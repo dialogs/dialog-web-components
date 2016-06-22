@@ -22,7 +22,7 @@
   box-sizing: border-box;
   border-radius: 50%;
 
-  div {
+  & div {
     position: relative;
     box-sizing: content-box;
     color: var(--spinner-color);

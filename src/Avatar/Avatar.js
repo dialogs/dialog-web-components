@@ -4,8 +4,7 @@ import styles from './Avatar.css'
 
 const SIZES = {
   tiny: 24,
-  small: 32,
-  default: 36,
+  small: 36,
   medium: 44,
   large: 60,
   big: 120,
@@ -18,7 +17,7 @@ class Avatar extends Component {
     image: PropTypes.string,
     title: PropTypes.string.isRequired,
     size: PropTypes.oneOf([
-      'tiny', 'small', 'default', 'medium', 'large', 'big', 'huge'
+      'tiny', 'small', 'medium', 'large', 'big', 'huge'
     ]).isRequired,
     placeholder: PropTypes.oneOf([
       'empty', 'lblue', 'blue', 'purple', 'red', 'orange', 'yellow', 'green'
@@ -27,7 +26,9 @@ class Avatar extends Component {
   };
 
   static defaultProps = {
-    size: 'default'
+    title: '',
+    size: 'small',
+    placeholder: 'empty'
   };
 
   shouldComponentUpdate(prevProps) {
