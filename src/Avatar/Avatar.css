@@ -30,6 +30,7 @@
   display: inline-flex;
   flex-direction: column;
 
+  cursor: default;
   user-select: none;
   text-align: center;
   text-transform: uppercase;
