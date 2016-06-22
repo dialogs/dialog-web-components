@@ -1,0 +1,3 @@
+Basic Spinner:
+
+    <Spinner />

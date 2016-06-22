@@ -1,0 +1,41 @@
+{
+  "name": "@dlghq/dialog-components",
+  "version": "0.0.0",
+  "description": "Dialog web components",
+  "main": "lib/index.js",
+  "scripts": {
+    "start": "styleguidist server",
+    "build": "styleguidist build",
+    "create": "node generator"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dialogs/dialog-web-components.git"
+  },
+  "author": "Nikita Gusakov <gusnkt@gmail.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/dialogs/dialog-web-components/issues"
+  },
+  "homepage": "https://github.com/dialogs/dialog-web-components#readme",
+  "dependencies": {
+    "classnames": "2.2.5",
+    "lodash": "4.13.1",
+    "react": "15.1.0",
+    "react-dom": "15.1.0"
+  },
+  "devDependencies": {
+    "@dlghq/babel-preset-dialog": "1.0.0",
+    "chalk": "1.1.3",
+    "ejs": "2.4.2",
+    "inquirer": "1.0.3",
+    "postcss": "5.0.21",
+    "postcss-browser-reporter": "0.5.0",
+    "postcss-cssnext": "2.6.0",
+    "postcss-import": "8.1.2",
+    "postcss-loader": "0.9.1",
+    "postcss-nested": "1.0.0",
+    "postcss-reporter": "1.3.3",
+    "react-styleguidist": "2.3.1"
+  }
+}
