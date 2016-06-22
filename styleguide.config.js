@@ -16,7 +16,7 @@ module.exports = {
       {
         test: /\.css$/,
         include: source,
-        loader: 'style!css?modules&importLoaders=1!postcss'
+        loader: 'style!css?modules&localIdentName=[name]__[local]&importLoaders=1!postcss'
       }
     );
 
