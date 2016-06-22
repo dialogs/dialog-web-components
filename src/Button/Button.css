@@ -1,0 +1,92 @@
+:root {
+  --main-color: #8601b0;
+  --default-border-radius: 2px;
+  --default-font-size: 16px;
+}
+
+/* Main */
+
+.container {
+  font-size: var(--default-font-size);
+  line-height: 1rem;
+
+  display: inline-block;
+
+  box-sizing: border-box;
+  padding: 1rem 1.5rem;
+
+  transition: all 150ms ease;
+
+  border: none;
+  border-radius: var(--default-border-radius);
+  outline: none;
+  background-color: transparent;
+
+  appearance: none;
+
+  &[disabled] {
+    opacity: .7;
+    cursor: not-allowed;
+  }
+}
+
+/* Types */
+
+.flat {
+  &:hover,
+  &:focus {
+    background-color: color(#000 alpha(2%));
+  }
+
+  &:active {
+    background-color: color(#000 alpha(4%));
+  }
+
+  &[disabled] {
+    background-color: color(#000 alpha(2%)) !important;
+  }
+}
+
+.rised {
+  color: #fff;
+  background-color: var(--main-color);
+  box-shadow: 0 2px 3px 0 color(#000 alpha(10%)), 0 2px 8px 0 color(#000 alpha(15%));
+
+  &:hover,
+  &:focus {
+    background-color: color(var(--main-color) lightness(+5%));
+  }
+
+  &:active {
+    background-color: color(var(--main-color) lightness(+7%));
+    box-shadow: 0 3px 6px 0 color(#000 alpha(20%)), 0 4px 10px 0 color(#000 alpha(10%));
+  }
+
+  &[disabled] {
+    color: #fff !important;
+    background-color: var(--main-color) !important;
+    box-shadow: 0 2px 3px 0 color(#000 alpha(10%)), 0 2px 8px 0 color(#000 alpha(15%)) !important;
+  }
+}
+
+.shade {
+  color: var(--main-color);
+  background-color: color(var(--main-color) alpha(15%));
+
+  &:hover,
+  &:focus {
+    background-color: color(var(--main-color) alpha(15%) lightness(+5%));
+    box-shadow: 0 1px 1px 0 color(var(--main-color) alpha(30%));
+  }
+
+  &:active {
+    background-color: color(var(--main-color) alpha(15%) lightness(+10%));
+    box-shadow: 0 2px 3px 0 color(var(--main-color) alpha(25%));
+  }
+
+  &[disabled] {
+    color: var(--main-color) !important;
+    background-color: color(var(--main-color) alpha(15%)) !important;
+    box-shadow: none !important;
+  }
+}
