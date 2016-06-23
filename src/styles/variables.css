@@ -1,6 +1,7 @@
 :root {
   --default-border-radius: 2px;
   --default-font-size: 16px;
+  --default-line-height: 24px;
 
   --spinner-max-height: 20px;
   --spinner-color: #fff;
