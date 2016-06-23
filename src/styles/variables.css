@@ -1,3 +1,26 @@
 :root {
-  
+  --default-border-radius: 2px;
+  --default-font-size: 16px;
+
+  --spinner-max-height: 20px;
+  --spinner-color: #fff;
+
+  --main-color: #8601b0;
+
+  --avatar-color-empty: #b8b8b8;
+  --avatar-color-lblue: #59a2be;
+  --avatar-color-blue: #2093cd;
+  --avatar-color-purple: #ad62a7;
+  --avatar-color-red: #f16364;
+  --avatar-color-orange: #f9a43e;
+  --avatar-color-yellow: #e4c62e;
+  --avatar-color-green: #67bf74;
+
+  --avatar-tiny-size: 24px;
+  --avatar-small-size: 36px;
+  --avatar-medium-size: 44px;
+  --avatar-large-size: 60px;
+  --avatar-big-size: 120px;
+  --avatar-huge-size: 200px;
+
 }

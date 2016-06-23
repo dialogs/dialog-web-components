@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import classNames from 'classnames';
 <% if (styles) { -%>
+import classNames from 'classnames';
 import styles from './<%= name %>.css'
 <% } -%>
 
@@ -14,7 +14,7 @@ class <%= name %> extends Component {
 
   render() {
 <% if (styles) { -%>
-    const className = classNames(styles.container, this.props.className);
+    const className = classNames(styles.root, this.props.className);
 
     return (
       <div className={className}>

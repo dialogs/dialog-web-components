@@ -1,7 +1,4 @@
-:root {
-  --spinner-max-height: 20px;
-  --spinner-color: #fff;
-}
+@import '../../styles/variables.css';
 
 @keyframes line-scale {
   0%, 40%, 100% {
@@ -13,7 +10,7 @@
   }
 }
 
-.container {
+.root {
   display: inline-block;
   background-color: color(#000 alpha(20%));
   height: calc(var(--spinner-max-height) + 20px);
@@ -26,7 +23,7 @@
     position: relative;
     box-sizing: content-box;
     color: var(--spinner-color);
-    background: var(--spinner-color);
+    background-color: var(--spinner-color);
     border: 0 solid var(--spinner-color);
     display: inline-block;
     width: 2px;

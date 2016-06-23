@@ -1,8 +1,4 @@
-:root {
-  --main-color: #8601b0;
-  --default-border-radius: 2px;
-  --default-font-size: 16px;
-}
+@import '../../styles/variables.css';
 
 /* Main */
 
