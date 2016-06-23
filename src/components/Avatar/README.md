@@ -4,7 +4,10 @@ Default Avatar with placeholder:
 
 Default Avatar with image:
 
-    <Avatar title="Test" image="https://octodex.github.com/images/total-eclipse-of-the-octocat.jpg" />
+    <Avatar
+      title="Test"
+      image="https://octodex.github.com/images/total-eclipse-of-the-octocat.jpg"
+    />
 
 Avatar sizes:
 

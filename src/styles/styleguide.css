@@ -29,7 +29,7 @@
   & .ReactStyleguidist-common__monospace,
   & .CodeMirror pre {
     font-family: 'Roboto Mono', monospace;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 14px;
     line-height: 18px;
   }
@@ -80,5 +80,9 @@
 
   & .ReactStyleguidist-Layout__footer {
     display: none;
+  }
+
+  & .ReactStyleguidist-Props__cell .ReactStyleguidist-common__monospace {
+    font-weight: 500;
   }
 }

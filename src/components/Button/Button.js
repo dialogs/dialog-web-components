@@ -17,7 +17,6 @@ class Button extends Component {
     type: 'flat'
   };
 
-
   render() {
     const { type, size, disabled, onClick } = this.props;
 

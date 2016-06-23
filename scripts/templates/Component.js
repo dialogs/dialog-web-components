@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 <% if (styles) { -%>
 import classNames from 'classnames';
-import styles from './<%= name %>.css'
+import styles from './<%= name %>.css';
 <% } -%>
 
 class <%= name %> extends Component {
