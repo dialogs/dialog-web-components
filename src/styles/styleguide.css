@@ -1,0 +1,84 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500);
+@import 'https://fonts.googleapis.com/css?family=Roboto+Mono';
+
+:global {
+  & body {
+    background-image: linear-gradient(45deg, #3d01a4 0%, #8601b0 100%);
+    background-repeat: repeat-x;
+    background-attachment: fixed;
+    background-position: 50% 50%;
+    background-size: 1600px 1200px;
+
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  & .ReactStyleguidist-TableOfContents__root {
+    padding: 15px;
+  }
+
+  & .ReactStyleguidist-colors__base-bg {
+    background: transparent;
+  }
+
+  & .ReactStyleguidist-common__font {
+    font-family: 'Roboto', sans-serif;
+  }
+
+  & .ReactStyleguidist-common__monospace,
+  & .CodeMirror pre {
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  & .ReactStyleguidist-Layout__wrapper {
+    padding-left: 250px;
+  }
+
+  & .ReactStyleguidist-Layout__sidebar {
+    background-color: transparent;
+    width: 250px;
+  }
+
+  & .ReactStyleguidist-Layout__content {
+    background-color: #fff;
+    max-width: 100%
+  }
+
+  & .ReactStyleguidist-TableOfContents__link {
+    color: color(#fff alpha(80%)) !important;
+    &:hover {
+      color: #fff !important;
+      text-decoration: underline;
+    }
+  }
+
+  & .ReactStyleguidist-Layout__heading {
+    border: 0;
+    color: #fff !important;
+    font-weight: 300;
+  }
+
+  & .ReactStyleguidist-TableOfContents__search {
+    margin: 0;
+    width: 100%;
+    border-radius: 2px;
+    border-color: color(#fff alpha(40%));
+    color: #fff;
+    line-height: 24px;
+    &:focus {
+      border-color: #fff;
+    }
+  }
+
+  & .ReactStyleguidist-TableOfContents__list {
+    padding: 15px 0;
+  }
+
+  & .ReactStyleguidist-Layout__footer {
+    display: none;
+  }
+}
