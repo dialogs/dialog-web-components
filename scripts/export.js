@@ -4,10 +4,8 @@ const path = require('path');
 const src = path.resolve(__dirname, '../src/components');
 const exportFile = path.resolve(__dirname, '../src/index.js');
 
-const components = fs.readdirSync(src)
-  .map((name) => `  ${name}: require('./src/${name}/${name}.js').default`)
-  .join(',\n');
+const code = fs.readdirSync(src)
+  .map((name) => `export ${name} from './components/${name}/${name}.js';`)
+  .join('\n')
 
-const exportList = `module.exports = {\n${components}\n};`;
-
-fs.writeFileSync(exportFile, exportList);
+fs.writeFileSync(exportFile, code);
