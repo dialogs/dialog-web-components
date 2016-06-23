@@ -85,4 +85,16 @@
   & .ReactStyleguidist-Props__cell .ReactStyleguidist-common__monospace {
     font-weight: 500;
   }
+
+  /*& .ReactStyleguidist-ReactComponent__pathLine {
+    text-shadow: 0 1px 2px color(#000 alpha(10%));
+  }*/
+
+
+  & .ReactStyleguidist-Playground__preview {
+    & .Button__root {
+      margin-right: 8px;
+      margin-bottom: 8px;
+    }
+  }
 }

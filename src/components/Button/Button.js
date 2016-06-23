@@ -21,7 +21,7 @@ class Button extends Component {
     const { type, size, disabled, onClick } = this.props;
 
     const className = classNames(
-      styles.container,
+      styles.root,
       styles[type],
       styles[size],
       this.props.className

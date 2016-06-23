@@ -2,7 +2,7 @@
 
 /* Main */
 
-.container {
+.root {
   font-size: var(--default-font-size);
   font-weight: 500;
   line-height: 1rem;
@@ -30,13 +30,14 @@
 /* Types */
 
 .flat {
+  color: color(#000 alpha(70%));
   &:hover,
   &:focus {
     background-color: color(#000 alpha(2%));
   }
 
   &:active {
-    background-color: color(#000 alpha(4%));
+    background-color: color(#000 alpha(5%));
   }
 
   &[disabled] {

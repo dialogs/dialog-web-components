@@ -1,4 +1,8 @@
-Default Avatar with placeholder:
+Default Avatar:
+
+    <Avatar title="Test" />
+
+Avatar with custom background color:
 
     <Avatar title="Test" placeholder="red" />
 
@@ -25,6 +29,6 @@ Clickable Avatar:
     <Avatar
       title="Test"
       placeholder="green"
-      size="medium"
+      size="large"
       onClick={() => alert('Handle click')}
     />
