@@ -1,0 +1,55 @@
+@import '../../styles/variables.css';
+
+.root {
+  height: var(--default-line-height);
+}
+
+.checkbox {
+  display: none;
+}
+
+.label {
+  line-height: 24px;
+  position: relative;
+  padding-left: 32px;
+  cursor: pointer;
+  user-select: none;
+  display: inline-block;
+
+  &:before {
+    position: absolute;
+    top: 4px;
+    left: 2px;
+    display: block;
+    width: 16px;
+    height: 16px;
+    content: '';
+    transition: 250ms ease;
+    border-radius: 1px;
+    box-shadow: 0 0 0 2px var(--main-color), inset 0 0 0 0 var(--main-color);
+
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10px;
+    height: 22px;
+    border: 0 solid white;
+    border-width: 0 4px 4px 0;
+    transform: translate(3px, -2px) rotate(45deg) scale(0);
+  }
+}
+
+.checked {
+  & .label {
+    &:before {
+      box-shadow: 0 0 0 2px var(--main-color), inset 0 0 0 10px var(--main-color);
+    }
+    &:after {
+      transform: translate(3px, -2px) rotate(45deg) scale(.45);
+    }
+  }
+}
