@@ -2,13 +2,15 @@
   "name": "@dlghq/dialog-components",
   "version": "0.0.0",
   "description": "Dialog web components",
-  "main": "lib/index.js",
+  "main": "src/index.js",
   "scripts": {
+    "build:docs": "styleguidist build",
+    "build:lib": "node scripts/export.js",
+    "build": "npm run build:docs && npm run build:lib",
     "start": "styleguidist server",
-    "build": "styleguidist build",
+    "pregh-pages": "npm run build:docs",
     "gh-pages": "buildbranch gh-pages styleguide",
-    "create": "node generator",
-    "generate:export": "node generator/export"
+    "create": "node scripts/create-component.js"
   },
   "repository": {
     "type": "git",

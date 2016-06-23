@@ -1,4 +1,7 @@
+# Node
 node_modules/
 npm-debug.log
+
+# Build
+src/index.js
 styleguide/
-index.js

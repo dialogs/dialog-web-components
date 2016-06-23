@@ -3,9 +3,14 @@ const pkg = require('./package.json');
 
 module.exports = {
   title: `Dialog Components v${pkg.version}`,
-  components: './src/*',
+  components: './src/components/*',
+  highlightTheme: 'railscasts',
   updateWebpackConfig(config) {
     const source = path.join(__dirname, 'src');
+
+    config.entry.push(
+      path.join(source, 'styles/styleguide.css')
+    );
 
     config.module.loaders.push(
       {

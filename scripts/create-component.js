@@ -35,7 +35,7 @@ function mkdir(dirName) {
   }
 }
 
-const src = path.resolve(__dirname, '../src');
+const src = path.resolve(__dirname, '../src/components');
 const templates = path.resolve(__dirname, 'templates');
 
 function render(options, template, out) {
