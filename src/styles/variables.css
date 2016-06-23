@@ -2,6 +2,7 @@
   --default-border-radius: 2px;
   --default-font-size: 16px;
   --default-line-height: 24px;
+  --default-font-family: 'Roboto', sans-serif;
 
   --spinner-max-height: 20px;
   --spinner-color: #fff;

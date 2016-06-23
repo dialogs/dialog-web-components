@@ -7,21 +7,20 @@ class Checkbox extends Component {
   static propTypes = {
     className: PropTypes.string,
     id: PropTypes.string.isRequired,
-    value: PropTypes.bool.isRequired,
+    checked: PropTypes.bool.isRequired,
     label: PropTypes.node,
     disabled: PropTypes.bool,
     onChange: PropTypes.func
   };
 
   static defaultProps = {
-    id: getRandomString(10),
-    value: false,
+    checked: false
   };
 
   render() {
-    const { id, value, label, onChange, disabled } = this.props;
+    const { id, checked, label, disabled, onChange } = this.props;
     const className = classNames(styles.root, this.props.className, {
-      [styles.checked]: value,
+      [styles.checked]: checked,
       [styles.disabled]: disabled
     });
 
@@ -30,7 +29,7 @@ class Checkbox extends Component {
         <input
           type="checkbox"
           id={id}
-          checked={value}
+          checked={checked}
           onChange={onChange}
           className={styles.checkbox}
         />
