@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
 import styles from './Switcher.css';
-import getRandomString from '../../utils/getRandomString';
 
 class Switcher extends Component {
   static propTypes = {

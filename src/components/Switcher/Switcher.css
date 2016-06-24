@@ -24,7 +24,7 @@
   border-radius: 14px;
   background-color: color(#000 alpha(20%));
 
-  &:before {
+  &::before {
     position: absolute;
     top: -3px;
     left: -3px;
@@ -43,7 +43,7 @@
   & .label {
     background-color: color(var(--main-color) alpha(50%));
 
-    &:before {
+    &::before {
       left: 17px;
       background-color: var(--main-color);
     }
@@ -51,7 +51,7 @@
 }
 
 .disabled {
-  opacity: .5;
+  opacity: 0.5;
 
   & .label {
     cursor: not-allowed;
