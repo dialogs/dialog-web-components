@@ -1,8 +1,10 @@
 @import '../../styles/variables.css';
 
 @keyframes line-scale {
-  0%, 40%, 100% {
-    transform: scaleY(.4);
+  0%,
+  40%,
+  100% {
+    transform: scaleY(0.4);
   }
 
   20% {
@@ -25,7 +27,7 @@
     color: var(--spinner-color);
     background-color: var(--spinner-color);
     border: 0 solid var(--spinner-color);
-    display: inline-block;
+    display: block;
     width: 2px;
     height: var(--spinner-max-height);
     margin: 0 1px;
@@ -54,10 +56,10 @@
     }
   }
 
-  &:after {
+  &::after {
     display: table;
     line-height: 0;
     clear: both;
-    content: "";
+    content: '';
   }
 }

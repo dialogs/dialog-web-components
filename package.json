@@ -1,9 +1,12 @@
 {
   "name": "@dlghq/dialog-components",
   "version": "0.1.1",
-  "description": "Dialog web components",
+  "description": "Dialog Web Components",
   "main": "src/index.js",
   "scripts": {
+    "eslint": "eslint src",
+    "stylelint": "stylelint 'src/**/*.css'",
+    "lint": "npm run eslint && npm run stylelint",
     "build:docs": "styleguidist build",
     "build:lib": "node scripts/export.js",
     "build": "npm run build:docs && npm run build:lib",
@@ -14,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dialogs/dialog-web-components.git"
+    "url": "https://github.com/dialogs/dialog-web-components.git"
   },
   "author": "Nikita Gusakov <gusnkt@gmail.com>",
   "license": "Apache-2.0",
@@ -30,9 +33,14 @@
   },
   "devDependencies": {
     "@dlghq/babel-preset-dialog": "1.1.0",
+    "@dlghq/eslint-config-dialog": "0.2.4",
+    "babel-eslint": "6.1.0",
     "buildbranch": "1.0.0",
     "chalk": "1.1.3",
     "ejs": "2.4.2",
+    "eslint": "^2.13.1",
+    "eslint-loader": "1.3.0",
+    "eslint-plugin-react": "5.2.2",
     "inquirer": "1.0.3",
     "postcss": "5.0.21",
     "postcss-browser-reporter": "0.5.0",
@@ -41,6 +49,8 @@
     "postcss-loader": "0.9.1",
     "postcss-nested": "1.0.0",
     "postcss-reporter": "1.3.3",
-    "react-styleguidist": "2.3.1"
+    "react-styleguidist": "2.3.1",
+    "stylelint": "6.7.1",
+    "stylelint-config-standard": "9.0.0"
   }
 }

@@ -1,14 +1,13 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500);
-@import 'https://fonts.googleapis.com/css?family=Roboto+Mono';
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,300,500');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
 
-:global {
+:root {
   & body {
     background-image: linear-gradient(45deg, #3d01a4 0%, #8601b0 100%);
     background-repeat: repeat-x;
     background-attachment: fixed;
     background-position: 50% 50%;
     background-size: 1600px 1200px;
-
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -29,7 +28,7 @@
   & .ReactStyleguidist-common__monospace,
   & .CodeMirror pre {
     font-family: 'Roboto Mono', monospace;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 14px;
     line-height: 18px;
   }
@@ -45,11 +44,12 @@
 
   & .ReactStyleguidist-Layout__content {
     background-color: #fff;
-    max-width: 100%
+    max-width: 100%;
   }
 
   & .ReactStyleguidist-TableOfContents__link {
     color: color(#fff alpha(80%)) !important;
+
     &:hover {
       color: #fff !important;
       text-decoration: underline;
@@ -69,6 +69,7 @@
     border-color: color(#fff alpha(40%));
     color: #fff;
     line-height: 24px;
+
     &:focus {
       border-color: #fff;
     }
@@ -85,11 +86,6 @@
   & .ReactStyleguidist-Props__cell .ReactStyleguidist-common__monospace {
     font-weight: 500;
   }
-
-  /*& .ReactStyleguidist-ReactComponent__pathLine {
-    text-shadow: 0 1px 2px color(#000 alpha(10%));
-  }*/
-
 
   & .ReactStyleguidist-Playground__preview {
     & .Button__root {
