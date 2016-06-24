@@ -135,4 +135,17 @@
       margin: 1rem 0;
     }
   }
+
+  & .ReactStyleguidist-colors__link {
+    &,
+    &:link,
+    &:visited {
+      color: color(#fff blackness(15%));
+    }
+
+    &:hover,
+    &:active {
+      color: #fff;
+    }
+  }
 }

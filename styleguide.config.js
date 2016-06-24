@@ -1,10 +1,35 @@
 const path = require('path');
 const pkg = require('./package.json');
 
+function component(name) {
+  return path.resolve(__dirname, 'src/components', name);
+}
+
 module.exports = {
   title: `Dialog Components v${pkg.version}`,
-  components: './src/components/*',
   highlightTheme: 'dracula',
+  sections: [
+    {
+      name: 'Interface',
+      components() {
+        return [
+          component('Avatar'),
+          component('Button'),
+          component('Spinner'),
+          component('Modal')
+        ];
+      }
+    },
+    {
+      name: 'Forms',
+      components() {
+        return [
+          component('Checkbox'),
+          component('Switcher')
+        ];
+      }
+    }
+  ],
   updateWebpackConfig(config) {
     const source = path.join(__dirname, 'src');
 
