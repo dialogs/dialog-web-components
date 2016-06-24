@@ -9,20 +9,25 @@ class Button extends Component {
     type: PropTypes.oneOf([
       'flat', 'rised', 'shade'
     ]).isRequired,
+    size: PropTypes.oneOf([
+      'small', 'normal', 'large'
+    ]),
     disabled: PropTypes.bool,
     onClick: PropTypes.func
   };
 
   static defaultProps = {
-    type: 'flat'
+    type: 'flat',
+    size: 'normal'
   };
 
   render() {
-    const { type, disabled, onClick } = this.props;
+    const { type, size, disabled, onClick } = this.props;
 
     const className = classNames(
       styles.root,
       styles[type],
+      styles[size],
       this.props.className
     );
 

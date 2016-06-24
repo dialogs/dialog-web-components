@@ -2,13 +2,11 @@
 
 /* Main */
 .root {
-  font-size: var(--default-font-size);
   font-family: var(--default-font-family);
   font-weight: 500;
   line-height: 1rem;
   display: inline-block;
   box-sizing: border-box;
-  padding: 1rem 1.5rem;
   transition: all 150ms ease;
   border: none;
   border-radius: var(--default-border-radius);
@@ -82,4 +80,20 @@
     background-color: color(var(--main-color) alpha(15%)) !important;
     box-shadow: none !important;
   }
+}
+
+/* Sizes */
+.small {
+  padding: 0.5rem 1rem;
+  font-size: var(--small-font-size);
+}
+
+.normal {
+  font-size: var(--default-font-size);
+  padding: 1rem 1.5rem;
+}
+
+.large {
+  font-size: var(--large-font-size);
+  padding: 1.25rem 2rem;
 }
