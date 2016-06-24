@@ -32,10 +32,10 @@ module.exports = {
     Object.assign(config, {
       postcss(webpack) {
         return [
+          require('stylelint')(),
           require('postcss-import')({
             addDependencyTo: webpack
           }),
-          require('stylelint')(),
           require('postcss-cssnext')(),
           require('postcss-nested')(),
           require('postcss-browser-reporter')(),
