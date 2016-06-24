@@ -15,8 +15,8 @@ module.exports = {
         return [
           component('Avatar'),
           component('Button'),
-          component('Spinner'),
-          component('Modal')
+          component('Modal'),
+          component('Spinner')
         ];
       }
     },
@@ -24,6 +24,7 @@ module.exports = {
       name: 'Forms',
       components() {
         return [
+          component('Input'),
           component('Checkbox'),
           component('Switcher')
         ];

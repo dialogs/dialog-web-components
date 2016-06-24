@@ -1,5 +1,10 @@
 @import '../../styles/variables.css';
 
+:root {
+  --spinner-max-height: 20px;
+  --spinner-color: #fff;
+}
+
 @keyframes line-scale {
   0%,
   40%,
