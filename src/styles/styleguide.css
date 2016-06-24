@@ -67,9 +67,50 @@
     border-color: color(#fff alpha(40%));
     color: #fff;
     line-height: 24px;
+    transition: 0ms;
+
+    &::-webkit-input-placeholder {
+      color: color(#fff alpha(60%));
+    }
+
+    &:-moz-placeholder {
+      color: color(#fff alpha(60%));
+      opacity: 1;
+    }
+
+    &::-moz-placeholder {
+      color: color(#fff alpha(60%));
+      opacity: 1;
+    }
+
+    &:-ms-input-placeholder {
+      color: color(#fff alpha(60%));
+    }
+
+    &:hover {
+      border-color: color(#fff alpha(60%));
+    }
 
     &:focus {
       border-color: #fff;
+
+      &::-webkit-input-placeholder {
+        color: #fff;
+      }
+
+      &:-moz-placeholder {
+        color: #fff;
+        opacity: 1;
+      }
+
+      &::-moz-placeholder {
+        color: #fff;
+        opacity: 1;
+      }
+
+      &:-ms-input-placeholder {
+        color: #fff;
+      }
     }
   }
 
@@ -89,6 +130,13 @@
     & .Button__root {
       margin-right: 8px;
       margin-bottom: 8px;
+    }
+
+    & hr {
+      height: 1px;
+      border: none;
+      background-color: color(#000 alpha(5%));
+      margin: 1rem 0;
     }
   }
 }
