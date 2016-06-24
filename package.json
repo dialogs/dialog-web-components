@@ -34,6 +34,7 @@
   "devDependencies": {
     "@dlghq/babel-preset-dialog": "1.1.0",
     "@dlghq/eslint-config-dialog": "0.2.4",
+    "@dlghq/stylelint-config-dialog": "^0.1.1",
     "babel-eslint": "6.1.0",
     "buildbranch": "1.0.0",
     "chalk": "1.1.3",
