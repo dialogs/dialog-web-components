@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
 import styles from './Checkbox.css';
-import getRandomString from '../../utils/getRandomString';
 
 class Checkbox extends Component {
   static propTypes = {

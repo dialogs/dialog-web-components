@@ -17,7 +17,7 @@
   display: inline-block;
   font-family: var(--default-font-family);
 
-  &:before {
+  &::before {
     position: absolute;
     top: 4px;
     left: 2px;
@@ -30,7 +30,7 @@
     box-shadow: 0 0 0 2px var(--main-color), inset 0 0 0 0 var(--main-color);
   }
 
-  &:after {
+  &::after {
     content: '';
     position: absolute;
     top: 0;
@@ -45,18 +45,18 @@
 
 .checked {
   & .label {
-    &:before {
+    &::before {
       box-shadow: 0 0 0 2px var(--main-color), inset 0 0 0 10px var(--main-color);
     }
 
-    &:after {
-      transform: translate(3px, -2px) rotate(45deg) scale(.45);
+    &::after {
+      transform: translate(3px, -2px) rotate(45deg) scale(0.45);
     }
   }
 }
 
 .disabled {
-  opacity: .5;
+  opacity: 0.5;
 
   & .label {
     cursor: not-allowed;
