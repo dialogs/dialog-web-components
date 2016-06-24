@@ -16,7 +16,8 @@ module.exports = {
           component('Avatar'),
           component('Button'),
           component('Modal'),
-          component('Spinner')
+          component('Spinner'),
+          component('Scroller')
         ];
       }
     },
