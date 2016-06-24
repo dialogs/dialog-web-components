@@ -53,13 +53,15 @@ class Avatar extends Component {
   render() {
     const { image, placeholder, title, size, onClick } = this.props;
 
-    if (image) {
-      const className = classNames(
-        styles.image,
-        this.props.className,
-        { [styles.clickable]: onClick }
-      );
+    const className = classNames(
+      styles.placeholder,
+      styles[size],
+      styles[placeholder],
+      this.props.className,
+      { [styles.clickable]: onClick }
+    );
 
+    if (image) {
       const imgSize = SIZES[size];
 
       return (
@@ -73,14 +75,6 @@ class Avatar extends Component {
         />
       );
     }
-
-    const className = classNames(
-      styles.placeholder,
-      styles[size],
-      styles[placeholder],
-      this.props.className,
-      { [styles.clickable]: onClick }
-    );
 
     return (
       <div className={className} onClick={onClick} title={title}>
