@@ -21,6 +21,8 @@
   text-shadow: 0 -1px 5px rgba(0, 0, 0, 0.17);
   align-content: center;
   justify-content: center;
+  font-family: var(--default-font-family);
+  font-weight: 500;
 }
 
 .clickable {
@@ -32,6 +34,7 @@
   font-size: 12px;
   width: var(--avatar-tiny-size);
   height: var(--avatar-tiny-size);
+  font-weight: 600;
 }
 
 .small {

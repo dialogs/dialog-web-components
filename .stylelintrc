@@ -3,7 +3,8 @@
   "rules": {
     "string-quotes": "single",
     "selector-pseudo-class-no-unknown": [true, {
-      ignorePseudoClasses: ["global"]
-    }]
+      "ignorePseudoClasses": ["global"]
+    }],
+    "declaration-block-no-duplicate-properties": true
   }
 }

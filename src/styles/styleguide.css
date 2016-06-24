@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,600');
-@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:400,500');
 
 :global {
   & body {
@@ -26,11 +26,9 @@
   }
 
   & .ReactStyleguidist-common__monospace,
-  & .CodeMirror pre {
+  & .CodeMirror {
     font-family: 'Roboto Mono', monospace;
     font-weight: 500;
-    font-size: 14px;
-    line-height: 18px;
   }
 
   & .ReactStyleguidist-Layout__wrapper {
