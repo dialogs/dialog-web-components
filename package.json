@@ -3,6 +3,11 @@
   "version": "0.1.2",
   "description": "Dialog Web Components",
   "main": "src/index.js",
+  "keywords": [
+    "react",
+    "components",
+    "dialog"
+  ],
   "scripts": {
     "eslint": "eslint src",
     "stylelint": "stylelint 'src/**/*.css'",
