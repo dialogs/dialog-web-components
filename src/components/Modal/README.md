@@ -2,8 +2,12 @@ Basic Modal:
 
     <div>
       {'isOpen' in state || setState({ isOpen: false })}
-      <Button onClick={() => {setState({ isOpen: true })}}>Open modal</Button>
-      <Modal isOpen={state.isOpen} onClose={() => {setState({ isOpen: false })}}>
+      <Button onClick={() => {setState({ isOpen: true })}} type="rised">Open modal</Button>
+      <Modal
+        isOpen={state.isOpen}
+        onClose={() => {setState({ isOpen: false })}}
+        header="Simple modal"
+      >
         Hello, world!
       </Modal>
     </div>
@@ -16,8 +20,9 @@ Fullscreen Modal:
       <Modal
         isOpen={state.isOpen}
         onClose={() => {setState({ isOpen: false })}}
+        header="Hello. I'm modal header!"
         fullscreen
       >
-        Hello, i'm inside fullscreen modal !!!
+        Hi again. I'm inside fullscreen modal !!!
       </Modal>
     </div>

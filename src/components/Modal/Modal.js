@@ -1,7 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
-import styles from './Modal.css';
 import ReactModal from 'react-modal';
+import styles from './Modal.css';
+import Button from '../Button/Button';
 
 class Modal extends Component {
   static propTypes = {
@@ -9,8 +10,44 @@ class Modal extends Component {
     children: PropTypes.node.isRequired,
     isOpen: PropTypes.bool.isRequired,
     fullscreen: PropTypes.bool,
-    onClose: PropTypes.func.isRequired
+    onClose: PropTypes.func.isRequired,
+    header: PropTypes.node
   };
+
+  renderModalHeader() {
+    const { fullscreen, header, onClose } = this.props;
+    if (fullscreen) {
+      return (
+        <div>
+          <Button
+            onClick={onClose}
+            size="small"
+            className={styles.close}
+          >
+            Close
+          </Button>
+          <header className={styles.header}>
+            <h3 className={styles.title}>{header}</h3>
+          </header>
+        </div>
+      );
+    }
+
+    return (
+      <div>
+        <header className={styles.header}>
+          <h3 className={styles.title}>{header}</h3>
+          <Button
+            onClick={onClose}
+            size="small"
+            className={styles.close}
+          >
+            Close
+          </Button>
+        </header>
+      </div>
+    );
+  }
 
   render() {
     const { children, isOpen, fullscreen, onClose } = this.props;
@@ -26,7 +63,12 @@ class Modal extends Component {
         onRequestClose={onClose}
         isOpen={isOpen}
       >
-        <div className={styles.container}>{children}</div>
+        <div className={styles.container}>
+          {this.renderModalHeader()}
+          <div className={styles.body}>
+            {children}
+          </div>
+        </div>
       </ReactModal>
     );
   }
