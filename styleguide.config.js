@@ -4,7 +4,7 @@ const pkg = require('./package.json');
 module.exports = {
   title: `Dialog Components v${pkg.version}`,
   components: './src/components/*',
-  highlightTheme: 'railscasts',
+  highlightTheme: 'dracula',
   updateWebpackConfig(config) {
     const source = path.join(__dirname, 'src');
 
