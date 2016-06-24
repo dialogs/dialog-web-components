@@ -27,7 +27,7 @@
     content: '';
     transition: 250ms ease;
     border-radius: 1px;
-    box-shadow: 0 0 0 2px var(--main-color), inset 0 0 0 0 var(--main-color);
+    box-shadow: 0 0 0 2px var(--color-primary), inset 0 0 0 0 var(--color-primary);
   }
 
   &::after {
@@ -46,7 +46,7 @@
 .checked {
   & .label {
     &::before {
-      box-shadow: 0 0 0 2px var(--main-color), inset 0 0 0 10px var(--main-color);
+      box-shadow: 0 0 0 2px var(--color-primary), inset 0 0 0 10px var(--color-primary);
     }
 
     &::after {

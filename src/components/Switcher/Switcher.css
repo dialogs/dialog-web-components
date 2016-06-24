@@ -41,11 +41,11 @@
 
 .checked {
   & .label {
-    background-color: color(var(--main-color) alpha(50%));
+    background-color: color(var(--color-primary) alpha(50%));
 
     &::before {
       left: 17px;
-      background-color: var(--main-color);
+      background-color: var(--color-primary);
     }
   }
 }

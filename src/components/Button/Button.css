@@ -40,44 +40,44 @@
 
 .rised {
   color: #fff;
-  background-color: var(--main-color);
+  background-color: var(--color-primary);
   box-shadow: 0 2px 3px 0 color(#000 alpha(10%)), 0 2px 8px 0 color(#000 alpha(15%));
 
   &:hover,
   &:focus {
-    background-color: color(var(--main-color) lightness(+5%));
+    background-color: color(var(--color-primary) lightness(+5%));
   }
 
   &:active {
-    background-color: color(var(--main-color) lightness(+7%));
+    background-color: color(var(--color-primary) lightness(+7%));
     box-shadow: 0 3px 6px 0 color(#000 alpha(20%)), 0 4px 10px 0 color(#000 alpha(10%));
   }
 
   &[disabled] {
     color: #fff !important;
-    background-color: var(--main-color) !important;
+    background-color: var(--color-primary) !important;
     box-shadow: 0 2px 3px 0 color(#000 alpha(10%)), 0 2px 8px 0 color(#000 alpha(15%)) !important;
   }
 }
 
 .shade {
-  color: var(--main-color);
-  background-color: color(var(--main-color) alpha(15%));
+  color: var(--color-primary);
+  background-color: color(var(--color-primary) alpha(15%));
 
   &:hover,
   &:focus {
-    background-color: color(var(--main-color) alpha(15%) lightness(+5%));
-    box-shadow: 0 1px 1px 0 color(var(--main-color) alpha(30%));
+    background-color: color(var(--color-primary) alpha(15%) lightness(+5%));
+    box-shadow: 0 1px 1px 0 color(var(--color-primary) alpha(30%));
   }
 
   &:active {
-    background-color: color(var(--main-color) alpha(15%) lightness(+10%));
-    box-shadow: 0 2px 3px 0 color(var(--main-color) alpha(25%));
+    background-color: color(var(--color-primary) alpha(15%) lightness(+10%));
+    box-shadow: 0 2px 3px 0 color(var(--color-primary) alpha(25%));
   }
 
   &[disabled] {
-    color: var(--main-color) !important;
-    background-color: color(var(--main-color) alpha(15%)) !important;
+    color: var(--color-primary) !important;
+    background-color: color(var(--color-primary) alpha(15%)) !important;
     box-shadow: none !important;
   }
 }

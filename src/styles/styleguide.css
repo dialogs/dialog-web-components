@@ -118,10 +118,6 @@
     padding: 15px 0;
   }
 
-  & .ReactStyleguidist-Layout__footer {
-    display: none;
-  }
-
   & .ReactStyleguidist-Props__cell .ReactStyleguidist-common__monospace {
     font-weight: 500;
   }

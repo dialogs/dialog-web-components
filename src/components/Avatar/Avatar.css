@@ -1,5 +1,25 @@
 @import '../../styles/variables.css';
 
+:root {
+  /* Sizes */
+  --avatar-tiny-size: 24px;
+  --avatar-small-size: 36px;
+  --avatar-medium-size: 44px;
+  --avatar-large-size: 60px;
+  --avatar-big-size: 120px;
+  --avatar-huge-size: 200px;
+
+  /* Colors */
+  --avatar-color-empty: var(--color-empty);
+  --avatar-color-lblue: var(--color-lblue);
+  --avatar-color-blue: var(--color-blue);
+  --avatar-color-purple: var(--color-purple);
+  --avatar-color-red: var(--color-red);
+  --avatar-color-orange: var(--color-orange);
+  --avatar-color-yellow: var(--color-yellow);
+  --avatar-color-green: var(--color-green);
+}
+
 .image {
   display: inline-block;
   user-select: none;
