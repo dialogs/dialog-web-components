@@ -3,6 +3,9 @@
   "version": "0.1.2",
   "description": "Dialog Web Components",
   "main": "src/index.js",
+  "files": [
+    "src"
+  ],
   "keywords": [
     "react",
     "components",
