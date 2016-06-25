@@ -20,5 +20,7 @@
   --color-orange: #f9a43e;
   --color-yellow: #e4c62e;
   --color-green: #67bf74;
-  --spinner-color: #fff;
+
+  --color-error: var(--color-red);
+  --color-success: var(--color-green);
 }
