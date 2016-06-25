@@ -1,0 +1,29 @@
+@import '../../styles/variables.css';
+
+:root {
+  --scroller-width: 4px;
+  --scroller-color: #adc2dc;
+}
+
+.wrapper,
+.container {
+  width: 100%;
+  min-height: 1px;
+}
+
+.wrapper {
+  display: flex;
+  overflow: hidden;
+}
+
+.container {
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: var(--scroller-width);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--scroller-color);
+  }
+}
