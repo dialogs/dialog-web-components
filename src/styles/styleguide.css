@@ -135,7 +135,7 @@
 
     & hr {
       height: 1px;
-      border: none;
+      border: 0;
       background-color: color(#000 alpha(5%));
       margin: 1rem 0;
     }
