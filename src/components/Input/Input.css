@@ -7,7 +7,6 @@
   --input-disabled-color: #bdbdbd;
   --input-error-color: var(--color-error);
   --input-success-color: var(--color-success);
-
   /* Font */
   --input-font-family: var(--default-font-family);
   --input-font-size: 1rem;
@@ -30,7 +29,6 @@
       color: var(--input-success-color);
     }
   }
-
   /* Error state */
   &.error {
     .input,
@@ -46,31 +44,30 @@
 }
 
 .input {
-  background-color: transparent;
+  box-sizing: content-box;
+  width: 100%;
+  height: 3rem;
+  margin-bottom: 0.5rem;
+  padding: 0;
+  transition: all 0.3s;
   border: 0;
   border-bottom: 1px solid var(--input-inactive-color);
   border-radius: 0;
   outline: none;
-  height: 3rem;
-  width: 100%;
+  background-color: transparent;
+  box-shadow: none;
   font-family: var(--input-font-family);
   font-size: var(--input-font-size);
-  margin-bottom: 0.5rem;
-  padding: 0;
-  box-shadow: none;
-  box-sizing: content-box;
-  transition: all 0.3s;
 
   /* Disabled state */
   &:disabled {
-    color: var(--input-disabled-color);
     border-bottom: 1px dotted var(--input-disabled-color);
+    color: var(--input-disabled-color);
   }
 
   &:disabled + .label {
     color: var(--input-disabled-color);
   }
-
   /* Focused state */
   &:focus {
     border-bottom: 1px solid var(--input-active-color);
@@ -83,25 +80,25 @@
 }
 
 .label {
-  color: var(--input-inactive-color);
   position: absolute;
   top: 0.8rem;
   left: 0;
-  font-family: var(--input-font-family);
-  font-size: 1rem;
   cursor: text;
   transition: 0.2s ease-out;
+  font-family: var(--input-font-family);
+  font-size: 1rem;
+  color: var(--input-inactive-color);
 }
 
 .label.active,
 .input:focus + .label {
-  font-size: var(--input-label-font-size);
   transform: translateY(-140%);
+  font-size: var(--input-label-font-size);
 }
 
 .hint {
+  margin: 0;
   font-family: var(--input-font-family);
   font-size: 0.8rem;
   color: var(--input-inactive-color);
-  margin: 0;
 }

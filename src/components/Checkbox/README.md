@@ -1,6 +1,6 @@
 Basic Checkbox:
 
-    'value' in state || setState({ value: true });
+    initialState = { value: true };
     <Checkbox
       id="basic"
       checked={state.value}

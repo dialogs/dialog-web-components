@@ -1,6 +1,6 @@
 Basic Switcher:
 
-    'value' in state || setState({ value: true });
+    initialState = { value: true };
     <Switcher
       id="example"
       checked={state.value}

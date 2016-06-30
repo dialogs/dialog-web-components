@@ -1,37 +1,37 @@
 @import '../../styles/variables.css';
 
 .root {
-  background-color: white;
-  outline: none;
+  display: block;
   min-width: 400px;
   min-height: 240px;
-  display: block;
   border-radius: var(--default-border-radius);
+  outline: none;
+  background-color: #fff;
   box-shadow: 0 4px 10px 0 color(#000 alpha(25%));
   font-family: var(--default-font-family);
 }
 
 .overlay {
   position: fixed;
+  z-index: 100;
   top: 0;
-  left: 0;
   right: 0;
   bottom: 0;
-  background-color: color(#000 alpha(45%));
-  z-index: 100;
+  left: 0;
   display: flex;
   flex-direction: column;
+  background-color: color(#000 alpha(45%));
   align-items: center;
   justify-content: center;
 }
 
 .header {
-  composes: clearfix from '../../styles/helpers.css';
+  display: flex;
+  flex-direction: row;
   padding: var(--default-padding);
   border-bottom: 1px solid color(#000 alpha(2%));
-  display: flex;
+  composes: clearfix from '../../styles/helpers.css';
   align-items: center;
-  flex-direction: row;
   justify-content: flex-start;
 
   & .title {
@@ -44,9 +44,9 @@
 }
 
 .title {
+  margin: 0;
   font-size: 18px;
   font-weight: 500;
-  margin: 0;
 }
 
 .body {
@@ -58,8 +58,8 @@
 
   & .close {
     position: absolute;
-    right: 32px;
     top: 32px;
+    right: 32px;
   }
 
   & .header {
@@ -81,11 +81,11 @@
     height: 100%;
 
     & .container {
+      overflow: scroll;
+      width: auto;
       min-width: 600px;
       max-width: 800px;
-      width: auto;
       height: 100%;
-      overflow: scroll;
       margin: 0 auto;
       padding-top: 100px;
     }

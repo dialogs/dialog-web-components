@@ -8,7 +8,6 @@
   --avatar-large-size: 60px;
   --avatar-big-size: 120px;
   --avatar-huge-size: 200px;
-
   /* Colors */
   --avatar-color-empty: var(--color-empty);
   --avatar-color-lblue: var(--color-lblue);
@@ -24,7 +23,7 @@
   display: inline-block;
   user-select: none;
   border-radius: 100%;
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 1px color(#000 alpha(10%));
 }
 
 .placeholder {
@@ -35,14 +34,15 @@
   text-align: center;
   vertical-align: middle;
   text-transform: uppercase;
-  color: white;
   border-radius: 100%;
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
-  text-shadow: 0 -1px 5px rgba(0, 0, 0, 0.17);
-  align-content: center;
-  justify-content: center;
+  background: #000;
+  box-shadow: 0 0 1px color(#000 alpha(10%));
   font-family: var(--default-font-family);
   font-weight: 500;
+  color: #fff;
+  text-shadow: 0 -1px 5px color(#000 alpha(17%));
+  align-content: center;
+  justify-content: center;
 }
 
 .clickable {
@@ -51,40 +51,40 @@
 
 /* Sizes */
 .tiny {
-  font-size: 12px;
   width: var(--avatar-tiny-size);
   height: var(--avatar-tiny-size);
+  font-size: 12px;
   font-weight: 600;
 }
 
 .small {
-  font-size: 15px;
   width: var(--avatar-small-size);
   height: var(--avatar-small-size);
+  font-size: 15px;
 }
 
 .medium {
-  font-size: 16px;
   width: var(--avatar-medium-size);
   height: var(--avatar-medium-size);
+  font-size: 16px;
 }
 
 .large {
-  font-size: 20px;
   width: var(--avatar-large-size);
   height: var(--avatar-large-size);
+  font-size: 20px;
 }
 
 .big {
-  font-size: 32px;
   width: var(--avatar-big-size);
   height: var(--avatar-big-size);
+  font-size: 32px;
 }
 
 .huge {
-  font-size: 64px;
   width: var(--avatar-huge-size);
   height: var(--avatar-huge-size);
+  font-size: 64px;
 }
 
 /* Placeholder colors */

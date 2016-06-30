@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
-import styles from './Avatar.css'
+import styles from './Avatar.css';
 
 const SIZES = {
   tiny: 24,
@@ -43,7 +43,7 @@ class Avatar extends Component {
     const { title } = this.props;
     const emojiFirstChar = /([\uE000-\uF8FF]|\uD83C|\uD83D)/g;
 
-    if (title.length == 0) {
+    if (title.length === 0) {
       return '#';
     }
 

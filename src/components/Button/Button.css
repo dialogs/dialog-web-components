@@ -2,9 +2,6 @@
 
 /* Main */
 .root {
-  font-family: var(--default-font-family);
-  font-weight: 500;
-  line-height: 1rem;
   display: inline-block;
   box-sizing: border-box;
   transition: all 150ms ease;
@@ -12,11 +9,14 @@
   border-radius: var(--default-border-radius);
   outline: none;
   background-color: transparent;
+  font-family: var(--default-font-family);
+  font-weight: 500;
+  line-height: 1rem;
   appearance: none;
 
   &[disabled] {
-    opacity: 0.7;
     cursor: not-allowed;
+    opacity: 0.7;
   }
 }
 
@@ -34,14 +34,14 @@
   }
 
   &[disabled] {
-    background-color: color(#000 alpha(2%)) !important;
+    background-color: color(#000 alpha(2%));
   }
 }
 
 .rised {
-  color: #fff;
   background-color: var(--color-primary);
   box-shadow: 0 2px 3px 0 color(#000 alpha(10%)), 0 2px 8px 0 color(#000 alpha(15%));
+  color: #fff;
 
   &:hover,
   &:focus {
@@ -54,15 +54,15 @@
   }
 
   &[disabled] {
-    color: #fff !important;
-    background-color: var(--color-primary) !important;
-    box-shadow: 0 2px 3px 0 color(#000 alpha(10%)), 0 2px 8px 0 color(#000 alpha(15%)) !important;
+    background-color: var(--color-primary);
+    box-shadow: 0 2px 3px 0 color(#000 alpha(10%)), 0 2px 8px 0 color(#000 alpha(15%));
+    color: #fff;
   }
 }
 
 .shade {
-  color: var(--color-primary);
   background-color: color(var(--color-primary) alpha(15%));
+  color: var(--color-primary);
 
   &:hover,
   &:focus {
@@ -76,9 +76,9 @@
   }
 
   &[disabled] {
-    color: var(--color-primary) !important;
-    background-color: color(var(--color-primary) alpha(15%)) !important;
-    box-shadow: none !important;
+    background-color: color(var(--color-primary) alpha(15%));
+    box-shadow: none;
+    color: var(--color-primary);
   }
 }
 
@@ -89,11 +89,11 @@
 }
 
 .normal {
-  font-size: var(--default-font-size);
   padding: 1rem 1.5rem;
+  font-size: var(--default-font-size);
 }
 
 .large {
-  font-size: var(--large-font-size);
   padding: 1.25rem 2rem;
+  font-size: var(--large-font-size);
 }

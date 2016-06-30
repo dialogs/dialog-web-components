@@ -9,13 +9,13 @@
 }
 
 .label {
-  line-height: 24px;
   position: relative;
+  display: inline-block;
   padding-left: 32px;
   cursor: pointer;
   user-select: none;
-  display: inline-block;
   font-family: var(--default-font-family);
+  line-height: 24px;
 
   &::before {
     position: absolute;
@@ -31,15 +31,23 @@
   }
 
   &::after {
-    content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 10px;
     height: 22px;
-    border: 0 solid white;
-    border-width: 0 4px 4px 0;
+    content: '';
     transform: translate(3px, -2px) rotate(45deg) scale(0);
+    border: 0 solid #fff;
+    border-width: 0 4px 4px 0;
+  }
+}
+
+.disabled {
+  opacity: 0.5;
+
+  .label {
+    cursor: not-allowed;
   }
 }
 
@@ -52,13 +60,5 @@
     &::after {
       transform: translate(3px, -2px) rotate(45deg) scale(0.45);
     }
-  }
-}
-
-.disabled {
-  opacity: 0.5;
-
-  & .label {
-    cursor: not-allowed;
   }
 }

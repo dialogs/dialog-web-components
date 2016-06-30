@@ -1,3 +1,4 @@
+/* eslint global-require:0 */
 const path = require('path');
 const pkg = require('./package.json');
 
@@ -42,10 +43,7 @@ module.exports = {
     config.module.loaders.push({
       test: /\.js$/,
       include: source,
-      loaders: [
-        'babel?cacheDirectory',
-        'eslint'
-      ]
+      loader: 'babel?cacheDirectory'
     }, {
       test: /\.css$/,
       include: source,
@@ -59,7 +57,6 @@ module.exports = {
     Object.assign(config, {
       postcss(webpack) {
         return [
-          require('stylelint')(),
           require('postcss-import')({
             addDependencyTo: webpack
           }),

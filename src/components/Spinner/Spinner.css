@@ -1,3 +1,6 @@
+/* Remove after merge & publish https://github.com/stylelint/stylelint/pull/1562 */
+/* stylelint-disable time-no-imperceptible */
+
 @import '../../styles/variables.css';
 
 :root {
@@ -19,26 +22,26 @@
 
 .root {
   display: inline-block;
-  background-color: color(#000 alpha(20%));
-  height: calc(var(--spinner-max-height) + 20px);
-  width: calc(var(--spinner-max-height) + 20px);
-  padding: 10px;
   box-sizing: border-box;
+  width: calc(var(--spinner-max-height) + 20px);
+  height: calc(var(--spinner-max-height) + 20px);
+  padding: 10px;
   border-radius: 50%;
+  background-color: color(#000 alpha(20%));
 
   & div {
     position: relative;
-    box-sizing: content-box;
-    color: var(--spinner-color);
-    background-color: var(--spinner-color);
-    border: 0 solid var(--spinner-color);
     display: block;
+    float: left;
+    box-sizing: content-box;
     width: 2px;
     height: var(--spinner-max-height);
     margin: 0 1px;
-    float: left;
-    border-radius: 0;
     animation: line-scale 1.2s infinite ease;
+    border: 0 solid var(--spinner-color);
+    border-radius: 0;
+    background-color: var(--spinner-color);
+    color: var(--spinner-color);
 
     &:nth-child(1) {
       animation-delay: -1.2s;
@@ -63,8 +66,8 @@
 
   &::after {
     display: table;
-    line-height: 0;
     clear: both;
     content: '';
+    line-height: 0;
   }
 }

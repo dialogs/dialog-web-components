@@ -38,8 +38,12 @@ Development
 NPM scripts:
 
  - `npm start` start dev server
- - `npm run build` build
- - `npm run gh-pages` publish to gh-pages
+ - `npm run create` create new component
+ - `npm test` run tests
+ - `npm run lint` run linters
+ - `npm run format` run formatters
+ - `npm run build` build docs & library
+ - `npm run release` build & publish to npm & publish to gh-pages
 
 License
 -------

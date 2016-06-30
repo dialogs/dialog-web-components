@@ -35,7 +35,18 @@
     transition: background 200ms ease, left 200ms ease;
     border-radius: 100%;
     background-color: rgb(250, 250, 250);
-    box-shadow: 0 3px 1px -2px color(#000 alpha(15%)), 0 2px 2px 0 color(#000 alpha(10%)), 0 1px 5px 0 color(#000 alpha(8.5%));
+    box-shadow:
+      0 3px 1px -2px color(#000 alpha(15%)),
+      0 2px 2px 0 color(#000 alpha(10%)),
+      0 1px 5px 0 color(#000 alpha(8.5%));
+  }
+}
+
+.disabled {
+  opacity: 0.5;
+
+  & .label {
+    cursor: not-allowed;
   }
 }
 
@@ -47,13 +58,5 @@
       left: 17px;
       background-color: var(--color-primary);
     }
-  }
-}
-
-.disabled {
-  opacity: 0.5;
-
-  & .label {
-    cursor: not-allowed;
   }
 }

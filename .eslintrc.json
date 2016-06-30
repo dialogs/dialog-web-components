@@ -1,0 +1,6 @@
+{
+  "extends": "@dlghq/eslint-config-dialog",
+  "rules": {
+    "no-warning-comments": 0
+  }
+}

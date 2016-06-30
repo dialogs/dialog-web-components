@@ -2,6 +2,10 @@ import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
 import styles from './Scroller.css';
 
+// TODO: replace by lodash noop,
+// when styleguidist will support it
+const noop = () => {}; // eslint-disable-line
+
 class Scroller extends Component {
   static propTypes = {
     className: PropTypes.string,
@@ -11,8 +15,8 @@ class Scroller extends Component {
   };
 
   static defaultProps = {
-    onScroll: () => {},
-    onResize: () => {}
+    onScroll: noop,
+    onResize: noop
   };
 
   constructor(props) {
@@ -22,12 +26,12 @@ class Scroller extends Component {
     this.onReference = this.onReference.bind(this);
   }
 
-  shouldComponentUpdate(nextProps) {
-    return nextProps.children !== this.props.children;
-  }
-
   componentDidMount() {
     window.addEventListener('resize', this.onResize, false);
+  }
+
+  shouldComponentUpdate(nextProps) {
+    return nextProps.children !== this.props.children;
   }
 
   componentWillUnmount() {
@@ -54,18 +58,6 @@ class Scroller extends Component {
     return this.container.getBoundingClientRect();
   }
 
-  render() {
-    const className = classNames(styles.container, this.props.className);
-
-    return (
-      <div className={styles.wrapper}>
-        <div className={className} ref={this.onReference} onScroll={this.props.onScroll}>
-          {this.props.children}
-        </div>
-      </div>
-    );
-  }
-
   scrollTo(offset) {
     this.container.scrollTop = offset;
   }
@@ -76,6 +68,18 @@ class Scroller extends Component {
 
   scrollToNode(node) {
     this.scrollTo(Math.min(node.offsetTop, this.container.scrollHeight));
+  }
+
+  render() {
+    const className = classNames(styles.container, this.props.className);
+
+    return (
+      <div className={styles.wrapper}>
+        <div className={className} ref={this.onReference} onScroll={this.props.onScroll}>
+          {this.props.children}
+        </div>
+      </div>
+    );
   }
 }
 

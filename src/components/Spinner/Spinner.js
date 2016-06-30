@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
-import styles from './Spinner.css'
+import styles from './Spinner.css';
 
 class Spinner extends Component {
   static propTypes = {
@@ -12,7 +12,7 @@ class Spinner extends Component {
 
     return (
       <div className={className}>
-        <div/><div/><div/><div/><div/>
+        <div /><div /><div /><div /><div />
       </div>
     );
   }

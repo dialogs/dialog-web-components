@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
-import styles from './Button.css'
+import styles from './Button.css';
 
 class Button extends Component {
   static propTypes = {

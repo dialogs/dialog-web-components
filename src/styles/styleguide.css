@@ -9,8 +9,8 @@
     background-position: 50% 50%;
     background-size: 1600px 1200px;
     text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
   }
 
   & .ReactStyleguidist-TableOfContents__root {
@@ -36,51 +36,51 @@
   }
 
   & .ReactStyleguidist-Layout__sidebar {
-    background-color: transparent;
     width: 250px;
+    background-color: transparent;
   }
 
   & .ReactStyleguidist-Layout__content {
-    background-color: #fff;
     max-width: 100%;
+    background-color: #fff;
   }
 
   & .ReactStyleguidist-TableOfContents__link {
-    color: color(#fff alpha(80%)) !important;
+    color: color(#fff alpha(80%));
 
     &:hover {
-      color: #fff !important;
       text-decoration: underline;
+      color: #fff;
     }
   }
 
   & .ReactStyleguidist-Layout__heading {
     border: 0;
-    color: #fff !important;
     font-weight: 300;
+    color: #fff;
   }
 
   & .ReactStyleguidist-TableOfContents__search {
-    margin: 0;
     width: 100%;
-    border-radius: 2px;
+    margin: 0;
+    transition: none;
     border-color: color(#fff alpha(40%));
-    color: #fff;
+    border-radius: 2px;
     line-height: 24px;
-    transition: 0ms;
+    color: #fff;
 
     &::-webkit-input-placeholder {
       color: color(#fff alpha(60%));
     }
 
     &:-moz-placeholder {
-      color: color(#fff alpha(60%));
       opacity: 1;
+      color: color(#fff alpha(60%));
     }
 
     &::-moz-placeholder {
-      color: color(#fff alpha(60%));
       opacity: 1;
+      color: color(#fff alpha(60%));
     }
 
     &:-ms-input-placeholder {
@@ -99,13 +99,13 @@
       }
 
       &:-moz-placeholder {
-        color: #fff;
         opacity: 1;
+        color: #fff;
       }
 
       &::-moz-placeholder {
-        color: #fff;
         opacity: 1;
+        color: #fff;
       }
 
       &:-ms-input-placeholder {
@@ -135,9 +135,9 @@
 
     & hr {
       height: 1px;
+      margin: 1rem 0;
       border: 0;
       background-color: color(#000 alpha(5%));
-      margin: 1rem 0;
     }
   }
 

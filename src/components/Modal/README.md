@@ -1,7 +1,7 @@
 Basic Modal:
 
+    initialState = { isOpen: false };
     <div>
-      {'isOpen' in state || setState({ isOpen: false })}
       <Button onClick={() => {setState({ isOpen: true })}} type="rised">Open modal</Button>
       <Modal
         isOpen={state.isOpen}
@@ -14,8 +14,8 @@ Basic Modal:
 
 Fullscreen Modal:
 
+    initialState = { isOpen: false };
     <div>
-      {'isOpen' in state || setState({ isOpen: false })}
       <Button onClick={() => {setState({ isOpen: true })}} type="shade">Open fullscreen modal</Button>
       <Modal
         isOpen={state.isOpen}
