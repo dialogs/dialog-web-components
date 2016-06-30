@@ -45,12 +45,14 @@
     background-color: #fff;
   }
 
-  & .ReactStyleguidist-TableOfContents__link {
-    color: color(#fff alpha(80%));
+  & .ReactStyleguidist-TableOfContents__list {
+    & .ReactStyleguidist-TableOfContents__link {
+      color: color(#fff alpha(80%));
 
-    &:hover {
-      text-decoration: underline;
-      color: #fff;
+      &:hover {
+        text-decoration: underline;
+        color: #fff;
+      }
     }
   }
 
@@ -95,21 +97,19 @@
       border-color: #fff;
 
       &::-webkit-input-placeholder {
-        color: #fff;
+        color: color(#fff alpha(80%));
       }
 
       &:-moz-placeholder {
-        opacity: 1;
-        color: #fff;
+        color: color(#fff alpha(80%));
       }
 
       &::-moz-placeholder {
-        opacity: 1;
-        color: #fff;
+        color: color(#fff alpha(80%));
       }
 
       &:-ms-input-placeholder {
-        color: #fff;
+        color: color(#fff alpha(80%));
       }
     }
   }
@@ -141,7 +141,7 @@
     }
   }
 
-  & .ReactStyleguidist-colors__link {
+  & .ReactStyleguidist-TableOfContents__section {
     &,
     &:link,
     &:visited {
@@ -152,5 +152,13 @@
     &:active {
       color: #fff;
     }
+  }
+
+  & .ReactStyleguidist-Playground__showCode {
+    border-top: 1px solid #e8e8e8;
+  }
+
+  & .ReactStyleguidist-ReactComponent__isolatedLink {
+    top: 18px;
   }
 }

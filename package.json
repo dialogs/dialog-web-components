@@ -39,7 +39,7 @@
   "bugs": {
     "url": "https://github.com/dialogs/dialog-web-components/issues"
   },
-  "homepage": "https://github.com/dialogs/dialog-web-components#readme",
+  "homepage": "https://dialogs.github.io/dialog-web-components",
   "dependencies": {
     "classnames": "2.2.5",
     "lodash": "4.13.1",
