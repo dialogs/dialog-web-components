@@ -43,20 +43,18 @@
   "dependencies": {
     "classnames": "2.2.5",
     "lodash": "4.13.1",
-    "react": "15.1.0",
-    "react-dom": "15.1.0",
-    "react-modal": "1.3.0"
+    "react": "15.2.0",
+    "react-dom": "15.2.0",
+    "react-modal": "1.4.0"
   },
   "devDependencies": {
-    "@dlghq/babel-preset-dialog": "1.1.0",
+    "@dlghq/babel-preset-dialog": "1.2.0",
     "@dlghq/eslint-config-dialog": "1.0.0",
     "@dlghq/stylelint-config-dialog": "0.3.2",
-    "@nkt/stylefmt": "4.0.0",
     "buildbranch": "1.0.0",
     "chalk": "1.1.3",
     "ejs": "2.4.2",
     "eslint": "2.13.1",
-    "eslint-loader": "1.3.0",
     "eslint-plugin-react": "5.2.2",
     "inquirer": "1.1.0",
     "npm-run-all": "2.3.0",
@@ -70,6 +68,7 @@
     "postcss-nested": "1.0.0",
     "postcss-reporter": "1.3.3",
     "react-styleguidist": "git+https://github.com/sapegin/react-styleguidist.git",
+    "stylefmt": "4.1.0",
     "stylelint": "6.8.0"
   }
 }
