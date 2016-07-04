@@ -6,19 +6,20 @@ class Switcher extends Component {
   static propTypes = {
     className: PropTypes.string,
     id: PropTypes.string.isRequired,
-    checked: PropTypes.bool.isRequired,
-    disabled: PropTypes.bool,
+    value: PropTypes.bool.isRequired,
+    disabled: PropTypes.bool.isRequired,
     onChange: PropTypes.func.isRequired
   };
 
   static defaultProps = {
-    checked: false
+    value: false,
+    disabled: false
   };
 
   render() {
-    const { id, checked, onChange, disabled } = this.props;
+    const { id, value, onChange, disabled } = this.props;
     const className = classNames(styles.root, this.props.className, {
-      [styles.checked]: checked,
+      [styles.checked]: value,
       [styles.disabled]: disabled
     });
 
@@ -26,7 +27,7 @@ class Switcher extends Component {
       <div className={className}>
         <input
           className={styles.input}
-          checked={checked}
+          checked={value}
           id={id}
           onChange={onChange}
           type="checkbox"

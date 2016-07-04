@@ -5,21 +5,22 @@ import styles from './Checkbox.css';
 class Checkbox extends Component {
   static propTypes = {
     className: PropTypes.string,
-    id: PropTypes.string.isRequired,
-    checked: PropTypes.bool.isRequired,
     label: PropTypes.node,
-    disabled: PropTypes.bool,
+    id: PropTypes.string.isRequired,
+    value: PropTypes.bool.isRequired,
+    disabled: PropTypes.bool.isRequired,
     onChange: PropTypes.func.isRequired
   };
 
   static defaultProps = {
-    checked: false
+    value: false,
+    disabled: false
   };
 
   render() {
-    const { id, checked, label, disabled, onChange } = this.props;
+    const { id, value, label, disabled, onChange } = this.props;
     const className = classNames(styles.root, this.props.className, {
-      [styles.checked]: checked,
+      [styles.checked]: value,
       [styles.disabled]: disabled
     });
 
@@ -28,7 +29,7 @@ class Checkbox extends Component {
         <input
           type="checkbox"
           id={id}
-          checked={checked}
+          checked={value}
           onChange={onChange}
           className={styles.checkbox}
         />

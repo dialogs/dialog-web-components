@@ -1,17 +1,21 @@
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
 import ReactModal from 'react-modal';
-import styles from './Modal.css';
 import Button from '../Button/Button';
+import styles from './Modal.css';
 
 class Modal extends Component {
   static propTypes = {
     className: PropTypes.string,
+    header: PropTypes.node,
     children: PropTypes.node.isRequired,
     isOpen: PropTypes.bool.isRequired,
-    fullscreen: PropTypes.bool,
-    onClose: PropTypes.func.isRequired,
-    header: PropTypes.node
+    fullscreen: PropTypes.bool.isRequired,
+    onClose: PropTypes.func.isRequired
+  };
+
+  static defaultProps = {
+    fullscreen: false
   };
 
   renderModalHeader() {

@@ -3,7 +3,7 @@ Basic Switcher:
     initialState = { value: true };
     <Switcher
       id="example"
-      checked={state.value}
+      value={state.value}
       onChange={() => setState({ value: !state.value })}
     />
 
@@ -11,6 +11,7 @@ Disabled Switcher:
 
     <Switcher
       id="disabled"
-      checked={true}
+      value
       disabled
+      onChange={() => {}}
     />
