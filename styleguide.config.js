@@ -57,16 +57,8 @@ module.exports = {
     Object.assign(config, {
       postcss(webpack) {
         return [
-          require('postcss-import')({
-            addDependencyTo: webpack
-          }),
-          require('postcss-autoreset')(),
-          require('postcss-initial')(),
-          require('postcss-cssnext')(),
-          require('postcss-nested')(),
-          require('postcss-browser-reporter')(),
-          require('postcss-reporter')({
-            clearMessages: true
+          require('@dlghq/postcss-dialog')({
+            bundler: webpack
           })
         ];
       }
