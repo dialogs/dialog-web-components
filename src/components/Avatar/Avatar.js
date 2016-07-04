@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
+import isEmoji from '../../utils/isEmoji';
 import styles from './Avatar.css';
 
 const SIZES = {
@@ -15,7 +16,7 @@ class Avatar extends Component {
   static propTypes = {
     className: PropTypes.string,
     image: PropTypes.string,
-    title: PropTypes.string.isRequired,
+    title: PropTypes.string,
     size: PropTypes.oneOf([
       'tiny', 'small', 'medium', 'large', 'big', 'huge'
     ]).isRequired,
@@ -41,13 +42,14 @@ class Avatar extends Component {
 
   getFirstChar() {
     const { title } = this.props;
-    const emojiFirstChar = /([\uE000-\uF8FF]|\uD83C|\uD83D)/g;
-
-    if (title.length === 0) {
-      return '#';
+    if (title.length) {
+      const char = title[0];
+      if (!isEmoji(char)) {
+        return char;
+      }
     }
 
-    return title[0].match(emojiFirstChar) ? '#' : title[0];
+    return '#';
   }
 
   render() {

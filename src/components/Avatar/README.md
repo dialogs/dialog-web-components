@@ -1,6 +1,6 @@
 Default Avatar:
 
-    <Avatar title="Test" />
+    <Avatar />
 
 Avatar with custom background color:
 
