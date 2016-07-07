@@ -28,8 +28,10 @@ module.exports = {
       components() {
         return [
           component('Input'),
+          component('Textarea'),
           component('Checkbox'),
-          component('Switcher')
+          component('Switcher'),
+          component('Fieldset')
         ];
       }
     },

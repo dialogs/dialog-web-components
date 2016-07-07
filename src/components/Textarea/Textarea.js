@@ -1,29 +1,14 @@
 import React, { Component, PropTypes } from 'react';
 import { FormattedMessage } from 'react-intl';
 import classNames from 'classnames';
-import styles from './Input.css';
+import styles from './Textarea.css';
 
-class Input extends Component {
+class Textarea extends Component {
   static propTypes = {
     id: PropTypes.string.isRequired,
     className: PropTypes.string,
     label: PropTypes.node,
-    value: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.number
-    ]),
-    type: PropTypes.oneOf([
-      'text',
-      'email',
-      'number',
-      'search',
-      'tel',
-      'url',
-      'password',
-      'file',
-      'radio',
-      'checkbox'
-    ]).isRequired,
+    value: PropTypes.string,
     disabled: PropTypes.bool.isRequired,
     hint: PropTypes.string,
     status: PropTypes.oneOf(['success', 'error']),
@@ -36,7 +21,6 @@ class Input extends Component {
   };
 
   static defaultProps = {
-    type: 'text',
     disabled: false
   };
 
@@ -52,7 +36,6 @@ class Input extends Component {
            nextProps.status !== this.props.status ||
            nextProps.label !== this.props.label ||
            nextProps.disabled !== this.props.disabled ||
-           nextProps.type !== this.props.type ||
            nextProps.className !== this.props.className ||
            nextProps.id !== this.props.id;
   }
@@ -62,18 +45,14 @@ class Input extends Component {
   }
 
   renderLabel() {
-    const { id, label, value } = this.props;
+    const { id, label } = this.props;
     if (!label) {
       return null;
     }
 
-    const className = classNames(styles.label, {
-      [styles.active]: value
-    });
-
     return (
-      <label className={className} htmlFor={id}>
-        <FormattedMessage className="test" id={label} />
+      <label className={styles.label} htmlFor={id}>
+        <FormattedMessage id={label} />
       </label>
     );
   }
@@ -99,10 +78,10 @@ class Input extends Component {
 
     return (
       <div className={className}>
-        <input
+        {this.renderLabel()}
+        <textarea
           id={this.props.id}
-          className={styles.input}
-          type={this.props.type}
+          className={styles.textarea}
           value={this.props.value}
           disabled={this.props.disabled}
           onChange={this.handleChange}
@@ -112,11 +91,10 @@ class Input extends Component {
           onKeyDown={this.props.onKeyDown}
           onKeyPress={this.props.onKeyPress}
         />
-        {this.renderLabel()}
         {this.renderHint()}
       </div>
     );
   }
 }
 
-export default Input;
+export default Textarea;

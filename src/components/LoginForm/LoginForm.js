@@ -3,8 +3,8 @@
  */
 
 import React, { Component, PropTypes } from 'react';
-import { FormattedMessage } from 'react-intl';
 import Input from '../Input/Input';
+import Fieldset from '../Fieldset/Fieldset';
 
 class LoginForm extends Component {
   static propTypes = {
@@ -60,12 +60,11 @@ class LoginForm extends Component {
   render() {
     return (
       <form id={this.props.id}>
-        <fieldset>
-          <FormattedMessage id="LoginForm.sign_in" tagName="legend" />
+        <Fieldset legend="LoginForm.sign_in">
           {this.renderLogin()}
           {this.renderCode()}
           {this.renderName()}
-        </fieldset>
+        </Fieldset>
       </form>
     );
   }

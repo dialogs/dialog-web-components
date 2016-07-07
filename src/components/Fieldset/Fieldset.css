@@ -1,0 +1,18 @@
+@import '../../styles/variables.css';
+
+:root {
+  --fieldset-legend-font-family: var(--default-font-family);
+}
+
+.fieldset {
+  width: 100%;
+  padding: 8px;
+}
+
+.legend {
+  display: block;
+  margin-bottom: 8px;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: var(--fieldset-legend-font-family);
+}
