@@ -32,6 +32,14 @@ module.exports = {
           component('Switcher')
         ];
       }
+    },
+    {
+      name: 'Plug & Play Forms',
+      components() {
+        return [
+          component('LoginForm')
+        ];
+      }
     }
   ],
   updateWebpackConfig(config) {
@@ -40,6 +48,8 @@ module.exports = {
     config.entry.push(
       path.join(source, 'styles/styleguide.css')
     );
+
+    config.resolve.alias['rsg-components/Wrapper'] = path.join(__dirname, 'src/styleguide/Wrapper');
 
     config.module.loaders.push({
       test: /\.js$/,
@@ -53,6 +63,14 @@ module.exports = {
         'css?modules&localIdentName=[name]__[local]&importLoaders=1',
         'postcss'
       ]
+    }, {
+      test: /\.json/,
+      include: source,
+      loader: 'json'
+    }, {
+      test: /\.yml$/,
+      include: source,
+      loader: 'json!yaml'
     });
 
     Object.assign(config, {

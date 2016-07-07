@@ -1,0 +1,15 @@
+sign_in: Вход
+login: Номер телефона или Email-адрес
+code: Код авторизации
+name: Ваше имя
+wrong: Ошиблись?
+errors:
+  EMAIL_INVALID: Некорректный email
+  PHONE_NUMBER_INVALID: Некорректный телефон
+  NAME_INVALID: Некорректное имя
+  PHONE_CODE_INVALID: Неверный код
+  EMAIL_CODE_INVALID: Неверный код
+  PHONE_CODE_EXPIRED: Время действия кода истекло
+  EMAIL_CODE_EXPIRED: Время действия кода истекло
+  CODE_WAIT: Попытайтесь запросить код позже
+  GATE_ERROR: Сервис не доступен, попробуйте позже

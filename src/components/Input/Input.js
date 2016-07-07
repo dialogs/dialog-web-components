@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { FormattedMessage } from 'react-intl';
 import classNames from 'classnames';
 import styles from './Input.css';
 
@@ -50,17 +51,18 @@ class Input extends Component {
   }
 
   renderLabel() {
-    if (!this.props.label) {
+    const { id, label, value } = this.props;
+    if (!label) {
       return null;
     }
 
     const className = classNames(styles.label, {
-      [styles.active]: this.props.value
+      [styles.active]: value
     });
 
     return (
-      <label className={className} htmlFor={this.props.id}>
-        {this.props.label}
+      <label className={className} htmlFor={id}>
+        <FormattedMessage className="test" id={label} />
       </label>
     );
   }
@@ -72,7 +74,7 @@ class Input extends Component {
 
     return (
       <p className={styles.hint}>
-        {this.props.hint}
+        <FormattedMessage id={this.props.hint} />
       </p>
     );
   }

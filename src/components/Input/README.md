@@ -1,25 +1,12 @@
 Basic Input:
 
-    class Test extends React.Component {
-      constructor(props) {
-        super(props);
-
-        this.state = { value: '' };
-      }
-
-      render() {
-        return (
-          <Input
-            id="input_basic"
-            label="Basic"
-            value={this.state.value}
-            onChange={(value) => this.setState({ value })}
-          />
-        );
-      }
-    }
-
-    <Test />
+    initialState = { value: '' };
+    <Input
+      id="input_basic"
+      label="Basic"
+      value={state.value}
+      onChange={(value) => setState({ value })}
+    />
 
 
 Input without label:

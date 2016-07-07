@@ -3,5 +3,5 @@ node_modules/
 npm-debug.log
 
 # Build
-src/index.js
-styleguide/
+/src/index.js
+/styleguide/
