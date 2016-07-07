@@ -2,6 +2,10 @@
 const path = require('path');
 const pkg = require('./package.json');
 
+function doc(name) {
+  return path.resolve(__dirname, 'docs', name + '.md');
+}
+
 function component(name) {
   return path.resolve(__dirname, 'src/components', name);
 }
@@ -25,6 +29,7 @@ module.exports = {
     },
     {
       name: 'Forms',
+      content: doc('forms'),
       components() {
         return [
           component('Input'),
