@@ -16,6 +16,13 @@ class Switcher extends Component {
     disabled: false
   };
 
+  shouldComponentUpdate(prevProps) {
+    return prevProps.value !== this.props.value ||
+           prevProps.disabled !== this.props.disabled ||
+           prevProps.id !== this.props.id ||
+           prevProps.className !== this.props.className;
+  }
+
   render() {
     const { id, value, onChange, disabled } = this.props;
     const className = classNames(styles.root, this.props.className, {

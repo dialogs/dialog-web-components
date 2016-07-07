@@ -21,6 +21,14 @@ class Button extends Component {
     size: 'normal'
   };
 
+  shouldComponentUpdate(prevProps) {
+    return prevProps.children !== this.props.children ||
+           prevProps.type !== this.props.type ||
+           prevProps.size !== this.props.size ||
+           prevProps.disabled !== this.props.disabled ||
+           prevProps.className !== this.props.className;
+  }
+
   render() {
     const { type, size, disabled, onClick } = this.props;
 

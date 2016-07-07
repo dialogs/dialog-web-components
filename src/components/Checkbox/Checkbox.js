@@ -17,6 +17,14 @@ class Checkbox extends Component {
     disabled: false
   };
 
+  shouldComponentUpdate(prevProps) {
+    return prevProps.value !== this.props.value ||
+           prevProps.disabled !== this.props.disabled ||
+           prevProps.label !== this.props.label ||
+           prevProps.id !== this.props.id ||
+           prevProps.className !== this.props.className;
+  }
+
   render() {
     const { id, value, label, disabled, onChange } = this.props;
     const className = classNames(styles.root, this.props.className, {

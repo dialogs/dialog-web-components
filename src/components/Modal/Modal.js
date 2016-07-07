@@ -18,6 +18,14 @@ class Modal extends Component {
     fullscreen: false
   };
 
+  shouldComponentUpdate(nextProps) {
+    return nextProps.isOpen !== this.props.isOpen ||
+           nextProps.children !== this.props.children ||
+           nextProps.header !== this.props.header ||
+           nextProps.fullscreen !== this.props.fullscreen ||
+           nextProps.className !== this.props.className;
+  }
+
   renderModalHeader() {
     const { fullscreen, header, onClose } = this.props;
     if (fullscreen) {

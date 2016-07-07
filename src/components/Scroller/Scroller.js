@@ -31,7 +31,8 @@ class Scroller extends Component {
   }
 
   shouldComponentUpdate(nextProps) {
-    return nextProps.children !== this.props.children;
+    return nextProps.children !== this.props.children ||
+           nextProps.className !== this.props.className;
   }
 
   componentWillUnmount() {

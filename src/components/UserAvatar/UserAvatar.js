@@ -17,6 +17,12 @@ class UserAvatar extends Component {
     onClick: PropTypes.func
   };
 
+  shouldComponentUpdate(prevProps) {
+    return prevProps.user !== this.props.user ||
+           prevProps.size !== this.props.size ||
+           prevProps.className !== this.props.className;
+  }
+
   render() {
     return (
       <Avatar

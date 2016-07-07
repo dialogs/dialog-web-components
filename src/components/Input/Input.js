@@ -46,6 +46,17 @@ class Input extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
+  shouldComponentUpdate(nextProps) {
+    return nextProps.value !== this.props.value ||
+           nextProps.hint !== this.props.hint ||
+           nextProps.status !== this.props.status ||
+           nextProps.label !== this.props.label ||
+           nextProps.disabled !== this.props.disabled ||
+           nextProps.type !== this.props.type ||
+           nextProps.className !== this.props.className ||
+           nextProps.id !== this.props.id;
+  }
+
   handleChange(event) {
     this.props.onChange(event.target.value, event);
   }
