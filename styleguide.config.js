@@ -44,7 +44,7 @@ module.exports = {
       name: 'Plug & Play Forms',
       components() {
         return [
-          component('LoginForm')
+          component('AuthForm')
         ];
       }
     }

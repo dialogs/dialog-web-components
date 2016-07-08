@@ -3,6 +3,10 @@ login: Phone number or Email address
 code: Auth code
 name: Your name
 wrong: Wrong?
+request_code: Request code
+check_code: Check code
+sign_up: Sign up
+success: Success
 errors:
   EMAIL_INVALID: Invalid email
   PHONE_NUMBER_INVALID: Invalid phone number

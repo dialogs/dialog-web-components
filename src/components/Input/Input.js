@@ -12,7 +12,7 @@ class Input extends Component {
     value: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.number
-    ]),
+    ]).isRequired,
     type: PropTypes.oneOf([
       'text',
       'email',

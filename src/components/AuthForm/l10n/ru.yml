@@ -3,6 +3,10 @@ login: Номер телефона или Email-адрес
 code: Код авторизации
 name: Ваше имя
 wrong: Ошиблись?
+request_code: Запросить код
+check_code: Проверить код
+sign_up: Зарегистрироваться
+success: Успешно
 errors:
   EMAIL_INVALID: Некорректный email
   PHONE_NUMBER_INVALID: Некорректный телефон
