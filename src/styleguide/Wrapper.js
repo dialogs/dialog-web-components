@@ -51,9 +51,11 @@ class Wrapper extends Component {
             <option value="ru">Russian</option>
           </select>
         </div>
-        <IntlProvider locale={locale} messages={messages}>
-          {this.props.children}
-        </IntlProvider>
+        <div className={styles.container}>
+          <IntlProvider locale={locale} messages={messages}>
+            {this.props.children}
+          </IntlProvider>
+        </div>
       </div>
     );
   }
