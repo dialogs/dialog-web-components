@@ -9,6 +9,7 @@ class Button extends Component {
     className: PropTypes.string,
     children: PropTypes.node.isRequired,
     disabled: PropTypes.bool.isRequired,
+    wide: PropTypes.bool.isRequired,
     type: PropTypes.oneOf(['submit', 'reset', 'button', 'menu']).isRequired,
     theme: PropTypes.oneOf(['flat', 'raised', 'shade']).isRequired,
     size: PropTypes.oneOf(['small', 'normal', 'large']).isRequired,
@@ -19,6 +20,7 @@ class Button extends Component {
     type: 'button',
     theme: 'flat',
     size: 'normal',
+    wide: false,
     disabled: false
   };
 
@@ -28,6 +30,7 @@ class Button extends Component {
            prevProps.type !== this.props.type ||
            prevProps.size !== this.props.size ||
            prevProps.theme !== this.props.theme ||
+           prevProps.wide !== this.props.wide ||
            prevProps.className !== this.props.className ||
            prevProps.id !== this.props.id ||
            prevProps.name !== this.props.name;
@@ -38,6 +41,7 @@ class Button extends Component {
       styles.button,
       styles[this.props.theme],
       styles[this.props.size],
+      { [styles.wide]: this.props.wide },
       this.props.className
     );
 

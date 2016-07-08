@@ -21,6 +21,11 @@
   }
 }
 
+.wide {
+  width: 100%;
+  text-align: center;
+}
+
 /* Types */
 .flat {
   color: color(#000 alpha(70%));

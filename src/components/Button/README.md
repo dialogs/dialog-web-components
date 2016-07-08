@@ -15,18 +15,22 @@ Basic Button:
 Different Button Sizes:
 
     <div>
-    <Button size="large">BEEG Button</Button>
-    <Button>Default size button</Button>
-    <Button size="small">Just a small button</Button>
-    <hr/>
-    <Button theme="raised" size="large">BEEG Button</Button>
-    <Button theme="raised">Default size button</Button>
-    <Button theme="raised" size="small">Just a small button</Button>
-    <hr/>
-    <Button theme="shade" size="large">BEEG Button</Button>
-    <Button theme="shade">Default size button</Button>
-    <Button theme="shade" size="small">Just a small button</Button>
+      <Button size="large">BEEG Button</Button>
+      <Button>Default size button</Button>
+      <Button size="small">Just a small button</Button>
+      <hr/>
+      <Button theme="raised" size="large">BEEG Button</Button>
+      <Button theme="raised">Default size button</Button>
+      <Button theme="raised" size="small">Just a small button</Button>
+      <hr/>
+      <Button theme="shade" size="large">BEEG Button</Button>
+      <Button theme="shade">Default size button</Button>
+      <Button theme="shade" size="small">Just a small button</Button>
     </div>
+
+Wide Button:
+
+    <Button theme="raised" wide>I'm wide button</Button>
 
 Disabled Button:
 
