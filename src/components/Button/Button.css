@@ -1,7 +1,7 @@
 @import '../../styles/variables.css';
 
 /* Main */
-.root {
+.button {
   display: inline-block;
   box-sizing: border-box;
   transition: all 150ms ease;
@@ -38,7 +38,7 @@
   }
 }
 
-.rised {
+.raised {
   background-color: var(--color-primary);
   box-shadow: 0 2px 3px 0 color(#000 alpha(10%)), 0 2px 8px 0 color(#000 alpha(15%));
   color: #fff;

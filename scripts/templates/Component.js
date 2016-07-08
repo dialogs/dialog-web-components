@@ -12,6 +12,15 @@ class <%= name %> extends Component {
     children: PropTypes.node.isRequired
   };
 
+  shouldComponentUpdate(nextProps) {
+<% if (styles) { -%>
+    return nextProps.children !== this.props.children ||
+           nextProps.className !== this.props.className;
+<% } else { -%>
+    return nextProps.children !== this.props.children;
+<% } -%>
+  }
+
   render() {
 <% if (styles) { -%>
     const className = classNames(styles.root, this.props.className);

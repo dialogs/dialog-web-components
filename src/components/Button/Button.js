@@ -4,43 +4,52 @@ import styles from './Button.css';
 
 class Button extends Component {
   static propTypes = {
+    id: PropTypes.string,
+    name: PropTypes.string,
     className: PropTypes.string,
     children: PropTypes.node.isRequired,
-    type: PropTypes.oneOf([
-      'flat', 'rised', 'shade'
-    ]).isRequired,
-    size: PropTypes.oneOf([
-      'small', 'normal', 'large'
-    ]),
-    disabled: PropTypes.bool,
+    disabled: PropTypes.bool.isRequired,
+    type: PropTypes.oneOf(['submit', 'reset', 'button', 'menu']).isRequired,
+    theme: PropTypes.oneOf(['flat', 'raised', 'shade']).isRequired,
+    size: PropTypes.oneOf(['small', 'normal', 'large']).isRequired,
     onClick: PropTypes.func
   };
 
   static defaultProps = {
-    type: 'flat',
-    size: 'normal'
+    type: 'button',
+    theme: 'flat',
+    size: 'normal',
+    disabled: false
   };
 
   shouldComponentUpdate(prevProps) {
     return prevProps.children !== this.props.children ||
+           prevProps.disabled !== this.props.disabled ||
            prevProps.type !== this.props.type ||
            prevProps.size !== this.props.size ||
-           prevProps.disabled !== this.props.disabled ||
-           prevProps.className !== this.props.className;
+           prevProps.theme !== this.props.theme ||
+           prevProps.className !== this.props.className ||
+           prevProps.id !== this.props.id ||
+           prevProps.name !== this.props.name;
   }
 
   render() {
-    const { type, size, disabled, onClick } = this.props;
-
     const className = classNames(
-      styles.root,
-      styles[type],
-      styles[size],
+      styles.button,
+      styles[this.props.theme],
+      styles[this.props.size],
       this.props.className
     );
 
     return (
-      <button className={className} onClick={onClick} disabled={disabled}>
+      <button
+        id={this.props.id}
+        name={this.props.name}
+        className={className}
+        type={this.props.type}
+        disabled={this.props.disabled}
+        onClick={this.props.onClick}
+      >
         {this.props.children}
       </button>
     );

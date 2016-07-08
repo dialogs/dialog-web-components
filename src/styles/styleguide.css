@@ -46,6 +46,8 @@
   }
 
   & .ReactStyleguidist-TableOfContents__list {
+    padding: 15px 0;
+
     & .ReactStyleguidist-TableOfContents__link {
       color: color(#fff alpha(80%));
 
@@ -114,16 +116,12 @@
     }
   }
 
-  & .ReactStyleguidist-TableOfContents__list {
-    padding: 15px 0;
-  }
-
   & .ReactStyleguidist-Props__cell .ReactStyleguidist-common__monospace {
     font-weight: 500;
   }
 
   & .ReactStyleguidist-Playground__preview {
-    & .Button__root {
+    & .Button__button {
       margin-right: 8px;
       margin-bottom: 8px;
     }
