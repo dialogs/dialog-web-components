@@ -1,6 +1,7 @@
 @import '../../styles/variables.css';
 
 .root {
+  all: initial;
   display: inline-block;
   box-sizing: border-box;
   height: var(--default-line-height);
@@ -13,6 +14,7 @@
 }
 
 .label {
+  all: initial;
   position: relative;
   display: block;
   box-sizing: border-box;

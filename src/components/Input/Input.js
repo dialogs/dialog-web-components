@@ -6,6 +6,7 @@ import styles from './Input.css';
 class Input extends Component {
   static propTypes = {
     id: PropTypes.string.isRequired,
+    name: PropTypes.string,
     className: PropTypes.string,
     label: PropTypes.node,
     value: PropTypes.oneOfType([
@@ -54,6 +55,7 @@ class Input extends Component {
            nextProps.disabled !== this.props.disabled ||
            nextProps.type !== this.props.type ||
            nextProps.className !== this.props.className ||
+           nextProps.name !== this.props.name ||
            nextProps.id !== this.props.id;
   }
 
@@ -101,6 +103,7 @@ class Input extends Component {
       <div className={className}>
         <input
           id={this.props.id}
+          name={this.props.name}
           className={styles.input}
           type={this.props.type}
           value={this.props.value}

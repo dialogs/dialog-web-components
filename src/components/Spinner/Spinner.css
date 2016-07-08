@@ -21,6 +21,7 @@
 }
 
 .root {
+  all: initial;
   display: inline-block;
   box-sizing: border-box;
   width: calc(var(--spinner-max-height) + 20px);

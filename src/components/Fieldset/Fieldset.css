@@ -5,11 +5,13 @@
 }
 
 .fieldset {
+  all: initial;
   width: 100%;
   padding: 8px;
 }
 
 .legend {
+  all: initial;
   display: block;
   margin-bottom: 8px;
   text-align: center;

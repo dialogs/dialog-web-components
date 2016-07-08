@@ -7,6 +7,7 @@
 
 .wrapper,
 .container {
+  all: initial;
   width: 100%;
   min-height: 1px;
 }

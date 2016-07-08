@@ -20,6 +20,7 @@
 }
 
 .image {
+  all: initial;
   display: inline-block;
   user-select: none;
   border-radius: 100%;
@@ -27,6 +28,7 @@
 }
 
 .placeholder {
+  all: initial;
   display: inline-flex;
   flex-direction: column;
   cursor: default;

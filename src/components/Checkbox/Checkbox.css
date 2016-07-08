@@ -1,6 +1,7 @@
 @import '../../styles/variables.css';
 
 .root {
+  all: initial;
   height: var(--default-line-height);
 }
 
@@ -9,6 +10,7 @@
 }
 
 .label {
+  all: initial;
   position: relative;
   display: inline-block;
   padding-left: 32px;

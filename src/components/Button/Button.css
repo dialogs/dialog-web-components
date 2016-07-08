@@ -2,6 +2,7 @@
 
 /* Main */
 .button {
+  all: initial;
   display: inline-block;
   box-sizing: border-box;
   transition: all 150ms ease;

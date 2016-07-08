@@ -1,9 +1,8 @@
 Basic Modal:
 
     initialState = { isOpen: false };
-    console.log(state);
     <div>
-      <Button theme="rised" onClick={() => setState({ isOpen: true })}>Open modal</Button>
+      <Button theme="raised" onClick={() => setState({ isOpen: true })}>Open modal</Button>
       <Modal
         isOpen={state.isOpen}
         header="Simple modal"
@@ -16,7 +15,6 @@ Basic Modal:
 Fullscreen Modal:
 
     initialState = { isOpen: false };
-    console.log(state);
     <div>
       <Button theme="shade" onClick={() => setState({ isOpen: true })}>Open fullscreen modal</Button>
       <Modal

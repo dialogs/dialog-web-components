@@ -14,6 +14,7 @@
 }
 
 .container {
+  all: initial;
   position: relative;
   margin-top: 1rem;
 
@@ -44,6 +45,7 @@
 }
 
 .input {
+  all: initial;
   box-sizing: content-box;
   width: 100%;
   height: 3rem;
@@ -80,6 +82,7 @@
 }
 
 .label {
+  all: initial;
   position: absolute;
   top: 0.8rem;
   left: 0;
@@ -97,6 +100,7 @@
 }
 
 .hint {
+  all: initial;
   margin: 0;
   font-family: var(--input-font-family);
   font-size: 0.8rem;

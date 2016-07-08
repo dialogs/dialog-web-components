@@ -1,6 +1,7 @@
 @import '../../styles/variables.css';
 
 .root {
+  all: initial;
   display: block;
   min-width: 400px;
   min-height: 240px;
@@ -12,6 +13,7 @@
 }
 
 .overlay {
+  all: initial;
   position: fixed;
   z-index: 100;
   top: 0;
@@ -26,13 +28,18 @@
 }
 
 .header {
+  all: initial;
   display: flex;
   flex-direction: row;
   padding: var(--default-padding);
   border-bottom: 1px solid color(#000 alpha(2%));
-  composes: clearfix from '../../styles/helpers.css';
   align-items: center;
   justify-content: flex-start;
+  &::after {
+    display: table;
+    clear: both;
+    content: '';
+  }
 
   & .title {
     flex: 1 0 auto;
@@ -44,12 +51,14 @@
 }
 
 .title {
+  all: initial;
   margin: 0;
   font-size: 18px;
   font-weight: 500;
 }
 
 .body {
+  all: initial;
   padding: var(--default-padding);
 }
 
