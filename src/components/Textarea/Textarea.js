@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { FormattedMessage } from 'react-intl';
 import classNames from 'classnames';
-import styles from './Textarea.css';
+import styles from '../Input/Input.css';
 
 class Textarea extends Component {
   static propTypes = {
@@ -81,7 +81,7 @@ class Textarea extends Component {
         {this.renderLabel()}
         <textarea
           id={this.props.id}
-          className={styles.textarea}
+          className={styles.input}
           value={this.props.value}
           disabled={this.props.disabled}
           onChange={this.handleChange}

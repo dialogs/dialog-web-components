@@ -64,17 +64,13 @@ class Input extends Component {
   }
 
   renderLabel() {
-    const { id, label, value } = this.props;
+    const { id, label } = this.props;
     if (!label) {
       return null;
     }
 
-    const className = classNames(styles.label, {
-      [styles.active]: value
-    });
-
     return (
-      <label className={className} htmlFor={id}>
+      <label className={styles.label} htmlFor={id}>
         <FormattedMessage className="test" id={label} />
       </label>
     );
@@ -101,6 +97,7 @@ class Input extends Component {
 
     return (
       <div className={className}>
+        {this.renderLabel()}
         <input
           id={this.props.id}
           name={this.props.name}
@@ -115,7 +112,6 @@ class Input extends Component {
           onKeyDown={this.props.onKeyDown}
           onKeyPress={this.props.onKeyPress}
         />
-        {this.renderLabel()}
         {this.renderHint()}
       </div>
     );
