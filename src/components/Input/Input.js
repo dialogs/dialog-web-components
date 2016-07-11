@@ -9,6 +9,7 @@ class Input extends Component {
     name: PropTypes.string,
     className: PropTypes.string,
     label: PropTypes.node,
+    placeholder: PropTypes.string,
     value: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.number
@@ -52,6 +53,7 @@ class Input extends Component {
            nextProps.hint !== this.props.hint ||
            nextProps.status !== this.props.status ||
            nextProps.label !== this.props.label ||
+           nextProps.placeholder !== this.props.placeholder ||
            nextProps.disabled !== this.props.disabled ||
            nextProps.type !== this.props.type ||
            nextProps.className !== this.props.className ||
@@ -105,6 +107,7 @@ class Input extends Component {
           type={this.props.type}
           value={this.props.value}
           disabled={this.props.disabled}
+          placeholder={this.props.placeholder}
           onChange={this.handleChange}
           onFocus={this.props.onFocus}
           onBlur={this.props.onBlur}

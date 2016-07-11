@@ -4,6 +4,7 @@ Basic Input:
     <Input
       id="input_basic"
       label="Basic"
+      placeholder="Basic placeholder"
       value={state.value}
       onChange={(value) => setState({ value })}
     />

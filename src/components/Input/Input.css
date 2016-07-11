@@ -4,14 +4,15 @@
   --input-error-color: var(--color-error);
   --input-success-color: var(--color-success);
 
-  --input-color: color(#000 alpha(40%));
+  --input-color-color: #000;
+  --input-placeholder-color: color(#000 alpha(30%));
   --input-border-color: color(#000 alpha(35%));
   --input-border-radius: 2.5px;
   --input-font-size: 18px;
   --input-line-height: 27px;
   --input-font-family: var(--default-font-family);
 
-  --input-focused-color: color(#000 alpha(60%));
+  --input-focused-color: #000;
   --input-focused-border-color: var(--color-primary);
 
   --input-disabled-color: #bdbdbd;
@@ -67,16 +68,32 @@
   box-sizing: border-box;
   width: 100%;
   padding: 9px 20px 10px;
-  transition: all 0.3s;
+  transition: border-color 300ms ease-in;
   border: 1px solid var(--input-border-color);
   border-radius: var(--input-border-radius);
   outline: none;
-  color: var(--input-color);
+  color: var(--input-color-color);
   background-color: #fff;
   box-shadow: none;
   font-family: var(--input-font-family);
   font-size: var(--input-font-size);
   line-height: var(--input-line-height);
+
+  &::-webkit-input-placeholder {
+    color: var(--input-placeholder-color);
+  }
+
+  :-moz-placeholder { /* Firefox 18- */
+    color: var(--input-placeholder-color);
+  }
+
+  ::-moz-placeholder {  /* Firefox 19+ */
+    color: var(--input-placeholder-color);
+  }
+
+  :-ms-input-placeholder {
+    color: var(--input-placeholder-color);
+  }
 
   /* Focused state */
   &:focus {
