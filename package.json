@@ -42,6 +42,7 @@
   "homepage": "https://dialogs.github.io/dialog-web-components",
   "dependencies": {
     "classnames": "2.2.5",
+    "intl": "^1.2.4",
     "lodash": "4.13.1",
     "react": "15.2.1",
     "react-dom": "15.2.1",
