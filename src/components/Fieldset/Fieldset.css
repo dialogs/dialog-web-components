@@ -6,13 +6,15 @@
 
 .fieldset {
   all: initial;
+  display: block;
   width: 100%;
   padding: 8px;
 }
 
 .legend {
   all: initial;
-  display: block;
+  display: inline-block;
+  width: 100%;
   margin-bottom: 8px;
   text-align: center;
   text-transform: uppercase;
