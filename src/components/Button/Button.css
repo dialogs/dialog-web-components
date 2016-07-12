@@ -1,19 +1,32 @@
 @import '../../styles/variables.css';
 
+:root {
+  --button-border-radius: 5px;
+  --button-padding-top: 9px;
+  --button-padding-right: 30px;
+  --button-padding-bottom: 10px;
+  --button-padding-left: 30px;
+  --button-font-size: 18px;
+  --button-font-weight: 500;
+  --button-line-height: 28px;
+  --button-font-family: var(--default-font-family);
+}
+
 /* Main */
+
 .button {
   all: initial;
   display: inline-block;
   box-sizing: border-box;
-  transition: all 150ms ease;
+  transition: all 150ms ease-in;
+  text-align: center;
   border: 0;
-  border-radius: var(--default-border-radius);
+  border-radius: var(--button-border-radius);
   outline: none;
+  color: #000;
   background-color: transparent;
-  font-family: var(--default-font-family);
-  font-weight: 500;
-  line-height: 1rem;
-  appearance: none;
+  font-family: var(--button-font-family);
+  font-weight: var(--button-font-weight);
 
   &[disabled] {
     cursor: not-allowed;
@@ -23,83 +36,72 @@
 
 .wide {
   width: 100%;
-  text-align: center;
 }
 
 /* Types */
-.flat {
-  color: color(#000 alpha(70%));
 
-  &:hover,
-  &:focus {
-    background-color: color(#000 alpha(2%));
-  }
-
-  &:active {
-    background-color: color(#000 alpha(5%));
-  }
-
-  &[disabled] {
-    background-color: color(#000 alpha(2%));
-  }
-}
-
-.raised {
-  background-color: var(--color-primary);
-  box-shadow: 0 2px 3px 0 color(#000 alpha(10%)), 0 2px 8px 0 color(#000 alpha(15%));
+.primary {
   color: #fff;
+  background-color: #4800cc;
 
-  &:hover,
-  &:focus {
-    background-color: color(var(--color-primary) lightness(+5%));
+  &:hover:enabled,
+  &:focus:enabled {
+    background-color: #6b27e6;
+    box-shadow: 0 2px 4px color(#000 alpha(25%));
   }
 
-  &:active {
-    background-color: color(var(--color-primary) lightness(+7%));
-    box-shadow: 0 3px 6px 0 color(#000 alpha(20%)), 0 4px 10px 0 color(#000 alpha(10%));
+  &:active:enabled {
+    background-color: #6b27e6;
+    box-shadow: 0 2px 0 color(#000 alpha(25%));
   }
 
   &[disabled] {
-    background-color: var(--color-primary);
-    box-shadow: 0 2px 3px 0 color(#000 alpha(10%)), 0 2px 8px 0 color(#000 alpha(15%));
-    color: #fff;
+    background-color: #9a73e3;
   }
 }
 
-.shade {
-  background-color: color(var(--color-primary) alpha(15%));
-  color: var(--color-primary);
+.link {
+  color: #4800cc;
 
-  &:hover,
-  &:focus {
-    background-color: color(var(--color-primary) alpha(15%) lightness(+5%));
-    box-shadow: 0 1px 1px 0 color(var(--color-primary) alpha(30%));
+  &:hover:enabled,
+  &:focus:enabled {
+    color: color(#4800cc alpha(70%));
   }
 
-  &:active {
-    background-color: color(var(--color-primary) alpha(15%) lightness(+10%));
-    box-shadow: 0 2px 3px 0 color(var(--color-primary) alpha(25%));
+  &:active:enabled {
+    color: color(#4800cc alpha(70%));
   }
 
   &[disabled] {
-    background-color: color(var(--color-primary) alpha(15%));
-    box-shadow: none;
-    color: var(--color-primary);
+    color: #9a73e3;
   }
 }
 
 /* Sizes */
+
 .small {
-  padding: 0.5rem 1rem;
-  font-size: var(--small-font-size);
+  padding-top: calc(0.75 * var(--button-padding-top));
+  padding-right: calc(0.75 * var(--button-padding-right));
+  padding-bottom: calc(0.75 * var(--button-padding-bottom));
+  padding-left: calc(0.75 * var(--button-padding-left));
+  font-size: calc(0.75 * var(--button-font-size));
+  line-height: calc(0.75 * var(--button-line-height));
 }
 
 .normal {
-  padding: 1rem 1.5rem;
-  font-size: var(--default-font-size);
+  padding-top: var(--button-padding-top);
+  padding-right: var(--button-padding-right);
+  padding-bottom: var(--button-padding-bottom);
+  padding-left: var(--button-padding-left);
+  font-size: var(--button-font-size);
+  line-height: var(--button-line-height);
 }
 
 .large {
-  padding: 1.25rem 2rem;
-  font-size: var(--large-font-size);
+  padding-top: calc(1.25 * var(--button-padding-top));
+  padding-right: calc(1.25 * var(--button-padding-right));
+  padding-bottom: calc(1.25 * var(--button-padding-bottom));
+  padding-left: calc(1.25 * var(--button-padding-left));
+  font-size: calc(1.25 * var(--button-font-size));
+  line-height: calc(1.25 * var(--button-line-height));
 }

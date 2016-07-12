@@ -11,14 +11,14 @@ class Button extends Component {
     disabled: PropTypes.bool.isRequired,
     wide: PropTypes.bool.isRequired,
     type: PropTypes.oneOf(['submit', 'reset', 'button', 'menu']).isRequired,
-    theme: PropTypes.oneOf(['flat', 'raised', 'shade']).isRequired,
+    theme: PropTypes.oneOf(['primary', 'link']).isRequired,
     size: PropTypes.oneOf(['small', 'normal', 'large']).isRequired,
     onClick: PropTypes.func
   };
 
   static defaultProps = {
     type: 'button',
-    theme: 'flat',
+    theme: 'primary',
     size: 'normal',
     wide: false,
     disabled: false

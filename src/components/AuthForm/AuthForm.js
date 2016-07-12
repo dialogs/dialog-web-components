@@ -125,7 +125,7 @@ class AuthForm extends Component {
           {this.renderCode()}
           {this.renderName()}
           <div className={styles.button}>
-            <Button type="submit" theme="raised" wide>
+            <Button type="submit" theme="primary" wide>
               {this.renderButtonText()}
             </Button>
           </div>
