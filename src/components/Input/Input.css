@@ -39,6 +39,7 @@
 
 .container {
   display: block;
+  margin-bottom: 15px;
 
   /* Success state */
   &.success {
