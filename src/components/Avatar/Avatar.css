@@ -1,13 +1,15 @@
 @import '../../styles/variables.css';
 
 :root {
+
   /* Sizes */
   --avatar-tiny-size: 24px;
   --avatar-small-size: 36px;
   --avatar-medium-size: 44px;
   --avatar-large-size: 60px;
-  --avatar-big-size: 120px;
+  --avatar-big-size: 100px;
   --avatar-huge-size: 200px;
+
   /* Colors */
   --avatar-color-empty: var(--color-empty);
   --avatar-color-lblue: var(--color-lblue);
@@ -37,7 +39,7 @@
   vertical-align: middle;
   text-transform: uppercase;
   border-radius: 100%;
-  background: #000;
+  background-color: var(--avatar-color-empty);
   box-shadow: 0 0 1px color(#000 alpha(10%));
   font-family: var(--default-font-family);
   font-weight: 500;
@@ -49,13 +51,18 @@
 
 .clickable {
   cursor: pointer;
+  transition: opacity 150ms ease-out;
+
+  &:hover {
+    opacity: 0.9;
+  }
 }
 
 /* Sizes */
 .tiny {
   width: var(--avatar-tiny-size);
   height: var(--avatar-tiny-size);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
 }
 

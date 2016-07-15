@@ -42,7 +42,7 @@
   "homepage": "https://dialogs.github.io/dialog-web-components",
   "dependencies": {
     "classnames": "2.2.5",
-    "intl": "^1.2.4",
+    "intl": "1.2.4",
     "lodash": "4.13.1",
     "react": "15.2.1",
     "react-dom": "15.2.1",
@@ -62,11 +62,11 @@
     "eslint-plugin-react": "5.2.2",
     "inquirer": "1.1.2",
     "npm-run-all": "2.3.0",
-    "postcss": "5.0.21",
+    "postcss": "5.1.0",
     "postcss-loader": "0.9.1",
     "react-styleguidist": "3.0.0",
     "stylefmt": "4.1.1",
-    "stylelint": "6.9.0",
-    "yaml-loader": "0.2.0"
+    "stylelint": "7.0.2",
+    "yaml-loader": "0.3.0"
   }
 }

@@ -18,7 +18,7 @@
   }
 
   & .ReactStyleguidist-colors__base-bg {
-    background: transparent;
+    background-color: transparent;
   }
 
   & .ReactStyleguidist-common__font {
@@ -122,8 +122,7 @@
 
   & .ReactStyleguidist-Playground__preview {
     & .Button__button {
-      margin-right: 8px;
-      margin-bottom: 8px;
+      margin: 4px;
     }
 
     & .scroller__demo {
