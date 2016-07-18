@@ -77,7 +77,7 @@ module.exports = {
     }, {
       test: /\.yml$/,
       include: source,
-      loader: 'json!yaml'
+      loader: 'yaml'
     });
 
     Object.assign(config, {
