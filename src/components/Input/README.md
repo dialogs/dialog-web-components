@@ -12,6 +12,7 @@ Basic Input:
 
 Input without label:
 
+    initialState = { value: '' };
     <Input
       id="input_no_label"
       value={state.value}
@@ -23,6 +24,7 @@ Disabled Input:
     <Input
       id="input_disabled"
       label="Disabled"
+      value=""
       disabled
     />
 
