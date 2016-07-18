@@ -48,3 +48,9 @@ Wide Button:
         Disabled
       </Button>
     </div>
+
+Loading Button:
+
+    <Button theme="primary" loading>
+      Loading
+    </Button>

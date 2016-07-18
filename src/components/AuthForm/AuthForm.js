@@ -8,10 +8,11 @@ import Input from '../Input/Input';
 import Button from '../Button/Button';
 import Fieldset from '../Fieldset/Fieldset';
 import {
-  AUTH_STARTED, LOGIN_SENT, CODE_REQUESTED,
-  AUTH_FINISHED, SIGNUP_STARTED, NAME_SENT
+  AUTH_STARTED, LOGIN_SENT,
+  CODE_REQUESTED, CODE_SENT,
+  SIGNUP_STARTED, NAME_SENT,
+  AUTH_FINISHED
 } from './constants';
-import styles from './AuthForm.css';
 
 class AuthForm extends Component {
   static propTypes = {
@@ -55,6 +56,16 @@ class AuthForm extends Component {
     this.props.onSubmit(this.props.value);
   }
 
+  isLoading() {
+    switch (this.props.step) {
+      case LOGIN_SENT:
+      case CODE_SENT:
+      case NAME_SENT:
+        return true;
+      default: return false;
+    }
+  }
+
   renderButtonText() {
     const { step } = this.props;
     if (step < CODE_REQUESTED) {
@@ -85,6 +96,7 @@ class AuthForm extends Component {
         id={`${id}_code`}
         label="AuthForm.code"
         value={value.code}
+        disabled={step >= CODE_SENT}
         onChange={this.handleChange}
       />
     );
@@ -103,6 +115,7 @@ class AuthForm extends Component {
         id={`${id}_name`}
         label="AuthForm.name"
         value={value.name}
+        disabled={step >= NAME_SENT}
         onChange={this.handleChange}
       />
     );
@@ -119,16 +132,14 @@ class AuthForm extends Component {
             id={`${id}_login`}
             label="AuthForm.login"
             value={value.login}
-            disabled={step > LOGIN_SENT}
+            disabled={step >= LOGIN_SENT}
             onChange={this.handleChange}
           />
           {this.renderCode()}
           {this.renderName()}
-          <div className={styles.button}>
-            <Button type="submit" theme="primary" wide>
-              {this.renderButtonText()}
-            </Button>
-          </div>
+          <Button type="submit" theme="primary" loading={this.isLoading()} wide>
+            {this.renderButtonText()}
+          </Button>
         </Fieldset>
       </form>
     );

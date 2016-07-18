@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
+import ButtonSpinner from './ButtonSpinner';
 import styles from './Button.css';
 
 class Button extends Component {
@@ -10,6 +11,7 @@ class Button extends Component {
     children: PropTypes.node.isRequired,
     disabled: PropTypes.bool.isRequired,
     wide: PropTypes.bool.isRequired,
+    loading: PropTypes.bool.isRequired,
     type: PropTypes.oneOf(['submit', 'reset', 'button', 'menu']).isRequired,
     theme: PropTypes.oneOf(['primary', 'link']).isRequired,
     size: PropTypes.oneOf(['small', 'normal', 'large']).isRequired,
@@ -21,11 +23,13 @@ class Button extends Component {
     theme: 'primary',
     size: 'normal',
     wide: false,
+    loading: false,
     disabled: false
   };
 
   shouldComponentUpdate(prevProps) {
     return prevProps.children !== this.props.children ||
+           prevProps.loading !== this.props.loading ||
            prevProps.disabled !== this.props.disabled ||
            prevProps.type !== this.props.type ||
            prevProps.size !== this.props.size ||
@@ -34,6 +38,16 @@ class Button extends Component {
            prevProps.className !== this.props.className ||
            prevProps.id !== this.props.id ||
            prevProps.name !== this.props.name;
+  }
+
+  renderLoading() {
+    if (!this.props.loading) {
+      return null;
+    }
+
+    return (
+      <ButtonSpinner />
+    );
   }
 
   render() {
@@ -55,6 +69,7 @@ class Button extends Component {
         onClick={this.props.onClick}
       >
         {this.props.children}
+        {this.renderLoading()}
       </button>
     );
   }
