@@ -47,6 +47,17 @@ module.exports = {
           component('AuthForm')
         ];
       }
+    },
+    {
+      name: 'Chat',
+      components() {
+        return [
+          component('Message'),
+          component('MessageContent'),
+          component('MessageGroup'),
+          component('MessageList')
+        ];
+      }
     }
   ],
   updateWebpackConfig(config) {

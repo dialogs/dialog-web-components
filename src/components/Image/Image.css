@@ -1,0 +1,20 @@
+@import '../../styles/variables.css';
+
+.image {
+  /*all: initial;*/
+  border: 1px solid #fff;
+}
+
+/* States */
+
+.loading {
+  border-color: var(--color-pending);
+}
+
+.success {
+  border-color: var(--color-error);
+}
+
+.error {
+  border-color: var(--color-error);
+}
