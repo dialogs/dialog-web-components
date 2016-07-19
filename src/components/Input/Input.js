@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { FormattedMessage } from 'react-intl';
+import { Text } from '@dlghq/react-l10n';
 import classNames from 'classnames';
 import styles from './Input.css';
 
@@ -24,7 +24,8 @@ class Input extends Component {
       'password',
       'file',
       'radio',
-      'checkbox'
+      'checkbox',
+      'textarea'
     ]).isRequired,
     disabled: PropTypes.bool.isRequired,
     hint: PropTypes.string,
@@ -72,9 +73,12 @@ class Input extends Component {
     }
 
     return (
-      <label className={styles.label} htmlFor={id}>
-        <FormattedMessage className="test" id={label} />
-      </label>
+      <Text
+        id={label}
+        tagName="label"
+        className={styles.label}
+        htmlFor={id}
+      />
     );
   }
 
@@ -84,9 +88,7 @@ class Input extends Component {
     }
 
     return (
-      <p className={styles.hint}>
-        <FormattedMessage id={this.props.hint} />
-      </p>
+      <Text id={this.props.hint} tagName="p" className={styles.hint} />
     );
   }
 
@@ -97,10 +99,12 @@ class Input extends Component {
       this.props.className
     );
 
+    const TagName = this.props.type === 'textarea' ? 'textarea' : 'input';
+
     return (
       <div className={className}>
         {this.renderLabel()}
-        <input
+        <TagName
           id={this.props.id}
           name={this.props.name}
           className={styles.input}

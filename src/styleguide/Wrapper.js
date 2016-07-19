@@ -1,24 +1,18 @@
-import 'intl';
 import React, { Component, PropTypes } from 'react';
-import { IntlProvider, addLocaleData } from 'react-intl';
-import en from 'react-intl/locale-data/en';
-import ru from 'react-intl/locale-data/ru';
+import { Provider } from '@dlghq/react-l10n';
 import compileMessages from '../utils/compileMessages';
 import styles from './Wrapper.css';
 
-addLocaleData(en);
-addLocaleData(ru);
-
 const requireMessags = require.context('../components', true, /l10n\/[A-Za-z]+\.yml$/);
 
-const translations = {};
+const messages = {};
 requireMessags.keys().forEach((pathname) => {
   const [, name, locale] = pathname.match(/([A-Za-z]+)\/l10n\/([A-Za-z]+)\.yml$/);
-  if (!translations[locale]) {
-    translations[locale] = {};
+  if (!messages[locale]) {
+    messages[locale] = {};
   }
 
-  Object.assign(translations[locale], compileMessages(name, requireMessags(pathname)));
+  Object.assign(messages[locale], compileMessages(name, requireMessags(pathname)));
 });
 
 class Wrapper extends Component {
@@ -42,7 +36,6 @@ class Wrapper extends Component {
 
   render() {
     const { locale } = this.state;
-    const messages = translations[locale];
 
     return (
       <div>
@@ -53,9 +46,9 @@ class Wrapper extends Component {
           </select>
         </div>
         <div className={styles.container}>
-          <IntlProvider locale={locale} messages={messages}>
+          <Provider locale={locale} messages={messages}>
             {this.props.children}
-          </IntlProvider>
+          </Provider>
         </div>
       </div>
     );

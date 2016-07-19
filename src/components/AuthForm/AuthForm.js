@@ -3,7 +3,7 @@
  */
 
 import React, { Component, PropTypes } from 'react';
-import { FormattedMessage } from 'react-intl';
+import { Text } from '@dlghq/react-l10n';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
 import Fieldset from '../Fieldset/Fieldset';
@@ -69,18 +69,18 @@ class AuthForm extends Component {
   renderButtonText() {
     const { step } = this.props;
     if (step < CODE_REQUESTED) {
-      return <FormattedMessage id="AuthForm.request_code" />;
+      return <Text id="AuthForm.request_code" />;
     }
 
     if (step < SIGNUP_STARTED) {
-      return <FormattedMessage id="AuthForm.check_code" />;
+      return <Text id="AuthForm.check_code" />;
     }
 
     if (step < AUTH_FINISHED) {
-      return <FormattedMessage id="AuthForm.sign_up" />;
+      return <Text id="AuthForm.sign_up" />;
     }
 
-    return <FormattedMessage id="AuthForm.success" />;
+    return <Text id="AuthForm.success" />;
   }
 
   renderCode() {

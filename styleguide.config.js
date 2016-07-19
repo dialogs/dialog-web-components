@@ -33,7 +33,6 @@ module.exports = {
       components() {
         return [
           component('Input'),
-          component('Textarea'),
           component('Checkbox'),
           component('Switcher'),
           component('Fieldset')
@@ -62,6 +61,10 @@ module.exports = {
   ],
   updateWebpackConfig(config) {
     const source = path.join(__dirname, 'src');
+    const whitelist = [
+      source,
+      path.join(__dirname, 'node_modules/@dlghq/react-l10n')
+    ];
 
     config.entry.push(
       path.join(source, 'styles/styleguide.css')
@@ -71,11 +74,11 @@ module.exports = {
 
     config.module.loaders.push({
       test: /\.js$/,
-      include: source,
+      include: whitelist,
       loader: 'babel?cacheDirectory'
     }, {
       test: /\.css$/,
-      include: source,
+      include: whitelist,
       loaders: [
         'style',
         'css?modules&localIdentName=[name]__[local]&importLoaders=1',
@@ -83,11 +86,11 @@ module.exports = {
       ]
     }, {
       test: /\.json/,
-      include: source,
+      include: whitelist,
       loader: 'json'
     }, {
       test: /\.yml$/,
-      include: source,
+      include: whitelist,
       loader: 'yaml'
     });
 

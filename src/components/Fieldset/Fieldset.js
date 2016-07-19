@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { FormattedMessage } from 'react-intl';
+import { Text } from '@dlghq/react-l10n';
 import classNames from 'classnames';
 import styles from './Fieldset.css';
 
@@ -21,9 +21,7 @@ class Fieldset extends Component {
 
     return (
       <fieldset className={className}>
-        <legend className={styles.legend}>
-          <FormattedMessage id={this.props.legend} />
-        </legend>
+        <Text id={this.props.legend} className={styles.legend} tagName="legend" />
         {this.props.children}
       </fieldset>
     );

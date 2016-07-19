@@ -47,3 +47,15 @@ Error Input with hint:
       hint="Incorrect email"
       status="error"
     />
+
+Since `<textarea />` has the same interface as `<input />`, there is `textarea` type:
+
+    initialState = { value: '' };
+    <Input
+      id="input_textarea"
+      type="textarea"
+      label="About"
+      placeholder="Type something"
+      value={state.value}
+      onChange={(value) => setState({ value })}
+    />

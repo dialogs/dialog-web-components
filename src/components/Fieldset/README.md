@@ -10,8 +10,9 @@ Basic Fieldset:
         />
       </Fieldset>
       <Fieldset legend="Step 2">
-        <Textarea
+        <Input
           id="fieldset_textarea"
+          type="textarea"
           label="About"
           value="Entrepreneur. Angel investor. Incubator owner. Founder and chairman, Pied Piper. Think of me like Batman or Santa. I'm For REAL"
           onChange={() => {}}
