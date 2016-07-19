@@ -1,3 +1,7 @@
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ */
+
 import React, { Component, PropTypes } from 'react';
 <% if (styles) { -%>
 import classNames from 'classnames';
