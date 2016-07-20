@@ -12,6 +12,7 @@
   --dropdown-item-height: 37px;
   --dropdown-item-hover-background: color(#000 alpha(10%));
   --dropdown-divider-color: color(#000 alpha(15%));
+  --dropdown-min-width: 200px;
 }
 
 .root {
@@ -23,10 +24,13 @@
   visibility: hidden;
   opacity: 0;
   line-height: 0;
-  padding: var(--dropdown-padding-top) 0 var(--dropdown-padding-bottom);
-  width: 240px;
+  padding-top: var(--dropdown-padding-top);
+  padding-right: 0;
+  padding-bottom: var(--dropdown-padding-bottom);
+  padding-left: 0;
+  min-width: var(--dropdown-min-width);
   z-index: var(--dropdown-z-index);
-  display: block;
+  display: table;
 }
 
 .opened {
@@ -39,10 +43,17 @@
   font-family: var(--dropdown-font-family);
   font-size: var(--dropdown-font-size);
   line-height: var(--dropdown-item-height);
-  display: inline-block;
+  display: table-row;
   width: 100%;
   box-sizing: border-box;
-  padding: 0 var(--dropdown-padding-right) 0 var(--dropdown-padding-left);
+
+  & span {
+    display: block;
+    padding-top: 0;
+    padding-right: var(--dropdown-padding-right);
+    padding-bottom: 0;
+    padding-left: var(--dropdown-padding-left);
+  }
 
   &:hover {
     background-color: var(--dropdown-item-hover-background);
@@ -51,12 +62,16 @@
 }
 
 .divider {
-  display: inline-block;
+  all: initial;
+  display: block;
   width: 100%;
   box-sizing: border-box;
   position: relative;
   line-height: 0;
-  padding: var(--dropdown-padding-top) var(--dropdown-padding-right) var(--dropdown-padding-bottom) var(--dropdown-padding-left);
+  padding-top: var(--dropdown-padding-top);
+  padding-right: var(--dropdown-padding-right);
+  padding-bottom: var(--dropdown-padding-bottom);
+  padding-left: var(--dropdown-padding-left);
 
   &::before {
     content: '';

@@ -11,7 +11,8 @@ class Dropdown extends Component {
 
   shouldComponentUpdate(nextProps) {
     return nextProps.children !== this.props.children ||
-           nextProps.className !== this.props.className;
+           nextProps.className !== this.props.className ||
+           nextProps.isOpen !== this.props.isOpen;
   }
 
   render() {
