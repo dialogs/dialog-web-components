@@ -6,12 +6,14 @@
   --switcher-border-radius: calc(var(--switcher-height) / 2);
   --switcher-dot-size: 16px;
   --switcher-background-color: #b8b8b8;
-  --switcher-active-background-color: #cccccc;
+  --switcher-active-background-color: #ccc;
   --switcher-checked-background-color: #4cd964;
   --switcher-checked-active-background-color: #59ee72;
   --switcher-dot-color: #fff;
   --switcher-active-dot-color: #f6fff7;
   --switcher-transition-duration: var(--default-transition-duration);
+  /* Too wide =( */
+  --switcher-active-offset: calc(var(--switcher-width) - var(--switcher-dot-size) - ((var(--switcher-height) - var(--switcher-dot-size)) / 2)); /* stylelint-disable-line */
 }
 
 .root {
@@ -35,21 +37,24 @@
   height: var(--switcher-height);
   cursor: pointer;
   user-select: none;
+  transition: background var(--switcher-transition-duration) ease;
   border-radius: var(--switcher-border-radius);
   background-color: var(--switcher-background-color);
-  transition: background var(--switcher-transition-duration) ease;
 
   &::before {
-    content: '';
     position: absolute;
     top: calc((var(--switcher-height) - var(--switcher-dot-size)) / 2);
     left: calc((var(--switcher-height) - var(--switcher-dot-size)) / 2);
     display: block;
     width: var(--switcher-dot-size);
     height: var(--switcher-dot-size);
-    background-color: var(--switcher-dot-color);
+    content: '';
+    transition:
+      background var(--switcher-transition-duration) ease,
+      left var(--switcher-transition-duration) ease,
+      box-shadow var(--switcher-transition-duration) ease;
     border-radius: 100%;
-    transition: background var(--switcher-transition-duration) ease, left var(--switcher-transition-duration) ease, box-shadow var(--switcher-transition-duration) ease;
+    background-color: var(--switcher-dot-color);
   }
 
   &:hover {
@@ -89,8 +94,8 @@
     background-color: var(--switcher-checked-background-color);
 
     &::before {
+      left: var(--switcher-active-offset);
       background-color: var(--switcher-active-dot-color);
-      left: calc(var(--switcher-width) - var(--switcher-dot-size) - ((var(--switcher-height) - var(--switcher-dot-size)) / 2));
     }
 
     &:hover {
