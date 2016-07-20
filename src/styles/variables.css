@@ -1,13 +1,16 @@
 :root {
   --default-font-family: 'Roboto', sans-serif;
+
   /* Sizes */
   --small-font-size: 14px;
   --default-font-size: 16px;
   --large-font-size: 20px;
   --default-line-height: 24px;
   --default-padding: 1rem;
-  --default-border-radius: 2px;
+  --default-border-radius-small: 3px;
+  --default-border-radius: 5px;
   --spinner-max-height: 20px;
+
   /* Colors */
   --color-primary: #8601b0;
   --color-empty: #b8b8b8;
