@@ -1,7 +1,8 @@
 @import '../../styles/variables.css';
 
 :root {
-  --button-border-radius: 5px;
+  --button-border-radius: var(--default-border-radius);
+  --button-border-radius-small: var(--default-border-radius-small);
   --button-padding-top: 9px;
   --button-padding-right: 30px;
   --button-padding-bottom: 10px;
@@ -13,7 +14,6 @@
 }
 
 /* Main */
-
 .button {
   all: initial;
   display: inline-block;
@@ -40,7 +40,6 @@
 }
 
 /* Types */
-
 .primary {
   color: #fff;
   background-color: #4800cc;
@@ -79,7 +78,6 @@
 }
 
 /* Sizes */
-
 .small {
   padding-top: calc(0.75 * var(--button-padding-top));
   padding-right: calc(0.75 * var(--button-padding-right));
@@ -87,6 +85,7 @@
   padding-left: calc(0.75 * var(--button-padding-left));
   font-size: calc(0.75 * var(--button-font-size));
   line-height: calc(0.75 * var(--button-line-height));
+  border-radius: var(--button-border-radius-small);
 }
 
 .normal {
