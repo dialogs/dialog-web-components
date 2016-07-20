@@ -1,0 +1,48 @@
+@import '../../styles/variables.css';
+
+:root {
+  --dropdown-font-family: var(--default-font-family);
+  --dropdown-font-size: 16px;
+  --dropdown-item-height: 37px;
+  --dropdown-padding-top: 9px;
+  --dropdown-padding-right: 20px;
+  --dropdown-padding-bottom: 10px;
+  --dropdown-padding-left: 20px;
+  --dropdown-border-radius: var(--default-border-radius);
+  --dropdown-z-index: var(--z-index-dropdown);
+}
+
+.root {
+  all: initial;
+  background-color: color(#fff alpha(98%));
+  border-radius: var(--dropdown-border-radius);
+  box-shadow: 0 1px 2px 0 color(#000 alpha(12%));
+  border: 1px solid color(#000 alpha(15%));
+  visibility: hidden;
+  opacity: 0;
+  padding: var(--dropdown-padding-top) 0 var(--dropdown-padding-bottom);
+  width: 240px;
+  z-index: var(--dropdown-z-index);
+  display: block;
+}
+
+.opened {
+  visibility: visible;
+  opacity: 1;
+}
+
+.item {
+  all: initial;
+  font-family: var(--dropdown-font-family);
+  font-size: var(--dropdown-font-size);
+  line-height: var(--dropdown-item-height);
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 var(--dropdown-padding-right) 0 var(--dropdown-padding-left);
+
+  &:hover {
+    background-color: color(#000 alpha(10%));
+    cursor: pointer;
+  }
+}

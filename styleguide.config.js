@@ -23,7 +23,8 @@ module.exports = {
           component('Button'),
           component('Modal'),
           component('Spinner'),
-          component('Scroller')
+          component('Scroller'),
+          component('Dropdown')
         ];
       }
     },
