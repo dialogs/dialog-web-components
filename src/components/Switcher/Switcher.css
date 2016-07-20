@@ -1,11 +1,24 @@
 @import '../../styles/variables.css';
 
+:root {
+  --switcher-width: 32px;
+  --switcher-height: 20px;
+  --switcher-border-radius: calc(var(--switcher-height) / 2);
+  --switcher-dot-size: 16px;
+  --switcher-background-color: #b8b8b8;
+  --switcher-active-background-color: #cccccc;
+  --switcher-checked-background-color: #4cd964;
+  --switcher-checked-active-background-color: #59ee72;
+  --switcher-dot-color: #fff;
+  --switcher-active-dot-color: #f6fff7;
+  --switcher-transition-duration: var(--default-transition-duration);
+}
+
 .root {
   all: initial;
   display: inline-block;
   box-sizing: border-box;
-  height: var(--default-line-height);
-  padding: 4px;
+  height: var(--switcher-height);
   vertical-align: middle;
 }
 
@@ -18,47 +31,70 @@
   position: relative;
   display: block;
   box-sizing: border-box;
-  width: 34px;
-  height: 14px;
+  width: var(--switcher-width);
+  height: var(--switcher-height);
   cursor: pointer;
   user-select: none;
-  transition: background 200ms ease;
-  border-radius: 14px;
-  background-color: color(#000 alpha(20%));
+  border-radius: var(--switcher-border-radius);
+  background-color: var(--switcher-background-color);
+  transition: background var(--switcher-transition-duration) ease;
 
   &::before {
-    position: absolute;
-    top: -3px;
-    left: -3px;
-    display: block;
-    width: 20px;
-    height: 20px;
     content: '';
-    transition: background 200ms ease, left 200ms ease;
+    position: absolute;
+    top: calc((var(--switcher-height) - var(--switcher-dot-size)) / 2);
+    left: calc((var(--switcher-height) - var(--switcher-dot-size)) / 2);
+    display: block;
+    width: var(--switcher-dot-size);
+    height: var(--switcher-dot-size);
+    background-color: var(--switcher-dot-color);
     border-radius: 100%;
-    background-color: rgb(250, 250, 250);
-    box-shadow:
-      0 3px 1px -2px color(#000 alpha(15%)),
-      0 2px 2px 0 color(#000 alpha(10%)),
-      0 1px 5px 0 color(#000 alpha(8.5%));
+    transition: background var(--switcher-transition-duration) ease, left var(--switcher-transition-duration) ease, box-shadow var(--switcher-transition-duration) ease;
+  }
+
+  &:hover {
+    background-color: var(--switcher-active-background-color);
+
+    &::before {
+      background-color: color(var(--switcher-dot-color) alpha(98%));
+      box-shadow: 0 2px 2px 0 color(#000 alpha(30%));
+    }
+  }
+
+  &:active {
+    background-color: var(--switcher-active-background-color);
+
+    &::before {
+      background-color: var(--switcher-active-dot-color);
+      box-shadow: 0 1px 0 0 color(#000 alpha(30%));
+    }
   }
 }
 
 .disabled {
-  opacity: 0.5;
+  opacity: 0.7;
 
   & .label {
     cursor: not-allowed;
+
+    &::before {
+      background-color: var(--switcher-dot-color);
+      box-shadow: none;
+    }
   }
 }
 
 .checked {
   & .label {
-    background-color: color(var(--color-primary) alpha(50%));
+    background-color: var(--switcher-checked-background-color);
 
     &::before {
-      left: 17px;
-      background-color: var(--color-primary);
+      background-color: var(--switcher-active-dot-color);
+      left: calc(var(--switcher-width) - var(--switcher-dot-size) - ((var(--switcher-height) - var(--switcher-dot-size)) / 2));
+    }
+
+    &:hover {
+      background-color: var(--switcher-checked-active-background-color);
     }
   }
 }
