@@ -32,6 +32,33 @@ render(
 
 [More components.](https://dialogs.github.io/dialog-web-components/)
 
+
+Translations
+------------
+
+For some complex components, like `AuthForm` you should wrap your components tree
+by `@dlghq/react-l10n` `Provider` component.
+Before publishing we generate `messages.json` bundle, which you should pass to `Provider`.
+
+```js
+import React from 'react';
+import { render } from 'react-dom';
+import { Provider } from '@dlghq/react-l10n';
+import dialogMessages from '@dlghq/dialog-components/src/messages.json';
+import appMessages from './messages';
+
+const container = document.getElementById('container');
+
+const messages = { ...dialogMessages, ...appMessages };
+
+render(
+  <Provider messages={messages} locale={navigator.language}>
+    <App />
+  </Provider>,
+  container
+);
+```
+
 Development
 -----------
 

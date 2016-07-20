@@ -1,3 +1,10 @@
+/**
+ * Compile translations:
+ * Input:
+ * { foo: { bar: 'baz' } }
+ * Output:
+ * { 'foo.bar': 'baz' }
+ */
 function compileMessages(prefix, messages) {
   const result = {};
   Object.keys(messages).forEach((key) => {
@@ -13,4 +20,5 @@ function compileMessages(prefix, messages) {
   return result;
 }
 
-export default compileMessages;
+// we using commonjs export due this function used by node script
+module.exports = compileMessages;
