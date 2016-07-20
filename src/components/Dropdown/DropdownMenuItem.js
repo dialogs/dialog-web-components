@@ -6,6 +6,7 @@ class DropdownMenuItem extends Component {
   static propTypes = {
     className: PropTypes.string,
     children: PropTypes.node.isRequired,
+    divider: PropTypes.bool,
     onClick: PropTypes.func
   };
 
@@ -29,7 +30,17 @@ class DropdownMenuItem extends Component {
   }
 
   render() {
-    const className = classNames(styles.item, this.props.className);
+    const { divider } = this.props;
+    const className = classNames({
+      [styles.item]: !divider,
+      [styles.divider]: divider
+    }, this.props.className);
+
+    if (divider) {
+      return (
+        <div className={className} />
+      );
+    }
 
     return (
       <div className={className} onClick={this.handleMenuItemClick}>

@@ -3,13 +3,15 @@
 :root {
   --dropdown-font-family: var(--default-font-family);
   --dropdown-font-size: 16px;
-  --dropdown-item-height: 37px;
   --dropdown-padding-top: 9px;
   --dropdown-padding-right: 20px;
   --dropdown-padding-bottom: 10px;
   --dropdown-padding-left: 20px;
   --dropdown-border-radius: var(--default-border-radius);
   --dropdown-z-index: var(--z-index-dropdown);
+  --dropdown-item-height: 37px;
+  --dropdown-item-hover-background: color(#000 alpha(10%));
+  --dropdown-divider-color: color(#000 alpha(15%));
 }
 
 .root {
@@ -20,6 +22,7 @@
   border: 1px solid color(#000 alpha(15%));
   visibility: hidden;
   opacity: 0;
+  line-height: 0;
   padding: var(--dropdown-padding-top) 0 var(--dropdown-padding-bottom);
   width: 240px;
   z-index: var(--dropdown-z-index);
@@ -42,7 +45,24 @@
   padding: 0 var(--dropdown-padding-right) 0 var(--dropdown-padding-left);
 
   &:hover {
-    background-color: color(#000 alpha(10%));
+    background-color: var(--dropdown-item-hover-background);
     cursor: pointer;
+  }
+}
+
+.divider {
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  line-height: 0;
+  padding: var(--dropdown-padding-top) var(--dropdown-padding-right) var(--dropdown-padding-bottom) var(--dropdown-padding-left);
+
+  &::before {
+    content: '';
+    display: block;
+    background-color: var(--dropdown-divider-color);
+    height: 1px;
+    width: 100%;
   }
 }
