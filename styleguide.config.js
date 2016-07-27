@@ -91,7 +91,7 @@ module.exports = {
     }, {
       test: /\.yml$/,
       include: whitelist,
-      loader: 'yaml'
+      loader: 'yml'
     });
 
     Object.assign(config, {
