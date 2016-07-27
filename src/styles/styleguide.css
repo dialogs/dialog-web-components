@@ -1,13 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,600');
-@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:400,500');
+@import './variables.css';
 
 :global {
   & body {
-    background-image: linear-gradient(45deg, #3d01a4 0%, #8601b0 100%);
-    background-repeat: repeat-x;
-    background-attachment: fixed;
-    background-position: 50% 50%;
-    background-size: 1600px 1200px;
     text-rendering: optimizeLegibility;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
@@ -22,13 +16,12 @@
   }
 
   & .ReactStyleguidist-common__font {
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--default-font-family);
   }
 
   & .ReactStyleguidist-common__monospace,
   & .CodeMirror {
-    font-family: 'Roboto Mono', monospace;
-    font-weight: 500;
+    font-family: var(--code-font-family);
   }
 
   & .ReactStyleguidist-Layout__wrapper {
@@ -37,7 +30,7 @@
 
   & .ReactStyleguidist-Layout__sidebar {
     width: 250px;
-    background-color: transparent;
+    background-image: linear-gradient(45deg, #3d01a4 0%, #8601b0 100%);
   }
 
   & .ReactStyleguidist-Layout__content {
