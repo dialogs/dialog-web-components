@@ -81,7 +81,7 @@ module.exports = {
       include: whitelist,
       loaders: [
         'style',
-        'css?modules&localIdentName=[name]__[local]&importLoaders=1',
+        'css?modules&localIdentName=DialogComponent[name]__[local]&importLoaders=1',
         'postcss'
       ]
     }, {
