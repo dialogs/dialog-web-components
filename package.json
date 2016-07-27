@@ -26,6 +26,7 @@
     "format": "npm-run-all --parallel format:*",
     "format:js": "eslint src/ --fix",
     "format:css": "find src -path '**/*.css' -exec stylefmt {} \\;",
+    "preversion": "npm test",
     "prerelease": "npm run build",
     "release": "npm publish",
     "postrelease": "npm run gh-pages",

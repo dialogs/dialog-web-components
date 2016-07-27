@@ -1,5 +1,9 @@
 :root {
-  --default-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  --font-apple: -apple-system, 'BlinkMacSystemFont';
+  --font-fallback: 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  --font-emoji: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  --default-font-family: var(--font-apple), var(--font-fallback), var(--font-emoji);
+  --code-font-family: 'Fira Code', 'Consolas', 'Monaco', 'Roboto Mono', monospace;
 
   /* Sizes */
   --small-font-size: 14px;
