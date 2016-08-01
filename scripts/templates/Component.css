@@ -5,5 +5,5 @@
 @import '../../styles/variables.css';
 
 .root {
-
+  all: initial;
 }
