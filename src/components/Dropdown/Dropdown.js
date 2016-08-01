@@ -4,15 +4,15 @@ import styles from './Dropdown.css';
 
 class Dropdown extends Component {
   static propTypes = {
-    className: PropTypes.string,
+    isOpen: PropTypes.bool.isRequired,
     children: PropTypes.node.isRequired,
-    isOpen: PropTypes.bool.isRequired
+    className: PropTypes.string
   };
 
   shouldComponentUpdate(nextProps) {
-    return nextProps.children !== this.props.children ||
-           nextProps.className !== this.props.className ||
-           nextProps.isOpen !== this.props.isOpen;
+    return nextProps.isOpen !== this.props.isOpen ||
+           nextProps.children !== this.props.children ||
+           nextProps.className !== this.props.className;
   }
 
   render() {

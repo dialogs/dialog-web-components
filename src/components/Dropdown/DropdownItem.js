@@ -4,8 +4,8 @@ import styles from './Dropdown.css';
 
 class DropdownItem extends Component {
   static propTypes = {
-    className: PropTypes.string,
     children: PropTypes.node.isRequired,
+    className: PropTypes.string,
     onClick: PropTypes.func
   };
 
