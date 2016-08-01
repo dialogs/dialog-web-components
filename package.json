@@ -45,9 +45,9 @@
   "dependencies": {
     "@dlghq/react-l10n": "0.1.2",
     "classnames": "2.2.5",
-    "lodash": "4.14.0",
-    "react": "15.2.1",
-    "react-dom": "15.2.1",
+    "lodash": "4.14.1",
+    "react": "15.3.0",
+    "react-dom": "15.3.0",
     "react-modal": "1.4.0"
   },
   "devDependencies": {
@@ -66,8 +66,8 @@
     "npm-run-all": "2.3.0",
     "postcss": "5.1.1",
     "postcss-loader": "0.9.1",
-    "react-styleguidist": "3.0.1",
-    "stylefmt": "4.2.0",
+    "react-styleguidist": "3.0.2",
+    "stylefmt": "4.2.1",
     "stylelint": "7.0.3",
     "yml-loader": "1.0.0"
   }
