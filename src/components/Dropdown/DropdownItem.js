@@ -20,7 +20,7 @@ class DropdownItem extends Component {
 
     return (
       <div className={className} onClick={this.props.onClick}>
-        <span>{this.props.children}</span>
+        <span className={styles.text}>{this.props.children}</span>
       </div>
     );
   }

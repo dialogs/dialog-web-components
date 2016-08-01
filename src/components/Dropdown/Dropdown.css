@@ -17,7 +17,8 @@
 
 .root,
 .item,
-.divider {
+.divider,
+.text {
   all: initial;
 }
 
@@ -46,22 +47,24 @@
 .item {
   display: table-row;
   box-sizing: border-box;
-  font-family: var(--dropdown-font-family);
-  font-size: var(--dropdown-font-size);
-  line-height: var(--dropdown-item-height);
-
-  & span {
-    display: block;
-    padding-top: 0;
-    padding-right: var(--dropdown-padding-right);
-    padding-bottom: 0;
-    padding-left: var(--dropdown-padding-left);
-  }
 
   &:hover {
     cursor: pointer;
     background-color: var(--dropdown-item-hover-background);
   }
+}
+
+.text {
+  display: block;
+  padding-top: 0;
+  padding-right: var(--dropdown-padding-right);
+  padding-bottom: 0;
+  padding-left: var(--dropdown-padding-left);
+  cursor: default;
+  user-select: none;
+  font-family: var(--dropdown-font-family);
+  font-size: var(--dropdown-font-size);
+  line-height: var(--dropdown-item-height);
 }
 
 .divider {
