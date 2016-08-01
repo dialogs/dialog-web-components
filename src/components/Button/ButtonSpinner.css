@@ -19,10 +19,10 @@
   position: relative;
   display: inline-block;
   height: var(--spinner-size);
+  margin-left: 6px;
   text-align: center;
   vertical-align: middle;
   font-size: var(--spinner-size);
-  margin-left: 6px;
 }
 
 .dot {

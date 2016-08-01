@@ -1,5 +1,9 @@
 :root {
-  --default-font-family: 'Roboto', sans-serif;
+  --font-apple: -apple-system, 'BlinkMacSystemFont';
+  --font-fallback: 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  --font-emoji: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  --default-font-family: var(--font-apple), var(--font-fallback), var(--font-emoji);
+  --code-font-family: 'Fira Code', 'Consolas', 'Monaco', 'Roboto Mono', monospace;
 
   /* Sizes */
   --small-font-size: 14px;
@@ -9,6 +13,7 @@
   --default-padding: 1rem;
   --default-border-radius-small: 3px;
   --default-border-radius: 5px;
+  --default-transition-duration: 150ms;
   --spinner-max-height: 20px;
 
   /* Layers */
