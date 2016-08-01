@@ -1,0 +1,88 @@
+@import '../../styles/variables.css';
+
+:root {
+  --dropdown-font-family: var(--default-font-family);
+  --dropdown-font-size: 16px;
+  --dropdown-padding-top: 9px;
+  --dropdown-padding-right: 20px;
+  --dropdown-padding-bottom: 10px;
+  --dropdown-padding-left: 20px;
+  --dropdown-border-radius: var(--default-border-radius);
+  --dropdown-z-index: var(--z-index-dropdown);
+  --dropdown-item-height: 37px;
+  --dropdown-item-hover-background: color(#000 alpha(10%));
+  --dropdown-divider-color: color(#000 alpha(15%));
+  --dropdown-min-width: 200px;
+}
+
+.root,
+.item,
+.divider,
+.text {
+  all: initial;
+}
+
+.root {
+  z-index: var(--dropdown-z-index);
+  display: table;
+  visibility: hidden;
+  min-width: var(--dropdown-min-width);
+  padding-top: var(--dropdown-padding-top);
+  padding-right: 0;
+  padding-bottom: var(--dropdown-padding-bottom);
+  padding-left: 0;
+  opacity: 0;
+  border: 1px solid color(#000 alpha(15%));
+  border-radius: var(--dropdown-border-radius);
+  background-color: color(#fff alpha(98%));
+  box-shadow: 0 1px 2px 0 color(#000 alpha(12%));
+  line-height: 0;
+}
+
+.opened {
+  visibility: visible;
+  opacity: 1;
+}
+
+.item {
+  display: table-row;
+  box-sizing: border-box;
+
+  &:hover {
+    cursor: pointer;
+    background-color: var(--dropdown-item-hover-background);
+  }
+}
+
+.text {
+  display: block;
+  padding-top: 0;
+  padding-right: var(--dropdown-padding-right);
+  padding-bottom: 0;
+  padding-left: var(--dropdown-padding-left);
+  cursor: default;
+  user-select: none;
+  font-family: var(--dropdown-font-family);
+  font-size: var(--dropdown-font-size);
+  line-height: var(--dropdown-item-height);
+}
+
+.divider {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  padding-top: var(--dropdown-padding-top);
+  padding-right: var(--dropdown-padding-right);
+  padding-bottom: var(--dropdown-padding-bottom);
+  padding-left: var(--dropdown-padding-left);
+  line-height: 0;
+
+  &::before {
+    display: block;
+    width: 100%;
+    height: 1px;
+    content: '';
+    background-color: var(--dropdown-divider-color);
+  }
+}

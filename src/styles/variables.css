@@ -16,6 +16,9 @@
   --default-transition-duration: 150ms;
   --spinner-max-height: 20px;
 
+  /* Layers */
+  --z-index-dropdown: 10;
+
   /* Colors */
   --color-primary: #8601b0;
   --color-empty: #b8b8b8;
