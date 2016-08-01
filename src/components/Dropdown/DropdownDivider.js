@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
 import styles from './Dropdown.css';
 
-class DropdownMenuDivider extends Component {
+class DropdownDivider extends Component {
   static propTypes = {
     className: PropTypes.string
   };
@@ -20,4 +20,4 @@ class DropdownMenuDivider extends Component {
   }
 }
 
-export default DropdownMenuDivider;
+export default DropdownDivider;

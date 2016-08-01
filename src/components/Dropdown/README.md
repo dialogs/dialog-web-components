@@ -1,13 +1,13 @@
 Basic Dropdown:
 
-    const DropdownMenuItem = require('./DropdownMenuItem').default;
-    const DropdownMenuDivider = require('./DropdownMenuDivider').default;
+    const DropdownItem = require('./DropdownItem').default;
+    const DropdownDivider = require('./DropdownDivider').default;
     const handleClick = () => alert('menu clicked');
 
     <Dropdown isOpen>
-      <DropdownMenuItem onClick={handleClick}>First menu item</DropdownMenuItem>
-      <DropdownMenuItem onClick={handleClick}>Very very very very loooong menu item</DropdownMenuItem>
-      <DropdownMenuDivider />
-      <DropdownMenuItem onClick={handleClick}>Another menu item</DropdownMenuItem>
-      <DropdownMenuItem onClick={handleClick}>Last menu item</DropdownMenuItem>
+      <DropdownItem onClick={handleClick}>First menu item</DropdownItem>
+      <DropdownItem onClick={handleClick}>Very very very very loooong menu item</DropdownItem>
+      <DropdownDivider />
+      <DropdownItem onClick={handleClick}>Another menu item</DropdownItem>
+      <DropdownItem onClick={handleClick}>Last menu item</DropdownItem>
     </Dropdown>

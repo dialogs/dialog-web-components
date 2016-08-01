@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
 import styles from './Dropdown.css';
 
-class DropdownMenuItem extends Component {
+class DropdownItem extends Component {
   static propTypes = {
     className: PropTypes.string,
     children: PropTypes.node.isRequired,
@@ -26,4 +26,4 @@ class DropdownMenuItem extends Component {
   }
 }
 
-export default DropdownMenuItem;
+export default DropdownItem;
