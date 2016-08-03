@@ -1,0 +1,25 @@
+:root {
+  --user-avatar-online-color: #3eca42;
+}
+
+.online,
+.online:after {
+  all: initial;
+}
+
+.online {
+  position: relative;
+  display: inline-block;
+  &:after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: block;
+    width: 8px;
+    height: 8px;
+    content: '';
+    border: solid 3px #fff;
+    border-radius: 100%;
+    background-color: var(--user-avatar-online-color);
+  }
+}

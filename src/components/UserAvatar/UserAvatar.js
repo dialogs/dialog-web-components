@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react';
+import classNames from 'classnames';
 import Avatar from '../Avatar/Avatar';
+import styles from './UserAvatar.css';
 
 class UserAvatar extends Component {
   static propTypes = {
@@ -14,25 +16,33 @@ class UserAvatar extends Component {
     size: PropTypes.oneOf([
       'tiny', 'small', 'medium', 'large', 'big', 'huge'
     ]),
+    online: PropTypes.bool.isRequired,
     onClick: PropTypes.func
   };
 
   shouldComponentUpdate(prevProps) {
-    return prevProps.user !== this.props.user ||
+    return prevProps.online !== this.props.online ||
+           prevProps.user !== this.props.user ||
            prevProps.size !== this.props.size ||
            prevProps.className !== this.props.className;
   }
 
   render() {
+    const className = classNames({
+      [styles.online]: this.props.online
+    });
+
     return (
-      <Avatar
-        className={this.props.className}
-        size={this.props.size}
-        image={this.props.user.avatar}
-        title={this.props.user.title}
-        placeholder={this.props.user.placeholder}
-        onClick={this.props.onClick}
-      />
+      <div className={className}>
+        <Avatar
+          className={this.props.className}
+          size={this.props.size}
+          image={this.props.user.avatar}
+          title={this.props.user.title}
+          placeholder={this.props.user.placeholder}
+          onClick={this.props.onClick}
+        />
+      </div>
     );
   }
 }
