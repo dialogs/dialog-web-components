@@ -1,7 +1,3 @@
 {
-  "extends": "@dlghq/eslint-config-dialog",
-  "rules": {
-    "no-warning-comments": 0,
-    "react/require-optimization": 2
-  }
+  "extends": "@dlghq/eslint-config-dialog"
 }
