@@ -1,0 +1,74 @@
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+:root {
+  --recent-item-default-top-padding: 9px;
+  --recent-item-default-right-padding: 16px;
+  --recent-item-default-bottom-padding: 9px;
+  --recent-item-default-left-padding: 16px;
+  --recent-item-default-height: 46px;
+
+  --recent-item-big-top-padding: 15px;
+  --recent-item-big-right-padding: 12px;
+  --recent-item-big-bottom-padding: 15px;
+  --recent-item-big-left-padding: 12px;
+  --recent-item-big-height: 66px;
+
+  --recent-item-hover-background-color: #e2e2e2;
+  --recent-item-hover-color: #000;
+
+  --recent-item-active-background-color: var(--violet-blue);
+  --recent-item-active-background-gradient: linear-gradient(90deg, var(--violet-blue), var(--vibrant-purple));
+  --recent-item-active-color: #fff;
+
+  --recent-item-counter-background: var(--purple-two);
+  --recent-item-counter-color: #fff;
+}
+
+.root,
+.title,
+.counter {
+  all: initial;
+}
+
+.root{
+  display: flex;
+  box-sizing: border-box;
+  height: var(--recent-item-default-height);
+  padding-top: var(--recent-item-default-top-padding);
+  padding-right: var(--recent-item-default-right-padding);
+  padding-bottom: var(--recent-item-default-bottom-padding);
+  padding-left: var(--recent-item-default-left-padding);
+  flex: 0 0 auto;
+
+  &:hover {
+    cursor: pointer;
+    background-color: var(--recent-item-hover-background-color);
+    color: var(--recent-item-hover-color);
+  }
+}
+
+.active {
+  background-color: var(--recent-item-active-background-color);
+  background-image: var(--recent-item-active-background-gradient);
+  color: var(--recent-item-active-color);
+}
+
+.counter {
+  background-color: var(--recent-item-counter-background);
+  color: var(--recent-item-counter-color);
+}
+
+.title {}
+.lastMessage {}
+
+/* Sizes */
+.large {
+  height: var(--recent-item-default-height);
+  padding-top: var(--recent-item-default-top-padding);
+  padding-right: var(--recent-item-default-right-padding);
+  padding-bottom: var(--recent-item-default-bottom-padding);
+  padding-left: var(--recent-item-default-left-padding);
+}
