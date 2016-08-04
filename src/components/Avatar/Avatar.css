@@ -1,28 +1,26 @@
 @import '../../styles/variables.css';
 
 :root {
-
   /* Sizes */
-  --avatar-tiny-size: 24px;
-  --avatar-small-size: 36px;
-  --avatar-medium-size: 44px;
-  --avatar-large-size: 60px;
+  --avatar-tiny-size: 14px;
+  --avatar-small-size: 22px;
+  --avatar-medium-size: 28px;
+  --avatar-large-size: 36px;
   --avatar-big-size: 100px;
-  --avatar-huge-size: 200px;
 
-  /* Colors */
-  --avatar-color-empty: var(--color-empty);
-  --avatar-color-lblue: var(--color-lblue);
-  --avatar-color-blue: var(--color-blue);
-  --avatar-color-purple: var(--color-purple);
-  --avatar-color-red: var(--color-red);
-  --avatar-color-orange: var(--color-orange);
-  --avatar-color-yellow: var(--color-yellow);
-  --avatar-color-green: var(--color-green);
+  /* Gradients */
+  --avatar-gradient-empty: linear-gradient(38deg, #bebebe, #9e9e9e);
+  --avatar-gradient-blue: linear-gradient(38deg, var(--aqua), var(--cerulean));
+  --avatar-gradient-orange: linear-gradient(38deg, var(--marigold), var(--red-orange-two));
+  --avatar-gradient-green: linear-gradient(38deg, var(--kiwi), var(--green));
+}
+
+.image,
+.placeholder {
+  all: initial;
 }
 
 .image {
-  all: initial;
   display: inline-block;
   user-select: none;
   border-radius: 100%;
@@ -30,23 +28,18 @@
 }
 
 .placeholder {
-  all: initial;
   display: inline-flex;
-  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
   cursor: default;
   user-select: none;
   text-align: center;
   vertical-align: middle;
   text-transform: uppercase;
   border-radius: 100%;
-  background-color: var(--avatar-color-empty);
-  box-shadow: 0 0 1px color(#000 alpha(10%));
   font-family: var(--default-font-family);
-  font-weight: 500;
   color: #fff;
-  text-shadow: 0 -1px 5px color(#000 alpha(17%));
-  align-content: center;
-  justify-content: center;
 }
 
 .clickable {
@@ -62,69 +55,61 @@
 .tiny {
   width: var(--avatar-tiny-size);
   height: var(--avatar-tiny-size);
-  font-size: 11px;
-  font-weight: 600;
 }
 
 .small {
   width: var(--avatar-small-size);
   height: var(--avatar-small-size);
-  font-size: 15px;
+  font-size: 12px;
+  line-height: var(--avatar-small-size);
+
+  &.twoChars {
+    font-size: 10px;
+  }
 }
 
 .medium {
   width: var(--avatar-medium-size);
   height: var(--avatar-medium-size);
-  font-size: 16px;
+  font-size: 18px;
+  line-height: var(--avatar-medium-size);
+
+  &.twoChars {
+    font-size: 15px;
+  }
 }
 
 .large {
   width: var(--avatar-large-size);
   height: var(--avatar-large-size);
   font-size: 20px;
+  line-height: var(--avatar-large-size);
+
+  &.twoChars {
+    font-size: 17px;
+  }
 }
 
 .big {
   width: var(--avatar-big-size);
   height: var(--avatar-big-size);
-  font-size: 32px;
-}
-
-.huge {
-  width: var(--avatar-huge-size);
-  height: var(--avatar-huge-size);
-  font-size: 64px;
+  font-size: 30px;
+  line-height: var(--avatar-big-size);
 }
 
 /* Placeholder colors */
 .empty {
-  background-color: var(--avatar-color-empty);
-}
-
-.lblue {
-  background-color: var(--avatar-color-lblue);
+  background-image: var(--avatar-gradient-empty);
 }
 
 .blue {
-  background-color: var(--avatar-color-blue);
-}
-
-.purple {
-  background-color: var(--avatar-color-purple);
-}
-
-.red {
-  background-color: var(--avatar-color-red);
+  background-image: var(--avatar-gradient-blue);
 }
 
 .orange {
-  background-color: var(--avatar-color-orange);
-}
-
-.yellow {
-  background-color: var(--avatar-color-yellow);
+  background-image: var(--avatar-gradient-orange);
 }
 
 .green {
-  background-color: var(--avatar-color-green);
+  background-image: var(--avatar-gradient-green);
 }

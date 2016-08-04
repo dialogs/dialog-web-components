@@ -4,7 +4,7 @@ Default Avatar:
 
 Avatar with custom background color:
 
-    <Avatar title="Test" placeholder="red" />
+    <Avatar title="Test" placeholder="blue" />
 
 Default Avatar with image:
 
@@ -16,12 +16,11 @@ Default Avatar with image:
 Avatar sizes:
 
     <div>
-      <Avatar title="Adam" placeholder="yellow" size="huge" />
-      <Avatar title="Vera" placeholder="orange" size="big" />
-      <Avatar title="Alex" placeholder="green" size="large" />
-      <Avatar title="Timmy" placeholder="lblue" size="medium" />
-      <Avatar title="Ashley" placeholder="blue" size="small" />
-      <Avatar title="Ray" placeholder="purple" size="tiny" />
+      <Avatar title="Valera Kotovski" placeholder="orange" size="big" />
+      <Avatar title="Hello World" placeholder="green" size="large" />
+      <Avatar title="Bad Timmy" placeholder="blue" size="medium" />
+      <Avatar title="Ashley Simpson" placeholder="green" size="small" />
+      <Avatar title="Ray Charles" placeholder="orange" size="tiny" />
     </div>
 
 Clickable Avatar:

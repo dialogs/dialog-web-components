@@ -1,25 +1,21 @@
+@import '../../styles/variables.css';
+
 :root {
-  --user-avatar-online-color: #3eca42;
+  --avatar-online-size: 8px;
+  --avatar-online-color: var(--leafy-green);
 }
 
-.online,
-.online:after {
-  all: initial;
+.root {
+  position: relative;
+  display: inline-block;
 }
 
 .online {
-  position: relative;
-  display: inline-block;
-  &:after {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    display: block;
-    width: 8px;
-    height: 8px;
-    content: '';
-    border: solid 3px #fff;
-    border-radius: 100%;
-    background-color: var(--user-avatar-online-color);
-  }
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: var(--avatar-online-size);
+  height: var(--avatar-online-size);
+  border-radius: 50%;
+  background-color: var(--avatar-online-color);
 }

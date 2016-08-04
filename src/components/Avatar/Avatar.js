@@ -4,12 +4,11 @@ import isEmoji from '../../utils/isEmoji';
 import styles from './Avatar.css';
 
 const SIZES = {
-  tiny: 24,
-  small: 36,
-  medium: 44,
-  large: 60,
-  big: 120,
-  huge: 200
+  tiny: 14,
+  small: 22,
+  medium: 28,
+  large: 36,
+  big: 100
 };
 
 class Avatar extends Component {
@@ -17,18 +16,14 @@ class Avatar extends Component {
     className: PropTypes.string,
     image: PropTypes.string,
     title: PropTypes.string,
-    size: PropTypes.oneOf([
-      'tiny', 'small', 'medium', 'large', 'big', 'huge'
-    ]).isRequired,
-    placeholder: PropTypes.oneOf([
-      'empty', 'lblue', 'blue', 'purple', 'red', 'orange', 'yellow', 'green'
-    ]).isRequired,
+    size: PropTypes.oneOf(['tiny', 'small', 'medium', 'large', 'big']).isRequired,
+    placeholder: PropTypes.oneOf(['empty', 'blue', 'orange', 'green']).isRequired,
     onClick: PropTypes.func
   };
 
   static defaultProps = {
     title: '',
-    size: 'small',
+    size: 'medium',
     placeholder: 'empty'
   };
 
@@ -40,9 +35,18 @@ class Avatar extends Component {
            prevProps.className !== this.props.className;
   }
 
-  getFirstChar() {
-    const { title } = this.props;
+  getAvatarText() {
+    const { title, size } = this.props;
+    if (size === 'tiny') {
+      return null;
+    }
+
     if (title.length) {
+      const titleArray = title.trim().split(' ');
+      if (titleArray.length > 1) {
+        return `${titleArray[0][0]}${titleArray[1][0]}`;
+      }
+
       const char = title[0];
       if (!isEmoji(char)) {
         return char;
@@ -54,13 +58,17 @@ class Avatar extends Component {
 
   render() {
     const { image, placeholder, title, size, onClick } = this.props;
+    const avatarText = this.getAvatarText();
 
     const className = classNames(
       styles.placeholder,
       styles[size],
       styles[placeholder],
       this.props.className,
-      { [styles.clickable]: onClick }
+      {
+        [styles.twoChars]: avatarText && avatarText.length !== 1,
+        [styles.clickable]: onClick
+      }
     );
 
     if (image) {
@@ -80,7 +88,7 @@ class Avatar extends Component {
 
     return (
       <div className={className} onClick={onClick} title={title}>
-        {this.getFirstChar()}
+        {avatarText}
       </div>
     );
   }
