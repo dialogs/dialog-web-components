@@ -1,74 +1,129 @@
 /**
  * Copyright 2016 Dialog LLC <info@dlg.im>
  */
-
 @import '../../styles/variables.css';
+@import '../../styles/helpers.css';
+
 :root {
   --recent-item-default-top-padding: 9px;
   --recent-item-default-right-padding: 16px;
   --recent-item-default-bottom-padding: 9px;
   --recent-item-default-left-padding: 16px;
   --recent-item-default-height: 46px;
-
-  --recent-item-big-top-padding: 15px;
-  --recent-item-big-right-padding: 12px;
-  --recent-item-big-bottom-padding: 15px;
-  --recent-item-big-left-padding: 12px;
-  --recent-item-big-height: 66px;
-
+  --recent-item-large-top-padding: 15px;
+  --recent-item-large-right-padding: 12px;
+  --recent-item-large-bottom-padding: 15px;
+  --recent-item-large-left-padding: 12px;
+  --recent-item-large-height: 66px;
   --recent-item-hover-background-color: #e2e2e2;
   --recent-item-hover-color: #000;
-
   --recent-item-active-background-color: var(--violet-blue);
   --recent-item-active-background-gradient: linear-gradient(90deg, var(--violet-blue), var(--vibrant-purple));
   --recent-item-active-color: #fff;
-
   --recent-item-counter-background: var(--purple-two);
   --recent-item-counter-color: #fff;
+  --recent-item-counter-size: 19px;
+  --recent-item-counter-font-size: 13px;
 }
 
-.root,
-.title,
-.counter {
+.root {
   all: initial;
-}
-
-.root{
   display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-content: stretch;
+  align-items: center;
   box-sizing: border-box;
   height: var(--recent-item-default-height);
   padding-top: var(--recent-item-default-top-padding);
   padding-right: var(--recent-item-default-right-padding);
   padding-bottom: var(--recent-item-default-bottom-padding);
   padding-left: var(--recent-item-default-left-padding);
-  flex: 0 0 auto;
+  color: color(#000 alpha(50%));
+  cursor: pointer;
+  user-select: none;
+  font-family: var(--default-font-family);
 
   &:hover {
-    cursor: pointer;
     background-color: var(--recent-item-hover-background-color);
     color: var(--recent-item-hover-color);
   }
 }
 
+.avatar {
+  flex: 0 0 auto;
+  align-self: auto;
+  margin-right: 14px;
+}
+
+.text {
+  flex: 1 1 auto;
+  align-self: auto;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-content: stretch;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.title {
+  @apply --text-overflow-ellipsis;
+  vertical-align: middle;
+  letter-spacing: -0.27px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 21px;
+}
+
+.message {
+  @apply --text-overflow-ellipsis;
+  vertical-align: middle;
+  letter-spacing: -0.25px;
+  font-size: 15px;
+  line-height: 22px;
+}
+
+.counter {
+  display: flex;
+  flex: 0 0 auto;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  width: var(--recent-item-counter-size);
+  height: var(--recent-item-counter-size);
+  border-radius: var(--recent-item-counter-size);
+  background-color: var(--recent-item-counter-background);
+  color: var(--recent-item-counter-color);
+  font-family: var(--default-font-family);
+  font-size: var(--recent-item-counter-font-size);
+}
+
+.unread {
+  color: #000;
+}
+
+/* State */
 .active {
   background-color: var(--recent-item-active-background-color);
   background-image: var(--recent-item-active-background-gradient);
   color: var(--recent-item-active-color);
-}
 
-.counter {
-  background-color: var(--recent-item-counter-background);
-  color: var(--recent-item-counter-color);
+  &:hover {
+    color: var(--recent-item-active-color);
+  }
 }
-
-.title {}
-.lastMessage {}
 
 /* Sizes */
 .large {
-  height: var(--recent-item-default-height);
-  padding-top: var(--recent-item-default-top-padding);
-  padding-right: var(--recent-item-default-right-padding);
-  padding-bottom: var(--recent-item-default-bottom-padding);
-  padding-left: var(--recent-item-default-left-padding);
+  height: var(--recent-item-large-height);
+  padding-top: var(--recent-item-large-top-padding);
+  padding-right: var(--recent-item-large-right-padding);
+  padding-bottom: var(--recent-item-large-bottom-padding);
+  padding-left: var(--recent-item-large-left-padding);
+
+  & .avatar {
+    margin-right: 10px;
+  }
 }

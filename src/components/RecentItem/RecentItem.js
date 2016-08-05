@@ -36,6 +36,12 @@ class RecentItem extends Component {
     active: false
   }
 
+  constructor(props) {
+    super(props);
+
+    this.handleClick = this.handleClick.bind(this);
+  }
+
   shouldComponentUpdate(nextProps) {
     return nextProps.className !== this.props.className ||
            nextProps.peer !== this.props.peer ||
@@ -46,22 +52,39 @@ class RecentItem extends Component {
            nextProps.onSelect !== this.props.onSelect;
   }
 
+  handleClick() {
+    const { peer, onSelect } = this.props;
+
+    onSelect(peer);
+  }
+
   renderAvatar() {
-    const { peer } = this.props;
+    const { peer, lastMessage } = this.props;
+    const avatarSize = lastMessage ? 'large' : 'medium';
 
     return (
       <UserAvatar
+        className={styles.avatar}
+        size={avatarSize}
         user={peer}
-        size="tiny"
       />
     );
   }
 
   renderText() {
-    const { peer } = this.props;
+    const { peer, lastMessage } = this.props;
+    if (lastMessage) {
+      return (
+        <div className={styles.text}>
+          <div className={styles.title}>{peer.title}</div>
+          <div className={styles.message}>{lastMessage.message}</div>
+        </div>
+      );
+    }
+
     return (
-      <div className={styles.title}>
-        {peer.title}
+      <div className={styles.text}>
+        <div className={styles.title}>{peer.title}</div>
       </div>
     );
   }
@@ -80,14 +103,15 @@ class RecentItem extends Component {
   }
 
   render() {
-    const { active, counter } = this.props;
+    const { active, counter, lastMessage } = this.props;
     const className = classNames(styles.root, {
       [styles.active]: active,
-      [styles.unread]: counter !== 0
+      [styles.unread]: counter !== 0,
+      [styles.large]: lastMessage
     }, this.props.className);
 
     return (
-      <div className={className}>
+      <div className={className} onClick={this.handleClick}>
         {this.renderAvatar()}
         {this.renderText()}
         {this.renderCounter()}
