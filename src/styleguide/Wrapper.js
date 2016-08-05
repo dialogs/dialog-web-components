@@ -41,7 +41,7 @@ class Wrapper extends Component {
       <div>
         <div className={styles.select}>
           <select value={locale} onChange={this.handleLocaleChange}>
-            <option value="en">Engligh</option>
+            <option value="en">English</option>
             <option value="ru">Russian</option>
           </select>
         </div>
