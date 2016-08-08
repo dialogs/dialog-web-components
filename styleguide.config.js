@@ -30,6 +30,7 @@ module.exports = {
     name: 'Sidebar',
     components() {
       return [
+        component('RecentGroup'),
         component('RecentItem')
       ];
     }
