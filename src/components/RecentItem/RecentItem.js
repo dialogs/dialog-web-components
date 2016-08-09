@@ -10,24 +10,18 @@ import UserAvatar from '../UserAvatar/UserAvatar';
 class RecentItem extends Component {
   static propTypes = {
     className: PropTypes.string,
-    peer: PropTypes.shape({
-      id: PropTypes.number.isRequired,
+    peerInfo: PropTypes.shape({
+      peer: PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        type: PropTypes.oneOf(['user', 'group']).isRequired
+      }).isRequired,
       title: PropTypes.string.isRequired,
       placeholder: PropTypes.string.isRequired,
       image: PropTypes.string
     }).isRequired,
     active: PropTypes.bool.isRequired,
     counter: PropTypes.number.isRequired,
-    lastMessage: PropTypes.shape({
-      peer: PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        title: PropTypes.string.isRequired,
-        placeholder: PropTypes.string.isRequired,
-        image: PropTypes.string
-      }).isRequired,
-      message: PropTypes.string.isRequired
-    }),
-    typing: PropTypes.string,
+    text: PropTypes.string,
     onSelect: PropTypes.func
   };
 
@@ -44,53 +38,59 @@ class RecentItem extends Component {
 
   shouldComponentUpdate(nextProps) {
     return nextProps.className !== this.props.className ||
-           nextProps.peer !== this.props.peer ||
+           nextProps.peerInfo !== this.props.peerInfo ||
            nextProps.active !== this.props.active ||
-           nextProps.lastMessage !== this.props.lastMessage ||
-           nextProps.typing !== this.props.typing ||
            nextProps.counter !== this.props.counter ||
+           nextProps.text !== this.props.text ||
            nextProps.onSelect !== this.props.onSelect;
   }
 
   handleClick() {
-    const { peer, onSelect } = this.props;
+    const { peerInfo: { peer }, onSelect } = this.props;
 
     onSelect(peer);
   }
 
   renderAvatar() {
-    const { peer, lastMessage } = this.props;
-    const avatarSize = lastMessage ? 'large' : 'medium';
+    const { peerInfo, text } = this.props;
+    const avatarSize = text ? 'large' : 'medium';
+    const user = {
+      title: peerInfo.title,
+      avatar: peerInfo.image,
+      placeholder: peerInfo.placeholder
+    };
 
     return (
       <UserAvatar
         className={styles.avatar}
         size={avatarSize}
-        user={peer}
+        user={user}
       />
     );
   }
 
   renderText() {
-    const { peer, lastMessage } = this.props;
-    if (lastMessage) {
+    const { peerInfo, text } = this.props;
+
+    if (text) {
       return (
         <div className={styles.text}>
-          <div className={styles.title}>{peer.title}</div>
-          <div className={styles.message}>{lastMessage.message}</div>
+          <div className={styles.title}>{peerInfo.title}</div>
+          <div className={styles.message}>{text}</div>
         </div>
       );
     }
 
     return (
       <div className={styles.text}>
-        <div className={styles.title}>{peer.title}</div>
+        <div className={styles.title}>{peerInfo.title}</div>
       </div>
     );
   }
 
   renderCounter() {
     const { counter } = this.props;
+
     if (counter === 0) {
       return null;
     }
@@ -103,11 +103,11 @@ class RecentItem extends Component {
   }
 
   render() {
-    const { active, counter, lastMessage } = this.props;
+    const { active, counter, text } = this.props;
     const className = classNames(styles.root, {
       [styles.active]: active,
       [styles.unread]: counter !== 0,
-      [styles.large]: lastMessage
+      [styles.large]: text
     }, this.props.className);
 
     return (

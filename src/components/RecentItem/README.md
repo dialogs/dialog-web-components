@@ -1,13 +1,12 @@
 Basic Recent Item:
 
-    const peer = {
-      id: 1,
+    const peerInfo = {
+      peer: {
+        id: 1,
+        type: 'user'
+      },
       title: 'Some User',
       placeholder: 'blue'
-    };
-    const lastMessage = {
-      peer: peer,
-      message: 'Lorem ipsum dolor sit amet, consectetur.'
     };
     function handleSelect(peer) {
       alert(`Peer ${peer.id} selected`);
@@ -15,17 +14,17 @@ Basic Recent Item:
 
     <div style={{ width: 270, background: '#f5f5f5' }}>
       <RecentItem
-        peer={peer}
+        peerInfo={peerInfo}
         counter={0}
         onSelect={handleSelect}
       />
       <RecentItem
-        peer={peer}
+        peerInfo={peerInfo}
         counter={10}
         onSelect={handleSelect}
       />
       <RecentItem
-        peer={peer}
+        peerInfo={peerInfo}
         counter={0}
         active
         onSelect={handleSelect}
@@ -34,42 +33,46 @@ Basic Recent Item:
 
 Extended Recent Item:
 
-    const peer1 = {
-      id: 1,
+    const peerInfo1 = {
+      peer: {
+        id: 1,
+        type: 'user'
+      },
       title: 'Dimon',
       placeholder: 'orange'
     };
-    const peer2 = {
-      id: 2,
+    const peerInfo2 = {
+      peer: {
+        id: 2,
+        type: 'user'
+      },
       title: 'Jane Doe',
       placeholder: 'green'
     };
-    const lastMessage = {
-      peer: peer1,
-      message: 'Lorem ipsum dolor sit amet, consectetur.'
-    };
+    const text = 'Lorem ipsum dolor sit amet, consectetur.';
+
     function handleSelect(peer) {
       alert(`Peer ${peer.id} selected`);
     }
 
     <div style={{ width: 270, background: '#f5f5f5' }}>
       <RecentItem
-        peer={peer2}
+        peerInfo={peerInfo1}
         counter={0}
-        lastMessage={lastMessage}
+        text={text}
         onSelect={handleSelect}
         active
       />
       <RecentItem
-        peer={peer1}
+        peerInfo={peerInfo1}
         counter={10}
-        lastMessage={lastMessage}
+        text={text}
         onSelect={handleSelect}
       />
       <RecentItem
-        peer={peer2}
+        peerInfo={peerInfo2}
         counter={0}
-        lastMessage={lastMessage}
+        text={text}
         onSelect={handleSelect}
       />
     </div>
