@@ -1,3 +1,6 @@
+/* disable rule due WIP colors */
+/* stylelint-disable custom-property-pattern */
+
 /* Color palette */
 :root {
   --violet-blue: #6b00cb;
