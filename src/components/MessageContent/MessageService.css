@@ -1,14 +1,17 @@
 @import '../../styles/variables.css';
 
-.container {
+:root {
+  --message-service-color: color(#000 alpha(50%));
+  --message-service-font-size: var(--default-font-size);
+}
+
+.root {
   all: initial;
   display: inline-block;
   user-select: text;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-  color: #bababa;
+  color: var(--message-service-color);
+  letter-spacing: -0.3px;
   font-family: var(--default-font-family);
-  font-size: 14px;
-  font-style: italic;
-  line-height: 22px;
+  font-size: var(--message-service-font-size);
+  line-height: 1.3;
 }

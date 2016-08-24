@@ -1,18 +1,19 @@
 @import '../../styles/variables.css';
 
-.image {
+.root {
   /* all: initial; */
-  border: 1px solid #fff;
+  display: inline-block;
+  border: 1px solid;
+  line-height: 0;
 }
 
 /* States */
-
 .loading {
   border-color: var(--color-pending);
 }
 
 .success {
-  border-color: var(--color-error);
+  border-color: var(--color-success);
 }
 
 .error {

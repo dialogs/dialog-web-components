@@ -1,7 +1,8 @@
 import React, { Component, PropTypes } from 'react';
-import Image from '../Image/Image';
+import Img from '../Img/Img';
+import styles from './MessagePhoto.css';
 
-class PhotoMessage extends Component {
+class MessagePhoto extends Component {
   static propTypes = {
     fileUrl: PropTypes.string.isRequired,
     fileName: PropTypes.string.isRequired,
@@ -11,16 +12,19 @@ class PhotoMessage extends Component {
   };
 
   render() {
+    const { fileUrl, fileName, preview, w, h } = this.props;
+
     return (
-      <Image
-        src={this.props.fileUrl}
-        alt={this.props.fileName}
-        preview={this.props.preview}
-        width={this.props.w}
-        height={this.props.h}
+      <Img
+        className={styles.root}
+        src={fileUrl}
+        alt={fileName}
+        preview={preview}
+        width={w}
+        height={h}
       />
     );
   }
 }
 
-export default PhotoMessage;
+export default MessagePhoto;

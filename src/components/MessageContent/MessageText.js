@@ -12,9 +12,9 @@ class MessageText extends Component {
 
   render() {
     return (
-      <div className={styles.container}>
+      <p className={styles.root}>
         {this.props.text}
-      </div>
+      </p>
     );
   }
 }
