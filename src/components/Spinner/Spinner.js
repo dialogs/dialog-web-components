@@ -7,8 +7,8 @@ class Spinner extends Component {
     className: PropTypes.string
   };
 
-  shouldComponentUpdate(prevProps) {
-    return prevProps.className !== this.props.className;
+  shouldComponentUpdate(nextProps) {
+    return nextProps.className !== this.props.className;
   }
 
   render() {

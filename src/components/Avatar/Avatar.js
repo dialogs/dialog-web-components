@@ -27,12 +27,12 @@ class Avatar extends Component {
     placeholder: 'empty'
   };
 
-  shouldComponentUpdate(prevProps) {
-    return prevProps.image !== this.props.image ||
-           prevProps.placeholder !== this.props.placeholder ||
-           prevProps.title !== this.props.title ||
-           prevProps.size !== this.props.size ||
-           prevProps.className !== this.props.className;
+  shouldComponentUpdate(nextProps) {
+    return nextProps.image !== this.props.image ||
+           nextProps.placeholder !== this.props.placeholder ||
+           nextProps.title !== this.props.title ||
+           nextProps.size !== this.props.size ||
+           nextProps.className !== this.props.className;
   }
 
   getAvatarText() {
