@@ -1,24 +1,26 @@
 /* eslint react/require-optimization:0 */
 
 import React, { PropTypes } from 'react';
-import MessageText from './MessageText';
-import MessageService from './MessageService';
-import MessagePhoto from './MessagePhoto';
+import {
+  Text,
+  Service,
+  Photo
+} from './Content';
 
 function MessageContent({ content }) {
   switch (content.content) {
     case 'text':
-      return <MessageText text={content.text} />;
+      return <Text text={content.text} />;
     case 'service':
-      return <MessageService text={content.text} />;
+      return <Service text={content.text} />;
     case 'photo':
       return (
-        <MessagePhoto
+        <Photo
           fileUrl={content.fileUrl}
           fileName={content.fileName}
           preview={content.preview}
-          w={content.w}
-          h={content.h}
+          width={content.w}
+          height={content.h}
         />
       );
     default:

@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import styles from './MessageText.css';
+import styles from './Service.css';
 
-class MessageText extends Component {
+class Service extends Component {
   static propTypes = {
     text: PropTypes.string.isRequired
   };
@@ -11,12 +11,12 @@ class MessageText extends Component {
   }
 
   render() {
+    const { text } = this.props;
+
     return (
-      <p className={styles.root}>
-        {this.props.text}
-      </p>
+      <p className={styles.root}>{text}</p>
     );
   }
 }
 
-export default MessageText;
+export default Service;
