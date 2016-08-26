@@ -1,5 +1,9 @@
-.clearfix::after {
-  display: table;
-  clear: both;
-  content: '';
+:root {
+  --clearfix: {
+    &::after {
+      display: table;
+      clear: both;
+      content: '';
+    }
+  }
 }
