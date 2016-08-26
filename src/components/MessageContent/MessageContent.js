@@ -4,10 +4,19 @@ import React, { PropTypes } from 'react';
 import {
   Text,
   Service,
-  Photo
+  Photo,
+  Document
 } from './Content';
 
+const CONTENT_TYPES = [
+  'text',
+  'service',
+  'photo',
+  'document'
+];
+
 function MessageContent({ content }) {
+  // TODO: use constants for content types;
   switch (content.content) {
     case 'text':
       return <Text text={content.text} />;
@@ -23,6 +32,16 @@ function MessageContent({ content }) {
           height={content.h}
         />
       );
+    case 'document':
+      return (
+        <Document
+          fileExtension={content.fileExtension}
+          fileName={content.fileName}
+          fileSize={content.fileSize}
+          fileUrl={content.fileUrl}
+          isUploading={content.isUploading}
+        />
+      );
     default:
       return <pre>{JSON.stringify(content)}</pre>;
   }
@@ -30,7 +49,7 @@ function MessageContent({ content }) {
 
 MessageContent.propTypes = {
   content: PropTypes.shape({
-    content: PropTypes.oneOf(['text', 'service', 'photo']).isRequired
+    content: PropTypes.oneOf(CONTENT_TYPES).isRequired
   }).isRequired
 };
 
