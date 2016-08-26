@@ -39,6 +39,7 @@ class UserAvatar extends Component {
 
   render() {
     const { online } = this.props;
+
     if (online) {
       return (
         <div className={styles.root}>
