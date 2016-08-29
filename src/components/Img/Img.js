@@ -80,6 +80,7 @@ class Img extends Component {
     const { alt, width, height, className } = this.props;
     const source = this.getSource();
     const imageClassName = classnames(styles.root, {
+      [styles.preview]: state !== STATE_SUCCESS,
       [styles.loading]: state === STATE_LOADING,
       [styles.success]: state === STATE_SUCCESS,
       [styles.error]: state === STATE_ERROR
