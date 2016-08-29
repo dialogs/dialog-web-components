@@ -21,7 +21,7 @@
   font-family: var(--message-font-family);
 
   &:hover {
-     background-color: var(--message-hover-background-color);
+    background-color: var(--message-hover-background-color);
   }
 }
 

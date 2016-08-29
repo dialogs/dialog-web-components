@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import MessageContent from '../MessageContent/MessageContent';
 import UserAvatar from '../UserAvatar/UserAvatar';
+import ReadState from './ReadState/ReadState';
 import styles from './Message.css';
 
 class Message extends Component {
@@ -9,7 +10,7 @@ class Message extends Component {
       date: PropTypes.string.isRequired,
       reactions: PropTypes.object.isRequired,
       rid: PropTypes.number.isRequired,
-      state: PropTypes.string.isRequired,
+      state: PropTypes.object.isRequired,
       sender: PropTypes.object.isRequired,
       content: PropTypes.object.isRequired
     }).isRequired
@@ -17,6 +18,14 @@ class Message extends Component {
 
   shouldComponentUpdate(nextProps) {
     return nextProps.message !== this.props.message;
+  }
+
+  renderState() {
+    const { message: { state } } = this.props;
+
+    return (
+      <ReadState state={state.state} readBy={state.readBy} />
+    );
   }
 
   render() {

@@ -7,7 +7,6 @@
 }
 
 .root {
-  all: initial;
   overflow: hidden;
   max-width: var(--message-photo-max-width);
   height: auto;
