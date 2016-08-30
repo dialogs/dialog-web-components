@@ -1,0 +1,67 @@
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+:root {
+  --icon-button-default-size: 36px;
+  --icon-button-large-size: 50px;
+  --icon-button-background-color: #fff;
+  --icon-button-color: var(--violet-blue-two);
+  --icon-button-glyph-size: 24px;
+  --icon-button-glyph-size-large: 32px;
+}
+
+.root {
+  all: initial;
+  display: inline-flex;
+  cursor: pointer;
+  transition: all var(--default-transition-duration) ease-in;
+  vertical-align: middle;
+  border: 1px solid color(#000 alpha(20%));
+  background-color: var(--icon-button-background-color);
+  box-shadow: 0 1px 2px 0 color(#000 alpha(10%));
+  align-content: center;
+  justify-content: center;
+  color: var(--icon-button-color);
+
+  &:hover,
+  &:focus {
+    border: 1px solid color(#000 alpha(30%));
+    box-shadow: 0 2px 4px 0 color(#000 alpha(25%));
+  }
+
+  &:active {
+    border: solid 1px color(#000 alpha(30%));
+    box-shadow: 0 2px 0 0 color(#000 alpha(25%));
+  }
+}
+
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+  border: 1px solid color(#000 alpha(20%)) !important;
+  box-shadow: 0 1px 2px 0 color(#000 alpha(10%)) !important;
+}
+
+/* Sizes */
+.normal {
+  width: var(--icon-button-default-size);
+  height: var(--icon-button-default-size);
+  border-radius: var(--icon-button-default-size);
+
+  & .icon {
+    font-size: var(--icon-button-glyph-size);
+  }
+}
+
+.large {
+  width: var(--icon-button-large-size);
+  height: var(--icon-button-large-size);
+  border-radius: var(--icon-button-large-size);
+
+  & .icon {
+    font-size: var(--icon-button-glyph-size-large);
+  }
+}
