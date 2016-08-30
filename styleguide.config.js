@@ -27,6 +27,14 @@ module.exports = {
       ];
     }
   }, {
+    name: 'Sidebar',
+    components() {
+      return [
+        component('RecentGroup'),
+        component('RecentItem')
+      ];
+    }
+  }, {
     name: 'Forms',
     content: doc('forms'),
     components() {
