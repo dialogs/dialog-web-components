@@ -51,7 +51,7 @@ Message:
       sender: sender,
       date: '20:31 pm',
       state: {
-        state: 'SENT'
+        state: 'SENDING'
       }
     };
     <div>

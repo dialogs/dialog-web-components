@@ -1,11 +1,24 @@
 @import '../../../styles/variables.css';
 
 :root {
-  --read-state-font-size: 13px;
-  --read-state-color: color(#000 alpha(60%));
-  --read-state-avatar-padding: 4px;
-  --read-state-dot-size: 10px;
-  --read-state-dot-color: color(#000 alpha(30%));
+  --message-state-font-size: 13px;
+  --message-state-color: color(#000 alpha(60%));
+  --message-state-avatar-padding: 4px;
+  --message-state-dot-size: 10px;
+  --message-state-dot-color: color(#000 alpha(30%));
+  --message-state-sending-size: 9px;
+  --message-state-sending-color: var(--violet-blue-two);
+  --message-state-sending-animation-duration: calc(var(--default-transition-duration) * 4);
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .root {
@@ -13,9 +26,9 @@
   flex-direction: row;
   padding-left: 8px;
   letter-spacing: -0.2px;
-  font-size: var(--read-state-font-size);
+  font-size: var(--message-state-font-size);
   line-height: 22px;
-  color: var(--read-state-color);
+  color: var(--message-state-color);
   flex: 1 1 auto;
   align-content: flex-start;
   justify-content: flex-start;
@@ -28,6 +41,13 @@
 }
 
 .sending {
+  width: var(--message-state-sending-size);
+  height: var(--message-state-sending-size);
+  animation: spin var(--message-state-sending-animation-duration) infinite linear;
+  border: 2px solid color(var(--message-state-sending-color) alpha(15%));
+  border-top-color: var(--message-state-sending-color);
+  border-radius: 50%;
+  align-self: center;
 }
 
 .sent {
@@ -35,10 +55,10 @@
 
 .dot {
   display: inline-block;
-  width: var(--read-state-dot-size);
-  height: var(--read-state-dot-size);
-  border-radius: var(--read-state-dot-size);
-  background-color: var(--read-state-dot-color);
+  width: var(--message-state-dot-size);
+  height: var(--message-state-dot-size);
+  border-radius: var(--message-state-dot-size);
+  background-color: var(--message-state-dot-color);
 }
 
 .read {
@@ -60,5 +80,5 @@
 }
 
 .avatar {
-  margin-left: var(--read-state-avatar-padding);
+  margin-left: var(--message-state-avatar-padding);
 }
