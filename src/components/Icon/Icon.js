@@ -3,7 +3,7 @@
  */
 
 import React, { Component, PropTypes } from 'react';
-import classnames from 'classnames';
+import classNames from 'classnames';
 import styles from './Icon.css';
 
 class Icon extends Component {
@@ -19,7 +19,7 @@ class Icon extends Component {
 
   render() {
     const { glyph, className } = this.props;
-    const iconClassName = classnames('material-icons', styles.root, className);
+    const iconClassName = classNames('material-icons', styles.root, className);
 
     return (
       <i className={iconClassName}>{glyph}</i>
