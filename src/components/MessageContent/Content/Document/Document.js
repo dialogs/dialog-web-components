@@ -3,12 +3,6 @@ import classnames from 'classnames';
 import Icon from '../../../Icon/Icon';
 import styles from './Document.css';
 
-// TODO: Add more types
-const fileTypes = {
-  doc: ['pdf', 'doc', 'docx'],
-  media: ['mov', 'mpeg', 'avi']
-};
-
 class Document extends Component {
   static propTypes = {
     fileExtension: PropTypes.string.isRequired,
@@ -16,11 +10,11 @@ class Document extends Component {
     fileSize: PropTypes.string.isRequired,
     fileUrl: PropTypes.string.isRequired,
     isUploading: PropTypes.bool.isRequired
-  }
+  };
 
   static defaultProps = {
     isUploading: true
-  }
+  };
 
   shouldComponentUpdate(nextProps) {
     return nextProps.fileExtension !== this.props.fileExtension ||
@@ -69,7 +63,7 @@ class Document extends Component {
   }
 
   renderInfo() {
-    const { fileName, fileSize, fileUrl, isUploading } = this.props;
+    const { fileName, fileSize } = this.props;
 
     return (
       <div className={styles.info}>
