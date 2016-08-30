@@ -24,10 +24,10 @@
   border: 0;
   border-radius: var(--button-border-radius);
   outline: none;
-  color: #000;
   background-color: transparent;
   font-family: var(--button-font-family);
   font-weight: var(--button-font-weight);
+  color: #000;
 
   &[disabled] {
     cursor: not-allowed;
@@ -41,8 +41,8 @@
 
 /* Types */
 .primary {
-  color: #fff;
   background-color: #4800cc;
+  color: #fff;
 
   &:hover:enabled,
   &:focus:enabled {

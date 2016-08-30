@@ -1,5 +1,68 @@
 @import '../../styles/variables.css';
 
-.container {
+:root {
+  --message-font-family: var(--default-font-family);
+  --message-top-padding: 14px;
+  --message-right-padding: 44px;
+  --message-bottom-padding: 14px;
+  --message-left-padding: 34px;
+  --message-hover-background-color: #f2f2f2;
+  --message-timestamp-color: color(#000 alpha(60%));
+}
 
+.root {
+  all: initial;
+  display: flex;
+  flex-direction: row;
+  padding-top: var(--message-top-padding);
+  padding-right: var(--message-right-padding);
+  padding-bottom: var(--message-bottom-padding);
+  padding-left: var(--message-left-padding);
+  font-family: var(--message-font-family);
+
+  &:hover {
+    background-color: var(--message-hover-background-color);
+  }
+}
+
+.avatar {
+  margin-right: 14px;
+  flex: 0 0 0;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-content: flex-start;
+  justify-content: flex-start;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  flex: 0 1 auto;
+}
+
+.sender {
+  display: inline-block;
+  height: 22px;
+  letter-spacing: -0.3px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.timestamp {
+  margin-left: 8px;
+  letter-spacing: -0.2px;
+  text-transform: uppercase;
+  font-size: 13px;
+  line-height: 22px;
+  color: var(--message-timestamp-color);
+}
+
+.content {
+  line-height: 0;
+  flex: 0;
 }

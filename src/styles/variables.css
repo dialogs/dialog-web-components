@@ -1,4 +1,5 @@
 @import './colors.css';
+@import './helpers.css';
 
 :root {
   --font-apple: -apple-system, 'BlinkMacSystemFont';
@@ -6,7 +7,6 @@
   --font-emoji: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   --default-font-family: var(--font-apple), var(--font-fallback), var(--font-emoji);
   --code-font-family: 'Fira Code', 'Consolas', 'Monaco', 'Roboto Mono', monospace;
-
   /* Sizes */
   --small-font-size: 14px;
   --default-font-size: 16px;
@@ -17,10 +17,8 @@
   --default-border-radius: 5px;
   --default-transition-duration: 150ms;
   --spinner-max-height: 20px;
-
   /* Layers */
   --z-index-dropdown: 10;
-
   /* Colors */
   --color-primary: #8601b0;
   --color-empty: #b8b8b8;

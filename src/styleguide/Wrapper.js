@@ -30,6 +30,10 @@ class Wrapper extends Component {
     this.handleLocaleChange = this.handleLocaleChange.bind(this);
   }
 
+  shouldComponentUpdate(nextProps) {
+    return nextProps.children !== this.props.children;
+  }
+
   handleLocaleChange({ target }) {
     this.setState({ locale: target.value });
   }

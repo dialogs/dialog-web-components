@@ -1,0 +1,80 @@
+@import '../../../../styles/variables.css';
+
+:root {
+  --document-min-width: 300px;
+  --document-font-family: var(--default-font-family);
+  --document-media-color: var(--sky-blue);
+  --document-doc-color: var(--orangey-red);
+  --document-picture-color: var(--pinkish-grey-two);
+  --document-padding: 12px;
+  --document-background-color: #fff;
+  --document-border-color: color(#000 alpha(14%));
+  --document-border-radius: 4px;
+  --document-preview-size: 50px;
+  --document-padding-margin-right: 14px;
+  --document-download-arrow-color: var(--purple);
+}
+
+.root {
+  all: initial;
+  display: inline-flex;
+  min-width: var(--document-min-width);
+  padding: var(--document-padding);
+  border-radius: var(--document-border-radius);
+  background-color: var(--document-background-color);
+  box-shadow: 0 0 0 1px var(--document-border-color);
+  font-family: var(--document-font-family);
+}
+
+.filename {
+  height: calc(var(--document-preview-size) / 2);
+  letter-spacing: -0.4px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: calc(var(--document-preview-size) / 2);
+  color: #000;
+}
+
+.sizeBlock {
+  height: calc(var(--document-preview-size) / 2);
+}
+
+.size {
+  vertical-align: middle;
+  font-size: 14px;
+  line-height: calc(var(--document-preview-size) / 2);
+  color: color(#000 alpha(60%));
+}
+
+.downloadArrow {
+  line-height: calc(var(--document-preview-size) / 2);
+  color: var(--document-download-arrow-color);
+}
+
+.preview {
+  display: flex;
+  width: var(--document-preview-size);
+  height: var(--document-preview-size);
+  margin-right: var(--document-padding-margin-right);
+  text-transform: uppercase;
+  border-radius: calc(var(--document-preview-size) / 2);
+  font-size: 14px;
+  font-weight: 500;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+/* File type colors */
+.media {
+  background-color: var(--document-media-color);
+}
+
+.doc {
+  background-color: var(--document-doc-color);
+}
+
+.picture {
+  background-color: var(--document-picture-color);
+}

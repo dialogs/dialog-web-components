@@ -44,6 +44,14 @@ class AuthForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  shouldComponentUpdate(nextProps) {
+    return nextProps.id !== this.props.id ||
+           nextProps.step !== this.props.step ||
+           nextProps.value !== this.props.value ||
+           nextProps.onChange !== this.props.onChange ||
+           nextProps.onSubmit !== this.props.onSubmit;
+  }
+
   handleChange(value, { target }) {
     this.props.onChange({
       ...this.props.value,

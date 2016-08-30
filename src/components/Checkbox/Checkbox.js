@@ -17,12 +17,12 @@ class Checkbox extends Component {
     disabled: false
   };
 
-  shouldComponentUpdate(prevProps) {
-    return prevProps.value !== this.props.value ||
-           prevProps.disabled !== this.props.disabled ||
-           prevProps.label !== this.props.label ||
-           prevProps.id !== this.props.id ||
-           prevProps.className !== this.props.className;
+  shouldComponentUpdate(nextProps) {
+    return nextProps.value !== this.props.value ||
+           nextProps.disabled !== this.props.disabled ||
+           nextProps.label !== this.props.label ||
+           nextProps.id !== this.props.id ||
+           nextProps.className !== this.props.className;
   }
 
   render() {

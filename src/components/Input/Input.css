@@ -3,7 +3,6 @@
 :root {
   --input-error-color: var(--color-error);
   --input-success-color: var(--color-success);
-
   --input-color-color: #000;
   --input-placeholder-color: color(#000 alpha(30%));
   --input-border-color: color(#000 alpha(35%));
@@ -11,19 +10,15 @@
   --input-font-size: 18px;
   --input-line-height: 27px;
   --input-font-family: var(--default-font-family);
-
   --input-focused-color: #000;
   --input-focused-border-color: var(--color-primary);
-
   --input-disabled-color: #bdbdbd;
   --input-disabled-border-color: var(--input-disabled-color);
   --input-disabled-background-color: color(var(--input-disabled-color) alpha(15%));
-
   --input-label-color: #000;
   --input-label-font-size: 16px;
   --input-label-line-height: 22px;
   --input-label-font-family: var(--default-font-family);
-
   --input-hint-color: color(#000 alpha(30%));
   --input-hint-font-size: 14px;
   --input-hint-line-height: 18px;
@@ -73,12 +68,12 @@
   border: 1px solid var(--input-border-color);
   border-radius: var(--input-border-radius);
   outline: none;
-  color: var(--input-color-color);
   background-color: #fff;
   box-shadow: none;
   font-family: var(--input-font-family);
   font-size: var(--input-font-size);
   line-height: var(--input-line-height);
+  color: var(--input-color-color);
 
   &::-webkit-input-placeholder {
     color: var(--input-placeholder-color);
@@ -95,13 +90,11 @@
   :-ms-input-placeholder {
     color: var(--input-placeholder-color);
   }
-
   /* Focused state */
   &:focus {
-    color: var(--input-focused-color);
     border-color: var(--input-focused-border-color);
+    color: var(--input-focused-color);
   }
-
   /* Disabled state */
   &:disabled {
     border: 1px dotted var(--input-disabled-border-color);

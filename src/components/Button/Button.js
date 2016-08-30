@@ -27,17 +27,17 @@ class Button extends Component {
     disabled: false
   };
 
-  shouldComponentUpdate(prevProps) {
-    return prevProps.children !== this.props.children ||
-           prevProps.loading !== this.props.loading ||
-           prevProps.disabled !== this.props.disabled ||
-           prevProps.type !== this.props.type ||
-           prevProps.size !== this.props.size ||
-           prevProps.theme !== this.props.theme ||
-           prevProps.wide !== this.props.wide ||
-           prevProps.className !== this.props.className ||
-           prevProps.id !== this.props.id ||
-           prevProps.name !== this.props.name;
+  shouldComponentUpdate(nextProps) {
+    return nextProps.children !== this.props.children ||
+           nextProps.loading !== this.props.loading ||
+           nextProps.disabled !== this.props.disabled ||
+           nextProps.type !== this.props.type ||
+           nextProps.size !== this.props.size ||
+           nextProps.theme !== this.props.theme ||
+           nextProps.wide !== this.props.wide ||
+           nextProps.className !== this.props.className ||
+           nextProps.id !== this.props.id ||
+           nextProps.name !== this.props.name;
   }
 
   renderLoading() {

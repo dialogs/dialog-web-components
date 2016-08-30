@@ -1,0 +1,16 @@
+@import '../../../../styles/variables.css';
+
+:root {
+  --message-photo-max-width: 400px;
+  --message-photo-max-height: 300px;
+  --message-photo-border-raduis: var(--default-border-radius);
+}
+
+.root {
+  overflow: hidden;
+  max-width: var(--message-photo-max-width);
+  height: auto;
+  max-height: var(--message-photo-max-height);
+  border: 0;
+  border-radius: var(--message-photo-border-raduis);
+}

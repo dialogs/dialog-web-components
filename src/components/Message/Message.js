@@ -1,10 +1,17 @@
 import React, { Component, PropTypes } from 'react';
 import MessageContent from '../MessageContent/MessageContent';
+import UserAvatar from '../UserAvatar/UserAvatar';
+import ReadState from './MessageState/MessageState';
 import styles from './Message.css';
 
 class Message extends Component {
   static propTypes = {
     message: PropTypes.shape({
+      date: PropTypes.string.isRequired,
+      reactions: PropTypes.object.isRequired,
+      rid: PropTypes.number.isRequired,
+      state: PropTypes.object.isRequired,
+      sender: PropTypes.object.isRequired,
       content: PropTypes.object.isRequired
     }).isRequired
   };
@@ -13,12 +20,32 @@ class Message extends Component {
     return nextProps.message !== this.props.message;
   }
 
-  render() {
-    const { message: { content } } = this.props;
+  renderState() {
+    const { message: { state } } = this.props;
 
     return (
-      <div className={styles.container}>
-        <MessageContent content={content} />
+      <ReadState state={state.state} readBy={state.readBy} />
+    );
+  }
+
+  render() {
+    const { message: { content, sender, date } } = this.props;
+
+    return (
+      <div className={styles.root}>
+        <div className={styles.avatar}>
+          <UserAvatar user={sender} size="large" />
+        </div>
+        <div className={styles.main}>
+          <div className={styles.header}>
+            <div className={styles.sender}>{sender.name}</div>
+            <time className={styles.timestamp}>{date}</time>
+            {this.renderState()}
+          </div>
+          <div className={styles.content}>
+            <MessageContent content={content} />
+          </div>
+        </div>
       </div>
     );
   }

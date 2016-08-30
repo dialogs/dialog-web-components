@@ -35,6 +35,7 @@
   border-bottom: 1px solid color(#000 alpha(2%));
   align-items: center;
   justify-content: flex-start;
+
   &::after {
     display: table;
     clear: both;

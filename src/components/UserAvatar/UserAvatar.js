@@ -15,11 +15,11 @@ class UserAvatar extends Component {
     onClick: PropTypes.func
   };
 
-  shouldComponentUpdate(prevProps) {
-    return prevProps.online !== this.props.online ||
-           prevProps.user !== this.props.user ||
-           prevProps.size !== this.props.size ||
-           prevProps.className !== this.props.className;
+  shouldComponentUpdate(nextProps) {
+    return nextProps.online !== this.props.online ||
+           nextProps.user !== this.props.user ||
+           nextProps.size !== this.props.size ||
+           nextProps.className !== this.props.className;
   }
 
   renderAvatar() {
@@ -39,6 +39,7 @@ class UserAvatar extends Component {
 
   render() {
     const { online } = this.props;
+
     if (online) {
       return (
         <div className={styles.root}>
