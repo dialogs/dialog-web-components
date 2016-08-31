@@ -4,6 +4,10 @@
 
 @import '../../styles/variables.css';
 
+:root {
+  --<%= dashedName -%>-font-family: var(--default-font-family);
+}
+
 .root {
   all: initial;
 }

@@ -3,6 +3,7 @@ const path = require('path');
 const ejs = require('ejs');
 const chalk = require('chalk');
 const inquirer = require('inquirer');
+const camelCaseToDash = require('../src/utils/camelCaseToDash');
 
 const info = (message) => console.error(chalk.cyan(message));
 const warning = (message) => console.error(chalk.yellow(message));
@@ -12,6 +13,7 @@ const questions = [
   {
     name: 'name',
     message: 'Component name',
+    default: 'DialogComponent',
     validate(value) {
       const valid = /^[A-Z][a-zA-Z]+$/.test(value);
       return valid || 'Component name should match /^[A-Z][a-zA-Z]+$/';
@@ -39,10 +41,14 @@ const src = path.resolve(__dirname, '../src/components');
 const templates = path.resolve(__dirname, 'templates');
 
 function render(options, template, out) {
+  const extendedOptions = Object.assign({}, options, {
+    dashedName: camelCaseToDash(options.name)
+  });
+  chalk.blue(extendedOptions);
   const input = path.join(templates, template);
   const output = path.join(src, options.name, out);
 
-  const code = ejs.render(fs.readFileSync(input, 'utf8'), options);
+  const code = ejs.render(fs.readFileSync(input, 'utf8'), extendedOptions);
   fs.writeFileSync(output, code);
 }
 
