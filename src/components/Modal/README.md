@@ -1,6 +1,7 @@
 Basic Modal:
 
     const ModalHeader = require('./ModalHeader').default;
+    const ModalClose = require('./ModalClose').default;
     const ModalBody = require('./ModalBody').default;
     const ModalFooter = require('./ModalFooter').default;
     let initialState = { isOpen: false };
@@ -14,7 +15,10 @@ Basic Modal:
         header=""
         onClose={handleClose}
       >
-        <ModalHeader>Simple modal</ModalHeader>
+        <ModalHeader>
+          Simple modal
+          <ModalClose onClick={handleClose} />
+        </ModalHeader>
         <ModalBody>
           <p>Hello, world!</p>
         </ModalBody>
@@ -25,6 +29,7 @@ Basic Modal:
 Fullscreen Modal:
 
     const ModalHeader = require('./ModalHeader').default;
+    const ModalClose = require('./ModalClose').default;
     const ModalBody = require('./ModalBody').default;
     let initialState = { isOpen: false };
     const handleOpen = () => setState({ isOpen: true });
@@ -37,6 +42,7 @@ Fullscreen Modal:
         onClose={handleClose}
         fullscreen
       >
+        <ModalClose onClick={handleClose} />
         <ModalHeader>Simple modal</ModalHeader>
         <ModalBody>
           <p>Hi again. I'm inside fullscreen modal!!!</p>

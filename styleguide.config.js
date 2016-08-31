@@ -19,18 +19,17 @@ module.exports = {
       return [
         component('Avatar'),
         component('UserAvatar'),
-        component('Button'),
-        component('IconButton'),
         component('Scroller'),
-        component('Dropdown')
+        component('Dropdown'),
+        component('Icon')
       ];
     }
   }, {
-    name: 'Sidebar',
+    name: 'Buttons',
     components() {
       return [
-        component('RecentGroup'),
-        component('RecentItem')
+        component('Button'),
+        component('IconButton')
       ];
     }
   }, {
@@ -63,6 +62,21 @@ module.exports = {
     components() {
       return [
         component('Modal')
+      ];
+    }
+  }, {
+    name: 'Plug & Play Modals',
+    components() {
+      return [
+        component('JoinModal')
+      ];
+    }
+  }, {
+    name: 'Sidebar',
+    components() {
+      return [
+        component('RecentItem'),
+        component('RecentGroup')
       ];
     }
   }, {
