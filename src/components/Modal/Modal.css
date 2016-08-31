@@ -1,14 +1,18 @@
 /**
  * Copyright 2016 Dialog LLC <info@dlg.im>
  */
-
 @import '../../styles/variables.css';
 
 :root {
   --modal-min-width: 500px;
-  --modal-font-family:  var(--default-font-family);
+  --modal-font-family: var(--default-font-family);
+  --modal-font-size: var(--default-font-size);
   --modal-border-radius: var(--default-border-radius);
+  --modal-overlay-color: color(#000 alpha(45%));
   --modal-background-color: #fff;
+  --modal-fullscreen-background-color: #fff;
+  --modal-header-font-size: 18px;
+  --modal-header-color: #000;
 }
 
 :global {
@@ -20,8 +24,9 @@
 .root {
   all: initial;
   display: flex;
+  overflow: hidden;
   min-width: var(--modal-min-width);
-  min-height: 240px;
+  margin: calc(var(--default-padding) * 2);
   border-radius: var(--modal-border-radius);
   outline: none;
   background-color: var(--modal-background-color);
@@ -39,68 +44,52 @@
   left: 0;
   display: flex;
   flex-direction: column;
-  background-color: color(#000 alpha(45%));
+  background-color: var(--modal-overlay-color);
   align-items: center;
   justify-content: center;
 }
 
-.header {
-  all: initial;
-  display: flex;
-  flex-direction: row;
-  padding: var(--default-padding);
-  border-bottom: 1px solid color(#000 alpha(2%));
-  align-items: center;
-  justify-content: flex-start;
-
-  &::after {
-    display: table;
-    clear: both;
-    content: '';
-  }
-
-  & .title {
-    flex: 1 0 auto;
-  }
-
-  & .close {
-    flex: 0 0 auto;
-  }
-}
-
-.title {
-  all: initial;
-  margin: 0;
-  font-size: 18px;
-  font-weight: 500;
-}
-
 .wrapper {
+  display: flex;
+  flex-direction: column;
   flex: 1 1 auto;
 }
 
+.header {
+  display: block;
+  padding: var(--default-padding) calc(var(--default-padding) * 2);
+  box-shadow: inset 0 -1px 0 0 color(#000 alpha(20%));
+  font-size: var(--modal-header-font-size);
+  font-weight: 500;
+  line-height: 28px;
+  flex: 0 1 auto;
+  color: var(--modal-header-color);
+}
+
 .body {
-  all: initial;
-  padding: var(--default-padding);
+  display: block;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  padding: var(--default-padding) calc(var(--default-padding) * 2);
+  font-size: var(--modal-font-size);
+  flex: 1 1 auto;
+}
+
+.footer {
+  padding: var(--default-padding) calc(var(--default-padding) * 2);
+  flex: 0 1 auto;
 }
 
 .fullscreen {
-  background-color: #fff;
-
-  & .close {
-    position: absolute;
-    top: 32px;
-    right: 32px;
-  }
+  background-color: var(--modal-fullscreen-background-color);
 
   & .header {
-    padding: var(--default-padding) 0 calc(var(--default-padding) * 2);
-    border-bottom: none;
-  }
-
-  &.title {
-    font-size: 32px;
-    font-weight: 500;
+    margin-top: 80px;
+    padding: var(--default-padding) 0;
+    box-shadow: none;
+    font-size: calc(var(--modal-header-font-size) * 2);
+    font-weight: 400;
+    line-height: 1.5;
   }
 
   & .body {
@@ -110,6 +99,8 @@
   & .root {
     width: 100%;
     height: 100%;
+    margin: 0;
+    box-shadow: none;
 
     & .wrapper {
       overflow: scroll;
@@ -118,8 +109,7 @@
       max-width: 800px;
       height: 100%;
       margin: 0 auto;
-      flex: 0;
-      padding-top: 100px;
+      flex: 0 1 auto;
     }
   }
 }

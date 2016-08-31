@@ -21,7 +21,6 @@ module.exports = {
         component('UserAvatar'),
         component('Button'),
         component('IconButton'),
-        component('Modal'),
         component('Scroller'),
         component('Dropdown')
       ];
@@ -57,6 +56,13 @@ module.exports = {
     components() {
       return [
         component('AuthForm')
+      ];
+    }
+  }, {
+    name: 'Modals',
+    components() {
+      return [
+        component('Modal')
       ];
     }
   }, {

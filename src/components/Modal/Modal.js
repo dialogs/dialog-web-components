@@ -5,13 +5,11 @@
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
 import ReactModal from 'react-modal';
-import Button from '../Button/Button';
 import styles from './Modal.css';
 
 class Modal extends Component {
   static propTypes = {
     className: PropTypes.string,
-    header: PropTypes.node,
     children: PropTypes.node.isRequired,
     isOpen: PropTypes.bool.isRequired,
     fullscreen: PropTypes.bool.isRequired,
@@ -25,44 +23,8 @@ class Modal extends Component {
   shouldComponentUpdate(nextProps) {
     return nextProps.isOpen !== this.props.isOpen ||
            nextProps.children !== this.props.children ||
-           nextProps.header !== this.props.header ||
            nextProps.fullscreen !== this.props.fullscreen ||
            nextProps.className !== this.props.className;
-  }
-
-  renderModalHeader() {
-    const { fullscreen, header, onClose } = this.props;
-    if (fullscreen) {
-      return (
-        <div>
-          <Button
-            onClick={onClose}
-            size="small"
-            className={styles.close}
-          >
-            Close
-          </Button>
-          <header className={styles.header}>
-            <h3 className={styles.title}>{header}</h3>
-          </header>
-        </div>
-      );
-    }
-
-    return (
-      <div>
-        <header className={styles.header}>
-          <h3 className={styles.title}>{header}</h3>
-          <Button
-            onClick={onClose}
-            size="small"
-            className={styles.close}
-          >
-            Close
-          </Button>
-        </header>
-      </div>
-    );
   }
 
   render() {
@@ -80,10 +42,7 @@ class Modal extends Component {
         isOpen={isOpen}
       >
         <div className={styles.wrapper}>
-          {this.renderModalHeader()}
-          <div className={styles.body}>
-            {children}
-          </div>
+          {children}
         </div>
       </ReactModal>
     );
