@@ -12,7 +12,6 @@ Basic Modal:
       <Button onClick={handleOpen}>Open modal</Button>
       <Modal
         isOpen={state.isOpen}
-        header=""
         onClose={handleClose}
       >
         <ModalHeader>
