@@ -78,10 +78,17 @@
 
   & .label {
     cursor: not-allowed;
+    background-color: var(--switcher-background-color) !important;
 
     &::before {
       background-color: var(--switcher-dot-color);
       box-shadow: none;
+    }
+  }
+
+  &.checked {
+    & .label {
+      background-color: var(--switcher-checked-background-color) !important;
     }
   }
 }

@@ -1,3 +1,7 @@
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ */
+
 @import '../../styles/variables.css';
 
 :root {
@@ -74,7 +78,7 @@
 
 .actions {
   position: absolute;
-  top: -17px;
+  top: -18px;
   right: var(--message-right-padding);
   display: none;
 }

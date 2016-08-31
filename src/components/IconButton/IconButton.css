@@ -17,7 +17,8 @@
   all: initial;
   display: inline-flex;
   cursor: pointer;
-  transition: all var(--default-transition-duration) ease-in;
+  user-select: none;
+  transition: all var(--default-transition-duration) ease;
   vertical-align: middle;
   border: 1px solid color(#000 alpha(20%));
   background-color: var(--icon-button-background-color);
