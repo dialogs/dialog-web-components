@@ -3,7 +3,6 @@
  */
 
 @import '../../styles/variables.css';
-@import '../../styles/helpers.css';
 
 :root {
   --recent-item-default-top-padding: 9px;
@@ -11,6 +10,7 @@
   --recent-item-default-bottom-padding: 9px;
   --recent-item-default-left-padding: 16px;
   --recent-item-default-height: 46px;
+  --recent-item-default-color: color(#000 alpha(50%));
   --recent-item-large-top-padding: 15px;
   --recent-item-large-right-padding: 12px;
   --recent-item-large-bottom-padding: 15px;
@@ -44,18 +44,18 @@
   justify-content: flex-start;
   align-content: stretch;
   align-items: center;
-  color: color(#000 alpha(50%));
+  color: var(--recent-item-default-color);
 
   &:hover {
     background-color: var(--recent-item-hover-background-color);
     color: var(--recent-item-hover-color);
   }
-}
 
-.avatar {
-  margin-right: 14px;
-  flex: 0 0 auto;
-  align-self: auto;
+  & .avatar {
+    margin-right: 14px;
+    flex: 0 0 auto;
+    align-self: auto;
+  }
 }
 
 .text {
@@ -92,7 +92,7 @@
   display: flex;
   width: var(--recent-item-counter-size);
   height: var(--recent-item-counter-size);
-  border-radius: var(--recent-item-counter-size);
+  border-radius: 50%;
   background-color: var(--recent-item-counter-background);
   font-family: var(--default-font-family);
   font-size: var(--recent-item-counter-font-size);
@@ -128,5 +128,7 @@
 
   & .avatar {
     margin-right: 10px;
+    flex: 0 0 auto;
+    align-self: auto;
   }
 }

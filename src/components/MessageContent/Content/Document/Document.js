@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import classnames from 'classnames';
+import classNames from 'classnames';
 import Icon from '../../../Icon/Icon';
 import styles from './Document.css';
 
@@ -49,7 +49,7 @@ class Document extends Component {
   renderPreview() {
     const { fileExtension } = this.props;
     const docType = this.getDocumentType();
-    const previewClassName = classnames(styles.preview, {
+    const previewClassName = classNames(styles.preview, {
       [styles.doc]: docType === 'doc',
       [styles.picture]: docType === 'picture',
       [styles.media]: docType === 'media'

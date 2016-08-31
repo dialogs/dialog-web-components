@@ -19,7 +19,8 @@
   display: inline-block;
   box-sizing: border-box;
   cursor: pointer;
-  transition: all 150ms ease-in;
+  user-select: none;
+  transition: all var(--default-transition-duration) ease;
   text-align: center;
   border: 0;
   border-radius: var(--button-border-radius);

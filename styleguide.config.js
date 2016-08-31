@@ -20,8 +20,8 @@ module.exports = {
         component('Avatar'),
         component('UserAvatar'),
         component('Button'),
+        component('IconButton'),
         component('Modal'),
-        component('Spinner'),
         component('Scroller'),
         component('Dropdown')
       ];
@@ -32,6 +32,13 @@ module.exports = {
       return [
         component('RecentGroup'),
         component('RecentItem')
+      ];
+    }
+  }, {
+    name: 'Spinners',
+    components() {
+      return [
+        component('Spinner')
       ];
     }
   }, {

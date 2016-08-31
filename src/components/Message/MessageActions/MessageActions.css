@@ -1,0 +1,24 @@
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ */
+
+@import '../../../styles/variables.css';
+
+:root {
+  --message-actions-button-color: color(#000 alpha(38%));
+  --message-actions-button-color-hover: var(--violet-blue-two);
+  --message-actions-button-padding: 5px;
+}
+
+.root {
+}
+
+.button {
+  margin-left: var(--message-actions-button-padding);
+  color: var(--message-actions-button-color);
+
+  &:hover,
+  &:focus {
+    color: var(--message-actions-button-color-hover);
+  }
+}

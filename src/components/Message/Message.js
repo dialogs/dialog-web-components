@@ -1,7 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import MessageContent from '../MessageContent/MessageContent';
 import UserAvatar from '../UserAvatar/UserAvatar';
-import ReadState from './MessageState/MessageState';
+import MessageState from './MessageState/MessageState';
+import MessageActions from './MessageActions/MessageActions';
 import styles from './Message.css';
 
 class Message extends Component {
@@ -24,7 +25,7 @@ class Message extends Component {
     const { message: { state } } = this.props;
 
     return (
-      <ReadState state={state.state} readBy={state.readBy} />
+      <MessageState state={state.state} readBy={state.readBy} />
     );
   }
 
@@ -45,6 +46,7 @@ class Message extends Component {
           <div className={styles.content}>
             <MessageContent content={content} />
           </div>
+          <MessageActions className={styles.actions} />
         </div>
       </div>
     );

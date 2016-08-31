@@ -16,7 +16,11 @@ class Spinner extends Component {
 
     return (
       <div className={className}>
-        <div /><div /><div /><div /><div />
+        <div className={styles.stick} />
+        <div className={styles.stick} />
+        <div className={styles.stick} />
+        <div className={styles.stick} />
+        <div className={styles.stick} />
       </div>
     );
   }

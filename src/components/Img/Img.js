@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import classnames from 'classnames';
+import classNames from 'classnames';
 import styles from './Img.css';
 
 const STATE_LOADING = 1;
@@ -79,7 +79,7 @@ class Img extends Component {
     const { state } = this.state;
     const { alt, width, height, className } = this.props;
     const source = this.getSource();
-    const imageClassName = classnames(styles.root, {
+    const imageClassName = classNames(styles.root, {
       [styles.preview]: state !== STATE_SUCCESS,
       [styles.loading]: state === STATE_LOADING,
       [styles.success]: state === STATE_SUCCESS,

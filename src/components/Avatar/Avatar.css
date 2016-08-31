@@ -35,6 +35,7 @@
   text-transform: uppercase;
   border-radius: 100%;
   font-family: var(--default-font-family);
+  font-weight: 300;
   align-content: center;
   justify-content: center;
   align-items: center;
@@ -60,7 +61,6 @@
   width: var(--avatar-small-size);
   height: var(--avatar-small-size);
   font-size: 12px;
-  line-height: var(--avatar-small-size);
 
   &.twoChars {
     font-size: 10px;
@@ -71,7 +71,6 @@
   width: var(--avatar-medium-size);
   height: var(--avatar-medium-size);
   font-size: 18px;
-  line-height: var(--avatar-medium-size);
 
   &.twoChars {
     font-size: 15px;
@@ -82,7 +81,6 @@
   width: var(--avatar-large-size);
   height: var(--avatar-large-size);
   font-size: 20px;
-  line-height: var(--avatar-large-size);
 
   &.twoChars {
     font-size: 17px;
@@ -93,7 +91,6 @@
   width: var(--avatar-big-size);
   height: var(--avatar-big-size);
   font-size: 30px;
-  line-height: var(--avatar-big-size);
 }
 
 /* Placeholder colors */

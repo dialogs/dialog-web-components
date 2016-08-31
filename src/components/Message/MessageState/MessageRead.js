@@ -1,5 +1,5 @@
 import React, { PropTypes, Component } from 'react';
-import classnames from 'classnames';
+import classNames from 'classnames';
 import UserAvatar from '../../UserAvatar/UserAvatar';
 import styles from './MessageState.css';
 
@@ -31,7 +31,7 @@ class MessageRead extends Component {
 
   render() {
     const { readBy } = this.props;
-    const readClassName = classnames(styles.read, {
+    const readClassName = classNames(styles.read, {
       [styles.inline]: readBy.length > 4
     });
 

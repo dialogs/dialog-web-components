@@ -3,9 +3,7 @@ import styles from './MessageState.css';
 
 function MessageSending() {
   return (
-    <div className={styles.sending}>
-      Sending
-    </div>
+    <div className={styles.sending} />
   );
 }
 

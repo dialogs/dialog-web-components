@@ -1,10 +1,12 @@
-/* Remove after merge & publish https://github.com/stylelint/stylelint/pull/1562 */
-/* stylelint-disable time-no-imperceptible */
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ */
 
 @import '../../styles/variables.css';
 
 :root {
   --spinner-max-height: 20px;
+  --spinner-background-color: color(var(--violet-blue-two) alpha(70%));
   --spinner-color: #fff;
 }
 
@@ -28,47 +30,42 @@
   height: calc(var(--spinner-max-height) + 20px);
   padding: 10px;
   border-radius: 50%;
-  background-color: color(#000 alpha(20%));
+  background-color: var(--spinner-background-color);
 
-  & div {
-    position: relative;
-    display: block;
-    float: left;
-    box-sizing: content-box;
-    width: 2px;
-    height: var(--spinner-max-height);
-    margin: 0 1px;
-    animation: line-scale 1.2s infinite ease;
-    border: 0 solid var(--spinner-color);
-    border-radius: 0;
-    background-color: var(--spinner-color);
-    color: var(--spinner-color);
+  @apply --clearfix;
+}
 
-    &:nth-child(1) {
-      animation-delay: -1.2s;
-    }
+.stick {
+  position: relative;
+  display: block;
+  float: left;
+  box-sizing: content-box;
+  width: 2px;
+  height: var(--spinner-max-height);
+  margin: 0 1px;
+  animation: line-scale 1.2s infinite ease;
+  border: 0;
+  border-radius: 0;
+  background-color: var(--spinner-color);
+  color: var(--spinner-color);
 
-    &:nth-child(2) {
-      animation-delay: -1.1s;
-    }
-
-    &:nth-child(3) {
-      animation-delay: -1s;
-    }
-
-    &:nth-child(4) {
-      animation-delay: -0.9s;
-    }
-
-    &:nth-child(5) {
-      animation-delay: -0.8s;
-    }
+  &:nth-child(1) {
+    animation-delay: -1.2s;
   }
 
-  &::after {
-    display: table;
-    clear: both;
-    content: '';
-    line-height: 0;
+  &:nth-child(2) {
+    animation-delay: -1.1s;
+  }
+
+  &:nth-child(3) {
+    animation-delay: -1s;
+  }
+
+  &:nth-child(4) {
+    animation-delay: -0.9s;
+  }
+
+  &:nth-child(5) {
+    animation-delay: -0.8s;
   }
 }
