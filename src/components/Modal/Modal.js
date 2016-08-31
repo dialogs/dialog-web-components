@@ -1,3 +1,7 @@
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ */
+
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
 import ReactModal from 'react-modal';
@@ -75,7 +79,7 @@ class Modal extends Component {
         onRequestClose={onClose}
         isOpen={isOpen}
       >
-        <div className={styles.container}>
+        <div className={styles.wrapper}>
           {this.renderModalHeader()}
           <div className={styles.body}>
             {children}

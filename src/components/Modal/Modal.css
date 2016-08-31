@@ -1,15 +1,32 @@
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ */
+
 @import '../../styles/variables.css';
+
+:root {
+  --modal-min-width: 500px;
+  --modal-font-family:  var(--default-font-family);
+  --modal-border-radius: var(--default-border-radius);
+  --modal-background-color: #fff;
+}
+
+:global {
+  & .ReactModal__Body--open {
+    overflow: hidden;
+  }
+}
 
 .root {
   all: initial;
-  display: block;
-  min-width: 400px;
+  display: flex;
+  min-width: var(--modal-min-width);
   min-height: 240px;
-  border-radius: var(--default-border-radius);
+  border-radius: var(--modal-border-radius);
   outline: none;
-  background-color: #fff;
+  background-color: var(--modal-background-color);
   box-shadow: 0 4px 10px 0 color(#000 alpha(25%));
-  font-family: var(--default-font-family);
+  font-family: var(--modal-font-family);
 }
 
 .overlay {
@@ -58,6 +75,10 @@
   font-weight: 500;
 }
 
+.wrapper {
+  flex: 1 1 auto;
+}
+
 .body {
   all: initial;
   padding: var(--default-padding);
@@ -90,13 +111,14 @@
     width: 100%;
     height: 100%;
 
-    & .container {
+    & .wrapper {
       overflow: scroll;
       width: auto;
       min-width: 600px;
       max-width: 800px;
       height: 100%;
       margin: 0 auto;
+      flex: 0;
       padding-top: 100px;
     }
   }
