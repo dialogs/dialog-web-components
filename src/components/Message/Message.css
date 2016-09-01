@@ -78,7 +78,7 @@
 
 .actions {
   position: absolute;
-  top: -16px;
+  top: -18px;
   right: var(--message-right-padding);
   display: none;
 }
