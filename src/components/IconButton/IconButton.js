@@ -12,6 +12,7 @@ class IconButton extends Component {
     className: PropTypes.string,
     glyph: PropTypes.string.isRequired,
     size: PropTypes.oneOf(['normal', 'large']).isRequired,
+    flat: PropTypes.bool.isRequired,
     disabled: PropTypes.bool.isRequired,
     onClick: PropTypes.func.isRequired
   };
@@ -24,15 +25,18 @@ class IconButton extends Component {
   shouldComponentUpdate(nextProps) {
     return nextProps.glyph !== this.props.glyph ||
            nextProps.size !== this.props.size ||
+           nextProps.flat !== this.props.flat ||
            nextProps.disabled !== this.props.disabled ||
            nextProps.onClick !== this.props.onClick ||
            nextProps.className !== this.props.className;
   }
 
   render() {
-    const { glyph, onClick, className, size, disabled } = this.props;
+    const { glyph, onClick, className, size, disabled, flat } = this.props;
     const buttonClassName = classNames(styles.root, styles[size], {
-      [styles.disabled]: disabled
+      [styles.disabled]: disabled,
+      [styles.defaultStyle]: !flat,
+      [styles.flatStyle]: flat
     }, className);
 
     return (

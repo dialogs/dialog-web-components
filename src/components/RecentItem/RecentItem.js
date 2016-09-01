@@ -28,7 +28,7 @@ class RecentItem extends Component {
   static defaultProps = {
     counter: 0,
     active: false
-  }
+  };
 
   constructor(props) {
     super(props);

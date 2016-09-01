@@ -6,10 +6,28 @@ import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
 import styles from './Icon.css';
 
+/**
+ * Simple icon component
+ *
+ * Used to display Google Material Icons
+ */
 class Icon extends Component {
   static propTypes = {
+
+    /**
+     * Class name which will be added to icon `classNames`
+     */
     className: PropTypes.string,
-    glyph: PropTypes.string.isRequired
+
+    /**
+     * You can find all available glyph names here: https://design.google.com/icons
+     */
+    glyph: PropTypes.string.isRequired,
+
+    /**
+     * Click handler function, which will be executed when icon is clicked
+     */
+    onClick: PropTypes.string
   };
 
   shouldComponentUpdate(nextProps) {
@@ -18,11 +36,11 @@ class Icon extends Component {
   }
 
   render() {
-    const { glyph, className } = this.props;
+    const { glyph, className, onClick } = this.props;
     const iconClassName = classNames('material-icons', styles.root, className);
 
     return (
-      <i className={iconClassName}>{glyph}</i>
+      <i className={iconClassName} onClick={onClick}>{glyph}</i>
     );
   }
 }

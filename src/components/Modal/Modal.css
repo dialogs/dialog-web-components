@@ -1,15 +1,38 @@
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ */
 @import '../../styles/variables.css';
+
+:root {
+  --modal-min-width: 500px;
+  --modal-font-family: var(--default-font-family);
+  --modal-font-size: var(--default-font-size);
+  --modal-border-radius: var(--default-border-radius);
+  --modal-overlay-color: color(#000 alpha(45%));
+  --modal-close-color: color(#000 alpha(38%));
+  --modal-background-color: #fff;
+  --modal-fullscreen-background-color: #fff;
+  --modal-header-font-size: 18px;
+  --modal-header-color: #000;
+}
+
+:global {
+  & .ReactModal__Body--open {
+    overflow: hidden;
+  }
+}
 
 .root {
   all: initial;
-  display: block;
-  min-width: 400px;
-  min-height: 240px;
-  border-radius: var(--default-border-radius);
+  display: flex;
+  overflow: hidden;
+  min-width: var(--modal-min-width);
+  margin: calc(var(--default-padding) * 2);
+  border-radius: var(--modal-border-radius);
   outline: none;
-  background-color: #fff;
+  background-color: var(--modal-background-color);
   box-shadow: 0 4px 10px 0 color(#000 alpha(25%));
-  font-family: var(--default-font-family);
+  font-family: var(--modal-font-family);
 }
 
 .overlay {
@@ -22,64 +45,86 @@
   left: 0;
   display: flex;
   flex-direction: column;
-  background-color: color(#000 alpha(45%));
+  background-color: var(--modal-overlay-color);
   align-items: center;
   justify-content: center;
 }
 
-.header {
-  all: initial;
+.wrapper {
   display: flex;
-  flex-direction: row;
-  padding: var(--default-padding);
-  border-bottom: 1px solid color(#000 alpha(2%));
-  align-items: center;
-  justify-content: flex-start;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
 
-  &::after {
-    display: table;
-    clear: both;
-    content: '';
+.close {
+  cursor: pointer;
+  user-select: none;
+  transition: all calc(var(--default-transition-duration) / 2) ease;
+  transform-origin: center;
+  color: var(--modal-close-color);
+
+  &:hover,
+  &:focus {
+    transform: scale(1.1);
   }
 
-  & .title {
-    flex: 1 0 auto;
-  }
-
-  & .close {
-    flex: 0 0 auto;
+  &:active {
+    transform: scale(0.9);
   }
 }
 
-.title {
-  all: initial;
-  margin: 0;
-  font-size: 18px;
+.header {
+  position: relative;
+  display: block;
+  padding: var(--default-padding) calc(var(--default-padding) * 2);
+  box-shadow: inset 0 -1px 0 0 color(#000 alpha(20%));
+  font-size: var(--modal-header-font-size);
   font-weight: 500;
-}
-
-.body {
-  all: initial;
-  padding: var(--default-padding);
-}
-
-.fullscreen {
-  background-color: #fff;
+  line-height: 28px;
+  flex: 0 1 auto;
+  color: var(--modal-header-color);
 
   & .close {
     position: absolute;
-    top: 32px;
-    right: 32px;
+    top: var(--default-padding);
+    right: calc(var(--default-padding) * 2);
+    line-height: 28px;
+  }
+}
+
+.body {
+  display: block;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  box-sizing: border-box;
+  padding: var(--default-padding) calc(var(--default-padding) * 2);
+  font-size: var(--modal-font-size);
+  flex: 1 1 auto;
+}
+
+.footer {
+  padding: var(--default-padding) calc(var(--default-padding) * 2);
+  flex: 0 1 auto;
+}
+
+.fullscreen {
+  background-color: var(--modal-fullscreen-background-color);
+
+  & .close {
+    position: absolute;
+    top: calc(var(--default-padding) * 2);
+    right: calc(var(--default-padding) * 2);
+    font-size: 32px;
+    line-height: 1;
   }
 
   & .header {
-    padding: var(--default-padding) 0 calc(var(--default-padding) * 2);
-    border-bottom: none;
-  }
-
-  &.title {
-    font-size: 32px;
-    font-weight: 500;
+    margin-top: 80px;
+    padding: var(--default-padding) 0;
+    box-shadow: none;
+    font-size: calc(var(--modal-header-font-size) * 2);
+    font-weight: 400;
+    line-height: 1.5;
   }
 
   & .body {
@@ -89,15 +134,17 @@
   & .root {
     width: 100%;
     height: 100%;
+    margin: 0;
+    box-shadow: none;
 
-    & .container {
+    & .wrapper {
       overflow: scroll;
       width: auto;
       min-width: 600px;
       max-width: 800px;
       height: 100%;
       margin: 0 auto;
-      padding-top: 100px;
+      flex: 0 1 auto;
     }
   }
 }

@@ -1,9 +1,13 @@
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ */
+
 @import '../../styles/variables.css';
 
 :root {
   --button-border-radius: var(--default-border-radius);
   --button-border-radius-small: var(--default-border-radius-small);
-  --button-padding-top: 9px;
+  --button-padding-top: 10px;
   --button-padding-right: 30px;
   --button-padding-bottom: 10px;
   --button-padding-left: 30px;
