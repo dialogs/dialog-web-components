@@ -7,7 +7,6 @@
   --avatar-medium-size: 28px;
   --avatar-large-size: 36px;
   --avatar-big-size: 100px;
-
   /* Colors */
   --avatar-empty-background-color: #757575;
   --avatar-lblue-background-color: var(--sky-blue);
@@ -17,7 +16,6 @@
   --avatar-orange-background-color: var(--red-orange-two);
   --avatar-yellow-background-color: var(--marigold);
   --avatar-green-background-color: var(--green);
-
   /* Gradients */
   --avatar-empty-gradient: linear-gradient(38deg, #bebebe, #757575);
   --avatar-lblue-gradient: none;
@@ -141,7 +139,7 @@
 
 .yellow {
   background-color: var(--avatar-yellow-background-color);
-  background-image: var(--avatar-yellow-gradient)
+  background-image: var(--avatar-yellow-gradient);
 }
 
 .green {

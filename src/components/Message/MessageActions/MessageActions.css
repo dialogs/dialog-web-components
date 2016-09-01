@@ -11,14 +11,13 @@
 }
 
 .root {
-}
+  & .button {
+    margin-left: var(--message-actions-button-padding);
+    color: var(--message-actions-button-color);
 
-.button {
-  margin-left: var(--message-actions-button-padding);
-  color: var(--message-actions-button-color);
-
-  &:hover,
-  &:focus {
-    color: var(--message-actions-button-color-hover);
+    &:hover,
+    &:focus {
+      color: var(--message-actions-button-color-hover);
+    }
   }
 }

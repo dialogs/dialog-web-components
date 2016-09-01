@@ -36,6 +36,7 @@ class JoinModal extends Component {
         <ModalBody className={styles.body}>
           <p className={styles.text}>Enter your contact details to join</p>
           <h4 className={styles.title}>{groupTitle}</h4>
+
           <form className={styles.form} onSubmit={onJoin}>
             <Input
               type="text"
@@ -44,11 +45,11 @@ class JoinModal extends Component {
             />
             <Button wide type="submit">Continue</Button>
           </form>
+
           <p className={styles.text}>
             Dialog is all your team messaging with free calling,<br />
             file sharing and fast mobile applications.
           </p>
-          {/*<p>Flat buttons must be placed here</p>*/}
         </ModalBody>
       </Modal>
     );

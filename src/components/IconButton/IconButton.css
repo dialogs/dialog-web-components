@@ -24,11 +24,11 @@
   cursor: pointer;
   user-select: none;
   transition: all var(--default-transition-duration) ease;
+  text-align: center;
   vertical-align: middle;
   border-radius: 50%;
   align-content: center;
   justify-content: center;
-  text-align: center;
 }
 
 .disabled {
