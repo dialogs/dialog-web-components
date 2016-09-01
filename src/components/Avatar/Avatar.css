@@ -7,11 +7,26 @@
   --avatar-medium-size: 28px;
   --avatar-large-size: 36px;
   --avatar-big-size: 100px;
+
+  /* Colors */
+  --avatar-empty-background-color: #757575;
+  --avatar-lblue-background-color: var(--sky-blue);
+  --avatar-blue-background-color: var(--cerulean);
+  --avatar-purple-background-color: var(--purple-blue);
+  --avatar-red-background-color: var(--neon-red);
+  --avatar-orange-background-color: var(--red-orange-two);
+  --avatar-yellow-background-color: var(--marigold);
+  --avatar-green-background-color: var(--green);
+
   /* Gradients */
-  --avatar-gradient-empty: linear-gradient(38deg, #bebebe, #9e9e9e);
-  --avatar-gradient-blue: linear-gradient(38deg, var(--aqua), var(--cerulean));
-  --avatar-gradient-orange: linear-gradient(38deg, var(--marigold), var(--red-orange-two));
-  --avatar-gradient-green: linear-gradient(38deg, var(--kiwi), var(--green));
+  --avatar-empty-gradient: linear-gradient(38deg, #bebebe, #757575);
+  --avatar-lblue-gradient: none;
+  --avatar-blue-gradient: linear-gradient(38deg, var(--aqua), var(--cerulean));
+  --avatar-purple-gradient: none;
+  --avatar-red-gradient: none;
+  --avatar-orange-gradient: linear-gradient(38deg, var(--marigold), var(--red-orange-two));
+  --avatar-yellow-gradient: none;
+  --avatar-green-gradient: linear-gradient(38deg, var(--kiwi), var(--green));
 }
 
 .image,
@@ -95,17 +110,41 @@
 
 /* Placeholder colors */
 .empty {
-  background-image: var(--avatar-gradient-empty);
+  background-color: var(--avatar-empty-background-color);
+  background-image: var(--avatar-empty-gradient);
+}
+
+.lblue {
+  background-color: var(--avatar-lblue-background-color);
+  background-image: var(--avatar-lblue-gradient);
 }
 
 .blue {
-  background-image: var(--avatar-gradient-blue);
+  background-color: var(--avatar-blue-background-color);
+  background-image: var(--avatar-blue-gradient);
+}
+
+.purple {
+  background-color: var(--avatar-purple-background-color);
+  background-image: var(--avatar-purple-gradient);
+}
+
+.red {
+  background-color: var(--avatar-red-background-color);
+  background-image: var(--avatar-red-gradient);
 }
 
 .orange {
-  background-image: var(--avatar-gradient-orange);
+  background-color: var(--avatar-orange-background-color);
+  background-image: var(--avatar-orange-gradient);
+}
+
+.yellow {
+  background-color: var(--avatar-yellow-background-color);
+  background-image: var(--avatar-yellow-gradient)
 }
 
 .green {
-  background-image: var(--avatar-gradient-green);
+  background-color: var(--avatar-green-background-color);
+  background-image: var(--avatar-green-gradient);
 }

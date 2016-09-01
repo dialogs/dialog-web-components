@@ -16,11 +16,15 @@ Default Avatar with image:
 Avatar sizes:
 
     <div>
-      <Avatar title="Valera Kotovski" placeholder="orange" size="big" />
-      <Avatar title="Hello World" placeholder="green" size="large" />
+      <Avatar title="Valera Kotovski" placeholder="empty" size="big" />
+      <Avatar title="Hello World" placeholder="lblue" size="large" />
       <Avatar title="Bad Timmy" placeholder="blue" size="medium" />
-      <Avatar title="Ashley Simpson" placeholder="green" size="small" />
-      <Avatar title="Ray Charles" placeholder="orange" size="tiny" />
+      <Avatar title="Ashley Simpson" placeholder="purple" size="small" />
+      <Avatar title="Ray Charles" placeholder="red" size="tiny" />
+      <Avatar title="Ashley Simpson" placeholder="orange" size="small" />
+      <Avatar title="Bad Timmy" placeholder="yellow" size="medium" />
+      <Avatar title="Hello World" placeholder="green" size="large" />
+      <Avatar title="Valera Kotovski" placeholder="empty" size="big" />
     </div>
 
 Clickable Avatar:

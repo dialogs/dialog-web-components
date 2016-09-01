@@ -17,7 +17,16 @@ class Avatar extends Component {
     image: PropTypes.string,
     title: PropTypes.string,
     size: PropTypes.oneOf(['tiny', 'small', 'medium', 'large', 'big']).isRequired,
-    placeholder: PropTypes.oneOf(['empty', 'blue', 'orange', 'green']).isRequired,
+    placeholder: PropTypes.oneOf([
+      'empty',
+      'lblue',
+      'blue',
+      'purple',
+      'red',
+      'orange',
+      'yellow',
+      'green'
+    ]).isRequired,
     onClick: PropTypes.func
   };
 

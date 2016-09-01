@@ -8,7 +8,16 @@ class UserAvatar extends Component {
     user: PropTypes.shape({
       title: PropTypes.string,
       avatar: PropTypes.string,
-      placeholder: PropTypes.oneOf(['empty', 'blue', 'orange', 'green'])
+      placeholder: PropTypes.oneOf([
+        'empty',
+        'lblue',
+        'blue',
+        'purple',
+        'red',
+        'orange',
+        'yellow',
+        'green'
+      ])
     }).isRequired,
     size: PropTypes.oneOf(['tiny', 'small', 'medium', 'large', 'big']).isRequired,
     online: PropTypes.bool.isRequired,
