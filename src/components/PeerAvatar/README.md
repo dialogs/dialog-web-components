@@ -1,4 +1,4 @@
-User Avatar
+Peer Avatar
 
     const user1 = {
       title: 'nkt',
@@ -12,6 +12,6 @@ User Avatar
     };
 
     <div>
-      <UserAvatar user={user1} />
-      <UserAvatar user={user2} online />
+      <PeerAvatar peer={user1} />
+      <PeerAvatar peer={user2} online />
     </div>

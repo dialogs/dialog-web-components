@@ -1,6 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 import classNames from 'classnames';
-import UserAvatar from '../../UserAvatar/UserAvatar';
+import PeerAvatar from '../../PeerAvatar/PeerAvatar';
 import styles from './MessageState.css';
 
 class MessageRead extends Component {
@@ -20,9 +20,9 @@ class MessageRead extends Component {
     }
 
     return readBy.map((reader, index) => (
-      <UserAvatar
+      <PeerAvatar
         className={styles.avatar}
-        user={reader}
+        peer={reader}
         key={index}
         size="tiny"
       />

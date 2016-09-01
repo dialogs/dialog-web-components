@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import MessageContent from '../MessageContent/MessageContent';
-import UserAvatar from '../UserAvatar/UserAvatar';
+import PeerAvatar from '../PeerAvatar/PeerAvatar';
 import MessageState from './MessageState/MessageState';
 import MessageActions from './MessageActions/MessageActions';
 import styles from './Message.css';
@@ -35,7 +35,7 @@ class Message extends Component {
     return (
       <div className={styles.root}>
         <div className={styles.avatar}>
-          <UserAvatar user={sender} size="large" />
+          <PeerAvatar peer={sender} size="large" />
         </div>
         <div className={styles.body}>
           <div className={styles.header}>

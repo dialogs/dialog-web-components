@@ -18,7 +18,7 @@ module.exports = {
     components() {
       return [
         component('Avatar'),
-        component('UserAvatar'),
+        component('PeerAvatar'),
         component('Button'),
         component('IconButton'),
         component('Modal'),

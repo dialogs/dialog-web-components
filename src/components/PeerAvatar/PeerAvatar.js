@@ -1,11 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import Avatar from '../Avatar/Avatar';
-import styles from './UserAvatar.css';
+import styles from './PeerAvatar.css';
 
-class UserAvatar extends Component {
+class PeerAvatar extends Component {
   static propTypes = {
     className: PropTypes.string,
-    user: PropTypes.shape({
+    peer: PropTypes.shape({
       title: PropTypes.string,
       avatar: PropTypes.string,
       placeholder: PropTypes.oneOf([
@@ -26,21 +26,21 @@ class UserAvatar extends Component {
 
   shouldComponentUpdate(nextProps) {
     return nextProps.online !== this.props.online ||
-           nextProps.user !== this.props.user ||
+           nextProps.peer !== this.props.peer ||
            nextProps.size !== this.props.size ||
            nextProps.className !== this.props.className;
   }
 
   renderAvatar() {
-    const { className, size, user, onClick } = this.props;
+    const { className, size, peer, onClick } = this.props;
 
     return (
       <Avatar
         className={className}
         size={size}
-        image={user.avatar}
-        title={user.title}
-        placeholder={user.placeholder}
+        image={peer.avatar}
+        title={peer.title}
+        placeholder={peer.placeholder}
         onClick={onClick}
       />
     );
@@ -62,4 +62,4 @@ class UserAvatar extends Component {
   }
 }
 
-export default UserAvatar;
+export default PeerAvatar;

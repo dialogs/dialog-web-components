@@ -5,7 +5,7 @@
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
 import styles from './RecentItem.css';
-import UserAvatar from '../UserAvatar/UserAvatar';
+import PeerAvatar from '../PeerAvatar/PeerAvatar';
 
 class RecentItem extends Component {
   static propTypes = {
@@ -54,17 +54,12 @@ class RecentItem extends Component {
   renderAvatar() {
     const { peerInfo, text } = this.props;
     const avatarSize = text ? 'large' : 'medium';
-    const user = {
-      title: peerInfo.title,
-      avatar: peerInfo.image,
-      placeholder: peerInfo.placeholder
-    };
 
     return (
-      <UserAvatar
+      <PeerAvatar
         className={styles.avatar}
         size={avatarSize}
-        user={user}
+        peer={peerInfo}
       />
     );
   }
