@@ -15,7 +15,7 @@
 
 .root {
   all: initial;
-  display: inline-flex;
+  display: inline-block;
   cursor: pointer;
   user-select: none;
   transition: all var(--default-transition-duration) ease;
@@ -23,9 +23,8 @@
   border: 1px solid color(#000 alpha(20%));
   background-color: var(--icon-button-background-color);
   box-shadow: 0 1px 2px 0 color(#000 alpha(10%));
-  align-content: center;
-  justify-content: center;
   color: var(--icon-button-color);
+  text-align: center;
 
   &:hover,
   &:focus {

@@ -37,7 +37,7 @@ class Message extends Component {
         <div className={styles.avatar}>
           <UserAvatar user={sender} size="large" />
         </div>
-        <div className={styles.main}>
+        <div className={styles.body}>
           <div className={styles.header}>
             <div className={styles.sender}>{sender.name}</div>
             <time className={styles.timestamp}>{date}</time>
@@ -46,8 +46,8 @@ class Message extends Component {
           <div className={styles.content}>
             <MessageContent content={content} />
           </div>
-          <MessageActions className={styles.actions} />
         </div>
+        <MessageActions className={styles.actions} />
       </div>
     );
   }
