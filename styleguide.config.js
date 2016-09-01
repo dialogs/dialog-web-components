@@ -12,6 +12,7 @@ function component(name) {
 
 module.exports = {
   title: `Dialog Components v${pkg.version}`,
+  serverPort: 5000,
   highlightTheme: 'dracula',
   sections: [{
     name: 'Interface',
