@@ -1,0 +1,48 @@
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+:root {
+  --add-contact-modal-width: 500px;
+  --add-contact-modal-heigth: 320px;
+  --add-contact-modal-font-family: var(--default-font-family);
+  --add-contact-modal-font-size: var(--default-font-size);
+  --add-contact-modal-text-color: color(#000 alpha(50%));
+}
+
+.root {
+  width: var(--add-contact-modal-width);
+  height: var(--add-contact-modal-heigth);
+  font-family: var(--add-contact-modal-font-family);
+  font-size: var(--add-contact-modal-font-size);
+}
+
+.body {
+  box-sizing: border-box;
+  padding: calc(var(--default-padding) * 2);
+  text-align: center;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.input {
+  flex: 0;
+  width: 100%;
+  margin-bottom: calc(var(--default-padding) * 2);
+}
+
+.hint {
+  margin: 0;
+  padding: 0 var(--default-padding);
+  line-height: 21px;
+  color: var(--add-contact-modal-text-color);
+}
+
+.footer {
+  padding: 0;
+}

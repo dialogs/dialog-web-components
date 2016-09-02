@@ -69,7 +69,8 @@ module.exports = {
     name: 'Plug & Play Modals',
     components() {
       return [
-        component('JoinModal')
+        component('JoinModal'),
+        component('AddContactModal')
       ];
     }
   }, {
