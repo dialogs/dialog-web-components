@@ -1,7 +1,7 @@
 Dialog Web Components
 =====================
 
-[![Build Status](https://circleci.com/gh/dialogs/dialog-web-components/tree/master.svg?style=svg)](https://circleci.com/gh/dialogs/dialog-web-components/tree/master)
+[![Build Status](https://circleci.com/gh/dialogs/dialog-web-components/tree/master.svg?style=shield)](https://circleci.com/gh/dialogs/dialog-web-components/tree/master)
 
 [Docs](https://dialogs.github.io/dialog-web-components/)
 
