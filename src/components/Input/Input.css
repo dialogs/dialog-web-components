@@ -106,6 +106,7 @@
 .label {
   display: inline-block;
   margin-bottom: 6px;
+  user-select: none;
   font-family: var(--input-font-family);
   font-size: var(--input-label-font-size);
   color: var(--input-label-color);
@@ -114,6 +115,7 @@
 .hint {
   display: inline-block;
   margin: 8px;
+  user-select: none;
   font-family: var(--input-hint-font-family);
   font-size: var(--input-hint-font-size);
   line-height: var(--input-hint-line-height);

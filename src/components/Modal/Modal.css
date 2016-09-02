@@ -59,18 +59,7 @@
 .close {
   cursor: pointer;
   user-select: none;
-  transition: all calc(var(--default-transition-duration) / 2) ease;
-  transform-origin: center;
   color: var(--modal-close-color);
-
-  &:hover,
-  &:focus {
-    transform: scale(1.1);
-  }
-
-  &:active {
-    transform: scale(0.9);
-  }
 }
 
 .header {

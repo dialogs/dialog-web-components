@@ -43,8 +43,14 @@ class Input extends Component {
     disabled: false
   };
 
-  constructor(props) {
-    super(props);
+  static contextTypes = {
+    l10n: PropTypes.shape({
+      formatText: PropTypes.func.isRequired
+    }).isRequired
+  };
+
+  constructor(props, context) {
+    super(props, context);
 
     this.handleChange = this.handleChange.bind(this);
   }
@@ -93,13 +99,13 @@ class Input extends Component {
   }
 
   render() {
+    const { l10n: { formatText } } = this.context;
+    const TagName = this.props.type === 'textarea' ? 'textarea' : 'input';
     const className = classNames(
       styles.container,
       styles[this.props.status],
       this.props.className
     );
-
-    const TagName = this.props.type === 'textarea' ? 'textarea' : 'input';
 
     return (
       <div className={className}>
@@ -111,7 +117,7 @@ class Input extends Component {
           type={this.props.type}
           value={this.props.value}
           disabled={this.props.disabled}
-          placeholder={this.props.placeholder}
+          placeholder={formatText(this.props.placeholder)}
           onChange={this.handleChange}
           onFocus={this.props.onFocus}
           onBlur={this.props.onBlur}

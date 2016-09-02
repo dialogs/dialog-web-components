@@ -54,7 +54,10 @@ class Button extends Component {
   }
 
   render() {
-    const { id, name, type, disabled, theme, size, wide, rounded, className, onClick, children } = this.props;
+    const {
+      id, name, type, disabled, theme, size, wide,
+      rounded, className, onClick, children
+    } = this.props;
 
     const buttonClassName = classNames(styles.button, styles[theme], styles[size], {
       [styles.wide]: wide,

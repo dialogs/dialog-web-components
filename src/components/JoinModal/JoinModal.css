@@ -17,7 +17,6 @@
 
 .root {
   width: var(--join-modal-width);
-  text-align: center;
   font-family: var(--join-modal-font-family);
   font-size: var(--join-modal-font-size);
 }
@@ -27,6 +26,7 @@
   padding-right: var(--join-modal-padding-right);
   padding-bottom: var(--join-modal-padding-bottom);
   padding-left: var(--join-modal-padding-left);
+  text-align: center;
 }
 
 .buttons {
