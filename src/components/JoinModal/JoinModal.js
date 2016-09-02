@@ -8,6 +8,7 @@ import Modal from '../Modal/Modal';
 import ModalBody from '../Modal/ModalBody';
 import Button from '../Button/Button';
 import Input from '../Input/Input';
+import IconButton from '../IconButton/IconButton';
 import styles from './JoinModal.css';
 
 class JoinModal extends Component {
@@ -34,22 +35,28 @@ class JoinModal extends Component {
     return (
       <Modal isOpen={isOpen} onClose={onClose} className={joinClassName}>
         <ModalBody className={styles.body}>
-          <p className={styles.text}>Enter your contact details to join</p>
+          <div className={styles.text}>Enter your contact details to join</div>
           <h4 className={styles.title}>{groupTitle}</h4>
 
-          <form className={styles.form} onSubmit={onJoin}>
+          <form className={styles.form}>
             <Input
               type="text"
               placeholder="Enter your email or mobile"
               className={styles.input}
             />
-            <Button wide type="submit">Continue</Button>
+            <Button wide onClick={onJoin}>Continue</Button>
           </form>
 
-          <p className={styles.text}>
+          <div className={styles.clean}>
             Dialog is all your team messaging with free calling,<br />
             file sharing and fast mobile applications.
-          </p>
+          </div>
+          <div className={styles.buttons} >
+            <IconButton glyph="logo" flat className={styles.button} size="large" />
+            <IconButton glyph="phone" flat className={styles.button} size="large" />
+            <IconButton glyph="apple" flat className={styles.button} size="large" />
+            <IconButton glyph="android" flat className={styles.button} size="large" />
+          </div>
         </ModalBody>
       </Modal>
     );

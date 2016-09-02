@@ -29,6 +29,14 @@
   padding-left: var(--join-modal-padding-left);
 }
 
+.buttons {
+  margin-top: calc(var(--default-padding) * 2);
+
+  & .button {
+    margin: 0 calc(var(--default-padding) / 2);
+  }
+}
+
 .text {
   margin: 0;
   padding: 0;
@@ -50,3 +58,4 @@
 .input {
   margin-bottom: 20px;
 }
+

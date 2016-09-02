@@ -6,14 +6,14 @@
 
 .material {
   vertical-align: middle;
-  line-height: inherit;
   font-size: var(--icon-default-size);
+  line-height: inherit;
 }
 
 .svg {
+  display: inline-block;
   width: var(--icon-default-size);
   height: auto;
-  display: inline-block;
   vertical-align: middle;
   fill: #000;
 }
