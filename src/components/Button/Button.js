@@ -11,6 +11,7 @@ class Button extends Component {
     children: PropTypes.node.isRequired,
     disabled: PropTypes.bool.isRequired,
     wide: PropTypes.bool.isRequired,
+    rounded: PropTypes.bool.isRequired,
     loading: PropTypes.bool.isRequired,
     type: PropTypes.oneOf(['submit', 'reset', 'button', 'menu']).isRequired,
     theme: PropTypes.oneOf(['primary', 'link']).isRequired,
@@ -23,6 +24,7 @@ class Button extends Component {
     theme: 'primary',
     size: 'normal',
     wide: false,
+    rounded: true,
     loading: false,
     disabled: false
   };
@@ -35,6 +37,7 @@ class Button extends Component {
            nextProps.size !== this.props.size ||
            nextProps.theme !== this.props.theme ||
            nextProps.wide !== this.props.wide ||
+           nextProps.rounded !== this.props.rounded ||
            nextProps.className !== this.props.className ||
            nextProps.id !== this.props.id ||
            nextProps.name !== this.props.name;
@@ -51,24 +54,23 @@ class Button extends Component {
   }
 
   render() {
-    const className = classNames(
-      styles.button,
-      styles[this.props.theme],
-      styles[this.props.size],
-      { [styles.wide]: this.props.wide },
-      this.props.className
-    );
+    const { id, name, type, disabled, theme, size, wide, rounded, className, onClick, children } = this.props;
+
+    const buttonClassName = classNames(styles.button, styles[theme], styles[size], {
+      [styles.wide]: wide,
+      [styles.rounded]: rounded
+    }, className);
 
     return (
       <button
-        id={this.props.id}
-        name={this.props.name}
-        className={className}
-        type={this.props.type}
-        disabled={this.props.disabled}
-        onClick={this.props.onClick}
+        id={id}
+        name={name}
+        className={buttonClassName}
+        type={type}
+        disabled={disabled}
+        onClick={onClick}
       >
-        {this.props.children}
+        {children}
         {this.renderLoading()}
       </button>
     );

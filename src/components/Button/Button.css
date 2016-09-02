@@ -27,7 +27,6 @@
   transition: all var(--default-transition-duration) ease;
   text-align: center;
   border: 0;
-  border-radius: var(--button-border-radius);
   outline: none;
   background-color: transparent;
   font-family: var(--button-font-family);
@@ -42,6 +41,14 @@
 
 .wide {
   width: 100%;
+}
+
+.rounded {
+  border-radius: var(--button-border-radius);
+
+  &.small {
+    border-radius: var(--button-border-radius-small);
+  }
 }
 
 /* Types */
@@ -88,7 +95,6 @@
   padding-right: calc(0.75 * var(--button-padding-right));
   padding-bottom: calc(0.75 * var(--button-padding-bottom));
   padding-left: calc(0.75 * var(--button-padding-left));
-  border-radius: var(--button-border-radius-small);
   font-size: calc(0.75 * var(--button-font-size));
   line-height: calc(0.75 * var(--button-line-height));
 }
