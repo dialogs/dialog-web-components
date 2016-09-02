@@ -47,7 +47,7 @@ class JoinModal extends Component {
             <Button wide onClick={onJoin}>Continue</Button>
           </form>
 
-          <div className={styles.clean}>
+          <div className={styles.text}>
             Dialog is all your team messaging with free calling,<br />
             file sharing and fast mobile applications.
           </div>
