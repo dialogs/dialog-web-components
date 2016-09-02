@@ -1,6 +1,19 @@
 @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
 
-.root {
+:root {
+  --icon-default-size: 24px;
+}
+
+.material {
   vertical-align: middle;
   line-height: inherit;
+  font-size: var(--icon-default-size);
+}
+
+.svg {
+  width: var(--icon-default-size);
+  height: auto;
+  display: inline-block;
+  vertical-align: middle;
+  fill: #000;
 }
