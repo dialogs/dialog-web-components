@@ -1,0 +1,57 @@
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+:root {
+  --fake-message-avatar-color: #c5c5c5;
+  --fake-message-text-color: #e5e5e5;
+  --fake-message-top-padding: 14px;
+  --fake-message-right-padding: 34px;
+  --fake-message-bottom-padding: 14px;
+  --fake-message-left-padding: 34px;
+}
+
+.root {
+  all: initial;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  padding-top: var(--fake-message-top-padding);
+  padding-right: var(--fake-message-right-padding);
+  padding-bottom: var(--fake-message-bottom-padding);
+  padding-left: var(--fake-message-left-padding);
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  background-color: var(--fake-message-avatar-color);
+  border-radius: 50%;
+  margin-right: 16px;
+  flex: 0 0 auto;
+  align-self: flex-start;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  align-content: flex-start;
+  justify-content: flex-start;
+}
+
+.header {
+  line-height: 0;
+}
+
+.line {
+  display: inline-block;
+  background-color: var(--fake-message-text-color);
+  height: 9px;
+  line-height: 0;
+  border-radius: 10px;
+  margin-right: 12px;
+  margin-bottom: 15px;
+}

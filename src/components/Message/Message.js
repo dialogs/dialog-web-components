@@ -38,11 +38,11 @@ class Message extends Component {
           <PeerAvatar peer={sender} size="large" />
         </div>
         <div className={styles.body}>
-          <div className={styles.header}>
+          <header className={styles.header}>
             <div className={styles.sender}>{sender.name}</div>
             <time className={styles.timestamp}>{date}</time>
             {this.renderState()}
-          </div>
+          </header>
           <div className={styles.content}>
             <MessageContent content={content} />
           </div>

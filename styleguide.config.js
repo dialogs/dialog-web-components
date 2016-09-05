@@ -72,7 +72,8 @@ module.exports = {
     components() {
       return [
         component('RecentItem'),
-        component('RecentGroup')
+        component('RecentGroup'),
+        component('FakeRecentItem')
       ];
     }
   }, {
@@ -81,8 +82,7 @@ module.exports = {
       return [
         component('Message'),
         component('MessageContent'),
-        component('MessageGroup'),
-        component('MessageList')
+        component('FakeMessage')
       ];
     }
   }],
