@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
-import ButtonSpinner from './ButtonSpinner';
+import Spinner from '../Spinner/Spinner';
 import styles from './Button.css';
 
 class Button extends Component {
@@ -49,7 +49,7 @@ class Button extends Component {
     }
 
     return (
-      <ButtonSpinner />
+      <Spinner type="dotted" className={styles.loading} />
     );
   }
 

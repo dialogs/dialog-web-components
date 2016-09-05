@@ -51,6 +51,13 @@
   }
 }
 
+.loading {
+  margin-left: 6px;
+  & div {
+    background-color: #fff;
+  }
+}
+
 /* Types */
 .primary {
   background-color: #4800cc;

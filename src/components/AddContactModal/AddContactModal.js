@@ -10,6 +10,7 @@ import ModalClose from '../Modal/ModalClose';
 import ModalHeader from '../Modal/ModalHeader';
 import ModalBody from '../Modal/ModalBody';
 import ModalFooter from '../Modal/ModalFooter';
+import Spinner from '../Spinner/Spinner';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
 import styles from './AddContactModal.css';
@@ -71,7 +72,7 @@ class AddContactModal extends Component {
     if (pending) {
       return (
         <ModalBody className={styles.body}>
-          Pending
+          <Spinner type="round" size="large" />
         </ModalBody>
       );
     }

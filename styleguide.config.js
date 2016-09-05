@@ -22,7 +22,8 @@ module.exports = {
         component('PeerAvatar'),
         component('Scroller'),
         component('Dropdown'),
-        component('Icon')
+        component('Icon'),
+        component('Spinner')
       ];
     }
   }, {
@@ -31,13 +32,6 @@ module.exports = {
       return [
         component('Button'),
         component('IconButton')
-      ];
-    }
-  }, {
-    name: 'Spinners',
-    components() {
-      return [
-        component('Spinner')
       ];
     }
   }, {

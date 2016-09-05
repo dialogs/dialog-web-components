@@ -6,19 +6,6 @@
   --message-state-avatar-padding: 4px;
   --message-state-dot-size: 10px;
   --message-state-dot-color: color(#000 alpha(30%));
-  --message-state-sending-size: 9px;
-  --message-state-sending-color: var(--violet-blue-two);
-  --message-state-sending-animation-duration: calc(var(--default-transition-duration) * 4);
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
 }
 
 .root {
@@ -41,13 +28,6 @@
 }
 
 .sending {
-  width: var(--message-state-sending-size);
-  height: var(--message-state-sending-size);
-  animation: spin var(--message-state-sending-animation-duration) infinite linear;
-  border: 2px solid color(var(--message-state-sending-color) alpha(15%));
-  border-top-color: var(--message-state-sending-color);
-  border-radius: 50%;
-  align-self: center;
 }
 
 .sent {

@@ -1,9 +1,10 @@
 import React from 'react';
+import Spinner from '../../Spinner/Spinner'
 import styles from './MessageState.css';
 
 function MessageSending() {
   return (
-    <div className={styles.sending} />
+    <Spinner type="round" className={styles.sending}/>
   );
 }
 
