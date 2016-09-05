@@ -12,6 +12,7 @@ import ModalBody from '../Modal/ModalBody';
 import ModalFooter from '../Modal/ModalFooter';
 import Spinner from '../Spinner/Spinner';
 import Input from '../Input/Input';
+import Icon from '../Icon/Icon';
 import Button from '../Button/Button';
 import styles from './AddContactModal.css';
 
@@ -24,12 +25,13 @@ class AddContactModal extends Component {
     error: PropTypes.string,
     onClose: PropTypes.func.isRequired,
     onAdd: PropTypes.func.isRequired,
-    onComplite: PropTypes.func.isRequired
+    onComplete: PropTypes.func.isRequired
   };
 
   static defaultProps = {
     isOpen: false,
-    pending: false
+    pending: false,
+    contact: null
   };
 
   constructor(props) {
@@ -49,7 +51,7 @@ class AddContactModal extends Component {
            nextProps.isOpen !== this.props.isOpen ||
            nextProps.onClose !== this.props.onClose ||
            nextProps.onAdd !== this.props.onAdd ||
-           nextProps.onComplite !== this.props.onComplite ||
+           nextProps.onComplete !== this.props.onComplete ||
            nextProps.pending !== this.props.pending ||
            nextProps.contact !== this.props.contact ||
            nextProps.error !== this.props.error;
@@ -62,7 +64,19 @@ class AddContactModal extends Component {
   handleAddContactClick(event) {
     const { onAdd } = this.props;
     const { value } = this.state;
+
     onAdd(value, event);
+  }
+
+  renderHeader() {
+    const { onClose } = this.props;
+
+    return (
+      <ModalHeader>
+        <Text id="AddContactModal.title" />
+        <ModalClose onClick={onClose} />
+      </ModalHeader>
+    );
   }
 
   renderBody() {
@@ -80,7 +94,17 @@ class AddContactModal extends Component {
     if (contact) {
       return (
         <ModalBody className={styles.body}>
-          Contact
+          <div className={styles.avatar}>
+            <PeerAvatar peer={contact} size="big" />
+            <Icon glyph="done" className={styles.icon} />
+          </div>
+          <Text
+            id="AddContactModal.user_added"
+            values={{ username: contact.name }}
+            tagName="p"
+            className={styles.text}
+            html
+          />
         </ModalBody>
       );
     }
@@ -100,7 +124,7 @@ class AddContactModal extends Component {
   }
 
   renderFooter() {
-    const { pending, contact, onComplite } = this.props;
+    const { pending, contact, onComplete } = this.props;
 
     if (pending) {
       return null;
@@ -109,7 +133,7 @@ class AddContactModal extends Component {
     if (contact) {
       return (
         <ModalFooter className={styles.footer}>
-          <Button wide rounded={false} onClick={onComplite}>
+          <Button wide rounded={false} onClick={onComplete}>
             <Text id="AddContactModal.button_send" />
           </Button>
         </ModalFooter>
@@ -131,10 +155,7 @@ class AddContactModal extends Component {
 
     return (
       <Modal isOpen={isOpen} onClose={onClose} className={addContactClassName}>
-        <ModalHeader>
-          <Text id="AddContactModal.title" />
-          <ModalClose onClick={onClose} />
-        </ModalHeader>
+        {this.renderHeader()}
         {this.renderBody()}
         {this.renderFooter()}
       </Modal>
