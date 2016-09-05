@@ -10,4 +10,5 @@
 
 .root {
   all: initial;
+  font-family: var(--<%= dashedName -%>-font-family);
 }
