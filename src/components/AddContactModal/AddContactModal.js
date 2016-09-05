@@ -13,6 +13,7 @@ import ModalFooter from '../Modal/ModalFooter';
 import Spinner from '../Spinner/Spinner';
 import Input from '../Input/Input';
 import Icon from '../Icon/Icon';
+import PeerAvatar from '../PeerAvatar/PeerAvatar';
 import Button from '../Button/Button';
 import styles from './AddContactModal.css';
 
@@ -21,7 +22,16 @@ class AddContactModal extends Component {
     className: PropTypes.string,
     isOpen: PropTypes.bool.isRequired,
     pending: PropTypes.bool.isRequired,
-    contact: PropTypes.object,
+    contact: PropTypes.shape({
+      peer: PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        type: PropTypes.oneOf(['user', 'group']).isRequired
+      }).isRequired,
+      name: PropTypes.string.isRequired,
+      nick: PropTypes.string.isRequired,
+      placeholder: PropTypes.string.isRequired,
+      avatar: PropTypes.string
+    }),
     error: PropTypes.string,
     onClose: PropTypes.func.isRequired,
     onAdd: PropTypes.func.isRequired,

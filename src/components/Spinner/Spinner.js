@@ -6,7 +6,7 @@ class Spinner extends Component {
   static propTypes = {
     className: PropTypes.string,
     type: PropTypes.oneOf(['round', 'wave', 'dotted']).isRequired,
-    size: PropTypes.oneOf(['normal', 'large']).isRequired,
+    size: PropTypes.oneOf(['normal', 'large']).isRequired
   };
 
   static defaultProps = {
@@ -16,7 +16,8 @@ class Spinner extends Component {
 
   shouldComponentUpdate(nextProps) {
     return nextProps.className !== this.props.className ||
-           nextProps.type!== this.props.type;
+           nextProps.size !== this.props.size ||
+           nextProps.type !== this.props.type;
   }
 
   renderWaveSpinner() {

@@ -8,17 +8,15 @@
   --spinner-wave-stick-width: 2px;
   --spinner-wave-background-color: color(var(--violet-blue-two) alpha(70%));
   --spinner-wave-color: #fff;
-
   --spinner-dotted-dot-size: 6px;
   --spinner-dotted-animation-delay: 160ms;
   --spinner-dotted-dot-color: var(--violet-blue-two);
-
   --spinner-round-size: 9px;
   --spinner-round-border-width: 2px;
   --spinner-round-large-size: 30px;
   --spinner-round-large-border-width: 3px;
   --spinner-round-color: var(--violet-blue-two);
-  --spinner-round-animation-duration: calc(var(--default-transition-duration) * 4)
+  --spinner-round-animation-duration: calc(var(--default-transition-duration) * 4);
 }
 
 @keyframes line-scale {
@@ -37,13 +35,13 @@
   0%,
   80%,
   100% {
-    opacity: 0;
     transform: scale(0.7);
+    opacity: 0;
   }
 
   40% {
-    opacity: 1;
     transform: scale(1);
+    opacity: 1;
   }
 }
 
@@ -62,10 +60,10 @@
   all: initial;
   display: inline-block;
   box-sizing: border-box;
-  vertical-align: middle;
   width: calc(var(--spinner-wawe-max-height) + 20px);
   height: calc(var(--spinner-wawe-max-height) + 20px);
   padding: 10px;
+  vertical-align: middle;
   border-radius: 50%;
   background-color: var(--spinner-wave-background-color);
 
@@ -74,6 +72,7 @@
   &.large {
     width: calc(var(--spinner-wawe-max-height) + 20px * 2);
     height: calc(var(--spinner-wawe-max-height) + 20px * 2);
+
     & .stick {
       width: calc(var(--spinner-wave-stick-width) * 2);
       height: calc(var(--spinner-wawe-max-height) * 2);
@@ -133,6 +132,7 @@
 
   &.large {
     height: calc(var(--spinner-dotted-dot-size) * 2);
+
     & .dot {
       width: calc(var(--spinner-dotted-dot-size) * 2);
       height: calc(var(--spinner-dotted-dot-size) * 2);
@@ -160,11 +160,11 @@
 
 /* Round spinner */
 .round {
-  vertical-align: middle;
   display: inline-block;
   width: var(--spinner-round-size);
   height: var(--spinner-round-size);
   animation: spin var(--spinner-round-animation-duration) infinite linear;
+  vertical-align: middle;
   border: 2px solid color(var(--spinner-round-color) alpha(15%));
   border-top-color: var(--spinner-round-color);
   border-radius: 50%;

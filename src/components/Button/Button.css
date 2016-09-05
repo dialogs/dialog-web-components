@@ -53,6 +53,7 @@
 
 .loading {
   margin-left: 6px;
+
   & div {
     background-color: #fff;
   }
