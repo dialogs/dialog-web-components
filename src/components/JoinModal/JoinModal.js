@@ -5,7 +5,9 @@
 import React, { PropTypes, Component } from 'react';
 import classNames from 'classnames';
 import Modal from '../Modal/Modal';
+import ModalHeader from '../Modal/ModalHeader';
 import ModalBody from '../Modal/ModalBody';
+import ModalFooter from '../Modal/ModalFooter';
 import Button from '../Button/Button';
 import Input from '../Input/Input';
 import IconButton from '../IconButton/IconButton';
@@ -34,9 +36,11 @@ class JoinModal extends Component {
 
     return (
       <Modal isOpen={isOpen} onClose={onClose} className={joinClassName}>
-        <ModalBody className={styles.body}>
+        <ModalHeader className={styles.header}>
           <div className={styles.text}>Enter your contact details to join</div>
           <h4 className={styles.title}>{groupTitle}</h4>
+        </ModalHeader>
+        <ModalBody className={styles.body}>
 
           <form className={styles.form}>
             <Input
@@ -46,7 +50,8 @@ class JoinModal extends Component {
             />
             <Button wide onClick={onJoin}>Continue</Button>
           </form>
-
+        </ModalBody>
+        <ModalFooter className={styles.footer}>
           <div className={styles.text}>
             Dialog is all your team messaging with free calling,<br />
             file sharing and fast mobile applications.
@@ -57,7 +62,7 @@ class JoinModal extends Component {
             <IconButton glyph="apple" flat className={styles.button} size="large" />
             <IconButton glyph="android" flat className={styles.button} size="large" />
           </div>
-        </ModalBody>
+        </ModalFooter>
       </Modal>
     );
   }

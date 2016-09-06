@@ -9,7 +9,7 @@
   --join-modal-width: 600px;
   --join-modal-font-size: 18px;
   --join-modal-title-font-size: 34px;
-  --join-modal-padding-top: 60px;
+  --join-modal-padding-top: 70px;
   --join-modal-padding-right: 50px;
   --join-modal-padding-bottom: 60px;
   --join-modal-padding-left: 50px;
@@ -21,8 +21,24 @@
   font-size: var(--join-modal-font-size);
 }
 
-.body {
+.header {
   padding-top: var(--join-modal-padding-top);
+  padding-right: var(--join-modal-padding-right);
+  padding-bottom: 0;
+  padding-left: var(--join-modal-padding-left);
+  text-align: center;
+}
+
+.body {
+  padding-top: 0;
+  padding-right: var(--join-modal-padding-right);
+  padding-bottom: 0;
+  padding-left: var(--join-modal-padding-left);
+  text-align: center;
+}
+
+.footer {
+  padding-top: 0;
   padding-right: var(--join-modal-padding-right);
   padding-bottom: var(--join-modal-padding-bottom);
   padding-left: var(--join-modal-padding-left);
@@ -30,7 +46,7 @@
 }
 
 .buttons {
-  margin-top: calc(var(--default-padding) * 2);
+  margin-top: 24px;
 
   & .button {
     margin: 0 calc(var(--default-padding) / 2);
@@ -41,6 +57,7 @@
   margin: 0;
   padding: 0;
   line-height: 24px;
+  font-weight: 400;
 }
 
 .title {
@@ -49,6 +66,7 @@
   letter-spacing: -0.5px;
   font-size: var(--join-modal-title-font-size);
   font-weight: 400;
+  line-height: 1.2;
 }
 
 .form {
