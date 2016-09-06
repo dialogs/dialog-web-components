@@ -3,7 +3,7 @@ const path = require('path');
 const ejs = require('ejs');
 const chalk = require('chalk');
 const inquirer = require('inquirer');
-const camelCaseToDash = require('../src/utils/camelCaseToDash');
+const kebabCase = require('lodash').kebabCase;
 
 const info = (message) => console.error(chalk.cyan(message));
 const warning = (message) => console.error(chalk.yellow(message));
@@ -42,7 +42,7 @@ const templates = path.resolve(__dirname, 'templates');
 
 function render(options, template, out) {
   const extendedOptions = Object.assign({}, options, {
-    dashedName: camelCaseToDash(options.name)
+    dashedName: kebabCase(options.name)
   });
   chalk.blue(extendedOptions);
   const input = path.join(templates, template);

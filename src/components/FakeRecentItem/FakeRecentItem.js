@@ -4,7 +4,7 @@
 
 import React, { Component, PropTypes } from 'react';
 import styles from './FakeRecentItem.css';
-import randomIntFromInterval from '../../utils/randomIntFromInterval';
+import { random } from 'lodash';
 
 class FakeRecentItem extends Component {
   renderAvatar() {
@@ -15,7 +15,7 @@ class FakeRecentItem extends Component {
 
   renderText() {
     const lineStyle = {
-      width: randomIntFromInterval(90, 160)
+      width: random(90, 160)
     };
 
     return (
@@ -26,7 +26,7 @@ class FakeRecentItem extends Component {
   }
 
   renderCounter() {
-    if (randomIntFromInterval(0, 1)) {
+    if (random(0, 1)) {
       return null;
     }
 

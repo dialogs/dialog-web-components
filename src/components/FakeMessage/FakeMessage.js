@@ -4,7 +4,7 @@
 
 import React, { Component, PropTypes } from 'react';
 import styles from './FakeMessage.css';
-import randomIntFromInterval from '../../utils/randomIntFromInterval';
+import { random } from 'lodash';
 
 class FakeMessage extends Component {
   shouldComponentUpdate() {
@@ -12,11 +12,11 @@ class FakeMessage extends Component {
   }
 
   renderText() {
-    const linesCount = randomIntFromInterval(5, 15);
+    const linesCount = random(5, 15);
     const linesArray = [];
 
     for (let i = 1; i <= linesCount; i++) {
-      linesArray.push(randomIntFromInterval(50, 300));
+      linesArray.push(random(50, 300));
     }
 
     return linesArray.map((lineWidth) => {
