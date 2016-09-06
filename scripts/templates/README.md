@@ -1,3 +1,5 @@
 Basic <%= name %>:
 
-    <<%= name %>>Hello, world!</<%= name %>>
+```
+<<%= name %>>Hello from <%= name %>!</<%= name %>>
+```
