@@ -14,14 +14,14 @@ Basic Modal:
         isOpen={state.isOpen}
         onClose={handleClose}
       >
-        <ModalHeader>
+        <ModalHeader withBorder>
           Simple modal
           <ModalClose onClick={handleClose} />
         </ModalHeader>
         <ModalBody>
           <p>Hello, world!</p>
         </ModalBody>
-        <ModalFooter>Footer content can be placed here</ModalFooter>
+        <ModalFooter withBorder>Footer content can be placed here</ModalFooter>
       </Modal>
     </div>
 

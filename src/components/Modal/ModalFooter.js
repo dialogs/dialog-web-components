@@ -9,17 +9,25 @@ import styles from './Modal.css';
 class ModalFooter extends Component {
   static propTypes = {
     className: PropTypes.string,
+    withBorder: PropTypes.bool,
     children: PropTypes.node.isRequired
+  };
+
+  static defaultProps = {
+    withBorder: false
   };
 
   shouldComponentUpdate(nextProps) {
     return nextProps.children !== this.props.children ||
+           nextProps.withBorder !== this.props.withBorder ||
            nextProps.className !== this.props.className;
   }
 
   render() {
-    const { children, className } = this.props;
-    const footerClassName = classNames(styles.footer, className);
+    const { children, withBorder, className } = this.props;
+    const footerClassName = classNames(styles.footer, {
+      [styles.border]: withBorder
+    }, className);
 
     return (
       <footer className={footerClassName}>

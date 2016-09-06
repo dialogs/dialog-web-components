@@ -9,17 +9,25 @@ import styles from './Modal.css';
 class ModalHeader extends Component {
   static propTypes = {
     className: PropTypes.string,
+    withBorder: PropTypes.bool,
     children: PropTypes.node.isRequired
+  };
+
+  static defaultProps = {
+    withBorder: false
   };
 
   shouldComponentUpdate(nextProps) {
     return nextProps.children !== this.props.children ||
+           nextProps.withBorder !== this.props.withBorder ||
            nextProps.className !== this.props.className;
   }
 
   render() {
-    const { children, className } = this.props;
-    const headerClassName = classNames(styles.header, className);
+    const { children, withBorder, className } = this.props;
+    const headerClassName = classNames(styles.header, {
+      [styles.border]: withBorder
+    }, className);
 
     return (
       <header className={headerClassName}>
