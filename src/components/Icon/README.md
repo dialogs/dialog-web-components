@@ -17,5 +17,6 @@ Our SVG Icons:
   <Icon glyph="logo" />
   <Icon glyph="phone" />
   <Icon glyph="apple" />
+  <Icon glyph="more" />
 </div>
 ```

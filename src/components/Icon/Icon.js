@@ -76,6 +76,16 @@ class Icon extends Component {
             </g>
           </svg>
         );
+      case 'more':
+        return (
+          <svg viewBox="0 0 32 32" className={svgClassName} onClick={onClick}>
+            <g transform="translate(7.000000, 14.000000)">
+              <circle cx="2.5" cy="2.5" r="2.5" />
+              <circle cx="9.5" cy="2.5" r="2.5" />
+              <circle cx="16.5" cy="2.5" r="2.5" />
+            </g>
+          </svg>
+        );
       default:
         return this.renderMaterialIcon();
     }
@@ -87,7 +97,9 @@ class Icon extends Component {
     switch (glyph) {
       case 'logo':
       case 'phone':
+      case 'phone_outline':
       case 'apple':
+      case 'more':
         return this.renderSvgIcon();
       default:
         return this.renderMaterialIcon();
