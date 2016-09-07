@@ -85,6 +85,7 @@
 }
 
 .body {
+  position: relative;
   display: block;
   overflow-x: hidden;
   overflow-y: scroll;
@@ -92,7 +93,6 @@
   padding: var(--default-padding) calc(var(--default-padding) * 2);
   font-size: var(--modal-font-size);
   flex: 1 1 auto;
-  position: relative;
 }
 
 .footer {

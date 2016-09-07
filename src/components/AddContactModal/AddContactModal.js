@@ -82,7 +82,7 @@ class AddContactModal extends Component {
     const { onClose } = this.props;
 
     return (
-      <ModalHeader>
+      <ModalHeader withBorder>
         <Text id="AddContactModal.title" />
         <ModalClose onClick={onClose} />
       </ModalHeader>

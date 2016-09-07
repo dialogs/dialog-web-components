@@ -13,9 +13,9 @@
   all: initial;
   display: flex;
   flex-direction: row;
+  box-sizing: border-box;
   height: 46px;
   padding: 9px 16px;
-  box-sizing: border-box;
   user-select: none;
   flex-wrap: nowrap;
   justify-content: flex-start;
@@ -26,8 +26,8 @@
 .avatar {
   width: 28px;
   height: 28px;
-  border-radius: 50%;
   margin-right: 16px;
+  border-radius: 50%;
   background-color: var(--fake-recent-avatar-color);
   flex: 0 0 auto;
   align-self: flex-start;
@@ -38,16 +38,16 @@
 }
 
 .line {
-  background-color: var(--fake-recent-text-color);
   height: 9px;
   border-radius: 10px;
+  background-color: var(--fake-recent-text-color);
 }
 
 .counter {
-  flex: 0 0 auto;
-  margin-left: 6px;
   width: 19px;
   height: 19px;
+  margin-left: 6px;
   border-radius: 50%;
   background-color: var(--purple-two);
+  flex: 0 0 auto;
 }

@@ -41,6 +41,7 @@
 
 .placeholder {
   display: inline-flex;
+  overflow: hidden;
   cursor: default;
   user-select: none;
   text-align: center;
@@ -53,7 +54,6 @@
   justify-content: center;
   align-items: center;
   color: #fff;
-  overflow: hidden;
 }
 
 .clickable {

@@ -2,18 +2,18 @@
  * Copyright 2016 Dialog LLC <info@dlg.im>
  */
 
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
 import styles from './FakeRecentItem.css';
 import { random } from 'lodash';
 
-class FakeRecentItem extends Component {
-  renderAvatar() {
+function FakeRecentItem() {
+  function renderAvatar() {
     return (
       <div className={styles.avatar} />
     );
   }
 
-  renderText() {
+  function renderText() {
     const lineStyle = {
       width: random(90, 160)
     };
@@ -25,7 +25,7 @@ class FakeRecentItem extends Component {
     );
   }
 
-  renderCounter() {
+  function renderCounter() {
     if (random(0, 1)) {
       return null;
     }
@@ -35,15 +35,13 @@ class FakeRecentItem extends Component {
     );
   }
 
-  render() {
-    return (
-      <div className={styles.root}>
-        {this.renderAvatar()}
-        {this.renderText()}
-        {this.renderCounter()}
-      </div>
-    );
-  }
+  return (
+    <div className={styles.root}>
+      {renderAvatar()}
+      {renderText()}
+      {renderCounter()}
+    </div>
+  );
 }
 
 export default FakeRecentItem;
