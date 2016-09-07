@@ -1,0 +1,70 @@
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+:root {
+  --toolbar-font-family: var(--default-font-family);
+  --toolbar-height: 60px;
+  --toolbar-background-color: #fff;
+  --toolbar-padding-top: 10px;
+  --toolbar-padding-right: 19px;
+  --toolbar-padding-bottom: 10px;
+  --toolbar-padding-left: 84px;
+  --toolbar-title-color: #000;
+  --toolbar-title-font-size: 18px;
+  --toolbar-status-color: color(#000 alpha(50%));
+  --toolbar-status-font-size: 14px;
+}
+
+.root {
+  all: initial;
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  height: var(--toolbar-height);
+  padding-top: var(--toolbar-padding-top);
+  padding-right: var(--toolbar-padding-right);
+  padding-bottom: var(--toolbar-padding-bottom);
+  padding-left: var(--toolbar-padding-left);
+  background-color: var(--toolbar-background-color);
+  box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.14);
+  font-family: var(--toolbar-font-family);
+  justify-content: flex-start;
+}
+
+/* Layout */
+.info {
+  box-sizing: border-box;
+  padding: 0;
+  flex: 1 1 auto;
+}
+
+.buttons {
+  display: flex;
+  box-sizing: border-box;
+  padding: 0 0 0 var(--toolbar-padding-left);
+  flex: 0 1 auto;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* Theming */
+.title {
+  vertical-align: middle;
+  letter-spacing: -0.3px;
+  font-size: var(--toolbar-title-font-size);
+  font-weight: 500;
+  line-height: 22px;
+  color: var(--toolbar-title-color);
+}
+
+.status {
+  vertical-align: middle;
+  letter-spacing: -0.2px;
+  font-size: var(--toolbar-status-font-size);
+  line-height: 18px;
+  color: var(--toolbar-status-color);
+}
+
