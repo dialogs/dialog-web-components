@@ -10,6 +10,7 @@ import styles from './IconButton.css';
 class IconButton extends Component {
   static propTypes = {
     className: PropTypes.string,
+    style: PropTypes.string,
     glyph: PropTypes.string.isRequired,
     size: PropTypes.oneOf(['normal', 'large']).isRequired,
     flat: PropTypes.bool.isRequired,
@@ -28,11 +29,12 @@ class IconButton extends Component {
            nextProps.flat !== this.props.flat ||
            nextProps.disabled !== this.props.disabled ||
            nextProps.onClick !== this.props.onClick ||
+           nextProps.style !== this.props.style ||
            nextProps.className !== this.props.className;
   }
 
   render() {
-    const { glyph, onClick, className, size, disabled, flat } = this.props;
+    const { glyph, onClick, className, size, disabled, flat, style } = this.props;
     const buttonClassName = classNames(styles.root, styles[size], {
       [styles.disabled]: disabled,
       [styles.defaultStyle]: !flat,
@@ -40,7 +42,7 @@ class IconButton extends Component {
     }, className);
 
     return (
-      <button className={buttonClassName} onClick={onClick} disabled={disabled}>
+      <button className={buttonClassName} onClick={onClick} disabled={disabled} style={style}>
         <Icon glyph={glyph} className={styles.icon} />
       </button>
     );
