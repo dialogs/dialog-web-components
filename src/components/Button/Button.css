@@ -72,7 +72,7 @@
 
   &:active:enabled {
     background-color: #6b27e6;
-    box-shadow: 0 2px 0 color(#000 alpha(25%));
+    box-shadow: 0 2px 1px color(#000 alpha(25%));
   }
 
   &[disabled] {
