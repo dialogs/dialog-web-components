@@ -86,6 +86,13 @@ module.exports = {
         component('FakeMessage')
       ];
     }
+  }, {
+    name: 'Activity',
+    components() {
+      return [
+        component('ActivityProfile')
+      ];
+    }
   }],
   updateWebpackConfig(config) {
     const source = path.join(__dirname, 'src');
