@@ -1,19 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Provider } from '@dlghq/react-l10n';
-import compileMessages from '../utils/compileMessages';
+import messages from './devMessages';
 import styles from './Wrapper.css';
-
-const requireMessags = require.context('../components', true, /l10n\/[A-Za-z]+\.yml$/);
-
-const messages = {};
-requireMessags.keys().forEach((pathname) => {
-  const [, name, locale] = pathname.match(/([A-Za-z]+)\/l10n\/([A-Za-z]+)\.yml$/);
-  if (!messages[locale]) {
-    messages[locale] = {};
-  }
-
-  Object.assign(messages[locale], compileMessages(name, requireMessags(pathname)));
-});
 
 class Wrapper extends Component {
   static propTypes = {
@@ -28,10 +16,6 @@ class Wrapper extends Component {
     };
 
     this.handleLocaleChange = this.handleLocaleChange.bind(this);
-  }
-
-  shouldComponentUpdate(nextProps) {
-    return nextProps.children !== this.props.children;
   }
 
   handleLocaleChange({ target }) {
