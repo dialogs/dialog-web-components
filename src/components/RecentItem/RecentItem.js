@@ -10,7 +10,7 @@ import PeerAvatar from '../PeerAvatar/PeerAvatar';
 class RecentItem extends Component {
   static propTypes = {
     className: PropTypes.string,
-    peerInfo: PropTypes.shape({
+    info: PropTypes.shape({
       peer: PropTypes.shape({
         id: PropTypes.number.isRequired,
         type: PropTypes.oneOf(['user', 'group']).isRequired
@@ -38,7 +38,7 @@ class RecentItem extends Component {
 
   shouldComponentUpdate(nextProps) {
     return nextProps.className !== this.props.className ||
-           nextProps.peerInfo !== this.props.peerInfo ||
+           nextProps.info !== this.props.info ||
            nextProps.active !== this.props.active ||
            nextProps.counter !== this.props.counter ||
            nextProps.text !== this.props.text ||
@@ -46,31 +46,31 @@ class RecentItem extends Component {
   }
 
   handleClick() {
-    const { peerInfo: { peer }, onSelect } = this.props;
+    const { info: { peer }, onSelect } = this.props;
 
     onSelect(peer);
   }
 
   renderAvatar() {
-    const { peerInfo, text } = this.props;
+    const { info, text } = this.props;
     const avatarSize = text ? 'large' : 'medium';
 
     return (
       <PeerAvatar
         className={styles.avatar}
         size={avatarSize}
-        peer={peerInfo}
+        peer={info}
       />
     );
   }
 
   renderText() {
-    const { peerInfo, text } = this.props;
+    const { info, text } = this.props;
 
     if (text) {
       return (
         <div className={styles.text}>
-          <div className={styles.title}>{peerInfo.title}</div>
+          <div className={styles.title}>{info.title}</div>
           <div className={styles.message}>{text}</div>
         </div>
       );
@@ -78,7 +78,7 @@ class RecentItem extends Component {
 
     return (
       <div className={styles.text}>
-        <div className={styles.title}>{peerInfo.title}</div>
+        <div className={styles.title}>{info.title}</div>
       </div>
     );
   }

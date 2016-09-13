@@ -4,32 +4,22 @@
 
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
-import styles from './RecentGroup.css';
+import { Peer, PeerInfo } from '../../PropTypes';
+import isSamePeer from '../../utils/isSamePeer';
 import RecentItem from '../RecentItem/RecentItem';
+import styles from './RecentGroup.css';
 
 class RecentGroup extends Component {
   static propTypes = {
     className: PropTypes.string,
     title: PropTypes.string.isRequired,
     items: PropTypes.arrayOf(PropTypes.shape({
-      peerInfo: PropTypes.shape({
-        peer: PropTypes.shape({
-          id: PropTypes.number.isRequired,
-          type: PropTypes.oneOf(['user', 'group']).isRequired
-        }).isRequired,
-        title: PropTypes.string.isRequired,
-        placeholder: PropTypes.string.isRequired,
-        image: PropTypes.string
-      }).isRequired,
-      active: PropTypes.bool.isRequired,
+      peer: PeerInfo.isRequired,
       counter: PropTypes.number.isRequired,
       text: PropTypes.string,
       typing: PropTypes.string
     })).isRequired,
-    currentPeer: PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      type: PropTypes.oneOf(['user', 'group']).isRequired
-    }),
+    currentPeer: Peer,
     onSelect: PropTypes.func.isRequired
   };
 
@@ -53,12 +43,12 @@ class RecentGroup extends Component {
     const { items, currentPeer, onSelect } = this.props;
 
     return items.map((item, index) => {
-      const isActive = currentPeer.id === item.peerInfo.peer.id;
+      const isActive = isSamePeer(currentPeer, item.peer.peer);
 
       return (
         <RecentItem
           key={index}
-          peerInfo={item.peerInfo}
+          info={item.peer}
           active={isActive}
           counter={item.counter}
           text={item.text}

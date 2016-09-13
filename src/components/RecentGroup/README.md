@@ -1,7 +1,7 @@
 Basic SidebarGroup:
 
     const items = [{
-      peerInfo: {
+      peer: {
         peer: {
           id: 1,
           type: 'user'
@@ -10,8 +10,8 @@ Basic SidebarGroup:
         placeholder: 'orange'
       },
       counter: 6
-    },{
-      peerInfo: {
+    }, {
+      peer: {
         peer: {
           id: 2,
           type: 'user'
@@ -21,8 +21,8 @@ Basic SidebarGroup:
         image: 'https://www.gravatar.com/avatar/19c935592c57cbeeec09a3b3d23b5b10'
       },
       counter: 0
-    },{
-      peerInfo: {
+    }, {
+      peer: {
         peer: {
           id: 3,
           type: 'group'
@@ -33,6 +33,7 @@ Basic SidebarGroup:
       counter: 0,
       text: 'Lorem ipsum dolor sit amet, consectetur.'
     }];
+
     function handleSelect(peer) {
       alert(`peer ${peer.id}`);
     }
