@@ -40,3 +40,20 @@ const handleClick = () => alert('menu clicked');
   <DropdownItem onClick={handleClick}>Another menu item</DropdownItem>
 </Dropdown>
 ```
+
+Themed Dropdown:
+
+```
+const DropdownHeader = require('./DropdownHeader').default;
+const DropdownItem = require('./DropdownItem').default;
+const DropdownDivider = require('./DropdownDivider').default;
+const handleClick = () => alert('menu clicked');
+
+<Dropdown isOpen theme="secondary">
+  <DropdownHeader>Hello there</DropdownHeader>
+  <DropdownItem onClick={handleClick}>First menu item</DropdownItem>
+  <DropdownItem onClick={handleClick}>Very very very very loooong menu item</DropdownItem>
+  <DropdownDivider />
+  <DropdownItem onClick={handleClick}>Another menu item</DropdownItem>
+</Dropdown>
+```
