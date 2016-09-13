@@ -2,9 +2,22 @@ Basic Dropdown:
 
 ```
 const DropdownItem = require('./DropdownItem').default;
+const DropdownDivider = require('./DropdownDivider').default;
+const PeerAvatar = require('../PeerAvatar').default;
 const handleClick = () => alert('menu clicked');
+const user = {
+  title: 'Someone',
+  placeholder: 'green',
+  avatar: null
+};
 
 <Dropdown isOpen>
+
+  <DropdownItem>
+    <PeerAvatar peer={user} />
+    <b style={{ marginLeft: 8 }}>{user.title}</b>
+  </DropdownItem>
+  <DropdownDivider />
   <DropdownItem onClick={handleClick}>First menu item</DropdownItem>
   <DropdownItem onClick={handleClick}>Very very very very loooong menu item</DropdownItem>
   <DropdownItem onClick={handleClick}>Last menu item</DropdownItem>

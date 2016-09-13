@@ -54,7 +54,11 @@
 }
 
 .text {
-  display: block;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: center;
+  align-items: center;
   padding-top: 0;
   padding-right: var(--dropdown-padding-right);
   padding-bottom: 0;
@@ -109,21 +113,21 @@
 
 
 /* Themes */
-
 .primary {
-  & .item {
+  & .hovered {
     &:hover {
       cursor: pointer;
       background-color: var(--dropdown-item-hover-background-default);
+
       & .text {
-        color: white;
+        color: #fff;
       }
     }
   }
 }
 
 .secondary {
-  & .item {
+  & .hovered {
     &:hover {
       cursor: pointer;
       background-color: var(--dropdown-item-hover-background-secondary);
