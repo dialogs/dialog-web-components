@@ -2,19 +2,19 @@
  * Copyright 2016 Dialog LLC <info@dlg.im>
  */
 
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
 import ActivityUserProfile from './ActivityUserProfile';
 import ActivityGroupProfile from './ActivityGroupProfile';
 
-function ActivityProfile({ peerInfo }) {
+function ActivityProfile({ peerInfo, ...props }) {
   switch (peerInfo.type) {
     case 'user':
       return (
-        <ActivityUserProfile peerInfo={peerInfo} />
+        <ActivityUserProfile peerInfo={peerInfo} {...props} />
       );
     case 'group':
       return (
-        <ActivityGroupProfile peerInfo={peerInfo} />
+        <ActivityGroupProfile peerInfo={peerInfo} {...props} />
       );
     default:
       console.warn('ActivityProfile does not support this type of peer', peerInfo.type);

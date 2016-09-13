@@ -9,7 +9,6 @@
   --activity-profile-padding-left: 25px;
   --activity-profile-padding-bottom: 25px;
   --activity-profile-padding-right: 25px;
-
   --activity-profile-text-color: #000;
   --activity-profile-text-light-color: color(#000 alpha(50%));
   --activity-profile-contact-content-color: var(--indigo);
@@ -63,6 +62,20 @@
 
 .about {
   margin-top: 18px;
+}
+
+.aboutButton {
+  margin: 0;
+  padding: 6px;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.aboutAddIcon {
+  margin-right: 8px;
+  font-size: 22px;
+  line-height: 20px;
+  vertical-align: top;
 }
 
 .actions {

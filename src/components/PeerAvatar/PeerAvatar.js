@@ -20,7 +20,7 @@ class PeerAvatar extends Component {
       ])
     }).isRequired,
     size: PropTypes.oneOf(['tiny', 'small', 'medium', 'large', 'big']).isRequired,
-    online: PropTypes.bool.isRequired,
+    online: PropTypes.bool,
     onClick: PropTypes.func
   };
 

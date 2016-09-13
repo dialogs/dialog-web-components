@@ -6,6 +6,8 @@ import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
 import PeerAvatar from '../PeerAvatar/PeerAvatar';
 import IconButton from '../IconButton/IconButton';
+import Button from '../Button/Button';
+import Icon from '../Icon/Icon';
 import styles from './ActivityProfile.css';
 
 class ActivityUserProfile extends Component {
@@ -14,13 +16,15 @@ class ActivityUserProfile extends Component {
     peerInfo: PropTypes.shape({
       name: PropTypes.string.isRequired,
       nick: PropTypes.string.isRequired,
-      about: PropTypes.string.isRequired,
-      avatar: PropTypes.string.isRequired,
-      bigAvatar: PropTypes.string.isRequired,
+      about: PropTypes.string,
+      avatar: PropTypes.string,
+      bigAvatar: PropTypes.string,
       placeholder: PropTypes.string.isRequired,
-      presence: PropTypes.array.isRequired,
-      phones: PropTypes.array.isRequired,
-    }).isRequired
+      presence: PropTypes.string.isRequired,
+      emails: PropTypes.array.isRequired,
+      phones: PropTypes.array.isRequired
+    }).isRequired,
+    onAboutAdd: PropTypes.func
   };
 
   shouldComponentUpdate(nextProps) {
@@ -28,11 +32,70 @@ class ActivityUserProfile extends Component {
            nextProps.className !== this.props.className;
   }
 
+  renderAvatar() {
+    const { peerInfo: { name, avatarBig, placeholder } } = this.props;
+
+    return (
+      <PeerAvatar
+        peer={{
+          title: name,
+          avatar: avatarBig,
+          placeholder
+        }}
+        size="big"
+        className={styles.avatar}
+      />
+    );
+  }
+
+  renderName() {
+    const { peerInfo: { name } } = this.props;
+
+    if (!name) {
+      return null;
+    }
+
+    return (
+      <div className={styles.name}>{name}</div>
+    );
+  }
+
+  renderNick() {
+    const { peerInfo: { nick } } = this.props;
+
+    if (!nick) {
+      return null;
+    }
+
+    return (
+      <div className={styles.nick}>{`@${nick}`}</div>
+    );
+  }
+
+  renderPresence() {
+    const { peerInfo: { presence } } = this.props;
+
+    if (!presence) {
+      return null;
+    }
+
+    return (
+      <div className={styles.presence}>{presence}</div>
+    );
+  }
+
   renderAbout() {
-    const { peerInfo: { about } } = this.props;
+    const { peerInfo: { about }, onAboutAdd } = this.props;
 
     if (!about) {
-      return null;
+      return (
+        <div className={styles.about}>
+          <Button theme="link" onClick={onAboutAdd} className={styles.aboutButton}>
+            <Icon glyph="add_circle_outline" className={styles.aboutAddIcon} />
+            Add About
+          </Button>
+        </div>
+      );
     }
 
     return (
@@ -75,24 +138,15 @@ class ActivityUserProfile extends Component {
   }
 
   render() {
-    const { className, peerInfo } = this.props;
+    const { className } = this.props;
     const userProfileClassName = classNames(styles.root, className);
 
     return (
       <div className={userProfileClassName}>
-        <PeerAvatar
-          peer={{
-            title: peerInfo.name,
-            avatar: peerInfo.avatarBig,
-            placeholder: peerInfo.placeholder
-          }}
-          size="big"
-          className={styles.avatar}
-        />
-
-        <div className={styles.name}>{peerInfo.name}</div>
-        <div className={styles.nick}>@{peerInfo.nick}</div>
-        <div className={styles.presence}>{peerInfo.presence}</div>
+        {this.renderAvatar()}
+        {this.renderName()}
+        {this.renderNick()}
+        {this.renderPresence()}
         {this.renderAbout()}
         {this.renderProfileActions()}
         {this.renderProfileContacts()}

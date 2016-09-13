@@ -27,13 +27,14 @@ const group = {
   adminId: 1903089995,
   presence: '2 members, 1 online'
 };
+const alert = () => window.alert('!!!');
 
 <div>
   <div style={{ width: '50%', float: 'left' }}>
-    <ActivityProfile peerInfo={user} />
+    <ActivityProfile peerInfo={user} onAboutAdd={alert} />
   </div>
   <div style={{ width: '50%', float: 'left' }}>
-    <ActivityProfile peerInfo={group} />
+    <ActivityProfile peerInfo={group} onAboutAdd={alert} />
   </div>
   <div style={{ clear: 'both' }} />
 </div>
