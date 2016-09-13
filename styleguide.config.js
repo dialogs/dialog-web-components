@@ -90,7 +90,8 @@ module.exports = {
     name: 'Activity',
     components() {
       return [
-        component('ActivityProfile')
+        component('ActivityProfile'),
+        component('ActivityList')
       ];
     }
   }],
