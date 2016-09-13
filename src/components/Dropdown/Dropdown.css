@@ -13,6 +13,8 @@
   --dropdown-item-hover-background: color(#000 alpha(10%));
   --dropdown-divider-color: color(#000 alpha(15%));
   --dropdown-min-width: 200px;
+  --dropdown-header-font-size: 14px;
+  --dropdown-header-color: color(#000 alpha(50%));
 }
 
 .root,
@@ -86,3 +88,24 @@
     background-color: var(--dropdown-divider-color);
   }
 }
+
+.header {
+  all: initial;
+  font-family: var(--dropdown-font-family);
+  font-size: var(--dropdown-header-font-size);
+  color: var(--dropdown-header-color);
+  text-transform: uppercase;
+  cursor: default;
+  user-select: none;
+  font-weight: 500;
+  letter-spacing: -0.2px;
+  line-height: 40px;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding-top: 0;
+  padding-right: var(--dropdown-padding-right);
+  padding-bottom: 0;
+  padding-left: var(--dropdown-padding-left);
+}
+
