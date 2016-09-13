@@ -1,6 +1,6 @@
 Basic Recent Item:
 
-    const peerInfo = {
+    const info = {
       peer: {
         id: 1,
         type: 'user'
@@ -14,17 +14,17 @@ Basic Recent Item:
 
     <div style={{ width: 270, background: '#f5f5f5' }}>
       <RecentItem
-        peerInfo={peerInfo}
+        info={info}
         counter={0}
         onSelect={handleSelect}
       />
       <RecentItem
-        peerInfo={peerInfo}
+        info={info}
         counter={10}
         onSelect={handleSelect}
       />
       <RecentItem
-        peerInfo={peerInfo}
+        info={info}
         counter={0}
         active
         onSelect={handleSelect}
@@ -57,20 +57,20 @@ Extended Recent Item:
 
     <div style={{ width: 270, background: '#f5f5f5' }}>
       <RecentItem
-        peerInfo={peerInfo1}
+        info={peerInfo1}
         counter={0}
         text={text}
         onSelect={handleSelect}
         active
       />
       <RecentItem
-        peerInfo={peerInfo1}
+        info={peerInfo1}
         counter={10}
         text={text}
         onSelect={handleSelect}
       />
       <RecentItem
-        peerInfo={peerInfo2}
+        info={peerInfo2}
         counter={0}
         text={text}
         onSelect={handleSelect}
