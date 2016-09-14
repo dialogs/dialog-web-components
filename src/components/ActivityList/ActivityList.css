@@ -1,0 +1,50 @@
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+:root {
+  --activity-list-font-family: var(--default-font-family);
+
+  --activity-list-item-hover-background-color: #f2f2f2;
+  --activity-list-item-border-color: color(#000 alpha(10%));
+  --activity-list-item-padding: 30px;
+}
+
+.list {
+  all: initial;
+  font-family: var(--activity-list-font-family);
+}
+
+.item {
+  height: 55px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-items: center;
+  padding: 0 var(--activity-list-item-padding);
+
+  &:hover {
+    background-color: var(--activity-list-item-hover-background-color);
+  }
+
+  &:first-child {
+    & .itemWrapper {
+      border-top: 1px solid var(--activity-list-item-border-color);
+    }
+  }
+}
+
+.active {
+  background-color: var(--activity-list-item-hover-background-color);
+}
+
+.itemWrapper {
+  border-bottom: 1px solid var(--activity-list-item-border-color);
+  flex: 1 1 auto;
+  align-items: center;
+  display: flex;
+  width: 100%;
+}

@@ -1,0 +1,106 @@
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ */
+@import '../../styles/variables.css';
+
+:root {
+  --activity-profile-font-family: var(--default-font-family);
+  --activity-profile-padding-top: 25px;
+  --activity-profile-padding-left: 25px;
+  --activity-profile-padding-bottom: 25px;
+  --activity-profile-padding-right: 25px;
+  --activity-profile-text-color: #000;
+  --activity-profile-text-light-color: color(#000 alpha(50%));
+  --activity-profile-contact-content-color: var(--indigo);
+  --activity-profile-title-font-size: 26px;
+  --activity-profile-text-font-size: 16px;
+}
+
+.root {
+  all: initial;
+  font-family: var(--activity-profile-font-family);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  padding-top: var(--activity-profile-padding-top);
+  padding-left: var(--activity-profile-padding-left);
+  padding-bottom: var(--activity-profile-padding-bottom);
+  padding-right: var(--activity-profile-padding-right);
+}
+
+.avatar {
+}
+
+.name {
+  font-size: var(--activity-profile-title-font-size);
+  color: var(--activity-profile-text-color);
+  letter-spacing: -0.4px;
+  line-height: 1.2;
+  margin-top: 18px;
+}
+
+.nick,
+.status,
+.about {
+  font-size: var(--activity-profile-text-font-size);
+  color: var(--activity-profile-text-color);
+  line-height: 1.3;
+  letter-spacing: -0.4px;
+}
+
+.nick {
+  margin-top: 8px;
+}
+
+.presence,
+.creator {
+  color: var(--activity-profile-text-light-color);
+  margin-top: 10px;
+}
+
+.about {
+  margin-top: 18px;
+}
+
+.aboutButton {
+  margin: 0;
+  padding: 6px;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.aboutAddIcon {
+  margin-right: 8px;
+  font-size: 22px;
+  line-height: 20px;
+  vertical-align: top;
+}
+
+.actions {
+  margin-top: 30px;
+}
+
+.button {
+  margin: 0 7px;
+}
+
+.contacts {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.contactTitle {
+  font-size: calc(var(--activity-profile-text-font-size) - 2);
+  line-height: 22px;
+  letter-spacing: -0.27px;
+  color: var(--activity-profile-text-light-color);
+}
+
+.contactContent {
+  font-size: var(--activity-profile-text-font-size);
+  line-height: 22px;
+  letter-spacing: -0.4px;
+  color: var(--activity-profile-contact-content-color);
+}

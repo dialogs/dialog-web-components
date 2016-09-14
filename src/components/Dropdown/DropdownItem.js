@@ -16,10 +16,13 @@ class DropdownItem extends Component {
   }
 
   render() {
-    const className = classNames(styles.item, this.props.className);
+    const { className, onClick, children } = this.props;
+    const dropdownItemClassName = classNames(styles.item, {
+      [styles.hovered]: onClick
+    }, className);
 
     return (
-      <div className={className} onClick={this.props.onClick}>
+      <div className={dropdownItemClassName} onClick={this.props.onClick}>
         <span className={styles.text}>{this.props.children}</span>
       </div>
     );

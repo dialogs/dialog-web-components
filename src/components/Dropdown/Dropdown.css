@@ -3,6 +3,7 @@
 :root {
   --dropdown-font-family: var(--default-font-family);
   --dropdown-font-size: 16px;
+  --dropdown-default-font-color: #000;
   --dropdown-padding-top: 9px;
   --dropdown-padding-right: 20px;
   --dropdown-padding-bottom: 10px;
@@ -10,9 +11,12 @@
   --dropdown-border-radius: var(--default-border-radius);
   --dropdown-z-index: var(--z-index-dropdown);
   --dropdown-item-height: 37px;
-  --dropdown-item-hover-background: color(#000 alpha(10%));
+  --dropdown-item-hover-background-default: var(--purple-two);
+  --dropdown-item-hover-background-secondary: color(#000 alpha(10%));
   --dropdown-divider-color: color(#000 alpha(15%));
   --dropdown-min-width: 200px;
+  --dropdown-header-font-size: 14px;
+  --dropdown-header-color: color(#000 alpha(50%));
 }
 
 .root,
@@ -47,15 +51,14 @@
 .item {
   display: table-row;
   box-sizing: border-box;
-
-  &:hover {
-    cursor: pointer;
-    background-color: var(--dropdown-item-hover-background);
-  }
 }
 
 .text {
-  display: block;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: center;
+  align-items: center;
   padding-top: 0;
   padding-right: var(--dropdown-padding-right);
   padding-bottom: 0;
@@ -65,6 +68,7 @@
   font-family: var(--dropdown-font-family);
   font-size: var(--dropdown-font-size);
   line-height: var(--dropdown-item-height);
+  color: var(--dropdown-default-font-color);
 }
 
 .divider {
@@ -84,5 +88,49 @@
     height: 1px;
     content: '';
     background-color: var(--dropdown-divider-color);
+  }
+}
+
+.header {
+  all: initial;
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  padding-top: 0;
+  padding-right: var(--dropdown-padding-right);
+  padding-bottom: 0;
+  padding-left: var(--dropdown-padding-left);
+  cursor: default;
+  user-select: none;
+  letter-spacing: -0.2px;
+  text-transform: uppercase;
+  font-family: var(--dropdown-font-family);
+  font-size: var(--dropdown-header-font-size);
+  color: var(--dropdown-header-color);
+  font-weight: 500;
+  line-height: 40px;
+}
+
+
+/* Themes */
+.primary {
+  & .hovered {
+    &:hover {
+      cursor: pointer;
+      background-color: var(--dropdown-item-hover-background-default);
+
+      & .text {
+        color: #fff;
+      }
+    }
+  }
+}
+
+.secondary {
+  & .hovered {
+    &:hover {
+      cursor: pointer;
+      background-color: var(--dropdown-item-hover-background-secondary);
+    }
   }
 }
