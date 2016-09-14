@@ -1,36 +1,15 @@
-Primary Button:
+### Primary Button
 
-    <div>
-      <Button theme="primary" size="small">
-        Small
-      </Button>
-      <Button theme="primary">
-        Default
-      </Button>
-      <Button theme="primary" size="large">
-        Large
-      </Button>
-      <Button theme="primary" disabled>
-        Disabled
-      </Button>
-    </div>
+It has different types of themes. You can change themes by changing `theme` prop.
 
-Link Button:
-
-    <div>
-      <Button theme="link" size="small">
-        Small
-      </Button>
-      <Button theme="link">
-        Default
-      </Button>
-      <Button theme="link" size="large">
-        Large
-      </Button>
-      <Button theme="link" disabled>
-        Disabled
-      </Button>
-    </div>
+```
+<div>
+  <Button theme="primary">Primary</Button>
+  <Button theme="success">Success</Button>
+  <Button theme="danger">Danger</Button>
+  <Button theme="link">Link</Button>
+</div>
+```
 
 Wide Button:
 

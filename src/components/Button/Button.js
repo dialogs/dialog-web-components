@@ -14,7 +14,7 @@ class Button extends Component {
     rounded: PropTypes.bool.isRequired,
     loading: PropTypes.bool.isRequired,
     type: PropTypes.oneOf(['submit', 'reset', 'button', 'menu']).isRequired,
-    theme: PropTypes.oneOf(['primary', 'link']).isRequired,
+    theme: PropTypes.oneOf(['primary', 'success', 'link']).isRequired,
     size: PropTypes.oneOf(['small', 'normal', 'large']).isRequired,
     onClick: PropTypes.func
   };

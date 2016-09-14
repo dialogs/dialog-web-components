@@ -23,6 +23,18 @@
   --button-primary-disabled-background-color: color(var(--button-primary-background-color) blackness(50%));
   --button-primary-color: #fff;
 
+  --button-success-background-color: var(--medium-green);
+  --button-success-hover-background-color: color(var(--button-success-background-color) tint(10%));
+  --button-success-active-background-color: color(var(--button-success-background-color) shade(5%));
+  --button-success-disabled-background-color: color(var(--button-success-background-color) blackness(50%));
+  --button-success-color: #fff;
+
+  --button-danger-background-color: var(--lipstick);
+  --button-danger-hover-background-color: color(var(--button-danger-background-color) tint(10%));
+  --button-danger-active-background-color: color(var(--button-danger-background-color) shade(5%));
+  --button-danger-disabled-background-color: color(var(--button-danger-background-color) blackness(50%));
+  --button-danger-color: #fff;
+
   --button-link-color: var(--violet-blue-two);
   --button-link-hover-color: color(var(--button-link-color) alpha(70%));
   --button-link-disabled-color: color(var(--button-link-color) blackness(50%));
@@ -88,6 +100,47 @@
 
   &[disabled] {
     background-color: var(--button-primary-disabled-background-color);
+  }
+}
+
+.success {
+  background-color: var(--button-success-background-color);
+  color: var(--button-success-color);
+
+  &:hover:enabled,
+  &:focus:enabled {
+    background-color: var(--button-success-hover-background-color);
+    box-shadow: 0 2px 4px color(#000 alpha(25%));
+  }
+
+  &:active:enabled {
+    background-color: var(--button-success-active-background-color);
+    box-shadow: 0 2px 1px color(#000 alpha(25%));
+  }
+
+  &[disabled] {
+    background-color: var(--button-success-disabled-background-color);
+  }
+}
+
+
+.danger {
+  background-color: var(--button-danger-background-color);
+  color: var(--button-danger-color);
+
+  &:hover:enabled,
+  &:focus:enabled {
+    background-color: var(--button-danger-hover-background-color);
+    box-shadow: 0 2px 4px color(#000 alpha(25%));
+  }
+
+  &:active:enabled {
+    background-color: var(--button-danger-active-background-color);
+    box-shadow: 0 2px 1px color(#000 alpha(25%));
+  }
+
+  &[disabled] {
+    background-color: var(--button-danger-disabled-background-color);
   }
 }
 
