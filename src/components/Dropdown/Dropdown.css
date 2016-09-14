@@ -56,9 +56,6 @@
 .text {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
-  align-content: center;
-  align-items: center;
   padding-top: 0;
   padding-right: var(--dropdown-padding-right);
   padding-bottom: 0;
@@ -68,6 +65,9 @@
   font-family: var(--dropdown-font-family);
   font-size: var(--dropdown-font-size);
   line-height: var(--dropdown-item-height);
+  justify-content: flex-start;
+  align-content: center;
+  align-items: center;
   color: var(--dropdown-default-font-color);
 }
 
@@ -106,9 +106,9 @@
   text-transform: uppercase;
   font-family: var(--dropdown-font-family);
   font-size: var(--dropdown-header-font-size);
-  color: var(--dropdown-header-color);
   font-weight: 500;
   line-height: 40px;
+  color: var(--dropdown-header-color);
 }
 
 

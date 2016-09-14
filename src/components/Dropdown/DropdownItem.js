@@ -22,8 +22,8 @@ class DropdownItem extends Component {
     }, className);
 
     return (
-      <div className={dropdownItemClassName} onClick={this.props.onClick}>
-        <span className={styles.text}>{this.props.children}</span>
+      <div className={dropdownItemClassName} onClick={onClick}>
+        <span className={styles.text}>{children}</span>
       </div>
     );
   }

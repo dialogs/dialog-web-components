@@ -6,7 +6,6 @@
 
 :root {
   --activity-list-font-family: var(--default-font-family);
-
   --activity-list-item-hover-background-color: #f2f2f2;
   --activity-list-item-border-color: color(#000 alpha(10%));
   --activity-list-item-padding: 30px;
@@ -18,13 +17,13 @@
 }
 
 .item {
-  height: 55px;
   display: flex;
   flex-direction: column;
+  height: 55px;
+  padding: 0 var(--activity-list-item-padding);
   justify-content: flex-start;
   align-content: flex-start;
   align-items: center;
-  padding: 0 var(--activity-list-item-padding);
 
   &:hover {
     background-color: var(--activity-list-item-hover-background-color);
@@ -42,9 +41,9 @@
 }
 
 .itemWrapper {
+  display: flex;
+  width: 100%;
   border-bottom: 1px solid var(--activity-list-item-border-color);
   flex: 1 1 auto;
   align-items: center;
-  display: flex;
-  width: 100%;
 }

@@ -18,36 +18,36 @@
 
 .root {
   all: initial;
-  font-family: var(--activity-profile-font-family);
   display: flex;
   flex-direction: column;
+  padding-top: var(--activity-profile-padding-top);
+  padding-right: var(--activity-profile-padding-right);
+  padding-bottom: var(--activity-profile-padding-bottom);
+  padding-left: var(--activity-profile-padding-left);
+  text-align: center;
+  font-family: var(--activity-profile-font-family);
   align-items: center;
   justify-content: flex-start;
-  text-align: center;
-  padding-top: var(--activity-profile-padding-top);
-  padding-left: var(--activity-profile-padding-left);
-  padding-bottom: var(--activity-profile-padding-bottom);
-  padding-right: var(--activity-profile-padding-right);
 }
 
 .avatar {
 }
 
 .name {
-  font-size: var(--activity-profile-title-font-size);
-  color: var(--activity-profile-text-color);
-  letter-spacing: -0.4px;
-  line-height: 1.2;
   margin-top: 18px;
+  letter-spacing: -0.4px;
+  font-size: var(--activity-profile-title-font-size);
+  line-height: 1.2;
+  color: var(--activity-profile-text-color);
 }
 
 .nick,
 .status,
 .about {
-  font-size: var(--activity-profile-text-font-size);
-  color: var(--activity-profile-text-color);
-  line-height: 1.3;
   letter-spacing: -0.4px;
+  font-size: var(--activity-profile-text-font-size);
+  line-height: 1.3;
+  color: var(--activity-profile-text-color);
 }
 
 .nick {
@@ -56,8 +56,8 @@
 
 .presence,
 .creator {
-  color: var(--activity-profile-text-light-color);
   margin-top: 10px;
+  color: var(--activity-profile-text-light-color);
 }
 
 .about {
@@ -73,9 +73,9 @@
 
 .aboutAddIcon {
   margin-right: 8px;
+  vertical-align: top;
   font-size: 22px;
   line-height: 20px;
-  vertical-align: top;
 }
 
 .actions {
@@ -92,15 +92,15 @@
 }
 
 .contactTitle {
+  letter-spacing: -0.27px;
   font-size: calc(var(--activity-profile-text-font-size) - 2);
   line-height: 22px;
-  letter-spacing: -0.27px;
   color: var(--activity-profile-text-light-color);
 }
 
 .contactContent {
+  letter-spacing: -0.4px;
   font-size: var(--activity-profile-text-font-size);
   line-height: 22px;
-  letter-spacing: -0.4px;
   color: var(--activity-profile-contact-content-color);
 }
