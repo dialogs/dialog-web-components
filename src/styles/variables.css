@@ -7,7 +7,7 @@
 
 :root {
   --font-apple: -apple-system, 'BlinkMacSystemFont';
-  --font-fallback: 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  --font-fallback: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   --font-emoji: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   --default-font-family: var(--font-apple), var(--font-fallback), var(--font-emoji);
   --code-font-family: 'Fira Code', 'Consolas', 'Monaco', 'Roboto Mono', monospace;
