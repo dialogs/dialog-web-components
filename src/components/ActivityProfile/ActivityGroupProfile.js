@@ -3,9 +3,9 @@
  */
 
 import React, { Component, PropTypes } from 'react';
+import { PeerInfo } from '../../PropTypes';
 import classNames from 'classnames';
 import PeerAvatar from '../PeerAvatar/PeerAvatar';
-import IconButton from '../IconButton/IconButton';
 import Button from '../Button/Button';
 import Icon from '../Icon/Icon';
 import styles from './ActivityProfile.css';
@@ -13,21 +13,16 @@ import styles from './ActivityProfile.css';
 class ActivityGroupProfile extends Component {
   static propTypes = {
     className: PropTypes.string,
-    peerInfo: PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      creator: PropTypes.string.isRequired,
-      about: PropTypes.string,
-      avatar: PropTypes.string,
-      bigAvatar: PropTypes.string,
-      placeholder: PropTypes.string.isRequired,
-      presence: PropTypes.string.isRequired
-    }).isRequired,
+    peerInfo: PeerInfo.isRequired,
+    children: PropTypes.node,
     onAboutAdd: PropTypes.func
   };
 
   shouldComponentUpdate(nextProps) {
     return nextProps.peerInfo !== this.props.peerInfo ||
-           nextProps.className !== this.props.className;
+           nextProps.className !== this.props.className ||
+           nextProps.children !== this.props.children ||
+           nextProps.onAboutAdd !== this.props.onAboutAdd;
   }
 
   renderAvatar() {
@@ -89,16 +84,17 @@ class ActivityGroupProfile extends Component {
     );
   }
 
-  renderProfileActions() {
+  renderChildren() {
+    const { children } = this.props;
+
+    if (!children) {
+      return null;
+    }
+
     return (
-      <div className={styles.actions}>
-        <IconButton glyph="phone" size="large" className={styles.button} />
-        <IconButton glyph="person_add" size="large" className={styles.button} />
-        <IconButton glyph="more" size="large" className={styles.button} />
-      </div>
+      <div className={styles.actions}>{children}</div>
     );
   }
-
 
   render() {
     const { className } = this.props;
@@ -110,7 +106,7 @@ class ActivityGroupProfile extends Component {
         {this.renderName()}
         {this.renderCreator()}
         {this.renderAbout()}
-        {this.renderProfileActions()}
+        {this.renderChildren()}
       </div>
     );
   }

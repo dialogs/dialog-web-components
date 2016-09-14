@@ -3,9 +3,9 @@
  */
 
 import React, { Component, PropTypes } from 'react';
+import { PeerInfo } from '../../PropTypes';
 import classNames from 'classnames';
 import PeerAvatar from '../PeerAvatar/PeerAvatar';
-import IconButton from '../IconButton/IconButton';
 import Button from '../Button/Button';
 import Icon from '../Icon/Icon';
 import styles from './ActivityProfile.css';
@@ -13,23 +13,16 @@ import styles from './ActivityProfile.css';
 class ActivityUserProfile extends Component {
   static propTypes = {
     className: PropTypes.string,
-    peerInfo: PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      nick: PropTypes.string.isRequired,
-      about: PropTypes.string,
-      avatar: PropTypes.string,
-      bigAvatar: PropTypes.string,
-      placeholder: PropTypes.string.isRequired,
-      presence: PropTypes.string.isRequired,
-      emails: PropTypes.array.isRequired,
-      phones: PropTypes.array.isRequired
-    }).isRequired,
+    peerInfo: PeerInfo.isRequired,
+    children: PropTypes.node,
     onAboutAdd: PropTypes.func
   };
 
   shouldComponentUpdate(nextProps) {
     return nextProps.peerInfo !== this.props.peerInfo ||
-           nextProps.className !== this.props.className;
+           nextProps.className !== this.props.className ||
+           nextProps.children !== this.props.children ||
+           nextProps.onAboutAdd !== this.props.onAboutAdd;
   }
 
   renderAvatar() {
@@ -103,14 +96,18 @@ class ActivityUserProfile extends Component {
     );
   }
 
-  renderProfileActions() {
+  renderChildren() {
+    const { children } = this.props;
+
+    if (!children) {
+      return null;
+    }
+
     return (
-      <div className={styles.actions}>
-        <IconButton glyph="phone" size="large" className={styles.button} />
-        <IconButton glyph="more" size="large" className={styles.button} />
-      </div>
+      <div className={styles.actions}>{children}</div>
     );
   }
+
 
   renderProfileContacts() {
     const { peerInfo } = this.props;
@@ -148,7 +145,7 @@ class ActivityUserProfile extends Component {
         {this.renderNick()}
         {this.renderPresence()}
         {this.renderAbout()}
-        {this.renderProfileActions()}
+        {this.renderChildren()}
         {this.renderProfileContacts()}
       </div>
     );

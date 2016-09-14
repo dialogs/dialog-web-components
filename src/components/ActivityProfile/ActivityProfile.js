@@ -3,6 +3,7 @@
  */
 
 import React from 'react';
+import { PeerInfo } from '../../PropTypes';
 import ActivityUserProfile from './ActivityUserProfile';
 import ActivityGroupProfile from './ActivityGroupProfile';
 
@@ -21,5 +22,9 @@ function ActivityProfile({ peerInfo, ...props }) {
       return null;
   }
 }
+
+ActivityProfile.propTypes = {
+  peerInfo: PeerInfo.isRequired
+};
 
 export default ActivityProfile;

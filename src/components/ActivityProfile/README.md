@@ -31,10 +31,17 @@ const alert = () => window.alert('!!!');
 
 <div>
   <div style={{ width: '50%', float: 'left' }}>
-    <ActivityProfile peerInfo={user} onAboutAdd={alert} />
+    <ActivityProfile peerInfo={user} onAboutAdd={alert}>
+      <IconButton glyph="phone" size="large" />
+      <IconButton glyph="more" size="large" />
+    </ActivityProfile>
   </div>
   <div style={{ width: '50%', float: 'left' }}>
-    <ActivityProfile peerInfo={group} onAboutAdd={alert} />
+    <ActivityProfile peerInfo={group} onAboutAdd={alert}>
+      <IconButton glyph="phone" size="large" />
+      <IconButton glyph="person_add" size="large" />
+      <IconButton glyph="more" size="large" />
+    </ActivityProfile>
   </div>
   <div style={{ clear: 'both' }} />
 </div>
