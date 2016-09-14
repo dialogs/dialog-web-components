@@ -4,7 +4,7 @@
 
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
-import styles from './Modal.css';
+import styles from '../Modal/Modal.css';
 
 class ModalBody extends Component {
   static propTypes = {

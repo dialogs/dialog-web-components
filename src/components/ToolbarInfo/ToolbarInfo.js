@@ -4,7 +4,7 @@
 
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
-import styles from './Toolbar.css';
+import styles from '../Toolbar/Toolbar.css';
 
 class Toolbar extends Component {
   static propTypes = {

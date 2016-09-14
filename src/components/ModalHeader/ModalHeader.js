@@ -4,9 +4,9 @@
 
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
-import styles from './Modal.css';
+import styles from '../Modal/Modal.css';
 
-class ModalFooter extends Component {
+class ModalHeader extends Component {
   static propTypes = {
     className: PropTypes.string,
     withBorder: PropTypes.bool,
@@ -25,16 +25,16 @@ class ModalFooter extends Component {
 
   render() {
     const { children, withBorder, className } = this.props;
-    const footerClassName = classNames(styles.footer, {
+    const headerClassName = classNames(styles.header, {
       [styles.border]: withBorder
     }, className);
 
     return (
-      <footer className={footerClassName}>
+      <header className={headerClassName}>
         {children}
-      </footer>
+      </header>
     );
   }
 }
 
-export default ModalFooter;
+export default ModalHeader;

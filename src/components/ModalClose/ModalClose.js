@@ -5,7 +5,7 @@
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
 import Icon from '../Icon/Icon';
-import styles from './Modal.css';
+import styles from '../Modal/Modal.css';
 
 /**
  * Close modal button
