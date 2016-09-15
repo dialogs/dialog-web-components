@@ -48,12 +48,13 @@
     "lodash": "4.15.0",
     "react": "15.3.1",
     "react-dom": "15.3.1",
-    "react-modal": "1.4.0"
+    "react-modal": "1.4.0",
+    "react-tether": "^0.5.2"
   },
   "devDependencies": {
     "@dlghq/babel-preset-dialog": "2.2.0",
     "@dlghq/eslint-config-dialog": "1.6.0",
-    "@dlghq/postcss-dialog": "1.1.0",
+    "@dlghq/postcss-dialog": "1.2.0",
     "@dlghq/stylelint-config-dialog": "0.6.1",
     "buildbranch": "1.0.0",
     "chalk": "1.1.3",
