@@ -19,12 +19,12 @@ class Toolbar extends Component {
 
   render() {
     const { className, children } = this.props;
-    const infoClassName = classNames(styles.root, className);
+    const toolbarClassName = classNames(styles.root, className);
 
     return (
-      <div className={infoClassName}>
+      <header className={toolbarClassName}>
         {children}
-      </div>
+      </header>
     );
   }
 }
