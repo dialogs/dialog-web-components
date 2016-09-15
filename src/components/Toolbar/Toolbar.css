@@ -20,6 +20,7 @@
 
 .root {
   all: initial;
+  z-index: var(--z-index-toolbar);
   display: flex;
   flex-direction: row;
   box-sizing: border-box;
@@ -32,7 +33,6 @@
   box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.14);
   font-family: var(--toolbar-font-family);
   justify-content: flex-start;
-  z-index: var(--z-index-toolbar);
 }
 
 /* Layout */

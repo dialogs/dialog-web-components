@@ -17,8 +17,8 @@
 }
 
 .container {
-  overflow-y: scroll;
   overflow-x: hidden;
+  overflow-y: scroll;
 
   &::-webkit-scrollbar {
     width: var(--scroller-width);

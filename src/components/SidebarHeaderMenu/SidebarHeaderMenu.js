@@ -5,6 +5,7 @@
 import React, { Component, PropTypes } from 'react';
 import TetherComponent from 'react-tether';
 import classNames from 'classnames';
+import Icon from '../Icon/Icon';
 import styles from '../SidebarHeader/SidebarHeader.css';
 
 class SidebarHeaderMenu extends Component {
@@ -43,11 +44,11 @@ class SidebarHeaderMenu extends Component {
   }
 
   setListener() {
-    document.addEventListener('click', this.handleMenuClose)
+    document.addEventListener('click', this.handleMenuClose);
   }
 
   removeListener() {
-    document.removeEventListener('click', this.handleMenuClose)
+    document.removeEventListener('click', this.handleMenuClose);
   }
 
   renderToggler() {

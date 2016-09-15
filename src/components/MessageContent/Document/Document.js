@@ -65,7 +65,7 @@ class Document extends Component {
       <div className={styles.info}>
         <div className={styles.filename}>{fileName}</div>
         <div className={styles.sizeBlock}>
-          <Icon glyph="arrow_downward" className={styles.downloadArrow}/>
+          <Icon glyph="arrow_downward" className={styles.downloadArrow} />
           <span className={styles.size}>{fileSize}</span>
         </div>
       </div>
