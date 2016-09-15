@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import Img from '../../../Img/Img';
+import Img from '../../Img/Img';
 import styles from './Photo.css';
 
 class Photo extends Component {

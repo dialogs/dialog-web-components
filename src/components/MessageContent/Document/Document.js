@@ -1,14 +1,14 @@
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
-import Icon from '../../../Icon/Icon';
+import Icon from '../../Icon';
 import styles from './Document.css';
 
 class Document extends Component {
   static propTypes = {
-    fileExtension: PropTypes.string.isRequired,
+    fileUrl: PropTypes.string.isRequired,
     fileName: PropTypes.string.isRequired,
     fileSize: PropTypes.string.isRequired,
-    fileUrl: PropTypes.string.isRequired,
+    fileExtension: PropTypes.string.isRequired,
     isUploading: PropTypes.bool.isRequired
   };
 

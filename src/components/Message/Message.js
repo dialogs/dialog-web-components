@@ -8,10 +8,10 @@ import styles from './Message.css';
 class Message extends Component {
   static propTypes = {
     message: PropTypes.shape({
+      rid: PropTypes.string.isRequired,
       date: PropTypes.string.isRequired,
-      reactions: PropTypes.object.isRequired,
-      rid: PropTypes.number.isRequired,
-      state: PropTypes.object.isRequired,
+      reactions: PropTypes.array.isRequired,
+      state: PropTypes.string.isRequired,
       sender: PropTypes.object.isRequired,
       content: PropTypes.object.isRequired
     }).isRequired
@@ -23,9 +23,12 @@ class Message extends Component {
 
   renderState() {
     const { message: { state } } = this.props;
+    if (state === 'unknown') {
+      return null;
+    }
 
     return (
-      <MessageState state={state.state} readBy={state.readBy} />
+      <MessageState state={state} />
     );
   }
 

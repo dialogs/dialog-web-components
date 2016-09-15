@@ -20,6 +20,7 @@ class IconButton extends Component {
 
   static defaultProps = {
     size: 'normal',
+    flat: false,
     disabled: false
   };
 

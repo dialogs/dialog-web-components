@@ -8,7 +8,7 @@ import styles from './MessageState.css';
 
 class MessageState extends Component {
   static propTypes = {
-    state: PropTypes.oneOf(['SENDING', 'SENT', 'READ', 'ERROR']).isRequired,
+    state: PropTypes.oneOf(['sending', 'sent', 'read', 'error']).isRequired,
     readBy: PropTypes.arrayOf(PropTypes.shape({
       title: PropTypes.string,
       avatar: PropTypes.string,
@@ -25,19 +25,19 @@ class MessageState extends Component {
     const { state, readBy } = this.props;
 
     switch (state) {
-      case 'SENDING':
+      case 'sending':
         return (
           <MessageSending />
         );
-      case 'SENT':
+      case 'sent':
         return (
           <MessageSent />
         );
-      case 'READ':
+      case 'read':
         return (
           <MessageRead readBy={readBy} />
         );
-      case 'ERROR':
+      case 'error':
       default:
         return (
           <MessageError />
