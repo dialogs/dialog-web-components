@@ -9,12 +9,12 @@ import Document from './Document/Document';
 function MessageContent({ content }) {
   switch (content.type) {
     case 'text':
-      return <Text text={content.text}/>;
+      return <Text text={content.text} />;
 
     case 'service':
-      return <Service text={content.text}/>;
+      return <Service text={content.text} />;
 
-      case 'photo':
+    case 'photo':
       return (
         <Photo
           fileUrl={content.fileUrl}
@@ -36,13 +36,15 @@ function MessageContent({ content }) {
         />
       );
     default:
-      return <pre>{JSON.stringify(content)}</pre>;
+      return (
+        <pre>{JSON.stringify(content)}</pre>
+      );
   }
 }
 
 MessageContent.propTypes = {
   content: PropTypes.shape({
-    content: PropTypes.oneOf([
+    type: PropTypes.oneOf([
       'text',
       'service',
       'photo',
