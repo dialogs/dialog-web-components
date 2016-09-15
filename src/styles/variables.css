@@ -22,6 +22,7 @@
   --default-transition-duration: 150ms;
   /* Layers */
   --z-index-dropdown: 10;
+  --z-index-toolbar: 1;
   /* Colors */
   --color-primary: #8601b0;
   --color-empty: #b8b8b8;
