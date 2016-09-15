@@ -9,31 +9,25 @@ import styles from '../Toolbar/Toolbar.css';
 class Toolbar extends Component {
   static propTypes = {
     className: PropTypes.string,
-    peerInfo: PropTypes.shape({
-      peer: PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        type: PropTypes.oneOf(['user', 'group']).isRequired
-      }).isRequired,
-      title: PropTypes.string.isRequired,
-      placeholder: PropTypes.string.isRequired,
-      image: PropTypes.string,
-      status: PropTypes.string
+    info: PropTypes.shape({
+      name: PropTypes.string,
+      presence: PropTypes.string
     }).isRequired
   };
 
   shouldComponentUpdate(nextProps) {
     return nextProps.className !== this.props.className ||
-           nextProps.peerInfo !== this.props.peerInfo;
+           nextProps.info !== this.props.info;
   }
 
   render() {
-    const { className, peerInfo: { title, status } } = this.props;
+    const { className, info: { name, presence } } = this.props;
     const infoClassName = classNames(styles.info, className);
 
     return (
       <div className={infoClassName}>
-        <div className={styles.title}>{title}</div>
-        <div className={styles.status}>{status}</div>
+        <div className={styles.name}>{name}</div>
+        <div className={styles.presence}>{presence}</div>
       </div>
     );
   }

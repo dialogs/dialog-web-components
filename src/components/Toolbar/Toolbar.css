@@ -51,7 +51,7 @@
 }
 
 /* Theming */
-.title {
+.name {
   vertical-align: middle;
   letter-spacing: -0.3px;
   font-size: var(--toolbar-title-font-size);
@@ -60,7 +60,7 @@
   color: var(--toolbar-title-color);
 }
 
-.status {
+.presence {
   vertical-align: middle;
   letter-spacing: -0.2px;
   font-size: var(--toolbar-status-font-size);
