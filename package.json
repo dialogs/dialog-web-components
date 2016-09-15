@@ -51,7 +51,7 @@
     "react-modal": "1.4.0"
   },
   "devDependencies": {
-    "@dlghq/babel-preset-dialog": "2.0.0",
+    "@dlghq/babel-preset-dialog": "2.2.0",
     "@dlghq/eslint-config-dialog": "1.6.0",
     "@dlghq/postcss-dialog": "1.0.2",
     "@dlghq/stylelint-config-dialog": "0.6.1",
@@ -66,7 +66,7 @@
     "npm-run-all": "3.1.0",
     "postcss-loader": "0.13.0",
     "react-styleguidist": "3.1.1",
-    "stylefmt": "4.2.3",
+    "stylefmt": "4.3.0",
     "stylelint": "7.2.0",
     "yml-loader": "1.1.0"
   }

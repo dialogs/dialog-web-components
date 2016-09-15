@@ -2,12 +2,11 @@
 
 :root {
   --scroller-width: 4px;
-  --scroller-color: #adc2dc;
+  --scroller-color: color(#e2e2e2 alpha(75%));
 }
 
 .wrapper,
 .container {
-  all: initial;
   width: 100%;
   min-height: 1px;
 }
@@ -25,6 +24,7 @@
   }
 
   &::-webkit-scrollbar-thumb {
+    border-radius: var(--scroller-width);
     background-color: var(--scroller-color);
   }
 }
