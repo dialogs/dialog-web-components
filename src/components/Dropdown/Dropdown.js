@@ -12,7 +12,7 @@ class Dropdown extends Component {
 
   static defaultProps = {
     theme: 'primary'
-  }
+  };
 
   shouldComponentUpdate(nextProps) {
     return nextProps.isOpen !== this.props.isOpen ||

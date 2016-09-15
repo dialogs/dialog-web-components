@@ -1,9 +1,9 @@
 Basic Dropdown:
 
 ```
-const DropdownItem = require('./DropdownItem').default;
-const DropdownDivider = require('./DropdownDivider').default;
-const PeerAvatar = require('../PeerAvatar').default;
+const DropdownItem = require('../DropdownItem/DropdownItem').default;
+const DropdownDivider = require('../DropdownDivider/DropdownDivider').default;
+const PeerAvatar = require('../PeerAvatar/PeerAvatar').default;
 const handleClick = () => alert('menu clicked');
 const user = {
   title: 'Someone',
@@ -12,7 +12,6 @@ const user = {
 };
 
 <Dropdown isOpen>
-
   <DropdownItem>
     <PeerAvatar peer={user} />
     <b style={{ marginLeft: 8 }}>{user.title}</b>
@@ -27,8 +26,8 @@ const user = {
 Dropdown with Divider:
 
 ```
-const DropdownItem = require('./DropdownItem').default;
-const DropdownDivider = require('./DropdownDivider').default;
+const DropdownItem = require('../DropdownItem/DropdownItem').default;
+const DropdownDivider = require('../DropdownDivider/DropdownDivider').default;
 const handleClick = () => alert('menu clicked');
 
 <Dropdown isOpen>
@@ -42,8 +41,8 @@ const handleClick = () => alert('menu clicked');
 Dropdown with Header:
 
 ```
-const DropdownHeader = require('./DropdownHeader').default;
-const DropdownItem = require('./DropdownItem').default;
+const DropdownHeader = require('../DropdownHeader/DropdownHeader').default;
+const DropdownItem = require('../DropdownItem/DropdownItem').default;
 const handleClick = () => alert('menu clicked');
 
 <Dropdown isOpen>
@@ -57,9 +56,9 @@ const handleClick = () => alert('menu clicked');
 Themed Dropdown:
 
 ```
-const DropdownHeader = require('./DropdownHeader').default;
-const DropdownItem = require('./DropdownItem').default;
-const DropdownDivider = require('./DropdownDivider').default;
+const DropdownHeader = require('../DropdownHeader/DropdownHeader').default;
+const DropdownItem = require('../DropdownItem/DropdownItem').default;
+const DropdownDivider = require('../DropdownDivider/DropdownDivider').default;
 const handleClick = () => alert('menu clicked');
 
 <Dropdown isOpen theme="secondary">
