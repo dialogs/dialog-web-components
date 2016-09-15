@@ -2,7 +2,7 @@
 
 :root {
   --scroller-width: 4px;
-  --scroller-color: color(#e2e2e2 alpha(75%));
+  --scroller-color: #e2e2e2;
 }
 
 .wrapper,
