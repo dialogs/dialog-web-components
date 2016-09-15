@@ -4,7 +4,7 @@ Message:
 const sender = {
   avatar: 'https://http.dlg.im/v1/files/5793894363707576092/small-avatar.jpg?signature=511756a7d73aaefe705a7f255a6a79f83cde6200151ce66f21b49f23c47c2e5f&expires=1472295075754',
   placeholder: 'orange',
-  name: 'Nikita',
+  title: 'Nikita',
   nick: 'gusnkt',
   peer: {
     id: 1643224499,
@@ -36,7 +36,7 @@ const message1 = {
   sender: sender,
   date: '20:30 pm',
   state: {
-    state: 'READ',
+    state: 'read',
     readBy: readers
   }
 };
@@ -52,7 +52,7 @@ const message2 = {
   sender: sender,
   date: '20:31 pm',
   state: {
-    state: 'SENDING'
+    state: 'sending'
   }
 };
 <div>
