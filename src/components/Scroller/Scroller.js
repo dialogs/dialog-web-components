@@ -72,12 +72,13 @@ class Scroller extends Component {
   }
 
   render() {
-    const className = classNames(styles.container, this.props.className);
+    const { className, onScroll, children } = this.props;
+    const scrollerClassName = classNames(styles.container, className);
 
     return (
       <div className={styles.wrapper}>
-        <div className={className} ref={this.onReference} onScroll={this.props.onScroll}>
-          {this.props.children}
+        <div className={scrollerClassName} ref={this.onReference} onScroll={onScroll}>
+          {children}
         </div>
       </div>
     );
