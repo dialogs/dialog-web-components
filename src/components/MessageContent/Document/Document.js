@@ -5,10 +5,10 @@ import styles from './Document.css';
 
 class Document extends Component {
   static propTypes = {
-    fileUrl: PropTypes.string.isRequired,
-    fileName: PropTypes.string.isRequired,
-    fileSize: PropTypes.string.isRequired,
-    fileExtension: PropTypes.string.isRequired,
+    fileUrl: PropTypes.string,
+    fileName: PropTypes.string,
+    fileSize: PropTypes.string,
+    fileExtension: PropTypes.string,
     isUploading: PropTypes.bool.isRequired
   };
 
@@ -48,15 +48,11 @@ class Document extends Component {
 
   renderPreview() {
     const { fileExtension } = this.props;
-    const docType = this.getDocumentType();
-    const previewClassName = classNames(styles.preview, {
-      [styles.doc]: docType === 'doc',
-      [styles.picture]: docType === 'picture',
-      [styles.media]: docType === 'media'
-    });
+    const type = this.getDocumentType();
+    const className = classNames(styles.preview, styles[type]);
 
     return (
-      <div className={previewClassName}>
+      <div className={className}>
         {fileExtension}
       </div>
     );
@@ -69,7 +65,7 @@ class Document extends Component {
       <div className={styles.info}>
         <div className={styles.filename}>{fileName}</div>
         <div className={styles.sizeBlock}>
-          <Icon glyph="arrow_downward" className={styles.downloadArrow} />
+          <Icon glyph="arrow_downward" className={styles.downloadArrow}/>
           <span className={styles.size}>{fileSize}</span>
         </div>
       </div>

@@ -4,8 +4,8 @@ import styles from './Photo.css';
 
 class Photo extends Component {
   static propTypes = {
-    fileUrl: PropTypes.string.isRequired,
-    fileName: PropTypes.string.isRequired,
+    fileUrl: PropTypes.string,
+    fileName: PropTypes.string,
     preview: PropTypes.string,
     width: PropTypes.number.isRequired,
     height: PropTypes.number.isRequired

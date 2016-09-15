@@ -8,46 +8,46 @@ const STATE_ERROR = 3;
 
 class Img extends Component {
   static propTypes = {
-    src: PropTypes.string.isRequired,
-    alt: PropTypes.string.isRequired,
+    className: PropTypes.string,
+    src: PropTypes.string,
+    alt: PropTypes.string,
     preview: PropTypes.string,
     width: PropTypes.number.isRequired,
-    height: PropTypes.number.isRequired,
-    className: PropTypes.string
+    height: PropTypes.number.isRequired
   };
 
   constructor(props) {
     super(props);
 
     this.state = {
-      state: STATE_LOADING
+      state: STATE_LOADING,
+      error: null
     };
-
-    this.handleLoadSuccess = this.handleLoadSuccess.bind(this);
-    this.handleErrorSuccess = this.handleErrorSuccess.bind(this);
   }
 
-  componentDidMount() {
-    this.fetchImage();
+  componentWillMount() {
+    if (this.props.src) {
+      this.startFetch(this.props.src);
+    }
   }
 
   shouldComponentUpdate(nextProps, nextState) {
     return nextState.state !== this.state.state ||
-           nextProps.src !== this.props.src ||
-           nextProps.alt !== this.props.alt ||
-           nextProps.preview !== this.props.preview ||
-           nextProps.width !== this.props.width ||
-           nextProps.height !== this.props.height;
+      nextProps.src !== this.props.src ||
+      nextProps.alt !== this.props.alt ||
+      nextProps.preview !== this.props.preview ||
+      nextProps.width !== this.props.width ||
+      nextProps.height !== this.props.height;
   }
 
-  handleLoadSuccess() {
-    this.setState({ state: STATE_SUCCESS });
-    this.removeListeners();
+  componentWillReceiveProps({ src }) {
+    if (src && this.props.src !== src) {
+      this.startFetch(src);
+    }
   }
 
-  handleErrorSuccess() {
-    this.setState({ state: STATE_ERROR });
-    this.removeListeners();
+  componentWillUnmount() {
+    this.stopFetch();
   }
 
   getSource() {
@@ -61,18 +61,28 @@ class Img extends Component {
     return src;
   }
 
-  fetchImage() {
-    const { src } = this.props;
-
+  startFetch(src) {
+    this.stopFetch();
     this.image = new Image();
-    this.image.addEventListener('load', this.handleLoadSuccess);
-    this.image.addEventListener('error', this.handleLoadSuccess);
+
+    this.image.onload = () => {
+      this.setState({ state: STATE_SUCCESS });
+    };
+
+    this.image.onerror = (error) => {
+      this.setState({ error, state: STATE_ERROR });
+    };
+
     this.image.src = src;
   }
 
-  removeListeners() {
-    this.image.removeEventListener('load', this.handleLoadSuccess);
-    this.image.removeEventListener('error', this.handleLoadSuccess);
+  stopFetch() {
+    if (this.image) {
+      this.image.src = null;
+      this.image.onload = null;
+      this.image.onerror = null;
+      this.image = null;
+    }
   }
 
   render() {
