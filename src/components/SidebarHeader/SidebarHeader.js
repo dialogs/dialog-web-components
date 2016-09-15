@@ -22,9 +22,9 @@ class SidebarHeader extends Component {
     const sidebarHeaderClassName = classNames(styles.root, className);
 
     return (
-      <div className={sidebarHeaderClassName}>
+      <header className={sidebarHeaderClassName}>
         {children}
-      </div>
+      </header>
     );
   }
 }
