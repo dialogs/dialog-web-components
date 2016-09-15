@@ -31,6 +31,12 @@ class Img extends Component {
     }
   }
 
+  componentWillReceiveProps({ src }) {
+    if (src && this.props.src !== src) {
+      this.startFetch(src);
+    }
+  }
+
   shouldComponentUpdate(nextProps, nextState) {
     return nextState.state !== this.state.state ||
       nextProps.src !== this.props.src ||
@@ -38,12 +44,6 @@ class Img extends Component {
       nextProps.preview !== this.props.preview ||
       nextProps.width !== this.props.width ||
       nextProps.height !== this.props.height;
-  }
-
-  componentWillReceiveProps({ src }) {
-    if (src && this.props.src !== src) {
-      this.startFetch(src);
-    }
   }
 
   componentWillUnmount() {
