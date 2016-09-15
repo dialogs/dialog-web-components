@@ -74,7 +74,7 @@
 .small {
   width: var(--avatar-small-size);
   height: var(--avatar-small-size);
-  font-size: 12px;
+  font-size: 13px;
 
   &.twoChars {
     font-size: 10px;
@@ -84,20 +84,20 @@
 .medium {
   width: var(--avatar-medium-size);
   height: var(--avatar-medium-size);
-  font-size: 18px;
+  font-size: 15px;
 
   &.twoChars {
-    font-size: 15px;
+    font-size: 13px;
   }
 }
 
 .large {
   width: var(--avatar-large-size);
   height: var(--avatar-large-size);
-  font-size: 20px;
+  font-size: 18px;
 
   &.twoChars {
-    font-size: 17px;
+    font-size: 15px;
   }
 }
 

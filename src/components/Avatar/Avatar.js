@@ -66,26 +66,24 @@ class Avatar extends Component {
   }
 
   render() {
-    const { image, placeholder, title, size, onClick } = this.props;
+    const { image, placeholder, title, size, onClick, className } = this.props;
     const avatarText = this.getAvatarText();
 
-    const className = classNames(
-      styles.placeholder,
-      styles[size],
-      styles[placeholder],
-      this.props.className,
-      {
-        [styles.twoChars]: avatarText && avatarText.length !== 1,
-        [styles.clickable]: onClick
-      }
-    );
+    const avatarClassName = classNames({
+      [styles.image]: image,
+      [styles.placeholder]: !image,
+      [styles[placeholder]]: !image,
+      [styles[size]]: true,
+      [styles.twoChars]: avatarText && avatarText.length !== 1,
+      [styles.clickable]: onClick
+    }, className);
 
     if (image) {
       const imgSize = SIZES[size];
 
       return (
         <img
-          className={className}
+          className={avatarClassName}
           src={image}
           width={imgSize}
           height={imgSize}
@@ -96,7 +94,7 @@ class Avatar extends Component {
     }
 
     return (
-      <div className={className} onClick={onClick} title={title}>
+      <div className={avatarClassName} onClick={onClick} title={title}>
         {avatarText}
       </div>
     );
