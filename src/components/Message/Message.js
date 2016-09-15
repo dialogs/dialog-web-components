@@ -42,7 +42,7 @@ class Message extends Component {
         </div>
         <div className={styles.body}>
           <header className={styles.header}>
-            <div className={styles.sender}>{sender.name}</div>
+            <div className={styles.sender}>{sender.title}</div>
             <time className={styles.timestamp}>{date}</time>
             {this.renderState()}
           </header>
