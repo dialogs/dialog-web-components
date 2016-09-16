@@ -24,7 +24,8 @@ module.exports = {
         component('Dropdown'),
         component('Icon'),
         component('Spinner'),
-        component('Toolbar')
+        component('Toolbar'),
+        component('Logo')
       ];
     }
   }, {

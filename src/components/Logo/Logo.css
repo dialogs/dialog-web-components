@@ -1,0 +1,9 @@
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ */
+
+.root {
+  all: initial;
+  width: 32px;
+  height: 32px;
+}
