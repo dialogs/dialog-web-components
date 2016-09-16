@@ -2,7 +2,7 @@
 
 :root {
   --message-photo-max-width: 400px;
-  --message-photo-max-height: 300px;
+  --message-photo-max-height: 400px;
   --message-photo-border-raduis: var(--default-border-radius);
 }
 
