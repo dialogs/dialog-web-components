@@ -116,7 +116,6 @@
   & .ReactStyleguidist-Playground__preview {
     & .Wrapper__container {
       padding: 8px;
-      line-height: 0;
     }
 
     & .Button__button {
