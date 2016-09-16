@@ -1,4 +1,6 @@
-sign_in: Sign in
+sign_head: Log In or Sign Up
+sign_subhead: Enter your contact details to get verification code and start messaging.
+footer_text: Dialog is all your team messaging with free calling,<br /> file sharing and fast mobile applications.
 login: Phone number or Email address
 code: Auth code
 name: Your name

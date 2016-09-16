@@ -4,19 +4,21 @@
 
 import React, { Component, PropTypes } from 'react';
 import { Text } from '@dlghq/react-l10n';
+import classNames from 'classnames';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
-import Fieldset from '../Fieldset/Fieldset';
 import {
   AUTH_STARTED, LOGIN_SENT,
   CODE_REQUESTED, CODE_SENT,
   SIGNUP_STARTED, NAME_SENT,
   AUTH_FINISHED
 } from './constants';
+import styles from './AuthForm.css';
 
 class AuthForm extends Component {
   static propTypes = {
     id: PropTypes.string.isRequired,
+    className: PropTypes.string,
     step: PropTypes.oneOf([
       AUTH_STARTED,
       LOGIN_SENT,
@@ -48,6 +50,7 @@ class AuthForm extends Component {
     return nextProps.id !== this.props.id ||
            nextProps.step !== this.props.step ||
            nextProps.value !== this.props.value ||
+           nextProps.className !== this.props.className ||
            nextProps.onChange !== this.props.onChange ||
            nextProps.onSubmit !== this.props.onSubmit;
   }
@@ -70,7 +73,8 @@ class AuthForm extends Component {
       case CODE_SENT:
       case NAME_SENT:
         return true;
-      default: return false;
+      default:
+        return false;
     }
   }
 
@@ -89,6 +93,25 @@ class AuthForm extends Component {
     }
 
     return <Text id="AuthForm.success" />;
+  }
+
+  renderLogin() {
+    const { id, step, value } = this.props;
+
+    if (step > LOGIN_SENT) {
+      return null;
+    }
+
+    return (
+      <Input
+        name="login"
+        id={`${id}_login`}
+        label="AuthForm.login"
+        value={value.login}
+        disabled={step >= LOGIN_SENT}
+        onChange={this.handleChange}
+      />
+    );
   }
 
   renderCode() {
@@ -130,25 +153,17 @@ class AuthForm extends Component {
   }
 
   render() {
-    const { id, step, value } = this.props;
+    const { id } = this.props;
+    const className = classNames(styles.root, this.props.className);
 
     return (
-      <form id={this.props.id} onSubmit={this.handleSubmit}>
-        <Fieldset legend="AuthForm.sign_in">
-          <Input
-            name="login"
-            id={`${id}_login`}
-            label="AuthForm.login"
-            value={value.login}
-            disabled={step >= LOGIN_SENT}
-            onChange={this.handleChange}
-          />
-          {this.renderCode()}
-          {this.renderName()}
-          <Button type="submit" theme="primary" loading={this.isLoading()} wide>
-            {this.renderButtonText()}
-          </Button>
-        </Fieldset>
+      <form id={id} onSubmit={this.handleSubmit} className={className}>
+        {this.renderLogin()}
+        {this.renderCode()}
+        {this.renderName()}
+        <Button type="submit" theme="primary" loading={this.isLoading()} wide>
+          {this.renderButtonText()}
+        </Button>
       </form>
     );
   }
