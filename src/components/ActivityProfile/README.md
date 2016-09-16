@@ -2,8 +2,6 @@ Basic ActivityProfile:
 
 ```
 const user = {
-  id: 1,
-  type: 'user',
   name: 'Steve Rodgers',
   nick: 'rodgers',
   about: 'Steve Rogers was a scrawny fine arts student growing up during the Great Depression. His alcoholic father died when Steve was a child, and his mother passed away from pneumonia after he graduated high school.',
@@ -15,8 +13,6 @@ const user = {
   emails: [{ email: 'cap@america.com', title: 'Home email' }]
 };
 const group = {
-  id: 101,
-  type: 'group',
   name: 'American Option Buddies',
   shortname: null,
   creator: 'Steve Rodgers',
@@ -27,17 +23,25 @@ const group = {
   adminId: 1903089995,
   presence: '2 members, 1 online'
 };
+const peer1 = {
+  id: 1,
+  type: 'user'
+};
+const peer2 = {
+  id: 101,
+  type: 'group'
+};
 const alert = () => window.alert('!!!');
 
 <div>
   <div style={{ width: '50%', float: 'left' }}>
-    <ActivityProfile peerInfo={user} onAboutAdd={alert}>
+    <ActivityProfile info={user} peer={peer1} onAboutAdd={alert}>
       <IconButton glyph="phone" size="large" />
       <IconButton glyph="more" size="large" />
     </ActivityProfile>
   </div>
   <div style={{ width: '50%', float: 'left' }}>
-    <ActivityProfile peerInfo={group} onAboutAdd={alert}>
+    <ActivityProfile info={group} peer={peer2} onAboutAdd={alert}>
       <IconButton glyph="phone" size="large" />
       <IconButton glyph="person_add" size="large" />
       <IconButton glyph="more" size="large" />

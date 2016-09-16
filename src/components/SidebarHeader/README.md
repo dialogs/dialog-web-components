@@ -2,6 +2,7 @@ Basic SidebarHeader:
 
 ```
 const SidebarHeaderMenu = require('../SidebarHeaderMenu/SidebarHeaderMenu').default;
+const Logo = require('../Logo/Logo').default;
 const Dropdown = require('../Dropdown/Dropdown').default;
 const DropdownItem = require('../DropdownItem/DropdownItem').default;
 const DropdownDivider = require('../DropdownDivider/DropdownDivider').default;
@@ -13,6 +14,7 @@ const user = {
 };
 
 <SidebarHeader>
+  <Logo />
   <SidebarHeaderMenu appName="Dialog">
     <Dropdown isOpen>
       <DropdownItem onClick={handleClick}>First menu item</DropdownItem>
