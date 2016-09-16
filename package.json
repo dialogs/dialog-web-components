@@ -67,7 +67,7 @@
     "npm-run-all": "3.1.0",
     "postcss-loader": "0.13.0",
     "react-styleguidist": "3.1.1",
-    "stylefmt": "4.3.0",
+    "stylefmt": "4.3.1",
     "stylelint": "7.2.0",
     "yml-loader": "1.1.0"
   }
