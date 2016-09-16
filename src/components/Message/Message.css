@@ -50,8 +50,8 @@
 .header {
   display: flex;
   flex-direction: row;
-  flex: 0 1 auto;
   margin-bottom: 4px;
+  flex: 0 1 auto;
 }
 
 .sender {

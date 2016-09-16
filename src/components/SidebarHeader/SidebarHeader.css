@@ -41,8 +41,8 @@
   letter-spacing: -0.3px;
   font-size: var(--sidebar-header-menu-font-size);
   font-weight: 500;
-  color: var(--sidebar-header-menu-color);
   line-height: calc(var(--sidebar-header-height) - var(--sidebar-header-padding-top) - var(--sidebar-header-padding-bottom));
+  color: var(--sidebar-header-menu-color);
 }
 
 .arrow {

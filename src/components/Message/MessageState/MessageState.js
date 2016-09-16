@@ -12,7 +12,16 @@ class MessageState extends Component {
     readBy: PropTypes.arrayOf(PropTypes.shape({
       title: PropTypes.string,
       avatar: PropTypes.string,
-      placeholder: PropTypes.oneOf(['empty', 'lblue', 'blue', 'purple', 'red', 'orange', 'yellow', 'green'])
+      placeholder: PropTypes.oneOf([
+        'empty',
+        'lblue',
+        'blue',
+        'purple',
+        'red',
+        'orange',
+        'yellow',
+        'green'
+      ])
     }))
   };
 
