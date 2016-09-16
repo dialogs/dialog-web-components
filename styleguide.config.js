@@ -85,7 +85,8 @@ module.exports = {
       return [
         component('Message'),
         component('MessageContent'),
-        component('FakeMessage')
+        component('FakeMessage'),
+        component('EmptyChat')
       ];
     }
   }, {

@@ -1,0 +1,17 @@
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+:root {
+  --empty-chat-font-family: var(--default-font-family);
+}
+
+.root {
+  all: initial;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  font-family: var(--empty-chat-font-family);
+}
