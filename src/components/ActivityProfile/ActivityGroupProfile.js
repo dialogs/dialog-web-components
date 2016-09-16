@@ -3,7 +3,7 @@
  */
 
 import React, { Component, PropTypes } from 'react';
-import { PeerInfo } from '../../PropTypes';
+import { Group } from '../../PropTypes';
 import classNames from 'classnames';
 import PeerAvatar from '../PeerAvatar/PeerAvatar';
 import Button from '../Button/Button';
@@ -13,7 +13,7 @@ import styles from './ActivityProfile.css';
 class ActivityGroupProfile extends Component {
   static propTypes = {
     className: PropTypes.string,
-    info: PeerInfo.isRequired,
+    info: Group.isRequired,
     children: PropTypes.node,
     onAboutAdd: PropTypes.func
   };

@@ -3,26 +3,22 @@
  */
 
 import React, { Component, PropTypes } from 'react';
-import { PeerInfo } from '../../PropTypes';
+import { User } from '../../PropTypes';
 import classNames from 'classnames';
 import PeerAvatar from '../PeerAvatar/PeerAvatar';
-import Button from '../Button/Button';
-import Icon from '../Icon/Icon';
 import styles from './ActivityProfile.css';
 
 class ActivityUserProfile extends Component {
   static propTypes = {
     className: PropTypes.string,
-    info: PeerInfo.isRequired,
-    children: PropTypes.node,
-    onAboutAdd: PropTypes.func
+    info: User.isRequired,
+    children: PropTypes.node
   };
 
   shouldComponentUpdate(nextProps) {
     return nextProps.info !== this.props.info ||
            nextProps.className !== this.props.className ||
-           nextProps.children !== this.props.children ||
-           nextProps.onAboutAdd !== this.props.onAboutAdd;
+           nextProps.children !== this.props.children;
   }
 
   renderAvatar() {
@@ -78,17 +74,10 @@ class ActivityUserProfile extends Component {
   }
 
   renderAbout() {
-    const { info: { about }, onAboutAdd } = this.props;
+    const { info: { about } } = this.props;
 
     if (!about) {
-      return (
-        <div className={styles.about}>
-          <Button theme="link" onClick={onAboutAdd} className={styles.aboutButton}>
-            <Icon glyph="add_circle_outline" className={styles.aboutAddIcon} />
-            Add About
-          </Button>
-        </div>
-      );
+      return null;
     }
 
     return (
