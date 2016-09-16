@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import Img from '../../Img/Img';
+import Image from '../../Image/Image';
 import styles from './Photo.css';
 
 class Photo extends Component {
@@ -22,7 +22,7 @@ class Photo extends Component {
     const { fileUrl, fileName, preview, width, height } = this.props;
 
     return (
-      <Img
+      <Image
         className={styles.root}
         src={fileUrl}
         alt={fileName}

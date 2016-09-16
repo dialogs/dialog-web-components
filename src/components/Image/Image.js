@@ -1,12 +1,12 @@
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
-import styles from './Img.css';
+import styles from './Image.css';
 
 const STATE_LOADING = 1;
 const STATE_SUCCESS = 2;
 const STATE_ERROR = 3;
 
-class Img extends Component {
+class Image extends Component {
   static propTypes = {
     className: PropTypes.string,
     src: PropTypes.string,
@@ -63,7 +63,7 @@ class Img extends Component {
 
   startFetch(src) {
     this.stopFetch();
-    this.image = new Image();
+    this.image = document.createElement('img');
 
     this.image.onload = () => {
       this.setState({ state: STATE_SUCCESS });
@@ -108,4 +108,4 @@ class Img extends Component {
   }
 }
 
-export default Img;
+export default Image;
