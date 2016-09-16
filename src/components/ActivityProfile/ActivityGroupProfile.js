@@ -13,26 +13,26 @@ import styles from './ActivityProfile.css';
 class ActivityGroupProfile extends Component {
   static propTypes = {
     className: PropTypes.string,
-    peerInfo: PeerInfo.isRequired,
+    info: PeerInfo.isRequired,
     children: PropTypes.node,
     onAboutAdd: PropTypes.func
   };
 
   shouldComponentUpdate(nextProps) {
-    return nextProps.peerInfo !== this.props.peerInfo ||
+    return nextProps.info !== this.props.info ||
            nextProps.className !== this.props.className ||
            nextProps.children !== this.props.children ||
            nextProps.onAboutAdd !== this.props.onAboutAdd;
   }
 
   renderAvatar() {
-    const { peerInfo: { name, avatarBig, placeholder } } = this.props;
+    const { info: { name, bigAvatar, placeholder } } = this.props;
 
     return (
       <PeerAvatar
         peer={{
           title: name,
-          avatar: avatarBig,
+          avatar: bigAvatar,
           placeholder
         }}
         size="big"
@@ -42,7 +42,7 @@ class ActivityGroupProfile extends Component {
   }
 
   renderName() {
-    const { peerInfo: { name } } = this.props;
+    const { info: { name } } = this.props;
 
     if (!name) {
       return null;
@@ -54,7 +54,7 @@ class ActivityGroupProfile extends Component {
   }
 
   renderCreator() {
-    const { peerInfo: { creator } } = this.props;
+    const { info: { creator } } = this.props;
 
     if (!creator) {
       return null;
@@ -66,7 +66,7 @@ class ActivityGroupProfile extends Component {
   }
 
   renderAbout() {
-    const { peerInfo: { about }, onAboutAdd } = this.props;
+    const { info: { about }, onAboutAdd } = this.props;
 
     if (!about) {
       return (

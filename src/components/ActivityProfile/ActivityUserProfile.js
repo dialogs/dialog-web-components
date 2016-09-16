@@ -13,26 +13,26 @@ import styles from './ActivityProfile.css';
 class ActivityUserProfile extends Component {
   static propTypes = {
     className: PropTypes.string,
-    peerInfo: PeerInfo.isRequired,
+    info: PeerInfo.isRequired,
     children: PropTypes.node,
     onAboutAdd: PropTypes.func
   };
 
   shouldComponentUpdate(nextProps) {
-    return nextProps.peerInfo !== this.props.peerInfo ||
+    return nextProps.info !== this.props.info ||
            nextProps.className !== this.props.className ||
            nextProps.children !== this.props.children ||
            nextProps.onAboutAdd !== this.props.onAboutAdd;
   }
 
   renderAvatar() {
-    const { peerInfo: { name, avatarBig, placeholder } } = this.props;
+    const { info: { name, bigAvatar, placeholder } } = this.props;
 
     return (
       <PeerAvatar
         peer={{
           title: name,
-          avatar: avatarBig,
+          avatar: bigAvatar,
           placeholder
         }}
         size="big"
@@ -42,7 +42,7 @@ class ActivityUserProfile extends Component {
   }
 
   renderName() {
-    const { peerInfo: { name } } = this.props;
+    const { info: { name } } = this.props;
 
     if (!name) {
       return null;
@@ -54,7 +54,7 @@ class ActivityUserProfile extends Component {
   }
 
   renderNick() {
-    const { peerInfo: { nick } } = this.props;
+    const { info: { nick } } = this.props;
 
     if (!nick) {
       return null;
@@ -66,7 +66,7 @@ class ActivityUserProfile extends Component {
   }
 
   renderPresence() {
-    const { peerInfo: { presence } } = this.props;
+    const { info: { presence } } = this.props;
 
     if (!presence) {
       return null;
@@ -78,7 +78,7 @@ class ActivityUserProfile extends Component {
   }
 
   renderAbout() {
-    const { peerInfo: { about }, onAboutAdd } = this.props;
+    const { info: { about }, onAboutAdd } = this.props;
 
     if (!about) {
       return (
@@ -110,16 +110,16 @@ class ActivityUserProfile extends Component {
 
 
   renderProfileContacts() {
-    const { peerInfo } = this.props;
+    const { info } = this.props;
 
-    const phones = peerInfo.phones.map((phone, index) => (
+    const phones = info.phones.map((phone, index) => (
       <div key={index}>
         <div className={styles.contactTitle}>{phone.title}</div>
         <div className={styles.contactContent}>{phone.number}</div>
       </div>
     ));
 
-    const emails = peerInfo.emails.map((email, index) => (
+    const emails = info.emails.map((email, index) => (
       <div key={index}>
         <div className={styles.contactTitle}>{email.title}</div>
         <div className={styles.contactContent}>{email.email}</div>

@@ -3,28 +3,29 @@
  */
 
 import React from 'react';
-import { PeerInfo } from '../../PropTypes';
+import { Peer, PeerInfo } from '../../PropTypes';
 import ActivityUserProfile from './ActivityUserProfile';
 import ActivityGroupProfile from './ActivityGroupProfile';
 
-function ActivityProfile({ peerInfo, ...props }) {
-  switch (peerInfo.type) {
+function ActivityProfile({ peer, ...props }) {
+  switch (peer.type) {
     case 'user':
       return (
-        <ActivityUserProfile peerInfo={peerInfo} {...props} />
+        <ActivityUserProfile {...props} />
       );
     case 'group':
       return (
-        <ActivityGroupProfile peerInfo={peerInfo} {...props} />
+        <ActivityGroupProfile {...props} />
       );
     default:
-      console.warn('ActivityProfile does not support this type of peer', peerInfo.type);
+      console.warn('ActivityProfile component does not support this type of peer', peer.type);
       return null;
   }
 }
 
 ActivityProfile.propTypes = {
-  peerInfo: PeerInfo.isRequired
+  peer: Peer.isRequired,
+  info: PeerInfo.isRequired
 };
 
 export default ActivityProfile;
