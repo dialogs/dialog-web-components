@@ -32,9 +32,6 @@
   justify-content: flex-start;
 }
 
-.logo {
-}
-
 .menu {
   cursor: pointer;
   user-select: none;
@@ -46,10 +43,10 @@
 }
 
 .arrow {
-  margin-left: -4px;
   line-height: calc(var(--sidebar-header-height) - var(--sidebar-header-padding-top) - var(--sidebar-header-padding-bottom));
+  transition: transform var(--default-transition-duration) ease-out;
 }
 
 .arrowOpened {
-  transform: scale(-1);
+  transform: scaleY(-1);
 }

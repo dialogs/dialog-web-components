@@ -11,6 +11,7 @@ import styles from '../SidebarHeader/SidebarHeader.css';
 class SidebarHeaderMenu extends Component {
   static propTypes = {
     appName: PropTypes.string.isRequired,
+    logo: PropTypes.element.isRequired,
     children: PropTypes.element.isRequired
   };
 
@@ -29,6 +30,7 @@ class SidebarHeaderMenu extends Component {
 
   shouldComponentUpdate(nextProps, nextState) {
     return nextState.isOpen !== this.state.isOpen ||
+           nextProps.logo !== this.props.logo ||
            nextProps.children !== this.props.children ||
            nextProps.appName !== this.props.appName;
   }
@@ -52,7 +54,7 @@ class SidebarHeaderMenu extends Component {
   }
 
   renderToggler() {
-    const { appName } = this.props;
+    const { appName, logo } = this.props;
     const { isOpen } = this.state;
     const arrowClassName = classNames(styles.arrow, {
       [styles.arrowOpened]: isOpen
@@ -60,7 +62,9 @@ class SidebarHeaderMenu extends Component {
 
     return (
       <a onClick={this.handleMenuOpen} className={styles.menu}>
-        {appName} <Icon glyph="arrow_drop_down" className={arrowClassName} />
+        {logo}
+        {appName}
+        <Icon glyph="arrow_drop_down" className={arrowClassName} />
       </a>
     );
   }
@@ -82,6 +86,7 @@ class SidebarHeaderMenu extends Component {
         attachment="top left"
         targetAttachment="bottom left"
         constraints={[{ to: 'scrollParent', attachment: 'together' }]}
+        offset="-10px -24px"
       >
         {this.renderToggler()}
         {this.renderChildren()}
