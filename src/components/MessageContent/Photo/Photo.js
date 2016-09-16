@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import classNames from 'classnames';
 import Image from '../../Image/Image';
 import styles from './Photo.css';
 
@@ -20,10 +21,15 @@ class Photo extends Component {
 
   render() {
     const { fileUrl, fileName, preview, width, height } = this.props;
+    const className = classNames(styles.root, {
+      [styles.portrait]: width < height,
+      [styles.landscape]: width > height,
+      [styles.square]: width === height
+    });
 
     return (
       <Image
-        className={styles.root}
+        className={className}
         src={fileUrl}
         alt={fileName}
         preview={preview}

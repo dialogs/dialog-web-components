@@ -9,8 +9,22 @@
 .root {
   overflow: hidden;
   max-width: var(--message-photo-max-width);
-  height: auto;
   max-height: var(--message-photo-max-height);
   border: 0;
   border-radius: var(--message-photo-border-raduis);
+}
+
+.portrait {
+  width: auto;
+  height: 100%;
+}
+
+.landscape {
+  width: 100%;
+  height: auto;
+}
+
+.square {
+  width: auto;
+  height: auto;
 }
