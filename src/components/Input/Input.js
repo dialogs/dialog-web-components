@@ -69,11 +69,14 @@ class Input extends Component {
   }
 
   handleChange(event) {
-    this.props.onChange(event.target.value, event);
+    const { onChange } = this.props;
+
+    onChange(event.target.value, event);
   }
 
   renderLabel() {
     const { id, label } = this.props;
+
     if (!label) {
       return null;
     }
@@ -89,41 +92,46 @@ class Input extends Component {
   }
 
   renderHint() {
-    if (!this.props.hint) {
+    const { hint } = this.props;
+
+    if (!hint) {
       return null;
     }
 
     return (
-      <Text id={this.props.hint} tagName="p" className={styles.hint} />
+      <Text id={hint} tagName="p" className={styles.hint} />
     );
   }
 
   render() {
+    const {
+      id, name, type, value, disabled, status,
+      placeholder, onFocus, onBlur,
+      onKeyUp, onKeyDown, onKeyPress
+    } = this.props;
     const { l10n: { formatText } } = this.context;
-    const TagName = this.props.type === 'textarea' ? 'textarea' : 'input';
-    const className = classNames(
-      styles.container,
-      styles[this.props.status],
-      this.props.className
-    );
+    const TagName = type === 'textarea' ? 'textarea' : 'input';
+    const className = classNames(styles.container, styles[status], {
+      [styles.filled]: value && value !== ''
+    }, this.props.className);
 
     return (
       <div className={className}>
         {this.renderLabel()}
         <TagName
-          id={this.props.id}
-          name={this.props.name}
+          id={id}
+          name={name}
           className={styles.input}
-          type={this.props.type}
-          value={this.props.value}
-          disabled={this.props.disabled}
-          placeholder={formatText(this.props.placeholder)}
+          type={type}
+          value={value}
+          disabled={disabled}
+          placeholder={formatText(placeholder)}
           onChange={this.handleChange}
-          onFocus={this.props.onFocus}
-          onBlur={this.props.onBlur}
-          onKeyUp={this.props.onKeyUp}
-          onKeyDown={this.props.onKeyDown}
-          onKeyPress={this.props.onKeyPress}
+          onFocus={onFocus}
+          onBlur={onBlur}
+          onKeyUp={onKeyUp}
+          onKeyDown={onKeyDown}
+          onKeyPress={onKeyPress}
         />
         {this.renderHint()}
       </div>
