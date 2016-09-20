@@ -1,0 +1,91 @@
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+:root {
+  --sidebar-search-font-family: var(--default-font-family);
+  --sidebar-search-padding: 12px;
+  --sidebar-search-border-radius: 6px;
+  --sidebar-search-background-color: var(--white-two);
+  --sidebar-search-color: color(#000 alpha(50%));
+  --sidebar-search-placeholder-color: color(#000 alpha(50%));
+  --sidebar-search-focus-color: #000;
+  --sidebar-search-focus-background-color: #fff;
+  --sidebar-search-input-height: 34px;
+}
+
+.container {
+  all: initial;
+  padding: var(--sidebar-search-padding);
+  box-sizing: border-box;
+  position: relative;
+  color: var(--sidebar-search-color);
+}
+
+.input {
+  all: initial;
+  display: block;
+  font-family: var(--sidebar-search-font-family);
+  border-radius: var(--sidebar-search-border-radius);
+  background-color: var(--sidebar-search-background-color);
+  width: 100%;
+  color: inherit;
+  height: var(--sidebar-search-input-height);
+  font-size: 15px;
+  letter-spacing: -0.2px;
+  line-height: 18px;
+  padding: 8px 12px 8px 46px;
+  box-sizing: border-box;
+  transition: padding var(--default-transition-duration) ease;
+
+  &::-webkit-input-placeholder {
+    color: var(--sidebar-search-placeholder-color);
+  }
+
+  :-moz-placeholder { /* Firefox 18- */
+    color: var(--sidebar-search-placeholder-color);
+  }
+
+  ::-moz-placeholder {  /* Firefox 19+ */
+    color: var(--sidebar-search-placeholder-color);
+  }
+
+  :-ms-input-placeholder {
+    color: var(--sidebar-search-placeholder-color);
+  }
+}
+
+.icon {
+  position: absolute;
+  line-height: 18px;
+  top: calc(var(--sidebar-search-padding) + 9px);
+  left: calc(var(--sidebar-search-padding) + 15px);
+  color: inherit;
+  font-size: 20px;
+  transition: opacity calc(var(--default-transition-duration)) ease;
+}
+
+.focused {
+  & .input {
+    padding-left: 12px;
+    background-color: var(--sidebar-search-focus-background-color);
+    color: var(--sidebar-search-focus-color);
+  }
+
+  & .icon {
+    opacity: 0;
+    /*transition: opacity calc(var(--default-transition-duration) * 0.75) ease;*/
+  }
+}
+
+.filled {
+  & .input {
+    padding-left: 12px;
+  }
+
+  & .icon {
+    opacity: 0;
+  }
+}
