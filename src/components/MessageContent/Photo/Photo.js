@@ -5,6 +5,7 @@ import styles from './Photo.css';
 
 class Photo extends Component {
   static propTypes = {
+    className: PropTypes.string,
     fileUrl: PropTypes.string,
     fileName: PropTypes.string,
     preview: PropTypes.string,
@@ -13,28 +14,24 @@ class Photo extends Component {
   };
 
   shouldComponentUpdate(nextProps) {
-    return nextProps.fileName !== this.props.fileName ||
-           nextProps.preview !== this.props.preview ||
-           nextProps.width !== this.props.width ||
-           nextProps.height !== this.props.height;
+    return nextProps.fileUrl !== this.props.fileUrl ||
+      nextProps.preview !== this.props.preview ||
+      nextProps.fileName !== this.props.fileName ||
+      nextProps.width !== this.props.width ||
+      nextProps.height !== this.props.height;
   }
 
   render() {
-    const { fileUrl, fileName, preview, width, height } = this.props;
-    const className = classNames(styles.root, {
-      [styles.portrait]: width < height,
-      [styles.landscape]: width > height,
-      [styles.square]: width === height
-    });
+    const className = classNames(styles.root, this.props.className);
 
     return (
       <Image
         className={className}
-        src={fileUrl}
-        alt={fileName}
-        preview={preview}
-        width={width}
-        height={height}
+        src={this.props.fileUrl}
+        alt={this.props.fileName}
+        preview={this.props.preview}
+        width={this.props.width}
+        height={this.props.height}
       />
     );
   }

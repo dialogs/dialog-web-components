@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
+import getImageSize from '../../utils/getImageSize';
 import styles from './Image.css';
 
 const STATE_LOADING = 1;
@@ -13,7 +14,14 @@ class Image extends Component {
     alt: PropTypes.string,
     preview: PropTypes.string,
     width: PropTypes.number.isRequired,
-    height: PropTypes.number.isRequired
+    height: PropTypes.number.isRequired,
+    maxWidth: PropTypes.number.isRequired,
+    maxHeight: PropTypes.number.isRequired
+  };
+
+  static defaultProps = {
+    maxWidth: 300,
+    maxHeight: 400
   };
 
   constructor(props) {
@@ -61,6 +69,12 @@ class Image extends Component {
     return src;
   }
 
+  getSize() {
+    const { width, height, maxWidth, maxHeight } = this.props;
+
+    return getImageSize(width, height, maxWidth, maxHeight);
+  }
+
   startFetch(src) {
     this.stopFetch();
     this.image = document.createElement('img');
@@ -86,23 +100,17 @@ class Image extends Component {
   }
 
   render() {
-    const { state } = this.state;
-    const { alt, width, height, className } = this.props;
     const source = this.getSource();
-    const imageClassName = classNames(styles.root, {
-      [styles.preview]: state !== STATE_SUCCESS,
-      [styles.loading]: state === STATE_LOADING,
-      [styles.success]: state === STATE_SUCCESS,
-      [styles.error]: state === STATE_ERROR
-    }, className);
+    const { width, height } = this.getSize();
+    const className = classNames(styles.root, this.props.className);
 
     return (
       <img
-        className={imageClassName}
+        className={className}
         src={source}
         width={width}
         height={height}
-        alt={alt}
+        alt={this.props.alt}
       />
     );
   }
