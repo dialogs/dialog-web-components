@@ -44,15 +44,15 @@
     color: var(--sidebar-search-placeholder-color);
   }
 
-  :-moz-placeholder { /* Firefox 18- */
+  &:-moz-placeholder {
     color: var(--sidebar-search-placeholder-color);
   }
 
-  ::-moz-placeholder {  /* Firefox 19+ */
+  &::-moz-placeholder {
     color: var(--sidebar-search-placeholder-color);
   }
 
-  :-ms-input-placeholder {
+  &:-ms-input-placeholder {
     color: var(--sidebar-search-placeholder-color);
   }
 }
@@ -69,23 +69,8 @@
 
 .focused {
   & .input {
-    padding-left: 12px;
     background-color: var(--sidebar-search-focus-background-color);
     color: var(--sidebar-search-focus-color);
-  }
-
-  & .icon {
-    opacity: 0;
-    /*transition: opacity calc(var(--default-transition-duration) * 0.75) ease;*/
-  }
-}
-
-.filled {
-  & .input {
-    padding-left: 12px;
-  }
-
-  & .icon {
-    opacity: 0;
+    box-shadow: inset 0 0 0 1.5px var(--pinkish-grey);
   }
 }

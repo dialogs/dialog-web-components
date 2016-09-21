@@ -11,27 +11,25 @@ class SidebarSearch extends Component {
   static propTypes = {
     className: PropTypes.string,
     placeholder: PropTypes.string,
+    value: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
-    onFocus: PropTypes.func,
-    onBlur: PropTypes.func
+    onFocus: PropTypes.func.isRequired,
+    onBlur: PropTypes.func.isRequired
   };
 
   constructor(props) {
     super(props);
 
     this.state = {
-      value: '',
       isFocused: false
     };
 
-    this.handleChange = this.handleChange.bind(this);
     this.handleFocus = this.handleFocus.bind(this);
     this.handleBlur = this.handleBlur.bind(this);
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    return nextState.value !== this.state.value ||
-           nextState.isFocused !== this.state.isFocused ||
+    return nextState.isFocused !== this.state.isFocused ||
            nextProps.className !== this.props.className ||
            nextProps.placeholder !== this.props.placeholder ||
            nextProps.onChange !== this.props.onChange ||
@@ -39,30 +37,19 @@ class SidebarSearch extends Component {
            nextProps.onBlur !== this.props.onBlur;
   }
 
-  handleChange(event) {
-    const { onChange } = this.props;
-
-    this.setState({ value: event.target.value });
-    onChange(event.target.value, event);
-  }
-
   handleFocus() {
     this.setState({ isFocused: true });
-    if (this.props.onFocus) {
-      this.props.onFocus();
-    }
+    this.props.onFocus();
   }
 
   handleBlur() {
     this.setState({ isFocused: false });
-    if (this.props.onBlur) {
-      this.props.onBlur();
-    }
+    this.props.onBlur();
   }
 
   render() {
-    const { value, isFocused } = this.state;
-    const { placeholder } = this.props;
+    const { isFocused } = this.state;
+    const { placeholder, value } = this.props;
     const className = classNames(styles.container, {
       [styles.focused]: isFocused,
       [styles.filled]: value && value !== ''
@@ -75,8 +62,7 @@ class SidebarSearch extends Component {
           type="search"
           className={styles.input}
           placeholder={placeholder}
-          value={value}
-          onChange={this.handleChange}
+          onChange={this.props.onChange}
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
         />
