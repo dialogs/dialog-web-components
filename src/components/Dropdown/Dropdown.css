@@ -9,7 +9,6 @@
   --dropdown-padding-bottom: 10px;
   --dropdown-padding-left: 20px;
   --dropdown-border-radius: var(--default-border-radius);
-  --dropdown-z-index: var(--z-index-dropdown);
   --dropdown-item-height: 37px;
   --dropdown-item-hover-background-default: var(--purple-two);
   --dropdown-item-hover-background-secondary: color(#000 alpha(10%));
@@ -17,6 +16,12 @@
   --dropdown-min-width: 250px;
   --dropdown-header-font-size: 14px;
   --dropdown-header-color: color(#000 alpha(50%));
+}
+
+:global {
+  & .tether-element {
+    z-index: var(--z-index-dropdown);
+  }
 }
 
 .root,
@@ -27,7 +32,7 @@
 }
 
 .root {
-  z-index: var(--dropdown-z-index);
+  z-index: var(--z-index-dropdown);
   display: table;
   visibility: hidden;
   min-width: var(--dropdown-min-width);
