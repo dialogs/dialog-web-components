@@ -44,14 +44,14 @@
   },
   "homepage": "https://dialogs.github.io/dialog-web-components",
   "dependencies": {
-    "@dlghq/dialog-types": "^1.1.0",
+    "@dlghq/dialog-types": "1.2.0",
     "@dlghq/react-l10n": "0.1.2",
     "classnames": "2.2.5",
     "lodash": "4.16.1",
     "react": "15.3.2",
     "react-dom": "15.3.2",
     "react-modal": "1.4.0",
-    "react-tether": "^0.5.2"
+    "react-tether": "0.5.2"
   },
   "devDependencies": {
     "@dlghq/babel-preset-dialog": "2.2.0",
