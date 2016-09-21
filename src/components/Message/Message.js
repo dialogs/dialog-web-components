@@ -1,4 +1,10 @@
-import React, { Component, PropTypes } from 'react';
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ * @flow
+ */
+
+import type { MessageProps } from './types';
+import React, { Component } from 'react';
 import MessageContent from '../MessageContent/MessageContent';
 import PeerAvatar from '../PeerAvatar/PeerAvatar';
 import MessageState from './MessageState/MessageState';
@@ -6,23 +12,15 @@ import MessageActions from './MessageActions/MessageActions';
 import styles from './Message.css';
 
 class Message extends Component {
-  static propTypes = {
-    message: PropTypes.shape({
-      rid: PropTypes.string.isRequired,
-      date: PropTypes.string.isRequired,
-      reactions: PropTypes.array.isRequired,
-      state: PropTypes.string.isRequired,
-      sender: PropTypes.object.isRequired,
-      content: PropTypes.object.isRequired
-    }).isRequired
-  };
+  props: MessageProps;
 
-  shouldComponentUpdate(nextProps) {
-    return nextProps.message !== this.props.message;
+  shouldComponentUpdate(nextProps: MessageProps) {
+    return nextProps.message !== this.props.message ||
+           nextProps.state !== this.props.state;
   }
 
   renderState() {
-    const { message: { state } } = this.props;
+    const { state } = this.props;
     if (state === 'unknown') {
       return null;
     }

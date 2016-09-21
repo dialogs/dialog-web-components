@@ -1,31 +1,20 @@
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ * @flow
+ */
+
+import type { MessageStateProps } from '../types';
 import React, { Component, PropTypes } from 'react';
 import MessageSending from './MessageSending';
 import MessageSent from './MessageSent';
 import MessageRead from './MessageRead';
 import MessageError from './MessageError';
-
 import styles from './MessageState.css';
 
 class MessageState extends Component {
-  static propTypes = {
-    state: PropTypes.oneOf(['pending', 'sent', 'read', 'error']).isRequired,
-    readBy: PropTypes.arrayOf(PropTypes.shape({
-      title: PropTypes.string,
-      avatar: PropTypes.string,
-      placeholder: PropTypes.oneOf([
-        'empty',
-        'lblue',
-        'blue',
-        'purple',
-        'red',
-        'orange',
-        'yellow',
-        'green'
-      ])
-    }))
-  };
+  props: MessageStateProps;
 
-  shouldComponentUpdate(nextProps) {
+  shouldComponentUpdate(nextProps: MessageStateProps) {
     return nextProps.state !== this.props.state ||
            nextProps.readBy !== this.props.readBy;
   }
@@ -35,22 +24,19 @@ class MessageState extends Component {
 
     switch (state) {
       case 'pending':
-        return (
-          <MessageSending />
-        );
+        return <MessageSending />;
+
       case 'sent':
-        return (
-          <MessageSent />
-        );
+        return <MessageSent />;
+
       case 'read':
-        return (
-          <MessageRead readBy={readBy} />
-        );
+        return <MessageRead readBy={readBy} />;
+
       case 'error':
+        return <MessageError />;
+
       default:
-        return (
-          <MessageError />
-        );
+        return null;
     }
   }
 

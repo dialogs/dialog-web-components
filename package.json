@@ -22,6 +22,7 @@
     "test": "exit 0",
     "lint": "npm-run-all --parallel lint:js",
     "lint:js": "eslint src/",
+    "lint:flow": "flow check",
     "lint:css": "stylelint 'src/**/*.css'",
     "format": "npm-run-all --parallel format:*",
     "format:js": "eslint src/ --fix",
@@ -43,6 +44,7 @@
   },
   "homepage": "https://dialogs.github.io/dialog-web-components",
   "dependencies": {
+    "@dlghq/dialog-types": "^1.1.0",
     "@dlghq/react-l10n": "0.1.2",
     "classnames": "2.2.5",
     "lodash": "4.16.1",
