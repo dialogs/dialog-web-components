@@ -55,7 +55,7 @@
   },
   "devDependencies": {
     "@dlghq/babel-preset-dialog": "2.2.0",
-    "@dlghq/eslint-config-dialog": "1.7.0",
+    "@dlghq/eslint-config-dialog": "1.7.1",
     "@dlghq/postcss-dialog": "1.2.0",
     "@dlghq/stylelint-config-dialog": "0.7.0",
     "buildbranch": "1.0.0",

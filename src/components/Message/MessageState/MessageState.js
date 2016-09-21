@@ -4,7 +4,7 @@
  */
 
 import type { MessageStateProps } from '../types';
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import MessageSending from './MessageSending';
 import MessageSent from './MessageSent';
 import MessageRead from './MessageRead';
