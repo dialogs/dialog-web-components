@@ -1,41 +1,42 @@
 /**
  * Copyright 2016 Dialog LLC <info@dlg.im>
+ * @flow
  */
 
-import React, { Component, PropTypes } from 'react';
-import { PeerInfo } from '../../PropTypes';
+import type { Peer, SearchEntity } from '@dlghq/dialog-types';
+import React, { Component } from 'react';
+import { peerToString } from '@dlghq/dialog-types/utils';
 import SidebarGroup from '../SidebarGroup/SidebarGroup';
 import RecentItem from '../RecentItem/RecentItem';
 
-class SidebarSearchGroup extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-    title: PropTypes.string.isRequired,
-    items: PropTypes.arrayOf(PeerInfo).isRequired,
-    onSelect: PropTypes.func.isRequired
-  };
+export type SidebarSearchGroupProps = {
+  className?: string,
+  title: string,
+  items: SearchEntity[],
+  onSelect: (peer: Peer) => any
+};
 
-  shouldComponentUpdate(nextProps) {
+class SidebarSearchGroup extends Component {
+  props: SidebarSearchGroupProps;
+
+  shouldComponentUpdate(nextProps: SidebarSearchGroupProps) {
     return nextProps.items !== this.props.items ||
            nextProps.title !== this.props.title ||
-           nextProps.onSelect !== this.props.onSelect ||
            nextProps.className !== this.props.className;
   }
 
   renderItems() {
     const { items, onSelect } = this.props;
 
-    return items.map((item, index) => {
-      return (
-        <RecentItem
-          key={index}
-          info={item.peerInfo}
-          active={false}
-          counter={0}
-          onSelect={onSelect}
-        />
-      );
-    });
+    return items.map(({ peerInfo }) => (
+      <RecentItem
+        key={peerToString(peerInfo.peer)}
+        info={peerInfo}
+        active={false}
+        counter={0}
+        onSelect={onSelect}
+      />
+    ));
   }
 
   render() {
