@@ -3,11 +3,10 @@
  */
 
 import React, { Component, PropTypes } from 'react';
-import classNames from 'classnames';
 import { Peer, PeerInfo } from '../../PropTypes';
 import isSamePeer from '../../utils/isSamePeer';
+import SidebarGroup from '../SidebarGroup/SidebarGroup';
 import RecentItem from '../RecentItem/RecentItem';
-import styles from './RecentGroup.css';
 
 class RecentGroup extends Component {
   static propTypes = {
@@ -31,14 +30,6 @@ class RecentGroup extends Component {
            nextProps.className !== this.props.className;
   }
 
-  renderTitle() {
-    const { title } = this.props;
-
-    return (
-      <div className={styles.title}>{title}</div>
-    );
-  }
-
   renderItems() {
     const { items, currentPeer, onSelect } = this.props;
 
@@ -59,13 +50,12 @@ class RecentGroup extends Component {
   }
 
   render() {
-    const className = classNames(styles.root, this.props.className);
+    const { className, title } = this.props;
 
     return (
-      <div className={className}>
-        {this.renderTitle()}
+      <SidebarGroup className={className} title={title}>
         {this.renderItems()}
-      </div>
+      </SidebarGroup>
     );
   }
 }

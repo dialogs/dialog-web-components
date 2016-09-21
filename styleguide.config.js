@@ -75,6 +75,7 @@ module.exports = {
       return [
         component('SidebarHeader'),
         component('SidebarSearch'),
+        component('SidebarGroup'),
         component('RecentItem'),
         component('RecentGroup'),
         component('FakeRecentItem')
