@@ -47,19 +47,18 @@ class SidebarSearch extends Component {
   }
 
   handleFocus() {
-    const { onFocus } = this.props;
-
     this.setState({ isFocused: true });
-    onFocus && onFocus();
+    if (this.props.onFocus) {
+      this.props.onFocus();
+    }
   }
 
   handleBlur() {
-    const { onBlur } = this.props;
-
     this.setState({ isFocused: false });
-    onBlur && onBlur();
+    if (this.props.onBlur) {
+      this.props.onBlur();
+    }
   }
-
 
   render() {
     const { value, isFocused } = this.state;
