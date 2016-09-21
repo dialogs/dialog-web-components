@@ -20,7 +20,7 @@ class Image extends Component {
   };
 
   static defaultProps = {
-    maxWidth: 300,
+    maxWidth: 400,
     maxHeight: 400
   };
 

@@ -5,6 +5,5 @@
 }
 
 .root {
-  border: 0;
   border-radius: var(--message-photo-border-raduis);
 }
