@@ -36,8 +36,10 @@ function MessageContent({ content }) {
         />
       );
     default:
+      console.warn('Unsupported message content', content);
+
       return (
-        <pre>{JSON.stringify(content)}</pre>
+        <Service text={`Unsupported message content (${content.type}).`} />
       );
   }
 }
