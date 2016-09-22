@@ -66,7 +66,8 @@ module.exports = {
     components() {
       return [
         component('JoinModal'),
-        component('AddContactModal')
+        component('AddContactModal'),
+        component('AttachmentModal')
       ];
     }
   }, {
