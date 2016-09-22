@@ -53,7 +53,8 @@
     "react": "15.3.2",
     "react-dom": "15.3.2",
     "react-modal": "1.4.0",
-    "react-tether": "0.5.2"
+    "react-tether": "0.5.2",
+    "webpack": "^1.13.2"
   },
   "devDependencies": {
     "@dlghq/babel-preset-dialog": "2.2.0",

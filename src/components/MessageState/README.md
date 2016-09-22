@@ -5,6 +5,8 @@ Message states:
       <br />
       <MessageState state="sent" />
       <br />
+      <MessageState state="received" />
+      <br />
       <MessageState state="read" />
       <br />
       <MessageState state="error" />

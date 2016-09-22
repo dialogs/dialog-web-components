@@ -5,10 +5,9 @@
 
 import type { MessageStateProps } from './types';
 import React, { Component } from 'react';
-import MessageSending from './MessageSending';
-import MessageSent from './MessageSent';
+import { Text } from '@dlghq/react-l10n';
+import Spinner from '../Spinner/Spinner';
 import MessageRead from './MessageRead';
-import MessageError from './MessageError';
 import styles from './MessageState.css';
 
 class MessageState extends Component {
@@ -24,19 +23,22 @@ class MessageState extends Component {
 
     switch (state) {
       case 'pending':
-        return <MessageSending />;
+        return <Spinner type="round" className={styles.sending} />;
 
       case 'sent':
-        return <MessageSent />;
+        return <Text id="MessageState.sent" tagName="div" />;
+
+      case 'received':
+        return <Text id="MessageState.delivered" tagName="div" />;
 
       case 'read':
         return <MessageRead readBy={readBy} />;
 
       case 'error':
-        return <MessageError />;
+        return <Text id="MessageState.error" className={styles.error} tagName="div" />;
 
       default:
-        return null;
+        return <Text id="MessageState.unknown" className={styles.error} tagName="div" />;
     }
   }
 

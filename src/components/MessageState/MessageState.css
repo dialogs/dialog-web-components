@@ -29,20 +29,6 @@
   }
 }
 
-.sending {
-}
-
-.sent {
-}
-
-.dot {
-  display: inline-block;
-  width: var(--message-state-dot-size);
-  height: var(--message-state-dot-size);
-  border-radius: var(--message-state-dot-size);
-  background-color: var(--message-state-dot-color);
-}
-
 .read {
   display: flex;
   flex-direction: row;
