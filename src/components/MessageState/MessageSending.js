@@ -1,5 +1,10 @@
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ * @flow
+ */
+
 import React from 'react';
-import Spinner from '../../Spinner/Spinner';
+import Spinner from '../Spinner/Spinner';
 import styles from './MessageState.css';
 
 function MessageSending() {

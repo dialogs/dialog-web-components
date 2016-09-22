@@ -7,7 +7,7 @@ import type { MessageProps } from './types';
 import React, { Component } from 'react';
 import MessageContent from '../MessageContent/MessageContent';
 import PeerAvatar from '../PeerAvatar/PeerAvatar';
-import MessageState from './MessageState/MessageState';
+import MessageState from '../MessageState/MessageState';
 import MessageActions from './MessageActions/MessageActions';
 import styles from './Message.css';
 

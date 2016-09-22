@@ -3,7 +3,7 @@
  * @flow
  */
 
-import type { MessageStateProps } from '../types';
+import type { MessageStateProps } from './types';
 import React, { Component } from 'react';
 import MessageSending from './MessageSending';
 import MessageSent from './MessageSent';

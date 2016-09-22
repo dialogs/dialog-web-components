@@ -1,6 +1,7 @@
-@import '../../../styles/variables.css';
+@import '../../styles/variables.css';
 
 :root {
+  --message-state-font-family: var(--default-font-family);
   --message-state-font-size: 13px;
   --message-state-color: color(#000 alpha(60%));
   --message-state-avatar-padding: 4px;
@@ -13,6 +14,7 @@
   flex-direction: row;
   padding-left: 8px;
   letter-spacing: -0.2px;
+  font-family: var(--message-state-font-family);
   font-size: var(--message-state-font-size);
   line-height: 22px;
   color: var(--message-state-color);
