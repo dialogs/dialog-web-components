@@ -15,7 +15,6 @@
     "start": "styleguidist server",
     "create": "node scripts/create-component.js",
     "build": "npm-run-all --parallel build:*",
-    "build:docs": "styleguidist build",
     "build:lib": "node scripts/export.js",
     "build:l10n": "node scripts/compile-translations.js",
     "pretest": "npm run lint",
@@ -28,10 +27,13 @@
     "format:js": "eslint src/ --fix",
     "format:css": "find src -path '**/*.css' -exec stylefmt {} \\;",
     "preversion": "npm test",
+    "postversion": "npm run release",
+    "postpublish": "git push --follow-tags",
     "prerelease": "npm run build",
     "release": "npm publish",
-    "postrelease": "npm run gh-pages",
-    "gh-pages": "buildbranch gh-pages styleguide"
+    "postrelease": "npm run docs",
+    "predocs": "styleguidist build",
+    "docs": "buildbranch gh-pages styleguide"
   },
   "repository": {
     "type": "git",
