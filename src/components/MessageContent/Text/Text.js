@@ -1,22 +1,27 @@
-import React, { Component, PropTypes } from 'react';
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ * @flow
+ */
+
+import React from 'react';
+import classNames from 'classnames';
 import styles from './Text.css';
 
-class Text extends Component {
-  static propTypes = {
-    text: PropTypes.string.isRequired
-  };
+export type TextProps = {
+  text: string,
+  service?: boolean
+};
 
-  shouldComponentUpdate(nextProps) {
-    return nextProps.text !== this.props.text;
-  }
+function Text(props: TextProps) {
+  const className = classNames(styles.root, {
+    [styles.service]: props.service
+  });
 
-  render() {
-    const { text } = this.props;
-
-    return (
-      <p className={styles.root}>{text}</p>
-    );
-  }
+  return (
+    <p className={className}>
+      {props.text}
+    </p>
+  );
 }
 
 export default Text;

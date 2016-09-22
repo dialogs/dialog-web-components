@@ -3,7 +3,6 @@
 import React, { PropTypes } from 'react';
 import Text from './Text/Text';
 import Photo from './Photo/Photo';
-import Service from './Service/Service';
 import Document from './Document/Document';
 
 function MessageContent({ content }) {
@@ -12,7 +11,7 @@ function MessageContent({ content }) {
       return <Text text={content.text} />;
 
     case 'service':
-      return <Service text={content.text} />;
+      return <Text text={content.text} service />;
 
     case 'photo':
       return (
@@ -36,10 +35,10 @@ function MessageContent({ content }) {
         />
       );
     default:
-      console.warn('Unsupported message content', content);
+      console.warn('Unsupported message content: ', content);
 
       return (
-        <Service text={`Unsupported message content (${content.type}).`} />
+        <Text text={`Unsupported message content (${content.type}).`} service />
       );
   }
 }
