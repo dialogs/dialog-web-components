@@ -8,7 +8,11 @@
   --<%= dashedName -%>-font-family: var(--default-font-family);
 }
 
-.root {
+/* Reset */
+.container {
   all: initial;
+}
+
+.container {
   font-family: var(--<%= dashedName -%>-font-family);
 }

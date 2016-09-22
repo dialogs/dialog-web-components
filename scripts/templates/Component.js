@@ -27,7 +27,7 @@ class <%= name %> extends Component {
 
   render() {
 <% if (styles) { -%>
-    const className = classNames(styles.root, this.props.className);
+    const className = classNames(styles.container, this.props.className);
 
     return (
       <div className={className}>
