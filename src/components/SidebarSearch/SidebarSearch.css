@@ -16,8 +16,12 @@
   --sidebar-search-input-height: 34px;
 }
 
-.container {
+.container,
+.input {
   all: initial;
+}
+
+.container {
   padding: var(--sidebar-search-padding);
   box-sizing: border-box;
   position: relative;
@@ -25,7 +29,6 @@
 }
 
 .input {
-  all: initial;
   display: block;
   font-family: var(--sidebar-search-font-family);
   border-radius: var(--sidebar-search-border-radius);
