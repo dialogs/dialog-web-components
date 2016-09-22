@@ -19,7 +19,7 @@
     "build:l10n": "node scripts/compile-translations.js",
     "pretest": "npm run lint",
     "test": "exit 0",
-    "lint": "npm-run-all --parallel lint:js",
+    "lint": "npm-run-all lint:js lint:flow",
     "lint:js": "eslint src/",
     "lint:flow": "flow check",
     "lint:css": "stylelint 'src/**/*.css'",
