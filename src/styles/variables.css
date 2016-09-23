@@ -1,7 +1,6 @@
 /**
  * Copyright 2016 Dialog LLC <info@dlg.im>
  */
-
 @import './colors.css';
 @import './helpers.css';
 
@@ -11,6 +10,7 @@
   --font-emoji: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   --default-font-family: var(--font-apple), var(--font-fallback), var(--font-emoji);
   --code-font-family: 'Fira Code', 'Consolas', 'Monaco', 'Roboto Mono', monospace;
+
   /* Sizes */
   --small-font-size: 14px;
   --default-font-size: 16px;
@@ -20,12 +20,20 @@
   --default-border-radius-small: 3px;
   --default-border-radius: 5px;
   --default-transition-duration: 150ms;
+
   /* Layers */
   --z-index-dropdown: 100;
   --z-index-sidebar: 50;
   --z-index-chat: 20;
+
   /* Colors */
-  --color-primary: #8601b0;
+  --color-primary: var(--purple-two);
+  --color-success: var(--medium-green);
+  --color-danger: var(--lipstick);
+  --color-info: var(--sky-blue);
+  --color-warning: var(--orange-yellow);
+
+  /* TODO: Cleanup this mess */
   --color-empty: #b8b8b8;
   --color-lblue: #59a2be;
   --color-blue: #2093cd;
@@ -34,7 +42,7 @@
   --color-orange: #f9a43e;
   --color-yellow: #e4c62e;
   --color-green: #67bf74;
-  --color-pending: var(--color-blue);
-  --color-error: var(--color-red);
-  --color-success: var(--color-green);
+  --color-pending: var(--color-info);
+  --color-error: var(--color-danger);
 }
+
