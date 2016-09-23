@@ -1,19 +1,115 @@
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ */
 @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+@import '../../styles/variables.css';
 
 :root {
   --icon-default-size: 24px;
+  --icon-default-color: #000;
+}
+
+.container {
+  user-select: none;
+  vertical-align: middle;
+  display: inline-block;
+  text-align: center;
+  cursor: default;
+  color: var(--icon-default-color);
+  fill: var(--icon-default-color);
+  font-size: var(--icon-default-size);
+  line-height: var(--icon-default-size);
+  width: var(--icon-default-size);
+  height: var(--icon-default-size);
+  background-color: transparent;
 }
 
 .material {
-  vertical-align: middle;
-  font-size: var(--icon-default-size);
+  font-size: inherit;
   line-height: inherit;
+  color: inherit;
 }
 
 .svg {
-  display: inline-block;
-  width: var(--icon-default-size);
-  height: auto;
-  vertical-align: middle;
-  fill: #000;
+  width: 100%;
+  height: 100%;
+  fill: inherit;
+}
+
+.inverted {
+  border-radius: 50%;
+  padding: 4px;
+  background-color: var(--icon-default-color);
+  color: #fff;
+  fill: #fff;
+  font-size: calc(var(--icon-default-size) - 4);
+  line-height: calc(var(--icon-default-size) - 4);
+  width: calc(var(--icon-default-size) - 4);
+  height: calc(var(--icon-default-size) - 4);
+}
+
+.clickable {
+  opacity: .75;
+  cursor: pointer;
+  transition: opacity var(--default-transition-duration) ease-in-out;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+/* Themes */
+.primary {
+  color: var(--color-primary);
+  fill: var(--color-primary);
+
+  &.inverted {
+    background-color: var(--color-primary);
+    color: #fff;
+    fill: #fff;
+  }
+}
+
+.success {
+  color: var(--color-success);
+  fill: var(--color-success);
+
+  &.inverted {
+    background-color: var(--color-success);
+    color: #fff;
+    fill: #fff;
+  }
+}
+
+.danger {
+  color: var(--color-danger);
+  fill: var(--color-danger);
+
+  &.inverted {
+    background-color: var(--color-danger);
+    color: #fff;
+    fill: #fff;
+  }
+}
+
+.info {
+  color: var(--color-info);
+  fill: var(--color-info);
+
+  &.inverted {
+    background-color: var(--color-info);
+    color: #fff;
+    fill: #fff;
+  }
+}
+
+.warning {
+  color: var(--color-warning);
+  fill: var(--color-warning);
+
+  &.inverted {
+    background-color: var(--color-warning);
+    color: #fff;
+    fill: #fff;
+  }
 }
