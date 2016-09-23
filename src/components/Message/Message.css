@@ -70,6 +70,7 @@
   font-size: 13px;
   line-height: 22px;
   color: var(--message-timestamp-color);
+  user-select: none;
 }
 
 .content {
