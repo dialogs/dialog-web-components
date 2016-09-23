@@ -1,11 +1,12 @@
 /**
  * Copyright 2016 Dialog LLC <info@dlg.im>
  */
+
 @import '../../styles/variables.css';
 
 :root {
   --attachment-modal-font-family: var(--default-font-family);
-  --attachment-modal-width: 600px;
+  --attachment-modal-width: 500px;
   --attachment-modal-font-size: var(--default-font-size);
   --attachment-modal-text-color: color(#000 alpha(50%));
   --attachment-modal-body-padding: 32px;
@@ -32,6 +33,7 @@
   flex: 0 0 auto;
   text-align: center;
   line-height: 0;
+  height: var(--attachment-modal-preview-max-height);
 }
 
 .previewImage {

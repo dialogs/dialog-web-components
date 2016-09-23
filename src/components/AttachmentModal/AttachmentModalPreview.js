@@ -21,6 +21,7 @@ class AttachmentModalPreview extends Component {
       case 'mov':
       case 'mpeg':
       case 'avi':
+      case 'mkv':
         return 'media';
       default:
         return 'unknown';
