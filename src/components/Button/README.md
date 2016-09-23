@@ -7,6 +7,8 @@ It has different types of themes. You can change themes by changing `theme` prop
   <Button theme="primary">Primary</Button>
   <Button theme="success">Success</Button>
   <Button theme="danger">Danger</Button>
+  <Button theme="info">Info</Button>
+  <Button theme="warning">Warning</Button>
   <Button theme="link">Link</Button>
 </div>
 ```

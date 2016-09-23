@@ -31,6 +31,16 @@
   --button-danger-active-background-color: color(var(--button-danger-background-color) shade(5%));
   --button-danger-disabled-background-color: color(var(--button-danger-background-color) blackness(50%));
   --button-danger-color: #fff;
+  --button-info-background-color: var(--color-info);
+  --button-info-hover-background-color: color(var(--button-info-background-color) tint(10%));
+  --button-info-active-background-color: color(var(--button-info-background-color) shade(5%));
+  --button-info-disabled-background-color: color(var(--button-info-background-color) blackness(50%));
+  --button-info-color: #fff;
+  --button-warning-background-color: var(--color-warning);
+  --button-warning-hover-background-color: color(var(--button-warning-background-color) tint(10%));
+  --button-warning-active-background-color: color(var(--button-warning-background-color) shade(5%));
+  --button-warning-disabled-background-color: color(var(--button-warning-background-color) blackness(50%));
+  --button-warning-color: #fff;
   --button-link-color: var(--violet-blue-two);
   --button-link-hover-color: color(var(--button-link-color) alpha(70%));
   --button-link-disabled-color: color(var(--button-link-color) blackness(50%));
@@ -43,7 +53,7 @@
   box-sizing: border-box;
   cursor: pointer;
   user-select: none;
-  transition: all var(--default-transition-duration) ease;
+  transition: all var(--default-transition-duration) ease-in-out;
   text-align: center;
   border: 0;
   outline: none;
@@ -136,6 +146,47 @@
 
   &[disabled] {
     background-color: var(--button-danger-disabled-background-color);
+  }
+}
+
+
+.info {
+  background-color: var(--button-info-background-color);
+  color: var(--button-info-color);
+
+  &:hover:enabled,
+  &:focus:enabled {
+    background-color: var(--button-info-hover-background-color);
+    box-shadow: 0 2px 4px color(#000 alpha(25%));
+  }
+
+  &:active:enabled {
+    background-color: var(--button-info-active-background-color);
+    box-shadow: 0 2px 1px color(#000 alpha(25%));
+  }
+
+  &[disabled] {
+    background-color: var(--button-info-disabled-background-color);
+  }
+}
+
+.warning {
+  background-color: var(--button-warning-background-color);
+  color: var(--button-warning-color);
+
+  &:hover:enabled,
+  &:focus:enabled {
+    background-color: var(--button-warning-hover-background-color);
+    box-shadow: 0 2px 4px color(#000 alpha(25%));
+  }
+
+  &:active:enabled {
+    background-color: var(--button-warning-active-background-color);
+    box-shadow: 0 2px 1px color(#000 alpha(25%));
+  }
+
+  &[disabled] {
+    background-color: var(--button-warning-disabled-background-color);
   }
 }
 
