@@ -40,10 +40,10 @@ class AttachmentModal extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    return nextState.index !== this.props.index ||
+    return nextState.index !== this.state.index ||
            nextProps.className !== this.props.className ||
            nextProps.isOpen !== this.props.isOpen ||
-           nextProps.attachment !== this.props.attachment ||
+           nextProps.attachments !== this.props.attachments ||
            nextProps.onClose !== this.props.onClose ||
            nextProps.onSend !== this.props.onSend;
   }
@@ -56,7 +56,7 @@ class AttachmentModal extends Component {
   }
 
   handleSendAll() {
-
+    console.debug('handleSendAll', this.props.attachments);
   }
 
   renderHeader() {

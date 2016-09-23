@@ -4,6 +4,7 @@
 
 import React, { Component, PropTypes } from 'react';
 import { Text } from '@dlghq/react-l10n';
+import Switcher from '../Switcher/Switcher';
 import getExtensionFromFilename from '../../utils/getExtensionFromFilename';
 import getReadableFileSize from '../../utils/getReadableFileSize';
 import styles from './AttachmentModal.css';
@@ -12,6 +13,10 @@ class AttachmentModalMeta extends Component {
   static propTypes = {
     attachment: PropTypes.any.isRequired
   };
+
+  shouldComponentUpdate(nextProps) {
+    return nextProps.attachment !== this.props.attachment;
+  }
 
   renderMethod() {
     const { attachment } = this.props;

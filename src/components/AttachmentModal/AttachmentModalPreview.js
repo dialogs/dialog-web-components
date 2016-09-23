@@ -12,9 +12,14 @@ class AttachmentModalPreview extends Component {
     attachment: PropTypes.any.isRequired
   };
 
+  shouldComponentUpdate(nextProps) {
+    return nextProps.attachment !== this.props.attachment;
+  }
+
   getDocumentType(extension) {
     switch (extension) {
       case 'pdf':
+      case 'xls':
       case 'doc':
       case 'docx':
         return 'document';

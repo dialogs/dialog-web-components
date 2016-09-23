@@ -109,7 +109,7 @@ class Icon extends Component {
       case 'more':
         return this.renderSvgIcon();
       default:
-        return this.renderMaterialIcon()
+        return this.renderMaterialIcon();
     }
   }
 
