@@ -33,6 +33,7 @@
 }
 
 .icon {
+  cursor: pointer;
   transition: all var(--default-transition-duration) ease;
 }
 
