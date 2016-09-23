@@ -1,20 +1,26 @@
-export default function getReadableFileSize(bytes, si) {
-  const thresh = si ? 1000 : 1024;
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ * @flow
+ */
 
-  if (Math.abs(bytes) < thresh) {
+const thresh = 1024;
+const units = ['kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+
+function getReadableFileSize(bytes: number): string {
+  if (bytes < thresh) {
     return bytes + ' B';
   }
 
-  const units = si
-    ? ['kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
-    : ['KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB'];
+  const exp = Math.min(
+    units.length,
+    Math.floor(
+      Math.log(bytes) / Math.log(thresh)
+    )
+  );
 
-  let u = -1;
+  const result = bytes / Math.pow(2, exp * 10);
 
-  do {
-    bytes /= thresh;
-    ++u;
-  } while (Math.abs(bytes) >= thresh && u < units.length - 1);
-
-  return bytes.toFixed(1) + ' ' + units[u];
+  return result.toFixed(1) + ' ' + units[exp - 1];
 }
+
+export default getReadableFileSize;

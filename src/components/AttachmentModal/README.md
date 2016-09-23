@@ -1,33 +1,28 @@
 Basic AttachmentModal:
 
 ```
-let initialState = {
-  isOpen: false
+const selectFiles = require('../../utils/selectFiles').default;
+
+initialState = {
+  isOpen: false,
+  attachments: []
 };
-const handleOpen = () => document.getElementById('attachment').click();
-const handleInputChange = (event) => {
-  setState({
-    isOpen: true,
-    attachments: event.target.files
+
+const handleOpen = (event) => {
+  selectFiles((files) => {
+    setState({
+      isOpen: true,
+      attachments: files
+    });
   });
 };
-const handleClose = () => setState({ isOpen: false });
+const handleClose = () => setState(initialState);
 const handleSend = (attachment) => {
   alert(`File ${attachment.name} sended`)
   handleClose();
 };
 
 <div>
-  <input
-    id="attachment"
-    onChange={handleInputChange}
-    type="file"
-    style={{
-      visibility: 'hidden',
-      display: 'none'
-    }}
-    multiple
-  />
   <Button onClick={handleOpen}>Send attachment</Button>
   <AttachmentModal
     isOpen={state.isOpen}

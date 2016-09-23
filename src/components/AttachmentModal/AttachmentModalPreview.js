@@ -2,68 +2,37 @@
  * Copyright 2016 Dialog LLC <info@dlg.im>
  */
 
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
 import classNames from 'classnames';
-import getExtensionFromFilename from '../../utils/getExtensionFromFilename';
+import getDocumentType from '../../utils/getDocumentType';
+import getFilenameExtension from '../../utils/getFilenameExtension';
 import styles from './AttachmentModal.css';
 
-class AttachmentModalPreview extends Component {
-  static propTypes = {
-    attachment: PropTypes.any.isRequired
-  };
+export type AttachmentModalPreviewProps = {
+  attachment: File
+};
 
-  shouldComponentUpdate(nextProps) {
-    return nextProps.attachment !== this.props.attachment;
-  }
+function AttachmentModalPreview(props: AttachmentModalPreviewProps) {
+  const { attachment } = props;
 
-  getDocumentType(extension) {
-    switch (extension) {
-      case 'pdf':
-      case 'xls':
-      case 'doc':
-      case 'docx':
-        return 'document';
-      case 'mov':
-      case 'mpeg':
-      case 'avi':
-      case 'mkv':
-        return 'media';
-      default:
-        return 'unknown';
-    }
-  }
-
-  renderFilePreview() {
-    const { attachment } = this.props;
-    const extension = getExtensionFromFilename(attachment.name);
-    const type = this.getDocumentType(extension);
-    const className = classNames(styles.previewDocument, styles[type]);
-
-    return (
-      <div className={className}>{extension}</div>
-    );
-  }
-
-  render() {
-    const { attachment } = this.props;
-
-    if (attachment.type.indexOf('image/') === 0) {
-      return (
-        <div className={styles.preview}>
-          <img
-            src={URL.createObjectURL(attachment)}
-            className={styles.previewImage}
-          />
-        </div>
-      );
-    }
-
+  if (attachment.type.indexOf('image/') === 0) {
     return (
       <div className={styles.preview}>
-        {this.renderFilePreview()}
+        <img
+          src={URL.createObjectURL(attachment)}
+          className={styles.previewImage}
+        />
       </div>
     );
   }
+
+  const extension = getFilenameExtension(attachment.name);
+  const type = getDocumentType(extension);
+  const className = classNames(styles.previewDocument, styles[type]);
+
+  return (
+    <div className={className}>{extension}</div>
+  );
 }
 
 export default AttachmentModalPreview;

@@ -1,8 +1,10 @@
 /**
  * Copyright 2016 Dialog LLC <info@dlg.im>
+ * @flow
  */
 
-import React, { Component, PropTypes } from 'react';
+import type { AttachmentModalProps, AttachmentModalState } from './types';
+import React, { Component } from 'react';
 import classNames from 'classnames';
 import { Text } from '@dlghq/react-l10n';
 import Modal from '../Modal/Modal';
@@ -16,47 +18,45 @@ import AttachmentModalPreview from './AttachmentModalPreview';
 import styles from './AttachmentModal.css';
 
 class AttachmentModal extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-    attachments: PropTypes.any,
-    isOpen: PropTypes.bool.isRequired,
-    onClose: PropTypes.func.isRequired,
-    onSend: PropTypes.func.isRequired
-  };
+  props: AttachmentModalProps;
+  state: AttachmentModalState;
 
-  static defaultProps = {
-    isOpen: false
-  };
+  handleSend: Function;
+  handleSendAll: Function;
 
-  constructor(props) {
+  constructor(props: AttachmentModalProps) {
     super(props);
 
     this.state = {
-      index: 0
+      current: 0
     };
 
     this.handleSend = this.handleSend.bind(this);
     this.handleSendAll = this.handleSendAll.bind(this);
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    return nextState.index !== this.state.index ||
-           nextProps.className !== this.props.className ||
+  shouldComponentUpdate(nextProps: AttachmentModalProps, nextState: AttachmentModalState) {
+    return nextState.current !== this.state.current ||
            nextProps.isOpen !== this.props.isOpen ||
            nextProps.attachments !== this.props.attachments ||
-           nextProps.onClose !== this.props.onClose ||
-           nextProps.onSend !== this.props.onSend;
+           nextProps.className !== this.props.className;
   }
 
   handleSend() {
-    const { attachments } = this.props;
-    const { index } = this.state;
-
-    this.props.onSend(attachments[index]);
+    this.props.onSend(this.getCurrentAttachment());
   }
 
   handleSendAll() {
-    console.debug('handleSendAll', this.props.attachments);
+    const { attachments } = this.props;
+    const { current } = this.state;
+
+    for (let i = current; i < attachments.length; i++) {
+      this.props.onSend(attachments[i]);
+    }
+  }
+
+  getCurrentAttachment(): File {
+    return this.props.attachments[this.state.current];
   }
 
   renderHeader() {
@@ -124,9 +124,8 @@ class AttachmentModal extends Component {
   }
 
   render() {
-    console.debug(this.props, this.state);
-    const { isOpen, onClose, attachments } = this.props;
-    const { index } = this.state;
+    const { isOpen, onClose } = this.props;
+    const currentAttachment = this.getCurrentAttachment();
     const className = classNames(styles.root, this.props.className);
 
     if (!isOpen) {
@@ -137,8 +136,8 @@ class AttachmentModal extends Component {
       <Modal isOpen={isOpen} onClose={onClose} className={className}>
         {this.renderHeader()}
         <ModalBody className={styles.body}>
-          <AttachmentModalPreview attachment={attachments[index]} />
-          <AttachmentModalMeta attachment={attachments[index]} />
+          <AttachmentModalPreview attachment={currentAttachment} />
+          <AttachmentModalMeta attachment={currentAttachment} />
         </ModalBody>
         {this.renderFooter()}
       </Modal>
