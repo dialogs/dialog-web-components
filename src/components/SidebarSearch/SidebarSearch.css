@@ -22,26 +22,26 @@
 }
 
 .container {
-  padding: var(--sidebar-search-padding);
-  box-sizing: border-box;
   position: relative;
+  box-sizing: border-box;
+  padding: var(--sidebar-search-padding);
   color: var(--sidebar-search-color);
 }
 
 .input {
   display: block;
-  font-family: var(--sidebar-search-font-family);
+  box-sizing: border-box;
+  width: 100%;
+  height: var(--sidebar-search-input-height);
+  padding: 8px 12px 8px 46px;
+  transition: padding var(--default-transition-duration) ease;
+  letter-spacing: -0.2px;
   border-radius: var(--sidebar-search-border-radius);
   background-color: var(--sidebar-search-background-color);
-  width: 100%;
-  color: inherit;
-  height: var(--sidebar-search-input-height);
+  font-family: var(--sidebar-search-font-family);
   font-size: 15px;
-  letter-spacing: -0.2px;
   line-height: 18px;
-  padding: 8px 12px 8px 46px;
-  box-sizing: border-box;
-  transition: padding var(--default-transition-duration) ease;
+  color: inherit;
 
   &::-webkit-input-placeholder {
     color: var(--sidebar-search-placeholder-color);
@@ -62,18 +62,18 @@
 
 .icon {
   position: absolute;
-  line-height: 18px;
   top: calc(var(--sidebar-search-padding) + 9px);
   left: calc(var(--sidebar-search-padding) + 15px);
-  color: inherit;
-  font-size: 20px;
   transition: opacity calc(var(--default-transition-duration)) ease;
+  font-size: 20px;
+  line-height: 18px;
+  color: inherit;
 }
 
 .focused {
   & .input {
     background-color: var(--sidebar-search-focus-background-color);
-    color: var(--sidebar-search-focus-color);
     box-shadow: inset 0 0 0 1.5px var(--pinkish-grey);
+    color: var(--sidebar-search-focus-color);
   }
 }

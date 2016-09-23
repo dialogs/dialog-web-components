@@ -13,6 +13,7 @@
   display: inline-flex;
   flex-direction: row;
   padding-left: 8px;
+  user-select: none;
   letter-spacing: -0.2px;
   font-family: var(--message-state-font-family);
   font-size: var(--message-state-font-size);
@@ -22,7 +23,6 @@
   align-content: flex-start;
   justify-content: flex-start;
   flex-wrap: nowrap;
-  user-select: none;
 
   &::before {
     padding-right: 8px;
