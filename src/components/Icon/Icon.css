@@ -1,6 +1,7 @@
 /**
  * Copyright 2016 Dialog LLC <info@dlg.im>
  */
+
 @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
 @import '../../styles/variables.css';
 
@@ -10,18 +11,18 @@
 }
 
 .container {
-  user-select: none;
-  vertical-align: middle;
   display: inline-block;
-  text-align: center;
-  cursor: default;
-  color: var(--icon-default-color);
-  fill: var(--icon-default-color);
-  font-size: var(--icon-default-size);
-  line-height: var(--icon-default-size);
   width: var(--icon-default-size);
   height: var(--icon-default-size);
+  cursor: default;
+  user-select: none;
+  text-align: center;
+  vertical-align: middle;
   background-color: transparent;
+  font-size: var(--icon-default-size);
+  line-height: var(--icon-default-size);
+  color: var(--icon-default-color);
+  fill: var(--icon-default-color);
 }
 
 .material {
@@ -37,21 +38,21 @@
 }
 
 .inverted {
-  border-radius: 50%;
-  padding: 4px;
-  background-color: var(--icon-default-color);
-  color: #fff;
-  fill: #fff;
-  font-size: calc(var(--icon-default-size) - 4);
-  line-height: calc(var(--icon-default-size) - 4);
   width: calc(var(--icon-default-size) - 4);
   height: calc(var(--icon-default-size) - 4);
+  padding: 4px;
+  border-radius: 50%;
+  background-color: var(--icon-default-color);
+  font-size: calc(var(--icon-default-size) - 4);
+  line-height: calc(var(--icon-default-size) - 4);
+  color: #fff;
+  fill: #fff;
 }
 
 .clickable {
-  opacity: .75;
   cursor: pointer;
   transition: opacity var(--default-transition-duration) ease-in-out;
+  opacity: 0.75;
 
   &:hover {
     opacity: 1;
