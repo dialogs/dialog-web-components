@@ -43,7 +43,8 @@
 }
 
 .arrow {
-  transition: transform var(--default-transition-duration) ease-out;
+  transition: transform var(--default-transition-duration) ease-in-out;
+  height: calc(var(--sidebar-header-height) - var(--sidebar-header-padding-top) - var(--sidebar-header-padding-bottom));
   line-height: calc(var(--sidebar-header-height) - var(--sidebar-header-padding-top) - var(--sidebar-header-padding-bottom));
 }
 
