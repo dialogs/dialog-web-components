@@ -11,8 +11,11 @@
   --activity-list-item-padding: 30px;
 }
 
-.list {
+.container {
   all: initial;
+}
+
+.container {
   font-family: var(--activity-list-font-family);
 }
 

@@ -18,7 +18,7 @@ class ActivityList extends Component {
   }
 
   render() {
-    const className = classNames(styles.root, this.props.className);
+    const className = classNames(styles.container, this.props.className);
 
     return (
       <div className={className}>
