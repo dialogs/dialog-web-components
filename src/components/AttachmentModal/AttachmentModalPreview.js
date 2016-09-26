@@ -31,7 +31,9 @@ function AttachmentModalPreview(props: AttachmentModalPreviewProps) {
   const className = classNames(styles.previewDocument, styles[type]);
 
   return (
-    <div className={className}>{extension}</div>
+    <div className={styles.preview}>
+      <div className={className}>{extension}</div>
+    </div>
   );
 }
 
