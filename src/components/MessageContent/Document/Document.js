@@ -4,7 +4,7 @@
  */
 
 import type { MessageContentDocument } from '@dlghq/dialog-types';
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import classNames from 'classnames';
 import Icon from '../../Icon';
 import styles from './Document.css';

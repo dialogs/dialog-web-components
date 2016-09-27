@@ -2,6 +2,7 @@
  * Copyright 2016 Dialog LLC <info@dlg.im>
  * @flow
  */
+/* eslint react/require-optimization: 0 */
 
 import type { MessageContent as MessageContentTypes } from '@dlghq/dialog-types';
 import React, { Component } from 'react';
@@ -21,10 +22,10 @@ class MessageContent extends Component {
 
     switch (content.type) {
       case 'text':
-        return <Text text={content.text}/>;
+        return <Text text={content.text} />;
 
       case 'service':
-        return <Text text={content.text} service/>;
+        return <Text text={content.text} service />;
 
       case 'photo':
         return (

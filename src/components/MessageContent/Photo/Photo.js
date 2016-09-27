@@ -4,7 +4,7 @@
  */
 
 import type { MessageContentPhoto } from '@dlghq/dialog-types';
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import classNames from 'classnames';
 import Image from '../../Image/Image';
 import styles from './Photo.css';
