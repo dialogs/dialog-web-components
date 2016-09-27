@@ -10,10 +10,16 @@ import getFilenameExtension from '../../utils/getFilenameExtension';
 import getReadableFileSize from '../../utils/getReadableFileSize';
 import styles from './AttachmentModal.css';
 
+export type AttachmentModalMetaProps = {
+  attachment: File
+};
+
 class AttachmentModalMeta extends Component {
-  props: {
-    attachment: File
-  };
+  props: AttachmentModalMetaProps;
+
+  shouldComponentUpdate(nextProps: AttachmentModalMetaProps) {
+    return nextProps.attachment !== this.props.attachment;
+  }
 
   renderMethod() {
     const { attachment } = this.props;
