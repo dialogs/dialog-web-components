@@ -21,6 +21,7 @@ class Message extends Component {
 
   renderState() {
     const { state } = this.props;
+
     if (state === 'unknown') {
       return null;
     }

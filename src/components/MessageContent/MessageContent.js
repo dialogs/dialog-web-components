@@ -5,7 +5,7 @@
 /* eslint react/require-optimization: 0 */
 
 import type { MessageContent as MessageContentTypes } from '@dlghq/dialog-types';
-import React, { Component } from 'react';
+import React from 'react';
 import Text from './Text/Text';
 import Photo from './Photo/Photo';
 import Document from './Document/Document';
@@ -14,36 +14,24 @@ export type MessageContentProps = {
   content: MessageContentTypes
 };
 
-class MessageContent extends Component {
-  props: MessageContentProps;
+function MessageContent({ content }: MessageContentProps) {
+  switch (content.type) {
+    case 'text':
+      return <Text text={content.text} />;
 
-  render() {
-    const { content } = this.props;
+    case 'service':
+      return <Text text={content.text} service />;
 
-    switch (content.type) {
-      case 'text':
-        return <Text text={content.text} />;
+    case 'photo':
+      return <Photo {...content} />;
 
-      case 'service':
-        return <Text text={content.text} service />;
+    case 'document':
+      return <Document {...content} />;
 
-      case 'photo':
-        return (
-          <Photo {...content} />
-        );
 
-      case 'document':
-        return (
-          <Document {...content} />
-        );
-
-      default:
-        console.warn('Unsupported message content: ', content);
-
-        return (
-          <Text text={`Unsupported message content (${content.type}).`} service />
-        );
-    }
+    default:
+      console.warn('Unsupported message content: ', content);
+      return <Text text={`Unsupported message content (${content.type}).`} service />;
   }
 }
 
