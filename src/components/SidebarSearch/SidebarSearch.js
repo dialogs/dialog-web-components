@@ -3,33 +3,49 @@
  * @flow
  */
 
-import type { SidebarSearchProps } from './types';
-import React, { Component, PropTypes } from 'react';
+import type { ProviderContext } from '@dlghq/react-l10n';
+import React, { Component } from 'react';
+import { LocalizationContextType } from '@dlghq/react-l10n';
 import classNames from 'classnames';
 import Icon from '../Icon/Icon';
 import styles from './SidebarSearch.css';
 
+export type SidebarSearchProps = {
+  className?: string,
+  value: string,
+  onChange: (value: string) => any,
+  onFocus?: () => any,
+  onBlur?: () => any
+};
+
+export type SidebarSearchContext = ProviderContext;
+
 class SidebarSearch extends Component {
   props: SidebarSearchProps;
+  context: SidebarSearchContext;
+
+  handleChange: Function;
 
   static contextTypes = {
-    l10n: PropTypes.object.isRequired
+    l10n: LocalizationContextType
   };
 
-  shouldComponentUpdate(nextProps: SidebarSearchProps) {
-    return nextProps.value !== this.props.value ||
-           nextProps.isFocused !== this.props.isFocused ||
-           nextProps.className !== this.props.className;
+  constructor(props: SidebarSearchProps, context: SidebarSearchContext) {
+    super(props, context);
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event: $FlowIssue): void {
+    this.props.onChange(event.target.value, event);
   }
 
   render() {
-    const { value, isFocused } = this.props;
+    const { value } = this.props;
+
     const className = classNames(
       styles.container,
-      {
-        [styles.focused]: isFocused,
-        [styles.filled]: Boolean(value)
-      },
+      value ? styles.filled : null,
       this.props.className
     );
 
@@ -40,6 +56,7 @@ class SidebarSearch extends Component {
         <Icon glyph="search" className={styles.icon} />
         <input
           type="search"
+          value={value}
           className={styles.input}
           placeholder={placeholder}
           onChange={this.props.onChange}

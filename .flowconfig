@@ -1,5 +1,6 @@
 [ignore]
 .*/__tests__/.*
+.*/test/.*
 .*/react/node_modules/.*
 .*/fbjs/node_modules/.*
 .*/node_modules/invariant/.*

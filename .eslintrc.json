@@ -1,6 +1,10 @@
 {
   "extends": "@dlghq/eslint-config-dialog",
+  "globals": {
+    "$FlowIssue": true
+  },
   "rules": {
+    "no-duplicate-imports": 0,
     "react/no-unused-prop-types": [2, {
       "skipShapeProps": true
     }]
