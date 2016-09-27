@@ -1,57 +1,49 @@
-/* eslint react/require-optimization:0 */
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ * @flow
+ */
 
-import React, { PropTypes } from 'react';
+import type { MessageContent as MessageContentTypes } from '@dlghq/dialog-types';
+import React, { Component } from 'react';
 import Text from './Text/Text';
 import Photo from './Photo/Photo';
 import Document from './Document/Document';
 
-function MessageContent({ content }) {
-  switch (content.type) {
-    case 'text':
-      return <Text text={content.text} />;
+export type MessageContentProps = {
+  content: MessageContentTypes
+};
 
-    case 'service':
-      return <Text text={content.text} service />;
+class MessageContent extends Component {
+  props: MessageContentProps;
 
-    case 'photo':
-      return (
-        <Photo
-          fileUrl={content.fileUrl}
-          fileName={content.fileName}
-          preview={content.preview}
-          width={content.width}
-          height={content.height}
-        />
-      );
+  render() {
+    const { content } = this.props;
 
-    case 'document':
-      return (
-        <Document
-          fileUrl={content.fileUrl}
-          fileName={content.fileName}
-          fileSize={content.fileSize}
-          fileExtension={content.fileExtension}
-          isUploading={content.isUploading}
-        />
-      );
-    default:
-      console.warn('Unsupported message content: ', content);
+    switch (content.type) {
+      case 'text':
+        return <Text text={content.text}/>;
 
-      return (
-        <Text text={`Unsupported message content (${content.type}).`} service />
-      );
+      case 'service':
+        return <Text text={content.text} service/>;
+
+      case 'photo':
+        return (
+          <Photo {...content} />
+        );
+
+      case 'document':
+        return (
+          <Document {...content} />
+        );
+
+      default:
+        console.warn('Unsupported message content: ', content);
+
+        return (
+          <Text text={`Unsupported message content (${content.type}).`} service />
+        );
+    }
   }
 }
-
-MessageContent.propTypes = {
-  content: PropTypes.shape({
-    type: PropTypes.oneOf([
-      'text',
-      'service',
-      'photo',
-      'document'
-    ]).isRequired
-  }).isRequired
-};
 
 export default MessageContent;

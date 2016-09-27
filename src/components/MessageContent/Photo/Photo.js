@@ -3,7 +3,7 @@
  * @flow
  */
 
-import type { MessageContentPhoto } from '@dlghq/dialog-types'
+import type { MessageContentPhoto } from '@dlghq/dialog-types';
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
 import Image from '../../Image/Image';
