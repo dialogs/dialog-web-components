@@ -1,7 +1,7 @@
 @import '../../../styles/variables.css';
 
 :root {
-  --document-min-width: 300px;
+  --document-min-width: 400px;
   --document-max-width: 400px;
   --document-font-family: var(--default-font-family);
   --document-media-color: var(--sky-blue);
