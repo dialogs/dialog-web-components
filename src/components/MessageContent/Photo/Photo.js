@@ -1,19 +1,20 @@
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ * @flow
+ */
+
+import type { MessageContentPhoto } from '@dlghq/dialog-types'
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
 import Image from '../../Image/Image';
 import styles from './Photo.css';
 
 class Photo extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-    fileUrl: PropTypes.string,
-    fileName: PropTypes.string,
-    preview: PropTypes.string,
-    width: PropTypes.number.isRequired,
-    height: PropTypes.number.isRequired
+  props: MessageContentPhoto & {
+    className?: string
   };
 
-  shouldComponentUpdate(nextProps) {
+  shouldComponentUpdate(nextProps: MessageContentPhoto) {
     return nextProps.fileUrl !== this.props.fileUrl ||
       nextProps.preview !== this.props.preview ||
       nextProps.fileName !== this.props.fileName ||
@@ -22,16 +23,17 @@ class Photo extends Component {
   }
 
   render() {
+    const { fileUrl, fileName, preview, width, height } = this.props;
     const className = classNames(styles.root, this.props.className);
 
     return (
       <Image
         className={className}
-        src={this.props.fileUrl}
-        alt={this.props.fileName}
-        preview={this.props.preview}
-        width={this.props.width}
-        height={this.props.height}
+        src={fileUrl}
+        alt={fileName}
+        preview={preview}
+        width={width}
+        height={height}
       />
     );
   }
