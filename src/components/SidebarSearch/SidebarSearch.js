@@ -59,7 +59,7 @@ class SidebarSearch extends Component {
           value={value}
           className={styles.input}
           placeholder={placeholder}
-          onChange={this.props.onChange}
+          onChange={this.handleChange}
           onFocus={this.props.onFocus}
           onBlur={this.props.onBlur}
         />
