@@ -2,6 +2,7 @@
 
 :root {
   --document-min-width: 300px;
+  --document-max-width: 400px;
   --document-font-family: var(--default-font-family);
   --document-media-color: var(--sky-blue);
   --document-doc-color: var(--orangey-red);
@@ -17,38 +18,18 @@
 
 .root {
   all: initial;
-  display: inline-flex;
+  display: flex;
+  flex-direction: row;
   min-width: var(--document-min-width);
+  max-width: var(--document-max-width);
   padding: var(--document-padding);
   border-radius: var(--document-border-radius);
   background-color: var(--document-background-color);
   box-shadow: 0 0 0 1px var(--document-border-color);
   font-family: var(--document-font-family);
-}
-
-.filename {
-  height: calc(var(--document-preview-size) / 2);
-  letter-spacing: -0.4px;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: calc(var(--document-preview-size) / 2);
-  color: #000;
-}
-
-.sizeBlock {
-  height: calc(var(--document-preview-size) / 2);
-}
-
-.size {
-  vertical-align: middle;
-  font-size: 14px;
-  line-height: calc(var(--document-preview-size) / 2);
-  color: color(#000 alpha(60%));
-}
-
-.downloadArrow {
-  line-height: calc(var(--document-preview-size) / 2);
-  color: var(--document-download-arrow-color);
+  box-sizing: border-box;
+  cursor: default;
+  user-select: none;
 }
 
 .preview {
@@ -64,6 +45,43 @@
   align-items: center;
   justify-content: center;
   color: #fff;
+  flex: 0 0 auto;
+}
+
+.info {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.filename {
+  flex: 1 1 50%;
+  letter-spacing: -0.4px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #000;
+}
+
+.sizeBlock {
+  flex: 1 1 50%;
+}
+
+.size {
+  vertical-align: middle;
+  font-size: 14px;
+  color: color(#000 alpha(60%));
+}
+
+.text {
+  max-width: 100%;
+  display: inline-block;
+  @apply --text-overflow-ellipsis;
+}
+
+.downloadArrow {
+  line-height: calc(var(--document-preview-size) / 2);
+  color: var(--document-download-arrow-color);
 }
 
 /* File type colors */

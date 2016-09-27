@@ -1,22 +1,18 @@
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ * @flow
+ */
+
+import type { MessageContentDocument } from '@dlghq/dialog-types'
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
 import Icon from '../../Icon';
 import styles from './Document.css';
 
 class Document extends Component {
-  static propTypes = {
-    fileUrl: PropTypes.string,
-    fileName: PropTypes.string,
-    fileSize: PropTypes.string,
-    fileExtension: PropTypes.string,
-    isUploading: PropTypes.bool.isRequired
-  };
+  props: MessageContentDocument;
 
-  static defaultProps = {
-    isUploading: true
-  };
-
-  shouldComponentUpdate(nextProps) {
+  shouldComponentUpdate(nextProps: MessageContentDocument) {
     return nextProps.fileExtension !== this.props.fileExtension ||
            nextProps.fileName !== this.props.fileName ||
            nextProps.fileSize !== this.props.fileSize ||
@@ -63,7 +59,9 @@ class Document extends Component {
 
     return (
       <div className={styles.info}>
-        <div className={styles.filename}>{fileName}</div>
+        <div className={styles.filename}>
+          <div className={styles.text} title={fileName}>{fileName}</div>
+        </div>
         <div className={styles.sizeBlock}>
           <Icon glyph="arrow_downward" className={styles.downloadArrow} />
           <span className={styles.size}>{fileSize}</span>
