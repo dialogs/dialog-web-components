@@ -99,7 +99,8 @@ module.exports = {
     components() {
       return [
         component('ActivityProfile'),
-        component('ActivityList')
+        component('ActivityList'),
+        component('ActivityNotification')
       ];
     }
   }],

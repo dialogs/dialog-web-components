@@ -1,0 +1,30 @@
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+:root {
+  --activity-notifications-font-family: var(--default-font-family);
+}
+
+.container {
+  font-family: var(--activity-notifications-font-family);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  user-select: none;
+}
+
+.icon {
+  margin-right: 14px;
+}
+
+.text {
+  flex: 1 1 auto;
+}
+
+.switcher {
+}
