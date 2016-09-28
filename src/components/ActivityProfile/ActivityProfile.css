@@ -56,7 +56,7 @@
   margin-top: 8px;
 }
 
-.presence,
+.online,
 .creator {
   margin-top: 10px;
   color: var(--activity-profile-text-light-color);

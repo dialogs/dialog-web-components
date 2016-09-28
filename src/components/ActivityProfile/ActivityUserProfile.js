@@ -1,23 +1,31 @@
 /**
  * Copyright 2016 Dialog LLC <info@dlg.im>
+ * @flow
  */
 
-import React, { Component, PropTypes } from 'react';
-import { User } from '../../PropTypes';
+import React, { Component } from 'react';
+import type { User, UserOnline } from '@dlghq/dialog-types';
 import classNames from 'classnames';
 import PeerAvatar from '../PeerAvatar/PeerAvatar';
+import Button from '../Button/Button';
+import Icon from '../Icon/Icon';
 import styles from './ActivityProfile.css';
 
-class ActivityUserProfile extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-    info: User.isRequired,
-    children: PropTypes.node
-  };
+export type ActivityUserProfileProps = {
+  info: User,
+  online: UserOnline,
+  onAboutEdit: () => any,
+  className?: string,
+  children?: any
+}
 
-  shouldComponentUpdate(nextProps) {
+class ActivityUserProfile extends Component {
+  props: ActivityUserProfileProps;
+
+  shouldComponentUpdate(nextProps: ActivityUserProfileProps) {
     return nextProps.info !== this.props.info ||
            nextProps.className !== this.props.className ||
+           nextProps.online !== this.props.online ||
            nextProps.children !== this.props.children;
   }
 
@@ -61,23 +69,30 @@ class ActivityUserProfile extends Component {
     );
   }
 
-  renderPresence() {
-    const { info: { presence } } = this.props;
+  renderOnline() {
+    const { online } = this.props;
 
-    if (!presence) {
+    if (!online) {
       return null;
     }
 
     return (
-      <div className={styles.presence}>{presence}</div>
+      <div className={styles.online}>{online.message}</div>
     );
   }
 
   renderAbout() {
-    const { info: { about } } = this.props;
+    const { info: { about }, onAboutEdit } = this.props;
 
     if (!about) {
-      return null;
+      return (
+        <div className={styles.about}>
+          <Button theme="link" onClick={onAboutEdit} className={styles.aboutButton}>
+            <Icon glyph="add_circle_outline" className={styles.aboutAddIcon} />
+            Add Description
+          </Button>
+        </div>
+      );
     }
 
     return (
@@ -132,7 +147,7 @@ class ActivityUserProfile extends Component {
         {this.renderAvatar()}
         {this.renderName()}
         {this.renderNick()}
-        {this.renderPresence()}
+        {this.renderOnline()}
         {this.renderAbout()}
         {this.renderChildren()}
         {this.renderProfileContacts()}

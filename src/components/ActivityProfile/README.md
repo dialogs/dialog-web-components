@@ -8,7 +8,6 @@ const user = {
   avatar: null,
   bigAvatar: null,
   placeholder: 'red',
-  presence: 'last seen 5 minutes ago',
   phones: [{ number: '+1 234 567 89 00', title: 'Mobile phone' }],
   emails: [{ email: 'cap@america.com', title: 'Home email' }]
 };
@@ -20,8 +19,7 @@ const group = {
   avatar: null,
   bigAvatar: null,
   placeholder: 'lblue',
-  adminId: 1903089995,
-  presence: '2 members, 1 online'
+  adminId: 1001
 };
 const peer1 = {
   id: 1,
@@ -31,17 +29,20 @@ const peer2 = {
   id: 101,
   type: 'group'
 };
+const online = {
+  message: '3 minutes ago'
+};
 const alert = () => window.alert('!!!');
 
 <div>
   <div style={{ width: '50%', float: 'left' }}>
-    <ActivityProfile info={user} peer={peer1} onAboutAdd={alert}>
+    <ActivityProfile info={user} peer={peer1} onAboutEdit={alert} online={online}>
       <IconButton glyph="phone" size="large" />
       <IconButton glyph="more" size="large" />
     </ActivityProfile>
   </div>
   <div style={{ width: '50%', float: 'left' }}>
-    <ActivityProfile info={group} peer={peer2} onAboutAdd={alert}>
+    <ActivityProfile info={group} peer={peer2} onAboutEdit={alert}>
       <IconButton glyph="phone" size="large" />
       <IconButton glyph="person_add" size="large" />
       <IconButton glyph="more" size="large" />
