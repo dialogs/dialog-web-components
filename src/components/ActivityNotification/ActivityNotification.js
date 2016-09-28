@@ -27,12 +27,12 @@ class ActivityNotification extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  shouldComponentUpdate(nextProps: ActivityNotificationProps) {
+  shouldComponentUpdate(nextProps: ActivityNotificationProps): boolean {
     return nextProps.isEnabled !== this.props.isEnabled ||
            nextProps.className !== this.props.className;
   }
 
-  handleChange(event: SyntheticEvent) {
+  handleChange(event: SyntheticEvent): void {
     event.preventDefault();
     this.props.onChange(event);
   }

@@ -12,19 +12,19 @@
   font-family: var(--activity-notifications-font-family);
   cursor: pointer;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: flex-start;
   align-content: center;
   user-select: none;
 }
 
 .icon {
   margin-right: 14px;
+  cursor: inherit;
 }
 
 .text {
   flex: 1 1 auto;
 }
 
-.switcher {
-}
+.switcher {}
