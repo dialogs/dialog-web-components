@@ -1,7 +1,9 @@
 {
   "extends": "@dlghq/eslint-config-dialog",
   "globals": {
-    "$FlowIssue": true
+    "$FlowIssue": true,
+    "EventHandler": true,
+    "SyntheticEvent": true
   },
   "rules": {
     "no-duplicate-imports": 0,
