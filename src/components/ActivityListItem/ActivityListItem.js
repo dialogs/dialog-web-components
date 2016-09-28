@@ -1,19 +1,22 @@
 /**
  * Copyright 2016 Dialog LLC <info@dlg.im>
+ * @flow
  */
 
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import classNames from 'classnames';
 import styles from '../ActivityList/ActivityList.css';
 
-class ActivityListItem extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-    children: PropTypes.node.isRequired,
-    onClick: PropTypes.func
-  };
+export type ActivityListItemProps = {
+  className?: string,
+  children?: any,
+  onClick?: EventHandler
+};
 
-  shouldComponentUpdate(nextProps) {
+class ActivityListItem extends Component {
+  props: ActivityListItemProps;
+
+  shouldComponentUpdate(nextProps: ActivityListItemProps) {
     return nextProps.children !== this.props.children ||
            nextProps.className !== this.props.className ||
            nextProps.onClick !== this.props.onClick;
@@ -25,9 +28,7 @@ class ActivityListItem extends Component {
 
     return (
       <div className={itemClassName} onClick={onClick}>
-        <div className={styles.itemWrapper}>
-          {children}
-        </div>
+        {children}
       </div>
     );
   }
