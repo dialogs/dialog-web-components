@@ -36,6 +36,11 @@ class SidebarSearch extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
+  shouldComponentUpdate(nextProps: SidebarSearchProps): boolean {
+    return nextProps.value !== this.props.value ||
+           nextProps.className !== this.props.className;
+  }
+
   handleChange(event: $FlowIssue): void {
     this.props.onChange(event.target.value, event);
   }
