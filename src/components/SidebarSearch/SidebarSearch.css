@@ -23,6 +23,7 @@
 
 .container {
   position: relative;
+  display: flex;
   box-sizing: border-box;
   padding: var(--sidebar-search-padding);
   color: var(--sidebar-search-color);
