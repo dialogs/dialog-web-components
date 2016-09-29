@@ -10,13 +10,16 @@ import ActivityGroupProfile from './ActivityGroupProfile';
 // FIXME: add flow
 export type ActivityProfileProps = {
   className?: string,
+  children?: any,
   peer: ?Peer,
   info: ?(User | Group),
   online: ?(UserOnline | GroupOnline),
   onAboutEdit: Function
 };
 
-function ActivityProfile({ peer, info, className, onAboutEdit, online }: ActivityProfileProps) {
+function ActivityProfile(props: ActivityProfileProps) {
+  const { peer, info, className, onAboutEdit, online, children } = props;
+
   if (!peer || !info) {
     return null;
   }
@@ -29,7 +32,9 @@ function ActivityProfile({ peer, info, className, onAboutEdit, online }: Activit
           onAboutEdit={onAboutEdit}
           className={className}
           online={online}
-        />
+        >
+          {children}
+        </ActivityUserProfile>
       );
     case 'group':
       return (
@@ -37,7 +42,9 @@ function ActivityProfile({ peer, info, className, onAboutEdit, online }: Activit
           info={info}
           onAboutEdit={onAboutEdit}
           className={className}
-        />
+        >
+          {children}
+        </ActivityGroupProfile>
       );
     default:
       console.warn('ActivityProfile component does not support this type of peer', peer.type);
