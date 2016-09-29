@@ -1,0 +1,95 @@
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+:root {
+  --activity-members-font-family: var(--default-font-family);
+  --activity-members-border-color: color(#000 alpha(10%));
+  --activity-members-header-arrow-color: var(--cool-grey);
+  --activity-members-title-font-size: 16px;
+  --activity-members-title-color: #000;
+}
+
+.container {
+  font-family: var(--activity-members-font-family);
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: row;
+  width: 100%;
+  height: 56px;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+  user-select: none;
+  box-sizing: border-box;
+}
+
+.icon {
+  margin-right: 14px;
+  cursor: inherit;
+}
+
+.text {
+  flex: 1 1 auto;
+}
+
+.arrow {
+  color: var(--activity-members-header-arrow-color) !important;
+  fill: var(--activity-members-header-arrow-color) !important;
+}
+
+.member {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+  width: 100%;
+  position: relative;
+  height: 52px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 42px;
+    background-color: var(--activity-members-border-color);
+    height: 1px;
+  }
+
+  &:first-child {
+    &::before {
+      display: none;
+    }
+  }
+}
+
+.members {
+  display: flex;
+  flex-direction: column;
+  &::before {
+    display: none;
+  }
+}
+
+.avatar {
+  flex: 0 0 auto;
+  margin-right: 14px;
+}
+
+.title {
+  font-size: var(--activity-members-title-font-size);
+  line-height: 22px;
+  letter-spacing: -0.4px;
+  color: var(--activity-members-title-color);
+  user-select: none;
+}

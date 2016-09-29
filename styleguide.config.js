@@ -100,7 +100,8 @@ module.exports = {
       return [
         component('ActivityProfile'),
         component('ActivityList'),
-        component('ActivityNotification')
+        component('ActivityNotification'),
+        component('ActivityMembers')
       ];
     }
   }],
