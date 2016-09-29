@@ -1,31 +1,25 @@
 /**
  * Copyright 2016 Dialog LLC <info@dlg.im>
+ * @flow
  */
 
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import styles from './ActivityList.css';
 
-class ActivityList extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-    children: PropTypes.node.isRequired
-  };
+export type ActivityListProps = {
+  className?: string,
+  children?: any
+}
 
-  shouldComponentUpdate(nextProps) {
-    return nextProps.children !== this.props.children ||
-           nextProps.className !== this.props.className;
-  }
+function ActivityList(props: ActivityListProps) {
+  const className = classNames(styles.container, props.className);
 
-  render() {
-    const className = classNames(styles.container, this.props.className);
-
-    return (
-      <div className={className}>
-        {this.props.children}
-      </div>
-    );
-  }
+  return (
+    <div className={className}>
+      {props.children}
+    </div>
+  );
 }
 
 export default ActivityList;
