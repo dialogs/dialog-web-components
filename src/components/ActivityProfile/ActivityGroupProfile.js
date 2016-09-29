@@ -106,7 +106,6 @@ class ActivityGroupProfile extends Component {
       <div className={userProfileClassName}>
         {this.renderAvatar()}
         {this.renderName()}
-        {this.renderCreator()}
         {this.renderAbout()}
         {this.renderChildren()}
       </div>
