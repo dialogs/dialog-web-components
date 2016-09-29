@@ -13,22 +13,22 @@
 }
 
 .container {
-  font-family: var(--activity-members-font-family);
   display: flex;
   flex-direction: column;
+  font-family: var(--activity-members-font-family);
 }
 
 .header {
   display: flex;
-  flex: 1 1 auto;
   flex-direction: row;
+  box-sizing: border-box;
   width: 100%;
   height: 56px;
+  user-select: none;
+  flex: 1 1 auto;
   justify-content: flex-start;
   align-items: center;
   align-content: center;
-  user-select: none;
-  box-sizing: border-box;
 }
 
 .icon {
@@ -46,24 +46,24 @@
 }
 
 .member {
+  position: relative;
   display: flex;
-  flex: 1 1 auto;
   flex-direction: row;
+  width: 100%;
+  height: 52px;
+  flex: 1 1 auto;
   justify-content: flex-start;
   align-items: center;
   align-content: center;
-  width: 100%;
-  position: relative;
-  height: 52px;
 
   &::before {
-    content: '';
     position: absolute;
     top: 0;
     right: 0;
     left: 42px;
-    background-color: var(--activity-members-border-color);
     height: 1px;
+    content: '';
+    background-color: var(--activity-members-border-color);
   }
 
   &:first-child {
@@ -76,20 +76,21 @@
 .members {
   display: flex;
   flex-direction: column;
+
   &::before {
     display: none;
   }
 }
 
 .avatar {
-  flex: 0 0 auto;
   margin-right: 14px;
+  flex: 0 0 auto;
 }
 
 .title {
+  user-select: none;
+  letter-spacing: -0.4px;
   font-size: var(--activity-members-title-font-size);
   line-height: 22px;
-  letter-spacing: -0.4px;
   color: var(--activity-members-title-color);
-  user-select: none;
 }

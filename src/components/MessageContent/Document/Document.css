@@ -13,23 +13,23 @@
   --document-border-radius: 4px;
   --document-preview-size: 50px;
   --document-padding-margin-right: 14px;
-  --document-download-arrow-color: var(--purple);
+  --document-download-arrow-color: var(--color-primary);
 }
 
 .root {
   all: initial;
   display: flex;
   flex-direction: row;
+  box-sizing: border-box;
   min-width: var(--document-min-width);
   max-width: var(--document-max-width);
   padding: var(--document-padding);
+  cursor: default;
+  user-select: none;
   border-radius: var(--document-border-radius);
   background-color: var(--document-background-color);
   box-shadow: 0 0 0 1px var(--document-border-color);
   font-family: var(--document-font-family);
-  box-sizing: border-box;
-  cursor: default;
-  user-select: none;
 }
 
 .preview {
@@ -49,17 +49,17 @@
 }
 
 .info {
-  flex: 1 1 auto;
   display: flex;
-  flex-direction: column;
   overflow: hidden;
+  flex-direction: column;
+  flex: 1 1 auto;
 }
 
 .filename {
-  flex: 1 1 50%;
   letter-spacing: -0.4px;
   font-size: 16px;
   font-weight: 500;
+  flex: 1 1 50%;
   color: #000;
 }
 
@@ -74,8 +74,9 @@
 }
 
 .text {
-  max-width: 100%;
   display: inline-block;
+  max-width: 100%;
+
   @apply --text-overflow-ellipsis;
 }
 

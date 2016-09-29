@@ -119,12 +119,14 @@
   font-size: var(--icon-small-size);
   line-height: var(--icon-small-size);
 }
+
 .normal {
   width: var(--icon-default-size);
   height: var(--icon-default-size);
   font-size: var(--icon-default-size);
   line-height: var(--icon-default-size);
 }
+
 .large {
   width: var(--icon-large-size);
   height: var(--icon-large-size);

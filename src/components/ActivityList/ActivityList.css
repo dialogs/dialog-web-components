@@ -1,6 +1,7 @@
 /**
  * Copyright 2016 Dialog LLC <info@dlg.im>
  */
+
 @import '../../styles/variables.css';
 
 :root {
@@ -19,24 +20,24 @@
 }
 
 .item {
+  position: relative;
   display: flex;
   flex-direction: row;
   min-height: 56px;
   padding: 0 var(--activity-list-item-padding);
+  cursor: default;
+  background-color: transparent;
   justify-content: flex-start;
   align-content: flex-start;
   align-items: center;
-  position: relative;
-  background-color: transparent;
-  cursor: default;
 
   &::before,
   &::after {
-    content: '';
     position: absolute;
-    left: var(--activity-list-item-padding);
     right: var(--activity-list-item-padding);
+    left: var(--activity-list-item-padding);
     height: 1px;
+    content: '';
     background-color: var(--activity-list-item-border-color);
   }
 
@@ -58,6 +59,7 @@
 
 .clickable {
   cursor: pointer;
+
   &:hover,
   &:focus {
     background-color: var(--activity-list-item-hover-background-color);
