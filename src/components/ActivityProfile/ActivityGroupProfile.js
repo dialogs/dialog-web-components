@@ -3,28 +3,22 @@
  * @flow
  */
 
+import type { ActivityGroupProfileProps } from './types';
 import React, { Component } from 'react';
-import type { Group } from '@dlghq/dialog-types';
+import { Text } from '@dlghq/react-l10n';
 import classNames from 'classnames';
 import PeerAvatar from '../PeerAvatar/PeerAvatar';
 import Button from '../Button/Button';
 import Icon from '../Icon/Icon';
 import styles from './ActivityProfile.css';
 
-export type ActivityGroupProfileProps = {
-  info: Group,
-  onAboutEdit: () => any,
-  className?: string,
-  children?: any
-}
-
 class ActivityGroupProfile extends Component {
   props: ActivityGroupProfileProps;
 
   shouldComponentUpdate(nextProps: ActivityGroupProfileProps) {
     return nextProps.info !== this.props.info ||
-           nextProps.className !== this.props.className ||
-           nextProps.children !== this.props.children;
+           nextProps.children !== this.props.children ||
+           nextProps.className !== this.props.className;
   }
 
   renderAvatar() {
@@ -63,26 +57,31 @@ class ActivityGroupProfile extends Component {
     }
 
     return (
-      <div className={styles.creator}>Created by {adminId}</div>
+      <Text
+        tagName="div"
+        className={styles.creator}
+        id="ActivityProfile.created_by"
+        values={{ name: adminId }}
+      />
     );
   }
 
   renderAbout() {
     const { info: { about }, onAboutEdit } = this.props;
 
-    if (!about) {
+    if (about) {
       return (
-        <div className={styles.about}>
-          <Button theme="link" onClick={onAboutEdit} className={styles.aboutButton}>
-            <Icon glyph="add_circle_outline" className={styles.aboutAddIcon} />
-            Add Description
-          </Button>
-        </div>
+        <div className={styles.about}>{about}</div>
       );
     }
 
     return (
-      <div className={styles.about}>{about}</div>
+      <div className={styles.about}>
+        <Button theme="link" onClick={onAboutEdit} className={styles.aboutButton}>
+          <Icon glyph="add_circle_outline" className={styles.aboutAddIcon} />
+          <Text id="ActivityProfile.add_description" />
+        </Button>
+      </div>
     );
   }
 
@@ -99,11 +98,10 @@ class ActivityGroupProfile extends Component {
   }
 
   render() {
-    const { className } = this.props;
-    const userProfileClassName = classNames(styles.root, className);
+    const className = classNames(styles.root, this.props.className);
 
     return (
-      <div className={userProfileClassName}>
+      <div className={className}>
         {this.renderAvatar()}
         {this.renderName()}
         {this.renderAbout()}

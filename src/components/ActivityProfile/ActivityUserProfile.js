@@ -3,30 +3,20 @@
  * @flow
  */
 
+import type { ActivityUserProfileProps } from './types';
 import React, { Component } from 'react';
-import type { User, UserOnline } from '@dlghq/dialog-types';
 import classNames from 'classnames';
 import PeerAvatar from '../PeerAvatar/PeerAvatar';
-import Button from '../Button/Button';
-import Icon from '../Icon/Icon';
 import styles from './ActivityProfile.css';
-
-export type ActivityUserProfileProps = {
-  info: User,
-  online: UserOnline,
-  onAboutEdit: () => any,
-  className?: string,
-  children?: any
-}
 
 class ActivityUserProfile extends Component {
   props: ActivityUserProfileProps;
 
   shouldComponentUpdate(nextProps: ActivityUserProfileProps) {
     return nextProps.info !== this.props.info ||
-           nextProps.className !== this.props.className ||
            nextProps.online !== this.props.online ||
-           nextProps.children !== this.props.children;
+           nextProps.children !== this.props.children ||
+           nextProps.className !== this.props.className;
   }
 
   renderAvatar() {
@@ -82,18 +72,7 @@ class ActivityUserProfile extends Component {
   }
 
   renderAbout() {
-    const { info: { about }, onAboutEdit } = this.props;
-
-    if (!about) {
-      return (
-        <div className={styles.about}>
-          <Button theme="link" onClick={onAboutEdit} className={styles.aboutButton}>
-            <Icon glyph="add_circle_outline" className={styles.aboutAddIcon} />
-            Add Description
-          </Button>
-        </div>
-      );
-    }
+    const { info: { about } } = this.props;
 
     return (
       <div className={styles.about}>{about}</div>
