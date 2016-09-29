@@ -5,8 +5,8 @@ const initialState = { isEnabled: true };
 
 <div style={{ background: '#fff', width: 320 }}>
   <ActivityNotification
-    isEnabled={state.isEnabled}
-    onChange={() => setState({ isEnabled: !state.isEnabled })}
+    value={state.isEnabled}
+    onChange={(isEnabled) => setState({ isEnabled })}
   />
 </div>
 ```

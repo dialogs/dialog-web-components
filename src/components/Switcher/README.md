@@ -4,14 +4,15 @@ Basic Switcher:
     <Switcher
       id="example"
       value={state.value}
-      onChange={() => setState({ value: !state.value })}
+      onChange={(value) => setState({ value })}
     />
 
 Disabled Switcher:
 
+    initialState = { value: true };
     <Switcher
-      id="disabled"
-      value
       disabled
-      onChange={() => {}}
+      id="disabled"
+      value={state.value}
+      onChange={(value) => setState({ value })}
     />

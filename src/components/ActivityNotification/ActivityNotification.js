@@ -13,36 +13,35 @@ import styles from './ActivityNotification.css';
 
 export type ActivityNotificationProps = {
   className?: string,
-  isEnabled: boolean,
-  onChange: () => void
+  value: boolean,
+  onChange: (value: boolean) => void
 }
 
 class ActivityNotification extends Component {
   props: ActivityNotificationProps;
-  handleChange: EventHandler;
+  handleClick: EventHandler;
 
   constructor(props: ActivityNotificationProps) {
     super(props);
 
-    this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   shouldComponentUpdate(nextProps: ActivityNotificationProps): boolean {
-    return nextProps.isEnabled !== this.props.isEnabled ||
+    return nextProps.value !== this.props.value ||
            nextProps.className !== this.props.className;
   }
 
-  handleChange(event: SyntheticEvent): void {
+  handleClick(event: SyntheticEvent): void {
     event.preventDefault();
-    this.props.onChange(event);
+    this.props.onChange(!this.props.value);
   }
 
   render() {
-    const { isEnabled } = this.props;
     const className = classNames(styles.container, this.props.className);
 
     return (
-      <ActivityListItem className={className} onClick={this.handleChange}>
+      <ActivityListItem className={className} onClick={this.handleClick}>
         <Icon
           glyph="notifications"
           inverted
@@ -56,9 +55,9 @@ class ActivityNotification extends Component {
         />
         <Switcher
           id="activity_notification"
-          value={isEnabled}
+          value={this.props.value}
           className={styles.switcher}
-          onChange={this.handleChange}
+          onChange={this.props.onChange}
         />
       </ActivityListItem>
     );
