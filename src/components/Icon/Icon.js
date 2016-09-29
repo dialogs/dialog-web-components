@@ -31,11 +31,13 @@ class Icon extends Component {
      */
     onClick: PropTypes.func,
     theme: PropTypes.oneOf(['primary', 'success', 'danger', 'info', 'warning']),
+    size: PropTypes.oneOf(['small', 'normal', 'large']),
     inverted: PropTypes.bool
   };
 
   static defaultProps = {
-    inverted: false
+    inverted: false,
+    size: 'normal'
   };
 
   shouldComponentUpdate(nextProps) {
@@ -43,6 +45,7 @@ class Icon extends Component {
            nextProps.onClick !== this.props.onClick ||
            nextProps.theme !== this.props.theme ||
            nextProps.inverted !== this.props.inverted ||
+           nextProps.size !== this.props.size ||
            nextProps.className !== this.props.className;
   }
 
@@ -114,9 +117,10 @@ class Icon extends Component {
   }
 
   render() {
-    const { onClick, theme, inverted } = this.props;
+    const { onClick, theme, inverted, size } = this.props;
     const className = classNames(styles.container, {
       [styles[theme]]: theme,
+      [styles[size]]: size,
       [styles.inverted]: inverted,
       [styles.clickable]: onClick
     }, this.props.className);
