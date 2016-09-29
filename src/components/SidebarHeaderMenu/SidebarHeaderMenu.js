@@ -1,21 +1,32 @@
 /**
  * Copyright 2016 Dialog LLC <info@dlg.im>
+ * @flow
  */
 
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import TetherComponent from 'react-tether';
-import classNames from 'classnames';
 import Icon from '../Icon/Icon';
 import styles from '../SidebarHeader/SidebarHeader.css';
 
-class SidebarHeaderMenu extends Component {
-  static propTypes = {
-    appName: PropTypes.string.isRequired,
-    logo: PropTypes.element.isRequired,
-    children: PropTypes.element.isRequired
-  };
+export type SidebarHeaderMenuProps = {
+  appName: string,
+  logo: React.Element<any>,
+  children?: any
+};
+export type SidebarHeaderMenuState = {
+  isOpen: boolean
+}
 
-  constructor(props) {
+class SidebarHeaderMenu extends Component {
+  props: SidebarHeaderMenuProps;
+  state: SidebarHeaderMenuState;
+
+  handleMenuOpen: EventHandler;
+  handleMenuClose: EventHandler;
+  setListener: () => void;
+  removeListener: () => void;
+
+  constructor(props: SidebarHeaderMenuProps) {
     super(props);
 
     this.state = {
@@ -28,43 +39,53 @@ class SidebarHeaderMenu extends Component {
     this.removeListener = this.removeListener.bind(this);
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
+  shouldComponentUpdate(nextProps: SidebarHeaderMenuProps, nextState: SidebarHeaderMenuState) {
     return nextState.isOpen !== this.state.isOpen ||
            nextProps.logo !== this.props.logo ||
            nextProps.children !== this.props.children ||
            nextProps.appName !== this.props.appName;
   }
 
-  handleMenuOpen() {
+  handleMenuOpen(): void {
     this.setState({ isOpen: true });
     this.setListener();
   }
 
-  handleMenuClose() {
+  handleMenuClose(): void {
     this.setState({ isOpen: false });
     this.removeListener();
   }
 
-  setListener() {
+  setListener(): void {
     document.addEventListener('click', this.handleMenuClose);
   }
 
-  removeListener() {
+  removeListener(): void {
     document.removeEventListener('click', this.handleMenuClose);
   }
 
+  renderLogo() {
+    const { logo } = this.props;
+
+    if (!logo) {
+      return null;
+    }
+
+    return (
+      <div className={styles.logo}>{logo}</div>
+    );
+  }
+
   renderToggler() {
-    const { appName, logo } = this.props;
+    const { appName } = this.props;
     const { isOpen } = this.state;
-    const arrowClassName = classNames(styles.arrow, {
-      [styles.arrowOpened]: isOpen
-    });
+    const arrowGlyph = isOpen ? 'arrow_drop_up' : 'arrow_drop_down';
 
     return (
       <a onClick={this.handleMenuOpen} className={styles.menu}>
-        {logo}
-        {appName}
-        <Icon glyph="arrow_drop_down" className={arrowClassName} />
+        {this.renderLogo()}
+        <div className={styles.appName}>{appName}</div>
+        <Icon glyph={arrowGlyph} className={styles.arrow} />
       </a>
     );
   }

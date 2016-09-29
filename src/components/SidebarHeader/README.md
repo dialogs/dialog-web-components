@@ -7,21 +7,17 @@ const Dropdown = require('../Dropdown/Dropdown').default;
 const DropdownItem = require('../DropdownItem/DropdownItem').default;
 const DropdownDivider = require('../DropdownDivider/DropdownDivider').default;
 const handleClick = () => alert('menu clicked');
-const user = {
-  title: 'Someone',
-  placeholder: 'green',
-  avatar: null
-};
 
-<SidebarHeader>
-  <Logo />
-  <SidebarHeaderMenu appName="Dialog">
-    <Dropdown isOpen>
-      <DropdownItem onClick={handleClick}>First menu item</DropdownItem>
-      <DropdownDivider />
-      <DropdownItem onClick={handleClick}>Very very very very loooong menu item</DropdownItem>
-      <DropdownItem onClick={handleClick}>Last menu item</DropdownItem>
-    </Dropdown>
-  </SidebarHeaderMenu>
-</SidebarHeader>
+<div style={{ width: 270, background: '#f5f5f5' }}>
+  <SidebarHeader>
+    <SidebarHeaderMenu appName="Dialog" logo={<Logo />}>
+      <Dropdown isOpen>
+        <DropdownItem onClick={handleClick}>First menu item</DropdownItem>
+        <DropdownDivider />
+        <DropdownItem onClick={handleClick}>Very very very very loooong menu item</DropdownItem>
+        <DropdownItem onClick={handleClick}>Last menu item</DropdownItem>
+      </Dropdown>
+    </SidebarHeaderMenu>
+  </SidebarHeader>
+</div>
 ```

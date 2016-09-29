@@ -40,14 +40,25 @@
   font-weight: 500;
   line-height: calc(var(--sidebar-header-height) - var(--sidebar-header-padding-top) - var(--sidebar-header-padding-bottom));
   color: var(--sidebar-header-menu-color);
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: center;
+  align-items: center;
 }
+
+.logo {
+  line-height: 0;
+  width: 26px;
+  height: 26px;
+  margin-left: 7px;
+  margin-right: 13px;
+}
+
+.appName {}
 
 .arrow {
-  transition: transform var(--default-transition-duration) ease-in-out;
+  cursor: inherit;
   height: calc(var(--sidebar-header-height) - var(--sidebar-header-padding-top) - var(--sidebar-header-padding-bottom));
   line-height: calc(var(--sidebar-header-height) - var(--sidebar-header-padding-top) - var(--sidebar-header-padding-bottom));
-}
-
-.arrowOpened {
-  transform: scaleY(-1);
 }
