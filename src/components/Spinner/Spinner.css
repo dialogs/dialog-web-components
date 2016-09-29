@@ -7,16 +7,16 @@
 :root {
   --spinner-wawe-max-height: 20px;
   --spinner-wave-stick-width: 2px;
-  --spinner-wave-background-color: color(var(--violet-blue-two) alpha(70%));
+  --spinner-wave-background-color: color(var(--color-primary) alpha(85%));
   --spinner-wave-color: #fff;
   --spinner-dotted-dot-size: 6px;
   --spinner-dotted-animation-delay: 160ms;
-  --spinner-dotted-dot-color: var(--violet-blue-two);
+  --spinner-dotted-dot-color: var(--color-primary);
   --spinner-round-size: 9px;
   --spinner-round-border-width: 2px;
   --spinner-round-large-size: 30px;
   --spinner-round-large-border-width: 3px;
-  --spinner-round-color: var(--violet-blue-two);
+  --spinner-round-color: var(--color-primary);
   --spinner-round-animation-duration: calc(var(--default-transition-duration) * 4);
 }
 
