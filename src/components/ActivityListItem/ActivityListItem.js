@@ -24,7 +24,9 @@ class ActivityListItem extends Component {
 
   render() {
     const { className, children, onClick } = this.props;
-    const itemClassName = classNames(styles.item, className);
+    const itemClassName = classNames(styles.item, {
+      [styles.clickable]: onClick
+    }, className);
 
     return (
       <div className={itemClassName} onClick={onClick}>

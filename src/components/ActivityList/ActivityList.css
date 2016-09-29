@@ -1,7 +1,6 @@
 /**
  * Copyright 2016 Dialog LLC <info@dlg.im>
  */
-
 @import '../../styles/variables.css';
 
 :root {
@@ -28,10 +27,8 @@
   align-content: flex-start;
   align-items: center;
   position: relative;
-
-  &:hover {
-    background-color: var(--activity-list-item-hover-background-color);
-  }
+  background-color: transparent;
+  cursor: default;
 
   &::before,
   &::after {
@@ -44,21 +41,25 @@
   }
 
   &::before {
-    display: none;
     top: 0;
   }
 
   &::after {
     bottom: 0;
+    display: none;
   }
 
-  &:first-child {
-    &::before {
+  &:last-child {
+    &::after {
       display: block;
     }
   }
 }
 
-.active {
-  background-color: var(--activity-list-item-hover-background-color);
+.clickable {
+  cursor: pointer;
+  &:hover,
+  &:focus {
+    background-color: var(--activity-list-item-hover-background-color);
+  }
 }
