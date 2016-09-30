@@ -1,0 +1,127 @@
+@import '../../../styles/variables.css';
+
+:root {
+  --voice-font-family: var(--default-font-family);
+  --voice-min-width: 400px;
+  --voice-max-width: 400px;
+  --voice-padding: 12px;
+  --voice-border-radius: 4px;
+  --voice-background-color: #fff;
+  --voice-border-color: color(#000 alpha(14%));
+  /*--voice-transcript-button-color: color(var(--color-primary) alpha(24%));*/
+  /*--voice-transcript-button-icon-color: var(--voice-transcript-button-color);*/
+  --voice-transcript-button-color: #baa2e5;
+  --voice-transcript-button-icon-color: #d4c2f3;
+  --voice-transcript-button-hover-color: var(--color-primary);
+  --voice-transcript-button-icon-hover-color: var(--voice-transcript-button-hover-color);
+  --voice-transcript-button-wdith: 70px;
+  --voice-transcription-padding: 15px;
+  --voice-transcription-font-size: 14px;
+  --voice-transcription-color: color(#000 alpha(40%));
+  --voice-transcription--stem-size: 12px;
+}
+
+.container,
+.transctiptButton {
+  all: initial;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  min-width: var(--voice-min-width);
+  max-width: var(--voice-max-width);
+  cursor: default;
+  user-select: none;
+  border-radius: var(--voice-border-radius);
+  background-color: var(--voice-background-color);
+  box-shadow: 0 0 0 1px var(--voice-border-color);
+  font-family: var(--voice-font-family);
+}
+
+.player {
+  display: flex;
+  padding: var(--voice-padding);
+  flex: 1 1 auto;
+}
+
+.playerIcon {
+}
+
+.transctiptButton {
+  display: flex;
+  flex-direction: column;
+  width: var(--voice-transcript-button-wdith);
+  cursor: pointer;
+  user-select: none;
+  transition: color var(--default-transition-duration) ease-out;
+  border-left: 1px solid var(--voice-border-color);
+  font-family: var(--voice-font-family);
+  flex: 0 0 auto;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  color: var(--voice-transcript-button-color);
+
+  &:hover, &.transctiptButtonActive  {
+    color: var(--voice-transcript-button-hover-color);
+
+    & .transctiptButtonIcon {
+      color: var(--voice-transcript-button-hover-color);
+      fill: var(--voice-transcript-button-hover-color);
+    }
+  }
+}
+
+.transctiptButtonIcon {
+  width: 30px;
+  height: 30px;
+  cursor: inherit;
+  transition: fill var(--default-transition-duration) ease-out;
+  color: var(--voice-transcript-button-icon-color);
+  fill: var(--voice-transcript-button-icon-color);
+}
+
+.transcriptButtonText {
+  margin-top: 4px;
+  letter-spacing: 0.1px;
+  font-size: 10px;
+}
+
+.transcription {
+  background-color: var(--voice-background-color);
+  box-shadow: 0 0 0 1px var(--voice-border-color);
+  border-radius: var(--voice-border-radius);
+  margin-top: 16px;
+  padding: var(--voice-transcription-padding);
+  font-family: var(--voice-font-family);
+  color: var(--voice-transcription-color);
+  font-size: var(--voice-transcription-font-size);
+  letter-spacing: -0.24px;
+  line-height: 21px;
+  min-width: var(--voice-min-width);
+  box-sizing: border-box;
+  position: relative;
+  z-index: 10;
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: var(--voice-transcription--stem-size);
+    height: var(--voice-transcription--stem-size);
+    top: calc(0 - var(--voice-transcription--stem-size) / 2);
+    background-color: var(--voice-background-color);
+    left: calc(var(--voice-min-width) - (var(--voice-transcript-button-wdith) / 2) - (var(--voice-transcription--stem-size) / 2));
+    transform: rotate(45deg);
+    box-shadow: -1px -1px 0 0 var(--voice-border-color);
+  }
+}
