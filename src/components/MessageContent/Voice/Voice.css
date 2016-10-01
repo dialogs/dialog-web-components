@@ -125,3 +125,10 @@
     box-shadow: -1px -1px 0 0 var(--voice-border-color);
   }
 }
+
+.transcriptionEmpty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}

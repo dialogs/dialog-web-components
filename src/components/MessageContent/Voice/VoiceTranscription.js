@@ -15,12 +15,12 @@ export type VoiceTranscriptionProps = {
 
 function VoiceTranscription(props: VoiceTranscriptionProps) {
   const className = classNames(styles.transcription, {
-    [styles.transcriptionEmpty]: props.transcription
+    [styles.transcriptionEmpty]: !props.transcription
   }, props.className);
 
   return (
     <div className={className}>
-      {props.transcription ? props.transcription : <Spinner />}
+      { props.transcription ? props.transcription : <Spinner /> }
     </div>
   );
 }
