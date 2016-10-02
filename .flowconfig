@@ -21,14 +21,14 @@
 [options]
 module.system=haste
 module.use_strict=true
+
 module.name_mapper='.*\(.css\)' -> 'CSSModule'
 module.file_ext=.js
 module.file_ext=.json
 module.file_ext=.css
 
-esproposal.class_static_fields=enable
 suppress_type=$FlowIssue
-suppress_comment=\\(.\\|\n\\)*\\$FlowFixMe\\($\\|[^(]\\|(\\(>=0\\.\\(2[0-8]\\|1[0-9]\\|[0-9]\\).[0-9]\\)? *\\).*\n
+esproposal.class_static_fields=enable
 
 [version]
-0.32.0
+0.33.0
