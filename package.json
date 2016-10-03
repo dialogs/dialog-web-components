@@ -46,10 +46,10 @@
   },
   "homepage": "https://dialogs.github.io/dialog-web-components",
   "dependencies": {
-    "@dlghq/dialog-types": "1.2.1",
+    "@dlghq/dialog-types": "1.2.2",
     "@dlghq/react-l10n": "0.3.1",
     "classnames": "2.2.5",
-    "lodash": "4.16.2",
+    "lodash": "4.16.3",
     "react": "15.3.2",
     "react-addons-css-transition-group": "15.3.2",
     "react-dom": "15.3.2",

@@ -9,27 +9,67 @@ import { Text } from '@dlghq/react-l10n';
 import classNames from 'classnames';
 import styles from './ConnectionStatus.css';
 
-export type ConnectionStatusProps = {
+export type Props = {
   className?: string,
   status: ?ConnectionStatusType
 };
 
-class ConnectionStatus extends Component {
-  props: ConnectionStatusProps;
+export type State = {
+  show: boolean
+};
 
-  shouldComponentUpdate(nextProps: ConnectionStatusProps): boolean {
-    return nextProps.status !== this.props.status ||
+class ConnectionStatus extends Component {
+  props: Props;
+  state: State;
+  timeoutId: ?number;
+
+  constructor(props: Props) {
+    super(props);
+
+    this.state = {
+      show: false
+    };
+  }
+
+  componentWillReceiveProps(nextProps: Props): void {
+    this.clearTimeout();
+    this.setState({
+      show: Boolean(nextProps.status)
+    });
+  }
+
+  shouldComponentUpdate(nextProps: Props, nextState: State): boolean {
+    return nextState.show !== this.state.show ||
+           nextProps.status !== this.props.status ||
            nextProps.className !== this.props.className;
   }
 
-  renderContent() {
-    const { status } = this.props;
+  componentDidUpdate() {
+    if (this.props.status === 'online') {
+      this.timeoutId = setTimeout(() => {
+        this.setState({ show: false });
+      }, 3000);
+    }
+  }
 
-    if (!status) {
+  componentWillUnmount(): void {
+    this.clearTimeout();
+  }
+
+  clearTimeout() {
+    if (typeof this.timeoutId === 'number') {
+      clearTimeout(this.timeoutId);
+      this.timeoutId = null;
+    }
+  }
+
+  renderContent() {
+    if (!this.state.show) {
       return null;
     }
 
-    const className = classNames(styles.status, styles[status], this.props.className);
+    const { status } = this.props;
+    const className = classNames(styles.root, styles[status], this.props.className);
 
     return (
       <Text
@@ -42,20 +82,18 @@ class ConnectionStatus extends Component {
 
   render() {
     return (
-      <div className={styles.container}>
-        <CSSTransitionGroup
-          transitionName={{
-            enter: styles.enter,
-            enterActive: styles.enterActive,
-            leave: styles.leave,
-            leaveActive: styles.leaveActive
-          }}
-          transitionEnterTimeout={150}
-          transitionLeaveTimeout={150}
-        >
-          {this.renderContent()}
-        </CSSTransitionGroup>
-      </div>
+      <CSSTransitionGroup
+        transitionName={{
+          enter: styles.enter,
+          enterActive: styles.enterActive,
+          leave: styles.leave,
+          leaveActive: styles.leaveActive
+        }}
+        transitionEnterTimeout={150}
+        transitionLeaveTimeout={150}
+      >
+        {this.renderContent()}
+      </CSSTransitionGroup>
     );
   }
 }

@@ -14,27 +14,15 @@
   --connection-status-translate-size: calc(0 - var(--connection-status-height));
 }
 
-/* Reset */
-.container {
+.root {
   all: initial;
-}
-
-.container {
-  font-family: var(--connection-status-font-family);
-  display: block;
-  position: relative;
-  height: var(--connection-status-height);
-  width: 100%;
-  overflow: hidden;
-  flex: 0 0 auto;
-}
-
-.status {
   width: 100%;
   height: var(--connection-status-height);
   color: var(--connection-status-font-color);
+  font-family: var(--connection-status-font-family);
   font-size: var(--connection-status-font-size);
   transition: background var(--connection-status-transition-duration) ease;
+  flex: 0 0 auto;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -60,7 +48,6 @@
   /*transform: translateY(var(--connection-status-translate-size));*/
   margin-top: var(--connection-status-translate-size);
 }
-
 
 .enterActive {
   /*transform: translateY(0);*/

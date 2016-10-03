@@ -1,19 +1,36 @@
 Basic ConnectionStatus:
 
 ```
+const statuses = ['online', 'connecting', 'updating'];
 const initialState = {
-  status: null
+  id: null,
+  status: 'online'
 };
-const setDefault = () => setState(initialState);
-const setOnline = () => setState({ status: 'online' });
-const setConnecting = () => setState({ status: 'connecting' });
-const setUpdating = () => setState({ status: 'updating' });
+
+const start = () => {
+  clearInterval(state.id);
+
+  const id = setInterval(() => {
+    const idx = parseInt(Math.random() * 1000, 10) % statuses.length;
+    setState({
+      status: statuses[idx]
+    });
+  }, 10000);
+
+  setState({ id });
+};
+
+const stop = () => {
+  clearInterval(state.id);
+  setState({ id: null });
+};
 
 <div>
-  <button onClick={setDefault}>Default</button>
-  <button onClick={setOnline}>Online</button>
-  <button onClick={setConnecting}>Connecting</button>
-  <button onClick={setUpdating}>Updating</button>
+  <div style={{ margin: 8, textAlign: 'center' }}>
+    <Button theme="success" size="small" onClick={start}>Start</Button>
+    <Button theme="danger" size="small" onClick={stop}>Stop</Button>
+  </div>
+
   <ConnectionStatus status={state.status} />
 </div>
 ```
