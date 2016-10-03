@@ -55,6 +55,27 @@
 }
 
 .playerIcon {
+  margin-right: 14px;
+}
+
+.playerControls {
+  flex: 1 1 auto;
+  padding-top: 22px;
+  display: flex;
+  flex-direction: column;
+}
+
+.playerControlsText {
+  flex: 1 1 auto;
+}
+
+.playerTime {
+  flex: 1 1 auto;
+  display: flex;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.3px;
+  color: color(#000 alpha(60%));
 }
 
 .seeker {
@@ -63,6 +84,18 @@
   height: 8px;
   width: 100%;
   cursor: pointer;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 8px;
+    width: 100%;
+    background-image: radial-gradient(ellipse at center, transparent 50%, #fff 50%);
+    background-size: 8px 8px;
+    background-repeat: repeat-x;
+  }
 }
 
 .seekerPlayed {
