@@ -1,0 +1,70 @@
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+:root {
+  --typing-font-family: var(--default-font-family);
+  --typing-font-size: 15px;
+  --typing-height: 40px;
+  --typing-text-color: color(#000 alpha(50%));
+  --typing-transition-duration: 100ms;
+}
+
+/* Reset */
+.container {
+  all: initial;
+}
+
+.container {
+  font-family: var(--typing-font-family);
+  height: var(--typing-height);
+  display: block;
+}
+
+.typing {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: center;
+  align-items: center;
+}
+
+.indicator {
+  margin-left: 34px;
+  padding: 2px 4px 0 4px;
+  & div {
+    background-color: var(--typing-text-color);
+  }
+}
+
+.text {
+  vertical-align: middle;
+  margin-left: 15px;
+  font-size: var(--typing-font-size);
+  line-height: 1.5;
+  letter-spacing: -0.2px;
+  color: var(--typing-text-color);
+}
+
+
+/* Animation */
+.enter {
+  opacity: 0.01;
+}
+
+.enterActive {
+  opacity: 1;
+  transition: opacity var(--typing-transition-duration) ease;
+}
+
+.leave {
+  opacity: 1;
+}
+
+.leaveActive {
+  opacity: 0.01;
+  transition: opacity var(--typing-transition-duration) ease;
+}

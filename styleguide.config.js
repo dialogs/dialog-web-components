@@ -25,7 +25,8 @@ module.exports = {
         component('Icon'),
         component('Spinner'),
         component('Toolbar'),
-        component('Logo')
+        component('Logo'),
+        component('Typing')
       ];
     }
   }, {
