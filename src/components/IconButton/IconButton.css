@@ -99,6 +99,7 @@
   & .icon {
     color: var(--icon-button-flat-color);
     fill: var(--icon-button-flat-color);
+    line-height: 1;
   }
 
   &:hover,
@@ -138,6 +139,7 @@
 
     & .icon {
       width: var(--icon-button-glyph-size-large);
+      height: var(--icon-button-glyph-size-large);
       font-size: var(--icon-button-glyph-size-large);
     }
   }
@@ -147,8 +149,9 @@
     height: var(--icon-button-flat-large-size);
 
     & .icon {
-      width: calc(var(--icon-button-glyph-size-large) * 1.15);
-      font-size: calc(var(--icon-button-glyph-size-large) * 1.075);
+      width: calc(var(--icon-button-glyph-size-large) * 1.2);
+      height: calc(var(--icon-button-glyph-size-large) * 1.2);
+      font-size: calc(var(--icon-button-glyph-size-large) * 1.2);
     }
   }
 }
