@@ -1,3 +1,7 @@
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ */
+
 import React, { Component, PropTypes } from 'react';
 import Avatar from '../Avatar/Avatar';
 import styles from './PeerAvatar.css';
@@ -31,7 +35,7 @@ class PeerAvatar extends Component {
            nextProps.className !== this.props.className;
   }
 
-  renderAvatar() {
+  renderAvatar(): React.Element<any> {
     const { className, size, peer, onClick } = this.props;
 
     return (
@@ -46,12 +50,12 @@ class PeerAvatar extends Component {
     );
   }
 
-  render() {
+  render(): React.Element<any> {
     const { online } = this.props;
 
     if (online) {
       return (
-        <div className={styles.root}>
+        <div className={styles.container}>
           {this.renderAvatar()}
           <div className={styles.online} />
         </div>

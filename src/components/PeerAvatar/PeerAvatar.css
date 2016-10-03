@@ -5,9 +5,8 @@
   --avatar-online-color: var(--leafy-green);
 }
 
-.root {
+.container {
   position: relative;
-  /*display: inline-block;*/
   display: inline-flex;
 }
 

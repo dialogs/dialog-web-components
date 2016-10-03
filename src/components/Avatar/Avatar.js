@@ -1,34 +1,35 @@
-import React, { Component, PropTypes } from 'react';
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ * @flow
+ */
+
+import React, { Component } from 'react';
 import classNames from 'classnames';
 import isEmoji from '../../utils/isEmoji';
 import styles from './Avatar.css';
+
+export type AvatarProps = {
+  className?: string,
+  image: string,
+  title: string,
+  placeholder: 'empty' | 'lblue' | 'blue' | 'purple' | 'red' | 'orange' | 'yellow' | 'green',
+  size: 'tiny' | 'small' | 'medium' | 'large' | 'big' | 'super',
+  onClick: Function
+};
 
 const SIZES = {
   tiny: 14,
   small: 22,
   medium: 28,
   large: 36,
-  big: 100
+  big: 100,
+  super: 150
 };
 
 class Avatar extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-    image: PropTypes.string,
-    title: PropTypes.string,
-    size: PropTypes.oneOf(['tiny', 'small', 'medium', 'large', 'big']).isRequired,
-    placeholder: PropTypes.oneOf([
-      'empty',
-      'lblue',
-      'blue',
-      'purple',
-      'red',
-      'orange',
-      'yellow',
-      'green'
-    ]).isRequired,
-    onClick: PropTypes.func
-  };
+  props: AvatarProps;
+
+  getAvatarText: Function;
 
   static defaultProps = {
     title: '',
@@ -36,7 +37,7 @@ class Avatar extends Component {
     placeholder: 'empty'
   };
 
-  shouldComponentUpdate(nextProps) {
+  shouldComponentUpdate(nextProps: AvatarProps): boolean {
     return nextProps.image !== this.props.image ||
            nextProps.placeholder !== this.props.placeholder ||
            nextProps.title !== this.props.title ||
@@ -44,7 +45,7 @@ class Avatar extends Component {
            nextProps.className !== this.props.className;
   }
 
-  getAvatarText() {
+  getAvatarText(): ?string {
     const { title, size } = this.props;
     if (size === 'tiny') {
       return null;
@@ -65,7 +66,7 @@ class Avatar extends Component {
     return '#';
   }
 
-  render() {
+  render(): React.Element<any> {
     const { image, placeholder, title, size, onClick, className } = this.props;
     const avatarText = this.getAvatarText();
 

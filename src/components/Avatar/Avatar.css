@@ -1,3 +1,7 @@
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ */
+
 @import '../../styles/variables.css';
 
 :root {
@@ -7,6 +11,7 @@
   --avatar-medium-size: 28px;
   --avatar-large-size: 36px;
   --avatar-big-size: 100px;
+  --avatar-super-size: 150px;
   /* Colors */
   --avatar-empty-background-color: #757575;
   --avatar-lblue-background-color: var(--sky-blue);
@@ -58,7 +63,7 @@
 
 .clickable {
   cursor: pointer;
-  transition: opacity 150ms ease-out;
+  transition: opacity var(--default-transition-duration) ease-out;
 
   &:hover {
     opacity: 0.9;
@@ -105,6 +110,12 @@
   width: var(--avatar-big-size);
   height: var(--avatar-big-size);
   font-size: 30px;
+}
+
+.super {
+  width: var(--avatar-super-size);
+  height: var(--avatar-super-size);
+  font-size: 42px;
 }
 
 /* Placeholder colors */
