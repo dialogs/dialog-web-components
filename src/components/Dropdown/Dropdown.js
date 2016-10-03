@@ -23,7 +23,7 @@ class Dropdown extends Component {
 
   render() {
     const { isOpen, theme, className } = this.props;
-    const dropdownClassName = classNames(styles.root, styles[theme], {
+    const dropdownClassName = classNames(styles.container, styles[theme], {
       [styles.opened]: isOpen
     }, className);
 
