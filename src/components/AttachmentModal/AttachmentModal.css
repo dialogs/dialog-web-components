@@ -30,11 +30,11 @@
 }
 
 .preview {
+  display: flex;
   height: var(--attachment-modal-preview-max-height);
   text-align: center;
   line-height: 0;
   flex: 0 0 auto;
-  display: flex;
   align-items: center;
   align-content: center;
   justify-content: center;

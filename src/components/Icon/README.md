@@ -38,6 +38,19 @@ Inverted Icon:
 </div>
 ```
 
+Sizable icon:
+
+```
+<div>
+  <Icon glyph="logo" theme="primary" size="small" />
+  <Icon glyph="done" theme="success" size="small" inverted />
+  <Icon glyph="call" theme="info" />
+  <Icon glyph="settings" theme="danger" inverted />
+  <Icon glyph="fingerprint" theme="warning" size="large" />
+  <Icon glyph="clear" theme="warning" size="large" inverted />
+</div>
+```
+
 Clickable Icon:
 
 ```

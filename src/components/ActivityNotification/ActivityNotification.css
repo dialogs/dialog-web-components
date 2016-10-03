@@ -9,13 +9,13 @@
 }
 
 .container {
-  font-family: var(--activity-notifications-font-family);
-  cursor: pointer;
   display: flex;
   flex-direction: row;
+  cursor: pointer;
+  user-select: none;
+  font-family: var(--activity-notifications-font-family);
   justify-content: flex-start;
   align-content: center;
-  user-select: none;
 }
 
 .icon {
@@ -27,4 +27,5 @@
   flex: 1 1 auto;
 }
 
-.switcher {}
+.switcher {
+}

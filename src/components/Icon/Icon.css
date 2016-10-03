@@ -7,20 +7,18 @@
 
 :root {
   --icon-default-size: 24px;
+  --icon-small-size: 18px;
+  --icon-large-size: 42px;
   --icon-default-color: #000;
 }
 
 .container {
   display: inline-block;
-  width: var(--icon-default-size);
-  height: var(--icon-default-size);
   cursor: default;
   user-select: none;
   text-align: center;
   vertical-align: middle;
   background-color: transparent;
-  font-size: var(--icon-default-size);
-  line-height: var(--icon-default-size);
   color: var(--icon-default-color);
   fill: var(--icon-default-color);
 }
@@ -52,10 +50,9 @@
 .clickable {
   cursor: pointer;
   transition: opacity var(--default-transition-duration) ease-in-out;
-  opacity: 0.75;
 
   &:hover {
-    opacity: 1;
+    opacity: 0.9;
   }
 }
 
@@ -113,4 +110,26 @@
     color: #fff;
     fill: #fff;
   }
+}
+
+/* Size */
+.small {
+  width: var(--icon-small-size);
+  height: var(--icon-small-size);
+  font-size: var(--icon-small-size);
+  line-height: var(--icon-small-size);
+}
+
+.normal {
+  width: var(--icon-default-size);
+  height: var(--icon-default-size);
+  font-size: var(--icon-default-size);
+  line-height: var(--icon-default-size);
+}
+
+.large {
+  width: var(--icon-large-size);
+  height: var(--icon-large-size);
+  font-size: var(--icon-large-size);
+  line-height: var(--icon-large-size);
 }
