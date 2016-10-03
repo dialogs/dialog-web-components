@@ -13,6 +13,7 @@
   all: initial;
 }
 
+/* Styles */
 .container {
   font-family: var(--<%= dashedName -%>-font-family);
 }

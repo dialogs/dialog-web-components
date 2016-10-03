@@ -24,11 +24,12 @@ class ConnectionStatus extends Component {
 
   renderContent() {
     const { status } = this.props;
+
     if (!status) {
       return null;
     }
 
-    const className = classNames(styles.root, this.props.className, styles[status]);
+    const className = classNames(styles.status, styles[status], this.props.className);
 
     return (
       <Text
@@ -41,15 +42,20 @@ class ConnectionStatus extends Component {
 
   render() {
     return (
-      <CSSTransitionGroup
-        transitionName={{
-          enter: styles.enter,
-          leave: styles.leave,
-          appear: styles.appear
-        }}
-      >
-        {this.renderContent()}
-      </CSSTransitionGroup>
+      <div className={styles.container}>
+        <CSSTransitionGroup
+          transitionName={{
+            enter: styles.enter,
+            enterActive: styles.enterActive,
+            leave: styles.leave,
+            leaveActive: styles.leaveActive
+          }}
+          transitionEnterTimeout={150}
+          transitionLeaveTimeout={150}
+        >
+          {this.renderContent()}
+        </CSSTransitionGroup>
+      </div>
     );
   }
 }
