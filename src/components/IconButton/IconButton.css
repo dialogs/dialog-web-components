@@ -16,7 +16,7 @@
   --icon-button-flat-hover-color: rgb(150, 150, 150);
   --icon-button-flat-border-width: 1.5px;
   --icon-button-flat-default-size: var(--icon-button-default-size);
-  --icon-button-flat-large-size: 60px;
+  --icon-button-flat-large-size: 72px;
 }
 
 .root {
