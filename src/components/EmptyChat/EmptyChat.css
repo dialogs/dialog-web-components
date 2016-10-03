@@ -8,10 +8,13 @@
   --empty-chat-font-family: var(--default-font-family);
 }
 
-.root {
+.container {
   all: initial;
   font-family: var(--empty-chat-font-family);
+  display: flex;
   align-items: center;
   align-content: center;
   justify-content: center;
 }
+
+

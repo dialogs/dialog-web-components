@@ -1,24 +1,23 @@
 /**
  * Copyright 2016 Dialog LLC <info@dlg.im>
+ * @flow
  */
 
-import React, { PropTypes } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import { Text } from '@dlghq/react-l10n';
 import styles from './EmptyChat.css';
 
-function EmptyChat(props) {
-  const className = classNames(styles.root, props.className);
-
-  return (
-    <div className={className}>
-      <Text id="EmptyChat.caption" tagName="p" />
-    </div>
-  );
+export type EmptyChatProps = {
+  className?: string
 }
 
-EmptyChat.propTypes = {
-  className: PropTypes.string
-};
+function EmptyChat(props: EmptyChatProps) {
+  const className = classNames(styles.container, props.className);
+
+  return (
+    <Text id="EmptyChat.caption" tagName="div" className={className} />
+  );
+}
 
 export default EmptyChat;
