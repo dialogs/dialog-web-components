@@ -55,13 +55,13 @@ const initialState = {
 };
 const voiceContent = {
   content: 'voice',
-  duration: 2040,
+  type: 'voice',
+  duration: 4920,
   fileExtension: 'opus',
   fileName: 'voice.opus',
-  fileSize: '12 KB',
-  fileUrl: 'https://storage.googleapis.com/prod-dlg-storage/5e1e36ed5f637613c67df237b66598de3ad2407d%2Fvoice.opus?GoogleAccessId=devops@dialog-1320.iam.gserviceaccount.com&Expires=1475073214&Signature=XXqmnxQ4BkMU4GO0R7iWYx%2BNzYH27kjcOz4SloboR60OBoX%2BxpCwu5ekFIRGrXHuibNKl4BuIPge5BURBRgfMHSuh5QhdadXhLI%2Fx1Oay19KKwIZUrGY%2ByhRlRTXXtITx0ECeE9gYk1rVBcAGmP4fD%2BZBAnEGU6229Cd%2FwXXInfu4Bwt2wpF1HX0MeofqYkGenv4T%2F4STYeFmgoTql4YtSbdYWb23oYiMRMjTfQXvdy6N1wMjEHpdYMS3dOy5REHpYIYR33LVLBRO6m4UOv7qda335RUmyKoMoKfrHCstzYL9NfHLKOF3bTYz%2FRUbxLyurULqiPIbYBom8GUzhyNkw%3D%3D',
+  fileSize: '30 KB',
+  fileUrl: 'https://storage.googleapis.com/prod-dlg-storage/dc20c3ad73d18a2931a0b353b39579f1577bce12%2Fvoice.opus?GoogleAccessId=devops@dialog-1320.iam.gserviceaccount.com&Expires=1475537982&Signature=eeSwVhn8Vp0%2FGEzItXJAzpETtdkPvGUve6pAjjyNDuesf01zoPoDqoESR0dhTE%2BygNvJibbk9RmqyhlDpqW%2Bs3WJu7PzIoovVoI2D0YMwoHByrdZXUI7kMiNzyoy6CCM6%2BligD6RWmtpsEDW5pihnZQrSwEd3hkvwuYpq2PME%2B%2B26vc4y3mUKnxoOx5UBKrSjfHVtogs0lTPCTqIvfceiFxnryab7bUefvXXcpXiQnO46VVk%2FBnqrOJLrbXNG%2Bt5nesypxQGteoqq3lKRF2fuKDpxSsBEXrG75oPBVLDf3VhMIFteYpic75gyqvRhdLHgQpynhsZM%2BvZMs9kRcMVvw%3D%3D',
   isUploading: false,
-  type: 'voice',
   transcription: state.transcription,
   isTranscriptionEnabled: true
 };

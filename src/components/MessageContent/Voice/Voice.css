@@ -57,6 +57,23 @@
 .playerIcon {
 }
 
+.seeker {
+  position: relative;
+  background-color: color(var(--color-primary) alpha(10%));
+  height: 8px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.seekerPlayed {
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  background-color: var(--color-primary);
+  transition: width 100ms linear;
+}
+
 .transctiptButton {
   display: flex;
   flex-direction: column;
@@ -72,7 +89,7 @@
   justify-content: center;
   color: var(--voice-transcript-button-color);
 
-  &:hover, &.transctiptButtonActive  {
+  &:hover, &.transctiptButtonActive {
     color: var(--voice-transcript-button-hover-color);
 
     & .transctiptButtonIcon {

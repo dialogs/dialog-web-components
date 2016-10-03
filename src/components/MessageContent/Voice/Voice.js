@@ -77,18 +77,13 @@ class Voice extends Component {
   }
 
   renderMessage() {
-    const { duration, fileName, fileSize, fileUrl, isUploading, type, fileExtension } = this.props;
+    const { duration, fileUrl } = this.props;
 
     return (
       <div className={styles.container}>
         <VoicePlayer
           duration={duration}
-          fileName={fileName}
-          fileExtension={fileExtension}
-          fileSize={fileSize}
           fileUrl={fileUrl}
-          isUploading={isUploading}
-          type={type}
         />
         {this.renderTrancsriptButton()}
       </div>
