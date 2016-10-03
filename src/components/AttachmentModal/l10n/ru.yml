@@ -1,8 +1,10 @@
-title: Send Attachment
-filename: File name
-filesize: File size
-filetype: File Type
-sending_method: Sendng method
-send_as_file: Send as file
-button_send: Send Attachment
-button_send_all: Send All
+title: Отправить файл
+filename: Название файла
+filesize: Размер файла
+filetype: Тип файла
+sending_method: Метод отправки
+send_as_file: Отправить как файл
+button_send: Отправить файл
+button_send_all: Отправить все
+next: следующий
+previous: предыдущий

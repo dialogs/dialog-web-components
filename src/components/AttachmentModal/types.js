@@ -3,14 +3,28 @@
  * @flow
  */
 
-export type AttachmentModalProps = {
-  className?: string,
-  attachments: File[],
-  isOpen: boolean,
-  onClose: () => any,
-  onSend: (file: File) => any
+export type AttachmentFile = Blob | File;
+
+export type Attachment = {
+  file: AttachmentFile,
+  isDocument: boolean
 };
 
-export type AttachmentModalState = {
-  current: number
+export type AttachmentModalProps = {
+  className?: string,
+  current: number,
+  attachments: Attachment[],
+  onClose: () => any,
+  onSend: (attachments: Attachment[]) => any,
+  onCurrentChange: (current: number) => any,
+  onAttachmentChange: (index: number, attachment: Attachment) => any
+};
+
+export type AttachmentPreviewProps = {
+  file: AttachmentFile
+};
+
+export type AttachmentMetaProps = {
+  attachment: Attachment,
+  onChange: (attachment: Attachment) => any
 };

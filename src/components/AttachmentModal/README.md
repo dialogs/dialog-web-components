@@ -4,31 +4,55 @@ Basic AttachmentModal:
 const selectFiles = require('../../utils/selectFiles').default;
 
 initialState = {
-  isOpen: false,
+  current: 0,
   attachments: []
 };
 
-const handleOpen = (event) => {
-  selectFiles((files) => {
-    setState({
-      isOpen: true,
-      attachments: files
+const actions = {
+  onOpen(event) {
+    selectFiles((files) => {
+      setState({
+        attachments: files.map((file) => ({
+          file,
+          isDocument: !file.type.startsWith('image')
+        }))
+      });
     });
-  });
-};
-const handleClose = () => setState(initialState);
-const handleSend = (attachment) => {
-  alert(`File ${attachment.name} sended`)
-  handleClose();
+  },
+  onSend(attachments) {
+    console.log(attachments);
+
+    setState({
+      current: 0,
+      attachments: state.attachments.filter((attachment) => {
+        return attachments.indexOf(attachment) !== -1;
+      })
+    });
+  },
+  onClose() {
+    setState(initialState);
+  },
+  onCurrentChange(current) {
+    setState({ current });
+  },
+  onAttachmentChange(index, nextAttachment) {
+    setState({
+      attachments: state.attachments.map((attachment, idx) => {
+        if (idx === index) {
+          return nextAttachment;
+        }
+
+        return attachment;
+      })
+    });
+  }
 };
 
 <div>
-  <Button onClick={handleOpen}>Send attachment</Button>
+  <Button onClick={actions.onOpen}>Send attachment</Button>
   <AttachmentModal
-    isOpen={state.isOpen}
-    attachments={state.attachments}
-    onClose={handleClose}
-    onSend={handleSend}
+    {...state}
+    {...actions}
   />
 </div>
 ```

@@ -9,6 +9,7 @@
   --attachment-modal-width: 500px;
   --attachment-modal-font-size: var(--default-font-size);
   --attachment-modal-text-color: color(#000 alpha(50%));
+  --attachment-modal-pagination-color: rgb(178, 178, 178);
   --attachment-modal-body-padding: 32px;
   --attachment-modal-preview-max-height: 200px;
   --attachment-modal-meta-font-size: 15px;
@@ -131,4 +132,16 @@
 
 .halfButton {
   width: 50%;
+}
+
+.pagination {
+  display: inline-block;
+  margin-left: 8px;
+  font-size: 12px;
+  color: var(--attachment-modal-pagination-color);
+}
+
+.paginationButton {
+  margin-left: 6px;
+  margin-right: 6px;
 }

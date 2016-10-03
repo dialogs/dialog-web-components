@@ -12,7 +12,7 @@ class IconButton extends Component {
     className: PropTypes.string,
     style: PropTypes.string,
     glyph: PropTypes.string.isRequired,
-    size: PropTypes.oneOf(['normal', 'large']),
+    size: PropTypes.oneOf(['small', 'normal', 'large']),
     flat: PropTypes.bool,
     disabled: PropTypes.bool,
     onClick: PropTypes.func

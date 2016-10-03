@@ -6,6 +6,7 @@
 function selectFiles(callback: (files: File[]) => void) {
   const input = document.createElement('input');
   input.type = 'file';
+  input.multiple = true;
   input.onchange = () => {
     input.onchange = null;
     callback(Array.from(input.files));

@@ -3,7 +3,7 @@
  * @flow
  */
 
-import type { AttachmentModalProps, AttachmentModalState } from './types';
+import type { Attachment, AttachmentModalProps } from './types';
 import React, { Component } from 'react';
 import classNames from 'classnames';
 import { Text } from '@dlghq/react-l10n';
@@ -13,73 +13,114 @@ import ModalHeader from '../ModalHeader/ModalHeader';
 import ModalBody from '../ModalBody/ModalBody';
 import ModalFooter from '../ModalFooter/ModalFooter';
 import Button from '../Button/Button';
-import AttachmentModalMeta from './AttachmentModalMeta';
-import AttachmentModalPreview from './AttachmentModalPreview';
+import IconButton from '../IconButton/IconButton';
+import AttachmentMeta from './AttachmentMeta';
+import AttachmentPreview from './AttachmentPreview';
 import styles from './AttachmentModal.css';
 
 class AttachmentModal extends Component {
   props: AttachmentModalProps;
-  state: AttachmentModalState;
 
   handleSend: Function;
+  handleNext: Function;
+  handlePrevious: Function;
+  handleChange: Function;
   handleSendAll: Function;
 
   constructor(props: AttachmentModalProps) {
     super(props);
 
-    this.state = {
-      current: 0
-    };
-
     this.handleSend = this.handleSend.bind(this);
+    this.handleNext = this.handleNext.bind(this);
+    this.handlePrevious = this.handlePrevious.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.handleSendAll = this.handleSendAll.bind(this);
   }
 
-  shouldComponentUpdate(nextProps: AttachmentModalProps, nextState: AttachmentModalState) {
-    return nextState.current !== this.state.current ||
-           nextProps.isOpen !== this.props.isOpen ||
+  shouldComponentUpdate(nextProps: AttachmentModalProps): boolean {
+    return nextProps.current !== this.props.current ||
            nextProps.attachments !== this.props.attachments ||
            nextProps.className !== this.props.className;
   }
 
-  handleSend() {
-    this.props.onSend(this.getCurrentAttachment());
+  handleSend(): void {
+    this.props.onSend([this.getCurrentAttachment()]);
   }
 
-  handleSendAll() {
+  handleSendAll(): void {
     const { attachments } = this.props;
-    const { current } = this.state;
-
-    for (let i = current; i < attachments.length; i++) {
-      this.props.onSend(attachments[i]);
-    }
+    this.props.onSend(attachments);
   }
 
-  getCurrentAttachment(): File {
-    return this.props.attachments[this.state.current];
-  }
-
-  renderHeader() {
-    const { onClose } = this.props;
-
-    return (
-      <ModalHeader withBorder>
-        <Text id="AttachmentModal.title" />
-        {this.renderPagination()}
-        <ModalClose onClick={onClose} />
-      </ModalHeader>
+  handleNext(): void {
+    const { current, attachments } = this.props;
+    this.props.onCurrentChange(
+      Math.min(attachments.length - 1, current + 1)
     );
   }
 
+  handlePrevious(): void {
+    const { current } = this.props;
+    this.props.onCurrentChange(
+      Math.max(0, current - 1)
+    );
+  }
+
+  handleChange(attachment: Attachment): void {
+    this.props.onAttachmentChange(this.props.current, attachment);
+  }
+
+  getCurrentAttachment(): Attachment {
+    return this.props.attachments[this.props.current];
+  }
+
   renderPagination() {
-    const { attachments } = this.props;
+    const { current, attachments } = this.props;
 
     if (attachments.length === 1) {
       return null;
     }
 
     return (
-      <span>Pagination</span>
+      <div className={styles.pagination}>
+        {current + 1} / {attachments.length}
+        <IconButton
+          className={styles.paginationButton}
+          size="small"
+          glyph="chevron_left"
+          onClick={this.handlePrevious}
+        />
+        <IconButton
+          className={styles.paginationButton}
+          size="small"
+          glyph="chevron_right"
+          onClick={this.handleNext}
+        />
+      </div>
+    );
+  }
+
+  renderHeader() {
+    return (
+      <ModalHeader withBorder>
+        <Text id="AttachmentModal.title" />
+        {this.renderPagination()}
+        <ModalClose onClick={this.props.onClose} />
+      </ModalHeader>
+    );
+  }
+
+  renderBody() {
+    const attachment = this.getCurrentAttachment();
+    if (!attachment) {
+      return null;
+    }
+
+    return (
+      <ModalBody className={styles.body}>
+        <AttachmentPreview file={attachment.file} />
+        <AttachmentMeta attachment={attachment} onChange={this.handleChange} />
+      </ModalBody>
     );
   }
 
@@ -124,21 +165,13 @@ class AttachmentModal extends Component {
   }
 
   render() {
-    const { isOpen, onClose } = this.props;
-    const currentAttachment = this.getCurrentAttachment();
+    const isOpen = Boolean(this.props.attachments.length);
     const className = classNames(styles.root, this.props.className);
 
-    if (!isOpen) {
-      return null;
-    }
-
     return (
-      <Modal isOpen={isOpen} onClose={onClose} className={className}>
+      <Modal className={className} isOpen={isOpen} onClose={this.props.onClose}>
         {this.renderHeader()}
-        <ModalBody className={styles.body}>
-          <AttachmentModalPreview attachment={currentAttachment} />
-          <AttachmentModalMeta attachment={currentAttachment} />
-        </ModalBody>
+        {this.renderBody()}
         {this.renderFooter()}
       </Modal>
     );

@@ -5,17 +5,26 @@
 
 export type DocumentType = 'unknown' | 'document' | 'media';
 
-function getDocumentType(extension: string): DocumentType {
-  switch (extension) {
-    case 'pdf':
-    case 'doc':
-    case 'docx':
+function getDocumentType(mime: string): DocumentType {
+  const [type, subtype] = mime.split('/');
+
+  switch (type) {
+    case 'image':
+    case 'audio':
+    case 'video':
+      return 'media';
+
+    case 'text':
       return 'document';
 
-    case 'mov':
-    case 'mpeg':
-    case 'avi':
-      return 'media';
+    case 'application':
+      switch (subtype) {
+        case 'pdf':
+          return 'document';
+
+        default:
+          return 'unknown';
+      }
 
     default:
       return 'unknown';

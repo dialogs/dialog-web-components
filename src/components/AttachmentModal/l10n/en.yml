@@ -6,3 +6,5 @@ sending_method: Sendng method
 send_as_file: Send as file
 button_send: Send Attachment
 button_send_all: Send All
+next: next
+previous: previous
