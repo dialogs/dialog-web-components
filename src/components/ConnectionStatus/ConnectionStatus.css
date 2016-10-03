@@ -1,0 +1,18 @@
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+:root {
+  --connection-status-font-family: var(--default-font-family);
+}
+
+/* Reset */
+.container {
+  all: initial;
+}
+
+.container {
+  font-family: var(--connection-status-font-family);
+}
