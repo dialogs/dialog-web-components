@@ -21,14 +21,6 @@ const group = {
   placeholder: 'lblue',
   adminId: 1001
 };
-const peer1 = {
-  id: 1,
-  type: 'user'
-};
-const peer2 = {
-  id: 101,
-  type: 'group'
-};
 const online = {
   message: '3 minutes ago'
 };
@@ -36,13 +28,13 @@ const alert = () => window.alert('!!!');
 
 <div>
   <div style={{ width: '50%', float: 'left' }}>
-    <ActivityProfile info={user} peer={peer1} onAboutEdit={alert} online={online}>
+    <ActivityProfile info={user} online={online} type="user">
       <IconButton glyph="phone" size="large" />
       <IconButton glyph="more" size="large" />
     </ActivityProfile>
   </div>
   <div style={{ width: '50%', float: 'left' }}>
-    <ActivityProfile info={group} peer={peer2} onAboutEdit={alert}>
+    <ActivityProfile info={group} onAboutEdit={alert} online={online} type="group">
       <IconButton glyph="phone" size="large" />
       <IconButton glyph="person_add" size="large" />
       <IconButton glyph="more" size="large" />
