@@ -23,6 +23,8 @@
   align-content: flex-start;
   justify-content: flex-start;
   flex-wrap: nowrap;
+  cursor: default;
+  user-select: none;
 
   &::before {
     padding-right: 8px;
