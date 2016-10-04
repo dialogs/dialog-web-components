@@ -18,15 +18,15 @@
 }
 
 .container {
-  font-family: var(--typing-font-family);
-  height: var(--typing-height);
   display: block;
+  height: var(--typing-height);
+  font-family: var(--typing-font-family);
 }
 
 .typing {
-  height: 100%;
   display: flex;
   flex-direction: row;
+  height: 100%;
   justify-content: flex-start;
   align-content: center;
   align-items: center;
@@ -34,18 +34,19 @@
 
 .indicator {
   margin-left: 34px;
-  padding: 2px 4px 0 4px;
+  padding: 2px 4px 0;
+
   & div {
     background-color: var(--typing-text-color);
   }
 }
 
 .text {
-  vertical-align: middle;
   margin-left: 15px;
+  vertical-align: middle;
+  letter-spacing: -0.2px;
   font-size: var(--typing-font-size);
   line-height: 1.5;
-  letter-spacing: -0.2px;
   color: var(--typing-text-color);
 }
 
@@ -56,8 +57,8 @@
 }
 
 .enterActive {
-  opacity: 1;
   transition: opacity var(--typing-transition-duration) ease;
+  opacity: 1;
 }
 
 .leave {
@@ -65,6 +66,6 @@
 }
 
 .leaveActive {
-  opacity: 0.01;
   transition: opacity var(--typing-transition-duration) ease;
+  opacity: 0.01;
 }

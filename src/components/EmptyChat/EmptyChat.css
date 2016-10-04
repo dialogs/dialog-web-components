@@ -10,8 +10,8 @@
 
 .container {
   all: initial;
-  font-family: var(--empty-chat-font-family);
   display: flex;
+  font-family: var(--empty-chat-font-family);
   align-items: center;
   align-content: center;
   justify-content: center;
