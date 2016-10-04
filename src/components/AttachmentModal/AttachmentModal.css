@@ -57,6 +57,7 @@
   height: auto;
   max-height: var(--attachment-modal-preview-max-height);
   border-radius: 6px;
+  box-shadow: 0 0 0 1px color(#000 alpha(2%));
 }
 
 .previewDocument {
