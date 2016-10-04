@@ -34,7 +34,7 @@ class CallAvatar extends Component {
           size="super"
           peer={{
             title: caller.title,
-            placeholder: caller.paceholder,
+            placeholder: caller.placeholder,
             avatar: caller.avatar
           }}
         />
