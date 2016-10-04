@@ -13,7 +13,7 @@ import ModalHeader from '../ModalHeader/ModalHeader';
 import ModalBody from '../ModalBody/ModalBody';
 import ModalFooter from '../ModalFooter/ModalFooter';
 import Button from '../Button/Button';
-import IconButton from '../IconButton/IconButton';
+import Icon from '../Icon/Icon';
 import AttachmentMeta from './AttachmentMeta';
 import AttachmentPreview from './AttachmentPreview';
 import styles from './AttachmentModal.css';
@@ -83,16 +83,16 @@ class AttachmentModal extends Component {
 
     return (
       <div className={styles.pagination}>
-        {current + 1} / {attachments.length}
-        <IconButton
-          className={styles.paginationButton}
-          size="small"
+        <Icon
+          className={styles.paginationArrow}
           glyph="chevron_left"
           onClick={this.handlePrevious}
         />
-        <IconButton
-          className={styles.paginationButton}
-          size="small"
+        <span className={styles.paginationNumbers}>
+          {current + 1} / {attachments.length}
+        </span>
+        <Icon
+          className={styles.paginationArrow}
           glyph="chevron_right"
           onClick={this.handleNext}
         />
@@ -102,7 +102,7 @@ class AttachmentModal extends Component {
 
   renderHeader() {
     return (
-      <ModalHeader withBorder>
+      <ModalHeader withBorder className={styles.header}>
         <Text id="AttachmentModal.title" />
         {this.renderPagination()}
         <ModalClose onClick={this.props.onClose} />
@@ -166,7 +166,7 @@ class AttachmentModal extends Component {
 
   render() {
     const isOpen = Boolean(this.props.attachments.length);
-    const className = classNames(styles.root, this.props.className);
+    const className = classNames(styles.container, this.props.className);
 
     return (
       <Modal className={className} isOpen={isOpen} onClose={this.props.onClose}>
