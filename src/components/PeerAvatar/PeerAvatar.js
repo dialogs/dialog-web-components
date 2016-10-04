@@ -1,69 +1,45 @@
 /**
  * Copyright 2016 Dialog LLC <info@dlg.im>
+ * @flow
  */
 
-import React, { Component, PropTypes } from 'react';
+import type { PeerInfo } from '@dlghq/dialog-types';
+import type { AvatarSize } from '../Avatar/Avatar';
+
+import React from 'react';
 import Avatar from '../Avatar/Avatar';
 import styles from './PeerAvatar.css';
 
-class PeerAvatar extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-    peer: PropTypes.shape({
-      title: PropTypes.string,
-      avatar: PropTypes.string,
-      placeholder: PropTypes.oneOf([
-        'empty',
-        'lblue',
-        'blue',
-        'purple',
-        'red',
-        'orange',
-        'yellow',
-        'green'
-      ])
-    }).isRequired,
-    size: PropTypes.oneOf(['tiny', 'small', 'medium', 'large', 'big']).isRequired,
-    online: PropTypes.bool,
-    onClick: PropTypes.func
-  };
+export type Props = {
+  className?: string,
+  peer: PeerInfo,
+  size?: AvatarSize,
+  online?: boolean,
+  onClick?: (event: SyntheticMouseEvent) => any
+};
 
-  shouldComponentUpdate(nextProps) {
-    return nextProps.online !== this.props.online ||
-           nextProps.peer !== this.props.peer ||
-           nextProps.size !== this.props.size ||
-           nextProps.className !== this.props.className;
-  }
+function PeerAvatar(props: Props) {
+  const avatar = (
+    <Avatar
+      className={props.className}
+      size={props.size}
+      image={props.peer.avatar}
+      title={props.peer.title}
+      placeholder={props.peer.placeholder}
+      onClick={props.onClick}
+    />
+  );
 
-  renderAvatar(): React.Element<any> {
-    const { className, size, peer, onClick } = this.props;
-
+  if (props.online) {
     return (
-      <Avatar
-        className={className}
-        size={size}
-        image={peer.avatar}
-        title={peer.title}
-        placeholder={peer.placeholder}
-        onClick={onClick}
-      />
+      <div className={styles.root}>
+        {avatar}
+        <div className={styles.online} />
+      </div>
     );
   }
 
-  render(): React.Element<any> {
-    const { online } = this.props;
-
-    if (online) {
-      return (
-        <div className={styles.container}>
-          {this.renderAvatar()}
-          <div className={styles.online} />
-        </div>
-      );
-    }
-
-    return this.renderAvatar();
-  }
+  return avatar;
 }
 
 export default PeerAvatar;

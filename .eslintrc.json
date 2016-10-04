@@ -3,7 +3,8 @@
   "globals": {
     "$FlowIssue": true,
     "EventHandler": true,
-    "SyntheticEvent": true
+    "SyntheticEvent": true,
+    "SyntheticMouseEvent": true
   },
   "rules": {
     "no-duplicate-imports": 0,

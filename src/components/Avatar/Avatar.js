@@ -3,19 +3,12 @@
  * @flow
  */
 
+import type { AvatarPlaceholder } from '@dlghq/dialog-types';
+
 import React, { Component } from 'react';
 import classNames from 'classnames';
 import isEmoji from '../../utils/isEmoji';
 import styles from './Avatar.css';
-
-export type AvatarProps = {
-  className?: string,
-  image: string,
-  title: string,
-  placeholder: 'empty' | 'lblue' | 'blue' | 'purple' | 'red' | 'orange' | 'yellow' | 'green',
-  size: 'tiny' | 'small' | 'medium' | 'large' | 'big' | 'super',
-  onClick: Function
-};
 
 const SIZES = {
   tiny: 14,
@@ -26,21 +19,29 @@ const SIZES = {
   super: 150
 };
 
-class Avatar extends Component {
-  props: AvatarProps;
+export type AvatarSize = 'tiny' | 'small' | 'medium' | 'large' | 'big' | 'super';
 
-  getAvatarText: Function;
+export type Props = {
+  className?: string,
+  image: ?string,
+  title: ?string,
+  size: AvatarSize,
+  placeholder: AvatarPlaceholder,
+  onClick?: (event: SyntheticMouseEvent) => any
+};
+
+class Avatar extends Component {
+  props: Props;
 
   static defaultProps = {
-    title: '',
     size: 'medium',
     placeholder: 'empty'
   };
 
-  shouldComponentUpdate(nextProps: AvatarProps): boolean {
+  shouldComponentUpdate(nextProps: Props): boolean {
     return nextProps.image !== this.props.image ||
-           nextProps.placeholder !== this.props.placeholder ||
            nextProps.title !== this.props.title ||
+           nextProps.placeholder !== this.props.placeholder ||
            nextProps.size !== this.props.size ||
            nextProps.className !== this.props.className;
   }
@@ -51,7 +52,7 @@ class Avatar extends Component {
       return null;
     }
 
-    if (title.length) {
+    if (title && title.length) {
       const titleArray = title.trim().split(' ');
       if (titleArray.length > 1) {
         return `${titleArray[0][0]}${titleArray[1][0]}`;
