@@ -1,106 +1,48 @@
 /**
  * Copyright 2016 Dialog LLC <info@dlg.im>
+ * @flow
  */
 
-import React, { Component } from 'react';
-import classNames from 'classnames';
-import Modal from '../Modal/Modal';
-import ModalBody from '../ModalBody/ModalBody';
-import CallAvatar from '../CallAvatar/CallAvatar';
-import CallControls from '../CallControls/CallControls';
-import CallInfo from '../CallInfo/CallInfo';
-import Draggable from 'react-draggable'
-import styles from './Call.css';
+import type { CallWrapperProps } from './types';
+import React from 'react';
+import { isSamePeer } from '@dlghq/dialog-types/utils';
+import BigCall from './BigCall';
+import SmallCall from './SmallCall';
 
-export type CallProps = {
-  call: {
-    caller: {
-      title: string,
-      avatar: string,
-      placeholder: string,
-    },
-    duration: ?string
-  },
-  small: boolean,
-  isOpen: boolean,
-  className?: string,
-  onMinimize: Function,
-  onCallEnd: Function,
-  onCallMute: Function
-};
-
-class Call extends Component {
-  props: CallProps;
-
-  static defaultProps = {
-    isOpen: false
+function Call(props: CallWrapperProps): ?React.Element<any> {
+  const { call } = props;
+  if (!call) {
+    return null;
   }
 
-  shouldComponentUpdate(nextProps: CallProps): boolean {
-    return nextProps.className !== this.props.className ||
-           nextProps.small !== this.props.small ||
-           nextProps.isOpen !== this.props.isOpen ||
-           nextProps.call !== this.props.call;
+  const caller = call.members.find((member) => isSamePeer(call.peer, member.peer));
+  if (!caller) {
+    return null;
   }
 
-  renderSmall(): React.Element<any> {
-    const { call } = this.props;
-    const className = classNames(styles.container, styles.small, this.props.className);
-
+  if (props.small) {
     return (
-      <Draggable>
-        <div className={className}>
-          <CallInfo
-            call={call}
-            small
-          />
-          <CallControls
-            small
-            onMinimize={this.props.onMinimize}
-            onCallEnd={this.props.onCallEnd}
-            onCallMute={this.props.onCallMute}
-          />
-        </div>
-      </Draggable>
+      <SmallCall
+        call={call}
+        caller={caller}
+        duration={props.duration}
+        onEnd={props.onEnd}
+        onSizeToggle={props.onSizeToggle}
+        onMuteToggle={props.onMuteToggle}
+      />
     );
   }
 
-  renderCall(): React.Element<any> {
-    const { isOpen, call } = this.props;
-    const className = classNames(styles.container, this.props.className);
-
-    return (
-      <Modal
-        className={className}
-        isOpen={isOpen}
-        onClose={this.props.onMinimize}
-      >
-        <ModalBody className={styles.body}>
-          <CallAvatar caller={call.caller} />
-          <CallInfo call={call} />
-          <CallControls
-            onMinimize={this.props.onMinimize}
-            onCallEnd={this.props.onCallEnd}
-            onCallMute={this.props.onCallMute}
-          />
-        </ModalBody>
-      </Modal>
-    );
-  }
-
-  render(): ?React.Element<any> {
-    const { isOpen, small } = this.props;
-
-    if (!isOpen) {
-      return null;
-    }
-
-    if (small) {
-      return this.renderSmall();
-    }
-
-    return this.renderCall();
-  }
+  return (
+    <BigCall
+      call={call}
+      caller={caller}
+      duration={props.duration}
+      onEnd={props.onEnd}
+      onSizeToggle={props.onSizeToggle}
+      onMuteToggle={props.onMuteToggle}
+    />
+  );
 }
 
 export default Call;

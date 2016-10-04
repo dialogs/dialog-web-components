@@ -1,9 +1,26 @@
-Basic Call:
+Call:
+
+export type CallState = 'calling' | 'connecting' | 'in_progress' | 'ended';
+
+export type Call = {
+  state: CallState,
+  peer: Peer,
+  members: PeerInfo[],
+  isMuted: boolean,
+  isOutgoing: boolean
+};
+
+small: boolean,
+duration: number,
+onEnd: EndHandler,
+onSizeToggle: SizeToggleHandler,
+onMuteToggle: MuteToggleHandler
 
 ```
 const initialState = {
-  isOpen: false,
   small: false,
+  duration: 0,
+
   call: {
     caller: {
       title: 'Andrey',

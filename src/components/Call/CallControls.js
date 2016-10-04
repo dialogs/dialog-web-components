@@ -3,48 +3,42 @@
  * @flow
  */
 
+import type { CallControlsProps } from './types';
 import React from 'react';
 import classNames from 'classnames';
 import IconButton from '../IconButton/IconButton';
-import styles from '../Call/Call.css';
-
-export type CallControlsProps = {
-  small: boolean,
-  onMinimize: Function,
-  onCallEnd: Function,
-  onCallMute: Function,
-};
+import styles from './Call.css';
 
 function CallControls(props: CallControlsProps): React.Element<any> {
+  const size = props.small ? 'normal' : 'large';
   const className = classNames(styles.control, {
     [styles.smallControl]: props.small
   });
-  const buttonSize = props.small ? 'normal' : 'large';
 
   return (
     <div className={className}>
       <IconButton
+        flat
         glyph="compare_arrows"
-        size={buttonSize}
-        flat
+        size={size}
         className={styles.controlButton}
-        onClick={props.onMinimize}
+        onClick={props.onSizeToggle}
       />
       <IconButton
-        glyph="call_end"
-        size={buttonSize}
+        flat
         theme="danger"
-        flat
+        glyph="call_end"
+        size={size}
         className={styles.controlButton}
-        onClick={props.onCallEnd}
+        onClick={props.onEnd}
       />
       <IconButton
-        glyph="mic_off"
-        size={buttonSize}
-        theme="primary"
         flat
+        theme="primary"
+        glyph="mic_off"
+        size={size}
         className={styles.controlButton}
-        onClick={props.onCallMute}
+        onClick={props.onMuteToggle}
       />
     </div>
   );
