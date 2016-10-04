@@ -33,6 +33,7 @@ function CallControls(props: CallControlsProps): React.Element<any> {
       <IconButton
         glyph="call_end"
         size={buttonSize}
+        theme="danger"
         flat
         className={styles.controlButton}
         onClick={props.onCallEnd}
@@ -40,6 +41,7 @@ function CallControls(props: CallControlsProps): React.Element<any> {
       <IconButton
         glyph="mic_off"
         size={buttonSize}
+        theme="primary"
         flat
         className={styles.controlButton}
         onClick={props.onCallMute}
