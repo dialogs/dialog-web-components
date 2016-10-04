@@ -1,32 +1,35 @@
 /**
  * Copyright 2016 Dialog LLC <info@dlg.im>
+ * @flow
  */
 
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 <% if (styles) { -%>
 import classNames from 'classnames';
 import styles from './<%= name %>.css';
 <% } -%>
 
-class <%= name %> extends Component {
-  static propTypes = {
-<% if (styles) { -%>
-    className: PropTypes.string,
-<% } -%>
-    children: PropTypes.node.isRequired
-  };
+export type Props = {
+  <% if (styles) { -%>
+  className?: string,
+  <% } -%>
+  children: any
+}
 
-  shouldComponentUpdate(nextProps) {
-<% if (styles) { -%>
+class <%= name %> extends Component {
+  props: Props;
+
+  shouldComponentUpdate(nextProps: Props): boolean {
+    <% if (styles) { -%>
     return nextProps.children !== this.props.children ||
            nextProps.className !== this.props.className;
-<% } else { -%>
+    <% } else { -%>
     return nextProps.children !== this.props.children;
-<% } -%>
+    <% } -%>
   }
 
-  render() {
-<% if (styles) { -%>
+  render(): React.Element<any> {
+    <% if (styles) { -%>
     const className = classNames(styles.container, this.props.className);
 
     return (
@@ -34,13 +37,13 @@ class <%= name %> extends Component {
         {this.props.children}
       </div>
     );
-<% } else { -%>
+    <% } else { -%>
     return (
       <div>
         {this.props.children}
       </div>
     );
-<% } -%>
+    <% } -%>
   }
 }
 
