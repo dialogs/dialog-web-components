@@ -9,6 +9,7 @@ import ModalBody from '../ModalBody/ModalBody';
 import CallAvatar from '../CallAvatar/CallAvatar';
 import CallControls from '../CallControls/CallControls';
 import CallInfo from '../CallInfo/CallInfo';
+import Draggable from 'react-draggable'
 import styles from './Call.css';
 
 export type CallProps = {
@@ -47,18 +48,20 @@ class Call extends Component {
     const className = classNames(styles.container, styles.small, this.props.className);
 
     return (
-      <div className={className}>
-        <CallInfo
-          call={call}
-          small
-        />
-        <CallControls
-          small
-          onMinimize={this.props.onMinimize}
-          onCallEnd={this.props.onCallEnd}
-          onCallMute={this.props.onCallMute}
-        />
-      </div>
+      <Draggable>
+        <div className={className}>
+          <CallInfo
+            call={call}
+            small
+          />
+          <CallControls
+            small
+            onMinimize={this.props.onMinimize}
+            onCallEnd={this.props.onCallEnd}
+            onCallMute={this.props.onCallMute}
+          />
+        </div>
+      </Draggable>
     );
   }
 
