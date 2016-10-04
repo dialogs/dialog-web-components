@@ -1,7 +1,7 @@
 @import '../../styles/variables.css';
 
 :root {
-  --input-error-color: var(--color-error);
+  --input-error-color: var(--color-danger);
   --input-success-color: var(--color-success);
   --input-color-color: #000;
   --input-placeholder-color: color(#000 alpha(30%));
@@ -14,8 +14,8 @@
   --input-disabled-color: #bdbdbd;
   --input-disabled-border-color: var(--input-disabled-color);
   --input-disabled-background-color: color(var(--input-disabled-color) alpha(15%));
-  --input-label-color: #000;
-  --input-label-font-size: 16px;
+  --input-label-color: var(--color-primary);
+  --input-label-font-size: 14px;
   --input-label-line-height: 22px;
   --input-label-font-family: var(--default-font-family);
   --input-hint-color: color(#000 alpha(30%));
@@ -34,13 +34,13 @@
 .container {
   display: block;
   width: 100%;
-  margin-bottom: 15px;
+  margin-bottom: var(--default-padding);
 }
 
 .input {
   box-sizing: border-box;
   width: 100%;
-  padding: 9px 0 10px;
+  padding: 10px 0;
   transition: border-color var(--default-transition-duration) ease-in;
   border-bottom: 2px solid var(--input-border-color);
   outline: none;
@@ -55,22 +55,24 @@
     color: var(--input-placeholder-color);
   }
 
-  :-moz-placeholder { /* Firefox 18- */
+  &:-moz-placeholder {
     color: var(--input-placeholder-color);
   }
 
-  ::-moz-placeholder {  /* Firefox 19+ */
+  &::-moz-placeholder {
     color: var(--input-placeholder-color);
   }
 
-  :-ms-input-placeholder {
+  &:-ms-input-placeholder {
     color: var(--input-placeholder-color);
   }
+
   /* Focused state */
   &:focus {
     border-color: var(--input-focused-border-color);
     color: var(--input-focused-color);
   }
+
   /* Disabled state */
   &:disabled {
     cursor: not-allowed;
@@ -89,16 +91,20 @@
 
 .label {
   display: inline-block;
+  text-transform: uppercase;
   margin-bottom: 6px;
   user-select: none;
+  font-weight: 500;
   font-family: var(--input-font-family);
   font-size: var(--input-label-font-size);
   color: var(--input-label-color);
+  cursor: pointer;
+  user-select: none;
 }
 
 .hint {
   display: inline-block;
-  margin: 8px 2px;
+  margin: 6px 0;
   user-select: none;
   font-family: var(--input-hint-font-family);
   font-size: var(--input-hint-font-size);
