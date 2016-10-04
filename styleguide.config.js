@@ -27,7 +27,8 @@ module.exports = {
         component('Toolbar'),
         component('Logo'),
         component('Typing'),
-        component('ConnectionStatus')
+        component('ConnectionStatus'),
+        component('Call')
       ];
     }
   }, {

@@ -1,0 +1,115 @@
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+:root {
+  --call-default-width: 500px;
+  --call-default-height: 464px;
+  --call-small-width: 260px;
+  --call-small-height: 143px;
+  --call-background-color: #fff;
+  --call-default-padding: 60px;
+  --call-font-family: var(--default-font-family);
+  --call-info-caller-font-size: 34px;
+  --call-info-caller-color: #000;
+  --call-info-duration-font-size: 24px;
+  --call-info-duration-color: color(#000 alpha(50%));
+}
+
+/* Styles */
+.container {
+  z-index: var(--z-index-call);
+  width: var(--call-default-width);
+  height: var(--call-default-height);
+  background-color: var(--call-background-color);
+  font-family: var(--call-font-family);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  padding: var(--call-default-padding);
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+
+.avatar {
+  flex: 1 1 auto;
+}
+
+.info {
+  width: 100%;
+  margin-top: 22px;
+  text-align: center;
+  flex: 1 1 auto;
+}
+
+.smallInfo {
+  margin: 0;
+  padding-bottom: 20px;
+  text-align: left;
+
+  & .infoCaller {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+  }
+
+  & .infoState {
+    font-size: 16px;
+    line-height: 16px;
+  }
+}
+
+.infoCaller {
+  letter-spacing: -0.5px;
+  font-size: var(--call-info-caller-font-size);
+  line-height: 40px;
+  color: var(--call-info-caller-color);
+}
+
+.infoState {
+  letter-spacing: -0.3px;
+  font-size: var(--call-info-duration-font-size);
+  line-height: 30px;
+  color: var(--call-info-duration-color);
+}
+
+.control {
+  margin-top: 24px;
+  text-align: center;
+  flex: 0 0 auto;
+}
+
+.smallControl {
+  margin: 0;
+  padding: 15px 0 0;
+  box-shadow: 0 -1px 0 0 color(#000 alpha(10%));
+}
+
+.controlButton {
+  margin: 0 10px;
+}
+
+/* Small */
+.small {
+  position: fixed;
+  top: 50px;
+  right: 50px;
+  box-sizing: border-box;
+  width: var(--call-small-width);
+  /*height: var(--call-small-height);*/
+  height: auto;
+  padding: 20px;
+  opacity: 0.98;
+  border-radius: 6px;
+  background-color: #fff;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.12), inset 0 0 0 1px rgba(0, 0, 0, 0.15);
+
+  & .controlButton {
+    margin: 0 5px;
+  }
+}

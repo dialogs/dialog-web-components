@@ -24,6 +24,7 @@
 
   /* Layers */
   --z-index-dropdown: 100;
+  --z-index-call: var(--z-index-dropdown);
   --z-index-sidebar: 50;
   --z-index-chat: 20;
 
