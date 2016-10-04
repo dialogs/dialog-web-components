@@ -53,7 +53,8 @@
   box-sizing: border-box;
   cursor: pointer;
   user-select: none;
-  transition: all var(--default-transition-duration) ease-in-out;
+  transition: background var(--default-transition-duration) ease,
+              box-shadow var(--default-transition-duration) ease;
   text-align: center;
   border: 0;
   outline: none;
