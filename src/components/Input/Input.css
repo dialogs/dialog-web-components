@@ -37,6 +37,7 @@
   display: block;
   width: 100%;
   margin-bottom: var(--default-padding);
+  line-height: 0;
 }
 
 .input {
@@ -102,11 +103,11 @@
 .label {
   display: inline-block;
   text-transform: uppercase;
-  margin-bottom: 6px;
   user-select: none;
   font-weight: 500;
   font-family: var(--input-font-family);
   font-size: var(--input-label-font-size);
+  line-height: var(--input-default-line-height);
   color: var(--input-label-color);
   cursor: pointer;
   user-select: none;

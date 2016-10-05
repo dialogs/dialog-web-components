@@ -9,7 +9,7 @@ class Input extends Component {
     name: PropTypes.string,
     className: PropTypes.string,
     label: PropTypes.node,
-    large: PropTypes.boolean,
+    large: PropTypes.bool,
     placeholder: PropTypes.string,
     value: PropTypes.oneOfType([
       PropTypes.string,
