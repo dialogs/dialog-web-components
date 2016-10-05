@@ -57,6 +57,18 @@ Error Input with hint:
 />
 ```
 
+Prefixed Input
+```
+<Input
+  id="shortname"
+  value=""
+  label="Channel link"
+  prefix="app.dlg.im/"
+  placeholder="string"
+/>
+```
+
+
 Since `<textarea />` has the same interface as `<input />`, there is `textarea` type:
 
 ```

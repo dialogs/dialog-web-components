@@ -11,6 +11,7 @@ class Input extends Component {
     label: PropTypes.node,
     large: PropTypes.bool,
     placeholder: PropTypes.string,
+    prefix: PropTypes.string,
     value: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.number
@@ -54,11 +55,18 @@ class Input extends Component {
   constructor(props, context) {
     super(props, context);
 
+    this.state = {
+      isFocused: false
+    };
+
     this.handleChange = this.handleChange.bind(this);
+    this.handleFocus = this.handleFocus.bind(this);
+    this.handleBlur = this.handleBlur.bind(this);
   }
 
-  shouldComponentUpdate(nextProps) {
-    return nextProps.value !== this.props.value ||
+  shouldComponentUpdate(nextProps, nextState) {
+    return nextState.isFocused !== this.state.isFocused ||
+           nextProps.value !== this.props.value ||
            nextProps.hint !== this.props.hint ||
            nextProps.status !== this.props.status ||
            nextProps.large !== this.props.large ||
@@ -75,6 +83,21 @@ class Input extends Component {
     const { onChange } = this.props;
 
     onChange(event.target.value, event);
+  }
+
+  handleFocus(event) {
+    this.setState({ isFocused: true });
+    if (this.props.onFocus) {
+      this.props.onFocus(event);
+    }
+  }
+
+  handleBlur(event) {
+    this.setState({ isFocused: false });
+
+    if (this.props.onBlur) {
+      this.props.onBlur(event);
+    }
   }
 
   renderLabel() {
@@ -106,37 +129,54 @@ class Input extends Component {
     );
   }
 
+  renderPrefix() {
+    const { prefix } = this.props;
+
+    if (!prefix) {
+      return null;
+    }
+
+    return (
+      <span className={styles.prefix}>{prefix}</span>
+    );
+  }
+
   render() {
     const {
       id, name, type, value, disabled, status, large,
-      placeholder, onFocus, onBlur,
-      onKeyUp, onKeyDown, onKeyPress
+      placeholder, onKeyUp, onKeyDown, onKeyPress
     } = this.props;
+    const { isFocused } = this.state;
     const { l10n: { formatText } } = this.context;
     const TagName = type === 'textarea' ? 'textarea' : 'input';
     const className = classNames(styles.container, styles[status], {
       [styles.filled]: value && value !== '',
+      [styles.focused]: isFocused,
+      [styles.disabled]: disabled,
       [styles.large]: large
     }, this.props.className);
 
     return (
       <div className={className}>
         {this.renderLabel()}
-        <TagName
-          id={id}
-          name={name}
-          className={styles.input}
-          type={type}
-          value={value}
-          disabled={disabled}
-          placeholder={formatText(placeholder)}
-          onChange={this.handleChange}
-          onFocus={onFocus}
-          onBlur={onBlur}
-          onKeyUp={onKeyUp}
-          onKeyDown={onKeyDown}
-          onKeyPress={onKeyPress}
-        />
+        <div className={styles.inputWrapper}>
+          {this.renderPrefix()}
+          <TagName
+            id={id}
+            name={name}
+            className={styles.input}
+            type={type}
+            value={value}
+            disabled={disabled}
+            placeholder={formatText(placeholder)}
+            onChange={this.handleChange}
+            onFocus={this.handleFocus}
+            onBlur={this.handleBlur}
+            onKeyUp={onKeyUp}
+            onKeyDown={onKeyDown}
+            onKeyPress={onKeyPress}
+          />
+        </div>
         {this.renderHint()}
       </div>
     );

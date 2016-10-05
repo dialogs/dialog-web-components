@@ -6,6 +6,7 @@
   --input-color-color: #000;
   --input-placeholder-color: color(#000 alpha(30%));
   --input-border-color: color(#000 alpha(35%));
+  --input-border-width: 1px;
   --input-default-font-size: 18px;
   --input-default-line-height: 1.4;
   --input-large-font-size: 24px;
@@ -24,6 +25,7 @@
   --input-hint-font-size: 14px;
   --input-hint-line-height: 18px;
   --input-hint-font-family: var(--default-font-family);
+  --input-prefix-color: color(#000 alpha(60%));
 }
 
 .container,
@@ -40,14 +42,31 @@
   line-height: 0;
 }
 
+.inputWrapper {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  border-bottom: var(--input-border-width) solid var(--input-border-color);
+  transition: border-color var(--default-transition-duration) ease-in-out;
+}
+
+.prefix {
+  font-family: var(--input-font-family);
+  font-size: var(--input-default-font-size);
+  line-height: var(--input-default-line-height);
+  color: var(--input-prefix-color);
+  padding: 10px 4px 10px 0;
+}
+
 .input {
   box-sizing: border-box;
   width: 100%;
-  transition: border-color var(--default-transition-duration) ease-in-out;
-  border-bottom: 2px solid var(--input-border-color);
   outline: none;
   background-color: transparent;
   box-shadow: none;
+  border: none;
   color: var(--input-color-color);
   font-family: var(--input-font-family);
   font-size: var(--input-default-font-size);
@@ -69,17 +88,34 @@
   &:-ms-input-placeholder {
     color: var(--input-placeholder-color);
   }
+}
 
-  /* Focused state */
-  &:focus {
+.filled,
+.focused {
+  & .inputWrapper {
     border-color: var(--input-focused-border-color);
+  }
+  & .input {
     color: var(--input-focused-color);
   }
+}
 
-  /* Disabled state */
-  &:disabled {
+.disabled {
+  & .label {
+    color: var(--input-disabled-border-color);
     cursor: not-allowed;
-    border-bottom: 2px dotted var(--input-disabled-border-color);
+  }
+
+  & .input {
+    cursor: not-allowed;
+  }
+
+  & .inputWrapper {
+    cursor: not-allowed;
+    border-bottom: var(--input-border-width) dotted var(--input-disabled-border-color);
+  }
+
+  & .input {
     color: var(--input-disabled-color);
   }
 }
@@ -89,14 +125,6 @@
     font-size: var(--input-large-font-size);
     line-height: var(--input-large-line-height);
     padding: var(--default-padding) 0;
-  }
-}
-
-.filled {
-  & .input,
-  & .input:focus {
-    border-color: var(--input-focused-border-color);
-    color: var(--input-focused-color);
   }
 }
 
@@ -125,8 +153,7 @@
 
 /* Success state */
 .success {
-  & .input,
-  & .input:focus {
+  & .inputWrapper {
     border-color: var(--input-success-color) !important;
   }
 
@@ -137,8 +164,7 @@
 
 /* Error state */
 .error {
-  & .input,
-  & .input:focus {
+  & .inputWrapper {
     border-color: var(--input-error-color) !important;
   }
 
