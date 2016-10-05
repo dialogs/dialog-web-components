@@ -47,10 +47,23 @@
   flex: 1 1 auto;
 }
 
+.smallInfoWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: flex-start;
+  padding-bottom: 20px;
+}
+
+.smallInfoAvatar {
+  margin-right: 14px;
+}
+
 .smallInfo {
   margin: 0;
-  padding-bottom: 20px;
   text-align: left;
+  flex: 1 1 auto;
 
   & .infoCaller {
     font-size: 16px;
