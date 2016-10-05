@@ -15,28 +15,30 @@ function CallControls(props: CallControlsProps): React.Element<any> {
     [styles.smallControl]: props.small
   });
 
+  const isIncomming = !props.isOutgoing && props.state === 'calling';
+
   return (
     <div className={className}>
       <IconButton
         flat
-        glyph={props.small ? 'aspect_ratio' : 'picture_in_picture'}
         size={size}
+        glyph={props.small ? 'aspect_ratio' : 'picture_in_picture'}
         className={styles.controlButton}
         onClick={props.onSizeToggle}
       />
       <IconButton
         flat
-        theme={props.isOutgoing ? 'danger' : 'success'}
-        glyph={props.isOutgoing ? 'call_end' : 'call'}
         size={size}
+        theme={isIncomming ? 'danger' : 'success'}
+        glyph={isIncomming ? 'call_end' : 'call'}
         className={styles.controlButton}
-        onClick={props.isOutgoing ? props.onEnd : props.onAnswer}
+        onClick={isIncomming ? props.onEnd : props.onAnswer}
       />
       <IconButton
         flat
+        size={size}
         theme="primary"
         glyph={props.isMuted ? 'mic_off' : 'mic'}
-        size={size}
         className={styles.controlButton}
         onClick={props.onMuteToggle}
       />

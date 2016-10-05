@@ -29,6 +29,7 @@ function SmallCall(props: CallProps) {
         </div>
         <CallControls
           small
+          state={props.call.state}
           isMuted={props.call.isMuted}
           isOutgoing={props.call.isOutgoing}
           onEnd={props.onEnd}

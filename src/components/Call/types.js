@@ -48,6 +48,7 @@ export type CallInfoStateProps = {
 };
 
 export type CallControlsProps = {
+  state: CallState,
   small: boolean,
   isMuted: boolean,
   isOutgoing: boolean,
