@@ -36,4 +36,6 @@
   font-weight: 500;
   line-height: var(--sidebar-group-title-line-height);
   color: var(--sidebar-group-title-color);
+  user-select: none;
+  cursor: default;
 }
