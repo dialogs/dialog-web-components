@@ -61,7 +61,7 @@ class Input extends Component {
     return nextProps.value !== this.props.value ||
            nextProps.hint !== this.props.hint ||
            nextProps.status !== this.props.status ||
-           nextProps.size !== this.props.size ||
+           nextProps.large !== this.props.large ||
            nextProps.label !== this.props.label ||
            nextProps.placeholder !== this.props.placeholder ||
            nextProps.disabled !== this.props.disabled ||
