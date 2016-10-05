@@ -50,6 +50,7 @@
   justify-content: center;
   border-bottom: var(--input-border-width) solid var(--input-border-color);
   transition: border-color var(--default-transition-duration) ease-in-out;
+  cursor: text;
 }
 
 .prefix {
@@ -58,6 +59,8 @@
   line-height: var(--input-default-line-height);
   color: var(--input-prefix-color);
   padding: 10px 4px 10px 0;
+  cursor: inherit;
+  user-select: none;
 }
 
 .input {
@@ -72,6 +75,7 @@
   font-size: var(--input-default-font-size);
   line-height: var(--input-default-line-height);
   padding: 10px 0;
+  cursor: inherit;
 
   &::-webkit-input-placeholder {
     color: var(--input-placeholder-color);

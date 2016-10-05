@@ -59,9 +59,13 @@ class Input extends Component {
       isFocused: false
     };
 
+    this.input = null;
+
     this.handleChange = this.handleChange.bind(this);
     this.handleFocus = this.handleFocus.bind(this);
     this.handleBlur = this.handleBlur.bind(this);
+    this.handleLabelMouseDown = this.handleLabelMouseDown.bind(this);
+    this.setInput = this.setInput.bind(this);
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -80,13 +84,14 @@ class Input extends Component {
   }
 
   handleChange(event) {
-    const { onChange } = this.props;
-
-    onChange(event.target.value, event);
+    if (this.props.onChange) {
+      this.props.onChange(event.target.value, event);
+    }
   }
 
   handleFocus(event) {
     this.setState({ isFocused: true });
+
     if (this.props.onFocus) {
       this.props.onFocus(event);
     }
@@ -98,6 +103,18 @@ class Input extends Component {
     if (this.props.onBlur) {
       this.props.onBlur(event);
     }
+  }
+
+  handleLabelMouseDown(event) {
+    event.preventDefault();
+
+    if (this.input) {
+      this.input.focus();
+    }
+  }
+
+  setInput(element) {
+    this.input = element;
   }
 
   renderLabel() {
@@ -113,6 +130,7 @@ class Input extends Component {
         tagName="label"
         className={styles.label}
         htmlFor={id}
+        onMouseDown={this.handleLabelMouseDown}
       />
     );
   }
@@ -130,14 +148,20 @@ class Input extends Component {
   }
 
   renderPrefix() {
-    const { prefix } = this.props;
+    const { prefix, id } = this.props;
 
     if (!prefix) {
       return null;
     }
 
     return (
-      <span className={styles.prefix}>{prefix}</span>
+      <label
+        htmlFor={id}
+        className={styles.prefix}
+        onMouseDown={this.handleLabelMouseDown}
+      >
+        {prefix}
+      </label>
     );
   }
 
@@ -162,19 +186,20 @@ class Input extends Component {
         <div className={styles.inputWrapper}>
           {this.renderPrefix()}
           <TagName
+            className={styles.input}
+            disabled={disabled}
             id={id}
             name={name}
-            className={styles.input}
-            type={type}
-            value={value}
-            disabled={disabled}
-            placeholder={formatText(placeholder)}
+            onBlur={this.handleBlur}
             onChange={this.handleChange}
             onFocus={this.handleFocus}
-            onBlur={this.handleBlur}
-            onKeyUp={onKeyUp}
             onKeyDown={onKeyDown}
             onKeyPress={onKeyPress}
+            onKeyUp={onKeyUp}
+            placeholder={formatText(placeholder)}
+            ref={this.setInput}
+            type={type}
+            value={value}
           />
         </div>
         {this.renderHint()}
