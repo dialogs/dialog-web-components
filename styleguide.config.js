@@ -71,7 +71,8 @@ module.exports = {
       return [
         component('JoinModal'),
         component('AddContactModal'),
-        component('AttachmentModal')
+        component('AttachmentModal'),
+        component('CreateNewModal')
       ];
     }
   }, {
