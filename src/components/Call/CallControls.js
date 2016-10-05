@@ -29,10 +29,10 @@ function CallControls(props: CallControlsProps): React.Element<any> {
       <IconButton
         flat
         size={size}
-        theme={isIncomming ? 'danger' : 'success'}
-        glyph={isIncomming ? 'call_end' : 'call'}
+        theme={isIncomming ? 'success' : 'danger'}
+        glyph={isIncomming ? 'call' : 'call_end'}
         className={styles.controlButton}
-        onClick={isIncomming ? props.onEnd : props.onAnswer}
+        onClick={isIncomming ? props.onAnswer : props.onEnd}
       />
       <IconButton
         flat
