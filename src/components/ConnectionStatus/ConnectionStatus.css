@@ -16,20 +16,20 @@
 
 .root {
   all: initial;
-  width: 100%;
-  height: var(--connection-status-height);
-  color: var(--connection-status-font-color);
-  font-family: var(--connection-status-font-family);
-  font-size: var(--connection-status-font-size);
-  transition: background var(--connection-status-transition-duration) ease;
-  flex: 0 0 auto;
   display: flex;
   flex-direction: row;
+  width: 100%;
+  height: var(--connection-status-height);
+  cursor: default;
+  user-select: none;
+  transition: background var(--connection-status-transition-duration) ease;
+  font-family: var(--connection-status-font-family);
+  font-size: var(--connection-status-font-size);
+  color: var(--connection-status-font-color);
+  flex: 0 0 auto;
   justify-content: center;
   align-items: center;
   align-content: center;
-  user-select: none;
-  cursor: default;
 }
 
 .online {

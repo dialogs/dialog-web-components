@@ -27,7 +27,8 @@ module.exports = {
         component('Toolbar'),
         component('Logo'),
         component('Typing'),
-        component('ConnectionStatus')
+        component('ConnectionStatus'),
+        component('Call')
       ];
     }
   }, {
@@ -111,7 +112,8 @@ module.exports = {
     const source = path.join(__dirname, 'src');
     const whitelist = [
       source,
-      path.join(__dirname, 'node_modules/@dlghq/react-l10n')
+      path.join(__dirname, 'node_modules/@dlghq/react-l10n'),
+      path.join(__dirname, 'node_modules/@dlghq/dialog-types')
     ];
 
     config.entry.push(
