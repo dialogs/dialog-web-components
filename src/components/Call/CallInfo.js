@@ -17,7 +17,7 @@ function CallInfo(props: CallInfoProps): React.Element<any> {
   return (
     <div className={className}>
       <div className={styles.infoCaller}>
-        {props.caller.title}
+        {props.caller.name}
       </div>
       <div className={styles.infoState}>
         <CallInfoState

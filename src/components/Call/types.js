@@ -3,7 +3,7 @@
  * @flow
  */
 
-import type { Call, CallState, PeerInfo } from '@dlghq/dialog-types';
+import type { Call, CallState, User } from '@dlghq/dialog-types';
 
 export type EndHandler = () => any;
 export type SizeToggleHandler = (small: boolean) => any;
@@ -11,7 +11,8 @@ export type MuteToggleHandler = (isMuted: boolean) => any;
 
 export type CallWrapperProps = {
   className?: string,
-  call?: Call,
+  call: ?Call,
+  caller: ?User,
   small: boolean,
   duration: number,
   onEnd: EndHandler,
@@ -22,7 +23,7 @@ export type CallWrapperProps = {
 export type CallProps = {
   className?: string,
   call: Call,
-  caller: PeerInfo,
+  caller: User,
   duration: number,
   onEnd: EndHandler,
   onSizeToggle: SizeToggleHandler,
@@ -31,12 +32,12 @@ export type CallProps = {
 
 export type CallAvatarProps = {
   state: CallState,
-  caller: PeerInfo
+  caller: User
 };
 
 export type CallInfoProps = {
   call: Call,
-  caller: PeerInfo,
+  caller: User,
   small: boolean,
   duration: number
 };

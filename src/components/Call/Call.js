@@ -5,18 +5,12 @@
 
 import type { CallWrapperProps } from './types';
 import React from 'react';
-import { isSamePeer } from '@dlghq/dialog-types/utils';
 import BigCall from './BigCall';
 import SmallCall from './SmallCall';
 
 function Call(props: CallWrapperProps): ?React.Element<any> {
-  const { call } = props;
-  if (!call) {
-    return null;
-  }
-
-  const caller = call.members.find((member) => isSamePeer(call.peer, member.peer));
-  if (!caller) {
+  const { call, caller } = props;
+  if (!call || !caller) {
     return null;
   }
 

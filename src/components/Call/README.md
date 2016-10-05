@@ -14,18 +14,13 @@ const call = {
     id: 1,
     type: 'user'
   },
-  members: [
-    {
-      peer: {
-        id: 1,
-        type: 'user'
-      },
-      title: 'Nikita',
-      userName: 'gusnkt',
-      avatar: 'https://avatars0.githubusercontent.com/u/3505878',
-      placeholder: 'red'
-    }
-  ],
+  caller: {
+    id: 1,
+    name: 'Nikita',
+    placeholder: 'red',
+    avatar: 'https://avatars0.githubusercontent.com/u/3505878'
+  },
+  members: [],
   isMuted: false,
   isOutgoing: false
 };

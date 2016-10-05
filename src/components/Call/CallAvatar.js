@@ -5,7 +5,7 @@
 import type { CallAvatarProps } from './types';
 import React from 'react';
 import classNames from 'classnames';
-import PeerAvatar from '../PeerAvatar/PeerAvatar';
+import Avatar from '../Avatar/Avatar';
 import styles from './Call.css';
 
 function CallAvatar(props: CallAvatarProps): React.Element<any> {
@@ -13,7 +13,12 @@ function CallAvatar(props: CallAvatarProps): React.Element<any> {
 
   return (
     <div className={className}>
-      <PeerAvatar size="super" peer={props.caller} />
+      <Avatar
+        size="super"
+        image={props.caller.avatar}
+        title={props.caller.name}
+        placeholder={props.caller.placeholder}
+      />
     </div>
   );
 }
