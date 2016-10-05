@@ -71,11 +71,16 @@
   padding: var(--default-padding) calc(var(--default-padding) * 2);
   font-size: var(--modal-header-font-size);
   font-weight: 500;
-  line-height: 28px;
   flex: 0 1 auto;
   color: var(--modal-header-color);
   box-sizing: border-box;
   height: 60px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+  line-height: 28px;
+  flex-direction: row;
 
   & .close {
     position: absolute;

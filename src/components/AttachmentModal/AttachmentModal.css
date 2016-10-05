@@ -24,13 +24,7 @@
   font-size: var(--attachment-modal-font-size);
 }
 
-.header {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  align-content: center;
-  line-height: 28px;
-}
+.header {}
 
 .body {
   display: flex;
