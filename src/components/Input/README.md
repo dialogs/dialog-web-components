@@ -58,16 +58,18 @@ Error Input with hint:
 ```
 
 Prefixed Input
+
 ```
+const onChange = (value) => setState({ value });
 <Input
   id="shortname"
-  value=""
   label="Channel link"
-  prefix="app.dlg.im/"
+  onChange={onChange}
   placeholder="string"
+  prefix="app.dlg.im/"
+  value={state.value}
 />
 ```
-
 
 Since `<textarea />` has the same interface as `<input />`, there is `textarea` type:
 
