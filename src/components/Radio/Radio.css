@@ -1,0 +1,84 @@
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+:root {
+  --radio-font-family: var(--default-font-family);
+  --radio-size: 22px;
+  --radio-inactive-color: #c0c0c0;
+  --radio-active-color: var(--color-primary);
+}
+
+
+/* Reset */
+.container {
+  all: initial;
+}
+
+/* Styles */
+.container {
+  font-family: var(--radio-font-family);
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+  cursor: pointer;
+  padding: 6px 0;
+
+  &:hover {
+    & .radio {
+      box-shadow: 0 0 0 2px var(--radio-active-color) inset;
+    }
+  }
+}
+
+.input {
+  display: none;
+  & + .radio {
+    &:before {
+      transform: scale(0);
+    }
+  }
+  &:checked + .radio {
+    box-shadow: 0 0 0 2px var(--radio-active-color) inset;
+    &:before {
+      transform: scale(1);
+    }
+  }
+}
+
+.radio {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  user-select: none;
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  transition: box-shadow var(--default-transition-duration) ease-in;
+  width: var(--radio-size);
+  height: var(--radio-size);
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px var(--radio-inactive-color) inset;
+
+
+  &:before {
+    flex: 0 0 auto;
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    transition: transform var(--default-transition-duration) ease-in;
+    background-color: var(--color-primary);
+  }
+}
+
+.label {
+  padding-left: 16px;
+  cursor: inherit;
+}

@@ -46,6 +46,7 @@ module.exports = {
       return [
         component('Input'),
         component('Checkbox'),
+        component('Radio'),
         component('Switcher'),
         component('Fieldset')
       ];
