@@ -19,7 +19,7 @@ function CallControls(props: CallControlsProps): React.Element<any> {
     <div className={className}>
       <IconButton
         flat
-        glyph="compare_arrows"
+        glyph={props.small ? 'aspect_ratio' : 'picture_in_picture'}
         size={size}
         className={styles.controlButton}
         onClick={props.onSizeToggle}
@@ -35,7 +35,7 @@ function CallControls(props: CallControlsProps): React.Element<any> {
       <IconButton
         flat
         theme="primary"
-        glyph="mic_off"
+        glyph={props.isMuted ? 'mic_off' : 'mic'}
         size={size}
         className={styles.controlButton}
         onClick={props.onMuteToggle}

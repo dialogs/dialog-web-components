@@ -20,21 +20,10 @@ function Call(props: CallWrapperProps): ?React.Element<any> {
     return null;
   }
 
-  if (props.small) {
-    return (
-      <SmallCall
-        call={call}
-        caller={caller}
-        duration={props.duration}
-        onEnd={props.onEnd}
-        onSizeToggle={props.onSizeToggle}
-        onMuteToggle={props.onMuteToggle}
-      />
-    );
-  }
+  const ChildCall = props.small ? SmallCall : BigCall;
 
   return (
-    <BigCall
+    <ChildCall
       call={call}
       caller={caller}
       duration={props.duration}

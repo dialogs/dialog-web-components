@@ -28,6 +28,7 @@ function BigCall(props: CallProps) {
         />
         <CallControls
           small={false}
+          isMuted={props.call.isMuted}
           onEnd={props.onEnd}
           onSizeToggle={props.onSizeToggle}
           onMuteToggle={props.onMuteToggle}

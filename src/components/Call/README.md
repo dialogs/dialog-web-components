@@ -1,47 +1,98 @@
 Call:
 
-export type CallState = 'calling' | 'connecting' | 'in_progress' | 'ended';
-
-export type Call = {
-  state: CallState,
-  peer: Peer,
-  members: PeerInfo[],
-  isMuted: boolean,
-  isOutgoing: boolean
-};
-
-small: boolean,
-duration: number,
-onEnd: EndHandler,
-onSizeToggle: SizeToggleHandler,
-onMuteToggle: MuteToggleHandler
-
 ```
 const initialState = {
+  call: null,
   small: false,
   duration: 0,
-
-  call: {
-    caller: {
-      title: 'Andrey',
-      placeholder: 'purple',
-      avatar: 'https://storage.googleapis.com/prod-dlg-storage/afddd52af6abd1fd7003715197b803f8502fe031%2Flarge-avatar.jpg?GoogleAccessId=devops@dialog-1320.iam.gserviceaccount.com&Expires=1475665230&Signature=ORfq4ZnayHqO9oinzc7CHvAgV16H4Nbn8oRVarCJqy8CmD4VjELkFNLPqnZsQqEJni0UnIX1UDAGhwsa0UFcWFt6N%2B8WUZTCYmIENM0OIAIV%2F5GLqYN9ERYyp2KHqbwyEOkoIlS8gXjOAQAw1IBp02AzVG5XGR3u31jecbunGQ73CuPvXeWjYWecPILih2Vlwc5jGoimNwZ0RhpGZHKdP58D5PLvzigQRt7ENjD6R7JcXLsA2XeOYVLzaCyyDY2EfJge8IZ5w0hNFSErcv4TuHLbWNUEGsgI9CP4G7zYZQbiQ7RK46g679JMREotkrj%2FA%2Bjoge4%2Fyp4iWkYIcP3K3g%3D%3D'
-    },
-    duration: '02:30'
-  }
+  timerId: null
 };
-const handleOpen = () => setState({ isOpen: true });
-const handleClose = () => setState({ ...initialState });
-const toggleSize = () => setState({ small: !state.small });
+
+const call = {
+  state: 'calling',
+  peer: {
+    id: 1,
+    type: 'user'
+  },
+  members: [
+    {
+      peer: {
+        id: 1,
+        type: 'user'
+      },
+      title: 'Nikita',
+      userName: 'gusnkt',
+      avatar: 'https://avatars0.githubusercontent.com/u/3505878',
+      placeholder: 'red'
+    }
+  ],
+  isMuted: false,
+  isOutgoing: false
+};
+
+const handleCall = () => {
+  setState({ call });
+  setTimeout(handleConnect, 3000);
+};
+
+const handleConnect = () => {
+  setState({
+    call: {
+      ...call,
+      state: 'connecting'
+    }
+  });
+
+  setTimeout(handleInProgress, 1000);
+};
+
+const handleInProgress = () => {
+  let duration = 0;
+  const timerId = setInterval(() => {
+    setState({ duration: duration++ });
+  }, 1000);
+
+  setState({
+    timerId,
+    duration,
+    call: {
+      ...call,
+      state: 'in_progress'
+    }
+  });
+};
+
+const handleEnd = () => {
+  if (state.timerId) {
+    clearInterval(state.timerId);
+  }
+
+  setState(initialState);
+};
+
+const handleSizeToggle = () => {
+  setState({ small: !state.small });
+};
+
+const handleMuteToggle = () => {
+  setState({
+    call: {
+      ...state.call,
+      isMuted: !state.call.isMuted
+    }
+  });
+};
 
 <div>
-  <Button onClick={handleOpen}>Call</Button>
+  <Button onClick={handleCall}>Call</Button>
+
   <Call
-    isOpen={state.isOpen}
-    small={state.small}
     call={state.call}
-    onCallEnd={handleClose}
-    onMinimize={toggleSize}
+    small={state.small}
+    duration={state.duration}
+    onEnd={handleEnd}
+    onSizeToggle={handleSizeToggle}
+    onMuteToggle={handleMuteToggle}
   />
 </div>
 ```

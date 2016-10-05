@@ -25,6 +25,7 @@ function SmallCall(props: CallProps) {
         />
         <CallControls
           small
+          isMuted={props.call.isMuted}
           onEnd={props.onEnd}
           onSizeToggle={props.onSizeToggle}
           onMuteToggle={props.onMuteToggle}

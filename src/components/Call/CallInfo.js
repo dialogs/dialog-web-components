@@ -6,7 +6,7 @@
 import type { CallInfoProps } from './types';
 import React from 'react';
 import classNames from 'classnames';
-import formatTime from '../../utils/formatTime';
+import CallInfoState from './CallInfoState';
 import styles from './Call.css';
 
 function CallInfo(props: CallInfoProps): React.Element<any> {
@@ -20,7 +20,11 @@ function CallInfo(props: CallInfoProps): React.Element<any> {
         {props.caller.title}
       </div>
       <div className={styles.infoState}>
-        {formatTime(props.duration)}
+        <CallInfoState
+          state={props.call.state}
+          duration={props.duration}
+          isOutgoing={props.call.isOutgoing}
+        />
       </div>
     </div>
   );

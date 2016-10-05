@@ -35,13 +35,21 @@ export type CallAvatarProps = {
 };
 
 export type CallInfoProps = {
-  small: boolean,
+  call: Call,
   caller: PeerInfo,
+  small: boolean,
+  duration: number
+};
+
+export type CallInfoStateProps = {
+  state: CallState,
+  isOutgoing: boolean,
   duration: number
 };
 
 export type CallControlsProps = {
   small: boolean,
+  isMuted: boolean,
   onEnd: EndHandler,
   onSizeToggle: SizeToggleHandler,
   onMuteToggle: MuteToggleHandler
