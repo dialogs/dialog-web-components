@@ -1,0 +1,13 @@
+title:
+  group: Создать новую группу
+  channel: Создать новый канал
+type:
+  group: Группа
+  channel: Канал
+hint:
+  group: Groups are ideal for limited communities, they can have up to 10000 members
+  channel: Channels are tool for broadcasting your messages to unlimited audiences
+next: Add info
+finish:
+  group: Создать Группу
+  channel: Создать Канал

@@ -8,6 +8,9 @@
   --create-new-modal-font-family: var(--default-font-family);
   --create-new-modal-width: 500px;
   --create-new-back-color: color(#000 alpha(38%));
+  --create-new-type-hint-color: color(#000 alpha(50%));
+  --create-new-type-hint-font-size: 16px;
+  --create-new-type-label-font-size: 18px
 }
 
 /* Styles */
@@ -32,6 +35,20 @@
 
 .type {
   padding: 50px;
+}
+
+.typeLabel {
+  font-size: var(--create-new-type-label-font-size);
+}
+
+.typeHint {
+  color: var(--create-new-type-hint-color);
+  font-size: var(--create-new-type-hint-font-size);
+  line-height: 1.6;
+  padding-left: 38px;
+  padding-right: 38px;
+  cursor: default;
+  user-select: none;
 }
 
 .info {

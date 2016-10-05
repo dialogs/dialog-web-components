@@ -5,6 +5,7 @@
 
 import React, { Component } from 'react';
 import classNames from 'classnames';
+import { Text } from '@dlghq/react-l10n';
 import Modal from '../Modal/Modal';
 import ModalHeader from '../ModalHeader/ModalHeader';
 import ModalClose from '../ModalClose/ModalClose';
@@ -57,13 +58,11 @@ class CreateNewModal extends Component {
     }
   }
 
-  handleChange(value: any, { target }: SyntheticEvent): void {
-    if (target instanceof HTMLInputElement) {
-      this.props.onChange({
-        ...this.props.request,
-        [target.name]: value
-      });
-    }
+  handleChange(value: any, { target }: $FlowIssue): void {
+    this.props.onChange({
+      ...this.props.request,
+      [target.name]: value
+    });
   }
 
   handleSubmit(): void {
@@ -79,7 +78,7 @@ class CreateNewModal extends Component {
         return (
           <div className={styles.wrapper}>
             <ModalHeader className={styles.header} withBorder>
-              Selelct type
+              <Text id={`CreateNewModal.title.${request.type}`} />
               <ModalClose onClick={this.props.onClose} />
             </ModalHeader>
             <ModalBody className={styles.type}>
@@ -89,8 +88,13 @@ class CreateNewModal extends Component {
                 value="group"
                 defaultChecked={request.type === 'group'}
               >
-                Group
+                <Text id="CreateNewModal.type.group" className={styles.typeLabel} />
               </Radio>
+              <Text
+                className={styles.typeHint}
+                id="CreateNewModal.hint.group"
+                tagName="div"
+              />
               <br />
               <Radio
                 onChange={this.handleChange}
@@ -98,8 +102,13 @@ class CreateNewModal extends Component {
                 value="channel"
                 defaultChecked={request.type === 'channel'}
               >
-                Channel
+                <Text id="CreateNewModal.type.channel" className={styles.typeLabel} />
               </Radio>
+              <Text
+                className={styles.typeHint}
+                id="CreateNewModal.hint.channel"
+                tagName="div"
+              />
             </ModalBody>
             <ModalFooter className={styles.footer}>
               <Button
@@ -109,7 +118,7 @@ class CreateNewModal extends Component {
                 theme="success"
                 wide
               >
-                Next step
+                <Text id="CreateNewModal.next" />
               </Button>
             </ModalFooter>
           </div>
@@ -123,7 +132,7 @@ class CreateNewModal extends Component {
                 onClick={this.handlePrevStepClick}
                 className={styles.back}
               />
-              Info
+              <Text id={`CreateNewModal.title.${request.type}`} />
               <ModalClose onClick={this.props.onClose} />
             </ModalHeader>
             <ModalBody className={styles.info}>
@@ -158,7 +167,7 @@ class CreateNewModal extends Component {
                 theme="success"
                 wide
               >
-                Finish
+                <Text id={`CreateNewModal.finish.${request.type}`} />
               </Button>
             </ModalFooter>
           </div>
