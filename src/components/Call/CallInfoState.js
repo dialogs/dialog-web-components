@@ -13,12 +13,12 @@ function CallInfoState(props: CallInfoStateProps): React.Element<any> {
     case 'calling':
       if (props.isOutgoing) {
         return (
-          <Text id="Call.calling_out" />
+          <Text id="Call.calling_in" />
         );
       }
 
       return (
-        <Text id="Call.calling_in" />
+        <Text id="Call.calling_out" />
       );
 
     case 'connecting':

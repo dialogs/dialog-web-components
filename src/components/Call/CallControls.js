@@ -27,7 +27,7 @@ function CallControls(props: CallControlsProps): React.Element<any> {
       <IconButton
         flat
         theme="danger"
-        glyph="call_end"
+        glyph={props.isOutgoing ? 'call_end' : 'call'}
         size={size}
         className={styles.controlButton}
         onClick={props.onEnd}

@@ -51,6 +51,7 @@ export type CallInfoStateProps = {
 export type CallControlsProps = {
   small: boolean,
   isMuted: boolean,
+  isOutgoing: boolean,
   onEnd: EndHandler,
   onSizeToggle: SizeToggleHandler,
   onMuteToggle: MuteToggleHandler
