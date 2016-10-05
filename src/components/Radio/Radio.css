@@ -32,6 +32,14 @@
       box-shadow: 0 0 0 2px var(--radio-active-color) inset;
     }
   }
+
+  &:active {
+    & .input:checked + .radio {
+      &:before {
+        transform: scale(0.9);
+      }
+    }
+  }
 }
 
 .input {
@@ -59,7 +67,7 @@
   justify-content: center;
   align-items: center;
   align-content: center;
-  transition: box-shadow var(--default-transition-duration) ease-in;
+  transition: box-shadow var(--default-transition-duration) ease-in-out;
   width: var(--radio-size);
   height: var(--radio-size);
   border-radius: 50%;
@@ -73,7 +81,7 @@
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    transition: transform var(--default-transition-duration) ease-in;
+    transition: transform var(--default-transition-duration) ease-in-out;
     background-color: var(--color-primary);
   }
 }
@@ -81,4 +89,5 @@
 .label {
   padding-left: 16px;
   cursor: inherit;
+  user-select: none;
 }

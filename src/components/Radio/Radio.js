@@ -34,10 +34,8 @@ class Radio extends Component {
            nextProps.value !== this.props.value;
   }
 
-  handleChange(event: SyntheticEvent): void {
-    if (event.target instanceof HTMLInputElement) {
-      this.props.onChange(event.target.value, event);
-    }
+  handleChange(event: $FlowIssue): void {
+    this.props.onChange(event.target.value, event);
   }
 
   renderChildren(): ?React.Element<any> {
