@@ -1,61 +1,86 @@
 Basic Input:
 
-    initialState = { value: '' };
-    <Input
-      id="input_basic"
-      label="Basic"
-      placeholder="Basic placeholder"
-      value={state.value}
-      onChange={(value) => setState({ value })}
-    />
-
+```
+const initialState = { value: '' };
+<Input
+  id="input_basic"
+  label="Basic"
+  placeholder="Basic placeholder"
+  value={state.value}
+  onChange={(value) => setState({ value })}
+/>
+```
 
 Input without label:
 
-    initialState = { value: '' };
-    <Input
-      id="input_no_label"
-      value={state.value}
-      onChange={(value) => setState({ value })}
-    />
+```
+const initialState = { value: '' };
+<Input
+  id="input_no_label"
+  value={state.value}
+  onChange={(value) => setState({ value })}
+/>
+```
 
 Disabled Input:
 
-    <Input
-      id="input_disabled"
-      label="Disabled"
-      value=""
-      disabled
-    />
+```
+<Input
+  id="input_disabled"
+  label="Disabled"
+  value=""
+  disabled
+/>
+```
 
 Success Input with hint:
 
-    <Input
-      id="input_success_hint"
-      label="Email"
-      value="bob@example.com"
-      hint="Correct email"
-      status="success"
-    />
+```
+<Input
+  id="input_success_hint"
+  label="Email"
+  value="bob@example.com"
+  hint="Correct email"
+  status="success"
+/>
+```
 
 Error Input with hint:
 
-    <Input
-      id="input_error_hint"
-      label="Email"
-      value="bob at example.com"
-      hint="Incorrect email"
-      status="error"
-    />
+```
+<Input
+  id="input_error_hint"
+  label="Email"
+  value="bob at example.com"
+  hint="Incorrect email"
+  status="error"
+/>
+```
 
 Since `<textarea />` has the same interface as `<input />`, there is `textarea` type:
 
-    initialState = { value: '' };
-    <Input
-      id="input_textarea"
-      type="textarea"
-      label="About"
-      placeholder="Type something"
-      value={state.value}
-      onChange={(value) => setState({ value })}
-    />
+```
+const initialState = { value: '' };
+<Input
+  id="input_textarea"
+  type="textarea"
+  label="About"
+  placeholder="Type something"
+  value={state.value}
+  onChange={(value) => setState({ value })}
+/>
+```
+
+You can make `Input` even larger. Just add `large` to props:
+
+```
+<Input
+  id="about"
+  label="About"
+  type="textarea"
+  value=""
+  label="Description - optional"
+  placeholder="Describe the Purpose of This Conversation"
+  large
+/>
+```

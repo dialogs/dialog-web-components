@@ -9,6 +9,7 @@ class Input extends Component {
     name: PropTypes.string,
     className: PropTypes.string,
     label: PropTypes.node,
+    large: PropTypes.boolean,
     placeholder: PropTypes.string,
     value: PropTypes.oneOfType([
       PropTypes.string,
@@ -40,6 +41,7 @@ class Input extends Component {
 
   static defaultProps = {
     type: 'text',
+    large: false,
     disabled: false
   };
 
@@ -59,6 +61,7 @@ class Input extends Component {
     return nextProps.value !== this.props.value ||
            nextProps.hint !== this.props.hint ||
            nextProps.status !== this.props.status ||
+           nextProps.size !== this.props.size ||
            nextProps.label !== this.props.label ||
            nextProps.placeholder !== this.props.placeholder ||
            nextProps.disabled !== this.props.disabled ||
@@ -105,14 +108,15 @@ class Input extends Component {
 
   render() {
     const {
-      id, name, type, value, disabled, status,
+      id, name, type, value, disabled, status, large,
       placeholder, onFocus, onBlur,
       onKeyUp, onKeyDown, onKeyPress
     } = this.props;
     const { l10n: { formatText } } = this.context;
     const TagName = type === 'textarea' ? 'textarea' : 'input';
     const className = classNames(styles.container, styles[status], {
-      [styles.filled]: value && value !== ''
+      [styles.filled]: value && value !== '',
+      [styles.large]: large
     }, this.props.className);
 
     return (

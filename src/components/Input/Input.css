@@ -6,8 +6,10 @@
   --input-color-color: #000;
   --input-placeholder-color: color(#000 alpha(30%));
   --input-border-color: color(#000 alpha(35%));
-  --input-font-size: 18px;
-  --input-line-height: 26px;
+  --input-default-font-size: 18px;
+  --input-default-line-height: 1.4;
+  --input-large-font-size: 24px;
+  --input-large-line-height: 1.25;
   --input-font-family: var(--default-font-family);
   --input-focused-color: #000;
   --input-focused-border-color: var(--color-primary);
@@ -40,16 +42,16 @@
 .input {
   box-sizing: border-box;
   width: 100%;
-  padding: 10px 0;
-  transition: border-color var(--default-transition-duration) ease-in;
+  transition: border-color var(--default-transition-duration) ease-in-out;
   border-bottom: 2px solid var(--input-border-color);
   outline: none;
   background-color: transparent;
   box-shadow: none;
-  font-family: var(--input-font-family);
-  font-size: var(--input-font-size);
-  line-height: var(--input-line-height);
   color: var(--input-color-color);
+  font-family: var(--input-font-family);
+  font-size: var(--input-default-font-size);
+  line-height: var(--input-default-line-height);
+  padding: 10px 0;
 
   &::-webkit-input-placeholder {
     color: var(--input-placeholder-color);
@@ -78,6 +80,14 @@
     cursor: not-allowed;
     border-bottom: 2px dotted var(--input-disabled-border-color);
     color: var(--input-disabled-color);
+  }
+}
+
+.large {
+  & .input {
+    font-size: var(--input-large-font-size);
+    line-height: var(--input-large-line-height);
+    padding: var(--default-padding) 0;
   }
 }
 
