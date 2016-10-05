@@ -30,7 +30,7 @@ function CallControls(props: CallControlsProps): React.Element<any> {
         glyph={props.isOutgoing ? 'call_end' : 'call'}
         size={size}
         className={styles.controlButton}
-        onClick={props.onEnd}
+        onClick={props.isOutgoing ? props.onEnd : props.onAnswer}
       />
       <IconButton
         flat

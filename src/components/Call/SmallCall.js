@@ -32,6 +32,7 @@ function SmallCall(props: CallProps) {
           isMuted={props.call.isMuted}
           isOutgoing={props.call.isOutgoing}
           onEnd={props.onEnd}
+          onAnswer={props.onAnswer}
           onSizeToggle={props.onSizeToggle}
           onMuteToggle={props.onMuteToggle}
         />

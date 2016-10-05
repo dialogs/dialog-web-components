@@ -5,19 +5,17 @@
 
 import type { Call, CallState, User } from '@dlghq/dialog-types';
 
-export type EndHandler = () => any;
-export type SizeToggleHandler = (small: boolean) => any;
-export type MuteToggleHandler = (isMuted: boolean) => any;
-
 export type CallWrapperProps = {
   className?: string,
+  id: ?string,
   call: ?Call,
   caller: ?User,
   small: boolean,
   duration: number,
-  onEnd: EndHandler,
-  onSizeToggle: SizeToggleHandler,
-  onMuteToggle: MuteToggleHandler
+  onEnd: (id: string) => any,
+  onAnswer: (id: string) => any,
+  onSizeToggle: (id: string, small: boolean) => any,
+  onMuteToggle: (id: string, isMuted: boolean) => any
 };
 
 export type CallProps = {
@@ -25,9 +23,10 @@ export type CallProps = {
   call: Call,
   caller: User,
   duration: number,
-  onEnd: EndHandler,
-  onSizeToggle: SizeToggleHandler,
-  onMuteToggle: MuteToggleHandler
+  onEnd: () => void,
+  onAnswer: () => void,
+  onSizeToggle: () => void,
+  onMuteToggle: () => void
 };
 
 export type CallAvatarProps = {
@@ -44,15 +43,16 @@ export type CallInfoProps = {
 
 export type CallInfoStateProps = {
   state: CallState,
-  isOutgoing: boolean,
-  duration: number
+  duration: number,
+  isOutgoing: boolean
 };
 
 export type CallControlsProps = {
   small: boolean,
   isMuted: boolean,
   isOutgoing: boolean,
-  onEnd: EndHandler,
-  onSizeToggle: SizeToggleHandler,
-  onMuteToggle: MuteToggleHandler
+  onEnd: () => void,
+  onAnswer: () => void,
+  onSizeToggle: () => void,
+  onMuteToggle: () => void
 };
