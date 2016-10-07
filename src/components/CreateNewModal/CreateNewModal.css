@@ -45,8 +45,8 @@
   color: var(--create-new-type-hint-color);
   font-size: var(--create-new-type-hint-font-size);
   line-height: 1.6;
-  padding-left: 38px;
-  padding-right: 38px;
+  padding-left: 46px;
+  padding-right: 30px;
   cursor: default;
   user-select: none;
 }

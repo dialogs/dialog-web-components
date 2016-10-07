@@ -63,108 +63,128 @@ class CreateNewModal extends PureComponent {
     this.props.onSubmit(request);
   }
 
+  renderTypeStep(): React.Element<any> {
+    const { request: { type } } = this.props;
+
+    return (
+      <div className={styles.wrapper}>
+        <ModalHeader className={styles.header} withBorder>
+          <Text id={`CreateNewModal.title.${type}`} />
+          <ModalClose onClick={this.props.onClose} />
+        </ModalHeader>
+        <ModalBody className={styles.type}>
+          <Radio
+            onChange={this.handleChange}
+            name="type"
+            value="group"
+            defaultChecked={type === 'group'}
+          >
+            <Text id="CreateNewModal.type.group" className={styles.typeLabel} />
+          </Radio>
+          <Text
+            className={styles.typeHint}
+            id="CreateNewModal.hint.group"
+            tagName="div"
+          />
+          <br />
+          <Radio
+            onChange={this.handleChange}
+            name="type"
+            value="channel"
+            defaultChecked={type === 'channel'}
+          >
+            <Text id="CreateNewModal.type.channel" className={styles.typeLabel} />
+          </Radio>
+          <Text
+            className={styles.typeHint}
+            id="CreateNewModal.hint.channel"
+            tagName="div"
+          />
+        </ModalBody>
+        <ModalFooter className={styles.footer}>
+          <Button
+            className={styles.halfButton}
+            onClick={this.handleNextStepClick}
+            rounded={false}
+            theme="success"
+            wide
+          >
+            <Text id="CreateNewModal.next" />
+          </Button>
+        </ModalFooter>
+      </div>
+    );
+  }
+
+  renderInfoStep(): React.Element<any> {
+    const { request: { type, about, title, shortname } } = this.props;
+
+    return (
+      <div className={styles.wrapper}>
+        <ModalHeader className={styles.header} withBorder>
+          <Icon
+            glyph="arrow_back"
+            onClick={this.handlePrevStepClick}
+            className={styles.back}
+          />
+          <Text id={`CreateNewModal.title.${type}`} />
+          <ModalClose onClick={this.props.onClose} />
+        </ModalHeader>
+        <ModalBody className={styles.info}>
+          <form autoComplete="off">
+            <Input
+              className={styles.input}
+              id="title"
+              large
+              name="title"
+              onChange={this.handleChange}
+              placeholder="Name This Group"
+              value={title}
+            />
+            <Input
+              className={styles.input}
+              id="about"
+              label="Description - optional"
+              large
+              name="about"
+              onChange={this.handleChange}
+              placeholder="Describe the Purpose of This Conversation"
+              type="textarea"
+              value={about}
+            />
+            <Input
+              id="shortname"
+              name="shortname"
+              label="Channel link"
+              onChange={this.handleChange}
+              prefix="app.dlg.im/"
+              value={shortname}
+            />
+          </form>
+        </ModalBody>
+        <ModalFooter className={styles.footer}>
+          <Button
+            className={styles.halfButton}
+            onClick={this.handleSubmit}
+            rounded={false}
+            theme="success"
+            wide
+          >
+            <Text id={`CreateNewModal.finish.${type}`} />
+          </Button>
+        </ModalFooter>
+      </div>
+    );
+  }
+
   renderStep(): ?React.Element<any> {
-    const { step, request } = this.props;
+    const { step } = this.props;
 
     switch (step) {
       case 'type':
-        return (
-          <div className={styles.wrapper}>
-            <ModalHeader className={styles.header} withBorder>
-              <Text id={`CreateNewModal.title.${request.type}`} />
-              <ModalClose onClick={this.props.onClose} />
-            </ModalHeader>
-            <ModalBody className={styles.type}>
-              <Radio
-                onChange={this.handleChange}
-                name="type"
-                value="group"
-                defaultChecked={request.type === 'group'}
-              >
-                <Text id="CreateNewModal.type.group" className={styles.typeLabel} />
-              </Radio>
-              <Text
-                className={styles.typeHint}
-                id="CreateNewModal.hint.group"
-                tagName="div"
-              />
-              <br />
-              <Radio
-                onChange={this.handleChange}
-                name="type"
-                value="channel"
-                defaultChecked={request.type === 'channel'}
-              >
-                <Text id="CreateNewModal.type.channel" className={styles.typeLabel} />
-              </Radio>
-              <Text
-                className={styles.typeHint}
-                id="CreateNewModal.hint.channel"
-                tagName="div"
-              />
-            </ModalBody>
-            <ModalFooter className={styles.footer}>
-              <Button
-                className={styles.halfButton}
-                onClick={this.handleNextStepClick}
-                rounded={false}
-                theme="success"
-                wide
-              >
-                <Text id="CreateNewModal.next" />
-              </Button>
-            </ModalFooter>
-          </div>
-        );
+        return this.renderTypeStep();
       case 'info':
-        return (
-          <div className={styles.wrapper}>
-            <ModalHeader className={styles.header} withBorder>
-              <Icon
-                glyph="arrow_back"
-                onClick={this.handlePrevStepClick}
-                className={styles.back}
-              />
-              <Text id={`CreateNewModal.title.${request.type}`} />
-              <ModalClose onClick={this.props.onClose} />
-            </ModalHeader>
-            <ModalBody className={styles.info}>
-              <form autoComplete="off">
-                <Input
-                  className={styles.input}
-                  id="title"
-                  large
-                  name="title"
-                  onChange={this.handleChange}
-                  placeholder="Name This Group"
-                  value={request.title}
-                />
-                <Input
-                  className={styles.input}
-                  id="about"
-                  label="Description - optional"
-                  large
-                  name="about"
-                  onChange={this.handleChange}
-                  placeholder="Describe the Purpose of This Conversation"
-                  type="textarea"
-                  value={request.about}
-                />
-              </form>
-            </ModalBody>
-            <ModalFooter className={styles.footer}>
-              <Button
-                className={styles.halfButton}
-                onClick={this.handleSubmit}
-                rounded={false}
-                theme="success"
-                wide
-              >
-                <Text id={`CreateNewModal.finish.${request.type}`} />
-              </Button>
-            </ModalFooter>
-          </div>
-        );
+        return this.renderInfoStep();
       default:
         return null;
     }
