@@ -10,9 +10,9 @@ import styles from './<%= name %>.css';
 <% } -%>
 
 export type Props = {
-  <% if (styles) { -%>
+<% if (styles) { -%>
   className?: string,
-  <% } -%>
+<% } -%>
   children: any
 }
 
@@ -20,16 +20,16 @@ class <%= name %> extends Component {
   props: Props;
 
   shouldComponentUpdate(nextProps: Props): boolean {
-    <% if (styles) { -%>
+<% if (styles) { -%>
     return nextProps.children !== this.props.children ||
            nextProps.className !== this.props.className;
-    <% } else { -%>
+<% } else { -%>
     return nextProps.children !== this.props.children;
-    <% } -%>
+<% } -%>
   }
 
   render(): React.Element<any> {
-    <% if (styles) { -%>
+<% if (styles) { -%>
     const className = classNames(styles.container, this.props.className);
 
     return (
@@ -37,13 +37,13 @@ class <%= name %> extends Component {
         {this.props.children}
       </div>
     );
-    <% } else { -%>
+<% } else { -%>
     return (
       <div>
         {this.props.children}
       </div>
     );
-    <% } -%>
+<% } -%>
   }
 }
 
