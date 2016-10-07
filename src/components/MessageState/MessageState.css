@@ -15,7 +15,6 @@
   padding-left: 8px;
   cursor: default;
   user-select: none;
-  user-select: none;
   letter-spacing: -0.2px;
   font-family: var(--message-state-font-family);
   font-size: var(--message-state-font-size);

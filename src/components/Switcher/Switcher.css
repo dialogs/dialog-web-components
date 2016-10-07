@@ -13,7 +13,7 @@
   --switcher-active-dot-color: #f6fff7;
   --switcher-transition-duration: var(--default-transition-duration);
   --switcher-label-font-family: var(--default-font-family);
-  --switcher-label-font-size: 16px;
+  --switcher-label-font-size: 15px;
   /* Too wide =( */
   --switcher-active-offset: calc(var(--switcher-width) - var(--switcher-dot-size) - ((var(--switcher-height) - var(--switcher-dot-size)) / 2)); /* stylelint-disable-line */
 }
@@ -127,4 +127,9 @@
   padding-left: 8px;
   user-select: none;
   cursor: pointer;
+
+  & b,
+  & strong {
+    font-weight: 500;
+  }
 }
