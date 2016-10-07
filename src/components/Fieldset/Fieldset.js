@@ -17,7 +17,7 @@ class Fieldset extends Component {
   }
 
   render() {
-    const className = classNames(styles.fieldset, this.props.className);
+    const className = classNames(styles.container, this.props.className);
 
     return (
       <fieldset className={className}>
