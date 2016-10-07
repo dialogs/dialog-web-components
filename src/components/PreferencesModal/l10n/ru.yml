@@ -1,0 +1,18 @@
+title: Настройки
+general:
+  title: Основные
+  legend:
+    sending: Отправка сообщений
+    other: Разное
+  sound: Enable sound effects
+  sendByEnter:
+    enable: <b>Enter</b> – отправить особщение;  <b>Shift + Enter</b> – новая строка
+    disable: <b>Сmd + Enter</b> – отправить особщение;  <b>Enter</b> – новая строка
+notifications:
+  title: Уведомления
+security:
+  title: Безопасность
+shortcuts:
+  title: Горячие клавиши
+blocked:
+  title: Заблокированные пользователи

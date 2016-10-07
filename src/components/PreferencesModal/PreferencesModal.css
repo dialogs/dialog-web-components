@@ -1,0 +1,41 @@
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+:root {
+  --preferences-modal-font-family: var(--default-font-family);
+  --preferences-modal-width: 740px;
+  --preferences-modal-height: 480px;
+}
+
+/* Reset */
+.container {
+  /*all: initial;*/
+}
+
+/* Styles */
+.container {
+  font-family: var(--preferences-modal-font-family);
+  width: var(--preferences-modal-width);
+  height: var(--preferences-modal-height);
+}
+
+.body {
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  align-content: flex-start;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.tabs {
+  flex: 0 0 auto;
+}
+
+.screen {
+  flex: 1 1 auto;
+  padding: 15px 40px 15px 50px;
+}

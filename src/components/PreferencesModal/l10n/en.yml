@@ -1,0 +1,18 @@
+title: Preferences
+general:
+  title: General
+  legend:
+    sending: Send Message
+    other: Other
+  sound: Enable sound effects
+  sendByEnter:
+    enable: <b>Enter</b> – send message;  <b>Shift + Enter</b> – new line
+    disable: <b>Сmd + Enter</b> – send message;  <b>Enter</b> – new line
+notifications:
+  title: Notifications
+security:
+  title: Security
+shortcuts:
+  title: Keyboard shortcuts
+blocked:
+  title: Blocked users
