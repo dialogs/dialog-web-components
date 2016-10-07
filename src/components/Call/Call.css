@@ -8,7 +8,6 @@
   --call-default-width: 500px;
   --call-default-height: 464px;
   --call-small-width: 260px;
-  --call-small-height: 143px;
   --call-background-color: #fff;
   --call-default-padding: 60px;
   --call-font-family: var(--default-font-family);
@@ -109,12 +108,11 @@
 
 /* Small */
 .small {
-  position: fixed;
+  position: absolute;
   top: 50px;
   right: 50px;
   box-sizing: border-box;
   width: var(--call-small-width);
-  /*height: var(--call-small-height);*/
   height: auto;
   padding: 20px;
   cursor: grab;
