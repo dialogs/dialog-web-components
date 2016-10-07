@@ -32,7 +32,7 @@ function PeerAvatar(props: Props) {
 
   if (props.online) {
     return (
-      <div className={styles.root}>
+      <div className={styles.container}>
         {avatar}
         <div className={styles.online} />
       </div>
