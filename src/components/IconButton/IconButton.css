@@ -160,6 +160,10 @@
         fill: white;
       }
     }
+
+    &:active {
+      background-color: color(var(--icon-button-flat-hover-color) shade(5%));
+    }
   }
 
   &.primary {
@@ -172,7 +176,11 @@
 
     &:hover,
     &:focus {
-      opacity: 0.9;
+      background-color: color(var(--color-primary) tint(10%));
+    }
+
+    &:active {
+      background-color: color(var(--color-primary) shade(5%));
     }
   }
 
@@ -186,7 +194,11 @@
 
     &:hover,
     &:focus {
-      opacity: 0.9;
+      background-color: color(var(--color-success) tint(10%));
+    }
+
+    &:active {
+      background-color: color(var(--color-success) shade(5%));
     }
   }
 
@@ -200,7 +212,11 @@
 
     &:hover,
     &:focus {
-      opacity: 0.9;
+      background-color: color(var(--color-danger) tint(10%));
+    }
+
+    &:active {
+      background-color: color(var(--color-danger) shade(5%));
     }
   }
 
@@ -214,7 +230,11 @@
 
     &:hover,
     &:focus {
-      opacity: 0.9;
+      background-color: color(var(--color-info) tint(10%));
+    }
+
+    &:active {
+      background-color: color(var(--color-info) shade(5%));
     }
   }
 
@@ -228,7 +248,11 @@
 
     &:hover,
     &:focus {
-      opacity: 0.9;
+      background-color: color(var(--color-warning) tint(10%));
+    }
+
+    &:active {
+      background-color: color(var(--color-warning) shade(5%));
     }
   }
 }
