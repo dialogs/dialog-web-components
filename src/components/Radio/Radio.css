@@ -59,6 +59,7 @@
 }
 
 .radio {
+  flex: 0 0 auto;
   position: relative;
   display: inline-block;
   cursor: pointer;
@@ -89,7 +90,7 @@
 
 .label {
   font-size: var(--radio-label-font-size);
-  padding-left: 16px;
+  padding-left: 24px;
   cursor: inherit;
   user-select: none;
 

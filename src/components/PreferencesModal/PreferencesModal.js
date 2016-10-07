@@ -110,6 +110,8 @@ class PreferencesModal extends Component {
     switch (screen) {
       case 'general':
         return this.renderGeneralScreen();
+      case 'notifications':
+        return this.renderNotificationsScreen();
       default:
         return null;
     }
@@ -154,6 +156,80 @@ class PreferencesModal extends Component {
             >
               <Text id="PreferencesModal.general.sound" />
             </Switcher>
+          </Field>
+        </Fieldset>
+      </div>
+    );
+  }
+
+  renderNotificationsScreen(): React.Element<any> {
+    const {
+      preferences: {
+        privateNotifications,
+        privateMessagePreview,
+        groupNotifications,
+        groupMessagePreview,
+        groupOnlyMentions
+      }
+    } = this.props;
+
+    return (
+      <div className={styles.screen}>
+        <Fieldset legend="PreferencesModal.notifications.legend.private">
+          <Field>
+            <Switcher
+              onChange={this.handleChange}
+              value={privateNotifications}
+              id="privateNotifications"
+              name="privateNotifications"
+            >
+              <Text id="PreferencesModal.notifications.notifications" />
+            </Switcher>
+          </Field>
+          <Field>
+            <Switcher
+              onChange={this.handleChange}
+              value={privateMessagePreview}
+              id="privateMessagePreview"
+              name="privateMessagePreview"
+            >
+              <Text id="PreferencesModal.notifications.preview" />
+            </Switcher>
+            <Text id="PreferencesModal.notifications.preview_hint" className={styles.hint} />
+          </Field>
+        </Fieldset>
+        <Fieldset legend="PreferencesModal.notifications.legend.group">
+          <Field>
+            <Switcher
+              onChange={this.handleChange}
+              value={groupNotifications}
+              id="groupNotifications"
+              name="groupNotifications"
+            >
+              <Text id="PreferencesModal.notifications.notifications" />
+            </Switcher>
+          </Field>
+          <Field>
+            <Switcher
+              onChange={this.handleChange}
+              value={groupMessagePreview}
+              id="groupMessagePreview"
+              name="groupMessagePreview"
+            >
+              <Text id="PreferencesModal.notifications.preview" />
+            </Switcher>
+            <Text id="PreferencesModal.notifications.preview_hint" className={styles.hint} />
+          </Field>
+          <Field>
+            <Switcher
+              onChange={this.handleChange}
+              value={groupOnlyMentions}
+              id="groupOnlyMentions"
+              name="groupOnlyMentions"
+            >
+              <Text id="PreferencesModal.notifications.mention" />
+            </Switcher>
+            <Text id="PreferencesModal.notifications.mention_hint" className={styles.hint} />
           </Field>
         </Fieldset>
       </div>

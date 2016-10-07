@@ -6,7 +6,12 @@ const initialState = {
   screen: 'general',
   preferences: {
     sendByEnter: false,
-    isSoundEnabled: true
+    isSoundEnabled: true,
+    privateNotifications: true,
+    privateMessagePreview: false,
+    groupNotifications: false,
+    groupMessagePreview: false,
+    groupOnlyMentions: true
   }
 };
 const actions = {

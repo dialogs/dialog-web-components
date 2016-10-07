@@ -4,12 +4,20 @@ general:
   legend:
     sending: Отправка сообщений
     other: Разное
-  sound: Enable sound effects
+  sound: Включить звуковые эффекты
   sendByEnter:
     enable: <b>Enter</b> – отправить особщение;  <b>Shift + Enter</b> – новая строка
     disable: <b>Сmd + Enter</b> – отправить особщение;  <b>Enter</b> – новая строка
 notifications:
   title: Уведомления
+  legend:
+    private: Сообщения от людей
+    group: Cообщения из групп
+  notifications: Уведомления
+  preview: Показ сообщений
+  preview_hint: Показывать текст сообщения в уведомлениях
+  mention: Уведомлять только при упоминании
+  mention_hint: Вы можете включить уведомления только для тех сообщений в которых вас упомянули
 security:
   title: Безопасность
 shortcuts:

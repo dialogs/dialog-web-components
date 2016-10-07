@@ -10,6 +10,14 @@ general:
     disable: <b>Сmd + Enter</b> – send message;  <b>Enter</b> – new line
 notifications:
   title: Notifications
+  legend:
+    private: Messages from people
+    group: Messages from groups
+  notifications: Notifications
+  preview: Message preview
+  preview_hint: Show message text in notification
+  mention: Mention Only Notifications
+  mention_hint: You can enable notifications only for messages that contains you mention.
 security:
   title: Security
 shortcuts:

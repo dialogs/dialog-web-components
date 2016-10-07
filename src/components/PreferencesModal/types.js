@@ -6,6 +6,11 @@
 export type Preferences = {
   sendByEnter: boolean,
   isSoundEnabled: boolean,
+  privateNotifications: boolean,
+  privateMessagePreview: boolean,
+  groupNotifications: boolean,
+  groupMessagePreview: boolean,
+  groupOnlyMentions: boolean
 };
 
 export type Props = {

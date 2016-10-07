@@ -71,7 +71,8 @@
   padding: var(--default-padding) calc(var(--default-padding) * 2);
   font-size: var(--modal-header-font-size);
   font-weight: 500;
-  flex: 0 1 auto;
+  flex: 0 0 auto;
+  width: 100%;
   color: var(--modal-header-color);
   box-sizing: border-box;
   height: 60px;
