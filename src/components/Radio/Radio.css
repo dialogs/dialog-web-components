@@ -8,6 +8,7 @@
   --radio-size: 22px;
   --radio-inactive-color: #c0c0c0;
   --radio-active-color: var(--color-primary);
+  --radio-label-font-size: 15px;
 }
 
 
@@ -87,7 +88,13 @@
 }
 
 .label {
+  font-size: var(--radio-label-font-size);
   padding-left: 16px;
   cursor: inherit;
   user-select: none;
+
+  & b,
+  & strong {
+    font-weight: 500;
+  }
 }

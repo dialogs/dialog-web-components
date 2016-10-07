@@ -10,7 +10,7 @@ import styles from './Radio.css';
 export type Props = {
   className?: string,
   children?: any,
-  value: string,
+  value: string | boolean,
   name: string,
   defaultChecked: boolean,
   onChange: Function
@@ -35,7 +35,15 @@ class Radio extends Component {
   }
 
   handleChange(event: $FlowIssue): void {
-    this.props.onChange(event.target.value, event);
+    let value = event.target.value;
+
+    if (event.target.value === 'true') {
+      value = true;
+    } else if (event.target.value === 'false') {
+      value = false;
+    }
+
+    this.props.onChange(value, event);
   }
 
   renderChildren(): ?React.Element<any> {
@@ -44,6 +52,7 @@ class Radio extends Component {
     if (!children) {
       return null;
     }
+
     return (
       <div className={styles.label}>{children}</div>
     );
