@@ -24,7 +24,7 @@
   --recent-item-counter-background: var(--purple-two);
   --recent-item-counter-color: #fff;
   --recent-item-counter-size: 19px;
-  --recent-item-counter-font-size: 13px;
+  --recent-item-counter-font-size: 10px;
 }
 
 .root {
@@ -97,6 +97,7 @@
   font-family: var(--default-font-family);
   font-size: var(--recent-item-counter-font-size);
   flex: 0 0 auto;
+  font-weight: 500;
   justify-content: center;
   align-items: center;
   align-content: center;
