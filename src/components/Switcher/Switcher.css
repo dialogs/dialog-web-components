@@ -12,25 +12,36 @@
   --switcher-dot-color: #fff;
   --switcher-active-dot-color: #f6fff7;
   --switcher-transition-duration: var(--default-transition-duration);
+  --switcher-label-font-family: var(--default-font-family);
+  --switcher-label-font-size: 16px;
   /* Too wide =( */
   --switcher-active-offset: calc(var(--switcher-width) - var(--switcher-dot-size) - ((var(--switcher-height) - var(--switcher-dot-size)) / 2)); /* stylelint-disable-line */
 }
 
-.root {
+.container,
+.switcher,
+.label {
   all: initial;
-  display: inline-block;
+}
+
+.container {
+  display: inline-flex;
   box-sizing: border-box;
   height: var(--switcher-height);
   vertical-align: middle;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: center;
+  align-items: center;
 }
 
 .input {
   display: none;
 }
 
-.label {
-  all: initial;
+.switcher {
   position: relative;
+  flex: 0 0 auto;
   display: block;
   box-sizing: border-box;
   width: var(--switcher-width);
@@ -75,8 +86,9 @@
 
 .disabled {
   opacity: 0.7;
+  cursor: not-allowed;
 
-  & .label {
+  & .switcher {
     cursor: not-allowed;
     background-color: var(--switcher-background-color) !important;
 
@@ -87,14 +99,14 @@
   }
 
   &.checked {
-    & .label {
+    & .switcher {
       background-color: var(--switcher-checked-background-color) !important;
     }
   }
 }
 
 .checked {
-  & .label {
+  & .switcher {
     background-color: var(--switcher-checked-background-color);
 
     &::before {
@@ -106,4 +118,13 @@
       background-color: var(--switcher-checked-active-background-color);
     }
   }
+}
+
+.label {
+  font-family: var(--switcher-label-font-family);
+  font-size: var(--switcher-label-font-size);
+  display: inline;
+  padding-left: 8px;
+  user-select: none;
+  cursor: pointer;
 }

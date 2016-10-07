@@ -9,7 +9,9 @@ import styles from './Switcher.css';
 
 export type SwitcherProps = {
   className?: string,
+  children?: any,
   id: string,
+  name: string,
   value: boolean,
   disabled: boolean,
   onChange: (value: boolean, event: SyntheticEvent) => void
@@ -31,20 +33,33 @@ class Switcher extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  shouldComponentUpdate(nextProps: SwitcherProps) {
+  shouldComponentUpdate(nextProps: SwitcherProps): boolean {
     return nextProps.value !== this.props.value ||
+           nextProps.name !== this.props.name ||
            nextProps.disabled !== this.props.disabled ||
            nextProps.id !== this.props.id ||
            nextProps.className !== this.props.className;
   }
 
-  handleChange(event: $FlowIssue) {
-    this.props.onChange(event.target.value, event);
+  handleChange(event: $FlowIssue): void {
+    this.props.onChange(event.target.checked, event);
   }
 
-  render() {
-    const { id, value, disabled } = this.props;
-    const className = classNames(styles.root, this.props.className, {
+  renderChildren(): ?React.Element<any> {
+    const { children, id } = this.props;
+
+    if (!children) {
+      return null;
+    }
+
+    return (
+      <label htmlFor={id} className={styles.label}>{children}</label>
+    );
+  }
+
+  render(): React.Element<any> {
+    const { id, value, disabled, name } = this.props;
+    const className = classNames(styles.container, this.props.className, {
       [styles.checked]: value,
       [styles.disabled]: disabled
     });
@@ -55,10 +70,12 @@ class Switcher extends Component {
           className={styles.input}
           checked={value}
           id={id}
+          name={name}
           type="checkbox"
           onChange={this.handleChange}
         />
-        <label htmlFor={id} className={styles.label} />
+        <label htmlFor={id} className={styles.switcher} />
+        {this.renderChildren()}
       </div>
     );
   }
