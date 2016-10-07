@@ -81,6 +81,8 @@
   align-content: center;
   line-height: 28px;
   flex-direction: row;
+  user-select: none;
+  cursor: default;
 
   & .close {
     position: absolute;
