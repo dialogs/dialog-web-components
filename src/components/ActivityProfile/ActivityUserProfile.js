@@ -12,14 +12,14 @@ import styles from './ActivityProfile.css';
 class ActivityUserProfile extends Component {
   props: ActivityUserProfileProps;
 
-  shouldComponentUpdate(nextProps: ActivityUserProfileProps) {
+  shouldComponentUpdate(nextProps: ActivityUserProfileProps): boolean {
     return nextProps.info !== this.props.info ||
            nextProps.online !== this.props.online ||
            nextProps.children !== this.props.children ||
            nextProps.className !== this.props.className;
   }
 
-  renderAvatar() {
+  renderAvatar(): React.Element<any> {
     const { info: { name, bigAvatar, placeholder } } = this.props;
 
     return (
@@ -35,7 +35,7 @@ class ActivityUserProfile extends Component {
     );
   }
 
-  renderName() {
+  renderName(): ?React.Element<any> {
     const { info: { name } } = this.props;
 
     if (!name) {
@@ -47,7 +47,7 @@ class ActivityUserProfile extends Component {
     );
   }
 
-  renderNick() {
+  renderNick(): ?React.Element<any> {
     const { info: { nick } } = this.props;
 
     if (!nick) {
@@ -59,7 +59,7 @@ class ActivityUserProfile extends Component {
     );
   }
 
-  renderOnline() {
+  renderOnline(): ?React.Element<any> {
     const { online } = this.props;
 
     if (!online) {
@@ -71,15 +71,19 @@ class ActivityUserProfile extends Component {
     );
   }
 
-  renderAbout() {
+  renderAbout(): ?React.Element<any> {
     const { info: { about } } = this.props;
+
+    if (!about) {
+      return null;
+    }
 
     return (
       <div className={styles.about}>{about}</div>
     );
   }
 
-  renderChildren() {
+  renderChildren(): ?React.Element<any> {
     const { children } = this.props;
 
     if (!children) {
@@ -92,8 +96,12 @@ class ActivityUserProfile extends Component {
   }
 
 
-  renderProfileContacts() {
+  renderProfileContacts(): React.Element<any> {
     const { info } = this.props;
+
+    if (!info.phones.length && !info.emails.length) {
+      return null;
+    }
 
     const phones = info.phones.map((phone, index) => (
       <div key={index}>
@@ -117,7 +125,7 @@ class ActivityUserProfile extends Component {
     );
   }
 
-  render() {
+  render(): React.Element<any> {
     const { className } = this.props;
     const userProfileClassName = classNames(styles.root, className);
 

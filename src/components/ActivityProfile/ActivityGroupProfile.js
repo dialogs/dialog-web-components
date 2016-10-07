@@ -15,13 +15,13 @@ import styles from './ActivityProfile.css';
 class ActivityGroupProfile extends Component {
   props: ActivityGroupProfileProps;
 
-  shouldComponentUpdate(nextProps: ActivityGroupProfileProps) {
+  shouldComponentUpdate(nextProps: ActivityGroupProfileProps): boolean {
     return nextProps.info !== this.props.info ||
            nextProps.children !== this.props.children ||
            nextProps.className !== this.props.className;
   }
 
-  renderAvatar() {
+  renderAvatar(): React.Element<any> {
     const { info: { name, bigAvatar, placeholder } } = this.props;
 
     return (
@@ -37,7 +37,7 @@ class ActivityGroupProfile extends Component {
     );
   }
 
-  renderName() {
+  renderName(): ?React.Element<any> {
     const { info: { name } } = this.props;
 
     if (!name) {
@@ -49,7 +49,7 @@ class ActivityGroupProfile extends Component {
     );
   }
 
-  renderCreator() {
+  renderCreator(): ?React.Element<any> {
     const { info: { adminId } } = this.props;
 
     if (!adminId) {
@@ -66,7 +66,7 @@ class ActivityGroupProfile extends Component {
     );
   }
 
-  renderAbout() {
+  renderAbout(): React.Element<any> {
     const { info: { about }, onAboutEdit } = this.props;
 
     if (about) {
@@ -85,7 +85,7 @@ class ActivityGroupProfile extends Component {
     );
   }
 
-  renderChildren() {
+  renderChildren(): ?React.Element<any> {
     const { children } = this.props;
 
     if (!children) {
@@ -97,7 +97,7 @@ class ActivityGroupProfile extends Component {
     );
   }
 
-  render() {
+  render(): React.Element<any> {
     const className = classNames(styles.root, this.props.className);
 
     return (
