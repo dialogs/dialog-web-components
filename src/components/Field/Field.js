@@ -4,32 +4,23 @@
  */
 
 import React, { Component } from 'react';
-<% if (styles) { -%>
 import classNames from 'classnames';
-import styles from './<%= name %>.css';
-<% } -%>
+import styles from './Field.css';
 
 export type Props = {
-<% if (styles) { -%>
   className?: string,
-<% } -%>
-  children?: any
+  children: any
 }
 
-class <%= name %> extends Component {
+class Field extends Component {
   props: Props;
 
   shouldComponentUpdate(nextProps: Props): boolean {
-<% if (styles) { -%>
     return nextProps.children !== this.props.children ||
            nextProps.className !== this.props.className;
-<% } else { -%>
-    return nextProps.children !== this.props.children;
-<% } -%>
   }
 
   render(): React.Element<any> {
-<% if (styles) { -%>
     const className = classNames(styles.container, this.props.className);
 
     return (
@@ -37,14 +28,7 @@ class <%= name %> extends Component {
         {this.props.children}
       </div>
     );
-<% } else { -%>
-    return (
-      <div>
-        {this.props.children}
-      </div>
-    );
-<% } -%>
   }
 }
 
-export default <%= name %>;
+export default Field;

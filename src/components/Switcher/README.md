@@ -14,15 +14,11 @@ Switcher with label:
 
 ```
 const initialState = { value: true };
-const onChange = (value) => {
-  console.debug(value);
-  setState({ value });
-};
 <Switcher
   id="label"
   name="label"
   value={state.value}
-  onChange={onChange}
+  onChange={(value) => setState({ value })}
 >
   Some label
 </Switcher>
