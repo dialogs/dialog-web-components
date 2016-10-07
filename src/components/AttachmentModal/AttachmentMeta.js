@@ -46,11 +46,13 @@ class AttachmentMeta extends Component {
         <div>
           <Switcher
             id="send_as_file"
+            name="send_as_file"
             className={styles.metaMethodSwitcher}
             value={isDocument}
             onChange={this.handleIsDocumentChange}
-          />
-          <Text id="AttachmentModal.send_as_file" className={styles.metaMethodText} />
+          >
+            <Text id="AttachmentModal.send_as_file" />
+          </Switcher>
         </div>
       </td>
     );
