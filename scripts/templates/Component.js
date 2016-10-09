@@ -3,7 +3,11 @@
  * @flow
  */
 
+<% if (stateless) { -%>
+import React from 'react';
+<% } else { -%>
 import React, { Component } from 'react';
+<% } -%>
 <% if (styles) { -%>
 import classNames from 'classnames';
 import styles from './<%= name %>.css';
@@ -14,8 +18,27 @@ export type Props = {
   className?: string,
 <% } -%>
   children?: any
-}
+};
 
+<% if (stateless) { -%>
+function <%= name %>(props: Props): React.Element<any> {
+<% if (styles) { -%>
+  const className = classNames(styles.container, props.className);
+
+  return (
+    <div className={className}>
+      {props.children}
+    </div>
+  );
+<% } else { -%>
+  return (
+    <div>
+      {props.children}
+    </div>
+  );
+<% } -%>
+}
+<% } else { -%>
 class <%= name %> extends Component {
   props: Props;
 
@@ -46,5 +69,6 @@ class <%= name %> extends Component {
 <% } -%>
   }
 }
+<% } -%>
 
 export default <%= name %>;

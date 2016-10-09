@@ -15,7 +15,7 @@ const questions = [
     message: 'Component name',
     default: 'DialogComponent',
     validate(value) {
-      const valid = /^[A-Z][a-zA-Z]+$/.test(value);
+      const valid = (/^[A-Z][a-zA-Z]+$/).test(value);
       return valid || 'Component name should match /^[A-Z][a-zA-Z]+$/';
     }
   },
@@ -24,18 +24,14 @@ const questions = [
     type: 'confirm',
     message: 'With styles?',
     default: true
+  },
+  {
+    name: 'stateless',
+    type: 'confirm',
+    message: 'Stateless?',
+    default: false
   }
 ];
-
-function mkdir(dirName) {
-  try {
-    fs.mkdirSync(dirName);
-  } catch (e) {
-    if (e.code !== 'EEXIST') {
-      throw e;
-    }
-  }
-}
 
 const src = path.resolve(__dirname, '../src/components');
 const templates = path.resolve(__dirname, 'templates');
@@ -60,10 +56,9 @@ inquirer.prompt(questions).then((options) => {
   } catch (e) {
     if (e.code === 'EEXIST') {
       warning(`Component ${options.name} already exists!`);
-      return;
+    } else {
+      throw e;
     }
-
-    throw e;
   }
 
   render(options, 'README.md', 'README.md');
@@ -74,6 +69,4 @@ inquirer.prompt(questions).then((options) => {
   }
 
   info(`Component ${options.name} successfully created!`);
-}).catch((error) => {
-  error(chalk.red(error));
-});
+}, error);
