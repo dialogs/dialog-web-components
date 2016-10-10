@@ -31,6 +31,8 @@ const stop = () => {
     <Button theme="danger" size="small" onClick={stop}>Stop</Button>
   </div>
 
-  <ConnectionStatus status={state.status} />
+  <div style={{ height: 30, overflow: 'hidden' }}>
+    <ConnectionStatus status={state.status} />
+  </div>
 </div>
 ```
