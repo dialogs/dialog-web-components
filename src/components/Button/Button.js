@@ -1,3 +1,7 @@
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ */
+
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
 import Spinner from '../Spinner/Spinner';
@@ -12,6 +16,7 @@ class Button extends Component {
     disabled: PropTypes.bool.isRequired,
     wide: PropTypes.bool.isRequired,
     rounded: PropTypes.bool.isRequired,
+    outline: PropTypes.bool.isRequired,
     loading: PropTypes.bool.isRequired,
     type: PropTypes.oneOf(['submit', 'reset', 'button', 'menu']).isRequired,
     theme: PropTypes.oneOf(['primary', 'success', 'danger', 'info', 'warning', 'link']).isRequired,
@@ -26,6 +31,7 @@ class Button extends Component {
     wide: false,
     rounded: true,
     loading: false,
+    outline: false,
     disabled: false
   };
 
@@ -38,6 +44,7 @@ class Button extends Component {
            nextProps.theme !== this.props.theme ||
            nextProps.wide !== this.props.wide ||
            nextProps.rounded !== this.props.rounded ||
+           nextProps.outline !== this.props.outline ||
            nextProps.className !== this.props.className ||
            nextProps.id !== this.props.id ||
            nextProps.name !== this.props.name;
@@ -56,12 +63,13 @@ class Button extends Component {
   render() {
     const {
       id, name, type, disabled, theme, size, wide,
-      rounded, className, onClick, children
+      rounded, className, onClick, children, outline
     } = this.props;
 
     const buttonClassName = classNames(styles.button, styles[theme], styles[size], {
       [styles.wide]: wide,
-      [styles.rounded]: rounded
+      [styles.rounded]: rounded,
+      [styles.outline]: outline
     }, className);
 
     return (

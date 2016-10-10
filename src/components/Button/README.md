@@ -15,23 +15,31 @@ It has different types of themes. You can change themes by changing `theme` prop
 
 Wide Button:
 
-    <div>
-      <Button theme="primary" size="small" wide>
-        Small
-      </Button>
-      <Button theme="primary" wide>
-        Default
-      </Button>
-      <Button theme="primary" size="large" wide>
-        Large
-      </Button>
-      <Button theme="primary" disabled wide>
-        Disabled
-      </Button>
-    </div>
+```
+<div>
+  <Button theme="primary" size="small" wide>Small</Button>
+  <Button theme="primary" wide>Default</Button>
+  <Button theme="primary" size="large" wide>Large</Button>
+  <Button theme="primary" disabled wide>Disabled</Button>
+</div>
+```
+
+Outlined button:
+
+```
+<div>
+  <Button theme="primary" outline>Primary</Button>
+  <Button theme="success" outline>Success</Button>
+  <Button theme="danger" outline>Danger</Button>
+  <Button theme="info" outline>Info</Button>
+  <Button theme="warning" outline>Warning</Button>
+</div>
+```
 
 Loading Button:
 
-    <Button theme="primary" loading>
-      Loading
-    </Button>
+```
+<Button theme="primary" loading>
+  Loading
+</Button>
+```
