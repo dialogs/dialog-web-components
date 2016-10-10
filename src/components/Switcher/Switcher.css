@@ -26,10 +26,10 @@
 
 .container {
   display: inline-flex;
+  flex-direction: row;
   box-sizing: border-box;
   height: var(--switcher-height);
   vertical-align: middle;
-  flex-direction: row;
   justify-content: flex-start;
   align-content: center;
   align-items: center;
@@ -41,7 +41,6 @@
 
 .switcher {
   position: relative;
-  flex: 0 0 auto;
   display: block;
   box-sizing: border-box;
   width: var(--switcher-width);
@@ -51,6 +50,7 @@
   transition: background var(--switcher-transition-duration) ease;
   border-radius: var(--switcher-border-radius);
   background-color: var(--switcher-background-color);
+  flex: 0 0 auto;
 
   &::before {
     position: absolute;
@@ -60,8 +60,8 @@
     width: var(--switcher-dot-size);
     height: var(--switcher-dot-size);
     content: '';
-    transform: translateZ(0);
     transition: background var(--switcher-transition-duration) ease, left var(--switcher-transition-duration) ease, box-shadow var(--switcher-transition-duration) ease;
+    transform: translateZ(0);
     border-radius: 100%;
     background-color: var(--switcher-dot-color);
   }
@@ -86,8 +86,8 @@
 }
 
 .disabled {
-  opacity: 0.7;
   cursor: not-allowed;
+  opacity: 0.7;
 
   & .switcher {
     cursor: not-allowed;
@@ -122,12 +122,12 @@
 }
 
 .label {
-  font-family: var(--switcher-label-font-family);
-  font-size: var(--switcher-label-font-size);
   display: inline;
   padding-left: 14px;
-  user-select: none;
   cursor: pointer;
+  user-select: none;
+  font-family: var(--switcher-label-font-family);
+  font-size: var(--switcher-label-font-size);
 
   & b,
   & strong {

@@ -22,13 +22,13 @@
 }
 
 .header {
+  flex-direction: column;
+  height: auto;
   padding-top: var(--join-modal-padding-top);
   padding-right: var(--join-modal-padding-right);
   padding-bottom: 0;
   padding-left: var(--join-modal-padding-left);
-  height: auto;
   text-align: center;
-  flex-direction: column;
   align-items: center;
 }
 

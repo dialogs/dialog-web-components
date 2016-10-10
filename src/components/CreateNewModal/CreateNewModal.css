@@ -10,27 +10,27 @@
   --create-new-back-color: color(#000 alpha(38%));
   --create-new-type-hint-color: color(#000 alpha(50%));
   --create-new-type-hint-font-size: 16px;
-  --create-new-type-label-font-size: 18px
+  --create-new-type-label-font-size: 18px;
 }
 
 /* Styles */
 .container {
-  font-family: var(--create-new-modal-font-family);
   width: var(--create-new-modal-width);
+  font-family: var(--create-new-modal-font-family);
 }
 
 .header {
-  line-height: 0;
-  padding-left: 24px;
   padding-right: 24px;
+  padding-left: 24px;
+  line-height: 0;
 }
 
 .back {
-  color: var(--create-new-back-color);
   width: 28px;
   height: 28px;
-  line-height: 28px;
   margin-right: 16px;
+  line-height: 28px;
+  color: var(--create-new-back-color);
 }
 
 .type {
@@ -42,13 +42,13 @@
 }
 
 .typeHint {
-  color: var(--create-new-type-hint-color);
-  font-size: var(--create-new-type-hint-font-size);
-  line-height: 1.6;
-  padding-left: 46px;
   padding-right: 30px;
+  padding-left: 46px;
   cursor: default;
   user-select: none;
+  font-size: var(--create-new-type-hint-font-size);
+  line-height: 1.6;
+  color: var(--create-new-type-hint-color);
 }
 
 .info {

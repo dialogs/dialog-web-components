@@ -96,8 +96,8 @@
   background-color: var(--recent-item-counter-background);
   font-family: var(--default-font-family);
   font-size: var(--recent-item-counter-font-size);
-  flex: 0 0 auto;
   font-weight: 500;
+  flex: 0 0 auto;
   justify-content: center;
   align-items: center;
   align-content: center;

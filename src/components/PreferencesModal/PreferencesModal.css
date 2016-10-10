@@ -20,18 +20,18 @@
 
 /* Styles */
 .container {
-  font-family: var(--preferences-modal-font-family);
   width: var(--preferences-modal-width);
   height: var(--preferences-modal-height);
+  font-family: var(--preferences-modal-font-family);
 }
 
 .body {
   display: flex;
   flex-direction: row;
+  padding: 0;
   align-content: flex-start;
   align-items: flex-start;
   justify-content: flex-start;
-  padding: 0;
   flex: 0 0 auto;
 }
 
@@ -41,20 +41,20 @@
 }
 
 .screen {
-  flex: 1 1 auto;
-  padding: 25px 50px 25px 40px;
   overflow-x: hidden;
   overflow-y: scroll;
   box-sizing: border-box;
   height: calc(var(--preferences-modal-height) - var(--preferences-modal-header-height));
+  padding: 25px 50px 25px 40px;
+  flex: 1 1 auto;
 }
 
 .hint {
-  font-size: var(--preferences-modal-hint-font-size);
-  line-height: 1.3;
-  user-select: none;
-  cursor: default;
-  color: var(--preferences-modal-hint-color);
   padding-top: 6px;
   padding-left: 46px;
+  cursor: default;
+  user-select: none;
+  font-size: var(--preferences-modal-hint-font-size);
+  line-height: 1.3;
+  color: var(--preferences-modal-hint-color);
 }

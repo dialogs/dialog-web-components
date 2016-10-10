@@ -21,13 +21,13 @@
   display: inline-block;
   width: 100%;
   margin-bottom: 8px;
+  cursor: default;
+  user-select: none;
+  letter-spacing: -0.1px;
   text-transform: uppercase;
   font-family: var(--fieldset-legend-font-family);
-  font-size: var(--fieldset-legend-font-family);;
+  font-size: var(--fieldset-legend-font-family);
   font-weight: 500;
   line-height: 1.6;
-  letter-spacing: -0.1px;
   color: var(--fieldset-legend-font-color);
-  user-select: none;
-  cursor: default;
 }

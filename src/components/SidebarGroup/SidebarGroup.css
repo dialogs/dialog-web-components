@@ -28,6 +28,8 @@
   display: inline-block;
   padding-bottom: var(--sidebar-group-title-padding-bottom);
   padding-left: var(--sidebar-group-title-padding-left);
+  cursor: default;
+  user-select: none;
   vertical-align: top;
   letter-spacing: -0.2px;
   text-transform: uppercase;
@@ -36,6 +38,4 @@
   font-weight: 500;
   line-height: var(--sidebar-group-title-line-height);
   color: var(--sidebar-group-title-color);
-  user-select: none;
-  cursor: default;
 }

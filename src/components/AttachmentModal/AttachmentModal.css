@@ -24,7 +24,8 @@
   font-size: var(--attachment-modal-font-size);
 }
 
-.header {}
+.header {
+}
 
 .body {
   display: flex;
@@ -141,21 +142,22 @@
 
 .paginationNumbers {
   display: inline-block;
-  vertical-align: middle;
+  min-width: 36px;
   margin: 0;
+  text-align: center;
+  vertical-align: middle;
+  letter-spacing: 0.1px;
   font-size: 14px;
+  font-weight: 500;
   line-height: 28px;
   color: var(--attachment-modal-pagination-arrow-color);
-  font-weight: 500;
-  min-width: 36px;
-  text-align: center;
-  letter-spacing: 0.1px;
 }
 
 .paginationArrow {
-  color: var(--attachment-modal-pagination-arrow-color);
-  line-height: 28px;
   height: 28px;
+  line-height: 28px;
+  color: var(--attachment-modal-pagination-arrow-color);
+
   &:hover {
     color: var(--attachment-modal-pagination-arrow-hover-color);
   }

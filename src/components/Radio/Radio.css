@@ -3,6 +3,7 @@
  */
 
 @import '../../styles/variables.css';
+
 :root {
   --radio-font-family: var(--default-font-family);
   --radio-size: 22px;
@@ -19,14 +20,14 @@
 
 /* Styles */
 .container {
-  font-family: var(--radio-font-family);
   display: inline-flex;
   flex-direction: row;
+  padding: 6px 0;
+  cursor: pointer;
+  font-family: var(--radio-font-family);
   justify-content: flex-start;
   align-items: center;
   align-content: center;
-  cursor: pointer;
-  padding: 6px 0;
 
   &:hover {
     & .radio {
@@ -45,13 +46,16 @@
 
 .input {
   display: none;
+
   & + .radio {
     &:before {
       transform: scale(0);
     }
   }
+
   &:checked + .radio {
     box-shadow: 0 0 0 2px var(--radio-active-color) inset;
+
     &:before {
       transform: scale(1);
     }
@@ -59,40 +63,39 @@
 }
 
 .radio {
-  flex: 0 0 auto;
   position: relative;
   display: inline-block;
-  cursor: pointer;
-  user-select: none;
   display: inline-flex;
   flex-direction: row;
+  width: var(--radio-size);
+  height: var(--radio-size);
+  cursor: pointer;
+  user-select: none;
+  transition: box-shadow var(--default-transition-duration) ease-in-out;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px var(--radio-inactive-color) inset;
+  flex: 0 0 auto;
   justify-content: center;
   align-items: center;
   align-content: center;
-  transition: box-shadow var(--default-transition-duration) ease-in-out;
-  width: var(--radio-size);
-  height: var(--radio-size);
-  border-radius: 50%;
-  box-shadow: 0 0 0 2px var(--radio-inactive-color) inset;
-
 
   &:before {
-    flex: 0 0 auto;
-    content: '';
     display: block;
     width: 10px;
     height: 10px;
-    border-radius: 50%;
+    content: '';
     transition: transform var(--default-transition-duration) ease-in-out;
+    border-radius: 50%;
     background-color: var(--color-primary);
+    flex: 0 0 auto;
   }
 }
 
 .label {
-  font-size: var(--radio-label-font-size);
   padding-left: 24px;
   cursor: inherit;
   user-select: none;
+  font-size: var(--radio-label-font-size);
 
   & b,
   & strong {

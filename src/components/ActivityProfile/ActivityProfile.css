@@ -76,12 +76,12 @@
 .aboutAddIcon {
   height: 20px;
   margin-right: 6px;
+  cursor: inherit !important;
   vertical-align: top;
   font-size: 22px;
   line-height: 20px;
   color: inherit !important;
   fill: inherit !important;
-  cursor: inherit !important;
 }
 
 .actions {

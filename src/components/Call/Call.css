@@ -49,10 +49,10 @@
 .smallInfoWrapper {
   display: flex;
   flex-direction: row;
+  padding-bottom: 20px;
   align-items: center;
   align-content: center;
   justify-content: flex-start;
-  padding-bottom: 20px;
 }
 
 .smallInfoAvatar {

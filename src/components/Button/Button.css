@@ -53,8 +53,7 @@
   box-sizing: border-box;
   cursor: pointer;
   user-select: none;
-  transition: background var(--default-transition-duration) ease,
-              box-shadow var(--default-transition-duration) ease;
+  transition: background var(--default-transition-duration) ease, box-shadow var(--default-transition-duration) ease;
   text-align: center;
   border: 0;
   outline: none;
@@ -211,47 +210,61 @@
     box-shadow: 0 0 0 2px var(--button-primary-background-color);
     color: var(--button-primary-background-color);
 
-    &:hover, &:focus, &:active {
+    &:hover,
+    &:focus,
+    &:active {
       background-color: var(--button-primary-background-color);
       box-shadow: 0 0 0 2px var(--button-primary-background-color);
       color: #fff;
     }
   }
+
   &.success {
     box-shadow: 0 0 0 2px var(--button-success-background-color);
     color: var(--button-success-background-color);
 
-    &:hover, &:focus, &:active {
+    &:hover,
+    &:focus,
+    &:active {
       background-color: var(--button-success-background-color);
       box-shadow: 0 0 0 2px var(--button-success-background-color);
       color: #fff;
     }
   }
+
   &.danger {
     box-shadow: 0 0 0 2px var(--button-danger-background-color);
     color: var(--button-danger-background-color);
 
-    &:hover, &:focus, &:active {
+    &:hover,
+    &:focus,
+    &:active {
       background-color: var(--button-danger-background-color);
       box-shadow: 0 0 0 2px var(--button-danger-background-color);
       color: #fff;
     }
   }
+
   &.info {
     box-shadow: 0 0 0 2px var(--button-info-background-color);
     color: var(--button-info-background-color);
 
-    &:hover, &:focus, &:active {
+    &:hover,
+    &:focus,
+    &:active {
       background-color: var(--button-info-background-color);
       box-shadow: 0 0 0 2px var(--button-info-background-color);
       color: #fff;
     }
   }
+
   &.warning {
     box-shadow: 0 0 0 2px var(--button-warning-background-color);
     color: var(--button-warning-background-color);
 
-    &:hover, &:focus, &:active {
+    &:hover,
+    &:focus,
+    &:active {
       background-color: var(--button-warning-background-color);
       box-shadow: 0 0 0 2px var(--button-warning-background-color);
       color: #fff;

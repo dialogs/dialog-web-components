@@ -16,35 +16,35 @@
 
 /* Styles */
 .container {
-  font-family: var(--tabs-font-family);
-  width: var(--tabs-width);
-  list-style: none;
   display: flex;
   flex-direction: column;
+  width: var(--tabs-width);
+  list-style: none;
+  font-family: var(--tabs-font-family);
   justify-content: center;
   align-content: center;
 }
 
 .tab {
+  display: inline-flex;
+  height: 50px;
+  padding-right: 22px;
+  padding-left: 22px;
   cursor: pointer;
+  user-select: none;
   text-transform: uppercase;
-  flex: 0 0 auto;
+  border-radius: 4px;
   font-size: 14px;
   font-weight: 500;
   line-height: 1.2;
-  border-radius: 4px;
-  display: inline-flex;
+  flex: 0 0 auto;
   align-content: center;
   justify-content: flex-start;
   align-items: center;
-  height: 50px;
-  padding-left: 22px;
-  padding-right: 22px;
-  user-select: none;
 }
 
 .active {
+  cursor: default;
   background-image: linear-gradient(89deg, var(--violet-blue), var(--vibrant-purple));
   color: #fff;
-  cursor: default;
 }

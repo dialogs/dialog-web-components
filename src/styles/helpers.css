@@ -18,7 +18,7 @@
   }
 
   --no-select {
-    user-select: none;
     cursor: default;
+    user-select: none;
   }
 }
