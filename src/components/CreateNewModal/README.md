@@ -1,7 +1,7 @@
 Basic CreateNewModal:
 
 ```
-const initialState = {
+initialState = {
   isOpen: false,
   step: 'type',
   request: {
@@ -11,10 +11,12 @@ const initialState = {
     about: '',
     avatar: null
   }
-}
+};
+
 const handleOpen = () => setState({ isOpen: true });
+
 const actions = {
-  onClose: () => setState({ ...initialState }),
+  onClose: () => setState(initialState),
   onChange: (request) => {
     console.debug({ ...request });
     setState({ request });
@@ -22,15 +24,19 @@ const actions = {
   onStepChange: (step) => setState({ step }),
   onSubmit: (request) => {
   	console.log({ ...request });
-	setState({ ...initialState });
+    setState({ ...initialState });
   }
 };
 
 <div>
   <Button onClick={handleOpen}>Create new</Button>
-  <CreateNewModal
-    {...state}
-    {...actions}
-  />
+  {
+    state.isOpen ? (
+      <CreateNewModal
+        {...state}
+        {...actions}
+      />
+    ) : null
+  }
 </div>
 ```

@@ -1,40 +1,30 @@
 /**
  * Copyright 2016 Dialog LLC <info@dlg.im>
+ * @flow
  */
 
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import styles from '../Modal/Modal.css';
 
-class ModalFooter extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-    withBorder: PropTypes.bool,
-    children: PropTypes.node.isRequired
-  };
+export type Props = {
+  className?: string,
+  withBorder?: boolean,
+  children?: React.Element<any>
+};
 
-  static defaultProps = {
-    withBorder: false
-  };
+function ModalFooter(props: Props): React.Element<any> {
+  const className = classNames(
+    styles.footer,
+    { [styles.border]: props.withBorder },
+    props.className
+  );
 
-  shouldComponentUpdate(nextProps) {
-    return nextProps.children !== this.props.children ||
-           nextProps.withBorder !== this.props.withBorder ||
-           nextProps.className !== this.props.className;
-  }
-
-  render() {
-    const { children, withBorder, className } = this.props;
-    const footerClassName = classNames(styles.footer, {
-      [styles.border]: withBorder
-    }, className);
-
-    return (
-      <footer className={footerClassName}>
-        {children}
-      </footer>
-    );
-  }
+  return (
+    <footer className={className}>
+      {props.children}
+    </footer>
+  );
 }
 
 export default ModalFooter;

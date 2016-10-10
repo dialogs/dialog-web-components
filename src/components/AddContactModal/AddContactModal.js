@@ -127,11 +127,7 @@ class AddContactModal extends PureComponent {
     const className = classNames(styles.root, this.props.className);
 
     return (
-      <Modal
-        isOpen
-        className={className}
-        onClose={this.props.onClose}
-      >
+      <Modal className={className} onClose={this.props.onClose}>
         <ModalHeader withBorder>
           <Text id="AddContactModal.title" />
           <ModalClose onClick={this.props.onClose} />

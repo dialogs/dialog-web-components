@@ -2,7 +2,7 @@
  * Copyright 2016 Dialog LLC <info@dlg.im>
  */
 
-import React, { PropTypes, Component } from 'react';
+import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import Modal from '../Modal/Modal';
 import ModalHeader from '../ModalHeader/ModalHeader';
@@ -13,42 +13,33 @@ import Input from '../Input/Input';
 import IconButton from '../IconButton/IconButton';
 import styles from './JoinModal.css';
 
-class JoinModal extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-    isOpen: PropTypes.bool.isRequired,
-    groupTitle: PropTypes.string.isRequired,
-    onClose: PropTypes.func.isRequired,
-    onJoin: PropTypes.func.isRequired
-  };
+export type Props = {
+  className?: string,
+  groupTitle: string,
+  onClose: () => any,
+  onJoin: () => any
+};
 
-  shouldComponentUpdate(nextProps) {
-    return nextProps.groupTitle !== this.props.groupTitle ||
-           nextProps.className !== this.props.className ||
-           nextProps.isOpen !== this.props.isOpen ||
-           nextProps.onClose !== this.props.onClose ||
-           nextProps.onJoin !== this.props.onJoin;
-  }
+class JoinModal extends PureComponent {
+  props: Props;
 
   render() {
-    const { groupTitle, isOpen, onClose, onJoin, className } = this.props;
-    const joinClassName = classNames(styles.root, className);
+    const className = classNames(styles.root, this.props.className);
 
     return (
-      <Modal isOpen={isOpen} onClose={onClose} className={joinClassName}>
+      <Modal isOpen className={className} onClose={this.props.onClose}>
         <ModalHeader className={styles.header}>
           <div className={styles.text}>Enter your contact details to join</div>
-          <h4 className={styles.title}>{groupTitle}</h4>
+          <h4 className={styles.title}>{this.props.groupTitle}</h4>
         </ModalHeader>
         <ModalBody className={styles.body}>
-
           <form className={styles.form}>
             <Input
               type="text"
               placeholder="Enter your email or mobile"
               className={styles.input}
             />
-            <Button wide onClick={onJoin}>Continue</Button>
+            <Button wide onClick={this.props.onJoin}>Continue</Button>
           </form>
         </ModalBody>
         <ModalFooter className={styles.footer}>

@@ -3,7 +3,7 @@
  * @flow
  */
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import { Text } from '@dlghq/react-l10n';
 import Modal from '../Modal/Modal';
@@ -18,7 +18,7 @@ import Input from '../Input/Input';
 import styles from './CreateNewModal.css';
 import type { Props } from './types';
 
-class CreateNewModal extends Component {
+class CreateNewModal extends PureComponent {
   props: Props;
 
   handleChange: EventHandler;
@@ -33,13 +33,6 @@ class CreateNewModal extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handlePrevStepClick = this.handlePrevStepClick.bind(this);
     this.handleNextStepClick = this.handleNextStepClick.bind(this);
-  }
-
-  shouldComponentUpdate(nextProps: Props): boolean {
-    return nextProps.request !== this.props.request ||
-           nextProps.step !== this.props.step ||
-           nextProps.isOpen !== this.props.isOpen ||
-           nextProps.className !== this.props.className;
   }
 
   handlePrevStepClick(): void {
@@ -59,7 +52,7 @@ class CreateNewModal extends Component {
   }
 
   handleChange(value: any, { target }: $FlowIssue): void {
-    this.props.onChange({
+    this.props.onRequestChange({
       ...this.props.request,
       [target.name]: value
     });
@@ -178,11 +171,10 @@ class CreateNewModal extends Component {
   }
 
   render(): React.Element<any> {
-    const { isOpen } = this.props;
     const className = classNames(styles.container, this.props.className);
 
     return (
-      <Modal isOpen={isOpen} onClose={this.props.onClose} className={className}>
+      <Modal className={className} onClose={this.props.onClose}>
         {this.renderStep()}
       </Modal>
     );

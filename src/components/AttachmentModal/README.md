@@ -50,9 +50,13 @@ const actions = {
 
 <div>
   <Button onClick={actions.onOpen}>Send attachment</Button>
-  <AttachmentModal
-    {...state}
-    {...actions}
-  />
+  {
+    state.attachments.length ? (
+      <AttachmentModal
+        {...state}
+        {...actions}
+      />
+    ) : null
+  }
 </div>
 ```

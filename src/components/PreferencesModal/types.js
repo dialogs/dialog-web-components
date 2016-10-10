@@ -13,12 +13,13 @@ export type Preferences = {
   groupOnlyMentions: boolean
 };
 
+export type PreferencesScreen = 'general' | 'notifications' | 'security' | 'shortcuts' | 'blocked';
+
 export type Props = {
-  preferences: Preferences,
-  screen: 'general' | 'notifications' | 'security' | 'shortcuts' | 'blocked',
   className?: string,
-  isOpen: boolean,
-  onScreenChange: Function,
+  screen: Screen,
+  preferences: Preferences,
+  onScreenChange: (screen: PreferencesScreen) => any,
   onChange: Function,
   onSubmit: Function
 }

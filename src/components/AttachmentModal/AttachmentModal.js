@@ -100,16 +100,6 @@ class AttachmentModal extends Component {
     );
   }
 
-  renderHeader() {
-    return (
-      <ModalHeader withBorder className={styles.header}>
-        <Text id="AttachmentModal.title" />
-        {this.renderPagination()}
-        <ModalClose onClick={this.props.onClose} />
-      </ModalHeader>
-    );
-  }
-
   renderBody() {
     const attachment = this.getCurrentAttachment();
     if (!attachment) {
@@ -165,12 +155,15 @@ class AttachmentModal extends Component {
   }
 
   render() {
-    const isOpen = Boolean(this.props.attachments.length);
     const className = classNames(styles.container, this.props.className);
 
     return (
-      <Modal className={className} isOpen={isOpen} onClose={this.props.onClose}>
-        {this.renderHeader()}
+      <Modal className={className} onClose={this.props.onClose}>
+        <ModalHeader withBorder className={styles.header}>
+          <Text id="AttachmentModal.title" />
+          {this.renderPagination()}
+          <ModalClose onClick={this.props.onClose} />
+        </ModalHeader>
         {this.renderBody()}
         {this.renderFooter()}
       </Modal>

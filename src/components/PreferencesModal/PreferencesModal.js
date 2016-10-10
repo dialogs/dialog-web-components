@@ -3,7 +3,8 @@
  * @flow
  */
 
-import React, { Component } from 'react';
+import type { Props, PreferencesScreen } from './types';
+import React, { PureComponent } from 'react';
 import { Text } from '@dlghq/react-l10n';
 import classNames from 'classnames';
 import Modal from '../Modal/Modal';
@@ -17,9 +18,8 @@ import Field from '../Field/Field';
 import Switcher from '../Switcher/Switcher';
 import Radio from '../Radio/Radio';
 import styles from './PreferencesModal.css';
-import type { Props } from './types';
 
-class PreferencesModal extends Component {
+class PreferencesModal extends PureComponent {
   props: Props;
 
   handleScreenChange: Function;
@@ -34,14 +34,7 @@ class PreferencesModal extends Component {
     this.handleScreenChange = this.handleScreenChange.bind(this);
   }
 
-  shouldComponentUpdate(nextProps: Props): boolean {
-    return nextProps.className !== this.props.className ||
-           nextProps.preferences !== this.props.preferences ||
-           nextProps.screen !== this.props.screen ||
-           nextProps.isOpen !== this.props.isOpen;
-  }
-
-  handleScreenChange(value: string): void {
+  handleScreenChange(value: PreferencesScreen): void {
     this.props.onScreenChange(value);
   }
 
@@ -237,11 +230,10 @@ class PreferencesModal extends Component {
   }
 
   render(): React.Element<any> {
-    const { isOpen } = this.props;
     const className = classNames(styles.container, this.props.className);
 
     return (
-      <Modal className={className} isOpen={isOpen} onClose={this.handleSubmit}>
+      <Modal className={className} onClose={this.handleSubmit}>
         <ModalHeader withBorder>
           <Text id="PreferencesModal.title" />
           <ModalClose onClick={this.handleSubmit} />

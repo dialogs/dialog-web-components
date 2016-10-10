@@ -14,12 +14,11 @@ export type Request = {
 export type Step = 'type' | 'info';
 
 export type Props = {
-  request: Request,
-  step: Step;
   className?: string,
-  isOpen: boolean,
-  onChange: (request: Request) => any,
-  onStepChange: (step: Step) => any,
+  step: Step,
+  request: Request,
+  onClose: () => any,
   onSubmit: (request: Request) => any,
-  onClose: Function,
+  onStepChange: (step: Step) => any,
+  onRequestChange: (request: Request) => any
 }

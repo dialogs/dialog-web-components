@@ -17,7 +17,7 @@ function BigCall(props: CallProps) {
   const className = classNames(styles.container, props.className);
 
   return (
-    <Modal isOpen className={className} onClose={props.onSizeToggle}>
+    <Modal className={className} onClose={props.onSizeToggle}>
       <ModalBody className={styles.body}>
         <CallAvatar caller={props.caller} />
         <CallInfo

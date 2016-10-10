@@ -1,7 +1,7 @@
 Basic PreferencesModal:
 
 ```
-const initialState = {
+initialState = {
   isOpen: false,
   screen: 'general',
   preferences: {
@@ -14,6 +14,7 @@ const initialState = {
     groupOnlyMentions: true
   }
 };
+
 const actions = {
   onScreenChange: (screen) => setState({ screen }),
   onChange: (preferences) => {
@@ -28,9 +29,13 @@ const actions = {
 
 <div>
   <Button onClick={() => setState({ isOpen: true })}>Open Preferences</Button>
-  <PreferencesModal
-    {...state}
-    {...actions}
-  />
+  {
+    state.isOpen ? (
+      <PreferencesModal
+        {...state}
+        {...actions}
+      />
+    ) : null
+  }
 </div>
 ```
