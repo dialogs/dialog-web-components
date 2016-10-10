@@ -158,7 +158,7 @@
   }
 
   & .ReactStyleguidist-Playground__codeToggle {
-    border-top: 1px solid #e8e8e8;
+    border-top: 0;
   }
 
   & .ReactStyleguidist-ReactComponent__isolatedLink {

@@ -22,7 +22,7 @@ function CallControls(props: CallControlsProps): React.Element<any> {
       <IconButton
         flat
         size={size}
-        glyph={props.small ? 'aspect_ratio' : 'picture_in_picture'}
+        glyph={props.small ? 'aspect_ratio' : 'minimize'}
         className={styles.controlButton}
         onClick={props.onSizeToggle}
       />
