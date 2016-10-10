@@ -41,6 +41,7 @@
 }
 
 .arrow {
+  cursor: inherit;
   color: var(--activity-members-header-arrow-color) !important;
   fill: var(--activity-members-header-arrow-color) !important;
 }
