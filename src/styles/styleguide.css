@@ -7,13 +7,13 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  & .ReactStyleguidist-TableOfContents__root {
+  /*& .ReactStyleguidist-TableOfContents__root {
     padding: 15px;
   }
 
   & .ReactStyleguidist-colors__base-bg {
     background-color: transparent;
-  }
+  }*/
 
   & .ReactStyleguidist-common__font {
     font-family: var(--default-font-family);
@@ -24,7 +24,7 @@
     font-family: var(--code-font-family);
   }
 
-  & .ReactStyleguidist-Layout__wrapper {
+  /*& .ReactStyleguidist-Layout__wrapper {
     padding-left: 250px;
   }
 
@@ -154,5 +154,5 @@
 
   & .ReactStyleguidist-ReactComponent__isolatedLink {
     top: 18px;
-  }
+  }*/
 }
