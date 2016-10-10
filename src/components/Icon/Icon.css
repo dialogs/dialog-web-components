@@ -14,7 +14,7 @@
 
 .container {
   display: inline-block;
-  cursor: default;
+  cursor: inherit;
   user-select: none;
   text-align: center;
   vertical-align: middle;
