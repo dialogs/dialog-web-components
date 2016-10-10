@@ -73,6 +73,7 @@ module.exports = {
         component('AddContactModal'),
         component('AttachmentModal'),
         component('CreateNewModal'),
+        component('ProfileModal'),
         component('PreferencesModal')
       ];
     }
