@@ -17,7 +17,7 @@ const handleOpen = () => setState({ isOpen: true });
 
 const actions = {
   onClose: () => setState(initialState),
-  onChange: (request) => {
+  onRequestChange: (request) => {
     console.debug({ ...request });
     setState({ request });
   },

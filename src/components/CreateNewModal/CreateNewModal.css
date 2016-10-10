@@ -15,7 +15,6 @@
 
 /* Styles */
 .container {
-  width: var(--create-new-modal-width);
   font-family: var(--create-new-modal-font-family);
 }
 
@@ -35,6 +34,8 @@
 
 .type {
   padding: 50px;
+  width: var(--create-new-modal-width);
+  box-sizing: border-box;
 }
 
 .typeLabel {
@@ -52,7 +53,44 @@
 }
 
 .info {
-  padding: 32px 50px 50px;
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  padding: 30px 50px;
+}
+
+.avatarBlock {
+  width: 100px;
+  margin-right: 34px;
+  flex: 0 0 auto;
+}
+
+
+.avatarChanger {
+  position: relative;
+}
+
+.avatar {
+  cursor: pointer;
+}
+
+.avatarChangerIcon {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 34px;
+  height: 34px;
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: #fff;
+  font-size: 20px;
+  line-height: 34px;
+  color: var(--violet-blue-two);
+}
+
+.form {
+  width: 400px;
+  flex: 0 0 auto;
 }
 
 .input {
