@@ -13,6 +13,7 @@ import ModalClose from '../ModalClose/ModalClose';
 import ModalHeader from '../ModalHeader/ModalHeader';
 import ModalBody from '../ModalBody/ModalBody';
 import ModalFooter from '../ModalFooter/ModalFooter';
+import ErrorMessage from '../Error/Error';
 import Spinner from '../Spinner/Spinner';
 import Input from '../Input/Input';
 import Icon from '../Icon/Icon';
@@ -70,7 +71,7 @@ class AddContactModal extends PureComponent {
     const { error, pending, contact } = this.props;
     if (error) {
       return (
-        <Error>{error.message}</Error>
+        <ErrorMessage>{error.message}</ErrorMessage>
       );
     }
 
