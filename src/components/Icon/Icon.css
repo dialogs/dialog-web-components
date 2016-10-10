@@ -21,6 +21,7 @@
   background-color: transparent;
   color: var(--icon-default-color);
   fill: var(--icon-default-color);
+  stroke: var(--icon-default-color);
 }
 
 .material {
@@ -33,7 +34,16 @@
   width: 100%;
   height: 100%;
   fill: inherit;
+  stroke: none;
 }
+
+.svgOutline {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: inherit;
+}
+
 
 .inverted {
   width: calc(var(--icon-default-size) - 4);
@@ -60,55 +70,65 @@
 .primary {
   color: var(--color-primary);
   fill: var(--color-primary);
+  stroke: var(--color-primary);
 
   &.inverted {
     background-color: var(--color-primary);
     color: #fff;
     fill: #fff;
+    stroke: #fff;
   }
 }
 
 .success {
   color: var(--color-success);
   fill: var(--color-success);
+  stroke: var(--color-success);
 
   &.inverted {
     background-color: var(--color-success);
     color: #fff;
     fill: #fff;
+    stroke: #fff;
   }
 }
 
 .danger {
   color: var(--color-danger);
   fill: var(--color-danger);
+  stroke: var(--color-danger);
 
   &.inverted {
     background-color: var(--color-danger);
     color: #fff;
     fill: #fff;
+    stroke: #fff;
   }
 }
 
 .info {
   color: var(--color-info);
   fill: var(--color-info);
+  stroke: var(--color-info);
 
   &.inverted {
     background-color: var(--color-info);
     color: #fff;
     fill: #fff;
+    stroke: #fff;
   }
 }
 
 .warning {
   color: var(--color-warning);
   fill: var(--color-warning);
+  stroke: var(--color-warning);
 
   &.inverted {
     background-color: var(--color-warning);
     color: #fff;
     fill: #fff;
+    stroke: #fff;
   }
 }
 
