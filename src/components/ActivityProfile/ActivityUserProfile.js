@@ -96,7 +96,7 @@ class ActivityUserProfile extends Component {
   }
 
 
-  renderProfileContacts(): React.Element<any> {
+  renderProfileContacts(): ?React.Element<any> {
     const { info } = this.props;
 
     if (!info.phones.length && !info.emails.length) {
