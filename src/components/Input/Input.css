@@ -26,7 +26,7 @@
   --input-hint-font-size: 14px;
   --input-hint-line-height: 18px;
   --input-hint-font-family: var(--default-font-family);
-  --input-prefix-color: color(#000 alpha(60%));
+  --input-prefix-color: color(#000 alpha(50%));
 }
 
 .container,
@@ -138,6 +138,11 @@
     font-size: var(--input-large-font-size);
     line-height: var(--input-large-line-height);
     padding: var(--default-padding) 0;
+  }
+
+  & .prefix {
+    font-size: var(--input-large-font-size);
+    padding: var(--default-padding) 4px var(--default-padding) 0;
   }
 }
 
