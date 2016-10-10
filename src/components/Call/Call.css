@@ -56,6 +56,7 @@
 }
 
 .smallInfoAvatar {
+  flex: 0 0 auto;
   margin-right: 14px;
 }
 
@@ -103,7 +104,7 @@
 }
 
 .controlButton {
-  margin: 0 10px;
+  margin: 0 10px !important;
 }
 
 /* Small */
@@ -122,6 +123,6 @@
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.12), inset 0 0 0 1px rgba(0, 0, 0, 0.15);
 
   & .controlButton {
-    margin: 0 5px;
+    margin: 0 5px !important;
   }
 }
