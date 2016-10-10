@@ -4,3 +4,4 @@ hint: Enter someone’s e-mail address, nickname or mobile phone to find them on
 user_added: <strong>{username}</strong> has been added to your Dialog contacts
 button_add: Add Contact
 button_send: Send Message
+not_found: User not found

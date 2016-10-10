@@ -1,8 +1,11 @@
 /**
  * Copyright 2016 Dialog LLC <info@dlg.im>
+ * @flow
  */
 
-import React, { Component, PropTypes } from 'react';
+import type { User } from '@dlghq/dialog-types';
+import debounce from 'lodash/debounce';
+import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import { Text } from '@dlghq/react-l10n';
 import Modal from '../Modal/Modal';
@@ -17,93 +20,69 @@ import PeerAvatar from '../PeerAvatar/PeerAvatar';
 import Button from '../Button/Button';
 import styles from './AddContactModal.css';
 
-class AddContactModal extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-    isOpen: PropTypes.bool.isRequired,
-    pending: PropTypes.bool.isRequired,
-    contact: PropTypes.shape({
-      peer: PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        type: PropTypes.oneOf(['user', 'group']).isRequired
-      }).isRequired,
-      name: PropTypes.string.isRequired,
-      nick: PropTypes.string.isRequired,
-      placeholder: PropTypes.string.isRequired,
-      avatar: PropTypes.string
-    }),
-    error: PropTypes.string,
-    onClose: PropTypes.func.isRequired,
-    onAdd: PropTypes.func.isRequired,
-    onComplete: PropTypes.func.isRequired
-  };
+export type Props = {
+  className?: string,
+  query: string,
+  error: ?Error,
+  pending: boolean,
+  contact: ?User,
+  onClose: () => any,
+  onChange: (query: string) => any,
+  onSearch: (query: string) => any,
+  onSubmit: (id: number) => any
+};
 
-  static defaultProps = {
-    isOpen: false,
-    pending: false,
-    contact: null
-  };
+class AddContactModal extends PureComponent {
+  props: Props;
+  handleSearch: Function;
+  handleAddClick: Function;
+  handleQueryChange: Function;
 
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
 
-    this.state = {
-      value: ''
-    };
-
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleAddContactClick = this.handleAddContactClick.bind(this);
+    this.handleSearch = debounce(this.handleSearch.bind(this), 100);
+    this.handleAddClick = this.handleAddClick.bind(this);
+    this.handleQueryChange = this.handleQueryChange.bind(this);
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    return nextState.value !== this.state.value ||
-           nextProps.className !== this.props.className ||
-           nextProps.isOpen !== this.props.isOpen ||
-           nextProps.onClose !== this.props.onClose ||
-           nextProps.onAdd !== this.props.onAdd ||
-           nextProps.onComplete !== this.props.onComplete ||
-           nextProps.pending !== this.props.pending ||
-           nextProps.contact !== this.props.contact ||
-           nextProps.error !== this.props.error;
+  handleSearch(query: string): void {
+    this.props.onSearch(query);
   }
 
-  handleInputChange(value) {
-    this.setState({ value });
+  handleAddClick(): void {
+    if (this.props.contact) {
+      this.props.onSubmit(this.props.contact.id);
+    }
   }
 
-  handleAddContactClick(event) {
-    const { onAdd } = this.props;
-    const { value } = this.state;
-
-    onAdd(value, event);
+  handleQueryChange(query: string): void {
+    this.handleSearch(query);
+    this.props.onChange(query);
   }
 
-  renderHeader() {
-    const { onClose } = this.props;
-
-    return (
-      <ModalHeader withBorder>
-        <Text id="AddContactModal.title" />
-        <ModalClose onClick={onClose} />
-      </ModalHeader>
-    );
-  }
-
-  renderBody() {
+  isLocked(): boolean {
     const { pending, contact } = this.props;
-    const { value } = this.state;
+    return pending || !contact;
+  }
+
+  renderContact() {
+    const { error, pending, contact } = this.props;
+    if (error) {
+      return (
+        <Error>{error.message}</Error>
+      );
+    }
 
     if (pending) {
       return (
-        <ModalBody className={styles.body}>
-          <Spinner type="round" size="large" />
-        </ModalBody>
+        <Spinner type="round" size="large" />
       );
     }
 
     if (contact) {
       return (
-        <ModalBody className={styles.body}>
+        <div>
           <div className={styles.avatar}>
             <PeerAvatar peer={contact} size="big" />
             <Icon glyph="done" className={styles.icon} />
@@ -115,59 +94,58 @@ class AddContactModal extends Component {
             className={styles.text}
             html
           />
-        </ModalBody>
+        </div>
       );
     }
+
+    return (
+      <Text id="AddContactModal.not_found" />
+    );
+  }
+
+  renderBody() {
+    const { query } = this.props;
 
     return (
       <ModalBody className={styles.body}>
         <Input
-          type="text"
-          value={value}
-          placeholder="AddContactModal.placeholder"
           className={styles.input}
-          onChange={this.handleInputChange}
+          id="add_contact_query"
+          type="text"
+          value={query}
+          hint="AddContactModal.hint"
+          placeholder="AddContactModal.placeholder"
+          onChange={this.handleQueryChange}
         />
-        <Text id="AddContactModal.hint" tagName="p" className={styles.hint} />
+        {this.renderContact()}
       </ModalBody>
     );
   }
 
-  renderFooter() {
-    const { pending, contact, onComplete } = this.props;
+  render() {
+    const className = classNames(styles.root, this.props.className);
 
-    if (pending) {
-      return null;
-    }
-
-    if (contact) {
-      return (
+    return (
+      <Modal
+        isOpen
+        className={className}
+        onClose={this.props.onClose}
+      >
+        <ModalHeader withBorder>
+          <Text id="AddContactModal.title" />
+          <ModalClose onClick={this.props.onClose} />
+        </ModalHeader>
+        {this.renderBody()}
         <ModalFooter className={styles.footer}>
-          <Button wide rounded={false} onClick={onComplete}>
-            <Text id="AddContactModal.button_send" />
+          <Button
+            wide
+            rounded={false}
+            disabled={this.isLocked()}
+            onClick={this.handleAddClick}
+          >
+            <Text id="AddContactModal.button_add" />
           </Button>
         </ModalFooter>
-      );
-    }
-
-    return (
-      <ModalFooter className={styles.footer}>
-        <Button wide rounded={false} onClick={this.handleAddContactClick}>
-          <Text id="AddContactModal.button_add" />
-        </Button>
-      </ModalFooter>
-    );
-  }
-
-  render() {
-    const { className, isOpen, onClose } = this.props;
-    const addContactClassName = classNames(styles.root, className);
-
-    return (
-      <Modal isOpen={isOpen} onClose={onClose} className={addContactClassName}>
-        {this.renderHeader()}
-        {this.renderBody()}
-        {this.renderFooter()}
       </Modal>
     );
   }
