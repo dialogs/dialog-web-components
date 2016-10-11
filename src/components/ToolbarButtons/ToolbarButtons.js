@@ -1,31 +1,25 @@
 /**
  * Copyright 2016 Dialog LLC <info@dlg.im>
+ * @flow
  */
 
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import styles from '../Toolbar/Toolbar.css';
 
-class Toolbar extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-    children: PropTypes.node.isRequired
-  };
+export type Props = {
+  className?: string,
+  children?: React.Element<any>
+};
 
-  shouldComponentUpdate(nextProps) {
-    return nextProps.children !== this.props.children ||
-           nextProps.className !== this.props.className;
-  }
+function ToolbarButtons(props: Props): React.Element<any> {
+  const className = classNames(styles.buttons, props.className);
 
-  render() {
-    const className = classNames(styles.buttons, this.props.className);
-
-    return (
-      <div className={className}>
-        {this.props.children}
-      </div>
-    );
-  }
+  return (
+    <div className={className}>
+      {props.children}
+    </div>
+  );
 }
 
-export default Toolbar;
+export default ToolbarButtons;
