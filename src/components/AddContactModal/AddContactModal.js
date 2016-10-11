@@ -16,6 +16,7 @@ import ModalFooter from '../ModalFooter/ModalFooter';
 import ErrorMessage from '../Error/Error';
 import Spinner from '../Spinner/Spinner';
 import Input from '../Input/Input';
+import Icon from '../Icon/Icon';
 import PeerAvatar from '../PeerAvatar/PeerAvatar';
 import Button from '../Button/Button';
 import styles from './AddContactModal.css';
@@ -25,11 +26,13 @@ export type Props = {
   query: string,
   error: ?Error,
   pending: boolean,
+  added: boolean,
   contact: ?User,
   onClose: () => any,
   onChange: (query: string) => any,
   onSearch: (query: string) => any,
-  onSubmit: (id: number) => any
+  onAdd: (id: number) => any,
+  onOpenChat: (id: number) => any
 };
 
 class AddContactModal extends PureComponent {
@@ -37,23 +40,19 @@ class AddContactModal extends PureComponent {
   handleSearch: Function;
   handleAddClick: Function;
   handleQueryChange: Function;
+  handleOpenChat: Function;
 
   constructor(props: Props) {
     super(props);
 
     this.handleSearch = debounce(this.handleSearch.bind(this), 200);
-    this.handleAddClick = this.handleAddClick.bind(this);
     this.handleQueryChange = this.handleQueryChange.bind(this);
+    this.handleAddClick = this.handleAddClick.bind(this);
+    this.handleOpenChat = this.handleOpenChat.bind(this);
   }
 
   handleSearch(query: string): void {
     this.props.onSearch(query);
-  }
-
-  handleAddClick(): void {
-    if (this.props.contact) {
-      this.props.onSubmit(this.props.contact.id);
-    }
   }
 
   handleQueryChange(query: string): void {
@@ -61,54 +60,104 @@ class AddContactModal extends PureComponent {
     this.props.onChange(query);
   }
 
+  handleAddClick(): void {
+    const { contact } = this.props;
+
+    if (contact) {
+      this.props.onAdd(contact.id);
+    }
+  }
+
+  handleOpenChat(): void {
+    const { contact } = this.props;
+
+    if (contact) {
+      this.props.onOpenChat(contact.id);
+    }
+  }
+
   isLocked(): boolean {
     const { pending, contact } = this.props;
     return pending || !contact;
   }
 
-  renderContact() {
-    const { error, pending, contact } = this.props;
+  renderStatus(): React.Element<any> {
+    const { query, pending, contact } = this.props;
 
-    if (error) {
+    if (!query) {
       return (
-        <div className={styles.contact}>
-          <ErrorMessage className={styles.contact}>{error.message}</ErrorMessage>
-        </div>
+        <Text id="AddContactModal.hint" className={styles.hint} />
       );
     }
 
     if (pending) {
       return (
-        <div className={styles.contact}>
-          <Spinner type="round" size="large" />
-        </div>
+        <Spinner type="round" size="large" />
       );
     }
 
     if (contact) {
       return (
-        <div>
+        <Text
+          id="AddContactModal.user_found"
+          values={{ username: contact.name }}
+          className={styles.hint}
+          html
+        />
+      );
+    }
+
+    return (
+      <Text id="AddContactModal.not_found" className={styles.hint} />
+    );
+  }
+
+  renderContact(): ?React.Element<any> {
+    const { error, contact } = this.props;
+
+    if (!contact) {
+      return null;
+    }
+
+    if (error) {
+      return (
+        <div className={styles.contact}>
           <div className={styles.avatar}>
             <PeerAvatar peer={contact} size="big" />
+            <Icon glyph="clear" className={styles.iconError} />
           </div>
-          <Text
-            id="AddContactModal.user_added"
-            values={{ username: contact.name }}
-            tagName="p"
-            className={styles.text}
-            html
-          />
+          <ErrorMessage className={styles.error}>{error.message}</ErrorMessage>
         </div>
       );
     }
 
     return (
-      <Text id="AddContactModal.not_found" className={styles.contact} tagName="div" />
+      <div className={styles.contact}>
+        <div className={styles.avatar}>
+          <PeerAvatar peer={contact} size="big" />
+          <Icon glyph="done" className={styles.icon} />
+        </div>
+        <Text
+          id="AddContactModal.user_added"
+          values={{ username: contact.name }}
+          tagName="p"
+          className={styles.text}
+          html
+        />
+      </div>
     );
   }
 
-  renderBody() {
-    const { query } = this.props;
+  renderBody(): React.Element<any> {
+    const { query, added } = this.props;
+
+    if (added) {
+      return (
+        <ModalBody className={styles.body}>
+          {this.renderContact()}
+        </ModalBody>
+      );
+    }
 
     return (
       <ModalBody className={styles.body}>
@@ -116,17 +165,51 @@ class AddContactModal extends PureComponent {
           className={styles.input}
           id="add_contact_query"
           type="text"
+          size="large"
           value={query}
-          hint="AddContactModal.hint"
           placeholder="AddContactModal.placeholder"
           onChange={this.handleQueryChange}
         />
-        {this.renderContact()}
+        <div className={styles.status}>
+          {this.renderStatus()}
+        </div>
       </ModalBody>
     );
   }
 
-  render() {
+  renderFooter(): React.Element<any> {
+    const { error, added } = this.props;
+
+    if (added) {
+      return (
+        <ModalFooter className={styles.footer}>
+          <Button
+            wide
+            rounded={false}
+            disabled={Boolean(error)}
+            onClick={this.handleOpenChat}
+          >
+            <Text id="AddContactModal.button_send" />
+          </Button>
+        </ModalFooter>
+      );
+    }
+
+    return (
+      <ModalFooter className={styles.footer}>
+        <Button
+          wide
+          rounded={false}
+          disabled={this.isLocked()}
+          onClick={this.handleAddClick}
+        >
+          <Text id="AddContactModal.button_add" />
+        </Button>
+      </ModalFooter>
+    );
+  }
+
+  render(): React.Element<any> {
     const className = classNames(styles.root, this.props.className);
 
     return (
@@ -136,16 +219,7 @@ class AddContactModal extends PureComponent {
           <ModalClose onClick={this.props.onClose} />
         </ModalHeader>
         {this.renderBody()}
-        <ModalFooter className={styles.footer}>
-          <Button
-            wide
-            rounded={false}
-            disabled={this.isLocked()}
-            onClick={this.handleAddClick}
-          >
-            <Text id="AddContactModal.button_add" />
-          </Button>
-        </ModalFooter>
+        {this.renderFooter()}
       </Modal>
     );
   }

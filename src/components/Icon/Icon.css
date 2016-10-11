@@ -28,6 +28,7 @@
   font-size: inherit;
   line-height: inherit;
   color: inherit;
+  cursor: inherit;
 }
 
 .svg {
@@ -35,6 +36,7 @@
   height: 100%;
   fill: inherit;
   stroke: none;
+  cursor: inherit;
 }
 
 .svgOutline {
@@ -42,8 +44,8 @@
   height: 100%;
   fill: none;
   stroke: inherit;
+  cursor: inherit;
 }
-
 
 .inverted {
   width: calc(var(--icon-default-size) - 4);

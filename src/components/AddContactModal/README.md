@@ -1,22 +1,19 @@
 Basic AddContactModal:
 
 ```
-const users = [
-  {
-    id: 3505878,
-    name: 'Nikita',
-    nick: 'gusnkt',
-    placeholder: 'red',
-    avatar: 'https://avatars0.githubusercontent.com/u/3505878'
-  },
-  {
-    id: 930121,
-    name: 'Oleg Shilov',
-    nick: 'olegshilov',
-    placeholder: 'orange',
-    avatar: 'https://avatars0.githubusercontent.com/u/930121'
-  },
-];
+const users = [{
+  id: 3505878,
+  name: 'Nikita',
+  nick: 'gusnkt',
+  placeholder: 'red',
+  avatar: 'https://avatars0.githubusercontent.com/u/3505878'
+},{
+  id: 930121,
+  name: 'Oleg Shilov',
+  nick: 'olegshilov',
+  placeholder: 'orange',
+  avatar: 'https://avatars0.githubusercontent.com/u/930121'
+}];
 
 initialState = {
   isOpen: false,
@@ -30,7 +27,8 @@ const handleOpen = () => {
       query: '',
       error: null,
       pending: false,
-      contact: null
+      contact: null,
+      added: false
     }
   });
 };
@@ -53,26 +51,22 @@ const handleChange = (query) => {
 };
 
 const handleSearch = (query) => {
-  setTimeout(() => {
-    setState({
-      state: {
-        ...state.state,
-        pending: false,
-        contact: users.find((user) => user.nick === query)
-      }
-    });
-  }, 1000);
-};
-
-const handleSubmit = () => {
   setState({
     state: {
       ...state.state,
-      pending: true
+      pending: false,
+      contact: users.find((user) => user.nick === query)
     }
   });
+};
 
-  setTimeout(handleClose, 2000)
+const handleAddContact = (id) => {
+  setState({
+    state: {
+      ...state.state,
+      added: true
+    }
+  });
 };
 
 <div>
@@ -84,7 +78,8 @@ const handleSubmit = () => {
         onClose={handleClose}
         onChange={handleChange}
         onSearch={handleSearch}
-        onSubmit={handleSubmit}
+        onAdd={handleAddContact}
+        onOpenChat={handleClose}
       />
     ) : null
   }
