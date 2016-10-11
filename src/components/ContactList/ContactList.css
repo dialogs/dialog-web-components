@@ -1,0 +1,129 @@
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+:root {
+  --contact-list-font-family: var(--default-font-family);
+  --contact-list-item-border-color: color(#000 alpha(10%));
+  --contact-list-item-padding: 20px;
+  --contact-list-item-hover-background: #f2f2f2;
+}
+
+/* Reset */
+.container {
+  all: initial;
+}
+
+/* Styles */
+.container {
+  font-family: var(--contact-list-font-family);
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.contact {
+  position: relative;
+  width: 100%;
+  height: 72px;
+  padding: 0 var(--contact-list-item-padding);
+  box-sizing: border-box;
+  flex: 1 1 auto;
+  display: flex;
+  @apply --no-select;
+
+  &::before,
+  &::after {
+    position: absolute;
+    right: var(--contact-list-item-padding);
+    left: var(--contact-list-item-padding);
+    height: 1px;
+    content: '';
+    background-color: var(--contact-list-item-border-color);
+  }
+
+  &::before {
+    top: 0;
+    display: none;
+  }
+
+  &::after {
+    bottom: 0;
+  }
+
+  &:first-child {
+    &::before {
+      display: block;
+    }
+  }
+}
+
+.hovered {
+  background-color: var(--contact-list-item-hover-background);
+}
+
+.wrapper {
+  flex: 1 1 auto;
+  padding: 0 10px;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.avatar {
+  flex: 0 0 auto;
+}
+
+.text {
+  padding-left: 12px;
+  flex: 1 1 auto;
+  flex-direction: column;
+  display: flex;
+  align-content: flex-start;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.name {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.3px;
+}
+
+.about {
+  font-size: 15px;
+  line-height: 1.5;
+  letter-spacing: -0.2px;
+  color: color(#000 alpha(50%));
+}
+
+.circle {
+  flex: 0 0 auto;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  background-color: #fff;
+  box-shadow: 0 0 0 2px color(#000 alpha(20%)) inset;
+}
+
+.selected {
+  composes: circle;
+  box-shadow: none;
+  background-color: var(--color-success);
+  color: #fff;
+}
+
+.icon {
+  width: 26px;
+  height: 26px;
+  color: #fff;
+  line-height: 26px;
+  font-size: 20px;
+}
