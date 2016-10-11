@@ -16,7 +16,6 @@ import ModalFooter from '../ModalFooter/ModalFooter';
 import ErrorMessage from '../Error/Error';
 import Spinner from '../Spinner/Spinner';
 import Input from '../Input/Input';
-import Icon from '../Icon/Icon';
 import PeerAvatar from '../PeerAvatar/PeerAvatar';
 import Button from '../Button/Button';
 import styles from './AddContactModal.css';
@@ -42,7 +41,7 @@ class AddContactModal extends PureComponent {
   constructor(props: Props) {
     super(props);
 
-    this.handleSearch = debounce(this.handleSearch.bind(this), 100);
+    this.handleSearch = debounce(this.handleSearch.bind(this), 200);
     this.handleAddClick = this.handleAddClick.bind(this);
     this.handleQueryChange = this.handleQueryChange.bind(this);
   }
@@ -69,15 +68,20 @@ class AddContactModal extends PureComponent {
 
   renderContact() {
     const { error, pending, contact } = this.props;
+
     if (error) {
       return (
-        <ErrorMessage>{error.message}</ErrorMessage>
+        <div className={styles.contact}>
+          <ErrorMessage className={styles.contact}>{error.message}</ErrorMessage>
+        </div>
       );
     }
 
     if (pending) {
       return (
-        <Spinner type="round" size="large" />
+        <div className={styles.contact}>
+          <Spinner type="round" size="large" />
+        </div>
       );
     }
 
@@ -86,7 +90,6 @@ class AddContactModal extends PureComponent {
         <div>
           <div className={styles.avatar}>
             <PeerAvatar peer={contact} size="big" />
-            <Icon glyph="done" className={styles.icon} />
           </div>
           <Text
             id="AddContactModal.user_added"
@@ -100,7 +103,7 @@ class AddContactModal extends PureComponent {
     }
 
     return (
-      <Text id="AddContactModal.not_found" />
+      <Text id="AddContactModal.not_found" className={styles.contact} tagName="div" />
     );
   }
 
