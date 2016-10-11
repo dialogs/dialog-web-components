@@ -16,6 +16,7 @@ export type AttachmentModalProps = {
   attachments: Attachment[],
   onClose: () => any,
   onSend: (attachments: Attachment[]) => any,
+  onSendAll: (attachments: Attachment[]) => any,
   onCurrentChange: (current: number) => any,
   onAttachmentChange: (index: number, attachment: Attachment) => any
 };

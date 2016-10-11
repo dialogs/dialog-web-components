@@ -49,7 +49,7 @@ class AttachmentModal extends Component {
 
   handleSendAll(): void {
     const { attachments } = this.props;
-    this.props.onSend(attachments);
+    this.props.onSendAll(attachments);
   }
 
   handleNext(): void {
@@ -123,7 +123,7 @@ class AttachmentModal extends Component {
           <Button
             wide
             rounded={false}
-            onClick={this.handleSend}
+            onClick={this.handleSendAll}
           >
             <Text id="AttachmentModal.button_send" />
           </Button>

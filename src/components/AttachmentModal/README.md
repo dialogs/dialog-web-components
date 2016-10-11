@@ -29,6 +29,10 @@ const actions = {
       })
     });
   },
+  onSendAll() {
+    console.log(attachments);
+    setState(initialState);
+  },
   onClose() {
     setState(initialState);
   },
