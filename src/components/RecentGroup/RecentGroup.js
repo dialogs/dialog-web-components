@@ -1,28 +1,26 @@
 /**
  * Copyright 2016 Dialog LLC <info@dlg.im>
+ * @flow
  */
 
-import React, { Component, PropTypes } from 'react';
-import { Peer, PeerInfo } from '../../PropTypes';
+import React, { Component } from 'react';
 import isSamePeer from '../../utils/isSamePeer';
 import SidebarGroup from '../SidebarGroup/SidebarGroup';
 import RecentItem from '../RecentItem/RecentItem';
+import type { Peer, Recent } from '@dlghq/dialog-types';
+
+export type Props = {
+  className?: string,
+  title: string,
+  items: Recent[],
+  currentPeer: Peer,
+  onSelect: Function
+}
 
 class RecentGroup extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-    title: PropTypes.string.isRequired,
-    items: PropTypes.arrayOf(PropTypes.shape({
-      peer: PeerInfo.isRequired,
-      counter: PropTypes.number.isRequired,
-      text: PropTypes.string,
-      typing: PropTypes.string
-    })).isRequired,
-    currentPeer: Peer,
-    onSelect: PropTypes.func.isRequired
-  };
+  props: Props;
 
-  shouldComponentUpdate(nextProps) {
+  shouldComponentUpdate(nextProps: Props): boolean {
     return nextProps.items !== this.props.items ||
            nextProps.title !== this.props.title ||
            nextProps.currentPeer !== this.props.currentPeer ||
@@ -30,7 +28,7 @@ class RecentGroup extends Component {
            nextProps.className !== this.props.className;
   }
 
-  renderItems() {
+  renderItems(): React.Element<any>[] {
     const { items, currentPeer, onSelect } = this.props;
 
     return items.map((item, index) => {
@@ -49,7 +47,7 @@ class RecentGroup extends Component {
     });
   }
 
-  render() {
+  render(): React.Element<any> {
     const { className, title } = this.props;
 
     return (
