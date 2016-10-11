@@ -16,5 +16,5 @@
 /* Styles */
 .container {
   font-family: var(--error-font-family);
-  color: red;
+  color: var(--color-danger);
 }
