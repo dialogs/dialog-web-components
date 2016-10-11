@@ -1,6 +1,7 @@
 /* eslint global-require:0 */
 const path = require('path');
 const pkg = require('./package.json');
+const components = require('./components.json');
 
 function doc(name) {
   return path.resolve(__dirname, 'docs', name + '.md');
@@ -14,104 +15,15 @@ module.exports = {
   title: `Dialog Components v${pkg.version}`,
   serverPort: 5000,
   highlightTheme: 'dracula',
-  sections: [{
-    name: 'Interface',
-    components() {
-      return [
-        component('Avatar'),
-        component('PeerAvatar'),
-        component('Scroller'),
-        component('Dropdown'),
-        component('Icon'),
-        component('Spinner'),
-        component('Toolbar'),
-        component('Logo'),
-        component('Typing'),
-        component('ConnectionStatus'),
-        component('Call')
-      ];
-    }
-  }, {
-    name: 'Buttons',
-    components() {
-      return [
-        component('Button'),
-        component('IconButton')
-      ];
-    }
-  }, {
-    name: 'Forms',
-    content: doc('forms'),
-    components() {
-      return [
-        component('Input'),
-        component('Checkbox'),
-        component('Radio'),
-        component('Switcher'),
-        component('Fieldset')
-      ];
-    }
-  }, {
-    name: 'Plug & Play Forms',
-    components() {
-      return [
-        component('AuthForm')
-      ];
-    }
-  }, {
-    name: 'Modals',
-    components() {
-      return [
-        component('Modal')
-      ];
-    }
-  }, {
-    name: 'Plug & Play Modals',
-    components() {
-      return [
-        component('JoinModal'),
-        component('AddContactModal'),
-        component('AttachmentModal'),
-        component('CreateNewModal'),
-        component('ProfileModal'),
-        component('PreferencesModal')
-      ];
-    }
-  }, {
-    name: 'Sidebar',
-    components() {
-      return [
-        component('SidebarHeader'),
-        component('SidebarSearch'),
-        component('SidebarGroup'),
-        component('RecentItem'),
-        component('RecentGroup'),
-        component('FakeRecentItem')
-      ];
-    }
-  }, {
-    name: 'Chat',
-    components() {
-      return [
-        component('Message'),
-        component('MessageState'),
-        component('MessageContent'),
-        component('MessageDivider'),
-        component('FakeMessage'),
-        component('EmptyChat')
-      ];
-    }
-  }, {
-    name: 'Activity',
-    components() {
-      return [
-        component('ActivityProfile'),
-        component('ActivityList'),
-        component('ActivityNotification'),
-        component('ActivityMembers')
-      ];
-    }
-  }],
+  sections: components.map(({ name, content, components }) => {
+    return {
+      name,
+      content: content ? doc(content) : content,
+      components() {
+        return components.map((name) => component(name))
+      }
+    };
+  }),
   updateWebpackConfig(config) {
     const source = path.join(__dirname, 'src');
     const whitelist = [

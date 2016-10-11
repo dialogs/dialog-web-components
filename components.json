@@ -1,0 +1,90 @@
+[
+  {
+    "name": "Interface",
+    "components": [
+      "Avatar",
+      "PeerAvatar",
+      "Scroller",
+      "Dropdown",
+      "Icon",
+      "Spinner",
+      "Toolbar",
+      "Logo",
+      "Typing",
+      "ConnectionStatus",
+      "Call"
+    ]
+  },
+  {
+    "name": "Buttons",
+    "components": [
+      "Button",
+      "IconButton"
+    ]
+  },
+  {
+    "name": "Forms",
+    "content": "forms",
+    "components": [
+      "Input",
+      "Checkbox",
+      "Radio",
+      "Switcher",
+      "Fieldset"
+    ]
+  },
+  {
+    "name": "Plug & Play Forms",
+    "components": [
+      "AuthForm"
+    ]
+  },
+  {
+    "name": "Modals",
+    "components": [
+      "Modal"
+    ]
+  },
+  {
+    "name": "Plug & Play Modals",
+    "components": [
+      "JoinModal",
+      "AddContactModal",
+      "AttachmentModal",
+      "CreateNewModal",
+      "ProfileModal",
+      "PreferencesModal"
+    ]
+  },
+  {
+    "name": "Sidebar",
+    "components": [
+      "SidebarHeader",
+      "SidebarSearch",
+      "SidebarGroup",
+      "RecentItem",
+      "RecentGroup",
+      "FakeRecentItem"
+    ]
+  },
+  {
+    "name": "Chat",
+    "components": [
+      "Message",
+      "MessageState",
+      "MessageContent",
+      "MessageDivider",
+      "FakeMessage",
+      "EmptyChat"
+    ]
+  },
+  {
+    "name": "Activity",
+    "components": [
+      "ActivityProfile",
+      "ActivityList",
+      "ActivityNotification",
+      "ActivityMembers"
+    ]
+  }
+]
