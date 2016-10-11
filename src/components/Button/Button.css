@@ -19,27 +19,27 @@
   --button-primary-background-color: var(--color-primary);
   --button-primary-hover-background-color: color(var(--button-primary-background-color) tint(10%));
   --button-primary-active-background-color: color(var(--button-primary-background-color) shade(5%));
-  --button-primary-disabled-background-color: color(var(--button-primary-background-color) blackness(50%));
+  --button-primary-disabled-background-color: color(var(--button-primary-background-color) blackness(50%) alpha(70%));
   --button-primary-color: #fff;
   --button-success-background-color: var(--color-success);
   --button-success-hover-background-color: color(var(--button-success-background-color) tint(10%));
   --button-success-active-background-color: color(var(--button-success-background-color) shade(5%));
-  --button-success-disabled-background-color: color(var(--button-success-background-color) blackness(50%));
+  --button-success-disabled-background-color: color(var(--button-success-background-color) blackness(50%) alpha(70%));
   --button-success-color: #fff;
   --button-danger-background-color: var(--color-danger);
   --button-danger-hover-background-color: color(var(--button-danger-background-color) tint(10%));
   --button-danger-active-background-color: color(var(--button-danger-background-color) shade(5%));
-  --button-danger-disabled-background-color: color(var(--button-danger-background-color) blackness(50%));
+  --button-danger-disabled-background-color: color(var(--button-danger-background-color) blackness(50%) alpha(70%));
   --button-danger-color: #fff;
   --button-info-background-color: var(--color-info);
   --button-info-hover-background-color: color(var(--button-info-background-color) tint(10%));
   --button-info-active-background-color: color(var(--button-info-background-color) shade(5%));
-  --button-info-disabled-background-color: color(var(--button-info-background-color) blackness(50%));
+  --button-info-disabled-background-color: color(var(--button-info-background-color) blackness(50%) alpha(70%));
   --button-info-color: #fff;
   --button-warning-background-color: var(--color-warning);
   --button-warning-hover-background-color: color(var(--button-warning-background-color) tint(10%));
   --button-warning-active-background-color: color(var(--button-warning-background-color) shade(5%));
-  --button-warning-disabled-background-color: color(var(--button-warning-background-color) blackness(50%));
+  --button-warning-disabled-background-color: color(var(--button-warning-background-color) blackness(50%) alpha(70%));
   --button-warning-color: #fff;
   --button-link-color: var(--violet-blue-two);
   --button-link-hover-color: color(var(--button-link-color) alpha(70%));
@@ -64,7 +64,6 @@
 
   &[disabled] {
     cursor: not-allowed;
-    opacity: 0.7;
   }
 }
 
