@@ -24,17 +24,18 @@ class VoicePlayer extends Component {
   props: VoicePlayerProps;
   state: VoicePlayerState;
 
-  audio: HTMLMediaElement;
-  rewind: HTMLElement;
-  interval: number;
+  audio: ?HTMLMediaElement;
+  rewind: ?HTMLElement;
+  interval: ?number;
+
   setAudio: Function;
   setRewind: Function;
   handleTimeUpdate: Function;
-  handleLoading: EventHandler;
-  handlePlayEnding: EventHandler;
-  handlePlayClick: EventHandler;
-  handlePauseClick: EventHandler;
-  handleRewind: EventHandler;
+  handleLoading: Function;
+  handlePlayEnding: Function;
+  handlePlayClick: Function;
+  handlePauseClick: Function;
+  handleRewind: Function;
 
   constructor(props: VoicePlayerProps) {
     super(props);
@@ -70,45 +71,68 @@ class VoicePlayer extends Component {
   }
 
   handlePlayClick(): void {
-    this.audio.play();
-    this.setState({ isPlaying: true });
-    this.interval = setInterval(() => {
-      this.handleTimeUpdate();
-    }, 100);
+    if (this.audio) {
+      this.audio.play();
+      this.setState({ isPlaying: true });
+      this.interval = setInterval(() => {
+        this.handleTimeUpdate();
+      }, 100);
+    }
   }
 
   handlePauseClick(): void {
-    this.audio.pause();
-    this.setState({ isPlaying: false });
-    clearInterval(this.interval);
+    if (this.audio) {
+      this.audio.pause();
+      this.setState({ isPlaying: false });
+    }
+
+    if (this.interval) {
+      clearInterval(this.interval);
+      this.interval = null;
+    }
   }
 
   handlePlayEnding(): void {
-    this.setState({
-      isPlaying: false,
-      currentTime: this.audio.duration
-    });
-    clearInterval(this.interval);
+    if (this.audio) {
+      this.setState({
+        isPlaying: false,
+        currentTime: this.audio.duration
+      });
+    }
+
+    if (this.interval) {
+      clearInterval(this.interval);
+      this.interval = null;
+    }
   }
 
   handleRewind(event: MouseEvent): void {
-    const rewindRect: ClientRect = this.rewind.getBoundingClientRect();
-    const rewindPosition = (event.clientX - rewindRect.left) / rewindRect.width;
+    if (this.rewind) {
+      const rewindRect: ClientRect = this.rewind.getBoundingClientRect();
+      const rewindPosition = (event.clientX - rewindRect.left) / rewindRect.width;
 
-    this.audio.currentTime = this.audio.duration * rewindPosition;
+      if (this.audio) {
+        this.audio.currentTime = this.audio.duration * rewindPosition;
+      }
+    }
   }
 
   handleTimeUpdate(): void {
-    this.setState({ currentTime: this.audio.currentTime });
+    if (this.audio) {
+      this.setState({ currentTime: this.audio.currentTime });
+    }
   }
 
-  setAudio(element: HTMLAudioElement): void {
-    element.volume = 1;
-    this.audio = element;
+  setAudio(audio: ?HTMLAudioElement): void {
+    if (audio) {
+      audio.volume = 1;
+    }
+
+    this.audio = audio;
   }
 
-  setRewind(element: HTMLAudioElement): void {
-    this.rewind = element;
+  setRewind(rewind: ?HTMLAudioElement): void {
+    this.rewind = rewind;
   }
 
   renderPlayPauseButton(): React.Element<any> {
