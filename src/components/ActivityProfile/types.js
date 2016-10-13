@@ -25,7 +25,7 @@ export type ActivityGroupProfileProps = {
   children?: any
 };
 
-export type ActivityProfileProps = (
+export type Props = (
   ({ type: 'user' } & ActivityUserProfileProps) |
   ({ type: 'group' } & ActivityGroupProfileProps)
 );

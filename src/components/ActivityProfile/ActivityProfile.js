@@ -3,12 +3,12 @@
  * @flow
  */
 
-import type { ActivityProfileProps } from './types';
+import type { Props } from './types';
 import React from 'react';
 import ActivityUserProfile from './ActivityUserProfile';
 import ActivityGroupProfile from './ActivityGroupProfile';
 
-function ActivityProfile(props: ActivityProfileProps) {
+function ActivityProfile(props: Props): ?React.Element<any> {
   switch (props.type) {
     case 'user':
       return (
