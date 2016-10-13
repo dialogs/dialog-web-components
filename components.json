@@ -84,6 +84,7 @@
     "components": [
       "ActivityHeader",
       "ActivityProfile",
+      "ActivityInvite",
       "ActivityList",
       "ActivityListNotification",
       "ActivityListInvite",
