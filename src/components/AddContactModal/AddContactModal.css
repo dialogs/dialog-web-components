@@ -1,6 +1,7 @@
 /**
  * Copyright 2016 Dialog LLC <info@dlg.im>
  */
+
 @import '../../styles/variables.css';
 
 :root {
@@ -36,9 +37,9 @@
 }
 
 .status {
+  display: flex;
   width: 100%;
   min-height: 50px;
-  display: flex;
   justify-content: center;
   align-content: center;
   align-items: center;
@@ -49,9 +50,9 @@
 }
 
 .hint {
+  letter-spacing: -0.3px;
   font-size: 16px;
   line-height: 1.2;
-  letter-spacing: -0.3px;
   color: var(--add-contact-modal-text-color);
   @apply --no-select;
 }
@@ -77,8 +78,8 @@
 }
 
 .iconError {
-  composes: icon;
   background-color: var(--color-danger);
+  composes: icon;
 }
 
 .text {

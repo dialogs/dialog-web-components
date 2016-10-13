@@ -18,9 +18,9 @@
 
 /* Styles */
 .container {
-  font-family: var(--contact-list-font-family);
   display: flex;
   flex-direction: column;
+  font-family: var(--contact-list-font-family);
   align-content: flex-start;
   justify-content: flex-start;
   align-items: flex-start;
@@ -28,12 +28,12 @@
 
 .contact {
   position: relative;
+  display: flex;
+  box-sizing: border-box;
   width: 100%;
   height: 72px;
   padding: 0 var(--contact-list-item-padding);
-  box-sizing: border-box;
   flex: 1 1 auto;
-  display: flex;
   @apply --no-select;
 
   &::before,
@@ -67,10 +67,10 @@
 }
 
 .wrapper {
-  flex: 1 1 auto;
-  padding: 0 10px;
   display: flex;
   flex-direction: row;
+  padding: 0 10px;
+  flex: 1 1 auto;
   align-content: center;
   justify-content: flex-start;
   align-items: center;
@@ -81,49 +81,49 @@
 }
 
 .text {
+  display: flex;
+  flex-direction: column;
   padding-left: 12px;
   flex: 1 1 auto;
-  flex-direction: column;
-  display: flex;
   align-content: flex-start;
   justify-content: center;
   align-items: flex-start;
 }
 
 .name {
+  letter-spacing: -0.3px;
   font-size: 16px;
   font-weight: 500;
   line-height: 1.3;
-  letter-spacing: -0.3px;
 }
 
 .about {
+  letter-spacing: -0.2px;
   font-size: 15px;
   line-height: 1.5;
-  letter-spacing: -0.2px;
   color: color(#000 alpha(50%));
 }
 
 .circle {
-  flex: 0 0 auto;
-  border-radius: 50%;
   width: 26px;
   height: 26px;
+  border-radius: 50%;
   background-color: #fff;
   box-shadow: 0 0 0 2px color(#000 alpha(20%)) inset;
+  flex: 0 0 auto;
 }
 
 .selected {
-  composes: circle;
-  box-shadow: none;
   background-color: var(--color-success);
+  box-shadow: none;
+  composes: circle;
   color: #fff;
 }
 
 .icon {
   width: 26px;
   height: 26px;
-  color: #fff;
-  line-height: 26px;
   font-size: 20px;
+  line-height: 26px;
+  color: #fff;
 }

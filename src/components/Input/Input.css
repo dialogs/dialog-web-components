@@ -58,11 +58,11 @@
   padding: 10px 4px 10px 0;
   cursor: inherit;
   user-select: none;
+  transition: color var(--default-transition-duration) ease-in-out;
   font-family: var(--input-font-family);
   font-size: var(--input-default-font-size);
   line-height: var(--input-default-line-height);
   color: var(--input-prefix-color);
-  transition: color var(--default-transition-duration) ease-in-out;
 }
 
 .input {

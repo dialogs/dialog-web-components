@@ -33,9 +33,9 @@
 }
 
 .type {
-  padding: 50px;
-  width: var(--create-new-modal-width);
   box-sizing: border-box;
+  width: var(--create-new-modal-width);
+  padding: 50px;
 }
 
 .typeLabel {
@@ -64,7 +64,6 @@
   margin-right: 34px;
   flex: 0 0 auto;
 }
-
 
 .avatarChanger {
   position: relative;
