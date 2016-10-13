@@ -3,7 +3,7 @@
  * @flow
  */
 
-import React, { Component } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import styles from '../ActivityList/ActivityList.css';
 

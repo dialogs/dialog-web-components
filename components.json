@@ -82,10 +82,12 @@
   {
     "name": "Activity",
     "components": [
+      "ActivityHeader",
       "ActivityProfile",
       "ActivityList",
-      "ActivityNotification",
-      "ActivityMembers"
+      "ActivityListNotification",
+      "ActivityListInvite",
+      "ActivityListMembers"
     ]
   }
 ]

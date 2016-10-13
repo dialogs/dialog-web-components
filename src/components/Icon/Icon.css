@@ -49,11 +49,11 @@
 
 .inverted {
   padding: 4px;
+  cursor: inherit;
   border-radius: 50%;
   background-color: var(--icon-default-color);
   color: #fff;
   fill: #fff;
-  cursor: inherit;
 }
 
 .clickable {
