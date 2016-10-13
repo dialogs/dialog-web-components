@@ -7,27 +7,26 @@ import type { GroupMember, GroupOnline } from '@dlghq/dialog-types';
 import React, { Component } from 'react';
 import classNames from 'classnames';
 import ActivityListItem from '../ActivityListItem/ActivityListItem';
-import ActivityMembersItem from './ActivityMembersItem';
+import ActivityMembersItem from './ActivityListMembersItem';
 import Icon from '../Icon/Icon';
-import styles from './ActivityMembers.css';
+import styles from './ActivityListMembers.css';
 
-
-export type ActivityMembersProps = {
+export type Props = {
   className?: string,
   members: GroupMember[],
   online: GroupOnline
 };
 
-export type ActivityMembersState = {
+export type State = {
   isOpen: boolean
 };
 
-class ActivityMembers extends Component {
-  props: ActivityMembersProps;
-  state: ActivityMembersState;
+class ActivityListMembers extends Component {
+  props: Props ;
+  state: State;
   handleMembersHeaderClick: EventHandler;
 
-  constructor(props: ActivityMembersProps) {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
@@ -37,13 +36,13 @@ class ActivityMembers extends Component {
     this.handleMembersHeaderClick = this.handleMembersHeaderClick.bind(this);
   }
 
-  componentWillReceiveProps(nextProps: ActivityMembersProps): void {
+  componentWillReceiveProps(nextProps: Props): void {
     if (nextProps.online.isNotMember) {
       this.setState({ isOpen: false });
     }
   }
 
-  shouldComponentUpdate(nextProps: ActivityMembersProps, nextState: ActivityMembersState) {
+  shouldComponentUpdate(nextProps: Props, nextState: State) {
     return nextState.isOpen !== this.state.isOpen ||
            nextProps.members !== this.props.members ||
            nextProps.online !== this.props.online ||
@@ -112,4 +111,4 @@ class ActivityMembers extends Component {
   }
 }
 
-export default ActivityMembers;
+export default ActivityListMembers;

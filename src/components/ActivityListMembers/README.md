@@ -1,4 +1,4 @@
-Basic ActivityMembers:
+Basic ActivityListMembers:
 
 ```
 const members = [{
@@ -25,6 +25,6 @@ const online = {
 };
 
 <div style={{ background: '#fff', width: 320 }}>
-  <ActivityMembers members={members} online={online} />
+  <ActivityListMembers members={members} online={online} />
 </div>
 ```
