@@ -9,25 +9,25 @@ import classNames from 'classnames';
 import ActivityListItem from '../ActivityListItem/ActivityListItem';
 import Icon from '../Icon/Icon';
 import Switcher from '../Switcher/Switcher';
-import styles from './ActivityNotification.css';
+import styles from './ActivityListNotification.css';
 
-export type ActivityNotificationProps = {
+export type Props = {
   className?: string,
   value: boolean,
   onChange: (value: boolean) => void
 }
 
-class ActivityNotification extends Component {
-  props: ActivityNotificationProps;
+class ActivityListNotification extends Component {
+  props: Props;
   handleClick: EventHandler;
 
-  constructor(props: ActivityNotificationProps) {
+  constructor(props: Props) {
     super(props);
 
     this.handleClick = this.handleClick.bind(this);
   }
 
-  shouldComponentUpdate(nextProps: ActivityNotificationProps): boolean {
+  shouldComponentUpdate(nextProps: Props): boolean {
     return nextProps.value !== this.props.value ||
            nextProps.className !== this.props.className;
   }
@@ -50,7 +50,7 @@ class ActivityNotification extends Component {
         />
         <Text
           tagName="div"
-          id="ActivityNotification.notifications"
+          id="ActivityListNotification.notifications"
           className={styles.text}
         />
         <Switcher
@@ -64,4 +64,4 @@ class ActivityNotification extends Component {
   }
 }
 
-export default ActivityNotification;
+export default ActivityListNotification;

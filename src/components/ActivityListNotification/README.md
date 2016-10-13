@@ -1,10 +1,10 @@
-Basic ActivityNotifications:
+Basic ActivityListNotification:
 
 ```
 const initialState = { isEnabled: true };
 
 <div style={{ background: '#fff', width: 320 }}>
-  <ActivityNotification
+  <ActivityListNotification
     value={state.isEnabled}
     onChange={(isEnabled) => setState({ isEnabled })}
   />
