@@ -27,18 +27,11 @@ const online = {
 const alert = () => window.alert('!!!');
 
 <div>
-  <div style={{ width: '50%', float: 'left' }}>
-    <ActivityProfile info={user} online={online} type="user">
-      <IconButton glyph="phone" size="large" />
-      <IconButton glyph="more" size="large" />
-    </ActivityProfile>
+  <div style={{ background: '#fff', width: 320, float: 'left'  }}>
+    <ActivityProfile info={user} online={online} type="user" />
   </div>
-  <div style={{ width: '50%', float: 'left' }}>
-    <ActivityProfile info={group} onAboutEdit={alert} online={online} type="group">
-      <IconButton glyph="phone" size="large" />
-      <IconButton glyph="person_add" size="large" />
-      <IconButton glyph="more" size="large" />
-    </ActivityProfile>
+  <div style={{ background: '#fff', width: 320, float: 'left'  }}>
+    <ActivityProfile info={group} onAboutEdit={alert} online={online} type="group" />
   </div>
   <div style={{ clear: 'both' }} />
 </div>
