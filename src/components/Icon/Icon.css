@@ -48,15 +48,12 @@
 }
 
 .inverted {
-  width: calc(var(--icon-default-size) - 4);
-  height: calc(var(--icon-default-size) - 4);
   padding: 4px;
   border-radius: 50%;
   background-color: var(--icon-default-color);
-  font-size: calc(var(--icon-default-size) - 4);
-  line-height: calc(var(--icon-default-size) - 4);
   color: #fff;
   fill: #fff;
+  cursor: inherit;
 }
 
 .clickable {
@@ -140,6 +137,13 @@
   height: var(--icon-small-size);
   font-size: var(--icon-small-size);
   line-height: var(--icon-small-size);
+
+  &.inverted {
+    width: calc(var(--icon-small-size) - 2);
+    height: calc(var(--icon-small-size) - 2);
+    font-size: calc(var(--icon-small-size) - 2);
+    line-height: calc(var(--icon-small-size) - 2);
+  }
 }
 
 .normal {
@@ -147,6 +151,13 @@
   height: var(--icon-default-size);
   font-size: var(--icon-default-size);
   line-height: var(--icon-default-size);
+
+  &.inverted {
+    width: calc(var(--icon-default-size) - 4);
+    height: calc(var(--icon-default-size) - 4);
+    font-size: calc(var(--icon-default-size) - 4);
+    line-height: calc(var(--icon-default-size) - 4);
+  }
 }
 
 .large {
@@ -154,4 +165,11 @@
   height: var(--icon-large-size);
   font-size: var(--icon-large-size);
   line-height: var(--icon-large-size);
+
+  &.inverted {
+    width: calc(var(--icon-large-size) - 6);
+    height: calc(var(--icon-large-size) - 6);
+    font-size: calc(var(--icon-large-size) - 6);
+    line-height: calc(var(--icon-large-size) - 6);
+  }
 }
