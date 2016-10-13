@@ -7,33 +7,21 @@ import React, { Component } from 'react';
 import classNames from 'classnames';
 import styles from '../ActivityList/ActivityList.css';
 
-export type ActivityListItemProps = {
+export type Props = {
   className?: string,
   children?: any,
   onClick?: EventHandler
 };
 
-class ActivityListItem extends Component {
-  props: ActivityListItemProps;
+function ActivityListItem(props: Props): React.Element<any> {
+  const className = classNames(styles.item, {
+    [styles.clickable]: props.onClick
+  }, props.className);
 
-  shouldComponentUpdate(nextProps: ActivityListItemProps) {
-    return nextProps.children !== this.props.children ||
-           nextProps.className !== this.props.className ||
-           nextProps.onClick !== this.props.onClick;
-  }
-
-  render() {
-    const { className, children, onClick } = this.props;
-    const itemClassName = classNames(styles.item, {
-      [styles.clickable]: onClick
-    }, className);
-
-    return (
-      <div className={itemClassName} onClick={onClick}>
-        {children}
-      </div>
-    );
-  }
+  return (
+    <div className={className} onClick={props.onClick}>{props.children}</div>
+  );
 }
+
 
 export default ActivityListItem;
