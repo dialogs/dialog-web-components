@@ -77,7 +77,7 @@ class ActivityGroupProfile extends Component {
 
     return (
       <div className={styles.about}>
-        <Button theme="link" onClick={onAboutEdit} className={styles.aboutButton}>
+        <Button view="link" onClick={onAboutEdit} className={styles.aboutButton}>
           <Icon glyph="add_circle_outline" className={styles.aboutAddIcon} />
           <Text id="ActivityProfile.add_description" />
         </Button>

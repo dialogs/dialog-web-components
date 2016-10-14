@@ -103,7 +103,7 @@ class ProfileModal extends Component {
       return (
         <div className={styles.nick}>
           <Button
-            theme="link"
+            view="link"
             className={styles.nickButton}
             onClick={this.handleNickChooserClick}
           >
