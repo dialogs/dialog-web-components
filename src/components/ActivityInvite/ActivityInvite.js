@@ -60,7 +60,7 @@ class ActivityInvite extends PureComponent {
     }
   }
 
-  handleCopyError(event?: $FlowIssue): void {
+  handleCopyError(): void {
     this.setState({ copied: false });
   }
 
@@ -72,7 +72,7 @@ class ActivityInvite extends PureComponent {
     }
   }
 
-  handleButtonMount(element: ?React.Element<any>) {
+  handleButtonMount(element: React.Component<any, any, any>) {
     if (this.clipboard) {
       this.clipboard.destroy();
       this.clipboard = null;
@@ -80,7 +80,7 @@ class ActivityInvite extends PureComponent {
 
     const button = findDOMNode(element);
     if (button) {
-      this.clipboard = new Clipboard(button, {
+      const clipboard = new Clipboard(button, {
         text: () => {
           // this method will be called
           // each time user press copy button
@@ -90,8 +90,10 @@ class ActivityInvite extends PureComponent {
         }
       });
 
-      this.clipboard.on('error', this.handleCopyError);
-      this.clipboard.on('success', this.handleCopySuccess);
+      clipboard.on('error', this.handleCopyError);
+      clipboard.on('success', this.handleCopySuccess);
+
+      this.clipboard = clipboard;
     }
   }
 
@@ -102,7 +104,7 @@ class ActivityInvite extends PureComponent {
     }
 
     return (
-      <a href={link} target="_blank" rel="nofollow noopener">
+      <a href={link} target="_blank" rel="noopener noreferrer">
         {link}
       </a>
     );
