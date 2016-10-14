@@ -41,9 +41,6 @@
   --button-warning-active-background-color: color(var(--button-warning-background-color) shade(5%));
   --button-warning-disabled-background-color: color(var(--button-warning-background-color) blackness(50%) alpha(70%));
   --button-warning-color: #fff;
-  --button-link-color: var(--violet-blue-two);
-  --button-link-hover-color: color(var(--button-link-color) alpha(70%));
-  --button-link-disabled-color: color(var(--button-link-color) blackness(50%));
 }
 
 /* Main */
@@ -188,17 +185,97 @@
   }
 }
 
-.link {
-  color: var(--button-link-color);
+/* View */
+.default {}
 
-  &:hover:enabled,
-  &:focus:enabled,
-  &:active:enabled {
-    color: var(--button-link-hover-color);
+.link {
+  background-color: transparent !important;
+  box-shadow: none !important;
+
+  &.primary {
+    color: var(--button-primary-background-color);
+
+    &:hover,
+    &:focus {
+      color: var(--button-primary-hover-background-color);
+    }
+
+    &:active {
+      color: var(--button-primary-active-background-color);
+    }
+
+    &[disabled] {
+      color: var(--button-primary-disabled-background-color);
+    }
   }
 
-  &[disabled] {
-    color: #9a73e3;
+  &.success {
+    color: var(--button-success-background-color);
+
+    &:hover,
+    &:focus {
+      color: var(--button-success-hover-background-color);
+    }
+
+    &:active {
+      color: var(--button-success-active-background-color);
+    }
+
+    &[disabled] {
+      color: var(--button-success-disabled-background-color);
+    }
+  }
+
+  &.danger {
+    color: var(--button-danger-background-color);
+
+    &:hover,
+    &:focus {
+      color: var(--button-danger-hover-background-color);
+    }
+
+    &:active {
+      color: var(--button-danger-active-background-color);
+    }
+
+    &[disabled] {
+      color: var(--button-danger-disabled-background-color);
+    }
+  }
+
+  &.info {
+    color: var(--button-info-background-color);
+
+    &:hover,
+    &:focus {
+      color: var(--button-info-hover-background-color);
+    }
+
+    &:active {
+      color: var(--button-info-active-background-color);
+    }
+
+    &[disabled] {
+      color: var(--button-info-disabled-background-color);
+    }
+  }
+
+  &.warning {
+    color: var(--button-warning-background-color);
+
+    &:hover,
+    &:focus {
+      color: var(--button-warning-hover-background-color);
+    }
+
+    &:active {
+      color: var(--button-warning-active-background-color);
+    }
+
+    &[disabled] {
+      color: var(--button-warning-disabled-background-color);
+    }
+
   }
 }
 
