@@ -33,8 +33,17 @@
   text-align: center;
 }
 
-.link {
+.linkContainer {
+  min-height: 60px;
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
   margin-bottom: 20px;
+}
+
+.link {
   font-size: var(--activity-invite-link-font-size);
   color: var(--activity-invite-link-color);
   line-height: 1.25;

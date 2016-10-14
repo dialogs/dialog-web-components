@@ -64,7 +64,7 @@ class ActivityInvite extends PureComponent {
     this.setState({ copied: false });
   }
 
-  handleCopySuccess(event?: $FlowIssue) {
+  handleCopySuccess(event?: $FlowIssue): void {
     this.setState({ copied: true });
 
     if (event) {
@@ -72,7 +72,7 @@ class ActivityInvite extends PureComponent {
     }
   }
 
-  handleButtonMount(element: React.Component<any, any, any>) {
+  handleButtonMount(element: React.Component<any, any, any>): void {
     if (this.clipboard) {
       this.clipboard.destroy();
       this.clipboard = null;
@@ -99,14 +99,13 @@ class ActivityInvite extends PureComponent {
 
   renderLink(): React.Element<any> {
     const { link, pending } = this.props;
+
     if (pending) {
       return <Spinner type="dotted" />;
     }
 
     return (
-      <a href={link} target="_blank" rel="noopener noreferrer">
-        {link}
-      </a>
+      <span className={styles.link}>{link}</span>
     );
   }
 
@@ -118,7 +117,7 @@ class ActivityInvite extends PureComponent {
     return (
       <div className={className}>
         <div className={styles.block}>
-          <div className={styles.link}>
+          <div className={styles.linkContainer}>
             {this.renderLink()}
           </div>
           <Button
@@ -132,7 +131,7 @@ class ActivityInvite extends PureComponent {
         </div>
         <hr className={styles.hr} />
         <div className={styles.block}>
-          <Button className={styles.revoke} theme="link" onClick={this.props.onRevoke}>
+          <Button theme="danger" view="link" onClick={this.props.onRevoke}>
             <Text id="ActivityInvite.revoke" />
           </Button>
         </div>
