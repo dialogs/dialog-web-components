@@ -3,61 +3,136 @@
  * @flow
  */
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
+import { findDOMNode } from 'react-dom';
+import { Text } from '@dlghq/react-l10n';
 import classNames from 'classnames';
+import Clipboard from 'clipboard';
 import Button from '../Button/Button';
+import Spinner from '../Spinner/Spinner';
 import styles from './ActivityInvite.css';
-// import selectText from '../../utils/selectText';
 
 export type Props = {
   className?: string,
   link: string,
-  onRevoke: () => any,
+  pending: boolean,
+  onRevoke: () => any
 };
 
-class ActivityInvite extends Component {
-  props: Props;
-  handleCopyClick: Function;
-  setLink: Function;
-  link: HTMLElement;
+export type State = {
+  copied: ?boolean
+};
 
-  constructor(props: Props): void {
+class ActivityInvite extends PureComponent {
+  props: Props;
+  state: State;
+  clipboard: ?Clipboard;
+
+  handleCopyError: Function;
+  handleCopySuccess: Function;
+  handleButtonMount: Function;
+
+  constructor(props: Props) {
     super(props);
 
-    this.handleCopyClick = this.handleCopyClick.bind(this);
-    this.setLink = this.setLink.bind(this);
+    this.state = {
+      copied: null
+    };
+
+    this.handleCopyError = this.handleCopyError.bind(this);
+    this.handleCopySuccess = this.handleCopySuccess.bind(this);
+    this.handleButtonMount = this.handleButtonMount.bind(this);
   }
 
-  shouldComponentUpdate(nextProps: Props): boolean {
-    return nextProps.link !== this.props.link ||
-           nextProps.onRevoke !== this.props.onRevoke ||
-           nextProps.className !== this.props.className;
+  componentWillReceiveProps(nextProps: Props) {
+    if (
+      nextProps.link !== this.props.link ||
+      nextProps.pending !== this.props.pending
+    ) {
+      this.setState({ copied: null });
+    }
   }
 
-  handleCopyClick(): void {
-    console.debug('handleCopyClick', this.props.link);
-    // selectText(this.link);
+  componentWillUnmount(): void {
+    if (this.clipboard) {
+      this.clipboard.destroy();
+      this.clipboard = null;
+    }
   }
 
-  setLink(element: HTMLElement): void {
-    this.link = element;
+  handleCopyError(event?: $FlowIssue): void {
+    this.setState({ copied: false });
+  }
+
+  handleCopySuccess(event?: $FlowIssue) {
+    this.setState({ copied: true });
+
+    if (event) {
+      event.clearSelection();
+    }
+  }
+
+  handleButtonMount(element: ?React.Element<any>) {
+    if (this.clipboard) {
+      this.clipboard.destroy();
+      this.clipboard = null;
+    }
+
+    const button = findDOMNode(element);
+    if (button) {
+      this.clipboard = new Clipboard(button, {
+        text: () => {
+          // this method will be called
+          // each time user press copy button
+          this.setState({ copied: null });
+
+          return this.props.link;
+        }
+      });
+
+      this.clipboard.on('error', this.handleCopyError);
+      this.clipboard.on('success', this.handleCopySuccess);
+    }
+  }
+
+  renderLink(): React.Element<any> {
+    const { link, pending } = this.props;
+    if (pending) {
+      return <Spinner type="dotted" />;
+    }
+
+    return (
+      <a href={link} target="_blank" rel="nofollow noopener">
+        {link}
+      </a>
+    );
   }
 
   render(): React.Element<any> {
-    const { link } = this.props;
+    const { pending } = this.props;
+    const { copied } = this.state;
     const className = classNames(styles.container, this.props.className);
 
     return (
       <div className={className}>
         <div className={styles.block}>
-          <div className={styles.link} ref={this.setLink}>{link}</div>
-          <Button wide theme="primary" onClick={this.handleCopyClick}>Copy Link</Button>
+          <div className={styles.link}>
+            {this.renderLink()}
+          </div>
+          <Button
+            wide
+            theme={copied ? 'success' : 'primary'}
+            disabled={pending}
+            ref={this.handleButtonMount}
+          >
+            <Text id={`ActivityInvite.${copied ? 'copied' : 'copy'}`} />
+          </Button>
         </div>
         <hr className={styles.hr} />
         <div className={styles.block}>
-          <a className={styles.revoke} onClick={this.props.onRevoke}>
-            Revoke Invitation Link
-          </a>
+          <Button className={styles.revoke} theme="link" onClick={this.props.onRevoke}>
+            <Text id="ActivityInvite.revoke" />
+          </Button>
         </div>
       </div>
     );
