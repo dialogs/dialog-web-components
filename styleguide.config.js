@@ -28,6 +28,7 @@ module.exports = {
     const source = path.join(__dirname, 'src');
     const whitelist = [
       source,
+      path.join(__dirname, 'node_modules/@dlghq/markdown'),
       path.join(__dirname, 'node_modules/@dlghq/react-l10n'),
       path.join(__dirname, 'node_modules/@dlghq/dialog-types')
     ];
@@ -51,8 +52,11 @@ module.exports = {
         'postcss'
       ]
     }, {
-      test: /\.json/,
-      include: whitelist,
+      test: /\.json$/,
+      include: [
+        ...whitelist,
+        path.join(__dirname, 'node_modules/entities')
+      ],
       loader: 'json'
     }, {
       test: /\.yml$/,

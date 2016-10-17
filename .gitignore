@@ -2,6 +2,9 @@
 node_modules/
 npm-debug.log
 
+# Yarn
+yarn.lock
+
 # Build
 /src/index.js
 /src/messages.json

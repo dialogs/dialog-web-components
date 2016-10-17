@@ -3,8 +3,14 @@ Text:
 ```
 const textContent = {
   type: 'text',
-  text: 'Hello, world!'
-};
+  text: `
+Hello, world!
+>test
+>foo
+\`\`\`
+const foo = bar;
+\`\`\`
+`};
 <MessageContent content={textContent} />
 ```
 

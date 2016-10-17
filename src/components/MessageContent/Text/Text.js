@@ -5,22 +5,31 @@
 
 import React from 'react';
 import classNames from 'classnames';
+import markdown from '@dlghq/markdown';
 import styles from './Text.css';
 
-export type TextProps = {
+export type Props = {
   text: string,
   service?: boolean
 };
 
-function Text(props: TextProps) {
-  const className = classNames(styles.root, {
-    [styles.service]: props.service
-  });
+function Text(props: Props) {
+  if (props.service) {
+    return (
+      <div className={classNames(styles.root, styles.service)}>
+        {props.text}
+      </div>
+    );
+  }
+
+  const html = markdown(props.text);
 
   return (
-    <p className={className}>
-      {props.text}
-    </p>
+    <div
+      className={styles.root}
+      // eslint-disable-next-line
+      dangerouslySetInnerHTML={{ __html: html }}
+    />
   );
 }
 
