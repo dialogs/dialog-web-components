@@ -35,7 +35,7 @@ class Message extends Component {
     const { message: { content, sender, date } } = this.props;
 
     return (
-      <div className={styles.root}>
+      <div className={styles.container}>
         <div className={styles.avatar}>
           <PeerAvatar peer={sender} size="large" />
         </div>

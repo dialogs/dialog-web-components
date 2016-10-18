@@ -14,7 +14,7 @@
   --message-timestamp-color: color(#000 alpha(60%));
 }
 
-.root {
+.container {
   all: initial;
   position: relative;
   display: flex;
