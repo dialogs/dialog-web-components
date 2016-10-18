@@ -186,7 +186,8 @@
 }
 
 /* View */
-.default {}
+.default {
+}
 
 .link {
   background-color: transparent !important;
@@ -275,7 +276,6 @@
     &[disabled] {
       color: var(--button-warning-disabled-background-color);
     }
-
   }
 }
 
