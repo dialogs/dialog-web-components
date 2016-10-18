@@ -13,6 +13,7 @@ import ModalBody from '../ModalBody/ModalBody';
 import ModalFooter from '../ModalFooter/ModalFooter';
 import Icon from '../Icon/Icon';
 import Radio from '../Radio/Radio';
+import RadioGroup from '../Radio/RadioGroup';
 import Button from '../Button/Button';
 import Input from '../Input/Input';
 import PeerAvatar from '../PeerAvatar/PeerAvatar';
@@ -81,33 +82,25 @@ class CreateNewModal extends PureComponent {
           <ModalClose onClick={this.props.onClose} />
         </ModalHeader>
         <ModalBody className={styles.type}>
-          <Radio
-            onChange={this.handleChange}
-            name="type"
-            value="group"
-            defaultChecked={type === 'group'}
-          >
-            <Text id="CreateNewModal.type.group" className={styles.typeLabel} />
-          </Radio>
-          <Text
-            className={styles.typeHint}
-            id="CreateNewModal.hint.group"
-            tagName="div"
-          />
-          <br />
-          <Radio
-            onChange={this.handleChange}
-            name="type"
-            value="channel"
-            defaultChecked={type === 'channel'}
-          >
-            <Text id="CreateNewModal.type.channel" className={styles.typeLabel} />
-          </Radio>
-          <Text
-            className={styles.typeHint}
-            id="CreateNewModal.hint.channel"
-            tagName="div"
-          />
+          <RadioGroup name="type" value={type} onChange={this.handleChange}>
+            <Radio value="group">
+              <Text id="CreateNewModal.type.group" className={styles.typeLabel} />
+            </Radio>
+            <Text
+              className={styles.typeHint}
+              id="CreateNewModal.hint.group"
+              tagName="div"
+            />
+            <br />
+            <Radio value="channel">
+              <Text id="CreateNewModal.type.channel" className={styles.typeLabel} />
+            </Radio>
+            <Text
+              className={styles.typeHint}
+              id="CreateNewModal.hint.channel"
+              tagName="div"
+            />
+          </RadioGroup>
         </ModalBody>
         <ModalFooter className={styles.footer}>
           <Button

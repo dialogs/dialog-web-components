@@ -1,54 +1,36 @@
 Basic Radio:
 
 ```
-const initialState = {
-  value: 'group'
-};
+const RadioGroup = require('./RadioGroup').default;
+
+initialState = { value: 'group' };
 const handleChange = (value) => setState({ value });
 
 <div>
-  <h3>Current value: { state.value }</h3>
+  <h3>Current value: {state.value}</h3>
   <hr />
-  <Radio
-    value={'group'}
-    defaultChecked={'group' === state.value}
-    onChange={handleChange}
-    name="type1"
-  />
-  <Radio
-    value={'channel'}
-    defaultChecked={'channel' === state.value}
-    onChange={handleChange}
-    name="type1"
-  />
+  <RadioGroup name="radio_basic" value={state.value} onChange={handleChange}>
+    <Radio value="group" />
+    <Radio value="channel" />
+  </RadioGroup>
 </div>
 ```
 
 You can render labeled content as children of Radio component:
 
 ```
-const initialState = {
-  value: 'group'
-};
+const RadioGroup = require('./RadioGroup').default;
+
+initialState = { value: 'group' };
 const handleChange = (value) => setState({ value });
 
-<div>
-  <Radio
-    value={'group'}
-    defaultChecked={'group' === state.value}
-    onChange={handleChange}
-    name="type2"
-  >
+<RadioGroup name="radio_labeled" value={state.value} onChange={handleChange}>
+  <Radio value="group">
     Group
   </Radio>
   <br />
-  <Radio
-    value={'channel'}
-    defaultChecked={'channel' === state.value}
-    onChange={handleChange}
-    name="type2"
-  >
+  <Radio value="channel">
     Channel
   </Radio>
-</div>
+</RadioGroup>
 ```

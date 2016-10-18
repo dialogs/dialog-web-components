@@ -3,52 +3,47 @@
  * @flow
  */
 
-import React, { Component } from 'react';
+import type { Context } from '../RadioGroup/RadioGroup';
+import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
 import styles from './Radio.css';
 
 export type Props = {
   className?: string,
   children?: any,
-  value: string | boolean,
-  name: string,
-  defaultChecked: boolean,
-  onChange: Function
-}
+  id?: string,
+  value: string
+};
 
 class Radio extends Component {
   props: Props;
+  context: Context;
+  handleChange: Function;
 
-  handleChange: EventHandler;
+  static contextTypes = {
+    radioGroup: PropTypes.object.isRequired
+  };
 
-  constructor(props: Props) {
-    super(props);
+  constructor(props: Props, context: Context) {
+    super(props, context);
 
     this.handleChange = this.handleChange.bind(this);
   }
 
-  shouldComponentUpdate(nextProps: Props): boolean {
-    return nextProps.children !== this.props.children ||
+  shouldComponentUpdate(nextProps: Props, nextState: any, nextContext): boolean {
+    return nextContext !== this.context ||
+           nextProps.value !== this.props.value ||
+           nextProps.children !== this.props.children ||
            nextProps.className !== this.props.className ||
-           nextProps.name !== this.props.name ||
-           nextProps.value !== this.props.value;
+           nextProps.id !== this.props.id;
   }
 
   handleChange(event: $FlowIssue): void {
-    let value = event.target.value;
-
-    if (event.target.value === 'true') {
-      value = true;
-    } else if (event.target.value === 'false') {
-      value = false;
-    }
-
-    this.props.onChange(value, event);
+    this.context.radioGroup.onChange(event.target.value, event);
   }
 
   renderChildren(): ?React.Element<any> {
     const { children } = this.props;
-
     if (!children) {
       return null;
     }
@@ -59,20 +54,22 @@ class Radio extends Component {
   }
 
   render(): React.Element<any> {
-    const { children, name, value, defaultChecked } = this.props;
-    const className = classNames(styles.container, {
-      [styles.labeled]: children
-    }, this.props.className);
+    const { children, id, value } = this.props;
+    const { radioGroup } = this.context;
+    const className = classNames(styles.container, this.props.className, {
+      [styles.labeled]: Boolean(children)
+    });
 
     return (
       <label className={className}>
         <input
-          type="radio"
-          name={name}
-          defaultChecked={defaultChecked}
-          value={value}
-          onChange={this.handleChange}
           className={styles.input}
+          type="radio"
+          id={id}
+          name={radioGroup.name}
+          value={value}
+          checked={value === radioGroup.value}
+          onChange={this.handleChange}
         />
         <span className={styles.radio} />
         {this.renderChildren()}
