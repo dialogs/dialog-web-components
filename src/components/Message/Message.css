@@ -45,6 +45,7 @@
   flex: 1 1 auto;
   align-content: flex-start;
   justify-content: flex-start;
+  @apply --flex-fix;
 }
 
 .header {

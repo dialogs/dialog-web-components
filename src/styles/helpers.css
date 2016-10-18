@@ -21,4 +21,9 @@
     cursor: default;
     user-select: none;
   }
+
+  --flex-fix {
+    min-width: 0;
+    min-height: 0;
+  }
 }
