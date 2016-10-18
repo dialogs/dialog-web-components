@@ -48,7 +48,7 @@
   "dependencies": {
     "@dlghq/dialog-types": "1.4.0",
     "@dlghq/markdown": "0.1.1",
-    "@dlghq/react-l10n": "0.4.0",
+    "@dlghq/react-l10n": "0.5.1",
     "classnames": "2.2.5",
     "clipboard": "1.5.13",
     "lodash": "4.16.4",
@@ -69,7 +69,7 @@
     "chalk": "1.1.3",
     "commander": "2.9.0",
     "ejs": "2.5.2",
-    "eslint": "3.8.0",
+    "eslint": "3.8.1",
     "eslint-plugin-react": "6.4.1",
     "flow-bin": "0.33.0",
     "glob": "7.1.1",

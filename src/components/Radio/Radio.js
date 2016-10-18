@@ -3,7 +3,7 @@
  * @flow
  */
 
-import type { Context } from '../RadioGroup/RadioGroup';
+import type { Context } from './RadioGroup';
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
 import styles from './Radio.css';
@@ -30,7 +30,7 @@ class Radio extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  shouldComponentUpdate(nextProps: Props, nextState: any, nextContext): boolean {
+  shouldComponentUpdate(nextProps: Props, nextState: any, nextContext: Context): boolean {
     return nextContext !== this.context ||
            nextProps.value !== this.props.value ||
            nextProps.children !== this.props.children ||

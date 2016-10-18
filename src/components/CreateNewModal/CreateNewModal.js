@@ -23,8 +23,8 @@ import type { Props } from './types';
 class CreateNewModal extends PureComponent {
   props: Props;
 
-  handleChange: EventHandler;
-  handleSubmit: EventHandler;
+  handleChange: Function;
+  handleSubmit: Function;
   handlePrevStepClick: Function;
   handleNextStepClick: Function;
   handleAvatarChangerClick: Function;

@@ -4,7 +4,7 @@
  */
 
 import type { ActivityGroupProfileProps } from './types';
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Text } from '@dlghq/react-l10n';
 import classNames from 'classnames';
 import PeerAvatar from '../PeerAvatar/PeerAvatar';
@@ -12,14 +12,8 @@ import Button from '../Button/Button';
 import Icon from '../Icon/Icon';
 import styles from './ActivityProfile.css';
 
-class ActivityGroupProfile extends Component {
+class ActivityGroupProfile extends PureComponent {
   props: ActivityGroupProfileProps;
-
-  shouldComponentUpdate(nextProps: ActivityGroupProfileProps): boolean {
-    return nextProps.info !== this.props.info ||
-           nextProps.children !== this.props.children ||
-           nextProps.className !== this.props.className;
-  }
 
   renderAvatar(): React.Element<any> {
     const { info: { name, bigAvatar, placeholder } } = this.props;
@@ -61,7 +55,7 @@ class ActivityGroupProfile extends Component {
         tagName="div"
         className={styles.creator}
         id="ActivityProfile.created_by"
-        values={{ name: adminId }}
+        values={{ name: String(adminId) }}
       />
     );
   }

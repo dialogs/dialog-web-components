@@ -11,8 +11,8 @@ general:
 notifications:
   title: Notifications
   legend:
-    private: Messages from people
-    group: Messages from groups
+    notifications: Notifications
+    privacy: Privacy
   notifications: Notifications
   preview: Message preview
   preview_hint: Show message text in notification

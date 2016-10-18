@@ -1,34 +1,100 @@
-Basic PreferencesModal:
-
 ```
 initialState = {
   isOpen: false,
   screen: 'general',
-  preferences: {
-    sendByEnter: false,
-    isSoundEnabled: true,
-    privateNotifications: true,
-    privateMessagePreview: false,
-    groupNotifications: false,
-    groupMessagePreview: false,
-    groupOnlyMentions: true
+  settings: {
+    value: null,
+    error: null,
+    pending: true
+  },
+  sessions: {
+    value: null,
+    error: null,
+    pending: true
+  },
+  blocked: {
+    value: null,
+    error: null,
+    pending: true
   }
 };
 
 const actions = {
-  onScreenChange: (screen) => setState({ screen }),
-  onChange: (preferences) => {
-    setState({ preferences });
-    console.debug(preferences);
+  onClose() {
+    setState({ isOpen: false })
   },
-  onSubmit: (preferences) => {
-    setState({ ...initialState });
-    console.debug(preferences);
-  }
+  onScreenChange(screen) {
+    setState({ screen });
+  },
+  onSettingsLoad() {
+    setState({
+      settings: {
+        ...state.settings,
+        pending: true
+      }
+    });
+
+    setTimeout(() => {
+      setState({
+        settings: {
+          value: {
+            isSendByEnter: true,
+            isSoundEffectsEnabled: false,
+            isOnlyMentionNotifications: true,
+            isGroupsNotificationsEnabled: false,
+            isShowNotificationsTextEnabled: true
+          },
+          error: null,
+          pending: false
+        }
+      });
+    }, 1000);
+  },
+  onSettingsChange(value) {
+    setState({
+      settings: {
+        value,
+        error: null,
+        pending: false
+      }
+    });
+  },
+  onSettingsSave(value) {
+    setState({
+      settings: {
+        ...state.settings,
+        pending: true
+      }
+    });
+
+    setTimeout(() => {
+      setState({
+        settings: {
+          ...state.settings,
+          value,
+          pending: false
+        }
+      });
+    }, 500);
+  },
+  onSessionsLoad() {
+
+  },
+  onSessionTerminate() {
+
+  },
+  onAllSessionsTerminate() {
+
+  },
+  onBlockedLoad() {
+
+  },
 };
 
 <div>
-  <Button onClick={() => setState({ isOpen: true })}>Open Preferences</Button>
+  <Button onClick={() => setState({ isOpen: true })}>
+    Open Preferences
+  </Button>
   {
     state.isOpen ? (
       <PreferencesModal

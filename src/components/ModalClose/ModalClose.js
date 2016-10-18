@@ -6,15 +6,23 @@
 import React from 'react';
 import classNames from 'classnames';
 import Icon from '../Icon/Icon';
+import Spinner from '../Spinner/Spinner';
 import styles from '../Modal/Modal.css';
 
 export type Props = {
   className?: string,
+  pending?: boolean,
   onClick: () => any
 };
 
 function ModalClose(props: Props): React.Element<any> {
   const className = classNames(styles.close, props.className);
+
+  if (props.pending) {
+    return (
+      <Spinner className={className} />
+    );
+  }
 
   return (
     <Icon

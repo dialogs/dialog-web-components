@@ -49,7 +49,7 @@ class MessageRead extends Component {
           className={className}
           id="MessageState.read_by_count"
           tagName="div"
-          values={{ count: readBy.length }}
+          values={{ count: String(readBy.length) }}
         />
       );
     }

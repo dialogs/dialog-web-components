@@ -3,29 +3,42 @@
  * @flow
  */
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import classNames from 'classnames';
+import Tab from './Tab';
 import styles from './Tabs.css';
 
 export type Props = {
   className?: string,
-  children: any
-}
+  current: string,
+  variants: Array<{ id: string, title: string }>,
+  onPick: (current: string) => any
+};
 
-class Tabs extends Component {
+class Tabs extends PureComponent {
   props: Props;
 
-  shouldComponentUpdate(nextProps: Props): boolean {
-    return nextProps.children !== this.props.children ||
-           nextProps.className !== this.props.className;
-  }
-
   render(): React.Element<any> {
+    const { current, variants } = this.props;
     const className = classNames(styles.container, this.props.className);
+
+    const tabs = variants.map(({ id, title }, index) => {
+      const active = id === current;
+
+      return (
+        <Tab
+          id={id}
+          key={index}
+          title={title}
+          active={active}
+          onPick={this.props.onPick}
+        />
+      );
+    });
 
     return (
       <ul className={className}>
-        {this.props.children}
+        {tabs}
       </ul>
     );
   }
