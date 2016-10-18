@@ -26,6 +26,14 @@ const codeLines = sections.reduce((result, section) => {
   ];
 }, []);
 
+codeLines.unshift('/* eslint-disable */\n');
+
+codeLines.unshift(
+`/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ */`
+);
+
 const code = codeLines.join('\n') + '\n';
 
 fs.writeFileSync(exportFile, code);
