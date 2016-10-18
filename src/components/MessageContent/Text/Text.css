@@ -10,6 +10,7 @@
 .container {
   all: initial;
   display: inline-block;
+  max-width: 100%;
   user-select: text;
   letter-spacing: -0.3px;
   font-family: var(--default-font-family);
@@ -45,11 +46,12 @@
   }
 
   & pre {
-    max-width: 100%;
+    overflow: auto;
     margin: var(--message-text-padding) calc(0 - var(--message-text-padding));
     padding: var(--message-text-padding);
-    white-space: pre-wrap;
-    word-wrap: break-word;
+    padding-bottom: calc(var(--message-text-padding) * 2);
+    white-space: pre;
+    word-wrap: normal;
     border-radius: var(--default-border-radius);
     background-color: color(#000 alpha(5%));
     box-shadow: inset 0 1px 1px 0 color(#000 alpha(10%));
@@ -87,6 +89,7 @@
     &:first-child {
       margin-top: 0;
     }
+
     &:last-child {
       margin-bottom: 0;
     }
