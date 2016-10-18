@@ -49,13 +49,12 @@
     overflow: auto;
     margin: var(--message-text-padding) calc(0 - var(--message-text-padding));
     padding: var(--message-text-padding);
-    padding-bottom: calc(var(--message-text-padding) * 2);
     white-space: pre;
     word-wrap: normal;
     border-radius: var(--default-border-radius);
     background-color: color(#000 alpha(5%));
     box-shadow: inset 0 1px 1px 0 color(#000 alpha(10%));
-    font-size: 14px;
+    font-size: 12px;
   }
 
   & h1,
