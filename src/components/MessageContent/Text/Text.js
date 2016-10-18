@@ -15,8 +15,10 @@ export type Props = {
 
 function Text(props: Props) {
   if (props.service) {
+    const className = classNames(styles.container, styles.service);
+
     return (
-      <div className={classNames(styles.root, styles.service)}>
+      <div className={className}>
         {props.text}
       </div>
     );
@@ -26,7 +28,7 @@ function Text(props: Props) {
 
   return (
     <div
-      className={styles.root}
+      className={styles.container}
       // eslint-disable-next-line
       dangerouslySetInnerHTML={{ __html: html }}
     />
