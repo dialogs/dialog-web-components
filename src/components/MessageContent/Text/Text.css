@@ -32,7 +32,7 @@
 
   & blockquote {
     margin: calc(var(--message-text-padding) + 2) 0;
-    padding: 2px 12px;
+    padding: 4px 12px;
     box-shadow: inset 2px 0 0 0 var(--color-info);
   }
 
@@ -62,16 +62,40 @@
   & h4,
   & h5,
   & h6 {
-    margin: 6px 0;
+    margin: var(--message-text-padding) 0;
     font-weight: 500;
     line-height: 1.4;
   }
 
   & ul,
   & ol {
-    margin: 4px 0;
+    margin: var(--message-text-padding) 0;
     padding: 0 0 0 16px;
   }
+
+  & ul,
+  & ol,
+  & h1,
+  & h2,
+  & h3,
+  & h4,
+  & h5,
+  & h6,
+  & p,
+  & blockquote,
+  & pre {
+    &:first-child {
+      margin-top: 0;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.wrapper {
+  display: block;
+  margin-bottom: var(--message-text-padding);
 }
 
 .service {
