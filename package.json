@@ -57,8 +57,7 @@
     "react-dom": "15.3.2",
     "react-draggable": "2.2.2",
     "react-modal": "1.5.2",
-    "react-tether": "0.5.2",
-    "webpack": "1.13.2"
+    "react-tether": "0.5.2"
   },
   "devDependencies": {
     "@dlghq/babel-preset-dialog": "2.3.2",
@@ -81,7 +80,8 @@
     "react-styleguidist": "4.0.1",
     "stylefmt": "4.3.1",
     "stylelint": "7.4.2",
-    "yml-loader": "1.1.0"
+    "yml-loader": "1.1.0",
+    "webpack": "1.13.2"
   },
   "pre-commit": {
     "colors": true,
