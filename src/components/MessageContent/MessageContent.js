@@ -11,17 +11,17 @@ import Photo from './Photo/Photo';
 import Document from './Document/Document';
 import Voice from './Voice/Voice';
 
-export type MessageContentProps = {
+export type Props = {
   content: MessageContentTypes
 };
 
-function MessageContent({ content, ...props }: MessageContentProps) {
+function MessageContent({ content, ...props }: Props) {
   switch (content.type) {
     case 'text':
-      return <Text text={content.text} {...props} />;
+      return <Text {...content} {...props} />;
 
     case 'service':
-      return <Text text={content.text} service {...props} />;
+      return <Text {...content} {...props} service />;
 
     case 'photo':
       return <Photo {...content} {...props} />;
