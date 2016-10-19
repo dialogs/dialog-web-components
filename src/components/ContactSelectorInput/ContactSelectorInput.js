@@ -1,7 +1,8 @@
 /**
  * Copyright 2016 Dialog LLC <info@dlg.im>
+ * @flow
  */
-// TODO: Add flow
+
 import type { Contact } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
 import { LocalizationContextType } from '@dlghq/react-l10n';
@@ -47,13 +48,19 @@ class ContactSelectorInput extends PureComponent {
     }
   }
 
-  renderChips(): ?React.Element<any>[] {
+  renderChips(): React.Element<any>[] {
     const { selected, contacts } = this.props;
-    const selectedContacts = selected.map((id) => contacts.find((contact) => contact.uid === id));
+    const chips = [];
+    selected.forEach((id) => {
+      const contact = contacts.find((item) => item.uid === id);
+      if (contact) {
+        chips.push(
+          <ContactSelectorChip contact={contact} key={contact.uid} />
+        );
+      }
+    });
 
-    return selectedContacts.map((contact) => (
-      <ContactSelectorChip contact={contact} key={contact.uid} />
-    ));
+    return chips;
   }
 
   render(): React.Element<any> {
