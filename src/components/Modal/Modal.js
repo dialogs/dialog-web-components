@@ -12,6 +12,7 @@ export type Props = {
   className?: string,
   children?: any,
   fullscreen?: boolean,
+  shouldCloseOnOverlayClick?: boolean,
   onClose: () => any
 };
 
@@ -27,6 +28,7 @@ function Modal(props: Props) {
       className={className}
       overlayClassName={overlayClassName}
       onRequestClose={props.onClose}
+      shouldCloseOnOverlayClick={props.shouldCloseOnOverlayClick || true}
     >
       <div className={styles.wrapper}>
         {props.children}
