@@ -6,7 +6,7 @@
 
 :root {
   --profile-modal-font-family: var(--default-font-family);
-  --profile-modal-width: 634px;
+  --profile-modal-width: 640px;
 }
 
 /* Styles */
@@ -30,6 +30,7 @@
 
 .avatarChanger {
   position: relative;
+  line-height: 0;
 }
 
 .avatar {
@@ -57,6 +58,11 @@
 
 .nick {
   margin-top: 32px;
+}
+
+.nickInput {
+  margin-top: 32px;
+  padding-bottom: 10px;
 }
 
 .nickButton {
@@ -118,4 +124,8 @@
 .contactContentIcon {
   margin-left: 16px;
   color: color(#000 alpha(40%));
+}
+
+.footer {
+  padding: 0;
 }

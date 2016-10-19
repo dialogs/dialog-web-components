@@ -33,7 +33,11 @@ const actions = {
   onSubmit: (profile) => {
     console.debug(profile);
     setState({ ...initialState });
-  }
+  },
+  onAvatarChange: (avatar) => {
+    console.debug(avatar);
+  },
+  onClose: () => setState({ ...initialState })
 };
 
 <div>

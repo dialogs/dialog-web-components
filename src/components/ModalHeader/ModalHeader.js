@@ -14,11 +14,9 @@ export type Props = {
 };
 
 function ModalHeader(props: Props): React.Element<any> {
-  const className = classNames(
-    styles.header,
-    { [styles.border]: props.withBorder },
-    props.className
-  );
+  const className = classNames(styles.header, {
+    [styles.border]: props.withBorder
+  }, props.className);
 
   return (
     <header className={className}>
