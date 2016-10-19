@@ -3,29 +3,36 @@
  * @flow
  */
 
-import type { Contact as ContactType } from '@dlghq/dialog-types';
+import type { Contact } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
+import { filter } from 'fuzzaldrin';
 import classNames from 'classnames';
 import ContactListItem from '../ContactListItem/ContactListItem';
 import styles from './ContactList.css';
 
-export type Contact = ContactType & {
-  isSelected: boolean,
-  isHovered: boolean
-};
-
 export type Props = {
   className?: string,
-  contacts: Contact[]
+  query: string,
+  selected: number[],
+  contacts: Contact[],
+  onSelect: (id: number) => void
 };
 
 class ContactList extends PureComponent {
   props: Props;
 
   renderContacts(): React.Element<any>[] {
-    const { contacts } = this.props;
+    const { contacts, selected, query } = this.props;
+    const filteredContacts = filter(contacts, query, { key: 'name' });
 
-    return contacts.map((contact) => <ContactListItem key={contact.uid} contact={contact} />);
+    return filteredContacts.map((contact) => (
+      <ContactListItem
+        key={contact.uid}
+        contact={contact}
+        onClick={this.props.onSelect}
+        isSelected={selected.indexOf(contact.uid) > -1}
+      />
+    ));
   }
 
   render(): React.Element<any> {

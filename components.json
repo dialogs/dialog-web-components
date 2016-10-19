@@ -13,7 +13,6 @@
       "Typing",
       "ConnectionStatus",
       "Call",
-      "ContactList",
       "Tabs"
     ]
   },
@@ -78,6 +77,13 @@
       "MessageDivider",
       "FakeMessage",
       "EmptyChat"
+    ]
+  },
+  {
+    "name": "Contacts",
+    "components": [
+      "ContactSelector",
+      "ContactList"
     ]
   },
   {

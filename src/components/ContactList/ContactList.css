@@ -36,34 +36,43 @@
   flex: 1 1 auto;
   @apply --no-select;
 
-  &::before,
+  /*&::before,*/
   &::after {
     position: absolute;
     right: var(--contact-list-item-padding);
     left: var(--contact-list-item-padding);
     height: 1px;
+    bottom: 0;
     content: '';
+    display: block;
     background-color: var(--contact-list-item-border-color);
   }
 
-  &::before {
-    top: 0;
-    display: none;
-  }
+  /*&::before {*/
+    /*top: 0;*/
+    /*display: none;*/
+  /*}*/
 
-  &::after {
-    bottom: 0;
-  }
+  /*&::after {*/
+    /*bottom: 0;*/
+  /*}*/
 
-  &:first-child {
-    &::before {
-      display: block;
+  &:last-child {
+    &::after {
+      display: none;
     }
   }
 }
 
 .hovered {
   background-color: var(--contact-list-item-hover-background);
+}
+
+.clickable {
+  cursor: pointer;
+  &:hover {
+    background-color: var(--contact-list-item-hover-background);
+  }
 }
 
 .wrapper {

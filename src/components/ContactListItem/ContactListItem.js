@@ -11,11 +11,24 @@ import Icon from '../Icon/Icon';
 import styles from '../ContactList/ContactList.css';
 
 export type Props = {
-  contact: Contact
+  contact: Contact,
+  isSelected: boolean,
+  onClick: (id: number) => void
 };
 
 class ContactListItem extends PureComponent {
   props: Props;
+  handleClick: Function;
+
+  constructor(props: Props): void {
+    super(props);
+
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(): void {
+    this.props.onClick(this.props.contact.uid);
+  }
 
   renderAbout(): ?React.Element<any> {
     const { contact: { about } } = this.props;
@@ -40,8 +53,8 @@ class ContactListItem extends PureComponent {
     );
   }
 
-  renderSelector(): React.Element<any> {
-    const { contact: { isSelected } } = this.props;
+  renderStatus(): React.Element<any> {
+    const { isSelected } = this.props;
 
     if (!isSelected) {
       return (
@@ -59,11 +72,12 @@ class ContactListItem extends PureComponent {
   render(): React.Element<any> {
     const { contact: { avatar, placeholder, name, isHovered } } = this.props;
     const className = classNames(styles.contact, {
-      [styles.hovered]: isHovered
+      [styles.hovered]: isHovered,
+      [styles.clickable]: this.props.onClick
     });
 
     return (
-      <div className={className}>
+      <div className={className} onClick={this.handleClick}>
         <div className={styles.wrapper}>
           <Avatar
             className={styles.avatar}
@@ -73,7 +87,7 @@ class ContactListItem extends PureComponent {
             size="large"
           />
           {this.renderText()}
-          {this.renderSelector()}
+          {this.renderStatus()}
         </div>
       </div>
     );
