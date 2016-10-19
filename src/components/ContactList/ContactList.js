@@ -5,7 +5,7 @@
 
 import type { Contact } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
-import { filter } from 'fuzzaldrin';
+import filterByQuery from '../../utils/filterByQuery';
 import classNames from 'classnames';
 import ContactListItem from '../ContactListItem/ContactListItem';
 import styles from './ContactList.css';
@@ -23,7 +23,7 @@ class ContactList extends PureComponent {
 
   renderContacts(): React.Element<any>[] {
     const { contacts, selected, query } = this.props;
-    const filteredContacts = filter(contacts, query, { key: 'name' });
+    const filteredContacts = filterByQuery(query, contacts, (contact) => contact.name);
 
     return filteredContacts.map((contact) => (
       <ContactListItem
