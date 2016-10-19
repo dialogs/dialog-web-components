@@ -3,17 +3,14 @@
  * @flow
  */
 
+import type { MessageContentText } from '@dlghq/dialog-types';
 import React from 'react';
 import classNames from 'classnames';
 import markdown from '@dlghq/markdown';
+import MessageMedia from '../../MessageMedia/MessageMedia';
 import styles from './Text.css';
 
-export type Props = {
-  text: string,
-  service?: boolean
-};
-
-function Text(props: Props) {
+function Text(props: MessageContentText) {
   if (props.service) {
     const className = classNames(styles.container, styles.service);
 
@@ -24,13 +21,24 @@ function Text(props: Props) {
     );
   }
 
-  const html = markdown(props.text);
+  if (props.media) {
+    return (
+      <div className={styles.container}>
+        <div
+          className={styles.wrapper}
+          // eslint-disable-next-line
+          dangerouslySetInnerHTML={{ __html: markdown(props.text) }}
+        />
+        <MessageMedia media={props.media} />
+      </div>
+    );
+  }
 
   return (
     <div
       className={styles.container}
       // eslint-disable-next-line
-      dangerouslySetInnerHTML={{ __html: html }}
+      dangerouslySetInnerHTML={{ __html: markdown(props.text) }}
     />
   );
 }

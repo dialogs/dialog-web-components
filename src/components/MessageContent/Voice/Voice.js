@@ -28,6 +28,10 @@ class Voice extends Component {
 
   handleToggleTranscription: () => void;
 
+  static defaultProps = {
+    isTranscriptionEnabled: false
+  };
+
   constructor(props: MessageContentVoiceProps) {
     super(props);
 

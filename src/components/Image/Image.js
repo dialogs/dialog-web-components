@@ -1,4 +1,8 @@
-import React, { Component, PropTypes } from 'react';
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ */
+// TODO: Add flow
+import React, { Component } from 'react';
 import classNames from 'classnames';
 import getImageSize from '../../utils/getImageSize';
 import styles from './Image.css';
@@ -7,24 +11,38 @@ const STATE_LOADING = 1;
 const STATE_SUCCESS = 2;
 const STATE_ERROR = 3;
 
+export type Props = {
+  className?: string,
+  src: string,
+  alt?: string,
+  preview?: string,
+  width: number,
+  height: number,
+  maxWidth: number,
+  maxHeight: number
+}
+
+export type State = {
+  state: 1 | 2 | 3,
+  error: ?any
+}
+
 class Image extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-    src: PropTypes.string,
-    alt: PropTypes.string,
-    preview: PropTypes.string,
-    width: PropTypes.number.isRequired,
-    height: PropTypes.number.isRequired,
-    maxWidth: PropTypes.number.isRequired,
-    maxHeight: PropTypes.number.isRequired
-  };
+  props: Props;
+  state: State;
+
+  image: HTMLImageElement;
+  getSource: Function;
+  getSize: Function;
+  startFetch: Function;
+  stopFetch: Function;
 
   static defaultProps = {
     maxWidth: 400,
     maxHeight: 400
   };
 
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
@@ -33,32 +51,32 @@ class Image extends Component {
     };
   }
 
-  componentWillMount() {
+  componentWillMount(): void {
     if (this.props.src) {
       this.startFetch(this.props.src);
     }
   }
 
-  componentWillReceiveProps({ src }) {
+  componentWillReceiveProps({ src }: Props): void {
     if (src && this.props.src !== src) {
       this.startFetch(src);
     }
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
+  shouldComponentUpdate(nextProps: Props, nextState: State): boolean {
     return nextState.state !== this.state.state ||
-      nextProps.src !== this.props.src ||
-      nextProps.alt !== this.props.alt ||
-      nextProps.preview !== this.props.preview ||
-      nextProps.width !== this.props.width ||
-      nextProps.height !== this.props.height;
+           nextProps.src !== this.props.src ||
+           nextProps.alt !== this.props.alt ||
+           nextProps.preview !== this.props.preview ||
+           nextProps.width !== this.props.width ||
+           nextProps.height !== this.props.height;
   }
 
-  componentWillUnmount() {
+  componentWillUnmount(): void {
     this.stopFetch();
   }
 
-  getSource() {
+  getSource(): string {
     const { preview, src } = this.props;
     const { state } = this.state;
 
@@ -75,7 +93,7 @@ class Image extends Component {
     return getImageSize(width, height, maxWidth, maxHeight);
   }
 
-  startFetch(src) {
+  startFetch(src: string): void {
     this.stopFetch();
     this.image = document.createElement('img');
 
@@ -90,7 +108,7 @@ class Image extends Component {
     this.image.src = src;
   }
 
-  stopFetch() {
+  stopFetch(): void {
     if (this.image) {
       this.image.src = null;
       this.image.onload = null;
@@ -99,7 +117,7 @@ class Image extends Component {
     }
   }
 
-  render() {
+  render(): React.Element<any> {
     const source = this.getSource();
     const { width, height } = this.getSize();
     const className = classNames(styles.root, this.props.className);
