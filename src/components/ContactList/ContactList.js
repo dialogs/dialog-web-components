@@ -21,6 +21,10 @@ export type Props = {
 class ContactList extends PureComponent {
   props: Props;
 
+  static defaultProps = {
+    query: ''
+  };
+
   renderContacts(): React.Element<any>[] {
     const { contacts, selected, query } = this.props;
     const filteredContacts = filterByQuery(query, contacts, (contact) => contact.name);
