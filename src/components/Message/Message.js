@@ -3,23 +3,28 @@
  * @flow
  */
 
-import type { MessageProps } from './types';
-import React, { Component } from 'react';
+import type {
+  // Peer,
+  Message as MessageType,
+  MessageState as MessageStateType
+} from '@dlghq/dialog-types';
+import React, { PureComponent } from 'react';
 import MessageContent from '../MessageContent/MessageContent';
 import PeerAvatar from '../PeerAvatar/PeerAvatar';
 import MessageState from '../MessageState/MessageState';
-import MessageActions from './MessageActions/MessageActions';
 import styles from './Message.css';
 
-class Message extends Component {
-  props: MessageProps;
+export type Props = {
+  // peer: Peer,
+  message: MessageType,
+  state: MessageStateType,
+  renderActions?: () => React.Element<any>[]
+};
 
-  shouldComponentUpdate(nextProps: MessageProps) {
-    return nextProps.message !== this.props.message ||
-           nextProps.state !== this.props.state;
-  }
+class Message extends PureComponent {
+  props: Props;
 
-  renderState() {
+  renderState(): ?React.Element<any> {
     const { state } = this.props;
 
     if (state === 'unknown') {
@@ -31,7 +36,19 @@ class Message extends Component {
     );
   }
 
-  render() {
+  renderActions(): ?React.Element<any> {
+    if (!this.props.renderActions) {
+      return null;
+    }
+
+    return (
+      <div className={styles.actions}>
+        {this.props.renderActions()}
+      </div>
+    );
+  }
+
+  render(): React.Element<any> {
     const { message: { content, sender, date } } = this.props;
 
     return (
@@ -49,7 +66,7 @@ class Message extends Component {
             <MessageContent content={content} />
           </div>
         </div>
-        <MessageActions className={styles.actions} />
+        {this.renderActions()}
       </div>
     );
   }
