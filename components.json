@@ -97,5 +97,11 @@
       "ActivityListInvite",
       "ActivityListMembers"
     ]
+  },
+  {
+    "name": "Helpers",
+    "components": [
+      "Trigger"
+    ]
   }
 ]
