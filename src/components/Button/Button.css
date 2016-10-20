@@ -50,7 +50,10 @@
   box-sizing: border-box;
   cursor: pointer;
   user-select: none;
-  transition: background var(--default-transition-duration) ease, box-shadow var(--default-transition-duration) ease;
+  transition:
+    background var(--default-transition-duration) ease-in-out,
+    box-shadow var(--default-transition-duration) ease-in-out,
+    color var(--default-transition-duration) ease-in-out;
   text-align: center;
   border: 0;
   outline: none;
