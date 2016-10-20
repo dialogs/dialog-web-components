@@ -12,7 +12,7 @@ export type TriggerHandler =
 
 export type Props = {
   renderChild: () => React.Element<any>,
-  children: React.Element<any>,
+  children?: React.Element<any>,
   openHandler: TriggerHandler[],
   closeHandler: TriggerHandler[],
   closeOnDocumentClick: boolean,
@@ -34,6 +34,11 @@ class Trigger extends Component {
   handleClose: Function;
   setListener: Function;
   removeListener: Function;
+
+  static defaultProps = {
+    closeOnDocumentClick: false,
+    closeOnDocumentScroll: false
+  };
 
   constructor(props: Props): void {
     super(props);
@@ -105,10 +110,13 @@ class Trigger extends Component {
 
   renderTrigger(): React.Element<any> {
     const { openHandler, closeHandler } = this.props;
+    const { isOpen } = this.state;
     const newProps = {};
+    const handlers = isOpen ? closeHandler : openHandler;
 
-    openHandler.forEach((handler) => Object.assign(newProps, { [handler]: this.handleOpen }));
-    closeHandler.forEach((handler) => Object.assign(newProps, { [handler]: this.handleClose }));
+    handlers.forEach((handler) => {
+      Object.assign(newProps, { [handler]: isOpen ? this.handleClose : this.handleOpen });
+    });
 
     return (
       <span {...newProps}>{this.props.children}</span>
