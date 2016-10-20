@@ -43,7 +43,7 @@ class AttachmentMeta extends Component {
     return (
       <td className={styles.metaBlock}>
         <Text id="AttachmentModal.sending_method" tagName="div" className={styles.metaHeading} />
-        <div>
+        <div className={styles.metaText}>
           <Switcher
             id="send_as_file"
             name="send_as_file"
