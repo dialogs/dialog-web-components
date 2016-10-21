@@ -10,10 +10,17 @@ import markdown from '@dlghq/markdown';
 import MessageMedia from '../../MessageMedia/MessageMedia';
 import styles from './Text.css';
 
-function Text(props: MessageContentText) {
-  if (props.service) {
-    const className = classNames(styles.container, styles.service);
+export type Props = MessageContentText & {
+  service?: boolean,
+  className?: string
+}
 
+function Text(props: Props) {
+  const className = classNames(styles.container, {
+    [styles.service]: props.service
+  }, props.className);
+
+  if (props.service) {
     return (
       <div className={className}>
         {props.text}
@@ -23,7 +30,7 @@ function Text(props: MessageContentText) {
 
   if (props.media) {
     return (
-      <div className={styles.container}>
+      <div className={className}>
         <div
           className={styles.wrapper}
           // eslint-disable-next-line
@@ -36,7 +43,7 @@ function Text(props: MessageContentText) {
 
   return (
     <div
-      className={styles.container}
+      className={className}
       // eslint-disable-next-line
       dangerouslySetInnerHTML={{ __html: markdown(props.text) }}
     />

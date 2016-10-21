@@ -2,7 +2,6 @@
  * Copyright 2016 Dialog LLC <info@dlg.im>
  * @flow
  */
-/* eslint react/require-optimization: 0 */
 
 import type { MessageContent as MessageContentTypes } from '@dlghq/dialog-types';
 import React from 'react';
@@ -12,7 +11,8 @@ import Document from './Document/Document';
 import Voice from './Voice/Voice';
 
 export type Props = {
-  content: MessageContentTypes
+  content: MessageContentTypes,
+  className?: string
 };
 
 function MessageContent({ content, ...props }: Props) {
