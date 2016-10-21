@@ -4,67 +4,38 @@
  */
 
 import React, { Component } from 'react';
-import TetherComponent from 'react-tether';
+import Trigger from '../Trigger/Trigger';
 import Icon from '../Icon/Icon';
 import styles from '../SidebarHeader/SidebarHeader.css';
 
-export type SidebarHeaderMenuProps = {
+export type Props = {
   appName: string,
   logo: React.Element<any>,
-  children?: any
+  children: React.Element<any>
 };
-export type SidebarHeaderMenuState = {
-  isOpen: boolean
-}
 
 class SidebarHeaderMenu extends Component {
-  props: SidebarHeaderMenuProps;
-  state: SidebarHeaderMenuState;
+  props: Props;
 
-  handleMenuOpen: EventHandler;
-  handleMenuClose: EventHandler;
-  setListener: () => void;
-  removeListener: () => void;
+  getChildren: () => React.Element<any>;
 
-  constructor(props: SidebarHeaderMenuProps) {
+  constructor(props: Props) {
     super(props);
 
-    this.state = {
-      isOpen: false
-    };
-
-    this.handleMenuOpen = this.handleMenuOpen.bind(this);
-    this.handleMenuClose = this.handleMenuClose.bind(this);
-    this.setListener = this.setListener.bind(this);
-    this.removeListener = this.removeListener.bind(this);
+    this.getChildren = this.getChildren.bind(this);
   }
 
-  shouldComponentUpdate(nextProps: SidebarHeaderMenuProps, nextState: SidebarHeaderMenuState) {
-    return nextState.isOpen !== this.state.isOpen ||
-           nextProps.logo !== this.props.logo ||
+  shouldComponentUpdate(nextProps: Props) {
+    return nextProps.logo !== this.props.logo ||
            nextProps.children !== this.props.children ||
            nextProps.appName !== this.props.appName;
   }
 
-  handleMenuOpen(): void {
-    this.setState({ isOpen: true });
-    this.setListener();
+  getChildren(): React.Element<any> {
+    return this.props.children;
   }
 
-  handleMenuClose(): void {
-    this.setState({ isOpen: false });
-    this.removeListener();
-  }
-
-  setListener(): void {
-    document.addEventListener('click', this.handleMenuClose);
-  }
-
-  removeListener(): void {
-    document.removeEventListener('click', this.handleMenuClose);
-  }
-
-  renderLogo() {
+  renderLogo(): ?React.Element<any> {
     const { logo } = this.props;
 
     if (!logo) {
@@ -76,42 +47,33 @@ class SidebarHeaderMenu extends Component {
     );
   }
 
-  renderToggler() {
+  render(): React.Element<any> {
     const { appName } = this.props;
-    const { isOpen } = this.state;
-    const arrowGlyph = isOpen ? 'arrow_drop_up' : 'arrow_drop_down';
+    const options = {
+      attachment: 'top left',
+      targetAttachment: 'bottom left',
+      constraints: [{
+        to: 'scrollParent',
+        attachment: 'together'
+      }],
+      targetOffset: '10px 24px'
+    };
 
     return (
-      <a onClick={this.handleMenuOpen} className={styles.menu}>
-        {this.renderLogo()}
-        <div className={styles.appName}>{appName}</div>
-        <Icon glyph={arrowGlyph} className={styles.arrow} />
-      </a>
-    );
-  }
-
-  renderChildren() {
-    const { children } = this.props;
-    const { isOpen } = this.state;
-
-    if (!isOpen) {
-      return null;
-    }
-
-    return children;
-  }
-
-  render() {
-    return (
-      <TetherComponent
-        attachment="top left"
-        targetAttachment="bottom left"
-        constraints={[{ to: 'scrollParent', attachment: 'together' }]}
-        offset="-10px -24px"
+      <Trigger
+        options={options}
+        renderChild={this.getChildren}
+        openHandler={['onClick']}
+        closeHandler={['onClick']}
+        closeOnDocumentClick
+        closeOnDocumentScroll
       >
-        {this.renderToggler()}
-        {this.renderChildren()}
-      </TetherComponent>
+        <a className={styles.menu}>
+          {this.renderLogo()}
+          <div className={styles.appName}>{appName}</div>
+          <Icon glyph="arrow_drop_down" className={styles.arrow} />
+        </a>
+      </Trigger>
     );
   }
 }
