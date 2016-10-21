@@ -17,8 +17,8 @@ export type Props = {
   closeHandler: TriggerHandler[],
   closeOnDocumentClick: boolean,
   closeOnDocumentScroll: boolean,
-  // openDelay?: number,
-  // closeDelay?: number,
+  openDelay?: number,
+  closeDelay?: number,
   options: any
 };
 
@@ -59,19 +59,39 @@ class Trigger extends Component {
            nextProps.children !== this.props.children ||
            nextProps.openHandler !== this.props.openHandler ||
            nextProps.closeHandler !== this.props.closeHandler ||
+           nextProps.openDelay !== this.props.openDelay ||
+           nextProps.closeDelay !== this.props.closeDelay ||
            nextProps.closeOnDocumentClick !== this.props.closeOnDocumentClick ||
            nextProps.closeOnDocumentScroll !== this.props.closeOnDocumentScroll ||
            nextProps.options !== this.props.options;
   }
 
   handleOpen(): void {
-    this.setState({ isOpen: true });
-    this.setListener();
+    const { openDelay } = this.props;
+
+    if (openDelay) {
+      setTimeout(() => {
+        this.setState({ isOpen: true });
+        this.setListener();
+      }, openDelay);
+    } else {
+      this.setState({ isOpen: true });
+      this.setListener();
+    }
   }
 
   handleClose(): void {
-    this.setState({ isOpen: false });
-    this.removeListener();
+    const { closeDelay } = this.props;
+
+    if (closeDelay) {
+      setTimeout(() => {
+        this.setState({ isOpen: false });
+        this.removeListener();
+      }, closeDelay);
+    } else {
+      this.setState({ isOpen: false });
+      this.removeListener();
+    }
   }
 
   setListener(): void {
