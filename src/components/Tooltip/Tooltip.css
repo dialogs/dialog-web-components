@@ -1,0 +1,36 @@
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+:root {
+  --tooltip-font-family: var(--default-font-family);
+  --tooltip-font-size: 17px;
+  --tooltip-background-color: color(#000 alpha(70%));
+  --tooltip-color: #fff;
+  --tooltip-offset: 6px;
+}
+
+/* Reset */
+.tooltip {
+  all: initial;
+}
+
+/* Styles */
+.tooltip {
+  font-family: var(--tooltip-font-family);
+  font-size: var(--tooltip-font-size);
+  color: var(--tooltip-color);
+  display: inline-block;
+  background-color: var(--tooltip-background-color);
+  line-height: 20px;
+  letter-spacing: -0.3px;
+  text-align: center;
+  padding: 5px 13px;
+  height: 30px;
+  box-sizing: border-box;
+  border-radius: 30px;
+  @apply --no-select;
+  margin: var(--tooltip-offset);
+}

@@ -139,7 +139,7 @@ class Trigger extends Component {
     });
 
     return (
-      <span {...newProps}>{this.props.children}</span>
+      <span {...newProps} style={{ display: 'inline-block' }}>{this.props.children}</span>
     );
   }
 

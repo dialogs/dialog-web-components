@@ -3,15 +3,14 @@ Basic Trigger:
 ```
 const Button = require('../Button/Button').default;
 initialState = {
-  openHandler: ['onMouseEnter'],
-  closeHandler: ['onMouseLeave'],
+  openHandler: ['onClick'],
+  closeHandler: ['onClick'],
   closeOnDocumentClick: false,
   closeOnDocumentScroll: false,
   options: {
     attachment: 'middle left',
     targetAttachment: 'middle right',
-    constraints: [{ to: 'scrollParent', attachment: 'together' }],
-    offset: '0px 0px'
+    constraints: [{ to: 'scrollParent', attachment: 'together' }]
   }
 };
 const actions = {
