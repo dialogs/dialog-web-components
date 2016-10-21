@@ -6,7 +6,7 @@
 
 :root {
   --tooltip-font-family: var(--default-font-family);
-  --tooltip-font-size: 17px;
+  --tooltip-font-size: 15px;
   --tooltip-background-color: color(#000 alpha(70%));
   --tooltip-color: #fff;
   --tooltip-offset: 6px;
@@ -27,10 +27,9 @@
   line-height: 20px;
   letter-spacing: -0.3px;
   text-align: center;
-  padding: 5px 13px;
-  height: 30px;
+  padding: 6px 12px;
   box-sizing: border-box;
   border-radius: 30px;
-  @apply --no-select;
   margin: var(--tooltip-offset);
+  @apply --no-select;
 }
