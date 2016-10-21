@@ -46,7 +46,7 @@
   },
   "homepage": "https://dialogs.github.io/dialog-web-components",
   "dependencies": {
-    "@dlghq/dialog-types": "1.5.0",
+    "@dlghq/dialog-types": "1.5.3",
     "@dlghq/markdown": "0.1.1",
     "@dlghq/react-l10n": "0.5.1",
     "classnames": "2.2.5",

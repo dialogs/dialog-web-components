@@ -4,6 +4,7 @@ npm-debug.log
 
 # Yarn
 yarn.lock
+yarn-error.log
 
 # Build
 /src/index.js
