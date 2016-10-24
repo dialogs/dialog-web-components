@@ -16,13 +16,7 @@ function Document(props: MessageContentDocument) {
   const className = classNames(styles.preview, styles[type]);
 
   return (
-    <a
-      className={styles.root}
-      href={fileUrl}
-      download={fileName}
-      target="_blank"
-      rel="noopener noreferrer"
-    >
+    <a className={styles.root} href={fileUrl} download={fileName} rel="noopener noreferrer">
       <div className={className}>
         {fileExtension}
       </div>
