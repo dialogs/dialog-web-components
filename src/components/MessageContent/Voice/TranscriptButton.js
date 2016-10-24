@@ -9,7 +9,7 @@ import styles from './Voice.css';
 
 export type TransctiptButtonProps = {
   className?: string,
-  onClick?: EventHandler
+  onClick?: (event: SyntheticMouseEvent) => any
 };
 
 function TransctiptButton({ onClick, className }: TransctiptButtonProps) {

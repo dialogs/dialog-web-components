@@ -19,7 +19,7 @@ export type Props = {
 
 class ActivityListNotification extends Component {
   props: Props;
-  handleClick: EventHandler;
+  handleClick: Function;
 
   constructor(props: Props) {
     super(props);

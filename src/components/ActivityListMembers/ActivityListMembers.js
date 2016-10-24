@@ -24,7 +24,7 @@ export type State = {
 class ActivityListMembers extends Component {
   props: Props ;
   state: State;
-  handleMembersHeaderClick: EventHandler;
+  handleMembersHeaderClick: Function;
 
   constructor(props: Props) {
     super(props);

@@ -10,7 +10,7 @@ import styles from '../ActivityList/ActivityList.css';
 export type Props = {
   className?: string,
   children?: any,
-  onClick?: EventHandler
+  onClick?: (event: SyntheticMouseEvent) => any
 };
 
 function ActivityListItem(props: Props): React.Element<any> {
