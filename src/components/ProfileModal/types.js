@@ -5,18 +5,22 @@
 
 import type { User } from '@dlghq/dialog-types';
 
-export type ProfileContext = {
-  error: ?Error,
-  pending: boolean
-};
-
 export type Props = {
   className?: string,
   profile: User,
   context: {
-    name: ProfileContext,
-    nick: ProfileContext,
-    about: ProfileContext
+    name: {
+      error: ?Error,
+      pending: boolean
+    },
+    nick: {
+      error: ?Error,
+      pending: boolean
+    },
+    about: {
+      error: ?Error,
+      pending: boolean
+    }
   },
   onClose: () => void,
   onNameChange: (name: string) => any,
@@ -30,6 +34,5 @@ export type State = {
   name: string,
   nick: ?string,
   about: ?string,
-  avatar: ?string,
-  isWantNickname: boolean
+  avatar: ?string
 };

@@ -29,7 +29,6 @@ class ProfileModal extends PureComponent {
   handleNickChooserClick: Function;
   handleAvatarChangerClick: Function;
   handleAvatarChange: (avatar: File[]) => void;
-  isChanged: Function;
 
   constructor(props: Props): void {
     super(props);
@@ -38,8 +37,7 @@ class ProfileModal extends PureComponent {
       name: props.profile.name,
       nick: props.profile.nick,
       about: props.profile.about,
-      avatar: props.profile.avatar,
-      isWantNickname: Boolean(!props.profile.nick)
+      avatar: props.profile.avatar
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -47,10 +45,10 @@ class ProfileModal extends PureComponent {
     this.handleNickChooserClick = this.handleNickChooserClick.bind(this);
     this.handleAvatarChangerClick = this.handleAvatarChangerClick.bind(this);
     this.handleAvatarChange = this.handleAvatarChange.bind(this);
-    this.isChanged = this.isChanged.bind(this);
   }
 
   handleChange(value: any, { target }: $FlowIssue): void {
+    console.debug('handleChange', target.name, value);
     this.setState({
       [target.name]: value
     });
@@ -187,55 +185,58 @@ class ProfileModal extends PureComponent {
   render(): React.Element<any> {
     const { name, about } = this.state;
     const className = classNames(styles.container, this.props.className);
+    console.debug(this.props, this.state);
 
     return (
       <Modal className={className} isOpen onClose={this.props.onClose}>
-        <ModalHeader withBorder>
-          <Text id="ProfileModal.title" />
-          <ModalClose onClick={this.props.onClose} />
-        </ModalHeader>
+        <form autoComplete="off" onSubmit={this.handleSubmit}>
+          <ModalHeader withBorder>
+            <Text id="ProfileModal.title" />
+            <ModalClose onClick={this.props.onClose} />
+          </ModalHeader>
 
-        <ModalBody className={styles.body}>
-          <div className={styles.avatarBlock}>
-            {this.renderAvatar()}
-          </div>
-          <form autoComplete="off" className={styles.form}>
-            <Input
-              className={styles.input}
-              id="name"
-              large
-              name="name"
-              onChange={this.handleChange}
-              placeholder="Your name"
-              value={name}
-            />
-            {this.renderNick()}
-            <Input
-              className={styles.about}
-              id="about"
-              label="About - optional"
-              large
-              name="about"
-              onChange={this.handleChange}
-              placeholder="Describe Yourself"
-              type="textarea"
-              value={about}
-            />
-            {this.renderContacts()}
-          </form>
-        </ModalBody>
+          <ModalBody className={styles.body}>
+            <div className={styles.avatarBlock}>
+              {this.renderAvatar()}
+            </div>
+            <div className={styles.form}>
+              <Input
+                className={styles.input}
+                large
+                id="name"
+                name="name"
+                placeholder="Your name"
+                value={name}
+                onChange={this.handleChange}
+              />
+              {this.renderNick()}
+              <Input
+                className={styles.about}
+                large
+                id="about"
+                name="about"
+                type="textarea"
+                label="About - optional"
+                placeholder="Describe Yourself"
+                value={about}
+                onChange={this.handleChange}
+              />
+              {this.renderContacts()}
+            </div>
+          </ModalBody>
 
-        <ModalFooter className={styles.footer}>
-          <Button
-            theme="success"
-            wide
-            onClick={this.handleSubmit}
-            rounded={false}
-            disabled={this.isChanged}
-          >
-            <Text id="ProfileModal.save" />
-          </Button>
-        </ModalFooter>
+          <ModalFooter className={styles.footer}>
+            <Button
+              wide
+              type="submit"
+              theme="success"
+              rounded={false}
+              disabled={!this.isChanged()}
+            >
+              <Text id="ProfileModal.save" />
+            </Button>
+          </ModalFooter>
+        </form>
       </Modal>
     );
   }
