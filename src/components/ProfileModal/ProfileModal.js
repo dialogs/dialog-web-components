@@ -47,14 +47,15 @@ class ProfileModal extends PureComponent {
     this.handleAvatarChange = this.handleAvatarChange.bind(this);
   }
 
-  handleChange(value: any, { target }: $FlowIssue): void {
-    console.debug('handleChange', target.name, value);
+  handleChange(value: any, event: $FlowIssue): void {
     this.setState({
-      [target.name]: value
+      [event.target.name]: value
     });
   }
 
-  handleSubmit() {
+  handleSubmit(event: SyntheticEvent): void {
+    event.preventDefault();
+
     if (this.state.name !== this.props.profile.name) {
       this.props.onNameChange(this.state.name);
     }
@@ -185,7 +186,6 @@ class ProfileModal extends PureComponent {
   render(): React.Element<any> {
     const { name, about } = this.state;
     const className = classNames(styles.container, this.props.className);
-    console.debug(this.props, this.state);
 
     return (
       <Modal className={className} isOpen onClose={this.props.onClose}>
