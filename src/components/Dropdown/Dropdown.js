@@ -2,13 +2,16 @@ import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
 import styles from './Dropdown.css';
 
+export type Props = {
+  isOpen: boolean,
+  children: any,
+  theme: 'primary' | 'secondary',
+  className?: string,
+  style: any
+};
+
 class Dropdown extends Component {
-  static propTypes = {
-    isOpen: PropTypes.bool.isRequired,
-    children: PropTypes.node.isRequired,
-    theme: PropTypes.oneOf(['primary', 'secondary']).isRequired,
-    className: PropTypes.string
-  };
+  props: Props;
 
   static defaultProps = {
     theme: 'primary'
@@ -18,17 +21,18 @@ class Dropdown extends Component {
     return nextProps.isOpen !== this.props.isOpen ||
            nextProps.children !== this.props.children ||
            nextProps.theme !== this.props.theme ||
+           nextProps.style !== this.props.style ||
            nextProps.className !== this.props.className;
   }
 
   render() {
-    const { isOpen, theme, className } = this.props;
+    const { isOpen, theme, className, style } = this.props;
     const dropdownClassName = classNames(styles.container, styles[theme], {
       [styles.opened]: isOpen
     }, className);
 
     return (
-      <div className={dropdownClassName}>
+      <div className={dropdownClassName} style={style}>
         {this.props.children}
       </div>
     );
