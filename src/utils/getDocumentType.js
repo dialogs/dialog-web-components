@@ -3,13 +3,15 @@
  * @flow
  */
 
-export type DocumentType = 'unknown' | 'document' | 'media';
+export type DocumentType = 'unknown' | 'document' | 'media' | 'picture';
 
 function getDocumentType(mime: string): DocumentType {
   const [type, subtype] = mime.split('/');
 
   switch (type) {
     case 'image':
+      return 'picture';
+
     case 'audio':
     case 'video':
       return 'media';

@@ -4,80 +4,35 @@
  */
 
 import type { MessageContentDocument } from '@dlghq/dialog-types';
-import React, { Component } from 'react';
+import React from 'react';
 import classNames from 'classnames';
+import getExtensionType from '../../../utils/getExtensionType';
 import Icon from '../../Icon';
 import styles from './Document.css';
 
-class Document extends Component {
-  props: MessageContentDocument;
+function Document(props: MessageContentDocument) {
+  const { fileUrl, fileName, fileSize, fileExtension } = props;
+  const type = getExtensionType(fileExtension);
+  const className = classNames(styles.preview, styles[type]);
 
-  shouldComponentUpdate(nextProps: MessageContentDocument) {
-    return nextProps.fileExtension !== this.props.fileExtension ||
-           nextProps.fileName !== this.props.fileName ||
-           nextProps.fileSize !== this.props.fileSize ||
-           nextProps.fileUrl !== this.props.fileUrl ||
-           nextProps.isUploading !== this.props.isUploading;
-  }
-
-  getDocumentType() {
-    const { fileExtension } = this.props;
-
-    switch (fileExtension) {
-      case 'pdf':
-      case 'doc':
-      case 'docx':
-        return 'doc';
-      case 'png':
-      case 'jpg':
-      case 'jpeg':
-      case 'gif':
-        return 'picture';
-      case 'mov':
-      case 'mpeg':
-      case 'avi':
-        return 'media';
-      default:
-        return 'unknown';
-    }
-  }
-
-  renderPreview() {
-    const { fileExtension } = this.props;
-    const type = this.getDocumentType();
-    const className = classNames(styles.preview, styles[type]);
-
-    return (
+  return (
+    <a className={styles.root} href={fileUrl} target="_blank" rel="noopener noreferrer">
       <div className={className}>
         {fileExtension}
       </div>
-    );
-  }
-
-  renderInfo() {
-    const { fileName, fileSize } = this.props;
-
-    return (
       <div className={styles.info}>
         <div className={styles.filename}>
-          <div className={styles.text} title={fileName}>{fileName}</div>
+          <div className={styles.text} title={fileName}>
+            {fileName}
+          </div>
         </div>
         <div className={styles.sizeBlock}>
           <Icon glyph="arrow_downward" className={styles.downloadArrow} />
           <span className={styles.size}>{fileSize}</span>
         </div>
       </div>
-    );
-  }
-
-  render() {
-    return (
-      <div className={styles.root}>
-        {this.renderPreview()}
-        {this.renderInfo()}
-      </div>
-    );
-  }
+    </a>
+  );
 }
 
 export default Document;

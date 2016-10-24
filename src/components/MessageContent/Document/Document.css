@@ -5,8 +5,9 @@
   --document-max-width: 400px;
   --document-font-family: var(--default-font-family);
   --document-media-color: var(--sky-blue);
-  --document-doc-color: var(--orangey-red);
-  --document-picture-color: var(--pinkish-grey-two);
+  --document-document-color: var(--orangey-red);
+  --document-picture-color: var(--color-green);
+  --document-unknown-color: var(--pinkish-grey-two);
   --document-padding: 12px;
   --document-background-color: #fff;
   --document-border-color: color(#000 alpha(14%));
@@ -24,7 +25,7 @@
   min-width: var(--document-min-width);
   max-width: var(--document-max-width);
   padding: var(--document-padding);
-  cursor: default;
+  cursor: pointer;
   user-select: none;
   border-radius: var(--document-border-radius);
   background-color: var(--document-background-color);
@@ -90,10 +91,14 @@
   background-color: var(--document-media-color);
 }
 
-.doc {
-  background-color: var(--document-doc-color);
+.document {
+  background-color: var(--document-document-color);
 }
 
 .picture {
   background-color: var(--document-picture-color);
+}
+
+.unknown {
+  background-color: var(--document-unknown-color);
 }
