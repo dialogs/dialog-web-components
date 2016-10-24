@@ -1,58 +1,74 @@
-import React, { Component, PropTypes } from 'react';
-import { Text } from '@dlghq/react-l10n';
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ * @flow
+ */
+
+import type { ProviderContext } from '@dlghq/react-l10n';
+import React, { Component } from 'react';
+import { LocalizationContextType } from '@dlghq/react-l10n';
 import classNames from 'classnames';
 import styles from './Input.css';
 
+export type StringProps = {
+  type: 'text' | 'email' | 'search' | 'tel' | 'url' | 'password' | 'textarea',
+  value: string,
+  onChange: (value: string, event: SyntheticInputEvent) => any
+};
+
+export type NumberProps = {
+  type: 'number',
+  value: number,
+  onChange: (value: number, event: SyntheticInputEvent) => any
+};
+
+export type Props = (StringProps | NumberProps) & {
+  className?: string,
+  id: string,
+  name?: string,
+  label?: string,
+  large?: boolean,
+  placeholder?: string,
+  prefix?: string,
+  disabled?: bool,
+  hint?: string,
+  status?: 'success' | 'error',
+  onFocus?: (event: SyntheticFocusEvent) => any,
+  onBlur?: (event: SyntheticFocusEvent) => any,
+  onKeyUp?: (event: SyntheticKeyboardEvent) => any,
+  onKeyDown?: (event: SyntheticKeyboardEvent) => any,
+  onKeyPress?: (event: SyntheticKeyboardEvent) => any
+};
+
+export type State = {
+  isFocused: boolean
+};
+
+export type Context = ProviderContext;
+
 class Input extends Component {
-  static propTypes = {
-    id: PropTypes.string.isRequired,
-    name: PropTypes.string,
-    className: PropTypes.string,
-    label: PropTypes.node,
-    large: PropTypes.bool,
-    placeholder: PropTypes.string,
-    prefix: PropTypes.string,
-    value: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.number
-    ]).isRequired,
-    type: PropTypes.oneOf([
-      'text',
-      'email',
-      'number',
-      'search',
-      'tel',
-      'url',
-      'password',
-      'file',
-      'radio',
-      'checkbox',
-      'textarea'
-    ]).isRequired,
-    disabled: PropTypes.bool.isRequired,
-    hint: PropTypes.string,
-    status: PropTypes.oneOf(['success', 'error']),
-    onChange: PropTypes.func,
-    onFocus: PropTypes.func,
-    onBlur: PropTypes.func,
-    onKeyUp: PropTypes.func,
-    onKeyDown: PropTypes.func,
-    onKeyPress: PropTypes.func
-  };
+  props: Props;
+  state: State;
+  context: Context;
+
+  // refs
+  input: ?(HTMLInputElement | HTMLTextAreaElement);
+  setInput: (element: HTMLInputElement | HTMLTextAreaElement) => void;
+
+  handleChange: (event: SyntheticInputEvent) => void;
+  handleFocus: (event: SyntheticFocusEvent) => void;
+  handleBlur: (event: SyntheticFocusEvent) => void;
+  handleLabelMouseDown: (event: SyntheticMouseEvent) => void;
+
 
   static defaultProps = {
-    type: 'text',
-    large: false,
-    disabled: false
+    type: 'text'
   };
 
   static contextTypes = {
-    l10n: PropTypes.shape({
-      formatText: PropTypes.func.isRequired
-    }).isRequired
+    l10n: LocalizationContextType
   };
 
-  constructor(props, context) {
+  constructor(props: Props, context: Context) {
     super(props, context);
 
     this.state = {
@@ -60,16 +76,17 @@ class Input extends Component {
     };
 
     this.input = null;
+    this.setInput = this.setInput.bind(this);
 
     this.handleChange = this.handleChange.bind(this);
     this.handleFocus = this.handleFocus.bind(this);
     this.handleBlur = this.handleBlur.bind(this);
     this.handleLabelMouseDown = this.handleLabelMouseDown.bind(this);
-    this.setInput = this.setInput.bind(this);
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    return nextState.isFocused !== this.state.isFocused ||
+  shouldComponentUpdate(nextProps: Props, nextState: State, nextContext: Context) {
+    return nextContext !== this.context ||
+           nextState.isFocused !== this.state.isFocused ||
            nextProps.value !== this.props.value ||
            nextProps.hint !== this.props.hint ||
            nextProps.status !== this.props.status ||
@@ -78,18 +95,17 @@ class Input extends Component {
            nextProps.placeholder !== this.props.placeholder ||
            nextProps.disabled !== this.props.disabled ||
            nextProps.type !== this.props.type ||
+           nextProps.prefix !== this.props.prefix ||
            nextProps.className !== this.props.className ||
            nextProps.name !== this.props.name ||
            nextProps.id !== this.props.id;
   }
 
-  handleChange(event) {
-    if (this.props.onChange) {
-      this.props.onChange(event.target.value, event);
-    }
+  handleChange(event: $FlowIssue): void {
+    this.props.onChange(event.target.value, event);
   }
 
-  handleFocus(event) {
+  handleFocus(event: $FlowIssue): void {
     this.setState({ isFocused: true });
 
     if (this.props.onFocus) {
@@ -97,7 +113,7 @@ class Input extends Component {
     }
   }
 
-  handleBlur(event) {
+  handleBlur(event: $FlowIssue): void {
     this.setState({ isFocused: false });
 
     if (this.props.onBlur) {
@@ -105,7 +121,7 @@ class Input extends Component {
     }
   }
 
-  handleLabelMouseDown(event) {
+  handleLabelMouseDown(event: $FlowIssue): void {
     event.preventDefault();
 
     if (this.input) {
@@ -113,41 +129,41 @@ class Input extends Component {
     }
   }
 
-  setInput(element) {
+  setInput(element: HTMLInputElement | HTMLTextAreaElement): void {
     this.input = element;
   }
 
-  renderLabel() {
+  renderLabel(): ?React.Element<any> {
     const { id, label } = this.props;
+    const { l10n } = this.context;
 
     if (!label) {
       return null;
     }
 
     return (
-      <Text
-        id={label}
-        tagName="label"
-        className={styles.label}
-        htmlFor={id}
-        onMouseDown={this.handleLabelMouseDown}
-      />
+      <label className={styles.label} htmlFor={id} onMouseDown={this.handleLabelMouseDown}>
+        {l10n.formatText(label)}
+      </label>
     );
   }
 
-  renderHint() {
+  renderHint(): ?React.Element<any> {
     const { hint } = this.props;
+    const { l10n } = this.context;
 
     if (!hint) {
       return null;
     }
 
     return (
-      <Text id={hint} tagName="p" className={styles.hint} />
+      <p className={styles.hint}>
+        {l10n.formatText(hint)}
+      </p>
     );
   }
 
-  renderPrefix() {
+  renderPrefix(): ?React.Element<any> {
     const { prefix, id } = this.props;
 
     if (!prefix) {
@@ -165,20 +181,31 @@ class Input extends Component {
     );
   }
 
-  render() {
+  render(): React.Element<any> {
     const {
-      id, name, type, value, disabled, status, large,
-      placeholder, onKeyUp, onKeyDown, onKeyPress
-    } = this.props;
-    const { isFocused } = this.state;
-    const { l10n: { formatText } } = this.context;
+      props: {
+        id, name, type, value, disabled, status, large,
+        placeholder, onKeyUp, onKeyDown, onKeyPress
+      },
+      state: {
+        isFocused
+      },
+      context: {
+        l10n
+      }
+    } = this;
+
+    const className = classNames(
+      styles.container,
+      this.props.className,
+      status ? styles[status] : null,
+      value ? styles.filled : null,
+      isFocused ? styles.focused : null,
+      disabled ? styles.disabled : null,
+      large ? styles.large : null
+    );
+
     const TagName = type === 'textarea' ? 'textarea' : 'input';
-    const className = classNames(styles.container, styles[status], {
-      [styles.filled]: value && value !== '',
-      [styles.focused]: isFocused,
-      [styles.disabled]: disabled,
-      [styles.large]: large
-    }, this.props.className);
 
     return (
       <div className={className}>
@@ -190,16 +217,16 @@ class Input extends Component {
             disabled={disabled}
             id={id}
             name={name}
-            onBlur={this.handleBlur}
+            placeholder={placeholder ? l10n.formatText(placeholder) : null}
+            type={type}
+            value={value}
+            ref={this.setInput}
             onChange={this.handleChange}
+            onBlur={this.handleBlur}
             onFocus={this.handleFocus}
             onKeyDown={onKeyDown}
             onKeyPress={onKeyPress}
             onKeyUp={onKeyUp}
-            placeholder={formatText(placeholder)}
-            ref={this.setInput}
-            type={type}
-            value={value}
           />
         </div>
         {this.renderHint()}
