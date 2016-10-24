@@ -17,13 +17,18 @@ export type Props = {
   closeHandler: TriggerHandler[],
   closeOnDocumentClick: boolean,
   closeOnDocumentScroll: boolean,
+  preventDefault: boolean,
   openDelay?: number,
   closeDelay?: number,
   options: any
 };
 
 export type State = {
-  isOpen: boolean
+  isOpen: boolean,
+  position: {
+    x: number,
+    y: number
+  }
 };
 
 class Trigger extends Component {
@@ -44,7 +49,11 @@ class Trigger extends Component {
     super(props);
 
     this.state = {
-      isOpen: false
+      isOpen: false,
+      position: {
+        x: 0,
+        y: 0
+      }
     };
 
     this.handleOpen = this.handleOpen.bind(this);
@@ -66,8 +75,19 @@ class Trigger extends Component {
            nextProps.options !== this.props.options;
   }
 
-  handleOpen(): void {
-    const { openDelay } = this.props;
+  handleOpen(event: $FlowIssue): void {
+    const { openDelay, preventDefault } = this.props;
+
+    if (preventDefault) {
+      event.preventDefault();
+    }
+
+    this.setState({
+      position: {
+        x: event.clientX,
+        y: event.clientY
+      }
+    });
 
     if (openDelay) {
       setTimeout(() => {
@@ -119,13 +139,13 @@ class Trigger extends Component {
   }
 
   renderChild(): ?React.Element<any> {
-    const { isOpen } = this.state;
+    const { isOpen, position } = this.state;
 
     if (!isOpen) {
       return null;
     }
 
-    return this.props.renderChild();
+    return this.props.renderChild(position);
   }
 
   renderTrigger(): React.Element<any> {
