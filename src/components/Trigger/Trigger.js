@@ -17,7 +17,7 @@ export type Props = {
   closeHandler: TriggerHandler[],
   closeOnDocumentClick: boolean,
   closeOnDocumentScroll: boolean,
-  preventDefault: boolean,
+  preventDefault?: boolean,
   openDelay?: number,
   closeDelay?: number,
   options: any

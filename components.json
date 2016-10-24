@@ -14,7 +14,8 @@
       "ConnectionStatus",
       "Call",
       "Tabs",
-      "Tooltip"
+      "Tooltip",
+      "ContextMenu"
     ]
   },
   {
