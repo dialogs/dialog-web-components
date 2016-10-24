@@ -50,7 +50,7 @@
     "@dlghq/markdown": "0.1.1",
     "@dlghq/react-l10n": "0.5.1",
     "classnames": "2.2.5",
-    "clipboard": "1.5.13",
+    "clipboard": "1.5.15",
     "lodash": "4.16.4",
     "react": "15.3.2",
     "react-addons-css-transition-group": "15.3.2",
