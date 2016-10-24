@@ -1,11 +1,5 @@
 {
   "extends": "@dlghq/eslint-config-dialog",
-  "globals": {
-    "$FlowIssue": true,
-    "EventHandler": true,
-    "SyntheticEvent": true,
-    "SyntheticMouseEvent": true
-  },
   "rules": {
     "no-duplicate-imports": 0,
     "react/no-unused-prop-types": [2, {
