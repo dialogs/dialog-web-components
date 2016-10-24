@@ -37,20 +37,6 @@ class Button extends PureComponent {
     disabled: false
   };
 
-  shouldComponentUpdate(nextProps: Props): boolean {
-    return nextProps.id !== this.props.id ||
-           nextProps.className !== this.props.className ||
-           nextProps.children !== this.props.children ||
-           nextProps.disabled !== this.props.disabled ||
-           nextProps.wide !== this.props.wide ||
-           nextProps.rounded !== this.props.rounded ||
-           nextProps.loading !== this.props.loading ||
-           nextProps.view !== this.props.view ||
-           nextProps.type !== this.props.type ||
-           nextProps.theme !== this.props.theme ||
-           nextProps.size !== this.props.size;
-  }
-
   renderLoading(): ?React.Element<any> {
     const { loading } = this.props;
 
