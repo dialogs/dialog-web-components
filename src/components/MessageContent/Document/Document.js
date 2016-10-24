@@ -12,7 +12,7 @@ import styles from './Document.css';
 
 function Document(props: MessageContentDocument) {
   const { fileUrl, fileName, fileSize, fileExtension } = props;
-  const type = getExtensionType(fileExtension);
+  const type = fileExtension ? getExtensionType(fileExtension) : 'unknown';
   const className = classNames(styles.preview, styles[type]);
 
   return (
