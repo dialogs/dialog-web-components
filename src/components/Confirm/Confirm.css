@@ -1,0 +1,30 @@
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+.container {
+  min-width: 360px;
+}
+
+.body {
+  padding: var(--default-padding);
+}
+
+.question {
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 2;
+  margin: 0;
+  padding: 0;
+}
+
+.footer {
+  text-align: right;
+  padding: var(--default-padding);
+}
+
+.button {
+  margin-left: 6px;
+}

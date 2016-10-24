@@ -104,7 +104,8 @@
   {
     "name": "Helpers",
     "components": [
-      "Trigger"
+      "Trigger",
+      "Confirm"
     ]
   }
 ]
