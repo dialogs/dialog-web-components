@@ -107,7 +107,9 @@ class PreferencesModal extends PureComponent {
     const { screen, settings } = this.props;
 
     const spinner = (
-      <Spinner />
+      <div className={styles.spinnerScreen}>
+        <Spinner size="large" />
+      </div>
     );
 
     switch (screen) {

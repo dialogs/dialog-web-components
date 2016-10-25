@@ -49,6 +49,14 @@
   flex: 1 1 auto;
 }
 
+.spinnerScreen {
+  composes: screen;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-content: center;
+}
+
 .hint {
   padding-top: 6px;
   padding-left: 46px;
