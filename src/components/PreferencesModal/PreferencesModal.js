@@ -18,6 +18,7 @@ import Spinner from '../Spinner/Spinner';
 import Tabs from '../Tabs/Tabs';
 import PreferencesGeneral from './PreferencesGeneral';
 import PreferencesNotifications from './PreferencesNotifications';
+import PreferencesSecurity from './PreferencesSecurity';
 import styles from './PreferencesModal.css';
 
 class PreferencesModal extends PureComponent {
@@ -30,6 +31,7 @@ class PreferencesModal extends PureComponent {
 
   constructor(props: Props) {
     super(props);
+    console.debug(props);
 
     this.handleClose = this.handleClose.bind(this);
     this.handleScreenChange = this.handleScreenChange.bind(this);
@@ -104,7 +106,7 @@ class PreferencesModal extends PureComponent {
   }
 
   renderScreen(): ?React.Element<any> {
-    const { screen, settings } = this.props;
+    const { screen, settings, sessions } = this.props;
 
     const spinner = (
       <div className={styles.spinnerScreen}>
@@ -134,6 +136,19 @@ class PreferencesModal extends PureComponent {
           <PreferencesNotifications
             settings={settings.value}
             onChange={this.handleSettingsChange}
+          />
+        );
+
+      case 'security':
+        if (!sessions.value) {
+          return spinner;
+        }
+
+        return (
+          <PreferencesSecurity
+            sessions={sessions.value}
+            onSessionTerminate={this.props.onSessionTerminate}
+            onAllSessionsTerminate={this.props.onAllSessionsTerminate}
           />
         );
 

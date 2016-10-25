@@ -20,6 +20,11 @@ notifications:
   mention_hint: You can enable notifications only for messages that contains you mention.
 security:
   title: Security
+  legend:
+    current_session: Current session
+    active_sessions: Active sessions
+  terminate: Terminate
+  terminate_all: Terminate all other sessions
 shortcuts:
   title: Keyboard shortcuts
 blocked:

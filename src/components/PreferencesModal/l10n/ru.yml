@@ -20,6 +20,11 @@ notifications:
   mention_hint: Вы можете включить уведомления только для тех сообщений в которых вас упомянули
 security:
   title: Безопасность
+  legend:
+    current_session: Текущая сессия
+    active_sessions: Активные сессии
+  terminate: Завершить
+  terminate_all: Завершить все другие сеансы
 shortcuts:
   title: Горячие клавиши
 blocked:
