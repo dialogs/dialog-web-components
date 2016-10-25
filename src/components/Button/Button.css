@@ -51,9 +51,9 @@
   cursor: pointer;
   user-select: none;
   transition:
-    background var(--default-transition-duration) ease-in-out,
-    box-shadow var(--default-transition-duration) ease-in-out,
-    color var(--default-transition-duration) ease-in-out;
+    background var(--default-transition-duration) ease,
+    box-shadow var(--default-transition-duration) ease,
+    color var(--default-transition-duration) ease;
   text-align: center;
   border: 0;
   outline: none;
