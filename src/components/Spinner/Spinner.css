@@ -59,7 +59,7 @@
 /* Wave spinner */
 .wave {
   all: initial;
-  display: inline-block;
+  display: inline-flex;
   box-sizing: border-box;
   width: calc(var(--spinner-wawe-max-height) + 20px);
   height: calc(var(--spinner-wawe-max-height) + 20px);
@@ -67,12 +67,15 @@
   vertical-align: middle;
   border-radius: 50%;
   background-color: var(--spinner-wave-background-color);
+  align-content: center;
+  align-items: center;
+  justify-content: center;
 
   @apply --clearfix;
 
   &.large {
-    width: calc(var(--spinner-wawe-max-height) + 20px * 2);
-    height: calc(var(--spinner-wawe-max-height) + 20px * 2);
+    width: calc(var(--spinner-wawe-max-height) + 25px * 2);
+    height: calc(var(--spinner-wawe-max-height) + 25px * 2);
 
     & .stick {
       width: calc(var(--spinner-wave-stick-width) * 2);
@@ -85,6 +88,7 @@
 .stick {
   position: relative;
   display: block;
+  flex: 0 0 auto;
   float: left;
   box-sizing: content-box;
   width: var(--spinner-wave-stick-width);
