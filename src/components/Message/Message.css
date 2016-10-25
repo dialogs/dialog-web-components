@@ -6,10 +6,10 @@
 
 :root {
   --message-font-family: var(--default-font-family);
-  --message-top-padding: 14px;
-  --message-right-padding: 34px;
-  --message-bottom-padding: 14px;
-  --message-left-padding: 34px;
+  --message-vertical-padding: 8px;
+  --message-horizontal-padding: 34px;
+  --message-small-vertical-padding: 6px;
+  --message-small-horizontal-padding: 34px;
   --message-hover-background-color: #f2f2f2;
   --message-timestamp-color: color(#000 alpha(60%));
 }
@@ -19,10 +19,7 @@
   position: relative;
   display: flex;
   flex-direction: row;
-  padding-top: var(--message-top-padding);
-  padding-right: var(--message-right-padding);
-  padding-bottom: var(--message-bottom-padding);
-  padding-left: var(--message-left-padding);
+  padding: var(--message-vertical-padding) var(--message-horizontal-padding);
   font-family: var(--message-font-family);
 
   &:hover {
@@ -31,6 +28,14 @@
     & .actions {
       display: block;
     }
+  }
+}
+
+.short {
+  padding: var(--message-small-vertical-padding) var(--message-small-horizontal-padding);
+
+  & .body {
+    padding-left: 50px;
   }
 }
 
@@ -51,7 +56,6 @@
 .header {
   display: flex;
   flex-direction: row;
-  margin-bottom: 4px;
   flex: 0 1 auto;
 }
 
@@ -83,6 +87,6 @@
 .actions {
   position: absolute;
   top: -18px;
-  right: var(--message-right-padding);
+  right: var(--message-horizontal-padding);
   display: none;
 }

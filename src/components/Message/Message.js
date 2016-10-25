@@ -3,11 +3,8 @@
  * @flow
  */
 
-import type {
-  // Peer,
-  Message as MessageType,
-  MessageState as MessageStateType
-} from '@dlghq/dialog-types';
+import type { Message as MessageType } from '@dlghq/dialog-types';
+import classNames from 'classnames';
 import React, { PureComponent } from 'react';
 import MessageContent from '../MessageContent/MessageContent';
 import PeerAvatar from '../PeerAvatar/PeerAvatar';
@@ -15,17 +12,16 @@ import MessageState from '../MessageState/MessageState';
 import styles from './Message.css';
 
 export type Props = {
-  // peer: Peer,
   message: MessageType,
-  state: MessageStateType,
-  renderActions?: () => React.Element<any>[]
+  renderActions?: () => React.Element<any>[],
+  short: boolean
 };
 
 class Message extends PureComponent {
   props: Props;
 
   renderState(): ?React.Element<any> {
-    const { state } = this.props;
+    const { message: { state } } = this.props;
 
     if (state === 'unknown') {
       return null;
@@ -33,6 +29,36 @@ class Message extends PureComponent {
 
     return (
       <MessageState state={state} />
+    );
+  }
+
+  renderAvatar(): ?React.Element<any> {
+    const { short, message: { sender } } = this.props;
+
+    if (short) {
+      return null;
+    }
+
+    return (
+      <div className={styles.avatar}>
+        <PeerAvatar peer={sender} size="large" />
+      </div>
+    );
+  }
+
+  renderHeader(): ?React.Element<any> {
+    const { short, message: { sender, date } } = this.props;
+
+    if (short) {
+      return null;
+    }
+
+    return (
+      <header className={styles.header}>
+        <div className={styles.sender}>{sender.title}</div>
+        <time className={styles.timestamp}>{date}</time>
+        {this.renderState()}
+      </header>
     );
   }
 
@@ -49,19 +75,16 @@ class Message extends PureComponent {
   }
 
   render(): React.Element<any> {
-    const { message: { content, sender, date } } = this.props;
+    const { short, message: { content } } = this.props;
+    const className = classNames(styles.container, {
+      [styles.short]: short
+    });
 
     return (
-      <div className={styles.container}>
-        <div className={styles.avatar}>
-          <PeerAvatar peer={sender} size="large" />
-        </div>
+      <div className={className}>
+        {this.renderAvatar()}
         <div className={styles.body}>
-          <header className={styles.header}>
-            <div className={styles.sender}>{sender.title}</div>
-            <time className={styles.timestamp}>{date}</time>
-            {this.renderState()}
-          </header>
+          {this.renderHeader()}
           <div className={styles.content}>
             <MessageContent content={content} />
           </div>
