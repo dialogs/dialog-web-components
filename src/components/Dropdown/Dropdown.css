@@ -3,7 +3,7 @@
 :root {
   --dropdown-font-family: var(--default-font-family);
   --dropdown-font-size: 16px;
-  --dropdown-default-font-color: #000;
+  --dropdown-default-font-color: #000000;
   --dropdown-padding-top: 9px;
   --dropdown-padding-right: 20px;
   --dropdown-padding-bottom: 10px;
@@ -69,7 +69,7 @@
   padding-right: var(--dropdown-padding-right);
   padding-bottom: 0;
   padding-left: var(--dropdown-padding-left);
-  cursor: default;
+  cursor: inherit;
   user-select: none;
   font-family: var(--dropdown-font-family);
   font-size: var(--dropdown-font-size);
@@ -119,22 +119,35 @@
   color: var(--dropdown-header-color);
 }
 
-
 /* Themes */
 .primary {
+  & .active {
+    cursor: pointer;
+    background-color: var(--dropdown-item-hover-background-default);
+
+    & .text {
+      color: #ffffff;
+    }
+  }
+
   & .hovered {
     &:hover {
       cursor: pointer;
       background-color: var(--dropdown-item-hover-background-default);
 
       & .text {
-        color: #fff;
+        color: #ffffff;
       }
     }
   }
 }
 
 .secondary {
+  & .active {
+    cursor: pointer;
+    background-color: var(--dropdown-item-hover-background-secondary);
+  }
+
   & .hovered {
     &:hover {
       cursor: pointer;
