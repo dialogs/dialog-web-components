@@ -16,6 +16,7 @@ import ModalClose from '../ModalClose/ModalClose';
 import ModalBody from '../ModalBody/ModalBody';
 import Spinner from '../Spinner/Spinner';
 import Tabs from '../Tabs/Tabs';
+import Scroller from '../Scroller/Scroller';
 import PreferencesGeneral from './PreferencesGeneral';
 import PreferencesNotifications from './PreferencesNotifications';
 import PreferencesSecurity from './PreferencesSecurity';
@@ -179,7 +180,9 @@ class PreferencesModal extends PureComponent {
             ]}
             onPick={this.handleScreenChange}
           />
-          {this.renderScreen()}
+          <Scroller className={styles.scroller}>
+            {this.renderScreen()}
+          </Scroller>
         </ModalBody>
       </Modal>
     );
