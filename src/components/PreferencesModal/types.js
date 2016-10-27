@@ -33,5 +33,6 @@ export type Props = {
   onSessionsLoad: () => any,
   onSessionTerminate: (id: number) => any,
   onAllSessionsTerminate: () => any,
-  onBlockedLoad: () => any
+  onBlockedLoad: () => any,
+  onUnblockUser: (id: number) => any
 }
