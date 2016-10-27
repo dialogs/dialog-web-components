@@ -20,6 +20,7 @@ import Scroller from '../Scroller/Scroller';
 import PreferencesGeneral from './PreferencesGeneral';
 import PreferencesNotifications from './PreferencesNotifications';
 import PreferencesSecurity from './PreferencesSecurity/PreferencesSecurity';
+import PreferencesBlocked from './PreferencesBlocked/PreferencesBlocked';
 import styles from './PreferencesModal.css';
 
 class PreferencesModal extends PureComponent {
@@ -107,7 +108,7 @@ class PreferencesModal extends PureComponent {
   }
 
   renderScreen(): ?React.Element<any> {
-    const { screen, settings, sessions } = this.props;
+    const { screen, settings, sessions, blocked } = this.props;
 
     const spinner = (
       <div className={styles.spinnerScreen}>
@@ -150,6 +151,18 @@ class PreferencesModal extends PureComponent {
             sessions={sessions.value}
             onSessionTerminate={this.props.onSessionTerminate}
             onAllSessionsTerminate={this.props.onAllSessionsTerminate}
+          />
+        );
+
+      case 'blocked':
+        if (!blocked.value) {
+          return spinner;
+        }
+
+        return (
+          <PreferencesBlocked
+            blocked={blocked.value}
+            onUnblockUser={this.props.onUnblockUser}
           />
         );
 

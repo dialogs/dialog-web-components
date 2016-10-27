@@ -1,0 +1,49 @@
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ */
+
+@import '../../../styles/variables.css';
+
+.user {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  align-content: center;
+  justify-content: flex-start;
+
+  &:hover {
+    & .unblockButton {
+      display: block;
+    }
+  }
+}
+
+.userMeta {
+  flex: 1 1 auto;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  align-content: center;
+  justify-content: flex-start;
+  @apply --flex-fix;
+  @apply --no-select;
+}
+
+.userAvatar {
+  margin-right: var(--default-padding);
+}
+.userName {
+  font-size: 16px;
+  line-height: 1.4;
+  font-weight: 500;
+  color: #000;
+}
+
+.userNick {
+  margin-left: 8px;
+  color: color(#000 alpha(50%));
+}
+
+.unblockButton {
+  display: none;
+}

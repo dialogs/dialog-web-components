@@ -29,3 +29,5 @@ shortcuts:
   title: Keyboard shortcuts
 blocked:
   title: Blocked users
+  legend: List of blocked users
+  unblock: Unblock
