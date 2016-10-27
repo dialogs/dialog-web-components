@@ -31,4 +31,6 @@ blocked:
   title: Blocked users
   legend: List of blocked users
   empty: You will not receive messages from people on your block list
+  search_placeholder: Search for blocked users
+  not_found: No users found
   unblock: Unblock
