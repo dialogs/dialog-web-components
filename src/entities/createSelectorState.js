@@ -1,0 +1,139 @@
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ * @flow
+ */
+
+import type { SelectorStateCreator } from './types';
+import { Record, List, OrderedSet } from 'immutable';
+import calculateCursor from '../utils/calculateCursor';
+import filterByQuery from '../utils/filterByQuery';
+
+function createSelectorState<T>(name: string, getValue: (item: T) => string): SelectorStateCreator<T> {
+  const defaultRecord = {
+    query: '',
+    items: List(),
+    filtered: List(),
+    selected: OrderedSet(),
+    hoverIndex: 0
+  };
+
+  function filter(query: string, items: List<T>): List<T> {
+    return List(filterByQuery(query, items, getValue));
+  }
+
+  class SelectorState extends Record(defaultRecord, name) {
+    hasQuery(): boolean {
+      return Boolean(this.get('query'));
+    }
+
+    getQuery(): string {
+      return this.get('query');
+    }
+
+    setQuery(query: string): SelectorState {
+      const filtered = filter(query, this.get('items'));
+
+      // TODO: lookup the same item
+      const hoverIndex = 0;
+
+      return this.set('query', query)
+                 .set('filtered', filtered)
+                 .set('hoverIndex', hoverIndex);
+    }
+
+    getItems(): List<T> {
+      return this.get('filtered');
+    }
+
+    getItem(index: number): T {
+      return this.getItems().get(index);
+    }
+
+    getHovered(): T {
+      return this.getItem(this.getHoverIndex());
+    }
+
+    getHoverIndex(): number {
+      return this.get('hoverIndex');
+    }
+
+    setHoverIndex(hoverIndex: number): SelectorState {
+      const max = this.getItems().size;
+      return this.set('hoverIndex', calculateCursor({ max, next: hoverIndex }));
+    }
+
+
+    getSelected(): OrderedSet<T> {
+      return this.get('selected');
+    }
+
+    isSelected(item: T): boolean {
+      return this.getSelected().has(item);
+    }
+
+    addSelected(item: T): SelectorState {
+      const selected = this.get('selected');
+      return this.set('selected', selected.add(item));
+    }
+
+    deleteSelected(item: T): SelectorState {
+      const selected = this.get('selected');
+      return this.set('selected', selected.delete(item));
+    }
+
+    toggleSelected(item: T): SelectorState {
+      const selected = this.get('selected');
+      return selected.has(item) ? this.deleteSelected(item) : this.addSelected(item);
+    }
+
+
+    handleKeyboardEvent(event: SyntheticKeyboardEvent): SelectorState {
+      switch (event.key) {
+        case 'Enter':
+          event.preventDefault();
+          return this.toggleSelected(
+            this.getHovered()
+          );
+
+        case 'ArrowUp':
+          event.preventDefault();
+          return this.setHoverIndex(
+            this.getHoverIndex() - 1
+          );
+
+        case 'ArrowDown':
+          event.preventDefault();
+          return this.setHoverIndex(
+            this.getHoverIndex() + 1
+          );
+
+        case 'Backspace':
+          if (!this.hasQuery()) {
+            event.preventDefault();
+            const last = this.getSelected().last();
+            if (last) {
+              return this.deleteSelected(last);
+            }
+          }
+
+          return this;
+
+        default:
+          return this;
+      }
+    }
+  }
+
+  return {
+    create(items: T[]): SelectorState {
+      const list = List(items);
+      return new SelectorState({
+        items: list,
+        filtered: list
+      });
+    }
+  };
+}
+
+
+export default createSelectorState;

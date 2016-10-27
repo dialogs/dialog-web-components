@@ -80,9 +80,11 @@ class ActivityListMembers extends Component {
   renderMembersList() {
     const { members } = this.props;
 
-    return members.map((member) => (
-      <ActivityMembersItem member={member} key={member.peerInfo.peer.key} />
-    ));
+    return members.map((member) => {
+      return (
+        <ActivityMembersItem member={member} key={member.peerInfo.peer.key} />
+      );
+    });
   }
 
   renderMembers() {

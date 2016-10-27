@@ -4,10 +4,11 @@
  */
 
 import type { Contact } from '@dlghq/dialog-types';
+
 import React, { PureComponent } from 'react';
 import PeerAvatar from '../PeerAvatar/PeerAvatar';
 import classNames from 'classnames';
-import styles from '../ContactSelector/ContactSelector.css';
+import styles from './ContactSelector.css';
 
 export type Props = {
   className?: string,

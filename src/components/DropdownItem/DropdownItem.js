@@ -15,15 +15,16 @@ export type Props = {
 };
 
 function DropdownItem(props: Props): React.Element<any> {
-  const { className, onClick, children, active } = props;
-  const dropdownItemClassName = classNames(styles.item, {
-    [styles.hovered]: onClick,
-    [styles.active]: active
-  }, className);
+  const className = classNames(
+    styles.item,
+    props.className,
+    props.active ? styles.active : null,
+    props.onClick ? styles.hovered : null
+  );
 
   return (
-    <div className={dropdownItemClassName} onClick={onClick}>
-      <span className={styles.text}>{children}</span>
+    <div className={className} onClick={props.onClick}>
+      <span className={styles.text}>{props.children}</span>
     </div>
   );
 }

@@ -4,61 +4,37 @@
  */
 
 import type { Contact } from '@dlghq/dialog-types';
+import type { SelectorState } from '../../entities';
+
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import ContactList from '../ContactList/ContactList';
-import ContactSelectorInput from '../ContactSelectorInput/ContactSelectorInput';
+import ContactSelectorInput from './ContactSelectorInput';
 import styles from './ContactSelector.css';
 
 export type Props = {
   className?: string,
-  selected: number[],
-  contacts: Contact[],
-  onSelect: (id: number) => void
+  autoFocus: boolean,
+  selector: SelectorState<Contact>,
+  onChange: (selector: SelectorState<Contact>) => any
 };
-
-export type State = {
-  query: string
-}
 
 class ContactSelector extends PureComponent {
   props: Props;
-  state: State;
-  handleChange: (query: string, event: $FlowIssue) => void;
-
-  constructor(props: Props): void {
-    super(props);
-
-    this.state = {
-      query: ''
-    };
-
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange(query: string): void {
-    this.setState({ query });
-  }
 
   render(): React.Element<any> {
-    const { contacts, selected } = this.props;
-    const { query } = this.state;
     const className = classNames(styles.container, this.props.className);
 
     return (
       <div className={className}>
         <ContactSelectorInput
-          query={query}
-          selected={selected}
-          contacts={contacts}
-          onChange={this.handleChange}
-          onSelect={this.props.onSelect}
+          selector={this.props.selector}
+          autoFocus={this.props.autoFocus}
+          onChange={this.props.onChange}
         />
         <ContactList
-          query={query}
-          contacts={contacts}
-          selected={selected}
-          onSelect={this.props.onSelect}
+          selector={this.props.selector}
+          onChange={this.props.onChange}
         />
       </div>
     );

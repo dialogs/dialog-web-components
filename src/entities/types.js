@@ -1,0 +1,27 @@
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ * @flow
+ */
+
+import type { List, OrderedSet } from 'immutable';
+
+export type SelectorState<T> = {
+  hasQuery(): boolean;
+  getQuery(): string;
+  setQuery(query: string): SelectorState<T>;
+  getItems(): List<T>;
+  getItem(index: number): T;
+  getHovered(): T;
+  getHoverIndex(): number;
+  setHoverIndex(index: number): SelectorState<T>;
+  getSelected(): OrderedSet<T>;
+  isSelected(item: T): boolean;
+  addSelected(item: T): SelectorState<T>;
+  deleteSelected(item: T): SelectorState<T>;
+  toggleSelected(item: T): SelectorState<T>;
+  handleKeyboardEvent(event: SyntheticKeyboardEvent): SelectorState<T>;
+}
+
+export type SelectorStateCreator<T> = {
+  create(items: T[]): SelectorState<T>;
+}
