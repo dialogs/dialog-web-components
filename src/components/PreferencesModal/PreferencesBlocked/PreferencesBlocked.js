@@ -5,9 +5,11 @@
 
 import type { User } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
+import { Text } from '@dlghq/react-l10n';
 import Fieldset from '../../Fieldset/Fieldset';
 import BlockedUser from './BlockedUser';
-import styles from '../PreferencesModal.css';
+import preferencesStyles from '../PreferencesModal.css';
+import styles from './Blocked.css';
 
 export type Props = {
   blocked: User[],
@@ -19,6 +21,17 @@ class PreferencesSecurity extends PureComponent {
 
   renderBlockedUsers(): React.Element<any>[] {
     const { blocked } = this.props;
+
+    if (!blocked.length) {
+      return [
+        <Text
+          key="empty"
+          id="PreferencesModal.blocked.empty"
+          className={styles.empty}
+          tagName="div"
+        />
+      ];
+    }
 
     return blocked.map((user) => {
       return (
@@ -33,7 +46,7 @@ class PreferencesSecurity extends PureComponent {
 
   render(): React.Element<any> {
     return (
-      <div className={styles.screen}>
+      <div className={preferencesStyles.screen}>
         <Fieldset legend="PreferencesModal.blocked.legend">
           {this.renderBlockedUsers()}
         </Fieldset>

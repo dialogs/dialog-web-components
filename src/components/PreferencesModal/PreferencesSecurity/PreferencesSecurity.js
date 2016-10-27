@@ -10,8 +10,8 @@ import Fieldset from '../../Fieldset/Fieldset';
 import Field from '../../Field/Field';
 import Button from '../../Button/Button';
 import Session from './SecuritySession';
-import styles from '../PreferencesModal.css';
-import securityStyles from './Security.css';
+import preferencesStyles from '../PreferencesModal.css';
+import styles from './Security.css';
 
 export type Props = {
   sessions: AuthSession[],
@@ -46,7 +46,7 @@ class PreferencesSecurity extends PureComponent {
         <Button
           theme="danger"
           view="link"
-          className={securityStyles.termnateAllButton}
+          className={styles.termnateAllButton}
           onClick={this.props.onAllSessionsTerminate}
         >
           <Text id="PreferencesModal.security.terminate_all" />
@@ -82,7 +82,7 @@ class PreferencesSecurity extends PureComponent {
 
   render(): React.Element<any> {
     return (
-      <div className={styles.screen}>
+      <div className={preferencesStyles.screen}>
         {this.renderCurrentSessions()}
         {this.renderActiveSessions()}
       </div>

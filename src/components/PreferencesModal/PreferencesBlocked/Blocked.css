@@ -4,6 +4,21 @@
 
 @import '../../../styles/variables.css';
 
+.empty {
+  height: 200px;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  padding: 0 50px;
+  text-align: center;
+  color: color(#000 alpha(30%));
+  font-size: 15px;
+  font-family: var(--default-font-family);
+  @apply --no-select;
+}
+
 .user {
   display: flex;
   flex-flow: row;

@@ -30,4 +30,5 @@ shortcuts:
 blocked:
   title: Blocked users
   legend: List of blocked users
+  empty: You will not receive messages from people on your block list
   unblock: Unblock
