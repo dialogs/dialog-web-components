@@ -1,0 +1,49 @@
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ */
+
+@import '../../../styles/variables.css';
+
+.session {
+  flex-flow: row;
+  align-items: center;
+  align-content: center;
+  justify-content: flex-start;
+
+  &:hover {
+    & .terminateButton {
+      display: block;
+    }
+  }
+}
+
+.sessionMeta {
+  flex: 1 1 auto;
+  display: flex;
+  flex-flow: column;
+  @apply --flex-fix;
+  @apply --no-select;
+}
+
+.sessionTitle {
+  flex: 0 0 auto;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.sessionAuthTime {
+  flex: 0 0 auto;
+  font-size: 13px;
+  line-height: 1.4;
+  color: color(#000 alpha(70%));
+}
+
+.terminateButton {
+  display: none;
+}
+
+.termnateAllButton {
+  margin-bottom: var(--default-padding);
+  padding: 6px 0;
+}

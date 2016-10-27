@@ -6,11 +6,12 @@
 import type { AuthSession } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
 import { Text } from '@dlghq/react-l10n';
-import Fieldset from '../Fieldset/Fieldset';
-import Field from '../Field/Field';
-import Button from '../Button/Button';
-import Session from './Security/Session';
-import styles from './PreferencesModal.css';
+import Fieldset from '../../Fieldset/Fieldset';
+import Field from '../../Field/Field';
+import Button from '../../Button/Button';
+import Session from './SecuritySession';
+import styles from '../PreferencesModal.css';
+import securityStyles from './Security.css';
 
 export type Props = {
   sessions: AuthSession[],
@@ -45,7 +46,7 @@ class PreferencesSecurity extends PureComponent {
         <Button
           theme="danger"
           view="link"
-          className={styles.termnateAllButton}
+          className={securityStyles.termnateAllButton}
           onClick={this.props.onAllSessionsTerminate}
         >
           <Text id="PreferencesModal.security.terminate_all" />

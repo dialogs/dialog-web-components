@@ -19,7 +19,7 @@ import Tabs from '../Tabs/Tabs';
 import Scroller from '../Scroller/Scroller';
 import PreferencesGeneral from './PreferencesGeneral';
 import PreferencesNotifications from './PreferencesNotifications';
-import PreferencesSecurity from './PreferencesSecurity';
+import PreferencesSecurity from './PreferencesSecurity/PreferencesSecurity';
 import styles from './PreferencesModal.css';
 
 class PreferencesModal extends PureComponent {

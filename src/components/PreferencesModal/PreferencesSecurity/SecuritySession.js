@@ -8,7 +8,7 @@ import React, { PureComponent } from 'react';
 import { Text } from '@dlghq/react-l10n';
 import Field from '../../Field/Field';
 import Button from '../../Button/Button';
-import styles from '../PreferencesModal.css';
+import styles from './Security.css';
 
 export type Props = {
   session: AuthSession,
