@@ -6,8 +6,6 @@
 import React, { PureComponent } from 'react';
 import { Text } from '@dlghq/react-l10n';
 import classNames from 'classnames';
-import selectFiles from '../../utils/selectFiles';
-import fileToBase64 from '../../utils/fileToBase64';
 import Modal from '../Modal/Modal';
 import ModalHeader from '../ModalHeader/ModalHeader';
 import ModalClose from '../ModalClose/ModalClose';
@@ -16,7 +14,7 @@ import ModalFooter from '../ModalFooter/ModalFooter';
 import Input from '../Input/Input';
 import Icon from '../Icon/Icon';
 import Button from '../Button/Button';
-import PeerAvatar from '../PeerAvatar/PeerAvatar';
+import AvatarSelector from '../AvatarSelector/AvatarSelector';
 import styles from './ProfileModal.css';
 import type { Props, State } from './types';
 
@@ -27,7 +25,6 @@ class ProfileModal extends PureComponent {
   handleChange: Function;
   handleSubmit: Function;
   handleNickChooserClick: Function;
-  handleAvatarChangerClick: Function;
   handleAvatarChange: (avatar: File[]) => void;
 
   constructor(props: Props): void {
@@ -43,7 +40,6 @@ class ProfileModal extends PureComponent {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleNickChooserClick = this.handleNickChooserClick.bind(this);
-    this.handleAvatarChangerClick = this.handleAvatarChangerClick.bind(this);
     this.handleAvatarChange = this.handleAvatarChange.bind(this);
   }
 
@@ -73,13 +69,8 @@ class ProfileModal extends PureComponent {
     this.setState({ nick: '' });
   }
 
-  handleAvatarChangerClick(): void {
-    selectFiles(this.handleAvatarChange, false);
-  }
-
-  handleAvatarChange(files: File[]): void {
-    fileToBase64(files[0], (avatar) => this.setState({ avatar }));
-    this.props.onAvatarChange(files[0]);
+  handleAvatarChange(avatar: File): void {
+    this.props.onAvatarChange(avatar);
   }
 
   isChanged(): boolean {
@@ -89,25 +80,15 @@ class ProfileModal extends PureComponent {
   }
 
   renderAvatar(): React.Element<any> {
-    const { profile: { name, placeholder } } = this.props;
-    const { avatar } = this.state;
+    const { profile: { name, placeholder, avatar } } = this.props;
 
     return (
-      <div className={styles.avatarChanger}>
-        <PeerAvatar
-          onClick={this.handleAvatarChangerClick}
-          className={styles.avatar}
-          peer={{
-            title: name,
-            avatar,
-            placeholder
-          }}
-          size="big"
-        />
-        <Icon
-          glyph="photo_camera"
-          className={styles.avatarChangerIcon}
-          onClick={this.handleAvatarChangerClick}
+      <div className={styles.avatarBlock}>
+        <AvatarSelector
+          name={name}
+          placeholder={placeholder}
+          avatar={avatar}
+          onChange={this.handleAvatarChange}
         />
       </div>
     );
@@ -196,9 +177,7 @@ class ProfileModal extends PureComponent {
           </ModalHeader>
 
           <ModalBody className={styles.body}>
-            <div className={styles.avatarBlock}>
-              {this.renderAvatar()}
-            </div>
+            {this.renderAvatar()}
             <div className={styles.form}>
               <Input
                 className={styles.input}

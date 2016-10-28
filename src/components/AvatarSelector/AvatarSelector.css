@@ -1,0 +1,41 @@
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ */
+@import '../../styles/variables.css';
+
+:root {
+  --avatar-selector-font-family: var(--default-font-family);
+  --avatar-selector-size: 100px;
+}
+
+/* Reset */
+.container {
+  all: initial;
+}
+
+/* Styles */
+.container {
+  display: block;
+  position: relative;
+  line-height: 0;
+  width: var(--avatar-selector-size);
+  height: var(--avatar-selector-size);
+}
+
+.avatar {
+  cursor: pointer;
+}
+
+.avatarChangerIcon {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 34px;
+  height: 34px;
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: #ffffff;
+  font-size: 20px;
+  line-height: 34px;
+  color: var(--violet-blue-two);
+}
