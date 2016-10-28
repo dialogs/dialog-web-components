@@ -11,7 +11,7 @@ export type Request = {
   avatar: ?File
 };
 
-export type Step = 'type' | 'info';
+export type Step = 'type' | 'info' | 'members';
 
 export type Props = {
   className?: string,

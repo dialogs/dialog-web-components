@@ -1,13 +1,25 @@
-title:
-  group: Create new group
-  channel: Create new channel
-type:
-  group: Group
-  channel: Channel
-hint:
-  group: Groups are ideal for limited communities, they can have up to 10000 members
-  channel: Channels are tool fro broadcasting your messages to unlimited audiences
+group:
+  title: Create new group
+  type: Group
+  hint: Groups are ideal for limited communities, they can have up to 10000 members
+  info:
+    name: Name this Group
+    description:
+      label: Description - optional
+      placeholder: Describe the Purpose of This Conversation
+    channel: Group link
+  finish: Create Group
+
+channel:
+  title: Create new channel
+  type: Channel
+  hint: Channels are tool for broadcasting your messages to unlimited audiences
+  info:
+    name: Name This Channel
+    description:
+      label: Description - optional
+      placeholder: Describe the Purpose of This Conversation
+    channel: Channel link
+  finish: Create Channel
+
 next: Add Info
-finish:
-  group: Create Group
-  channel: Create Channel

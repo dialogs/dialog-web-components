@@ -12,11 +12,9 @@ import ModalClose from '../ModalClose/ModalClose';
 import ModalBody from '../ModalBody/ModalBody';
 import ModalFooter from '../ModalFooter/ModalFooter';
 import Icon from '../Icon/Icon';
-import Radio from '../Radio/Radio';
-import RadioGroup from '../Radio/RadioGroup';
 import Button from '../Button/Button';
-import Input from '../Input/Input';
-import PeerAvatar from '../PeerAvatar/PeerAvatar';
+import CreateNewType from './CreateNewType';
+import CreateNewInfo from './CreateNewInfo';
 import styles from './CreateNewModal.css';
 import type { Props } from './types';
 
@@ -24,19 +22,19 @@ class CreateNewModal extends PureComponent {
   props: Props;
 
   handleChange: Function;
+  handleAvatarChange: Function;
   handleSubmit: Function;
   handlePrevStepClick: Function;
   handleNextStepClick: Function;
-  handleAvatarChangerClick: Function;
 
   constructor(props: Props): void {
     super(props);
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleAvatarChange = this.handleAvatarChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handlePrevStepClick = this.handlePrevStepClick.bind(this);
     this.handleNextStepClick = this.handleNextStepClick.bind(this);
-    this.handleAvatarChangerClick = this.handleAvatarChangerClick.bind(this);
   }
 
   handlePrevStepClick(): void {
@@ -62,14 +60,16 @@ class CreateNewModal extends PureComponent {
     });
   }
 
+  handleAvatarChange(avatar: File): void {
+    this.props.onRequestChange({
+      ...this.props.request,
+      avatar
+    });
+  }
+
   handleSubmit(): void {
     const { request } = this.props;
     this.props.onSubmit(request);
-  }
-
-  handleAvatarChangerClick(): void {
-    const { request: { avatar } } = this.props;
-    console.debug('handleAvatarChangerClick', { avatar });
   }
 
   renderTypeStep(): React.Element<any> {
@@ -78,29 +78,11 @@ class CreateNewModal extends PureComponent {
     return (
       <div className={styles.wrapper}>
         <ModalHeader className={styles.header} withBorder>
-          <Text id={`CreateNewModal.title.${type}`} />
+          <Text id={`CreateNewModal.${type}.title`} />
           <ModalClose onClick={this.props.onClose} />
         </ModalHeader>
-        <ModalBody className={styles.type}>
-          <RadioGroup name="type" value={type} onChange={this.handleChange}>
-            <Radio value="group">
-              <Text id="CreateNewModal.type.group" className={styles.typeLabel} />
-            </Radio>
-            <Text
-              className={styles.typeHint}
-              id="CreateNewModal.hint.group"
-              tagName="div"
-            />
-            <br />
-            <Radio value="channel">
-              <Text id="CreateNewModal.type.channel" className={styles.typeLabel} />
-            </Radio>
-            <Text
-              className={styles.typeHint}
-              id="CreateNewModal.hint.channel"
-              tagName="div"
-            />
-          </RadioGroup>
+        <ModalBody className={styles.body}>
+          <CreateNewType onChange={this.handleChange} type={type} />
         </ModalBody>
         <ModalFooter className={styles.footer}>
           <Button
@@ -118,7 +100,7 @@ class CreateNewModal extends PureComponent {
   }
 
   renderInfoStep(): React.Element<any> {
-    const { request: { type, about, title, shortname } } = this.props;
+    const { request: { type, about, title, shortname, avatar } } = this.props;
 
     return (
       <div className={styles.wrapper}>
@@ -128,43 +110,19 @@ class CreateNewModal extends PureComponent {
             onClick={this.handlePrevStepClick}
             className={styles.back}
           />
-          <Text id={`CreateNewModal.title.${type}`} />
+          <Text id={`CreateNewModal.${type}.title`} />
           <ModalClose onClick={this.props.onClose} />
         </ModalHeader>
-        <ModalBody className={styles.info}>
-          <div className={styles.avatarBlock}>
-            {this.renderAvatar()}
-          </div>
-          <form autoComplete="off" className={styles.form}>
-            <Input
-              className={styles.input}
-              id="title"
-              large
-              name="title"
-              onChange={this.handleChange}
-              placeholder="Name This Group"
-              value={title}
-            />
-            <Input
-              className={styles.input}
-              id="about"
-              label="Description - optional"
-              large
-              name="about"
-              onChange={this.handleChange}
-              placeholder="Describe the Purpose of This Conversation"
-              type="textarea"
-              value={about}
-            />
-            <Input
-              id="shortname"
-              name="shortname"
-              label="Channel link"
-              onChange={this.handleChange}
-              prefix="app.dlg.im/"
-              value={shortname}
-            />
-          </form>
+        <ModalBody className={styles.body}>
+          <CreateNewInfo
+            type={type}
+            about={about}
+            title={title}
+            avatar={avatar}
+            shortname={shortname}
+            onChange={this.handleChange}
+            onAvatarChange={this.handleAvatarChange}
+          />
         </ModalBody>
         <ModalFooter className={styles.footer}>
           <Button
@@ -174,33 +132,9 @@ class CreateNewModal extends PureComponent {
             theme="success"
             wide
           >
-            <Text id={`CreateNewModal.finish.${type}`} />
+            <Text id={`CreateNewModal.${type}.finish`} />
           </Button>
         </ModalFooter>
-      </div>
-    );
-  }
-
-  renderAvatar(): React.Element<any> {
-    const { request: { title, avatar } } = this.props;
-
-    return (
-      <div className={styles.avatarChanger}>
-        <PeerAvatar
-          onClick={this.handleAvatarChangerClick}
-          className={styles.avatar}
-          peer={{
-            title,
-            avatar,
-            placeholder: 'empty'
-          }}
-          size="big"
-        />
-        <Icon
-          glyph="photo_camera"
-          className={styles.avatarChangerIcon}
-          onClick={this.handleAvatarChangerClick}
-        />
       </div>
     );
   }

@@ -24,6 +24,10 @@
   line-height: 0;
 }
 
+.body {
+  padding: 0;
+}
+
 .back {
   width: 28px;
   height: 28px;
