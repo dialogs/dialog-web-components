@@ -32,4 +32,4 @@ suppress_type=$FlowIssue
 esproposal.class_static_fields=enable
 
 [version]
-0.33.0
+0.34.0
