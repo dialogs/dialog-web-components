@@ -1,14 +1,12 @@
 /* eslint global-require:0 */
+const fs = require('fs');
 const path = require('path');
 const pkg = require('./package.json');
 const components = require('./components.json');
 
-function doc(name) {
-  return path.resolve(__dirname, 'docs', name + '.md');
-}
 
-function component(name) {
-  return path.resolve(__dirname, 'src/components', name);
+function resolve(...paths) {
+  return fs.realpathSync(path.join(__dirname, ...paths));
 }
 
 module.exports = {
@@ -18,26 +16,25 @@ module.exports = {
   sections: components.map(({ name, content, components }) => {
     return {
       name,
-      content: content ? doc(content) : content,
+      content: content ? resolve('docs', name + '.md') : null,
       components() {
-        return components.map((name) => component(name))
+        return components.map((name) => resolve('src/components', name))
       }
     };
   }),
   updateWebpackConfig(config) {
-    const source = path.join(__dirname, 'src');
     const whitelist = [
-      source,
-      path.join(__dirname, 'node_modules/@dlghq/markdown'),
-      path.join(__dirname, 'node_modules/@dlghq/react-l10n'),
-      path.join(__dirname, 'node_modules/@dlghq/dialog-types')
+      resolve('src'),
+      resolve('node_modules/@dlghq/markdown'),
+      resolve('node_modules/@dlghq/react-l10n'),
+      resolve('node_modules/@dlghq/dialog-types')
     ];
 
     config.entry.push(
-      path.join(source, 'styles/styleguide.css')
+      resolve('src/styles/styleguide.css')
     );
 
-    config.resolve.alias['rsg-components/Wrapper'] = path.join(__dirname, 'src/styleguide/Wrapper');
+    config.resolve.alias['rsg-components/Wrapper'] = resolve('src/styleguide/Wrapper.js');
 
     config.module.loaders.push({
       test: /\.js$/,
