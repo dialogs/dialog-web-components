@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const pkg = require('./package.json');
 const components = require('./components.json');
-
+const babelrc = JSON.parse(fs.readFileSync('./.babelrc', 'utf-8'));
 
 function resolve(...paths) {
   return fs.realpathSync(path.join(__dirname, ...paths));
@@ -39,7 +39,11 @@ module.exports = {
     config.module.loaders.push({
       test: /\.js$/,
       include: whitelist,
-      loader: 'babel?cacheDirectory'
+      loader: 'babel',
+      query: Object.assign({}, babelrc, {
+        babelrc: false,
+        cacheDirectory: true
+      })
     }, {
       test: /\.css$/,
       include: whitelist,
