@@ -3,7 +3,11 @@
  * @flow
  */
 
-function filterByQuery<T>(query: string, items: T[], getValue: (item: T) => string): T[] {
+import type { List } from 'immutable';
+
+export type Filterable<T> = Array<T> | List<T>;
+
+function filterByQuery<T, C: Filterable<T>>(query: string, items: C, getValue: (item: T) => string): C {
   const lowerQuery = query.toLowerCase();
 
   return items.filter((item) => {

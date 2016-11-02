@@ -4,50 +4,36 @@
  */
 
 import type { Contact } from '@dlghq/dialog-types';
-import React, { PureComponent } from 'react';
-import filterByQuery from '../../utils/filterByQuery';
+import type { SelectorState } from '../../entities';
+
+import React from 'react';
 import classNames from 'classnames';
-import ContactListItem from '../ContactListItem/ContactListItem';
+import SelectList from '../SelectList/SelectList';
+import ContactListItem from './ContactListItem';
 import styles from './ContactList.css';
 
 export type Props = {
   className?: string,
-  query: string,
-  selected: number[],
-  contacts: Contact[],
-  onSelect: (id: number) => void
+  selector: SelectorState<Contact>,
+  onChange: (selector: SelectorState<Contact>) => void
 };
 
-class ContactList extends PureComponent {
-  props: Props;
+function ContactList(props: Props) {
+  const className = classNames(styles.container, props.className);
 
-  static defaultProps = {
-    query: ''
-  };
-
-  renderContacts(): React.Element<any>[] {
-    const { contacts, selected, query } = this.props;
-    const filteredContacts = filterByQuery(query, contacts, (contact) => contact.name);
-
-    return filteredContacts.map((contact) => (
-      <ContactListItem
-        key={contact.uid}
-        contact={contact}
-        onClick={this.props.onSelect}
-        isSelected={selected.indexOf(contact.uid) > -1}
+  return (
+    <div className={styles.list}>
+      <SelectList
+        className={className}
+        width={500}
+        itemHeight={72}
+        itemVisibleCount={5.5}
+        selector={props.selector}
+        onChange={props.onChange}
+        renderItem={ContactListItem.render}
       />
-    ));
-  }
-
-  render(): React.Element<any> {
-    const className = classNames(styles.container, this.props.className);
-
-    return (
-      <div className={className}>
-        {this.renderContacts()}
-      </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default ContactList;
