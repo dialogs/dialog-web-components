@@ -46,7 +46,7 @@
   },
   "homepage": "https://dialogs.github.io/dialog-web-components",
   "dependencies": {
-    "@dlghq/dialog-types": "1.5.3",
+    "@dlghq/dialog-types": "1.6.1",
     "@dlghq/markdown": "0.1.1",
     "@dlghq/react-l10n": "0.5.1",
     "classnames": "2.2.5",
@@ -60,7 +60,7 @@
     "react-draggable": "2.2.2",
     "react-modal": "1.5.2",
     "react-tether": "0.5.2",
-    "react-virtualized": "8.3.1"
+    "react-virtualized": "8.4.0"
   },
   "devDependencies": {
     "@dlghq/babel-preset-dialog": "2.4.0",
