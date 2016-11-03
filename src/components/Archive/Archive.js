@@ -6,6 +6,7 @@
 import type { Peer, ShortRecent } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
+// $FlowFixMe: https://github.com/facebook/flow/issues/2092
 import CSSTransitionGroup from 'react-addons-css-transition-group';
 import ArchiveList from './ArchiveList';
 import Button from '../Button/Button';
