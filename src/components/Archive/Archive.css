@@ -43,6 +43,8 @@
   position: absolute;
   bottom: 0;
   box-shadow: none !important;
+  text-shadow: none !important;
+  color: color(#000 alpha(50%));
   z-index: var(--archive-button-z-index);
 }
 
