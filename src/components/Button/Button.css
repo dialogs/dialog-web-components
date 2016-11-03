@@ -18,9 +18,9 @@
   --button-size-modifier: 0.25;
   --button-default-background-color: #e2e2e2;
   --button-default-hover-background-color: color(var(--button-default-background-color) tint(10%));
-  --button-default-active-background-color: color(var(--button-default-background-color) shade(5%));
+  --button-default-active-background-color: color(var(--button-default-background-color) shade(10%));
   --button-default-disabled-background-color: color(var(--button-default-background-color) blackness(50%) alpha(70%));
-  --button-default-color: color(#000 alpha(45%));
+  --button-default-color: #fff;
   --button-primary-background-color: var(--color-primary);
   --button-primary-hover-background-color: color(var(--button-primary-background-color) tint(10%));
   --button-primary-active-background-color: color(var(--button-primary-background-color) shade(5%));
@@ -49,7 +49,7 @@
 }
 
 /* Main */
-.button {
+.container {
   all: initial;
   display: inline-block;
   box-sizing: border-box;
@@ -214,7 +214,9 @@
 }
 
 /* View */
-.button {}
+.button {
+  text-shadow: 0 1px 2px color(#000 alpha(25%));
+}
 
 .link {
   background-color: transparent !important;

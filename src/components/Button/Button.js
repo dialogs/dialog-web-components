@@ -51,7 +51,7 @@ class Button extends PureComponent {
 
   render(): React.Element<any> {
     const { id, type, disabled, theme, size, wide, rounded, children, view, loading } = this.props;
-    const className = classNames(styles.button, styles[theme], styles[view], styles[size], {
+    const className = classNames(styles.container, styles[theme], styles[view], styles[size], {
       [styles.wide]: wide,
       [styles.rounded]: rounded
     }, this.props.className);
