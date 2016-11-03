@@ -3,79 +3,75 @@
  * @flow
  */
 
-import type { PeerInfo } from '@dlghq/dialog-types';
-import React, { Component } from 'react';
+import type { ShortRecent } from '@dlghq/dialog-types';
+import React, { PureComponent } from 'react';
 import classNames from 'classnames';
-import RecentItem from '../RecentItem/RecentItem';
 import CSSTransitionGroup from 'react-addons-css-transition-group';
+import { AutoSizer } from 'react-virtualized';
+import ArchiveList from './ArchiveList';
 import styles from './Archive.css';
 
 export type Props = {
   className?: string,
-  archive: PeerInfo[]
+  pending: boolean,
+  archive: ShortRecent[],
+  onOpen: () => void,
+  onClose: () => void,
+  onLoadMore: () => void
 };
 
-export type Props = {
+export type State = {
   isOpen: boolean
 };
 
-class Archive extends Component {
+class Archive extends PureComponent {
   props: Props;
   state: State;
 
   constructor(props: Props) {
     super(props);
-    console.debug(props);
 
     this.state = {
       isOpen: false
     };
   }
 
-  shouldComponentUpdate(nextProps: Props, nextState: State): boolean {
-    return nextState.isOpen !== this.state.isOpen ||
-           nextProps.children !== this.props.children ||
-           nextProps.className !== this.props.className;
-  }
-
   handleArchiveToggle = () => {
-    console.debug('handleArchiveToggle');
-    this.setState({ isOpen: !this.state.isOpen })
+    const isOpen = !this.state.isOpen;
+    this.setState({ isOpen });
+    if (isOpen) {
+      this.props.onOpen();
+    } else {
+      this.props.onClose();
+    }
   };
 
   renderToggler() {
     const { isOpen } = this.state;
 
     return (
-      <div className={styles.button} onClick={this.handleArchiveToggle}>
+      <button className={styles.button} onClick={this.handleArchiveToggle}>
         {
           isOpen
             ? <span>Back</span>
             : <span>Archive</span>
         }
-      </div>
+      </button>
     );
   }
 
   renderArchive() {
-    const { isOpen } = this.state;
-    const { archive } = this.props;
-
-    if (!isOpen) {
+    if (!this.state.isOpen) {
       return null;
     }
 
-    const children = archive.map((dialog) => {
-      console.debug(dialog);
-      return (
-        <RecentItem info={dialog} key={dialog.peer.id} />
-      );
-    });
-
-    return(
-      <div className={styles.archive}>
-        {children}
-      </div>
+    return (
+      <ArchiveList
+        className={styles.archive}
+        items={this.props.archive}
+        pending={this.props.pending}
+        onLoadMore={this.props.onLoadMore}
+      />
     );
   }
 

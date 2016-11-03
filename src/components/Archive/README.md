@@ -1,24 +1,46 @@
 Basic Archive:
 
 ```
-function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min)) + min;
+function getArchives(offset = 0) {
+  const archive = [];
+  for (let i = 0; i < 10; i++) {
+    const id = i + offset * 10;
+    archive.push({
+      counter: id % 123,
+      peer: {
+        peer: {
+          id: id,
+          type: 'user'
+        },
+        title: `User ${id}`,
+        placeholder: 'blue',
+        avatar: null
+      }
+    });
+  };
+  
+  return archive;
 }
 
-let archive = [];
-for (let i = 0; i < 10; i++) {
-  const id = getRandomInt(100, 10000);
-  archive.push({
-    peer: {
-      id: id,
-      type: 'user'
-    },
-    title: `User ${id}`,
-    placeholder: 'blue',
-    avatar: null
-  });
+initialState = {
+  archive: [],
+  offset: 0
+};
+
+const handleLoad = () => {
+  setTimeout(() => {
+    setState({
+      archive: [
+        ...state.archive, 
+        ...getArchives(state.offset)
+      ],
+      offset: state.offset + 1
+    });
+  }, 3000);
+};
+
+const handleClose = () => {
+  setState(initialState);
 };
 
 <div style={{
@@ -28,6 +50,11 @@ for (let i = 0; i < 10; i++) {
   position: 'relative',
   overflow: 'hidden'
 }}>
-  <Archive archive={archive} />
+  <Archive 
+    archive={state.archive}
+    onOpen={handleLoad}
+    onLoadMore={handleLoad}
+    onClose={handleClose}
+  />
 </div>
 ```

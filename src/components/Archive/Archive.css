@@ -29,11 +29,13 @@
 }
 
 .archive {
+  display: block;
+  height: 100%;
   padding-top: var(--archive-button-height);
-
 }
 
 .button {
+  all: initial;
   transition: all var(--archive-transition-duration) ease;
   position: absolute;
   height: var(--archive-button-height);
@@ -44,6 +46,7 @@
   margin: 0;
   text-align: center;
   font-size: 15px;
+  font-family: var(--archive-font-family);
   line-height: 20px;
   padding: 10px;
   box-sizing: border-box;
