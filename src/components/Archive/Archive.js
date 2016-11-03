@@ -3,7 +3,7 @@
  * @flow
  */
 
-import type { ShortRecent } from '@dlghq/dialog-types';
+import type { Peer, ShortRecent } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import CSSTransitionGroup from 'react-addons-css-transition-group';
@@ -17,7 +17,8 @@ export type Props = {
   archive: ShortRecent[],
   onOpen: () => void,
   onClose: () => void,
-  onLoadMore: () => void
+  onLoadMore: () => void,
+  onSelect: (peer: Peer) => void
 };
 
 export type State = {
@@ -80,6 +81,7 @@ class Archive extends PureComponent {
         items={this.props.archive}
         pending={this.props.pending}
         onLoadMore={this.props.onLoadMore}
+        onSelect={this.props.onSelect}
       />
     );
   }

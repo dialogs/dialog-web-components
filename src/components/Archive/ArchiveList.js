@@ -16,19 +16,21 @@ export type Props = {
 }
 
 class ArchiveList extends PureComponent {
+  props: Props;
+
+  handleRowsRendered = ({ overscanStopIndex }: Object) => {
+    if (overscanStopIndex === this.props.items.length - 1) {
+      this.props.onLoadMore();
+    }
+  };
+
   renderEmpty = () => {
     return (
       <span>{'You don\'t have archived chats'}</span>
     );
   };
 
-  handleRowsRendered = ({ overscanStopIndex }) => {
-    if (overscanStopIndex === this.props.items.length - 1) {
-      this.props.onLoadMore();
-    }
-  };
-
-  renderRow = ({ index, key, style }) => {
+  renderRow = ({ index, key, style }: Object) => {
     const { peer, counter } = this.props.items[index];
 
     return (
@@ -40,7 +42,7 @@ class ArchiveList extends PureComponent {
           onSelect={this.props.onSelect}
         />
       </div>
-    )
+    );
   };
 
   render() {
@@ -58,11 +60,11 @@ class ArchiveList extends PureComponent {
                 rowRenderer={this.renderRow}
                 rowCount={this.props.items.length}
               />
-            )
+            );
           }}
         </AutoSizer>
       </div>
-    )
+    );
   }
 }
 

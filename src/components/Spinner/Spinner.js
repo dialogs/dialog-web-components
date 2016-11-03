@@ -3,7 +3,7 @@
  * @flow
  */
 
-import React, { PureComponent } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import styles from './Spinner.css';
 
