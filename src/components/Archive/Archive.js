@@ -19,38 +19,23 @@ export type Props = {
   onOpen: () => void,
   onClose: () => void,
   onLoadMore: () => void,
-  onSelect: (peer: Peer) => void
-};
-
-export type State = {
+  onSelect: (peer: Peer) => void,
   isOpen: boolean
 };
 
 class Archive extends PureComponent {
-  props: Props;
-  state: State;
-
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      isOpen: false
-    };
-  }
-
   handleArchiveToggle = () => {
-    const isOpen = !this.state.isOpen;
-    this.setState({ isOpen });
+    const { isOpen } = this.props;
+
     if (isOpen) {
-      this.props.onOpen();
-    } else {
       this.props.onClose();
+    } else {
+      this.props.onOpen();
     }
   };
 
   renderToggler() {
-    const { isOpen } = this.state;
-    const { pending } = this.props;
+    const { isOpen, pending } = this.props;
 
     return (
       <Button
@@ -72,7 +57,7 @@ class Archive extends PureComponent {
   }
 
   renderArchive() {
-    if (!this.state.isOpen) {
+    if (!this.props.isOpen) {
       return null;
     }
 
@@ -88,7 +73,7 @@ class Archive extends PureComponent {
   }
 
   render(): React.Element<any> {
-    const { isOpen } = this.state;
+    const { isOpen } = this.props;
     const className = classNames(styles.container, {
       [styles.opened]: isOpen
     }, this.props.className);
