@@ -1,75 +1,50 @@
-import React, { Component, PropTypes } from 'react';
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ * @flow
+ */
+
+import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import styles from './Spinner.css';
 
-class Spinner extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-    type: PropTypes.oneOf(['round', 'wave', 'dotted']).isRequired,
-    size: PropTypes.oneOf(['normal', 'large']).isRequired
-  };
+export type Props = {
+  className?: string,
+  type: 'round' | 'wave' | 'dotted',
+  size: 'small' | 'normal' | 'large'
+};
 
-  static defaultProps = {
-    type: 'round',
-    size: 'normal'
-  };
+function Spinner(props: Props): ?React.Element<any> {
+  const { size, type } = props;
+  const className = classNames(styles[type], styles[size], props.className);
 
-  shouldComponentUpdate(nextProps) {
-    return nextProps.className !== this.props.className ||
-           nextProps.size !== this.props.size ||
-           nextProps.type !== this.props.type;
-  }
+  switch (type) {
+    case 'wave':
+      return (
+        <div className={className}>
+          <div className={styles.stick} />
+          <div className={styles.stick} />
+          <div className={styles.stick} />
+          <div className={styles.stick} />
+          <div className={styles.stick} />
+        </div>
+      );
 
-  renderWaveSpinner() {
-    const { size, className } = this.props;
-    const waveClassName = classNames(styles.wave, styles[size], className);
+    case 'round':
+      return (
+        <div className={className} />
+      );
 
-    return (
-      <div className={waveClassName}>
-        <div className={styles.stick} />
-        <div className={styles.stick} />
-        <div className={styles.stick} />
-        <div className={styles.stick} />
-        <div className={styles.stick} />
-      </div>
-    );
-  }
+    case 'dotted':
+      return (
+        <div className={className}>
+          <div className={styles.dot} />
+          <div className={styles.dot} />
+          <div className={styles.dot} />
+        </div>
+      );
 
-  renderRoundSpinner() {
-    const { size, className } = this.props;
-    const roundClassName = classNames(styles.round, styles[size], className);
-
-    return (
-      <div className={roundClassName} />
-    );
-  }
-
-  renderDottedSpinner() {
-    const { size, className } = this.props;
-    const dottedClassName = classNames(styles.dotted, styles[size], className);
-
-    return (
-      <div className={dottedClassName}>
-        <div className={styles.dot} />
-        <div className={styles.dot} />
-        <div className={styles.dot} />
-      </div>
-    );
-  }
-
-  render() {
-    const { type } = this.props;
-
-    switch (type) {
-      case 'wave':
-        return this.renderWaveSpinner();
-      case 'round':
-        return this.renderRoundSpinner();
-      case 'dotted':
-        return this.renderDottedSpinner();
-      default:
-        return null;
-    }
+    default:
+      return null;
   }
 }
 
