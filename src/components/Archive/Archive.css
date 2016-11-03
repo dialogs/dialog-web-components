@@ -42,6 +42,7 @@
   transition: bottom var(--archive-transition-duration) ease, margin var(--archive-transition-duration) ease;
   position: absolute;
   bottom: 0;
+  box-shadow: none !important;
   z-index: var(--archive-button-z-index);
 }
 

@@ -56,7 +56,7 @@ class Archive extends PureComponent {
         onClick={this.handleArchiveToggle}
         loading={pending}
         size="small"
-        theme="info"
+        theme="default"
         wide
         rounded={false}
       >
