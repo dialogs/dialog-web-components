@@ -38,14 +38,14 @@ class Button extends PureComponent {
   };
 
   renderLoading(): ?React.Element<any> {
-    const { loading } = this.props;
+    const { loading, size } = this.props;
 
     if (!loading) {
       return null;
     }
 
     return (
-      <Spinner type="dotted" className={styles.loading} />
+      <Spinner type="dotted" className={styles.loading} size={size} />
     );
   }
 
