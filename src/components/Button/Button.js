@@ -16,9 +16,9 @@ export type Props = {
   wide: boolean,
   rounded: boolean,
   loading: boolean,
-  view: 'default' | 'outline' | 'link',
+  view: 'button' | 'outline' | 'link',
   type: 'submit' | 'reset' | 'button' | 'menu',
-  theme: 'primary' | 'success' | 'danger' | 'info' | 'warning' | 'link',
+  theme:'default' | 'primary' | 'success' | 'danger' | 'info' | 'warning' | 'link',
   size: 'small' | 'normal' | 'large',
   onClick: () => any
 }
@@ -28,8 +28,8 @@ class Button extends PureComponent {
 
   static defaultProps = {
     type: 'button',
-    theme: 'primary',
-    view: 'default',
+    theme: 'default',
+    view: 'button',
     size: 'normal',
     wide: false,
     rounded: true,
