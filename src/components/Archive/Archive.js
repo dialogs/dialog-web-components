@@ -7,8 +7,8 @@ import type { ShortRecent } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import CSSTransitionGroup from 'react-addons-css-transition-group';
-import { AutoSizer } from 'react-virtualized';
 import ArchiveList from './ArchiveList';
+import Button from '../Button/Button';
 import styles from './Archive.css';
 
 export type Props = {
@@ -48,15 +48,24 @@ class Archive extends PureComponent {
 
   renderToggler() {
     const { isOpen } = this.state;
+    const { pending } = this.props;
 
     return (
-      <button className={styles.button} onClick={this.handleArchiveToggle}>
+      <Button
+        className={styles.button}
+        onClick={this.handleArchiveToggle}
+        loading={pending}
+        size="small"
+        theme="info"
+        wide
+        rounded={false}
+      >
         {
           isOpen
             ? <span>Back</span>
             : <span>Archive</span>
         }
-      </button>
+      </Button>
     );
   }
 

@@ -24,19 +24,24 @@ function getArchives(offset = 0) {
 
 initialState = {
   archive: [],
-  offset: 0
+  offset: 0,
+  pending: false
 };
 
 const handleLoad = () => {
-  setTimeout(() => {
-    setState({
-      archive: [
-        ...state.archive, 
-        ...getArchives(state.offset)
-      ],
-      offset: state.offset + 1
-    });
-  }, 3000);
+  if (state.offset < 5) {
+    setState({ pending: true });
+    setTimeout(() => {
+      setState({
+        archive: [
+          ...state.archive, 
+          ...getArchives(state.offset)
+        ],
+        offset: state.offset + 1,
+        pending: false
+      });
+    }, 3000);
+  }
 };
 
 const handleClose = () => {
@@ -55,6 +60,7 @@ const handleClose = () => {
     onOpen={handleLoad}
     onLoadMore={handleLoad}
     onClose={handleClose}
+    pending={state.pending}
   />
 </div>
 ```

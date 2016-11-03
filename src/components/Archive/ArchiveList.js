@@ -45,23 +45,23 @@ class ArchiveList extends PureComponent {
 
   render() {
     return (
-      <AutoSizer>
-        {({ width, height }) => {
-          console.debug({ width, height, items: this.props.items });
-          return (
-            <List
-              className={this.props.className}
-              width={width}
-              height={height}
-              noRowsRenderer={this.renderEmpty}
-              onRowsRendered={this.handleRowsRendered}
-              rowHeight={46}
-              rowRenderer={this.renderRow}
-              rowCount={this.props.items.length}
-            />
-          )
-        }}
-      </AutoSizer>
+      <div className={this.props.className}>
+        <AutoSizer>
+          {({ width, height }) => {
+            return (
+              <List
+                width={width}
+                height={height}
+                noRowsRenderer={this.renderEmpty}
+                onRowsRendered={this.handleRowsRendered}
+                rowHeight={46}
+                rowRenderer={this.renderRow}
+                rowCount={this.props.items.length}
+              />
+            )
+          }}
+        </AutoSizer>
+      </div>
     )
   }
 }
