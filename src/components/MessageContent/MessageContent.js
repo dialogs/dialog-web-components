@@ -33,7 +33,7 @@ function MessageContent({ content, ...props }: Props) {
       return <Voice {...content} {...props} />;
 
     default:
-      console.warn('Unsupported message content: ', content);
+      console.warn('Unsupported message content: ', content); // eslint-disable-line
       return <Text text={`Unsupported message content (${content.type}).`} service />;
   }
 }

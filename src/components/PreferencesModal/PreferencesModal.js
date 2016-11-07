@@ -26,35 +26,26 @@ import styles from './PreferencesModal.css';
 class PreferencesModal extends PureComponent {
   props: Props;
 
-  handleClose: Function;
-  handleSettingsChange: Function;
-  handleSettingsSave: Function;
-  handleScreenChange: Function;
-
   constructor(props: Props) {
     super(props);
-    console.debug(props);
 
-    this.handleClose = this.handleClose.bind(this);
-    this.handleScreenChange = this.handleScreenChange.bind(this);
-    this.handleSettingsSave = _.debounce(this.handleSettingsSave.bind(this), 100, {
+    this.handleSettingsSave = _.debounce(this.handleSettingsSave, 100, {
       leading: true,
       maxWait: 300
     });
-    this.handleSettingsChange = this.handleSettingsChange.bind(this);
   }
 
   componentDidMount() {
     this.props.onSettingsLoad();
   }
 
-  handleClose(): void {
+  handleClose = (): void => {
     if (!this.isPending()) {
       this.props.onClose();
     }
   }
 
-  handleSettingsChange(settings: GeneralSettings | NotificationSettings): void {
+  handleSettingsChange = (settings: GeneralSettings | NotificationSettings): void => {
     this.handleSettingsSave();
     this.props.onSettingsChange({
       ...this.props.settings.value,
@@ -62,13 +53,13 @@ class PreferencesModal extends PureComponent {
     });
   }
 
-  handleSettingsSave() {
+  handleSettingsSave = (): void => {
     if (this.props.settings.value) {
       this.props.onSettingsSave(this.props.settings.value);
     }
   }
 
-  handleScreenChange(value: PreferencesScreen): void {
+  handleScreenChange = (value: PreferencesScreen): void => {
     this.props.onScreenChange(value);
     switch (value) {
       case 'general':

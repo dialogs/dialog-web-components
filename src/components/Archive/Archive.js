@@ -14,16 +14,18 @@ import styles from './Archive.css';
 
 export type Props = {
   className?: string,
+  isOpen: boolean,
   pending: boolean,
   archive: ShortRecent[],
   onOpen: () => void,
   onClose: () => void,
   onLoadMore: () => void,
-  onSelect: (peer: Peer) => void,
-  isOpen: boolean
+  onSelect: (peer: Peer) => void
 };
 
 class Archive extends PureComponent {
+  props: Props;
+
   handleArchiveToggle = () => {
     const { isOpen } = this.props;
 

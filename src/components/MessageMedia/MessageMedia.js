@@ -26,7 +26,7 @@ function MessageMedia(props: Props): ?React.Element<any> {
       return <MessageMediaImage media={props.media} className={props.className} />;
 
     default:
-      console.warn('Unsupported message media: ', props.media.type);
+      console.warn('Unsupported message media: ', props.media.type); // eslint-disable-line
       return null;
   }
 }
