@@ -9,6 +9,7 @@ import Text from './Text/Text';
 import Photo from './Photo/Photo';
 import Document from './Document/Document';
 import Voice from './Voice/Voice';
+import Location from './Location/Location';
 
 export type Props = {
   content: MessageContentTypes,
@@ -31,6 +32,9 @@ function MessageContent({ content, ...props }: Props) {
 
     case 'voice':
       return <Voice {...content} {...props} />;
+
+    case 'location':
+      return <Location {...content} {...props} />;
 
     default:
       console.warn('Unsupported message content: ', content); // eslint-disable-line

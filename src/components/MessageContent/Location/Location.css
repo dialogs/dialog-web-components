@@ -1,0 +1,12 @@
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ */
+
+:root {
+  --location-border-radius: 4px;
+}
+
+.container {
+  line-height: 0;
+  border-radius: var(--location-border-radius);
+}

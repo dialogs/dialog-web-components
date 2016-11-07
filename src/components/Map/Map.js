@@ -27,7 +27,7 @@ function Map(props: Props): React.Element<any> {
   }
 
   return (
-    <a href={href} target="_blank">
+    <a href={href} target="_blank" rel="noopener noreferrer">
       <img
         src={src}
         className={props.className}
