@@ -7,7 +7,7 @@ import type { MessageContentDocument } from '@dlghq/dialog-types';
 import React from 'react';
 import classNames from 'classnames';
 import getExtensionType from '../../../utils/getExtensionType';
-import Icon from '../../Icon';
+import Icon from '../../Icon/Icon';
 import styles from './Document.css';
 
 function Document(props: MessageContentDocument) {
