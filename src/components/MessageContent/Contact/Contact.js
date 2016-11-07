@@ -32,7 +32,7 @@ class Contact extends PureComponent {
     return emails.map((email, index) => {
       return (
         <div className={styles.email} key={index}>
-          <Icon glyph="phone" className={styles.icon} />
+          <Icon glyph="mail_outline" className={styles.icon} />
           <a href={`mailto:${email}`} className={styles.link}>{email}</a>
         </div>
       );
@@ -49,7 +49,7 @@ class Contact extends PureComponent {
     return phones.map((phone, index) => {
       return (
         <div className={styles.phone} key={index}>
-          <Icon glyph="mail_outline" className={styles.icon} />
+          <Icon glyph="phone" className={styles.icon} />
           <a href={`tel:${phone}`} className={styles.link}>{phone}</a>
         </div>
       );
