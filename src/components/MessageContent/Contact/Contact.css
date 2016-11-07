@@ -1,0 +1,78 @@
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ */
+@import '../../../styles/variables.css';
+
+:root {
+  --contact-font-family: var(--default-font-family);
+  --contact-border-radius: 4px;
+  --contact-avatar-size: 96px;
+  --contact-width: 400px;
+  --contact-border-color: color(#000 alpha(14%));
+  --contact-padding: var(--default-padding);
+  --contact-link-color: var(--color-info);
+}
+
+.container {
+  all: initial;
+  display: flex;
+  font-family: var(--contact-font-family);
+  border-radius: var(--contact-border-radius);
+  width: var(--contact-width);
+  box-shadow: 0 0 0 1px var(--contact-border-color);
+  padding: var(--contact-padding);
+  flex-flow: row-reverse;
+  background-color: #fff;
+}
+
+.avatar {
+  width: var(--contact-avatar-size);
+  height: var(--contact-avatar-size);
+  line-height: 0;
+  border-radius: calc(var(--contact-avatar-size) / 2);
+  overflow: hidden;
+  flex: 0 0 auto;
+}
+
+.credentials {
+  flex: 1 1 auto;
+  @apply --flex-fix;
+}
+
+.name {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.6;
+  margin-bottom: 6px;
+}
+
+.phone {
+  font-size: 14px;
+  line-height: 1.2;
+  margin-bottom: 4px;
+  vertical-align: middle;
+}
+
+.email {
+  font-size: 14px;
+  line-height: 1.2;
+  margin-bottom: 4px;
+  vertical-align: middle;
+}
+
+.icon {
+  font-size: 22px;
+  margin-right: 6px;
+  color: color(#000 alpha(20%));
+}
+
+.link {
+  color: var(--contact-link-color);
+  text-decoration: none;
+  line-height: inherit;
+  border-bottom: 1px dotted var(--contact-link-color);
+  &:hover {
+    border-bottom: 1px solid var(--contact-link-color);
+  }
+}
+
