@@ -23,7 +23,7 @@ function getArchives(offset = 0) {
 }
 
 initialState = {
-  archive: [],
+  archive: getArchives(0),
   offset: 0,
   pending: false
 };
