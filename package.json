@@ -81,7 +81,7 @@
     "postcss-loader": "1.1.0",
     "pre-commit": "1.1.3",
     "raw-loader": "0.5.1",
-    "react-styleguidist": "4.2.0",
+    "react-styleguidist": "4.1.0",
     "stylefmt": "4.3.1",
     "stylelint": "7.5.0",
     "webpack": "1.13.3",
