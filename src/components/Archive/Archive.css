@@ -5,66 +5,13 @@
 
 :root {
   --archive-font-family: var(--default-font-family);
-  --archive-button-height: 34px;
-  --archive-button-background-color: #e2e2e2;
-  --archive-button-color: color(#000 alpha(55%));
-  --archive-button-z-index: 1;
-  --archive-transition-duration: var(--default-transition-duration);
-}
-
-/* Reset */
-.container {
-  all: initial;
 }
 
 /* Styles */
 .container {
+  all: initial;
   display: block;
   height: 100%;
   font-family: var(--archive-font-family);
-}
-
-.opened {
-  & .button {
-    bottom: 100%;
-    margin-bottom: calc(0 - var(--archive-button-height));
-  }
-}
-
-.archive {
-  height: 100%;
-  padding-top: var(--archive-button-height);
   box-sizing: border-box;
-}
-
-.button {
-  /*all: initial;*/
-  transition: bottom var(--archive-transition-duration) ease, margin var(--archive-transition-duration) ease;
-  position: absolute;
-  bottom: 0;
-  box-shadow: none !important;
-  text-shadow: none !important;
-  color: color(#000 alpha(50%));
-  z-index: var(--archive-button-z-index);
-}
-
-/* Animation */
-.enter {
-  opacity: 0.01;
-  transform: translateX(150px);
-}
-
-.enterActive {
-  opacity: 1;
-  transform: translateX(0);
-  transition: all var(--archive-transition-duration) 50ms linear;
-}
-
-.leave {
-  opacity: 1;
-}
-
-.leaveActive {
-  opacity: 0.01;
-  transition: all 50ms linear;
 }
