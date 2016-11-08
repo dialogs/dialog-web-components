@@ -9,6 +9,7 @@
       "Icon",
       "Spinner",
       "Toolbar",
+      "ToolbarInfoButton",
       "Logo",
       "Typing",
       "ConnectionStatus",
