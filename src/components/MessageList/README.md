@@ -1,3 +1,9 @@
-Basic MessageList:
+```
+const messages = require('./mock');
 
-    <MessageList>Hello, world!</MessageList>
+<div style={{ height: 600, background: '#fff' }}>
+  <MessageList
+    messages={messages}
+  />
+</div>
+```

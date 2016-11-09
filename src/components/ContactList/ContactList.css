@@ -28,6 +28,7 @@
   align-items: flex-start;
   display: flex;
   flex-direction: column;
+  outline: none;
 }
 
 .contact {

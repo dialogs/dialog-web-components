@@ -82,7 +82,8 @@
       "MessageContent",
       "MessageDivider",
       "FakeMessage",
-      "EmptyChat"
+      "EmptyChat",
+      "MessageList"
     ]
   },
   {

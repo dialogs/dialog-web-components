@@ -1,4 +1,14 @@
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ */
 @import '../../styles/variables.css';
 
-.root {
+.container {
+  display: block;
+  height: 100%;
+}
+
+.list {
+  display: block;
+  outline: none;
 }

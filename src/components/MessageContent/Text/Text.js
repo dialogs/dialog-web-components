@@ -6,9 +6,12 @@
 import type { MessageContentText } from '@dlghq/dialog-types';
 import React from 'react';
 import classNames from 'classnames';
+import { memoize } from 'lodash';
 import markdown from '@dlghq/markdown';
 import MessageMedia from '../../MessageMedia/MessageMedia';
 import styles from './Text.css';
+
+const textToHtml = memoize(markdown);
 
 export type Props = MessageContentText & {
   service?: boolean,
@@ -34,7 +37,7 @@ function Text(props: Props) {
         <div
           className={styles.wrapper}
           // eslint-disable-next-line
-          dangerouslySetInnerHTML={{ __html: markdown(props.text) }}
+          dangerouslySetInnerHTML={{ __html: textToHtml(props.text) }}
         />
         <MessageMedia media={props.media} />
       </div>
@@ -45,7 +48,7 @@ function Text(props: Props) {
     <div
       className={className}
       // eslint-disable-next-line
-      dangerouslySetInnerHTML={{ __html: markdown(props.text) }}
+      dangerouslySetInnerHTML={{ __html: textToHtml(props.text) }}
     />
   );
 }
