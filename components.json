@@ -10,6 +10,7 @@
       "Spinner",
       "Toolbar",
       "ToolbarInfoButton",
+      "ToolbarCallButton",
       "Logo",
       "Typing",
       "ConnectionStatus",
