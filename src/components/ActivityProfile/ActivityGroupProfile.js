@@ -71,7 +71,7 @@ class ActivityGroupProfile extends PureComponent {
 
     return (
       <div className={styles.about}>
-        <Button view="link" onClick={onAboutEdit} className={styles.aboutButton}>
+        <Button theme="primary" view="link" onClick={onAboutEdit} className={styles.aboutButton}>
           <Icon glyph="add_circle_outline" className={styles.aboutAddIcon} />
           <Text id="ActivityProfile.add_description" />
         </Button>

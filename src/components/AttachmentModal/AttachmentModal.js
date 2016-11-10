@@ -122,6 +122,7 @@ class AttachmentModal extends Component {
         <ModalFooter className={styles.footer}>
           <Button
             wide
+            theme="primary"
             rounded={false}
             onClick={this.handleSendAll}
           >
@@ -135,6 +136,7 @@ class AttachmentModal extends Component {
       <ModalFooter className={styles.footer}>
         <Button
           wide
+          theme="primary"
           rounded={false}
           onClick={this.handleSendAll}
           className={styles.halfButton}

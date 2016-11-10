@@ -20,6 +20,6 @@ const actions = {
 };
 
 <Trigger {...state} {...actions} >
-  <Button>Click me!</Button>
+  <Button theme="primary">Click me!</Button>
 </Trigger>
 ```

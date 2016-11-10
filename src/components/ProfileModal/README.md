@@ -41,7 +41,7 @@ const actions = {
 };
 
 <div>
-  <Button onClick={() => setState({ isOpen: true })}>Edit profile</Button>
+  <Button theme="primary" onClick={() => setState({ isOpen: true })}>Edit profile</Button>
   {state.isOpen ? <ProfileModal {...state.state} {...actions} /> : null}
 </div>
 ```

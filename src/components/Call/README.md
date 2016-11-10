@@ -79,7 +79,7 @@ const handleMuteToggle = () => {
 };
 
 <div>
-  <Button onClick={handleCall}>Call</Button>
+  <Button onClick={handleCall} theme="primary">Call</Button>
 
   <Call
     call={state.call}

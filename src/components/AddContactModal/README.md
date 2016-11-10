@@ -70,7 +70,7 @@ const handleAddContact = (id) => {
 };
 
 <div>
-  <Button onClick={handleOpen}>Add contact</Button>
+  <Button theme="primary" onClick={handleOpen}>Add contact</Button>
   {
     state.isOpen ? (
       <AddContactModal

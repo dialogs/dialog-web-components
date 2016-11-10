@@ -92,7 +92,7 @@ const actions = {
 };
 
 <div>
-  <Button onClick={() => setState({ isOpen: true })}>
+  <Button theme="primary" onClick={() => setState({ isOpen: true })}>
     Open Preferences
   </Button>
   {

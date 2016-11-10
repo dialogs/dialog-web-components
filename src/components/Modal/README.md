@@ -12,7 +12,7 @@ const handleOpen = () => setState({ isOpen: true });
 const handleClose = () => setState({ isOpen: false });
 
 <div>
-  <Button onClick={handleOpen}>Open modal</Button>
+  <Button theme="primary" onClick={handleOpen}>Open modal</Button>
   {
     state.isOpen ? (
       <Modal onClose={handleClose}>
@@ -43,7 +43,7 @@ const handleOpen = () => setState({ isOpen: true });
 const handleClose = () => setState({ isOpen: false });
 
 <div>
-  <Button onClick={handleOpen}>Open fullscreen modal</Button>
+  <Button theme="primary" onClick={handleOpen}>Open fullscreen modal</Button>
   {
     state.isOpen ? (
       <Modal fullscreen onClose={handleClose}>

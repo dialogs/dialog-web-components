@@ -185,6 +185,7 @@ class AddContactModal extends PureComponent {
         <ModalFooter className={styles.footer}>
           <Button
             wide
+            theme="primary"
             rounded={false}
             disabled={Boolean(error)}
             onClick={this.handleOpenChat}
@@ -199,6 +200,7 @@ class AddContactModal extends PureComponent {
       <ModalFooter className={styles.footer}>
         <Button
           wide
+          theme="primary"
           rounded={false}
           disabled={this.isLocked()}
           onClick={this.handleAddClick}

@@ -5,7 +5,7 @@ JoinModal:
     const handleClose = () => setState({ isOpen: false });
 
     <div>
-      <Button onClick={handleOpen}>Join group</Button>
+      <Button onClick={handleOpen} theme="primary">Join group</Button>
       {
         state.isOpen ? (
           <JoinModal

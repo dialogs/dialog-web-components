@@ -29,7 +29,7 @@ const actions = {
 };
 
 <div>
-  <Button onClick={handleOpen}>Create new</Button>
+  <Button theme="primary" onClick={handleOpen}>Create new</Button>
   {
     state.isOpen ? (
       <CreateNewModal

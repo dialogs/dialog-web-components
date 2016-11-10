@@ -53,7 +53,7 @@ const actions = {
 };
 
 <div>
-  <Button onClick={actions.onOpen}>Send attachment</Button>
+  <Button theme="primary" onClick={actions.onOpen}>Send attachment</Button>
   {
     state.attachments.length ? (
       <AttachmentModal

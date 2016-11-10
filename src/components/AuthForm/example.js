@@ -67,7 +67,7 @@ class ExampleAuthForm extends Component {
     }
 
     return (
-      <Button onClick={this.handleFinish}>
+      <Button theme="primary" onClick={this.handleFinish}>
         Restart Auth
       </Button>
     );

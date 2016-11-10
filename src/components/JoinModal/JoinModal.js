@@ -39,7 +39,7 @@ class JoinModal extends PureComponent {
               placeholder="Enter your email or mobile"
               className={styles.input}
             />
-            <Button wide onClick={this.props.onJoin}>Continue</Button>
+            <Button wide onClick={this.props.onJoin} theme="primary">Continue</Button>
           </form>
         </ModalBody>
         <ModalFooter className={styles.footer}>
