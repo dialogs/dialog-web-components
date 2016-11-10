@@ -47,6 +47,8 @@ class Confirm extends PureComponent {
           </ModalBody>
           <ModalFooter className={styles.footer}>
             <Button
+              theme="primary"
+              size="small"
               className={styles.button}
               view="outline"
               onClick={this.handleCancel}
@@ -56,6 +58,7 @@ class Confirm extends PureComponent {
             <Button
               className={styles.button}
               view="outline"
+              size="small"
               theme={this.props.request.theme}
               onClick={this.handleSuccess}
             >
