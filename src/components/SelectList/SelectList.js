@@ -67,7 +67,11 @@ class SelectList<T> extends PureComponent<void, Props<T>, void> {
     );
   };
 
-  render() {
+  render(): ?React.Element<any> {
+    if (!this.props.selector.getShow()) {
+      return null;
+    }
+
     return (
       <List
         className={this.props.className}

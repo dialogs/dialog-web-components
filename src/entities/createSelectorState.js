@@ -11,6 +11,7 @@ import filterByQuery from '../utils/filterByQuery';
 function createSelectorState<T>(name: string, getValue: (item: T) => string): SelectorStateCreator<T> {
   const defaultRecord = {
     query: '',
+    show: true,
     items: List(),
     filtered: List(),
     selected: OrderedSet(),
@@ -39,6 +40,14 @@ function createSelectorState<T>(name: string, getValue: (item: T) => string): Se
       return this.set('query', query)
                  .set('filtered', filtered)
                  .set('hoverIndex', hoverIndex);
+    }
+
+    getShow(): boolean {
+      return this.get('show');
+    }
+
+    setShow(show: boolean): SelectorState {
+      return this.set('show', show);
     }
 
     getItems(): List<T> {
