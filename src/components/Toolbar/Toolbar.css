@@ -46,7 +46,7 @@
 .buttons {
   display: flex;
   box-sizing: border-box;
-  padding: 0 0 0 var(--toolbar-padding-left);
+  padding: 0 0 0 var(--toolbar-padding-right);
   flex: 0 1 auto;
   align-items: center;
   justify-content: flex-end;
