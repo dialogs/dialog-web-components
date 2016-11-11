@@ -3,7 +3,7 @@
  * @flow
  */
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import Icon from '../Icon/Icon';
 import styles from './ActivityHeader.css';
@@ -15,15 +15,8 @@ export type Props = {
   className?: string
 };
 
-class ActivityHeader extends Component {
+class ActivityHeader extends PureComponent {
   props: Props;
-
-  shouldComponentUpdate(nextProps: Props): boolean {
-    return nextProps.className !== this.props.className ||
-           nextProps.onClose !== this.props.onClose ||
-           nextProps.onBack !== this.props.onBack ||
-           nextProps.children !== this.props.children;
-  }
 
   renderBackButton(): ?React.Element<any> {
     if (!this.props.onBack) {
