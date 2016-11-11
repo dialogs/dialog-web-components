@@ -9,6 +9,8 @@ export type SelectorState<T> = {
   hasQuery(): boolean;
   getQuery(): string;
   setQuery(query: string): SelectorState<T>;
+  getShow(): boolean;
+  setShow(show: boolean): SelectorState<T>;
   getItems(): List<T>;
   getItem(index: number): T;
   getHovered(): T;
