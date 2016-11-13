@@ -1,5 +1,6 @@
 /**
  * Copyright 2016 Dialog LLC <info@dlg.im>
+ * @flow
  */
 
 import type { Typing as TypingType } from '@dlghq/dialog-types';

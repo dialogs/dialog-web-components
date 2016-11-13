@@ -23,7 +23,7 @@
 module.system=haste
 module.use_strict=true
 
-module.name_mapper='.*\(.css\)' -> 'CSSModule'
+module.name_mapper='.*\.css$' -> 'CSSModule'
 module.file_ext=.js
 module.file_ext=.json
 module.file_ext=.css

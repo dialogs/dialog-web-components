@@ -1,9 +1,10 @@
 /**
  * Copyright 2016 Dialog LLC <info@dlg.im>
+ * @flow
  */
 
 import type { ConnectionStatus as ConnectionStatusType } from '@dlghq/dialog-types';
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import CSSTransitionGroup from 'react-addons-css-transition-group';
 import { Text } from '@dlghq/react-l10n';
 import classNames from 'classnames';
@@ -18,7 +19,7 @@ export type State = {
   show: boolean
 };
 
-class ConnectionStatus extends Component {
+class ConnectionStatus extends PureComponent {
   props: Props;
   state: State;
   timeoutId: ?number;
@@ -36,12 +37,6 @@ class ConnectionStatus extends Component {
     this.setState({
       show: Boolean(nextProps.status)
     });
-  }
-
-  shouldComponentUpdate(nextProps: Props, nextState: State): boolean {
-    return nextState.show !== this.state.show ||
-           nextProps.status !== this.props.status ||
-           nextProps.className !== this.props.className;
   }
 
   componentDidUpdate() {
@@ -64,11 +59,11 @@ class ConnectionStatus extends Component {
   }
 
   renderContent() {
-    if (!this.state.show) {
+    const { props: { status }, state: { show } } = this;
+    if (!(show && status)) {
       return null;
     }
 
-    const { status } = this.props;
     const className = classNames(styles.root, styles[status], this.props.className);
 
     return (
