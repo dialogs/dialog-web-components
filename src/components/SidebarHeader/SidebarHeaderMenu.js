@@ -6,7 +6,7 @@
 import React, { Component } from 'react';
 import Trigger from '../Trigger/Trigger';
 import Icon from '../Icon/Icon';
-import styles from '../SidebarHeader/SidebarHeader.css';
+import styles from './SidebarHeader.css';
 
 export type Props = {
   appName: string,

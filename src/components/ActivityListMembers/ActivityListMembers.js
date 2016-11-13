@@ -6,7 +6,7 @@
 import type { GroupMember, GroupOnline } from '@dlghq/dialog-types';
 import React, { Component } from 'react';
 import classNames from 'classnames';
-import ActivityListItem from '../ActivityListItem/ActivityListItem';
+import ActivityListItem from '../ActivityList/ActivityListItem';
 import ActivityMembersItem from './ActivityListMembersItem';
 import Icon from '../Icon/Icon';
 import styles from './ActivityListMembers.css';

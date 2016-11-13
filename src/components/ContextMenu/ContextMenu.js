@@ -8,7 +8,7 @@ import React, { Component } from 'react';
 import styles from './ContextMenu.css';
 import Trigger from '../Trigger/Trigger';
 import Dropdown from '../Dropdown/Dropdown';
-import DropdownItem from '../DropdownItem/DropdownItem';
+import DropdownItem from '../Dropdown/DropdownItem';
 
 class ContextMenu extends Component {
   props: Props;

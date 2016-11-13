@@ -15,7 +15,6 @@
     "start": "styleguidist server",
     "create": "node scripts/create-component.js",
     "build": "npm-run-all --parallel build:*",
-    "build:lib": "node scripts/export.js",
     "build:l10n": "node scripts/compile-translations.js",
     "pretest": "npm run lint",
     "test": "exit 0",

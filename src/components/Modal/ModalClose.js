@@ -7,7 +7,7 @@ import React from 'react';
 import classNames from 'classnames';
 import Icon from '../Icon/Icon';
 import Spinner from '../Spinner/Spinner';
-import styles from '../Modal/Modal.css';
+import styles from './Modal.css';
 
 export type Props = {
   className?: string,

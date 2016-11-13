@@ -5,7 +5,7 @@
 
 import React from 'react';
 import classNames from 'classnames';
-import styles from '../Dropdown/Dropdown.css';
+import styles from './Dropdown.css';
 
 export type Props = {
   children?: any,

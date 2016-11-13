@@ -7,8 +7,8 @@ import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import modalStyles from '../Modal/Modal.css';
 import styles from './Confirm.css';
-import ModalBody from '../ModalBody/ModalBody';
-import ModalFooter from '../ModalFooter/ModalFooter';
+import ModalBody from '../Modal/ModalBody';
+import ModalFooter from '../Modal/ModalFooter';
 import Button from '../Button/Button';
 
 export type ConfirmRequest = {

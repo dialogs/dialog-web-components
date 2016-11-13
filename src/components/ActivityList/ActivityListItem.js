@@ -5,7 +5,7 @@
 
 import React from 'react';
 import classNames from 'classnames';
-import styles from '../ActivityList/ActivityList.css';
+import styles from './ActivityList.css';
 
 export type Props = {
   className?: string,

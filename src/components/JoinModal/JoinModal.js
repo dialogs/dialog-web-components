@@ -5,9 +5,9 @@
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import Modal from '../Modal/Modal';
-import ModalHeader from '../ModalHeader/ModalHeader';
-import ModalBody from '../ModalBody/ModalBody';
-import ModalFooter from '../ModalFooter/ModalFooter';
+import ModalHeader from '../Modal/ModalHeader';
+import ModalBody from '../Modal/ModalBody';
+import ModalFooter from '../Modal/ModalFooter';
 import Button from '../Button/Button';
 import Input from '../Input/Input';
 import IconButton from '../IconButton/IconButton';

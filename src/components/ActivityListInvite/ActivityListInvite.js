@@ -6,7 +6,7 @@
 import React from 'react';
 import { Text } from '@dlghq/react-l10n';
 import classNames from 'classnames';
-import ActivityListItem from '../ActivityListItem/ActivityListItem';
+import ActivityListItem from '../ActivityList/ActivityListItem';
 import Icon from '../Icon/Icon';
 import styles from './ActivityListInvite.css';
 

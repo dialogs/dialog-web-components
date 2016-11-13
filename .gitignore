@@ -7,6 +7,5 @@ yarn.lock
 yarn-error.log
 
 # Build
-/src/index.js
 /src/messages.json
 /styleguide/

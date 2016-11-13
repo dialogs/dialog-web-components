@@ -7,7 +7,7 @@ import type { CallProps } from './types';
 import React from 'react';
 import classNames from 'classnames';
 import Modal from '../Modal/Modal';
-import ModalBody from '../ModalBody/ModalBody';
+import ModalBody from '../Modal/ModalBody';
 import CallAvatar from './CallAvatar';
 import CallControls from './CallControls';
 import CallInfo from './CallInfo';
