@@ -18,7 +18,7 @@ module.exports = {
       name,
       content: content ? resolve('docs', name + '.md') : null,
       components() {
-        return components.map((name) => resolve('src/components', name))
+        return components.map((name) => resolve('src/components', name, name + '.js'))
       }
     };
   }),
@@ -84,6 +84,6 @@ module.exports = {
   },
 
   getExampleFilename(componentPath) {
-    return path.join(componentPath, 'README.md');
+    return componentPath.replace(/[\w\d]+\.js$/i, 'README.md');
   }
 };

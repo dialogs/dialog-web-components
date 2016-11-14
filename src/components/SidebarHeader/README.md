@@ -1,11 +1,14 @@
 Basic SidebarHeader:
 
 ```
-const SidebarHeaderMenu = require('../SidebarHeaderMenu/SidebarHeaderMenu').default;
-const Logo = require('../Logo/Logo').default;
-const Dropdown = require('../Dropdown/Dropdown').default;
-const DropdownItem = require('../DropdownItem/DropdownItem').default;
-const DropdownDivider = require('../DropdownDivider/DropdownDivider').default;
+const {
+  Logo,
+  Dropdown,
+  DropdownItem,
+  DropdownDivider,
+  SidebarHeaderMenu
+} = require('../../index');
+
 const handleClick = () => alert('menu clicked');
 
 <div style={{ width: 270, background: '#f5f5f5' }}>

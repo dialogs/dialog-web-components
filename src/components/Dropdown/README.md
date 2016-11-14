@@ -1,10 +1,14 @@
 Basic Dropdown:
 
 ```
-const DropdownItem = require('../DropdownItem/DropdownItem').default;
-const DropdownDivider = require('../DropdownDivider/DropdownDivider').default;
-const PeerAvatar = require('../PeerAvatar/PeerAvatar').default;
+const {
+  DropdownItem,
+  DropdownDivider,
+  PeerAvatar
+} = require('../../index');
+
 const handleClick = () => alert('menu clicked');
+
 const user = {
   title: 'Someone',
   placeholder: 'green',
@@ -26,8 +30,11 @@ const user = {
 Dropdown with Divider:
 
 ```
-const DropdownItem = require('../DropdownItem/DropdownItem').default;
-const DropdownDivider = require('../DropdownDivider/DropdownDivider').default;
+const {
+  DropdownItem,
+  DropdownDivider
+} = require('../../index');
+
 const handleClick = () => alert('menu clicked');
 
 <Dropdown isOpen>
@@ -41,8 +48,11 @@ const handleClick = () => alert('menu clicked');
 Dropdown with Header:
 
 ```
-const DropdownHeader = require('../DropdownHeader/DropdownHeader').default;
-const DropdownItem = require('../DropdownItem/DropdownItem').default;
+const {
+  DropdownItem,
+  DropdownHeader
+} = require('../../index');
+
 const handleClick = () => alert('menu clicked');
 
 <Dropdown isOpen>
@@ -56,9 +66,12 @@ const handleClick = () => alert('menu clicked');
 Themed Dropdown:
 
 ```
-const DropdownHeader = require('../DropdownHeader/DropdownHeader').default;
-const DropdownItem = require('../DropdownItem/DropdownItem').default;
-const DropdownDivider = require('../DropdownDivider/DropdownDivider').default;
+const {
+  DropdownItem,
+  DropdownHeader,
+  DropdownDivider
+} = require('../../index');
+
 const handleClick = () => alert('menu clicked');
 
 <Dropdown isOpen theme="secondary">

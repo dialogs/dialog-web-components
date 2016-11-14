@@ -1,10 +1,12 @@
 Basic Modal:
 
 ```
-const ModalHeader = require('../ModalHeader/ModalHeader').default;
-const ModalClose = require('../ModalClose/ModalClose').default;
-const ModalBody = require('../ModalBody/ModalBody').default;
-const ModalFooter = require('../ModalFooter/ModalFooter').default;
+const {
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  ModalClose
+} = require('../../index');
 
 initialState = { isOpen: false };
 
@@ -33,9 +35,11 @@ const handleClose = () => setState({ isOpen: false });
 Fullscreen Modal:
 
 ```
-const ModalHeader = require('../ModalHeader/ModalHeader').default;
-const ModalClose = require('../ModalClose/ModalClose').default;
-const ModalBody = require('../ModalBody/ModalBody').default;
+const {
+  ModalHeader,
+  ModalBody,
+  ModalClose
+} = require('../../index');
 
 initialState = { isOpen: false };
 
