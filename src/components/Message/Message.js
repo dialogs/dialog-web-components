@@ -3,9 +3,12 @@
  * @flow
  */
 
-import type { Message as MessageType } from '@dlghq/dialog-types';
+import type {
+  Message as MessageType,
+  MessageState as MessageStateType
+} from '@dlghq/dialog-types';
 import classNames from 'classnames';
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import MessageContent from '../MessageContent/MessageContent';
 import PeerAvatar from '../PeerAvatar/PeerAvatar';
 import MessageState from '../MessageState/MessageState';
@@ -13,15 +16,22 @@ import styles from './Message.css';
 
 export type Props = {
   message: MessageType,
-  renderActions?: () => React.Element<any>[],
-  short: boolean
+  state: MessageStateType,
+  short: boolean,
+  renderActions?: () => React.Element<any>[]
 };
 
-class Message extends PureComponent {
+class Message extends Component {
   props: Props;
 
+  shouldComponentUpdate(nextProps: Props): boolean {
+    return nextProps.message !== this.props.message ||
+           nextProps.state !== this.props.state ||
+           nextProps.short !== this.props.short;
+  }
+
   renderState(): ?React.Element<any> {
-    const { message: { state } } = this.props;
+    const { state } = this.props;
 
     if (state === 'unknown') {
       return null;
