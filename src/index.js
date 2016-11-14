@@ -4,101 +4,101 @@
  */
 
 // Interface
-export Avatar from './components/Avatar/Avatar';
-export PeerAvatar from './components/PeerAvatar/PeerAvatar';
-export Scroller from './components/Scroller/Scroller';
-export Dropdown from './components/Dropdown/Dropdown';
-export DropdownDivider from './components/Dropdown/DropdownDivider';
-export DropdownHeader from './components/Dropdown/DropdownHeader';
-export DropdownItem from './components/Dropdown/DropdownItem';
-export Icon from './components/Icon/Icon';
-export Spinner from './components/Spinner/Spinner';
-export Toolbar from './components/Toolbar/Toolbar';
-export ToolbarInfoButton from './components/ToolbarInfoButton/ToolbarInfoButton';
-export ToolbarCallButton from './components/ToolbarCallButton/ToolbarCallButton';
-export Logo from './components/Logo/Logo';
-export Typing from './components/Typing/Typing';
-export ConnectionStatus from './components/ConnectionStatus/ConnectionStatus';
-export Call from './components/Call/Call';
-export Tabs from './components/Tabs/Tabs';
-export Tooltip from './components/Tooltip/Tooltip';
-export ContextMenu from './components/ContextMenu/ContextMenu';
-export AvatarSelector from './components/AvatarSelector/AvatarSelector';
-export Archive from './components/Archive/Archive';
+export { default as Avatar } from './components/Avatar/Avatar';
+export { default as PeerAvatar } from './components/PeerAvatar/PeerAvatar';
+export { default as Scroller } from './components/Scroller/Scroller';
+export { default as Dropdown } from './components/Dropdown/Dropdown';
+export { default as DropdownDivider } from './components/Dropdown/DropdownDivider';
+export { default as DropdownHeader } from './components/Dropdown/DropdownHeader';
+export { default as DropdownItem } from './components/Dropdown/DropdownItem';
+export { default as Icon } from './components/Icon/Icon';
+export { default as Spinner } from './components/Spinner/Spinner';
+export { default as Toolbar } from './components/Toolbar/Toolbar';
+export { default as ToolbarInfoButton } from './components/ToolbarInfoButton/ToolbarInfoButton';
+export { default as ToolbarCallButton } from './components/ToolbarCallButton/ToolbarCallButton';
+export { default as Logo } from './components/Logo/Logo';
+export { default as Typing } from './components/Typing/Typing';
+export { default as ConnectionStatus } from './components/ConnectionStatus/ConnectionStatus';
+export { default as Call } from './components/Call/Call';
+export { default as Tabs } from './components/Tabs/Tabs';
+export { default as Tooltip } from './components/Tooltip/Tooltip';
+export { default as ContextMenu } from './components/ContextMenu/ContextMenu';
+export { default as AvatarSelector } from './components/AvatarSelector/AvatarSelector';
+export { default as Archive } from './components/Archive/Archive';
 
 // Buttons
-export Button from './components/Button/Button';
-export IconButton from './components/IconButton/IconButton';
+export { default as Button } from './components/Button/Button';
+export { default as IconButton } from './components/IconButton/IconButton';
 
 // Forms
-export Input from './components/Input/Input';
-export Checkbox from './components/Checkbox/Checkbox';
-export Radio from './components/Radio/Radio';
-export Switcher from './components/Switcher/Switcher';
-export Fieldset from './components/Fieldset/Fieldset';
+export { default as Input } from './components/Input/Input';
+export { default as Checkbox } from './components/Checkbox/Checkbox';
+export { default as Radio } from './components/Radio/Radio';
+export { default as Switcher } from './components/Switcher/Switcher';
+export { default as Fieldset } from './components/Fieldset/Fieldset';
 
 // Plug & Play Forms
-export AuthForm from './components/AuthForm/AuthForm';
+export { default as AuthForm } from './components/AuthForm/AuthForm';
 
 // Modals
-export Modal from './components/Modal/Modal';
-export ModalBody from './components/Modal/ModalBody';
-export ModalClose from './components/Modal/ModalClose';
-export ModalFooter from './components/Modal/ModalFooter';
-export ModalHeader from './components/Modal/ModalHeader';
+export { default as Modal } from './components/Modal/Modal';
+export { default as ModalBody } from './components/Modal/ModalBody';
+export { default as ModalClose } from './components/Modal/ModalClose';
+export { default as ModalFooter } from './components/Modal/ModalFooter';
+export { default as ModalHeader } from './components/Modal/ModalHeader';
 
 // Plug & Play Modals
-export JoinModal from './components/JoinModal/JoinModal';
-export AddContactModal from './components/AddContactModal/AddContactModal';
-export AttachmentModal from './components/AttachmentModal/AttachmentModal';
-export CreateNewModal from './components/CreateNewModal/CreateNewModal';
-export ProfileModal from './components/ProfileModal/ProfileModal';
-export PreferencesModal from './components/PreferencesModal/PreferencesModal';
+export { default as JoinModal } from './components/JoinModal/JoinModal';
+export { default as AddContactModal } from './components/AddContactModal/AddContactModal';
+export { default as AttachmentModal } from './components/AttachmentModal/AttachmentModal';
+export { default as CreateNewModal } from './components/CreateNewModal/CreateNewModal';
+export { default as ProfileModal } from './components/ProfileModal/ProfileModal';
+export { default as PreferencesModal } from './components/PreferencesModal/PreferencesModal';
 
 // Sidebar
-export SidebarHeader from './components/SidebarHeader/SidebarHeader';
-export SidebarSearch from './components/SidebarSearch/SidebarSearch';
-export SidebarGroup from './components/SidebarGroup/SidebarGroup';
-export RecentItem from './components/RecentItem/RecentItem';
-export RecentGroup from './components/RecentGroup/RecentGroup';
-export FakeRecentItem from './components/FakeRecentItem/FakeRecentItem';
+export { default as SidebarHeader } from './components/SidebarHeader/SidebarHeader';
+export { default as SidebarSearch } from './components/SidebarSearch/SidebarSearch';
+export { default as SidebarGroup } from './components/SidebarGroup/SidebarGroup';
+export { default as RecentItem } from './components/RecentItem/RecentItem';
+export { default as RecentGroup } from './components/RecentGroup/RecentGroup';
+export { default as FakeRecentItem } from './components/FakeRecentItem/FakeRecentItem';
 
 // Chat
-export Message from './components/Message/Message';
-export MessageState from './components/MessageState/MessageState';
-export MessageContent from './components/MessageContent/MessageContent';
-export MessageDivider from './components/MessageDivider/MessageDivider';
-export MessageGroup from './components/MessageGroup/MessageGroup';
-export MessageList from './components/MessageList/MessageList';
-export MessageMedia from './components/MessageMedia/MessageMedia';
-export FakeMessage from './components/FakeMessage/FakeMessage';
-export EmptyChat from './components/EmptyChat/EmptyChat';
+export { default as Message } from './components/Message/Message';
+export { default as MessageState } from './components/MessageState/MessageState';
+export { default as MessageContent } from './components/MessageContent/MessageContent';
+export { default as MessageDivider } from './components/MessageDivider/MessageDivider';
+export { default as MessageGroup } from './components/MessageGroup/MessageGroup';
+export { default as MessageList } from './components/MessageList/MessageList';
+export { default as MessageMedia } from './components/MessageMedia/MessageMedia';
+export { default as FakeMessage } from './components/FakeMessage/FakeMessage';
+export { default as EmptyChat } from './components/EmptyChat/EmptyChat';
 
 // Contacts
-export ContactSelector from './components/ContactSelector/ContactSelector';
-export ContactList from './components/ContactList/ContactList';
+export { default as ContactSelector } from './components/ContactSelector/ContactSelector';
+export { default as ContactList } from './components/ContactList/ContactList';
 
 // Activity
-export ActivityHeader from './components/ActivityHeader/ActivityHeader';
-export ActivityProfile from './components/ActivityProfile/ActivityProfile';
-export ActivityInvite from './components/ActivityInvite/ActivityInvite';
-export ActivityList from './components/ActivityList/ActivityList';
-export ActivityListItem from './components/ActivityList/ActivityListItem';
-export ActivityListNotification from './components/ActivityListNotification/ActivityListNotification';
-export ActivityListInvite from './components/ActivityListInvite/ActivityListInvite';
-export ActivityListMembers from './components/ActivityListMembers/ActivityListMembers';
+export { default as ActivityHeader } from './components/ActivityHeader/ActivityHeader';
+export { default as ActivityProfile } from './components/ActivityProfile/ActivityProfile';
+export { default as ActivityInvite } from './components/ActivityInvite/ActivityInvite';
+export { default as ActivityList } from './components/ActivityList/ActivityList';
+export { default as ActivityListItem } from './components/ActivityList/ActivityListItem';
+export { default as ActivityListNotification } from './components/ActivityListNotification/ActivityListNotification';
+export { default as ActivityListInvite } from './components/ActivityListInvite/ActivityListInvite';
+export { default as ActivityListMembers } from './components/ActivityListMembers/ActivityListMembers';
 
 // Helpers
-export Trigger from './components/Trigger/Trigger';
-export Confirm from './components/Confirm/Confirm';
+export { default as Trigger } from './components/Trigger/Trigger';
+export { default as Confirm } from './components/Confirm/Confirm';
 
 // Other
-export Error from './components/Error/Error';
-export Field from './components/Field/Field';
-export Image from './components/Image/Image';
-export Map from './components/Map/Map';
-export SelectList from './components/SelectList/SelectList';
-export SidebarHeaderMenu from './components/SidebarHeader/SidebarHeaderMenu';
-export SidebarSearchGroup from './components/SidebarSearchGroup/SidebarSearchGroup';
-export ToolbarButtons from './components/ToolbarButtons/ToolbarButtons';
-export ToolbarInfo from './components/ToolbarInfo/ToolbarInfo';
+export { default as Error } from './components/Error/Error';
+export { default as Field } from './components/Field/Field';
+export { default as Image } from './components/Image/Image';
+export { default as Map } from './components/Map/Map';
+export { default as SelectList } from './components/SelectList/SelectList';
+export { default as SidebarHeaderMenu } from './components/SidebarHeader/SidebarHeaderMenu';
+export { default as SidebarSearchGroup } from './components/SidebarSearchGroup/SidebarSearchGroup';
+export { default as ToolbarButtons } from './components/ToolbarButtons/ToolbarButtons';
+export { default as ToolbarInfo } from './components/ToolbarInfo/ToolbarInfo';
