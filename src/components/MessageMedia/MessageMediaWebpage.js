@@ -6,6 +6,7 @@
 import type { MessageMediaWebsite } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
+import Image from '../Image/Image';
 import styles from './MessageMedia.css';
 
 export type Props = {
@@ -48,10 +49,14 @@ class MessageMediaWebpage extends PureComponent {
     }
 
     return (
-      <img
+      <Image
         className={styles.webpageImage}
         src={image.url}
         alt={title}
+        width={image.width}
+        height={image.height}
+        maxWidth={200}
+        maxHeight={100}
       />
     );
   }
