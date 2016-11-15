@@ -22,12 +22,12 @@
   overflow-y: scroll;
   position: relative;
 
-  &::-webkit-scrollbar {
+  /*&::-webkit-scrollbar {
     width: var(--scroller-width);
   }
 
   &::-webkit-scrollbar-thumb {
     border-radius: var(--scroller-width);
     background-color: var(--scroller-color);
-  }
+  }*/
 }
