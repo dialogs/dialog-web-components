@@ -19,7 +19,8 @@ export type Props = {
   width: number,
   height: number,
   maxWidth: number,
-  maxHeight: number
+  maxHeight: number,
+  onClick: () => void
 }
 
 export type State = {
@@ -124,6 +125,7 @@ class Image extends Component {
 
     return (
       <img
+        onClick={this.props.onClick}
         className={className}
         src={source}
         width={width}
