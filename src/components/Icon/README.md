@@ -2,15 +2,23 @@ Basic Icon:
 
 ```
 <div>
-  <Icon glyph="logo" />
   <Icon glyph="done" />
   <Icon glyph="settings" />
-  <Icon glyph="call" />
   <Icon glyph="clear" />
   <Icon glyph="place" />
   <Icon glyph="phone" />
+  <Icon glyph="more" />
+  <hr />
+  <Icon glyph="logo" />
+  <Icon glyph="call" />
+  <Icon glyph="call_end" />
+  <Icon glyph="phone_outline" />
   <Icon glyph="apple" />
   <Icon glyph="more" />
+  <Icon glyph="minimize" />
+  <Icon glyph="link" />
+  <Icon glyph="smile" />
+
 </div>
 ```
 
