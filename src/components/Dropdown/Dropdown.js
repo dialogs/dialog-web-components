@@ -3,7 +3,7 @@
  * @flow
  */
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import styles from './Dropdown.css';
 
@@ -14,28 +14,21 @@ export type Props = {
   className?: string
 };
 
-class Dropdown extends Component {
+class Dropdown extends PureComponent {
   props: Props;
 
   static defaultProps = {
     theme: 'primary'
   };
 
-  shouldComponentUpdate(nextProps: Props): boolean {
-    return nextProps.isOpen !== this.props.isOpen ||
-           nextProps.children !== this.props.children ||
-           nextProps.theme !== this.props.theme ||
-           nextProps.className !== this.props.className;
-  }
-
   render(): React.Element<any> {
-    const { isOpen, theme, className } = this.props;
+    const { isOpen, theme, className, style } = this.props;
     const dropdownClassName = classNames(styles.container, styles[theme], {
       [styles.opened]: isOpen
     }, className);
 
     return (
-      <div className={dropdownClassName}>
+      <div className={dropdownClassName} style={style}>
         {this.props.children}
       </div>
     );

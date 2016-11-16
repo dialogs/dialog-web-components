@@ -4,13 +4,13 @@
  */
 
 import type { Props } from './types';
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import styles from './ContextMenu.css';
 import Trigger from '../Trigger/Trigger';
 import Dropdown from '../Dropdown/Dropdown';
 import DropdownItem from '../Dropdown/DropdownItem';
 
-class ContextMenu extends Component {
+class ContextMenu extends PureComponent {
   props: Props;
   renderMenu: Function;
 
@@ -18,12 +18,6 @@ class ContextMenu extends Component {
     super(props);
 
     this.renderMenu = this.renderMenu.bind(this);
-  }
-
-  shouldComponentUpdate(nextProps: Props): boolean {
-    return nextProps.menu !== this.props.menu ||
-           nextProps.children !== this.props.children ||
-           nextProps.className !== this.props.className;
   }
 
   renderMenuItems() {
@@ -36,12 +30,12 @@ class ContextMenu extends Component {
     });
   }
 
-  renderMenu(position: any): React.Element<any> {
+  renderMenu(position: Object): React.Element<any> {
     return (
       <Dropdown
         isOpen
         className={styles.container}
-        style={{ left: position.x, top: position.y }}
+        style={{ left: window.pageXOffset + position.x, top: window.pageYOffset + position.y }}
       >
         {this.renderMenuItems()}
       </Dropdown>
