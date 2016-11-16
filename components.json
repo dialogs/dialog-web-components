@@ -19,7 +19,8 @@
       "Tooltip",
       "ContextMenu",
       "AvatarSelector",
-      "Archive"
+      "Archive",
+      "Lightbox"
     ]
   },
   {
