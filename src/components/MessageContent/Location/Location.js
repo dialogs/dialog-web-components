@@ -12,7 +12,7 @@ function Location(props: MessageContentLocation) {
   return (
     <Map
       className={styles.container}
-      apiKey="AIzaSyDxiVlTaA3lh1zy1h9rZUYGaDvSj4DUNsQ"
+      apiKey="AIzaSyCV9I5_GAlbDMcVnD87TcONL2YaPv_d-LA"
       width={400}
       height={200}
       latitude={props.latitude}
