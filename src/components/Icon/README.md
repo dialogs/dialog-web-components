@@ -16,7 +16,6 @@ Basic Icon:
   <Icon glyph="more" />
   <Icon glyph="minimize" />
   <Icon glyph="link" />
-  <Icon glyph="smile" />
   <Icon glyph="add_member" />
   <Icon glyph="more_outline" />
   <Icon glyph="apple" />
@@ -24,6 +23,13 @@ Basic Icon:
   <Icon glyph="tux" />
   <Icon glyph="finder" />
   <Icon glyph="plus_outline" />
+  <Icon glyph="emoji_smile" />
+  <Icon glyph="emoji_nature" />
+  <Icon glyph="emoji_food" />
+  <Icon glyph="emoji_party" />
+  <Icon glyph="emoji_activity" />
+  <Icon glyph="emoji_travel" />
+  <Icon glyph="emoji_objects" />
 </div>
 ```
 
