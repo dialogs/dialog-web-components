@@ -2,7 +2,7 @@
  * Copyright 2016 Dialog LLC <info@dlg.im>
  */
 
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent } from 'react';
 import { Text } from '@dlghq/react-l10n';
 import classNames from 'classnames';
 import Input from '../Input/Input';
@@ -15,25 +15,24 @@ import {
 } from './constants';
 import styles from './AuthForm.css';
 
-class AuthForm extends Component {
-  static propTypes = {
-    id: PropTypes.string.isRequired,
-    className: PropTypes.string,
-    step: PropTypes.oneOf([
-      AUTH_STARTED,
-      LOGIN_SENT,
-      CODE_REQUESTED,
-      SIGNUP_STARTED,
-      NAME_SENT
-    ]).isRequired,
-    value: PropTypes.shape({
-      login: PropTypes.string,
-      code: PropTypes.string,
-      name: PropTypes.string
-    }).isRequired,
-    onChange: PropTypes.func.isRequired,
-    onSubmit: PropTypes.func.isRequired
-  };
+export type AuthValue = {
+  login: string,
+  code: string,
+  name: string
+};
+
+export type Props = {
+  id: string,
+  className?: string,
+  step: 1 | 2 | 3 | 4 | 5 | 6 | 7,
+  value: AuthValue,
+  onChange: (value: AuthValue) => any,
+  onSubmit: (value: AuthValue) => any
+};
+
+
+class AuthForm extends PureComponent {
+  props: Props;
 
   static defaultProps = {
     id: 'form_login'
