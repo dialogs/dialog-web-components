@@ -47,11 +47,16 @@ module.exports = {
     }, {
       test: /\.css$/,
       include: whitelist,
+      exclude: resolve('src/styles/global.css'),
       loaders: [
         'style',
         'css?modules&localIdentName=[name]__[local]&importLoaders=1',
         'postcss'
       ]
+    }, {
+      test: /\.css$/,
+      include: resolve('src/styles/global.css'),
+      loaders: ['style', 'css', 'postcss']
     }, {
       test: /\.json$/,
       include: [
@@ -63,6 +68,10 @@ module.exports = {
       test: /\.yml$/,
       include: whitelist,
       loader: 'yml'
+    }, {
+      test: /\.(jpg|png|svg|gif)$/,
+      include: /./,
+      loader: 'file'
     });
 
     Object.assign(config, {

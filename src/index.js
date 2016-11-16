@@ -102,3 +102,4 @@ export { default as SidebarHeaderMenu } from './components/SidebarHeader/Sidebar
 export { default as SidebarSearchGroup } from './components/SidebarSearchGroup/SidebarSearchGroup';
 export { default as ToolbarButtons } from './components/ToolbarButtons/ToolbarButtons';
 export { default as ToolbarInfo } from './components/ToolbarInfo/ToolbarInfo';
+export { default as Lightbox } from './components/Lightbox/Lightbox';
