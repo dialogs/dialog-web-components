@@ -8,10 +8,8 @@ import classNames from 'classnames';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
 import {
-  AUTH_STARTED, LOGIN_SENT,
-  CODE_REQUESTED, CODE_SENT,
-  SIGNUP_STARTED, NAME_SENT,
-  AUTH_FINISHED
+  LOGIN_SENT, CODE_REQUESTED, CODE_SENT,
+  SIGNUP_STARTED, NAME_SENT, AUTH_FINISHED
 } from './constants';
 import styles from './AuthForm.css';
 
@@ -43,15 +41,6 @@ class AuthForm extends PureComponent {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  shouldComponentUpdate(nextProps) {
-    return nextProps.id !== this.props.id ||
-           nextProps.step !== this.props.step ||
-           nextProps.value !== this.props.value ||
-           nextProps.className !== this.props.className ||
-           nextProps.onChange !== this.props.onChange ||
-           nextProps.onSubmit !== this.props.onSubmit;
   }
 
   handleChange(value, { target }) {
@@ -95,7 +84,7 @@ class AuthForm extends PureComponent {
   }
 
   renderLogin() {
-    const { id, step, value } = this.props;
+    const { id, step } = this.props;
 
     if (step > LOGIN_SENT) {
       return null;
@@ -106,7 +95,7 @@ class AuthForm extends PureComponent {
         name="login"
         id={`${id}_login`}
         label="AuthForm.login"
-        value={value.login}
+        value={this.props.value.login}
         disabled={step >= LOGIN_SENT}
         onChange={this.handleChange}
       />
@@ -114,7 +103,7 @@ class AuthForm extends PureComponent {
   }
 
   renderCode() {
-    const { id, step, value } = this.props;
+    const { id, step } = this.props;
 
     if (step < CODE_REQUESTED) {
       return null;
@@ -125,7 +114,7 @@ class AuthForm extends PureComponent {
         name="code"
         id={`${id}_code`}
         label="AuthForm.code"
-        value={value.code}
+        value={this.props.value.code}
         disabled={step >= CODE_SENT}
         onChange={this.handleChange}
       />
@@ -133,7 +122,7 @@ class AuthForm extends PureComponent {
   }
 
   renderName() {
-    const { id, step, value } = this.props;
+    const { id, step } = this.props;
 
     if (step < SIGNUP_STARTED) {
       return null;
@@ -144,7 +133,7 @@ class AuthForm extends PureComponent {
         name="name"
         id={`${id}_name`}
         label="AuthForm.name"
-        value={value.name}
+        value={this.props.value.name}
         disabled={step >= NAME_SENT}
         onChange={this.handleChange}
       />
