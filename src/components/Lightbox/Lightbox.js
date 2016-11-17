@@ -126,14 +126,22 @@ class Lightbox extends Component {
           <div className="pswp__ui pswp__ui--hidden">
             <div className={cx('pswp__top-bar', styles.toolbar)}>
               <div className="pswp__counter" />
-              <button className="pswp__button pswp__button--close"
-                      title="Close (Esc)" />
-              <button className="pswp__button pswp__button--share"
-                      title="Share" />
-              <button className="pswp__button pswp__button--fs"
-                      title="Toggle fullscreen" />
-              <button className="pswp__button pswp__button--zoom"
-                      title="Zoom in/out" />
+              <button
+                className="pswp__button pswp__button--close"
+                title="Close (Esc)"
+              />
+              <button
+                className="pswp__button pswp__button--share"
+                title="Share"
+              />
+              <button
+                className="pswp__button pswp__button--fs"
+                title="Toggle fullscreen"
+              />
+              <button
+                className="pswp__button pswp__button--zoom"
+                title="Zoom in/out"
+              />
               {this.renderDownload()}
               <div className="pswp__preloader">
                 <div className="pswp__preloader__icn">
@@ -144,13 +152,18 @@ class Lightbox extends Component {
               </div>
             </div>
             <div
-              className="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+              className="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"
+            >
               <div className="pswp__share-tooltip" />
             </div>
-            <button className="pswp__button pswp__button--arrow--left"
-                    title="Previous (arrow left)" />
-            <button className="pswp__button pswp__button--arrow--right"
-                    title="Next (arrow right)" />
+            <button
+              className="pswp__button pswp__button--arrow--left"
+              title="Previous (arrow left)"
+            />
+            <button
+              className="pswp__button pswp__button--arrow--right"
+              title="Next (arrow right)"
+            />
             <div className="pswp__caption">
               <div className="pswp__caption__center" />
             </div>
