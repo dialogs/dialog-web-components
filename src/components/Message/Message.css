@@ -1,7 +1,6 @@
 /**
  * Copyright 2016 Dialog LLC <info@dlg.im>
  */
-
 @import '../../styles/variables.css';
 
 :root {
@@ -11,6 +10,7 @@
   --message-small-vertical-padding: 6px;
   --message-small-horizontal-padding: 34px;
   --message-hover-background-color: #f2f2f2;
+  --message-mention-color: color(#000 alpha(60%));
   --message-timestamp-color: color(#000 alpha(60%));
 }
 
@@ -63,9 +63,19 @@
   display: inline-block;
   height: 22px;
   letter-spacing: -0.3px;
+  line-height: 20px;
+  cursor: pointer;
+}
+
+.title {
   font-size: 16px;
   font-weight: 500;
-  line-height: 20px;
+}
+
+.mention {
+  font-size: 14px;
+  color: var(--message-mention-color);
+  user-select: none;
 }
 
 .timestamp {

@@ -13,8 +13,9 @@ import Location from './Location/Location';
 import Contact from './Contact/Contact';
 
 export type Props = {
+  className?: string,
   content: MessageContentTypes,
-  className?: string
+  onLightboxOpen: () => any
 };
 
 function MessageContent({ content, ...props }: Props) {
@@ -26,7 +27,7 @@ function MessageContent({ content, ...props }: Props) {
       return <Text {...content} {...props} service />;
 
     case 'photo':
-      return <Photo {...content} {...props} />;
+      return <Photo {...content} {...props} onClick={props.onLightboxOpen} />;
 
     case 'document':
       return <Document {...content} {...props} />;

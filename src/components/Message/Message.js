@@ -5,7 +5,8 @@
 
 import type {
   Message as MessageType,
-  MessageState as MessageStateType
+  MessageState as MessageStateType,
+  PeerInfo
 } from '@dlghq/dialog-types';
 import classNames from 'classnames';
 import React, { Component } from 'react';
@@ -16,8 +17,13 @@ import styles from './Message.css';
 
 export type Props = {
   message: MessageType,
-  state: MessageStateType,
   short: boolean,
+  state: ?MessageStateType,
+  sender: ?PeerInfo,
+  onTitleClick?: (message: MessageType) => any,
+  onAvatarClick?: (message: MessageType) => any,
+  onMentionClick?: (message: MessageType) => any,
+  onLightboxOpen?: (message: MessageType) => any,
   renderActions?: () => React.Element<any>[]
 };
 
@@ -27,12 +33,44 @@ class Message extends Component {
   shouldComponentUpdate(nextProps: Props): boolean {
     return nextProps.message !== this.props.message ||
            nextProps.state !== this.props.state ||
-           nextProps.short !== this.props.short;
+           nextProps.short !== this.props.short ||
+           nextProps.sender !== this.props.sender;
+  }
+
+  handleTitleClick = () => {
+    if (this.props.onTitleClick) {
+      this.props.onTitleClick(this.props.message);
+    }
+  };
+
+  handleAvatarClick = () => {
+    if (this.props.onAvatarClick) {
+      this.props.onAvatarClick(this.props.message);
+    }
+  };
+
+  handleMentionClick = () => {
+    if (this.props.onMentionClick) {
+      this.props.onMentionClick(this.props.message);
+    }
+  };
+
+  handleLightboxOpen = () => {
+    if (this.props.onLightboxOpen) {
+      this.props.onLightboxOpen(this.props.message);
+    }
+  };
+
+  getState(): MessageState {
+    return this.props.state || this.props.message.state;
+  }
+
+  getSender(): PeerInfo {
+    return this.props.sender || this.props.message.sender;
   }
 
   renderState(): ?React.Element<any> {
-    const { state } = this.props;
-
+    const state = this.getState();
     if (state === 'unknown') {
       return null;
     }
@@ -43,30 +81,40 @@ class Message extends Component {
   }
 
   renderAvatar(): ?React.Element<any> {
-    const { short, message: { sender } } = this.props;
-
-    if (short) {
+    if (this.props.short) {
       return null;
     }
 
+    const sender = this.getSender();
+    const onClick = this.props.onAvatarClick ? this.handleAvatarClick : null;
+
     return (
       <div className={styles.avatar}>
-        <PeerAvatar peer={sender} size="large" />
+        <PeerAvatar peer={sender} size="large" onClick={onClick} />
       </div>
     );
   }
 
   renderHeader(): ?React.Element<any> {
-    const { short, message: { sender, date } } = this.props;
-
-    if (short) {
+    if (this.props.short) {
       return null;
     }
 
+    const { message: { date } } = this.props;
+    const sender = this.getSender();
+    const mention = sender.userName ? (
+      <span className={styles.mention} onClick={this.handleMentionClick}>
+        {` @${sender.userName}`}
+      </span>
+    ) : null;
+
     return (
       <header className={styles.header}>
-        <div className={styles.sender}>{sender.title}</div>
-        <time className={styles.timestamp}>{date}</time>
+        <div className={styles.sender}>
+          <span className={styles.title} onClick={this.handleTitleClick}>{sender.title}</span>
+          {mention}
+        </div>
+        <time className={styles.timestamp} onClick={this.handleTimeClick}>{date}</time>
         {this.renderState()}
       </header>
     );
@@ -96,7 +144,7 @@ class Message extends Component {
         <div className={styles.body}>
           {this.renderHeader()}
           <div className={styles.content}>
-            <MessageContent content={content} />
+            <MessageContent content={content} onLightboxOpen={this.handleLightboxOpen} />
           </div>
         </div>
         {this.renderActions()}

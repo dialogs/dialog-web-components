@@ -5,7 +5,7 @@ const sender = {
   avatar: 'https://avatars1.githubusercontent.com/u/3505878',
   placeholder: 'red',
   title: 'Nikita',
-  nick: 'gusnkt',
+  userName: 'gusnkt',
   peer: {
     id: 1643224499,
     type: 'user'
