@@ -4,33 +4,37 @@
  */
 
 import type { Props } from './types';
+import type { ProviderContext } from '@dlghq/react-l10n';
 import React, { PureComponent } from 'react';
+import { LocalizationContextType } from '@dlghq/react-l10n';
 import styles from './ContextMenu.css';
 import Trigger from '../Trigger/Trigger';
 import Dropdown from '../Dropdown/Dropdown';
 import DropdownItem from '../Dropdown/DropdownItem';
 
+export type Context = ProviderContext;
+
 class ContextMenu extends PureComponent {
   props: Props;
-  renderMenu: Function;
+  context: Context;
 
-  constructor(props: Props): void {
-    super(props);
-
-    this.renderMenu = this.renderMenu.bind(this);
-  }
+  static contextTypes = {
+    l10n: LocalizationContextType
+  };
 
   renderMenuItems() {
-    return this.props.menu.map((menuItem, index) => {
-      const { title, handler } = menuItem;
+    const items = this.props.getMenu();
 
+    return items.map(({ title, handler }, index) => {
       return (
-        <DropdownItem onClick={handler} key={index}>{title}</DropdownItem>
+        <DropdownItem key={index} onClick={handler}>
+          {this.context.l10n.formatText(title)}
+        </DropdownItem>
       );
     });
   }
 
-  renderMenu(position: Object): React.Element<any> {
+  renderMenu = (position: Object): React.Element<any> => {
     return (
       <Dropdown
         isOpen
@@ -47,10 +51,12 @@ class ContextMenu extends PureComponent {
       attachment: 'top left',
       targetAttachment: 'top left',
       target: document.body,
-      constraints: [{
-        to: 'window',
-        attachment: 'together'
-      }]
+      constraints: [
+        {
+          to: 'window',
+          attachment: 'together'
+        }
+      ]
     };
 
     return (

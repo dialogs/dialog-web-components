@@ -8,9 +8,7 @@ const getMenu = () => {
     handler: onClick
   }]);
 };
-<ContextMenu
-  menu={getMenu()}
->
+<ContextMenu getMenu={getMenu}>
   Hello from ContextMenu!
 </ContextMenu>
 ```

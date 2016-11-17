@@ -10,7 +10,7 @@ export type MenuItem = {
 
 export type Props = {
   className?: string,
-  children: any,
-  menu: MenuItem[]
+  children?: any,
+  getMenu: () => MenuItem[]
 };
 
