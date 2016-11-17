@@ -1,0 +1,32 @@
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+:root {
+  --emoji-font-family: var(--default-font-family);
+  --emoji-size: 32px;
+}
+
+/* Reset */
+.container {
+  all: initial;
+}
+
+/* Styles */
+.container {
+  font-family: var(--emoji-font-family);
+  display: inline-flex;
+  width: var(--emoji-size);
+  height: var(--emoji-size);
+  background-size: 100%;
+  align-self: center;
+  vertical-align: middle;
+  @apply --no-select;
+}
+
+.image {
+  display: flex;
+  flex: 1 1 auto;
+}

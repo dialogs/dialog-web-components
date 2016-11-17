@@ -143,7 +143,7 @@ class Icon extends PureComponent {
       case 'emoji_smile':
         return (
           <svg viewBox="0 0 24 24" className={styles.svg}>
-            <g fillRule="evenodd" transform="translate(1 1) scale(1.18)" >
+            <g fillRule="evenodd" transform="translate(2 2) scale(1.08)" >
               <path
                 d="M9 12.6c-2.5 0-3.7-.8-4.2-1.6.4.2 1.5.4 4 .4 2.8 0 4-.2 4.2-.4-.4.8-1.6 1.6-4 1.6m4.2-2.4c-.4 0-1 .4-4.2.4-3.3 0-3.8-.4-4.2-.4-.7-.2-.7.2-.7.4 0 2.3 2.5 4 5 4s5-1.7 5-4c0-.2 0-.6-.6-.4M12 4.8c.8 0 1.5.8 1.5 1.7 0 1-.7 1.8-1.5 1.8s-1.4-.8-1.4-1.8.6-1.7 1.4-1.7m-6 0c.8 0 1.4.8 1.4 1.7 0 1-.6 1.8-1.4 1.8-.8 0-1.5-.8-1.5-1.8S5.2 4.8 6 4.8"
                 className={styles.svgFill}
