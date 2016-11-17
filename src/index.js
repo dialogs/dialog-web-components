@@ -121,3 +121,4 @@ export { default as SelectList } from './components/SelectList/SelectList';
 
 //Emoji
 export { default as Emoji } from './components/Emoji/Emoji';
+export { default as EmojiList } from './components/EmojiList/EmojiList';

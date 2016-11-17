@@ -13,24 +13,31 @@ const SPRITE_SIZE = 40;
 export type Props = {
   className?: string,
   char: string,
-  onClick: () => void
+  onClick: (emoji: string) => void
 };
+class Emoji extends PureComponent {
+  props: Props;
 
-function Emoji(props: Props): React.Element<any> {
-  const className = classNames(styles.container, props.className);
-  const emoji = getEmojiByChar(props.char);
-  const style = {
-    backgroundImage: `url(${emojiImage})`,
-    backgroundPosition: `${(100 / SPRITE_SIZE) * emoji.x}% ${(100 / SPRITE_SIZE) * emoji.y}%`,
-    backgroundSize: `${SPRITE_SIZE * 100}%`
+  handleClick = (): void => {
+    const emoji = getEmojiByChar(this.props.char);
+    this.props.onClick(emoji);
   };
-  console.debug(emoji);
 
-  return (
-    <div className={className} title={emoji.name} onClick={props.onClick}>
-      <span className={styles.image} style={style} />
-    </div>
-  );
+  render(): React.Element<any> {
+    const className = classNames(styles.container, this.props.className);
+    const emoji = getEmojiByChar(this.props.char);
+    const style = {
+      backgroundImage: `url(${emojiImage})`,
+      backgroundPosition: `${(100 / SPRITE_SIZE) * emoji.x}% ${(100 / SPRITE_SIZE) * emoji.y}%`,
+      backgroundSize: `${SPRITE_SIZE * 100}%`
+    };
+
+    return (
+      <div className={className} title={emoji.name} onClick={this.handleClick}>
+        <span className={styles.image} style={style} />
+      </div>
+    );
+  }
 }
 
 export default Emoji;

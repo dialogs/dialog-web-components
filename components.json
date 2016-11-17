@@ -22,7 +22,9 @@
       "AvatarSelector",
       "Archive",
       "Lightbox",
-      "Dragndrop"
+      "Dragndrop",
+      "Emoji",
+      "EmojiList"
     ]
   },
   {

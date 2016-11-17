@@ -1,0 +1,3 @@
+```
+<EmojiList onClick={console.debug} />
+```

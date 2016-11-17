@@ -1,0 +1,119 @@
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+:root {
+  --emoji-list-font-family: var(--default-font-family);
+  --emoji-list-width: 310px;
+  --emoji-list-height: 280px;
+  --emoji-list-emoji-size: 26px;
+}
+
+/* Reset */
+.container {
+  all: initial;
+}
+
+/* Styles */
+.container {
+  font-family: var(--emoji-list-font-family);
+  width: var(--emoji-list-width);
+  height: var(--emoji-list-height);
+  background-color: color(#fff alpha(98%));
+  box-shadow: 0 1px 2px 0 color(#000 alpha(12%)), inset 0 0 0 1px color(#000 alpha(15%));
+  border-radius: var(--default-border-radius);
+  display: flex;
+  flex-flow: column;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.body {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  flex: 1 1 auto;
+  @apply --flex-fix;
+}
+
+.category {}
+
+.categoryTitle {
+  color: color(#000 alpha(50%));
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.6;
+  padding: 8px 16px;
+  letter-spacing: -0.2px;
+  text-transform: uppercase;
+  @apply --no-select;
+}
+
+.categoryList {
+  padding: 0 11px;
+}
+
+.emoji {
+  padding: 5px;
+  border-radius: 50%;
+  width: var(--emoji-list-emoji-size);
+  height: var(--emoji-list-emoji-size);
+  cursor: pointer;
+
+  &:hover {
+    background-color: color(var(--purple-two) alpha(10%));
+  }
+}
+
+.footer {
+  height: 46px;
+  width: 100%;
+  flex: 0 0 auto;
+  position: relative;
+  padding: 5px 11px 0;
+  box-sizing: border-box;
+
+  &:before {
+    content: '';
+    position: absolute;
+    height: 40px;
+    width: 100%;
+    left: 0;
+    top: -40px;
+    pointer-events: none;
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, white 100%);
+  }
+}
+
+.footerTab {
+  display: inline-flex;
+  padding: 5px;
+}
+
+.footerTabIcon {
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--cool-grey-two);
+  fill: var(--cool-grey-two);
+  stroke: var(--cool-grey-two);
+  transition-property: color, fill, stroke;
+  transition-timing-function: ease-in-out;
+  transition-duration: var(--default-transition-duration);
+
+  &:hover {
+    color: color(var(--cool-grey-two) shade(20%));
+    fill: color(var(--cool-grey-two) shade(20%));
+    stroke: color(var(--cool-grey-two) shade(20%));
+  }
+}
+
+.footerTabIconActive {
+  color: var(--purple-two);
+  fill: var(--purple-two);
+  stroke: var(--purple-two);
+}
