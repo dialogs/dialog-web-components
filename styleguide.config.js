@@ -70,10 +70,13 @@ module.exports = {
       test: /\.(jpg|png|svg|gif)$/,
       include: /./,
       loader: 'file'
+<<<<<<< HEAD
     }, {
       test: /\.txt$/,
       include: whitelist,
       loader: 'raw'
+=======
+>>>>>>> chore: add @dlghq/emoji and file-loader to dependencies
     });
 
     Object.assign(config, {
