@@ -18,6 +18,7 @@ initialState = {
     h: 1440
   }]
 };
+
 const handleClose = () => {
   console.debug('handleClose');
   setState({ isOpen: false })
@@ -36,9 +37,12 @@ const handleClose = () => {
       );
     })
   }
-  <Lightbox
-    {...state}
-    onClose={handleClose}
-  />
+  {state.isOpen ? (
+    <Lightbox
+      startIndex={state.index}
+      items={state.items}
+      onClose={handleClose}
+    />
+  ) : null}
 </div>
 ```
