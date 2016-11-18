@@ -62,7 +62,6 @@ inquirer.prompt(questions).then((options) => {
   }
 
   render(options, 'README.md', 'README.md');
-  render(options, 'package.json', 'package.json');
   render(options, 'Component.js', `${options.name}.js`);
   if (options.styles) {
     render(options, 'Component.css', `${options.name}.css`);
