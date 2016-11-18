@@ -20,6 +20,7 @@ export type Props = {
   short: boolean,
   state: ?MessageStateType,
   sender: ?PeerInfo,
+  onTimeClick: (message: MessageType) => any,
   onTitleClick?: (message: MessageType) => any,
   onAvatarClick?: (message: MessageType) => any,
   onMentionClick?: (message: MessageType) => any,
@@ -55,13 +56,19 @@ class Message extends Component {
     }
   };
 
+  handleTimeClick = () => {
+    if (this.props.onTimeClick) {
+      this.props.onTimeClick(this.props.message);
+    }
+  };
+
   handleLightboxOpen = () => {
     if (this.props.onLightboxOpen) {
       this.props.onLightboxOpen(this.props.message);
     }
   };
 
-  getState(): MessageState {
+  getState(): MessageStateType {
     return this.props.state || this.props.message.state;
   }
 
