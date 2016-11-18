@@ -1,84 +1,106 @@
-import React, { Component, PropTypes } from 'react';
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ * @flow
+ */
+
+import React, { Component } from 'react';
+import { EventListener } from '@dlghq/dialog-utils';
 import classNames from 'classnames';
 import styles from './Scroller.css';
 
-// TODO: replace by lodash noop,
-// when styleguidist will support it
-const noop = () => {}; // eslint-disable-line
+export type Dimensions = {
+  scrollTop: number,
+  scrollHeight: number,
+  offsetHeight: number
+};
+
+export type Props = {
+  className?: string,
+  children?: React.Element<any>,
+  onScroll?: () => void
+};
 
 class Scroller extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-    children: PropTypes.node.isRequired,
-    onScroll: PropTypes.func.isRequired,
-    onResize: PropTypes.func.isRequired
-  };
+  container: ?HTMLElement;
+  listener: ?{ remove(): void };
 
-  static defaultProps = {
-    onScroll: noop,
-    onResize: noop
-  };
-
-  constructor(props) {
-    super(props);
-
-    this.onResize = this.onResize.bind(this);
-    this.onReference = this.onReference.bind(this);
+  componentDidMount(): void {
+    if (this.container) {
+      this.listener = EventListener.listen(this.container, 'scroll', this.handleScroll, true);
+    }
   }
 
-  componentDidMount() {
-    window.addEventListener('resize', this.onResize, false);
-  }
-
-  shouldComponentUpdate(nextProps) {
+  shouldComponentUpdate(nextProps: Props): boolean {
     return nextProps.children !== this.props.children ||
            nextProps.className !== this.props.className;
   }
 
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.onResize, false);
+  componentWillUnmount(): void {
+    if (this.listener) {
+      this.listener.remove();
+      this.listener = null;
+    }
   }
 
-  onResize() {
-    this.props.onResize();
+  handleScroll = (): void => {
+    if (this.props.onScroll) {
+      this.props.onScroll();
+    }
+  };
+
+  setContainer = (container: HTMLElement): void => {
+    this.container = container;
   }
 
-  onReference(node) {
-    this.container = node;
+  getDimensions(): ?Dimensions {
+    if (this.container) {
+      return {
+        scrollTop: this.container.scrollTop,
+        scrollHeight: this.container.scrollHeight,
+        offsetHeight: this.container.offsetHeight
+      };
+    }
+
+    return null;
   }
 
-  getDimensions() {
-    return {
-      scrollTop: this.container.scrollTop,
-      scrollHeight: this.container.scrollHeight,
-      offsetHeight: this.container.offsetHeight
-    };
+  getBoundingClientRect(): ?ClientRect {
+    if (this.container) {
+      return this.container.getBoundingClientRect();
+    }
+
+    return null;
   }
 
-  getBoundingClientRect() {
-    return this.container.getBoundingClientRect();
+  scrollTo(offset: number): void {
+    if (this.container) {
+      this.container.scrollTop = offset;
+    }
   }
 
-  scrollTo(offset) {
-    this.container.scrollTop = offset;
+  scrollToBottom(): void {
+    if (this.container) {
+      this.scrollTo(
+        this.container.scrollHeight
+      );
+    }
   }
 
-  scrollToBottom() {
-    this.container.scrollTop = this.container.scrollHeight;
+  scrollToNode(node: HTMLElement): void {
+    if (this.container) {
+      this.scrollTo(
+        Math.min(node.offsetTop, this.container.scrollHeight)
+      );
+    }
   }
 
-  scrollToNode(node) {
-    this.scrollTo(Math.min(node.offsetTop, this.container.scrollHeight));
-  }
-
-  render() {
-    const { className, onScroll, children } = this.props;
-    const scrollerClassName = classNames(styles.container, className);
+  render(): React.Element<any> {
+    const className = classNames(styles.container, this.props.className);
 
     return (
       <div className={styles.wrapper}>
-        <div className={scrollerClassName} ref={this.onReference} onScroll={onScroll}>
-          {children}
+        <div className={className} ref={this.setContainer}>
+          {this.props.children}
         </div>
       </div>
     );
