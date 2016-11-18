@@ -21,6 +21,7 @@ export type Props = {
 };
 
 class Scroller extends Component {
+  props: Props;
   container: ?HTMLElement;
   listener: ?{ remove(): void };
 
@@ -48,10 +49,6 @@ class Scroller extends Component {
     }
   };
 
-  setContainer = (container: HTMLElement): void => {
-    this.container = container;
-  }
-
   getDimensions(): ?Dimensions {
     if (this.container) {
       return {
@@ -70,6 +67,10 @@ class Scroller extends Component {
     }
 
     return null;
+  }
+
+  setContainer = (container: HTMLElement): void => {
+    this.container = container;
   }
 
   scrollTo(offset: number): void {
