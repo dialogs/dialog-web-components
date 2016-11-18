@@ -3,46 +3,46 @@
  * @flow
  */
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import TetherComponent from 'react-tether';
+import { EventListener } from '@dlghq/dialog-utils';
 
-export type TriggerHandler =
-  'onClick' | 'onContextMenu' | 'onDoubleClick' | 'onMouseDown' |
+export type TriggerHandler = 'onClick' | 'onContextMenu' | 'onDoubleClick' | 'onMouseDown' |
   'onMouseEnter' | 'onMouseLeave' | 'onMouseMove' | 'onMouseUp';
 
+export type Point = {
+  x: number,
+  y: number
+};
+
 export type Props = {
-  renderChild: () => React.Element<any>,
+  renderChild: (point: Point) => React.Element<any>,
   children?: React.Element<any>,
   openHandler: TriggerHandler[],
   closeHandler: TriggerHandler[],
   closeOnDocumentClick: boolean,
   closeOnDocumentScroll: boolean,
   preventDefault?: boolean,
-  openDelay?: number,
-  closeDelay?: number,
+  openDelay: number,
+  closeDelay: number,
   options: any
 };
 
 export type State = {
   isOpen: boolean,
-  position: {
-    x: number,
-    y: number
-  }
+  position: Point
 };
 
-class Trigger extends Component {
+class Trigger extends PureComponent {
   props: Props;
   state: State;
-
-  handleOpen: Function;
-  handleClose: Function;
-  setListener: Function;
-  removeListener: Function;
+  listeners: ?{ remove(): void }[];
 
   static defaultProps = {
     closeOnDocumentClick: false,
-    closeOnDocumentScroll: false
+    closeOnDocumentScroll: false,
+    openDelay: 0,
+    closeDelay: 0
   };
 
   constructor(props: Props): void {
@@ -55,30 +55,14 @@ class Trigger extends Component {
         y: 0
       }
     };
-
-    this.handleOpen = this.handleOpen.bind(this);
-    this.handleClose = this.handleClose.bind(this);
-    this.setListener = this.setListener.bind(this);
-    this.removeListener = this.removeListener.bind(this);
   }
 
-  shouldComponentUpdate(nextProps: Props, nextState: State): boolean {
-    return nextState.isOpen !== this.state.isOpen ||
-           nextProps.renderChild !== this.props.renderChild ||
-           nextProps.children !== this.props.children ||
-           nextProps.openHandler !== this.props.openHandler ||
-           nextProps.closeHandler !== this.props.closeHandler ||
-           nextProps.openDelay !== this.props.openDelay ||
-           nextProps.closeDelay !== this.props.closeDelay ||
-           nextProps.closeOnDocumentClick !== this.props.closeOnDocumentClick ||
-           nextProps.closeOnDocumentScroll !== this.props.closeOnDocumentScroll ||
-           nextProps.options !== this.props.options;
+  componentWillUnmount(): void {
+    this.removeListener();
   }
 
-  handleOpen(event: $FlowIssue): void {
-    const { openDelay, preventDefault } = this.props;
-
-    if (preventDefault) {
+  handleOpen = (event: $FlowIssue): void => {
+    if (this.props.preventDefault) {
       event.preventDefault();
     }
 
@@ -89,54 +73,44 @@ class Trigger extends Component {
       }
     });
 
-    if (openDelay) {
-      setTimeout(() => {
-        this.setState({ isOpen: true });
-        this.setListener();
-      }, openDelay);
-    } else {
+    setTimeout(() => {
       this.setState({ isOpen: true });
       this.setListener();
-    }
-  }
+    }, this.props.openDelay);
+  };
 
-  handleClose(): void {
-    const { closeDelay } = this.props;
-
-    if (closeDelay) {
-      setTimeout(() => {
-        this.setState({ isOpen: false });
-        this.removeListener();
-      }, closeDelay);
-    } else {
+  handleClose = (): void => {
+    setTimeout(() => {
       this.setState({ isOpen: false });
       this.removeListener();
+    }, this.props.closeDelay);
+  };
+
+  handleDocumentClick = (): void => {
+    if (this.props.closeOnDocumentClick) {
+      this.handleClose();
     }
-  }
+  };
 
-  setListener(): void {
-    const { closeOnDocumentClick, closeOnDocumentScroll } = this.props;
-
-    if (closeOnDocumentClick) {
-      document.addEventListener('click', this.handleClose);
+  handleDocumentScroll = (): void => {
+    if (this.props.closeOnDocumentScroll) {
+      this.handleClose();
     }
+  };
 
-    if (closeOnDocumentScroll) {
-      document.addEventListener('scroll', this.handleClose);
+  setListener = (): void => {
+    this.listeners = [
+      EventListener.listen(document, 'click', this.handleDocumentClick, true),
+      EventListener.listen(document, 'scroll', this.handleDocumentScroll, true)
+    ];
+  };
+
+  removeListener = (): void => {
+    if (this.listeners) {
+      this.listeners.forEach((listener) => listener.remove());
+      this.listeners = null;
     }
-  }
-
-  removeListener(): void {
-    const { closeOnDocumentClick, closeOnDocumentScroll } = this.props;
-
-    if (closeOnDocumentClick) {
-      document.removeEventListener('click', this.handleClose);
-    }
-
-    if (closeOnDocumentScroll) {
-      document.removeEventListener('scroll', this.handleClose);
-    }
-  }
+  };
 
   renderChild(): ?React.Element<any> {
     const { isOpen, position } = this.state;
