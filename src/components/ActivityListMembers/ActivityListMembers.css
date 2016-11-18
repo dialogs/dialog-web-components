@@ -46,7 +46,16 @@
   fill: var(--activity-members-header-arrow-color) !important;
 }
 
-.member {
+.members {
+  display: flex;
+  flex-direction: column;
+
+  &::before {
+    display: none;
+  }
+}
+
+.listItem {
   position: relative;
   display: flex;
   flex-direction: row;
@@ -74,13 +83,26 @@
   }
 }
 
-.members {
-  display: flex;
-  flex-direction: column;
-
-  &::before {
-    display: none;
+.addMember {
+  composes: listItem;
+  cursor: pointer;
+  & .title,
+  & .addMemberIcon {
+    /* I think --color-info might look better here */
+    color: var(--color-primary);
   }
+}
+
+.addMemberIcon {
+  font-size: 28px;
+  flex: 0 0 auto;
+  width: 28px;
+  height: 28px;
+  margin-right: 14px;
+}
+
+.member {
+  composes: listItem;
 }
 
 .avatar {

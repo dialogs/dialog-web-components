@@ -7,14 +7,16 @@ import type { GroupMember, GroupOnline } from '@dlghq/dialog-types';
 import React, { Component } from 'react';
 import classNames from 'classnames';
 import ActivityListItem from '../ActivityList/ActivityListItem';
-import ActivityMembersItem from './ActivityListMembersItem';
+import ActivityListMembersItem from './ActivityListMembersItem';
+import ActivityListMembersAdd from './ActivityListMembersAdd';
 import Icon from '../Icon/Icon';
 import styles from './ActivityListMembers.css';
 
 export type Props = {
   className?: string,
   members: GroupMember[],
-  online: GroupOnline
+  online: GroupOnline,
+  onAddMemberClick: () => void
 };
 
 export type State = {
@@ -32,8 +34,6 @@ class ActivityListMembers extends Component {
     this.state = {
       isOpen: false
     };
-
-    this.handleMembersHeaderClick = this.handleMembersHeaderClick.bind(this);
   }
 
   componentWillReceiveProps(nextProps: Props): void {
@@ -42,18 +42,18 @@ class ActivityListMembers extends Component {
     }
   }
 
-  shouldComponentUpdate(nextProps: Props, nextState: State) {
+  shouldComponentUpdate(nextProps: Props, nextState: State): boolean {
     return nextState.isOpen !== this.state.isOpen ||
            nextProps.members !== this.props.members ||
            nextProps.online !== this.props.online ||
            nextProps.className !== this.props.className;
   }
 
-  handleMembersHeaderClick(): void {
+  handleMembersHeaderClick = (): void => {
     this.setState({ isOpen: !this.state.isOpen });
-  }
+  };
 
-  renderHeader() {
+  renderHeader(): React.Element<any> {
     const { online } = this.props;
 
     if (online.isNotMember) {
@@ -77,17 +77,18 @@ class ActivityListMembers extends Component {
     );
   }
 
-  renderMembersList() {
+  renderMembersList(): React.Element<any>[] {
     const { members } = this.props;
 
     return members.map((member) => {
       return (
-        <ActivityMembersItem member={member} key={member.peerInfo.peer.key} />
+        <ActivityListMembersItem member={member} key={member.peerInfo.peer.key} />
       );
     });
   }
 
-  renderMembers() {
+
+  renderMembers(): React.Element<any> {
     const { isOpen } = this.state;
 
     if (!isOpen) {
@@ -96,12 +97,13 @@ class ActivityListMembers extends Component {
 
     return (
       <ActivityListItem className={styles.members}>
+        <ActivityListMembersAdd onClick={this.props.onAddMemberClick} />
         {this.renderMembersList()}
       </ActivityListItem>
     );
   }
 
-  render() {
+  render(): React.Element<any> {
     const className = classNames(styles.container, this.props.className);
 
     return (

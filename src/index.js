@@ -88,6 +88,8 @@ export { default as ActivityListItem } from './components/ActivityList/ActivityL
 export { default as ActivityListNotification } from './components/ActivityListNotification/ActivityListNotification';
 export { default as ActivityListInvite } from './components/ActivityListInvite/ActivityListInvite';
 export { default as ActivityListMembers } from './components/ActivityListMembers/ActivityListMembers';
+export { default as ActivityListMembersAdd } from './components/ActivityListMembers/ActivityListMembersAdd';
+export { default as ActivityListMembersItem } from './components/ActivityListMembers/ActivityListMembersItem';
 
 // Helpers
 export { default as Trigger } from './components/Trigger/Trigger';
