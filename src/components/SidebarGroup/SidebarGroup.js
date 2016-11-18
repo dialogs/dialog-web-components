@@ -1,31 +1,29 @@
 /**
  * Copyright 2016 Dialog LLC <info@dlg.im>
+ * @flow
  */
 
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent } from 'react';
 import classNames from 'classnames';
+import SidebarGroupTitle from './SidebarGroupTitle';
 import styles from './SidebarGroup.css';
 
-class SidebarGroup extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-    title: PropTypes.string.isRequired,
-    children: PropTypes.node.isRequired
-  };
+export type Props = {
+  className?: string,
+  title: string,
+  children: React.Element<any>[]
+};
 
-  shouldComponentUpdate(nextProps) {
-    return nextProps.children !== this.props.children ||
-           nextProps.title !== this.props.title ||
-           nextProps.className !== this.props.className;
-  }
+class SidebarGroup extends PureComponent {
+  props: Props;
 
   render() {
     const { title, children } = this.props;
-    const className = classNames(styles.root, this.props.className);
+    const className = classNames(styles.container, this.props.className);
 
     return (
       <div className={className}>
-        <div className={styles.title}>{title}</div>
+        <SidebarGroupTitle title={title} />
         {children}
       </div>
     );

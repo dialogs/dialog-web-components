@@ -59,6 +59,7 @@ export { default as PreferencesModal } from './components/PreferencesModal/Prefe
 export { default as SidebarHeader } from './components/SidebarHeader/SidebarHeader';
 export { default as SidebarSearch } from './components/SidebarSearch/SidebarSearch';
 export { default as SidebarGroup } from './components/SidebarGroup/SidebarGroup';
+export { default as SidebarGroupTitle } from './components/SidebarGroup/SidebarGroupTitle';
 export { default as RecentItem } from './components/RecentItem/RecentItem';
 export { default as RecentGroup } from './components/RecentGroup/RecentGroup';
 export { default as FakeRecentItem } from './components/FakeRecentItem/FakeRecentItem';
