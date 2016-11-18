@@ -35,7 +35,7 @@ class Lightbox extends Component {
     super(props);
 
     this.state = {
-      current: null
+      current: props.items[props.startIndex]
     };
   }
 
