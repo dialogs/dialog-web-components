@@ -66,6 +66,7 @@
 .elementDisabled {}
 
 .buttonDownload {
+  all: initial;
   width: 44px;
   height: 44px;
   float: right;
@@ -74,6 +75,7 @@
   align-items: center;
   justify-content: center;
   opacity: .75;
+  text-decoration: none;
   transition: opacity 200ms;
 
   & .icon {

@@ -138,11 +138,11 @@ class Lightbox extends Component {
                 className="pswp__button pswp__button--fs"
                 title="Toggle fullscreen"
               />
+              {this.renderDownload()}
               <button
                 className="pswp__button pswp__button--zoom"
                 title="Zoom in/out"
               />
-              {this.renderDownload()}
               <div className="pswp__preloader">
                 <div className="pswp__preloader__icn">
                   <div className="pswp__preloader__cut">
