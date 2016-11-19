@@ -5,6 +5,7 @@
 
 import React from 'react';
 import Icon from '../Icon/Icon';
+import { Text } from '@dlghq/react-l10n';
 import styles from './ActivityListMembers.css';
 
 export type Props = {
@@ -14,8 +15,12 @@ export type Props = {
 function ActivityListMembersAdd(props: Props) {
   return (
     <div onClick={props.onClick} className={styles.addMember}>
-      <Icon glyph="add" className={styles.addMemberIcon}/>
-      <div className={styles.title}>Add member</div>
+      <Icon glyph="add" className={styles.addMemberIcon} />
+      <Text
+        id="ActivityListMembers.add"
+        className={styles.title}
+        tagName="div"
+      />
     </div>
   );
 }

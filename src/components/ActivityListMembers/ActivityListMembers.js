@@ -3,7 +3,7 @@
  * @flow
  */
 
-import type { GroupMember, GroupOnline } from '@dlghq/dialog-types';
+import type { GroupMember as GroupMemberType, GroupOnline } from '@dlghq/dialog-types';
 import React, { Component } from 'react';
 import classNames from 'classnames';
 import ActivityListItem from '../ActivityList/ActivityListItem';
@@ -12,11 +12,20 @@ import ActivityListMembersAdd from './ActivityListMembersAdd';
 import Icon from '../Icon/Icon';
 import styles from './ActivityListMembers.css';
 
+export type GroupMember = GroupMemberType & {
+  kickState: {
+    pending: boolean,
+    error: ?string
+  }
+}
+
 export type Props = {
   className?: string,
   members: GroupMember[],
   online: GroupOnline,
-  onAddMemberClick: () => void
+  onMemberAdd: () => void,
+  onMemberKick:() => void,
+  onMemberClick: () => void,
 };
 
 export type State = {
@@ -82,13 +91,19 @@ class ActivityListMembers extends Component {
 
     return members.map((member) => {
       return (
-        <ActivityListMembersItem member={member} key={member.peerInfo.peer.key} />
+        <ActivityListMembersItem
+          member={member}
+          key={member.peerInfo.peer.key}
+          onMemberKick={this.props.onMemberKick}
+          onMemberClick={this.props.onMemberClick}
+          kickState={member.kickState}
+        />
       );
     });
   }
 
 
-  renderMembers(): React.Element<any> {
+  renderMembers(): ?React.Element<any> {
     const { isOpen } = this.state;
 
     if (!isOpen) {
@@ -97,7 +112,7 @@ class ActivityListMembers extends Component {
 
     return (
       <ActivityListItem className={styles.members}>
-        <ActivityListMembersAdd onClick={this.props.onAddMemberClick} />
+        <ActivityListMembersAdd onClick={this.props.onMemberAdd} />
         {this.renderMembersList()}
       </ActivityListItem>
     );

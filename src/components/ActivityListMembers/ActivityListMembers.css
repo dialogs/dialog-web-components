@@ -111,9 +111,27 @@
 }
 
 .title {
-  user-select: none;
+  flex: 1 1 auto;
   letter-spacing: -0.4px;
   font-size: var(--activity-members-title-font-size);
   line-height: 22px;
   color: var(--activity-members-title-color);
+  user-select: none;
+  @apply --flex-fix;
+}
+
+.kickMember {
+  flex: 0 0 auto;
+  user-select: none;
+  font-size: 14px;
+  cursor: pointer;
+  color: var(--color-primary);
+}
+
+.kickMemberPending {
+  margin-right: 8px;
+}
+
+.kickMemberError {
+  color: var(--color-danger);
 }
