@@ -48,6 +48,7 @@
     & .icon {
       color: var(--icon-button-default-color) !important;
       fill: var(--icon-button-default-color) !important;
+      stroke: var(--icon-button-default-color) !important;
     }
   }
 
@@ -58,6 +59,7 @@
     & .icon {
       color: var(--icon-button-flat-color) !important;
       fill: var(--icon-button-flat-color) !important;
+      stroke: var(--icon-button-flat-color) !important;
     }
   }
 }
@@ -71,6 +73,7 @@
   & .icon {
     color: var(--icon-button-default-color);
     fill: var(--icon-button-default-color);
+    stroke: var(--icon-button-default-color);
   }
 
   &:hover,
@@ -80,6 +83,7 @@
     & .icon {
       color: var(--icon-button-hover-color);
       fill: var(--icon-button-hover-color);
+      stroke: var(--icon-button-hover-color);
     }
   }
 
@@ -89,6 +93,7 @@
     & .icon {
       color: var(--icon-button-hover-color);
       fill: var(--icon-button-hover-color);
+      stroke: var(--icon-button-hover-color);
     }
   }
 }
@@ -148,6 +153,7 @@
     & .icon {
       color: var(--icon-button-flat-color);
       fill: var(--icon-button-flat-color);
+      stroke: var(--icon-button-flat-color);
     }
 
     &:hover,
@@ -158,6 +164,7 @@
       & .icon {
         color: white;
         fill: white;
+        stroke: white;
       }
     }
 
@@ -172,6 +179,7 @@
     & .icon {
       color: white;
       fill: white;
+      stroke: white;
     }
 
     &:hover,
@@ -190,6 +198,7 @@
     & .icon {
       color: white;
       fill: white;
+      stroke: white;
     }
 
     &:hover,
@@ -208,6 +217,7 @@
     & .icon {
       color: white;
       fill: white;
+      stroke: white;
     }
 
     &:hover,
@@ -226,6 +236,7 @@
     & .icon {
       color: white;
       fill: white;
+      stroke: white;
     }
 
     &:hover,
@@ -244,6 +255,7 @@
     & .icon {
       color: white;
       fill: white;
+      stroke: white;
     }
 
     &:hover,

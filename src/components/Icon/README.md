@@ -18,7 +18,8 @@ Basic Icon:
   <Icon glyph="minimize" />
   <Icon glyph="link" />
   <Icon glyph="smile" />
-
+  <Icon glyph="add_member" />
+  <Icon glyph="more_outline" />
 </div>
 ```
 

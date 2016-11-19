@@ -158,6 +158,56 @@ class Icon extends PureComponent {
             </g>
           </svg>
         );
+      case 'add_member':
+        return (
+          <svg viewBox="0 0 36 36" className={styles.svg}>
+            <g transform="translate(2 7) scale(1.1)">
+              <g className={styles.svgFill}>
+                <rect
+                  width="2"
+                  height="12"
+                  x="23"
+                  y="3"
+                  rx="1"
+                />
+                <rect
+                  width="2"
+                  height="12"
+                  x="23"
+                  y="3"
+                  transform="rotate(90 24 9)"
+                  rx="1"
+                />
+              </g>
+              <g className={styles.svgStroke}>
+                <path d="M18 20c0-4.741-4.0294-7-9-7s-9 2.259-9 7h18z" strokeLinejoin="round" strokeWidth="2" />
+                <rect
+                  id="b"
+                  width="8"
+                  height="11"
+                  x="5"
+                  rx="4"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                />
+              </g>
+            </g>
+          </svg>
+        );
+      case 'more_outline':
+        return (
+          <svg viewBox="0 0 32 32" className={styles.svg}>
+            <g
+              strokeWidth="2"
+              transform="translate(4 14)"
+              className={styles.svgStroke}
+            >
+              <circle id="a" cx="2" cy="2" r="3" />
+              <circle id="b" cx="12" cy="2" r="3" />
+              <circle id="c" cx="22" cy="2" r="3" />
+            </g>
+          </svg>
+        );
       default:
         return this.renderMaterialIcon();
     }
@@ -176,6 +226,8 @@ class Icon extends PureComponent {
       case 'minimize':
       case 'link':
       case 'smile':
+      case 'add_member':
+      case 'more_outline':
         return this.renderSvgIcon();
       default:
         return this.renderMaterialIcon();
