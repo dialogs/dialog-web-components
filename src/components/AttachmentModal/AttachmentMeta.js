@@ -68,23 +68,23 @@ class AttachmentMeta extends Component {
     return (
       <table className={styles.meta}>
         <tbody>
-        <tr>
-          <td className={styles.metaBlock}>
-            <Text id="AttachmentModal.filename" tagName="div" className={styles.metaHeading} />
-            <div className={styles.metaText}>{name}</div>
-          </td>
-          <td className={styles.metaBlock}>
-            <Text id="AttachmentModal.filesize" tagName="div" className={styles.metaHeading} />
-            <div className={styles.metaText}>{size}</div>
-          </td>
-        </tr>
-        <tr>
-          <td className={styles.metaBlock}>
-            <Text id="AttachmentModal.filetype" tagName="div" className={styles.metaHeading} />
-            <div className={styles.metaFileType}>{extension}</div>
-          </td>
-          {this.renderMethod()}
-        </tr>
+          <tr>
+            <td className={styles.metaBlock}>
+              <Text id="AttachmentModal.filename" tagName="div" className={styles.metaHeading} />
+              <div className={styles.metaText}>{name}</div>
+            </td>
+            <td className={styles.metaBlock}>
+              <Text id="AttachmentModal.filesize" tagName="div" className={styles.metaHeading} />
+              <div className={styles.metaText}>{size}</div>
+            </td>
+          </tr>
+          <tr>
+            <td className={styles.metaBlock}>
+              <Text id="AttachmentModal.filetype" tagName="div" className={styles.metaHeading} />
+              <div className={styles.metaFileType}>{extension}</div>
+            </td>
+            {this.renderMethod()}
+          </tr>
         </tbody>
       </table>
     );
