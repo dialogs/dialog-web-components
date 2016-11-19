@@ -1,7 +1,7 @@
 Basic AttachmentModal:
 
 ```
-const selectFiles = require('../../utils/selectFiles').default;
+const { selectFiles } = require('@dlghq/dialog-utils');
 
 initialState = {
   current: 0,

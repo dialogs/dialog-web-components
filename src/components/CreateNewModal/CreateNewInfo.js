@@ -6,7 +6,7 @@
 import type { ProviderContext } from '@dlghq/react-l10n';
 import React, { PureComponent } from 'react';
 import { LocalizationContextType } from '@dlghq/react-l10n';
-import fileToBase64 from '../../utils/fileToBase64';
+import { fileToBase64 } from '@dlghq/dialog-utils';
 import AvatarSelector from '../AvatarSelector/AvatarSelector';
 import Input from '../Input/Input';
 import styles from './CreateNewModal.css';

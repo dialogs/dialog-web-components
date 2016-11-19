@@ -6,7 +6,7 @@
 import type { User } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
 import { Text, LocalizationContextType } from '@dlghq/react-l10n';
-import filterByQuery from '../../../utils/filterByQuery';
+import { filterByQuery } from '@dlghq/dialog-utils';
 import Fieldset from '../../Fieldset/Fieldset';
 import SearchInput from './SearchInput';
 import BlockedUser from './BlockedUser';

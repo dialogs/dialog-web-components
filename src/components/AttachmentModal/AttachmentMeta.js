@@ -6,9 +6,9 @@
 import type { AttachmentMetaProps } from './types';
 import React, { Component } from 'react';
 import { Text } from '@dlghq/react-l10n';
-import Switcher from '../Switcher/Switcher';
+import { getReadableFileSize } from '@dlghq/dialog-utils';
 import getFilenameExtension from '../../utils/getFilenameExtension';
-import getReadableFileSize from '../../utils/getReadableFileSize';
+import Switcher from '../Switcher/Switcher';
 import styles from './AttachmentModal.css';
 
 class AttachmentMeta extends Component {
@@ -68,23 +68,23 @@ class AttachmentMeta extends Component {
     return (
       <table className={styles.meta}>
         <tbody>
-          <tr>
-            <td className={styles.metaBlock}>
-              <Text id="AttachmentModal.filename" tagName="div" className={styles.metaHeading} />
-              <div className={styles.metaText}>{name}</div>
-            </td>
-            <td className={styles.metaBlock}>
-              <Text id="AttachmentModal.filesize" tagName="div" className={styles.metaHeading} />
-              <div className={styles.metaText}>{size}</div>
-            </td>
-          </tr>
-          <tr>
-            <td className={styles.metaBlock}>
-              <Text id="AttachmentModal.filetype" tagName="div" className={styles.metaHeading} />
-              <div className={styles.metaFileType}>{extension}</div>
-            </td>
-            {this.renderMethod()}
-          </tr>
+        <tr>
+          <td className={styles.metaBlock}>
+            <Text id="AttachmentModal.filename" tagName="div" className={styles.metaHeading} />
+            <div className={styles.metaText}>{name}</div>
+          </td>
+          <td className={styles.metaBlock}>
+            <Text id="AttachmentModal.filesize" tagName="div" className={styles.metaHeading} />
+            <div className={styles.metaText}>{size}</div>
+          </td>
+        </tr>
+        <tr>
+          <td className={styles.metaBlock}>
+            <Text id="AttachmentModal.filetype" tagName="div" className={styles.metaHeading} />
+            <div className={styles.metaFileType}>{extension}</div>
+          </td>
+          {this.renderMethod()}
+        </tr>
         </tbody>
       </table>
     );

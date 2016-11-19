@@ -2,10 +2,10 @@
  * Copyright 2016 Dialog LLC <info@dlg.im>
  * @flow
  */
+
 import React, { Component } from 'react';
 import classNames from 'classnames';
-import selectFiles from '../../utils/selectFiles';
-import fileToBase64 from '../../utils/fileToBase64';
+import { selectFiles, fileToBase64 } from '@dlghq/dialog-utils';
 import PeerAvatar from '../PeerAvatar/PeerAvatar';
 import Icon from '../Icon/Icon';
 import styles from './AvatarSelector.css';

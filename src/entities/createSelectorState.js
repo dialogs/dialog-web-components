@@ -5,8 +5,7 @@
 
 import type { SelectorStateCreator } from './types';
 import { Record, List, OrderedSet } from 'immutable';
-import calculateCursor from '../utils/calculateCursor';
-import filterByQuery from '../utils/filterByQuery';
+import { calculateCursor, filterByQuery } from '@dlghq/dialog-utils';
 
 function createSelectorState<T>(name: string, getValue: (item: T) => string): SelectorStateCreator<T> {
   const defaultRecord = {

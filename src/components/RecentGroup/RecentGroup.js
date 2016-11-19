@@ -4,7 +4,7 @@
  */
 
 import React, { Component } from 'react';
-import isSamePeer from '../../utils/isSamePeer';
+import { isSamePeer } from '@dlghq/dialog-types/utils'
 import SidebarGroup from '../SidebarGroup/SidebarGroup';
 import RecentItem from '../RecentItem/RecentItem';
 import type { Peer, Recent } from '@dlghq/dialog-types';

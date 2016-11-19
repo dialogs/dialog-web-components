@@ -6,7 +6,7 @@
 import type { CallInfoStateProps } from './types';
 import React from 'react';
 import { Text } from '@dlghq/react-l10n';
-import formatTime from '../../utils/formatTime';
+import { formatTime } from '@dlghq/dialog-utils';
 
 function CallInfoState(props: CallInfoStateProps): React.Element<any> {
   switch (props.state) {
