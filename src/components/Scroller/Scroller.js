@@ -5,7 +5,7 @@
 
 import React, { Component } from 'react';
 import { EventListener } from '@dlghq/dialog-utils';
-import classNames from 'classnames';
+import { AutoSizer } from 'react-virtualized';
 import styles from './Scroller.css';
 
 export type Dimensions = {
@@ -17,7 +17,8 @@ export type Dimensions = {
 export type Props = {
   className?: string,
   children?: React.Element<any>,
-  onScroll?: () => void
+  onScroll?: () => void,
+  onResize?: (size: {width: number, height: number}) => void
 };
 
 class Scroller extends Component {
@@ -96,14 +97,16 @@ class Scroller extends Component {
   }
 
   render(): React.Element<any> {
-    const className = classNames(styles.container, this.props.className);
-
     return (
-      <div className={styles.wrapper}>
-        <div className={className} ref={this.setContainer}>
-          {this.props.children}
-        </div>
-      </div>
+      <AutoSizer onResize={this.props.onResize}>
+        {(size) => (
+          <div className={this.props.className} style={size}>
+            <div className={styles.container} ref={this.setContainer}>
+              {this.props.children}
+            </div>
+          </div>
+        )}
+      </AutoSizer>
     );
   }
 }

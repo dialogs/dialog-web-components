@@ -1,33 +1,11 @@
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ */
+
 @import '../../styles/variables.css';
 
-:root {
-  --scroller-width: 4px;
-  --scroller-color: #e2e2e2;
-}
-
-.wrapper,
 .container {
-  width: 100%;
-  min-height: 1px;
-}
-
-.wrapper {
-  height: 100%;
-  display: flex;
-  overflow: hidden;
-}
-
-.container {
-  overflow-x: hidden;
   overflow-y: scroll;
-  position: relative;
-
-  /*&::-webkit-scrollbar {
-    width: var(--scroller-width);
-  }
-
-  &::-webkit-scrollbar-thumb {
-    border-radius: var(--scroller-width);
-    background-color: var(--scroller-color);
-  }*/
+  min-height: 1px;
+  height: 100%;
 }

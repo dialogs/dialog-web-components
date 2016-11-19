@@ -131,11 +131,6 @@
       margin: 4px;
     }
 
-    & .scroller__demo {
-      width: 300px;
-      height: 100px;
-    }
-
     & hr {
       height: 1px;
       margin: 1rem 0;

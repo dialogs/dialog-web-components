@@ -72,6 +72,10 @@ module.exports = {
       test: /\.(jpg|png|svg|gif)$/,
       include: /./,
       loader: 'file'
+    }, {
+      test: /\.txt$/,
+      include: whitelist,
+      loader: 'raw'
     });
 
     Object.assign(config, {
