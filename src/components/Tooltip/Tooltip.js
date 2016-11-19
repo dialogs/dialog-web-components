@@ -13,6 +13,7 @@ export type Props = {
   text: string,
   openDelay?: number,
   closeDelay?: number,
+  options: Object
 };
 
 class Tooltip extends PureComponent {
@@ -38,7 +39,8 @@ class Tooltip extends PureComponent {
       constraints: [{
         to: 'scrollParent',
         attachment: 'together'
-      }]
+      }],
+      ...this.props.options
     };
 
     return (
