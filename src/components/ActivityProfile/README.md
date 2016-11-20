@@ -31,7 +31,13 @@ const alert = () => window.alert('!!!');
     <ActivityProfile info={user} online={online} type="user" />
   </div>
   <div style={{ background: '#fff', width: 320, float: 'left'  }}>
-    <ActivityProfile info={group} onAboutEdit={alert} online={online} type="group" />
+    <ActivityProfile info={group} onAboutEdit={alert} online={online} type="group">
+      <IconButton
+        glyph="more_outline"
+        key="more"
+        size="large"
+      />
+    </ActivityProfile>
   </div>
   <div style={{ clear: 'both' }} />
 </div>
