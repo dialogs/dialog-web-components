@@ -13,7 +13,7 @@ export type Props = {
   className?: string,
   title: string,
   items: Recent[],
-  currentPeer: Peer,
+  currentPeer: ?Peer,
   onSelect: Function
 }
 
