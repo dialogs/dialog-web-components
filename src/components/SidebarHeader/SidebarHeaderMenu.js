@@ -3,7 +3,7 @@
  * @flow
  */
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import Trigger from '../Trigger/Trigger';
 import Icon from '../Icon/Icon';
 import styles from './SidebarHeader.css';
@@ -11,29 +11,16 @@ import styles from './SidebarHeader.css';
 export type Props = {
   appName: string,
   logo: React.Element<any>,
-  children: React.Element<any>
+  children?: React.Element<any>
 };
 
-class SidebarHeaderMenu extends Component {
+class SidebarHeaderMenu extends PureComponent {
   props: Props;
 
-  getChildren: () => React.Element<any>;
-
-  constructor(props: Props) {
-    super(props);
-
-    this.getChildren = this.getChildren.bind(this);
-  }
-
-  shouldComponentUpdate(nextProps: Props) {
-    return nextProps.logo !== this.props.logo ||
-           nextProps.children !== this.props.children ||
-           nextProps.appName !== this.props.appName;
-  }
-
-  getChildren(): React.Element<any> {
+  // $FlowFixMe: children are required, actually
+  getChildren = (): React.Element<any> => {
     return this.props.children;
-  }
+  };
 
   renderLogo(): ?React.Element<any> {
     const { logo } = this.props;
