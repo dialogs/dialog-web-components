@@ -4,7 +4,7 @@
  */
 
 import React, { Component } from 'react';
-import { EventListener } from '@dlghq/dialog-utils';
+import { listen } from '@dlghq/dialog-utils';
 import { AutoSizer } from 'react-virtualized';
 import styles from './Scroller.css';
 
@@ -28,7 +28,7 @@ class Scroller extends Component {
 
   componentDidMount(): void {
     if (this.container) {
-      this.listener = EventListener.listen(this.container, 'scroll', this.handleScroll, true);
+      this.listener = listen(this.container, 'scroll', this.handleScroll, { passive: true });
     }
   }
 

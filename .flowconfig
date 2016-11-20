@@ -20,17 +20,17 @@
 ./node_modules/fbjs/flow/lib
 
 [options]
-module.system = haste
-module.use_strict = true
+module.system=haste
+module.use_strict=true
 
-module.name_mapper = '.*\.css$' -> 'CSSModule'
-module.file_ext = .js
-module.file_ext = .json
-module.file_ext = .css
+module.name_mapper='.*\.css$' -> 'CSSModule'
+module.file_ext=.js
+module.file_ext=.json
+module.file_ext=.css
 
-suppress_type = $FlowIssue
-suppress_comment = \\(.\\|\n\\)*\\$FlowFixMe
-esproposal.class_static_fields = enable
+suppress_type=$FlowIssue
+suppress_comment=\\(.\\|\n\\)*\\$FlowFixMe
+esproposal.class_static_fields=enable
 
 [version]
 0.35.0

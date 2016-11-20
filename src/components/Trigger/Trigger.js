@@ -5,7 +5,7 @@
 
 import React, { PureComponent } from 'react';
 import TetherComponent from 'react-tether';
-import { EventListener } from '@dlghq/dialog-utils';
+import { listen } from '@dlghq/dialog-utils';
 
 export type TriggerHandler = 'onClick' | 'onContextMenu' | 'onDoubleClick' | 'onMouseDown' |
   'onMouseEnter' | 'onMouseLeave' | 'onMouseMove' | 'onMouseUp';
@@ -100,8 +100,8 @@ class Trigger extends PureComponent {
 
   setListener = (): void => {
     this.listeners = [
-      EventListener.listen(document, 'click', this.handleDocumentClick, true),
-      EventListener.listen(document, 'scroll', this.handleDocumentScroll, true)
+      listen(document, 'click', this.handleDocumentClick, { passive: true }),
+      listen(document, 'scroll', this.handleDocumentScroll, { passive: true })
     ];
   };
 
