@@ -3,16 +3,16 @@
  * @flow
  */
 
+import type { Peer, ShortRecent } from '@dlghq/dialog-types';
 import React, { Component } from 'react';
 import { isSamePeer } from '@dlghq/dialog-types/utils';
 import SidebarGroup from '../SidebarGroup/SidebarGroup';
 import RecentItem from '../RecentItem/RecentItem';
-import type { Peer, Recent } from '@dlghq/dialog-types';
 
 export type Props = {
   className?: string,
   title: string,
-  items: Recent[],
+  items: ShortRecent[],
   currentPeer: ?Peer,
   onSelect: Function
 }
@@ -22,9 +22,8 @@ class RecentGroup extends Component {
 
   shouldComponentUpdate(nextProps: Props): boolean {
     return nextProps.items !== this.props.items ||
-           nextProps.title !== this.props.title ||
            nextProps.currentPeer !== this.props.currentPeer ||
-           nextProps.onSelect !== this.props.onSelect ||
+           nextProps.title !== this.props.title ||
            nextProps.className !== this.props.className;
   }
 
@@ -40,7 +39,6 @@ class RecentGroup extends Component {
           info={item.peer}
           active={isActive}
           counter={item.counter}
-          text={item.text}
           onSelect={onSelect}
         />
       );

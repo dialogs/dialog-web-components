@@ -2,28 +2,23 @@
  * Copyright 2016 Dialog LLC <info@dlg.im>
  */
 
-import React, { Component, PropTypes } from 'react';
+import type { Peer, PeerInfo } from '@dlghq/dialog-types';
+import React, { Component } from 'react';
 import classNames from 'classnames';
 import styles from './RecentItem.css';
 import PeerAvatar from '../PeerAvatar/PeerAvatar';
 
+export type Props = {
+  className?: string,
+  info: PeerInfo,
+  active: boolean,
+  counter: number,
+  text?: string,
+  onSelect: (peer: Peer) => any
+};
+
 class RecentItem extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-    info: PropTypes.shape({
-      peer: PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        type: PropTypes.oneOf(['user', 'group']).isRequired
-      }).isRequired,
-      title: PropTypes.string.isRequired,
-      placeholder: PropTypes.string.isRequired,
-      image: PropTypes.string
-    }).isRequired,
-    active: PropTypes.bool.isRequired,
-    counter: PropTypes.number.isRequired,
-    text: PropTypes.string,
-    onSelect: PropTypes.func
-  };
+  props: Props;
 
   static defaultProps = {
     counter: 0,
@@ -41,15 +36,14 @@ class RecentItem extends Component {
            nextProps.info !== this.props.info ||
            nextProps.active !== this.props.active ||
            nextProps.counter !== this.props.counter ||
-           nextProps.text !== this.props.text ||
-           nextProps.onSelect !== this.props.onSelect;
+           nextProps.text !== this.props.text;
   }
 
-  handleClick() {
+  handleClick = (): void => {
     const { info: { peer }, onSelect } = this.props;
 
     onSelect(peer);
-  }
+  };
 
   renderAvatar() {
     const { info, text } = this.props;
