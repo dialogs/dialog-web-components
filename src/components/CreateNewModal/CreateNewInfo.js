@@ -5,6 +5,7 @@
 
 import type { ProviderContext } from '@dlghq/react-l10n';
 import React, { PureComponent } from 'react';
+import classNames from 'classnames';
 import { LocalizationContextType } from '@dlghq/react-l10n';
 import { fileToBase64 } from '@dlghq/dialog-utils';
 import AvatarSelector from '../AvatarSelector/AvatarSelector';
@@ -17,6 +18,8 @@ export type Props = {
   shortname: ?string,
   about: ?string,
   avatar: ?File,
+  className?: string,
+  vertical: boolean,
   onChange: () => void;
   onAvatarChange: (avatar: File) => void;
 }
@@ -26,9 +29,13 @@ export type State = {
 
 export type Context = ProviderContext;
 
-class CreateNewType extends PureComponent {
+class CreateNewInfo extends PureComponent {
   props: Props;
   state: State;
+
+  static defaultProps = {
+    vertical: false
+  };
 
   static contextTypes = {
     l10n: LocalizationContextType
@@ -91,11 +98,14 @@ class CreateNewType extends PureComponent {
   }
 
   render(): React.Element<any> {
-    const { type, about, title } = this.props;
+    const { type, about, title, vertical } = this.props;
     const { l10n } = this.context;
+    const className = classNames(styles.info, {
+      [styles.vertical]: vertical
+    }, this.props.className);
 
     return (
-      <div className={styles.info}>
+      <div className={className}>
         {this.renderAvatar()}
         <form autoComplete="off" className={styles.form}>
           <Input
@@ -125,4 +135,4 @@ class CreateNewType extends PureComponent {
   }
 }
 
-export default CreateNewType;
+export default CreateNewInfo;

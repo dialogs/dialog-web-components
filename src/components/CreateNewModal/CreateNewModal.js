@@ -132,6 +132,7 @@ class CreateNewModal extends PureComponent {
         </ModalHeader>
         <ModalBody className={styles.body}>
           <CreateNewInfo
+            vertical
             type={type}
             about={about}
             title={title}

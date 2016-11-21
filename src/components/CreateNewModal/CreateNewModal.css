@@ -59,16 +59,29 @@
 
 .info {
   display: flex;
-  flex-flow: column;
-  align-items: center;
-  align-content: center;
+  flex-flow: row;
   box-sizing: border-box;
   padding: 30px 50px;
 }
 
+.vertical {
+  flex-flow: column;
+  align-items: center;
+  align-content: center;
+
+  & .avatarBlock {
+    margin-right: 0;
+    margin-bottom: 32px;
+  }
+
+  & .form {
+    width: 100%;
+  }
+}
+
 .avatarBlock {
   width: 100px;
-  margin-bottom: 16px;
+  margin-right: 34px;
   flex: 0 0 auto;
 }
 
@@ -95,8 +108,8 @@
 }
 
 .form {
-  width: 400px;
-  flex: 0 0 auto;
+  flex: 1 1 auto;
+  @apply --flex-fix;
 }
 
 .input {
