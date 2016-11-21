@@ -27,7 +27,7 @@ class Tooltip extends PureComponent {
 
   renderTrigger = (handlers: Object): React.Element<any> => {
     return (
-      <span {...handlers}>{this.props.children}</span>
+      <span {...handlers} style={{ display: 'inline-block' }}>{this.props.children}</span>
     );
   };
 
