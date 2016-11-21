@@ -69,7 +69,7 @@
 
 .icon {
   position: absolute;
-  top: calc(var(--sidebar-search-padding) + 9px);
+  top: calc(var(--sidebar-search-padding) + 6px);
   left: calc(var(--sidebar-search-padding) + 15px);
   transition: opacity calc(var(--default-transition-duration)) ease;
   font-size: 20px;
