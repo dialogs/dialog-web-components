@@ -27,7 +27,8 @@ module.exports = {
       resolve('src'),
       resolve('node_modules/@dlghq/markdown'),
       resolve('node_modules/@dlghq/react-l10n'),
-      resolve('node_modules/@dlghq/dialog-types')
+      resolve('node_modules/@dlghq/dialog-types'),
+      resolve('node_modules/@dlghq/dialog-utils')
     ];
 
     config.entry.push(

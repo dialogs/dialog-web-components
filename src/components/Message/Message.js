@@ -13,6 +13,7 @@ import React, { Component } from 'react';
 import MessageContent from '../MessageContent/MessageContent';
 import PeerAvatar from '../PeerAvatar/PeerAvatar';
 import MessageState from '../MessageState/MessageState';
+import Hover from '../Hover/Hover';
 import styles from './Message.css';
 
 export type Props = {
@@ -28,8 +29,21 @@ export type Props = {
   renderActions?: () => React.Element<any>[]
 };
 
+export type State = {
+  hover: boolean
+};
+
 class Message extends Component {
   props: Props;
+  state: State;
+
+  constructor(props: Props) {
+    super(props);
+
+    this.state = {
+      hover: false
+    };
+  }
 
   shouldComponentUpdate(nextProps: Props): boolean {
     return nextProps.message !== this.props.message ||
@@ -66,6 +80,10 @@ class Message extends Component {
     if (this.props.onLightboxOpen) {
       this.props.onLightboxOpen(this.props.message);
     }
+  };
+
+  handleHover = (hover: boolean): void => {
+    this.setState({ hover });
   };
 
   getState(): MessageStateType {
@@ -128,15 +146,15 @@ class Message extends Component {
   }
 
   renderActions(): ?React.Element<any> {
-    if (!this.props.renderActions) {
-      return null;
+    if (this.state.hover && this.props.renderActions) {
+      return (
+        <div className={styles.actions}>
+          {this.props.renderActions()}
+        </div>
+      );
     }
 
-    return (
-      <div className={styles.actions}>
-        {this.props.renderActions()}
-      </div>
-    );
+    return null;
   }
 
   render(): React.Element<any> {
@@ -146,7 +164,7 @@ class Message extends Component {
     });
 
     return (
-      <div className={className}>
+      <Hover className={className} onHover={this.handleHover}>
         {this.renderAvatar()}
         <div className={styles.body}>
           {this.renderHeader()}
@@ -155,7 +173,7 @@ class Message extends Component {
           </div>
         </div>
         {this.renderActions()}
-      </div>
+      </Hover>
     );
   }
 }
