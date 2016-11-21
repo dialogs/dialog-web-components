@@ -16,6 +16,7 @@
 /* Styles */
 .container {
   font-family: var(--create-new-modal-font-family);
+  width: 500px;
 }
 
 .header {
@@ -58,14 +59,16 @@
 
 .info {
   display: flex;
-  flex-direction: row;
+  flex-flow: column;
+  align-items: center;
+  align-content: center;
   box-sizing: border-box;
   padding: 30px 50px;
 }
 
 .avatarBlock {
   width: 100px;
-  margin-right: 34px;
+  margin-bottom: 16px;
   flex: 0 0 auto;
 }
 

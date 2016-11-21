@@ -1,6 +1,9 @@
 Basic CreateNewModal:
 
 ```
+const { ContactSelectorState } = require('../../entities');
+const contacts = require('../ContactList/mock/contacts.json');
+
 initialState = {
   isOpen: false,
   step: 'type',
@@ -9,23 +12,18 @@ initialState = {
     title: '',
     shortname: '',
     about: '',
-    avatar: null
+    avatar: null,
+    members: ContactSelectorState.create(contacts),
   }
 };
 
 const handleOpen = () => setState({ isOpen: true });
-
-const actions = {
-  onClose: () => setState(initialState),
-  onRequestChange: (request) => {
-    console.debug({ ...request });
-    setState({ request });
-  },
-  onStepChange: (step) => setState({ step }),
-  onSubmit: (request) => {
-  	console.log({ ...request });
-    setState({ ...initialState });
-  }
+const handleClose = () => setState(initialState);
+const handleRequestChange = (request) => setState({ request });
+const handleStepChange = (step) => setState({ step });
+const handleSubmit = (request) => {
+  console.debug(request);
+  setState(initialState);
 };
 
 <div>
@@ -33,8 +31,13 @@ const actions = {
   {
     state.isOpen ? (
       <CreateNewModal
-        {...state}
-        {...actions}
+        isOpen={state.isOpen}
+        step={state.step}
+        request={state.request}
+        onClose={handleClose}
+        onRequestChange={handleRequestChange}
+        onStepChange={handleStepChange}
+        onSubmit={handleSubmit}
       />
     ) : null
   }

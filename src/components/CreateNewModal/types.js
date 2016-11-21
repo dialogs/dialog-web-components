@@ -3,12 +3,16 @@
  * @flow
  */
 
+import type { SelectorState } from '../../entities';
+import type { Contact } from '@dlghq/dialog-types';
+
 export type Request = {
   type: 'group' | 'channel',
   title: string,
   shortname: string,
   about: string,
-  avatar: ?File
+  avatar: ?File,
+  members: SelectorState<Contact>,
 };
 
 export type Step = 'type' | 'info' | 'members';

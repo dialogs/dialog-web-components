@@ -15,7 +15,10 @@ import Icon from '../Icon/Icon';
 import Button from '../Button/Button';
 import CreateNewType from './CreateNewType';
 import CreateNewInfo from './CreateNewInfo';
+import CreateNewMembers from './CreateNewMembers';
 import styles from './CreateNewModal.css';
+import type { SelectorState } from '../../entities';
+import type { Contact } from '@dlghq/dialog-types';
 import type { Props } from './types';
 
 class CreateNewModal extends PureComponent {
@@ -43,6 +46,10 @@ class CreateNewModal extends PureComponent {
     if (step === 'info') {
       this.props.onStepChange('type');
     }
+
+    if (step === 'members') {
+      this.props.onStepChange('info');
+    }
   }
 
   handleNextStepClick(): void {
@@ -50,6 +57,10 @@ class CreateNewModal extends PureComponent {
 
     if (step === 'type') {
       this.props.onStepChange('info');
+    }
+
+    if (step === 'info') {
+      this.props.onStepChange('members');
     }
   }
 
@@ -59,6 +70,13 @@ class CreateNewModal extends PureComponent {
       [target.name]: value
     });
   }
+
+  handleMembersChange = (members: SelectorState<Contact>): void => {
+    this.props.onRequestChange({
+      ...this.props.request,
+      members
+    });
+  };
 
   handleAvatarChange(avatar: File): void {
     this.props.onRequestChange({
@@ -73,7 +91,7 @@ class CreateNewModal extends PureComponent {
   }
 
   renderTypeStep(): React.Element<any> {
-    const { request: { type } } = this.props;
+    const { request: { type }, step } = this.props;
 
     return (
       <div className={styles.wrapper}>
@@ -86,13 +104,12 @@ class CreateNewModal extends PureComponent {
         </ModalBody>
         <ModalFooter className={styles.footer}>
           <Button
-            className={styles.halfButton}
             onClick={this.handleNextStepClick}
             rounded={false}
             theme="success"
             wide
           >
-            <Text id="CreateNewModal.next" />
+            <Text id={`CreateNewModal.next.${step}`} />
           </Button>
         </ModalFooter>
       </div>
@@ -100,7 +117,7 @@ class CreateNewModal extends PureComponent {
   }
 
   renderInfoStep(): React.Element<any> {
-    const { request: { type, about, title, shortname, avatar } } = this.props;
+    const { request: { type, about, title, shortname, avatar }, step } = this.props;
 
     return (
       <div className={styles.wrapper}>
@@ -126,6 +143,40 @@ class CreateNewModal extends PureComponent {
         </ModalBody>
         <ModalFooter className={styles.footer}>
           <Button
+            onClick={this.handleNextStepClick}
+            rounded={false}
+            theme="success"
+            wide
+          >
+            <Text id={`CreateNewModal.next.${step}`} />
+          </Button>
+        </ModalFooter>
+      </div>
+    );
+  }
+
+  renderMembersStep(): React.Element<any> {
+    const { request: { type, members } } = this.props;
+
+    return (
+      <div className={styles.wrapper}>
+        <ModalHeader className={styles.header} withBorder>
+          <Icon
+            glyph="arrow_back"
+            onClick={this.handlePrevStepClick}
+            className={styles.back}
+          />
+          <Text id={`CreateNewModal.${type}.title`} />
+          <ModalClose onClick={this.props.onClose} />
+        </ModalHeader>
+        <ModalBody className={styles.body}>
+          <CreateNewMembers
+            members={members}
+            onChange={this.handleMembersChange}
+          />
+        </ModalBody>
+        <ModalFooter className={styles.footer}>
+          <Button
             className={styles.halfButton}
             onClick={this.handleSubmit}
             rounded={false}
@@ -147,6 +198,8 @@ class CreateNewModal extends PureComponent {
         return this.renderTypeStep();
       case 'info':
         return this.renderInfoStep();
+      case 'members':
+        return this.renderMembersStep();
       default:
         return null;
     }

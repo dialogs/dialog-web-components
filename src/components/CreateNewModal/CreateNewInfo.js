@@ -82,7 +82,7 @@ class CreateNewType extends PureComponent {
       <Input
         id="shortname"
         name="shortname"
-        label={l10n.formatText(`CreateNewModal.${type}.shortname`)}
+        label={l10n.formatText(`CreateNewModal.${type}.info.shortname`)}
         onChange={this.props.onChange}
         prefix="app.dlg.im/"
         value={shortname}

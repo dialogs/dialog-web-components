@@ -19,20 +19,20 @@ function CreateNewType(props: Props) {
     <div className={styles.type}>
       <RadioGroup name="type" value={props.type} onChange={props.onChange}>
         <Radio value="group">
-          <Text id="CreateNewModal.group.type" className={styles.typeLabel} />
+          <Text id="CreateNewModal.group.type.title" className={styles.typeLabel} />
         </Radio>
         <Text
           className={styles.typeHint}
-          id="CreateNewModal.group.hint"
+          id="CreateNewModal.group.type.hint"
           tagName="div"
         />
         <br />
         <Radio value="channel">
-          <Text id="CreateNewModal.channel.type" className={styles.typeLabel} />
+          <Text id="CreateNewModal.channel.type.title" className={styles.typeLabel} />
         </Radio>
         <Text
           className={styles.typeHint}
-          id="CreateNewModal.channel.hint"
+          id="CreateNewModal.channel.type.hint"
           tagName="div"
         />
       </RadioGroup>

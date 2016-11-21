@@ -141,7 +141,7 @@ class Trigger extends PureComponent {
       );
     }
 
-    return React.cloneElement(this.props.children, {...this.props.children.props, ...newProps});
+    return React.cloneElement(this.props.children, { ...this.props.children.props, ...newProps });
   }
 
   render(): React.Element<any> {
