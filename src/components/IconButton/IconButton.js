@@ -33,7 +33,7 @@ class IconButton extends PureComponent {
   };
 
   render(): React.Element<any> {
-    const { glyph, className, theme, size, disabled, flat, style, active } = this.props;
+    const { glyph, className, theme, size, disabled, flat, style, active, ...otherProps } = this.props;
 
     const buttonClassName = classNames(styles.container, styles[size], {
       [styles.disabled]: disabled,
@@ -49,6 +49,7 @@ class IconButton extends PureComponent {
         onClick={this.props.onClick}
         disabled={disabled}
         style={style}
+        {...otherProps}
       >
         <Icon glyph={glyph} className={styles.icon} />
       </button>
