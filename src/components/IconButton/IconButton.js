@@ -3,7 +3,7 @@
  * @flow
  */
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import Icon from '../Icon/Icon';
 import styles from './IconButton.css';
@@ -12,16 +12,17 @@ export type Theme = 'default' | 'primary' | 'success' | 'danger' | 'info' | 'war
 
 export type Props = {
   className?: string,
-  style?: any,
+  style?: Object,
   glyph: string,
   size: 'small' | 'normal' | 'large',
   theme: Theme,
   flat: boolean,
   disabled: boolean,
-  onClick: Function
+  onClick: Function,
+  active: boolean
 }
 
-class IconButton extends Component {
+class IconButton extends PureComponent {
   props: Props;
 
   static defaultProps = {
@@ -31,25 +32,15 @@ class IconButton extends Component {
     disabled: false
   };
 
-  shouldComponentUpdate(nextProps: Props): boolean {
-    return nextProps.glyph !== this.props.glyph ||
-           nextProps.size !== this.props.size ||
-           nextProps.flat !== this.props.flat ||
-           nextProps.theme !== this.props.theme ||
-           nextProps.disabled !== this.props.disabled ||
-           nextProps.onClick !== this.props.onClick ||
-           nextProps.style !== this.props.style ||
-           nextProps.className !== this.props.className;
-  }
-
   render(): React.Element<any> {
-    const { glyph, className, theme, size, disabled, flat, style } = this.props;
+    const { glyph, className, theme, size, disabled, flat, style, active } = this.props;
 
     const buttonClassName = classNames(styles.container, styles[size], {
       [styles.disabled]: disabled,
       [styles.defaultStyle]: !flat,
       [styles.flat]: flat,
-      [styles[theme]]: flat
+      [styles[theme]]: flat,
+      [styles.active]: active
     }, className);
 
     return (

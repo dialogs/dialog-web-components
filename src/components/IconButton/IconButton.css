@@ -64,6 +64,13 @@
   }
 }
 
+.active {
+  & .icon {
+    color: var(--icon-button-hover-color) !important;
+    fill: var(--icon-button-hover-color) !important;
+    stroke: var(--icon-button-hover-color) !important;
+  }
+}
 
 /* Styles */
 .defaultStyle {
