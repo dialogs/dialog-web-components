@@ -61,7 +61,9 @@
       "AttachmentModal",
       "CreateNewModal",
       "ProfileModal",
-      "PreferencesModal"
+      "PreferencesModal",
+      "AddMembersModal",
+      "EditGroupModal"
     ]
   },
   {
