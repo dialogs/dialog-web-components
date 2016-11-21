@@ -9,7 +9,7 @@ import type {
   PeerInfo
 } from '@dlghq/dialog-types';
 import classNames from 'classnames';
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import MessageContent from '../MessageContent/MessageContent';
 import PeerAvatar from '../PeerAvatar/PeerAvatar';
 import MessageState from '../MessageState/MessageState';
@@ -33,7 +33,7 @@ export type State = {
   hover: boolean
 };
 
-class Message extends Component {
+class Message extends PureComponent {
   props: Props;
   state: State;
 
@@ -43,13 +43,6 @@ class Message extends Component {
     this.state = {
       hover: false
     };
-  }
-
-  shouldComponentUpdate(nextProps: Props): boolean {
-    return nextProps.message !== this.props.message ||
-           nextProps.state !== this.props.state ||
-           nextProps.short !== this.props.short ||
-           nextProps.sender !== this.props.sender;
   }
 
   handleTitleClick = () => {
