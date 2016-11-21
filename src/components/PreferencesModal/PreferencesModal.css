@@ -27,7 +27,8 @@
   align-content: flex-start;
   align-items: flex-start;
   justify-content: flex-start;
-  flex: 0 0 auto;
+  flex: 1 1 auto;
+  @apply --flex-fix;
 }
 
 .tabs {
@@ -36,14 +37,15 @@
 }
 
 .scroller {
+  width: 100%;
+  flex: 1 1 auto;
+  min-height: 100%;
   height: calc(var(--preferences-modal-height) - var(--preferences-modal-header-height));
 }
 
 .screen {
   box-sizing: border-box;
   padding: 25px 50px 25px 40px;
-  flex: 1 1 auto;
-  min-height: 100%;
 }
 
 .spinnerScreen {

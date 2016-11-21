@@ -72,7 +72,7 @@ class Scroller extends Component {
 
   setContainer = (container: HTMLElement): void => {
     this.container = container;
-  }
+  };
 
   scrollTo(offset: number): void {
     if (this.container) {

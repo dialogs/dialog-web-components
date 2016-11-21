@@ -43,7 +43,7 @@ class PreferencesModal extends PureComponent {
     if (!this.isPending()) {
       this.props.onClose();
     }
-  }
+  };
 
   handleSettingsChange = (settings: GeneralSettings | NotificationSettings): void => {
     this.handleSettingsSave();
@@ -184,9 +184,11 @@ class PreferencesModal extends PureComponent {
             ]}
             onPick={this.handleScreenChange}
           />
-          <Scroller className={styles.scroller}>
-            {this.renderScreen()}
-          </Scroller>
+          <div className={styles.scroller}>
+            <Scroller>
+              {this.renderScreen()}
+            </Scroller>
+          </div>
         </ModalBody>
       </Modal>
     );
