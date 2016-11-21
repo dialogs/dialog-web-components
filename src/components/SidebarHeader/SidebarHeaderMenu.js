@@ -18,7 +18,7 @@ class SidebarHeaderMenu extends PureComponent {
   props: Props;
 
   // $FlowFixMe: children are required, actually
-  getChildren = (): React.Element<any> => {
+  renderChildren = (): React.Element<any> => {
     return this.props.children;
   };
 
@@ -34,8 +34,19 @@ class SidebarHeaderMenu extends PureComponent {
     );
   }
 
-  render(): React.Element<any> {
+  renderTrigger = (handlers: Object, isActive: boolean): React.Element<any> => {
     const { appName } = this.props;
+
+    return (
+      <a className={styles.menu} {...handlers}>
+        {this.renderLogo()}
+        <div className={styles.appName}>{appName}</div>
+        <Icon glyph={isActive ? 'arrow_drop_up' : 'arrow_drop_down'} className={styles.arrow} />
+      </a>
+    );
+  };
+
+  render(): React.Element<any> {
     const options = {
       attachment: 'top left',
       targetAttachment: 'bottom left',
@@ -49,18 +60,13 @@ class SidebarHeaderMenu extends PureComponent {
     return (
       <Trigger
         options={options}
-        renderChild={this.getChildren}
+        renderTrigger={this.renderTrigger}
+        renderChild={this.renderChildren}
         openHandler={['onClick']}
         closeHandler={['onClick']}
         closeOnDocumentClick
         closeOnDocumentScroll
-      >
-        <a className={styles.menu}>
-          {this.renderLogo()}
-          <div className={styles.appName}>{appName}</div>
-          <Icon glyph="arrow_drop_down" className={styles.arrow} />
-        </a>
-      </Trigger>
+      />
     );
   }
 }

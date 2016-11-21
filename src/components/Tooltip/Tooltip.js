@@ -18,19 +18,18 @@ export type Props = {
 
 class Tooltip extends PureComponent {
   props: Props;
-  getTooltip: () => React.Element<any>;
 
-  constructor(props: Props) {
-    super(props);
-
-    this.getTooltip = this.getTooltip.bind(this);
-  }
-
-  getTooltip(): React.Element<any> {
+  renderTooltip = (): React.Element<any> => {
     return (
       <Text id={this.props.text} className={styles.tooltip} tagName="div" />
     );
-  }
+  };
+
+  renderTrigger = (handlers: Object): React.Element<any> => {
+    return (
+      <span {...handlers}>{this.props.children}</span>
+    );
+  };
 
   render(): React.Element<any> {
     const options = {
@@ -46,14 +45,13 @@ class Tooltip extends PureComponent {
     return (
       <Trigger
         options={options}
-        renderChild={this.getTooltip}
+        renderTrigger={this.renderTrigger}
+        renderChild={this.renderTooltip}
         openHandler={['onMouseEnter']}
         closeHandler={['onMouseLeave']}
         openDelay={this.props.openDelay}
         closeDelay={this.props.closeDelay}
-      >
-        {this.props.children}
-      </Trigger>
+      />
     );
   }
 }

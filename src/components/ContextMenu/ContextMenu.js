@@ -44,7 +44,13 @@ class ContextMenu extends PureComponent {
         {this.renderMenuItems()}
       </Dropdown>
     );
-  }
+  };
+
+  renderTrigger = (newProps: Object): React.Element<any> => {
+    return (
+      <span {...newProps}>{this.props.children}</span>
+    );
+  };
 
   render(): React.Element<any> {
     const options = {
@@ -65,11 +71,10 @@ class ContextMenu extends PureComponent {
         closeHandler={['onClick']}
         closeOnDocumentClick
         preventDefault
+        renderTrigger={this.renderTrigger}
         renderChild={this.renderMenu}
         options={options}
-      >
-        {this.props.children}
-      </Trigger>
+      />
     );
   }
 }

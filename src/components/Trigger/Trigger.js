@@ -16,8 +16,8 @@ export type Point = {
 };
 
 export type Props = {
+  renderTrigger: (handlers: Object, isActive: boolean) => React.Element<any>,
   renderChild: (point: Point) => React.Element<any>,
-  children: React.Element<any>,
   openHandler: TriggerHandler[],
   closeHandler: TriggerHandler[],
   closeOnDocumentClick: boolean,
@@ -125,23 +125,14 @@ class Trigger extends PureComponent {
   renderTrigger(): React.Element<any> {
     const { openHandler, closeHandler } = this.props;
     const { isOpen } = this.state;
-    const newProps = {
-      active: isOpen
-    };
+    const newProps = {};
     const handlers = isOpen ? closeHandler : openHandler;
 
     handlers.forEach((handler) => {
       Object.assign(newProps, { [handler]: isOpen ? this.handleClose : this.handleOpen });
     });
 
-    // Wrap children with span if it string
-    if (typeof this.props.children === 'string') {
-      return (
-        <span {...newProps}>{this.props.children}</span>
-      );
-    }
-
-    return React.cloneElement(this.props.children, { ...this.props.children.props, ...newProps });
+    return this.props.renderTrigger(newProps, isOpen);
   }
 
   render(): React.Element<any> {

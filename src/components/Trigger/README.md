@@ -13,13 +13,22 @@ initialState = {
     constraints: [{ to: 'scrollParent', attachment: 'together' }]
   }
 };
-const actions = {
-  renderChild: () => {
-    return <Icon glyph="close" />;
-  }
+const renderTrigger = (newProps) => {
+  return (
+    <Button theme="primary" {...newProps}>Click me!</Button>
+  );
+};
+const renderChild = () => {
+  return <Icon glyph="close" />;
 };
 
-<Trigger {...state} {...actions} >
-  <Button theme="primary">Click me!</Button>
-</Trigger>
+<Trigger
+  openHandler={state.openHandler}
+  closeHandler={state.closeHandler}
+  closeOnDocumentClick={state.closeOnDocumentClick}
+  closeOnDocumentScroll={state.closeOnDocumentScroll}
+  options={state.options}
+  renderChild={renderChild}
+  renderTrigger={renderTrigger}
+/>
 ```
