@@ -3,43 +3,54 @@
  * @flow
  */
 
-import type { MessageContentText } from '@dlghq/dialog-types';
-import React from 'react';
+import type { MessageMedia as MessageMediaType } from '@dlghq/dialog-types';
+import React, { Component } from 'react';
 import classNames from 'classnames';
 import MessageMedia from '../../MessageMedia/MessageMedia';
 import Markdown from '../../Markdown/Markdown';
 import styles from './Text.css';
 
-export type Props = MessageContentText & {
+export type Props = {
+  text: string,
+  media: ?MessageMediaType,
   service?: boolean,
   className?: string
 }
 
-function Text(props: Props) {
-  if (props.service) {
-    const className = classNames(styles.container, styles.service, props.className);
+class Text extends Component {
+  props: Props;
 
-    return (
-      <div className={className}>
-        {props.text}
-      </div>
-    );
+  shouldComponentUpdate(nextProps: Props): boolean {
+    return this.props.text !== nextProps.text ||
+           this.props.media !== nextProps.media;
   }
 
-  const className = classNames(styles.container, props.className);
+  render(): React.Element<any> {
+    if (this.props.service) {
+      const className = classNames(styles.container, styles.service, this.props.className);
 
-  if (props.media) {
+      return (
+        <div className={className}>
+          {this.props.text}
+        </div>
+      );
+    }
+
+    const className = classNames(styles.container, this.props.className);
+
+    if (this.props.media) {
+      return (
+        <div className={className}>
+          <Markdown className={styles.wrapper} text={this.props.text} />
+          <MessageMedia media={this.props.media} />
+        </div>
+      );
+    }
+
     return (
-      <div className={className}>
-        <Markdown className={styles.wrapper} text={props.text} />
-        <MessageMedia media={props.media} />
-      </div>
+      <Markdown className={className} text={this.props.text} />
     );
   }
-
-  return (
-    <Markdown className={className} text={props.text} />
-  );
 }
 
 export default Text;
