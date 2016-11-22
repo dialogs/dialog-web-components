@@ -40,12 +40,6 @@ class CreateNewModal extends PureComponent {
     this.handleNextStepClick = this.handleNextStepClick.bind(this);
   }
 
-  componentWillReceiveProps(newProps: Props): void {
-    if (newProps.error && newProps.step !== 'info') {
-      this.props.onStepChange('info');
-    }
-  }
-
   handlePrevStepClick(): void {
     const { step } = this.props;
 
@@ -201,6 +195,7 @@ class CreateNewModal extends PureComponent {
             onClick={this.handleSubmit}
             rounded={false}
             theme="success"
+            disabled={this.props.pending}
             wide
           >
             <Text id={`CreateNewModal.${type}.finish`} />

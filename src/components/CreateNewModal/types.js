@@ -21,6 +21,7 @@ export type Props = {
   className?: string,
   step: Step,
   error: ?string,
+  pending: boolean,
   request: Request,
   onClose: () => any,
   onSubmit: (request: Request) => any,
