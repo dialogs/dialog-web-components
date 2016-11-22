@@ -20,6 +20,7 @@ export type Step = 'type' | 'info' | 'members';
 export type Props = {
   className?: string,
   step: Step,
+  error: ?string,
   request: Request,
   onClose: () => any,
   onSubmit: (request: Request) => any,

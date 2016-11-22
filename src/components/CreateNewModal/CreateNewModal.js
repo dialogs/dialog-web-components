@@ -40,6 +40,12 @@ class CreateNewModal extends PureComponent {
     this.handleNextStepClick = this.handleNextStepClick.bind(this);
   }
 
+  componentWillReceiveProps(newProps: Props): void {
+    if (newProps.error && newProps.step !== 'info') {
+      this.props.onStepChange('info');
+    }
+  }
+
   handlePrevStepClick(): void {
     const { step } = this.props;
 
@@ -90,6 +96,18 @@ class CreateNewModal extends PureComponent {
     this.props.onSubmit(request);
   }
 
+  renderError(): ?React.Element<any> {
+    const { error } = this.props;
+
+    if (!error) {
+      return null;
+    }
+
+    return (
+      <div className={styles.error}>{error}</div>
+    );
+  }
+
   renderTypeStep(): React.Element<any> {
     const { request: { type }, step } = this.props;
 
@@ -130,6 +148,7 @@ class CreateNewModal extends PureComponent {
           <Text id={`CreateNewModal.${type}.title`} />
           <ModalClose onClick={this.props.onClose} />
         </ModalHeader>
+        {this.renderError()}
         <ModalBody className={styles.body}>
           <CreateNewInfo
             vertical
