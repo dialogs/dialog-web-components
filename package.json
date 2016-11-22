@@ -46,8 +46,8 @@
   "homepage": "https://dialogs.github.io/dialog-web-components",
   "dependencies": {
     "@dlghq/dialog-types": "1.6.1",
-    "@dlghq/dialog-utils": "0.4.0",
-    "@dlghq/markdown": "0.4.0",
+    "@dlghq/dialog-utils": "0.4.1",
+    "@dlghq/markdown": "0.4.1",
     "@dlghq/react-l10n": "0.6.0",
     "classnames": "2.2.5",
     "clipboard": "1.5.15",
