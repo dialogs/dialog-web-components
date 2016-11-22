@@ -4,7 +4,7 @@
  */
 
 import type { SelectorState } from '../../entities';
-import type { Contact } from '@dlghq/dialog-types';
+import type { Contact, Group } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import { Text } from '@dlghq/react-l10n';
@@ -19,10 +19,11 @@ import styles from './AddMembersModal.css';
 
 export type Props = {
   className?: string,
+  group: Group,
   pending: boolean,
   selector: SelectorState<Contact>,
   onClose: () => any,
-  onSubmit: (uids: number[]) => any,
+  onSubmit: (gid: number, uids: number[]) => any,
   onChange: (selector: SelectorState<Contact>) => any
 };
 
@@ -38,6 +39,7 @@ class AddMembersModal extends PureComponent {
   handleSubmit = (): void => {
     const selected = this.props.selector.getSelected();
     this.props.onSubmit(
+      this.props.group.id,
       selected.map((contact) => contact.uid).toArray()
     );
   };
