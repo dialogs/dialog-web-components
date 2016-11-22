@@ -54,6 +54,7 @@ export { default as AttachmentModal } from './components/AttachmentModal/Attachm
 export { default as CreateNewModal } from './components/CreateNewModal/CreateNewModal';
 export { default as ProfileModal } from './components/ProfileModal/ProfileModal';
 export { default as PreferencesModal } from './components/PreferencesModal/PreferencesModal';
+export { default as AddMembersModal } from './components/AddMembersModal/AddMembersModal';
 
 // Sidebar
 export { default as SidebarHeader } from './components/SidebarHeader/SidebarHeader';
