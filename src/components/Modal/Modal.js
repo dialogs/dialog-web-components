@@ -17,7 +17,7 @@ export type Props = {
 };
 
 function Modal(props: Props) {
-  const className = classNames(styles.root, props.className);
+  const className = classNames(styles.container, props.className);
   const overlayClassName = classNames(styles.overlay, {
     [styles.fullscreen]: props.fullscreen
   });

@@ -23,17 +23,19 @@
   }
 }
 
-.root {
+.container {
   all: initial;
   display: flex;
   overflow: hidden;
   min-width: var(--modal-min-width);
-  margin: calc(var(--default-padding) * 2);
   border-radius: var(--modal-border-radius);
   outline: none;
   background-color: var(--modal-background-color);
   box-shadow: 0 4px 10px 0 color(#000 alpha(25%));
   font-family: var(--modal-font-family);
+  flex: 0 0 auto;
+  margin: 60px 0;
+  @apply --flex-fix;
 }
 
 .overlay {
@@ -47,13 +49,16 @@
   flex-direction: column;
   background-color: var(--modal-overlay-color);
   align-items: center;
-  justify-content: center;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding: calc(var(--default-padding) * 2);
 }
 
 .wrapper {
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
+  @apply --flex-fix;
 }
 
 .close {
