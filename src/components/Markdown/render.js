@@ -44,11 +44,15 @@ export function renderBlocks(tokens: BlockToken[]): React.Element<any>[] {
 
     switch (token.type) {
       case 'paragraph':
-        result.push(
-          <p key={i}>
-            {renderText(token.content)}
-          </p>
-        );
+        if (token.content.length) {
+          result.push(
+            <p key={i}>
+              {renderText(token.content)}
+            </p>
+          );
+        } else {
+          result.push(<br key={i} />);
+        }
 
         break;
 
