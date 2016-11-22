@@ -7,6 +7,24 @@
   --message-service-color: color(#000 alpha(50%));
 }
 
+:global {
+  & .code {
+    padding: 2px 4px;
+    border-radius: var(--default-border-radius-small);
+    background-color: color(#000 alpha(5%));
+    box-shadow: inset 0 1px 1px 0 color(#000 alpha(10%));
+    font-size: 14px;
+  }
+
+  & .italic {
+    font-style: italic;
+  }
+
+  & .bold {
+    font-weight: 500;
+  }
+}
+
 .container {
   all: initial;
   display: inline-block;
@@ -23,16 +41,12 @@
     word-break: break-word;
   }
 
-  p > code, :global(.code) {
+  p > code {
     padding: 2px 4px;
     border-radius: var(--default-border-radius-small);
     background-color: color(#000 alpha(5%));
     box-shadow: inset 0 1px 1px 0 color(#000 alpha(10%));
     font-size: 14px;
-  }
-
-  :global(.italic) {
-    font-style: italic;
   }
 
   & blockquote {
@@ -41,7 +55,7 @@
     box-shadow: inset 3px 0 0 0 var(--color-info);
   }
 
-  & strong, :global(.bold) {
+  & strong {
     font-weight: 500;
   }
 
