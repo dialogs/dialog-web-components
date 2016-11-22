@@ -23,6 +23,12 @@
   & .bold {
     font-weight: 500;
   }
+
+  & .mention {
+    background-color: #fffbe9;
+    border-radius: 2px;
+    padding: 2px 1px;
+  }
 }
 
 .container {
