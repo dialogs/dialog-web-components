@@ -5,7 +5,7 @@
 
 import type { SelectorState } from '../../entities';
 import type { Contact } from '@dlghq/dialog-types';
-import React from 'react';
+import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import { Text } from '@dlghq/react-l10n';
 import Button from '../Button/Button';
@@ -21,40 +21,57 @@ export type Props = {
   className?: string,
   pending: boolean,
   selector: SelectorState<Contact>,
-  onChange: (selector: SelectorState<Contact>) => any,
-  onClose: () => void,
-  onSubmit: () => void
+  onClose: () => any,
+  onSubmit: (uids: number[]) => any,
+  onChange: (selector: SelectorState<Contact>) => any
 };
 
-function AddMembersModal(props: Props): React.Element<any> {
-  const className = classNames(styles.container, props.className);
+class AddMembersModal extends PureComponent {
+  props: Props;
 
-  return (
-    <Modal className={className} onClose={props.onClose}>
-      <ModalHeader withBorder>
-        <Text id="AddMembersModal.title" />
-        <ModalClose onClick={props.onClose} />
-      </ModalHeader>
-      <ModalBody className={styles.body}>
-        <ContactSelector
-          autoFocus={false}
-          selector={props.selector}
-          onChange={props.onChange}
-        />
-      </ModalBody>
-      <ModalFooter className={styles.footer}>
-        <Button
-          wide
-          theme="success"
-          rounded={false}
-          disabled={props.pending}
-          onClick={props.onSubmit}
-        >
-          <Text id="AddMembersModal.button_add" />
-        </Button>
-      </ModalFooter>
-    </Modal>
-  );
+  handleClose = (): void => {
+    if (!this.props.pending) {
+      this.props.onClose();
+    }
+  };
+
+  handleSubmit = (): void => {
+    const selected = this.props.selector.getSelected();
+    this.props.onSubmit(
+      selected.map((contact) => contact.uid).toArray()
+    );
+  };
+
+  render(): React.Element<any> {
+    const className = classNames(styles.container, this.props.className);
+
+    return (
+      <Modal className={className} onClose={this.handleClose}>
+        <ModalHeader withBorder>
+          <Text id="AddMembersModal.title" />
+          <ModalClose onClick={this.handleClose} />
+        </ModalHeader>
+        <ModalBody className={styles.body}>
+          <ContactSelector
+            autoFocus={false}
+            selector={this.props.selector}
+            onChange={this.props.onChange}
+          />
+        </ModalBody>
+        <ModalFooter className={styles.footer}>
+          <Button
+            wide
+            theme="success"
+            rounded={false}
+            disabled={this.props.pending}
+            onClick={this.handleSubmit}
+          >
+            <Text id="AddMembersModal.button_add" />
+          </Button>
+        </ModalFooter>
+      </Modal>
+    );
+  }
 }
 
 export default AddMembersModal;
