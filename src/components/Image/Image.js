@@ -1,7 +1,8 @@
 /**
  * Copyright 2016 Dialog LLC <info@dlg.im>
+ * @flow
  */
-// TODO: Add flow
+
 import React, { Component } from 'react';
 import classNames from 'classnames';
 import getImageSize from '../../utils/getImageSize';
@@ -32,11 +33,7 @@ class Image extends Component {
   props: Props;
   state: State;
 
-  image: HTMLImageElement;
-  getSource: Function;
-  getSize: Function;
-  startFetch: Function;
-  stopFetch: Function;
+  image: ?HTMLImageElement;
 
   static defaultProps = {
     maxWidth: 400,
@@ -52,7 +49,7 @@ class Image extends Component {
     };
   }
 
-  componentWillMount(): void {
+  componentDidMount(): void {
     if (this.props.src) {
       this.startFetch(this.props.src);
     }
@@ -95,23 +92,29 @@ class Image extends Component {
   }
 
   startFetch(src: string): void {
-    this.stopFetch();
-    this.image = document.createElement('img');
+    setImmediate(() => {
+      this.stopFetch();
+      const image = document.createElement('img');
 
-    this.image.onload = () => {
-      this.setState({ state: STATE_SUCCESS });
-    };
+      image.onload = () => {
+        this.setState({ state: STATE_SUCCESS });
+        this.stopFetch();
+      };
 
-    this.image.onerror = (error) => {
-      this.setState({ error, state: STATE_ERROR });
-    };
+      image.onerror = (error) => {
+        this.setState({ error, state: STATE_ERROR });
+        this.stopFetch();
+      };
 
-    this.image.src = src;
+      image.src = src;
+
+      this.image = image;
+    });
   }
 
   stopFetch(): void {
     if (this.image) {
-      this.image.src = null;
+      this.image.src = '';
       this.image.onload = null;
       this.image.onerror = null;
       this.image = null;
