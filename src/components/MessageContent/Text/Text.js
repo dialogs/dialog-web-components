@@ -6,8 +6,8 @@
 import type { MessageContentText } from '@dlghq/dialog-types';
 import React from 'react';
 import classNames from 'classnames';
-import markdown from '@dlghq/markdown';
 import MessageMedia from '../../MessageMedia/MessageMedia';
+import Markdown from '../../Markdown/Markdown';
 import styles from './Text.css';
 
 export type Props = MessageContentText & {
@@ -16,11 +16,9 @@ export type Props = MessageContentText & {
 }
 
 function Text(props: Props) {
-  const className = classNames(styles.container, {
-    [styles.service]: props.service
-  }, props.className);
-
   if (props.service) {
+    const className = classNames(styles.container, styles.service, props.className);
+
     return (
       <div className={className}>
         {props.text}
@@ -28,25 +26,19 @@ function Text(props: Props) {
     );
   }
 
+  const className = classNames(styles.container, props.className);
+
   if (props.media) {
     return (
       <div className={className}>
-        <div
-          className={styles.wrapper}
-          // eslint-disable-next-line
-          dangerouslySetInnerHTML={{ __html: markdown(props.text) }}
-        />
+        <Markdown className={styles.wrapper} text={props.text} />
         <MessageMedia media={props.media} />
       </div>
     );
   }
 
   return (
-    <div
-      className={className}
-      // eslint-disable-next-line
-      dangerouslySetInnerHTML={{ __html: markdown(props.text) }}
-    />
+    <Markdown className={className} text={props.text} />
   );
 }
 
