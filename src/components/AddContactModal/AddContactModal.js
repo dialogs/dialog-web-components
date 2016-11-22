@@ -98,12 +98,19 @@ class AddContactModal extends PureComponent {
 
     if (contact) {
       return (
-        <Text
-          id="AddContactModal.user_found"
-          values={{ username: contact.name }}
-          className={styles.hint}
-          html
-        />
+        <div>
+          <PeerAvatar
+            peer={contact}
+            size="large"
+            className={styles.foundAvatar}
+          />
+          <Text
+            id="AddContactModal.user_found"
+            values={{ username: contact.name }}
+            className={styles.found}
+            html
+          />
+        </div>
       );
     }
 
@@ -212,7 +219,7 @@ class AddContactModal extends PureComponent {
   }
 
   render(): React.Element<any> {
-    const className = classNames(styles.root, this.props.className);
+    const className = classNames(styles.container, this.props.className);
 
     return (
       <Modal className={className} onClose={this.props.onClose}>

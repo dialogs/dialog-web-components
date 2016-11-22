@@ -12,7 +12,7 @@
   --add-contact-modal-text-color: color(#000 alpha(50%));
 }
 
-.root {
+.container {
   width: var(--add-contact-modal-width);
   /*height: var(--add-contact-modal-heigth);*/
   font-family: var(--add-contact-modal-font-family);
@@ -54,7 +54,21 @@
   font-size: 16px;
   line-height: 1.2;
   color: var(--add-contact-modal-text-color);
+  vertical-align: middle;
+  & b {
+    font-weight: 500;
+  }
   @apply --no-select;
+}
+
+.found {
+  composes: hint;
+  color: color(#000 alpha(80%));
+}
+
+.foundAvatar {
+  vertical-align: middle;
+  margin-right: 8px;
 }
 
 .avatar {
