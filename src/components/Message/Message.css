@@ -64,18 +64,19 @@
   height: 22px;
   letter-spacing: -0.3px;
   line-height: 20px;
-  cursor: pointer;
 }
 
 .title {
   font-size: 16px;
   font-weight: 500;
+  @apply --no-select;
 }
 
-.mention {
+.username {
+  margin-left: 6px;
   font-size: 14px;
   color: var(--message-mention-color);
-  user-select: none;
+  @apply --no-select;
 }
 
 .timestamp {
@@ -99,4 +100,8 @@
   top: -18px;
   right: var(--message-horizontal-padding);
   display: none;
+}
+
+.clickable {
+  cursor: pointer !important;
 }

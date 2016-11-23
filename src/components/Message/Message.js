@@ -106,10 +106,13 @@ class Message extends PureComponent {
 
     const sender = this.getSender();
     const onClick = this.props.onAvatarClick ? this.handleAvatarClick : null;
+    const avatarClassName = classNames({
+      [styles.clickable]: this.props.onAvatarClick
+    });
 
     return (
       <div className={styles.avatar}>
-        <PeerAvatar peer={sender} size="large" onClick={onClick} />
+        <PeerAvatar peer={sender} size="large" onClick={onClick} className={avatarClassName} />
       </div>
     );
   }
@@ -121,19 +124,33 @@ class Message extends PureComponent {
 
     const { message: { date } } = this.props;
     const sender = this.getSender();
-    const mention = sender.userName ? (
-      <span className={styles.mention} onClick={this.handleMentionClick}>
-        {` @${sender.userName}`}
-      </span>
+
+    const onTitleClick = this.props.onTitleClick ? this.handleTitleClick : null;
+    const titleClassName = classNames(styles.title, {
+      [styles.clickable]: this.props.onTitleClick
+    });
+
+    const onMentionClick = this.props.onMentionClick ? this.handleMentionClick : null;
+    const mentionClassName = classNames(styles.username, {
+      [styles.clickable]: this.props.onMentionClick
+    });
+
+    const onTimeClick = this.props.onMentionClick ? this.handleTimeClick : null;
+    const timeClassName = classNames(styles.timestamp, {
+      [styles.clickable]: this.props.onMentionClick
+    });
+
+    const username = sender.userName ? (
+      <span className={mentionClassName} onClick={onMentionClick}>@{sender.userName}</span>
     ) : null;
 
     return (
       <header className={styles.header}>
         <div className={styles.sender}>
-          <span className={styles.title} onClick={this.handleTitleClick}>{sender.title}</span>
-          {mention}
+          <span className={titleClassName} onClick={onTitleClick}>{sender.title}</span>
+          {username}
         </div>
-        <time className={styles.timestamp} onClick={this.handleTimeClick}>{date}</time>
+        <time className={timeClassName} onClick={onTimeClick}>{date}</time>
         {this.renderState()}
       </header>
     );
