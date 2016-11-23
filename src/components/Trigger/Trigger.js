@@ -37,6 +37,8 @@ class Trigger extends PureComponent {
   props: Props;
   state: State;
   listeners: ?{ remove(): void }[];
+  openTimeout: ?number;
+  closeTimeout: ?number;
 
   static defaultProps = {
     closeOnDocumentClick: false,
@@ -58,6 +60,7 @@ class Trigger extends PureComponent {
   }
 
   componentWillUnmount(): void {
+    this.clearTimeouts();
     this.removeListener();
   }
 
@@ -73,14 +76,16 @@ class Trigger extends PureComponent {
       }
     });
 
-    setTimeout(() => {
+    this.clearTimeouts();
+    this.openTimeout = setTimeout(() => {
       this.setState({ isOpen: true });
       this.setListener();
     }, this.props.openDelay);
   };
 
   handleClose = (): void => {
-    setTimeout(() => {
+    this.clearTimeouts();
+    this.closeTimeout = setTimeout(() => {
       this.setState({ isOpen: false });
       this.removeListener();
     }, this.props.closeDelay);
@@ -111,6 +116,18 @@ class Trigger extends PureComponent {
       this.listeners = null;
     }
   };
+
+  clearTimeouts(): void {
+    if (this.openTimeout) {
+      clearTimeout(this.openTimeout);
+      this.openTimeout = null;
+    }
+
+    if (this.closeTimeout) {
+      clearTimeout(this.closeTimeout);
+      this.closeTimeout = null;
+    }
+  }
 
   renderChild(): ?React.Element<any> {
     const { isOpen, position } = this.state;
