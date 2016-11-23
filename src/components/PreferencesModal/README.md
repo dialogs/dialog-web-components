@@ -53,15 +53,6 @@ const actions = {
   onSettingsChange(value) {
     setState({
       settings: {
-        value,
-        error: null,
-        pending: false
-      }
-    });
-  },
-  onSettingsSave(value) {
-    setState({
-      settings: {
         ...state.settings,
         pending: true
       }

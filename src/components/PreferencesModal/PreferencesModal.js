@@ -6,7 +6,6 @@
 import type { Settings as GeneralSettings } from './PreferencesGeneral';
 import type { Settings as NotificationSettings } from './PreferencesNotifications';
 import type { Props, PreferencesScreen } from './types';
-import _ from 'lodash';
 import React, { PureComponent } from 'react';
 import { Text } from '@dlghq/react-l10n';
 import classNames from 'classnames';
@@ -26,15 +25,6 @@ import styles from './PreferencesModal.css';
 class PreferencesModal extends PureComponent {
   props: Props;
 
-  constructor(props: Props) {
-    super(props);
-
-    this.handleSettingsSave = _.debounce(this.handleSettingsSave, 100, {
-      leading: true,
-      maxWait: 300
-    });
-  }
-
   componentDidMount() {
     this.props.onSettingsLoad();
   }
@@ -46,17 +36,10 @@ class PreferencesModal extends PureComponent {
   };
 
   handleSettingsChange = (settings: GeneralSettings | NotificationSettings): void => {
-    this.handleSettingsSave();
     this.props.onSettingsChange({
       ...this.props.settings.value,
       ...settings
     });
-  }
-
-  handleSettingsSave = (): void => {
-    if (this.props.settings.value) {
-      this.props.onSettingsSave(this.props.settings.value);
-    }
   }
 
   handleScreenChange = (value: PreferencesScreen): void => {

@@ -29,7 +29,6 @@ export type Props = {
   onScreenChange: (screen: PreferencesScreen) => any,
   onSettingsLoad: () => any,
   onSettingsChange: (value: ProfileSettings) => any,
-  onSettingsSave: (value: ProfileSettings) => any,
   onSessionsLoad: () => any,
   onSessionTerminate: (id: number) => any,
   onAllSessionsTerminate: () => any,
