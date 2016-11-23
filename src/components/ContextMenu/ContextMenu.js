@@ -37,7 +37,6 @@ class ContextMenu extends PureComponent {
   renderMenu = (position: Object): React.Element<any> => {
     return (
       <Dropdown
-        isOpen
         className={styles.container}
         style={{ left: window.pageXOffset + position.x, top: window.pageYOffset + position.y }}
       >
@@ -57,12 +56,10 @@ class ContextMenu extends PureComponent {
       attachment: 'top left',
       targetAttachment: 'top left',
       target: document.body,
-      constraints: [
-        {
-          to: 'window',
-          attachment: 'together'
-        }
-      ]
+      constraints: [{
+        to: 'window',
+        attachment: 'together'
+      }]
     };
 
     return (
