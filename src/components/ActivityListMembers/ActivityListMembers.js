@@ -3,8 +3,9 @@
  * @flow
  */
 
-import type { GroupMember as GroupMemberType, GroupOnline } from '@dlghq/dialog-types';
-import React, { Component } from 'react';
+import type { Peer, GroupOnline } from '@dlghq/dialog-types';
+import type { ChatMember } from './types';
+import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import ActivityListItem from '../ActivityList/ActivityListItem';
 import ActivityListMembersItem from './ActivityListMembersItem';
@@ -12,30 +13,22 @@ import ActivityListMembersAdd from './ActivityListMembersAdd';
 import Icon from '../Icon/Icon';
 import styles from './ActivityListMembers.css';
 
-export type GroupMember = GroupMemberType & {
-  kickState: {
-    pending: boolean,
-    error: ?string
-  }
-}
-
 export type Props = {
   className?: string,
-  members: GroupMember[],
+  members: ChatMember[],
   online: GroupOnline,
   onMemberAdd: () => void,
-  onMemberKick:() => void,
-  onMemberClick: () => void,
+  onMemberKick: (peer: Peer) => void,
+  onMemberClick: (peer: Peer) => void,
 };
 
 export type State = {
   isOpen: boolean
 };
 
-class ActivityListMembers extends Component {
+class ActivityListMembers extends PureComponent {
   props: Props ;
   state: State;
-  handleMembersHeaderClick: Function;
 
   constructor(props: Props) {
     super(props);
@@ -49,13 +42,6 @@ class ActivityListMembers extends Component {
     if (nextProps.online.isNotMember) {
       this.setState({ isOpen: false });
     }
-  }
-
-  shouldComponentUpdate(nextProps: Props, nextState: State): boolean {
-    return nextState.isOpen !== this.state.isOpen ||
-           nextProps.members !== this.props.members ||
-           nextProps.online !== this.props.online ||
-           nextProps.className !== this.props.className;
   }
 
   handleMembersHeaderClick = (): void => {
@@ -94,9 +80,8 @@ class ActivityListMembers extends Component {
         <ActivityListMembersItem
           member={member}
           key={member.peerInfo.peer.key}
-          onMemberKick={this.props.onMemberKick}
-          onMemberClick={this.props.onMemberClick}
-          kickState={member.kickState}
+          onKick={this.props.onMemberKick}
+          onClick={this.props.onMemberClick}
         />
       );
     });

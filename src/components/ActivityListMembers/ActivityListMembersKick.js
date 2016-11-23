@@ -11,9 +11,9 @@ import Icon from '../Icon/Icon';
 import styles from './ActivityListMembers.css';
 
 export type Props = {
-  onClick: () => void,
+  error: ?string,
   pending: boolean,
-  error: ?string
+  onClick: () => void
 };
 
 function ActivityListMembersKick(props: Props) {
