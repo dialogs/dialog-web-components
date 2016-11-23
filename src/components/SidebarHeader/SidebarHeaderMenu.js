@@ -51,7 +51,7 @@ class SidebarHeaderMenu extends PureComponent {
       attachment: 'top left',
       targetAttachment: 'bottom left',
       constraints: [{
-        to: 'scrollParent',
+        to: 'window',
         attachment: 'together'
       }],
       targetOffset: '10px 24px'
