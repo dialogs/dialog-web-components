@@ -1,0 +1,65 @@
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+:root {
+  --dragndrop-font-family: var(--default-font-family);
+  --dragndrop-width: 740px;
+  --dragndrop-height: 440px;
+  --dragndrop-border-radius: 6px;
+  --dragndrop-background-color: #333;
+  --dragndrop-hover-background-color: var(--purple-two);
+
+}
+
+/* Reset */
+.container {
+  all: initial;
+}
+
+/* Styles */
+.container {
+  font-family: var(--dragndrop-font-family);
+  width: var(--dragndrop-width);
+  height: var(--dragndrop-height);
+  border-radius: var(--dragndrop-border-radius);
+  background-color: var(--dragndrop-background-color);
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  color: #fff;
+  transition: background var(--default-transition-duration) ease-in-out;
+  text-align: center;
+
+  &:hover {
+    background-color: var(--dragndrop-hover-background-color);
+  }
+}
+
+
+.arrow {
+  width: 80px;
+  height: 80px;
+  fill: #fff;
+  margin-bottom: 30px;
+}
+
+
+.title {
+  font-size: 34px;
+  letter-spacing: -0.3px;
+  line-height: 1.24;
+  margin-bottom: 18px;
+  font-weight: 300;
+}
+
+.subtitle {
+  padding: 0 160px;
+  font-size: 18px;
+  line-height: 1.33;
+  letter-spacing: -0.3px;
+}

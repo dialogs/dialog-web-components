@@ -25,6 +25,8 @@ export { default as Tooltip } from './components/Tooltip/Tooltip';
 export { default as ContextMenu } from './components/ContextMenu/ContextMenu';
 export { default as AvatarSelector } from './components/AvatarSelector/AvatarSelector';
 export { default as Archive } from './components/Archive/Archive';
+export { default as Lightbox } from './components/Lightbox/Lightbox';
+export { default as Dragndrop } from './components/Dragndrop/Dragndrop';
 
 // Buttons
 export { default as Button } from './components/Button/Button';
@@ -106,4 +108,3 @@ export { default as SidebarHeaderMenu } from './components/SidebarHeader/Sidebar
 export { default as SidebarSearchGroup } from './components/SidebarSearchGroup/SidebarSearchGroup';
 export { default as ToolbarButtons } from './components/ToolbarButtons/ToolbarButtons';
 export { default as ToolbarInfo } from './components/ToolbarInfo/ToolbarInfo';
-export { default as Lightbox } from './components/Lightbox/Lightbox';

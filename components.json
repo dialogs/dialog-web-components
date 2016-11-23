@@ -20,7 +20,8 @@
       "ContextMenu",
       "AvatarSelector",
       "Archive",
-      "Lightbox"
+      "Lightbox",
+      "Dragndrop"
     ]
   },
   {
