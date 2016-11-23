@@ -29,10 +29,14 @@ function ActivityListMembersKick(props: Props) {
         text={props.error}
         options={{
           attachment: 'middle right',
-          targetAttachment: 'middle left'
+          targetAttachment: 'middle left',
+          constraints: [{
+            to: 'window',
+            attachment: 'together'
+          }]
         }}
       >
-        <Icon glyph="error" className={styles.kickMemberError} />
+        <Icon glyph="error" className={styles.kickMemberError} onClick={props.onClick} />
       </Tooltip>
     );
   }
