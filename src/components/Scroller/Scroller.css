@@ -9,3 +9,9 @@
   min-height: 1px;
   height: 100%;
 }
+
+.fromBottom {
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-end;
+}
