@@ -7,11 +7,6 @@
 .container {
   overflow-y: scroll;
   min-height: 1px;
-  height: 100%;
-}
-
-.fromBottom {
-  display: flex;
-  flex-flow: column;
-  justify-content: flex-end;
+  max-height: 100%;
+  width: 100%;
 }
