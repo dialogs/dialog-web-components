@@ -176,6 +176,7 @@ class Message extends PureComponent {
 
     return (
       <Hover className={className} onHover={this.handleHover}>
+        {this.renderActions()}
         {this.renderAvatar()}
         <div className={styles.body}>
           {this.renderHeader()}
@@ -183,7 +184,6 @@ class Message extends PureComponent {
             <MessageContent content={content} onLightboxOpen={this.handleLightboxOpen} />
           </div>
         </div>
-        {this.renderActions()}
       </Hover>
     );
   }
