@@ -3,7 +3,7 @@
  */
 
 import type { Peer, PeerInfo } from '@dlghq/dialog-types';
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import styles from './RecentItem.css';
 import PeerAvatar from '../PeerAvatar/PeerAvatar';
@@ -17,27 +17,13 @@ export type Props = {
   onSelect: (peer: Peer) => any
 };
 
-class RecentItem extends Component {
+class RecentItem extends PureComponent {
   props: Props;
 
   static defaultProps = {
     counter: 0,
     active: false
   };
-
-  constructor(props) {
-    super(props);
-
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  shouldComponentUpdate(nextProps) {
-    return nextProps.className !== this.props.className ||
-           nextProps.info !== this.props.info ||
-           nextProps.active !== this.props.active ||
-           nextProps.counter !== this.props.counter ||
-           nextProps.text !== this.props.text;
-  }
 
   handleClick = (): void => {
     const { info: { peer }, onSelect } = this.props;
@@ -93,7 +79,7 @@ class RecentItem extends Component {
 
   render() {
     const { active, counter, text } = this.props;
-    const className = classNames(styles.root, {
+    const className = classNames(styles.container, {
       [styles.active]: active,
       [styles.unread]: counter !== 0,
       [styles.large]: text

@@ -23,11 +23,11 @@
   --recent-item-active-color: #fff;
   --recent-item-counter-background: var(--purple-two);
   --recent-item-counter-color: #fff;
-  --recent-item-counter-size: 19px;
-  --recent-item-counter-font-size: 10px;
+  --recent-item-counter-size: 24px;
+  --recent-item-counter-font-size: 13px;
 }
 
-.root {
+.container {
   all: initial;
   display: flex;
   flex-direction: row;
@@ -96,7 +96,7 @@
   background-color: var(--recent-item-counter-background);
   font-family: var(--default-font-family);
   font-size: var(--recent-item-counter-font-size);
-  font-weight: 500;
+  font-weight: 400;
   flex: 0 0 auto;
   justify-content: center;
   align-items: center;
