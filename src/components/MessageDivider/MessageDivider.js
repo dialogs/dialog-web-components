@@ -1,25 +1,22 @@
 /**
  * Copyright 2016 Dialog LLC <info@dlg.im>
+ * @flow
  */
 
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import styles from './MessageDivider.css';
 
-class MessageDivider extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-    theme: PropTypes.oneOf(['primary', 'success', 'danger', 'info', 'warning']),
-    children: PropTypes.node.isRequired
-  };
+export type Props = {
+  className?: string,
+  theme: 'primary' | 'success' | 'danger' | 'info' | 'warning',
+  children: React.Element<any>
+};
 
-  shouldComponentUpdate(nextProps) {
-    return nextProps.children !== this.props.children ||
-           nextProps.theme !== this.props.theme ||
-           nextProps.className !== this.props.className;
-  }
+class MessageDivider extends PureComponent {
+  props: Props;
 
-  render() {
+  render(): React.Element<any> {
     const { theme, children } = this.props;
     const className = classNames(styles.container, {
       [styles[theme]]: theme
