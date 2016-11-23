@@ -10,9 +10,8 @@ import styles from './Dropdown.css';
 export type Props = {
   className?: string,
   children?: any,
-  isOpen: boolean,
   theme: 'primary' | 'secondary',
-  style: Object
+  style?: Object
 };
 
 class Dropdown extends PureComponent {
@@ -23,13 +22,8 @@ class Dropdown extends PureComponent {
   };
 
   render(): React.Element<any> {
-    const { isOpen, theme, style } = this.props;
-    const className = classNames(
-      styles.container,
-      styles[theme],
-      this.props.className,
-      isOpen ? styles.opened : null
-    );
+    const { theme, style } = this.props;
+    const className = classNames(styles.container, styles[theme], this.props.className);
 
     return (
       <div className={className} style={style}>

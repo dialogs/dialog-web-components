@@ -15,7 +15,7 @@ const user = {
   avatar: null
 };
 
-<Dropdown isOpen>
+<Dropdown>
   <DropdownItem>
     <PeerAvatar peer={user} />
     <b style={{ marginLeft: 8 }}>{user.title}</b>
@@ -37,7 +37,7 @@ const {
 
 const handleClick = () => alert('menu clicked');
 
-<Dropdown isOpen>
+<Dropdown>
   <DropdownItem onClick={handleClick}>First menu item</DropdownItem>
   <DropdownItem onClick={handleClick}>Very very very very loooong menu item</DropdownItem>
   <DropdownDivider />
@@ -55,7 +55,7 @@ const {
 
 const handleClick = () => alert('menu clicked');
 
-<Dropdown isOpen>
+<Dropdown>
   <DropdownHeader>Hello there</DropdownHeader>
   <DropdownItem onClick={handleClick}>First menu item</DropdownItem>
   <DropdownHeader>There is another one heading</DropdownHeader>
@@ -74,7 +74,7 @@ const {
 
 const handleClick = () => alert('menu clicked');
 
-<Dropdown isOpen theme="secondary">
+<Dropdown theme="secondary">
   <DropdownHeader>Hello there</DropdownHeader>
   <DropdownItem onClick={handleClick}>First menu item</DropdownItem>
   <DropdownItem onClick={handleClick}>Very very very very loooong menu item</DropdownItem>
