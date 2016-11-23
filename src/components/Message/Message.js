@@ -21,6 +21,7 @@ export type Props = {
   short: boolean,
   state: ?MessageStateType,
   sender: ?PeerInfo,
+  className?: string,
   onTimeClick: (message: MessageType) => any,
   onTitleClick?: (message: MessageType) => any,
   onAvatarClick?: (message: MessageType) => any,
@@ -154,7 +155,7 @@ class Message extends PureComponent {
     const { short, message: { content } } = this.props;
     const className = classNames(styles.container, {
       [styles.short]: short
-    });
+    }, this.props.className);
 
     return (
       <Hover className={className} onHover={this.handleHover}>
