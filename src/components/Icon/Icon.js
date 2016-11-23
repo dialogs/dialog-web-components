@@ -208,6 +208,16 @@ class Icon extends PureComponent {
             </g>
           </svg>
         );
+      case 'arrow_up':
+        return (
+          <svg viewBox="0 0 32 32" className={styles.svg}>
+            <g className={styles.svgFill}>
+              <path d="M15 3.3294c0-.4368.355-.791.8-.791.4418 0 .8.36.8.791V30.209c0 .437-.355.791-.8.791-.4418 0-.8-.36-.8-.791V3.3295z" />
+              <path d="M15.0434 1.8662c.311-.3707.817-.364 1.1216.005l.0268.0324c.3084.3734.302.9764-.0175 1.3502L5.0468 16.2808c-.318.3724-.885.4147-1.246.1118l.1148.0963c-.3702-.311-.412-.87-.107-1.234L15.0434 1.866z" />
+              <path d="M16.691 1.9278c-.319-.3804-.827-.3643-1.1264.025l-.0264.0343c-.303.3946-.282 1.025.0408 1.4017L26.622 16.267c.3256.3798.8988.428 1.274.1132l-.1433.1203c.378-.3172.427-.881.1066-1.263L16.691 1.9278z" />
+            </g>
+          </svg>
+        );
       default:
         return this.renderMaterialIcon();
     }
@@ -228,6 +238,7 @@ class Icon extends PureComponent {
       case 'smile':
       case 'add_member':
       case 'more_outline':
+      case 'arrow_up':
         return this.renderSvgIcon();
       default:
         return this.renderMaterialIcon();
