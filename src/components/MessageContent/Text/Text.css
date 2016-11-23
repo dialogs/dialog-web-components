@@ -25,7 +25,7 @@
   }
 
   & .mention {
-    background-color: color(var(--color-warning) alpha(30%));
+    background-color: color(var(--color-warning) alpha(20%));
     border-radius: 2px;
     display: inline-block;
     padding: 0 2px;
