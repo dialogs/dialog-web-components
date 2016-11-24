@@ -71,9 +71,11 @@ class Input extends PureComponent {
   }
 
   componentDidMount(): void {
-    if (this.isAutoFocus() && this.input) {
-      this.input.focus();
-    }
+    this.autoFocus();
+  }
+
+  componentDidUpdate(): void {
+    this.autoFocus();
   }
 
   handleChange = (event: $FlowIssue): void => {
@@ -117,6 +119,14 @@ class Input extends PureComponent {
   setInput = (element: HTMLInputElement | HTMLTextAreaElement): void => {
     this.input = element;
   };
+
+  autoFocus(): void {
+    if (this.isAutoFocus() && this.input) {
+      if (document.activeElement !== this.input) {
+        this.input.focus();
+      }
+    }
+  }
 
   renderLabel(): ?React.Element<any> {
     const { id, label } = this.props;
