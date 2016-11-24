@@ -22,7 +22,12 @@ class AttachmentModal extends PureComponent {
   props: AttachmentModalProps;
 
   handleSend = (): void => {
-    this.props.onSend([this.getCurrentAttachment()]);
+    const { attachments } = this.props;
+    if (attachments.length === 1) {
+      this.props.onSendAll(attachments);
+    } else {
+      this.props.onSend([this.getCurrentAttachment()]);
+    }
   };
 
   handleSendAll = (): void => {
