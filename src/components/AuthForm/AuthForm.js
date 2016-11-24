@@ -24,6 +24,7 @@ export type Props = {
   className?: string,
   step: 1 | 2 | 3 | 4 | 5 | 6 | 7,
   value: AuthValue,
+  autoFocus?: boolean,
   onChange: (value: AuthValue) => any,
   onSubmit: (value: AuthValue) => any
 };
@@ -97,6 +98,7 @@ class AuthForm extends PureComponent {
         label="AuthForm.login"
         value={this.props.value.login}
         disabled={step >= LOGIN_SENT}
+        autoFocus={this.props.autoFocus}
         onChange={this.handleChange}
       />
     );
@@ -116,6 +118,7 @@ class AuthForm extends PureComponent {
         label="AuthForm.code"
         value={this.props.value.code}
         disabled={step >= CODE_SENT}
+        autoFocus={this.props.autoFocus}
         onChange={this.handleChange}
       />
     );
@@ -135,6 +138,7 @@ class AuthForm extends PureComponent {
         label="AuthForm.name"
         value={this.props.value.name}
         disabled={step >= NAME_SENT}
+        autoFocus={this.props.autoFocus}
         onChange={this.handleChange}
       />
     );

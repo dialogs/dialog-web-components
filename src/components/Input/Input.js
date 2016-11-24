@@ -4,7 +4,7 @@
  */
 
 import type { ProviderContext } from '@dlghq/react-l10n';
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { LocalizationContextType } from '@dlghq/react-l10n';
 import classNames from 'classnames';
 import styles from './Input.css';
@@ -32,6 +32,7 @@ export type Props = (StringProps | NumberProps) & {
   disabled?: bool,
   hint?: string,
   status?: 'success' | 'error',
+  autoFocus?: boolean,
   onFocus?: (event: SyntheticFocusEvent) => any,
   onBlur?: (event: SyntheticFocusEvent) => any,
   onKeyUp?: (event: SyntheticKeyboardEvent) => any,
@@ -45,20 +46,13 @@ export type State = {
 
 export type Context = ProviderContext;
 
-class Input extends Component {
+class Input extends PureComponent {
   props: Props;
   state: State;
   context: Context;
 
   // refs
   input: ?(HTMLInputElement | HTMLTextAreaElement);
-  setInput: (element: HTMLInputElement | HTMLTextAreaElement) => void;
-
-  handleChange: (event: SyntheticInputEvent) => void;
-  handleFocus: (event: SyntheticFocusEvent) => void;
-  handleBlur: (event: SyntheticFocusEvent) => void;
-  handleLabelMouseDown: (event: SyntheticMouseEvent) => void;
-
 
   static defaultProps = {
     type: 'text'
@@ -74,64 +68,55 @@ class Input extends Component {
     this.state = {
       isFocused: false
     };
-
-    this.input = null;
-    this.setInput = this.setInput.bind(this);
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleFocus = this.handleFocus.bind(this);
-    this.handleBlur = this.handleBlur.bind(this);
-    this.handleLabelMouseDown = this.handleLabelMouseDown.bind(this);
   }
 
-  shouldComponentUpdate(nextProps: Props, nextState: State, nextContext: Context) {
-    return nextContext !== this.context ||
-           nextState.isFocused !== this.state.isFocused ||
-           nextProps.value !== this.props.value ||
-           nextProps.hint !== this.props.hint ||
-           nextProps.status !== this.props.status ||
-           nextProps.large !== this.props.large ||
-           nextProps.label !== this.props.label ||
-           nextProps.placeholder !== this.props.placeholder ||
-           nextProps.disabled !== this.props.disabled ||
-           nextProps.type !== this.props.type ||
-           nextProps.prefix !== this.props.prefix ||
-           nextProps.className !== this.props.className ||
-           nextProps.name !== this.props.name ||
-           nextProps.id !== this.props.id;
+  componentDidMount(): void {
+    if (this.isAutoFocus() && this.input) {
+      this.input.focus();
+    }
   }
 
-  handleChange(event: $FlowIssue): void {
+  handleChange = (event: $FlowIssue): void => {
     this.props.onChange(event.target.value, event);
-  }
+  };
 
-  handleFocus(event: $FlowIssue): void {
+  handleFocus = (event: $FlowIssue): void => {
     this.setState({ isFocused: true });
 
     if (this.props.onFocus) {
       this.props.onFocus(event);
     }
-  }
+  };
 
-  handleBlur(event: $FlowIssue): void {
+  handleBlur = (event: $FlowIssue): void => {
+    if (this.isAutoFocus()) {
+      event.preventDefault();
+      event.target.focus();
+      return;
+    }
+
     this.setState({ isFocused: false });
 
     if (this.props.onBlur) {
       this.props.onBlur(event);
     }
-  }
+  };
 
-  handleLabelMouseDown(event: $FlowIssue): void {
+  handleLabelMouseDown = (event: $FlowIssue): void => {
     event.preventDefault();
 
     if (this.input) {
       this.input.focus();
     }
+  };
+
+  isAutoFocus(): boolean {
+    return Boolean(this.props.autoFocus) && !this.props.disabled;
   }
 
-  setInput(element: HTMLInputElement | HTMLTextAreaElement): void {
+  setInput = (element: HTMLInputElement | HTMLTextAreaElement): void => {
     this.input = element;
-  }
+  };
 
   renderLabel(): ?React.Element<any> {
     const { id, label } = this.props;
