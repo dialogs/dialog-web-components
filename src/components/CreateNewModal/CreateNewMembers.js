@@ -10,6 +10,7 @@ import ContactSelector from '../ContactSelector/ContactSelector';
 import styles from './CreateNewModal.css';
 
 export type Props = {
+  autoFocus: boolean,
   members: SelectorState<Contact>,
   onChange: (members: SelectorState<Contact>) => any,
 }
@@ -18,7 +19,7 @@ function CreateNewMembers(props: Props) {
   return (
     <div className={styles.members}>
       <ContactSelector
-        autoFocus={false}
+        autoFocus={props.autoFocus}
         selector={props.members}
         onChange={props.onChange}
       />

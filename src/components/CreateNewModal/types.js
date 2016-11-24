@@ -23,6 +23,7 @@ export type Props = {
   error: ?string,
   pending: boolean,
   request: Request,
+  autoFocus: boolean,
   onClose: () => any,
   onSubmit: (request: Request) => any,
   onStepChange: (step: Step) => any,

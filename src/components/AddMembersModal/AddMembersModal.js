@@ -22,6 +22,7 @@ export type Props = {
   group: Group,
   pending: boolean,
   selector: SelectorState<Contact>,
+  autoFocus: boolean,
   onClose: () => any,
   onSubmit: (gid: number, uids: number[]) => any,
   onChange: (selector: SelectorState<Contact>) => any
@@ -55,7 +56,7 @@ class AddMembersModal extends PureComponent {
         </ModalHeader>
         <ModalBody className={styles.body}>
           <ContactSelector
-            autoFocus={false}
+            autoFocus={this.props.autoFocus}
             selector={this.props.selector}
             onChange={this.props.onChange}
           />

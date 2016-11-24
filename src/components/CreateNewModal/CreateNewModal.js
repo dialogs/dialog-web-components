@@ -186,6 +186,7 @@ class CreateNewModal extends PureComponent {
         <ModalBody className={styles.body}>
           <CreateNewMembers
             members={members}
+            autoFocus={this.props.autoFocus}
             onChange={this.handleMembersChange}
           />
         </ModalBody>
