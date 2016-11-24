@@ -46,12 +46,11 @@ class ActivityListMembersItem extends PureComponent {
     const { member } = this.props;
 
     return (
-      <div className={styles.member}>
+      <div className={styles.member} onClick={this.handleClick}>
         <PeerAvatar
           className={styles.avatar}
           size="medium"
           peer={member.peerInfo}
-          onClick={this.handleClick}
         />
         <div className={styles.title}>
           {member.peerInfo.title}

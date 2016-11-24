@@ -5,7 +5,6 @@
 
 import React from 'react';
 import classNames from 'classnames';
-import Icon from '../Icon/Icon';
 import styles from './Toolbar.css';
 
 export type Props = {
@@ -19,10 +18,7 @@ function ToolbarInfo(props: Props): React.Element<any> {
 
   return (
     <div className={className}>
-      <div className={styles.name}>
-        {props.title}
-        <Icon glyph="favourite" onClick={console.debug} className={styles.favourite} />
-      </div>
+      <div className={styles.name}>{props.title}</div>
       <div className={styles.status}>{props.status}</div>
     </div>
   );
