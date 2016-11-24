@@ -70,3 +70,8 @@
   color: var(--toolbar-status-color);
 }
 
+.favourite {
+  width: 16px;
+  height: 16px;
+  fill: color(#000 alpha(38%));
+}

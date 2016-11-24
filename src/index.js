@@ -13,9 +13,6 @@ export { default as DropdownHeader } from './components/Dropdown/DropdownHeader'
 export { default as DropdownItem } from './components/Dropdown/DropdownItem';
 export { default as Icon } from './components/Icon/Icon';
 export { default as Spinner } from './components/Spinner/Spinner';
-export { default as Toolbar } from './components/Toolbar/Toolbar';
-export { default as ToolbarInfoButton } from './components/ToolbarInfoButton/ToolbarInfoButton';
-export { default as ToolbarCallButton } from './components/ToolbarCallButton/ToolbarCallButton';
 export { default as Logo } from './components/Logo/Logo';
 export { default as Typing } from './components/Typing/Typing';
 export { default as ConnectionStatus } from './components/ConnectionStatus/ConnectionStatus';
@@ -27,6 +24,13 @@ export { default as AvatarSelector } from './components/AvatarSelector/AvatarSel
 export { default as Archive } from './components/Archive/Archive';
 export { default as Lightbox } from './components/Lightbox/Lightbox';
 export { default as Dragndrop } from './components/Dragndrop/Dragndrop';
+
+// Toolbar
+export { default as Toolbar } from './components/Toolbar/Toolbar';
+export { default as ToolbarButtons } from './components/Toolbar/ToolbarButtons';
+export { default as ToolbarInfo } from './components/Toolbar/ToolbarInfo';
+export { default as ToolbarInfoButton } from './components/ToolbarInfoButton/ToolbarInfoButton';
+export { default as ToolbarCallButton } from './components/ToolbarCallButton/ToolbarCallButton';
 
 // Buttons
 export { default as Button } from './components/Button/Button';
@@ -106,5 +110,3 @@ export { default as Map } from './components/Map/Map';
 export { default as SelectList } from './components/SelectList/SelectList';
 export { default as SidebarHeaderMenu } from './components/SidebarHeader/SidebarHeaderMenu';
 export { default as SidebarSearchGroup } from './components/SidebarSearchGroup/SidebarSearchGroup';
-export { default as ToolbarButtons } from './components/ToolbarButtons/ToolbarButtons';
-export { default as ToolbarInfo } from './components/ToolbarInfo/ToolbarInfo';

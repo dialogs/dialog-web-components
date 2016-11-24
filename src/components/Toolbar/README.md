@@ -1,8 +1,8 @@
 Basic Toolbar:
 
 ```
-const ToolbarInfo = require('../ToolbarInfo/ToolbarInfo').default;
-const ToolbarButtons = require('../ToolbarButtons/ToolbarButtons').default;
+const ToolbarInfo = require('./ToolbarInfo').default;
+const ToolbarButtons = require('./ToolbarButtons').default;
 const IconButton = require('../IconButton/IconButton').default;
 
 <div style={{ background: 'white' }}>
