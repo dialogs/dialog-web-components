@@ -4,7 +4,7 @@
  */
 
 import type { Attachment, AttachmentModalProps } from './types';
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import { Text } from '@dlghq/react-l10n';
 import Modal from '../Modal/Modal';
@@ -18,57 +18,35 @@ import AttachmentMeta from './AttachmentMeta';
 import AttachmentPreview from './AttachmentPreview';
 import styles from './AttachmentModal.css';
 
-class AttachmentModal extends Component {
+class AttachmentModal extends PureComponent {
   props: AttachmentModalProps;
 
-  handleSend: Function;
-  handleNext: Function;
-  handlePrevious: Function;
-  handleChange: Function;
-  handleSendAll: Function;
-
-  constructor(props: AttachmentModalProps) {
-    super(props);
-
-    this.handleSend = this.handleSend.bind(this);
-    this.handleNext = this.handleNext.bind(this);
-    this.handlePrevious = this.handlePrevious.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSendAll = this.handleSendAll.bind(this);
-  }
-
-  shouldComponentUpdate(nextProps: AttachmentModalProps): boolean {
-    return nextProps.current !== this.props.current ||
-           nextProps.attachments !== this.props.attachments ||
-           nextProps.className !== this.props.className;
-  }
-
-  handleSend(): void {
+  handleSend = (): void => {
     this.props.onSend([this.getCurrentAttachment()]);
-  }
+  };
 
-  handleSendAll(): void {
+  handleSendAll = (): void => {
     const { attachments } = this.props;
     this.props.onSendAll(attachments);
-  }
+  };
 
-  handleNext(): void {
+  handleNext = (): void => {
     const { current, attachments } = this.props;
     this.props.onCurrentChange(
       Math.min(attachments.length - 1, current + 1)
     );
-  }
+  };
 
-  handlePrevious(): void {
+  handlePrevious = (): void => {
     const { current } = this.props;
     this.props.onCurrentChange(
       Math.max(0, current - 1)
     );
-  }
+  };
 
-  handleChange(attachment: Attachment): void {
+  handleChange = (attachment: Attachment): void => {
     this.props.onAttachmentChange(this.props.current, attachment);
-  }
+  };
 
   getCurrentAttachment(): Attachment {
     return this.props.attachments[this.props.current];
@@ -159,8 +137,22 @@ class AttachmentModal extends Component {
   render() {
     const className = classNames(styles.container, this.props.className);
 
+    const hotKeyMap = {
+      next: 'right',
+      previous: 'left',
+      send: 'enter',
+      sendAll: 'mod+enter'
+    };
+
+    const hotKeyHandlers = {
+      next: this.handleNext,
+      previous: this.handlePrevious,
+      send: this.handleSend,
+      sendAll: this.handleSendAll
+    };
+
     return (
-      <Modal className={className} onClose={this.props.onClose}>
+      <Modal className={className} onClose={this.props.onClose} keyMap={hotKeyMap} handlers={hotKeyHandlers}>
         <ModalHeader withBorder className={styles.header}>
           <Text id="AttachmentModal.title" />
           {this.renderPagination()}

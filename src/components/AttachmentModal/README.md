@@ -17,20 +17,17 @@ const actions = {
           isDocument: !file.type.startsWith('image')
         }))
       });
-    });
+    }, true);
   },
   onSend(attachments) {
-    console.log(attachments);
-
     setState({
       current: 0,
       attachments: state.attachments.filter((attachment) => {
-        return attachments.indexOf(attachment) !== -1;
+        return attachments.indexOf(attachment) === -1;
       })
     });
   },
   onSendAll() {
-    console.log(attachments);
     setState(initialState);
   },
   onClose() {
