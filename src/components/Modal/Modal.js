@@ -3,38 +3,63 @@
  * @flow
  */
 
-import React from 'react';
+import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import ReactModal from 'react-modal';
 import styles from './Modal.css';
+import { HotKeys } from 'react-hotkeys';
 
 export type Props = {
   className?: string,
   children?: any,
   fullscreen?: boolean,
   shouldCloseOnOverlayClick?: boolean,
+  keyMap?: Object,
+  handlers?: Object,
   onClose: () => any
 };
 
-function Modal(props: Props) {
-  const className = classNames(styles.container, props.className);
-  const overlayClassName = classNames(styles.overlay, {
-    [styles.fullscreen]: props.fullscreen
-  });
+class Modal extends PureComponent {
+  props: Props;
 
-  return (
-    <ReactModal
-      isOpen
-      className={className}
-      overlayClassName={overlayClassName}
-      onRequestClose={props.onClose}
-      shouldCloseOnOverlayClick={props.shouldCloseOnOverlayClick || true}
-    >
+  renderContent() {
+    const { keyMap, handlers } = this.props;
+    const content = (
       <div className={styles.wrapper}>
-        {props.children}
+        {this.props.children}
       </div>
-    </ReactModal>
-  );
+    );
+
+    if (keyMap && handlers) {
+      return (
+        <HotKeys keyMap={keyMap} handlers={handlers} focused attach={window}>
+          {content}
+        </HotKeys>
+      );
+    }
+
+    return content;
+  }
+
+  render(): React.Element<any> {
+    const className = classNames(styles.container, this.props.className);
+    const overlayClassName = classNames(styles.overlay, {
+      [styles.fullscreen]: this.props.fullscreen
+    });
+
+    return (
+      <ReactModal
+        isOpen
+        className={className}
+        overlayClassName={overlayClassName}
+        onRequestClose={this.props.onClose}
+        shouldCloseOnOverlayClick={this.props.shouldCloseOnOverlayClick}
+      >
+        {this.renderContent()}
+      </ReactModal>
+    );
+  }
 }
+
 
 export default Modal;
