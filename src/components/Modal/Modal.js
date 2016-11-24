@@ -23,22 +23,27 @@ class Modal extends PureComponent {
   props: Props;
 
   renderContent() {
-    const { keyMap, handlers } = this.props;
-    const content = (
-      <div className={styles.wrapper}>
-        {this.props.children}
-      </div>
-    );
+    const { keyMap, handlers, children } = this.props;
 
     if (keyMap && handlers) {
       return (
-        <HotKeys keyMap={keyMap} handlers={handlers} focused attach={window}>
-          {content}
+        <HotKeys
+          className={styles.wrapper}
+          keyMap={keyMap}
+          handlers={handlers}
+          focused
+          attach={window}
+        >
+          {children}
         </HotKeys>
       );
     }
 
-    return content;
+    return (
+      <div className={styles.wrapper}>
+        {children}
+      </div>
+    );
   }
 
   render(): React.Element<any> {
