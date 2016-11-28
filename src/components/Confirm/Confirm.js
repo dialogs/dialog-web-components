@@ -35,7 +35,7 @@ class Confirm extends PureComponent {
   };
 
   render() {
-    const className = classNames(modalStyles.root, styles.container);
+    const className = classNames(modalStyles.container, styles.container);
 
     return (
       <div className={className}>
