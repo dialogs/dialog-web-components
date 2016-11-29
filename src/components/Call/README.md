@@ -6,8 +6,7 @@ const initialState = {
   call: null,
   caller: null,
   small: false,
-  duration: 0,
-  timerId: null
+  duration: 0
 };
 
 const call = {
@@ -43,13 +42,7 @@ const handleConnect = () => {
 };
 
 const handleInProgress = () => {
-  let duration = 0;
-  const timerId = setInterval(() => {
-    setState({ duration: duration++ });
-  }, 1000);
-
   setState({
-    timerId,
     duration,
     call: {
       ...call,
@@ -63,10 +56,6 @@ const handleAnswer = () => {
 };
 
 const handleEnd = () => {
-  if (state.timerId) {
-    clearInterval(state.timerId);
-  }
-
   setState(initialState);
 };
 
@@ -91,7 +80,6 @@ const handleMuteToggle = () => {
     call={state.call}
     caller={state.caller}
     small={state.small}
-    duration={state.duration}
     onEnd={handleEnd}
     onAnswer={handleAnswer}
     onSizeToggle={handleSizeToggle}

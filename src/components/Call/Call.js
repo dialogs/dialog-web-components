@@ -3,13 +3,40 @@
  * @flow
  */
 
-import type { CallWrapperProps } from './types';
+import type { CallWrapperProps as Props } from './types';
 import React, { PureComponent } from 'react';
 import BigCall from './BigCall';
 import SmallCall from './SmallCall';
 
+export type State = {
+  duration: number
+};
+
 class Call extends PureComponent {
-  props: CallWrapperProps;
+  props: Props;
+  state: State;
+  timer: ?number;
+
+  constructor(props: Props) {
+    super(props);
+
+    this.state = {
+      duration: 0
+    };
+  }
+
+  componentWillReceiveProps(nextProps: Props) {
+    if (this.props.call && nextProps.call) {
+      const { state } = this.props.call;
+      const { state: nextState } = nextProps.call;
+
+      if (nextState === 'in_progress' && state !== 'in_progress') {
+        this.setTimer();
+      } else if (state === 'in_progress' && nextState !== 'in_progress') {
+        this.clearTimer();
+      }
+    }
+  }
 
   handleEnd = (): void => {
     if (this.props.id) {
@@ -36,8 +63,25 @@ class Call extends PureComponent {
     }
   };
 
+  setTimer(): void {
+    this.clearTimer();
+
+    let duration = 0;
+    this.timer = setInterval(() => {
+      this.setState({ duration: ++duration });
+    }, 1000);
+  }
+
+  clearTimer(): void {
+    if (this.timer) {
+      clearInterval(this.timer);
+    }
+  }
+
   render(): ?React.Element<any> {
-    const { id, call, caller, small, duration } = this.props;
+    const { id, call, caller, small } = this.props;
+    const { duration } = this.state;
+
     if (!id || !call || !caller) {
       return null;
     }

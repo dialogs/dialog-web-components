@@ -11,7 +11,6 @@ export type CallWrapperProps = {
   call: ?Call,
   caller: ?User,
   small: boolean,
-  duration: number,
   onEnd: (id: string) => any,
   onAnswer: (id: string) => any,
   onSizeToggle: (id: string, small: boolean) => any,
