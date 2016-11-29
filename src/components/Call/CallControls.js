@@ -32,7 +32,7 @@ function CallControls(props: CallControlsProps): React.Element<any> {
     buttons.push(
       <IconButton
         flat
-        key="end"
+        key="answer"
         size={size}
         theme="success"
         glyph="call"
