@@ -2,7 +2,9 @@ Call:
 
 ```
 const initialState = {
+  id: 1,
   call: null,
+  caller: null,
   small: false,
   duration: 0,
   timerId: null
@@ -14,19 +16,20 @@ const call = {
     id: 1,
     type: 'user'
   },
-  caller: {
-    id: 1,
-    name: 'Nikita',
-    placeholder: 'red',
-    avatar: 'https://avatars0.githubusercontent.com/u/3505878'
-  },
   members: [],
   isMuted: false,
   isOutgoing: false
 };
 
+const caller = {
+  id: 1,
+  name: 'Nikita',
+  placeholder: 'red',
+  avatar: 'https://avatars0.githubusercontent.com/u/3505878'
+};
+
 const handleCall = () => {
-  setState({ call });
+  setState({ call, caller });
   setTimeout(handleConnect, 3000);
 };
 
@@ -37,8 +40,6 @@ const handleConnect = () => {
       state: 'connecting'
     }
   });
-
-  setTimeout(handleInProgress, 1000);
 };
 
 const handleInProgress = () => {
@@ -55,6 +56,10 @@ const handleInProgress = () => {
       state: 'in_progress'
     }
   });
+};
+
+const handleAnswer = () => {
+  setTimeout(handleInProgress, 1000);
 };
 
 const handleEnd = () => {
@@ -82,10 +87,13 @@ const handleMuteToggle = () => {
   <Button onClick={handleCall} theme="primary">Call</Button>
 
   <Call
+    id={state.id}
     call={state.call}
+    caller={state.caller}
     small={state.small}
     duration={state.duration}
     onEnd={handleEnd}
+    onAnswer={handleAnswer}
     onSizeToggle={handleSizeToggle}
     onMuteToggle={handleMuteToggle}
   />
