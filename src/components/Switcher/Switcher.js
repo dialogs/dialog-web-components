@@ -3,7 +3,7 @@
  * @flow
  */
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import styles from './Switcher.css';
 
@@ -14,35 +14,37 @@ export type SwitcherProps = {
   name: string,
   value: boolean,
   disabled: boolean,
+  tabIndex?: number,
   onChange: (value: boolean, event: SyntheticEvent) => void
 }
 
-class Switcher extends Component {
+class Switcher extends PureComponent {
   props: SwitcherProps;
-
-  handleChange: Function;
+  input: ?HTMLInputElement;
 
   static defaultProps = {
     value: false,
     disabled: false
   };
 
-  constructor(props: SwitcherProps) {
-    super(props);
-
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  shouldComponentUpdate(nextProps: SwitcherProps): boolean {
-    return nextProps.value !== this.props.value ||
-           nextProps.name !== this.props.name ||
-           nextProps.disabled !== this.props.disabled ||
-           nextProps.id !== this.props.id ||
-           nextProps.className !== this.props.className;
-  }
-
-  handleChange(event: $FlowIssue): void {
+  handleChange = (event: $FlowIssue): void => {
     this.props.onChange(event.target.checked, event);
+  }
+
+  setInput = (input: ?HTMLInputElement): void => {
+    this.input = input;
+  };
+
+  focus(): void {
+    if (this.input) {
+      this.input.focus();
+    }
+  }
+
+  blur(): void {
+    if (this.input) {
+      this.input.blur();
+    }
   }
 
   renderChildren(): ?React.Element<any> {
@@ -58,7 +60,7 @@ class Switcher extends Component {
   }
 
   render(): React.Element<any> {
-    const { id, value, disabled, name } = this.props;
+    const { id, value, disabled, name, tabIndex } = this.props;
     const className = classNames(styles.container, this.props.className, {
       [styles.checked]: value,
       [styles.disabled]: disabled
@@ -68,10 +70,12 @@ class Switcher extends Component {
       <div className={className}>
         <input
           className={styles.input}
-          checked={value}
           id={id}
           name={name}
+          checked={value}
           type="checkbox"
+          tabIndex={tabIndex}
+          ref={this.setInput}
           onChange={this.handleChange}
         />
         <label htmlFor={id} className={styles.switcher} />
