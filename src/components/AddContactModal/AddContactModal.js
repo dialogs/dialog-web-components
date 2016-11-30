@@ -37,44 +37,37 @@ export type Props = {
 
 class AddContactModal extends PureComponent {
   props: Props;
-  handleSearch: Function;
-  handleAddClick: Function;
-  handleQueryChange: Function;
-  handleOpenChat: Function;
 
   constructor(props: Props) {
     super(props);
 
-    this.handleSearch = debounce(this.handleSearch.bind(this), 200);
-    this.handleQueryChange = this.handleQueryChange.bind(this);
-    this.handleAddClick = this.handleAddClick.bind(this);
-    this.handleOpenChat = this.handleOpenChat.bind(this);
+    this.handleSearch = debounce(this.handleSearch, 200);
   }
 
-  handleSearch(query: string): void {
+  handleSearch = (query: string): void => {
     this.props.onSearch(query);
-  }
+  };
 
-  handleQueryChange(query: string): void {
+  handleQueryChange = (query: string): void => {
     this.handleSearch(query);
     this.props.onChange(query);
-  }
+  };
 
-  handleAddClick(): void {
+  handleAddClick = (): void => {
     const { contact } = this.props;
 
     if (contact) {
       this.props.onAdd(contact.id);
     }
-  }
+  };
 
-  handleOpenChat(): void {
+  handleOpenChat = (): void => {
     const { contact } = this.props;
 
     if (contact) {
       this.props.onOpenChat(contact.id);
     }
-  }
+  };
 
   isLocked(): boolean {
     const { pending, contact } = this.props;
@@ -169,6 +162,7 @@ class AddContactModal extends PureComponent {
     return (
       <ModalBody className={styles.body}>
         <Input
+          autoFocus
           className={styles.input}
           id="add_contact_query"
           type="text"
