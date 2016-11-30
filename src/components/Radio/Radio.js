@@ -4,7 +4,7 @@
  */
 
 import type { Context } from './RadioGroup';
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 import classNames from 'classnames';
 import styles from './Radio.css';
 
@@ -12,34 +12,37 @@ export type Props = {
   className?: string,
   children?: any,
   id?: string,
-  value: string
+  value: string,
+  tabIndex?: number
 };
 
-class Radio extends Component {
+class Radio extends PureComponent {
   props: Props;
   context: Context;
-  handleChange: Function;
+  input: ?HTMLInputElement;
 
   static contextTypes = {
     radioGroup: PropTypes.object.isRequired
   };
 
-  constructor(props: Props, context: Context) {
-    super(props, context);
-
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  shouldComponentUpdate(nextProps: Props, nextState: any, nextContext: Context): boolean {
-    return nextContext !== this.context ||
-           nextProps.value !== this.props.value ||
-           nextProps.children !== this.props.children ||
-           nextProps.className !== this.props.className ||
-           nextProps.id !== this.props.id;
-  }
-
   handleChange(event: $FlowIssue): void {
     this.context.radioGroup.onChange(event.target.value, event);
+  }
+
+  setInput = (input: ?HTMLInputElement): void => {
+    this.input = input;
+  };
+
+  focus(): void {
+    if (this.input) {
+      this.input.focus();
+    }
+  }
+
+  blur(): void {
+    if (this.input) {
+      this.input.blur();
+    }
   }
 
   renderChildren(): ?React.Element<any> {
@@ -54,7 +57,7 @@ class Radio extends Component {
   }
 
   render(): React.Element<any> {
-    const { children, id, value } = this.props;
+    const { children, id, value, tabIndex } = this.props;
     const { radioGroup } = this.context;
     const className = classNames(styles.container, this.props.className, {
       [styles.labeled]: Boolean(children)
@@ -67,8 +70,9 @@ class Radio extends Component {
           type="radio"
           id={id}
           name={radioGroup.name}
-          value={value}
+          tabIndex={tabIndex}
           checked={value === radioGroup.value}
+          ref={this.setInput}
           onChange={this.handleChange}
         />
         <span className={styles.radio} />
