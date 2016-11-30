@@ -1,32 +1,49 @@
-import React, { Component, PropTypes } from 'react';
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ * @flow
+ */
+
+import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import styles from './Checkbox.css';
 
-class Checkbox extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-    label: PropTypes.node,
-    id: PropTypes.string.isRequired,
-    value: PropTypes.bool.isRequired,
-    disabled: PropTypes.bool.isRequired,
-    onChange: PropTypes.func.isRequired
-  };
+export type Props = {
+  className?: string,
+  label?: string | React.Element<any>,
+  id: string,
+  value: boolean,
+  disabled: boolean,
+  tabIndex?: number,
+  onChange: (event: SyntheticInputEvent) => any
+}
+
+class Checkbox extends PureComponent {
+  props: Props;
+  input: ?HTMLInputElement;
 
   static defaultProps = {
     value: false,
     disabled: false
   };
 
-  shouldComponentUpdate(nextProps) {
-    return nextProps.value !== this.props.value ||
-           nextProps.disabled !== this.props.disabled ||
-           nextProps.label !== this.props.label ||
-           nextProps.id !== this.props.id ||
-           nextProps.className !== this.props.className;
+  setInput = (input: ?HTMLInputElement): void => {
+    this.input = input;
+  };
+
+  focus(): void {
+    if (this.input) {
+      this.input.focus();
+    }
+  }
+
+  blur(): void {
+    if (this.input) {
+      this.input.blur();
+    }
   }
 
   render() {
-    const { id, value, label, disabled, onChange } = this.props;
+    const { id, value, label, disabled, tabIndex, onChange } = this.props;
     const className = classNames(styles.root, this.props.className, {
       [styles.checked]: value,
       [styles.disabled]: disabled
@@ -35,11 +52,13 @@ class Checkbox extends Component {
     return (
       <div className={className}>
         <input
+          className={styles.checkbox}
           type="checkbox"
           id={id}
           checked={value}
+          tabIndex={tabIndex}
+          ref={this.setInput}
           onChange={onChange}
-          className={styles.checkbox}
         />
 
         <label htmlFor={id} className={styles.label}>
