@@ -71,6 +71,7 @@ class Radio extends PureComponent {
           id={id}
           name={radioGroup.name}
           tabIndex={tabIndex}
+          value={value}
           checked={value === radioGroup.value}
           ref={this.setInput}
           onChange={this.handleChange}
