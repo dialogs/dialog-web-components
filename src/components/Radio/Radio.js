@@ -25,9 +25,9 @@ class Radio extends PureComponent {
     radioGroup: PropTypes.object.isRequired
   };
 
-  handleChange(event: $FlowIssue): void {
+  handleChange = (event: $FlowIssue): void => {
     this.context.radioGroup.onChange(event.target.value, event);
-  }
+  };
 
   setInput = (input: ?HTMLInputElement): void => {
     this.input = input;
