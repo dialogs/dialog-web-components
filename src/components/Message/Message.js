@@ -22,7 +22,6 @@ export type Props = {
   state: ?MessageStateType,
   sender: ?PeerInfo,
   className?: string,
-  onTimeClick: (message: MessageType) => any,
   onTitleClick?: (message: MessageType) => any,
   onAvatarClick?: (message: MessageType) => any,
   onMentionClick?: (message: MessageType) => any,
@@ -64,12 +63,6 @@ class Message extends PureComponent {
     }
   };
 
-  handleTimeClick = () => {
-    if (this.props.onTimeClick) {
-      this.props.onTimeClick(this.props.message);
-    }
-  };
-
   handleLightboxOpen = () => {
     if (this.props.onLightboxOpen) {
       this.props.onLightboxOpen(this.props.message);
@@ -95,15 +88,14 @@ class Message extends PureComponent {
     }
 
     return (
-      <MessageState state={state} />
+      <MessageState
+        state={state}
+        time={this.props.message.date}
+      />
     );
   }
 
   renderAvatar(): ?React.Element<any> {
-    if (this.props.short) {
-      return null;
-    }
-
     const sender = this.getSender();
     const onClick = this.props.onAvatarClick ? this.handleAvatarClick : null;
     const avatarClassName = classNames({
@@ -118,11 +110,6 @@ class Message extends PureComponent {
   }
 
   renderHeader(): ?React.Element<any> {
-    if (this.props.short) {
-      return null;
-    }
-
-    const { message: { date } } = this.props;
     const sender = this.getSender();
 
     const onTitleClick = this.props.onTitleClick ? this.handleTitleClick : null;
@@ -135,13 +122,10 @@ class Message extends PureComponent {
       [styles.clickable]: this.props.onMentionClick
     });
 
-    const onTimeClick = this.props.onMentionClick ? this.handleTimeClick : null;
-    const timeClassName = classNames(styles.timestamp, {
-      [styles.clickable]: this.props.onMentionClick
-    });
-
     const username = sender.userName ? (
-      <span className={mentionClassName} onClick={onMentionClick}>@{sender.userName}</span>
+      <span className={mentionClassName} onClick={onMentionClick}>
+        {`@${sender.userName}`}
+      </span>
     ) : null;
 
     return (
@@ -150,7 +134,6 @@ class Message extends PureComponent {
           <span className={titleClassName} onClick={onTitleClick}>{sender.title}</span>
           {username}
         </div>
-        <time className={timeClassName} onClick={onTimeClick}>{date}</time>
         {this.renderState()}
       </header>
     );
@@ -170,16 +153,28 @@ class Message extends PureComponent {
 
   render(): React.Element<any> {
     const { short, message: { content } } = this.props;
-    const className = classNames(styles.container, {
-      [styles.short]: short
-    }, this.props.className);
+    const { hover } = this.state;
+
+    const state = this.getState();
+    const isError = state === 'error';
+    const isUnread = state !== 'unknown' && state !== 'read';
+
+    const className = classNames(
+      styles.container,
+      this.props.className,
+      short ? styles.short : null,
+      isError ? styles.error : isUnread ? styles.unread : null
+    );
 
     return (
       <Hover className={className} onHover={this.handleHover}>
         {this.renderActions()}
-        {this.renderAvatar()}
+        <div className={styles.info}>
+          {short ? null : this.renderAvatar()}
+          {short && hover ? this.renderState() : null}
+        </div>
         <div className={styles.body}>
-          {this.renderHeader()}
+          {short ? null : this.renderHeader()}
           <div className={styles.content}>
             <MessageContent content={content} onLightboxOpen={this.handleLightboxOpen} />
           </div>

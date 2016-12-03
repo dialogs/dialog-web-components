@@ -1,6 +1,6 @@
 pending: Отправка
 sent: Отправлено
-delivered: Доставлено
+received: Доставлено
 read: Прочитано
 read_by: Прочитано
 read_by_count: Прочитало "{count} человек"

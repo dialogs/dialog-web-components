@@ -6,12 +6,18 @@
 :root {
   --message-font-family: var(--default-font-family);
   --message-vertical-padding: 8px;
-  --message-horizontal-padding: 34px;
+  --message-horizontal-padding: 20px;
   --message-small-vertical-padding: 6px;
   --message-small-horizontal-padding: 34px;
   --message-hover-background-color: #f2f2f2;
   --message-mention-color: color(#000 alpha(60%));
   --message-timestamp-color: color(#000 alpha(60%));
+
+  --message-error-color: color(var(--color-error) alpha(10%));
+  --message-error-hover-color: color(var(--color-error) alpha(15%));
+
+  --message-unread-color: color(#f2f2f2 alpha(80%));
+  --message-unread-hover-color: #f2f2f2;
 }
 
 .container {
@@ -23,24 +29,20 @@
   font-family: var(--message-font-family);
 
   &:hover {
-    background-color: var(--message-hover-background-color);
-
     & .actions {
       display: block;
     }
   }
 }
 
-.short {
-  padding: var(--message-small-vertical-padding) var(--message-small-horizontal-padding);
-
-  & .body {
-    padding-left: 50px;
-  }
-}
-
 .avatar {
   margin-right: 14px;
+  flex: 0 0 auto;
+}
+
+.info {
+  width: 60px;
+  display: flex;
   flex: 0 0 auto;
 }
 
@@ -64,6 +66,7 @@
   height: 22px;
   letter-spacing: -0.3px;
   line-height: 20px;
+  margin-right: 10px;
 }
 
 .title {
@@ -104,4 +107,32 @@
 
 .clickable {
   cursor: pointer !important;
+}
+
+.error {
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 5px,
+    var(--message-error-color) 5px,
+    var(--message-error-color) 10px
+  );
+
+  &:hover {
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 5px,
+      var(--message-error-hover-color) 5px,
+      var(--message-error-hover-color) 10px
+    );
+  }
+}
+
+.unread {
+  background-color: var(--message-unread-color);
+
+  &:hover {
+    background-color: var(--message-unread-hover-color);
+  }
 }

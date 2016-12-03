@@ -11,29 +11,62 @@ const sender = {
     type: 'user'
   }
 };
+
 const messages = [
   {
     sender,
-    date: '20:30 pm',
+    date: '20:30',
     state: 'read',
     content: {
       type: 'text',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aperiam, aspernatur dolor ea eum expedita labore modi nesciunt, numquam officia perferendis porro quidem quod rerum saepe sequi suscipit tempora voluptate?'
+      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ipsum viverra, eleifend ante nec, porta enim.'
     }
   },
   {
     sender,
-    date: '20:31 pm',
-    state: 'sending',
+    date: '20:30',
+    state: 'error',
     content: {
       type: 'text',
-      text: 'Accusamus aperiam, aspernatur dolor ea eum expedita'
+      text: 'Quisque sollicitudin purus eget dui imperdiet, sed imperdiet dui mollis.'
+    }
+  },
+  {
+    sender,
+    date: '20:31',
+    state: 'pending',
+    content: {
+      type: 'text',
+      text: 'Donec iaculis augue eu blandit scelerisque.'
+    }
+  },
+  {
+    sender,
+    date: '20:31',
+    state: 'sent',
+    content: {
+      type: 'text',
+      text: 'Quisque cursus non lectus id congue. Nam accumsan faucibus ex eget tempor.'
+    }
+  },
+  {
+    sender,
+    date: '20:32',
+    state: 'received',
+    content: {
+      type: 'text',
+      text: 'Suspendisse sodales purus tellus, non sollicitudin dolor consectetur vel. Sed non facilisis ex. Pellentesque eu urna ac quam eleifend tristique ut at est. Aliquam condimentum nec quam congue imperdiet.'
     }
   }
 ];
 
-<div>
-  <Message message={messages[0]} state={messages[0].state} />
-  <Message message={messages[1]} state={messages[1].state} short />
+<div style={{background: '#fff'}}>
+  {messages.map((message, index) => (
+    <Message
+      key={index}
+      message={message} 
+      short={index > 0} 
+    />
+  ))}
 </div>
 ```
