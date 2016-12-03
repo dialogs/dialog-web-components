@@ -62,7 +62,7 @@
     "react-hotkeys": "0.9.0",
     "react-modal": "1.5.2",
     "react-tether": "0.5.2",
-    "react-virtualized": "8.6.1"
+    "react-virtualized": "8.7.0"
   },
   "devDependencies": {
     "@dlghq/babel-preset-dialog": "2.5.1",
