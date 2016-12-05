@@ -142,6 +142,9 @@
   background-color: var(--message-hover-background-color) !important;
 }
 
+.short {
+}
+
 .state {
 }
 
