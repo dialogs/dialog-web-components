@@ -64,7 +64,7 @@ class ConnectionStatus extends PureComponent {
       return null;
     }
 
-    const className = classNames(styles.root, styles[status], this.props.className);
+    const className = classNames(styles.container, styles[status], this.props.className);
 
     return (
       <Text
@@ -77,18 +77,20 @@ class ConnectionStatus extends PureComponent {
 
   render() {
     return (
-      <CSSTransitionGroup
-        transitionName={{
-          enter: styles.enter,
-          enterActive: styles.enterActive,
-          leave: styles.leave,
-          leaveActive: styles.leaveActive
-        }}
-        transitionEnterTimeout={150}
-        transitionLeaveTimeout={150}
-      >
-        {this.renderContent()}
-      </CSSTransitionGroup>
+      <div className={styles.wrapper}>
+        <CSSTransitionGroup
+          transitionName={{
+            enter: styles.enter,
+            enterActive: styles.enterActive,
+            leave: styles.leave,
+            leaveActive: styles.leaveActive
+          }}
+          transitionEnterTimeout={150}
+          transitionLeaveTimeout={150}
+        >
+          {this.renderContent()}
+        </CSSTransitionGroup>
+      </div>
     );
   }
 }

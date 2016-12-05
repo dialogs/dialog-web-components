@@ -10,11 +10,16 @@
   --connection-status-font-color: #fff;
   --connection-status-height: 28px;
   --connection-status-transition-duration: var(--default-transition-duration);
-  --connection-status-z-index: 2;
+  --connection-status-z-index: 10;
   --connection-status-translate-size: calc(0 - var(--connection-status-height));
 }
 
-.root {
+.wrapper {
+  position: relative;
+  height: 0;
+}
+
+.container {
   all: initial;
   display: flex;
   flex-direction: row;
@@ -30,6 +35,10 @@
   justify-content: center;
   align-items: center;
   align-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: var(--connection-status-z-index);
 }
 
 .online {
