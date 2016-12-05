@@ -27,10 +27,9 @@
     "format:css": "find src -path '**/*.css' -exec stylefmt {} \\;",
     "preversion": "npm test",
     "postversion": "npm run release",
-    "postpublish": "git push --follow-tags",
     "prerelease": "npm run build",
     "release": "npm publish",
-    "postrelease": "npm run docs",
+    "postpublish": "git push --follow-tags",
     "predocs": "styleguidist build",
     "docs": "buildbranch gh-pages styleguide"
   },

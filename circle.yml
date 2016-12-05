@@ -1,7 +1,17 @@
 machine:
   node:
-    version: 6
+    version: 7
+
 general:
   branches:
     ignore:
       - gh-pages
+
+deployment:
+  docs:
+    tag: /^v\d+(\.\d+)*$/
+    owner: circleci
+    commands:
+      - git config --global user.name "Circle CI"
+      - git config --global user.email "ci@dlg.im"
+      - npm run docs
