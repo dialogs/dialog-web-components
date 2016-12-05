@@ -159,12 +159,12 @@ class Message extends PureComponent {
     const isError = state === 'error';
     const isUnread = state !== 'unknown' && state !== 'read';
 
-    const className = classNames(
-      styles.container,
-      this.props.className,
-      short ? styles.short : null,
-      isError ? styles.error : isUnread ? styles.unread : null
-    );
+    const className = classNames(styles.container, {
+      [styles.short]: short,
+      [styles.hovered]: hover,
+      [styles.error]: isError,
+      [styles.unread]: isUnread
+    }, this.props.className);
 
     return (
       <Hover className={className} onHover={this.handleHover}>

@@ -9,15 +9,15 @@
   --message-horizontal-padding: 20px;
   --message-small-vertical-padding: 6px;
   --message-small-horizontal-padding: 34px;
-  --message-hover-background-color: #f2f2f2;
+  --message-hover-background-color: color(#f2f2f2 alpha(55%));
   --message-mention-color: color(#000 alpha(60%));
   --message-timestamp-color: color(#000 alpha(60%));
 
-  --message-error-color: color(var(--color-error) alpha(10%));
+  --message-error-color: color(var(--color-error) alpha(12%));
   --message-error-hover-color: color(var(--color-error) alpha(15%));
 
-  --message-unread-color: color(#f2f2f2 alpha(80%));
-  --message-unread-hover-color: #f2f2f2;
+  --message-unread-color: color(#f2f2f2 alpha(25%));
+  /*--message-unread-hover-color: #f2f2f2;*/
 }
 
 .container {
@@ -109,7 +109,14 @@
   cursor: pointer !important;
 }
 
+.unread {
+  background-color: var(--message-unread-color);
+  box-shadow: inset 2px 0 0 0 var(--color-info);
+}
+
 .error {
+  background-color: transparent;
+  box-shadow: inset 2px 0 0 0 var(--color-danger);
   background: repeating-linear-gradient(
     -45deg,
     transparent,
@@ -119,6 +126,7 @@
   );
 
   &:hover {
+    background-color: transparent !important;
     background: repeating-linear-gradient(
       -45deg,
       transparent,
@@ -129,10 +137,6 @@
   }
 }
 
-.unread {
-  background-color: var(--message-unread-color);
-
-  &:hover {
-    background-color: var(--message-unread-hover-color);
-  }
+.hovered {
+  background-color: var(--message-hover-background-color) !important;
 }
