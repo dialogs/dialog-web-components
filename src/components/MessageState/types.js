@@ -6,7 +6,9 @@
 import type { PeerInfo, MessageState } from '@dlghq/dialog-types';
 
 export type MessageStateProps = {
+  className?: string,
   state: MessageState,
+  time: string,
   readBy?: PeerInfo[]
 };
 
