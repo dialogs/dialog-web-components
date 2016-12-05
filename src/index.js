@@ -34,6 +34,7 @@ export { default as ToolbarCallButton } from './components/ToolbarCallButton/Too
 
 // Buttons
 export { default as Button } from './components/Button/Button';
+export { default as CopyButton } from './components/CopyButton/CopyButton';
 export { default as IconButton } from './components/IconButton/IconButton';
 
 // Forms
@@ -90,10 +91,12 @@ export { default as ContactList } from './components/ContactList/ContactList';
 export { default as ActivityHeader } from './components/ActivityHeader/ActivityHeader';
 export { default as ActivityProfile } from './components/ActivityProfile/ActivityProfile';
 export { default as ActivityInvite } from './components/ActivityInvite/ActivityInvite';
+export { default as ActivityIntegration } from './components/ActivityIntegration/ActivityIntegration';
 export { default as ActivityList } from './components/ActivityList/ActivityList';
 export { default as ActivityListItem } from './components/ActivityList/ActivityListItem';
 export { default as ActivityListNotification } from './components/ActivityListNotification/ActivityListNotification';
 export { default as ActivityListInvite } from './components/ActivityListInvite/ActivityListInvite';
+export { default as ActivityListIntegration } from './components/ActivityListIntegration/ActivityListIntegration';
 export { default as ActivityListMembers } from './components/ActivityListMembers/ActivityListMembers';
 export { default as ActivityListMembersAdd } from './components/ActivityListMembers/ActivityListMembersAdd';
 export { default as ActivityListMembersItem } from './components/ActivityListMembers/ActivityListMembersItem';
