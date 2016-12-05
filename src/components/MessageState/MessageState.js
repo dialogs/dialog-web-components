@@ -4,27 +4,23 @@
  */
 
 import type { MessageStateProps } from './types';
-import React, { Component } from 'react';
-import { Text } from '@dlghq/react-l10n';
-import Spinner from '../Spinner/Spinner';
+import React, { PureComponent } from 'react';
+import classNames from 'classnames';
 import Tooltip from '../Tooltip/Tooltip'
 import styles from './MessageState.css';
 
-class MessageState extends Component {
+class MessageState extends PureComponent {
   props: MessageStateProps;
 
-  shouldComponentUpdate(nextProps: MessageStateProps) {
-    return nextProps.state !== this.props.state ||
-           nextProps.readBy !== this.props.readBy;
-  }
-
   render() {
+    const className = classNames(styles.container, this.props.className);
+
     return (
-      <div className={styles.root}>
-        <Tooltip text={`MessageState.${this.props.state}`}>
+      <Tooltip text={`MessageState.${this.props.state}`}>
+        <div className={className}>
           {this.props.time}
-        </Tooltip>
-      </div>
+        </div>
+      </Tooltip>
     );
   }
 }

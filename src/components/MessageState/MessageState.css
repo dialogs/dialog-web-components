@@ -9,12 +9,13 @@
   --message-state-dot-color: color(#000 alpha(30%));
 }
 
-.root {
-  display: inline;
+.container {
+  display: inline-block;
+  vertical-align: middle;
   cursor: default;
   user-select: none;
   letter-spacing: -0.2px;
-  line-height: 22px;
+  line-height: 18px;
   font-family: var(--message-state-font-family);
   font-size: var(--message-state-font-size);
   color: var(--message-state-color);
