@@ -15,6 +15,14 @@ class MessageState extends PureComponent {
   render() {
     const className = classNames(styles.container, this.props.className);
 
+    if (this.props.state === 'unknown') {
+      return (
+        <div className={className}>
+          {this.props.time}
+        </div>
+      );
+    }
+
     return (
       <Tooltip text={`MessageState.${this.props.state}`}>
         <div className={className}>
