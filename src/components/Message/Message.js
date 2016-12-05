@@ -83,12 +83,14 @@ class Message extends PureComponent {
 
   renderState(): ?React.Element<any> {
     const state = this.getState();
-    if (state === 'unknown') {
-      return null;
-    }
+    const { short } = this.props;
+    const className = classNames(styles.state, {
+      [styles.stateShort]: short
+    });
 
     return (
       <MessageState
+        className={className}
         state={state}
         time={this.props.message.date}
       />
@@ -161,7 +163,7 @@ class Message extends PureComponent {
 
     const className = classNames(styles.container, {
       [styles.short]: short,
-      [styles.hovered]: hover,
+      [styles.hover]: hover,
       [styles.error]: isError,
       [styles.unread]: isUnread
     }, this.props.className);
