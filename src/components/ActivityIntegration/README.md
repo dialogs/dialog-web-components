@@ -1,4 +1,4 @@
-ActivityInvite:
+Basic ActivityInvite:
 
 ```
 const getRandomHash = () => {
@@ -12,7 +12,7 @@ const getRandomHash = () => {
   return text;
 };
 
-const generateLink = () => `https://dlg.im/join/${getRandomHash()}`;
+const generateLink = () => `https://api.dlg.im/${getRandomHash()}`;
 
 initialState = {
   link: generateLink(),
@@ -27,10 +27,11 @@ const handleRevoke = () => {
 };
 
 <div style={{ background: '#fff', width: 320 }}>
-  <ActivityInvite
+  <ActivityIntegration
     link={state.link}
     pending={state.pending}
     onRevoke={handleRevoke}
   />
 </div>
+
 ```

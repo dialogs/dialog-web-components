@@ -9,7 +9,7 @@ import classNames from 'classnames';
 import CopyButton from '../CopyButton/CopyButton';
 import Button from '../Button/Button';
 import Spinner from '../Spinner/Spinner';
-import styles from './ActivityInvite.css';
+import styles from './ActivityIntegration.css';
 
 export type Props = {
   className?: string,
@@ -18,7 +18,7 @@ export type Props = {
   onRevoke: () => any
 };
 
-class ActivityInvite extends PureComponent {
+class ActivityIntegration extends PureComponent {
   props: Props;
 
   renderLink(): React.Element<any> {
@@ -52,7 +52,7 @@ class ActivityInvite extends PureComponent {
         <hr className={styles.hr} />
         <div className={styles.block}>
           <Button theme="danger" view="link" onClick={this.props.onRevoke}>
-            <Text id="ActivityInvite.revoke" />
+            <Text id="ActivityIntegration.revoke" />
           </Button>
         </div>
       </div>
@@ -60,4 +60,4 @@ class ActivityInvite extends PureComponent {
   }
 }
 
-export default ActivityInvite;
+export default ActivityIntegration;

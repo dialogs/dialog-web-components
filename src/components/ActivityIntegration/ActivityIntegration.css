@@ -1,0 +1,57 @@
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+:root {
+  --activity-invite-font-family: var(--default-font-family);
+  --activity-invite-link-font-size: 24px;
+  --activity-invite-link-color: color(#000 alpha(90%));
+}
+
+/* Reset */
+.container,
+.hr {
+  all: initial;
+}
+
+/* Styles */
+.container {
+  font-family: var(--activity-invite-font-family);
+}
+
+.hr {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: color(#000 alpha(10%));
+}
+
+.block {
+  padding: 40px 30px;
+  text-align: center;
+}
+
+.linkContainer {
+  display: inline-flex;
+  flex-direction: row;
+  min-height: 60px;
+  margin-bottom: 20px;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.link {
+  word-break: break-all;
+  font-size: var(--activity-invite-link-font-size);
+  line-height: 1.25;
+  color: var(--activity-invite-link-color);
+}
+
+.revoke {
+  cursor: pointer;
+  user-select: none;
+  color: var(--color-danger);
+}

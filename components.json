@@ -101,10 +101,12 @@
     "components": [
       "ActivityHeader",
       "ActivityProfile",
-      "ActivityInvite",
       "ActivityList",
       "ActivityListNotification",
       "ActivityListInvite",
+      "ActivityInvite",
+      "ActivityListIntegration",
+      "ActivityIntegration",
       "ActivityListMembers"
     ]
   },
