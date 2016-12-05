@@ -10,7 +10,7 @@ general:
 deployment:
   docs:
     tag: /^v\d+(\.\d+)*$/
-    owner: circleci
+    owner: dialogs
     commands:
       - git config --global user.name "Circle CI"
       - git config --global user.email "ci@dlg.im"
