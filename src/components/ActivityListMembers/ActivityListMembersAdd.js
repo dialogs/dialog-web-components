@@ -14,13 +14,16 @@ export type Props = {
 
 function ActivityListMembersAdd(props: Props) {
   return (
-    <div onClick={props.onClick} className={styles.addMember}>
-      <Icon glyph="add" className={styles.addMemberIcon} />
-      <Text
-        id="ActivityListMembers.add"
-        className={styles.title}
-        tagName="div"
-      />
+    <div className={styles.addMember}>
+      <Icon glyph="add" className={styles.addMemberIcon} onClick={props.onClick} />
+      <div className={styles.title}>
+        <Text
+          onClick={props.onClick}
+          id="ActivityListMembers.add"
+          className={styles.title}
+          tagName="div"
+        />
+      </div>
     </div>
   );
 }

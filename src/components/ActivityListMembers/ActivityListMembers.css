@@ -85,10 +85,10 @@
 
 .addMember {
   composes: listItem;
-  cursor: pointer;
   & .title,
   & .addMemberIcon {
     /* I think --color-info might look better here */
+    cursor: pointer;
     color: var(--color-primary);
   }
 }
@@ -108,16 +108,22 @@
 .avatar {
   margin-right: 14px;
   flex: 0 0 auto;
+  cursor: pointer;
+}
+
+.body {
+  flex: 1 1 auto;
+  @apply --flex-fix;
 }
 
 .title {
-  flex: 1 1 auto;
+  display: inline-block;
   letter-spacing: -0.4px;
   font-size: var(--activity-members-title-font-size);
   line-height: 22px;
   color: var(--activity-members-title-color);
   user-select: none;
-  @apply --flex-fix;
+  cursor: pointer;
 }
 
 .kickMember {
