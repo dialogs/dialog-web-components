@@ -12,6 +12,12 @@
   --tooltip-offset: 3px;
 }
 
+:global {
+  & .tether-element {
+    pointer-events: none;
+  }
+}
+
 /* Reset */
 .tooltip {
   all: initial;
@@ -29,7 +35,8 @@
   text-align: center;
   padding: 3px 12px;
   box-sizing: border-box;
-  border-radius: 6px;
+  border-radius: 4px;
   margin: var(--tooltip-offset);
+  pointer-events: none;
   @apply --no-select;
 }
