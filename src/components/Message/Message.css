@@ -16,6 +16,7 @@
   --message-error-hover-color: color(var(--color-error) alpha(10%));
   --message-unread-color: color(#f2f2f2 alpha(25%));
   --message-state-border-width: 3px;
+  --mesage-transition-duration: var(--default-transition-duration);
 }
 
 .container {
@@ -25,7 +26,7 @@
   flex-direction: row;
   padding: var(--message-vertical-padding) var(--message-horizontal-padding);
   font-family: var(--message-font-family);
-  transition: box-shadow 100ms ease-in-out;
+  transition: box-shadow var(--mesage-transition-duration) ease-in-out, opacity var(--mesage-transition-duration) ease-in;
 
   &:hover {
     & .actions {
@@ -109,6 +110,10 @@
   cursor: pointer !important;
 }
 
+.pending {
+  opacity: 0.6;
+}
+
 .unread {
   background-color: var(--message-unread-color);
   box-shadow: inset var(--message-state-border-width) 0 0 0 color(#000 alpha(20%));
@@ -139,12 +144,6 @@
 
 .hover {
   background-color: var(--message-hover-background-color) !important;
-}
-
-.short {
-}
-
-.state {
 }
 
 .stateShort {

@@ -84,9 +84,7 @@ class Message extends PureComponent {
   renderState(): ?React.Element<any> {
     const state = this.getState();
     const { short } = this.props;
-    const className = classNames(styles.state, {
-      [styles.stateShort]: short
-    });
+    const className = classNames(short ? styles.stateShort : null);
 
     return (
       <MessageState
@@ -159,14 +157,16 @@ class Message extends PureComponent {
 
     const state = this.getState();
     const isError = state === 'error';
+    const isPending = state === 'pending';
     const isUnread = state !== 'unknown' && state !== 'read';
 
-    const className = classNames(styles.container, {
-      [styles.short]: short,
-      [styles.hover]: hover,
-      [styles.error]: isError,
-      [styles.unread]: isUnread
-    }, this.props.className);
+    const className = classNames(
+      styles.container,
+      this.props.className,
+      hover ? styles.hover : null,
+      isError ? styles.error : null,
+      isUnread ? styles.unread : null
+    );
 
     return (
       <Hover className={className} onHover={this.handleHover}>
@@ -178,7 +178,11 @@ class Message extends PureComponent {
         <div className={styles.body}>
           {short ? null : this.renderHeader()}
           <div className={styles.content}>
-            <MessageContent content={content} onLightboxOpen={this.handleLightboxOpen} />
+            <MessageContent
+              className={classNames(isPending ? styles.pending : null)}
+              content={content}
+              onLightboxOpen={this.handleLightboxOpen}
+            />
           </div>
         </div>
       </Hover>
