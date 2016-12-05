@@ -6,18 +6,17 @@
 :root {
   --message-font-family: var(--default-font-family);
   --message-vertical-padding: 8px;
-  --message-horizontal-padding: 20px;
+  --message-horizontal-padding: 22px;
   --message-small-vertical-padding: 6px;
   --message-small-horizontal-padding: 34px;
-  --message-hover-background-color: color(#f2f2f2 alpha(55%));
-  --message-mention-color: color(#000 alpha(60%));
+  --message-hover-background-color: color(#f2f2f2 alpha(65%));
+  --message-username-color: color(#000 alpha(60%));
   --message-timestamp-color: color(#000 alpha(60%));
 
-  --message-error-color: color(var(--color-error) alpha(12%));
-  --message-error-hover-color: color(var(--color-error) alpha(15%));
+  --message-error-color: color(var(--color-error) alpha(7.5%));
+  --message-error-hover-color: color(var(--color-error) alpha(10%));
 
   --message-unread-color: color(#f2f2f2 alpha(25%));
-  /*--message-unread-hover-color: #f2f2f2;*/
 }
 
 .container {
@@ -36,13 +35,14 @@
 }
 
 .avatar {
-  margin-right: 14px;
+  margin-right: 22px;
   flex: 0 0 auto;
 }
 
 .info {
   width: 60px;
-  display: flex;
+  display: block;
+  line-height: 0;
   flex: 0 0 auto;
 }
 
@@ -78,7 +78,7 @@
 .username {
   margin-left: 6px;
   font-size: 14px;
-  color: var(--message-mention-color);
+  color: var(--message-username-color);
   @apply --no-select;
 }
 
@@ -111,7 +111,7 @@
 
 .unread {
   background-color: var(--message-unread-color);
-  box-shadow: inset 2px 0 0 0 var(--color-info);
+  box-shadow: inset 2px 0 0 0 color(#000 alpha(20%));
 }
 
 .error {
