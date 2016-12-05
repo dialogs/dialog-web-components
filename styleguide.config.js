@@ -16,9 +16,11 @@ module.exports = {
   sections: components.map(({ name, content, components }) => {
     return {
       name,
-      content: content ? resolve('docs', name + '.md') : null,
+      content: content ? resolve('docs', content + '.md') : null,
       components() {
-        return components.map((name) => resolve('src/components', name, name + '.js'))
+        return components.map((componentName) => {
+          return resolve('src/components', componentName, componentName + '.js');
+        });
       }
     };
   }),
