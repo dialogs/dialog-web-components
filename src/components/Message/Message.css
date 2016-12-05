@@ -117,7 +117,7 @@
 .error {
   background-color: transparent;
   box-shadow: inset 2px 0 0 0 var(--color-danger);
-  background: repeating-linear-gradient(
+  background-image: repeating-linear-gradient(
     -45deg,
     transparent,
     transparent 5px,
@@ -127,7 +127,7 @@
 
   &:hover {
     background-color: transparent !important;
-    background: repeating-linear-gradient(
+    background-image: repeating-linear-gradient(
       -45deg,
       transparent,
       transparent 5px,
@@ -141,7 +141,9 @@
   background-color: var(--message-hover-background-color) !important;
 }
 
-.state {}
+.state {
+}
+
 .stateShort {
   display: inline-block;
   line-height: 20px;
