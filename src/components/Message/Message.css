@@ -26,6 +26,7 @@
   flex-direction: row;
   padding: var(--message-vertical-padding) var(--message-horizontal-padding);
   font-family: var(--message-font-family);
+  transition: box-shadow 100ms ease-in-out;
 
   &:hover {
     & .actions {
