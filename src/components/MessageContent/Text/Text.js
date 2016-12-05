@@ -21,7 +21,8 @@ class Text extends Component {
   props: Props;
 
   shouldComponentUpdate(nextProps: Props): boolean {
-    return this.props.text !== nextProps.text ||
+    return this.props.className !== nextProps.className ||
+           this.props.text !== nextProps.text ||
            this.props.media !== nextProps.media;
   }
 
