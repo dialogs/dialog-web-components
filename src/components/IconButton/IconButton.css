@@ -5,8 +5,8 @@
 @import '../../styles/variables.css';
 
 :root {
-  --icon-button-default-size: 36px;
-  --icon-button-large-size: 50px;
+  --icon-button-default-size: 40px;
+  --icon-button-large-size: 54px;
   --icon-button-background-color: #fff;
   --icon-button-default-color: rgb(178, 178, 178);
   --icon-button-hover-color: var(--violet-blue-two);
@@ -14,7 +14,7 @@
   --icon-button-glyph-size-large: 30px;
   --icon-button-flat-color: rgb(178, 178, 178);
   --icon-button-flat-hover-color: rgb(150, 150, 150);
-  --icon-button-flat-border-width: 1.5px;
+  --icon-button-flat-border-width: 1px;
   --icon-button-flat-default-size: var(--icon-button-default-size);
   --icon-button-flat-large-size: 72px;
 }
