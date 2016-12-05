@@ -3,7 +3,7 @@
  * @flow
  */
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import getHumanTime from '../../../utils/getHumanTime';
 import { Text } from '@dlghq/react-l10n';
 import Icon from '../../Icon/Icon';
@@ -20,7 +20,7 @@ export type VoicePlayerState = {
   duration: number
 };
 
-class VoicePlayer extends Component {
+class VoicePlayer extends PureComponent {
   props: VoicePlayerProps;
   state: VoicePlayerState;
 
@@ -54,14 +54,6 @@ class VoicePlayer extends Component {
     this.handlePlayClick = this.handlePlayClick.bind(this);
     this.handlePauseClick = this.handlePauseClick.bind(this);
     this.handleRewind = this.handleRewind.bind(this);
-  }
-
-  shouldComponentUpdate(nextProps: VoicePlayerProps, nextState: VoicePlayerState): boolean {
-    return nextState.isPlaying !== this.state.isPlaying ||
-           nextState.currentTime !== this.state.currentTime ||
-           nextState.duration !== this.state.duration ||
-           nextProps.fileUrl !== this.props.fileUrl ||
-           nextProps.duration !== this.props.duration;
   }
 
   handleLoading(): void {

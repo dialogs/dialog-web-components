@@ -4,7 +4,7 @@
  */
 
 import type { MessageContentVoice } from '@dlghq/dialog-types';
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import VoicePlayer from './VoicePlayer';
 import TransctiptButton from './TranscriptButton';
@@ -22,7 +22,7 @@ export type MessageContentVoiceState = {
   isTranscriptionVisible: boolean
 };
 
-class Voice extends Component {
+class Voice extends PureComponent {
   props: MessageContentVoiceProps;
   state: MessageContentVoiceState;
 
@@ -40,13 +40,6 @@ class Voice extends Component {
     };
 
     this.handleToggleTranscription = this.handleToggleTranscription.bind(this);
-  }
-
-  shouldComponentUpdate(nextProps: MessageContentVoiceProps, nextState: MessageContentVoiceState) {
-    return nextState.isTranscriptionVisible !== this.state.isTranscriptionVisible ||
-           nextProps.className !== this.props.className ||
-           nextProps.transcription !== this.props.transcription ||
-           nextProps.isTranscriptionEnabled !== this.props.isTranscriptionEnabled;
   }
 
   handleToggleTranscription() : void {
