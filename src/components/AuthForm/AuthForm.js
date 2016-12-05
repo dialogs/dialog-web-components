@@ -149,7 +149,7 @@ class AuthForm extends PureComponent {
     const className = classNames(styles.root, this.props.className);
 
     return (
-      <form id={id} onSubmit={this.handleSubmit} className={className}>
+      <form id={id} onSubmit={this.handleSubmit} className={className} autoComplete="off">
         {this.renderLogin()}
         {this.renderCode()}
         {this.renderName()}
