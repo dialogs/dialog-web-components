@@ -19,7 +19,7 @@ export type Props = {
 class ActivityListMembersItem extends PureComponent {
   props: Props;
 
-  handleKick = (event: Flow$Issue): void => {
+  handleKick = (event: $FlowIssue): void => {
     event.preventDefault();
     event.stopPropagation();
     this.props.onKick(this.props.member.peerInfo.peer);
