@@ -6,7 +6,7 @@
 
 :root {
   --sidebar-unread-font-family: var(--default-font-family);
-  --sidebar-unread-default-height: 4px;
+  --sidebar-unread-default-height: 6px;
   --sidebar-unread-hover-height: 18px;
   --sidebar-unread-color: #fff;
   --sidebar-unread-background-color: var(--color-warning);
