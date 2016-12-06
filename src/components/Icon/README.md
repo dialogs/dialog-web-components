@@ -22,6 +22,7 @@ Basic Icon:
   <Icon glyph="apple" />
   <Icon glyph="windows" />
   <Icon glyph="tux" />
+  <Icon glyph="plus_outline" />
 </div>
 ```
 

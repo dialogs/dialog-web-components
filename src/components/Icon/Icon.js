@@ -182,7 +182,6 @@ class Icon extends PureComponent {
               <g className={styles.svgStroke}>
                 <path d="M18 20c0-4.741-4.0294-7-9-7s-9 2.259-9 7h18z" strokeLinejoin="round" strokeWidth="2" />
                 <rect
-                  id="b"
                   width="8"
                   height="11"
                   x="5"
@@ -202,9 +201,9 @@ class Icon extends PureComponent {
               transform="translate(4 14)"
               className={styles.svgStroke}
             >
-              <circle id="a" cx="2" cy="2" r="3" />
-              <circle id="b" cx="12" cy="2" r="3" />
-              <circle id="c" cx="22" cy="2" r="3" />
+              <circle cx="2" cy="2" r="3" />
+              <circle cx="12" cy="2" r="3" />
+              <circle cx="22" cy="2" r="3" />
             </g>
           </svg>
         );
@@ -240,6 +239,35 @@ class Icon extends PureComponent {
             </g>
           </svg>
         );
+      case 'plus_outline':
+        return (
+          <svg viewBox="0 0 24 24" className={styles.svg}>
+            <circle
+              className={styles.svgStroke}
+              cx="12"
+              cy="12"
+              r="10"
+              strokeWidth="1.5"
+            />
+            <g className={styles.svgFill}>
+              <rect
+                width="2"
+                height="12"
+                x="11"
+                y="6"
+                rx="2"
+              />
+              <rect
+                width="2"
+                height="12"
+                x="11"
+                y="6"
+                transform="rotate(90 12 12)"
+                rx="2"
+              />
+            </g>
+          </svg>
+        );
       default:
         return this.renderMaterialIcon();
     }
@@ -264,6 +292,7 @@ class Icon extends PureComponent {
       case 'favourite':
       case 'windows':
       case 'tux':
+      case 'plus_outline':
         return this.renderSvgIcon();
       default:
         return this.renderMaterialIcon();
