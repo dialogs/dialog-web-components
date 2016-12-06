@@ -13,13 +13,15 @@ Basic Icon:
   <Icon glyph="call" />
   <Icon glyph="call_end" />
   <Icon glyph="phone_outline" />
-  <Icon glyph="apple" />
   <Icon glyph="more" />
   <Icon glyph="minimize" />
   <Icon glyph="link" />
   <Icon glyph="smile" />
   <Icon glyph="add_member" />
   <Icon glyph="more_outline" />
+  <Icon glyph="apple" />
+  <Icon glyph="windows" />
+  <Icon glyph="tux" />
 </div>
 ```
 
