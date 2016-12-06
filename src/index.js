@@ -66,6 +66,7 @@ export { default as AddMembersModal } from './components/AddMembersModal/AddMemb
 // Sidebar
 export { default as SidebarHeader } from './components/SidebarHeader/SidebarHeader';
 export { default as SidebarSearch } from './components/SidebarSearch/SidebarSearch';
+export { default as SidebarUnread } from './components/SidebarUnread/SidebarUnread';
 export { default as SidebarGroup } from './components/SidebarGroup/SidebarGroup';
 export { default as SidebarGroupTitle } from './components/SidebarGroup/SidebarGroupTitle';
 export { default as RecentItem } from './components/RecentItem/RecentItem';

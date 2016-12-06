@@ -72,6 +72,7 @@
     "components": [
       "SidebarHeader",
       "SidebarSearch",
+      "SidebarUnread",
       "SidebarGroup",
       "RecentItem",
       "RecentGroup",
