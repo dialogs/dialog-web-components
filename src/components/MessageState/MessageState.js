@@ -17,17 +17,17 @@ class MessageState extends PureComponent {
 
     if (this.props.state === 'unknown') {
       return (
-        <div className={className}>
+        <time className={className}>
           {this.props.time}
-        </div>
+        </time>
       );
     }
 
     return (
       <Tooltip text={`MessageState.${this.props.state}`}>
-        <div className={className}>
+        <time className={className}>
           {this.props.time}
-        </div>
+        </time>
       </Tooltip>
     );
   }

@@ -11,34 +11,14 @@
 
 .container {
   display: inline-block;
-  vertical-align: middle;
   cursor: default;
   user-select: none;
   letter-spacing: -0.2px;
-  line-height: 18px;
+  line-height: 20px;
   font-family: var(--message-state-font-family);
   font-size: var(--message-state-font-size);
   color: var(--message-state-color);
-}
-
-.read {
-  display: flex;
-  flex-direction: row;
-  flex: 1 1 auto;
-  flex-wrap: nowrap;
-  align-items: center;
-  align-content: center;
-  justify-content: flex-start;
-}
-
-.inline {
-  display: inline;
-}
-
-.error {
-  color: var(--color-error);
-}
-
-.avatar {
-  margin-left: var(--message-state-avatar-padding);
+  text-transform: uppercase;
+  vertical-align: bottom;
+  @apply --no-select;
 }

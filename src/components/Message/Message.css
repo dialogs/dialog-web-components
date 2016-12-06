@@ -60,38 +60,36 @@
   display: flex;
   flex-direction: row;
   flex: 0 1 auto;
+  vertical-align: bottom;
+  margin-bottom: 4px;
 }
 
 .sender {
   display: inline-block;
-  height: 22px;
+  height: 20px;
   letter-spacing: -0.3px;
   line-height: 20px;
-  margin-right: 8px;
+  margin-right: 6px;
+  vertical-align: bottom;
 }
 
 .title {
   font-size: 16px;
+  line-height: 20px;
   font-weight: 500;
+  display: inline-block;
   @apply --no-select;
+  vertical-align: bottom;
 }
 
 .username {
+  vertical-align: bottom;
+  display: inline-block;
   margin-left: 6px;
   font-size: 14px;
+  line-height: 20px;
   color: var(--message-username-color);
   @apply --no-select;
-}
-
-.timestamp {
-  margin-left: 8px;
-  cursor: default;
-  user-select: none;
-  letter-spacing: -0.2px;
-  text-transform: uppercase;
-  font-size: 13px;
-  line-height: 22px;
-  color: var(--message-timestamp-color);
 }
 
 .content {
