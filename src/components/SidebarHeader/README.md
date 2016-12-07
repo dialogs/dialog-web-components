@@ -6,21 +6,41 @@ const {
   Dropdown,
   DropdownItem,
   DropdownDivider,
-  SidebarHeaderMenu
+  SidebarHeaderMenu,
+  SidebarHeaderPlus
 } = require('../../index');
 
-const handleClick = () => alert('menu clicked');
+const renderMainMenu = () => {
+  return (
+    <Dropdown>
+      <DropdownItem onClick={console.debug}>First menu item</DropdownItem>
+      <DropdownDivider />
+      <DropdownItem onClick={console.debug}>Very very very very loooong menu item</DropdownItem>
+      <DropdownItem onClick={console.debug}>Last menu item</DropdownItem>
+    </Dropdown>
+  );
+};
+const renderPlusMenu = () => {
+  return (
+    <Dropdown>
+      <DropdownItem onClick={console.debug}>Menu item</DropdownItem>
+      <DropdownItem onClick={console.debug}>Menu item</DropdownItem>
+      <DropdownItem onClick={console.debug}>Menu item</DropdownItem>
+    </Dropdown>
+  );
+};
+
 
 <div style={{ width: 270, background: '#f5f5f5' }}>
   <SidebarHeader>
-    <SidebarHeaderMenu appName="Dialog" logo={<Logo />}>
-      <Dropdown>
-        <DropdownItem onClick={handleClick}>First menu item</DropdownItem>
-        <DropdownDivider />
-        <DropdownItem onClick={handleClick}>Very very very very loooong menu item</DropdownItem>
-        <DropdownItem onClick={handleClick}>Last menu item</DropdownItem>
-      </Dropdown>
-    </SidebarHeaderMenu>
+    <SidebarHeaderMenu
+      appName="Dialog"
+      logo={<Logo />}
+      renderMenu={renderMainMenu}
+    />
+    <SidebarHeaderPlus
+      renderMenu={renderPlusMenu}
+    />
   </SidebarHeader>
 </div>
 ```

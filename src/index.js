@@ -65,8 +65,11 @@ export { default as AddMembersModal } from './components/AddMembersModal/AddMemb
 
 // Sidebar
 export { default as SidebarHeader } from './components/SidebarHeader/SidebarHeader';
-export { default as SidebarSearch } from './components/SidebarSearch/SidebarSearch';
+export { default as SidebarHeaderMenu } from './components/SidebarHeader/SidebarHeaderMenu';
+export { default as SidebarHeaderPlus } from './components/SidebarHeader/SidebarHeaderPlus';
 export { default as SidebarUnread } from './components/SidebarUnread/SidebarUnread';
+export { default as SidebarSearch } from './components/SidebarSearch/SidebarSearch';
+export { default as SidebarSearchGroup } from './components/SidebarSearchGroup/SidebarSearchGroup';
 export { default as SidebarGroup } from './components/SidebarGroup/SidebarGroup';
 export { default as SidebarGroupTitle } from './components/SidebarGroup/SidebarGroupTitle';
 export { default as RecentItem } from './components/RecentItem/RecentItem';
@@ -112,5 +115,3 @@ export { default as Field } from './components/Field/Field';
 export { default as Image } from './components/Image/Image';
 export { default as Map } from './components/Map/Map';
 export { default as SelectList } from './components/SelectList/SelectList';
-export { default as SidebarHeaderMenu } from './components/SidebarHeader/SidebarHeaderMenu';
-export { default as SidebarSearchGroup } from './components/SidebarSearchGroup/SidebarSearchGroup';

@@ -1,32 +1,25 @@
 /**
  * Copyright 2016 Dialog LLC <info@dlg.im>
+ * @flow
  */
 
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import styles from './SidebarHeader.css';
 
-class SidebarHeader extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-    children: PropTypes.node.isRequired
-  };
+export type Props = {
+  className?: string,
+  children?: any
+};
 
-  shouldComponentUpdate(nextProps) {
-    return nextProps.children !== this.props.children ||
-           nextProps.className !== this.props.className;
-  }
+function SidebarHeader(props: Props): React.Element<any> {
+  const className = classNames(styles.container, props.className);
 
-  render() {
-    const { className, children } = this.props;
-    const sidebarHeaderClassName = classNames(styles.root, className);
-
-    return (
-      <header className={sidebarHeaderClassName}>
-        {children}
-      </header>
-    );
-  }
+  return (
+    <header className={className}>
+      {props.children}
+    </header>
+  );
 }
 
 export default SidebarHeader;

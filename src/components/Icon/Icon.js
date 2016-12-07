@@ -247,7 +247,7 @@ class Icon extends PureComponent {
               cx="12"
               cy="12"
               r="10"
-              strokeWidth="1.5"
+              strokeWidth="2"
             />
             <g className={styles.svgFill}>
               <rect

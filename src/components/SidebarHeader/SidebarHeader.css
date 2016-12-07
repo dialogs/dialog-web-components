@@ -14,9 +14,10 @@
   --sidebar-header-padding-left: 12px;
   --sidebar-header-menu-color: color(#000 alpha(80%));
   --sidebar-header-menu-font-size: 18px;
+  --sidebar-header-plus-color: var(--indigo);
 }
 
-.root {
+.container {
   all: initial;
   display: flex;
   flex-direction: row;
@@ -55,11 +56,40 @@
   line-height: 0;
 }
 
-.appName {
-}
+.appName {}
 
 .arrow {
   height: calc(var(--sidebar-header-height) - var(--sidebar-header-padding-top) - var(--sidebar-header-padding-bottom));
   cursor: inherit;
   line-height: calc(var(--sidebar-header-height) - var(--sidebar-header-padding-top) - var(--sidebar-header-padding-bottom));
+}
+
+.plusWrapper {
+  display: inline-flex;
+  align-content: center;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1 1 auto;
+  height: calc(var(--sidebar-header-height) - var(--sidebar-header-padding-top) - var(--sidebar-header-padding-bottom));
+}
+
+.plus {
+  margin-right: 10px;
+  color: var(--sidebar-header-plus-color);
+  stroke: var(--sidebar-header-plus-color);
+  fill: var(--sidebar-header-plus-color);
+  transition: all var(--default-transition-duration) ease-in;
+  transform-origin: 50% 50%;
+
+  &:hover {
+    opacity: .8;
+  }
+
+  &:active {
+    opacity: .9;
+  }
+}
+
+.plusActive {
+  transform: rotate(90deg);
 }

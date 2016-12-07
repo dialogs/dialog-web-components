@@ -11,16 +11,11 @@ import styles from './SidebarHeader.css';
 export type Props = {
   appName: string,
   logo: React.Element<any>,
-  children?: React.Element<any>
+  renderMenu: () => React.Element<any>
 };
 
 class SidebarHeaderMenu extends PureComponent {
   props: Props;
-
-  // $FlowFixMe: children are required, actually
-  renderChildren = (): React.Element<any> => {
-    return this.props.children;
-  };
 
   renderLogo(): ?React.Element<any> {
     const { logo } = this.props;
@@ -61,7 +56,7 @@ class SidebarHeaderMenu extends PureComponent {
       <Trigger
         options={options}
         renderTrigger={this.renderTrigger}
-        renderChild={this.renderChildren}
+        renderChild={this.props.renderMenu}
         openHandler={['onClick']}
         closeHandler={['onClick']}
         closeOnDocumentClick
