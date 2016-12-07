@@ -10,7 +10,7 @@ import classNames from 'classnames';
 import Icon from '../Icon/Icon';
 import styles from './SidebarSearch.css';
 
-export type SidebarSearchProps = {
+export type Props = {
   className?: string,
   value: string,
   onChange: (value: string) => any,
@@ -18,35 +18,47 @@ export type SidebarSearchProps = {
   onBlur?: () => any
 };
 
-export type SidebarSearchContext = ProviderContext;
+export type Context = ProviderContext;
 
 class SidebarSearch extends Component {
-  props: SidebarSearchProps;
-  context: SidebarSearchContext;
-
-  handleChange: Function;
+  props: Props;
+  context: Context;
+  input: ?HTMLInputElement;
 
   static contextTypes = {
     l10n: LocalizationContextType
   };
 
-  constructor(props: SidebarSearchProps, context: SidebarSearchContext) {
-    super(props, context);
-
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  shouldComponentUpdate(nextProps: SidebarSearchProps): boolean {
+  shouldComponentUpdate(nextProps: Props): boolean {
     return nextProps.value !== this.props.value ||
            nextProps.className !== this.props.className;
   }
 
-  handleChange(event: $FlowIssue): void {
-    this.props.onChange(event.target.value, event);
-  }
+  handleChange = (event: SyntheticInputEvent): void => {
+    this.props.onChange(event.target.value);
+  };
 
-  render() {
+  handleKeyDown = (event: SyntheticKeyboardEvent): void => {
+    switch (event.key) {
+      case 'Escape':
+        if (this.input) {
+          this.input.blur();
+        }
+
+        break;
+
+      default:
+      // do nothing
+    }
+  };
+
+  setInput = (input: ?HTMLInputElement): void => {
+    this.input = input;
+  };
+
+  render(): React.Element<any> {
     const { value } = this.props;
+    const { l10n } = this.context;
 
     const className = classNames(
       styles.container,
@@ -54,7 +66,7 @@ class SidebarSearch extends Component {
       this.props.className
     );
 
-    const placeholder = this.context.l10n.formatText('SidebarSearch.placeholder');
+    const placeholder = l10n.formatText('SidebarSearch.placeholder');
 
     return (
       <div className={className}>
@@ -64,7 +76,9 @@ class SidebarSearch extends Component {
           value={value}
           className={styles.input}
           placeholder={placeholder}
+          ref={this.setInput}
           onChange={this.handleChange}
+          onKeyDown={this.handleKeyDown}
           onFocus={this.props.onFocus}
           onBlur={this.props.onBlur}
         />
