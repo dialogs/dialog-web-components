@@ -36,12 +36,14 @@
 }
 
 .avatar {
-  margin-right: 22px;
   flex: 0 0 auto;
 }
 
 .info {
   width: 60px;
+  box-sizing: border-box;
+  padding-right: 20px;
+  text-align: center;
   display: block;
   line-height: 0;
   flex: 0 0 auto;

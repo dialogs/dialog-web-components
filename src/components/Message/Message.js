@@ -104,7 +104,7 @@ class Message extends PureComponent {
 
     return (
       <div className={styles.avatar}>
-        <PeerAvatar peer={sender} size="large" onClick={onClick} className={avatarClassName} />
+        <PeerAvatar peer={sender} size={40} onClick={onClick} className={avatarClassName} />
       </div>
     );
   }
