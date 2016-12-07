@@ -37,7 +37,7 @@ You can set avatar size in pixels:
 ```
 <div>
   <Avatar title="Valera Kotovski" placeholder="empty" size={50} />
-  <Avatar title="Hello World" placeholder="lblue" size={100}" />
+  <Avatar title="Hello World" placeholder="lblue" size={100} />
   <Avatar title="Bad Timmy" placeholder="blue" size={200} />
 </div>
 ```

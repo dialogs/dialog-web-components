@@ -5,13 +5,6 @@
 @import '../../styles/variables.css';
 
 :root {
-  /* Sizes */
-  --avatar-tiny-size: 14px;
-  --avatar-small-size: 22px;
-  --avatar-medium-size: 28px;
-  --avatar-large-size: 36px;
-  --avatar-big-size: 100px;
-  --avatar-super-size: 150px;
   /* Colors */
   --avatar-empty-background-color: #757575;
   --avatar-lblue-background-color: var(--sky-blue);
@@ -23,12 +16,12 @@
   --avatar-green-background-color: var(--green);
   /* Gradients */
   --avatar-empty-gradient: linear-gradient(38deg, #bebebe, #757575);
-  --avatar-lblue-gradient: none;
-  --avatar-blue-gradient: linear-gradient(38deg, var(--aqua), var(--cerulean));
-  --avatar-purple-gradient: none;
-  --avatar-red-gradient: none;
-  --avatar-orange-gradient: linear-gradient(38deg, var(--marigold), var(--red-orange-two));
-  --avatar-yellow-gradient: none;
+  --avatar-blue-gradient: linear-gradient(38deg, var(--sky-blue), var(--violet-blue-two));
+  --avatar-lblue-gradient: linear-gradient(38deg, var(--aqua), var(--cerulean));
+  --avatar-purple-gradient: linear-gradient(38deg, var(--dark-periwinkle), var(--vibrant-purple));
+  --avatar-red-gradient: linear-gradient(38deg, var(--neon-red), var(--lauries-lips));
+  --avatar-orange-gradient: linear-gradient(38deg, var(--light-orange), var(--red-orange-two));
+  --avatar-yellow-gradient: linear-gradient(38deg, var(--french-toast), var(--marigold));
   --avatar-green-gradient: linear-gradient(38deg, var(--kiwi), var(--green));
 }
 
@@ -65,60 +58,12 @@
 
 .clickable {
   cursor: pointer;
-  transition: opacity var(--default-transition-duration) ease-out;
+  transition: opacity var(--default-transition-duration) ease-in-out;
   display: inline-block;
 
   &:hover {
     opacity: 0.9;
   }
-}
-
-/* Sizes */
-.tiny {
-  width: var(--avatar-tiny-size);
-  height: var(--avatar-tiny-size);
-}
-
-.small {
-  width: var(--avatar-small-size);
-  height: var(--avatar-small-size);
-  font-size: 13px;
-
-  &.twoChars {
-    font-size: 10px;
-  }
-}
-
-.medium {
-  width: var(--avatar-medium-size);
-  height: var(--avatar-medium-size);
-  font-size: 15px;
-
-  &.twoChars {
-    font-size: 13px;
-  }
-}
-
-.large {
-  width: var(--avatar-large-size);
-  height: var(--avatar-large-size);
-  font-size: 18px;
-
-  &.twoChars {
-    font-size: 15px;
-  }
-}
-
-.big {
-  width: var(--avatar-big-size);
-  height: var(--avatar-big-size);
-  font-size: 30px;
-}
-
-.super {
-  width: var(--avatar-super-size);
-  height: var(--avatar-super-size);
-  font-size: 42px;
 }
 
 /* Placeholder colors */

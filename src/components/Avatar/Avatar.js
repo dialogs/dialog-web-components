@@ -39,7 +39,7 @@ class Avatar extends PureComponent {
 
   getAvatarText(): ?string {
     const { title, size } = this.props;
-    if (size === 'tiny') {
+    if (size === 'tiny' || (typeof size === 'number' && size < 20)) {
       return null;
     }
 
@@ -71,19 +71,19 @@ class Avatar extends PureComponent {
   render(): React.Element<any> {
     const { image, placeholder, title } = this.props;
     const avatarText = this.getAvatarText();
+    const avatarSize = this.getAvatarSize();
+    const twoChars = Boolean(avatarText && avatarText.length !== 1);
 
     const className = classNames({
       [styles.image]: image,
       [styles.placeholder]: !image,
-      [styles[placeholder]]: !image,
-      [styles.twoChars]: avatarText && avatarText.length !== 1
+      [styles[placeholder]]: !image
     }, this.props.className);
 
-
-    const avatarSize = this.getAvatarSize();
     const avatarStyles = {
       width: avatarSize,
-      height: avatarSize
+      height: avatarSize,
+      fontSize: Math.min(Math.floor(twoChars ? (avatarSize / 2.2) : (avatarSize / 1.9)), 60)
     };
 
     if (image) {
