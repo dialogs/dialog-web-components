@@ -66,6 +66,7 @@
 .clickable {
   cursor: pointer;
   transition: opacity var(--default-transition-duration) ease-out;
+  display: inline-block;
 
   &:hover {
     opacity: 0.9;

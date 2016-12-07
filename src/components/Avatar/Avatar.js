@@ -18,7 +18,7 @@ const SIZES = {
   super: 150
 };
 
-export type AvatarSize = 'tiny' | 'small' | 'medium' | 'large' | 'big' | 'super';
+export type AvatarSize = 'tiny' | 'small' | 'medium' | 'large' | 'big' | 'super' | number;
 
 export type Props = {
   className?: string,
@@ -58,29 +58,44 @@ class Avatar extends PureComponent {
     return '#';
   }
 
+  getAvatarSize(): number {
+    const { size } = this.props;
+
+    if (typeof size === 'number') {
+      return size;
+    }
+
+    return SIZES[size];
+  }
+
   render(): React.Element<any> {
-    const { image, placeholder, title, size } = this.props;
+    const { image, placeholder, title } = this.props;
     const avatarText = this.getAvatarText();
 
-    const avatarClassName = classNames({
+    const className = classNames({
       [styles.image]: image,
       [styles.placeholder]: !image,
       [styles[placeholder]]: !image,
-      [styles[size]]: true,
       [styles.twoChars]: avatarText && avatarText.length !== 1
     }, this.props.className);
 
-    if (image) {
-      const imgSize = SIZES[size];
 
+    const avatarSize = this.getAvatarSize();
+    const avatarStyles = {
+      width: avatarSize,
+      height: avatarSize
+    };
+
+    if (image) {
       if (this.props.onClick) {
         return (
           <div onClick={this.props.onClick} className={styles.clickable}>
             <img
-              className={avatarClassName}
+              className={className}
+              style={avatarStyles}
               src={image}
-              width={imgSize}
-              height={imgSize}
+              width={avatarSize}
+              height={avatarSize}
               alt={title}
             />
           </div>
@@ -89,25 +104,27 @@ class Avatar extends PureComponent {
 
       return (
         <img
-          className={avatarClassName}
+          className={className}
+          style={avatarStyles}
           src={image}
-          width={imgSize}
-          height={imgSize}
+          width={avatarSize}
+          height={avatarSize}
           alt={title}
         />
       );
     }
 
+
     if (this.props.onClick) {
       return (
         <div onClick={this.props.onClick} className={styles.clickable}>
-          <div className={avatarClassName} title={title}>{avatarText}</div>
+          <div className={className} title={title} style={avatarStyles}>{avatarText}</div>
         </div>
       );
     }
 
     return (
-      <div className={avatarClassName} title={title}>{avatarText}</div>
+      <div className={className} title={title} style={avatarStyles}>{avatarText}</div>
     );
   }
 }
