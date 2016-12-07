@@ -13,7 +13,7 @@ export type Props = {
 };
 
 function Toolbar(props: Props): React.Element<any> {
-  const className = classNames(styles.root, props.className);
+  const className = classNames(styles.container, props.className);
 
   return (
     <header className={className}>
