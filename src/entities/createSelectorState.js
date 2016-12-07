@@ -97,6 +97,10 @@ function createSelectorState<T>(name: string, getValue: (item: T) => string): Se
 
     handleKeyboardEvent(event: SyntheticKeyboardEvent): SelectorState {
       switch (event.key) {
+        case 'Esc':
+          event.preventDefault();
+          return this.setShow(false).setQuery('');
+
         case 'Tab':
           event.preventDefault();
           return this.addSelected(
