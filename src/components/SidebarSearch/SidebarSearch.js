@@ -15,7 +15,8 @@ export type Props = {
   value: string,
   onChange: (value: string) => any,
   onFocus?: () => any,
-  onBlur?: () => any
+  onBlur?: () => any,
+  onKeyDown?: (event: SyntheticInputEvent) => any
 };
 
 export type Context = ProviderContext;
@@ -38,23 +39,21 @@ class SidebarSearch extends Component {
     this.props.onChange(event.target.value);
   };
 
-  handleKeyDown = (event: SyntheticKeyboardEvent): void => {
-    switch (event.key) {
-      case 'Escape':
-        if (this.input) {
-          this.input.blur();
-        }
-
-        break;
-
-      default:
-      // do nothing
-    }
-  };
-
   setInput = (input: ?HTMLInputElement): void => {
     this.input = input;
   };
+
+  focus(): void {
+    if (this.input) {
+      this.input.focus();
+    }
+  }
+
+  blur(): void {
+    if (this.input) {
+      this.input.blur();
+    }
+  }
 
   render(): React.Element<any> {
     const { value } = this.props;
@@ -78,9 +77,9 @@ class SidebarSearch extends Component {
           placeholder={placeholder}
           ref={this.setInput}
           onChange={this.handleChange}
-          onKeyDown={this.handleKeyDown}
           onFocus={this.props.onFocus}
           onBlur={this.props.onBlur}
+          onKeyDown={this.props.onKeyDown}
         />
       </div>
     );
