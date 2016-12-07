@@ -18,29 +18,20 @@ import type { Props } from './types';
 
 class EditGroupModal extends PureComponent {
   props: Props;
-  handleChange: (value: any, event: $FlowIssue) => void;
-  handleAvatarChange: (avatar: File) => void;
 
-  constructor(props: Props) {
-    super(props);
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleAvatarChange = this.handleAvatarChange.bind(this);
-  }
-
-  handleChange(value: any, { target }: $FlowIssue): void {
+  handleChange = (value: any, { target }: $FlowIssue): void => {
     this.props.onChange({
       ...this.props.info,
       [target.name]: value
     });
-  }
+  };
 
-  handleAvatarChange(avatar: File): void {
+  handleAvatarChange = (avatar: File): void => {
     this.props.onChange({
       ...this.props.info,
       avatar
     });
-  }
+  };
 
   render(): React.Element<any> {
     const { info: { type, title, shortname, about, avatar } } = this.props;

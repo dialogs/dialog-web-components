@@ -59,6 +59,7 @@ export { default as JoinModal } from './components/JoinModal/JoinModal';
 export { default as AddContactModal } from './components/AddContactModal/AddContactModal';
 export { default as AttachmentModal } from './components/AttachmentModal/AttachmentModal';
 export { default as CreateNewModal } from './components/CreateNewModal/CreateNewModal';
+export { default as EditGroupModal } from './components/EditGroupModal/EditGroupModal';
 export { default as ProfileModal } from './components/ProfileModal/ProfileModal';
 export { default as PreferencesModal } from './components/PreferencesModal/PreferencesModal';
 export { default as AddMembersModal } from './components/AddMembersModal/AddMembersModal';
