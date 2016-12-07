@@ -4,8 +4,7 @@
  */
 
 import type { AvatarPlaceholder } from '@dlghq/dialog-types';
-
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import isEmoji from '../../utils/isEmoji';
 import styles from './Avatar.css';
@@ -30,21 +29,13 @@ export type Props = {
   onClick?: (event: SyntheticMouseEvent) => any
 };
 
-class Avatar extends Component {
+class Avatar extends PureComponent {
   props: Props;
 
   static defaultProps = {
     size: 'medium',
     placeholder: 'empty'
   };
-
-  shouldComponentUpdate(nextProps: Props): boolean {
-    return nextProps.image !== this.props.image ||
-           nextProps.title !== this.props.title ||
-           nextProps.placeholder !== this.props.placeholder ||
-           nextProps.size !== this.props.size ||
-           nextProps.className !== this.props.className;
-  }
 
   getAvatarText(): ?string {
     const { title, size } = this.props;
@@ -68,7 +59,7 @@ class Avatar extends Component {
   }
 
   render(): React.Element<any> {
-    const { image, placeholder, title, size, onClick, className } = this.props;
+    const { image, placeholder, title, size } = this.props;
     const avatarText = this.getAvatarText();
 
     const avatarClassName = classNames({
@@ -76,12 +67,25 @@ class Avatar extends Component {
       [styles.placeholder]: !image,
       [styles[placeholder]]: !image,
       [styles[size]]: true,
-      [styles.twoChars]: avatarText && avatarText.length !== 1,
-      [styles.clickable]: onClick
-    }, className);
+      [styles.twoChars]: avatarText && avatarText.length !== 1
+    }, this.props.className);
 
     if (image) {
       const imgSize = SIZES[size];
+
+      if (this.props.onClick) {
+        return (
+          <div onClick={this.props.onClick} className={styles.clickable}>
+            <img
+              className={avatarClassName}
+              src={image}
+              width={imgSize}
+              height={imgSize}
+              alt={title}
+            />
+          </div>
+        );
+      }
 
       return (
         <img
@@ -90,15 +94,20 @@ class Avatar extends Component {
           width={imgSize}
           height={imgSize}
           alt={title}
-          onClick={onClick}
         />
       );
     }
 
+    if (this.props.onClick) {
+      return (
+        <div onClick={this.props.onClick} className={styles.clickable}>
+          <div className={avatarClassName} title={title}>{avatarText}</div>
+        </div>
+      );
+    }
+
     return (
-      <div className={avatarClassName} onClick={onClick} title={title}>
-        {avatarText}
-      </div>
+      <div className={avatarClassName} title={title}>{avatarText}</div>
     );
   }
 }
