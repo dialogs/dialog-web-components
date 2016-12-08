@@ -1,7 +1,7 @@
 @import '../../../styles/variables.css';
 
 :root {
-  --message-text-color: #000000;
+  --message-text-color: #000;
   --message-text-font-size: var(--default-font-size);
   --message-text-padding: 8px;
   --message-service-color: color(#000 alpha(50%));

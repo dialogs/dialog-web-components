@@ -3,7 +3,7 @@
 :root {
   --dropdown-font-family: var(--default-font-family);
   --dropdown-font-size: 16px;
-  --dropdown-default-font-color: #000000;
+  --dropdown-default-font-color: #000;
   --dropdown-padding-top: 9px;
   --dropdown-padding-right: 20px;
   --dropdown-padding-bottom: 10px;
@@ -120,7 +120,7 @@
     background-color: var(--dropdown-item-hover-background-default);
 
     & .text {
-      color: #ffffff;
+      color: #fff;
     }
   }
 
@@ -130,7 +130,7 @@
       background-color: var(--dropdown-item-hover-background-default);
 
       & .text {
-        color: #ffffff;
+        color: #fff;
       }
     }
   }

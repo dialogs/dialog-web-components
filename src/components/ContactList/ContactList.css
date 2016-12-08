@@ -8,6 +8,7 @@
   --contact-list-item-border-color: color(#000 alpha(10%));
   --contact-list-item-padding: 20px;
   --contact-list-item-hover-background: #f2f2f2;
+  --contact-list-switcher-transition-duration: calc(var(--default-transition-duration) * 0.5);
 }
 
 /* Reset */
@@ -37,10 +38,15 @@
   width: 100%;
   height: 100%;
   padding: 0 var(--contact-list-item-padding);
-
+  cursor: pointer;
   @apply --no-select;
 
-  cursor: pointer;
+  &:active {
+    & .selected,
+    & .circle {
+      transform: scale(0.9);
+    }
+  }
 }
 
 .hovered {
@@ -55,9 +61,8 @@
   align-content: center;
   justify-content: flex-start;
   align-items: center;
-  @apply  --flex-fix;
-
   box-shadow: inset 0 -1px 0 0 var(--contact-list-item-border-color);
+  @apply  --flex-fix;
 }
 
 .avatar {
@@ -92,22 +97,26 @@
   width: 26px;
   height: 26px;
   border-radius: 50%;
-  background-color: #ffffff;
+  background-color: #fff;
   box-shadow: 0 0 0 2px color(#000 alpha(20%)) inset;
   flex: 0 0 auto;
+  transform-origin: 50% 50%;
+  transition: transform var(--contact-list-switcher-transition-duration) linear;
 }
 
 .selected {
   background-color: var(--color-success);
   box-shadow: none;
   composes: circle;
-  color: #ffffff;
+  color: #fff;
+  transform-origin: 50% 50%;
+  transition: transform var(--contact-list-switcher-transition-duration) linear;
 }
 
 .icon {
   width: 26px;
   height: 26px;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 26px;
-  color: #ffffff;
+  color: #fff;
 }
