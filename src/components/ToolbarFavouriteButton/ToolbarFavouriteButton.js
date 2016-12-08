@@ -11,14 +11,14 @@ import styles from './ToolbarFavouriteButton.css';
 
 export type Props = {
   className?: string,
-  active: boolean,
+  value: boolean,
   onClick: () => void
 };
 
-function ToolbarFavouriteButton(props : Props) : React.Element<any> {
+function ToolbarFavouriteButton(props: Props) : React.Element<any> {
   const className = classNames(styles.container, props.className);
 
-  if (props.active) {
+  if (props.value) {
     return (
       <div className={className} onClick={props.onClick}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" className={styles.icon}>

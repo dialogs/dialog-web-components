@@ -13,15 +13,15 @@ import type { PeerInfo } from '@dlghq/dialog-types';
 export type Props = {
   className?: string,
   peerInfo: PeerInfo,
-  value: boolean,
-  onFavouriteChange: (value: boolean) => void
+  isFavourite: boolean,
+  onFavouriteChange: (isFavourite: boolean) => void
 };
 
 class ToolbarAvatar extends PureComponent {
   props: Props;
 
   handleFavouriteToggle = (): void => {
-    this.props.onFavouriteChange(!this.props.value);
+    this.props.onFavouriteChange(!this.props.isFavourite);
   };
 
   render(): React.Element<any> {
@@ -34,7 +34,7 @@ class ToolbarAvatar extends PureComponent {
           size={40}
         />
         <ToolbarFavouriteButton
-          value={this.props.value}
+          value={this.props.isFavourite}
           onClick={this.handleFavouriteToggle}
           className={styles.favourite}
         />
