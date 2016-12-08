@@ -27,3 +27,6 @@ channel:
 next:
   type: Add Info
   info: Add Members
+
+avatar:
+  remove: Remove avatar

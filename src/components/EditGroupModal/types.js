@@ -3,18 +3,33 @@
  * @flow
  */
 
-export type EditInfo = {
-  type: 'group' | 'channel',
-  title: string,
-  shortname: ?string,
-  about: ?string,
-  avatar: ?File
-};
+import type { Group } from '@dlghq/dialog-types';
 
 export type Props = {
-  info: EditInfo,
+  group: Group,
   className?: string,
-  onChange: (info: EditInfo) => any,
+  name: {
+    error: ?string,
+    pending: boolean
+  },
+  shortname: {
+    error: ?string,
+    pending: boolean
+  },
+  about: {
+    error: ?string,
+    pending: boolean
+  },
   onClose: () => void,
-  onSubmit: () => void
+  onNameChange: (gid: number, name: string) => any,
+  onShortnameChange: (gid: number, shortname: string) => any,
+  onAboutChange: (gid: number, about: string) => any,
+  onAvatarChange: (gid: number, avatar: File) => any,
+  onAvatarRemove: (gid: number) => any
 };
+
+export type State = {
+  name: string,
+  about: ?string,
+  shortname: ?string
+}
