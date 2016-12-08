@@ -31,6 +31,7 @@ export { default as ToolbarButtons } from './components/Toolbar/ToolbarButtons';
 export { default as ToolbarInfo } from './components/Toolbar/ToolbarInfo';
 export { default as ToolbarInfoButton } from './components/ToolbarInfoButton/ToolbarInfoButton';
 export { default as ToolbarCallButton } from './components/ToolbarCallButton/ToolbarCallButton';
+export { default as ToolbarFavouriteButton } from './components/ToolbarFavouriteButton/ToolbarFavouriteButton';
 
 // Buttons
 export { default as Button } from './components/Button/Button';

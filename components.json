@@ -11,6 +11,7 @@
       "Toolbar",
       "ToolbarInfoButton",
       "ToolbarCallButton",
+      "ToolbarFavouriteButton",
       "Logo",
       "Typing",
       "ConnectionStatus",
