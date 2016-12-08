@@ -62,7 +62,7 @@
 
   & blockquote {
     margin: calc(var(--message-text-padding) + 2) 0;
-    padding: 4px 16px;
+    padding: 4px 12px;
     box-shadow: inset 3px 0 0 0 var(--color-info);
   }
 

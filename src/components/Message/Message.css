@@ -6,9 +6,9 @@
 :root {
   --message-font-family: var(--default-font-family);
   --message-vertical-padding: 8px;
-  --message-horizontal-padding: 22px;
+  --message-horizontal-padding: 20px;
   --message-small-vertical-padding: 6px;
-  --message-small-horizontal-padding: 34px;
+  --message-small-horizontal-padding: 20px;
   --message-hover-background-color: color(#f2f2f2 alpha(65%));
   --message-username-color: color(#000 alpha(60%));
   --message-timestamp-color: color(#000 alpha(60%));
