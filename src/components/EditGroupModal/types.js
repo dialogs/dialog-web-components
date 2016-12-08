@@ -29,36 +29,6 @@ export type Props = {
 
 export type State = {
   name: string,
+  about: string,
   shortname: ?string,
-  about: ?string,
-  avatar: ?string
-}
-
-export type FormProps = {
-  type: 'group' | 'channel',
-  name: {
-    error: ?string,
-    pending: boolean,
-    value: string
-  },
-  shortname: {
-    error: ?string,
-    pending: boolean,
-    value: ?string
-  },
-  about: {
-    error: ?string,
-    pending: boolean,
-    value: ?string
-  },
-  avatar: ?string | ?File,
-  className?: string,
-  vertical: boolean,
-  onChange: () => void;
-  onAvatarChange: (avatar: File) => void;
-  onAvatarRemove: () => void;
-}
-
-export type FormState = {
-  avatar: ?string
 }

@@ -20,75 +20,54 @@ class EditGroupModal extends PureComponent {
   props: Props;
   state: State;
 
-  handleChange: (value: any, event: $FlowIssue) => void;
-  handleSubmit: (event: SyntheticEvent) => void;
-  handleAvatarChange: (avatar: File[]) => void;
-  handleAvatarRemove: () => void;
-  isChanged: () => boolean
-
   constructor(props: Props) {
     super(props);
 
     this.state = {
-      name: {
-        ...props.name,
-        value: props.group.name
-      },
-      shortname: {
-        ...props.shortname,
-        value: props.group.shortname
-      },
-      about: {
-        ...props.about,
-        value: props.group.about
-      }
+      name: props.group.name,
+      about: props.group.about,
+      shortname: props.group.shortname
     };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleAvatarChange = this.handleAvatarChange.bind(this);
-    this.handleAvatarRemove = this.handleAvatarRemove.bind(this);
   }
 
-  handleChange(value: any, { target }: $FlowIssue) {
-    this.setState({
-      [target.name]: { ...this.state[target.name], value }
-    });
-  }
+  handleChange = (value: string) => {
+    this.setState({ [target.name]: value });
+  };
 
-  handleSubmit(event: SyntheticEvent): void {
+  handleSubmit = (event: SyntheticEvent): void => {
+    const { group } = this.props;
+
     event.preventDefault();
 
-    if (this.state.name.value !== this.props.group.name) {
-      this.props.onNameChange(this.props.group.id, this.state.name.value);
+    if (this.state.name !== group.name) {
+      this.props.onNameChange(group.id, this.state.name);
     }
 
-    if (this.state.shortname && this.state.shortname.value !== this.props.group.shortname) {
-      this.props.onShortnameChange(this.props.group.id, this.state.shortname.value);
+    if (this.state.about !== group.about) {
+      this.props.onAboutChange(group.id, this.state.about);
     }
 
-    if (this.state.about && this.state.about.value !== this.props.group.about) {
-      this.props.onAboutChange(this.props.group.id, this.state.about.value);
+    if (this.state.shortname !== group.shortname) {
+      this.props.onShortnameChange(group.id, this.state.shortname);
     }
-  }
+  };
 
-  handleAvatarChange(avatar: File): void {
+  handleAvatarChange = (avatar: File): void => {
     this.props.onAvatarChange(this.props.group.id, avatar);
-  }
+  };
 
-  handleAvatarRemove(): void {
+  handleAvatarRemove = (): void => {
     this.props.onAvatarRemove(this.props.group.id);
-  }
+  };
 
   isChanged(): boolean {
-    return this.state.name.value !== this.props.group.name ||
-           this.state.shortname.value !== this.props.group.shortname ||
-           this.state.about.value !== this.props.group.about;
+    return this.state.name !== this.props.group.name ||
+           this.state.about !== this.props.group.about ||
+           this.state.shortname !== this.props.group.shortname;
   }
 
   render(): React.Element<any> {
     const { group } = this.props;
-    const { name, shortname, about } = this.state;
     const className = classNames(styles.container, this.props.className);
 
     return (
@@ -102,9 +81,9 @@ class EditGroupModal extends PureComponent {
           <EditGroupModalForm
             className={styles.info}
             type={group.type}
-            name={name}
-            shortname={shortname}
-            about={about}
+            name={{ ...this.props.name, value: this.state.name }}
+            about={{ ...this.props.about, value: this.state.about }}
+            shortname={{ ...this.props.shortname, value: this.state.shortname }}
             avatar={group.avatar}
             onChange={this.handleChange}
             onAvatarChange={this.handleAvatarChange}

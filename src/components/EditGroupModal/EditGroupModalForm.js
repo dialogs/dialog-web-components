@@ -13,9 +13,40 @@ import AvatarSelector from '../AvatarSelector/AvatarSelector';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
 import styles from '../CreateNewModal/CreateNewModal.css';
+
+export type FormProps = {
+  type: 'group' | 'channel',
+  name: {
+    value: string,
+    error: ?string,
+    pending: boolean,
+  },
+  shortname: {
+    value: string,
+    error: ?string,
+    pending: boolean
+  },
+  about: {
+    value: string,
+    error: ?string,
+    pending: boolean
+  },
+  avatar: ?string | ?File,
+  className?: string,
+  vertical: boolean,
+  onChange: () => void;
+  onAvatarChange: (avatar: File) => void;
+  onAvatarRemove: () => void;
+}
+
+export type FormState = {
+  avatar: ?string
+}
+
+
 export type Context = ProviderContext;
 
-class CreateNewInfo extends PureComponent {
+class EditGroupModalForm extends PureComponent {
   props: Props;
   state: State;
 
@@ -136,4 +167,4 @@ class CreateNewInfo extends PureComponent {
   }
 }
 
-export default CreateNewInfo;
+export default EditGroupModalForm;
