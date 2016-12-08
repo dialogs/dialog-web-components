@@ -2,21 +2,22 @@
  * Copyright 2016 Dialog LLC <info@dlg.im>
  * @flow
  */
+
 import type { Group } from '@dlghq/dialog-types';
 
 export type Props = {
   group: Group,
   className?: string,
   name: {
-    error: ?Error,
+    error: ?string,
     pending: boolean
   },
   shortname: {
-    error: ?Error,
+    error: ?string,
     pending: boolean
   },
   about: {
-    error: ?Error,
+    error: ?string,
     pending: boolean
   },
   onClose: () => void,
@@ -30,5 +31,5 @@ export type Props = {
 export type State = {
   name: string,
   about: string,
-  shortname: ?string,
+  shortname: string
 }

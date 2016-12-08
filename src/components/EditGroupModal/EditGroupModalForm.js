@@ -4,7 +4,6 @@
  */
 
 import type { ProviderContext } from '@dlghq/react-l10n';
-import type { FormProps as Props, FormState as State } from './types';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import { LocalizationContextType } from '@dlghq/react-l10n';
@@ -14,7 +13,7 @@ import Input from '../Input/Input';
 import Button from '../Button/Button';
 import styles from '../CreateNewModal/CreateNewModal.css';
 
-export type FormProps = {
+export type Props = {
   type: 'group' | 'channel',
   name: {
     value: string,
@@ -39,7 +38,7 @@ export type FormProps = {
   onAvatarRemove: () => void;
 }
 
-export type FormState = {
+export type State = {
   avatar: ?string
 }
 

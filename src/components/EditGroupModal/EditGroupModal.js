@@ -25,12 +25,12 @@ class EditGroupModal extends PureComponent {
 
     this.state = {
       name: props.group.name,
-      about: props.group.about,
-      shortname: props.group.shortname
+      about: props.group.about || '',
+      shortname: props.group.shortname || ''
     };
   }
 
-  handleChange = (value: string) => {
+  handleChange = (value: any, { target }: $FlowIssue) => {
     this.setState({ [target.name]: value });
   };
 
