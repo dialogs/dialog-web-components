@@ -3,28 +3,43 @@ Basic EditGroupModal:
 ```
 initialState = {
   isOpen: false,
-  info: {
+  group: {
+    id: '1001',
     type: 'group',
-    title: '',
-    shortname: '',
-    about: '',
     avatar: null,
+    name: 'Example group',
+    shortname: null,
+    about: null,
+  },
+  name: {
+    error: null,
+    pending: false
+  },
+  shortname: {
+    error: null,
+    pending: false
+  },
+  about: {
+    error: null,
+    pending: false
   }
 };
-
-const handleClose = () => setState(initialState);
-const handleChange = (info) => setState({ info })
-const handleSubmit = () => setState(initialState);
 
 <div>
   <Button theme="primary" onClick={() => setState({ isOpen: true })}>Edit Group</Button>
   {
     state.isOpen
       ? <EditGroupModal
-          info={state.info}
-          onClose={handleClose}
-          onChange={handleChange}
-          onSubmit={handleSubmit}
+          group={state.group}
+          name={state.name}
+          shortname={state.shortname}
+          about={state.about}
+          onClose={() => setState(initialState)}
+          onNameChange={console.debug}
+          onShortnameChange={console.debug}
+          onAboutChange={console.debug}
+          onAvatarChange={console.debug}
+          onAvatarRemove={console.debug}
         />
       : null
   }
