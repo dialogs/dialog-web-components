@@ -17,7 +17,7 @@
   --activity-profile-text-font-size: 16px;
 }
 
-.root {
+.container {
   all: initial;
   display: flex;
   flex-direction: column;
@@ -64,24 +64,6 @@
 
 .about {
   margin-top: 18px;
-}
-
-.aboutButton {
-  margin: 0;
-  padding: 6px;
-  font-size: 16px;
-  line-height: 20px;
-}
-
-.aboutAddIcon {
-  height: 20px;
-  margin-right: 6px;
-  cursor: inherit !important;
-  vertical-align: top;
-  font-size: 22px;
-  line-height: 20px;
-  color: inherit !important;
-  fill: inherit !important;
 }
 
 .actions {

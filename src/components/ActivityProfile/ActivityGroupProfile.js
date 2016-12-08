@@ -60,22 +60,15 @@ class ActivityGroupProfile extends PureComponent {
     );
   }
 
-  renderAbout(): React.Element<any> {
+  renderAbout(): ?React.Element<any> {
     const { info: { about }, onAboutEdit } = this.props;
 
-    if (about) {
-      return (
-        <div className={styles.about}>{about}</div>
-      );
+    if (!about) {
+      return null
     }
 
     return (
-      <div className={styles.about}>
-        <Button theme="primary" view="link" onClick={onAboutEdit} className={styles.aboutButton}>
-          <Icon glyph="add_circle_outline" className={styles.aboutAddIcon} />
-          <Text id="ActivityProfile.add_description" />
-        </Button>
-      </div>
+      <div className={styles.about}>{about}</div>
     );
   }
 
@@ -92,7 +85,7 @@ class ActivityGroupProfile extends PureComponent {
   }
 
   render(): React.Element<any> {
-    const className = classNames(styles.root, this.props.className);
+    const className = classNames(styles.container, this.props.className);
 
     return (
       <div className={className}>

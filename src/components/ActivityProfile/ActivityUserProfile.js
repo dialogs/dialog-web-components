@@ -127,7 +127,7 @@ class ActivityUserProfile extends Component {
 
   render(): React.Element<any> {
     const { className } = this.props;
-    const userProfileClassName = classNames(styles.root, className);
+    const userProfileClassName = classNames(styles.container, className);
 
     return (
       <div className={userProfileClassName}>
