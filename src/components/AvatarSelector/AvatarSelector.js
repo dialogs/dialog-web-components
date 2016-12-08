@@ -3,7 +3,7 @@
  * @flow
  */
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import { selectFiles, fileToBase64 } from '@dlghq/dialog-utils';
 import PeerAvatar from '../PeerAvatar/PeerAvatar';
@@ -23,12 +23,9 @@ export type State = {
 }
 
 
-class AvatarSelector extends Component {
+class AvatarSelector extends PureComponent {
   props: Props;
   state: State;
-
-  handleAvatarChange: (files: File[]) => void;
-  handleAvatarChangerClick: () => void;
 
   constructor(props: Props) {
     super(props);
@@ -36,31 +33,20 @@ class AvatarSelector extends Component {
     this.state = {
       avatar: props.avatar
     };
-
-    this.handleAvatarChange = this.handleAvatarChange.bind(this);
-    this.handleAvatarChangerClick = this.handleAvatarChangerClick.bind(this);
   }
 
   componentWillReceiveProps(nextProps: Props): void {
     this.setState({ avatar: nextProps.avatar });
   }
 
-  shouldComponentUpdate(nextProps: Props, nextState: State): boolean {
-    return nextState.avatar !== this.state.avatar ||
-           nextProps.avatar !== this.props.avatar ||
-           nextProps.name !== this.props.name ||
-           nextProps.placeholder !== this.props.placeholder ||
-           nextProps.className !== this.props.className;
-  }
-
-  handleAvatarChange(files: File[]): void {
+  handleAvatarChange = (files: File[]): void => {
     fileToBase64(files[0], (avatar) => this.setState({ avatar }));
     this.props.onChange(files[0]);
-  }
+  };
 
-  handleAvatarChangerClick(): void {
+  handleAvatarChangerClick = (): void => {
     selectFiles(this.handleAvatarChange, false);
-  }
+  };
 
   render(): React.Element<any> {
     const { name, placeholder } = this.props;

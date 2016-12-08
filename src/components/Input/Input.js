@@ -31,7 +31,7 @@ export type Props = (StringProps | NumberProps) & {
   prefix?: string,
   disabled?: bool,
   hint?: string,
-  status?: 'success' | 'error',
+  status: 'normal' | 'success' | 'error',
   autoFocus?: boolean,
   tabIndex?: number,
   onFocus?: (event: SyntheticFocusEvent) => any,
@@ -56,7 +56,8 @@ class Input extends PureComponent {
   input: ?(HTMLInputElement | HTMLTextAreaElement);
 
   static defaultProps = {
-    type: 'text'
+    type: 'text',
+    status: 'normal'
   };
 
   static contextTypes = {
