@@ -11,7 +11,7 @@
   --toolbar-padding-top: 10px;
   --toolbar-padding-right: 20px;
   --toolbar-padding-bottom: 10px;
-  --toolbar-padding-left: 82px;
+  --toolbar-padding-left: 20px;
   --toolbar-title-color: #000000;
   --toolbar-title-font-size: 18px;
   --toolbar-status-color: color(#000 alpha(50%));
@@ -70,8 +70,20 @@
   color: var(--toolbar-status-color);
 }
 
+.avatar {
+  margin-right: 20px;
+  position: relative;
+
+}
+
 .favourite {
-  width: 16px;
-  height: 16px;
-  fill: color(#000 alpha(38%));
+  position: absolute;
+  right: -2px;
+  bottom: -2px;
+  width: 16px !important;
+  height: 16px !important;
+  background-color: #fff;
+  border-radius: 50%;
+  padding: 2px;
+  box-sizing: border-box;
 }
