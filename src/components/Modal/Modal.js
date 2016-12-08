@@ -59,6 +59,7 @@ class Modal extends PureComponent {
         overlayClassName={overlayClassName}
         onRequestClose={this.props.onClose}
         shouldCloseOnOverlayClick={this.props.shouldCloseOnOverlayClick}
+        contentLabel=""
       >
         {this.renderContent()}
       </ReactModal>
