@@ -8,8 +8,6 @@ import React, { PureComponent } from 'react';
 import { Text } from '@dlghq/react-l10n';
 import classNames from 'classnames';
 import PeerAvatar from '../PeerAvatar/PeerAvatar';
-import Button from '../Button/Button';
-import Icon from '../Icon/Icon';
 import styles from './ActivityProfile.css';
 
 class ActivityGroupProfile extends PureComponent {
@@ -61,10 +59,10 @@ class ActivityGroupProfile extends PureComponent {
   }
 
   renderAbout(): ?React.Element<any> {
-    const { info: { about }, onAboutEdit } = this.props;
+    const { info: { about } } = this.props;
 
     if (!about) {
-      return null
+      return null;
     }
 
     return (
