@@ -9,12 +9,12 @@ import styles from './Spinner.css';
 
 export type Props = {
   className?: string,
-  type: 'round' | 'wave' | 'dotted',
-  size: 'small' | 'normal' | 'large'
+  type?: 'round' | 'wave' | 'dotted',
+  size?: 'small' | 'normal' | 'large'
 };
 
 function Spinner(props: Props): ?React.Element<any> {
-  const { size, type } = props;
+  const { size = 'small', type = 'round' } = props;
   const className = classNames(styles[type], styles[size], props.className);
 
   switch (type) {

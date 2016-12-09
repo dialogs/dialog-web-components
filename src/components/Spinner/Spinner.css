@@ -181,3 +181,8 @@
     border-width: var(--spinner-round-large-border-width);
   }
 }
+
+/* Size */
+.small {}
+.normal {}
+.large {}

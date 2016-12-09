@@ -3,11 +3,11 @@ Spinner types:
 ```
 <div>
   <Spinner type="round" />
-  &nbsp;&nbsp;&nbsp;
+  <br />
   <Spinner type="wave" />
-  &nbsp;&nbsp;&nbsp;
+  <br />
   <Spinner type="dotted" />
-</div> 
+</div>
 ```
 
 Large Spinners:
@@ -15,9 +15,9 @@ Large Spinners:
 ```
 <div>
   <Spinner type="round" size="large" />
-  &nbsp;&nbsp;&nbsp;
+  <br />
   <Spinner type="wave" size="large" />
-  &nbsp;&nbsp;&nbsp;
+  <br />
   <Spinner type="dotted" size="large" />
-</div> 
+</div>
 ```
