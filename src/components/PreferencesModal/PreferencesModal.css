@@ -54,6 +54,7 @@
   flex-flow: row;
   justify-content: center;
   align-content: center;
+  height: 100%;
 }
 
 .hint {
