@@ -6,6 +6,7 @@
 import React, { PureComponent } from 'react';
 import { Text } from '@dlghq/react-l10n';
 import Trigger from '../Trigger/Trigger';
+import CSSTransitionGroup from 'react-addons-css-transition-group';
 import styles from './Tooltip.css';
 
 export type Props = {
@@ -21,13 +22,24 @@ class Tooltip extends PureComponent {
 
   renderTooltip = (): React.Element<any> => {
     return (
-      <Text id={this.props.text} className={styles.tooltip} tagName="div" />
+      <CSSTransitionGroup
+        transitionAppear={true}
+        transitionAppearTimeout={100}
+        transitionEnter={false}
+        transitionLeave={false}
+        transitionName={{
+          appear: styles.appear,
+          appearActive: styles.appearActive,
+        }}
+      >
+        <Text id={this.props.text} className={styles.tooltip} tagName="div" />
+      </CSSTransitionGroup>
     );
   };
 
   renderTrigger = (handlers: Object): React.Element<any> => {
     return (
-      <span {...handlers} style={{ display: 'inline-block' }}>{this.props.children}</span>
+      <div {...handlers} className={styles.wrapper}>{this.props.children}</div>
     );
   };
 

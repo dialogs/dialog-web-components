@@ -10,6 +10,8 @@
   --tooltip-background-color: color(#000 alpha(70%));
   --tooltip-color: #fff;
   --tooltip-offset: 3px;
+  --tooltip-z-index: 5;
+  --tooltip-transition-duration: 100ms;
 }
 
 :global {
@@ -24,19 +26,38 @@
 }
 
 /* Styles */
+.wrapper {
+  display: inline-block;
+}
+
 .tooltip {
   font-family: var(--tooltip-font-family);
   font-size: var(--tooltip-font-size);
   color: var(--tooltip-color);
-  display: inline-block;
+  display: block;
   background-color: var(--tooltip-background-color);
   line-height: 20px;
   letter-spacing: -0.3px;
   text-align: center;
   padding: 3px 12px;
   box-sizing: border-box;
+  position: relative;
   border-radius: 3px;
   margin: var(--tooltip-offset);
   pointer-events: none;
+  z-index: var(--tooltip-z-index);
   @apply --no-select;
+}
+
+/* Animations */
+.appear {
+  opacity: 0.01;
+  transform-origin: 50% 100%;
+  transform: translateZ(0) scale(0.6);
+}
+
+.appearActive {
+  opacity: 1;
+  transform: translateZ(0) scale(1);
+  transition: all var(--tooltip-transition-duration) ease-out;
 }
