@@ -24,7 +24,7 @@ function ToolbarFavouriteButton(props: Props) : React.Element<any> {
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" className={styles.icon}>
           <defs>
             <linearGradient
-              id="a"
+              id="favouriteGradient"
               x1="82.85%"
               x2="24.084%"
               y1="7.904%"
@@ -36,7 +36,7 @@ function ToolbarFavouriteButton(props: Props) : React.Element<any> {
           </defs>
           <path
             transform="translate(0, -1)"
-            fill="url(#a)"
+            fill="url(#favouriteGradient)"
             d="M20.11 11.93l-2.938-6.92c-.648-1.527-1.693-1.535-2.34-.01l-2.943 6.945-7.533.64c-1.65.14-1.975 1.13-.72 2.217l5.72 4.955L7.64 27.12c-.376 1.613.464 2.23 1.885 1.37L16 24.585l6.473 3.907c1.418.857 2.265.248 1.89-1.37l-1.708-7.363 5.71-4.955c1.25-1.085.93-2.08-.723-2.222l-7.532-.65z"
           />
         </svg>
