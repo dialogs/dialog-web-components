@@ -90,10 +90,13 @@
   align-items: center;
   align-content: center;
 
-  & .close {
+  & .closeContainer {
     position: absolute;
     top: var(--default-padding);
     right: calc(var(--default-padding) * 2);
+  }
+
+  & .close {
     line-height: 28px;
   }
 
@@ -125,10 +128,13 @@
 .fullscreen {
   background-color: var(--modal-fullscreen-background-color);
 
-  & .close {
+  & .closeContainer {
     position: absolute;
     top: calc(var(--default-padding) * 2);
     right: calc(var(--default-padding) * 2);
+  }
+
+  & .close {
     font-size: 32px;
     line-height: 1;
   }

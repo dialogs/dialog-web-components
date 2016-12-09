@@ -16,20 +16,24 @@ export type Props = {
 };
 
 function ModalClose(props: Props): React.Element<any> {
-  const className = classNames(styles.close, props.className);
+  const className = classNames(styles.closeContainer, props.className);
 
   if (props.pending) {
     return (
-      <Spinner className={className} />
+      <div className={className}>
+        <Spinner type="round" />
+      </div>
     );
   }
 
   return (
-    <Icon
-      glyph="close"
-      className={className}
-      onClick={props.onClick}
-    />
+    <div className={className}>
+      <Icon
+        glyph="close"
+        className={styles.close}
+        onClick={props.onClick}
+      />
+    </div>
   );
 }
 
