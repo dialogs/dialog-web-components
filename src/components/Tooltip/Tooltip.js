@@ -23,13 +23,15 @@ class Tooltip extends PureComponent {
   renderTooltip = (): React.Element<any> => {
     return (
       <CSSTransitionGroup
-        transitionAppear={true}
-        transitionAppearTimeout={100}
+        transitionAppear
+        // $FlowFixMe
         transitionEnter={false}
+        // $FlowFixMe
         transitionLeave={false}
+        transitionAppearTimeout={100}
         transitionName={{
           appear: styles.appear,
-          appearActive: styles.appearActive,
+          appearActive: styles.appearActive
         }}
       >
         <Text id={this.props.text} className={styles.tooltip} tagName="div" />
