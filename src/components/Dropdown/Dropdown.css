@@ -1,3 +1,7 @@
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ */
+
 @import '../../styles/variables.css';
 
 :root {
@@ -16,6 +20,7 @@
   --dropdown-min-width: 200px;
   --dropdown-header-font-size: 14px;
   --dropdown-header-color: color(#000 alpha(50%));
+  --dropdown-transition-duration: 150ms;
 }
 
 :global {
@@ -148,4 +153,17 @@
       background-color: var(--dropdown-item-hover-background-secondary);
     }
   }
+}
+
+/* Animations */
+.appear {
+  opacity: 0.01;
+  transform: translateY(-10px) scale(0.6);
+  transform-origin: 50% 0;
+}
+
+.appearActive {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition: all var(--dropdown-transition-duration) ease-in-out;
 }
