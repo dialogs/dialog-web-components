@@ -5,6 +5,7 @@
 
 import type { ActivityUserProfileProps } from './types';
 import React, { Component } from 'react';
+import { Text } from '@dlghq/react-l10n';
 import classNames from 'classnames';
 import PeerAvatar from '../PeerAvatar/PeerAvatar';
 import styles from './ActivityProfile.css';
@@ -105,14 +106,14 @@ class ActivityUserProfile extends Component {
 
     const phones = info.phones.map((phone, index) => (
       <div key={index}>
-        <div className={styles.contactTitle}>{phone.title}</div>
+        <Text className={styles.contactTitle} tagName="div" id="ActivityProfile.phone" />
         <div className={styles.contactContent}>{phone.number}</div>
       </div>
     ));
 
     const emails = info.emails.map((email, index) => (
       <div key={index}>
-        <div className={styles.contactTitle}>{email.title}</div>
+        <Text className={styles.contactTitle} tagName="div" id="ActivityProfile.email" />
         <div className={styles.contactContent}>{email.email}</div>
       </div>
     ));
