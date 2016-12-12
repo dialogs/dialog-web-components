@@ -4,6 +4,7 @@
  */
 
 import React from 'react';
+import { Text } from '@dlghq/react-l10n';
 import styles from './SidebarGroup.css';
 
 export type Props = {
@@ -12,7 +13,7 @@ export type Props = {
 
 function SidebarGroupTitle(props: Props) {
   return (
-    <header className={styles.title}>{props.title}</header>
+    <Text className={styles.title} id={props.title} tagName="header" />
   );
 }
 
