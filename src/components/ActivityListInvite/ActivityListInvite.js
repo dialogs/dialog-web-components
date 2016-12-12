@@ -28,7 +28,7 @@ function ActivityListInvite(props: Props): React.Element<any> {
       />
       <Text
         tagName="div"
-        id={'ActivityListInvite.invite'}
+        id="ActivityListInvite.invite"
         className={styles.text}
       />
       <Icon glyph="keyboard_arrow_right" className={styles.arrow} />
