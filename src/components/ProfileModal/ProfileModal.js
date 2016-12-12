@@ -4,7 +4,7 @@
  */
 
 import React, { PureComponent } from 'react';
-import { Text } from '@dlghq/react-l10n';
+import { Text, LocalizationContextType } from '@dlghq/react-l10n';
 import classNames from 'classnames';
 import Modal from '../Modal/Modal';
 import ModalHeader from '../Modal/ModalHeader';
@@ -26,6 +26,10 @@ class ProfileModal extends PureComponent {
   handleSubmit: Function;
   handleNickChooserClick: Function;
   handleAvatarChange: (avatar: File[]) => void;
+
+  static contextTypes = {
+    l10n: LocalizationContextType
+  };
 
   constructor(props: Props): void {
     super(props);
@@ -139,7 +143,7 @@ class ProfileModal extends PureComponent {
 
     const phonesBlock = phones.map((phone) => (
       <div key={phone.number}>
-        <div className={styles.contactTitle}>{phone.title}</div>
+        <Text className={styles.contactTitle} id="ProfileModal.phone" tagName="div" />
         <div className={styles.contactContent}>
           {phone.number}
           <Icon glyph="lock" className={styles.contactContentIcon} />
@@ -148,7 +152,7 @@ class ProfileModal extends PureComponent {
     ));
     const emailsBlock = emails.map((email) => (
       <div key={email.email}>
-        <div className={styles.contactTitle}>{email.title}</div>
+        <Text className={styles.contactTitle} id="ProfileModal.email" tagName="div" />
         <div className={styles.contactContent}>
           {email.email}
           <Icon glyph="lock" className={styles.contactContentIcon} />
@@ -167,6 +171,7 @@ class ProfileModal extends PureComponent {
   render(): React.Element<any> {
     const { name, about } = this.state;
     const className = classNames(styles.container, this.props.className);
+    const { l10n: { formatText } } = this.context;
 
     return (
       <Modal className={className} isOpen onClose={this.props.onClose}>
@@ -184,7 +189,7 @@ class ProfileModal extends PureComponent {
                 large
                 id="name"
                 name="name"
-                placeholder="Your name"
+                placeholder={formatText('ProfileModal.name')}
                 value={name}
                 onChange={this.handleChange}
               />
@@ -195,8 +200,8 @@ class ProfileModal extends PureComponent {
                 id="about"
                 name="about"
                 type="textarea"
-                label="About - optional"
-                placeholder="Describe Yourself"
+                label={formatText('ProfileModal.about')}
+                placeholder={formatText('ProfileModal.about_placeholder')}
                 value={about}
                 onChange={this.handleChange}
               />
