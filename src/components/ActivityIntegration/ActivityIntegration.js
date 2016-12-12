@@ -9,7 +9,7 @@ import classNames from 'classnames';
 import CopyButton from '../CopyButton/CopyButton';
 import Button from '../Button/Button';
 import Spinner from '../Spinner/Spinner';
-import styles from './ActivityIntegration.css';
+import styles from '../ActivityInvite/ActivityInvite.css';
 
 export type Props = {
   className?: string,
