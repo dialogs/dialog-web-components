@@ -64,7 +64,7 @@ class PreferencesNotifications extends PureComponent {
 
     return (
       <div className={styles.screen}>
-        <Fieldset legend="PreferencesModal.notifications.legend.notifications">
+        <Fieldset legend="PreferencesModal.notifications.title">
           <Field>
             <Switcher
               id="groupsEnabled"
@@ -87,7 +87,7 @@ class PreferencesNotifications extends PureComponent {
             <Text id="PreferencesModal.notifications.mention_hint" className={styles.hint} />
           </Field>
         </Fieldset>
-        <Fieldset legend="PreferencesModal.notifications.legend.privacy">
+        <Fieldset legend="PreferencesModal.security.title">
           <Field>
             <Switcher
               id="showText"
