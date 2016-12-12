@@ -1,7 +1,4 @@
-sign_head: Вход или Регистрация
-sign_subhead: Enter your contact details to get verification code and start messaging.
-footer_text: Dialog is all your team messaging with free calling,<br /> file sharing and fast mobile applications.
-login: Номер телефона или Email-адрес
+login: Номер телефона или Email адрес
 code: Код авторизации
 name: Ваше имя
 wrong: Ошиблись?
