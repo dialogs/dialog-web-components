@@ -1,29 +1,30 @@
 /**
  * Copyright 2016 Dialog LLC <info@dlg.im>
  */
-
 @import '../../styles/variables.css';
 
 :root {
-  --emoji-font-family: var(--default-font-family);
   --emoji-size: 32px;
+  --emoji-font-size: 24px;
+  --emoji-font-family: var(--font-emoji);
 }
 
-/* Reset */
-.container {
-  all: initial;
-}
-
-/* Styles */
-.container {
-  font-family: var(--emoji-font-family);
+.image {
   display: inline-block;
   width: var(--emoji-size);
   height: var(--emoji-size);
   background-size: 100%;
   vertical-align: middle;
-  flex: 1 1 auto;
-  text-indent: 9001px;
   overflow: hidden;
   cursor: inherit;
+
+  /* hide emoji char */
+  color: transparent !important;
+  text-shadow: none;
+}
+
+.char {
+  display: inline-block;
+  font-family: var(--emoji-font-family);
+  font-size: var(--emoji-font-size);
 }

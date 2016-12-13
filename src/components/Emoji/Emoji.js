@@ -15,6 +15,7 @@ export type Props = {
   char: string,
   onClick: (emoji: string) => void
 };
+
 class Emoji extends PureComponent {
   props: Props;
 
@@ -24,16 +25,28 @@ class Emoji extends PureComponent {
   };
 
   render(): React.Element<any> {
-    const className = classNames(styles.container, this.props.className);
     const emoji = getEmojiByChar(this.props.char);
-    const style = {
-      backgroundImage: `url(${emojiImage})`,
-      backgroundPosition: `${(100 / SPRITE_SIZE) * emoji.x}% ${(100 / SPRITE_SIZE) * emoji.y}%`,
-      backgroundSize: `${SPRITE_SIZE * 100}%`
-    };
+
+    if (emoji.useImage) {
+      const className = classNames(styles.image, this.props.className);
+
+      const style = {
+        backgroundImage: `url(${emojiImage})`,
+        backgroundPosition: `${(100 / SPRITE_SIZE) * emoji.x}% ${(100 / SPRITE_SIZE) * emoji.y}%`,
+        backgroundSize: `${SPRITE_SIZE * 100}%`
+      };
+
+      return (
+        <span className={className} style={style} title={emoji.name} onClick={this.handleClick}>
+          {emoji.char}
+        </span>
+      );
+    }
+
+    const className = classNames(styles.char, this.props.className);
 
     return (
-      <span className={className} style={style} title={emoji.name} onClick={this.handleClick}>
+      <span className={className} title={emoji.name} onClick={this.handleClick}>
         {emoji.char}
       </span>
     );
