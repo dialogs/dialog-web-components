@@ -9,6 +9,7 @@
   --emoji-list-width: 310px;
   --emoji-list-height: 280px;
   --emoji-list-emoji-size: 26px;
+  --emoji-list-emoji-wrapper-padding: 5px;
 }
 
 /* Reset */
@@ -55,16 +56,20 @@
   padding: 0 11px;
 }
 
-.emoji {
-  padding: 5px;
-  border-radius: 50%;
-  width: var(--emoji-list-emoji-size);
-  height: var(--emoji-list-emoji-size);
+.emojiWrapper {
   cursor: pointer;
-
+  padding: var(--emoji-list-emoji-wrapper-padding);
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
   &:hover {
     background-color: color(var(--purple-two) alpha(10%));
   }
+}
+
+.emoji {
+  width: var(--emoji-list-emoji-size);
+  height: var(--emoji-list-emoji-size);
 }
 
 .footer {
@@ -89,7 +94,8 @@
 
 .footerTab {
   display: inline-flex;
-  padding: 5px;
+  padding: 5px 7px;
+  vertical-align: middle;
 }
 
 .footerTabIcon {

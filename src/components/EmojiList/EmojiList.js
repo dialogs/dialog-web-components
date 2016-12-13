@@ -29,12 +29,9 @@ class EmojiList extends PureComponent {
   renderCategory(category: string): React.Element<any> {
     const children = categories[category].map((emoji) => {
       return (
-        <Emoji
-          char={emoji}
-          key={emoji}
-          className={styles.emoji}
-          onClick={this.props.onClick}
-        />
+        <div className={styles.emojiWrapper} onClick={this.props.onClick} key={emoji}>
+          <Emoji char={emoji} className={styles.emoji}/>
+        </div>
       );
     });
 
