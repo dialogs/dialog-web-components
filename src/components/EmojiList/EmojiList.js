@@ -6,83 +6,82 @@ import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import styles from './EmojiList.css';
 import Emoji from '../Emoji/Emoji';
-import { categories } from '@dlghq/emoji';
+import Icon from '../Icon/Icon';
+import categories from './categories';
 
 export type Props = {
   className?: string,
   onClick: (char: string) => void
 };
 
-const RENDER_ORDER = [
-  'people',
-  'nature',
-  'foods',
-  'objects',
-  'activity',
-  'symbols',
-  'flags'
-];
+function getGlyph(category: string): string {
+  switch (category) {
+    case 'people':
+      return 'emoji_smile';
+
+    case 'nature':
+      return 'emoji_nature';
+
+    case 'foods':
+      return 'emoji_food';
+
+    case 'objects':
+      return 'emoji_party';
+
+    case 'activity':
+      return 'emoji_activity';
+
+    case 'symbols':
+      return 'emoji_travel';
+
+    case 'flags':
+      return 'emoji_objects';
+
+    default:
+      return 'emoji_smile';
+  }
+}
 
 class EmojiList extends PureComponent {
   props: Props;
 
-  renderCategory(category: string): React.Element<any> {
-    const children = categories[category].map((emoji) => {
+  handleClick = (...args) => {
+    console.debug(...args);
+  };
+
+  renderCategories(): React.Element<any>[] {
+    return categories.map(({ name, chars }) => {
+      const children = chars.map((char) => {
+        return (
+          <div className={styles.emojiWrapper} onClick={this.props.onClick} key={char}>
+            <Emoji char={char} className={styles.emoji} />
+          </div>
+        );
+      });
+
       return (
-        <div className={styles.emojiWrapper} onClick={this.props.onClick} key={emoji}>
-          <Emoji char={emoji} className={styles.emoji}/>
+        <div key={name} className={styles.category}>
+          <div className={styles.categoryTitle}>{name}</div>
+          <div className={styles.categoryList}>{children}</div>
         </div>
       );
     });
-
-    return (
-      <div key={category} className={styles.category}>
-        <div className={styles.categoryTitle}>{category}</div>
-        <div className={styles.categoryList}>{children}</div>
-      </div>
-    );
   }
 
   renderTabs(): React.Element<any> {
-    let children = [];
+    const children = [];
     children.push(
       <div className={styles.footerTab} key="recent">
-        <Icon glyph="schedule" className={styles.footerTabIcon} onClick={console.debug} />
+        <Icon glyph="schedule" className={styles.footerTabIcon} onClick={this.handleClick} />
       </div>
-    )
+    );
 
-    for (let category of RENDER_ORDER) {
-      let glyph;
-      switch (category) {
-        case 'people':
-          glyph = 'emoji_smile'
-          break;
-        case 'nature':
-          glyph = 'emoji_nature'
-          break;
-        case 'foods':
-          glyph = 'emoji_food'
-          break;
-        case 'objects':
-          glyph = 'emoji_party'
-          break;
-        case 'activity':
-          glyph = 'emoji_activity'
-          break;
-        case 'symbols':
-          glyph = 'emoji_travel'
-          break;
-        case 'flags':
-          glyph = 'emoji_objects'
-          break;
-        default:
-      }
-
+    for (const { name } of categories) {
       children.push(
-        <div className={styles.footerTab} key={glyph}>
-          <Icon glyph={glyph} className={styles.footerTabIcon} onClick={console.debug} />
+        <div className={styles.footerTab} key={name}>
+          <Icon glyph={getGlyph(name)} className={styles.footerTabIcon} onClick={this.handleClick} />
         </div>
-      )
+      );
     }
 
     return (
@@ -94,15 +93,10 @@ class EmojiList extends PureComponent {
 
   render(): React.Element<any> {
     const className = classNames(styles.container, this.props.className);
-    const children = [];
-    for (let category of RENDER_ORDER) {
-      children.push(this.renderCategory(category));
-    }
-
     return (
       <section className={className}>
         <div className={styles.body}>
-          {children}
+          {this.renderCategories()}
         </div>
         {this.renderTabs()}
       </section>
