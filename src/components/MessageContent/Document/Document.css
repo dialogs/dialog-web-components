@@ -88,6 +88,7 @@
 .downloadArrow {
   line-height: calc(var(--document-preview-size) / 2);
   color: var(--document-download-arrow-color);
+  margin-right: 6px;
 }
 
 /* File type colors */
