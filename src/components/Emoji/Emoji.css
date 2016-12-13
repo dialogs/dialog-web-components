@@ -17,16 +17,13 @@
 /* Styles */
 .container {
   font-family: var(--emoji-font-family);
-  display: inline-flex;
+  display: inline-block;
   width: var(--emoji-size);
   height: var(--emoji-size);
   background-size: 100%;
-  align-self: center;
   vertical-align: middle;
-  @apply --no-select;
-}
-
-.image {
-  display: flex;
   flex: 1 1 auto;
+  text-indent: 9001px;
+  overflow: hidden;
+  cursor: inherit;
 }

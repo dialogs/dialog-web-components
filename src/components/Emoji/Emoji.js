@@ -33,9 +33,9 @@ class Emoji extends PureComponent {
     };
 
     return (
-      <div className={className} title={emoji.name} onClick={this.handleClick}>
-        <span className={styles.image} style={style} />
-      </div>
+      <span className={className} style={style} title={emoji.name} onClick={this.handleClick}>
+        {emoji.char}
+      </span>
     );
   }
 }
