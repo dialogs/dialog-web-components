@@ -46,7 +46,7 @@
   "dependencies": {
     "@dlghq/dialog-types": "1.8.0",
     "@dlghq/dialog-utils": "0.4.1",
-    "@dlghq/emoji": "0.2.1",
+    "@dlghq/emoji": "0.3.0",
     "@dlghq/markdown": "0.5.1",
     "@dlghq/react-l10n": "0.6.0",
     "classnames": "2.2.5",
