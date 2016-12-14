@@ -2,45 +2,19 @@
  * Copyright 2016 Dialog LLC <info@dlg.im>
  * @flow
  */
+
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import styles from './EmojiList.css';
-import Emoji from '../Emoji/Emoji';
 import Icon from '../Icon/Icon';
+import EmojiCategory from './EmojiCategory';
 import categories from './categories';
 
 export type Props = {
   className?: string,
+  recent: ?string[],
   onClick: (char: string) => void
 };
-
-function getGlyph(category: string): string {
-  switch (category) {
-    case 'people':
-      return 'emoji_smile';
-
-    case 'nature':
-      return 'emoji_nature';
-
-    case 'foods':
-      return 'emoji_food';
-
-    case 'objects':
-      return 'emoji_party';
-
-    case 'activity':
-      return 'emoji_activity';
-
-    case 'symbols':
-      return 'emoji_travel';
-
-    case 'flags':
-      return 'emoji_objects';
-
-    default:
-      return 'emoji_smile';
-  }
-}
 
 class EmojiList extends PureComponent {
   props: Props;
@@ -50,36 +24,44 @@ class EmojiList extends PureComponent {
   };
 
   renderCategories(): React.Element<any>[] {
-    return categories.map(({ name, chars }) => {
-      const children = chars.map((char) => {
-        return (
-          <div className={styles.emojiWrapper} onClick={this.props.onClick} key={char}>
-            <Emoji char={char} className={styles.emoji} />
-          </div>
-        );
-      });
-
-      return (
-        <div key={name} className={styles.category}>
-          <div className={styles.categoryTitle}>{name}</div>
-          <div className={styles.categoryList}>{children}</div>
-        </div>
+    const result = [];
+    if (this.props.recent) {
+      result.push(
+        <EmojiCategory
+          key="recent"
+          name="recent"
+          chars={this.props.recent}
+        />
       );
-    });
+    }
+
+    for (const { name, chars } of categories) {
+      result.push(
+        <EmojiCategory
+          key={name}
+          name={name}
+          chars={chars}
+        />
+      );
+    }
+
+    return result;
   }
 
   renderTabs(): React.Element<any> {
     const children = [];
-    children.push(
-      <div className={styles.footerTab} key="recent">
-        <Icon glyph="schedule" className={styles.footerTabIcon} onClick={this.handleClick} />
-      </div>
-    );
+    if (this.props.recent) {
+      children.push(
+        <div className={styles.footerTab} key="recent">
+          <Icon glyph="schedule" className={styles.footerTabIcon} onClick={this.handleClick} />
+        </div>
+      );
+    }
 
-    for (const { name } of categories) {
+    for (const { name, glyph } of categories) {
       children.push(
         <div className={styles.footerTab} key={name}>
-          <Icon glyph={getGlyph(name)} className={styles.footerTabIcon} onClick={this.handleClick} />
+          <Icon glyph={glyph} className={styles.footerTabIcon} onClick={this.handleClick} />
         </div>
       );
     }

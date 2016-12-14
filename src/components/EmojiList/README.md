@@ -1,3 +1,6 @@
 ```
-<EmojiList onClick={console.debug} />
+<EmojiList
+  recent={['😀', '👻']}
+  onClick={console.debug} 
+/>
 ```

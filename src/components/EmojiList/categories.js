@@ -5,10 +5,10 @@
 import { categories } from '@dlghq/emoji';
 
 export default [
-  { name: 'people', chars: categories.people },
-  { name: 'nature', chars: categories.nature },
-  { name: 'foods', chars: categories.foods },
-  { name: 'objects', chars: categories.objects },
-  { name: 'activity', chars: categories.activity },
-  { name: 'symbols', chars: [...categories.symbols, ...categories.flags] }
+  { name: 'people', glyph: 'emoji_smile', chars: categories.people },
+  { name: 'nature', glyph: 'emoji_nature', chars: categories.nature },
+  { name: 'foods', glyph: 'emoji_food', chars: categories.foods },
+  { name: 'objects', glyph: 'emoji_party', chars: categories.objects },
+  { name: 'activity', glyph: 'emoji_activity', chars: categories.activity },
+  { name: 'symbols', glyph: 'emoji_objects', chars: [...categories.symbols, ...categories.flags] }
 ];
