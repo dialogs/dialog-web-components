@@ -24,8 +24,11 @@ class Emoji extends PureComponent {
     this.props.onClick(emoji);
   };
 
-  render(): React.Element<any> {
+  render(): ?React.Element<any> {
     const emoji = getEmojiByChar(this.props.char);
+    if (!emoji) {
+      return null;
+    }
 
     if (emoji.useImage) {
       const className = classNames(styles.image, this.props.className);
