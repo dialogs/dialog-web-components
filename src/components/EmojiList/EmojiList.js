@@ -8,10 +8,10 @@ import { findDOMNode } from 'react-dom';
 import { throttle } from 'lodash';
 import { listen } from '@dlghq/dialog-utils';
 import classNames from 'classnames';
-import styles from './EmojiList.css';
-import Icon from '../Icon/Icon';
-import EmojiCategory from './EmojiCategory';
 import categories from './categories';
+import EmojiTab from './EmojiTab';
+import EmojiCategory from './EmojiCategory';
+import styles from './EmojiList.css';
 
 export type Props = {
   className?: string,
@@ -53,6 +53,17 @@ class EmojiList extends PureComponent {
       this.listener = null;
     }
   }
+
+  handleTabClick = (next) => {
+    this.setState({
+      current: next
+    });
+
+    const node = this.categories[next];
+    if (node && this.container) {
+      this.container.scrollTop = node.offsetTop;
+    }
+  };
 
   handleScroll = ({ target }) => {
     const { scrollTop } = target;
@@ -126,22 +137,26 @@ class EmojiList extends PureComponent {
   renderTabs(): React.Element<any> {
     const children = [];
     if (this.props.recent) {
-      const className = classNames(styles.footerTabIcon, this.state.current === 'recent' ? styles.active : null);
-
       children.push(
-        <div className={styles.footerTab} key="recent">
-          <Icon glyph="schedule" className={className} onClick={this.handleClick} />
-        </div>
+        <EmojiTab
+          key="recent"
+          name="recent"
+          glyph="schedule"
+          active={this.state.current === 'recent'}
+          onClick={this.handleTabClick}
+        />
       );
     }
 
     for (const { name, glyph } of categories) {
-      const className = classNames(styles.footerTabIcon, this.state.current === name ? styles.active : null);
-
       children.push(
-        <div key={name} className={styles.footerTab}>
-          <Icon glyph={glyph} className={className} onClick={this.handleClick} />
-        </div>
+        <EmojiTab
+          key={name}
+          name={name}
+          glyph={glyph}
+          active={this.state.current === name}
+          onClick={this.handleTabClick}
+        />
       );
     }
 
