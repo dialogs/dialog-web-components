@@ -24,7 +24,17 @@
 }
 
 .char {
+  box-sizing: border-box;
+  text-size-adjust: 100%;
+  vertical-align: middle;
+  word-wrap: break-word;
+  text-align: center;
   display: inline-block;
+  padding-top: 2px;
   font-family: var(--emoji-font-family);
   font-size: var(--emoji-font-size);
+  width: var(--emoji-font-size);
+  height: var(--emoji-font-size);
+  line-height: var(--emoji-font-size);
+  font-weight: normal;
 }
