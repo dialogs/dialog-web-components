@@ -6,6 +6,7 @@
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import styles from './EmojiList.css';
+import Icon from '../Icon/Icon';
 
 type Props = {
   name: string,

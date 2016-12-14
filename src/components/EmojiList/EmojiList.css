@@ -63,12 +63,16 @@
   border-radius: 50%;
   display: inline-block;
   box-sizing: border-box;
+  user-select: none;
+
   &:hover {
     background-color: color(var(--purple-two) alpha(10%));
   }
 }
 
 .emoji {
+  font-size: var(--emoji-list-emoji-size);
+  line-height: var(--emoji-list-emoji-size);
   width: var(--emoji-list-emoji-size);
   height: var(--emoji-list-emoji-size);
 }

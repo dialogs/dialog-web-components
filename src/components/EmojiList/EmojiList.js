@@ -43,7 +43,7 @@ class EmojiList extends PureComponent {
 
   componentDidMount(): void {
     if (this.container) {
-      this.listener = listen(this.container, 'scroll', this.handleScroll, { passive: true })
+      this.listener = listen(this.container, 'scroll', this.handleScroll, { passive: true });
     }
   }
 
