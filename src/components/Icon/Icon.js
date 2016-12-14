@@ -3,7 +3,8 @@
  * @flow
  */
 
-/* eslint max-len: 0 */
+/* eslint-disable */
+/* eslint max-lines: 0 */
 
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
