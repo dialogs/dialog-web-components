@@ -1,7 +1,6 @@
 /**
  * Copyright 2016 Dialog LLC <info@dlg.im>
  */
-
 @import '../../styles/variables.css';
 
 :root {
@@ -39,7 +38,8 @@
   @apply --flex-fix;
 }
 
-.category {}
+.category {
+}
 
 .categoryTitle {
   color: color(#000 alpha(50%));
@@ -88,7 +88,7 @@
     left: 0;
     top: -40px;
     pointer-events: none;
-    background-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, white 100%);
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, white 100%);
   }
 }
 
@@ -116,6 +116,12 @@
     fill: color(var(--cool-grey-two) shade(20%));
     stroke: color(var(--cool-grey-two) shade(20%));
   }
+}
+
+.active {
+  color: var(--color-primary);
+  fill: var(--color-primary);
+  stroke: var(--color-primary);
 }
 
 .footerTabIconActive {

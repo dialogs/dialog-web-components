@@ -7,24 +7,34 @@ import React, { PureComponent } from 'react';
 import styles from './EmojiList.css';
 import Emoji from '../Emoji/Emoji';
 
-function EmojiCategory(props): React.Element<any> {
-  const children = props.chars.map((char) => {
+type Props = {
+  name: string,
+  chars: string[],
+  onClick: (char: string) => any
+};
+
+class EmojiCategory extends PureComponent {
+  props: Props;
+
+  render(): React.Element<any> {
+    const children = this.props.chars.map((char) => {
+      return (
+        <div key={char} className={styles.emojiWrapper} onClick={this.props.onClick}>
+          <Emoji
+            className={styles.emoji}
+            char={char}
+          />
+        </div>
+      );
+    });
+
     return (
-      <div key={char} className={styles.emojiWrapper} onClick={props.onClick}>
-        <Emoji
-          className={styles.emoji}
-          char={char}
-        />
+      <div className={styles.category} data-category={this.props.name}>
+        <div className={styles.categoryTitle}>{this.props.name}</div>
+        <div className={styles.categoryList}>{children}</div>
       </div>
     );
-  });
-
-  return (
-    <div className={styles.category}>
-      <div className={styles.categoryTitle}>{props.name}</div>
-      <div className={styles.categoryList}>{children}</div>
-    </div>
-  );
+  }
 }
 
 export default EmojiCategory;
