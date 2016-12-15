@@ -29,7 +29,8 @@ Basic Icon:
   <Icon glyph="emoji_party" />
   <Icon glyph="emoji_activity" />
   <Icon glyph="emoji_travel" />
-  <Icon glyph="emoji_objects" />
+  <Icon glyph="emoji_symbols" />
+  <Icon glyph="emoji_flags" />
 </div>
 ```
 
