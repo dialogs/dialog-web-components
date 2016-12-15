@@ -27,7 +27,8 @@ class EmojiList extends PureComponent {
   props: Props;
   state: State;
   container: ?HTMLElement;
-  categories: { [key: string]: ?HTMLElement };
+  categories: { [key: string]: HTMLElement };
+  listener: ?{ remove(): void };
 
   constructor(props: Props) {
     super(props);
@@ -54,7 +55,7 @@ class EmojiList extends PureComponent {
     }
   }
 
-  handleTabClick = (next) => {
+  handleTabClick = (next: string): void => {
     this.setState({
       current: next
     });
@@ -65,7 +66,7 @@ class EmojiList extends PureComponent {
     }
   };
 
-  handleScroll = ({ target }) => {
+  handleScroll = ({ target }: $FlowIssue): void => {
     const { scrollTop } = target;
     const breakpoints = Object.keys(this.categories).map((name) => {
       const node = this.categories[name];
@@ -96,7 +97,7 @@ class EmojiList extends PureComponent {
     this.container = container;
   };
 
-  setCategory = (category: ?typeof EmojiCategory): void => {
+  setCategory = (category: ?EmojiCategory): void => {
     if (category) {
       const node = findDOMNode(category);
       if (node) {
