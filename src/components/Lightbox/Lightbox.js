@@ -2,6 +2,7 @@
  * Copyright 2016 Dialog LLC <info@dlg.im>
  * @flow
  */
+import '!style!css!./photoswipe.css';
 
 import type { PhotoSwipeItem, PhotoSwipeOptions } from 'photoswipe';
 import React, { Component } from 'react';
@@ -9,8 +10,6 @@ import cx from 'classnames';
 import PhotoSwipe from 'photoswipe';
 import PhotoSwipeUI from 'photoswipe/src/js/ui/photoswipe-ui-default';
 import Icon from '../Icon/Icon';
-
-import '!style!css!./Lightbox.global.css';
 import styles from './Lightbox.css';
 
 export type Props = {

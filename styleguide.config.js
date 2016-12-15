@@ -50,16 +50,11 @@ module.exports = {
     }, {
       test: /\.css$/,
       include: whitelist,
-      exclude: resolve('src/styles/global.css'),
       loaders: [
         'style',
-        'css?modules&localIdentName=[name]__[local]&importLoaders=1',
+        'css?modules&importLoaders=1&localIdentName=[name]__[local]',
         'postcss'
       ]
-    }, {
-      test: /\.css$/,
-      include: resolve('src/styles/global.css'),
-      loaders: ['style', 'css', 'postcss']
     }, {
       test: /\.json$/,
       include: [
