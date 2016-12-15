@@ -9,6 +9,11 @@
   --emoji-list-height: 280px;
   --emoji-list-emoji-size: 26px;
   --emoji-list-emoji-wrapper-padding: 5px;
+  --emoji-list-emoji-wrapper-background: color(var(--color-primary) alpha(10%));
+  --emoji-list-category-icon-color: var(--cool-grey-two);
+  --emoji-list-category-icon-hover-color: color(var(--emoji-list-category-icon-color) shade(20%));
+  --emoji-list-category-icon-active-color: var(--color-primary);
+  --emoji-list-category-icon-active-hover-color: color(var(--emoji-list-category-icon-active-color) alpha(80%));
 }
 
 /* Reset */
@@ -64,9 +69,10 @@
   display: inline-block;
   box-sizing: border-box;
   user-select: none;
+  transition: background calc(var(--default-transition-duration) / 2) linear;
 
   &:hover {
-    background-color: color(var(--purple-two) alpha(10%));
+    background-color: var(--emoji-list-emoji-wrapper-background);
   }
 }
 
@@ -88,10 +94,10 @@
   &:before {
     content: '';
     position: absolute;
-    height: 40px;
+    height: 20px;
     width: 100%;
     left: 0;
-    top: -40px;
+    top: -20px;
     pointer-events: none;
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, white 100%);
   }
@@ -109,28 +115,28 @@
   height: 22px;
   font-size: 24px;
   cursor: pointer;
-  color: var(--cool-grey-two);
-  fill: var(--cool-grey-two);
-  stroke: var(--cool-grey-two);
+  color: var(--emoji-list-category-icon-color);
+  fill: var(--emoji-list-category-icon-color);
+  stroke: var(--emoji-list-category-icon-color);
   transition-property: color, fill, stroke;
   transition-timing-function: ease-in-out;
   transition-duration: var(--default-transition-duration);
 
   &:hover {
-    color: color(var(--cool-grey-two) shade(20%));
-    fill: color(var(--cool-grey-two) shade(20%));
-    stroke: color(var(--cool-grey-two) shade(20%));
+    color: var(--emoji-list-category-icon-hover-color);
+    fill: var(--emoji-list-category-icon-hover-color);
+    stroke: var(--emoji-list-category-icon-hover-color);
   }
 }
 
 .active {
-  color: var(--color-primary);
-  fill: var(--color-primary);
-  stroke: var(--color-primary);
-}
+  color: var(--emoji-list-category-icon-active-color);
+  fill: var(--emoji-list-category-icon-active-color);
+  stroke: var(--emoji-list-category-icon-active-color);
 
-.footerTabIconActive {
-  color: var(--purple-two);
-  fill: var(--purple-two);
-  stroke: var(--purple-two);
+  &:hover {
+    color: var(--emoji-list-category-icon-active-hover-color);
+    fill: var(--emoji-list-category-icon-active-hover-color);
+    stroke: var(--emoji-list-category-icon-active-hover-color);
+  }
 }
