@@ -4,24 +4,9 @@
 
 @import '../../styles/variables.css';
 
-:root {
-  --toolbar-font-family: var(--default-font-family);
-  --toolbar-height: 60px;
-  --toolbar-background-color: #fff;
-  --toolbar-padding-top: 10px;
-  --toolbar-padding-right: 20px;
-  --toolbar-padding-bottom: 10px;
-  --toolbar-padding-left: 20px;
-  --toolbar-title-color: #000;
-  --toolbar-title-font-size: 18px;
-  --toolbar-status-color: color(#000 alpha(50%));
-  --toolbar-status-font-size: 14px;
-  --toolbar-border-color: color(#000 alpha(14%));
-}
-
 .container {
   all: initial;
-  z-index: calc(var(--z-index-chat) + 1);
+  z-index: var(--z-index-toolbar);
   display: flex;
   flex-direction: row;
   box-sizing: border-box;
@@ -71,19 +56,18 @@
 }
 
 .avatar {
-  margin-right: 20px;
   position: relative;
-
+  margin-right: 20px;
 }
 
 .favourite {
   position: absolute;
   right: -2px;
   bottom: -2px;
+  box-sizing: border-box;
   width: 16px !important;
   height: 16px !important;
-  background-color: #fff;
-  border-radius: 50%;
   padding: 2px;
-  box-sizing: border-box;
+  border-radius: 50%;
+  background-color: #fff;
 }

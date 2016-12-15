@@ -4,15 +4,6 @@
 
 @import '../../styles/variables.css';
 
-:root {
-  --radio-font-family: var(--default-font-family);
-  --radio-size: 22px;
-  --radio-inactive-color: #c0c0c0;
-  --radio-active-color: var(--color-primary);
-  --radio-label-font-size: 15px;
-}
-
-
 /* Reset */
 .container {
   all: initial;

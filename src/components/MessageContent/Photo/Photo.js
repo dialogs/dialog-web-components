@@ -16,7 +16,7 @@ export type Props = MessageContentPhoto & {
 
 function Photo(props: Props): React.Element<any> {
   const { fileUrl, fileName, preview, width, height } = props;
-  const className = classNames(styles.root, props.className);
+  const className = classNames(styles.container, props.className);
 
   return (
     <Image

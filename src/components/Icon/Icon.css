@@ -5,48 +5,43 @@
 @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
 @import '../../styles/variables.css';
 
-:root {
-  --icon-default-size: 24px;
-  --icon-small-size: 18px;
-  --icon-large-size: 42px;
-  --icon-default-color: #000;
-}
-
 .container {
   display: inline-flex;
-  flex-flow: row;
-  align-content: center;
-  align-items: center;
-  justify-content: center;
   cursor: inherit;
   user-select: none;
   text-align: center;
   vertical-align: middle;
   background-color: transparent;
+  flex-flow: row;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
   color: var(--icon-default-color);
   fill: var(--icon-default-color);
   stroke: var(--icon-default-color);
 }
 
 .material {
-  flex: 0 0 auto;
   cursor: inherit;
   font-size: inherit;
   line-height: inherit;
+  flex: 0 0 auto;
   color: inherit;
 }
 
 .svg {
-  flex: 0 0 auto;
   width: 100%;
   height: 100%;
   cursor: inherit;
+  flex: 0 0 auto;
   fill: inherit;
   stroke: inherit;
+
   & .svgFill {
     fill: inherit;
     stroke: none;
   }
+
   & .svgStroke {
     fill: none;
     stroke: inherit;
@@ -58,8 +53,9 @@
   cursor: inherit;
   border-radius: 50%;
   background-color: var(--icon-default-color);
-  color: #fff;
-  fill: #fff;
+  color: var(--icon-inverted-color);
+  fill: var(--icon-inverted-color);
+  stroke: var(--icon-inverted-color);
 }
 
 .clickable {
@@ -79,9 +75,9 @@
 
   &.inverted {
     background-color: var(--color-primary);
-    color: #fff;
-    fill: #fff;
-    stroke: #fff;
+    color: var(--icon-inverted-color);
+    fill: var(--icon-inverted-color);
+    stroke: var(--icon-inverted-color);
   }
 }
 
@@ -92,9 +88,9 @@
 
   &.inverted {
     background-color: var(--color-success);
-    color: #fff;
-    fill: #fff;
-    stroke: #fff;
+    color: var(--icon-inverted-color);
+    fill: var(--icon-inverted-color);
+    stroke: var(--icon-inverted-color);
   }
 }
 
@@ -105,9 +101,9 @@
 
   &.inverted {
     background-color: var(--color-danger);
-    color: #fff;
-    fill: #fff;
-    stroke: #fff;
+    color: var(--icon-inverted-color);
+    fill: var(--icon-inverted-color);
+    stroke: var(--icon-inverted-color);
   }
 }
 
@@ -118,9 +114,9 @@
 
   &.inverted {
     background-color: var(--color-info);
-    color: #fff;
-    fill: #fff;
-    stroke: #fff;
+    color: var(--icon-inverted-color);
+    fill: var(--icon-inverted-color);
+    stroke: var(--icon-inverted-color);
   }
 }
 
@@ -131,9 +127,9 @@
 
   &.inverted {
     background-color: var(--color-warning);
-    color: #fff;
-    fill: #fff;
-    stroke: #fff;
+    color: var(--icon-inverted-color);
+    fill: var(--icon-inverted-color);
+    stroke: var(--icon-inverted-color);
   }
 }
 

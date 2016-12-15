@@ -1,12 +1,8 @@
 /**
  * Copyright 2016 Dialog LLC <info@dlg.im>
  */
-@import '../../styles/variables.css';
 
-:root {
-  --avatar-selector-font-family: var(--default-font-family);
-  --avatar-selector-size: 100px;
-}
+@import '../../styles/variables.css';
 
 /* Reset */
 .container {
@@ -15,11 +11,11 @@
 
 /* Styles */
 .container {
-  display: block;
   position: relative;
-  line-height: 0;
+  display: block;
   width: var(--avatar-selector-size);
   height: var(--avatar-selector-size);
+  line-height: 0;
 }
 
 .avatar {

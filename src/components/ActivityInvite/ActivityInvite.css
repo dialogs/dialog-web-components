@@ -4,11 +4,6 @@
 
 @import '../../styles/variables.css';
 
-:root {
-  --activity-invite-font-family: var(--default-font-family);
-  --activity-invite-link-font-size: 24px;
-  --activity-invite-link-color: color(#000 alpha(90%));
-}
 
 /* Reset */
 .container,
@@ -18,18 +13,19 @@
 
 /* Styles */
 .container {
-  font-family: var(--activity-invite-font-family);
+  font-family: var(--activity-font-family);
 }
 
 .hr {
   display: block;
   width: 100%;
   height: 1px;
-  background-color: color(#000 alpha(10%));
+  margin: var(--default-padding-small) 0;
+  background-color: var(--activity-border-color);
 }
 
 .block {
-  padding: 20px 30px;
+  padding: var(--default-padding-large) calc(var(--default-padding-large) * 1.5);
   text-align: center;
 }
 
@@ -37,7 +33,7 @@
   display: inline-flex;
   flex-direction: row;
   min-height: 60px;
-  margin-bottom: 20px;
+  margin-bottom: var(--default-padding-large);
   justify-content: center;
   align-items: center;
   align-content: center;

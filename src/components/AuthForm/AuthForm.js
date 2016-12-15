@@ -146,7 +146,7 @@ class AuthForm extends PureComponent {
 
   render() {
     const { id } = this.props;
-    const className = classNames(styles.root, this.props.className);
+    const className = classNames(styles.container, this.props.className);
 
     return (
       <form id={id} onSubmit={this.handleSubmit} className={className} autoComplete="off">

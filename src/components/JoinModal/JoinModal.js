@@ -20,11 +20,13 @@ export type Props = {
   onJoin: () => any
 };
 
+// TODO: Add localisation support
+
 class JoinModal extends PureComponent {
   props: Props;
 
   render() {
-    const className = classNames(styles.root, this.props.className);
+    const className = classNames(styles.container, this.props.className);
 
     return (
       <Modal isOpen className={className} onClose={this.props.onClose}>

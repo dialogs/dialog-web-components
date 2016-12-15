@@ -4,22 +4,18 @@
 
 @import '../../styles/variables.css';
 
-:root {
-  --activity-notifications-font-family: var(--default-font-family);
-}
-
 .container {
   display: flex;
   flex-direction: row;
   cursor: pointer;
   user-select: none;
-  font-family: var(--activity-notifications-font-family);
+  font-family: var(--activity-font-family);
   justify-content: flex-start;
   align-content: center;
 }
 
 .icon {
-  margin-right: 14px;
+  margin-right: var(--default-padding-small);
   cursor: inherit;
 }
 

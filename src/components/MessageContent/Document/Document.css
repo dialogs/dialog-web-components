@@ -4,24 +4,7 @@
 
 @import '../../../styles/variables.css';
 
-:root {
-  --document-min-width: 400px;
-  --document-max-width: 400px;
-  --document-font-family: var(--default-font-family);
-  --document-media-color: var(--sky-blue);
-  --document-document-color: var(--orangey-red);
-  --document-picture-color: var(--color-green);
-  --document-unknown-color: var(--pinkish-grey-two);
-  --document-padding: 12px;
-  --document-background-color: #fff;
-  --document-border-color: color(#000 alpha(14%));
-  --document-border-radius: 4px;
-  --document-preview-size: 50px;
-  --document-padding-margin-right: 14px;
-  --document-download-arrow-color: var(--color-primary);
-}
-
-.root {
+.container {
   all: initial;
   display: flex;
   flex-direction: row;
@@ -62,7 +45,7 @@
 
 .filename {
   letter-spacing: -0.4px;
-  font-size: 16px;
+  font-size: var(--default-font-size);
   font-weight: 500;
   flex: 1 1 50%;
   color: #000;
@@ -74,8 +57,8 @@
 
 .size {
   vertical-align: middle;
-  font-size: 14px;
-  color: color(#000 alpha(60%));
+  font-size: var(--default-font-size-small);
+  color: var(--default-font-color-light);
 }
 
 .text {
@@ -86,9 +69,9 @@
 }
 
 .downloadArrow {
+  margin-right: 6px;
   line-height: calc(var(--document-preview-size) / 2);
   color: var(--document-download-arrow-color);
-  margin-right: 6px;
 }
 
 /* File type colors */

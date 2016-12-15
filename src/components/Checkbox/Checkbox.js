@@ -44,7 +44,7 @@ class Checkbox extends PureComponent {
 
   render() {
     const { id, value, label, disabled, tabIndex, onChange } = this.props;
-    const className = classNames(styles.root, this.props.className, {
+    const className = classNames(styles.container, this.props.className, {
       [styles.checked]: value,
       [styles.disabled]: disabled
     });

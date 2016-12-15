@@ -1,23 +1,8 @@
 /**
  * Copyright 2016 Dialog LLC <info@dlg.im>
  */
-@import '../../styles/variables.css';
 
-:root {
-  --message-font-family: var(--default-font-family);
-  --message-vertical-padding: 8px;
-  --message-horizontal-padding: 20px;
-  --message-small-vertical-padding: 6px;
-  --message-small-horizontal-padding: 20px;
-  --message-hover-background-color: color(#f2f2f2 alpha(65%));
-  --message-username-color: color(#000 alpha(60%));
-  --message-timestamp-color: color(#000 alpha(60%));
-  --message-error-color: color(var(--color-error) alpha(7.5%));
-  --message-error-hover-color: color(var(--color-error) alpha(10%));
-  --message-unread-color: color(#f2f2f2 alpha(25%));
-  --message-state-border-width: 3px;
-  --mesage-transition-duration: var(--default-transition-duration);
-}
+@import '../../styles/variables.css';
 
 .container {
   all: initial;
@@ -25,8 +10,8 @@
   display: flex;
   flex-direction: row;
   padding: var(--message-vertical-padding) var(--message-horizontal-padding);
-  font-family: var(--message-font-family);
   transition: box-shadow var(--mesage-transition-duration) ease-in-out, opacity var(--mesage-transition-duration) ease-in;
+  font-family: var(--message-font-family);
 
   &:hover {
     & .actions {
@@ -40,11 +25,11 @@
 }
 
 .info {
-  width: 60px;
+  display: block;
   box-sizing: border-box;
+  width: 60px;
   padding-right: 20px;
   text-align: center;
-  display: block;
   line-height: 0;
   flex: 0 0 auto;
 }
@@ -61,33 +46,34 @@
 .header {
   display: flex;
   flex-direction: row;
-  flex: 0 1 auto;
-  vertical-align: bottom;
   margin-bottom: 4px;
+  vertical-align: bottom;
+  flex: 0 1 auto;
 }
 
 .sender {
   display: inline-block;
   height: 20px;
-  letter-spacing: -0.3px;
-  line-height: 20px;
   margin-right: 6px;
   vertical-align: bottom;
+  letter-spacing: -0.3px;
+  line-height: 20px;
 }
 
 .title {
-  font-size: 16px;
-  line-height: 20px;
-  font-weight: 500;
   display: inline-block;
-  @apply --no-select;
   vertical-align: bottom;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+
+  @apply --no-select;
 }
 
 .username {
-  vertical-align: bottom;
   display: inline-block;
   margin-left: 6px;
+  vertical-align: bottom;
   font-size: 14px;
   line-height: 20px;
   color: var(--message-username-color);
@@ -121,24 +107,12 @@
 
 .error {
   background-color: transparent;
+  background-image: repeating-linear-gradient(-45deg, transparent, transparent 5px, var(--message-error-color) 5px, var(--message-error-color) 10px);
   box-shadow: inset var(--message-state-border-width) 0 0 0 var(--color-danger);
-  background-image: repeating-linear-gradient(
-    -45deg,
-    transparent,
-    transparent 5px,
-    var(--message-error-color) 5px,
-    var(--message-error-color) 10px
-  );
 
   &:hover {
     background-color: transparent !important;
-    background-image: repeating-linear-gradient(
-      -45deg,
-      transparent,
-      transparent 5px,
-      var(--message-error-hover-color) 5px,
-      var(--message-error-hover-color) 10px
-    );
+    background-image: repeating-linear-gradient(-45deg, transparent, transparent 5px, var(--message-error-hover-color) 5px, var(--message-error-hover-color) 10px);
   }
 }
 

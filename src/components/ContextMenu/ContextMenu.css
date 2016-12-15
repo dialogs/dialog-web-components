@@ -4,12 +4,8 @@
 
 @import '../../styles/variables.css';
 
-:root {
-  --context-menu-font-family: var(--default-font-family);
-}
-
 /* Styles */
 .container {
-  font-family: var(--context-menu-font-family);
   position: fixed;
+  font-family: var(--default-font-family);
 }

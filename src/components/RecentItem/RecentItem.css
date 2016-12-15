@@ -4,29 +4,6 @@
 
 @import '../../styles/variables.css';
 
-:root {
-  --recent-item-default-top-padding: 9px;
-  --recent-item-default-right-padding: 16px;
-  --recent-item-default-bottom-padding: 9px;
-  --recent-item-default-left-padding: 16px;
-  --recent-item-default-height: 46px;
-  --recent-item-default-color: color(#000 alpha(50%));
-  --recent-item-large-top-padding: 15px;
-  --recent-item-large-right-padding: 12px;
-  --recent-item-large-bottom-padding: 15px;
-  --recent-item-large-left-padding: 12px;
-  --recent-item-large-height: 66px;
-  --recent-item-hover-background-color: #e2e2e2;
-  --recent-item-hover-color: #000;
-  --recent-item-active-background-color: var(--violet-blue);
-  --recent-item-active-background-gradient: linear-gradient(90deg, var(--violet-blue), var(--vibrant-purple));
-  --recent-item-active-color: #fff;
-  --recent-item-counter-background: var(--purple-two);
-  --recent-item-counter-color: #fff;
-  --recent-item-counter-size: 24px;
-  --recent-item-counter-font-size: 13px;
-}
-
 .container {
   all: initial;
   display: flex;
@@ -72,7 +49,7 @@
 .title {
   vertical-align: middle;
   letter-spacing: -0.27px;
-  font-size: 16px;
+  font-size: var(--default-font-size);
   font-weight: 500;
   line-height: 21px;
 

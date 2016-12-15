@@ -4,19 +4,11 @@
 
 @import '../../styles/variables.css';
 
-:root {
-  --add-contact-modal-width: 500px;
-  --add-contact-modal-heigth: 320px;
-  --add-contact-modal-font-family: var(--default-font-family);
-  --add-contact-modal-font-size: var(--default-font-size);
-  --add-contact-modal-text-color: color(#000 alpha(50%));
-}
-
 .container {
-  width: var(--add-contact-modal-width);
-  /*height: var(--add-contact-modal-heigth);*/
-  font-family: var(--add-contact-modal-font-family);
-  font-size: var(--add-contact-modal-font-size);
+  width: var(--modal-add-contact-width);
+  /*height: var(--modal-add-contact-heigth);*/
+  font-family: var(--modal-font-family);
+  font-size: var(--modal-font-size);
 }
 
 .body {
@@ -50,11 +42,12 @@
 }
 
 .hint {
-  letter-spacing: -0.3px;
-  font-size: 16px;
-  line-height: 1.2;
-  color: var(--add-contact-modal-text-color);
   vertical-align: middle;
+  letter-spacing: -0.3px;
+  font-size: var(--modal-font-size);
+  line-height: 1.2;
+  color: var(--modal-font-color-light);
+
   & b {
     font-weight: 500;
   }
@@ -63,12 +56,12 @@
 
 .found {
   composes: hint;
-  color: color(#000 alpha(80%));
+  color: color(var(--modal-font-color) alpha(80%));
 }
 
 .foundAvatar {
+  margin-right: var(--default-padding-small);
   vertical-align: middle;
-  margin-right: 8px;
 }
 
 .avatar {
@@ -100,9 +93,9 @@
   margin: 0;
   padding: 0 50px;
   letter-spacing: -0.3px;
-  font-size: 18px;
+  font-size: var(--default-font-size-large);
   line-height: 1.3;
-  color: #000;
+  color: var(--modal-font-color);
   @apply --no-select;
 
   & b,

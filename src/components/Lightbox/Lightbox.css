@@ -4,83 +4,107 @@
 
 @import '../../styles/variables.css';
 
-:root {
-  --lightbox-font-family: var(--default-font-family);
-  --lightbox-background-color: color(rgb(51, 51, 51) alpha(80%));
-  --lightbox-toolbar-background-color: color(#333 alpha(75%));
-}
-
 /* Styles */
 .container {
-  font-family: var(--lightbox-font-family);
+  font-family: var(--default-font-family);
 }
 
-.scroll {}
+.scroll {
+}
 
-.wrapper {}
+.wrapper {
+}
 
-.zoomWrap {}
+.zoomWrap {
+}
 
 .background {
   background-color: var(--lightbox-background-color) !important;
 }
 
-.item {}
-.image {}
-.oneSlide {}
+.item {
+}
+
+.image {
+}
+
+.oneSlide {
+}
 
 .ui {
-  z-index: 1550;
   position: relative;
+  z-index: 1550;
 }
-.overClose {}
-.uiHidden {}
+
+.overClose {
+}
+
+.uiHidden {
+}
+
 .uiIdle {
   display: none;
 }
 
-.controls {}
+.controls {
+}
 
-.title {}
-.titleEmpty {}
+.title {
+}
+
+.titleEmpty {
+}
 
 .preloader {
   /*display: none;*/
 }
+
 .preloaderActive {
   /*display: block;*/
 }
 
-.overClose {}
+.overClose {
+}
 
 .toolbar {
   /*height: 74px;*/
   background-color: var(--lightbox-toolbar-background-color) !important;
 }
 
-.buttonZoom {}
-.buttonClose {}
-.buttonPrev {}
-.buttonNext {}
-.preloader {}
-.elementDisabled {}
+.buttonZoom {
+}
+
+.buttonClose {
+}
+
+.buttonPrev {
+}
+
+.buttonNext {
+}
+
+.preloader {
+}
+
+.elementDisabled {
+}
 
 .buttonDownload {
   all: initial;
+  display: flex;
+  float: right;
   width: 44px;
   height: 44px;
-  float: right;
-  display: flex;
+  transition: opacity 200ms;
+  text-decoration: none;
+  opacity: 0.75;
   align-content: center;
   align-items: center;
   justify-content: center;
-  opacity: .75;
-  text-decoration: none;
-  transition: opacity 200ms;
 
   & .icon {
-    color: #fff;
     font-size: 22px;
+    color: #fff;
   }
 
   &:hover {

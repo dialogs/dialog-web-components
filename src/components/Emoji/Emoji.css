@@ -1,22 +1,17 @@
 /**
  * Copyright 2016 Dialog LLC <info@dlg.im>
  */
-@import '../../styles/variables.css';
 
-:root {
-  --emoji-size: 32px;
-  --emoji-font-size: 24px;
-  --emoji-font-family: var(--font-emoji);
-}
+@import '../../styles/variables.css';
 
 .image {
   display: inline-block;
+  overflow: hidden;
   width: var(--emoji-size);
   height: var(--emoji-size);
-  background-size: 100%;
-  vertical-align: middle;
-  overflow: hidden;
   cursor: inherit;
+  vertical-align: middle;
+  background-size: 100%;
 
   /* hide emoji char */
   color: transparent !important;
@@ -24,17 +19,17 @@
 }
 
 .char {
-  box-sizing: border-box;
-  text-size-adjust: 100%;
-  vertical-align: middle;
-  word-wrap: break-word;
-  text-align: center;
   display: inline-block;
-  padding-top: 2px;
-  font-family: var(--emoji-font-family);
-  font-size: var(--emoji-font-size);
+  box-sizing: border-box;
   width: var(--emoji-font-size);
   height: var(--emoji-font-size);
-  line-height: var(--emoji-font-size);
+  padding-top: 2px;
+  text-align: center;
+  vertical-align: middle;
+  word-wrap: break-word;
+  font-family: var(--emoji-font-family);
+  font-size: var(--emoji-font-size);
   font-weight: normal;
+  line-height: var(--emoji-font-size);
+  text-size-adjust: 100%;
 }

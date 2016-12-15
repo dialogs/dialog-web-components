@@ -1,24 +1,15 @@
 @import '../../styles/variables.css';
 
-:root {
-  --message-state-font-family: var(--default-font-family);
-  --message-state-font-size: 13px;
-  --message-state-color: color(#000 alpha(60%));
-  --message-state-avatar-padding: 4px;
-  --message-state-dot-size: 10px;
-  --message-state-dot-color: color(#000 alpha(30%));
-}
-
 .container {
   display: inline-block;
   cursor: default;
   user-select: none;
+  vertical-align: bottom;
   letter-spacing: -0.2px;
-  line-height: 20px;
+  text-transform: uppercase;
   font-family: var(--message-state-font-family);
   font-size: var(--message-state-font-size);
+  line-height: 20px;
   color: var(--message-state-color);
-  text-transform: uppercase;
-  vertical-align: bottom;
   @apply --no-select;
 }

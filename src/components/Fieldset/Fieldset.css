@@ -1,16 +1,16 @@
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ */
+
 @import '../../styles/variables.css';
 
-:root {
-  --fieldset-legend-font-family: var(--default-font-family);
-  --fieldset-legend-font-size: 14px;
-  --fieldset-legend-font-color: var(--violet-blue-two);
-}
-
+/* Reset */
 .container,
 .legend {
   all: initial;
 }
 
+/* Styles */
 .container {
   display: block;
   width: 100%;
@@ -25,8 +25,8 @@
   user-select: none;
   letter-spacing: -0.1px;
   text-transform: uppercase;
-  font-family: var(--fieldset-legend-font-family);
-  font-size: var(--fieldset-legend-font-family);
+  font-family: var(--default-font-family);
+  font-size: var(--fieldset-legend-font-size);
   font-weight: 500;
   line-height: 1.6;
   color: var(--fieldset-legend-font-color);

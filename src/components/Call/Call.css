@@ -4,26 +4,13 @@
 
 @import '../../styles/variables.css';
 
-:root {
-  --call-default-width: 500px;
-  --call-default-height: 464px;
-  --call-small-width: 260px;
-  --call-background-color: #fff;
-  --call-default-padding: 60px;
-  --call-font-family: var(--default-font-family);
-  --call-info-caller-font-size: 34px;
-  --call-info-caller-color: #000;
-  --call-info-duration-font-size: 24px;
-  --call-info-duration-color: color(#000 alpha(50%));
-}
-
 /* Styles */
 .container {
   z-index: var(--z-index-call);
   width: var(--call-default-width);
   height: var(--call-default-height);
   background-color: var(--call-background-color);
-  font-family: var(--call-font-family);
+  font-family: var(--default-font-family);
 }
 
 .body {

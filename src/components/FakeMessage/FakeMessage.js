@@ -25,7 +25,7 @@ function FakeMessage() {
   }
 
   return (
-    <div className={styles.root}>
+    <div className={styles.container}>
       <div className={styles.avatar} />
       <div className={styles.body}>
         <header className={styles.header}>

@@ -1,22 +1,8 @@
-@import '../../styles/variables.css';
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ */
 
-:root {
-  --switcher-width: 32px;
-  --switcher-height: 20px;
-  --switcher-border-radius: calc(var(--switcher-height) / 2);
-  --switcher-dot-size: 16px;
-  --switcher-background-color: #b8b8b8;
-  --switcher-active-background-color: #ccc;
-  --switcher-checked-background-color: #4cd964;
-  --switcher-checked-active-background-color: #59ee72;
-  --switcher-dot-color: #fff;
-  --switcher-active-dot-color: #f6fff7;
-  --switcher-transition-duration: var(--default-transition-duration);
-  --switcher-label-font-family: var(--default-font-family);
-  --switcher-label-font-size: 15px;
-  /* Too wide =( */
-  --switcher-active-offset: calc(var(--switcher-width) - var(--switcher-dot-size) - ((var(--switcher-height) - var(--switcher-dot-size)) / 2)); /* stylelint-disable-line */
-}
+@import '../../styles/variables.css';
 
 .container,
 .switcher,

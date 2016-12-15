@@ -4,19 +4,10 @@
 
 @import '../../styles/variables.css';
 
-:root {
-  --create-new-modal-font-family: var(--default-font-family);
-  --create-new-modal-width: 500px;
-  --create-new-back-color: color(#000 alpha(38%));
-  --create-new-type-hint-color: color(#000 alpha(50%));
-  --create-new-type-hint-font-size: 16px;
-  --create-new-type-label-font-size: 18px;
-}
-
 /* Styles */
 .container {
-  font-family: var(--create-new-modal-font-family);
-  width: 500px;
+  width: var(--modal-create-new-width);
+  font-family: var(--modal-font-family);
 }
 
 .header {
@@ -30,46 +21,51 @@
 }
 
 .back {
-  width: 28px;
-  height: 28px;
+  width: var(--modal-close-size);
+  height: var(--modal-close-size);
   margin-right: 16px;
-  line-height: 28px;
-  color: var(--create-new-back-color);
+  transition: color var(--modal-close-transition-duration) linear;
+  line-height: var(--modal-close-size);
+  color: var(--modal-close-color);
+
+  &:hover {
+    color: var(--modal-close-color-hover);
+  }
 }
 
 .type {
   box-sizing: border-box;
-  width: var(--create-new-modal-width);
-  padding: 50px;
+  width: var(--modal-create-new-width);
+  padding: calc(var(--default-padding-large) * 2.5);
 }
 
 .typeLabel {
-  font-size: var(--create-new-type-label-font-size);
+  font-size: var(--modal-create-new-label-font-size);
 }
 
 .typeHint {
-  padding-right: 30px;
+  padding-right: calc(var(--default-padding-large) * 1.5);
   padding-left: 46px;
   cursor: default;
   user-select: none;
-  font-size: var(--create-new-type-hint-font-size);
+  font-size: var(--modal-create-new-hint-font-size);
   line-height: 1.6;
-  color: var(--create-new-type-hint-color);
+  color: var(--modal-create-new-hint-color);
 }
 
 .error {
-  background-color: var(--color-danger);
   padding: var(--default-padding);
-  font-size: 16px;
+  background-color: var(--color-danger);
+  font-size: var(--modal-font-size);
   font-weight: 500;
   color: #fff;
 }
 
 .info {
   display: flex;
-  flex-flow: row;
   box-sizing: border-box;
-  padding: 30px 50px;
+  padding: calc(var(--default-padding-large) * 1.5) calc(var(--default-padding-large) * 2.5);
+  flex-flow: row;
 }
 
 .vertical {
@@ -91,28 +87,6 @@
   width: 100px;
   margin-right: 34px;
   flex: 0 0 auto;
-}
-
-.avatarChanger {
-  position: relative;
-}
-
-.avatar {
-  cursor: pointer;
-}
-
-.avatarChangerIcon {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  width: 34px;
-  height: 34px;
-  cursor: pointer;
-  border-radius: 50%;
-  background-color: #fff;
-  font-size: 20px;
-  line-height: 34px;
-  color: var(--violet-blue-two);
 }
 
 .form {

@@ -4,14 +4,6 @@
 
 @import '../../styles/variables.css';
 
-:root {
-  --typing-font-family: var(--default-font-family);
-  --typing-font-size: 15px;
-  --typing-height: 40px;
-  --typing-text-color: color(#000 alpha(50%));
-  --typing-transition-duration: 100ms;
-}
-
 /* Reset */
 .container {
   all: initial;

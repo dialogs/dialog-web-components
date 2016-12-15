@@ -1,11 +1,8 @@
-@import '../../../styles/variables.css';
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ */
 
-:root {
-  --message-text-color: #000;
-  --message-text-font-size: var(--default-font-size);
-  --message-text-padding: 6px;
-  --message-service-color: color(#000 alpha(50%));
-}
+@import '../../../styles/variables.css';
 
 :global {
   & .code {
@@ -25,10 +22,10 @@
   }
 
   & .mention {
-    background-color: color(var(--color-warning) alpha(20%));
-    border-radius: 2px;
     display: inline-block;
     padding: 0 2px;
+    border-radius: 2px;
+    background-color: color(var(--color-warning) alpha(20%));
   }
 
   & .strike {
@@ -124,9 +121,9 @@
   }
 
   & a {
-    color: var(--color-info);
     text-decoration: none;
     border-bottom: 1px dotted var(--color-info);
+    color: var(--color-info);
 
     &:hover {
       border-bottom: 1px solid var(--color-info);

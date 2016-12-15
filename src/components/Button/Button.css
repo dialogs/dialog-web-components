@@ -4,50 +4,6 @@
 
 @import '../../styles/variables.css';
 
-:root {
-  --button-border-radius: var(--default-border-radius);
-  --button-border-radius-small: var(--default-border-radius-small);
-  --button-padding-top: 10px;
-  --button-padding-right: 30px;
-  --button-padding-bottom: 10px;
-  --button-padding-left: 30px;
-  --button-font-size: 18px;
-  --button-font-weight: 400;
-  --button-line-height: 26px;
-  --button-font-family: var(--default-font-family);
-  --button-size-modifier: 0.25;
-  --button-default-background-color: #e2e2e2;
-  --button-default-hover-background-color: color(var(--button-default-background-color) tint(10%));
-  --button-default-active-background-color: color(var(--button-default-background-color) shade(10%));
-  --button-default-disabled-background-color: color(var(--button-default-background-color) blackness(50%) alpha(70%));
-  --button-default-color: #fff;
-  --button-primary-background-color: var(--color-primary);
-  --button-primary-hover-background-color: color(var(--button-primary-background-color) tint(10%));
-  --button-primary-active-background-color: color(var(--button-primary-background-color) shade(5%));
-  --button-primary-disabled-background-color: color(var(--button-primary-background-color) blackness(50%) alpha(70%));
-  --button-primary-color: #fff;
-  --button-success-background-color: var(--color-success);
-  --button-success-hover-background-color: color(var(--button-success-background-color) tint(10%));
-  --button-success-active-background-color: color(var(--button-success-background-color) shade(5%));
-  --button-success-disabled-background-color: color(var(--button-success-background-color) blackness(50%) alpha(70%));
-  --button-success-color: #fff;
-  --button-danger-background-color: var(--color-danger);
-  --button-danger-hover-background-color: color(var(--button-danger-background-color) tint(10%));
-  --button-danger-active-background-color: color(var(--button-danger-background-color) shade(5%));
-  --button-danger-disabled-background-color: color(var(--button-danger-background-color) blackness(50%) alpha(70%));
-  --button-danger-color: #fff;
-  --button-info-background-color: var(--color-info);
-  --button-info-hover-background-color: color(var(--button-info-background-color) tint(10%));
-  --button-info-active-background-color: color(var(--button-info-background-color) shade(5%));
-  --button-info-disabled-background-color: color(var(--button-info-background-color) blackness(50%) alpha(70%));
-  --button-info-color: #fff;
-  --button-warning-background-color: var(--color-warning);
-  --button-warning-hover-background-color: color(var(--button-warning-background-color) tint(10%));
-  --button-warning-active-background-color: color(var(--button-warning-background-color) shade(5%));
-  --button-warning-disabled-background-color: color(var(--button-warning-background-color) blackness(50%) alpha(70%));
-  --button-warning-color: #fff;
-}
-
 /* Main */
 .container {
   all: initial;
@@ -55,10 +11,7 @@
   box-sizing: border-box;
   cursor: pointer;
   user-select: none;
-  transition:
-    background var(--default-transition-duration) ease,
-    box-shadow var(--default-transition-duration) ease,
-    color var(--default-transition-duration) ease;
+  transition: background var(--button-transition-duration) ease, box-shadow var(--button-transition-duration) ease, color var(--button-transition-duration) ease;
   text-align: center;
   border: 0;
   outline: none;
@@ -215,7 +168,7 @@
 
 /* View */
 .button {
-  text-shadow: 0 1px 2px color(#000 alpha(25%));
+  text-shadow: 0 1px 2px color(#000 alpha(20%));
 }
 
 .link {

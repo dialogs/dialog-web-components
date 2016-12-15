@@ -4,17 +4,13 @@
 
 @import '../../styles/variables.css';
 
-:root {
-  --fake-message-avatar-color: #c5c5c5;
-  --fake-message-text-color: #e5e5e5;
-  --fake-message-top-padding: 14px;
-  --fake-message-right-padding: 34px;
-  --fake-message-bottom-padding: 14px;
-  --fake-message-left-padding: 34px;
+/* Reset */
+.container {
+  all: initial;
 }
 
-.root {
-  all: initial;
+/* Styles*/
+.container {
   position: relative;
   display: flex;
   flex-direction: row;
@@ -25,8 +21,8 @@
 }
 
 .avatar {
-  width: 36px;
-  height: 36px;
+  width: var(--fake-message-avatar-size);
+  height: var(--fake-message-avatar-size);
   margin-right: 16px;
   border-radius: 50%;
   background-color: var(--fake-message-avatar-color);

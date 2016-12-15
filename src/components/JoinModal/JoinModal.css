@@ -4,52 +4,41 @@
 
 @import '../../styles/variables.css';
 
-:root {
-  --join-modal-font-family: var(--default-font-family);
-  --join-modal-width: 600px;
-  --join-modal-font-size: 18px;
-  --join-modal-title-font-size: 34px;
-  --join-modal-padding-top: 70px;
-  --join-modal-padding-right: 50px;
-  --join-modal-padding-bottom: 60px;
-  --join-modal-padding-left: 50px;
-}
-
-.root {
-  width: var(--join-modal-width);
-  font-family: var(--join-modal-font-family);
-  font-size: var(--join-modal-font-size);
+.container {
+  width: var(--modal-join-width);
+  font-family: var(--modal-font-family);
+  font-size: var(--modal-join-font-size);
 }
 
 .header {
   flex-direction: column;
   height: auto;
-  padding-top: var(--join-modal-padding-top);
-  padding-right: var(--join-modal-padding-right);
+  padding-top: var(--modal-join-padding-top);
+  padding-right: var(--modal-join-padding-right);
   padding-bottom: 0;
-  padding-left: var(--join-modal-padding-left);
+  padding-left: var(--modal-join-padding-left);
   text-align: center;
   align-items: center;
 }
 
 .body {
   padding-top: 0;
-  padding-right: var(--join-modal-padding-right);
+  padding-right: var(--modal-join-padding-right);
   padding-bottom: 0;
-  padding-left: var(--join-modal-padding-left);
+  padding-left: var(--modal-join-padding-left);
   text-align: center;
 }
 
 .footer {
   padding-top: 0;
-  padding-right: var(--join-modal-padding-right);
-  padding-bottom: var(--join-modal-padding-bottom);
-  padding-left: var(--join-modal-padding-left);
+  padding-right: var(--modal-join-padding-right);
+  padding-bottom: var(--modal-join-padding-bottom);
+  padding-left: var(--modal-join-padding-left);
   text-align: center;
 }
 
 .buttons {
-  margin-top: 24px;
+  margin-top: calc(var(--default-padding-large) * 2);
 
   & .button {
     margin: 0 calc(var(--default-padding) / 2);
@@ -60,20 +49,23 @@
   margin: 0;
   padding: 0;
   font-weight: 400;
-  line-height: 24px;
+  line-height: var(--default-line-height);
 }
 
 .title {
   margin: 0;
   padding: 0;
   letter-spacing: -0.5px;
-  font-size: var(--join-modal-title-font-size);
+  font-size: var(--modal-join-title-font-size);
   font-weight: 400;
-  line-height: 1.2;
+  line-height: var(--default-line-height-small);
 }
 
 .form {
-  padding: 40px 0;
+  padding-top: calc(var(--default-padding-large) * 3);
+  padding-right: 0;
+  padding-bottom: calc(var(--default-padding-large) * 2);
+  padding-left: 0;
 }
 
 .input {

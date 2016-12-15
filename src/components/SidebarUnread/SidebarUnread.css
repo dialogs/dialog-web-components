@@ -4,18 +4,6 @@
 
 @import '../../styles/variables.css';
 
-:root {
-  --sidebar-unread-font-family: var(--default-font-family);
-  --sidebar-unread-default-height: 6px;
-  --sidebar-unread-hover-height: 18px;
-  --sidebar-unread-color: #fff;
-  --sidebar-unread-background-color: var(--color-warning);
-  --sidebar-unread-hover-background-color: color(var(--sidebar-unread-background-color) tint(10%));
-  --sidebar-unread-active-background-color: color(var(--sidebar-unread-background-color) shade(5%));
-  --sidebar-unread-z-index: 20;
-  --sidebar-unread-transition-duration: calc(var(--default-transition-duration) * 0.6);
-}
-
 /* Reset */
 .container {
   all: initial;
@@ -23,42 +11,45 @@
 
 /* Styles */
 .container {
-  font-family: var(--sidebar-unread-font-family);
   position: absolute;
-  left: 0;
+  z-index: var(--z-index-sidebar-unread);
   right: 0;
-  height: var(--sidebar-unread-default-height);
-  background-color: var(--sidebar-unread-background-color);
-  transition: height var(--sidebar-unread-transition-duration) ease-in-out, background var(--sidebar-unread-transition-duration) ease-in-out;
+  left: 0;
   display: flex;
+  overflow: hidden;
+  height: var(--sidebar-unread-default-height);
+  cursor: pointer;
+  transition: height var(--sidebar-unread-transition-duration) ease-in-out, background var(--sidebar-unread-transition-duration) ease-in-out;
+  background-color: var(--sidebar-unread-background-color);
+  font-family: var(--sidebar-unread-font-family);
   align-content: center;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
-  z-index: var(--sidebar-unread-z-index);
   @apply --no-select;
-  cursor: pointer;
 
   &:hover {
     height: var(--sidebar-unread-hover-height);
     background-color: var(--sidebar-unread-hover-background-color);
+
     & .icon {
-      opacity: 1;
       transform: scale(1) translateY(0);
+      opacity: 1;
     }
   }
 
   &:active {
     background-color: var(--sidebar-unread-active-background-color);
+
     & .icon {
-      opacity: 1;
       transform: scale(1) translateY(0);
+      opacity: 1;
     }
   }
 }
 
 .top {
   top: 0;
+
   & .icon {
     transform: scale(0.7) translateY(-10px);
   }
@@ -72,9 +63,11 @@
 
 .bottom {
   bottom: 0;
+
   & .icon {
     transform: scale(0.7) translateY(10px);
   }
+
   &:active {
     & .icon {
       transform: translateY(1px);
@@ -83,10 +76,10 @@
 }
 
 .icon {
+  transition: opacity var(--sidebar-unread-transition-duration) ease-in-out, transform var(--sidebar-unread-transition-duration) ease-in-out;
+  opacity: 0;
+  font-size: 20px;
   fill: var(--sidebar-unread-color);
   color: var(--sidebar-unread-color);
   stroke: var(--sidebar-unread-color);
-  transition: opacity var(--sidebar-unread-transition-duration) ease-in-out, transform var(--sidebar-unread-transition-duration) ease-in-out;
-  font-size: 20px;
-  opacity: 0;
 }

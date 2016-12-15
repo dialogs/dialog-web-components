@@ -4,27 +4,6 @@
 
 @import '../../styles/variables.css';
 
-:root {
-  /* Colors */
-  --avatar-empty-background-color: #757575;
-  --avatar-lblue-background-color: var(--sky-blue);
-  --avatar-blue-background-color: var(--cerulean);
-  --avatar-purple-background-color: var(--purple-blue);
-  --avatar-red-background-color: var(--neon-red);
-  --avatar-orange-background-color: var(--red-orange-two);
-  --avatar-yellow-background-color: var(--marigold);
-  --avatar-green-background-color: var(--green);
-  /* Gradients */
-  --avatar-empty-gradient: linear-gradient(38deg, #bebebe, #757575);
-  --avatar-blue-gradient: linear-gradient(38deg, var(--sky-blue), var(--violet-blue-two));
-  --avatar-lblue-gradient: linear-gradient(38deg, var(--aqua), var(--cerulean));
-  --avatar-purple-gradient: linear-gradient(38deg, var(--dark-periwinkle), var(--vibrant-purple));
-  --avatar-red-gradient: linear-gradient(38deg, var(--neon-red), var(--lauries-lips));
-  --avatar-orange-gradient: linear-gradient(38deg, var(--light-orange), var(--red-orange-two));
-  --avatar-yellow-gradient: linear-gradient(38deg, var(--french-toast), var(--marigold));
-  --avatar-green-gradient: linear-gradient(38deg, var(--kiwi), var(--green));
-}
-
 .image,
 .placeholder {
   all: initial;
@@ -33,9 +12,9 @@
 .image {
   display: inline-block;
   user-select: none;
-  border-radius: 100%;
-  box-shadow: 0 0 1px color(#000 alpha(10%));
   pointer-events: none;
+  border-radius: 100%;
+  box-shadow: 0 0 1px color(#000 alpha(12%));
 }
 
 .placeholder {
@@ -46,20 +25,20 @@
   text-align: center;
   vertical-align: middle;
   text-transform: uppercase;
+  pointer-events: none;
   border-radius: 100%;
   font-family: var(--default-font-family);
   font-weight: 300;
   align-content: center;
   justify-content: center;
   align-items: center;
-  color: #fff;
-  pointer-events: none;
+  color: var(--avatar-placeholder-color);
 }
 
 .clickable {
+  display: inline-block;
   cursor: pointer;
   transition: opacity var(--default-transition-duration) ease-in-out;
-  display: inline-block;
 
   &:hover {
     opacity: 0.9;

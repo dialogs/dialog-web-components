@@ -4,23 +4,17 @@
 
 @import '../../styles/variables.css';
 
-:root {
-  --connection-status-font-family: var(--default-font-family);
-  --connection-status-font-size: 14px;
-  --connection-status-font-color: #fff;
-  --connection-status-height: 28px;
-  --connection-status-transition-duration: var(--default-transition-duration);
-  --connection-status-z-index: 10;
-  --connection-status-translate-size: calc(0 - var(--connection-status-height));
-}
-
-.wrapper {
-  position: relative;
-  height: 0;
-}
-
+/* Reset */
 .container {
   all: initial;
+}
+
+/* Styles */
+.container {
+  position: absolute;
+  z-index: var(--z-index-connection-status);
+  top: 0;
+  left: 0;
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -28,17 +22,18 @@
   cursor: default;
   user-select: none;
   transition: background var(--connection-status-transition-duration) ease;
-  font-family: var(--connection-status-font-family);
+  font-family: var(--default-font-family);
   font-size: var(--connection-status-font-size);
   color: var(--connection-status-font-color);
   flex: 0 0 auto;
   justify-content: center;
   align-items: center;
   align-content: center;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: var(--connection-status-z-index);
+}
+
+.wrapper {
+  position: relative;
+  height: 0;
 }
 
 .online {

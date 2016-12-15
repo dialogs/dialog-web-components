@@ -11,30 +11,537 @@
   --font-emoji: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   --default-font-family: var(--font-apple), var(--font-fallback), var(--font-emoji);
   --code-font-family: 'Fira Code', 'Consolas', 'Monaco', 'Roboto Mono', monospace;
-
   /* Sizes */
-  --small-font-size: 14px;
+  --default-font-size-small: 14px;
   --default-font-size: 16px;
-  --large-font-size: 20px;
-  --default-line-height: 24px;
+  --default-font-size-large: 18px;
+  --default-font-color: #000;
+  --default-font-color-light: color(var(--default-font-color) alpha(50%));
+  --default-line-height-small: 1.25;
+  --default-line-height: 1.5;
+  --default-line-height-large: 2;
+  --default-padding-small: 10px;
   --default-padding: 16px;
+  --default-padding-large: 20px;
   --default-border-radius-small: 3px;
   --default-border-radius: 5px;
   --default-transition-duration: 150ms;
-
   /* Layers */
   --z-index-dropdown: 100;
+  --z-index-tooltip: var(--z-index-dropdown);
   --z-index-call: var(--z-index-dropdown);
   --z-index-sidebar: 50;
   --z-index-chat: 20;
-
+  --z-index-toolbar: calc(var(--z-index-chat) + 1);
+  --z-index-sidebar-unread: 20;
+  --z-index-connection-status: 10;
   /* Colors */
   --color-primary: var(--purple-two);
   --color-success: var(--medium-green);
   --color-danger: var(--lipstick);
   --color-info: var(--dark-periwinkle);
   --color-warning: var(--orange-yellow);
-
+  /* Gradients */
+  --default-gradient: linear-gradient(89deg, var(--violet-blue), var(--vibrant-purple));
+  /* Avatar */
+  --avatar-placeholder-color: #fff;
+  --avatar-empty-background-color: #757575;
+  --avatar-lblue-background-color: var(--sky-blue);
+  --avatar-blue-background-color: var(--cerulean);
+  --avatar-purple-background-color: var(--purple-blue);
+  --avatar-red-background-color: var(--neon-red);
+  --avatar-orange-background-color: var(--red-orange-two);
+  --avatar-yellow-background-color: var(--marigold);
+  --avatar-green-background-color: var(--green);
+  --avatar-empty-gradient: linear-gradient(38deg, #bebebe, #757575);
+  --avatar-blue-gradient: linear-gradient(38deg, var(--sky-blue), var(--violet-blue-two));
+  --avatar-lblue-gradient: linear-gradient(38deg, var(--aqua), var(--cerulean));
+  --avatar-purple-gradient: linear-gradient(38deg, var(--dark-periwinkle), var(--vibrant-purple));
+  --avatar-red-gradient: linear-gradient(38deg, var(--neon-red), var(--lauries-lips));
+  --avatar-orange-gradient: linear-gradient(38deg, var(--light-orange), var(--red-orange-two));
+  --avatar-yellow-gradient: linear-gradient(38deg, var(--french-toast), var(--marigold));
+  --avatar-green-gradient: linear-gradient(38deg, var(--kiwi), var(--green));
+  /* PeerAvatar */
+  --avatar-online-size: 8px;
+  --avatar-online-color: var(--leafy-green);
+  /* AvatarSelector */
+  --avatar-selector-size: 100px;
+  /* Button */
+  --button-border-radius: var(--default-border-radius);
+  --button-border-radius-small: var(--default-border-radius-small);
+  --button-padding-top: var(--default-padding-small);
+  --button-padding-right: calc(var(--default-padding-large) * 1.5);
+  --button-padding-bottom: var(--default-padding-small);
+  --button-padding-left: calc(var(--default-padding-large) * 1.5);
+  --button-font-size: var(--default-font-size-large);
+  --button-font-weight: 400;
+  --button-line-height: 26px;
+  --button-font-family: var(--default-font-family);
+  --button-size-modifier: 0.25;
+  --button-default-background-color: var(--cool-grey);
+  --button-default-hover-background-color: color(var(--button-default-background-color) tint(10%));
+  --button-default-active-background-color: color(var(--button-default-background-color) shade(10%));
+  --button-default-disabled-background-color: color(var(--button-default-background-color) blackness(50%) alpha(70%));
+  --button-default-color: #fff;
+  --button-primary-background-color: var(--color-primary);
+  --button-primary-hover-background-color: color(var(--button-primary-background-color) tint(10%));
+  --button-primary-active-background-color: color(var(--button-primary-background-color) shade(5%));
+  --button-primary-disabled-background-color: color(var(--button-primary-background-color) blackness(50%) alpha(70%));
+  --button-primary-color: var(--button-default-color);
+  --button-success-background-color: var(--color-success);
+  --button-success-hover-background-color: color(var(--button-success-background-color) tint(10%));
+  --button-success-active-background-color: color(var(--button-success-background-color) shade(5%));
+  --button-success-disabled-background-color: color(var(--button-success-background-color) blackness(50%) alpha(70%));
+  --button-success-color: var(--button-default-color);
+  --button-danger-background-color: var(--color-danger);
+  --button-danger-hover-background-color: color(var(--button-danger-background-color) tint(10%));
+  --button-danger-active-background-color: color(var(--button-danger-background-color) shade(5%));
+  --button-danger-disabled-background-color: color(var(--button-danger-background-color) blackness(50%) alpha(70%));
+  --button-danger-color: var(--button-default-color);
+  --button-info-background-color: var(--color-info);
+  --button-info-hover-background-color: color(var(--button-info-background-color) tint(10%));
+  --button-info-active-background-color: color(var(--button-info-background-color) shade(5%));
+  --button-info-disabled-background-color: color(var(--button-info-background-color) blackness(50%) alpha(70%));
+  --button-info-color: var(--button-default-color);
+  --button-warning-background-color: var(--color-warning);
+  --button-warning-hover-background-color: color(var(--button-warning-background-color) tint(10%));
+  --button-warning-active-background-color: color(var(--button-warning-background-color) shade(5%));
+  --button-warning-disabled-background-color: color(var(--button-warning-background-color) blackness(50%) alpha(70%));
+  --button-warning-color: var(--button-default-color);
+  --button-transition-duration: var(--default-transition-duration);
+  /* Call */
+  --call-default-width: 500px;
+  --call-default-height: 464px;
+  --call-small-width: 260px;
+  --call-background-color: #fff;
+  --call-default-padding: calc(var(--default-padding-large) * 3);
+  --call-info-caller-font-size: 34px;
+  --call-info-caller-color: var(--default-font-color);
+  --call-info-duration-font-size: 24px;
+  --call-info-duration-color: var(--default-font-color-light);
+  /* Checkbox */
+  --checkbox-size: 16px;
+  /* Confirm */
+  --confirm-width: 400px;
+  --confirm-font-size: var(--default-font-size-large);
+  /* ConnectionStatus */
+  --connection-status-font-size: var(--default-font-size-small);
+  --connection-status-font-color: #fff;
+  --connection-status-height: calc(var(--default-padding-large) * 1.5);
+  --connection-status-transition-duration: var(--default-transition-duration);
+  --connection-status-translate-size: calc(0 - var(--connection-status-height));
+  /* ContactList */
+  --contact-list-item-border-color: color(#000 alpha(10%));
+  --contact-list-item-padding: var(--default-padding-large);
+  --contact-list-item-hover-background: #f2f2f2;
+  --contact-list-switcher-transition-duration: calc(var(--default-transition-duration) * 0.5);
+  /* ContactSelector */
+  --contact-selector-background-color: #f2f0f5;
+  /* Dragndrop */
+  --dragndrop-width: 740px;
+  --dragndrop-height: 440px;
+  --dragndrop-border-radius: var(--default-border-radius);
+  --dragndrop-background-color: #333;
+  --dragndrop-hover-background-color: var(--color-primary);
+  /* Dropdown */
+  --dropdown-font-size: var(--default-font-size);
+  --dropdown-font-color: #000;
+  --dropdown-background-color: color(#fff alpha(98%));
+  --dropdown-padding-top: 9px;
+  --dropdown-padding-right: var(--default-padding-large);
+  --dropdown-padding-bottom: var(--default-padding-small);
+  --dropdown-padding-left: var(--default-padding-large);
+  --dropdown-border-radius: var(--default-border-radius);
+  --dropdown-item-height: 37px;
+  --dropdown-item-hover-color-default: #fff;
+  --dropdown-item-hover-background-default: var(--color-primary);
+  --dropdown-item-hover-background-secondary: color(#000 alpha(10%));
+  --dropdown-divider-color: color(#000 alpha(15%));
+  --dropdown-min-width: 200px;
+  --dropdown-header-font-size: var(--default-font-size-small);
+  --dropdown-header-color: var(--default-font-color-light);
+  --dropdown-transition-duration: var(--default-transition-duration);
+  /* Enoji */
+  --emoji-size: 32px;
+  --emoji-font-size: 24px;
+  --emoji-font-family: var(--font-emoji);
+  /* EmojiList */
+  --emoji-list-width: 346px;
+  --emoji-list-height: 280px;
+  --emoji-list-background-color: color(#fff alpha(98%));
+  --emoji-list-emoji-size: 26px;
+  --emoji-list-emoji-wrapper-padding: 5px;
+  --emoji-list-emoji-wrapper-background: color(var(--color-primary) alpha(10%));
+  --emoji-list-category-icon-color: var(--cool-grey-two);
+  --emoji-list-category-icon-hover-color: color(var(--emoji-list-category-icon-color) shade(20%));
+  --emoji-list-category-icon-active-color: var(--color-primary);
+  --emoji-list-category-icon-active-hover-color: color(var(--emoji-list-category-icon-active-color) alpha(80%));
+  /* FakeMessage */
+  --fake-message-avatar-size: 36px;
+  --fake-message-avatar-color: #c5c5c5;
+  --fake-message-text-color: #e5e5e5;
+  --fake-message-top-padding: 14px;
+  --fake-message-right-padding: 34px;
+  --fake-message-bottom-padding: 14px;
+  --fake-message-left-padding: 34px;
+  --fake-recent-text-color: #cacaca;
+  --fake-recent-avatar-size: 28px;
+  --fake-recent-avatar-color: #c5c5c5;
+  /* Field */
+  --field-border-color: color(#000 alpha(10%));
+  /* Fieldset */
+  --fieldset-legend-font-size: var(--default-font-size-small);
+  --fieldset-legend-font-color: var(--violet-blue-two);
+  /* Icon */
+  --icon-default-size: 24px;
+  --icon-small-size: 18px;
+  --icon-large-size: 42px;
+  --icon-default-color: #000;
+  --icon-inverted-color: #fff;
+  /* IconButton */
+  --icon-button-default-size: 40px;
+  --icon-button-large-size: 54px;
+  --icon-button-background-color: #fff;
+  --icon-button-default-color: rgb(178, 178, 178);
+  --icon-button-hover-color: var(--color-primary);
+  --icon-button-glyph-size: 22px;
+  --icon-button-glyph-size-large: 30px;
+  --icon-button-flat-color: rgb(178, 178, 178);
+  --icon-button-flat-color-hover: #fff;
+  --icon-button-flat-hover-background-color: rgb(150, 150, 150);
+  --icon-button-flat-border-width: 1px;
+  --icon-button-flat-default-size: var(--icon-button-default-size);
+  --icon-button-flat-large-size: 72px;
+  /* Input */
+  --input-error-color: var(--color-danger);
+  --input-success-color: var(--color-success);
+  --input-color-color: #000;
+  --input-placeholder-color: color(#000 alpha(30%));
+  --input-border-color: color(#000 alpha(35%));
+  --input-border-width: 1px;
+  --input-focus-border-width: 2px;
+  --input-default-font-size: 18px;
+  --input-default-line-height: 1.4;
+  --input-large-font-size: 22px;
+  --input-large-line-height: 1.25;
+  --input-font-family: var(--default-font-family);
+  --input-focused-color: #000;
+  --input-focused-border-color: var(--color-primary);
+  --input-disabled-color: #bdbdbd;
+  --input-disabled-border-color: var(--input-disabled-color);
+  --input-disabled-background-color: color(var(--input-disabled-color) alpha(15%));
+  --input-label-color: var(--color-primary);
+  --input-label-font-size: 14px;
+  --input-label-line-height: 22px;
+  --input-label-font-family: var(--default-font-family);
+  --input-hint-color: color(#000 alpha(30%));
+  --input-hint-font-size: 14px;
+  --input-hint-line-height: 18px;
+  --input-hint-font-family: var(--default-font-family);
+  --input-prefix-color: var(--default-font-color-light);
+  /* Lightbox */
+  --lightbox-background-color: color(rgb(51, 51, 51) alpha(80%));
+  --lightbox-toolbar-background-color: color(#333 alpha(75%));
+  /* Message */
+  --message-font-family: var(--default-font-family);
+  --message-vertical-padding: 8px;
+  --message-horizontal-padding: 20px;
+  --message-small-vertical-padding: 6px;
+  --message-small-horizontal-padding: 20px;
+  --message-hover-background-color: color(#f2f2f2 alpha(65%));
+  --message-username-color: color(#000 alpha(60%));
+  --message-timestamp-color: color(#000 alpha(60%));
+  --message-error-color: color(var(--color-error) alpha(7.5%));
+  --message-error-hover-color: color(var(--color-error) alpha(10%));
+  --message-unread-color: color(#f2f2f2 alpha(25%));
+  --message-state-border-width: 3px;
+  --mesage-transition-duration: var(--default-transition-duration);
+  /* Contact */
+  --contact-font-family: var(--default-font-family);
+  --contact-border-radius: var(--default-border-radius);
+  --contact-avatar-size: 96px;
+  --contact-width: 400px;
+  --contact-border-color: color(#000 alpha(14%));
+  --contact-padding: var(--default-padding);
+  --contact-link-color: var(--color-info);
+  /* Document */
+  --document-min-width: 400px;
+  --document-max-width: 400px;
+  --document-font-family: var(--default-font-family);
+  --document-media-color: var(--sky-blue);
+  --document-document-color: var(--orangey-red);
+  --document-picture-color: var(--color-green);
+  --document-unknown-color: var(--pinkish-grey-two);
+  --document-padding: 12px;
+  --document-background-color: #fff;
+  --document-border-color: color(#000 alpha(14%));
+  --document-border-radius: var(--default-border-radius);
+  --document-preview-size: 50px;
+  --document-padding-margin-right: 14px;
+  --document-download-arrow-color: var(--color-primary);
+  /* Location */
+  --location-border-radius: var(--default-border-radius);
+  /* Photo */
+  --message-photo-border-raduis: var(--default-border-radius);
+  /* Text */
+  --message-text-color: #000;
+  --message-text-font-size: var(--default-font-size);
+  --message-text-padding: 6px;
+  --message-service-color: var(--default-font-color-light);
+  /* Voice */
+  --voice-font-family: var(--default-font-family);
+  --voice-min-width: 400px;
+  --voice-max-width: 400px;
+  --voice-padding: 12px;
+  --voice-border-radius: var(--default-border-radius);
+  --voice-background-color: #fff;
+  --voice-border-color: color(#000 alpha(14%));
+  /*--voice-transcript-button-color: color(var(--color-primary) alpha(24%));*/
+  /*--voice-transcript-button-icon-color: var(--voice-transcript-button-color);*/
+  --voice-transcript-button-color: #baa2e5;
+  --voice-transcript-button-icon-color: #d4c2f3;
+  --voice-transcript-button-hover-color: var(--color-primary);
+  --voice-transcript-button-icon-hover-color: var(--voice-transcript-button-hover-color);
+  --voice-transcript-button-wdith: 70px;
+  --voice-transcription-padding: 15px;
+  --voice-transcription-font-size: var(--default-font-size-small);
+  --voice-transcription-color: color(#000 alpha(40%));
+  --voice-transcription-stem-size: 12px;
+  /* MessageDivider */
+  --message-divider-font-family: var(--default-font-family);
+  --message-divider-font-size: var(--default-font-size);
+  --message-divider-default-color: color(#000 alpha(80%));
+  --message-divider-background-color: #fff;
+  --message-divider-default-line-color: color(#000 alpha(14%));
+  /* MessageMedia */
+  --message-media-font-family: var(--default-font-family);
+  /* MessageState */
+  --message-state-font-family: var(--default-font-family);
+  --message-state-font-size: 13px;
+  --message-state-color: color(#000 alpha(60%));
+  --message-state-avatar-padding: 4px;
+  --message-state-dot-size: 10px;
+  --message-state-dot-color: color(#000 alpha(30%));
+  /* Radio */
+  --radio-font-family: var(--default-font-family);
+  --radio-size: 22px;
+  --radio-inactive-color: #c0c0c0;
+  --radio-active-color: var(--color-primary);
+  --radio-label-font-size: 15px;
+  /* RecentItem */
+  --recent-item-default-top-padding: 9px;
+  --recent-item-default-right-padding: 16px;
+  --recent-item-default-bottom-padding: 9px;
+  --recent-item-default-left-padding: 16px;
+  --recent-item-default-height: 46px;
+  --recent-item-default-color: color(#000 alpha(50%));
+  --recent-item-large-top-padding: 15px;
+  --recent-item-large-right-padding: 12px;
+  --recent-item-large-bottom-padding: 15px;
+  --recent-item-large-left-padding: 12px;
+  --recent-item-large-height: 66px;
+  --recent-item-hover-background-color: #e2e2e2;
+  --recent-item-hover-color: #000;
+  --recent-item-active-background-color: var(--violet-blue);
+  --recent-item-active-background-gradient: var(--default-gradient);
+  --recent-item-active-color: #fff;
+  --recent-item-counter-background: var(--color-primary);
+  --recent-item-counter-color: #fff;
+  --recent-item-counter-size: 24px;
+  --recent-item-counter-font-size: 13px;
+  /* Sidebar */
+  /* SidebarGroupTitle */
+  --sidebar-group-title-font-family: var(--default-font-family);
+  --sidebar-group-title-font-size: var(--default-font-size-small);
+  --sidebar-group-title-color: color(#000 alpha(60%));
+  --sidebar-group-title-line-height: 22px;
+  --sidebar-group-title-padding-top: 8px;
+  --sidebar-group-title-padding-left: 16px;
+  /* SidebarHeader */
+  --sidebar-header-font-family: var(--default-font-family);
+  --sidebar-header-height: 60px;
+  --sidebar-header-background-color: #fff;
+  --sidebar-header-padding-top: 10px;
+  --sidebar-header-padding-right: 12px;
+  --sidebar-header-padding-bottom: 10px;
+  --sidebar-header-padding-left: 12px;
+  --sidebar-header-menu-color: color(#000 alpha(80%));
+  --sidebar-header-menu-font-size: var(--default-font-size-large);
+  --sidebar-header-plus-color: var(--indigo);
+  /* SidebarSearch */
+  --sidebar-search-font-family: var(--default-font-family);
+  --sidebar-search-padding: 12px;
+  --sidebar-search-border-radius: 6px;
+  --sidebar-search-background-color: var(--white-two);
+  --sidebar-search-color: color(#000 alpha(50%));
+  --sidebar-search-placeholder-color: color(#000 alpha(50%));
+  --sidebar-search-focus-color: #000;
+  --sidebar-search-focus-background-color: #fff;
+  --sidebar-search-input-height: 34px;
+  /* SidebarUnread */
+  --sidebar-unread-font-family: var(--default-font-family);
+  --sidebar-unread-default-height: 6px;
+  --sidebar-unread-hover-height: 18px;
+  --sidebar-unread-color: #fff;
+  --sidebar-unread-background-color: var(--color-warning);
+  --sidebar-unread-hover-background-color: color(var(--sidebar-unread-background-color) tint(10%));
+  --sidebar-unread-active-background-color: color(var(--sidebar-unread-background-color) shade(5%));
+  --sidebar-unread-transition-duration: calc(var(--default-transition-duration) * 0.6);
+  /* Spinner */
+  --spinner-wawe-max-height: 20px;
+  --spinner-wave-stick-width: 2px;
+  --spinner-wave-background-color: color(var(--color-primary) alpha(85%));
+  --spinner-wave-color: #fff;
+  --spinner-dotted-dot-size: 6px;
+  --spinner-dotted-animation-delay: 160ms;
+  --spinner-dotted-dot-color: var(--color-primary);
+  --spinner-round-size: 9px;
+  --spinner-round-border-width: 2px;
+  --spinner-round-large-size: 30px;
+  --spinner-round-large-border-width: 3px;
+  --spinner-round-color: var(--color-primary);
+  --spinner-round-animation-duration: calc(var(--default-transition-duration) * 4);
+  /* Swither */
+  --switcher-width: 32px;
+  --switcher-height: 20px;
+  --switcher-border-radius: calc(var(--switcher-height) / 2);
+  --switcher-dot-size: 16px;
+  --switcher-background-color: #b8b8b8;
+  --switcher-active-background-color: #ccc;
+  --switcher-checked-background-color: #4cd964;
+  --switcher-checked-active-background-color: #59ee72;
+  --switcher-dot-color: #fff;
+  --switcher-active-dot-color: #f6fff7;
+  --switcher-transition-duration: var(--default-transition-duration);
+  --switcher-label-font-family: var(--default-font-family);
+  --switcher-label-font-size: 15px;
+  --switcher-active-offset: calc(var(--switcher-width) - var(--switcher-dot-size) - ((var(--switcher-height) - var(--switcher-dot-size)) / 2)); /* stylelint-disable-line */
+  /* Tabs */
+  --tabs-font-family: var(--default-font-family);
+  --tabs-width: 220px;
+  --tabs-gradient: var(--default-gradient);
+  --tabs-color: var(--default-font-color);
+  --tabs-color-active: #fff;
+  /* Toolbar */
+  --toolbar-font-family: var(--default-font-family);
+  --toolbar-height: 60px;
+  --toolbar-background-color: #fff;
+  --toolbar-padding-top: 10px;
+  --toolbar-padding-right: 20px;
+  --toolbar-padding-bottom: 10px;
+  --toolbar-padding-left: 20px;
+  --toolbar-title-color: #000;
+  --toolbar-title-font-size: 18px;
+  --toolbar-status-color: var(--default-font-color-light);
+  --toolbar-status-font-size: 14px;
+  --toolbar-border-color: color(#000 alpha(14%));
+  --toolbar-call-button-size: 28px;
+  --toolbar-info-button-size: 24px;
+  --toolbar-info-button-color: color(#000 alpha(40%));
+  --toolbar-info-button-hover-color: color(#000 alpha(60%));
+  --toolbar-info-button-active-color: color(#000 alpha(70%));
+  /* Tooltip */
+  --tooltip-font-family: var(--default-font-family);
+  --tooltip-font-size: var(--default-font-size-small);
+  --tooltip-background-color: color(#000 alpha(70%));
+  --tooltip-color: #fff;
+  --tooltip-offset: 3px;
+  --tooltip-z-index: 5;
+  --tooltip-transition-duration: 100ms;
+  /* Typing */
+  --typing-font-family: var(--default-font-family);
+  --typing-font-size: 15px;
+  --typing-height: 40px;
+  --typing-text-color: var(--default-font-color-light);
+  --typing-transition-duration: 100ms;
+  /* Activity */
+  --activity-font-family: var(--default-font-family);
+  --activity-font-size: var(--default-font-size-large);
+  --activity-font-color: var(--default-font-color);
+  --activity-text-color-light: var(--default-font-color-light);
+  --activity-border-color: color(#000 alpha(10%));
+  /* ActivityHeader */
+  --activity-header-height: 60px;
+  --activity-header-transition-duration: var(--default-transition-duration);
+  --activity-header-icon-size: 26px;
+  --activity-header-icon-color: color(#000 alpha(40%));
+  --activity-header-icon-color-hover: color(#000 alpha(60%));
+  /* ActivityList */
+  --activity-list-hover-background-color: #f2f2f2;
+  --activity-list-padding: calc(var(--default-padding-large) * 1.5);
+  --activity-list-arrow-color: var(--cool-grey);
+  /* ActivityInvite */
+  --activity-invite-link-font-size: 24px;
+  --activity-invite-link-color: color(#000 alpha(90%));
+  /* ActivityProfile */
+  --activity-profile-padding: 25px;
+  --activity-profile-contact-font-color: var(--indigo);
+  --activity-profile-title-font-size: 26px;
+  /* Modals */
+  --modal-font-family: var(--default-font-family);
+  --modal-font-size: var(--default-font-size);
+  --modal-font-color: var(--default-font-color);
+  --modal-font-color-light: var(--default-font-color-light);
+  --modal-border-radius: var(--default-border-radius);
+  --modal-border-color: color(#000 alpha(20%));
+  --modal-min-width: 500px;
+  --modal-overlay-color: color(#000 alpha(45%));
+  --modal-close-size: 28px;
+  --modal-close-size-large: 32px;
+  --modal-close-color: color(#000 alpha(40%));
+  --modal-close-color-hover: color(#000 alpha(60%));
+  --modal-close-transition-duration: var(--default-transition-duration);
+  --modal-background-color: #fff;
+  --modal-fullscreen-background-color: #fff;
+  --modal-fullscreen-padding-top: 80px;
+  --modal-fullscreen-min-width: 800px;
+  --modal-fullscreen-min-height: 600px;
+  --modal-header-font-size: var(--default-font-size-large);
+  --modal-header-color: var(--default-font-color);
+  /* AddContactModal */
+  --modal-add-contact-width: 500px;
+  --modal-add-contact-heigth: 320px;
+  /* JoinModal */
+  --modal-join-width: 600px;
+  --modal-join-font-size: var(--default-font-size-large);
+  --modal-join-title-font-size: 34px;
+  --modal-join-padding-top: calc(var(--default-padding-large) * 3.5);
+  --modal-join-padding-right: calc(var(--default-padding-large) * 2.5);
+  --modal-join-padding-bottom: calc(var(--default-padding-large) * 3);
+  --modal-join-padding-left: calc(var(--default-padding-large) * 2.5);
+  /* AttachmentModal */
+  --modal-attachment-width: 500px;
+  --modal-attachment-font-size: var(--default-font-size);
+  --modal-attachment-text-color: var(--modal-font-color-light);
+  --modal-attachment-pagination-arrow-size: 28px;
+  --modal-attachment-pagination-arrow-color: var(--cool-grey);
+  --modal-attachment-pagination-arrow-hover-color: color(var(--cool-grey) shade(20%));
+  --modal-attachment-body-padding: calc(var(--default-padding) * 2);
+  --modal-attachment-preview-max-height: 200px;
+  --modal-attachment-meta-font-size: var(--default-font-size-small);
+  --modal-attachment-meta-heading-color: var(--violet-blue-two);
+  --modal-attachment-meta-heading-font-size: var(--modal-attachment-meta-font-size);
+  /* CreateNewModal */
+  --modal-create-new-width: 500px;
+  --modal-create-new-hint-color: var(--modal-font-color-light);
+  --modal-create-new-hint-font-size: var(--modal-font-size);
+  --modal-create-new-label-font-size: var(--default-font-size-large);
+  /* ProfileModal */
+  --modal-profile-width: 640px;
+  --modal-profile-form-width: 400px;
+  --modal-profile-hint-color: var(--modal-font-color-light);
+  /* PreferencesModal */
+  --modal-preferences-width: 740px;
+  --modal-preferences-height: 480px;
+  --modal-preferences-header-height: 60px;
+  --modal-preferences-hint-font-size: var(--default-font-size-small);
+  --modal-preferences-hint-color: var(--modal-font-color-light);
+  /* AddMembersModal */
+  --modal-member-add-width: 500px;
+  /* EditGroupModal */
+  --modal-group-edit-width: 600px;
+  /* Chat */
+  /* Messages */
   /* TODO: Cleanup this mess */
   --color-empty: #b8b8b8;
   --color-lblue: #59a2be;
@@ -47,4 +554,3 @@
   --color-pending: var(--color-info);
   --color-error: var(--color-danger);
 }
-

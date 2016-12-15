@@ -1,20 +1,8 @@
 /**
  * Copyright 2016 Dialog LLC <info@dlg.im>
  */
-@import '../../styles/variables.css';
 
-:root {
-  --emoji-list-font-family: var(--default-font-family);
-  --emoji-list-width: 346px;
-  --emoji-list-height: 280px;
-  --emoji-list-emoji-size: 26px;
-  --emoji-list-emoji-wrapper-padding: 5px;
-  --emoji-list-emoji-wrapper-background: color(var(--color-primary) alpha(10%));
-  --emoji-list-category-icon-color: var(--cool-grey-two);
-  --emoji-list-category-icon-hover-color: color(var(--emoji-list-category-icon-color) shade(20%));
-  --emoji-list-category-icon-active-color: var(--color-primary);
-  --emoji-list-category-icon-active-hover-color: color(var(--emoji-list-category-icon-active-color) alpha(80%));
-}
+@import '../../styles/variables.css';
 
 /* Reset */
 .container {
@@ -23,13 +11,13 @@
 
 /* Styles */
 .container {
-  font-family: var(--emoji-list-font-family);
+  display: flex;
   width: var(--emoji-list-width);
   height: var(--emoji-list-height);
-  background-color: color(#fff alpha(98%));
-  box-shadow: 0 1px 2px 0 color(#000 alpha(12%)), inset 0 0 0 1px color(#000 alpha(15%));
   border-radius: var(--default-border-radius);
-  display: flex;
+  background-color: var(--emoji-list-background-color);
+  box-shadow: 0 1px 2px 0 color(#000 alpha(12%)), inset 0 0 0 1px color(#000 alpha(15%));
+  font-family: var(--default-font-family);
   flex-flow: column;
   align-content: center;
   align-items: center;
@@ -48,13 +36,13 @@
 }
 
 .categoryTitle {
-  color: color(#000 alpha(50%));
+  padding: 8px var(--default-padding);
+  letter-spacing: -0.2px;
+  text-transform: uppercase;
   font-size: 14px;
   font-weight: 500;
   line-height: 1.6;
-  padding: 8px 16px;
-  letter-spacing: -0.2px;
-  text-transform: uppercase;
+  color: color(#000 alpha(50%));
   @apply --no-select;
 }
 
@@ -63,13 +51,13 @@
 }
 
 .emojiWrapper {
-  cursor: pointer;
-  padding: var(--emoji-list-emoji-wrapper-padding);
-  border-radius: 50%;
   display: inline-block;
   box-sizing: border-box;
+  padding: var(--emoji-list-emoji-wrapper-padding);
+  cursor: pointer;
   user-select: none;
   transition: background calc(var(--default-transition-duration) / 2) linear;
+  border-radius: 50%;
 
   &:hover {
     background-color: var(--emoji-list-emoji-wrapper-background);
@@ -77,27 +65,27 @@
 }
 
 .emoji {
-  font-size: var(--emoji-list-emoji-size);
-  line-height: var(--emoji-list-emoji-size);
   width: var(--emoji-list-emoji-size);
   height: var(--emoji-list-emoji-size);
+  font-size: var(--emoji-list-emoji-size);
+  line-height: var(--emoji-list-emoji-size);
 }
 
 .footer {
-  height: 46px;
-  width: 100%;
-  flex: 0 0 auto;
   position: relative;
-  padding: 0 11px;
   box-sizing: border-box;
+  width: 100%;
+  height: 46px;
+  padding: 0 11px;
+  flex: 0 0 auto;
 
   &:before {
-    content: '';
     position: absolute;
-    height: 20px;
-    width: 100%;
-    left: 0;
     top: -20px;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    content: '';
     pointer-events: none;
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, white 100%);
   }
@@ -105,23 +93,23 @@
 
 .footerTab {
   display: inline-flex;
+  margin-top: 7px;
   padding: 5px 7px;
   vertical-align: middle;
-  margin-top: 7px;
 }
 
 .footerTabIcon {
-  border-radius: 50%;
   width: 22px;
   height: 22px;
-  font-size: 24px;
   cursor: pointer;
+  transition-timing-function: ease-in-out;
+  transition-duration: var(--default-transition-duration);
+  transition-property: color, fill, stroke;
+  border-radius: 50%;
+  font-size: 24px;
   color: var(--emoji-list-category-icon-color);
   fill: var(--emoji-list-category-icon-color);
   stroke: var(--emoji-list-category-icon-color);
-  transition-property: color, fill, stroke;
-  transition-timing-function: ease-in-out;
-  transition-duration: var(--default-transition-duration);
 
   &:hover {
     color: var(--emoji-list-category-icon-hover-color);

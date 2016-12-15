@@ -1,10 +1,5 @@
 @import '../../styles/variables.css';
 
-:root {
-  --avatar-online-size: 8px;
-  --avatar-online-color: var(--leafy-green);
-}
-
 .container {
   position: relative;
   display: inline-flex;

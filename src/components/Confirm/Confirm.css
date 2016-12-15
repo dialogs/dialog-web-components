@@ -5,25 +5,26 @@
 @import '../../styles/variables.css';
 
 .container {
-  width: 400px;
+  width: var(--confirm-width);
   min-width: 0;
 }
 
 .body {
-  padding: var(--default-padding);
+  padding: var(--default-padding-large) var(--default-padding) var(--default-padding);
 }
 
 .question {
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 2;
   margin: 0;
   padding: 0;
+  text-align: center;
+  font-size: var(--confirm-font-size);
+  font-weight: 400;
+  line-height: var(--default-line-height-large);
 }
 
 .footer {
-  text-align: right;
-  padding: var(--default-padding);
+  padding: var(--default-padding) var(--default-padding) var(--default-padding-large);
+  text-align: center;
 }
 
 .button {

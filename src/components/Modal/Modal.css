@@ -4,37 +4,29 @@
 
 @import '../../styles/variables.css';
 
-:root {
-  --modal-min-width: 500px;
-  --modal-font-family: var(--default-font-family);
-  --modal-font-size: var(--default-font-size);
-  --modal-border-radius: var(--default-border-radius);
-  --modal-overlay-color: color(#000 alpha(45%));
-  --modal-close-color: color(#000 alpha(38%));
-  --modal-background-color: #fff;
-  --modal-fullscreen-background-color: #fff;
-  --modal-header-font-size: 18px;
-  --modal-header-color: #000;
-}
-
 :global {
   & .ReactModal__Body--open {
     overflow: hidden;
   }
 }
 
+/* Reset */
 .container {
   all: initial;
+}
+
+/* Styles */
+.container {
   display: flex;
   overflow: hidden;
   min-width: var(--modal-min-width);
+  margin: calc(var(--default-padding-large) * 3) 0;
   border-radius: var(--modal-border-radius);
   outline: none;
   background-color: var(--modal-background-color);
   box-shadow: 0 4px 10px 0 color(#000 alpha(25%));
   font-family: var(--modal-font-family);
   flex: 0 0 auto;
-  margin: 60px 0;
   @apply --flex-fix;
 }
 
@@ -46,12 +38,12 @@
   bottom: 0;
   left: 0;
   display: flex;
+  overflow-x: hidden;
+  overflow-y: scroll;
   flex-direction: column;
+  padding: calc(var(--default-padding) * 2);
   background-color: var(--modal-overlay-color);
   align-items: center;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  padding: calc(var(--default-padding) * 2);
 }
 
 .wrapper {
@@ -62,17 +54,21 @@
 }
 
 .close {
-  width: 28px;
-  height: 28px;
+  width: var(--modal-close-size);
+  height: var(--modal-close-size);
   cursor: pointer;
   user-select: none;
+  transition: color var(--modal-close-transition-duration) linear;
   line-height: inherit;
   color: var(--modal-close-color);
+
+  &:hover {
+    color: var(--modal-close-color-hover);
+  }
 }
 
 .header {
   position: relative;
-  display: block;
   display: flex;
   flex-direction: row;
   box-sizing: border-box;
@@ -83,7 +79,7 @@
   user-select: none;
   font-size: var(--modal-header-font-size);
   font-weight: 500;
-  line-height: 28px;
+  line-height: var(--modal-close-size);
   flex: 0 0 auto;
   color: var(--modal-header-color);
   justify-content: flex-start;
@@ -97,11 +93,11 @@
   }
 
   & .close {
-    line-height: 28px;
+    line-height: var(--modal-close-size);
   }
 
   &.border {
-    box-shadow: inset 0 -1px 0 0 color(#000 alpha(20%));
+    box-shadow: inset 0 -1px 0 0 var(--modal-border-color);
   }
 }
 
@@ -121,7 +117,7 @@
   flex: 0 1 auto;
 
   &.border {
-    box-shadow: inset 0 1px 0 0 color(#000 alpha(20%));
+    box-shadow: inset 0 1px 0 0 var(--modal-border-color);
   }
 }
 
@@ -135,12 +131,12 @@
   }
 
   & .close {
-    font-size: 32px;
+    font-size: var(--modal-close-size-large);
     line-height: 1;
   }
 
   & .header {
-    margin-top: 80px;
+    margin-top: var(--modal-fullscreen-padding-top);
     padding: var(--default-padding) 0;
     box-shadow: none;
     font-size: calc(var(--modal-header-font-size) * 2);
@@ -161,9 +157,9 @@
     & .wrapper {
       overflow: scroll;
       width: auto;
-      min-width: 600px;
-      max-width: 800px;
+      min-width: var(--modal-fullscreen-min-width);
       height: 100%;
+      max-height: var(--modal-fullscreen-min-height);
       margin: 0 auto;
       flex: 0 1 auto;
     }

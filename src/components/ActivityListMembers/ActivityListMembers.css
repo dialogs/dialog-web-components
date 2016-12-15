@@ -4,18 +4,10 @@
 
 @import '../../styles/variables.css';
 
-:root {
-  --activity-members-font-family: var(--default-font-family);
-  --activity-members-border-color: color(#000 alpha(10%));
-  --activity-members-header-arrow-color: var(--cool-grey);
-  --activity-members-title-font-size: 16px;
-  --activity-members-title-color: #000;
-}
-
 .container {
   display: flex;
   flex-direction: column;
-  font-family: var(--activity-members-font-family);
+  font-family: var(--activity-font-family);
 }
 
 .header {
@@ -32,7 +24,7 @@
 }
 
 .icon {
-  margin-right: 14px;
+  margin-right: var(--default-padding-small);
   cursor: inherit;
 }
 
@@ -42,8 +34,9 @@
 
 .arrow {
   cursor: inherit;
-  color: var(--activity-members-header-arrow-color) !important;
-  fill: var(--activity-members-header-arrow-color) !important;
+  color: var(--activity-list-arrow-color) !important;
+  stroke: var(--activity-list-arrow-color) !important;
+  fill: var(--activity-list-arrow-color) !important;
 }
 
 .members {
@@ -73,7 +66,7 @@
     left: 42px;
     height: 1px;
     content: '';
-    background-color: var(--activity-members-border-color);
+    background-color: var(--activity-border-color);
   }
 
   &:first-child {
@@ -85,20 +78,22 @@
 
 .addMember {
   composes: listItem;
+
   & .title,
   & .addMemberIcon {
-    /* I think --color-info might look better here */
     cursor: pointer;
     color: var(--color-primary);
+    stroke: var(--color-primary);
+    fill: var(--color-primary);
   }
 }
 
 .addMemberIcon {
-  font-size: 28px;
-  flex: 0 0 auto;
   width: 28px;
   height: 28px;
-  margin-right: 14px;
+  margin-right: var(--default-padding-small);
+  font-size: 28px;
+  flex: 0 0 auto;
 }
 
 .member {
@@ -106,9 +101,9 @@
 }
 
 .avatar {
-  margin-right: 14px;
-  flex: 0 0 auto;
+  margin-right: var(--default-padding-small);
   cursor: pointer;
+  flex: 0 0 auto;
 }
 
 .body {
@@ -118,19 +113,19 @@
 
 .title {
   display: inline-block;
-  letter-spacing: -0.4px;
-  font-size: var(--activity-members-title-font-size);
-  line-height: 22px;
-  color: var(--activity-members-title-color);
-  user-select: none;
   cursor: pointer;
+  user-select: none;
+  letter-spacing: -0.4px;
+  font-size: var(--activity-font-size);
+  line-height: 22px;
+  color: var(--activity-font-color);
 }
 
 .kickMember {
-  flex: 0 0 auto;
-  user-select: none;
-  font-size: 14px;
   cursor: pointer;
+  user-select: none;
+  font-size: var(--default-font-size-small);
+  flex: 0 0 auto;
   color: var(--color-primary);
 }
 

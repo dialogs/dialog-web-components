@@ -4,14 +4,10 @@
 
 @import '../../styles/variables.css';
 
-:root {
-  --edit-group-modal-font-family: var(--default-font-family);
-}
-
 /* Styles */
 .container {
-  font-family: var(--edit-group-modal-font-family);
-  width: 600px;
+  width: var(--modal-group-edit-width);
+  font-family: var(--modal-font-family);
 }
 
 .body {

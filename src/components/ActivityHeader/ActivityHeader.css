@@ -4,14 +4,6 @@
 
 @import '../../styles/variables.css';
 
-:root {
-  --activity-header-font-family: var(--default-font-family);
-  --activity-header-font-size: 18px;
-  --activity-header-height: 60px;
-  --activity-header-icon-color: color(#000 alpha(40%));
-  --activity-header-icon-hover-color: color(#000 alpha(60%));
-}
-
 /* Reset */
 .container {
   all: initial;
@@ -23,7 +15,7 @@
   display: flex;
   flex-direction: row;
   height: var(--activity-header-height);
-  font-family: var(--activity-header-font-family);
+  font-family: var(--activity-font-family);
   justify-content: center;
   align-content: center;
   align-items: center;
@@ -33,7 +25,7 @@
   padding: 0 40px;
   text-align: center;
   letter-spacing: -0.3px;
-  font-size: var(--activity-header-font-size);
+  font-size: var(--activity-font-size);
   font-weight: 500;
   line-height: 1.6;
   flex: 1 1 auto;
@@ -43,15 +35,15 @@
 .icon {
   position: absolute;
   top: 17px;
-  width: 26px;
-  height: 26px;
-  transition: color var(--default-transition-duration) ease-in-out;
-  font-size: 26px;
-  line-height: 26px;
+  width: var(--activity-header-icon-size);
+  height: var(--activity-header-icon-size);
+  transition: color var(--activity-header-transition-duration) linear;
+  font-size: var(--activity-header-icon-size);
+  line-height: var(--activity-header-icon-size);
   color: var(--activity-header-icon-color);
 
   &:hover {
-    color: var(--activity-header-icon-hover-color);
+    color: var(--activity-header-icon-color-hover);
   }
 }
 

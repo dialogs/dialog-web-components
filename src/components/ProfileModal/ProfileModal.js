@@ -100,12 +100,14 @@ class ProfileModal extends PureComponent {
 
   renderNick(): React.Element<any> {
     const { nick } = this.state;
+    const { l10n: { formatText } } = this.context;
 
     if (nick === null) {
       return (
         <div className={styles.nick}>
           <Button
             view="link"
+            theme="primary"
             className={styles.nickButton}
             onClick={this.handleNickChooserClick}
           >
@@ -127,6 +129,7 @@ class ProfileModal extends PureComponent {
         id="nick"
         name="nick"
         large
+        label={formatText('ProfileModal.nickname')}
         prefix="@"
         onChange={this.handleChange}
         value={nick}
@@ -189,7 +192,7 @@ class ProfileModal extends PureComponent {
                 large
                 id="name"
                 name="name"
-                placeholder={formatText('ProfileModal.name')}
+                label={formatText('ProfileModal.name')}
                 value={name}
                 onChange={this.handleChange}
               />

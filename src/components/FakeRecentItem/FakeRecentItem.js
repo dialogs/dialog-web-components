@@ -36,7 +36,7 @@ function FakeRecentItem() {
   }
 
   return (
-    <div className={styles.root}>
+    <div className={styles.container}>
       {renderAvatar()}
       {renderText()}
       {renderCounter()}
