@@ -13,15 +13,18 @@ const SPRITE_SIZE = 40;
 export type Props = {
   className?: string,
   char: string,
-  onClick: (emoji: string) => void
+  onClick?: (emoji: string) => void
 };
 
 class Emoji extends PureComponent {
   props: Props;
 
   handleClick = (): void => {
-    const emoji = getEmojiByChar(this.props.char);
-    this.props.onClick(emoji);
+    if (this.props.onClick) {
+      const emoji = getEmojiByChar(this.props.char);
+      // $FlowFixMe
+      this.props.onClick(emoji);
+    }
   };
 
   render(): ?React.Element<any> {
