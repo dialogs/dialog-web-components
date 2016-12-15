@@ -11,5 +11,6 @@ export default [
   { name: 'objects', glyph: 'emoji_party', chars: categories.objects },
   { name: 'travel', glyph: 'emoji_travel', chars: categories.places },
   { name: 'activity', glyph: 'emoji_activity', chars: categories.activity },
-  { name: 'symbols', glyph: 'emoji_objects', chars: [...categories.symbols, ...categories.flags] }
+  { name: 'symbols', glyph: 'emoji_symbols', chars: categories.symbols },
+  { name: 'flags', glyph: 'emoji_flags', chars: categories.flags }
 ];
