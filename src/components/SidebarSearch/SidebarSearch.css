@@ -31,10 +31,12 @@
   font-size: 15px;
   line-height: 18px;
   color: inherit;
+  box-shadow: inset 0 0 0 1px var(--sidebar-search-border-color);
+
 
   &:focus {
     background-color: var(--sidebar-search-focus-background-color);
-    box-shadow: inset 0 0 0 1px var(--pinkish-grey);
+    box-shadow: inset 0 0 0 1px var(--sidebar-search-border-color-focus);
     color: var(--sidebar-search-focus-color);
   }
 

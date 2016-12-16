@@ -26,6 +26,11 @@
   --default-border-radius-small: 3px;
   --default-border-radius: 5px;
   --default-transition-duration: 150ms;
+  /* Layout */
+  --layout-min-width: 1120px;
+  --layout-min-height: 450px;
+  --layout-sidebar-width: 270px;
+  --layout-activity-width: 320px;
   /* Layers */
   --z-index-dropdown: 100;
   --z-index-tooltip: var(--z-index-dropdown);
@@ -41,6 +46,8 @@
   --color-danger: var(--lipstick);
   --color-info: var(--dark-periwinkle);
   --color-warning: var(--orange-yellow);
+  --color-pending: var(--color-info);
+  --color-error: var(--color-danger);
   /* Gradients */
   --default-gradient: linear-gradient(89deg, var(--violet-blue), var(--vibrant-purple));
   /* Avatar */
@@ -66,6 +73,7 @@
   --avatar-online-color: var(--leafy-green);
   /* AvatarSelector */
   --avatar-selector-size: 100px;
+  --avatar-selector-icon-color: var(--violet-blue-two);
   /* Button */
   --button-border-radius: var(--default-border-radius);
   --button-border-radius-small: var(--default-border-radius-small);
@@ -78,7 +86,7 @@
   --button-line-height: 26px;
   --button-font-family: var(--default-font-family);
   --button-size-modifier: 0.25;
-  --button-default-background-color: var(--cool-grey);
+  --button-default-background-color: #e2e2e2;
   --button-default-hover-background-color: color(var(--button-default-background-color) tint(10%));
   --button-default-active-background-color: color(var(--button-default-background-color) shade(10%));
   --button-default-disabled-background-color: color(var(--button-default-background-color) blackness(50%) alpha(70%));
@@ -270,7 +278,7 @@
   --document-font-family: var(--default-font-family);
   --document-media-color: var(--sky-blue);
   --document-document-color: var(--orangey-red);
-  --document-picture-color: var(--color-green);
+  --document-picture-color: var(--lightish-green-two);
   --document-unknown-color: var(--pinkish-grey-two);
   --document-padding: 12px;
   --document-background-color: #fff;
@@ -372,6 +380,8 @@
   --sidebar-search-font-family: var(--default-font-family);
   --sidebar-search-padding: 12px;
   --sidebar-search-border-radius: 6px;
+  --sidebar-search-border-color: transparent;
+  --sidebar-search-border-color-focus: var(--pinkish-grey);
   --sidebar-search-background-color: var(--white-two);
   --sidebar-search-color: color(#000 alpha(50%));
   --sidebar-search-placeholder-color: color(#000 alpha(50%));
@@ -438,8 +448,9 @@
   --toolbar-call-button-size: 28px;
   --toolbar-info-button-size: 24px;
   --toolbar-info-button-color: color(#000 alpha(40%));
-  --toolbar-info-button-hover-color: color(#000 alpha(60%));
-  --toolbar-info-button-active-color: color(#000 alpha(70%));
+  --toolbar-info-button-color-hover: color(#000 alpha(60%));
+  --toolbar-info-button-color-active: color(#000 alpha(70%));
+  --toolbar-info-button-active-background-image: linear-gradient(-36deg, #7103cd 0%, #2c00b4 100%);
   /* Tooltip */
   --tooltip-font-family: var(--default-font-family);
   --tooltip-font-size: var(--default-font-size-small);
@@ -540,17 +551,4 @@
   --modal-member-add-width: 500px;
   /* EditGroupModal */
   --modal-group-edit-width: 600px;
-  /* Chat */
-  /* Messages */
-  /* TODO: Cleanup this mess */
-  --color-empty: #b8b8b8;
-  --color-lblue: #59a2be;
-  --color-blue: #2093cd;
-  --color-purple: #ad62a7;
-  --color-red: #f16364;
-  --color-orange: #f9a43e;
-  --color-yellow: #e4c62e;
-  --color-green: #67bf74;
-  --color-pending: var(--color-info);
-  --color-error: var(--color-danger);
 }
