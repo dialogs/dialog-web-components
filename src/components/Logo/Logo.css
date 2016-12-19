@@ -2,9 +2,10 @@
  * Copyright 2016 Dialog LLC <info@dlg.im>
  */
 
-.root {
+.container {
   all: initial;
   width: auto;
   height: auto;
   cursor: inherit;
+  display: block;
 }

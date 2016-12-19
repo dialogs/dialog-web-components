@@ -17,7 +17,7 @@ class Logo extends Component {
   }
 
   render() {
-    const className = classNames(styles.root, this.props.className);
+    const className = classNames(styles.container, this.props.className);
 
     return (
       <svg viewBox="0 0 360 360" className={className}>
