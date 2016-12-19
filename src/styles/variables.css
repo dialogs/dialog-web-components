@@ -5,6 +5,9 @@
 @import './colors.css';
 @import './helpers.css';
 
+@custom-media --small (width < 800px);
+@custom-media --medium (width < 1000px);
+
 :root {
   --font-apple: -apple-system, 'BlinkMacSystemFont';
   --font-fallback: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
