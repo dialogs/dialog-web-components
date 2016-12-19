@@ -4,8 +4,13 @@
 
 @import '../../styles/variables.css';
 
+/* Reset */
 .container {
   all: initial;
+}
+
+/* Styles */
+.container {
   display: flex;
   flex-direction: row;
   box-sizing: border-box;
@@ -92,7 +97,9 @@
   color: var(--recent-item-active-color);
 
   &:hover {
-    color: var(--recent-item-active-color);
+    color: var(--recent-item-active-hover-color);
+    background-color: var(--recent-item-active-hover-background-color);
+    background-image: var(--recent-item-active-hover-background-gradient);
   }
 }
 

@@ -353,6 +353,9 @@
   --recent-item-active-background-color: var(--violet-blue);
   --recent-item-active-background-gradient: var(--default-gradient);
   --recent-item-active-color: #fff;
+  --recent-item-active-hover-background-color: var(--recent-item-active-background-color);
+  --recent-item-active-hover-background-gradient: var(--recent-item-active-background-gradient);
+  --recent-item-active-hover-color: var(--recent-item-active-color);
   --recent-item-counter-background: var(--color-primary);
   --recent-item-counter-color: #fff;
   --recent-item-counter-size: 24px;
