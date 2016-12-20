@@ -9,6 +9,5 @@
   all: initial;
   display: block;
   box-sizing: border-box;
-  height: 100%;
   font-family: var(--default-font-family);
 }

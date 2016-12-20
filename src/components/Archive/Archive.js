@@ -5,6 +5,7 @@
 
 import type { Peer, ShortRecent } from '@dlghq/dialog-types';
 import React from 'react';
+import classNames from 'classnames';
 import ArchiveList from './ArchiveList';
 import styles from './Archive.css';
 
@@ -16,9 +17,10 @@ export type Props = {
 };
 
 function Archive(props: Props): React.Element<any> {
+  const className = classNames(styles.container, props.className);
   return (
     <ArchiveList
-      className={styles.container}
+      className={className}
       items={props.archive}
       pending={props.pending}
       onLoadMore={props.onLoadMore}
