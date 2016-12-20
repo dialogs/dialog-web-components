@@ -10,6 +10,7 @@ import ArchiveList from './ArchiveList';
 import styles from './Archive.css';
 
 export type Props = {
+  className?: string,
   pending: boolean,
   archive: ShortRecent[],
   onLoadMore: () => void,
