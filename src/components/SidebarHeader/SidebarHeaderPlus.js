@@ -32,10 +32,11 @@ class SidebarHeaderPlus extends PureComponent {
       attachment: 'top center',
       targetAttachment: 'bottom center',
       constraints: [{
-        to: 'window',
-        attachment: 'together'
+        to: 'scrollParent',
+        attachment: 'together',
+        pin: true
       }],
-      targetOffset: '10px 0'
+      targetOffset: '0 0'
     };
 
     return (
