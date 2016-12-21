@@ -118,6 +118,7 @@ export { default as Field } from './components/Field/Field';
 export { default as Image } from './components/Image/Image';
 export { default as Map } from './components/Map/Map';
 export { default as SelectList } from './components/SelectList/SelectList';
+export { default as Hover } from './components/Hover/Hover';
 
 // Emoji
 export { default as Emoji } from './components/Emoji/Emoji';
