@@ -9,6 +9,7 @@
 # Incorrect parsing
 .*/systemjs-builder/.*
 .*/findup/.*
+.*/stylelint/.*
 
 [include]
 ./node_modules/react
