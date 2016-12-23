@@ -474,13 +474,14 @@
   --typing-transition-duration: 100ms;
   /* Activity */
   --activity-font-family: var(--default-font-family);
-  --activity-font-size: var(--default-font-size-large);
+  --activity-font-size: var(--default-font-size);
   --activity-font-color: var(--default-font-color);
   --activity-text-color-light: var(--default-font-color-light);
   --activity-border-color: color(#000 alpha(10%));
   /* ActivityHeader */
   --activity-header-height: 60px;
   --activity-header-transition-duration: var(--default-transition-duration);
+  --activity-header-font-size: var(--default-font-size-large);
   --activity-header-icon-size: 26px;
   --activity-header-icon-color: color(#000 alpha(40%));
   --activity-header-icon-color-hover: color(#000 alpha(60%));

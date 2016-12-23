@@ -31,7 +31,7 @@ class Select extends Component {
   state: State;
   listener: ?{ remove(): void };
 
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
