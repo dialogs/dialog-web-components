@@ -107,7 +107,7 @@ class AuthForm extends PureComponent {
   renderCode() {
     const { id, step } = this.props;
 
-    if (step < CODE_REQUESTED) {
+    if (step < CODE_REQUESTED || step > CODE_SENT) {
       return null;
     }
 
