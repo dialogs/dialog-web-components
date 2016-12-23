@@ -100,10 +100,14 @@
   composes: listItem;
 }
 
-.avatar {
-  margin-right: var(--default-padding-small);
-  cursor: pointer;
+.avatarBlock {
+  padding-right: var(--default-padding-small);
   flex: 0 0 auto;
+  line-height: 0;
+}
+
+.avatar {
+  cursor: pointer;
 }
 
 .body {

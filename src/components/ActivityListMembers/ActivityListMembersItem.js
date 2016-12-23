@@ -49,12 +49,14 @@ class ActivityListMembersItem extends PureComponent {
 
     return (
       <div className={styles.member}>
-        <PeerAvatar
-          onClick={this.handleClick}
-          className={styles.avatar}
-          size="medium"
-          peer={member.peerInfo}
-        />
+        <div className={styles.avatarBlock}>
+          <PeerAvatar
+            onClick={this.handleClick}
+            className={styles.avatar}
+            size="medium"
+            peer={member.peerInfo}
+          />
+        </div>
         <div className={styles.body}>
           <div className={styles.title} onClick={this.handleClick}>{member.peerInfo.title}</div>
         </div>

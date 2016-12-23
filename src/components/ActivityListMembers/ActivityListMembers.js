@@ -27,7 +27,7 @@ export type State = {
 };
 
 class ActivityListMembers extends PureComponent {
-  props: Props ;
+  props: Props;
   state: State;
 
   constructor(props: Props) {
