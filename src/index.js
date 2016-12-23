@@ -24,6 +24,7 @@ export { default as AvatarSelector } from './components/AvatarSelector/AvatarSel
 export { default as Archive } from './components/Archive/Archive';
 export { default as Lightbox } from './components/Lightbox/Lightbox';
 export { default as Dragndrop } from './components/Dragndrop/Dragndrop';
+export { default as Select } from './components/Select/Select';
 
 // Toolbar
 export { default as Toolbar } from './components/Toolbar/Toolbar';

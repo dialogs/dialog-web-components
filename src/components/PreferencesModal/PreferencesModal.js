@@ -40,7 +40,7 @@ class PreferencesModal extends PureComponent {
       ...this.props.settings.value,
       ...settings
     });
-  }
+  };
 
   handleScreenChange = (value: PreferencesScreen): void => {
     this.props.onScreenChange(value);
@@ -61,7 +61,7 @@ class PreferencesModal extends PureComponent {
       default:
         // do nothing
     }
-  }
+  };
 
   isPending(): boolean {
     const { screen, settings, sessions, blocked } = this.props;
