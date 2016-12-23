@@ -34,6 +34,7 @@
 }
 
 .nickButton {
+  margin-top: 7px;
   display: inline-flex;
   flex-direction: row;
   padding: 6px 0;
@@ -45,7 +46,6 @@
 }
 
 .nickButtonIcon {
-  margin-top: 7px;
   margin-right: 6px;
   cursor: inherit !important;
   font-size: 22px;
