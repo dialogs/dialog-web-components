@@ -82,6 +82,8 @@ export { default as SidebarGroupTitle } from './components/SidebarGroup/SidebarG
 export { default as RecentItem } from './components/RecentItem/RecentItem';
 export { default as RecentGroup } from './components/RecentGroup/RecentGroup';
 export { default as FakeRecentItem } from './components/FakeRecentItem/FakeRecentItem';
+export { default as SidebarFooter } from './components/SidebarFooter/SidebarFooter';
+export { default as SidebarFooterButton } from './components/SidebarFooter/SidebarFooterButton';
 
 // Chat
 export { default as Message } from './components/Message/Message';

@@ -1,0 +1,71 @@
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+:root {
+  --sidebar-footer-font-family: var(--default-font-family);
+  --sidebar-footer-height: 54px;
+  --sidebar-footer-background: #fff;
+  --sidebar-footer-border-color: color(#000 alpha(14%));
+  --sidebar-footer-button-color: color(#000 alpha(38%));
+  --sidebar-footer-button-icon-size: 28px;
+  --sidebar-footer-button-color-hover: color(#000 alpha(50%));
+  --sidebar-footer-button-color-active: var(--color-primary);
+}
+
+/* Reset */
+.container {
+  all: initial;
+}
+
+/* Styles */
+.container {
+  display: flex;
+  font-family: var(--sidebar-footer-font-family);
+  height: var(--sidebar-footer-height);
+  background-color: var(--sidebar-footer-background);
+  box-shadow: inset 0 1px 0 0 var(--sidebar-footer-border-color), 1px 0 0 0 var(--sidebar-footer-border-color);
+  flex-flow: row;
+  align-content: stretch;
+  align-items: stretch;
+  justify-content: space-around;
+}
+
+.button {
+  flex: 1 1 auto;
+  @apply --flex-fix;
+  cursor: pointer;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    & .icon {
+      color: var(--sidebar-footer-button-color-hover);
+      fill: var(--sidebar-footer-button-color-hover);
+      stroke: var(--sidebar-footer-button-color-hover);
+    }
+  }
+}
+
+.active {
+  & .icon {
+    color: var(--sidebar-footer-button-color-active) !important;
+    fill: var(--sidebar-footer-button-color-active) !important;
+    stroke: var(--sidebar-footer-button-color-active) !important;
+  }
+}
+
+.icon {
+  flex: 0 0 auto;
+  height: var(--sidebar-footer-button-icon-size);
+  width: var(--sidebar-footer-button-icon-size);
+  font-size: var(--sidebar-footer-button-icon-size);
+  line-height: var(--sidebar-footer-button-icon-size);
+  color: var(--sidebar-footer-button-color);
+  fill: var(--sidebar-footer-button-color);
+  stroke: var(--sidebar-footer-button-color);
+}
