@@ -15,7 +15,7 @@ export type Props = {
   className?: string,
   // id: string,
   // name?: string,
-  value: ?Option,
+  value: Option,
   // placeholder: ?string,
   // disabled?: boolean,
   options: Option[],
