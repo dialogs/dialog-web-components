@@ -3,7 +3,7 @@
  * @flow
  */
 
-import type Option from './SelectOption';
+import type { Option } from './SelectOption';
 import React, { Component } from 'react';
 import classNames from 'classnames';
 import Icon from '../Icon/Icon';
@@ -15,11 +15,11 @@ export type Props = {
   className?: string,
   // id: string,
   // name?: string,
-  value: Option,
-  // placeholder: ?string,
+  value: string,
   // disabled?: boolean,
   options: Option[],
-  onChange: (value: Option) => any
+  placeholder: ?string,
+  onChange: (value: string) => any
 };
 
 export type State = {
@@ -43,7 +43,7 @@ class Select extends Component {
     this.removeListener();
   }
 
-  handleChange = (value: Option): void => {
+  handleChange = (value: string): void => {
     this.handleClose();
     this.props.onChange(value);
   };
@@ -56,6 +56,16 @@ class Select extends Component {
   handleClose = (): void => {
     this.removeListener();
     this.setState({ isOpen: false });
+  }
+
+  getLabel(): string {
+    for (const option of this.props.options) {
+      if (option.value === this.props.value) {
+        return option.title;
+      }
+    }
+
+    return this.props.placeholder || '';
   }
 
   setListener = (): void => {
@@ -74,8 +84,8 @@ class Select extends Component {
       return (
         <SelectOption
           option={option}
-          key={`option-${option.value}`}
-          active={this.props.value === option}
+          key={option.value}
+          active={this.props.value === option.value}
           onClick={this.handleChange}
         />
       );
@@ -96,7 +106,6 @@ class Select extends Component {
   }
 
   render(): React.Element<any> {
-    const { value: { title } } = this.props;
     const { isOpen } = this.state;
     const className = classNames(
       styles.container,
@@ -107,7 +116,9 @@ class Select extends Component {
     return (
       <div className={className}>
         <div className={styles.select} onClick={this.handleOpen}>
-          <div className={styles.value}>{title}</div>
+          <div className={styles.value}>
+            {this.getLabel()}
+          </div>
           <Icon glyph="arrow_drop_down" className={styles.arrow} />
         </div>
         {this.renderOptionsDropdown()}

@@ -3,37 +3,18 @@ Basic Select:
 ```
 const options = [
   {
-    value: 'ara', title: 'Arabic'
+    value: 'user', title: 'User'
   }, {
-    value: 'zho', title: 'Chinese'
-  }, {
-    value: 'eng', title: 'English'
-  }, {
-    value: 'fra', title: 'French'
-  }, {
-    value: 'deu', title: 'German'
-  }, {
-    value: 'jpn', title: 'Japanese'
-  }, {
-    value: 'kor', title: 'Korean'
-  }, {
-    value: 'rus', title: 'Russian'
-  }, {
-    value: 'spa', title: 'Spanish'
-  }, {
-    value: 'tur', title: 'Turkish'
-  }, {
-    value: 'ukr', title: 'Ukrainian'
+    value: 'group', title: 'Group'
   }
 ];
 
 initialState = {
-  value: options[0],
+  value: 'user',
   options: options
 };
 
 const handleChange = (value) => {
-  console.debug('handleChange', value);
   setState({ value });
 };
 
