@@ -433,6 +433,23 @@
   --switcher-label-font-family: var(--default-font-family);
   --switcher-label-font-size: 15px;
   --switcher-active-offset: calc(var(--switcher-width) - var(--switcher-dot-size) - ((var(--switcher-height) - var(--switcher-dot-size)) / 2)); /* stylelint-disable-line */
+  /* Select */
+  --select-font-family: var(--default-font-family);
+  --select-font-size: 15px;
+  --select-border-radius: var(--default-border-radius);
+  --select-horizontal-padding: 15px;
+  --select-height: 34px;
+  --select-min-width: 200px;
+  --select-options-z-index: var(--z-index-dropdown);
+  --select-color: #000;
+  --select-background-color: #fff;
+  --select-border-color: #ccc;
+  --select-option-color: var(--select-color);
+  --select-option-background-color: var(--select-background-color);
+  --select-option-color-hover: var(--select-option-color);
+  --select-option-background-color-hover: color(#000 alpha(10%));
+  --select-option-color-active: #fff;
+  --select-option-background-color-active: var(--color-primary);
   /* Tabs */
   --tabs-font-family: var(--default-font-family);
   --tabs-width: 220px;
