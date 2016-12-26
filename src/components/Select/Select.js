@@ -53,8 +53,12 @@ class Select extends PureComponent {
     });
   }
 
-  renderLabel() {
+  renderLabel(): ?React.Element<any> {
     const { id, label } = this.props;
+
+    if (!label) {
+      return null;
+    }
 
     return (
       <Text
@@ -68,7 +72,7 @@ class Select extends PureComponent {
   }
 
   render(): React.Element<any> {
-    const { id, name, disabled, label } = this.props;
+    const { id, name, disabled } = this.props;
     const className = classNames(styles.container, {
       [styles.disabled]: disabled
     }, this.props.className);
@@ -85,7 +89,6 @@ class Select extends PureComponent {
             defaultValue={this.props.value}
             onChange={this.handleChange}
           >
-            {/*{this.renderPlaceholder()}*/}
             {this.renderOptions()}
           </select>
           <Icon glyph="arrow_drop_down" className={styles.arrow} />
