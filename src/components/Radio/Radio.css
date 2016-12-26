@@ -55,7 +55,6 @@
 
 .radio {
   position: relative;
-  display: inline-block;
   display: inline-flex;
   flex-direction: row;
   width: var(--radio-size);
@@ -83,7 +82,7 @@
 }
 
 .label {
-  padding-left: 24px;
+  padding-left: var(--radio-label-padding);
   cursor: inherit;
   user-select: none;
   font-size: var(--radio-label-font-size);
@@ -93,3 +92,5 @@
     font-weight: 500;
   }
 }
+
+.labeled {}

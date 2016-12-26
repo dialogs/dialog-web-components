@@ -340,6 +340,7 @@
   --radio-inactive-color: #c0c0c0;
   --radio-active-color: var(--color-primary);
   --radio-label-font-size: 15px;
+  --radio-label-padding: var(--default-padding);
   /* RecentItem */
   --recent-item-default-top-padding: 9px;
   --recent-item-default-right-padding: 16px;
