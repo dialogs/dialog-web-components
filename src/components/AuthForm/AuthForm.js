@@ -148,13 +148,19 @@ class AuthForm extends PureComponent {
   }
 
   renderGender() {
-    const { isGenderEnabled, step } = this.props;
+    const { id, step, isGenderEnabled } = this.props;
     if (!isGenderEnabled || step < SIGNUP_STARTED) {
       return null;
     }
 
     return (
-      <GenderSelect value={this.props.value.gender} onChange={this.handleChange} />
+      <GenderSelect
+        name="gender"
+        id={`${id}_gender`}
+        label="AuthForm.gender"
+        value={this.props.value.gender}
+        onChange={this.handleChange}
+      />
     );
   }
 

@@ -3,16 +3,9 @@
  * @flow
  */
 
-import type { Option } from '../Select/types';
+import type { Props } from '../Select/types';
 import React, { PureComponent } from 'react';
 import Select from '../Select/Select';
-
-export type Props = {
-  className?: string,
-  value: string,
-  options: Option[],
-  onChange: (value: string) => any
-};
 
 class GenderSelect extends PureComponent {
   props: Props;
@@ -27,12 +20,7 @@ class GenderSelect extends PureComponent {
 
   render(): React.Element<any> {
     return (
-      <Select
-        className={this.props.className}
-        value={this.props.value}
-        options={this.props.options}
-        onChange={this.props.onChange}
-      />
+      <Select {...this.props} />
     );
   }
 }
