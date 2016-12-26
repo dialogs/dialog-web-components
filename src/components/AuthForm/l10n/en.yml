@@ -1,6 +1,7 @@
 login: Phone number or Email address
 code: Auth code
 name: Your name
+gender: Your gender
 wrong: Wrong?
 request_code: Request code
 check_code: Check code

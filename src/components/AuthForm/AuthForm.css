@@ -3,12 +3,7 @@
 .container {
 }
 
-.radioGroup {
-  display: flex;
-  flex-flow: row;
-}
-
-.radio {
-  flex: 1 1 auto;
-  @apply --flex-fix;
+.select {
+  width: 100%;
+  margin-bottom: var(--default-padding);
 }

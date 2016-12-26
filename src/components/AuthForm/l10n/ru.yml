@@ -1,6 +1,7 @@
 login: Номер телефона или Email адрес
 code: Код авторизации
 name: Ваше имя
+gender: Ваше пол
 wrong: Ошиблись?
 request_code: Запросить код
 check_code: Проверить код

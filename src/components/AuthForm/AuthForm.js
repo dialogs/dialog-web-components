@@ -155,6 +155,7 @@ class AuthForm extends PureComponent {
 
     return (
       <GenderSelect
+        className={styles.select}
         name="gender"
         id={`${id}_gender`}
         label="AuthForm.gender"
