@@ -6,15 +6,44 @@
 
 /* Reset */
 .container,
-.select {
+.select,
+.wrapper {
   all: initial;
 }
 
 /* Styles */
-.container {
+.wrapper {
   position: relative;
   display: inline-flex;
   min-width: var(--select-min-width);
+}
+
+.container {
+  display: inline-flex;
+  flex-flow: column;
+  align-items: flex-start;
+  align-content: center;
+  justify-content: center;
+  min-width: var(--select-min-width);
+
+  & .wrapper {
+    width: 100%;
+    flex: 1 1 auto;
+    @apply --flex-fix;
+  }
+}
+
+.label {
+  font-family: var(--select-font-family);
+  font-size: var(--select-label-font-size);
+  display: inline-block;
+  cursor: pointer;
+  user-select: none;
+  text-transform: uppercase;
+  font-weight: 500;
+  line-height: var(--select-line-height);
+  color: var(--select-label-color);
+  margin-bottom: calc(var(--default-padding-small) / 2);
 }
 
 .select {

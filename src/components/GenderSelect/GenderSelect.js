@@ -12,7 +12,7 @@ class GenderSelect extends PureComponent {
 
   static defaultProps = {
     options: [
-      { value: 'unknown', title: '' },
+      { value: 'unknown', title: 'GenderSelect.unknown' },
       { value: 'female', title: 'GenderSelect.female' },
       { value: 'male', title: 'GenderSelect.male' }
     ]

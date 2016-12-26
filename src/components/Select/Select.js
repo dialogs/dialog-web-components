@@ -21,24 +21,24 @@ class Select extends PureComponent {
     this.props.onChange(event.target.value, event);
   };
 
-  renderPlaceholder(): ?React.Element<any> {
-    const { placeholder } = this.props;
-
-    if (!placeholder) {
-      return null;
-    }
-
-    return (
-      <Text
-        key={placeholder}
-        tagName="option"
-        id={placeholder}
-        disabled
-        selected
-        style={{ display: 'none' }}
-      />
-    );
-  }
+  // renderPlaceholder(): ?React.Element<any> {
+  //   const { placeholder } = this.props;
+  //
+  //   if (!placeholder) {
+  //     return null;
+  //   }
+  //
+  //   return (
+  //     <Text
+  //       key={placeholder}
+  //       tagName="option"
+  //       id={placeholder}
+  //       disabled
+  //       selected="selected"
+  //       style={{ display: 'none' }}
+  //     />
+  //   );
+  // }
 
   renderOptions(): React.Element<any>[] {
     return this.props.options.map((option) => {
@@ -53,26 +53,43 @@ class Select extends PureComponent {
     });
   }
 
+  renderLabel() {
+    const { id, label } = this.props;
+
+    return (
+      <Text
+        value={label}
+        tagName="label"
+        htmlFor={id}
+        id={label}
+        className={styles.label}
+      />
+    );
+  }
+
   render(): React.Element<any> {
-    const { id, name, disabled } = this.props;
+    const { id, name, disabled, label } = this.props;
     const className = classNames(styles.container, {
       [styles.disabled]: disabled
     }, this.props.className);
 
     return (
       <div className={className}>
-        <select
-          className={styles.select}
-          id={id}
-          name={name}
-          disabled={disabled}
-          value={this.props.value}
-          onChange={this.handleChange}
-        >
-          {this.renderPlaceholder()}
-          {this.renderOptions()}
-        </select>
-        <Icon glyph="arrow_drop_down" className={styles.arrow} />
+        {this.renderLabel()}
+        <div className={styles.wrapper}>
+          <select
+            className={styles.select}
+            id={id}
+            name={name}
+            disabled={disabled}
+            defaultValue={this.props.value}
+            onChange={this.handleChange}
+          >
+            {/*{this.renderPlaceholder()}*/}
+            {this.renderOptions()}
+          </select>
+          <Icon glyph="arrow_drop_down" className={styles.arrow} />
+        </div>
       </div>
     );
   }

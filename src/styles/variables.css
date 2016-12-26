@@ -444,6 +444,9 @@
   --select-color: #000;
   --select-background-color: #fff;
   --select-border-color: #ccc;
+  --select-label-font-size: var(--input-label-font-size);
+  --select-line-height: var(--input-label-line-height);
+  --select-label-color: var(--input-label-color);
   /* Tabs */
   --tabs-font-family: var(--default-font-family);
   --tabs-width: 220px;

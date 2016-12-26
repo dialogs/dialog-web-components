@@ -138,7 +138,6 @@
   display: inline-block;
   cursor: pointer;
   user-select: none;
-  user-select: none;
   text-transform: uppercase;
   font-family: var(--input-font-family);
   font-size: var(--input-label-font-size);

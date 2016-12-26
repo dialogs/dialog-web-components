@@ -38,3 +38,25 @@ const handleChange = (value) => {
   />
 </div>
 ```
+
+Select with label
+
+```
+
+const options = [
+  {
+    value: 'user', title: 'User'
+  }, {
+    value: 'group', title: 'Group'
+  }
+];
+
+<Select
+  name="type"
+  label="Select type"
+  id="type"
+  onChange={console.debug}
+  value={''}
+  options={options}
+/>
+```
