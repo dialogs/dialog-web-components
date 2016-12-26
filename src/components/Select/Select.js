@@ -48,7 +48,6 @@ class Select extends PureComponent {
           key={option.value}
           tagName="option"
           id={option.title}
-          selected={option.value === this.props.value}
         />
       );
     });
@@ -67,6 +66,7 @@ class Select extends PureComponent {
           id={id}
           name={name}
           disabled={disabled}
+          value={this.props.value}
           onChange={this.handleChange}
         >
           {this.renderPlaceholder()}
