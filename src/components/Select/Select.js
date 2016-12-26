@@ -3,125 +3,76 @@
  * @flow
  */
 
-import type { Option } from './SelectOption';
-import React, { Component } from 'react';
+import type { Props } from './types';
+import React, { PureComponent } from 'react';
+import { Text, LocalizationContextType } from '@dlghq/react-l10n';
 import classNames from 'classnames';
 import Icon from '../Icon/Icon';
-import SelectOption from './SelectOption';
-import { listen } from '@dlghq/dialog-utils';
 import styles from './Select.css';
 
-export type Props = {
-  className?: string,
-  // id: string,
-  // name?: string,
-  value: string,
-  // disabled?: boolean,
-  options: Option[],
-  placeholder: ?string,
-  onChange: (value: string) => any
-};
-
-export type State = {
-  isOpen: boolean
-}
-
-class Select extends Component {
+class Select extends PureComponent {
   props: Props;
-  state: State;
-  listener: ?{ remove(): void };
 
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      isOpen: false
-    };
-  }
-
-  componentWillUnmount(): void {
-    this.removeListener();
-  }
-
-  handleChange = (value: string): void => {
-    this.handleClose();
-    this.props.onChange(value);
+  static contextTypes = {
+    l10n: LocalizationContextType
   };
 
-  handleOpen = (): void => {
-    this.setListener();
-    this.setState({ isOpen: true });
+  handleChange = (event: $FlowIssue): void => {
+    this.props.onChange(event.target.value, event);
   };
 
-  handleClose = (): void => {
-    this.removeListener();
-    this.setState({ isOpen: false });
-  }
+  renderPlaceholder(): ?React.Element<any> {
+    const { placeholder } = this.props;
 
-  getLabel(): string {
-    for (const option of this.props.options) {
-      if (option.value === this.props.value) {
-        return option.title;
-      }
+    if (!placeholder) {
+      return null;
     }
 
-    return this.props.placeholder || '';
+    return (
+      <Text
+        key={placeholder}
+        tagName="option"
+        id={placeholder}
+        disabled
+        selected
+        style={{ display: 'none' }}
+      />
+    );
   }
-
-  setListener = (): void => {
-    this.listener = listen(document, 'click', this.handleClose, { passive: true });
-  };
-
-  removeListener = (): void => {
-    if (this.listener) {
-      this.listener.remove();
-      this.listener = null;
-    }
-  };
 
   renderOptions(): React.Element<any>[] {
     return this.props.options.map((option) => {
       return (
-        <SelectOption
-          option={option}
+        <Text
+          value={option.value}
           key={option.value}
-          active={this.props.value === option.value}
-          onClick={this.handleChange}
+          tagName="option"
+          id={option.title}
+          selected={option.value === this.props.value}
         />
       );
     });
   }
 
-  renderOptionsDropdown(): ?React.Element<any> {
-    const { isOpen } = this.state;
-    if (!isOpen) {
-      return null;
-    }
-
-    return (
-      <div className={styles.options}>
-        {this.renderOptions()}
-      </div>
-    );
-  }
-
   render(): React.Element<any> {
-    const { isOpen } = this.state;
-    const className = classNames(
-      styles.container,
-      isOpen ? styles.opened : null,
-      this.props.className
-    );
+    const { id, name, disabled } = this.props;
+    const className = classNames(styles.container, {
+      [styles.disabled]: disabled
+    }, this.props.className);
 
     return (
       <div className={className}>
-        <div className={styles.select} onClick={this.handleOpen}>
-          <div className={styles.value}>
-            {this.getLabel()}
-          </div>
-          <Icon glyph="arrow_drop_down" className={styles.arrow} />
-        </div>
-        {this.renderOptionsDropdown()}
+        <select
+          className={styles.select}
+          id={id}
+          name={name}
+          disabled={disabled}
+          onChange={this.handleChange}
+        >
+          {this.renderPlaceholder()}
+          {this.renderOptions()}
+        </select>
+        <Icon glyph="arrow_drop_down" className={styles.arrow} />
       </div>
     );
   }

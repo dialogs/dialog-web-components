@@ -18,8 +18,20 @@ const handleChange = (value) => {
   setState({ value });
 };
 
-<div style={{height: 400}}>
+<div>
   <Select
+    name="type"
+    id="type"
+    onChange={handleChange}
+    value=""
+    placeholder="Hello"
+    options={state.options}
+  />
+  <br />
+  <Select
+    name="type2"
+    id="type2"
+    disabled
     onChange={handleChange}
     value={state.value}
     options={state.options}

@@ -1,0 +1,20 @@
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ * @flow
+ */
+
+export type Option = {
+  value: string,
+  title: string
+};
+
+export type Props = {
+  className?: string,
+  id: string,
+  name?: string,
+  value: string,
+  disabled?: boolean,
+  options: Option[],
+  placeholder: ?string,
+  onChange: (value: string) => any
+};
