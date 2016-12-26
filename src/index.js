@@ -49,6 +49,7 @@ export { default as Fieldset } from './components/Fieldset/Fieldset';
 
 // Plug & Play Forms
 export { default as AuthForm } from './components/AuthForm/AuthForm';
+export { default as GenderSelect } from './components/GenderSelect/GenderSelect';
 
 // Modals
 export { default as Modal } from './components/Modal/Modal';

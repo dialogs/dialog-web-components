@@ -14,7 +14,8 @@ class ExampleAuthForm extends Component {
     value: {
       login: '',
       code: '',
-      name: ''
+      name: '',
+      gender: 'unknown'
     }
   };
 

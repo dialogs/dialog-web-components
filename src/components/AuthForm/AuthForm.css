@@ -2,3 +2,13 @@
 
 .container {
 }
+
+.radioGroup {
+  display: flex;
+  flex-flow: row;
+}
+
+.radio {
+  flex: 1 1 auto;
+  @apply --flex-fix;
+}

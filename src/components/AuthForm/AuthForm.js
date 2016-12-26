@@ -7,6 +7,7 @@ import { Text } from '@dlghq/react-l10n';
 import classNames from 'classnames';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
+import GenderSelect from '../GenderSelect/GenderSelect';
 import {
   LOGIN_SENT, CODE_REQUESTED, CODE_SENT,
   SIGNUP_STARTED, NAME_SENT, AUTH_FINISHED
@@ -16,7 +17,8 @@ import styles from './AuthForm.css';
 export type AuthValue = {
   login: string,
   code: string,
-  name: string
+  name: string,
+  gender: string
 };
 
 export type Props = {
@@ -26,15 +28,16 @@ export type Props = {
   value: AuthValue,
   autoFocus?: boolean,
   onChange: (value: AuthValue) => any,
-  onSubmit: (value: AuthValue) => any
+  onSubmit: (value: AuthValue) => any,
+  isGenderEnabled: boolean
 };
-
 
 class AuthForm extends PureComponent {
   props: Props;
 
   static defaultProps = {
-    id: 'form_login'
+    id: 'form_login',
+    isGenderEnabled: true
   };
 
   constructor(props) {
@@ -144,6 +147,17 @@ class AuthForm extends PureComponent {
     );
   }
 
+  renderGender() {
+    const { isGenderEnabled, step } = this.props;
+    if (!isGenderEnabled || step < SIGNUP_STARTED) {
+      return null;
+    }
+
+    return (
+      <GenderSelect value={this.props.value.gender} onChange={this.handleChange} />
+    );
+  }
+
   render() {
     const { id } = this.props;
     const className = classNames(styles.container, this.props.className);
@@ -153,6 +167,7 @@ class AuthForm extends PureComponent {
         {this.renderLogin()}
         {this.renderCode()}
         {this.renderName()}
+        {this.renderGender()}
         <Button type="submit" theme="primary" loading={this.isLoading()} wide>
           {this.renderButtonText()}
         </Button>

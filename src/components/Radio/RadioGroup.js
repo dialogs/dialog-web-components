@@ -9,7 +9,8 @@ export type Props = {
   name: string,
   value: string,
   onChange: (value: string) => any,
-  children?: any
+  children?: any,
+  className?: string
 };
 
 export type Context = {
@@ -39,7 +40,7 @@ class RadioGroup extends PureComponent {
 
   render(): React.Element<any> {
     return (
-      <div>
+      <div className={this.props.className}>
         {this.props.children}
       </div>
     );
