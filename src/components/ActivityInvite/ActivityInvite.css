@@ -28,7 +28,7 @@
 .block {
   padding: var(--default-padding-large) calc(var(--default-padding-large) * 1.5);
   display: flex;
-  flex-flow: row;
+  flex-flow: column;
   align-content: center;
   align-items: center;
   justify-content: center;
