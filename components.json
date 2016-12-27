@@ -32,6 +32,7 @@
     "name": "Buttons",
     "components": [
       "Button",
+      "LinkButton",
       "IconButton"
     ]
   },

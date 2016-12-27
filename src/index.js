@@ -37,6 +37,7 @@ export { default as ToolbarFavouriteButton } from './components/ToolbarFavourite
 
 // Buttons
 export { default as Button } from './components/Button/Button';
+export { default as LinkButton } from './components/LinkButton/LinkButton';
 export { default as CopyButton } from './components/CopyButton/CopyButton';
 export { default as IconButton } from './components/IconButton/IconButton';
 
