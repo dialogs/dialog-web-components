@@ -4,9 +4,13 @@
 
 @import '../../styles/variables.css';
 
+
 .container {
   all: initial;
-  display: inline-block;
+}
+
+.container {
+  display: inline-flex;
   cursor: pointer;
   user-select: none;
   transition: all var(--default-transition-duration) ease;
@@ -14,6 +18,7 @@
   vertical-align: middle;
   border-radius: 50%;
   align-content: center;
+  align-items: center;
   justify-content: center;
 }
 

@@ -33,7 +33,8 @@
     "components": [
       "Button",
       "LinkButton",
-      "IconButton"
+      "IconButton",
+      "LinkIconButton"
     ]
   },
   {
