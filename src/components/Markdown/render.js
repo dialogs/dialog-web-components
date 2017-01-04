@@ -5,6 +5,7 @@
 
 import type { BlockToken, TextToken } from '@dlghq/markdown/src/types';
 import React from 'react';
+import Emoji from '../Emoji/Emoji';
 
 export function renderText(tokens: TextToken[]): React.Element<any>[] {
   const result = [];
@@ -18,6 +19,13 @@ export function renderText(tokens: TextToken[]): React.Element<any>[] {
           <a key={i} href={token.content} target="_blank" rel="noopener noreferrer">
             {token.content}
           </a>
+        );
+
+        break;
+
+      case 'emoji':
+        result.push(
+          <Emoji char={token.content} />
         );
 
         break;
