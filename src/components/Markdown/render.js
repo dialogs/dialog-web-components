@@ -7,6 +7,14 @@ import type { BlockToken, TextToken } from '@dlghq/markdown/src/types';
 import React from 'react';
 import Emoji from '../Emoji/Emoji';
 
+export function shrinkLink(link: string): string {
+  if (link.length <= 50) {
+    return link;
+  }
+
+  return link.slice(0, 30) + '…' + link.slice(link.length - 15);
+}
+
 export function renderText(tokens: TextToken[]): React.Element<any>[] {
   const result = [];
 
@@ -17,7 +25,7 @@ export function renderText(tokens: TextToken[]): React.Element<any>[] {
       case 'link':
         result.push(
           <a key={i} href={token.content} target="_blank" rel="noopener noreferrer">
-            {token.content}
+            {shrinkLink(token.content)}
           </a>
         );
 
