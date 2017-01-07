@@ -51,7 +51,7 @@ class PreferencesGeneral extends PureComponent {
 
   render() {
     const sendBy = this.props.settings.isSendByEnter ? 'enter' : 'shift_enter';
-    const isSoundEffectsEnabled = this.props.settings.isSoundEffectsEnabled;
+    const { isSoundEffectsEnabled } = this.props.settings;
 
     return (
       <div className={styles.screen}>
