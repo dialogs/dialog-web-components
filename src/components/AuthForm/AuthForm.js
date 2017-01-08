@@ -2,6 +2,7 @@
  * Copyright 2016 Dialog LLC <info@dlg.im>
  */
 
+import type { AuthError } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
 import { Text } from '@dlghq/react-l10n';
 import classNames from 'classnames';
@@ -26,6 +27,7 @@ export type Props = {
   className?: string,
   step: 1 | 2 | 3 | 4 | 5 | 6 | 7,
   value: AuthValue,
+  error: ?AuthError,
   autoFocus?: boolean,
   onChange: (value: AuthValue) => any,
   onSubmit: (value: AuthValue) => any,
@@ -70,6 +72,19 @@ class AuthForm extends PureComponent {
     }
   }
 
+  getInputState(): ?{ hint: string, status: 'error' } {
+    const { error } = this.props;
+
+    if (error) {
+      return {
+        hint: error.message,
+        status: 'error'
+      };
+    }
+
+    return null;
+  }
+
   renderButtonText() {
     const { step } = this.props;
     if (step < CODE_REQUESTED) {
@@ -96,6 +111,7 @@ class AuthForm extends PureComponent {
 
     return (
       <Input
+        {...this.getInputState()}
         name="login"
         id={`${id}_login`}
         label="AuthForm.login"
@@ -116,6 +132,7 @@ class AuthForm extends PureComponent {
 
     return (
       <Input
+        {...this.getInputState()}
         name="code"
         id={`${id}_code`}
         label="AuthForm.code"
@@ -136,6 +153,7 @@ class AuthForm extends PureComponent {
 
     return (
       <Input
+        {...this.getInputState()}
         name="name"
         id={`${id}_name`}
         label="AuthForm.name"
