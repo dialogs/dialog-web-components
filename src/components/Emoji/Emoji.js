@@ -60,9 +60,13 @@ class Emoji extends PureComponent {
     }
 
     return (
-      <span className={className} title={emoji.name} style={style}>
-        {emoji.char}
-      </span>
+      <span
+        className={className}
+        style={style}
+        title={emoji.name}
+        // eslint-disable-next-line
+        dangerouslySetInnerHTML={{ __html: emoji.char }}
+      />
     );
   }
 }
