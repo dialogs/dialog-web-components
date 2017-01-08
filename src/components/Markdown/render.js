@@ -33,7 +33,7 @@ export function renderText(tokens: TextToken[]): React.Element<any>[] {
 
       case 'emoji':
         result.push(
-          <Emoji char={token.content} />
+          <Emoji key={i} char={token.content} />
         );
 
         break;
