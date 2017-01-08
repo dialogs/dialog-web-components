@@ -8,18 +8,17 @@ import { getEmojiByChar } from '@dlghq/emoji';
 import styles from './EmojiList.css';
 
 export type Props = {
+  className?: string,
   char: string,
-  onClick?: (emoji: string) => void
+  onClick: (emoji: string) => void
 };
 
 class EmojiListItem extends PureComponent {
   props: Props;
 
   handleClick = (): void => {
-    if (this.props.onClick) {
-      const emoji = getEmojiByChar(this.props.char);
-      this.props.onClick(emoji);
-    }
+    const emoji = getEmojiByChar(this.props.char);
+    this.props.onClick(emoji);
   };
 
   render(): ?React.Element<any> {
