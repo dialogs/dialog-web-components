@@ -24,6 +24,6 @@
   font-family: var(--emoji-font-family);
   font-size: var(--emoji-font-size);
   font-weight: normal;
-  line-height: var(--emoji-font-size);
+  line-height: var(--emoji-line-height);
   text-size-adjust: 100%;
 }

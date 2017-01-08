@@ -176,6 +176,7 @@
   /* Enoji */
   --emoji-size: 32px;
   --emoji-font-size: 20px;
+  --emoji-line-height: 16px;
   --emoji-font-family: var(--font-emoji);
   /* EmojiList */
   --emoji-list-width: 346px;
