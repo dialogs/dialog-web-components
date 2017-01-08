@@ -175,12 +175,14 @@
   --dropdown-transition-duration: var(--default-transition-duration);
   /* Enoji */
   --emoji-size: 32px;
-  --emoji-font-size: 24px;
+  --emoji-font-size: 20px;
   --emoji-font-family: var(--font-emoji);
   /* EmojiList */
   --emoji-list-width: 346px;
   --emoji-list-height: 280px;
   --emoji-list-background-color: color(#fff alpha(98%));
+  --emoji-list-emoji-font-size: 26px;
+  --emoji-list-emoji-line-height: 30px;
   --emoji-list-emoji-size: 26px;
   --emoji-list-emoji-wrapper-padding: 5px;
   --emoji-list-emoji-wrapper-background: color(var(--color-primary) alpha(10%));

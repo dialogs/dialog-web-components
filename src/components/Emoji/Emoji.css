@@ -19,14 +19,8 @@
 }
 
 .char {
-  display: inline-block;
-  box-sizing: border-box;
-  width: var(--emoji-font-size);
-  height: var(--emoji-font-size);
-  padding-top: 2px;
   text-align: center;
   vertical-align: middle;
-  word-wrap: break-word;
   font-family: var(--emoji-font-family);
   font-size: var(--emoji-font-size);
   font-weight: normal;

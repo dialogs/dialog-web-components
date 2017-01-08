@@ -65,10 +65,11 @@
 }
 
 .emoji {
+  display: inline-block;
   width: var(--emoji-list-emoji-size);
   height: var(--emoji-list-emoji-size);
-  font-size: var(--emoji-list-emoji-size);
-  line-height: var(--emoji-list-emoji-size);
+  font-size: var(--emoji-list-emoji-font-size);
+  line-height: var(--emoji-list-emoji-line-height);
 }
 
 .footer {

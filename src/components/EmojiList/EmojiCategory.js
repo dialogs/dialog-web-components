@@ -5,7 +5,7 @@
 
 import React, { PureComponent } from 'react';
 import styles from './EmojiList.css';
-import Emoji from '../Emoji/Emoji';
+import EmojiListItem from './EmojiListItem';
 
 type Props = {
   name: string,
@@ -19,12 +19,12 @@ class EmojiCategory extends PureComponent {
   render(): React.Element<any> {
     const children = this.props.chars.map((char) => {
       return (
-        <div key={char} className={styles.emojiWrapper} onClick={this.props.onClick}>
-          <Emoji
-            className={styles.emoji}
-            char={char}
-          />
-        </div>
+        <EmojiListItem
+          key={char}
+          char={char}
+          className={styles.emojiWrapper}
+          onClick={this.props.onClick}
+        />
       );
     });
 
