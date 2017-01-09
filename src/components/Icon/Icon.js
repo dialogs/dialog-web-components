@@ -112,7 +112,7 @@ class Icon extends PureComponent {
         return (
           <svg viewBox="0 0 32 32" className={styles.svg}>
             <g
-              transform="translate(15.742962, 15.670769) rotate(-4.000000) translate(-15.742962, -15.670769) translate(5.742962, 4.670769) scale(1.1)"
+              transform="translate(15.742962, 15.670769) rotate(-4.000000) translate(-15.742962, -15.670769) translate(5.742962, 4.670769) scale(1.075)"
               strokeWidth="2"
               className={styles.svgStroke}
             >
