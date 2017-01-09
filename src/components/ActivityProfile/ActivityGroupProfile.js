@@ -8,6 +8,7 @@ import React, { PureComponent } from 'react';
 import { Text } from '@dlghq/react-l10n';
 import classNames from 'classnames';
 import PeerAvatar from '../PeerAvatar/PeerAvatar';
+import Markdown from '../Markdown/Markdown';
 import styles from './ActivityProfile.css';
 
 class ActivityGroupProfile extends PureComponent {
@@ -66,7 +67,9 @@ class ActivityGroupProfile extends PureComponent {
     }
 
     return (
-      <div className={styles.about}>{about}</div>
+      <div className={styles.about}>
+        <Markdown text={about} />
+      </div>
     );
   }
 

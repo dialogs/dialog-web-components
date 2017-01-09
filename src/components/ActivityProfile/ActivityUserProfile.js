@@ -8,6 +8,7 @@ import React, { Component } from 'react';
 import { Text } from '@dlghq/react-l10n';
 import classNames from 'classnames';
 import PeerAvatar from '../PeerAvatar/PeerAvatar';
+import Markdown from '../Markdown/Markdown';
 import styles from './ActivityProfile.css';
 
 class ActivityUserProfile extends Component {
@@ -80,7 +81,9 @@ class ActivityUserProfile extends Component {
     }
 
     return (
-      <div className={styles.about}>{about}</div>
+      <div className={styles.about}>
+        <Markdown text={about} />
+      </div>
     );
   }
 
