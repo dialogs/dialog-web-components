@@ -4,7 +4,7 @@
  */
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
-import { getEmojiByChar } from '@dlghq/emoji';
+import { getEmojiByChar, shouldUseImage } from '@dlghq/emoji';
 import emojiImage from '@dlghq/emoji/dist/apple.png';
 import styles from './Emoji.css';
 
@@ -25,7 +25,7 @@ class Emoji extends PureComponent {
       return null;
     }
 
-    if (emoji.useImage) {
+    if (shouldUseImage(emoji.char)) {
       const className = classNames(styles.image, this.props.className);
 
       let style = {
