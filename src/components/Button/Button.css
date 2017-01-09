@@ -53,12 +53,12 @@
   &:hover:enabled,
   &:focus:enabled {
     background-color: var(--button-default-hover-background-color);
-    box-shadow: 0 2px 4px color(#000 alpha(25%));
+    box-shadow: var(--button-default-box-shadow);
   }
 
   &:active:enabled {
     background-color: var(--button-default-active-background-color);
-    box-shadow: 0 2px 1px color(#000 alpha(25%));
+    box-shadow: var(--button-default-box-shadow-active);
   }
 
   &[disabled] {
@@ -73,12 +73,12 @@
   &:hover:enabled,
   &:focus:enabled {
     background-color: var(--button-primary-hover-background-color);
-    box-shadow: 0 2px 4px color(#000 alpha(25%));
+    box-shadow: var(--button-default-box-shadow);
   }
 
   &:active:enabled {
     background-color: var(--button-primary-active-background-color);
-    box-shadow: 0 2px 1px color(#000 alpha(25%));
+    box-shadow: var(--button-default-box-shadow-active);
   }
 
   &[disabled] {
@@ -93,12 +93,12 @@
   &:hover:enabled,
   &:focus:enabled {
     background-color: var(--button-success-hover-background-color);
-    box-shadow: 0 2px 4px color(#000 alpha(25%));
+    box-shadow: var(--button-default-box-shadow);
   }
 
   &:active:enabled {
     background-color: var(--button-success-active-background-color);
-    box-shadow: 0 2px 1px color(#000 alpha(25%));
+    box-shadow: var(--button-default-box-shadow-active);
   }
 
   &[disabled] {
@@ -113,12 +113,12 @@
   &:hover:enabled,
   &:focus:enabled {
     background-color: var(--button-danger-hover-background-color);
-    box-shadow: 0 2px 4px color(#000 alpha(25%));
+    box-shadow: var(--button-default-box-shadow);
   }
 
   &:active:enabled {
     background-color: var(--button-danger-active-background-color);
-    box-shadow: 0 2px 1px color(#000 alpha(25%));
+    box-shadow: var(--button-default-box-shadow-active);
   }
 
   &[disabled] {
@@ -133,12 +133,12 @@
   &:hover:enabled,
   &:focus:enabled {
     background-color: var(--button-info-hover-background-color);
-    box-shadow: 0 2px 4px color(#000 alpha(25%));
+    box-shadow: var(--button-default-box-shadow);
   }
 
   &:active:enabled {
     background-color: var(--button-info-active-background-color);
-    box-shadow: 0 2px 1px color(#000 alpha(25%));
+    box-shadow: var(--button-default-box-shadow-active);
   }
 
   &[disabled] {
@@ -153,12 +153,12 @@
   &:hover:enabled,
   &:focus:enabled {
     background-color: var(--button-warning-hover-background-color);
-    box-shadow: 0 2px 4px color(#000 alpha(25%));
+    box-shadow: var(--button-default-box-shadow);
   }
 
   &:active:enabled {
     background-color: var(--button-warning-active-background-color);
-    box-shadow: 0 2px 1px color(#000 alpha(25%));
+    box-shadow: var(--button-default-box-shadow-active);
   }
 
   &[disabled] {
@@ -168,7 +168,7 @@
 
 /* View */
 .button {
-  text-shadow: 0 1px 2px color(#000 alpha(20%));
+  text-shadow: var(--button-default-text-shadow);
 }
 
 .link {

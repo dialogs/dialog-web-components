@@ -91,6 +91,9 @@
   --button-font-family: var(--default-font-family);
   --button-size-modifier: 0.25;
   --button-default-background-color: #e2e2e2;
+  --button-default-text-shadow: 0 1px 2px color(#000 alpha(20%));
+  --button-default-box-shadow: 0 2px 1px color(#000 alpha(25%));
+  --button-default-box-shadow-active: 0 2px 1px color(#000 alpha(25%));
   --button-default-hover-background-color: color(var(--button-default-background-color) tint(10%));
   --button-default-active-background-color: color(var(--button-default-background-color) shade(10%));
   --button-default-disabled-background-color: color(var(--button-default-background-color) blackness(50%) alpha(70%));
