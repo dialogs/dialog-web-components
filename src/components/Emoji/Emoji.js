@@ -12,7 +12,8 @@ const SPRITE_SIZE = 40;
 
 export type Props = {
   className?: string,
-  char: string
+  char: string,
+  size?: number
 };
 
 class Emoji extends PureComponent {
@@ -27,11 +28,19 @@ class Emoji extends PureComponent {
     if (emoji.useImage) {
       const className = classNames(styles.image, this.props.className);
 
-      const style = {
+      let style = {
         backgroundImage: `url(${emojiImage})`,
         backgroundPosition: `${(100 / SPRITE_SIZE) * emoji.x}% ${(100 / SPRITE_SIZE) * emoji.y}%`,
         backgroundSize: `${SPRITE_SIZE * 100}%`
       };
+
+      if (this.props.size) {
+        style = {
+          ...style,
+          width: this.props.size,
+          height: this.props.size
+        };
+      }
 
       return (
         <span className={className} style={style} title={emoji.name}>
@@ -42,8 +51,16 @@ class Emoji extends PureComponent {
 
     const className = classNames(styles.char, this.props.className);
 
+    let style = {};
+    if (this.props.size) {
+      style = {
+        fontSize: this.props.size,
+        lineHeight: 1
+      };
+    }
+
     return (
-      <span className={className} title={emoji.name}>
+      <span className={className} title={emoji.name} style={style}>
         {emoji.char}
       </span>
     );

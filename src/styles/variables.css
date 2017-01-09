@@ -177,7 +177,7 @@
   --dropdown-header-color: var(--default-font-color-light);
   --dropdown-transition-duration: var(--default-transition-duration);
   /* Enoji */
-  --emoji-size: 32px;
+  --emoji-size: 20px;
   --emoji-font-size: 20px;
   --emoji-line-height: 16px;
   --emoji-font-family: var(--font-emoji);
