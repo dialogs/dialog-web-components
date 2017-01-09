@@ -21,6 +21,7 @@
 .char {
   text-align: center;
   vertical-align: middle;
+  word-break: normal;
   font-family: var(--emoji-font-family);
   font-size: var(--emoji-font-size);
   font-weight: normal;
