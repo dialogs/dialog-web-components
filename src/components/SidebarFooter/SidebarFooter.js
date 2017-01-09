@@ -9,7 +9,7 @@ import styles from './SidebarFooter.css';
 
 export type Props = {
   className?: string,
-  renderButtons: () => React.Element<any>
+  children: any
 };
 
 class SidebarFooter extends PureComponent {
@@ -20,7 +20,7 @@ class SidebarFooter extends PureComponent {
 
     return (
       <div className={className}>
-        {this.props.renderButtons()}
+        {this.props.children}
       </div>
     );
   }

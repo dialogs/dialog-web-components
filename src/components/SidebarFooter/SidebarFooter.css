@@ -26,7 +26,7 @@
   font-family: var(--sidebar-footer-font-family);
   height: var(--sidebar-footer-height);
   background-color: var(--sidebar-footer-background);
-  box-shadow: inset 0 1px 0 0 var(--sidebar-footer-border-color), 1px 0 0 0 var(--sidebar-footer-border-color);
+  box-shadow: inset 0 1px 0 0 var(--sidebar-footer-border-color);
   flex-flow: row;
   align-content: stretch;
   align-items: stretch;
