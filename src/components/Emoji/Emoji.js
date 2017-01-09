@@ -54,7 +54,7 @@ class Emoji extends PureComponent {
     let style = {};
     if (this.props.size) {
       style = {
-        fontSize: this.props.size,
+        fontSize: this.props.size + 'px',
         lineHeight: 1
       };
     }

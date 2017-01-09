@@ -75,7 +75,7 @@ const voiceContent = {
   fileExtension: 'opus',
   fileName: 'voice.opus',
   fileSize: '30 KB',
-  fileUrl: 'https://storage.googleapis.com/prod-dlg-storage/dc20c3ad73d18a2931a0b353b39579f1577bce12%2Fvoice.opus?GoogleAccessId=devops@dialog-1320.iam.gserviceaccount.com&Expires=1475537982&Signature=eeSwVhn8Vp0%2FGEzItXJAzpETtdkPvGUve6pAjjyNDuesf01zoPoDqoESR0dhTE%2BygNvJibbk9RmqyhlDpqW%2Bs3WJu7PzIoovVoI2D0YMwoHByrdZXUI7kMiNzyoy6CCM6%2BligD6RWmtpsEDW5pihnZQrSwEd3hkvwuYpq2PME%2B%2B26vc4y3mUKnxoOx5UBKrSjfHVtogs0lTPCTqIvfceiFxnryab7bUefvXXcpXiQnO46VVk%2FBnqrOJLrbXNG%2Bt5nesypxQGteoqq3lKRF2fuKDpxSsBEXrG75oPBVLDf3VhMIFteYpic75gyqvRhdLHgQpynhsZM%2BvZMs9kRcMVvw%3D%3D',
+  fileUrl: 'http://www.html5tutorial.info/media/vincent.mp3',
   isUploading: false,
   transcription: state.transcription,
   isTranscriptionEnabled: true
