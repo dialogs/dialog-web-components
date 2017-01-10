@@ -6,6 +6,7 @@
 
 .container {
   font-family: var(--default-font-family);
+  line-height: 20px;
 }
 
 .pre {
@@ -77,5 +78,5 @@
   display: inline-block;
   padding: 0 2px;
   border-radius: 2px;
-  background-color: color(var(--color-warning) alpha(20%));
+  background-color: color(var(--color-primary) alpha(15%));
 }
