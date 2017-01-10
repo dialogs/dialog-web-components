@@ -20,6 +20,16 @@
   align-content: center;
   align-items: center;
   justify-content: center;
+  flex-flow: row;
+
+  /* fix fow safari  */
+  /* based on http://stackoverflow.com/a/40483475/1661138 */
+  &::before,
+  &::after {
+    content: '';
+    flex: 1 1 auto;
+    @apply --flex-fix;
+  }
 }
 
 .icon {
