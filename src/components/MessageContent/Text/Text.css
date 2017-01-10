@@ -4,35 +4,6 @@
 
 @import '../../../styles/variables.css';
 
-:global {
-  & .code {
-    padding: 2px 4px;
-    border-radius: var(--default-border-radius-small);
-    background-color: color(#000 alpha(5%));
-    box-shadow: inset 0 1px 1px 0 color(#000 alpha(10%));
-    font-size: 14px;
-  }
-
-  & .italic {
-    font-style: italic;
-  }
-
-  & .bold {
-    font-weight: 500;
-  }
-
-  & .mention {
-    display: inline-block;
-    padding: 0 2px;
-    border-radius: 2px;
-    background-color: color(var(--color-warning) alpha(20%));
-  }
-
-  & .strike {
-    text-decoration: line-through;
-  }
-}
-
 .container {
   all: initial;
   display: inline-block;
@@ -43,92 +14,6 @@
   font-size: var(--message-text-font-size);
   line-height: 1.3;
   color: var(--message-text-color);
-
-  & p {
-    margin: var(--message-text-padding) 0;
-    word-break: break-word;
-  }
-
-  p > code {
-    padding: 2px 4px;
-    border-radius: var(--default-border-radius-small);
-    background-color: color(#000 alpha(5%));
-    box-shadow: inset 0 1px 1px 0 color(#000 alpha(10%));
-    font-size: 14px;
-  }
-
-  & blockquote {
-    margin: calc(var(--message-text-padding) + 2) 0;
-    padding: 4px 12px;
-    box-shadow: inset 3px 0 0 0 var(--color-info);
-  }
-
-  & strong {
-    font-weight: 500;
-  }
-
-  & code {
-    font-family: var(--code-font-family);
-  }
-
-  & pre {
-    overflow: auto;
-    margin: var(--message-text-padding) calc(0 - var(--message-text-padding));
-    padding: var(--message-text-padding);
-    white-space: pre;
-    word-wrap: normal;
-    border-radius: var(--default-border-radius);
-    background-color: color(#000 alpha(5%));
-    box-shadow: inset 0 1px 1px 0 color(#000 alpha(10%));
-    font-size: 12px;
-  }
-
-  & h1,
-  & h2,
-  & h3,
-  & h4,
-  & h5,
-  & h6 {
-    margin: var(--message-text-padding) 0;
-    font-weight: 500;
-    line-height: 1.4;
-  }
-
-  & ul,
-  & ol {
-    margin: var(--message-text-padding) 0;
-    padding: 0 0 0 16px;
-  }
-
-  & ul,
-  & ol,
-  & h1,
-  & h2,
-  & h3,
-  & h4,
-  & h5,
-  & h6,
-  & p,
-  & blockquote,
-  & pre {
-    &:first-child {
-      margin-top: 0;
-    }
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-
-  & a {
-    text-decoration: none;
-    border-bottom: 1px dotted var(--color-info);
-    color: var(--color-info);
-
-    &:hover {
-      border-bottom: 1px solid var(--color-info);
-    }
-  }
 }
 
 .wrapper {

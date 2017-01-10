@@ -1,41 +1,29 @@
 Text:
 
 ```
-const textContent = {
+const content = {
   type: 'text',
-  text: 'Hello, world!'
+  text: 'Hello, world :+1:'
 };
 
-<MessageContent content={textContent} />
-```
-
-Markdown Text:
-
-```
-const text = require("raw!./Text/markdown.md");
-const markdownText = {
-  type: 'text',
-  text: text
-};
-
-<MessageContent content={markdownText} />
+<MessageContent content={content} />
 ```
 
 Service:
 
 ```
-const serviceContent = {
+const content = {
   type: 'service',
   text: 'Octocat joined group!'
 };
 
-<MessageContent content={serviceContent} />
+<MessageContent content={content} />
 ```
 
 Photo:
 
 ```
-const photoContent = {
+const content = {
   type: 'photo',
   fileUrl: 'http://www.snapsbox.com/images/2015/12/15/outer_space_stars_galaxies_nasa_hubble_1920x1080_15173.jpg',
   fileName: 'outer_space_stars_galaxies_nasa_hubble_1920x1080_15173.jpg',
@@ -44,13 +32,13 @@ const photoContent = {
   height: 1080
 };
 
-<MessageContent content={photoContent} />
+<MessageContent content={content} />
 ```
 
 Document:
 
 ```
-const documentContent = {
+const content = {
   type: 'document',
   preview: '',
   fileName: 'Dialog.dmg',
@@ -59,7 +47,7 @@ const documentContent = {
 };
 
 
-<MessageContent content={documentContent} />
+<MessageContent content={content} />
 ```
 
 Voice:
@@ -68,7 +56,7 @@ Voice:
 const initialState = {
   transcription: null
 };
-const voiceContent = {
+const content = {
   content: 'voice',
   type: 'voice',
   duration: 4920,
@@ -86,5 +74,5 @@ const onGetTranscription = () => {
   }, 1000);
 };
 
-<MessageContent content={voiceContent} getTranscription={onGetTranscription} />
+<MessageContent content={content} getTranscription={onGetTranscription} />
 ```

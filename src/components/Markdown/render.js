@@ -6,6 +6,7 @@
 import type { BlockToken, TextToken } from '@dlghq/markdown/src/types';
 import React from 'react';
 import Emoji from '../Emoji/Emoji';
+import styles from './Markdown.css';
 
 export function shrinkLink(link: string): string {
   if (link.length <= 50) {
@@ -24,7 +25,13 @@ export function renderText(tokens: TextToken[]): React.Element<any>[] {
     switch (token.highlight) {
       case 'link':
         result.push(
-          <a key={i} href={token.content} target="_blank" rel="noopener noreferrer">
+          <a
+            key={i}
+            className={styles.link}
+            href={token.content}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             {shrinkLink(token.content)}
           </a>
         );
@@ -38,14 +45,17 @@ export function renderText(tokens: TextToken[]): React.Element<any>[] {
 
         break;
 
-      default:
+      default: {
+        const className = token.highlight ? styles[token.highlight] : null;
+
         result.push(
-          <span key={i} className={token.highlight}>
+          <span key={i} className={className}>
             {token.content}
           </span>
         );
 
         break;
+      }
     }
   }
 
@@ -62,7 +72,7 @@ export function renderBlocks(tokens: BlockToken[]): React.Element<any>[] {
       case 'paragraph':
         if (token.content.length) {
           result.push(
-            <p key={i}>
+            <p key={i} className={styles.paragraph}>
               {renderText(token.content)}
             </p>
           );
@@ -74,7 +84,7 @@ export function renderBlocks(tokens: BlockToken[]): React.Element<any>[] {
 
       case 'code_block':
         result.push(
-          <pre key={i}>
+          <pre key={i} className={styles.pre}>
             <code>{token.content}</code>
           </pre>
         );
@@ -83,7 +93,7 @@ export function renderBlocks(tokens: BlockToken[]): React.Element<any>[] {
 
       case 'blockquote':
         result.push(
-          <blockquote key={i}>
+          <blockquote key={i} className={styles.blockquote}>
             {renderBlocks(token.content)}
           </blockquote>
         );

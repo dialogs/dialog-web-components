@@ -1,0 +1,81 @@
+/**
+ * Copyright 2016 Dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+.container {
+  font-family: var(--default-font-family);
+}
+
+.pre {
+  overflow: auto;
+  margin: var(--message-text-padding) calc(0 - var(--message-text-padding));
+  padding: var(--message-text-padding);
+  white-space: pre;
+  word-wrap: normal;
+  border-radius: var(--default-border-radius);
+  background-color: color(#000 alpha(5%));
+  box-shadow: inset 0 1px 1px 0 color(#000 alpha(10%));
+  font-size: 12px;
+}
+
+.paragraph {
+  margin: var(--message-text-padding) 0;
+  word-break: break-word;
+}
+
+.blockquote {
+  margin: calc(var(--message-text-padding) + 2) 0;
+  padding: 4px 12px;
+  box-shadow: inset 3px 0 0 0 var(--color-info);
+}
+
+.pre,
+.paragraph,
+.blockquote {
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.code {
+  padding: 2px 4px;
+  border-radius: var(--default-border-radius-small);
+  background-color: color(#000 alpha(5%));
+  box-shadow: inset 0 1px 1px 0 color(#000 alpha(10%));
+  font-size: 14px;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.strike {
+  text-decoration: line-through;
+}
+
+.link {
+  text-decoration: none;
+  border-bottom: 1px dotted var(--color-info);
+  color: var(--color-info);
+
+  &:hover {
+    border-bottom: 1px solid var(--color-info);
+  }
+}
+
+.mention {
+  display: inline-block;
+  padding: 0 2px;
+  border-radius: 2px;
+  background-color: color(var(--color-warning) alpha(20%));
+}

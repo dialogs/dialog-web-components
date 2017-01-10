@@ -4,8 +4,10 @@
  */
 
 import React, { Component } from 'react';
+import classNames from 'classnames';
 import { parse, decorators } from '@dlghq/markdown';
 import { renderBlocks } from './render';
+import styles from './Markdown.css';
 
 export type Props = {
   className?: string,
@@ -27,11 +29,13 @@ class Markdown extends Component {
   }
 
   render(): React.Element<any> {
+    const className = classNames(styles.className, styles.container);
     const tokens = parse(this.props.text, this.props.decorators);
-    const markup = this.props.renderBlocks(tokens);
 
     return (
-      <div className={this.props.className}>{markup}</div>
+      <div className={className}>
+        {this.props.renderBlocks(tokens)}
+      </div>
     );
   }
 }
