@@ -14,7 +14,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 56px;
+  height: var(--message-divider-height);
   background-color: var(--message-divider-background-color);
   font-family: var(--message-divider-font-family);
   justify-content: center;
@@ -24,7 +24,7 @@
   &::after {
     position: absolute;
     z-index: 1;
-    top: 27px;
+    top: calc(var(--message-divider-height) / 2);
     right: 24px;
     left: 24px;
     display: block;
@@ -37,7 +37,7 @@
 .text {
   position: relative;
   z-index: 3;
-  padding: 0 32px;
+  padding: 0 var(--default-padding);
   cursor: default;
   user-select: none;
   text-align: center;

@@ -329,8 +329,9 @@
   --voice-transcription-stem-size: 12px;
   /* MessageDivider */
   --message-divider-font-family: var(--default-font-family);
-  --message-divider-font-size: var(--default-font-size);
+  --message-divider-font-size: var(--default-font-size-small);
   --message-divider-default-color: color(#000 alpha(80%));
+  --message-divider-height: 40px;
   --message-divider-background-color: #fff;
   --message-divider-default-line-color: color(#000 alpha(14%));
   /* MessageMedia */
