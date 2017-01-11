@@ -6,6 +6,7 @@
 import type { DocumentType } from './getDocumentType';
 
 function getExtensionType(extension: string): DocumentType {
+  // TODO: add more types
   switch (extension) {
     case 'pdf':
     case 'doc':
@@ -23,6 +24,7 @@ function getExtensionType(extension: string): DocumentType {
     case 'mov':
     case 'mpeg':
     case 'avi':
+    case 'mp3':
       return 'media';
 
     default:

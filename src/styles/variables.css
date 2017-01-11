@@ -297,6 +297,7 @@
   --document-preview-size: 50px;
   --document-padding-margin-right: 14px;
   --document-download-arrow-color: var(--color-primary);
+  --document-download-arrow-size: 20px;
   /* Location */
   --location-border-radius: var(--default-border-radius);
   /* Photo */

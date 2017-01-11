@@ -20,6 +20,12 @@
   font-family: var(--document-font-family);
 }
 
+.uploading {
+  opacity: 0.6;
+  padding-right: calc(var(--document-padding) * 2);
+  position: relative;
+}
+
 .preview {
   display: flex;
   width: var(--document-preview-size);
@@ -49,14 +55,17 @@
   font-weight: 500;
   flex: 1 1 50%;
   color: #000;
+  display: inline-flex;
+  align-items: center;
 }
 
 .sizeBlock {
   flex: 1 1 50%;
+  display: inline-flex;
+  align-items: center;
 }
 
 .size {
-  vertical-align: middle;
   font-size: var(--default-font-size-small);
   color: var(--default-font-color-light);
 }
@@ -64,14 +73,12 @@
 .text {
   display: inline-block;
   max-width: 100%;
-
   @apply --text-overflow-ellipsis;
 }
 
 .downloadArrow {
-  margin-right: 6px;
-  line-height: calc(var(--document-preview-size) / 2);
   color: var(--document-download-arrow-color);
+  font-size: var(--document-download-arrow-size);
 }
 
 /* File type colors */
@@ -89,4 +96,11 @@
 
 .unknown {
   background-color: var(--document-unknown-color);
+}
+
+.spinner {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  opacity: 1;
 }
