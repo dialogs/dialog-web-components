@@ -90,6 +90,23 @@ class AddContactModal extends PureComponent {
     }
 
     if (contact) {
+      if (contact.isContact) {
+        return (
+          <div>
+            <div className={styles.addedAvatar}>
+              <PeerAvatar peer={contact} size="large" />
+              <Icon glyph="done" className={styles.iconSmall} />
+            </div>
+            <Text
+              id="AddContactModal.user_in_contact"
+              values={{ username: contact.name }}
+              className={styles.found}
+              html
+            />
+          </div>
+        );
+      }
+
       return (
         <div>
           <PeerAvatar
@@ -179,9 +196,9 @@ class AddContactModal extends PureComponent {
   }
 
   renderFooter(): React.Element<any> {
-    const { error, added } = this.props;
+    const { error, added, contact } = this.props;
 
-    if (added) {
+    if (added || (contact && contact.isContact)) {
       return (
         <ModalFooter className={styles.footer}>
           <Button

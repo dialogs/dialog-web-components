@@ -64,6 +64,14 @@
   vertical-align: middle;
 }
 
+.addedAvatar {
+  position: relative;
+  display: inline-block;
+  line-height: 0;
+  margin-right: var(--default-padding-small);
+  vertical-align: middle;
+}
+
 .avatar {
   position: relative;
   display: inline-block;
@@ -87,6 +95,15 @@
 .iconError {
   background-color: var(--color-danger);
   composes: icon;
+}
+
+.iconSmall {
+  composes: icon;
+  font-size: 10px;
+  width: 14px;
+  height: 14px;
+  right: -2px;
+  bottom: -2px;
 }
 
 .text {
