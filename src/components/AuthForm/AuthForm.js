@@ -31,6 +31,7 @@ export type Props = {
   autoFocus?: boolean,
   onChange: (value: AuthValue) => any,
   onSubmit: (value: AuthValue) => any,
+  onRetry: () => any,
   isGenderEnabled: boolean
 };
 
@@ -105,21 +106,24 @@ class AuthForm extends PureComponent {
   renderLogin() {
     const { id, step } = this.props;
 
-    if (step > LOGIN_SENT) {
-      return null;
-    }
-
     return (
-      <Input
-        {...this.getInputState()}
-        name="login"
-        id={`${id}_login`}
-        label="AuthForm.login"
-        value={this.props.value.login}
-        disabled={step >= LOGIN_SENT}
-        autoFocus={this.props.autoFocus}
-        onChange={this.handleChange}
-      />
+      <div className={styles.inputWrapper}>
+        <Input
+          {...this.getInputState()}
+          name="login"
+          id={`${id}_login`}
+          label="AuthForm.login"
+          value={this.props.value.login}
+          disabled={step >= LOGIN_SENT}
+          autoFocus={this.props.autoFocus}
+          onChange={this.handleChange}
+        />
+        {
+          step >= LOGIN_SENT
+            ? <span className={styles.retry} onClick={this.props.onRetry}>Wrong?</span>
+            : null
+        }
+      </div>
     );
   }
 
@@ -131,16 +135,18 @@ class AuthForm extends PureComponent {
     }
 
     return (
-      <Input
-        {...this.getInputState()}
-        name="code"
-        id={`${id}_code`}
-        label="AuthForm.code"
-        value={this.props.value.code}
-        disabled={step >= CODE_SENT}
-        autoFocus={this.props.autoFocus}
-        onChange={this.handleChange}
-      />
+      <div className={styles.inputWrapper}>
+        <Input
+          {...this.getInputState()}
+          name="code"
+          id={`${id}_code`}
+          label="AuthForm.code"
+          value={this.props.value.code}
+          disabled={step >= CODE_SENT}
+          autoFocus={this.props.autoFocus}
+          onChange={this.handleChange}
+        />
+      </div>
     );
   }
 
@@ -152,16 +158,18 @@ class AuthForm extends PureComponent {
     }
 
     return (
-      <Input
-        {...this.getInputState()}
-        name="name"
-        id={`${id}_name`}
-        label="AuthForm.name"
-        value={this.props.value.name}
-        disabled={step >= NAME_SENT}
-        autoFocus={this.props.autoFocus}
-        onChange={this.handleChange}
-      />
+      <div className={styles.inputWrapper}>
+        <Input
+          {...this.getInputState()}
+          name="name"
+          id={`${id}_name`}
+          label="AuthForm.name"
+          value={this.props.value.name}
+          disabled={step >= NAME_SENT}
+          autoFocus={this.props.autoFocus}
+          onChange={this.handleChange}
+        />
+      </div>
     );
   }
 
