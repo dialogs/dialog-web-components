@@ -6,6 +6,7 @@
 import React, { PureComponent } from 'react';
 import { Text } from '@dlghq/react-l10n';
 import Trigger from '../Trigger/Trigger';
+import classNames from 'classnames';
 import CSSTransitionGroup from 'react-addons-css-transition-group';
 import styles from './Tooltip.css';
 
@@ -14,7 +15,8 @@ export type Props = {
   text: string,
   openDelay?: number,
   closeDelay?: number,
-  options: Object
+  options: Object,
+  className?: string
 };
 
 class Tooltip extends PureComponent {
@@ -40,8 +42,10 @@ class Tooltip extends PureComponent {
   };
 
   renderTrigger = (handlers: Object): React.Element<any> => {
+    const className = classNames(styles.wrapper, this.props.className);
+
     return (
-      <div {...handlers} className={styles.wrapper}>{this.props.children}</div>
+      <div {...handlers} className={className}>{this.props.children}</div>
     );
   };
 
