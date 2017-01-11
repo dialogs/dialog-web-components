@@ -28,5 +28,5 @@
 }
 
 .button {
-  margin-left: 6px;
+  margin: 0 calc(var(--default-padding) / 4);
 }
