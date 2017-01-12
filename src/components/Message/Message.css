@@ -10,7 +10,7 @@
   display: flex;
   flex-direction: row;
   padding: var(--message-vertical-padding) var(--message-horizontal-padding);
-  transition: box-shadow var(--mesage-transition-duration) ease-in-out, opacity var(--mesage-transition-duration) ease-in;
+  transition: box-shadow var(--message-transition-duration) ease-in-out, opacity var(--message-transition-duration) ease-in;
   font-family: var(--message-font-family);
 
   &:hover {
