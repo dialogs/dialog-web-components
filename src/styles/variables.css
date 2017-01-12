@@ -416,10 +416,10 @@
   --sidebar-search-input-height: 34px;
   /* SidebarUnread */
   --sidebar-unread-font-family: var(--default-font-family);
-  --sidebar-unread-default-height: 6px;
+  --sidebar-unread-default-height: 4px;
   --sidebar-unread-hover-height: 18px;
   --sidebar-unread-color: #fff;
-  --sidebar-unread-background-color: var(--color-warning);
+  --sidebar-unread-background-color: var(--color-primary);
   --sidebar-unread-hover-background-color: color(var(--sidebar-unread-background-color) tint(10%));
   --sidebar-unread-active-background-color: color(var(--sidebar-unread-background-color) shade(5%));
   --sidebar-unread-transition-duration: calc(var(--default-transition-duration) * 0.6);

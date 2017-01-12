@@ -15,21 +15,13 @@
   z-index: var(--z-index-sidebar-unread);
   right: 0;
   left: 0;
-  display: flex;
-  overflow: hidden;
-  height: var(--sidebar-unread-default-height);
-  cursor: pointer;
-  transition: height var(--sidebar-unread-transition-duration) ease-in-out, background var(--sidebar-unread-transition-duration) ease-in-out;
-  background-color: var(--sidebar-unread-background-color);
-  font-family: var(--sidebar-unread-font-family);
-  align-content: center;
-  align-items: center;
-  justify-content: center;
-  @apply --no-select;
+  height: var(--sidebar-unread-hover-height);
 
   &:hover {
-    height: var(--sidebar-unread-hover-height);
-    background-color: var(--sidebar-unread-hover-background-color);
+    & .wrapper {
+      height: var(--sidebar-unread-hover-height);
+      background-color: var(--sidebar-unread-hover-background-color);
+    }
 
     & .icon {
       transform: scale(1) translateY(0);
@@ -38,7 +30,9 @@
   }
 
   &:active {
-    background-color: var(--sidebar-unread-active-background-color);
+    & .wrapper {
+      background-color: var(--sidebar-unread-active-background-color);
+    }
 
     & .icon {
       transform: scale(1) translateY(0);
@@ -47,8 +41,29 @@
   }
 }
 
+.wrapper {
+  height: var(--sidebar-unread-default-height);
+  display: flex;
+  position: absolute;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  transition: height var(--sidebar-unread-transition-duration) ease-in-out, background var(--sidebar-unread-transition-duration) ease-in-out;
+  background-color: var(--sidebar-unread-background-color);
+  font-family: var(--sidebar-unread-font-family);
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  @apply --no-select;
+  cursor: pointer;
+}
+
 .top {
   top: 0;
+
+  & .wrapper {
+    top: 0;
+  }
 
   & .icon {
     transform: scale(0.7) translateY(-10px);
@@ -63,6 +78,10 @@
 
 .bottom {
   bottom: 0;
+
+  & .wrapper {
+    bottom: 0;
+  }
 
   & .icon {
     transform: scale(0.7) translateY(10px);

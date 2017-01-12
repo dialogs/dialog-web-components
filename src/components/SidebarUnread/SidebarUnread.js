@@ -39,7 +39,9 @@ class SidebarUnread extends PureComponent {
 
     return (
       <div className={className} onClick={this.props.onClick}>
-        {this.renderArrow()}
+        <div className={styles.wrapper}>
+          {this.renderArrow()}
+        </div>
       </div>
     );
   }
