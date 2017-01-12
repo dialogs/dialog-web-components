@@ -1,4 +1,4 @@
-Dialog Web Components
+dialog Web Components
 =====================
 
 [![Build Status](https://circleci.com/gh/dialogs/dialog-web-components/tree/master.svg?style=shield)](https://circleci.com/gh/dialogs/dialog-web-components/tree/master)

@@ -34,7 +34,7 @@ const renderPlusMenu = () => {
 <div style={{ width: 270, background: '#f5f5f5' }}>
   <SidebarHeader>
     <SidebarHeaderMenu
-      appName="Dialog"
+      appName="dialog"
       logo={<Logo />}
       renderMenu={renderMainMenu}
     />

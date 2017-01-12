@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Dialog LLC <info@dlg.im>
+ * Copyright 2016 dialog LLC <info@dlg.im>
  */
 
 import React, { PureComponent } from 'react';
@@ -46,7 +46,7 @@ class JoinModal extends PureComponent {
         </ModalBody>
         <ModalFooter className={styles.footer}>
           <div className={styles.text}>
-            Dialog is all your team messaging with free calling,<br />
+            dialog is all your team messaging with free calling,<br />
             file sharing and fast mobile applications.
           </div>
           <div className={styles.buttons} >

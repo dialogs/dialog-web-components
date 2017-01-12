@@ -41,7 +41,7 @@ Document:
 const content = {
   type: 'document',
   preview: '',
-  fileName: 'Dialog.dmg',
+  fileName: 'dialog.dmg',
   fileExtension: 'dmg',
   fileUrl: 'https://dlg.im/dl/osx'
 };
