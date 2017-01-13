@@ -23,8 +23,6 @@
       "Archive",
       "Lightbox",
       "Dragndrop",
-      "Emoji",
-      "EmojiList",
       "Select",
       "Markdown"
     ]
@@ -47,6 +45,14 @@
       "Radio",
       "Switcher",
       "Fieldset"
+    ]
+  },
+  {
+    "name": "Emoji",
+    "components": [
+      "Emoji",
+      "EmojiList",
+      "EmojiButton"
     ]
   },
   {

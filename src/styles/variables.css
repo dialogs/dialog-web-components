@@ -195,6 +195,20 @@
   --emoji-list-category-icon-hover-color: color(var(--emoji-list-category-icon-color) shade(20%));
   --emoji-list-category-icon-active-color: var(--color-primary);
   --emoji-list-category-icon-active-hover-color: color(var(--emoji-list-category-icon-active-color) alpha(80%));
+  /* EmojiButton */
+  --emoji-button-font-family: var(--default-font-family);
+  --emoji-button-font-size: var(--default-font-size);
+  --emoji-button-size: 30px;
+  --emoji-button-background: #fff;
+  --emoji-button-background-active: #F6F2FC;
+  --emoji-button-border-color: #D9D9D9;
+  --emoji-button-border-color-hover: var(--color-primary);
+  --emoji-button-border-color-active: var(--emoji-button-border-color-hover);
+  --emoji-button-border-radius: var(--emoji-button-size);
+  --emoji-button-transition-duration: var(--default-transition-duration);
+  --emoji-button-counter-color: color(#000 alpha(50%));
+  --emoji-button-counter-color-hover: var(--color-primary);
+  --emoji-button-counter-color-active: var(--emoji-button-counter-color-hover);
   /* FakeMessage */
   --fake-message-avatar-size: 36px;
   --fake-message-avatar-color: #c5c5c5;

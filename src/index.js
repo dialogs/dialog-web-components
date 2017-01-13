@@ -129,3 +129,4 @@ export { default as Hover } from './components/Hover/Hover';
 // Emoji
 export { default as Emoji } from './components/Emoji/Emoji';
 export { default as EmojiList } from './components/EmojiList/EmojiList';
+export { default as EmojiButton } from './components/EmojiButton/EmojiButton';
