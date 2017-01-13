@@ -14,6 +14,7 @@ export type Props = {
   active: boolean,
   counter: number,
   text?: string,
+  online?: ?boolean,
   onSelect: (peer: Peer) => any
 };
 
@@ -32,7 +33,7 @@ class RecentItem extends PureComponent {
   };
 
   renderAvatar() {
-    const { info, text } = this.props;
+    const { info, text, online } = this.props;
     const avatarSize = text ? 'large' : 'medium';
 
     return (
@@ -40,6 +41,7 @@ class RecentItem extends PureComponent {
         className={styles.avatar}
         size={avatarSize}
         peer={info}
+        online={online}
       />
     );
   }

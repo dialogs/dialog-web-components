@@ -14,7 +14,7 @@ export type Props = {
   className?: string,
   peer: PeerInfo,
   size?: AvatarSize,
-  online?: boolean,
+  online?: ?boolean,
   onClick?: (event: SyntheticMouseEvent) => any
 };
 
