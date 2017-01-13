@@ -13,6 +13,7 @@ import React, { PureComponent } from 'react';
 import MessageContent from '../MessageContent/MessageContent';
 import PeerAvatar from '../PeerAvatar/PeerAvatar';
 import MessageState from '../MessageState/MessageState';
+import EmojiButton from '../EmojiButton/EmojiButton';
 import Hover from '../Hover/Hover';
 import styles from './Message.css';
 
@@ -151,8 +152,26 @@ class Message extends PureComponent {
     return null;
   }
 
+  renderReactions(): ?React.Element<any>[] {
+    if (!this.props.message.reactions.length) {
+      return null;
+    }
+
+    return this.props.message.reactions.map((reaction) => {
+      return (
+        <EmojiButton
+          char={reaction.reaction}
+          onClick={console.debug}
+          active={reaction.isOwnSet}
+          key={reaction.reaction}
+          count={reaction.uids.length}
+        />
+      );
+    });
+  }
+
   render(): React.Element<any> {
-    const { short, message: { content } } = this.props;
+    const { short, message: { content, reactions } } = this.props;
     const { hover } = this.state;
 
     const state = this.getState();
@@ -183,6 +202,14 @@ class Message extends PureComponent {
               content={content}
               onLightboxOpen={this.handleLightboxOpen}
             />
+            {
+              reactions.length
+                ? (
+                  <div className={styles.reactions}>
+                    {this.renderReactions()}
+                  </div>
+                ) : null
+            }
           </div>
         </div>
       </Hover>

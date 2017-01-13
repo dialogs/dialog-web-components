@@ -117,3 +117,7 @@
   display: inline-block;
   line-height: 20px;
 }
+
+.reactions {
+  margin-top: calc(var(--default-padding) / 2);
+}
