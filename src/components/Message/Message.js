@@ -70,6 +70,10 @@ class Message extends PureComponent {
     }
   };
 
+  handleReaction = () => {
+    console.debug('add reaction');
+  };
+
   handleHover = (hover: boolean): void => {
     this.setState({ hover });
   };
@@ -152,26 +156,33 @@ class Message extends PureComponent {
     return null;
   }
 
-  renderReactions(): ?React.Element<any>[] {
-    if (!this.props.message.reactions.length) {
+  renderReactions(): ?React.Element<any> {
+    const { message } = this.props;
+    if (!message.reactions || !message.reactions.length) {
       return null;
     }
 
-    return this.props.message.reactions.map((reaction) => {
+    const children = message.reactions.map((reaction) => {
       return (
         <EmojiButton
           char={reaction.reaction}
-          onClick={console.debug}
+          onClick={this.handleReaction}
           active={reaction.isOwnSet}
           key={reaction.reaction}
           count={reaction.uids.length}
         />
       );
     });
+
+    return (
+      <div className={styles.reactions}>
+        {children}
+      </div>
+    );
   }
 
   render(): React.Element<any> {
-    const { short, message: { content, reactions } } = this.props;
+    const { short, message: { content } } = this.props;
     const { hover } = this.state;
 
     const state = this.getState();
@@ -202,14 +213,7 @@ class Message extends PureComponent {
               content={content}
               onLightboxOpen={this.handleLightboxOpen}
             />
-            {
-              reactions.length
-                ? (
-                  <div className={styles.reactions}>
-                    {this.renderReactions()}
-                  </div>
-                ) : null
-            }
+            {this.renderReactions()}
           </div>
         </div>
       </Hover>
