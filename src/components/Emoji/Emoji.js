@@ -2,6 +2,7 @@
  * Copyright 2017 dialog LLC <info@dlg.im>
  * @flow
  */
+
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import { getEmojiByChar, shouldUseImage } from '@dlghq/emoji';
@@ -60,13 +61,9 @@ class Emoji extends PureComponent {
     }
 
     return (
-      <span
-        className={className}
-        style={style}
-        title={emoji.name}
-        // eslint-disable-next-line
-        dangerouslySetInnerHTML={{ __html: emoji.char }}
-      />
+      <span className={className} style={style} title={emoji.name}>
+        {emoji.char}
+      </span>
     );
   }
 }
