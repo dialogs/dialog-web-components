@@ -2,9 +2,9 @@
  * Copyright 2017 dialog LLC <info@dlg.im>
  * @flow
  */
+
 import React, { PureComponent } from 'react';
 import Emoji from '../Emoji/Emoji';
-import { getEmojiByChar } from '@dlghq/emoji';
 import styles from './EmojiList.css';
 
 export type Props = {
@@ -17,8 +17,7 @@ class EmojiListItem extends PureComponent {
   props: Props;
 
   handleClick = (): void => {
-    const emoji = getEmojiByChar(this.props.char);
-    this.props.onClick(emoji);
+    this.props.onClick(this.props.char);
   };
 
   render(): ?React.Element<any> {
