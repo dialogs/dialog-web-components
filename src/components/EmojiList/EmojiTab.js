@@ -18,7 +18,9 @@ type Props = {
 class EmojiTab extends PureComponent {
   props: Props;
 
-  handleClick = () => {
+  handleClick = (event: SyntheticMouseEvent) => {
+    event.preventDefault();
+    event.stopPropagation();
     this.props.onClick(this.props.name);
   };
 

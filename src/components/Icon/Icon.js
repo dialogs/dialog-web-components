@@ -16,7 +16,7 @@ export type Props = {
   theme: 'primary' | 'success' | 'danger' | 'info' | 'warning',
   size: 'small' | 'normal' | 'large',
   inverted: boolean,
-  onClick: () => void
+  onClick: (event: SyntheticMouseEvent) => void
 };
 
 class Icon extends PureComponent {
