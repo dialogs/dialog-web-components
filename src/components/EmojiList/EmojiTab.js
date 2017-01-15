@@ -21,6 +21,8 @@ class EmojiTab extends PureComponent {
   handleClick = (event: SyntheticMouseEvent) => {
     event.preventDefault();
     event.stopPropagation();
+    event.nativeEvent.stopImmediatePropagation();
+
     this.props.onClick(this.props.name);
   };
 
