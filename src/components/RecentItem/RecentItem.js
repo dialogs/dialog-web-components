@@ -80,6 +80,7 @@ class RecentItem extends PureComponent {
   }
 
   render() {
+    console.debug(this.props);
     const { active, counter, text } = this.props;
     const className = classNames(styles.container, {
       [styles.active]: active,

@@ -57,22 +57,6 @@
   --login-gradient: linear-gradient(-45deg, #3023AE 0%, #6339B1 61%, #8347B3 100%);
   /* Avatar */
   --avatar-placeholder-color: #fff;
-  --avatar-empty-background-color: #757575;
-  --avatar-lblue-background-color: var(--sky-blue);
-  --avatar-blue-background-color: var(--cerulean);
-  --avatar-purple-background-color: var(--purple-blue);
-  --avatar-red-background-color: var(--neon-red);
-  --avatar-orange-background-color: var(--red-orange-two);
-  --avatar-yellow-background-color: var(--marigold);
-  --avatar-green-background-color: var(--green);
-  --avatar-empty-gradient: linear-gradient(38deg, #bebebe, #757575);
-  --avatar-blue-gradient: linear-gradient(38deg, var(--sky-blue), var(--violet-blue-two));
-  --avatar-lblue-gradient: linear-gradient(38deg, var(--aqua), var(--cerulean));
-  --avatar-purple-gradient: linear-gradient(38deg, var(--dark-periwinkle), var(--vibrant-purple));
-  --avatar-red-gradient: linear-gradient(38deg, var(--neon-red), var(--lauries-lips));
-  --avatar-orange-gradient: linear-gradient(38deg, var(--light-orange), var(--red-orange-two));
-  --avatar-yellow-gradient: linear-gradient(38deg, var(--french-toast), var(--marigold));
-  --avatar-green-gradient: linear-gradient(38deg, var(--kiwi), var(--green));
   /* PeerAvatar */
   --avatar-online-size: 8px;
   --avatar-online-color: var(--leafy-green);

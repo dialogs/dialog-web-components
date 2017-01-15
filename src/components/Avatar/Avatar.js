@@ -4,26 +4,19 @@
  */
 
 import type { AvatarPlaceholder } from '@dlghq/dialog-types';
+import type { AvatarSize } from './getAvatarSize';
+import type { Gradient } from './getAvatarColor';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
-import isEmoji from '../../utils/isEmoji';
+import getAvatarSize from './getAvatarSize';
+import getAvatarText from './getAvatarText';
+import getAvatarColor from './getAvatarColor';
 import styles from './Avatar.css';
-
-const SIZES = {
-  tiny: 14,
-  small: 22,
-  medium: 28,
-  large: 36,
-  big: 100,
-  super: 150
-};
-
-export type AvatarSize = 'tiny' | 'small' | 'medium' | 'large' | 'big' | 'super' | number;
 
 export type Props = {
   className?: string,
   image: ?string,
-  title: ?string,
+  title: string,
   size: AvatarSize,
   placeholder: AvatarPlaceholder,
   onClick?: (event: SyntheticMouseEvent) => any
@@ -37,94 +30,53 @@ class Avatar extends PureComponent {
     placeholder: 'empty'
   };
 
-  getAvatarText(): ?string {
-    const { title, size } = this.props;
-    if (size === 'tiny' || (typeof size === 'number' && size < 20)) {
-      return null;
-    }
-
-    if (title && title.length) {
-      const titleArray = title.trim().split(' ');
-      if (titleArray.length > 1) {
-        return `${titleArray[0][0]}${titleArray[1][0]}`;
-      }
-
-      const char = title[0];
-      if (!isEmoji(char)) {
-        return char;
-      }
-    }
-
-    return '#';
+  getAvatarText(): string {
+    return getAvatarText(this.props.title);
   }
 
   getAvatarSize(): number {
-    const { size } = this.props;
+    return getAvatarSize(this.props.size);
+  }
 
-    if (typeof size === 'number') {
-      return size;
-    }
-
-    return SIZES[size];
+  getAvatarColor(): Gradient {
+    return getAvatarColor(this.props.placeholder);
   }
 
   render(): React.Element<any> {
-    const { image, placeholder, title } = this.props;
-    const avatarText = this.getAvatarText();
-    const avatarSize = this.getAvatarSize();
-    const twoChars = Boolean(avatarText && avatarText.length !== 1);
+    const { image, title } = this.props;
+    const size = this.getAvatarSize();
+    const text = size >= 20 ? this.getAvatarText() : null;
+    const twoChars = Boolean(text && text.length !== 1);
 
-    const className = classNames({
-      [styles.image]: image,
-      [styles.placeholder]: !image,
-      [styles[placeholder]]: !image
+    const className = classNames(image ? styles.image : styles.placeholder, {
+      [styles.clickable]: this.props.onClick
     }, this.props.className);
 
+    const colors = this.getAvatarColor();
+
     const avatarStyles = {
-      width: avatarSize,
-      height: avatarSize,
-      fontSize: Math.min(Math.floor(twoChars ? (avatarSize / 2.2) : (avatarSize / 1.9)), 60)
+      width: size,
+      height: size,
+      fontSize: Math.min(Math.floor(twoChars ? (size / 2.2) : (size / 1.9)), 60),
+      backgroundImage: `linear-gradient(38deg, ${colors.payload.from}, ${colors.payload.to})`
     };
 
     if (image) {
-      if (this.props.onClick) {
-        return (
-          <div onClick={this.props.onClick} className={styles.clickable}>
-            <img
-              className={className}
-              style={avatarStyles}
-              src={image}
-              width={avatarSize}
-              height={avatarSize}
-              alt={title}
-            />
-          </div>
-        );
-      }
-
       return (
         <img
           className={className}
+          onClick={this.props.onClick}
           style={avatarStyles}
           src={image}
-          width={avatarSize}
-          height={avatarSize}
+          width={size}
+          height={size}
           alt={title}
         />
       );
     }
 
-
-    if (this.props.onClick) {
-      return (
-        <div onClick={this.props.onClick} className={styles.clickable}>
-          <div className={className} title={title} style={avatarStyles}>{avatarText}</div>
-        </div>
-      );
-    }
-
     return (
-      <div className={className} title={title} style={avatarStyles}>{avatarText}</div>
+      <div className={className} title={title} style={avatarStyles} onClick={this.props.onClick}>{text}</div>
     );
   }
 }
