@@ -15,7 +15,7 @@ import styles from './EmojiList.css';
 
 export type Props = {
   className?: string,
-  recent: ?string[],
+  recent?: string[],
   onClick: (char: string) => void
 };
 
@@ -34,7 +34,7 @@ class EmojiList extends PureComponent {
     super(props);
 
     this.state = {
-      current: props.recent ? 'recent' : categories[0].name
+      current: (props.recent && props.recent.length) ? 'recent' : categories[0].name
     };
 
     this.categories = {};
@@ -108,7 +108,7 @@ class EmojiList extends PureComponent {
 
   renderCategories(): React.Element<any>[] {
     const result = [];
-    if (this.props.recent) {
+    if (this.props.recent && this.props.recent.length) {
       result.push(
         <EmojiCategory
           key="recent"
@@ -137,7 +137,7 @@ class EmojiList extends PureComponent {
 
   renderTabs(): React.Element<any> {
     const children = [];
-    if (this.props.recent) {
+    if (this.props.recent && this.props.recent.length) {
       children.push(
         <EmojiTab
           key="recent"
