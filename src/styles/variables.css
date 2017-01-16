@@ -78,7 +78,11 @@
   --avatar-online-color: var(--leafy-green);
   /* AvatarSelector */
   --avatar-selector-size: 100px;
-  --avatar-selector-icon-color: var(--violet-blue-two);
+  --avatar-selector-transitio-duration: var(--default-transition-duration);
+  --avatar-selector-camera-icon-color: var(--violet-blue-two);
+  --avatar-selector-camera-icon-color-hover: color(var(--avatar-selector-camera-icon-color) alpha(90%));;
+  --avatar-selector-remove-icon-color: var(--color-danger);
+  --avatar-selector-remove-icon-color-hover: color(var(--avatar-selector-remove-icon-color) alpha(90%));;
   /* Button */
   --button-border-radius: var(--default-border-radius);
   --button-border-radius-small: var(--default-border-radius-small);

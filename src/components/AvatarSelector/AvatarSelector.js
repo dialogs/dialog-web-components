@@ -15,7 +15,8 @@ export type Props = {
   name: string,
   placeholder: string,
   avatar: ?string,
-  onChange: (avatar: File) => void
+  onChange: (avatar: File) => void,
+  onRemove: () => void
 };
 
 export type State = {
@@ -69,6 +70,11 @@ class AvatarSelector extends PureComponent {
           onClick={this.handleAvatarChangerClick}
           className={styles.avatarChangerIcon}
           glyph="photo_camera"
+        />
+        <Icon
+          onClick={this.props.onRemove}
+          className={styles.avatarRemoveIcon}
+          glyph="clear"
         />
       </div>
     );

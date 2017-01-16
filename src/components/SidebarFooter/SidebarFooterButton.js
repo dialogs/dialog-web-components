@@ -22,7 +22,6 @@ class SidebarFooterButton extends PureComponent {
     const { active } = this.props;
 
     if (!active) {
-      console.debug('handleClick');
       this.props.onClick();
     }
   };

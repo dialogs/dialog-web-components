@@ -93,6 +93,7 @@ class ProfileModal extends PureComponent {
           placeholder={placeholder}
           avatar={avatar}
           onChange={this.handleAvatarChange}
+          onRemove={this.props.onAvatarRemove}
         />
       </div>
     );
