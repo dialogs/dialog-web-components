@@ -45,7 +45,7 @@
   --z-index-connection-status: 10;
   --z-index-message-actions: 10;
   /* Colors */
-  --color-primary: var(--purple-two);
+  --color-primary: var(--violet-blue);
   --color-success: var(--medium-green);
   --color-danger: var(--lipstick);
   --color-info: var(--dark-periwinkle);
