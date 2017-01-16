@@ -46,6 +46,7 @@ class PreferencesSecurity extends PureComponent {
         <Button
           theme="danger"
           view="link"
+          size="small"
           className={styles.termnateAllButton}
           onClick={this.props.onAllSessionsTerminate}
         >
