@@ -28,6 +28,7 @@ export type Props = {
   onAvatarClick?: (message: MessageType) => any,
   onMentionClick?: (message: MessageType) => any,
   onLightboxOpen?: (message: MessageType) => any,
+  onReaction?: (message: MessageType, char: string) => any,
   renderActions?: () => React.Element<any>[]
 };
 
@@ -71,8 +72,10 @@ class Message extends PureComponent {
     }
   };
 
-  handleReaction = () => {
-    console.debug('add reaction');
+  handleReaction = (char: string): void => {
+    if (this.props.onReaction) {
+      this.props.onReaction(this.props.message, char);
+    }
   };
 
   handleHover = (hover: boolean): void => {
@@ -163,6 +166,7 @@ class Message extends PureComponent {
 
   renderReactions(): ?React.Element<any> {
     const { message } = this.props;
+
     if (!message.reactions || !message.reactions.length) {
       return null;
     }
