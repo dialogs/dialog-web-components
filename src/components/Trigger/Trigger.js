@@ -25,7 +25,8 @@ export type Props = {
   preventDefault?: boolean,
   openDelay: number,
   closeDelay: number,
-  options: any
+  options: any,
+  onChange: ?(active: boolean) => void
 };
 
 export type State = {
@@ -80,6 +81,9 @@ class Trigger extends PureComponent {
     this.openTimeout = setTimeout(() => {
       this.setState({ isOpen: true });
       this.setListener();
+      if (this.props.onChange) {
+        this.props.onChange(true);
+      }
     }, this.props.openDelay);
   };
 
@@ -88,6 +92,9 @@ class Trigger extends PureComponent {
     this.closeTimeout = setTimeout(() => {
       this.setState({ isOpen: false });
       this.removeListener();
+      if (this.props.onChange) {
+        this.props.onChange(false);
+      }
     }, this.props.closeDelay);
   };
 
