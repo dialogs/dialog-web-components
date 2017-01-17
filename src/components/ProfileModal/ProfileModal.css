@@ -91,7 +91,7 @@
 }
 
 .contactContentIcon {
-  margin-left: 16px;
+  margin-left: calc(var(--default-padding) / 2);
   color: var(--modal-profile-hint-color);
 }
 
