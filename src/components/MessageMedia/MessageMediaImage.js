@@ -24,8 +24,8 @@ function MessageMediaImage(props: Props): React.Element<any> {
       src={url}
       width={width}
       height={height}
-      maxWidth="400"
-      maxHeight="400"
+      maxWidth={400}
+      maxHeight={400}
     />
   );
 }
