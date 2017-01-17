@@ -11,38 +11,41 @@ import styles from './Markdown.css';
 export function renderText(tokens: TextToken[]): React.Element<any>[] {
   const result = [];
 
-  for (let i = 0; i < tokens.length; i++) {
-    const token = tokens[i];
+  for (let index = 0; index < tokens.length; index++) {
+    const { content, highlight, options } = tokens[index];
 
-    switch (token.highlight) {
-      case 'link':
+    switch (highlight) {
+      case 'link': {
+        const href = (options && options.href) ? options.href : content;
+
         result.push(
           <a
-            key={i}
+            key={index}
             className={styles.link}
-            href={token.content}
+            href={href}
             target="_blank"
             rel="noopener noreferrer"
           >
-            {token.content}
+            {content}
           </a>
         );
 
         break;
+      }
 
       case 'emoji':
         result.push(
-          <Emoji key={i} char={token.content} />
+          <Emoji key={index} char={content} />
         );
 
         break;
 
       default: {
-        const className = token.highlight ? styles[token.highlight] : null;
+        const className = highlight ? styles[highlight] : null;
 
         result.push(
-          <span key={i} className={className}>
-            {token.content}
+          <span key={index} className={className}>
+            {content}
           </span>
         );
 
