@@ -12,12 +12,6 @@
   padding: var(--message-vertical-padding) var(--message-horizontal-padding);
   transition: box-shadow var(--message-transition-duration) ease-in-out, opacity var(--message-transition-duration) ease-in;
   font-family: var(--message-font-family);
-
-  &:hover {
-    & .actions {
-      display: block;
-    }
-  }
 }
 
 .avatar {
@@ -81,7 +75,7 @@
   position: absolute;
   top: -18px;
   right: var(--message-horizontal-padding);
-  display: none;
+  display: block;
   z-index: var(--z-index-message-actions);
 }
 

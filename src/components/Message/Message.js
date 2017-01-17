@@ -23,6 +23,7 @@ export type Props = {
   state: ?MessageStateType,
   sender: ?PeerInfo,
   className?: string,
+  forceHover?: boolean,
   onTitleClick?: (message: MessageType) => any,
   onAvatarClick?: (message: MessageType) => any,
   onMentionClick?: (message: MessageType) => any,
@@ -86,6 +87,10 @@ class Message extends PureComponent {
     return this.props.sender || this.props.message.sender;
   }
 
+  isHover(): boolean {
+    return this.props.forceHover ? this.props.forceHover : this.state.hover
+  }
+
   renderState(): ?React.Element<any> {
     const state = this.getState();
     const { short } = this.props;
@@ -145,7 +150,7 @@ class Message extends PureComponent {
   }
 
   renderActions(): ?React.Element<any> {
-    if (this.state.hover && this.props.renderActions) {
+    if (this.isHover() && this.props.renderActions) {
       return (
         <div className={styles.actions}>
           {this.props.renderActions()}
@@ -182,9 +187,8 @@ class Message extends PureComponent {
   }
 
   render(): React.Element<any> {
-    const { short, message: { content } } = this.props;
-    const { hover } = this.state;
-
+    const { short, message: { content }} = this.props;
+    const hover = this.isHover();
     const state = this.getState();
     const isError = state === 'error';
     const isPending = state === 'pending';
