@@ -55,7 +55,8 @@ class Tooltip extends PureComponent {
       targetAttachment: 'top center',
       constraints: [{
         to: 'scrollParent',
-        attachment: 'together'
+        attachment: 'together',
+        pin: true
       }],
       ...this.props.options
     };
