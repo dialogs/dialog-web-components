@@ -26,7 +26,7 @@ export type Props = {
   openDelay: number,
   closeDelay: number,
   options: any,
-  onChange: ?(active: boolean) => void
+  onChange?: (active: boolean) => void
 };
 
 export type State = {

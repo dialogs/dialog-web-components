@@ -79,16 +79,16 @@ class Message extends PureComponent {
     this.setState({ hover });
   };
 
+  isHover(): boolean {
+    return this.props.forceHover ? this.props.forceHover : this.state.hover;
+  }
+
   getState(): MessageStateType {
     return this.props.state || this.props.message.state;
   }
 
   getSender(): PeerInfo {
     return this.props.sender || this.props.message.sender;
-  }
-
-  isHover(): boolean {
-    return this.props.forceHover ? this.props.forceHover : this.state.hover
   }
 
   renderState(): ?React.Element<any> {
@@ -187,7 +187,7 @@ class Message extends PureComponent {
   }
 
   render(): React.Element<any> {
-    const { short, message: { content }} = this.props;
+    const { short, message: { content } } = this.props;
     const hover = this.isHover();
     const state = this.getState();
     const isError = state === 'error';
