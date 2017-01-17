@@ -115,7 +115,7 @@ class PeerAvatar extends PureComponent {
       <text
         className={styles.text}
         x="50%"
-        y="52%"
+        y="51%"
         textAnchor="middle"
         alignmentBaseline="central"
         style={textStyles}
@@ -131,7 +131,7 @@ class PeerAvatar extends PureComponent {
     }
 
     return (
-      <circle cx="30" cy="30" r="4" className={styles.online} />
+      <circle cx="30" cy="30" r="5" className={styles.online} />
     );
   }
 
