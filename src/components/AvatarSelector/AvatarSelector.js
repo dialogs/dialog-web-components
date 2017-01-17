@@ -49,6 +49,22 @@ class AvatarSelector extends PureComponent {
     selectFiles(this.handleAvatarChange, false);
   };
 
+  renderRemoveIcon(): ?React.Element<any> {
+    const { avatar } = this.state;
+
+    if (avatar) {
+      return null;
+    }
+
+    return (
+      <Icon
+        onClick={this.props.onRemove}
+        className={styles.avatarRemoveIcon}
+        glyph="clear"
+      />
+    );
+  }
+
   render(): React.Element<any> {
     const { name, placeholder } = this.props;
     const { avatar } = this.state;
@@ -71,11 +87,7 @@ class AvatarSelector extends PureComponent {
           className={styles.avatarChangerIcon}
           glyph="photo_camera"
         />
-        <Icon
-          onClick={this.props.onRemove}
-          className={styles.avatarRemoveIcon}
-          glyph="clear"
-        />
+        {this.renderRemoveIcon()}
       </div>
     );
   }
