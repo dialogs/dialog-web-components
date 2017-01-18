@@ -49,6 +49,7 @@
 .arrow {
   height: calc(var(--sidebar-header-height) - var(--sidebar-header-padding-top) - var(--sidebar-header-padding-bottom));
   cursor: inherit;
+  color: #000;
   line-height: calc(var(--sidebar-header-height) - var(--sidebar-header-padding-top) - var(--sidebar-header-padding-bottom));
 }
 
