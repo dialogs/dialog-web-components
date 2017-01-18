@@ -115,3 +115,7 @@
 .reactions {
   margin-top: calc(var(--default-padding) / 2);
 }
+
+.reactionButton {
+  margin-right: calc(var(--default-padding) / 2);
+}

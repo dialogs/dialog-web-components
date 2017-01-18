@@ -169,6 +169,7 @@ class Message extends PureComponent {
     const children = message.reactions.map((reaction) => {
       return (
         <EmojiButton
+          className={styles.reactionButton}
           char={reaction.reaction}
           onClick={this.props.onReaction}
           active={reaction.isOwnSet}
