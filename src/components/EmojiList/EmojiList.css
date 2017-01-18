@@ -130,3 +130,11 @@
     stroke: var(--emoji-list-category-icon-active-hover-color);
   }
 }
+
+.disabled {
+  color: var(--emoji-list-category-icon-color) !important;
+  fill: var(--emoji-list-category-icon-color) !important;
+  stroke: var(--emoji-list-category-icon-color) !important;
+  cursor: default !important;
+  opacity: 0.5 !important;
+}

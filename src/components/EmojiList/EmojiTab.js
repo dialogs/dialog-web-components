@@ -12,22 +12,32 @@ type Props = {
   name: string,
   glyph: string,
   active: boolean,
+  disabled: ?boolean,
   onClick: (name: string) => any
 };
 
 class EmojiTab extends PureComponent {
   props: Props;
 
+  static defaultProps = {
+    disabled: false
+  };
+
   handleClick = (event: SyntheticMouseEvent) => {
     event.preventDefault();
     event.stopPropagation();
     event.nativeEvent.stopImmediatePropagation();
 
-    this.props.onClick(this.props.name);
+    if (!this.props.disabled) {
+      this.props.onClick(this.props.name);
+    }
   };
 
   render(): React.Element<any> {
-    const className = classNames(styles.footerTabIcon, this.props.active ? styles.active : null);
+    const className = classNames(styles.footerTabIcon, {
+      [styles.active]: this.props.active,
+      [styles.disabled]: this.props.disabled
+    });
 
     return (
       <div title={this.props.name} className={styles.footerTab}>

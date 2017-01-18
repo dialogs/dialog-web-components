@@ -137,17 +137,17 @@ class EmojiList extends PureComponent {
 
   renderTabs(): React.Element<any> {
     const children = [];
-    if (this.props.recent && this.props.recent.length) {
-      children.push(
-        <EmojiTab
-          key="recent"
-          name="recent"
-          glyph="schedule"
-          active={this.state.current === 'recent'}
-          onClick={this.handleTabClick}
-        />
-      );
-    }
+
+    children.push(
+      <EmojiTab
+        key="recent"
+        name="recent"
+        glyph="schedule"
+        disabled={this.props.recent && this.props.recent.length === 0}
+        active={this.state.current === 'recent'}
+        onClick={this.handleTabClick}
+      />
+    );
 
     for (const { name, glyph } of categories) {
       children.push(
