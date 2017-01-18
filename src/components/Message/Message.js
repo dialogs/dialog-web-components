@@ -28,7 +28,7 @@ export type Props = {
   onAvatarClick?: (message: MessageType) => any,
   onMentionClick?: (message: MessageType) => any,
   onLightboxOpen?: (message: MessageType) => any,
-  onReaction?: (message: MessageType, char: string) => any,
+  onReaction?: (char: string) => any,
   isReactionsEnabled: boolean,
   renderActions?: () => React.Element<any>[]
 };
@@ -70,12 +70,6 @@ class Message extends PureComponent {
   handleLightboxOpen = () => {
     if (this.props.onLightboxOpen) {
       this.props.onLightboxOpen(this.props.message);
-    }
-  };
-
-  handleReaction = (char: string): void => {
-    if (this.props.isReactionsEnabled && this.props.onReaction) {
-      this.props.onReaction(this.props.message, char);
     }
   };
 
@@ -176,7 +170,7 @@ class Message extends PureComponent {
       return (
         <EmojiButton
           char={reaction.reaction}
-          onClick={this.handleReaction}
+          onClick={this.props.onReaction}
           active={reaction.isOwnSet}
           key={reaction.reaction}
           count={reaction.uids.length}
