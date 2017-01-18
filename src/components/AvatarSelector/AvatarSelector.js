@@ -52,16 +52,16 @@ class AvatarSelector extends PureComponent {
     const { avatar } = this.state;
 
     if (avatar && this.props.onRemove) {
-      return null;
+      return (
+        <Icon
+          className={styles.avatarRemoveIcon}
+          glyph="clear"
+          onClick={this.props.onRemove}
+        />
+      );
     }
 
-    return (
-      <Icon
-        className={styles.avatarRemoveIcon}
-        glyph="clear"
-        onClick={this.props.onRemove}
-      />
-    );
+    return null;
   }
 
   render(): React.Element<any> {
