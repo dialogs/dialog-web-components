@@ -29,6 +29,7 @@ export type Props = {
   onMentionClick?: (message: MessageType) => any,
   onLightboxOpen?: (message: MessageType) => any,
   onReaction?: (message: MessageType, char: string) => any,
+  isReactionsEnabled: boolean,
   renderActions?: () => React.Element<any>[]
 };
 
@@ -73,7 +74,7 @@ class Message extends PureComponent {
   };
 
   handleReaction = (char: string): void => {
-    if (this.props.onReaction) {
+    if (this.props.isReactionsEnabled && this.props.onReaction) {
       this.props.onReaction(this.props.message, char);
     }
   };
@@ -167,7 +168,7 @@ class Message extends PureComponent {
   renderReactions(): ?React.Element<any> {
     const { message } = this.props;
 
-    if (!message.reactions || !message.reactions.length) {
+    if (!message.reactions || !message.reactions.length || !this.props.isReactionsEnabled) {
       return null;
     }
 
