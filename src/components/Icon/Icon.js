@@ -13,7 +13,7 @@ import styles from './Icon.css';
 export type Props = {
   className?: string,
   glyph: string,
-  theme: 'primary' | 'success' | 'danger' | 'info' | 'warning',
+  theme: 'default' | 'primary' | 'success' | 'danger' | 'info' | 'warning',
   size: 'small' | 'normal' | 'large',
   inverted: boolean,
   onClick?: (event: SyntheticMouseEvent) => void
@@ -24,7 +24,7 @@ class Icon extends PureComponent {
 
   static defaultProps = {
     size: 'normal',
-    theme: 'primary',
+    theme: 'default',
     inverted: false
   };
 

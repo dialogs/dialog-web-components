@@ -217,7 +217,7 @@
   --icon-default-size: 24px;
   --icon-small-size: 18px;
   --icon-large-size: 42px;
-  --icon-default-color: #000;
+  --icon-default-color: rgb(178, 178, 178);
   --icon-inverted-color: #fff;
   /* IconButton */
   --icon-button-default-size: 40px;

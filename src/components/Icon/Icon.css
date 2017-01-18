@@ -16,9 +16,6 @@
   align-content: center;
   align-items: center;
   justify-content: center;
-  color: var(--icon-default-color);
-  fill: var(--icon-default-color);
-  stroke: var(--icon-default-color);
 }
 
 .material {
@@ -68,6 +65,19 @@
 }
 
 /* Themes */
+.default {
+  color: var(--icon-default-color);
+  fill: var(--icon-default-color);
+  stroke: var(--icon-default-color);
+
+  &.inverted {
+    background-color: var(--icon-default-color);
+    color: var(--icon-inverted-color);
+    fill: var(--icon-inverted-color);
+    stroke: var(--icon-inverted-color);
+  }
+}
+
 .primary {
   color: var(--color-primary);
   fill: var(--color-primary);
