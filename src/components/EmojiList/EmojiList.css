@@ -83,8 +83,8 @@
   &:before {
     position: absolute;
     top: -20px;
-    left: 0;
-    width: 100%;
+    left: 1px;
+    right: 1px;
     height: 20px;
     content: '';
     pointer-events: none;
