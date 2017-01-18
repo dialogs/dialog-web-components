@@ -3,18 +3,25 @@
  * @flow
  */
 
-import type { ActivityUserProfileProps } from './types';
+import type { User, UserOnline } from '@dlghq/dialog-types';
 import React, { Component } from 'react';
 import { Text } from '@dlghq/react-l10n';
 import classNames from 'classnames';
-import PeerAvatar from '../PeerAvatar/PeerAvatar';
+import Avatar from '../Avatar/Avatar';
 import Markdown from '../Markdown/Markdown';
 import styles from './ActivityProfile.css';
 
-class ActivityUserProfile extends Component {
-  props: ActivityUserProfileProps;
+export type Props = {
+  info: User,
+  online: UserOnline,
+  className?: string,
+  children?: any
+};
 
-  shouldComponentUpdate(nextProps: ActivityUserProfileProps): boolean {
+class ActivityUserProfile extends Component {
+  props: Props;
+
+  shouldComponentUpdate(nextProps: Props): boolean {
     return nextProps.info !== this.props.info ||
            nextProps.online !== this.props.online ||
            nextProps.children !== this.props.children ||
@@ -25,14 +32,12 @@ class ActivityUserProfile extends Component {
     const { info: { name, bigAvatar, placeholder } } = this.props;
 
     return (
-      <PeerAvatar
-        peer={{
-          title: name,
-          avatar: bigAvatar,
-          placeholder
-        }}
-        size="big"
+      <Avatar
         className={styles.avatar}
+        size="big"
+        title={name}
+        image={bigAvatar}
+        placeholder={placeholder}
       />
     );
   }

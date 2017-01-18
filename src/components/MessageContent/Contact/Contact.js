@@ -2,13 +2,19 @@
  * Copyright 2017 dialog LLC <info@dlg.im>
  * @flow
  */
-import type { MessageContentContact } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
 import Icon from '../../Icon/Icon';
 import styles from './Contact.css';
 
+export type Props = {|
+  name: string,
+  photo64: string,
+  phones: string[],
+  emails: string[]
+|};
+
 class Contact extends PureComponent {
-  props: MessageContentContact;
+  props: Props;
 
   renderAvatar(): ?React.Element<any> {
     const { name, photo64 } = this.props;
@@ -29,9 +35,9 @@ class Contact extends PureComponent {
       return null;
     }
 
-    return emails.map((email, index) => {
+    return emails.map((email) => {
       return (
-        <div className={styles.email} key={index}>
+        <div className={styles.email} key={email}>
           <Icon glyph="mail_outline" className={styles.icon} />
           <a href={`mailto:${email}`} className={styles.link}>{email}</a>
         </div>
@@ -46,9 +52,9 @@ class Contact extends PureComponent {
       return null;
     }
 
-    return phones.map((phone, index) => {
+    return phones.map((phone) => {
       return (
-        <div className={styles.phone} key={index}>
+        <div className={styles.phone} key={phone}>
           <Icon glyph="phone" className={styles.icon} />
           <a href={`tel:${phone}`} className={styles.link}>{phone}</a>
         </div>

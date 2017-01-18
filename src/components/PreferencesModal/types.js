@@ -9,7 +9,7 @@ export type PreferencesScreen = 'general' | 'notifications' | 'security' | 'shor
 
 export type Props = {
   className?: string,
-  screen: PreferencesScreen,
+  screen: string,
   settings: {
     value: ?ProfileSettings,
     error: ?Error,
@@ -26,7 +26,7 @@ export type Props = {
     pending: boolean
   },
   onClose: close,
-  onScreenChange: (screen: PreferencesScreen) => any,
+  onScreenChange: (screen: string) => any,
   onSettingsLoad: () => any,
   onSettingsChange: (value: ProfileSettings) => any,
   onSessionsLoad: () => any,
@@ -34,4 +34,4 @@ export type Props = {
   onAllSessionsTerminate: () => any,
   onBlockedLoad: () => any,
   onUnblockUser: (id: number) => any
-}
+};

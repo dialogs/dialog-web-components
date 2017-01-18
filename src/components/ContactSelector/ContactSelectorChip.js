@@ -6,7 +6,7 @@
 import type { Contact } from '@dlghq/dialog-types';
 
 import React, { PureComponent } from 'react';
-import PeerAvatar from '../PeerAvatar/PeerAvatar';
+import Avatar from '../Avatar/Avatar';
 import classNames from 'classnames';
 import styles from './ContactSelector.css';
 
@@ -24,10 +24,12 @@ class ContactSelectorChip extends PureComponent {
 
     return (
       <div className={className}>
-        <PeerAvatar
-          peer={contact}
-          size="medium"
+        <Avatar
           className={styles.chipAvatar}
+          size="medium"
+          title={contact.name}
+          image={contact.avatar}
+          placeholder={contact.placeholder}
         />
         <div className={styles.chipText}>{contact.name}</div>
       </div>

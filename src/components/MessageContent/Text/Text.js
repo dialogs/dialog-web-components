@@ -12,7 +12,7 @@ import styles from './Text.css';
 
 export type Props = {
   text: string,
-  media: ?MessageMediaType,
+  media?: ?MessageMediaType,
   service?: boolean,
   className?: string
 }

@@ -87,7 +87,7 @@ class CopyButton extends Component {
     this.timeout = setTimeout(() => this.setState({ copied: null }), 3000);
   }
 
-  setButton = (button: ?typeof Button): void => {
+  setButton = (button: ?Button): void => {
     if (button) {
       this.button = findDOMNode(button);
     } else {
@@ -101,7 +101,7 @@ class CopyButton extends Component {
     return (
       <Button
         ref={this.setButton}
-        wide={this.props.wide}
+        wide={Boolean(this.props.wide)}
         disabled={this.props.disabled}
         theme={copied ? 'success' : 'primary'}
       >

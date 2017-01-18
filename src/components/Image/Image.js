@@ -14,14 +14,14 @@ const STATE_ERROR = 3;
 
 export type Props = {
   className?: string,
-  src: string,
-  alt?: string,
+  src: ?string,
+  alt?: ?string,
   preview?: string,
   width: number,
   height: number,
   maxWidth: number,
   maxHeight: number,
-  onClick: () => void
+  onClick?: (event: SyntheticMouseEvent) => void
 }
 
 export type State = {
@@ -74,7 +74,7 @@ class Image extends Component {
     this.stopFetch();
   }
 
-  getSource(): string {
+  getSource(): ?string {
     const { preview, src } = this.props;
     const { state } = this.state;
 
@@ -125,6 +125,15 @@ class Image extends Component {
     const source = this.getSource();
     const { width, height } = this.getSize();
     const className = classNames(styles.root, this.props.className);
+
+    if (!source) {
+      return (
+        <div
+          title={this.props.alt}
+          style={{ width, height }}
+        />
+      );
+    }
 
     return (
       <img

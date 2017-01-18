@@ -11,7 +11,7 @@ import styles from './SidebarGroup.css';
 export type Props = {
   className?: string,
   title: string,
-  children: React.Element<any>[]
+  children?: React.Element<any>[]
 };
 
 class SidebarGroup extends PureComponent {

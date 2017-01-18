@@ -3,15 +3,19 @@
  * @flow
  */
 
-import type { MessageContentPhoto } from '@dlghq/dialog-types';
 import React from 'react';
 import classNames from 'classnames';
 import Image from '../../Image/Image';
 import styles from './Photo.css';
 
-export type Props = MessageContentPhoto & {
+export type Props = {
   className?: string,
-  onClick?: () => any
+  width: number,
+  height: number,
+  preview: string,
+  fileUrl: ?string,
+  fileName: ?string,
+  onClick?: (event: SyntheticMouseEvent) => any
 };
 
 function Photo(props: Props): React.Element<any> {

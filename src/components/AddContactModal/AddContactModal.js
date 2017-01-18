@@ -17,7 +17,7 @@ import ErrorMessage from '../Error/Error';
 import Spinner from '../Spinner/Spinner';
 import Input from '../Input/Input';
 import Icon from '../Icon/Icon';
-import PeerAvatar from '../PeerAvatar/PeerAvatar';
+import Avatar from '../Avatar/Avatar';
 import Button from '../Button/Button';
 import styles from './AddContactModal.css';
 
@@ -94,7 +94,12 @@ class AddContactModal extends PureComponent {
         return (
           <div>
             <div className={styles.addedAvatar}>
-              <PeerAvatar peer={contact} size="large" />
+              <Avatar
+                size="large"
+                title={contact.name}
+                image={contact.avatar}
+                placeholder={contact.placeholder}
+              />
               <Icon glyph="done" className={styles.iconSmall} />
             </div>
             <Text
@@ -109,10 +114,12 @@ class AddContactModal extends PureComponent {
 
       return (
         <div>
-          <PeerAvatar
-            peer={contact}
-            size="large"
+          <Avatar
             className={styles.foundAvatar}
+            size="large"
+            title={contact.name}
+            image={contact.avatar}
+            placeholder={contact.placeholder}
           />
           <Text
             id="AddContactModal.user_found"
@@ -140,7 +147,12 @@ class AddContactModal extends PureComponent {
       return (
         <div className={styles.contact}>
           <div className={styles.avatar}>
-            <PeerAvatar peer={contact} size="big" />
+            <Avatar
+              size="big"
+              title={contact.name}
+              image={contact.avatar}
+              placeholder={contact.placeholder}
+            />
             <Icon glyph="clear" className={styles.iconError} />
           </div>
           <ErrorMessage className={styles.error}>{error.message}</ErrorMessage>
@@ -151,7 +163,12 @@ class AddContactModal extends PureComponent {
     return (
       <div className={styles.contact}>
         <div className={styles.avatar}>
-          <PeerAvatar peer={contact} size="big" />
+          <Avatar
+            size="big"
+            title={contact.name}
+            image={contact.avatar}
+            placeholder={contact.placeholder}
+          />
           <Icon glyph="done" className={styles.icon} />
         </div>
         <Text

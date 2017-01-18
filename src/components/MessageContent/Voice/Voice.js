@@ -3,7 +3,6 @@
  * @flow
  */
 
-import type { MessageContentVoice } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import VoicePlayer from './VoicePlayer';
@@ -11,38 +10,36 @@ import TransctiptButton from './TranscriptButton';
 import VoiceTranscription from './VoiceTranscription';
 import styles from './Voice.css';
 
-export type MessageContentVoiceProps = MessageContentVoice & {
+export type Props = {|
   className?: string,
-  transcription: ?string,
+  duration: number,
+  fileUrl: ?string,
+  transcription?: ?string,
   getTranscription?: () => void,
-  isTranscriptionEnabled: boolean,
-};
+  isTranscriptionEnabled: boolean
+|};
 
-export type MessageContentVoiceState = {
+export type State = {
   isTranscriptionVisible: boolean
 };
 
 class Voice extends PureComponent {
-  props: MessageContentVoiceProps;
-  state: MessageContentVoiceState;
-
-  handleToggleTranscription: () => void;
+  props: Props;
+  state: State;
 
   static defaultProps = {
     isTranscriptionEnabled: false
   };
 
-  constructor(props: MessageContentVoiceProps) {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
       isTranscriptionVisible: false
     };
-
-    this.handleToggleTranscription = this.handleToggleTranscription.bind(this);
   }
 
-  handleToggleTranscription() : void {
+  handleToggleTranscription = (): void => {
     const { transcription, getTranscription } = this.props;
     const { isTranscriptionVisible } = this.state;
 
@@ -74,13 +71,13 @@ class Voice extends PureComponent {
   }
 
   renderMessage() {
-    const { duration, fileUrl } = this.props;
+    const className = classNames(styles.container, this.props.className);
 
     return (
-      <div className={styles.container}>
+      <div className={className}>
         <VoicePlayer
-          duration={duration}
-          fileUrl={fileUrl}
+          fileUrl={this.props.fileUrl}
+          duration={this.props.duration}
         />
         {this.renderTrancsriptButton()}
       </div>

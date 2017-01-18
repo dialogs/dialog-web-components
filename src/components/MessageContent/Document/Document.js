@@ -3,7 +3,6 @@
  * @flow
  */
 
-import type { MessageContentDocument } from '@dlghq/dialog-types';
 import React from 'react';
 import classNames from 'classnames';
 import getExtensionType from '../../../utils/getExtensionType';
@@ -11,10 +10,19 @@ import Icon from '../../Icon/Icon';
 import Spinner from '../../Spinner/Spinner';
 import styles from './Document.css';
 
-function Document(props: MessageContentDocument) {
+type Props = {
+  className?: string,
+  fileUrl: ?string,
+  fileName: ?string,
+  fileSize: ?string,
+  fileExtension: ?string,
+  isUploading: boolean
+};
+
+function Document(props: Props) {
   const { fileUrl, fileName, fileSize, fileExtension, isUploading } = props;
   const type = fileExtension ? getExtensionType(fileExtension) : 'unknown';
-  const className = classNames(styles.container, {
+  const className = classNames(styles.container, props.className, {
     [styles.uploading]: isUploading
   });
   const previewClassName = classNames(styles.preview, styles[type]);

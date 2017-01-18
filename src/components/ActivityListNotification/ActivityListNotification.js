@@ -55,6 +55,7 @@ class ActivityListNotification extends Component {
         />
         <Switcher
           id="activity_notification"
+          name="activity_notification"
           value={this.props.value}
           className={styles.switcher}
           onChange={this.props.onChange}

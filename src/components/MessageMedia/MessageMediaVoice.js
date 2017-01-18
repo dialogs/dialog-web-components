@@ -16,16 +16,13 @@ export type Props = {
 
 function MessageMediaVoice(props: Props): React.Element<any> {
   const className = classNames(styles.container, styles.voice, props.className);
-  const { media: { content: { fileUrl, fileSize, mimeType, duration } } } = props;
+  const { media: { content: { fileUrl, duration } } } = props;
 
   return (
     <Voice
       className={className}
       duration={duration}
       fileUrl={fileUrl}
-      fileName="MessageMediaVoice"
-      fileSize={fileSize}
-      fileExtension={mimeType}
     />
   );
 }

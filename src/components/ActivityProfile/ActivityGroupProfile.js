@@ -3,29 +3,33 @@
  * @flow
  */
 
-import type { ActivityGroupProfileProps } from './types';
+import type { Group } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
 import { Text } from '@dlghq/react-l10n';
 import classNames from 'classnames';
-import PeerAvatar from '../PeerAvatar/PeerAvatar';
+import Avatar from '../Avatar/Avatar';
 import Markdown from '../Markdown/Markdown';
 import styles from './ActivityProfile.css';
 
+export type Props = {
+  className?: string,
+  info: Group,
+  children?: mixed
+};
+
 class ActivityGroupProfile extends PureComponent {
-  props: ActivityGroupProfileProps;
+  props: Props;
 
   renderAvatar(): React.Element<any> {
     const { info: { name, bigAvatar, placeholder } } = this.props;
 
     return (
-      <PeerAvatar
-        peer={{
-          title: name,
-          avatar: bigAvatar,
-          placeholder
-        }}
-        size="big"
+      <Avatar
         className={styles.avatar}
+        size="big"
+        title={name}
+        image={bigAvatar}
+        placeholder={placeholder}
       />
     );
   }

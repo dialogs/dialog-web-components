@@ -8,7 +8,7 @@ import React, { PureComponent } from 'react';
 import { Text } from '@dlghq/react-l10n';
 import Field from '../../Field/Field';
 import Button from '../../Button/Button';
-import PeerAvatar from '../../PeerAvatar/PeerAvatar';
+import Avatar from '../../Avatar/Avatar';
 import styles from './Blocked.css';
 
 export type Props = {
@@ -33,19 +33,16 @@ class BlockedUser extends PureComponent {
 
   render(): React.Element<any> {
     const { user } = this.props;
-    const avatarPeer = {
-      title: user.name,
-      avatar: user.avatar,
-      placeholder: user.placeholder
-    };
 
     return (
       <Field className={styles.user}>
         <div className={styles.userMeta}>
-          <PeerAvatar
-            size="large"
+          <Avatar
             className={styles.userAvatar}
-            peer={avatarPeer}
+            size="large"
+            title={user.name}
+            image={user.avatar}
+            placeholder={user.placeholder}
           />
           <span className={styles.userName}>{user.name}</span>
           {

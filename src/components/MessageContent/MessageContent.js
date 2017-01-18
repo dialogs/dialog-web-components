@@ -18,28 +18,76 @@ export type Props = {
   onLightboxOpen: () => any
 };
 
-function MessageContent({ content, ...props }: Props) {
+function MessageContent({ className, content, onLightboxOpen }: Props) {
   switch (content.type) {
     case 'text':
-      return <Text {...content} {...props} />;
+      return (
+        <Text
+          className={className}
+          text={content.text}
+          media={content.media}
+        />
+      );
 
     case 'service':
-      return <Text {...content} {...props} service />;
+      return (
+        <Text
+          service
+          className={className}
+          text={content.text}
+        />
+      );
 
     case 'photo':
-      return <Photo {...content} {...props} onClick={props.onLightboxOpen} />;
+      return (
+        <Photo
+          className={className}
+          width={content.width}
+          height={content.height}
+          preview={content.preview}
+          fileUrl={content.fileUrl}
+          fileName={content.fileName}
+          onClick={onLightboxOpen}
+        />
+      );
 
     case 'document':
-      return <Document {...content} {...props} />;
+      return (
+        <Document
+          className={className}
+          fileUrl={content.fileUrl}
+          fileName={content.fileName}
+          fileSize={content.fileSize}
+          fileExtension={content.fileExtension}
+          isUploading={content.isUploading}
+        />
+      );
 
     case 'voice':
-      return <Voice {...content} {...props} />;
+      return (
+        <Voice
+          fileUrl={content.fileUrl}
+          duration={content.duration}
+        />
+      );
 
     case 'location':
-      return <Location {...content} {...props} />;
+      return (
+        <Location
+          latitude={content.latitude}
+          longitude={content.longitude}
+        />
+      );
 
     case 'contact':
-      return <Contact {...content} {...props} />;
+      return (
+        <Contact
+          name={content.name}
+          photo64={content.photo64}
+          phones={content.phones}
+          emails={content.emails}
+        />
+      );
 
     default:
       console.warn('Unsupported message content: ', content); // eslint-disable-line

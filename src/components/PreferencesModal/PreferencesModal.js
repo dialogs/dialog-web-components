@@ -5,7 +5,7 @@
 
 import type { Settings as GeneralSettings } from './PreferencesGeneral';
 import type { Settings as NotificationSettings } from './PreferencesNotifications';
-import type { Props, PreferencesScreen } from './types';
+import type { Props } from './types';
 import React, { PureComponent } from 'react';
 import { Text } from '@dlghq/react-l10n';
 import classNames from 'classnames';
@@ -42,7 +42,7 @@ class PreferencesModal extends PureComponent {
     });
   };
 
-  handleScreenChange = (value: PreferencesScreen): void => {
+  handleScreenChange = (value: string): void => {
     this.props.onScreenChange(value);
     switch (value) {
       case 'general':

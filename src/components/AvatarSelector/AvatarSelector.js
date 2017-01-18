@@ -6,7 +6,7 @@
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import { selectFiles, fileToBase64 } from '@dlghq/dialog-utils';
-import PeerAvatar from '../PeerAvatar/PeerAvatar';
+import Avatar from '../Avatar/Avatar';
 import Icon from '../Icon/Icon';
 import styles from './AvatarSelector.css';
 
@@ -16,13 +16,12 @@ export type Props = {
   placeholder: string,
   avatar: ?string,
   onChange: (avatar: File) => void,
-  onRemove: () => void
+  onRemove?: () => void
 };
 
 export type State = {
   avatar: ?string
-}
-
+};
 
 class AvatarSelector extends PureComponent {
   props: Props;
@@ -52,15 +51,15 @@ class AvatarSelector extends PureComponent {
   renderRemoveIcon(): ?React.Element<any> {
     const { avatar } = this.state;
 
-    if (avatar) {
+    if (avatar && this.props.onRemove) {
       return null;
     }
 
     return (
       <Icon
-        onClick={this.props.onRemove}
         className={styles.avatarRemoveIcon}
         glyph="clear"
+        onClick={this.props.onRemove}
       />
     );
   }
@@ -72,15 +71,13 @@ class AvatarSelector extends PureComponent {
 
     return (
       <div className={className}>
-        <PeerAvatar
-          onClick={this.handleAvatarChangerClick}
+        <Avatar
           className={styles.avatar}
-          peer={{
-            title: name,
-            avatar,
-            placeholder
-          }}
           size="big"
+          title={name}
+          image={avatar}
+          placeholder={placeholder}
+          onClick={this.handleAvatarChangerClick}
         />
         <Icon
           onClick={this.handleAvatarChangerClick}

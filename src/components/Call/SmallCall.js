@@ -9,7 +9,7 @@ import Draggable from 'react-draggable';
 import classNames from 'classnames';
 import CallInfo from './CallInfo';
 import CallControls from './CallControls';
-import PeerAvatar from '../PeerAvatar/PeerAvatar';
+import Avatar from '../Avatar/Avatar';
 import styles from './Call.css';
 
 function SmallCall(props: CallProps) {
@@ -19,7 +19,14 @@ function SmallCall(props: CallProps) {
     <Draggable>
       <div className={className}>
         <div className={styles.smallInfoWrapper}>
-          <PeerAvatar size="large" peer={props.caller} className={styles.smallInfoAvatar} />
+          <Avatar
+            className={styles.smallInfoAvatar}
+            size="large"
+            peer={props.caller}
+            title={props.caller.name}
+            image={props.caller.avatar}
+            placeholder={props.caller.placeholder}
+          />
           <CallInfo
             small
             call={props.call}

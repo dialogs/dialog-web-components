@@ -22,11 +22,6 @@ class ProfileModal extends PureComponent {
   props: Props;
   state: State;
 
-  handleChange: Function;
-  handleSubmit: Function;
-  handleNickChooserClick: Function;
-  handleAvatarChange: (avatar: File[]) => void;
-
   static contextTypes = {
     l10n: LocalizationContextType
   };
@@ -40,20 +35,15 @@ class ProfileModal extends PureComponent {
       about: props.profile.about,
       avatar: props.profile.avatar
     };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleNickChooserClick = this.handleNickChooserClick.bind(this);
-    this.handleAvatarChange = this.handleAvatarChange.bind(this);
   }
 
-  handleChange(value: any, event: $FlowIssue): void {
+  handleChange = (value: string, event: SyntheticInputEvent): void => {
     this.setState({
       [event.target.name]: value
     });
-  }
+  };
 
-  handleSubmit(event: SyntheticEvent): void {
+  handleSubmit = (event: SyntheticEvent): void => {
     event.preventDefault();
 
     if (this.state.name !== this.props.profile.name) {
@@ -67,15 +57,15 @@ class ProfileModal extends PureComponent {
     if (this.state.about && this.state.about !== this.props.profile.about) {
       this.props.onAboutChange(this.state.about);
     }
-  }
+  };
 
-  handleNickChooserClick(): void {
+  handleNickChooserClick = (): void => {
     this.setState({ nick: '' });
-  }
+  };
 
-  handleAvatarChange(avatar: File): void {
+  handleAvatarChange = (avatar: File): void => {
     this.props.onAvatarChange(avatar);
-  }
+  };
 
   isChanged(): boolean {
     return this.state.name !== this.props.profile.name ||
@@ -206,7 +196,7 @@ class ProfileModal extends PureComponent {
                 type="textarea"
                 label={formatText('ProfileModal.about')}
                 placeholder={formatText('ProfileModal.about_placeholder')}
-                value={about}
+                value={about || ''}
                 onChange={this.handleChange}
               />
               {this.renderContacts()}

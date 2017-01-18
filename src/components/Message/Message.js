@@ -110,7 +110,7 @@ class Message extends PureComponent {
 
   renderAvatar(): ?React.Element<any> {
     const sender = this.getSender();
-    const onClick = this.props.onAvatarClick ? this.handleAvatarClick : null;
+    const onClick = this.props.onAvatarClick ? this.handleAvatarClick : undefined;
     const avatarClassName = classNames({
       [styles.clickable]: this.props.onAvatarClick
     });

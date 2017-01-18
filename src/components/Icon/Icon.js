@@ -16,15 +16,16 @@ export type Props = {
   theme: 'primary' | 'success' | 'danger' | 'info' | 'warning',
   size: 'small' | 'normal' | 'large',
   inverted: boolean,
-  onClick: (event: SyntheticMouseEvent) => void
+  onClick?: (event: SyntheticMouseEvent) => void
 };
 
 class Icon extends PureComponent {
   props: Props;
 
   static defaultProps = {
-    inverted: false,
-    size: 'normal'
+    size: 'normal',
+    theme: 'primary',
+    inverted: false
   };
 
   renderMaterialIcon() {

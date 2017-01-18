@@ -18,9 +18,9 @@ export type Props = {
   theme: Theme,
   flat: boolean,
   disabled: boolean,
-  onClick: Function,
-  active: boolean
-}
+  active?: boolean,
+  onClick: (event: SyntheticMouseEvent) => any
+};
 
 class IconButton extends PureComponent {
   props: Props;

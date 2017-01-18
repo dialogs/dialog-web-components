@@ -23,11 +23,14 @@ export type Props = {
   onClick?: (event: SyntheticMouseEvent) => any
 };
 
+type DefaultProps = {
+  size: AvatarSize
+};
+
 const seq = createSequence();
 
-class PeerAvatar extends PureComponent {
+class PeerAvatar extends PureComponent<DefaultProps, Props, void> {
   id: string;
-  props: Props;
 
   static defaultProps = {
     size: 'medium'

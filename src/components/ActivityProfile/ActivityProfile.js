@@ -3,10 +3,17 @@
  * @flow
  */
 
-import type { Props } from './types';
+import type { Props as UserProps } from './ActivityUserProfile';
+import type { Props as GroupProps } from './ActivityGroupProfile';
+
 import React from 'react';
 import ActivityUserProfile from './ActivityUserProfile';
 import ActivityGroupProfile from './ActivityGroupProfile';
+
+export type Props = (
+  ({ type: 'user' } & UserProps) |
+  ({ type: 'group' } & GroupProps)
+);
 
 function ActivityProfile(props: Props): ?React.Element<any> {
   switch (props.type) {
@@ -26,8 +33,6 @@ function ActivityProfile(props: Props): ?React.Element<any> {
         <ActivityGroupProfile
           className={props.className}
           info={props.info}
-          online={props.online}
-          onAboutEdit={props.onAboutEdit}
         >
           {props.children}
         </ActivityGroupProfile>

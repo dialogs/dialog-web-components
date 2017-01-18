@@ -3,7 +3,7 @@
  * @flow
  */
 
-import type { Contact } from './ContactList';
+import type { Contact } from '@dlghq/dialog-types';
 import type { ItemProps } from '../SelectList/SelectList';
 
 import React, { PureComponent } from 'react';
@@ -21,17 +21,6 @@ class ContactListItem extends PureComponent {
     );
   }
 
-  renderAbout(): ?React.Element<any> {
-    const { item: { about } } = this.props;
-    if (!about) {
-      return null;
-    }
-
-    return (
-      <span className={styles.about}>{about}</span>
-    );
-  }
-
   render(): React.Element<any> {
     const { item: { avatar, placeholder, name }, hovered, selected } = this.props;
     const className = classNames(styles.contact, {
@@ -43,14 +32,13 @@ class ContactListItem extends PureComponent {
         <div className={styles.wrapper}>
           <Avatar
             className={styles.avatar}
-            image={avatar}
-            title={name}
-            placeholder={placeholder}
             size="large"
+            title={name}
+            image={avatar}
+            placeholder={placeholder}
           />
           <div className={styles.text}>
             <span className={styles.name}>{name}</span>
-            {this.renderAbout()}
           </div>
           <SelectSwitcher value={selected} />
         </div>

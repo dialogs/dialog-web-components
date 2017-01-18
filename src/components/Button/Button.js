@@ -9,18 +9,18 @@ import Spinner from '../Spinner/Spinner';
 import styles from './Button.css';
 
 export type Props = {
-  id: string,
+  id?: string,
   className?: string,
-  children: any,
+  children?: mixed,
   disabled: boolean,
   wide: boolean,
   rounded: boolean,
   loading: boolean,
   view: 'button' | 'outline' | 'link',
   type: 'submit' | 'reset' | 'button' | 'menu',
-  theme:'default' | 'primary' | 'success' | 'danger' | 'info' | 'warning' | 'link',
+  theme: 'default' | 'primary' | 'success' | 'danger' | 'info' | 'warning' | 'link',
   size: 'small' | 'normal' | 'large',
-  onClick: () => any
+  onClick?: (event: SyntheticEvent) => any
 }
 
 class Button extends PureComponent {

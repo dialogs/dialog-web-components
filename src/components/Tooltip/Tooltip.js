@@ -15,7 +15,7 @@ export type Props = {
   text: string,
   openDelay?: number,
   closeDelay?: number,
-  options: Object,
+  options?: Object,
   className?: string
 };
 

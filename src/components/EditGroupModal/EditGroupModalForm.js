@@ -115,7 +115,7 @@ class EditGroupModalForm extends PureComponent {
         label={l10n.formatText(`CreateNewModal.${type}.info.shortname`)}
         onChange={this.props.onChange}
         prefix="app.dlg.im/"
-        value={shortname.value}
+        value={shortname.value || ''}
         status={shortname.error ? 'error' : 'normal'}
       />
     );
@@ -153,7 +153,7 @@ class EditGroupModalForm extends PureComponent {
             onChange={this.props.onChange}
             placeholder={l10n.formatText(`CreateNewModal.${type}.info.description.placeholder`)}
             type="textarea"
-            value={about.value}
+            value={about.value || ''}
           />
         </form>
       </div>

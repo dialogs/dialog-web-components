@@ -92,7 +92,7 @@ class CreateNewInfo extends PureComponent {
         label={l10n.formatText(`CreateNewModal.${type}.info.shortname`)}
         onChange={this.props.onChange}
         prefix="app.dlg.im/"
-        value={shortname}
+        value={shortname || ''}
       />
     );
   }
@@ -126,7 +126,7 @@ class CreateNewInfo extends PureComponent {
             onChange={this.props.onChange}
             placeholder={l10n.formatText(`CreateNewModal.${type}.info.description.placeholder`)}
             type="textarea"
-            value={about}
+            value={about || ''}
           />
           {this.renderShortname()}
         </form>
