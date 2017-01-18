@@ -71,7 +71,6 @@
     "@dlghq/stylelint-config-dialog": "0.11.0",
     "buildbranch": "1.0.0",
     "chalk": "1.1.3",
-    "commander": "2.9.0",
     "ejs": "2.5.5",
     "eslint": "3.13.1",
     "eslint-plugin-react": "6.9.0",
