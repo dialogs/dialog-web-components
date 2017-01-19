@@ -89,14 +89,14 @@ class PeerAvatar extends PureComponent<DefaultProps, Props, void> {
   renderMask(): React.Element<any> {
     if (!this.props.online) {
       return (
-        <circle fill={`url(#${this.id})`} cx="18" cy="18" r="18" />
+        <circle fill={`url(#${this.id})`} cx="50" cy="50" r="50" />
       );
     }
 
     return (
       <path
         // eslint-disable-next-line
-        d="M24.79 34.675C22.695 35.53 20.402 36 18 36 8.06 36 0 27.94 0 18S8.06 0 18 0s18 8.06 18 18c0 2.402-.47 4.695-1.325 6.79C33.435 23.677 31.797 23 30 23c-3.866 0-7 3.134-7 7 0 1.797.677 3.436 1.79 4.675z"
+        d="M68.393 96.508C62.7 98.762 56.495 100 50 100 22.386 100 0 77.614 0 50S22.386 0 50 0s50 22.386 50 50c0 6.495-1.238 12.7-3.492 18.393C93.083 65.643 88.734 64 84 64c-11.046 0-20 8.954-20 20 0 4.734 1.644 9.083 4.393 12.508z"
         fill={`url(#${this.id})`}
       />
     );
@@ -111,7 +111,7 @@ class PeerAvatar extends PureComponent<DefaultProps, Props, void> {
     const text = size >= 20 ? this.getAvatarText() : null;
     const twoChars = Boolean(text && text.length !== 1);
     const textStyles = {
-      fontSize: twoChars ? 14 : 18
+      fontSize: twoChars ? 36 : 48
     };
 
     return (
@@ -134,7 +134,7 @@ class PeerAvatar extends PureComponent<DefaultProps, Props, void> {
     }
 
     return (
-      <circle cx="30" cy="30" r="5" className={styles.online} />
+      <circle cx="84" cy="84" r="15" className={styles.online} />
     );
   }
 
@@ -146,7 +146,7 @@ class PeerAvatar extends PureComponent<DefaultProps, Props, void> {
 
     return (
       <svg
-        viewBox="0 0 36 36"
+        viewBox="0 0 100 100"
         width={size}
         height={size}
         className={className}
