@@ -4,6 +4,7 @@
 .*/react/node_modules/.*
 .*/fbjs/node_modules/.*
 .*/node_modules/invariant/.*
+.*/node_modules/flow-coverage-report/.*
 .*/scripts/.*
 
 # Incorrect parsing

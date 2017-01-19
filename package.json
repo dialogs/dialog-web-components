@@ -31,7 +31,8 @@
     "release": "npm publish",
     "postpublish": "git push --follow-tags",
     "predocs": "styleguidist build",
-    "docs": "buildbranch gh-pages styleguide"
+    "docs": "buildbranch gh-pages styleguide",
+    "coverage": "flow-coverage-report -i 'src/**/*.js' -x 'src/styleguide/**/*.js'"
   },
   "repository": {
     "type": "git",
@@ -75,7 +76,8 @@
     "eslint": "3.13.1",
     "eslint-plugin-react": "6.9.0",
     "file-loader": "0.9.0",
-    "flow-bin": "0.37.4",
+    "flow-bin": "0.38.0",
+    "flow-coverage-report": "0.2.0",
     "glob": "7.1.1",
     "inquirer": "2.0.0",
     "jest-cli": "18.1.0",
