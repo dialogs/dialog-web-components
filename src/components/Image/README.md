@@ -1,10 +1,13 @@
 Image:
 
 ```
+
+const preview = require('./fixtures/welcome-cat-preview.txt');
+
 <Image
   src="https://octodex.github.com/images/welcometocat.png"
   alt="Welcometocat"
-  preview={null}
+  preview={preview}
   width={896}
   height={896}
 />

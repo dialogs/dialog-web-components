@@ -122,28 +122,36 @@ class Image extends Component {
   }
 
   render(): React.Element<any> {
-    const source = this.getSource();
+    const { preview, src } = this.props;
+    const { state } = this.state;
+
+    const isPreview = state !== STATE_SUCCESS;
+    const source = isPreview ? preview : src;
     const { width, height } = this.getSize();
     const className = classNames(styles.root, this.props.className);
 
-    if (!source) {
-      return (
-        <div
-          title={this.props.alt}
-          style={{ width, height }}
-        />
-      );
-    }
+    const style = {
+      width,
+      height,
+      display: 'inline-block',
+      filter: isPreview ? 'blur(5px)' : null
+    };
 
     return (
-      <img
-        onClick={this.props.onClick}
-        className={className}
-        src={source}
-        width={width}
-        height={height}
-        alt={this.props.alt}
-      />
+      <div title={this.props.alt} style={style}>
+        {
+          source ? (
+            <img
+              className={className}
+              src={source}
+              width={width}
+              height={height}
+              alt={this.props.alt}
+              onClick={this.props.onClick}
+            />
+          ) : null
+        }
+      </div>
     );
   }
 }
