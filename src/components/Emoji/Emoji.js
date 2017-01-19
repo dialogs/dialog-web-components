@@ -14,7 +14,8 @@ const SPRITE_SIZE = 40;
 export type Props = {
   className?: string,
   char: string,
-  size?: number
+  size?: number,
+  children?: any
 };
 
 class Emoji extends PureComponent {
@@ -45,7 +46,7 @@ class Emoji extends PureComponent {
 
       return (
         <span className={className} style={style} title={emoji.name}>
-          {emoji.char}
+          {this.props.children || emoji.char}
         </span>
       );
     }
@@ -62,7 +63,7 @@ class Emoji extends PureComponent {
 
     return (
       <span className={className} style={style} title={emoji.name}>
-        {emoji.char}
+        {this.props.children || emoji.char}
       </span>
     );
   }

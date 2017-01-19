@@ -27,4 +27,5 @@
   font-weight: normal;
   line-height: var(--emoji-line-height);
   text-size-adjust: 100%;
+  letter-spacing: 2px;
 }
