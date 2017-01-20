@@ -198,13 +198,11 @@
   --emoji-button-counter-color-hover: var(--color-primary);
   --emoji-button-counter-color-active: var(--emoji-button-counter-color-hover);
   /* FakeMessage */
-  --fake-message-avatar-size: 36px;
+  --fake-message-avatar-size: 40px;
   --fake-message-avatar-color: #c5c5c5;
   --fake-message-text-color: #e5e5e5;
-  --fake-message-top-padding: 14px;
-  --fake-message-right-padding: 34px;
-  --fake-message-bottom-padding: 14px;
-  --fake-message-left-padding: 34px;
+  --fake-message-header-text-color: var(--fake-recent-text-color);
+  --fake-message-line-height: 12px;
   --fake-recent-line-height: 12px;
   --fake-recent-text-color: #cacaca;
   --fake-recent-avatar-size: 28px;

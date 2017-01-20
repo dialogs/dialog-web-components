@@ -14,16 +14,13 @@
   position: relative;
   display: flex;
   flex-direction: row;
-  padding-top: var(--fake-message-top-padding);
-  padding-right: var(--fake-message-right-padding);
-  padding-bottom: var(--fake-message-bottom-padding);
-  padding-left: var(--fake-message-left-padding);
+  padding: var(--message-vertical-padding) var(--message-horizontal-padding);
 }
 
 .avatar {
   width: var(--fake-message-avatar-size);
   height: var(--fake-message-avatar-size);
-  margin-right: 16px;
+  margin-right: var(--message-horizontal-padding);
   border-radius: 50%;
   background-color: var(--fake-message-avatar-color);
   flex: 0 0 auto;
@@ -41,14 +38,19 @@
 .header {
   margin-top: 2px;
   line-height: 0;
-}
+ }
 
 .line {
   display: inline-block;
-  height: 9px;
+  height: var(--fake-message-line-height);
   margin-right: 12px;
   margin-bottom: 15px;
   border-radius: 10px;
   background-color: var(--fake-message-text-color);
   line-height: 0;
+}
+
+.lineHeader {
+  composes: line;
+  background-color: var(--fake-message-header-text-color);
 }

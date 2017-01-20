@@ -29,8 +29,8 @@ function FakeMessage() {
       <div className={styles.avatar} />
       <div className={styles.body}>
         <header className={styles.header}>
-          <div className={styles.line} style={{ width: 136 }} />
-          <div className={styles.line} style={{ width: 49 }} />
+          <div className={styles.lineHeader} style={{ width: 136 }} />
+          <div className={styles.lineHeader} style={{ width: 49 }} />
         </header>
         <div className={styles.text}>
           {renderText()}
