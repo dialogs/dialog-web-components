@@ -53,7 +53,7 @@
   --color-pending: var(--color-info);
   --color-error: var(--color-danger);
   /* Gradients */
-  --default-gradient: linear-gradient(89deg, var(--violet-blue), var(--vibrant-purple));
+  --default-gradient: linear-gradient(89deg, var(--violet-blue), var(--color-primary));
   --login-gradient: linear-gradient(-45deg, #3023AE 0%, #6339B1 61%, #8347B3 100%);
   /* Avatar */
   --avatar-placeholder-color: #fff;
