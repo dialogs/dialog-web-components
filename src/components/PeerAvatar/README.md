@@ -26,5 +26,5 @@ Peer Avatar
     ];
 
     <div>
-      {users.map((user, key) => <PeerAvatar key={key} {...user} />)}
+      {users.map((user, key) => <PeerAvatar key={key} {...user} size={100} />)}
     </div>
