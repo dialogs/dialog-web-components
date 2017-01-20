@@ -205,9 +205,11 @@
   --fake-message-right-padding: 34px;
   --fake-message-bottom-padding: 14px;
   --fake-message-left-padding: 34px;
+  --fake-recent-line-height: 12px;
   --fake-recent-text-color: #cacaca;
   --fake-recent-avatar-size: 28px;
   --fake-recent-avatar-color: #c5c5c5;
+  --fake-recent-counter-size: var(--recent-item-counter-size);
   /* Field */
   --field-border-color: color(#000 alpha(10%));
   /* Fieldset */

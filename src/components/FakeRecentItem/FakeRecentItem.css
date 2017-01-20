@@ -26,7 +26,7 @@
 .avatar {
   width: var(--fake-recent-avatar-size);
   height: var(--fake-recent-avatar-size);
-  margin-right: 16px;
+  margin-right: var(--default-padding);
   border-radius: 50%;
   background-color: var(--fake-recent-avatar-color);
   flex: 0 0 auto;
@@ -38,14 +38,14 @@
 }
 
 .line {
-  height: 9px;
+  height: var(--fake-recent-line-height);
   border-radius: 10px;
   background-color: var(--fake-recent-text-color);
 }
 
 .counter {
-  width: 19px;
-  height: 19px;
+  width: var(--fake-recent-counter-size);
+  height: var(--fake-recent-counter-size);
   margin-left: 6px;
   border-radius: 50%;
   background-color: var(--color-primary);
