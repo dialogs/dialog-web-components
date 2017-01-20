@@ -23,5 +23,4 @@ const renderButtons = () => {
     renderButtons={renderButtons}
   />
 </div>
-
 ```
