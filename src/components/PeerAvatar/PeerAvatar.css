@@ -13,7 +13,7 @@
   fill: var(--avatar-placeholder-color);
   text-transform: uppercase;
   font-family: var(--default-font-family);
-  font-weight: 300;
+  font-weight: 400;
   user-select: none;
   cursor: inherit;
 }
