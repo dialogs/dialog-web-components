@@ -31,6 +31,11 @@ const seq = createSequence();
 
 class DoublePeerAvatar extends PureComponent<DefaultProps, Props, void> {
   id: string;
+  ids: {
+    big: string,
+    clip: string,
+    small: string
+  };
 
   static defaultProps = {
     size: 'medium'
@@ -51,14 +56,6 @@ class DoublePeerAvatar extends PureComponent<DefaultProps, Props, void> {
     return getAvatarSize(this.props.size);
   }
 
-  getAvatarText(peer: PeerInfo): string {
-    return getAvatarText(peer.title);
-  }
-
-  getAvatarColor(peer: PeerInfo): Gradient {
-    return getAvatarColor(peer.placeholder);
-  }
-
   renderDefsBig(): React.Element<any> {
     if (this.props.peerBig.avatar) {
       return (
@@ -74,7 +71,7 @@ class DoublePeerAvatar extends PureComponent<DefaultProps, Props, void> {
       );
     }
 
-    const colors = this.getAvatarColor(this.props.peerBig);
+    const colors: Gradient = getAvatarColor(this.props.peerBig.placeholder);
 
     return (
       <linearGradient
@@ -94,7 +91,10 @@ class DoublePeerAvatar extends PureComponent<DefaultProps, Props, void> {
   renderClipMaskBig(): React.Element<any> {
     return (
       <clipPath id={this.ids.clip}>
-        <path d="M58.2070074,99.3297063 C55.5367715,99.7706374 52.795171,100 50,100 C22.3857625,100 0,77.6142375 0,50 C0,22.3857625 22.3857625,0 50,0 C77.6142375,0 100,22.3857625 100,50 C100,52.795171 99.7706374,55.5367715 99.3297063,58.2070074 C94.8434182,55.5348957 89.6009561,54 84,54 C67.4314575,54 54,67.4314575 54,84 C54,89.6009561 55.5348957,94.8434182 58.2070074,99.3297063 Z" />
+        <path
+          // eslint-disable-next-line
+          d="M58.2070074,99.3297063 C55.5367715,99.7706374 52.795171,100 50,100 C22.3857625,100 0,77.6142375 0,50 C0,22.3857625 22.3857625,0 50,0 C77.6142375,0 100,22.3857625 100,50 C100,52.795171 99.7706374,55.5367715 99.3297063,58.2070074 C94.8434182,55.5348957 89.6009561,54 84,54 C67.4314575,54 54,67.4314575 54,84 C54,89.6009561 55.5348957,94.8434182 58.2070074,99.3297063 Z"
+        />
       </clipPath>
     );
   }
@@ -102,7 +102,14 @@ class DoublePeerAvatar extends PureComponent<DefaultProps, Props, void> {
   renderDefsSmall(): React.Element<any> {
     if (this.props.peerSmall.avatar) {
       return (
-        <pattern id={this.ids.small} width="100%" height="100%" x="58" y="58" patternUnits="userSpaceOnUse">
+        <pattern
+          id={this.ids.small}
+          width="100%"
+          height="100%"
+          x="58"
+          y="58"
+          patternUnits="userSpaceOnUse"
+        >
           <image
             x="0"
             y="0"
@@ -115,7 +122,7 @@ class DoublePeerAvatar extends PureComponent<DefaultProps, Props, void> {
       );
     }
 
-    const colors = this.getAvatarColor(this.props.peerSmall);
+    const colors: Gradient = getAvatarColor(this.props.peerSmall.placeholder);
 
     return (
       <linearGradient
@@ -154,7 +161,7 @@ class DoublePeerAvatar extends PureComponent<DefaultProps, Props, void> {
     }
 
     const size = this.getAvatarSize();
-    const text = size >= 20 ? this.getAvatarText(this.props.peerSmall) : null;
+    const text = size >= 20 ? getAvatarText(this.props.peerSmall.title) : null;
     const twoChars = Boolean(text && text.length !== 1);
     const textStyles = {
       fontSize: twoChars ? 20 : 24
@@ -180,7 +187,7 @@ class DoublePeerAvatar extends PureComponent<DefaultProps, Props, void> {
     }
 
     const size = this.getAvatarSize();
-    const text = size >= 20 ? this.getAvatarText(this.props.peerBig) : null;
+    const text = size >= 20 ? getAvatarText(this.props.peerBig.title) : null;
     const twoChars = Boolean(text && text.length !== 1);
     const textStyles = {
       fontSize: twoChars ? 40 : 48
