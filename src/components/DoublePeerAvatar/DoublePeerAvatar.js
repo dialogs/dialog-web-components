@@ -42,6 +42,7 @@ class DoublePeerAvatar extends PureComponent<DefaultProps, Props, void> {
     this.id = 'double_peer_avatar_' + seq.next();
     this.ids = {
       big: `${this.id}_big`,
+      clip: `${this.id}_big_clip`,
       small: `${this.id}_small`
     };
   }
@@ -50,11 +51,11 @@ class DoublePeerAvatar extends PureComponent<DefaultProps, Props, void> {
     return getAvatarSize(this.props.size);
   }
 
-  getAvatarText(peer: Peer): string {
+  getAvatarText(peer: PeerInfo): string {
     return getAvatarText(peer.title);
   }
 
-  getAvatarColor(peer: Peer): Gradient {
+  getAvatarColor(peer: PeerInfo): Gradient {
     return getAvatarColor(peer.placeholder);
   }
 
@@ -87,6 +88,14 @@ class DoublePeerAvatar extends PureComponent<DefaultProps, Props, void> {
         <stop stopColor={colors.payload.from} />
         <stop offset="1" stopColor={colors.payload.to} />
       </linearGradient>
+    );
+  }
+
+  renderClipMaskBig(): React.Element<any> {
+    return (
+      <clipPath id={this.ids.clip}>
+        <path d="M58.2070074,99.3297063 C55.5367715,99.7706374 52.795171,100 50,100 C22.3857625,100 0,77.6142375 0,50 C0,22.3857625 22.3857625,0 50,0 C77.6142375,0 100,22.3857625 100,50 C100,52.795171 99.7706374,55.5367715 99.3297063,58.2070074 C94.8434182,55.5348957 89.6009561,54 84,54 C67.4314575,54 54,67.4314575 54,84 C54,89.6009561 55.5348957,94.8434182 58.2070074,99.3297063 Z" />
+      </clipPath>
     );
   }
 
@@ -139,23 +148,23 @@ class DoublePeerAvatar extends PureComponent<DefaultProps, Props, void> {
     );
   }
 
-  renderPeerText(): ?React.Element<any {
-    if (this.props.peerBig.avatar) {
+  renderPeerSmallText(): ?React.Element<any> {
+    if (this.props.peerSmall.avatar) {
       return null;
     }
 
     const size = this.getAvatarSize();
-    const text = size >= 20 ? this.getAvatarText() : null;
+    const text = size >= 20 ? this.getAvatarText(this.props.peerSmall) : null;
     const twoChars = Boolean(text && text.length !== 1);
     const textStyles = {
-      fontSize: twoChars ? 36 : 48
+      fontSize: twoChars ? 20 : 24
     };
 
     return (
       <text
         className={styles.text}
-        x="50%"
-        y="51%"
+        x="84"
+        y="84"
         textAnchor="middle"
         alignmentBaseline="central"
         style={textStyles}
@@ -165,8 +174,31 @@ class DoublePeerAvatar extends PureComponent<DefaultProps, Props, void> {
     );
   }
 
-  renderText(): ?React.Element<any> {
+  renderPeerBigText(): ?React.Element<any> {
+    if (this.props.peerBig.avatar) {
+      return null;
+    }
 
+    const size = this.getAvatarSize();
+    const text = size >= 20 ? this.getAvatarText(this.props.peerBig) : null;
+    const twoChars = Boolean(text && text.length !== 1);
+    const textStyles = {
+      fontSize: twoChars ? 40 : 48
+    };
+
+    return (
+      <text
+        className={styles.text}
+        x="50"
+        y="50"
+        textAnchor="middle"
+        alignmentBaseline="central"
+        style={textStyles}
+        clipPath={`url(#${this.ids.clip})`}
+      >
+        {text}
+      </text>
+    );
   }
 
   render(): React.Element<any> {
@@ -185,11 +217,13 @@ class DoublePeerAvatar extends PureComponent<DefaultProps, Props, void> {
       >
         <defs>
           {this.renderDefsBig()}
+          {this.renderClipMaskBig()}
           {this.renderDefsSmall()}
         </defs>
         {this.renderBigAvatar()}
         {this.renderSmallAvatar()}
-        {this.renderText()}
+        {this.renderPeerBigText()}
+        {this.renderPeerSmallText()}
       </svg>
     );
   }
