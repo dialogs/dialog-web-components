@@ -17,12 +17,8 @@
   text-align: center;
   vertical-align: middle;
   border-radius: 50%;
-  align-content: center;
-  align-items: center;
-  justify-content: center;
-  flex-flow: row;
 
-  /* fix fow safari  */
+  /* flexbox fix for safari */
   /* based on http://stackoverflow.com/a/40483475/1661138 */
   &::before,
   &::after {
@@ -30,6 +26,16 @@
     flex: 1 1 auto;
     @apply --flex-fix;
   }
+}
+
+.fix {
+  /* flexbox fix for safari */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  flex-flow: row;
 }
 
 .icon {

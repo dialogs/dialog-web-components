@@ -51,7 +51,9 @@ class IconButton extends PureComponent {
         style={style}
         {...otherProps}
       >
-        <Icon glyph={glyph} className={styles.icon} />
+        <span className={styles.fix}>
+          <Icon glyph={glyph} className={styles.icon} />
+        </span>
       </button>
     );
   }
