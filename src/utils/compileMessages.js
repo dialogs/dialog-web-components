@@ -1,4 +1,8 @@
 /**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+/*
  * Compile translations:
  * Input:
  * { foo: { bar: 'baz' } }

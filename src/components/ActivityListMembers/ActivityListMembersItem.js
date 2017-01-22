@@ -14,12 +14,12 @@ export type Props = {
   member: ChatMember,
   onKick: (peer: Peer) => void,
   onClick: (peer: Peer) => void
-}
+};
 
 class ActivityListMembersItem extends PureComponent {
   props: Props;
 
-  handleKick = (event: $FlowIssue): void => {
+  handleKick = (event: SyntheticMouseEvent): void => {
     event.preventDefault();
     event.stopPropagation();
     this.props.onKick(this.props.member.peerInfo.peer);

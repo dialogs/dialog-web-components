@@ -15,7 +15,7 @@ export type Props = {
   info: User,
   online: UserOnline,
   className?: string,
-  children?: any
+  children?: mixed
 };
 
 class ActivityUserProfile extends Component {

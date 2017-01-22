@@ -11,7 +11,7 @@ import styles from './ActivityHeader.css';
 export type Props = {
   onClose?: () => any,
   onBack?: () => any,
-  children: any,
+  children?: any,
   className?: string
 };
 

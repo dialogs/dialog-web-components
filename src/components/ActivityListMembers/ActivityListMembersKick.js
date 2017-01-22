@@ -13,7 +13,7 @@ import styles from './ActivityListMembers.css';
 export type Props = {
   error: ?string,
   pending: boolean,
-  onClick: () => void
+  onClick: (event: SyntheticMouseEvent) => void
 };
 
 function ActivityListMembersKick(props: Props) {

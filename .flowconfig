@@ -6,6 +6,7 @@
 .*/node_modules/invariant/.*
 .*/node_modules/flow-coverage-report/.*
 .*/scripts/.*
+src/utils/compileMessages.js
 
 # Incorrect parsing
 .*/systemjs-builder/.*

@@ -90,8 +90,6 @@ export { default as Message } from './components/Message/Message';
 export { default as MessageState } from './components/MessageState/MessageState';
 export { default as MessageContent } from './components/MessageContent/MessageContent';
 export { default as MessageDivider } from './components/MessageDivider/MessageDivider';
-export { default as MessageGroup } from './components/MessageGroup/MessageGroup';
-export { default as MessageList } from './components/MessageList/MessageList';
 export { default as MessageMedia } from './components/MessageMedia/MessageMedia';
 export { default as FakeMessage } from './components/FakeMessage/FakeMessage';
 export { default as EmptyChat } from './components/EmptyChat/EmptyChat';

@@ -1,27 +1,25 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ * @flow
+ */
+
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
 import styles from './Dropdown.css';
 
-class DropdownHeader extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-    children: PropTypes.node.isRequired
-  };
+type Props = {
+  className?: string,
+  children?: mixed
+};
 
-  shouldComponentUpdate(nextProps) {
-    return nextProps.className !== this.props.className;
-  }
+function DropdownHeader(props: Props): React.Element<any> {
+  const className = classNames(styles.header, props.className);
 
-  render() {
-    const { className, children } = this.props;
-    const headerClassName = classNames(styles.header, className);
-
-    return (
-      <header className={headerClassName}>
-        {children}
-      </header>
-    );
-  }
+  return (
+    <header className={className}>
+      {props.children}
+    </header>
+  );
 }
 
 export default DropdownHeader;

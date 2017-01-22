@@ -1,23 +1,22 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ * @flow
+ */
+
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
 import styles from './Dropdown.css';
 
-class DropdownDivider extends Component {
-  static propTypes = {
-    className: PropTypes.string
-  };
+type Props = {
+  className?: string
+};
 
-  shouldComponentUpdate(nextProps) {
-    return nextProps.className !== this.props.className;
-  }
+function DropdownDivider(props: Props): React.Element<any> {
+  const className = classNames(styles.divider, props.className);
 
-  render() {
-    const className = classNames(styles.divider, this.props.className);
-
-    return (
-      <div className={className} />
-    );
-  }
+  return (
+    <div className={className} />
+  );
 }
 
 export default DropdownDivider;

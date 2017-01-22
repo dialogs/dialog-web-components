@@ -9,3 +9,4 @@ yarn-error.log
 # Build
 /src/messages.json
 /styleguide/
+/flow-coverage/
