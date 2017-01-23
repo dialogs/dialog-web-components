@@ -33,6 +33,10 @@
     color: var(--recent-item-hover-color);
   }
 
+  &:active{
+    background-color: color(var(--recent-item-hover-background-color) shade(2%));
+  }
+
   & .avatar {
     margin-right: 14px;
     flex: 0 0 auto;
