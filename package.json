@@ -52,6 +52,7 @@
     "@dlghq/react-l10n": "0.7.1",
     "classnames": "2.2.5",
     "clipboard": "1.5.16",
+    "date-fns": "^1.27.1",
     "immutable": "3.8.1",
     "lodash": "4.17.4",
     "photoswipe": "4.1.1",

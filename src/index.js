@@ -81,6 +81,7 @@ export { default as SidebarSearchGroup } from './components/SidebarSearchGroup/S
 export { default as SidebarGroup } from './components/SidebarGroup/SidebarGroup';
 export { default as SidebarGroupTitle } from './components/SidebarGroup/SidebarGroupTitle';
 export { default as RecentItem } from './components/RecentItem/RecentItem';
+export { default as RecentCallItem } from './components/RecentCallItem/RecentCallItem';
 export { default as RecentGroup } from './components/RecentGroup/RecentGroup';
 export { default as FakeRecentItem } from './components/FakeRecentItem/FakeRecentItem';
 export { default as SidebarFooter } from './components/SidebarFooter/SidebarFooter';

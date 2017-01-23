@@ -1,0 +1,87 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+:root {
+  --recent-call-item-font-family: var(--default-font-family);
+  --recent-call-item-large-top-padding: 12px;
+  --recent-call-item-large-right-padding: 14px;
+  --recent-call-item-large-bottom-padding: 9px;
+  --recent-call-item-large-left-padding: 10px;
+  --recent-call-item-height: 61px;
+  --recent-call-item-default-color: var(--recent-item-default-color);
+  --recent-call-item-hover-background-color: var(--recent-item-hover-background-color);
+  --recent-call-item-hover-color: var(--recent-item-hover-color);
+  --recent-call-item-text-height: 37px;
+  --recent-call-item-font-size: 14px;
+  --recent-call-item-time-font-size: 12px;
+}
+
+/* Reset */
+.container {
+  all: initial;
+}
+
+/* Styles */
+.container {
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  height: var(--recent-call-item-height);
+  padding-top: var(--recent-call-item-large-top-padding);
+  padding-right: var(--recent-call-item-large-right-padding);
+  padding-bottom: var(--recent-call-item-large-bottom-padding);
+  padding-left: var(--recent-call-item-large-left-padding);
+  cursor: pointer;
+  user-select: none;
+  font-family: var(--recent-call-item-font-family);
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  color: var(--recent-call-item-default-color);
+
+  &:hover {
+    background-color: var(--recent-call-item-hover-background-color);
+    color: var(--recent-call-item-hover-color);
+  }
+
+  &:active {
+    background-color: color(var(--recent-call-item-hover-background-color) shade(2%));
+  }
+
+  & .avatar {
+    margin-right: 6px;
+    flex: 0 0 auto;
+    align-self: auto;
+    cursor: inherit;
+  }
+}
+
+.text {
+  display: flex;
+  flex-flow: column;
+  vertical-align: middle;
+  flex: 1 1 auto;
+  height: var(--recent-call-item-text-height);
+  position: relative;
+  @apply --flex-fix;
+}
+
+.state {
+  font-weight: 500;
+  line-height: 20px;
+  font-size: var(--recent-call-item-font-size);
+  @apply --text-overflow-ellipsis;
+}
+
+.time {
+  line-height: 17px;
+  font-size: var(--recent-call-item-time-font-size);
+  vertical-align: middle;
+  @apply --text-overflow-ellipsis;
+}
+
+.duration {
+}

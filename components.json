@@ -91,6 +91,7 @@
       "SidebarUnread",
       "SidebarGroup",
       "RecentItem",
+      "RecentCallItem",
       "RecentGroup",
       "FakeRecentItem",
       "SidebarFooter"
