@@ -22,7 +22,7 @@
   box-sizing: border-box;
   width: 100%;
   height: var(--sidebar-search-input-height);
-  padding: 8px 12px 8px 46px;
+  padding: 8px 12px 8px 44px;
   transition: padding var(--default-transition-duration) ease;
   letter-spacing: -0.2px;
   border-radius: var(--sidebar-search-border-radius);
@@ -60,7 +60,7 @@
 .icon {
   position: absolute;
   top: 6px;
-  left: calc(var(--sidebar-search-padding) + 15px);
+  left: calc(var(--sidebar-search-padding) + 10px);
   transition: opacity calc(var(--default-transition-duration)) ease;
   font-size: 20px;
   line-height: 18px;
