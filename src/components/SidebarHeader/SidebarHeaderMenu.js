@@ -49,7 +49,7 @@ class SidebarHeaderMenu extends PureComponent {
         to: 'window',
         attachment: 'together'
       }],
-      targetOffset: '10px 24px'
+      targetOffset: '0px 23px'
     };
 
     return (
