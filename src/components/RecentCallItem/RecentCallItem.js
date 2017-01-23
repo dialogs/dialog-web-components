@@ -15,7 +15,7 @@ import styles from './RecentCallItem.css';
 export type Props = {
   className?: string,
   call: CallInfo,
-  uid: string,
+  uid: number,
   onSelect: (id: string) => any
 };
 

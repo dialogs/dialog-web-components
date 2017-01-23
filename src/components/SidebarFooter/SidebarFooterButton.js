@@ -30,7 +30,7 @@ class SidebarFooterButton extends PureComponent {
   };
 
   render(): React.Element<any> {
-    const { glyph, active, title, id} = this.props;
+    const { glyph, active, title, id } = this.props;
     const className = classNames(styles.button, {
       [styles.active]: active
     }, this.props.className);
