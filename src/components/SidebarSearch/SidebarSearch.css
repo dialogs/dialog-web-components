@@ -13,7 +13,7 @@
   position: relative;
   display: flex;
   box-sizing: border-box;
-  padding: var(--sidebar-search-padding);
+  padding: 0 var(--sidebar-search-padding) var(--sidebar-search-padding);
   color: var(--sidebar-search-color);
 }
 
@@ -59,7 +59,7 @@
 
 .icon {
   position: absolute;
-  top: calc(var(--sidebar-search-padding) + 6px);
+  top: 6px;
   left: calc(var(--sidebar-search-padding) + 15px);
   transition: opacity calc(var(--default-transition-duration)) ease;
   font-size: 20px;
