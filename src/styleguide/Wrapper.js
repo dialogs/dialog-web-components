@@ -39,7 +39,7 @@ class Wrapper extends Component {
           </select>
         </div>
         <div className={styles.container}>
-          <Provider locale={locale} messages={messages}>
+          <Provider locale={locale} messages={messages} globalValues={{ appName: 'dialog' }}>
             {this.props.children}
           </Provider>
         </div>
