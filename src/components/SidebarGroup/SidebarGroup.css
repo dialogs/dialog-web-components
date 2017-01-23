@@ -8,9 +8,6 @@
   all: initial;
   display: flex;
   flex-direction: column;
-
-  /*padding-top: var(--sidebar-group-padding-top);*/
-  /*padding-bottom: var(--sidebar-group-padding-bottom);*/
   flex-wrap: nowrap;
 }
 

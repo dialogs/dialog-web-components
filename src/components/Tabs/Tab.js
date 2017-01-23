@@ -18,17 +18,9 @@ export type Props = {
 class Tab extends PureComponent {
   props: Props;
 
-  handleClick: Function;
-
-  constructor(props: Props) {
-    super(props);
-
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick(): void {
+  handleClick = (): void => {
     this.props.onPick(this.props.id);
-  }
+  };
 
   render(): React.Element<any> {
     const { title, active } = this.props;
