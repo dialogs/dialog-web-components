@@ -9,6 +9,7 @@ import classNames from 'classnames';
 import CopyButton from '../CopyButton/CopyButton';
 import Button from '../Button/Button';
 import Spinner from '../Spinner/Spinner';
+import CopyOnly from '../CopyOnly/CopyOnly';
 import styles from './ActivityInvite.css';
 
 export type Props = {
@@ -43,6 +44,7 @@ class ActivityInvite extends PureComponent {
           <div className={styles.linkContainer}>
             {this.renderLink()}
           </div>
+          <CopyOnly block />
           <CopyButton
             wide
             disabled={pending}
