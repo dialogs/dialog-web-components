@@ -9,7 +9,8 @@ import createSelectorState from './createSelectorState';
 
 const ContactSelectorState = createSelectorState(
   'ContactSelectorState',
-  (contact: Contact) => contact.name
+  (contact: Contact) => contact.name,
+  true
 );
 
 export type {

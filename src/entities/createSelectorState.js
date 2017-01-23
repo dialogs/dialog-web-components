@@ -7,7 +7,11 @@ import type { SelectorStateCreator } from './types';
 import { Record, List, OrderedSet } from 'immutable';
 import { calculateCursor, filterByQuery } from '@dlghq/dialog-utils';
 
-function createSelectorState<T>(name: string, getValue: (item: T) => string): SelectorStateCreator<T> {
+function createSelectorState<T>(
+  name: string,
+  getValue: (item: T) => string,
+  clearAfterSelection: boolean = false
+): SelectorStateCreator<T> {
   const defaultRecord = {
     query: '',
     show: true,
@@ -81,19 +85,28 @@ function createSelectorState<T>(name: string, getValue: (item: T) => string): Se
 
     addSelected(item: T): SelectorState {
       const selected = this.get('selected');
-      return this.set('selected', selected.add(item));
+      let nextState = this.set('selected', selected.add(item));
+      if (clearAfterSelection) {
+        nextState = nextState.setQuery('');
+      }
+
+      return nextState;
     }
 
     deleteSelected(item: T): SelectorState {
       const selected = this.get('selected');
-      return this.set('selected', selected.delete(item));
+      let nextState = this.set('selected', selected.delete(item));
+      if (clearAfterSelection) {
+        nextState = nextState.setQuery('');
+      }
+
+      return nextState;
     }
 
     toggleSelected(item: T): SelectorState {
       const selected = this.get('selected');
       return selected.has(item) ? this.deleteSelected(item) : this.addSelected(item);
     }
-
 
     handleKeyboardEvent(event: SyntheticKeyboardEvent): SelectorState {
       switch (event.key) {
