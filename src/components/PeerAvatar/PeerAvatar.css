@@ -3,7 +3,7 @@
 .container {
   position: relative;
   display: inline-flex;
-  cursor: default;
+  cursor: inherit;
 }
 
 .online {
