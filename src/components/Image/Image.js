@@ -134,7 +134,7 @@ class Image extends Component {
       width,
       height,
       display: 'inline-block',
-      filter: isPreview ? 'blur(5px)' : null
+      filter: isPreview ? 'blur(3px)' : null
     };
 
     return (
