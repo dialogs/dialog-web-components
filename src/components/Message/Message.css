@@ -97,7 +97,7 @@
   background-image: repeating-linear-gradient(-45deg, transparent, transparent 5px, var(--message-error-color) 5px, var(--message-error-color) 10px);
   box-shadow: inset var(--message-state-border-width) 0 0 0 var(--color-danger);
 
-  &:hover {
+  &.hover {
     background-color: transparent !important;
     background-image: repeating-linear-gradient(-45deg, transparent, transparent 5px, var(--message-error-hover-color) 5px, var(--message-error-hover-color) 10px);
   }
@@ -105,6 +105,20 @@
 
 .hover {
   background-color: var(--message-hover-background-color) !important;
+}
+
+.selectionMode {
+  user-select: none;
+  cursor: pointer;
+  &.hover {
+    background-color: color(var(--message-selected-background-color) alpha(5%));
+    box-shadow: inset var(--message-state-border-width) 0 0 0 var(--message-selected-background-color);
+  }
+}
+
+.selected {
+  background-color: color(var(--message-selected-background-color) alpha(10%));
+  box-shadow: inset var(--message-state-border-width) 0 0 0 var(--message-selected-background-color);
 }
 
 .stateShort {

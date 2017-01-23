@@ -15,7 +15,7 @@ function CopyOnly(props: Props): React.Element<any> {
   if (props.block) {
     return (
       <div className={styles.block}>
-        <br/>
+        <br />
         {props.children}
       </div>
     );

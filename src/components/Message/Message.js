@@ -30,6 +30,8 @@ export type Props = {
   onLightboxOpen?: (message: MessageType) => any,
   onReaction?: (char: string) => any,
   isReactionsEnabled: boolean,
+  isSelected: boolean,
+  isSelectionMode: boolean,
   renderActions?: () => React.Element<any>[]
 };
 
@@ -78,7 +80,11 @@ class Message extends PureComponent {
   };
 
   isHover(): boolean {
-    return this.props.forceHover ? this.props.forceHover : this.state.hover;
+    if (this.props.forceHover) {
+      return true;
+    }
+
+    return this.state.hover;
   }
 
   getState(): MessageStateType {
@@ -134,12 +140,12 @@ class Message extends PureComponent {
       <span className={mentionClassName} onClick={onMentionClick}>
         {`@${sender.userName}`}
       </span>
-    ) : null;
+      ) : null;
 
     return (
       <header className={styles.header}>
         <div className={styles.sender}>
-          <span className={titleClassName} onClick={onTitleClick}>{sender.title}</span>
+          <span className={titleClassName} onClick={onTitleClick}>{sender.title + ' '}</span>
           {username}
         </div>
         {this.renderState()}
@@ -187,7 +193,7 @@ class Message extends PureComponent {
   }
 
   render(): React.Element<any> {
-    const { short, message: { content } } = this.props;
+    const { short, message: { content }, isSelected, isSelectionMode } = this.props;
     const hover = this.isHover();
     const state = this.getState();
     const isError = state === 'error';
@@ -199,7 +205,9 @@ class Message extends PureComponent {
       this.props.className,
       hover ? styles.hover : null,
       isError ? styles.error : null,
-      isUnread ? styles.unread : null
+      isUnread ? styles.unread : null,
+      isSelected ? styles.selected : null,
+      isSelectionMode ? styles.selectionMode : null
     );
 
     return (
