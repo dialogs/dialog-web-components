@@ -355,7 +355,7 @@
   --radio-label-padding: var(--default-padding);
   /* RecentItem */
   --recent-item-default-top-padding: 9px;
-  --recent-item-default-right-padding: 16px;
+  --recent-item-default-right-padding: 12px;
   --recent-item-default-bottom-padding: 9px;
   --recent-item-default-left-padding: 16px;
   --recent-item-default-height: 46px;
