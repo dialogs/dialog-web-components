@@ -357,7 +357,7 @@
   --recent-item-default-top-padding: 9px;
   --recent-item-default-right-padding: 12px;
   --recent-item-default-bottom-padding: 9px;
-  --recent-item-default-left-padding: 16px;
+  --recent-item-default-left-padding: 14px;
   --recent-item-default-height: 46px;
   --recent-item-default-color: color(#000 alpha(50%));
   --recent-item-large-top-padding: 15px;
@@ -383,8 +383,8 @@
   --sidebar-group-title-font-size: var(--default-font-size-small);
   --sidebar-group-title-color: color(#000 alpha(60%));
   --sidebar-group-title-line-height: 22px;
-  --sidebar-group-title-padding-top: 8px;
-  --sidebar-group-title-padding-left: 16px;
+  --sidebar-group-title-padding-top: calc(var(--default-padding) / 2);
+  --sidebar-group-title-padding-left: var(--default-padding);
   /* SidebarHeader */
   --sidebar-header-font-family: var(--default-font-family);
   --sidebar-header-height: 60px;
