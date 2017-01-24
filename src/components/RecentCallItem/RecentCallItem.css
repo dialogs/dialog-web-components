@@ -15,10 +15,10 @@
   flex-direction: row;
   box-sizing: border-box;
   height: var(--recent-call-item-height);
-  padding-top: var(--recent-call-item-large-top-padding);
-  padding-right: var(--recent-call-item-large-right-padding);
-  padding-bottom: var(--recent-call-item-large-bottom-padding);
-  padding-left: var(--recent-call-item-large-left-padding);
+  padding-top: var(--recent-call-item-top-padding);
+  padding-right: var(--recent-call-item-right-padding);
+  padding-bottom: var(--recent-call-item-bottom-padding);
+  padding-left: var(--recent-call-item-left-padding);
   cursor: pointer;
   user-select: none;
   font-family: var(--recent-call-item-font-family);
