@@ -7,6 +7,7 @@ import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import Icon from '../Icon/Icon';
 import Tooltip from '../Tooltip/Tooltip';
+import Spinner from '../Spinner/Spinner';
 import styles from './SidebarFooter.css';
 
 export type Props = {
@@ -15,6 +16,7 @@ export type Props = {
   title: string,
   glyph: string,
   active: boolean,
+  pending: boolean,
   onPick: (id: string) => any
 };
 
@@ -30,7 +32,7 @@ class SidebarFooterButton extends PureComponent {
   };
 
   render(): React.Element<any> {
-    const { glyph, active, title, id } = this.props;
+    const { glyph, active, title, id, pending } = this.props;
     const className = classNames(styles.button, {
       [styles.active]: active
     }, this.props.className);
@@ -38,7 +40,11 @@ class SidebarFooterButton extends PureComponent {
     return (
       <Tooltip text={title} key={id} className={styles.tooltip}>
         <div className={className} onClick={this.handleClick}>
-          <Icon glyph={glyph} className={styles.icon} />
+          {
+            pending
+              ? <Spinner size="normal" />
+              : <Icon glyph={glyph} className={styles.icon} />
+          }
         </div>
       </Tooltip>
     );

@@ -11,7 +11,7 @@ import styles from './SidebarFooter.css';
 export type Props = {
   className?: string,
   current: string,
-  variants: Array<{ id: string, title: string, glyph: string }>,
+  variants: Array<{ id: string, title: string, glyph: string, pending: boolean }>,
   onPick: (current: string) => any
 };
 
@@ -21,7 +21,7 @@ class SidebarFooter extends PureComponent {
   rendereFooterButtons(): React.Element<any>[] {
     const { current, variants } = this.props;
 
-    return variants.map(({ id, title, glyph }) => {
+    return variants.map(({ id, title, glyph, pending }) => {
       const active = id === current;
 
       return (
@@ -30,6 +30,7 @@ class SidebarFooter extends PureComponent {
           key={id}
           title={title}
           glyph={glyph}
+          pending={pending}
           active={active}
           onPick={this.props.onPick}
         />

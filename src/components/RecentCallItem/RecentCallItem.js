@@ -90,7 +90,7 @@ class RecentCallItem extends PureComponent {
     );
   }
 
-  render() {
+  render(): React.Element<any> {
     const className = classNames(styles.container, this.props.className);
 
     return (
