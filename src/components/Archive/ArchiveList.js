@@ -5,8 +5,10 @@
 
 import type { Peer, ShortRecent } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
+import { Text } from '@dlghq/react-l10n';
 import { AutoSizer, List } from 'react-virtualized';
 import RecentItem from '../RecentItem/RecentItem';
+import styles from './Archive.css';
 
 export type Props = {
   className?: string,
@@ -26,7 +28,7 @@ class ArchiveList extends PureComponent {
 
   renderEmpty = () => {
     return (
-      <span>{'You don\'t have archived chats'}</span>
+      <Text id="Archive.empty" className={styles.empty} />
     );
   };
 
