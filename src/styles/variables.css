@@ -377,6 +377,19 @@
   --recent-item-counter-color: #fff;
   --recent-item-counter-size: 24px;
   --recent-item-counter-font-size: 13px;
+  /* RecentCallItem */
+  --recent-call-item-font-family: var(--default-font-family);
+  --recent-call-item-large-top-padding: 12px;
+  --recent-call-item-large-right-padding: 14px;
+  --recent-call-item-large-bottom-padding: 9px;
+  --recent-call-item-large-left-padding: 10px;
+  --recent-call-item-height: 61px;
+  --recent-call-item-default-color: var(--recent-item-default-color);
+  --recent-call-item-hover-background-color: var(--recent-item-hover-background-color);
+  --recent-call-item-hover-color: var(--recent-item-hover-color);
+  --recent-call-item-text-height: 37px;
+  --recent-call-item-font-size: 14px;
+  --recent-call-item-time-font-size: 12px;
   /* Sidebar */
   /* SidebarGroupTitle */
   --sidebar-group-title-font-family: var(--default-font-family);
