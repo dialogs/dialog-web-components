@@ -17,7 +17,7 @@ export type Props = {
   uid: number,
   calls: CallInfo[],
   onLoadMore: () => void,
-  onSelect: (id: string) => void
+  onSelect: (call: CallInfo) => void
 };
 
 class SidebarCalls extends Component {

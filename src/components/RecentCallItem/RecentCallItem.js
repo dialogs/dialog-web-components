@@ -12,18 +12,42 @@ import DoublePeerAvatar from '../DoublePeerAvatar/DoublePeerAvatar';
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
 import styles from './RecentCallItem.css';
 
+export type CallState = 'outgoing' | 'incoming' | 'canceled' | 'missed';
+
 export type Props = {
   className?: string,
   call: CallInfo,
   uid: number,
-  onSelect: (id: string) => any
+  onSelect: (call: CallInfo) => any
 };
 
 class RecentCallItem extends PureComponent {
   props: Props;
 
   handleClick = (): void => {
-    this.props.onSelect(this.props.call.id);
+    this.props.onSelect(this.props.call);
+  };
+
+  getCallState = (): CallState => {
+    const { uid, call: { initiator, isAnswered } } = this.props;
+
+    let state = '';
+
+    if (uid === initiator.peer.id) {
+      state = 'outgoing';
+    } else {
+      state = 'incoming';
+    }
+
+    if (!isAnswered) {
+      if (state === 'outgoing') {
+        state = 'canceled';
+      } else {
+        state = 'missed';
+      }
+    }
+
+    return state;
   };
 
   renderAvatar(): React.Element<any> {
@@ -38,18 +62,7 @@ class RecentCallItem extends PureComponent {
   }
 
   renderState(): React.Element<any> {
-    const { uid, call: { initiator, isAnswered } } = this.props;
-
-    let state = '';
-    if (uid === initiator.peer.id) {
-      state = 'outgoing';
-    } else {
-      state = 'incoming';
-    }
-
-    if (!isAnswered) {
-      state = state === 'outgoing' ? 'declined' : 'missed';
-    }
+    const state = this.getCallState();
 
     return (
       <div className={styles.state}>
