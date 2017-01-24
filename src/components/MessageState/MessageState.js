@@ -15,19 +15,19 @@ class MessageState extends PureComponent {
   render() {
     const className = classNames(styles.container, this.props.className);
 
+    const time = (
+      <time className={className}>
+        {' ' + this.props.time}
+      </time>
+    );
+
     if (this.props.state === 'unknown') {
-      return (
-        <time className={className}>
-          {this.props.time}
-        </time>
-      );
+      return time;
     }
 
     return (
       <Tooltip text={`MessageState.${this.props.state}`}>
-        <time className={className}>
-          {this.props.time}
-        </time>
+        {time}
       </Tooltip>
     );
   }

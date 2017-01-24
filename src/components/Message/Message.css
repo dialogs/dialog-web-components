@@ -47,15 +47,12 @@
 
 .sender {
   display: inline-block;
-  margin-right: 6px;
-  letter-spacing: -0.3px;
 }
 
 .title {
   display: inline-block;
   font-size: 16px;
   font-weight: 500;
-  @apply --no-select;
 }
 
 .username {
@@ -63,7 +60,6 @@
   margin-left: 6px;
   font-size: 14px;
   color: var(--message-username-color);
-  @apply --no-select;
 }
 
 .content {
@@ -105,20 +101,6 @@
 
 .hover {
   background-color: var(--message-hover-background-color) !important;
-}
-
-.selectionMode {
-  user-select: none;
-  cursor: pointer;
-  &.hover {
-    background-color: color(var(--message-selected-background-color) alpha(5%));
-    box-shadow: inset var(--message-state-border-width) 0 0 0 var(--message-selected-background-color);
-  }
-}
-
-.selected {
-  background-color: color(var(--message-selected-background-color) alpha(10%));
-  box-shadow: inset var(--message-state-border-width) 0 0 0 var(--message-selected-background-color);
 }
 
 .stateShort {

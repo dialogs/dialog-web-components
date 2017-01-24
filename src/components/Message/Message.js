@@ -15,6 +15,7 @@ import PeerAvatar from '../PeerAvatar/PeerAvatar';
 import MessageState from '../MessageState/MessageState';
 import EmojiButton from '../EmojiButton/EmojiButton';
 import Hover from '../Hover/Hover';
+import CopyOnly from '../CopyOnly/CopyOnly';
 import styles from './Message.css';
 
 export type Props = {
@@ -30,8 +31,6 @@ export type Props = {
   onLightboxOpen?: (message: MessageType) => any,
   onReaction?: (char: string) => any,
   isReactionsEnabled: boolean,
-  isSelected: boolean,
-  isSelectionMode: boolean,
   renderActions?: () => React.Element<any>[]
 };
 
@@ -123,7 +122,7 @@ class Message extends PureComponent {
     );
   }
 
-  renderHeader(): ?React.Element<any> {
+  renderHeader(): React.Element<any> {
     const sender = this.getSender();
 
     const onTitleClick = this.props.onTitleClick ? this.handleTitleClick : null;
@@ -144,12 +143,24 @@ class Message extends PureComponent {
 
     return (
       <header className={styles.header}>
-        <div className={styles.sender}>
+        <span>
           <span className={titleClassName} onClick={onTitleClick}>{sender.title + ' '}</span>
           {username}
-        </div>
-        {this.renderState()}
+          {this.renderState()}
+        </span>
       </header>
+    );
+  }
+
+  renderShortHeader(): React.Element<any> {
+    const { message: { date } } = this.props;
+    const sender = this.getSender();
+    const username = sender.userName ? ` @${sender.userName}` : '';
+
+    return (
+      <CopyOnly>
+        {sender.title + username + ' ' + date}
+      </CopyOnly>
     );
   }
 
@@ -193,7 +204,7 @@ class Message extends PureComponent {
   }
 
   render(): React.Element<any> {
-    const { short, message: { content }, isSelected, isSelectionMode } = this.props;
+    const { short, message: { content } } = this.props;
     const hover = this.isHover();
     const state = this.getState();
     const isError = state === 'error';
@@ -205,20 +216,19 @@ class Message extends PureComponent {
       this.props.className,
       hover ? styles.hover : null,
       isError ? styles.error : null,
-      isUnread ? styles.unread : null,
-      isSelected ? styles.selected : null,
-      isSelectionMode ? styles.selectionMode : null
+      isUnread ? styles.unread : null
     );
 
     return (
       <Hover className={className} onHover={this.handleHover}>
+        <CopyOnly block />
         {this.renderActions()}
         <div className={styles.info}>
           {short ? null : this.renderAvatar()}
           {short && hover ? this.renderState() : null}
         </div>
         <div className={styles.body}>
-          {short ? null : this.renderHeader()}
+          {short ? this.renderShortHeader() : this.renderHeader()}
           <div className={styles.content}>
             <MessageContent
               className={classNames(isPending ? styles.pending : null)}

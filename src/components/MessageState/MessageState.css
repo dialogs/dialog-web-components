@@ -7,11 +7,10 @@
 .container {
   display: inline-block;
   cursor: default;
-  letter-spacing: -0.2px;
   text-transform: uppercase;
   font-family: var(--message-state-font-family);
   font-size: var(--message-state-font-size);
   line-height: 20px;
   color: var(--message-state-color);
-  @apply --no-select;
+  margin-left: 6px;
 }
