@@ -11,3 +11,10 @@
   box-sizing: border-box;
   font-family: var(--default-font-family);
 }
+
+.empty {
+  padding: var(--recent-item-default-left-padding);
+  display: flex;
+  justify-content: center;
+  color: var(--icon-default-color);
+}

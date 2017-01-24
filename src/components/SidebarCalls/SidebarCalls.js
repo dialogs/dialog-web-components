@@ -6,6 +6,7 @@
 import type { CallInfo } from '@dlghq/dialog-types';
 import React, { Component } from 'react';
 import classNames from 'classnames';
+import { Text } from '@dlghq/react-l10n';
 import { AutoSizer, List } from 'react-virtualized';
 import RecentCallItem from '../RecentCallItem/RecentCallItem';
 import styles from './SidebarCalls.css';
@@ -30,7 +31,7 @@ class SidebarCalls extends Component {
 
   renderEmpty = () => {
     return (
-      <span>{'You don\'t have archived chats'}</span>
+      <Text id="SidebarCalls.empty" className={styles.empty} />
     );
   };
 
