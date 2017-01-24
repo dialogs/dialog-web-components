@@ -42,7 +42,7 @@ class SidebarFooterButton extends PureComponent {
         <div className={className} onClick={this.handleClick}>
           {
             pending
-              ? <Spinner size="normal" />
+              ? <div className={styles.spinner}><Spinner size="normal" /></div>
               : <Icon glyph={glyph} className={styles.icon} />
           }
         </div>
