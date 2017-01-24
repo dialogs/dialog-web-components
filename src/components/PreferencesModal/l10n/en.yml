@@ -7,7 +7,7 @@ general:
   sound: Enable sound effects
   sendByEnter:
     enable: <b>Enter</b> – send message; <b>Shift + Enter</b> – new line
-    disable: <b>Сmd + Enter</b> – send message; <b>Enter</b> – new line
+    disable: <b>{keyOS} + Enter</b> – send message; <b>Enter</b> – new line
 notifications:
   title: Notifications
   legend:
