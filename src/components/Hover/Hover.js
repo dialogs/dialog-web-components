@@ -16,7 +16,7 @@ class Hover extends Component {
   props: Props;
   hover: boolean;
   selecting: boolean;
-  listeners: ?Array<{ remove(): void }>;
+  listener: ?{ remove(): void };
 
   constructor(props: Props) {
     super(props);
@@ -25,20 +25,18 @@ class Hover extends Component {
     this.selecting = false;
   }
 
-  componentDidMount() {
-    this.listeners = [
-      listen(document, 'selectionchange', this.handleSelectionChange, { passive: true })
-    ];
+  componentDidMount(): void {
+    this.listener = listen(document, 'selectionchange', this.handleSelectionChange, { passive: true });
   }
 
-  componentWillUnmount() {
-    if (this.listeners) {
-      this.listeners.forEach((listener) => listener.remove());
-      this.listeners = null;
+  componentWillUnmount(): void {
+    if (this.listener) {
+      this.listener.remove();
+      this.listener = null;
     }
   }
 
-  handleSelectionChange = (event) => {
+  handleSelectionChange = (): void => {
     const selection = document.getSelection();
     if (selection && selection.toString()) {
       this.selecting = true;
