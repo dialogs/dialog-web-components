@@ -10,6 +10,7 @@ import Field from '../Field/Field';
 import Radio from '../Radio/Radio';
 import RadioGroup from '../Radio/RadioGroup';
 import Switcher from '../Switcher/Switcher';
+import isMac from '../../utils/isMac';
 import styles from './PreferencesModal.css';
 
 export type Settings = {
@@ -52,6 +53,7 @@ class PreferencesGeneral extends PureComponent {
   render() {
     const sendBy = this.props.settings.isSendByEnter ? 'enter' : 'shift_enter';
     const { isSoundEffectsEnabled } = this.props.settings;
+    const keyOS = isMac() ? 'Cmd' : 'Ctrl';
 
     return (
       <div className={styles.screen}>
@@ -63,12 +65,12 @@ class PreferencesGeneral extends PureComponent {
           >
             <Field>
               <Radio value="enter">
-                <Text id="PreferencesModal.general.sendByEnter.enable" html />
+                <Text id="PreferencesModal.general.sendByEnter.enable" values={{keyOS}} html />
               </Radio>
             </Field>
             <Field>
               <Radio value="shift_enter">
-                <Text id="PreferencesModal.general.sendByEnter.disable" html />
+                <Text id="PreferencesModal.general.sendByEnter.disable" values={{keyOS}} html />
               </Radio>
             </Field>
           </RadioGroup>

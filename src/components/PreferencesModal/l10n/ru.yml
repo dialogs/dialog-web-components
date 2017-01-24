@@ -7,7 +7,7 @@ general:
   sound: Включить звуковые эффекты
   sendByEnter:
     enable: <b>Enter</b> – отправить особщение;<br /> <b>Shift + Enter</b> – новая строка
-    disable: <b>Сmd + Enter</b> – отправить особщение;<br /> <b>Enter</b> – новая строка
+    disable: <b>{keyOS} + Enter</b> – отправить особщение;<br /> <b>Enter</b> – новая строка
 notifications:
   title: Уведомления
   legend:
