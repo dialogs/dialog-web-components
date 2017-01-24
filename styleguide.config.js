@@ -1,8 +1,8 @@
-/* eslint global-require:0 */
+/* eslint global-require:0, no-sync:0 */
 const fs = require('fs');
 const path = require('path');
 const pkg = require('./package.json');
-const components = require('./components.json');
+const schema = require('./components.json');
 const babelrc = JSON.parse(fs.readFileSync('./.babelrc', 'utf-8'));
 
 function resolve(...paths) {
@@ -13,7 +13,7 @@ module.exports = {
   title: `dialog Components v${pkg.version}`,
   serverPort: 5000,
   highlightTheme: 'dracula',
-  sections: components.map(({ name, content, components }) => {
+  sections: schema.map(({ name, content, components }) => {
     return {
       name,
       content: content ? resolve('docs', content + '.md') : null,
