@@ -17,8 +17,13 @@ export type Props = {
   onSelect: (peer: Peer) => void
 };
 
-function Archive(props: Props): React.Element<any> {
+function Archive(props: Props): ?React.Element<any> {
   const className = classNames(styles.container, props.className);
+
+  if (props.pending && !props.archive.length) {
+    return null;
+  }
+
   return (
     <ArchiveList
       className={className}
