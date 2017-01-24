@@ -47,8 +47,12 @@ class SidebarCalls extends Component {
     );
   };
 
-  render() {
+  render(): ?React.Element<any> {
     const className = classNames(styles.container, this.props.className);
+
+    if (this.props.pending && !this.props.calls.length) {
+      return null;
+    }
 
     return (
       <div className={className}>
