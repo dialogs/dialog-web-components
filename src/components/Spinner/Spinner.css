@@ -158,6 +158,12 @@
   border-radius: 50%;
   align-self: center;
 
+  &.normal {
+    width: var(--spinner-round-normal-size);
+    height: var(--spinner-round-normal-size);
+    border-width: var(--spinner-round-normal-border-width);
+  }
+
   &.large {
     width: var(--spinner-round-large-size);
     height: var(--spinner-round-large-size);

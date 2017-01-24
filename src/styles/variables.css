@@ -447,10 +447,12 @@
   --spinner-dotted-dot-size: 6px;
   --spinner-dotted-animation-delay: 160ms;
   --spinner-dotted-dot-color: var(--color-primary);
-  --spinner-round-size: 9px;
+  --spinner-round-size: 10px;
   --spinner-round-border-width: 2px;
+  --spinner-round-normal-size: 20px;
+  --spinner-round-normal-border-width: 2px;
   --spinner-round-large-size: 30px;
-  --spinner-round-large-border-width: 3px;
+  --spinner-round-large-border-width: 2px;
   --spinner-round-color: var(--color-primary);
   --spinner-round-animation-duration: calc(var(--default-transition-duration) * 4);
   /* Swither */
