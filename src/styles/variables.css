@@ -68,6 +68,7 @@
   --avatar-selector-remove-icon-color: var(--color-danger);
   --avatar-selector-remove-icon-color-hover: color(var(--avatar-selector-remove-icon-color) alpha(90%));;
   /* Button */
+  --button-min-width: 90px;
   --button-border-radius: var(--default-border-radius);
   --button-border-radius-small: var(--default-border-radius-small);
   --button-padding-top: var(--default-padding-small);
