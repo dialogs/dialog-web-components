@@ -20,6 +20,25 @@ const members = [{
     pending: false,
     error: null
   }
+},{
+  peerInfo: {
+    peer: {
+      type: 'user',
+      id: 321,
+      key: 'u321'
+    },
+    title: 'Dmitri Ivanovich Mendeleev',
+    userName: 'medved',
+    avatar: null,
+    placeholder: 'red',
+    isVerified: true
+  },
+  isAdmin: false,
+  canKick: true,
+  kickState: {
+    pending: false,
+    error: null
+  }
 }];
 const online = {
   isNotMember: false,
