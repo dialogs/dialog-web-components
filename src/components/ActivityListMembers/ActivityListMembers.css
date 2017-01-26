@@ -4,11 +4,6 @@
 
 @import '../../styles/variables.css';
 
-
-:root {
-  --activity-list-min-height: 52px;
-  --activity-list-vertical-padding: 12px;
-}
 .container {
   display: flex;
   flex-direction: column;
@@ -20,7 +15,7 @@
   flex-direction: row;
   box-sizing: border-box;
   width: 100%;
-  height: 56px;
+  height: var(--activity-list-min-height);
   user-select: none;
   flex: 1 1 auto;
   justify-content: flex-start;
@@ -68,6 +63,10 @@
   padding: var(--activity-list-vertical-padding) 0;
   box-sizing: border-box;
 
+  & .title {
+    margin-top: 3px;
+  }
+
   &::before {
     position: absolute;
     top: 0;
@@ -96,13 +95,17 @@
     stroke: var(--color-primary);
     fill: var(--color-primary);
   }
+
+  & .title {
+    margin-top: 0px;
+  }
 }
 
 .addMemberIcon {
-  width: 28px;
-  height: 28px;
+  width: var(--activity-list-icon-size);
+  height: var(--activity-list-icon-size);
   margin-right: var(--default-padding-small);
-  font-size: 28px;
+  font-size: var(--activity-list-icon-size);
   flex: 0 0 auto;
 }
 
@@ -139,6 +142,7 @@
   cursor: pointer;
   user-select: none;
   font-size: var(--default-font-size-small);
+  line-height: var(--activity-list-icon-size);
   flex: 0 0 auto;
   color: var(--color-danger);
 }
