@@ -128,7 +128,8 @@
       padding: 8px;
     }
 
-    & .Button__container {
+    & .Button__container,
+    & .IconButton__container {
       margin: 4px;
     }
 

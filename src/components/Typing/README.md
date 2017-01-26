@@ -14,7 +14,7 @@ function toggleTyping() {
 };
 
 <div>
-  <Button theme="primary" onClick={toggleTyping}>toggle</Button>
+  <Button theme="primary" onClick={toggleTyping} size="small">toggle</Button>
   <br/>
   <Typing typing={state.typing} />
 </div>
