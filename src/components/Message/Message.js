@@ -90,7 +90,7 @@ class Message extends PureComponent {
     return this.props.state || this.props.message.state;
   }
 
-  getSender(): PeerInfo {
+  getSender(): ?PeerInfo {
     return this.props.sender || this.props.message.sender;
   }
 
@@ -110,6 +110,10 @@ class Message extends PureComponent {
 
   renderAvatar(): ?React.Element<any> {
     const sender = this.getSender();
+    if (!sender) {
+      return null;
+    }
+
     const onClick = this.props.onAvatarClick ? this.handleAvatarClick : undefined;
     const avatarClassName = classNames({
       [styles.clickable]: this.props.onAvatarClick
@@ -122,8 +126,11 @@ class Message extends PureComponent {
     );
   }
 
-  renderHeader(): React.Element<any> {
+  renderHeader(): ?React.Element<any> {
     const sender = this.getSender();
+    if (!sender) {
+      return null;
+    }
 
     const onTitleClick = this.props.onTitleClick ? this.handleTitleClick : null;
     const titleClassName = classNames(styles.title, {
@@ -152,9 +159,13 @@ class Message extends PureComponent {
     );
   }
 
-  renderShortHeader(): React.Element<any> {
+  renderShortHeader(): ?React.Element<any> {
     const { message: { date } } = this.props;
     const sender = this.getSender();
+    if (!sender) {
+      return null;
+    }
+
     const username = sender.userName ? ` @${sender.userName}` : '';
 
     return (
