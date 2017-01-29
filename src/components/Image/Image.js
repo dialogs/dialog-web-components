@@ -133,23 +133,21 @@ class Image extends Component {
     const style = {
       width,
       height,
-      display: 'inline-block',
-      filter: isPreview ? 'blur(3px)' : null
+      display: 'inline-block'
     };
 
     return (
-      <div title={this.props.alt} style={style}>
+      <div className={className} style={style} title={this.props.alt}>
         {
           source ? (
             <img
-              className={className}
               src={source}
               width={width}
               height={height}
               alt={this.props.alt}
               onClick={this.props.onClick}
             />
-          ) : null
+            ) : null
         }
       </div>
     );

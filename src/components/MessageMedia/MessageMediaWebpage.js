@@ -7,6 +7,7 @@ import type { MessageMediaWebsite } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import Image from '../Image/Image';
+import Markdown from '../Markdown/Markdown';
 import styles from './MessageMedia.css';
 
 export type Props = {
@@ -37,7 +38,7 @@ class MessageMediaWebpage extends PureComponent {
     }
 
     return (
-      <div className={styles.webpageDescription}>{description}</div>
+      <Markdown text={description} />
     );
   }
 
@@ -65,11 +66,11 @@ class MessageMediaWebpage extends PureComponent {
     const className = classNames(styles.container, styles.webpage, this.props.className);
 
     return (
-      <div className={className}>
+      <blockquote className={className}>
         {this.renderTitle()}
         {this.renderDescription()}
         {this.renderImage()}
-      </div>
+      </blockquote>
     );
   }
 }
