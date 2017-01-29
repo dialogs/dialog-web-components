@@ -33,6 +33,7 @@ class Image extends Component {
   props: Props;
   state: State;
 
+  requestId: ?number;
   image: ?HTMLImageElement;
 
   static defaultProps = {
@@ -74,17 +75,6 @@ class Image extends Component {
     this.stopFetch();
   }
 
-  getSource(): ?string {
-    const { preview, src } = this.props;
-    const { state } = this.state;
-
-    if (preview && state !== STATE_SUCCESS) {
-      return preview;
-    }
-
-    return src;
-  }
-
   getSize() {
     const { width, height, maxWidth, maxHeight } = this.props;
 
@@ -92,8 +82,8 @@ class Image extends Component {
   }
 
   startFetch(src: string): void {
-    setImmediate(() => {
-      this.stopFetch();
+    this.stopFetch();
+    this.requestId = requestAnimationFrame(() => {
       const image = document.createElement('img');
 
       image.onload = () => {
@@ -113,6 +103,11 @@ class Image extends Component {
   }
 
   stopFetch(): void {
+    if (this.requestId) {
+      cancelAnimationFrame(this.requestId);
+      this.requestId = null;
+    }
+
     if (this.image) {
       this.image.src = '';
       this.image.onload = null;
@@ -147,7 +142,7 @@ class Image extends Component {
               alt={this.props.alt}
               onClick={this.props.onClick}
             />
-            ) : null
+          ) : null
         }
       </div>
     );
