@@ -29,7 +29,7 @@ class Markdown extends Component {
   }
 
   render(): React.Element<any> {
-    const className = classNames(styles.className, styles.container);
+    const className = classNames(styles.container, this.props.className);
     const tokens = parse(this.props.text, this.props.decorators);
 
     return (

@@ -242,8 +242,8 @@ class Message extends PureComponent {
           {short ? this.renderShortHeader() : this.renderHeader()}
           <div className={styles.content}>
             <MessageContent
-              className={classNames(isPending ? styles.pending : null)}
               content={content}
+              isPending={isPending}
               onLightboxOpen={this.handleLightboxOpen}
             />
             {this.renderReactions()}

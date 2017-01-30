@@ -24,3 +24,7 @@
 .service {
   color: var(--message-service-color);
 }
+
+.pending {
+  color: color(var(--message-text-color) alpha(60%));
+}

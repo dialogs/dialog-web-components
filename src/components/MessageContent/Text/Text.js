@@ -10,34 +10,39 @@ import MessageMedia from '../../MessageMedia/MessageMedia';
 import Markdown from '../../Markdown/Markdown';
 import styles from './Text.css';
 
-export type Props = {
+export type Props = {|
+  className?: string,
   text: string,
   media?: ?MessageMediaType,
   service?: boolean,
-  className?: string
-}
+  isPending?: boolean
+|};
 
 class Text extends Component {
   props: Props;
 
   shouldComponentUpdate(nextProps: Props): boolean {
-    return this.props.className !== nextProps.className ||
-           this.props.text !== nextProps.text ||
-           this.props.media !== nextProps.media;
+    return this.props.text !== nextProps.text ||
+           this.props.media !== nextProps.media ||
+           this.props.isPending !== nextProps.isPending ||
+           this.props.className !== nextProps.className;
   }
 
   render(): React.Element<any> {
-    if (this.props.service) {
-      const className = classNames(styles.container, styles.service, this.props.className);
+    const className = classNames(
+      styles.container,
+      this.props.className,
+      this.props.service ? styles.service : null,
+      this.props.isPending ? styles.pending : null
+    );
 
+    if (this.props.service) {
       return (
         <div className={className}>
           {this.props.text}
         </div>
       );
     }
-
-    const className = classNames(styles.container, this.props.className);
 
     if (this.props.media) {
       return (

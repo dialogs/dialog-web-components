@@ -12,13 +12,14 @@ import Voice from './Voice/Voice';
 import Location from './Location/Location';
 import Contact from './Contact/Contact';
 
-export type Props = {
+export type Props = {|
   className?: string,
   content: MessageContentTypes,
+  isPending?: boolean,
   onLightboxOpen: () => any
-};
+|};
 
-function MessageContent({ className, content, onLightboxOpen }: Props) {
+function MessageContent({ className, content, isPending, onLightboxOpen }: Props) {
   switch (content.type) {
     case 'text':
       return (
@@ -26,6 +27,7 @@ function MessageContent({ className, content, onLightboxOpen }: Props) {
           className={className}
           text={content.text}
           media={content.media}
+          isPending={isPending}
         />
       );
 
@@ -35,6 +37,7 @@ function MessageContent({ className, content, onLightboxOpen }: Props) {
           service
           className={className}
           text={content.text}
+          isPending={isPending}
         />
       );
 
@@ -47,6 +50,7 @@ function MessageContent({ className, content, onLightboxOpen }: Props) {
           preview={content.preview}
           fileUrl={content.fileUrl}
           fileName={content.fileName}
+          isPending={isPending}
           onClick={onLightboxOpen}
         />
       );
@@ -59,7 +63,7 @@ function MessageContent({ className, content, onLightboxOpen }: Props) {
           fileName={content.fileName}
           fileSize={content.fileSize}
           fileExtension={content.fileExtension}
-          isUploading={content.isUploading}
+          isUploading={isPending || content.isUploading}
         />
       );
 
