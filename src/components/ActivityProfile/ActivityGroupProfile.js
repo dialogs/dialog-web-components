@@ -47,9 +47,17 @@ class ActivityGroupProfile extends PureComponent {
   }
 
   renderCreator(): ?React.Element<any> {
-    const { info: { adminId } } = this.props;
+    const { info: { type, adminId, members } } = this.props;
 
-    if (!adminId) {
+    if (type !== 'group') {
+      return null;
+    }
+
+    const admin = members.find((member) => {
+      return member.peerInfo.peer.id === adminId;
+    });
+
+    if (!admin) {
       return null;
     }
 
@@ -58,7 +66,7 @@ class ActivityGroupProfile extends PureComponent {
         tagName="div"
         className={styles.creator}
         id="ActivityProfile.created_by"
-        values={{ name: String(adminId) }}
+        values={{ name: admin.peerInfo.title }}
       />
     );
   }
@@ -97,6 +105,7 @@ class ActivityGroupProfile extends PureComponent {
         {this.renderAvatar()}
         {this.renderName()}
         {this.renderAbout()}
+        {this.renderCreator()}
         {this.renderChildren()}
       </div>
     );
