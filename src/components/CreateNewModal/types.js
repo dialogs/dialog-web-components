@@ -23,6 +23,7 @@ export type Props = {
   error: ?string,
   pending: boolean,
   request: Request,
+  shortnamePrefix?: ?string,
   autoFocus: boolean,
   onClose: () => any,
   onSubmit: (request: Request) => any,

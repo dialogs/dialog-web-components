@@ -113,7 +113,7 @@ class CreateNewModal extends PureComponent {
   }
 
   renderInfoStep(): React.Element<any> {
-    const { request: { type, about, title, shortname, avatar }, step } = this.props;
+    const { step, request: { type, about, title, shortname, avatar }, shortnamePrefix } = this.props;
 
     return (
       <div className={styles.wrapper}>
@@ -135,6 +135,7 @@ class CreateNewModal extends PureComponent {
             title={title}
             avatar={avatar}
             shortname={shortname}
+            shortnamePrefix={shortnamePrefix}
             onChange={this.handleChange}
             onAvatarChange={this.handleAvatarChange}
           />

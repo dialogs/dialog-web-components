@@ -28,7 +28,7 @@ export type Props = (StringProps | NumberProps) & {
   label?: string,
   large?: boolean,
   placeholder?: string,
-  prefix?: string,
+  prefix?: ?string,
   disabled?: bool,
   hint?: string,
   status: 'normal' | 'success' | 'error',

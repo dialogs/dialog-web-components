@@ -16,6 +16,7 @@ export type Props = {
   type: 'group' | 'channel',
   title: string,
   shortname: ?string,
+  shortnamePrefix: ?string,
   about: ?string,
   avatar: ?File,
   className?: string,
@@ -79,7 +80,6 @@ class CreateNewInfo extends PureComponent {
 
   renderShortname(): ?React.Element<any> {
     const { type, shortname } = this.props;
-    const { l10n } = this.context;
 
     if (type === 'group') {
       return null;
@@ -89,10 +89,10 @@ class CreateNewInfo extends PureComponent {
       <Input
         id="shortname"
         name="shortname"
-        label={l10n.formatText(`CreateNewModal.${type}.info.shortname`)}
-        onChange={this.props.onChange}
-        prefix="app.dlg.im/"
         value={shortname || ''}
+        prefix={this.props.shortnamePrefix}
+        label={`CreateNewModal.${type}.info.shortname`}
+        onChange={this.props.onChange}
       />
     );
   }
