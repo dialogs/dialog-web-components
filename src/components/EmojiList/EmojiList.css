@@ -98,12 +98,13 @@
 }
 
 .sticker {
-  display: inline-block;
+  display: inline-flex;
+  cursor: pointer;
   border-radius: var(--default-border-radius);
   padding: 2px;
   margin: 2px;
   &:hover {
-    background-color: color(#000 alpha(5%));
+    background-color: var(--emoji-list-emoji-wrapper-background);
   }
 }
 
@@ -143,6 +144,7 @@
   display: inline-flex;
   margin: 6px;
   vertical-align: middle;
+  cursor: pointer;
   &.active {
     border-bottom: 2px solid var(--emoji-list-category-icon-active-color);
   }
