@@ -5,22 +5,42 @@
 
 import React, { PureComponent } from 'react';
 import { findDOMNode } from 'react-dom';
+import { Text } from '@dlghq/react-l10n';
 import { throttle } from 'lodash';
 import { listen } from '@dlghq/dialog-utils';
 import classNames from 'classnames';
 import categories from './categories';
 import EmojiTab from './EmojiTab';
 import EmojiCategory from './EmojiCategory';
+import StickerTab from './StickerTab';
+import StickerCategory from './StickerCategory';
 import styles from './EmojiList.css';
+
+export type Sticker = {
+  id: number,
+  emoji: string,
+  image: string
+};
+
+export type StickerPack = {
+  id: number,
+  title: string,
+  stickers: Sticker[]
+};
 
 export type Props = {
   className?: string,
   recent?: string[],
-  onClick: (char: string) => void
+  stickers?: StickerPack[],
+  onClick: (char: string) => void,
+  onStickerClick: (sticker: Sticker) => void
 };
 
+type Screen = 'emoji' | 'stickers';
+
 export type State = {
-  current: string
+  current: string,
+  screen: Screen
 };
 
 class EmojiList extends PureComponent {
@@ -34,6 +54,7 @@ class EmojiList extends PureComponent {
     super(props);
 
     this.state = {
+      screen: 'emoji',
       current: (props.recent && props.recent.length) ? 'recent' : categories[0].name
     };
 
@@ -55,15 +76,33 @@ class EmojiList extends PureComponent {
     }
   }
 
-  handleTabClick = (next: string): void => {
-    this.setState({
-      current: next
-    });
+  handleToggleScreen = (): void => {
+    this.setState(() => {
+      if (this.props.stickers) {
+        this.categories = {};
+        this.container.scrollTop = 0;
 
-    const node = this.categories[next];
-    if (node && this.container) {
-      this.container.scrollTop = node.offsetTop;
-    }
+        return {
+          screen: this.getNextScreen(),
+          current: String(this.props.stickers[0].id)
+        };
+      }
+
+      return {};
+    });
+  };
+
+  handleTabClick = (next: string): void => {
+    this.setState(() => {
+      const node = this.categories[next];
+      if (node && this.container) {
+        this.container.scrollTop = node.offsetTop;
+      }
+
+      return {
+        current: next
+      };
+    });
   };
 
   handleScroll = ({ target }: $FlowIssue): void => {
@@ -93,6 +132,10 @@ class EmojiList extends PureComponent {
     }
   };
 
+  getNextScreen(): Screen {
+    return this.state.screen === 'emoji' ? 'stickers' : 'emoji';
+  }
+
   setContainer = (container: ?HTMLElement): void => {
     this.container = container;
   };
@@ -108,28 +151,44 @@ class EmojiList extends PureComponent {
 
   renderCategories(): React.Element<any>[] {
     const result = [];
-    if (this.props.recent && this.props.recent.length) {
-      result.push(
-        <EmojiCategory
-          key="recent"
-          name="recent"
-          chars={this.props.recent}
-          ref={this.setCategory}
-          onClick={this.props.onClick}
-        />
-      );
-    }
 
-    for (const { name, chars } of categories) {
-      result.push(
-        <EmojiCategory
-          key={name}
-          name={name}
-          chars={chars}
-          ref={this.setCategory}
-          onClick={this.props.onClick}
-        />
-      );
+    if (this.state.screen === 'emoji') {
+      if (this.props.recent && this.props.recent.length) {
+        result.push(
+          <EmojiCategory
+            key="recent"
+            name="recent"
+            chars={this.props.recent}
+            ref={this.setCategory}
+            onClick={this.props.onClick}
+          />
+        );
+      }
+
+      for (const { name, chars } of categories) {
+        result.push(
+          <EmojiCategory
+            key={name}
+            name={name}
+            chars={chars}
+            ref={this.setCategory}
+            onClick={this.props.onClick}
+          />
+        );
+      }
+    } else {
+      for (const { id, title, stickers } of this.props.stickers) {
+        result.push(
+          <StickerCategory
+            key={id}
+            id={id}
+            title={title}
+            stickers={stickers}
+            ref={this.setCategory}
+            onClick={this.props.onStickerClick}
+          />
+        );
+      }
     }
 
     return result;
@@ -138,40 +197,77 @@ class EmojiList extends PureComponent {
   renderTabs(): React.Element<any> {
     const children = [];
 
-    children.push(
-      <EmojiTab
-        key="recent"
-        name="recent"
-        glyph="schedule"
-        disabled={this.props.recent && this.props.recent.length === 0}
-        active={this.state.current === 'recent'}
-        onClick={this.handleTabClick}
-      />
-    );
-
-    for (const { name, glyph } of categories) {
+    if (this.state.screen === 'emoji') {
       children.push(
         <EmojiTab
-          key={name}
-          name={name}
-          glyph={glyph}
-          active={this.state.current === name}
+          key="recent"
+          name="recent"
+          glyph="schedule"
+          disabled={this.props.recent && this.props.recent.length === 0}
+          active={this.state.current === 'recent'}
           onClick={this.handleTabClick}
         />
       );
+
+      for (const { name, glyph } of categories) {
+        children.push(
+          <EmojiTab
+            key={name}
+            name={name}
+            glyph={glyph}
+            active={this.state.current === name}
+            onClick={this.handleTabClick}
+          />
+        );
+      }
+    } else {
+      for (const { id, title, stickers } of this.props.stickers) {
+        children.push(
+          <StickerTab
+            key={id}
+            id={id}
+            title={title}
+            image={stickers[0].image}
+            active={this.state.current === String(id)}
+            onClick={this.handleTabClick}
+          />
+        );
+      }
     }
 
+    const className = classNames(styles.footer, {
+      [styles.footerStickers]: this.state.screen === 'stickers'
+    });
+
     return (
-      <footer className={styles.footer}>
+      <footer className={className}>
         {children}
       </footer>
     );
   }
 
+  renderGoToButton(): ?React.Element {
+    const { stickers } = this.props;
+    if (!stickers || !stickers.length) {
+      return null;
+    }
+
+    return (
+      <Text
+        id={`EmojiList.screen.${this.getNextScreen()}`}
+        tagName="button"
+        className={styles.goToButton}
+        onClick={this.handleToggleScreen}
+      />
+    );
+  }
+
   render(): React.Element<any> {
     const className = classNames(styles.container, this.props.className);
+
     return (
       <section className={className}>
+        {this.renderGoToButton()}
         <div className={styles.body} ref={this.setContainer}>
           {this.renderCategories()}
         </div>
