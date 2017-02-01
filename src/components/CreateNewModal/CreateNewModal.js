@@ -24,23 +24,7 @@ import type { Props } from './types';
 class CreateNewModal extends PureComponent {
   props: Props;
 
-  handleChange: Function;
-  handleAvatarChange: Function;
-  handleSubmit: Function;
-  handlePrevStepClick: Function;
-  handleNextStepClick: Function;
-
-  constructor(props: Props): void {
-    super(props);
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleAvatarChange = this.handleAvatarChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handlePrevStepClick = this.handlePrevStepClick.bind(this);
-    this.handleNextStepClick = this.handleNextStepClick.bind(this);
-  }
-
-  handlePrevStepClick(): void {
+  handlePrevStepClick = (): void => {
     const { step } = this.props;
 
     if (step === 'info') {
@@ -50,9 +34,9 @@ class CreateNewModal extends PureComponent {
     if (step === 'members') {
       this.props.onStepChange('info');
     }
-  }
+  };
 
-  handleNextStepClick(): void {
+  handleNextStepClick = (): void => {
     const { step } = this.props;
 
     if (step === 'type') {
@@ -62,14 +46,14 @@ class CreateNewModal extends PureComponent {
     if (step === 'info') {
       this.props.onStepChange('members');
     }
-  }
+  };
 
-  handleChange(value: any, { target }: $FlowIssue): void {
+  handleChange = (value: any, { target }: $FlowIssue): void => {
     this.props.onRequestChange({
       ...this.props.request,
       [target.name]: value
     });
-  }
+  };
 
   handleMembersChange = (members: SelectorState<Contact>): void => {
     this.props.onRequestChange({
@@ -78,17 +62,17 @@ class CreateNewModal extends PureComponent {
     });
   };
 
-  handleAvatarChange(avatar: File): void {
+  handleAvatarChange = (avatar: File): void => {
     this.props.onRequestChange({
       ...this.props.request,
       avatar
     });
-  }
+  };
 
-  handleSubmit(): void {
-    const { request } = this.props;
-    this.props.onSubmit(request);
-  }
+  handleSubmit = (event: SyntheticEvent): void => {
+    event.preventDefault();
+    this.props.onSubmit(this.props.request);
+  };
 
   renderError(): ?React.Element<any> {
     const { error } = this.props;
@@ -116,10 +100,10 @@ class CreateNewModal extends PureComponent {
         </ModalBody>
         <ModalFooter className={styles.footer}>
           <Button
-            onClick={this.handleNextStepClick}
-            rounded={false}
-            theme="success"
             wide
+            theme="success"
+            rounded={false}
+            onClick={this.handleNextStepClick}
           >
             <Text id={`CreateNewModal.next.${step}`} />
           </Button>
@@ -157,10 +141,10 @@ class CreateNewModal extends PureComponent {
         </ModalBody>
         <ModalFooter className={styles.footer}>
           <Button
-            onClick={this.handleNextStepClick}
-            rounded={false}
-            theme="success"
             wide
+            theme="success"
+            rounded={false}
+            onClick={this.handleNextStepClick}
           >
             <Text id={`CreateNewModal.next.${step}`} />
           </Button>
