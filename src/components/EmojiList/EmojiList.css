@@ -1,7 +1,6 @@
 /**
  * Copyright 2017 dialog LLC <info@dlg.im>
  */
-
 @import '../../styles/variables.css';
 
 /* Reset */
@@ -36,6 +35,10 @@
 }
 
 .categoryTitle {
+  position: sticky;
+  top: 0;
+  left: 0;
+  background: color(#fff alpha(90%));
   padding: 8px var(--default-padding);
   letter-spacing: -0.2px;
   text-transform: uppercase;
