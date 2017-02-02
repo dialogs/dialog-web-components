@@ -3,16 +3,17 @@
  * @flow
  */
 
+import type { Sticker } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
 import Image from '../Image/Image';
 import styles from './EmojiList.css';
 
 export type Props = {
-  sticker: Object,
-  onClick: (sticker: Object) => void
+  sticker: Sticker,
+  onClick: (sticker: Sticker) => void
 };
 
-class Sticker extends PureComponent {
+class StickerItem extends PureComponent {
   props: Props;
 
   handleClick = (): void => {
@@ -36,4 +37,4 @@ class Sticker extends PureComponent {
   }
 }
 
-export default Sticker;
+export default StickerItem;

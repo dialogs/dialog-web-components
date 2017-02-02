@@ -3,14 +3,13 @@
  * @flow
  */
 
+import type { StickerPack } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
 import styles from './EmojiList.css';
-import Sticker from './Sticker';
+import StickerItem from './StickerItem';
 
 type Props = {
-  id: number,
-  title: string,
-  stickers: Object[],
+  pack: StickerPack,
   onClick: (sticker: Object) => any
 };
 
@@ -18,9 +17,10 @@ class StickerCategory extends PureComponent {
   props: Props;
 
   render(): React.Element<any> {
-    const children = this.props.stickers.map((sticker) => {
+    const { pack } = this.props;
+    const children = pack.stickers.map((sticker) => {
       return (
-        <Sticker
+        <StickerItem
           key={sticker.id}
           sticker={sticker}
           onClick={this.props.onClick}
@@ -29,8 +29,8 @@ class StickerCategory extends PureComponent {
     });
 
     return (
-      <div className={styles.category} data-category={this.props.id}>
-        <div className={styles.categoryTitle}>{this.props.title}</div>
+      <div className={styles.category} data-category={pack.id}>
+        <div className={styles.categoryTitle}>{pack.title}</div>
         <div className={styles.categoryList}>{children}</div>
       </div>
     );

@@ -3,6 +3,7 @@
  * @flow
  */
 
+import type { StickerPack, Sticker } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
 import { findDOMNode } from 'react-dom';
 import { Text } from '@dlghq/react-l10n';
@@ -15,18 +16,6 @@ import EmojiCategory from './EmojiCategory';
 import StickerTab from './StickerTab';
 import StickerCategory from './StickerCategory';
 import styles from './EmojiList.css';
-
-export type Sticker = {
-  id: number,
-  emoji: string,
-  image: string
-};
-
-export type StickerPack = {
-  id: number,
-  title: string,
-  stickers: Sticker[]
-};
 
 export type Props = {
   className?: string,
@@ -78,13 +67,17 @@ class EmojiList extends PureComponent {
 
   handleToggleScreen = (): void => {
     this.setState(() => {
-      if (this.props.stickers) {
+      const { stickers } = this.props;
+
+      if (stickers && stickers.length) {
         this.categories = {};
-        this.container.scrollTop = 0;
+        if (this.container) {
+          this.container.scrollTop = 0;
+        }
 
         return {
           screen: this.getNextScreen(),
-          current: String(this.props.stickers[0].id)
+          current: String(stickers[0].id)
         };
       }
 
@@ -176,14 +169,12 @@ class EmojiList extends PureComponent {
           />
         );
       }
-    } else {
-      for (const { id, title, stickers } of this.props.stickers) {
+    } else if (this.props.stickers) {
+      for (const pack of this.props.stickers) {
         result.push(
           <StickerCategory
-            key={id}
-            id={id}
-            title={title}
-            stickers={stickers}
+            key={pack.id}
+            pack={pack}
             ref={this.setCategory}
             onClick={this.props.onStickerClick}
           />
@@ -220,15 +211,13 @@ class EmojiList extends PureComponent {
           />
         );
       }
-    } else {
-      for (const { id, title, stickers } of this.props.stickers) {
+    } else if (this.props.stickers) {
+      for (const pack of this.props.stickers) {
         children.push(
           <StickerTab
-            key={id}
-            id={id}
-            title={title}
-            image={stickers[0].image}
-            active={this.state.current === String(id)}
+            key={pack.id}
+            pack={pack}
+            active={this.state.current === String(pack.id)}
             onClick={this.handleTabClick}
           />
         );
@@ -246,7 +235,7 @@ class EmojiList extends PureComponent {
     );
   }
 
-  renderGoToButton(): ?React.Element {
+  renderGoToButton(): ?React.Element<any> {
     const { stickers } = this.props;
     if (!stickers || !stickers.length) {
       return null;

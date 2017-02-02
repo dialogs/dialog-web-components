@@ -3,17 +3,16 @@
  * @flow
  */
 
+import type { StickerPack } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import styles from './EmojiList.css';
 import Image from '../Image/Image';
 
 type Props = {
-  id: number,
-  title: string,
-  image: string,
+  pack: StickerPack,
   active: boolean,
-  onClick: (id: number) => any
+  onClick: (id: string) => void
 };
 
 class StickerTab extends PureComponent {
@@ -24,8 +23,17 @@ class StickerTab extends PureComponent {
     event.stopPropagation();
     event.nativeEvent.stopImmediatePropagation();
 
-    this.props.onClick(this.props.id);
+    this.props.onClick(String(this.props.pack.id));
   };
+
+  getCoverImage(): ?string {
+    const { pack } = this.props;
+    if (pack.stickers.length) {
+      return pack.stickers[0].image;
+    }
+
+    return null;
+  }
 
   render(): React.Element<any> {
     const className = classNames(styles.footerTabSticker, {
@@ -36,8 +44,8 @@ class StickerTab extends PureComponent {
       <div className={className}>
         <Image
           className={styles.stickerTabImage}
-          src={this.props.image}
-          alt={this.props.title}
+          src={this.getCoverImage()}
+          alt={this.props.pack.title}
           width={30}
           height={30}
           onClick={this.handleClick}
