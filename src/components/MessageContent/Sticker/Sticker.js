@@ -23,8 +23,8 @@ function Sticker(props: Props): React.Element<any> {
       alt={props.emoji}
       width={props.width}
       height={props.height}
-      maxWidth={256}
-      maxHeight={256}
+      maxWidth={128}
+      maxHeight={128}
       onClick={props.onClick}
     />
   );
