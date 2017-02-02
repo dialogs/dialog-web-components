@@ -3,7 +3,7 @@
  * @flow
  */
 
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import Tether from 'react-tether';
 import { listen } from '@dlghq/dialog-utils';
 
@@ -21,7 +21,15 @@ export type Props = {
    * [Tether options](http://tether.io/#options)
    */
   options: Object,
+
+  /**
+   * Which events should trigger child mount.
+   */
   openHandler: TriggerHandler[],
+
+  /**
+   * Which events should trigger child unmount.
+   */
   closeHandler: TriggerHandler[],
 
   /**
@@ -30,16 +38,21 @@ export type Props = {
   preventDefault?: boolean,
 
   /**
-   * Close child on document click. **You shouldn't update this prop.**
+   * Close child on document click.
    */
   closeOnDocumentClick: boolean,
 
   /**
-   * Close child on document scroll. **You shouldn't update this prop.**
+   * Close child on document scroll.
    */
   closeOnDocumentScroll: boolean,
+
   renderTrigger: (handlers: Object, isActive: boolean) => React.Element<any>,
   renderChild: (point: Point) => React.Element<any>,
+
+  /**
+   * Called whenever child is mounting or unmounting.
+   */
   onChange?: (active: boolean) => void
 };
 
@@ -48,7 +61,7 @@ export type State = {
   position: Point
 };
 
-class Trigger extends PureComponent {
+class Trigger extends Component {
   props: Props;
   state: State;
   listeners: ?{ remove(): void }[];
@@ -70,8 +83,15 @@ class Trigger extends PureComponent {
     };
   }
 
+  shouldComponentUpdate(nextProps: Props, nextState: State): boolean {
+    return nextState.isOpen !== this.state.isOpen;
+  }
+
   componentWillUnmount(): void {
     this.removeListeners();
+    if (this.props.onChange) {
+      this.props.onChange(false);
+    }
   }
 
   handleOpen = (event: $FlowIssue): void => {
@@ -114,7 +134,7 @@ class Trigger extends PureComponent {
       this.removeListeners();
 
       if (this.props.onChange) {
-        this.props.onChange(true);
+        this.props.onChange(false);
       }
 
       return {

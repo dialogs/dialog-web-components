@@ -1,4 +1,8 @@
-Basic Trigger:
+You should note that every trigger props works like a **flags**.
+You shouldn't update them. Imagine if `shouldComponentUpdate` always
+returns `false` inside of this component.
+
+Example:
 
 ```
 const Button = require('../Button/Button').default;
