@@ -60,9 +60,11 @@ function MessageContent({ className, content, isPending, onLightboxOpen }: Props
       return (
         <Sticker
           className={className}
-          fileUrl={content.fileUrl}
-          fileName={content.fileName}
-          isUploading={isPending || content.isUploading}
+          emoji={content.emoji}
+          image={content.image}
+          width={content.width}
+          height={content.height}
+          isPending={isPending}
         />
       );
 

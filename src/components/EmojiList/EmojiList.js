@@ -69,7 +69,11 @@ class EmojiList extends PureComponent {
     }
   }
 
-  handleToggleScreen = (): void => {
+  handleToggleScreen = (event: SyntheticMouseEvent) => {
+    event.preventDefault();
+    event.stopPropagation();
+    event.nativeEvent.stopImmediatePropagation();
+
     this.setState(() => {
       const { stickers } = this.props;
 

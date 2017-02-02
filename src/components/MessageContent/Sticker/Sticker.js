@@ -8,8 +8,10 @@ import Image from '../../Image/Image';
 
 export type Props = {
   className?: string,
-  fileUrl: ?string,
-  fileName: ?string,
+  emoji: ?string,
+  image: ?string,
+  width: number,
+  height: number,
   onClick?: (event: SyntheticMouseEvent) => any
 };
 
@@ -17,10 +19,12 @@ function Sticker(props: Props): React.Element<any> {
   return (
     <Image
       className={props.className}
-      src={props.fileUrl}
-      alt={props.fileName}
-      width={256}
-      height={256}
+      src={props.image}
+      alt={props.emoji}
+      width={props.width}
+      height={props.height}
+      maxWidth={256}
+      maxHeight={256}
       onClick={props.onClick}
     />
   );
