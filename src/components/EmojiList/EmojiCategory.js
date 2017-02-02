@@ -4,6 +4,7 @@
  */
 
 import React, { PureComponent } from 'react';
+import { Text } from '@dlghq/react-l10n';
 import styles from './EmojiList.css';
 import EmojiListItem from './EmojiListItem';
 
@@ -30,7 +31,11 @@ class EmojiCategory extends PureComponent {
 
     return (
       <div className={styles.category} data-category={this.props.name}>
-        <div className={styles.categoryTitle}>{this.props.name}</div>
+        <Text
+          id={`EmojiList.${this.props.name}`}
+          tagName="div"
+          className={styles.categoryTitle}
+        />
         <div className={styles.categoryList}>{children}</div>
       </div>
     );
