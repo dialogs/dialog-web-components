@@ -7,7 +7,6 @@ import type { StickerPack, Sticker } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
 import { findDOMNode } from 'react-dom';
 import { Text } from '@dlghq/react-l10n';
-import { throttle } from 'lodash';
 import { listen } from '@dlghq/dialog-utils';
 import classNames from 'classnames';
 import categories from './categories';
@@ -21,6 +20,7 @@ export type Props = {
   className?: string,
   recent?: string[],
   stickers?: StickerPack[],
+  categoryHeight: number,
   onClick: (char: string) => void,
   onStickerClick: (sticker: Sticker) => void
 };
@@ -29,7 +29,8 @@ type Screen = 'emoji' | 'stickers';
 
 export type State = {
   current: string,
-  screen: Screen
+  screen: Screen,
+  isAtBottom: boolean
 };
 
 class EmojiList extends PureComponent {
@@ -39,17 +40,20 @@ class EmojiList extends PureComponent {
   categories: { [key: string]: HTMLElement };
   listener: ?{ remove(): void };
 
+  static defaultProps = {
+    categoryHeight: 38
+  };
+
   constructor(props: Props) {
     super(props);
 
     this.state = {
       screen: 'emoji',
-      current: (props.recent && props.recent.length) ? 'recent' : categories[0].name
+      current: (props.recent && props.recent.length) ? 'recent' : categories[0].name,
+      isAtBottom: false
     };
 
     this.categories = {};
-
-    this.handleScroll = throttle(this.handleScroll, 16);
   }
 
   componentDidMount(): void {
@@ -100,6 +104,7 @@ class EmojiList extends PureComponent {
 
   handleScroll = ({ target }: $FlowIssue): void => {
     const { scrollTop } = target;
+    console.debug({ scrollTop });
     const breakpoints = Object.keys(this.categories).map((name) => {
       const node = this.categories[name];
       return {
@@ -116,7 +121,14 @@ class EmojiList extends PureComponent {
       for (let i = breakpoints.length - 1; i >= 0; i--) {
         const breakpoint = breakpoints[i];
         if (breakpoint.offset - firstOffset <= scrollTop) {
+          let isAtBottom = false;
+          if (i !== breakpoints.length - 1) {
+            const next = breakpoints[i + 1];
+            isAtBottom = scrollTop >= next.offset - this.props.categoryHeight;
+          }
+
           this.setState({
+            isAtBottom,
             current: breakpoint.name
           });
           break;
@@ -153,6 +165,8 @@ class EmojiList extends PureComponent {
             name="recent"
             chars={this.props.recent}
             ref={this.setCategory}
+            isAtBottom={this.state.isAtBottom}
+            active={this.state.current === 'recent'}
             onClick={this.props.onClick}
           />
         );
@@ -165,6 +179,8 @@ class EmojiList extends PureComponent {
             name={name}
             chars={chars}
             ref={this.setCategory}
+            isAtBottom={this.state.isAtBottom}
+            active={this.state.current === name}
             onClick={this.props.onClick}
           />
         );
@@ -176,6 +192,8 @@ class EmojiList extends PureComponent {
             key={pack.id}
             pack={pack}
             ref={this.setCategory}
+            isAtBottom={this.state.isAtBottom}
+            active={this.state.current === String(pack.id)}
             onClick={this.props.onStickerClick}
           />
         );

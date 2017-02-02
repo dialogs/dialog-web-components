@@ -10,6 +10,8 @@ import StickerItem from './StickerItem';
 
 type Props = {
   pack: StickerPack,
+  active: boolean,
+  isAtBottom: boolean,
   onClick: (sticker: Object) => any
 };
 
@@ -28,10 +30,30 @@ class StickerCategory extends PureComponent {
       );
     });
 
+    const containerStyles = {};
+    const titleStyles = {};
+
+    if (this.props.active) {
+      if (this.props.isAtBottom) {
+        containerStyles.position = 'relative';
+        titleStyles.bottom = 0;
+        titleStyles.top = 'auto';
+      } else {
+        titleStyles.top = 0;
+        containerStyles.position = 'static';
+      }
+    } else {
+      titleStyles.top = 0;
+    }
+
     return (
-      <div className={styles.category} data-category={pack.id}>
-        <div className={styles.categoryTitle}>{pack.title}</div>
-        <div className={styles.categoryList}>{children}</div>
+      <div className={styles.category} style={containerStyles} data-category={pack.id}>
+        <div className={styles.categoryTitle} style={titleStyles}>
+          {pack.title}
+        </div>
+        <div className={styles.categoryList}>
+          {children}
+        </div>
       </div>
     );
   }
