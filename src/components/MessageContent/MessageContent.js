@@ -7,6 +7,7 @@ import type { MessageContent as MessageContentTypes } from '@dlghq/dialog-types'
 import React from 'react';
 import Text from './Text/Text';
 import Photo from './Photo/Photo';
+import Sticker from './Sticker/Sticker';
 import Document from './Document/Document';
 import Voice from './Voice/Voice';
 import Location from './Location/Location';
@@ -50,8 +51,18 @@ function MessageContent({ className, content, isPending, onLightboxOpen }: Props
           preview={content.preview}
           fileUrl={content.fileUrl}
           fileName={content.fileName}
-          isPending={isPending}
+          isUploading={isPending || content.isUploading}
           onClick={onLightboxOpen}
+        />
+      );
+
+    case 'sticker':
+      return (
+        <Sticker
+          className={className}
+          fileUrl={content.fileUrl}
+          fileName={content.fileName}
+          isUploading={isPending || content.isUploading}
         />
       );
 
