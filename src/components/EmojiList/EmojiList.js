@@ -108,7 +108,6 @@ class EmojiList extends PureComponent {
 
   handleScroll = ({ target }: $FlowIssue): void => {
     const { scrollTop } = target;
-    console.debug({ scrollTop });
     const breakpoints = Object.keys(this.categories).map((name) => {
       const node = this.categories[name];
       return {
