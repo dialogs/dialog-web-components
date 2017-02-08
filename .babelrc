@@ -1,8 +1,5 @@
 {
   "presets": [
-    ["@dlghq/babel-preset-dialog", {
-      "runtime": false,
-      "development": true
-    }]
+    "@dlghq/dialog"
   ]
 }

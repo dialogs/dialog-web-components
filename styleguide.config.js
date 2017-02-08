@@ -3,7 +3,6 @@ const fs = require('fs');
 const path = require('path');
 const pkg = require('./package.json');
 const schema = require('./components.json');
-const babelrc = JSON.parse(fs.readFileSync('./.babelrc', 'utf-8'));
 
 function resolve(...paths) {
   return fs.realpathSync(path.join(__dirname, ...paths));
@@ -43,17 +42,38 @@ module.exports = {
       test: /\.js$/,
       include: whitelist,
       loader: 'babel',
-      query: Object.assign({}, babelrc, {
+      options: {
         babelrc: false,
-        cacheDirectory: true
-      })
+        cacheDirectory: true,
+        presets: [
+          ['@dlghq/dialog', {
+            modules: false,
+            runtime: false,
+            development: true
+          }]
+        ]
+      }
     }, {
       test: /\.css$/,
       include: whitelist,
-      loaders: [
-        'style',
-        'css?modules&importLoaders=1&localIdentName=[name]__[local]',
-        'postcss'
+      use: [
+        'style-loader',
+        {
+          loader: 'css-loader',
+          options: {
+            modules: true,
+            importLoaders: 1,
+            localIdentName: '[name]__[local]'
+          }
+        },
+        {
+          loader: 'postcss-loader',
+          options: {
+            plugins() {
+              return require('@dlghq/postcss-dialog')();
+            }
+          }
+        }
       ]
     }, {
       test: /\.json$/,
@@ -61,29 +81,19 @@ module.exports = {
         ...whitelist,
         path.join(__dirname, 'node_modules/entities')
       ],
-      loader: 'json'
+      loader: 'json-loader'
     }, {
       test: /\.yml$/,
       include: whitelist,
-      loader: 'yml'
+      loader: 'yml-loader'
     }, {
       test: /\.(jpg|png|svg|gif)$/,
       include: /./,
-      loader: 'file'
+      loader: 'file-loader'
     }, {
       test: /\.txt$/,
       include: whitelist,
-      loader: 'raw'
-    });
-
-    Object.assign(config, {
-      postcss(webpack) {
-        return [
-          require('@dlghq/postcss-dialog')({
-            bundler: webpack
-          })
-        ];
-      }
+      loader: 'raw-loader'
     });
 
     return config;
