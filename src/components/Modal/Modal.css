@@ -39,7 +39,7 @@
   left: 0;
   display: flex;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
   flex-direction: column;
   padding: calc(var(--default-padding) * 2);
   background-color: var(--modal-overlay-color);
@@ -105,7 +105,7 @@
   position: relative;
   display: block;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
   box-sizing: border-box;
   padding: var(--default-padding) calc(var(--default-padding) * 2);
   font-size: var(--modal-font-size);
@@ -155,7 +155,7 @@
     box-shadow: none;
 
     & .wrapper {
-      overflow: scroll;
+      overflow: auto;
       width: auto;
       min-width: var(--modal-fullscreen-min-width);
       height: 100%;
