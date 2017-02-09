@@ -1,0 +1,119 @@
+/*
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+@import '../../styles/variables.css';
+
+/* Reset */
+.container {
+  all: initial;
+}
+
+/* Styles */
+.container {
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  height: var(--recent-item-large-height);
+  padding-top: var(--recent-item-large-top-padding);
+  padding-right: var(--recent-item-large-right-padding);
+  padding-bottom: var(--recent-item-large-bottom-padding);
+  padding-left: var(--recent-item-large-left-padding);
+  cursor: pointer;
+  user-select: none;
+  font-family: var(--default-font-family);
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-content: stretch;
+  align-items: center;
+  color: var(--recent-item-default-color);
+
+  &:hover {
+    background-color: var(--recent-item-hover-background-color);
+    color: var(--recent-item-hover-color);
+  }
+}
+
+.avatar {
+  margin-right: 10px;
+  flex: 0 0 auto;
+  align-self: auto;
+}
+
+.text {
+  flex-direction: column;
+  min-width: 0;
+  flex: 1 1 auto;
+  align-self: auto;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-content: stretch;
+  align-items: flex-start;
+}
+
+.title {
+  vertical-align: middle;
+  letter-spacing: -0.27px;
+  font-size: var(--default-font-size);
+  font-weight: 500;
+  line-height: 21px;
+
+  @apply --text-overflow-ellipsis;
+}
+
+.message {
+  vertical-align: middle;
+  letter-spacing: -0.25px;
+  font-size: 15px;
+  line-height: 22px;
+  color: var(--recent-item-message-color);
+
+  @apply --text-overflow-ellipsis;
+}
+
+.sender, .service, .highlight {
+  color: var(--color-info);
+}
+
+.counter {
+  display: flex;
+  width: var(--recent-item-counter-size);
+  height: var(--recent-item-counter-size);
+  border-radius: 50%;
+  background-color: var(--recent-item-counter-background);
+  font-family: var(--default-font-family);
+  font-size: var(--recent-item-counter-font-size);
+  font-weight: 400;
+  flex: 0 0 auto;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  color: var(--recent-item-counter-color);
+}
+
+.unread {
+  color: #000000;
+}
+
+/* State */
+.active {
+  background-color: var(--recent-item-active-background-color);
+  background-image: var(--recent-item-active-background-gradient);
+  color: var(--recent-item-active-color);
+
+  &:hover {
+    color: var(--recent-item-active-hover-color);
+    background-color: var(--recent-item-active-hover-background-color);
+    background-image: var(--recent-item-active-hover-background-gradient);
+  }
+
+  & .counter {
+    background-color: color(#fff alpha(50%));
+  }
+
+  & .message,
+  & .sender,
+  & .service,
+  & .highlight {
+    color: color(#fff alpha(80%));
+  }
+}

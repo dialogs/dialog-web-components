@@ -92,6 +92,7 @@
       "SidebarGroup",
       "SidebarCalls",
       "RecentItem",
+      "FullRecentItem",
       "RecentCallItem",
       "RecentGroup",
       "FakeRecentItem",

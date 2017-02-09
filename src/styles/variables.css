@@ -361,6 +361,7 @@
   --recent-item-default-left-padding: 14px;
   --recent-item-default-height: 46px;
   --recent-item-default-color: color(#000 alpha(50%));
+  --recent-item-message-color: color(#000 alpha(40%));
   --recent-item-large-top-padding: 15px;
   --recent-item-large-right-padding: 12px;
   --recent-item-large-bottom-padding: 15px;

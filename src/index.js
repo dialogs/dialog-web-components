@@ -82,6 +82,7 @@ export { default as SidebarGroup } from './components/SidebarGroup/SidebarGroup'
 export { default as SidebarGroupTitle } from './components/SidebarGroup/SidebarGroupTitle';
 export { default as SidebarCalls } from './components/SidebarCalls/SidebarCalls';
 export { default as RecentItem } from './components/RecentItem/RecentItem';
+export { default as FullRecentItem } from './components/FullRecentItem/FullRecentItem';
 export { default as RecentCallItem } from './components/RecentCallItem/RecentCallItem';
 export { default as RecentGroup } from './components/RecentGroup/RecentGroup';
 export { default as FakeRecentItem } from './components/FakeRecentItem/FakeRecentItem';
