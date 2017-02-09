@@ -54,14 +54,18 @@ class Avatar extends PureComponent {
 
     const colors = this.getAvatarColor();
 
-    const avatarStyles = {
+    let avatarStyles = {
       width: size,
       height: size,
-      fontSize: Math.min(Math.floor(twoChars ? (size / 2.2) : (size / 1.9)), 60),
-      backgroundImage: `linear-gradient(38deg, ${colors.payload.from}, ${colors.payload.to})`
     };
 
-    if (image) {
+    if(!image) {
+      avatarStyles = {
+        ...avatarStyles,
+        fontSize: Math.min(Math.floor(twoChars ? (size / 2.2) : (size / 1.9)), 60),
+        backgroundImage: `linear-gradient(38deg, ${colors.payload.from}, ${colors.payload.to})`
+      };
+    } else {
       return (
         <img
           className={className}
