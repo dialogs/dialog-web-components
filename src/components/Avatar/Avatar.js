@@ -48,39 +48,44 @@ class Avatar extends PureComponent {
     const text = size >= 20 ? this.getAvatarText() : null;
     const twoChars = Boolean(text && text.length !== 1);
 
-    const className = classNames(image ? styles.image : styles.placeholder, {
-      [styles.clickable]: this.props.onClick
-    }, this.props.className);
+    const className = classNames(
+      this.props.className,
+      image ? styles.image : styles.placeholder,
+      this.props.onClick ? styles.clickable : null
+    );
 
-    const colors = this.getAvatarColor();
-
-    let avatarStyles = {
-      width: size,
-      height: size,
-    };
-
-    if(!image) {
-      avatarStyles = {
-        ...avatarStyles,
-        fontSize: Math.min(Math.floor(twoChars ? (size / 2.2) : (size / 1.9)), 60),
-        backgroundImage: `linear-gradient(38deg, ${colors.payload.from}, ${colors.payload.to})`
-      };
-    } else {
+    if (image) {
       return (
         <img
           className={className}
-          onClick={this.props.onClick}
-          style={avatarStyles}
           src={image}
+          alt={title}
           width={size}
           height={size}
-          alt={title}
+          style={{ width: size, height: size }}
+          onClick={this.props.onClick}
         />
       );
     }
 
+    const colors = this.getAvatarColor();
+
+    const style = {
+      width: size,
+      height: size,
+      fontSize: Math.min(Math.floor(twoChars ? (size / 2.2) : (size / 1.9)), 60),
+      backgroundImage: `linear-gradient(38deg, ${colors.payload.from}, ${colors.payload.to})`
+    };
+
     return (
-      <div className={className} title={title} style={avatarStyles} onClick={this.props.onClick}>{text}</div>
+      <div
+        className={className}
+        title={title}
+        style={style}
+        onClick={this.props.onClick}
+      >
+        {text}
+      </div>
     );
   }
 }
