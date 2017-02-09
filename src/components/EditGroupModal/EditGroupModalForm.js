@@ -29,6 +29,7 @@ export type Props = {
   avatar: ?string | ?File,
   className?: string,
   vertical: boolean,
+  shortnamePrefix?: ?string,
   onChange: () => void;
   onAvatarChange: (avatar: File) => void;
   onAvatarRemove: () => void;
@@ -114,7 +115,7 @@ class EditGroupModalForm extends PureComponent {
         name="shortname"
         label={l10n.formatText(`CreateNewModal.${type}.info.shortname`)}
         onChange={this.props.onChange}
-        prefix="app.dlg.im/"
+        prefix={this.props.shortnamePrefix}
         value={shortname.value || ''}
         status={shortname.error ? 'error' : 'normal'}
       />

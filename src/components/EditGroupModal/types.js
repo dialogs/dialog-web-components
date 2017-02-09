@@ -20,6 +20,7 @@ export type Props = {
     error: ?string,
     pending: boolean
   },
+  shortnamePrefix?: ?string,
   onClose: () => void,
   onNameChange: (gid: number, name: string) => any,
   onShortnameChange: (gid: number, shortname: string) => any,

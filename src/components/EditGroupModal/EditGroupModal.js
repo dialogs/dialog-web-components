@@ -89,6 +89,7 @@ class EditGroupModal extends PureComponent {
             about={{ ...this.props.about, value: this.state.about }}
             shortname={{ ...this.props.shortname, value: this.state.shortname }}
             avatar={group.avatar}
+            shortnamePrefix={this.props.shortnamePrefix}
             onChange={this.handleChange}
             onAvatarChange={this.handleAvatarChange}
             onAvatarRemove={this.handleAvatarRemove}
