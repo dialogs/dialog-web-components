@@ -30,7 +30,6 @@
     display: block;
     height: 1px;
     content: '';
-    background-color: var(--message-divider-default-line-color);
   }
 }
 
@@ -46,10 +45,19 @@
   font-size: var(--message-divider-font-size);
   font-weight: 500;
   line-height: 22px;
-  color: var(--message-divider-default-color);
 }
 
 /* Themes */
+.default {
+  &::after {
+    background-color: var(--message-divider-default-line-color);
+  }
+
+  & .text {
+    color: var(--message-divider-default-color);
+  }
+}
+
 .primary {
   &::after {
     background-color: var(--color-primary);

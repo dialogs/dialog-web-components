@@ -9,22 +9,29 @@ import styles from './MessageDivider.css';
 
 export type Props = {
   className?: string,
-  theme: 'primary' | 'success' | 'danger' | 'info' | 'warning',
-  children: React.Element<any>
+  theme: 'default' | 'primary' | 'success' | 'danger' | 'info' | 'warning',
+  children?: React.Element<any>
 };
 
 class MessageDivider extends PureComponent {
   props: Props;
 
-  render(): React.Element<any> {
-    const { theme, children } = this.props;
-    const className = classNames(styles.container, {
-      [styles[theme]]: theme
-    }, this.props.className);
+  static defaultProps = {
+    theme: 'default'
+  };
+
+  render() {
+    const className = classNames(
+      styles.container,
+      styles[this.props.theme],
+      this.props.className
+    );
 
     return (
       <div className={className}>
-        <div className={styles.text}>{children}</div>
+        <div className={styles.text}>
+          {this.props.children}
+        </div>
       </div>
     );
   }
