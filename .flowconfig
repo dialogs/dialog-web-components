@@ -1,12 +1,12 @@
 [ignore]
 .*/__tests__/.*
 .*/test/.*
+.*/scripts/.*
 .*/react/node_modules/.*
 .*/fbjs/node_modules/.*
 .*/node_modules/invariant/.*
 .*/node_modules/flow-coverage-report/.*
-.*/scripts/.*
-src/utils/compileMessages.js
+<PROJECT_ROOT>/src/utils/compileMessages.js
 
 # Incorrect parsing
 .*/systemjs-builder/.*
@@ -19,16 +19,20 @@ src/utils/compileMessages.js
 ./node_modules/immutable
 
 [libs]
-./node_modules/@dlghq/dialog-utils/lib
 ./node_modules/fbjs/flow/lib
+./node_modules/@dlghq/dialog-utils/lib
 
 [options]
+emoji=true
 module.system=haste
 module.use_strict=true
 
 module.file_ext=.js
 module.name_mapper='.*\.css$' -> 'CSSModule'
+module.name_mapper='.*\.mp3$' -> 'AssetModule'
+module.name_mapper='.*\.png$' -> 'AssetModule'
 
 suppress_type=$FlowIssue
-suppress_comment=\\(.\\|\n\\)*\\$FlowFixMe
+suppress_comment= \\(.\\|\n\\)*\\$FlowFixMe
+
 esproposal.class_static_fields=enable

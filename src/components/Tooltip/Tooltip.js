@@ -26,9 +26,7 @@ class Tooltip extends PureComponent {
     return (
       <CSSTransitionGroup
         transitionAppear
-        // $FlowFixMe
         transitionEnter={false}
-        // $FlowFixMe
         transitionLeave={false}
         transitionAppearTimeout={100}
         transitionName={{

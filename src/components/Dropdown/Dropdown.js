@@ -30,9 +30,7 @@ class Dropdown extends PureComponent {
       <CSSTransitionGroup
         transitionAppear
         transitionAppearTimeout={150}
-        // $FlowFixMe
         transitionEnter={false}
-        // $FlowFixMe
         transitionLeave={false}
         transitionName={{
           appear: styles.appear,

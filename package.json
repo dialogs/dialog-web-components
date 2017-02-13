@@ -45,8 +45,8 @@
   },
   "homepage": "https://dialogs.github.io/dialog-web-components",
   "dependencies": {
-    "@dlghq/dialog-types": "1.16.0",
-    "@dlghq/dialog-utils": "0.5.1",
+    "@dlghq/dialog-types": "1.16.1",
+    "@dlghq/dialog-utils": "0.6.1",
     "@dlghq/emoji": "0.5.2",
     "@dlghq/markdown": "0.8.2",
     "@dlghq/react-l10n": "0.7.1",
@@ -83,10 +83,10 @@
     "inquirer": "3.0.1",
     "jest-cli": "18.1.0",
     "npm-run-all": "4.0.1",
-    "postcss-loader": "1.2.2",
+    "postcss-loader": "1.3.0",
     "raw-loader": "0.5.1",
     "react-styleguidist": "4.6.3",
-    "stylefmt": "5.1.1",
+    "stylefmt": "5.1.2",
     "stylelint": "7.8.0",
     "webpack": "2.2.1",
     "yml-loader": "1.1.0"
