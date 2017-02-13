@@ -9,6 +9,6 @@ export type ChatMember = GroupMember & {
   online: ?UserOnline,
   kickState: {
     pending: boolean,
-    error?: string
+    error: ?(Error | string)
   }
 };

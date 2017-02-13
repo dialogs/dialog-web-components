@@ -9,9 +9,10 @@ import Spinner from '../Spinner/Spinner';
 import Tooltip from '../Tooltip/Tooltip';
 import Icon from '../Icon/Icon';
 import styles from './ActivityListMembers.css';
+import errorToString from '../../utils/errorToString';
 
 export type Props = {
-  error: ?string,
+  error: ?(Error | string),
   pending: boolean,
   onClick: (event: SyntheticMouseEvent) => void
 };
@@ -23,10 +24,12 @@ function ActivityListMembersKick(props: Props) {
     );
   }
 
-  if (props.error) {
+  const error = errorToString(props.error);
+
+  if (error) {
     return (
       <Tooltip
-        text={props.error}
+        text={error}
         options={{
           attachment: 'middle right',
           targetAttachment: 'middle left',
