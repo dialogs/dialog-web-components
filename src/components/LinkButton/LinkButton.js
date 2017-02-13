@@ -9,7 +9,7 @@ import styles from '../Button/Button.css';
 
 export type Props = {
   className?: string,
-  children: any,
+  children?: any,
   wide: boolean,
   rounded: boolean,
   view: 'button' | 'outline' | 'link',
