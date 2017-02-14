@@ -143,6 +143,32 @@
   }
 }
 
+.light {
+  color: var(--icon-inverted-color);
+  fill: var(--icon-inverted-color);
+  stroke: var(--icon-inverted-color);
+
+  &.inverted {
+    background-color: var(--icon-inverted-color);
+    color: var(--icon-button-dark-color);
+    fill: var(--icon-button-dark-color);
+    stroke: var(--icon-button-dark-color);
+  }
+}
+
+.dark {
+  color: var(--icon-button-dark-color);
+  fill: var(--icon-button-dark-color);
+  stroke: var(--icon-button-dark-color);
+
+  &.inverted {
+    background-color: var(--icon-button-dark-color);
+    color: var(--icon-inverted-color);
+    fill: var(--icon-inverted-color);
+    stroke: var(--icon-inverted-color);
+  }
+}
+
 /* Size */
 .small {
   width: var(--icon-small-size);

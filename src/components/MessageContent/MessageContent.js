@@ -12,13 +12,14 @@ import Document from './Document/Document';
 import Voice from './Voice/Voice';
 import Location from './Location/Location';
 import Contact from './Contact/Contact';
+import Video from './Video/Video';
 
-export type Props = {|
+export type Props = {
   className?: string,
   content: MessageContentTypes,
   isPending?: boolean,
   onLightboxOpen: () => any
-|};
+};
 
 function MessageContent({ className, content, isPending, onLightboxOpen }: Props) {
   switch (content.type) {
@@ -104,6 +105,21 @@ function MessageContent({ className, content, isPending, onLightboxOpen }: Props
           phones={content.phones}
           emails={content.emails}
         />
+      );
+    case 'video':
+      return (
+        <Video
+          className={className}
+          width={content.width}
+          height={content.height}
+          preview={content.preview}
+          duration={content.duration}
+          fileUrl={content.fileUrl}
+          fileName={content.fileName}
+          fileSize={content.fileSize}
+          fileExtension={content.fileExtension}
+          isUploading={isPending || content.isUploading}
+          />
       );
 
     default:
