@@ -16,7 +16,7 @@ export type Props = {
   className?: string,
   src: ?string,
   alt?: ?string,
-  preview?: string,
+  preview?: ?string,
   width: number,
   height: number,
   maxWidth: number,

@@ -19,7 +19,7 @@ export type Props = {
   online: GroupOnline,
   onMemberAdd: () => void,
   onMemberKick: (peer: Peer) => void,
-  onMemberClick: (peer: Peer) => void,
+  onMemberClick: (peer: Peer) => void
 };
 
 export type State = {

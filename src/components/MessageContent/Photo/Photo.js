@@ -12,7 +12,7 @@ export type Props = {
   className?: string,
   width: number,
   height: number,
-  preview: string,
+  preview: ?string,
   fileUrl: ?string,
   fileName: ?string,
   onClick?: (event: SyntheticMouseEvent) => any
