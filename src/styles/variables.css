@@ -224,6 +224,7 @@
   --icon-button-default-size: 40px;
   --icon-button-large-size: 54px;
   --icon-button-background-color: #fff;
+  --icon-button-dark-color: #111111;
   --icon-button-default-color: rgb(178, 178, 178);
   --icon-button-hover-color: var(--color-primary);
   --icon-button-glyph-size: 22px;

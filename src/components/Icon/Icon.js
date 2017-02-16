@@ -13,7 +13,7 @@ import styles from './Icon.css';
 export type Props = {
   className?: string,
   glyph: string,
-  theme: 'default' | 'primary' | 'success' | 'danger' | 'info' | 'warning',
+  theme: 'default' | 'primary' | 'success' | 'danger' | 'info' | 'warning' | 'light',
   size: 'small' | 'normal' | 'large',
   inverted: boolean,
   onClick?: (event: SyntheticMouseEvent) => void
@@ -57,6 +57,13 @@ class Icon extends PureComponent {
               transform="translate(0, 2)"
               className={styles.svgFill}
             />
+          </svg>
+        );
+
+      case 'play':
+        return(
+          <svg className={styles.svg} viewBox="0 0 24 24">
+            <path className={styles.svgFill} d="M8,5.14V19.14L19,12.14L8,5.14Z" />
           </svg>
         );
       case 'call':
@@ -378,6 +385,7 @@ class Icon extends PureComponent {
 
     switch (glyph) {
       case 'logo':
+      case 'play':
       case 'call':
       case 'call_end':
       case 'phone_outline':
