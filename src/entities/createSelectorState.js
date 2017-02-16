@@ -35,6 +35,10 @@ function createSelectorState<T>(
     }
 
     setQuery(query: string): SelectorState {
+      if (query === this.get('query')) {
+        return this;
+      }
+
       const filtered = filter(query, this.get('items'));
 
       // TODO: lookup the same item
@@ -73,7 +77,6 @@ function createSelectorState<T>(
       const max = this.getItems().size;
       return this.set('hoverIndex', calculateCursor({ max, next: hoverIndex }));
     }
-
 
     getSelected(): OrderedSet<T> {
       return this.get('selected');
