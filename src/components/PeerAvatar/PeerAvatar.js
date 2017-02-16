@@ -121,6 +121,7 @@ class PeerAvatar extends PureComponent<DefaultProps, Props, void> {
         y="51%"
         textAnchor="middle"
         alignmentBaseline="central"
+        dominantBaseline="central"
         style={textStyles}
       >
         {text}
