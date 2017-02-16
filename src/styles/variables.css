@@ -587,7 +587,7 @@
   --modal-join-padding-bottom: calc(var(--default-padding-large) * 3);
   --modal-join-padding-left: calc(var(--default-padding-large) * 2.5);
   /* AttachmentModal */
-  --modal-attachment-width: 500px;
+  --modal-attachment-width: 520px;
   --modal-attachment-font-size: var(--default-font-size);
   --modal-attachment-text-color: var(--modal-font-color-light);
   --modal-attachment-pagination-arrow-size: 28px;

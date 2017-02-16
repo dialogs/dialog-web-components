@@ -78,11 +78,11 @@
   vertical-align: top;
 
   &:nth-child(1) {
-    padding: var(--default-padding-large) 15px 0 0;
+    padding: var(--default-padding-large) 10px 0 0;
   }
 
   &:nth-child(2) {
-    padding: var(--default-padding-large) 0 0 15px;
+    padding: var(--default-padding-large) 0 0 10px;
   }
 }
 
@@ -96,7 +96,7 @@
 }
 
 .metaText {
-  max-width: 200px;
+  max-width: 215px;
   height: 20px;
   padding-bottom: var(--default-padding-small);
   box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.15);

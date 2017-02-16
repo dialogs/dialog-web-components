@@ -19,6 +19,7 @@
   justify-content: flex-start;
   align-content: center;
   align-items: center;
+  max-width: 100%;
 }
 
 .input {
@@ -114,6 +115,7 @@
   user-select: none;
   font-family: var(--switcher-label-font-family);
   font-size: var(--switcher-label-font-size);
+  @apply --text-overflow-ellipsis;
 
   & b,
   & strong {
