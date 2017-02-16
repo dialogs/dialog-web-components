@@ -41,8 +41,14 @@ function createSelectorState<T>(
 
       const filtered = filter(query, this.get('items'));
 
-      // TODO: lookup the same item
-      const hoverIndex = 0;
+      let hoverIndex = 0;
+      if (this.getHoverIndex() !== 0) {
+        const hovered = this.getHovered();
+        const sameHoverIndex = filtered.findIndex((item) => item === hovered);
+        if (sameHoverIndex !== -1) {
+          hoverIndex = sameHoverIndex;
+        }
+      }
 
       return this.set('query', query)
                  .set('filtered', filtered)
