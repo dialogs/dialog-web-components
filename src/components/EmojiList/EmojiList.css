@@ -128,7 +128,7 @@
     height: 20px;
     content: '';
     pointer-events: none;
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, white 100%);
+    background-image: linear-gradient(to bottom, color(#fff alpha(0%)) 0%, color(#fff alpha(100%)) 100%);
   }
 }
 
