@@ -237,7 +237,7 @@
   /* Input */
   --input-error-color: var(--color-danger);
   --input-success-color: var(--color-success);
-  --input-color-color: #000;
+  --input-text-color: #000;
   --input-placeholder-color: color(#000 alpha(30%));
   --input-border-color: color(#000 alpha(35%));
   --input-border-width: 1px;

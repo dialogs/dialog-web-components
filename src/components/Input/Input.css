@@ -54,7 +54,7 @@
   font-family: var(--input-font-family);
   font-size: var(--input-default-font-size);
   line-height: var(--input-default-line-height);
-  color: var(--input-color-color);
+  color: var(--input-text-color);
 
   &::-webkit-input-placeholder {
     color: var(--input-placeholder-color);
@@ -108,7 +108,7 @@
   }
 
   & .input {
-    color: color(var(--input-color-color) alpha(35%));
+    color: color(var(--input-text-color) alpha(35%));
     cursor: not-allowed;
   }
 
