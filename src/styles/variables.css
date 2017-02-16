@@ -249,7 +249,7 @@
   --input-font-family: var(--default-font-family);
   --input-focused-color: #000;
   --input-focused-border-color: var(--color-primary);
-  --input-disabled-color: #bdbdbd;
+  --input-disabled-color: var(--pinkish-grey-two);
   --input-disabled-border-color: var(--input-disabled-color);
   --input-disabled-background-color: color(var(--input-disabled-color) alpha(15%));
   --input-label-color: var(--color-primary);

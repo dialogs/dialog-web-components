@@ -104,20 +104,17 @@
 .disabled {
   & .label {
     cursor: not-allowed;
-    color: var(--input-disabled-border-color);
+    color: var(--input-disabled-color);
   }
 
   & .input {
+    color: color(var(--input-color-color) alpha(35%));
     cursor: not-allowed;
   }
 
   & .inputWrapper {
     cursor: not-allowed;
     box-shadow: 0 var(--input-border-width) 0 0 var(--input-disabled-border-color);
-  }
-
-  & .input {
-    color: var(--input-disabled-color);
   }
 }
 

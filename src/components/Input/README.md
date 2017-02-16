@@ -27,7 +27,7 @@ Disabled Input:
   disabled
   id="input_disabled"
   label="Disabled"
-  value=""
+  value="Disabled input text"
 />
 ```
 
