@@ -174,6 +174,7 @@ class DoublePeerAvatar extends PureComponent<DefaultProps, Props, void> {
         y="84"
         textAnchor="middle"
         alignmentBaseline="central"
+        dominantBaseline="central"
         style={textStyles}
       >
         {text}
@@ -200,6 +201,7 @@ class DoublePeerAvatar extends PureComponent<DefaultProps, Props, void> {
         y="50"
         textAnchor="middle"
         alignmentBaseline="central"
+        dominantBaseline="central"
         style={textStyles}
         clipPath={`url(#${this.ids.clip})`}
       >
