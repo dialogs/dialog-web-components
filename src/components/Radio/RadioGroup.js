@@ -6,18 +6,18 @@
 import React, { PureComponent, PropTypes } from 'react';
 
 export type Props = {
+  className?: string,
+  children?: mixed,
   name: string,
   value: string,
-  onChange: (value: string) => any,
-  children?: any,
-  className?: string
+  onChange: (value: string, event: SyntheticInputEvent) => mixed
 };
 
 export type Context = {
   radioGroup: {
     name: string,
     value: string,
-    onChange: (value: string) => any
+    onChange: (value: string, event: SyntheticInputEvent) => mixed
   }
 };
 

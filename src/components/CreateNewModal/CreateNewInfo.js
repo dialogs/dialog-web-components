@@ -21,8 +21,8 @@ export type Props = {
   avatar: ?File,
   className?: string,
   vertical: boolean,
-  onChange: () => void;
-  onAvatarChange: (avatar: File) => void;
+  onChange: (value: string, event: SyntheticInputEvent) => void,
+  onAvatarChange: (avatar: File) => void
 }
 export type State = {
   avatar: ?string

@@ -11,7 +11,7 @@ import styles from './CreateNewModal.css';
 
 export type Props = {
   type: 'group' | 'channel',
-  onChange: () => void;
+  onChange: (value: string, event: SyntheticInputEvent) => void
 }
 
 function CreateNewType(props: Props) {
