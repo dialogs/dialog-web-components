@@ -3,48 +3,57 @@
  * @flow
  */
 
-import React from 'react';
+import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import styles from './Spinner.css';
 
 export type Props = {
   className?: string,
-  type?: 'round' | 'wave' | 'dotted',
-  size?: 'small' | 'normal' | 'large'
+  type: 'round' | 'wave' | 'dotted',
+  size: 'small' | 'normal' | 'large'
 };
 
-function Spinner(props: Props): ?React.Element<any> {
-  const { size = 'small', type = 'round' } = props;
-  const className = classNames(styles[type], styles[size], props.className);
+class Spinner extends PureComponent {
+  props: Props;
 
-  switch (type) {
-    case 'wave':
-      return (
-        <div className={className}>
-          <div className={styles.stick} />
-          <div className={styles.stick} />
-          <div className={styles.stick} />
-          <div className={styles.stick} />
-          <div className={styles.stick} />
-        </div>
-      );
+  static defaultProps = {
+    type: 'round',
+    size: 'small'
+  };
 
-    case 'round':
-      return (
-        <div className={className} />
-      );
+  render() {
+    const className = classNames(
+      this.props.className,
+      styles[this.props.type],
+      styles[this.props.size]
+    );
 
-    case 'dotted':
-      return (
-        <div className={className}>
-          <div className={styles.dot} />
-          <div className={styles.dot} />
-          <div className={styles.dot} />
-        </div>
-      );
+    switch (this.props.type) {
+      case 'wave':
+        return (
+          <div className={className}>
+            <div className={styles.stick} />
+            <div className={styles.stick} />
+            <div className={styles.stick} />
+            <div className={styles.stick} />
+            <div className={styles.stick} />
+          </div>
+        );
 
-    default:
-      return null;
+      case 'dotted':
+        return (
+          <div className={className}>
+            <div className={styles.dot} />
+            <div className={styles.dot} />
+            <div className={styles.dot} />
+          </div>
+        );
+
+      default:
+        return (
+          <div className={className} />
+        );
+    }
   }
 }
 
