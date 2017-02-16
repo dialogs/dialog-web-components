@@ -3,7 +3,7 @@
  * @flow
  */
 
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import { Text } from '@dlghq/react-l10n';
 import Trigger from '../Trigger/Trigger';
 import classNames from 'classnames';
@@ -11,18 +11,35 @@ import CSSTransitionGroup from 'react-addons-css-transition-group';
 import styles from './Tooltip.css';
 
 export type Props = {
+  className?: string,
   children?: any,
+
+  /**
+   * Tooltip text. Will be translated using @dlghq/react-l10n.
+   */
   text: string,
-  openDelay?: number,
-  closeDelay?: number,
-  options?: Object,
-  className?: string
+
+  /**
+   * [Tether options](http://tether.io/#options)
+   */
+  options?: Object
 };
 
-class Tooltip extends PureComponent {
+class Tooltip extends Component {
   props: Props;
+  trigger: ?Trigger;
 
-  renderTooltip = (): React.Element<any> => {
+  componentWillUpdate(): void {
+    if (this.trigger) {
+      this.trigger.forceUpdate();
+    }
+  }
+
+  setTrigger = (trigger: ?Trigger): void => {
+    this.trigger = trigger;
+  };
+
+  renderTooltip = () => {
     return (
       <CSSTransitionGroup
         transitionAppear
@@ -39,7 +56,7 @@ class Tooltip extends PureComponent {
     );
   };
 
-  renderTrigger = (handlers: Object): React.Element<any> => {
+  renderTrigger = (handlers: Object) => {
     const className = classNames(styles.wrapper, this.props.className);
 
     return (
@@ -47,7 +64,7 @@ class Tooltip extends PureComponent {
     );
   };
 
-  render(): React.Element<any> {
+  render() {
     const options = {
       attachment: 'bottom center',
       targetAttachment: 'top center',
@@ -62,12 +79,11 @@ class Tooltip extends PureComponent {
     return (
       <Trigger
         options={options}
-        renderTrigger={this.renderTrigger}
-        renderChild={this.renderTooltip}
         openHandler={['onMouseEnter']}
         closeHandler={['onMouseLeave']}
-        openDelay={this.props.openDelay}
-        closeDelay={this.props.closeDelay}
+        ref={this.setTrigger}
+        renderTrigger={this.renderTrigger}
+        renderChild={this.renderTooltip}
       />
     );
   }
