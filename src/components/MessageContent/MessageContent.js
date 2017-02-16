@@ -119,7 +119,7 @@ function MessageContent({ className, content, isPending, onLightboxOpen }: Props
           fileSize={content.fileSize}
           fileExtension={content.fileExtension}
           isUploading={isPending || content.isUploading}
-          />
+        />
       );
 
     default:
