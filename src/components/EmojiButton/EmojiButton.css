@@ -31,7 +31,7 @@
   }
 
   &:active {
-    box-shadow: inset 0 0 0 1px var(--emoji-button-border-color-active), 0 2px 0 0 color(#000 alpha(25%));
+    box-shadow: inset 0 0 0 1px var(--emoji-button-border-color-active), 0 1px 1px 0 color(#000 alpha(25%));
     background-color: var(--emoji-button-background-active);
     & .counter {
       color: var(--emoji-button-counter-color-active);
