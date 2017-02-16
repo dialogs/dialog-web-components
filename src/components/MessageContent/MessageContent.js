@@ -10,15 +10,16 @@ import Photo from './Photo/Photo';
 import Sticker from './Sticker/Sticker';
 import Document from './Document/Document';
 import Voice from './Voice/Voice';
+import Video from './Video/Video';
 import Location from './Location/Location';
 import Contact from './Contact/Contact';
 
-export type Props = {|
+export type Props = {
   className?: string,
   content: MessageContentTypes,
   isPending?: boolean,
   onLightboxOpen: () => any
-|};
+};
 
 function MessageContent({ className, content, isPending, onLightboxOpen }: Props) {
   switch (content.type) {
@@ -85,6 +86,20 @@ function MessageContent({ className, content, isPending, onLightboxOpen }: Props
         <Voice
           fileUrl={content.fileUrl}
           duration={content.duration}
+        />
+      );
+
+    case 'video':
+      return (
+        <Video
+          className={className}
+          width={content.width}
+          height={content.height}
+          preview={content.preview}
+          fileUrl={content.fileUrl}
+          fileName={content.fileName}
+          duration={content.duration}
+          isUploading={isPending || content.isUploading}
         />
       );
 

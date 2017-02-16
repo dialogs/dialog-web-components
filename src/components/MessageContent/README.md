@@ -76,3 +76,40 @@ const onGetTranscription = () => {
 
 <MessageContent content={content} getTranscription={onGetTranscription} />
 ```
+
+Video:
+
+
+```
+const content = {
+  type: 'video',
+  width: 640,
+  height: 352,
+  duration: 600,
+  fileName: 'test.mp4',
+  fileSize: '30 KB',
+  preview: null,
+  fileUrl: 'https://www.w3schools.com/html/mov_bbb.mp4',
+  isUploading: false
+};
+
+<MessageContent content={content} />
+```
+
+Null Video:
+
+```
+const content = {
+  type: 'video',
+  width: 640,
+  height: 352,
+  duration: 600,
+  fileName: 'test.mp4',
+  fileSize: '30 KB',
+  preview: null,
+  fileUrl: null,
+  isUploading: false
+};
+
+<MessageContent content={content} />
+```
