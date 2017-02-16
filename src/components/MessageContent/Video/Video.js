@@ -62,7 +62,7 @@ function Video(props : Props) : React.Element < any > {
       <div className={styles.preview}>
         <Image
           className={styles.img}
-          src={fileUrl}
+          src={preview}
           alt={fileName}
           preview={preview}
           width={width}

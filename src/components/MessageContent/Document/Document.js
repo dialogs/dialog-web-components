@@ -30,7 +30,7 @@ function Document(props: Props) {
   if (isUploading) {
     return (
       <div className={className}>
-        <div className={previewClassName}>{fileExtension} HALO</div>
+        <div className={previewClassName}>{fileExtension}</div>
         <div className={styles.info}>
           <div className={styles.filename}>
             <div className={styles.text} title={fileName}>{fileName}</div>
