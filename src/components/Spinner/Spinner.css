@@ -56,9 +56,6 @@
   all: initial;
   display: inline-flex;
   box-sizing: border-box;
-  width: calc(var(--spinner-wawe-max-height) + 20px);
-  height: calc(var(--spinner-wawe-max-height) + 20px);
-  padding: 10px;
   vertical-align: middle;
   border-radius: 50%;
   background-color: var(--spinner-wave-background-color);
@@ -66,27 +63,14 @@
   align-items: center;
   justify-content: center;
   @apply --clearfix;
-
-  &.large {
-    width: calc(var(--spinner-wawe-max-height) + 25px * 2);
-    height: calc(var(--spinner-wawe-max-height) + 25px * 2);
-
-    & .stick {
-      width: calc(var(--spinner-wave-stick-width) * 2);
-      height: calc(var(--spinner-wawe-max-height) * 2);
-      margin: 0 2px;
-    }
-  }
 }
 
 .stick {
+  all: initial;
   position: relative;
-  display: block;
+  display: inline-flex;
   float: left;
   box-sizing: content-box;
-  width: var(--spinner-wave-stick-width);
-  height: var(--spinner-wawe-max-height);
-  margin: 0 1px;
   animation: line-scale 1.2s infinite ease;
   border: 0;
   border-radius: 0;
@@ -118,32 +102,19 @@
 
 /* Dotted spinner */
 .dotted {
+  all: initial;
   position: relative;
-  display: inline-block;
-  height: var(--spinner-dotted-dot-size);
+  display: inline-flex;
   text-align: center;
   vertical-align: middle;
 
-  & .dot {
-    width: var(--spinner-dotted-dot-size);
-    height: var(--spinner-dotted-dot-size);
-  }
-
-  &.large {
-    height: calc(var(--spinner-dotted-dot-size) * 2);
-
-    & .dot {
-      width: calc(var(--spinner-dotted-dot-size) * 2);
-      height: calc(var(--spinner-dotted-dot-size) * 2);
-    }
-  }
 }
 
 .dot {
   display: inline-block;
-  margin: 0 calc(var(--spinner-dotted-dot-size) / 4);
   animation: pulse 1s infinite ease-in-out;
-  vertical-align: top;
+  transform-origin: 50% 50%;
+  vertical-align: middle;
   border-radius: 50%;
   background-color: var(--spinner-dotted-dot-color);
 
@@ -159,21 +130,39 @@
 
 /* Round spinner */
 .round {
-  display: inline-block;
+  vertical-align: middle;
   animation: spin var(--spinner-round-animation-duration) infinite linear;
   align-self: center;
 }
 
 .path {
   stroke: var(--spinner-round-color);
-  animation: dash 1.5s ease-in-out infinite;
-  stroke-dasharray: 1, 200;
-  stroke-dashoffset: 0;
+  animation: dash calc(var(--spinner-round-animation-duration) / 1.5) ease-in-out infinite;
   stroke-linecap: round;
 }
 
 /* Size */
 .small {
+  &.wave {
+    width: var(--spinner-wawe-small-height);
+    height: var(--spinner-wawe-small-height);
+    padding: 0;
+    & .stick {
+      width: var(--spinner-wave-small-stick-width);
+      height: 10px;
+      margin: 0 1px 0 0;
+    }
+  }
+
+  &.dotted {
+    height: var(--spinner-dotted-small-dot-size);
+
+    & .dot {
+      margin: 0 1px;
+      width: var(--spinner-dotted-small-dot-size);
+      height: var(--spinner-dotted-small-dot-size);
+    }
+  }
 
   &.round {
     width: var(--spinner-round-size);
@@ -186,6 +175,25 @@
 }
 
 .normal {
+  &.wave {
+    width: var(--spinner-wawe-height);
+    height: var(--spinner-wawe-height);
+    & .stick {
+      width: var(--spinner-wave-stick-width);
+      height: 20px;
+      margin: 0 1px;
+    }
+  }
+
+  &.dotted {
+    height: var(--spinner-dotted-dot-size);
+
+    & .dot {
+      width: var(--spinner-dotted-dot-size);
+      height: var(--spinner-dotted-dot-size);
+      margin: 0 2px 0 1px;
+    }
+  }
 
   &.round {
     width: var(--spinner-round-normal-size);
@@ -202,6 +210,27 @@
     height: var(--spinner-round-large-size);
     & .path {
       stroke-width: var(--spinner-round-large-border-width);
+    }
+  }
+
+  &.wave {
+    width: var(--spinner-wawe-large-height);
+    height: var(--spinner-wawe-large-height);
+
+    & .stick {
+      width: var(--spinner-wave-large-stick-width);
+      height: 28px;
+      margin: 0 2px 0 1px;
+    }
+  }
+
+  &.dotted {
+    height: calc(var(--spinner-dotted-dot-size) * 2);
+
+    & .dot {
+      margin: 0 2px;
+      width: calc(var(--spinner-dotted-dot-size) * 2);
+      height: calc(var(--spinner-dotted-dot-size) * 2);
     }
   }
 }

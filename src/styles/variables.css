@@ -442,13 +442,21 @@
   --sidebar-unread-active-background-color: color(var(--sidebar-unread-background-color) shade(5%));
   --sidebar-unread-transition-duration: calc(var(--default-transition-duration) * 0.6);
   /* Spinner */
-  --spinner-wawe-max-height: 20px;
-  --spinner-wave-stick-width: 2px;
   --spinner-wave-background-color: color(var(--color-primary) alpha(85%));
   --spinner-wave-color: #fff;
+  --spinner-wawe-small-height: 24px;
+  --spinner-wave-small-stick-width: 2px;
+  --spinner-wawe-height: 40px;
+  --spinner-wave-stick-width: 2px;
+  --spinner-wawe-large-height: 50px;
+  --spinner-wave-large-stick-width: 3px;
+
+  --spinner-dotted-small-dot-size: 4px;
   --spinner-dotted-dot-size: 6px;
+  --spinner-dotted-large-dot-size: 8px;
   --spinner-dotted-animation-delay: 160ms;
   --spinner-dotted-dot-color: var(--color-primary);
+
   --spinner-round-size: 14px;
   --spinner-round-border-width: 6px;
   --spinner-round-normal-size: 24px;

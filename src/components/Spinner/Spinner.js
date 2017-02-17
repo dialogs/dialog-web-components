@@ -52,11 +52,11 @@ class Spinner extends PureComponent {
       case 'round':
       default:
         return (
-          <svg viewBox="25 25 50 50" className={className}>
+          <svg viewBox="0 0 50 50" className={className}>
             <circle
               className={styles.path}
-              cx="50"
-              cy="50"
+              cx="25"
+              cy="25"
               r="20"
               fill="none"
               strokeMiterlimit="10"
