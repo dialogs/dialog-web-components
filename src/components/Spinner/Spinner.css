@@ -31,12 +31,23 @@
 }
 
 @keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -35px;
+  }
+  100% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -124px;
   }
 }
 
@@ -149,34 +160,48 @@
 /* Round spinner */
 .round {
   display: inline-block;
-  width: var(--spinner-round-size);
-  height: var(--spinner-round-size);
   animation: spin var(--spinner-round-animation-duration) infinite linear;
-  vertical-align: middle;
-  border: 2px solid color(var(--spinner-round-color) alpha(15%));
-  border-top-color: var(--spinner-round-color);
-  border-radius: 50%;
   align-self: center;
+}
 
-  &.normal {
-    width: var(--spinner-round-normal-size);
-    height: var(--spinner-round-normal-size);
-    border-width: var(--spinner-round-normal-border-width);
-  }
-
-  &.large {
-    width: var(--spinner-round-large-size);
-    height: var(--spinner-round-large-size);
-    border-width: var(--spinner-round-large-border-width);
-  }
+.path {
+  stroke: var(--spinner-round-color);
+  animation: dash 1.5s ease-in-out infinite;
+  stroke-dasharray: 1, 200;
+  stroke-dashoffset: 0;
+  stroke-linecap: round;
 }
 
 /* Size */
 .small {
+
+  &.round {
+    width: var(--spinner-round-size);
+    height: var(--spinner-round-size);
+
+    & .path {
+      stroke-width: var(--spinner-round-border-width);
+    }
+  }
 }
 
 .normal {
+
+  &.round {
+    width: var(--spinner-round-normal-size);
+    height: var(--spinner-round-normal-size);
+    & .path {
+      stroke-width: var(--spinner-round-normal-border-width);
+    }
+  }
 }
 
 .large {
+  &.round {
+    width: var(--spinner-round-large-size);
+    height: var(--spinner-round-large-size);
+    & .path {
+      stroke-width: var(--spinner-round-large-border-width);
+    }
+  }
 }
