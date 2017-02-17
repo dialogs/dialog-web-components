@@ -191,7 +191,7 @@ class DoublePeerAvatar extends PureComponent<DefaultProps, Props, void> {
     const text = size >= 20 ? getAvatarText(this.props.peerBig.title) : null;
     const twoChars = Boolean(text && text.length !== 1);
     const textStyles = {
-      fontSize: twoChars ? 40 : 48
+      fontSize: twoChars ? 38 : 48
     };
 
     return (

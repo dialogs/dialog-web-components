@@ -111,7 +111,7 @@ class PeerAvatar extends PureComponent<DefaultProps, Props, void> {
     const text = size >= 20 ? this.getAvatarText() : null;
     const twoChars = Boolean(text && text.length !== 1);
     const textStyles = {
-      fontSize: twoChars ? 40 : 48
+      fontSize: twoChars ? 38 : 48
     };
 
     return (
