@@ -1,0 +1,68 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../../styles/variables.css';
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 20, 150;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 150, 20;
+    stroke-dashoffset: -20;
+  }
+  100% {
+    stroke-dasharray: 20, 150;
+    stroke-dashoffset: -170;
+  }
+}
+
+/* Reset */
+.container {
+  all: initial;
+}
+
+/* Styles */
+.container {
+  display: block;
+  width: 46px;
+  height: 46px;
+  margin-right: 14px !important;
+  border-radius: 23px;
+  box-sizing: border-box;
+  user-select: none;
+  cursor: pointer;
+}
+
+.icon {
+  fill: var(--color-primary);
+}
+
+.border {
+  stroke-width: 2px;
+  stroke: var(--color-primary);
+  transform-origin: 50% 50%;
+}
+
+.pending {
+  cursor: default !important;
+  pointer-events: none;
+  & .border {
+    stroke-dasharray: 1, 150;
+    stroke-dashoffset: 0;
+    animation: spin 1.25s infinite linear, dash 2.3s ease-in-out infinite;
+  }
+}
+
+.disabled {
+  cursor: default;
+  opacity: 0.9;
+}

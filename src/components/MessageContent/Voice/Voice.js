@@ -8,16 +8,21 @@ import classNames from 'classnames';
 import VoicePlayer from './VoicePlayer';
 import TransctiptButton from './TranscriptButton';
 import VoiceTranscription from './VoiceTranscription';
+import Spinner from '../../Spinner/Spinner';
 import styles from './Voice.css';
 
-export type Props = {|
+export type Props = {
   className?: string,
   duration: number,
   fileUrl: ?string,
+  fileName: ?string,
+  fileSize: ?string,
+  fileExtension: ?string,
+  isUploading: boolean,
   transcription?: ?string,
   getTranscription?: () => void,
   isTranscriptionEnabled: boolean
-|};
+};
 
 export type State = {
   isTranscriptionVisible: boolean
@@ -48,7 +53,7 @@ class Voice extends PureComponent {
     }
 
     this.setState({ isTranscriptionVisible: !isTranscriptionVisible });
-  }
+  };
 
   renderTrancsriptButton() {
     const { isTranscriptionEnabled } = this.props;
@@ -70,21 +75,30 @@ class Voice extends PureComponent {
     );
   }
 
-  renderMessage() {
-    const className = classNames(styles.container, this.props.className);
+  renderMessage(): React.Element<any> {
+    const { isUploading } = this.props;
+    const className = classNames(styles.container, {
+      [styles.uploading]: isUploading
+    }, this.props.className);
 
     return (
       <div className={className}>
         <VoicePlayer
+          isUploading={isUploading}
           fileUrl={this.props.fileUrl}
           duration={this.props.duration}
         />
+        {
+          isUploading
+            ? <Spinner className={styles.spinner} size="large" />
+            : null
+        }
         {this.renderTrancsriptButton()}
       </div>
     );
   }
 
-  renderTranscription() {
+  renderTranscription(): ?React.Element<any> {
     const { transcription } = this.props;
     const { isTranscriptionVisible } = this.state;
 

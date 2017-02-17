@@ -290,6 +290,7 @@
   /* Document */
   --document-min-width: 400px;
   --document-max-width: 400px;
+  --document-height: 70px;
   --document-font-family: var(--default-font-family);
   --document-media-color: var(--sky-blue);
   --document-document-color: var(--orangey-red);
@@ -299,7 +300,7 @@
   --document-background-color: #fff;
   --document-border-color: color(#000 alpha(14%));
   --document-border-radius: var(--default-border-radius);
-  --document-preview-size: 50px;
+  --document-preview-size: 46px;
   --document-padding-margin-right: 14px;
   --document-download-arrow-color: var(--color-primary);
   --document-download-arrow-size: 20px;
@@ -314,6 +315,7 @@
   --message-service-color: var(--default-font-color-light);
   /* Voice */
   --voice-font-family: var(--default-font-family);
+  --voice-height: 70px;
   --voice-min-width: 400px;
   --voice-max-width: 400px;
   --voice-padding: 12px;

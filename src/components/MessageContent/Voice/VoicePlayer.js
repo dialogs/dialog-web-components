@@ -4,14 +4,17 @@
  */
 
 import React, { PureComponent } from 'react';
+import classNames from 'classnames';
 import getHumanTime from '../../../utils/getHumanTime';
 import { Text } from '@dlghq/react-l10n';
 import Icon from '../../Icon/Icon';
+import VoicePlayerButton from './VoicePlayerButton';
 import styles from './Voice.css';
 
 export type VoicePlayerProps = {
   fileUrl: ?string,
-  duration: number
+  duration: number,
+  isUploading: boolean
 };
 
 export type VoicePlayerState = {
@@ -128,29 +131,15 @@ class VoicePlayer extends PureComponent {
   }
 
   renderPlayPauseButton(): React.Element<any> {
+    const { isUploading } = this.props;
     const { isPlaying } = this.state;
 
-    if (isPlaying) {
-      return (
-        <Icon
-          glyph="pause"
-          className={styles.playerIcon}
-          theme="primary"
-          size="large"
-          inverted
-          onClick={this.handlePauseClick}
-        />
-      );
-    }
-
     return (
-      <Icon
-        glyph="play_arrow"
-        className={styles.playerIcon}
-        theme="primary"
-        size="large"
-        inverted
-        onClick={this.handlePlayClick}
+      <VoicePlayerButton
+        pending={isUploading}
+        isPlaying={isPlaying}
+        onPlay={this.handlePlayClick}
+        onPause={this.handlePauseClick}
       />
     );
   }

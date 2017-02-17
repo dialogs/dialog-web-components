@@ -73,8 +73,11 @@ const onGetTranscription = () => {
     setState({ transcription: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore maiores aliquam libero alias asperiores reprehenderit esse tenetur, praesentium labore nisi, repudiandae totam. Explicabo saepe illum, ipsa exercitationem molestias nobis culpa.'});
   }, 1000);
 };
-
+<div>
 <MessageContent content={content} getTranscription={onGetTranscription} />
+<br/>
+<MessageContent content={{ ...content, isUploading: true}} getTranscription={onGetTranscription} />
+</div>
 ```
 
 Video:

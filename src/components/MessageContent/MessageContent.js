@@ -84,8 +84,12 @@ function MessageContent({ className, content, isPending, onLightboxOpen }: Props
     case 'voice':
       return (
         <Voice
-          fileUrl={content.fileUrl}
           duration={content.duration}
+          fileUrl={content.fileUrl}
+          fileName={content.fileName}
+          fileSize={content.fileSize}
+          fileExtension={content.fileExtension}
+          isUploading={isPending || content.isUploading}
         />
       );
 
