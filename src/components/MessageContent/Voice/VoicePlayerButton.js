@@ -47,21 +47,6 @@ class VoicePlayerButton extends PureComponent {
     );
   }
 
-  renderBorder(): React.Element<any> {
-    const className = classNames(styles.border);
-
-    return (
-      <circle
-        className={className}
-        cx="25"
-        cy="25"
-        r="22"
-        fill="none"
-        strokeMiterlimit="10"
-      />
-    );
-  }
-
   render() {
     const className = classNames(styles.container, {
       [styles.pending]: this.props.pending
@@ -70,7 +55,14 @@ class VoicePlayerButton extends PureComponent {
     return (
       <svg viewBox="0 0 50 50" className={className} onClick={this.handleButtonClick}>
         {this.renderIcon()}
-        {this.renderBorder()}
+        <circle
+          className={styles.border}
+          cx="25"
+          cy="25"
+          r="23"
+          fill="none"
+          strokeMiterlimit="10"
+        />
       </svg>
     );
   }

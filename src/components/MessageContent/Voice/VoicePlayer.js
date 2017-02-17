@@ -4,10 +4,8 @@
  */
 
 import React, { PureComponent } from 'react';
-import classNames from 'classnames';
 import getHumanTime from '../../../utils/getHumanTime';
 import { Text } from '@dlghq/react-l10n';
-import Icon from '../../Icon/Icon';
 import VoicePlayerButton from './VoicePlayerButton';
 import styles from './Voice.css';
 

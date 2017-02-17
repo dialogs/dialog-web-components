@@ -20,6 +20,7 @@ function MessageMediaVoice(props: Props): React.Element<any> {
 
   return (
     <Voice
+      isUploading={false}
       className={className}
       duration={duration}
       fileUrl={fileUrl}
