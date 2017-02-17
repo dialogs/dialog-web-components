@@ -58,7 +58,7 @@
 .title {
   vertical-align: middle;
   letter-spacing: -0.27px;
-  font-size: var(--default-font-size);
+  font-size: var(--default-font-size-small);
   font-weight: 500;
   line-height: 21px;
 

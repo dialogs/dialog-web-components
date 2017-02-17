@@ -40,22 +40,21 @@
 }
 
 .text {
-  flex-direction: column;
-  min-width: 0;
+  height: 37px;
+  display: flex;
+  flex-flow: column;
+  vertical-align: middle;
   flex: 1 1 auto;
-  align-self: auto;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  align-content: stretch;
-  align-items: flex-start;
+  position: relative;
+  @apply --flex-fix;
 }
 
 .title {
   vertical-align: middle;
   letter-spacing: -0.27px;
-  font-size: var(--default-font-size);
+  font-size: var(--default-font-size-small);
   font-weight: 500;
-  line-height: 21px;
+  line-height: 20px;
 
   @apply --text-overflow-ellipsis;
 }
@@ -63,8 +62,8 @@
 .message {
   vertical-align: middle;
   letter-spacing: -0.25px;
-  font-size: 15px;
-  line-height: 22px;
+  font-size: 13px;
+  line-height: 17px;
   color: var(--recent-item-message-color);
 
   @apply --text-overflow-ellipsis;

@@ -364,11 +364,11 @@
   --recent-item-default-height: 46px;
   --recent-item-default-color: color(#000 alpha(50%));
   --recent-item-message-color: color(#000 alpha(40%));
-  --recent-item-large-top-padding: 15px;
-  --recent-item-large-right-padding: 12px;
-  --recent-item-large-bottom-padding: 15px;
-  --recent-item-large-left-padding: 12px;
-  --recent-item-large-height: 66px;
+  --recent-item-large-top-padding: 12px;
+  --recent-item-large-right-padding: 14px;
+  --recent-item-large-bottom-padding: 9px;
+  --recent-item-large-left-padding: 10px;
+  --recent-item-large-height: 61px;
   --recent-item-hover-background-color: #e2e2e2;
   --recent-item-hover-color: #000;
   --recent-item-active-background-color: var(--violet-blue);
@@ -392,8 +392,8 @@
   --recent-call-item-hover-background-color: var(--recent-item-hover-background-color);
   --recent-call-item-hover-color: var(--recent-item-hover-color);
   --recent-call-item-text-height: 37px;
-  --recent-call-item-font-size: 14px;
-  --recent-call-item-time-font-size: 12px;
+  --recent-call-item-font-size: var(--default-font-size-small);
+  --recent-call-item-time-font-size: 13px;
   /* Sidebar */
   /* SidebarGroupTitle */
   --sidebar-group-title-font-family: var(--default-font-family);

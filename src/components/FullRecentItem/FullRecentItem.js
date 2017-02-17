@@ -36,7 +36,7 @@ class FullRecentItem extends PureComponent {
       return (
         <DoublePeerAvatar
           className={styles.avatar}
-          size="large"
+          size={40}
           peerBig={info}
           peerSmall={message.sender}
         />
@@ -46,7 +46,7 @@ class FullRecentItem extends PureComponent {
     return (
       <PeerAvatar
         className={styles.avatar}
-        size="large"
+        size={37}
         peer={info}
         online={online}
       />
