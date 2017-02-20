@@ -198,6 +198,20 @@
   }
 }
 
+.medium {
+  width: var(--icon-medium-size);
+  height: var(--icon-medium-size);
+  font-size: var(--icon-medium-size);
+  line-height: var(--icon-medium-size);
+
+  &.inverted {
+    width: calc(var(--icon-medium-size) - 5);
+    height: calc(var(--icon-medium-size) - 5);
+    font-size: calc(var(--icon-medium-size) - 5);
+    line-height: calc(var(--icon-medium-size) - 5);
+  }
+}
+
 .large {
   width: var(--icon-large-size);
   height: var(--icon-large-size);

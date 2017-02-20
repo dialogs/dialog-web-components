@@ -71,6 +71,12 @@
     ]
   },
   {
+    "name": "VideoPlayer",
+    "components": [
+      "VideoPlayer"
+    ]
+  },
+  {
     "name": "Plug & Play Modals",
     "components": [
       "JoinModal",

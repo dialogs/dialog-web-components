@@ -1,0 +1,101 @@
+@import '../../../styles/variables.css';
+.container {
+  width: 100%;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  flex: 1 1 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: #232323;
+  align-items: center;
+  color: #fff;
+  cursor: default;
+  transition: 100ms padding-top ease;
+  padding-top: 3px;
+  &.hovered {
+    padding-top: 12px;
+  }
+}
+
+.left {
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  align-items: center;
+  flex: 1 1 50%;
+}
+
+.barElement {
+  padding: 5px 10px;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+
+.play, .sound {
+  composes: barElement;
+  cursor: pointer;
+}
+
+.duration {
+  composes: barElement;
+}
+
+.durationBar {
+  width: 100%;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  flex: 1 1 100%;
+  height: 3px;
+  position: absolute;
+  top: 0;
+  transition: 100ms height ease;
+  &.durationBarHovered {
+    height: 12px;
+    & .durationBarLine {
+      height: 6px;
+    }
+  }
+}
+
+.durationBarLine {
+  transition: 100ms height ease;
+  width: 100%;
+  cursor: pointer;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  flex: 1 1 100%;
+  height: 3px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--dark-periwinkle);
+  z-index: 11;
+}
+
+.pointBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  z-index: 12;
+  width: 0;
+  height: 0;
+  border-radius: 0;
+  transition: 180ms height ease,
+  180ms width ease,
+  180ms margin-top ease,
+  180ms border-radius ease;
+  &.pointShow {
+    width: 16px;
+    height: 16px;
+    background-color: var(--dark-periwinkle);
+    box-shadow: inset 0px 0px 0px 4px rgba(255, 255, 255, 1);
+    margin-top: -5px;
+    border-radius: 9999px;
+  }
+}

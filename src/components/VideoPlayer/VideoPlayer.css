@@ -1,0 +1,30 @@
+@import '../../styles/variables.css';
+
+.container {
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  background-color: #000;
+  padding: 10px 0 50px 0;
+  cursor: pointer;
+  transition: 100ms scale ease;
+  &:hover .play {
+    transform: scale(1.12);
+  }
+}
+
+.play {
+  cursor: pointer;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transition: 100ms transform ease-in;
+  z-index: 11;
+  margin-top: calc(var(--icon-large-size) / -2);
+  margin-left: calc(var(--icon-large-size) / -2);
+  display: block;
+}
