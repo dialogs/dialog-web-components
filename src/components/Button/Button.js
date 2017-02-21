@@ -16,7 +16,7 @@ export type Props = {
   wide: boolean,
   rounded: boolean,
   loading: boolean,
-  view: 'button' | 'outline' | 'link',
+  view: 'button' | 'outline' | 'link' | 'next',
   type: 'submit' | 'reset' | 'button' | 'menu',
   theme: 'default' | 'primary' | 'success' | 'danger' | 'info' | 'warning' | 'link',
   size: 'small' | 'normal' | 'large',
