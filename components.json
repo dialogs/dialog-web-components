@@ -43,6 +43,7 @@
     "content": "forms",
     "components": [
       "Input",
+      "PhoneInput",
       "Checkbox",
       "Radio",
       "Switcher",
