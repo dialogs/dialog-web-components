@@ -5,87 +5,36 @@
 
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
-import countryCodes from '@dlghq/country-codes';
 import styles from './PhoneInput.css';
 import Input from '../Input/Input';
-import { parse, isValidNumber, format, asYouType } from 'libphonenumber-js';
+import CountrySelector from './CountrySelector';
 
-function getGeoData() {
-  return new Promise((resolve, reject) => {
-    const xhttp = new XMLHttpRequest();
-
-    xhttp.addEventListener('readystatechange', () => {
-      if (xhttp.readyState === 4) {
-        if (xhttp.status === 200) {
-          resolve(JSON.parse(xhttp.responseText));
-        } else {
-          reject(new Error());
-        }
-      }
-    });
-
-    xhttp.open('GET', `${location.protocol}//freegeoip.net/json/`, true);
-    xhttp.send();
-  });
+export type Country = {
+  alpha2: string,
+  code: string,
+  flag: string
 }
 
+export type Status = 'normal' | 'success' | 'error';
+
 export type Props = {
-  className?: string
+  className?: string,
+  country: Country,
+  status: Status,
+  value: string,
+  onCountryChange: (country: Country) => void,
+  onChange: (phone: string) => void
 };
 
 class PhoneInput extends PureComponent {
   props: Props;
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      countryCode: '',
-      value: '',
-      valid: false
-    };
-  }
-
-  componentDidMount() {
-    getGeoData().then((result) => {
-      this.setState({ countryCode: result.country_code });
-    });
-  }
-
-  handleCountryChange = ({ target: { value } }): void => {
-    this.setState({ countryCode: value });
-  };
-
-  handleNumberChange = (value: String): void => {
-    const formatter = new asYouType(this.state.countryCode);
-    value = formatter.input(value);
-    console.log(formatter)
-    // console.log(value)
-    // console.debug(parse(value, this.state.countryCode));
-    // console.debug(isValidNumber(value, this.state.countryCode));
-    // console.debug(format(parse(value, this.state.countryCode), 'International_plaintext'));
-    this.setState({
-      value,
-      valid: formatter.valid
-    });
-  };
-
-  renderSelect(): React.Element<any> {
-    const options = [];
-
-    countryCodes.forEach((country) => {
-      country.codes.forEach((code) => {
-        options.push(
-          <option key={`${country.alpha2}-${code}`} value={country.alpha2}>{country.emoji} {code}</option>
-        );
-      });
-    });
-
+  renderSelector(): React.Element<any> {
     return (
-      <select onChange={this.handleCountryChange} value={this.state.countryCode}>
-        <option value="" />
-        {options}
-      </select>
+      <CountrySelector
+        country={this.props.country}
+        onCountryChange={this.props.onCountryChange}
+      />
     );
   }
 
@@ -95,9 +44,12 @@ class PhoneInput extends PureComponent {
         type="tel"
         id="phone"
         name="phone"
-        status={this.state.valid ? 'success' : 'normal'}
-        onChange={this.handleNumberChange}
-        value={this.state.value}
+        autoFocus
+        status={this.props.status}
+        value={this.props.value}
+        onChange={this.props.onChange}
+        className={styles.input}
+        wrapperClassName={styles.inputWrapper}
       />
     );
   }
@@ -107,7 +59,7 @@ class PhoneInput extends PureComponent {
 
     return (
       <div className={className}>
-        {this.renderSelect()}
+        {this.renderSelector()}
         {this.renderInput()}
       </div>
     );

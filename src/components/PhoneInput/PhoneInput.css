@@ -16,4 +16,37 @@
 /* Styles */
 .container {
   font-family: var(--phone-input-font-family);
+  position: relative;
+}
+
+.selectorCurrent {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  line-height: 45px;
+}
+
+.selectorDropdown {
+  margin: var(--default-padding-small);
+  //width: 300px;
+}
+
+.selectorDropdownWrapper {
+  max-height: 300px;
+  overflow: scroll;
+}
+
+.selectorDropdownItem {
+  //display: block;
+}
+
+.input {
+  position: relative;
+  margin-bottom: 0;
+}
+
+.inputWrapper {
+  padding-left: 50px;
 }

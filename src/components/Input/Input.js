@@ -23,6 +23,9 @@ export type NumberProps = {
 
 export type Props = (StringProps | NumberProps) & {
   className?: string,
+  inputClassName?: string,
+  wrapperClassName?: string,
+  prefixClassName?: string,
   id: string,
   name?: string,
   label?: string,
@@ -178,11 +181,15 @@ class Input extends PureComponent {
     if (!prefix) {
       return null;
     }
+    const className = classNames(
+      styles.prefix,
+      this.props.prefixClassName,
+    );
 
     return (
       <label
         htmlFor={id}
-        className={styles.prefix}
+        className={className}
         onMouseDown={this.handleLabelMouseDown}
       >
         {prefix}
@@ -215,15 +222,25 @@ class Input extends PureComponent {
       large ? styles.large : null
     );
 
+    const wrapperClassName = classNames(
+      styles.inputWrapper,
+      this.props.wrapperClassName,
+    );
+
+    const inputClassName = classNames(
+      styles.input,
+      this.props.inputClassName,
+    );
+
     const TagName = type === 'textarea' ? 'textarea' : 'input';
 
     return (
       <div className={className}>
         {this.renderLabel()}
-        <div className={styles.inputWrapper}>
+        <div className={wrapperClassName}>
           {this.renderPrefix()}
           <TagName
-            className={styles.input}
+            className={inputClassName}
             disabled={disabled}
             id={id}
             name={name}
