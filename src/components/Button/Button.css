@@ -7,7 +7,7 @@
 :root {
   --button-next-background-color: #705eff;
   --button-next-hover-background-color: #9b40ff;
-  --button-next-border-radius: 23px;
+  --button-next-border-radius: 50px;
 }
 /* Main */
 .container {
@@ -180,6 +180,7 @@
   box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.15);
   background-color: var(--button-next-background-color);
   color: white;
+  min-width: 200px;
   &.default,
   &.primary,
   &.success,
