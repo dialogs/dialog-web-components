@@ -26,6 +26,7 @@ export { default as Archive } from './components/Archive/Archive';
 export { default as Lightbox } from './components/Lightbox/Lightbox';
 export { default as Dragndrop } from './components/Dragndrop/Dragndrop';
 export { default as Select } from './components/Select/Select';
+export { default as CountryCodeSelector } from './components/CountryCodeSelector/CountryCodeSelector';
 
 // Toolbar
 export { default as Toolbar } from './components/Toolbar/Toolbar';
