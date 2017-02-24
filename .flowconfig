@@ -9,9 +9,10 @@
 <PROJECT_ROOT>/src/utils/compileMessages.js
 
 # Incorrect parsing
-.*/systemjs-builder/.*
 .*/findup/.*
 .*/stylelint/.*
+.*/systemjs-builder/.*
+
 
 [include]
 ./node_modules/react
@@ -24,7 +25,6 @@
 
 [options]
 emoji=true
-module.system=haste
 module.use_strict=true
 
 module.file_ext=.js

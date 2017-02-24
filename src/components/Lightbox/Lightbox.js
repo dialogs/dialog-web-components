@@ -2,6 +2,8 @@
  * Copyright 2017 dialog LLC <info@dlg.im>
  * @flow
  */
+
+// $FlowFixMe: move this to css
 import '!style!css!./photoswipe.css';
 
 import type { PhotoSwipeItem, PhotoSwipeOptions } from 'photoswipe';
