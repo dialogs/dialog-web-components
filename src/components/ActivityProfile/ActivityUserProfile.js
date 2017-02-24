@@ -112,15 +112,15 @@ class ActivityUserProfile extends Component {
       return null;
     }
 
-    const phones = info.phones.map((phone, index) => (
-      <div key={index}>
+    const phones = info.phones.map((phone) => (
+      <div key={phone.number}>
         <Text className={styles.contactTitle} tagName="div" id="ActivityProfile.phone" />
         <div className={styles.contactContent}>{phone.number}</div>
       </div>
     ));
 
-    const emails = info.emails.map((email, index) => (
-      <div key={index}>
+    const emails = info.emails.map((email) => (
+      <div key={email.email}>
         <Text className={styles.contactTitle} tagName="div" id="ActivityProfile.email" />
         <div className={styles.contactContent}>{email.email}</div>
       </div>

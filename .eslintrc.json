@@ -1,12 +1,8 @@
 {
   "extends": "@dlghq/eslint-config-dialog",
   "rules": {
-    "max-len": [2, 120],
-    "no-duplicate-imports": 0,
     "no-invalid-this": 0,
-    "react/no-unused-prop-types": [2, {
-      "skipShapeProps": true
-    }]
+    "react/void-dom-elements-no-children": 0
   },
   "env": {
     "jest": true

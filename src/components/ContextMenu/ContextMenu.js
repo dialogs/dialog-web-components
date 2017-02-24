@@ -34,7 +34,7 @@ class ContextMenu extends PureComponent {
     });
   }
 
-  renderMenu = (position: Object): React.Element<any> => {
+  renderMenu = (position: Object) => {
     return (
       <Dropdown
         className={styles.container}
@@ -45,13 +45,13 @@ class ContextMenu extends PureComponent {
     );
   };
 
-  renderTrigger = (newProps: Object): React.Element<any> => {
+  renderTrigger = (newProps: Object) => {
     return (
       <span {...newProps}>{this.props.children}</span>
     );
   };
 
-  render(): React.Element<any> {
+  render() {
     const options = {
       attachment: 'top left',
       targetAttachment: 'top left',
