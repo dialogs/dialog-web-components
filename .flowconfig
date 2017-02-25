@@ -25,6 +25,7 @@
 
 [options]
 emoji=true
+module.system=haste
 module.use_strict=true
 
 module.file_ext=.js

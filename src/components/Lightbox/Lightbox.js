@@ -3,7 +3,7 @@
  * @flow
  */
 
-// $FlowFixMe: move this to css
+// TODO: move this to css
 import '!style!css!./photoswipe.css';
 
 import type { PhotoSwipeItem, PhotoSwipeOptions } from 'photoswipe';
