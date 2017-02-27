@@ -29,7 +29,8 @@ module.exports = {
       resolve('node_modules/@dlghq/markdown'),
       resolve('node_modules/@dlghq/react-l10n'),
       resolve('node_modules/@dlghq/dialog-types'),
-      resolve('node_modules/@dlghq/dialog-utils')
+      resolve('node_modules/@dlghq/dialog-utils'),
+      resolve('node_modules/@dlghq/country-codes')
     ];
 
     config.entry.push(
@@ -81,19 +82,19 @@ module.exports = {
         ...whitelist,
         path.join(__dirname, 'node_modules/entities')
       ],
-      loader: 'json-loader'
+      use: ['json-loader']
     }, {
       test: /\.yml$/,
       include: whitelist,
-      loader: 'yml-loader'
+      use: ['yml-loader']
     }, {
       test: /\.(jpg|png|svg|gif)$/,
       include: /./,
-      loader: 'file-loader'
+      use: ['file-loader']
     }, {
       test: /\.txt$/,
       include: whitelist,
-      loader: 'raw-loader'
+      use: ['raw-loader']
     });
 
     return config;
