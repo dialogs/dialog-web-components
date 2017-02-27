@@ -117,9 +117,13 @@ class AuthForm extends PureComponent {
           onChange={this.handleChange}
         />
         {
-          step >= LOGIN_SENT
-            ? <span className={styles.retry} onClick={this.props.onRetry}>Wrong?</span>
-            : null
+          step >= LOGIN_SENT && step <= CODE_REQUESTED ? (
+            <Text
+              id="AuthForm.wrong"
+              onClick={this.props.onRetry}
+              className={styles.retry}
+            />
+          ) : null
         }
       </div>
     );
