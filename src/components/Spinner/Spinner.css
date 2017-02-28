@@ -133,10 +133,10 @@
   vertical-align: middle;
   animation: spin var(--spinner-round-animation-duration) infinite linear;
   align-self: center;
+  stroke: var(--spinner-round-color);
 }
 
 .path {
-  stroke: var(--spinner-round-color);
   animation: dash calc(var(--spinner-round-animation-duration) / 1.5) ease-in-out infinite;
   stroke-linecap: round;
 }
