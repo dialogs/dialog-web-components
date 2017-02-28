@@ -48,17 +48,6 @@ Link Button:
 </div>
 ```
 
-Next Button: `theme` don't work on next button
-
-```
-<div>
-  <Button view="next" size="small">Small next button</Button>
-  <Button view="next">Default next button</Button>
-  <Button view="next" size="large">Large next button</Button>
-  <Button view="next" wide>Wide next button</Button>
-</div>
-```
-
 Wide Button:
 
 ```
