@@ -72,6 +72,7 @@ class CountryCodeSelector extends PureComponent {
           placeholder={formatText('CountryCodeSelector.search')}
           noResultsText={formatText('CountryCodeSelector.not_found')}
           onChange={this.props.onChange}
+          disabled={this.props.disabled}
           optionRenderer={this.renderOption}
           valueRenderer={this.renderOption}
         />

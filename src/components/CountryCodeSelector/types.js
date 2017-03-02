@@ -20,5 +20,6 @@ export type Props = {
   className?: string,
   value?: Country,
   label?: string,
+  disabled: boolean,
   onChange: (value: Country) => void
 };

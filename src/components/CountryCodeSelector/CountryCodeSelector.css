@@ -19,6 +19,7 @@
   color: var(--country-code-selector-color);
 
   & :global(.Select) {
+    text-align: left;
     &:global(.is-focused) {
 
       & :global(.Select-control) {
@@ -30,6 +31,11 @@
           box-shadow: 0 0 0 1px var(--country-code-selector-border-color), 0 3px 3px 0 color(#000 alpha(26%));
           border-radius: var(--country-code-selector-border-radius) var(--country-code-selector-border-radius) 0 0;
         }
+      }
+    }
+    &:global(.is-disabled) {
+      & :global(.Select-control) {
+        box-shadow: 0 0 0 1px var(--country-code-selector-border-color);
       }
     }
 
