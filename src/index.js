@@ -47,6 +47,7 @@ export { default as LinkIconButton } from './components/LinkIconButton/LinkIconB
 
 // Forms
 export { default as Input } from './components/Input/Input';
+export { default as InputNext } from './components/InputNext/InputNext';
 export { default as PhoneInput } from './components/PhoneInput/PhoneInput';
 export { default as Checkbox } from './components/Checkbox/Checkbox';
 export { default as Radio } from './components/Radio/Radio';

@@ -45,6 +45,7 @@
     "content": "forms",
     "components": [
       "Input",
+      "InputNext",
       "PhoneInput",
       "Checkbox",
       "Radio",
