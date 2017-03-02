@@ -10,6 +10,7 @@
   --country-code-selector-label-color: #676C75;
   --country-code-selector-height: 56px;
   --country-code-selector-color: #414752;
+  --country-code-selector-border-hover-color: color(var(--country-code-selector-border-color) shade(10%));
   --country-code-selector-z-index: var(--z-index-dropdown);
 }
 
@@ -21,9 +22,8 @@
   & :global(.Select) {
     text-align: left;
     &:global(.is-focused) {
-
       & :global(.Select-control) {
-        box-shadow: 0 0 0 1px var(--country-code-selector-border-color);
+        box-shadow: 0 0 0 1px var(--country-code-selector-border-hover-color);
       }
 
       &:global(.is-open) {
@@ -33,9 +33,13 @@
         }
       }
     }
+
     &:global(.is-disabled) {
       & :global(.Select-control) {
-        box-shadow: 0 0 0 1px var(--country-code-selector-border-color);
+        background-color: #fff;
+        cursor: not-allowed;
+        opacity: .6;
+        box-shadow: 0 0 0 1px var(--country-code-selector-border-color) !important;
       }
     }
 
@@ -43,16 +47,26 @@
       border: 0;
       border-radius: var(--country-code-selector-border-radius);
       box-shadow: 0 0 0 1px var(--country-code-selector-border-color);
+      transition: box-shadow var(--default-transition-duration) ease;
       height: var(--country-code-selector-height);
+      &:hover {
+        box-shadow: 0 0 0 1px var(--country-code-selector-border-hover-color);
+      }
+    }
+
+    &:global(.has-value) {
+      & :global(.Select-input) {
+        padding-left: 52px;
+      }
     }
 
     &-input {
       height: var(--country-code-selector-height);
-      padding-left: 46px;
+      padding: 0 var(--default-padding);
 
       & > input {
         line-height: 24px;
-        padding: 16px 0;
+        padding: var(--default-padding) 0;
       }
     }
 
@@ -71,22 +85,24 @@
 
     &-placeholder {
       line-height: var(--country-code-selector-height);
-      padding-left: 46px;
+      padding: 0 var(--default-padding);
     }
 
     &-arrow-zone {
       width: 32px;
+      padding-right: 10px;
     }
 
     &-value {
+      padding: 0 var(--default-padding) !important;
       &-label {
-        padding: 16px 0;
+        padding: var(--default-padding) 0;
         display: block;
       }
     }
 
     &-option {
-      padding: 6px 10px;
+      padding: 6px var(--default-padding);
       color: var(--country-code-selector-color);
       &:global(.is-focused) {
         background-color: #F0F1F4;
@@ -101,11 +117,18 @@
   }
 }
 
+.disabled {
+  & .label {
+    cursor: not-allowed;
+  }
+}
+
 .label {
   color: var(--country-code-selector-label-color);
   font-size: var(--default-font-size);
-  display: block;
+  display: inline-block;
   line-height: 32px;
+  @apply --no-select;
 }
 
 .option {

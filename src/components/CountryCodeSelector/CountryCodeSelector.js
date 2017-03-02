@@ -58,8 +58,9 @@ class CountryCodeSelector extends PureComponent {
   };
 
   render(): React.Element<any> {
+    const { disabled } = this.props;
     const { l10n: { formatText } } = this.context;
-    const className = classNames(styles.container, this.props.className);
+    const className = classNames(styles.container, disabled ? styles.disabled : null, this.props.className);
 
     return (
       <div className={className}>
