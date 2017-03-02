@@ -25,7 +25,6 @@ export { default as AvatarSelector } from './components/AvatarSelector/AvatarSel
 export { default as Archive } from './components/Archive/Archive';
 export { default as Lightbox } from './components/Lightbox/Lightbox';
 export { default as Dragndrop } from './components/Dragndrop/Dragndrop';
-export { default as Select } from './components/Select/Select';
 export { default as CountryCodeSelector } from './components/CountryCodeSelector/CountryCodeSelector';
 
 // Toolbar
@@ -49,6 +48,7 @@ export { default as LinkIconButton } from './components/LinkIconButton/LinkIconB
 export { default as Input } from './components/Input/Input';
 export { default as InputNext } from './components/InputNext/InputNext';
 export { default as PhoneInput } from './components/PhoneInput/PhoneInput';
+export { default as Select } from './components/Select/Select';
 export { default as Checkbox } from './components/Checkbox/Checkbox';
 export { default as Radio } from './components/Radio/Radio';
 export { default as Switcher } from './components/Switcher/Switcher';

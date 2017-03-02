@@ -24,7 +24,6 @@
       "Archive",
       "Lightbox",
       "Dragndrop",
-      "Select",
       "Markdown",
       "Image",
       "CountryCodeSelector"
@@ -47,6 +46,7 @@
       "Input",
       "InputNext",
       "PhoneInput",
+      "Select",
       "Checkbox",
       "Radio",
       "Switcher",

@@ -12,6 +12,7 @@ import styles from './Select.css';
 
 class Select extends PureComponent {
   props: Props;
+  select: HTMLSelectElement;
 
   static contextTypes = {
     l10n: LocalizationContextType
@@ -40,6 +41,24 @@ class Select extends PureComponent {
   //   );
   // }
 
+  handleLabelMouseDown = (event: $FlowIssue): void => {
+    event.preventDefault();
+
+    if (this.select) {
+      this.select.focus();
+    }
+  };
+
+  setSelect = (select: HTMLSelectElement): void => {
+    this.select = select;
+  };
+
+  focus(): void {
+    if (this.select && document.activeElement !== this.select) {
+      this.select.focus();
+    }
+  }
+
   renderOptions(): React.Element<any>[] {
     return this.props.options.map((option) => {
       return (
@@ -67,6 +86,7 @@ class Select extends PureComponent {
         htmlFor={id}
         id={label}
         className={styles.label}
+        onMouseDown={this.handleLabelMouseDown}
       />
     );
   }
@@ -87,6 +107,7 @@ class Select extends PureComponent {
             name={name}
             disabled={disabled}
             defaultValue={this.props.value}
+            ref={this.setSelect}
             onChange={this.handleChange}
           >
             {this.renderOptions()}
