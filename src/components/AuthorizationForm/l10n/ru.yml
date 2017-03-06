@@ -1,0 +1,22 @@
+phone: Номер телефона
+email: Email адрес
+code: Код авторизации
+name: Ваше имя
+gender: Ваше пол
+wrong: Ошиблись?
+request_code: Запросить код
+resend_code: Запросить код повторно
+code_arrive: Ваше сообщение прийдет в течении {time}
+check_code: Проверить код
+sign_up: Зарегистрироваться
+success: Успешно
+errors:
+  EMAIL_INVALID: Некорректный email
+  PHONE_NUMBER_INVALID: Некорректный телефон
+  NAME_INVALID: Некорректное имя
+  PHONE_CODE_INVALID: Неверный код
+  EMAIL_CODE_INVALID: Неверный код
+  PHONE_CODE_EXPIRED: Время действия кода истекло
+  EMAIL_CODE_EXPIRED: Время действия кода истекло
+  CODE_WAIT: Попытайтесь запросить код позже
+  GATE_ERROR: Сервис не доступен, попробуйте позже

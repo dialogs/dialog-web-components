@@ -43,11 +43,6 @@ class AuthForm extends PureComponent {
     isGenderEnabled: true
   };
 
-  constructor(props) {
-    super(props);
-
-  }
-
   handleChange = (value, { target }) => {
     this.props.onChange({
       ...this.props.value,
