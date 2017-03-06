@@ -17,7 +17,7 @@
   box-sizing: border-box;
   cursor: pointer;
   user-select: none;
-  transition: background var(--button-transition-duration) ease, box-shadow var(--button-transition-duration) ease, color var(--button-transition-duration) ease;
+  transition: all var(--button-transition-duration) ease;
   text-align: center;
   border: 0;
   outline: none;
@@ -27,6 +27,7 @@
   background-color: var(--button-next-background-color);
   color: white;
   min-width: var(--button-next-min-width);
+
   &:hover,
   &:focus {
     box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.25);
@@ -51,7 +52,10 @@
 }
 
 .loading {
-  stroke: white !important;
+}
+
+.spinner {
+  stroke: white;
 }
 
 .rounded {

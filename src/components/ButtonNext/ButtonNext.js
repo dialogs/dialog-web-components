@@ -41,7 +41,7 @@ class ButtonNext extends PureComponent {
     }
 
     return (
-      <Spinner type="round" className={styles.loading} size={size} />
+      <Spinner type="round" className={styles.spinner} size={size} />
     );
   }
 
@@ -49,7 +49,8 @@ class ButtonNext extends PureComponent {
     const { id, type, disabled, wide, rounded, children, loading, size } = this.props;
     const className = classNames(styles.container, styles[size], {
       [styles.wide]: wide,
-      [styles.rounded]: rounded
+      [styles.rounded]: rounded,
+      [styles.loading]: loading
     }, this.props.className);
 
     return (
