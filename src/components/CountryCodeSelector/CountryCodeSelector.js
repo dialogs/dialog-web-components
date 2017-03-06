@@ -33,7 +33,7 @@ class CountryCodeSelector extends PureComponent {
           alpha: country.alpha,
           code,
           label: country.alpha ? formatText(`CountryCodeSelector.country.${country.alpha}`) : null,
-          flag: country.emoji
+          flag: country.emoji || null
         });
       });
     });

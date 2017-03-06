@@ -8,8 +8,8 @@ import type { LocalizationContext } from '@dlghq/react-l10n';
 export type Country = {
   alpha: string,
   code: string,
-  label: string,
-  flag: string
+  label: ?string,
+  flag: ?string
 };
 
 export type Context = {
@@ -18,8 +18,8 @@ export type Context = {
 
 export type Props = {
   className?: string,
-  value?: Country,
-  label?: string,
+  value: ?Country,
+  label: ?string,
   disabled: boolean,
   onChange: (value: Country) => void
 };

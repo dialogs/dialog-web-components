@@ -5,7 +5,7 @@
 /* eslint max-lines: ["error", 500] */
 
 import type { AuthError } from '@dlghq/dialog-types';
-import type Country from '../CountryCodeSelector/CountryCodeSelector';
+import type Country from '../CountryCodeSelector/types';
 import React, { PureComponent } from 'react';
 import { Text } from '@dlghq/react-l10n';
 import classNames from 'classnames';
@@ -42,8 +42,10 @@ export type Props = {
   onCodeResend: () => any
 };
 
+export type LoginType = 'phone' | 'email';
+
 export type State = {
-  loginType: 'phone' | 'email',
+  loginType: LoginType,
   country: ?Country,
   isCodeResendRequested: boolean,
   resendTimeout: number
@@ -61,7 +63,7 @@ class AuthorizationForm extends PureComponent {
     isGenderEnabled: true
   };
 
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
@@ -76,14 +78,14 @@ class AuthorizationForm extends PureComponent {
     this.handleIntervalClear();
   }
 
-  handleChange = (value, { target }) => {
+  handleChange = (value: any, { target }: $FlowIssue) => {
     this.props.onChange({
       ...this.props.value,
       [target.name]: value
     });
   };
 
-  handleSubmit = (event): void => {
+  handleSubmit = (event: $FlowIssue): void => {
     event.preventDefault();
     this.props.onSubmit(this.props.value);
   };
@@ -357,7 +359,7 @@ class AuthorizationForm extends PureComponent {
     const { loginType } = this.state;
 
     return (
-      <div key="login">
+      <div key="login" className={styles.stepWrapper}>
         <RadioGroup name="login_type" value={loginType} onChange={this.handleLoginTypeChange}>
           <Radio value="phone" className={styles.type}>
             Phone
@@ -389,14 +391,14 @@ class AuthorizationForm extends PureComponent {
 
   renderSignupStep(): React.Element<any> {
     return (
-      <div className={styles.inputWrapper} key="signup">
+      <div className={styles.stepWrapper} key="signup">
         {this.renderNameInput()}
         {this.renderGenderSelector()}
       </div>
     );
   }
 
-  renderStep(): React.Element<any> {
+  renderStep(): ?React.Element<any> {
     const { step } = this.props;
 
     switch (step) {

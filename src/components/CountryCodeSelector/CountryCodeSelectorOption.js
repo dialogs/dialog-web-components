@@ -11,7 +11,11 @@ import styles from './CountryCodeSelector.css';
 function CountryCodeSelectorOption(country: Country): React.Element<any> {
   return (
     <div className={styles.option}>
-      <Emoji char={country.flag} className={styles.optionFlag} size={26} />
+      {
+        country.flag
+          ? <Emoji char={country.flag} className={styles.optionFlag} size={26} />
+          : null
+      }
       <div className={styles.optionLabel}>
         <div className={styles.optionCountry}>{country.label}</div>
       </div>
