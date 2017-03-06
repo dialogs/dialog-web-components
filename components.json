@@ -45,7 +45,6 @@
     "components": [
       "Input",
       "InputNext",
-      "PhoneInput",
       "Select",
       "Checkbox",
       "Radio",
