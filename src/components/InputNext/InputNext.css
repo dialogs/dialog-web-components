@@ -7,7 +7,7 @@
 :root {
   --input-next-font-family: var(--default-font-family);
   --input-next-font-size: var(--default-font-size);
-  --input-next-border-radius: 4px;
+  --input-next-border-radius: var(--default-border-radius-small);
   --input-next-height: 56px;
   --input-next-line-height: 20px;
   --input-next-background-color: #fff;
