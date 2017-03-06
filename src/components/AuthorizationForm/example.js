@@ -23,17 +23,13 @@ class ExampleAuthForm extends Component {
     super(props);
 
     this.state = { ...ExampleAuthForm.initialState };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleFinish = this.handleFinish.bind(this);
   }
 
-  handleChange(value) {
+  handleChange = (value) => {
     this.setState({ value });
-  }
+  };
 
-  handleSubmit() {
+  handleSubmit = () => {
     switch (this.state.step) {
       case AUTH_STARTED:
         this.setState({ step: LOGIN_SENT });
@@ -56,15 +52,19 @@ class ExampleAuthForm extends Component {
       default:
         throw new Error(`Unexpected step ${this.state.step}`);
     }
-  }
+  };
 
-  handleCodeResend() {
+  handleCodeResend = () => {
     console.debug('Resend code request');
-  }
+  };
 
-  handleFinish() {
+  handleFinish = () => {
     this.setState({ ...ExampleAuthForm.initialState });
-  }
+  };
+
+  handleRetry = () => {
+    this.setState({ step: AUTH_STARTED });
+  };
 
   renderFinished() {
     if (this.state.step < AUTH_FINISHED) {
@@ -88,6 +88,7 @@ class ExampleAuthForm extends Component {
           value={this.state.value}
           onChange={this.handleChange}
           onSubmit={this.handleSubmit}
+          onRetry={this.handleRetry}
           onCodeResend={this.handleCodeResend}
         />
         {this.renderFinished()}

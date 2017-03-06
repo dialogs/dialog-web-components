@@ -5,7 +5,7 @@
 /* eslint max-lines: ["error", 500] */
 
 import type { AuthError } from '@dlghq/dialog-types';
-import type Country from '../CountryCodeSelector/types';
+import type { Country } from '../CountryCodeSelector/types';
 import React, { PureComponent } from 'react';
 import { Text } from '@dlghq/react-l10n';
 import classNames from 'classnames';

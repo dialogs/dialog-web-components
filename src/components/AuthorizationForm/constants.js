@@ -1,5 +1,4 @@
-export const AUTH_STARTED = 0;
-export const ENDPOINT_SELECT = 1;
+export const AUTH_STARTED = 1;
 export const LOGIN_SENT = 2;
 export const CODE_REQUESTED = 3;
 export const CODE_SENT = 4;
