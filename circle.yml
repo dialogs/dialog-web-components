@@ -12,12 +12,12 @@ machine:
     GIT_EMAIL: circle@dlg.im
     YARN_VERSION: 0.21.3
     PATH: "${PATH}:${HOME}/.yarn/bin"
-  pre:
-    - git config --global user.name "$GIT_NAME"
-    - git config --global user.email "$GIT_EMAIL"
 
 dependencies:
   pre:
+    # setup git
+    - git config --global user.name "$GIT_NAME"
+    - git config --global user.email "$GIT_EMAIL"
     # install yarn if it's not already installed
     - |
       if [[ ! -e ~/.yarn/bin/yarn || $(yarn --version) != "${YARN_VERSION}" ]]; then
