@@ -37,6 +37,10 @@ module.exports = {
       resolve('src/styles/styleguide.css')
     );
 
+    config.entry.push(
+      resolve('src/styles/global.css')
+    );
+
     config.resolve.alias['rsg-components/Wrapper'] = resolve('src/styleguide/Wrapper.js');
 
     config.module.loaders.push({
@@ -56,7 +60,33 @@ module.exports = {
       }
     }, {
       test: /\.css$/,
+      use: [
+        'style-loader',
+        {
+          loader: 'css-loader',
+          options: {
+            modules: false,
+            importLoaders: 1
+          }
+        },
+        {
+          loader: 'postcss-loader',
+          options: {
+            plugins() {
+              return require('@dlghq/postcss-dialog')({ initial: false });
+            }
+          }
+        }
+      ],
+      include: [
+        resolve('src/styles/global.css')
+      ]
+    }, {
+      test: /\.css$/,
       include: whitelist,
+      exclude: [
+        resolve('src/styles/global.css')
+      ],
       use: [
         'style-loader',
         {

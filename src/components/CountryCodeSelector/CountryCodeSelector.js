@@ -8,7 +8,6 @@ import { LocalizationContextType } from '@dlghq/react-l10n';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import Select from 'react-select';
-import 'style!css!react-select/dist/react-select.css';
 import styles from './CountryCodeSelector.css';
 import CountryCodeSelectorOption from './CountryCodeSelectorOption';
 import { getCountries } from '@dlghq/country-codes';
