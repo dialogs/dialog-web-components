@@ -40,6 +40,5 @@ deployment:
   docs:
     tag: /^v\d+(\.\d+)*$/
     owner: dialogs
-    branch: master
     commands:
       - yarn docs
