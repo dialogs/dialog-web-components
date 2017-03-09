@@ -26,6 +26,7 @@
   box-sizing: border-box;
   padding: 0;
   flex: 1 1 auto;
+  overflow: hidden;
 }
 
 .buttons {
@@ -53,6 +54,7 @@
   font-size: var(--toolbar-status-font-size);
   line-height: 18px;
   color: var(--toolbar-status-color);
+  @apply --text-overflow-ellipsis;
 }
 
 .avatar {
