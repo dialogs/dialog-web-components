@@ -65,6 +65,7 @@
     "components": [
       "AuthForm",
       "AuthorizationForm",
+      "AuthorizationFormEE",
       "GenderSelect"
     ]
   },
