@@ -10,7 +10,7 @@ class ExampleAuthForm extends Component {
     step: AUTH_STARTED,
     value: {
       login: '',
-      password: '',
+      password: ''
     },
     endpoint: 'tls://'
   };
@@ -26,7 +26,6 @@ class ExampleAuthForm extends Component {
   };
 
   handleSubmit = () => {
-    console.debug('handleSubmit', this.state.step);
     switch (this.state.step) {
       case AUTH_STARTED:
         this.setState({ step: AUTH_PENDING });
@@ -55,8 +54,9 @@ class ExampleAuthForm extends Component {
     this.setState({ endpoint });
   };
 
-  handleEndpointSubmit = () => {
-    this.setState({ step: AUTH_STARTED })
+  handleEndpointSubmit = (endpoint) => {
+    console.debug('handleEndpointSubmit', endpoint);
+    this.setState({ step: AUTH_STARTED });
   };
 
   renderFinished() {

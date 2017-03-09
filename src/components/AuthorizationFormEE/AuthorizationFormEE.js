@@ -2,7 +2,6 @@
  * Copyright 2017 dialog LLC <info@dlg.im>
  * @flow
  */
-/* eslint max-lines: ["error", 500] */
 
 import type { AuthError } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
@@ -120,7 +119,7 @@ class AuthorizationFormEE extends PureComponent {
             type="text"
             label="AuthorizationFormEE.login"
             value={this.props.value.login}
-            disabled={step >= AUTH_PENDING}
+            disabled={step > AUTH_STARTED}
             onChange={this.handleChange}
             autoFocus={this.props.autoFocus}
           />
@@ -135,7 +134,7 @@ class AuthorizationFormEE extends PureComponent {
             type="password"
             label="AuthorizationFormEE.password"
             value={this.props.value.password}
-            disabled={step >= AUTH_PENDING}
+            disabled={step > AUTH_STARTED}
             onChange={this.handleChange}
             autoFocus={this.props.autoFocus}
           />
