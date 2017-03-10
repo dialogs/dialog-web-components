@@ -22,6 +22,7 @@ Basic Icon:
   <Icon glyph="windows" />
   <Icon glyph="tux" />
   <Icon glyph="finder" />
+  <Icon glyph="group" />
   <Icon glyph="plus_outline" />
   <Icon glyph="emoji_smile" />
   <Icon glyph="emoji_nature" />
@@ -31,6 +32,9 @@ Basic Icon:
   <Icon glyph="emoji_travel" />
   <Icon glyph="emoji_symbols" />
   <Icon glyph="emoji_flags" />
+  <Icon glyph="group" />
+  <Icon glyph="person" />
+  <Icon glyph="channel" />
 </div>
 ```
 
