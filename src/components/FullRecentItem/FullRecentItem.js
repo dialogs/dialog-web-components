@@ -35,7 +35,7 @@ class FullRecentItem extends PureComponent {
     if (message && message.sender && info.type === 'group') {
       return (
         <DoublePeerAvatar
-          className={styles.avatar}
+          className={styles.doubleAvatar}
           size={40}
           peerBig={info}
           peerSmall={message.sender}
