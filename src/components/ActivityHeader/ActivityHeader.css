@@ -38,12 +38,10 @@
   width: var(--activity-header-icon-size);
   height: var(--activity-header-icon-size);
   transition: color var(--activity-header-transition-duration) linear;
-  font-size: var(--activity-header-icon-size);
-  line-height: var(--activity-header-icon-size);
-  color: var(--activity-header-icon-color);
+  fill: var(--activity-header-icon-color);
 
   &:hover {
-    color: var(--activity-header-icon-color-hover);
+    fill: var(--activity-header-icon-color-hover);
   }
 }
 
