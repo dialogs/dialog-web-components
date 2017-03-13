@@ -1,6 +1,7 @@
 /**
  * Copyright 2017 dialog LLC <info@dlg.im>
  */
+
 /* eslint no-sync:0 */
 
 const fs = require('fs');
@@ -25,12 +26,14 @@ const spriter = new SVGSpriter(config);
 
 for (const iconName of icons) {
   const iconPath = path.join(iconsPath, iconName);
-  // console.log(`"${iconName}" will be added to sprite`);
   spriter.add(iconPath, iconName, fs.readFileSync(iconPath, { encoding: 'utf-8' }));
 }
 
 spriter.compile((error, result) => {
+  if (error) {
+    throw error;
+  }
+
   const output = path.join(component, spriteFileName);
   fs.writeFileSync(output, result.symbol.sprite.contents);
-  // console.log(`Sprite saved to "${output}."`);
 });
