@@ -215,9 +215,6 @@
   --fieldset-legend-font-size: var(--default-font-size-small);
   --fieldset-legend-font-color: var(--violet-blue-two);
   /* Icon */
-  --icon-default-size: 24px;
-  --icon-small-size: 18px;
-  --icon-large-size: 42px;
   --icon-default-color: rgb(178, 178, 178);
   --icon-inverted-color: #fff;
   /* IconButton */
