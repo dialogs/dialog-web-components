@@ -4,7 +4,9 @@ Basic Icon:
 <div>
   <Icon glyph="add_member" />
   <Icon glyph="apple" />
+  <Icon glyph="android" />
   <Icon glyph="arrow_back" />
+  <Icon glyph="arrow_drop_up" />
   <Icon glyph="arrow_drop_down" />
   <Icon glyph="arrow_up" />
   <Icon glyph="arrow_down" />
@@ -12,8 +14,6 @@ Basic Icon:
   <Icon glyph="call" />
   <Icon glyph="call_end" />
   <Icon glyph="channel" />
-  <Icon glyph="chevron_left" />
-  <Icon glyph="chevron_right" />
   <Icon glyph="close" />
   <Icon glyph="done" />
   <Icon glyph="emoji" />
@@ -26,11 +26,16 @@ Basic Icon:
   <Icon glyph="emoji_symbols" />
   <Icon glyph="emoji_travel" />
   <Icon glyph="error" />
+  <Icon glyph="file_download" />
   <Icon glyph="favourite" />
   <Icon glyph="favourite_outline" />
   <Icon glyph="finder" />
   <Icon glyph="group" />
   <Icon glyph="info" />
+  <Icon glyph="keyboard_arrow_down" />
+  <Icon glyph="keyboard_arrow_up" />
+  <Icon glyph="keyboard_arrow_left" />
+  <Icon glyph="keyboard_arrow_right" />
   <Icon glyph="link" />
   <Icon glyph="lock" />
   <Icon glyph="logo" />
@@ -40,6 +45,7 @@ Basic Icon:
   <Icon glyph="mic_material_off" />
   <Icon glyph="minimize" />
   <Icon glyph="maximize" />
+  <Icon glyph="message" />
   <Icon glyph="more" />
   <Icon glyph="more_outline" />
   <Icon glyph="notifications" />
@@ -50,6 +56,7 @@ Basic Icon:
   <Icon glyph="plus_outline" />
   <Icon glyph="reply" />
   <Icon glyph="schedule" />
+  <Icon glyph="search" />
   <Icon glyph="tux" />
   <Icon glyph="windows" />
 </div>
