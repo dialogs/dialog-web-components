@@ -91,7 +91,12 @@
 }
 
 .unread {
-  color: #000;
+  & .title {
+    color: var(--recent-item-unread-color);
+  }
+  & .text {
+    color: var(--recent-item-unread-text-color);
+  }
 }
 
 /* State */

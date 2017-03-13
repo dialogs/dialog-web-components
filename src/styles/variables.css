@@ -378,6 +378,8 @@
   --recent-item-counter-color: #fff;
   --recent-item-counter-size: 24px;
   --recent-item-counter-font-size: 13px;
+  --recent-item-unread-color: var(--recent-item-hover-color);
+  --recent-item-unread-text-color: color(var(--recent-item-unread-color) alpha(50%));
   /* RecentCallItem */
   --recent-call-item-font-family: var(--default-font-family);
   --recent-call-item-top-padding: 12px;
