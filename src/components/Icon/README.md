@@ -16,6 +16,7 @@ Basic Icon:
   <Icon glyph="channel" />
   <Icon glyph="close" />
   <Icon glyph="done" />
+  <Icon glyph="delete" />
   <Icon glyph="emoji" />
   <Icon glyph="emoji_activity" />
   <Icon glyph="emoji_flag" />
@@ -25,6 +26,7 @@ Basic Icon:
   <Icon glyph="emoji_smile" />
   <Icon glyph="emoji_symbols" />
   <Icon glyph="emoji_travel" />
+  <Icon glyph="edit" />
   <Icon glyph="error" />
   <Icon glyph="file_download" />
   <Icon glyph="favourite" />
@@ -57,6 +59,7 @@ Basic Icon:
   <Icon glyph="reply" />
   <Icon glyph="schedule" />
   <Icon glyph="search" />
+  <Icon glyph="send" />
   <Icon glyph="tux" />
   <Icon glyph="windows" />
 </div>
