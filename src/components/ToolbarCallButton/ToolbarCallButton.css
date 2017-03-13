@@ -23,23 +23,17 @@
 
   & .icon {
     fill: var(--toolbar-call-button-color);
-    stroke: var(--toolbar-call-button-color);
-    color: var(--toolbar-call-button-color);
   }
 
   &:hover {
     & .icon {
       fill: var(--toolbar-call-button-color-hover);
-      stroke: var(--toolbar-call-button-color-hover);
-      color: var(--toolbar-call-button-color-hover);
     }
   }
 
   &:active {
     & .icon {
       fill: var(--toolbar-call-button-color-active);
-      stroke: var(--toolbar-call-button-color-active);
-      color: var(--toolbar-call-button-color-active);
     }
   }
 }
@@ -47,7 +41,6 @@
 .icon {
   width: var(--toolbar-call-button-size);
   height: var(--toolbar-call-button-size);
-  margin-top: -2px;
 }
 
 .disabled {

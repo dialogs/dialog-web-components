@@ -2,7 +2,7 @@ Basic ToolbarFavouriteButton:
 
 ```
 <div>
-  <ToolbarFavouriteButton active={false} onClick={console.debug} />
-  <ToolbarFavouriteButton active={true} onClick={console.debug} />
+  <ToolbarFavouriteButton value={false} onClick={console.debug} />
+  <ToolbarFavouriteButton value={true} onClick={console.debug} />
 </div>
 ```

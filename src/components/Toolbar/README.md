@@ -24,9 +24,9 @@ const handleFavouriteClick = (value) => {
     <ToolbarAvatar active={state.isFavourite} onFavouriteChange={handleFavouriteClick} peerInfo={state.peer} />
     <ToolbarInfo title={state.peer.title} status="last seen 5 minutes ago" />
     <ToolbarButtons>
-      <IconButton glyph="more" />
-      <IconButton glyph="phone" style={{ marginLeft: 6 }} />
-      <IconButton glyph="info" style={{ marginLeft: 6 }} />
+      <ToolbarCallButton onClick={() => {}} />
+      <div style={{ marginRight: 8 }} />
+      <ToolbarInfoButton active={false} onClick={() => {}} />
     </ToolbarButtons>
   </Toolbar>
 </div>
