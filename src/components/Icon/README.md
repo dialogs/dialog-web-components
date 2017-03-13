@@ -27,6 +27,7 @@ Basic Icon:
   <Icon glyph="emoji_travel" />
   <Icon glyph="error" />
   <Icon glyph="favourite" />
+  <Icon glyph="favourite_outline" />
   <Icon glyph="finder" />
   <Icon glyph="group" />
   <Icon glyph="info" />
