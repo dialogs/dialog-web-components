@@ -61,7 +61,6 @@
 }
 
 .plus {
-  margin-right: 10px;
   transition: all var(--default-transition-duration) ease-in;
   transform-origin: 50% 50%;
   fill: var(--sidebar-header-plus-color);
