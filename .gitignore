@@ -10,3 +10,4 @@ yarn-error.log
 /src/messages.json
 /styleguide/
 /flow-coverage/
+/src/components/Icon/Icons.svg

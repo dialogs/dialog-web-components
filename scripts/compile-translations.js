@@ -1,4 +1,8 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
 /* eslint no-sync:0 */
+
 const fs = require('fs');
 const path = require('path');
 const glob = require('glob');
