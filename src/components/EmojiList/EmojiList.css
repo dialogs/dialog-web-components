@@ -139,8 +139,8 @@
 
 .footerTab {
   display: inline-flex;
-  margin-top: 7px;
-  padding: 5px 7px;
+  margin-top: 8px;
+  padding: 5px 6px;
   vertical-align: middle;
 }
 
@@ -156,41 +156,27 @@
 }
 
 .footerTabIcon {
-  width: 22px;
-  height: 22px;
   cursor: pointer;
   transition-timing-function: ease-in-out;
   transition-duration: var(--default-transition-duration);
   transition-property: color, fill, stroke;
-  border-radius: 50%;
-  font-size: 24px;
-  color: var(--emoji-list-category-icon-color);
   fill: var(--emoji-list-category-icon-color);
-  stroke: var(--emoji-list-category-icon-color);
 
   &:hover {
-    color: var(--emoji-list-category-icon-hover-color);
     fill: var(--emoji-list-category-icon-hover-color);
-    stroke: var(--emoji-list-category-icon-hover-color);
   }
 
   &.active {
-    color: var(--emoji-list-category-icon-active-color);
     fill: var(--emoji-list-category-icon-active-color);
-    stroke: var(--emoji-list-category-icon-active-color);
 
     &:hover {
-      color: var(--emoji-list-category-icon-active-hover-color);
       fill: var(--emoji-list-category-icon-active-hover-color);
-      stroke: var(--emoji-list-category-icon-active-hover-color);
     }
   }
 }
 
 .disabled {
-  color: var(--emoji-list-category-icon-color) !important;
   fill: var(--emoji-list-category-icon-color) !important;
-  stroke: var(--emoji-list-category-icon-color) !important;
   cursor: default !important;
   opacity: 0.5 !important;
 }
