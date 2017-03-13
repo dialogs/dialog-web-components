@@ -102,7 +102,7 @@ class ProfileModal extends PureComponent {
             className={styles.nickButton}
             onClick={this.handleNickChooserClick}
           >
-            <Icon glyph="add_circle_outline" className={styles.nickButtonIcon} />
+            <Icon glyph="plus_outline" className={styles.nickButtonIcon} />
             <Text id="ProfileModal.choose_nickname" />
           </Button>
           <Text

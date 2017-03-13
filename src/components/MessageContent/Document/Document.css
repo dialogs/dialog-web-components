@@ -79,8 +79,7 @@
 }
 
 .downloadArrow {
-  color: var(--document-download-arrow-color);
-  font-size: var(--document-download-arrow-size);
+  fill: var(--document-download-arrow-color);
 }
 
 /* File type colors */

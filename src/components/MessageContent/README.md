@@ -46,8 +46,11 @@ const content = {
   fileUrl: 'https://dlg.im/dl/osx'
 };
 
-
-<MessageContent content={content} />
+<div>
+  <MessageContent content={content} />
+  <br/>
+  <MessageContent content={{ ...content, isUploading: true }} />
+</div>
 ```
 
 Voice:
@@ -74,9 +77,9 @@ const onGetTranscription = () => {
   }, 1000);
 };
 <div>
-<MessageContent content={content} getTranscription={onGetTranscription} />
-<br/>
-<MessageContent content={{ ...content, isUploading: true}} getTranscription={onGetTranscription} />
+  <MessageContent content={content} getTranscription={onGetTranscription} />
+  <br/>
+  <MessageContent content={{ ...content, isUploading: true}} getTranscription={onGetTranscription} />
 </div>
 ```
 

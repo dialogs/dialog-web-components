@@ -23,7 +23,7 @@ class SidebarHeaderPlus extends PureComponent {
     }, this.props.className);
 
     return (
-      <Icon glyph="plus_outline" className={plusClassName} {...handlers} />
+      <Icon glyph="plus_outline" className={plusClassName} {...handlers} size={28} />
     );
   };
 

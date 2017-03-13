@@ -47,10 +47,8 @@
 }
 
 .arrow {
-  height: calc(var(--sidebar-header-height) - var(--sidebar-header-padding-top) - var(--sidebar-header-padding-bottom));
   cursor: inherit;
-  color: #000;
-  line-height: calc(var(--sidebar-header-height) - var(--sidebar-header-padding-top) - var(--sidebar-header-padding-bottom));
+  fill: var(--sidebar-header-menu-color);
 }
 
 .plusWrapper {
@@ -66,8 +64,6 @@
   margin-right: 10px;
   transition: all var(--default-transition-duration) ease-in;
   transform-origin: 50% 50%;
-  color: var(--sidebar-header-plus-color);
-  stroke: var(--sidebar-header-plus-color);
   fill: var(--sidebar-header-plus-color);
 
   &:hover {

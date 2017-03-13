@@ -21,7 +21,7 @@ function CallControls(props: CallControlsProps): React.Element<any> {
       flat
       key="size"
       size={size}
-      glyph={props.small ? 'aspect_ratio' : 'minimize'}
+      glyph={props.small ? 'maximize' : 'minimize'}
       className={styles.controlButton}
       onClick={props.onSizeToggle}
     />
@@ -60,7 +60,7 @@ function CallControls(props: CallControlsProps): React.Element<any> {
       key="mic"
       size={size}
       theme="primary"
-      glyph={props.isMuted ? 'mic_off' : 'mic'}
+      glyph={props.isMuted ? 'mic_material_off' : 'mic_material'}
       className={styles.controlButton}
       onClick={props.onMuteToggle}
     />

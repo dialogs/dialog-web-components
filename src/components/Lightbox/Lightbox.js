@@ -98,7 +98,7 @@ class Lightbox extends Component {
 
     return (
       <a className={styles.buttonDownload} href={current.src} download={current.src}>
-        <Icon glyph="file_download" className={styles.icon} />
+        <Icon glyph="file_download" className={styles.icon} size={20} />
       </a>
     );
   }

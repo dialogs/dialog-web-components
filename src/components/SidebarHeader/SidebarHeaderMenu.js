@@ -36,7 +36,7 @@ class SidebarHeaderMenu extends PureComponent {
       <a className={styles.menu} {...handlers}>
         {this.renderLogo()}
         <div className={styles.appName}>{appName}</div>
-        <Icon glyph={isActive ? 'arrow_drop_up' : 'arrow_drop_down'} className={styles.arrow} />
+        <Icon glyph={isActive ? 'arrow_drop_up' : 'arrow_drop_down'} className={styles.arrow} size={30} />
       </a>
     );
   };

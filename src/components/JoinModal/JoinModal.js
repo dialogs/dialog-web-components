@@ -51,7 +51,7 @@ class JoinModal extends PureComponent {
           </div>
           <div className={styles.buttons} >
             <IconButton glyph="logo" flat className={styles.button} size="large" />
-            <IconButton glyph="phone" flat className={styles.button} size="large" />
+            <IconButton glyph="call" flat className={styles.button} size="large" />
             <IconButton glyph="apple" flat className={styles.button} size="large" />
             <IconButton glyph="android" flat className={styles.button} size="large" />
           </div>

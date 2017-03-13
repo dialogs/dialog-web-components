@@ -33,23 +33,19 @@
 
   &:hover {
     & .icon {
-      color: var(--sidebar-footer-button-color-hover);
       fill: var(--sidebar-footer-button-color-hover);
-      stroke: var(--sidebar-footer-button-color-hover);
     }
   }
 }
 
 .active {
   & .icon {
-    color: var(--sidebar-footer-button-color-active) !important;
     fill: var(--sidebar-footer-button-color-active) !important;
-    stroke: var(--sidebar-footer-button-color-active) !important;
   }
 
   &:hover {
     & .icon {
-      opacity: .8;
+      opacity: 0.8;
     }
   }
 }
@@ -60,9 +56,7 @@
   width: var(--sidebar-footer-button-icon-size);
   font-size: var(--sidebar-footer-button-icon-size);
   line-height: var(--sidebar-footer-button-icon-size);
-  color: var(--sidebar-footer-button-color);
   fill: var(--sidebar-footer-button-color);
-  stroke: var(--sidebar-footer-button-color);
   transition: var(--default-transition-duration) ease;
 }
 

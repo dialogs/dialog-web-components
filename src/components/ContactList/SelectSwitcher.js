@@ -15,7 +15,7 @@ function SelectSwitcher(props: Props) {
   if (props.value) {
     return (
       <div className={styles.selected}>
-        <Icon className={styles.icon} glyph="done" />
+        <Icon className={styles.icon} glyph="done" size={16} />
       </div>
     );
   }

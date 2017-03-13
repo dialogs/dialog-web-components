@@ -68,7 +68,7 @@ class AttachmentModal extends PureComponent {
       <div className={styles.pagination}>
         <Icon
           className={styles.paginationArrow}
-          glyph="chevron_left"
+          glyph="keyboard_arrow_left"
           onClick={this.handlePrevious}
         />
         <span className={styles.paginationNumbers}>
@@ -76,7 +76,7 @@ class AttachmentModal extends PureComponent {
         </span>
         <Icon
           className={styles.paginationArrow}
-          glyph="chevron_right"
+          glyph="keyboard_arrow_right"
           onClick={this.handleNext}
         />
       </div>

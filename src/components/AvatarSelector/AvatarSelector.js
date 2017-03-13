@@ -53,11 +53,9 @@ class AvatarSelector extends PureComponent {
 
     if (avatar && this.props.onRemove) {
       return (
-        <Icon
-          className={styles.avatarRemoveIcon}
-          glyph="clear"
-          onClick={this.props.onRemove}
-        />
+        <div className={styles.avatarRemove} onClick={this.props.onRemove}>
+          <Icon glyph="close" className={styles.avatarRemoveIcon} size={18} />
+        </div>
       );
     }
 
@@ -79,11 +77,9 @@ class AvatarSelector extends PureComponent {
           placeholder={placeholder}
           onClick={this.handleAvatarChangerClick}
         />
-        <Icon
-          onClick={this.handleAvatarChangerClick}
-          className={styles.avatarChangerIcon}
-          glyph="photo_camera"
-        />
+        <div onClick={this.handleAvatarChangerClick} className={styles.avatarChanger}>
+          <Icon glyph="photo_camera" className={styles.avatarChangerIcon} size={22} />
+        </div>
         {this.renderRemoveIcon()}
       </div>
     );

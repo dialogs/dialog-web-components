@@ -6,7 +6,8 @@ const users = [{
   name: 'Nikita',
   nick: 'gusnkt',
   placeholder: 'red',
-  avatar: 'https://avatars0.githubusercontent.com/u/3505878'
+  avatar: 'https://avatars0.githubusercontent.com/u/3505878',
+  isContact: true
 },{
   id: 930121,
   name: 'Oleg Shilov',

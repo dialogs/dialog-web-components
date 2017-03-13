@@ -97,8 +97,5 @@
 .icon {
   transition: opacity var(--sidebar-unread-transition-duration) ease-in-out, transform var(--sidebar-unread-transition-duration) ease-in-out;
   opacity: 0;
-  font-size: 20px;
   fill: var(--sidebar-unread-color);
-  color: var(--sidebar-unread-color);
-  stroke: var(--sidebar-unread-color);
 }

@@ -54,7 +54,13 @@ class ActivityListMembers extends PureComponent {
     if (online.isNotMember) {
       return (
         <ActivityListItem className={styles.header}>
-          <Icon glyph="person" inverted theme="warning" className={styles.icon} />
+          <Icon
+            glyph="person"
+            inverted
+            theme="warning"
+            className={styles.icon}
+            size={28}
+          />
           <div className={styles.text}>{online.message}</div>
         </ActivityListItem>
       );
@@ -65,7 +71,13 @@ class ActivityListMembers extends PureComponent {
 
     return (
       <ActivityListItem className={styles.header} onClick={this.handleMembersHeaderClick}>
-        <Icon glyph="person" inverted theme="warning" className={styles.icon} />
+        <Icon
+          glyph="person"
+          inverted
+          theme="warning"
+          className={styles.icon}
+          size={28}
+        />
         <div className={styles.text}>{online.message}</div>
         <Icon glyph={arrowGlyph} className={styles.arrow} />
       </ActivityListItem>

@@ -52,7 +52,7 @@ function Document(props: Props) {
           <div className={styles.text} title={fileName}>{fileName}</div>
         </div>
         <div className={styles.sizeBlock}>
-          <Icon glyph="arrow_downward" className={styles.downloadArrow} />
+          <Icon glyph="arrow_down" className={styles.downloadArrow} size={20} />
           <span className={styles.size}>{fileSize}</span>
         </div>
       </div>

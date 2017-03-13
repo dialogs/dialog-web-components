@@ -36,8 +36,6 @@
 
 .arrow {
   cursor: inherit;
-  color: var(--activity-list-arrow-color) !important;
-  stroke: var(--activity-list-arrow-color) !important;
   fill: var(--activity-list-arrow-color) !important;
 }
 
@@ -91,21 +89,18 @@
   & .title,
   & .addMemberIcon {
     cursor: pointer;
-    color: var(--color-primary);
-    stroke: var(--color-primary);
     fill: var(--color-primary);
+    color: var(--color-primary);
   }
 
   & .title {
-    margin-top: 0px;
+    margin-top: 0;
   }
 }
 
 .addMemberIcon {
-  width: var(--activity-list-icon-size);
-  height: var(--activity-list-icon-size);
+  margin-left: -2px;
   margin-right: var(--default-padding-small);
-  font-size: var(--activity-list-icon-size);
   flex: 0 0 auto;
 }
 
@@ -152,5 +147,5 @@
 }
 
 .kickMemberError {
-  color: var(--color-danger);
+  fill: var(--color-danger);
 }

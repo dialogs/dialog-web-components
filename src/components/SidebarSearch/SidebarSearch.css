@@ -59,10 +59,8 @@
 
 .icon {
   position: absolute;
-  top: 6px;
+  top: 8px;
   left: calc(var(--sidebar-search-padding) + 10px);
   transition: opacity calc(var(--default-transition-duration)) ease;
-  font-size: 20px;
-  line-height: 18px;
-  color: inherit;
+  fill: var(--sidebar-search-color);
 }

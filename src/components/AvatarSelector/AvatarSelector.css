@@ -22,42 +22,47 @@
   cursor: pointer;
 }
 
-.avatarChangerIcon {
+.avatarChanger {
   position: absolute;
   right: 0;
   bottom: 0;
-  width: 34px;
-  height: 34px;
   cursor: pointer;
-  border-radius: 50%;
+  border-radius: 100px;
   background-color: #fff;
-  font-size: 20px;
-  line-height: 34px;
-  color: var(--avatar-selector-camera-icon-color);
+  padding: 5px;
 
   &:hover {
-    opacity: 1;
-    color: var(--avatar-selector-camera-icon-color-hover);
+    & .avatarChangerIcon {
+      opacity: 1;
+      fill: var(--avatar-selector-camera-icon-color-hover);
+    }
+  }
+}
+
+.avatarChangerIcon {
+  fill: var(--avatar-selector-camera-icon-color);
+}
+
+.avatarRemove {
+  position: absolute;
+  right: 6px;
+  top: 0;
+  cursor: pointer;
+  border-radius: 100px;
+  background-color: #fff;
+  padding: 2px;
+  transition: all var(--avatar-selector-transitio-duration) ease;
+
+  &:hover {
+    transform: scale(1.2);
+
+    & .avatarRemoveIcon {
+      opacity: 1;
+      color: var(--avatar-selector-remove-icon-color-hover);
+    }
   }
 }
 
 .avatarRemoveIcon {
-  position: absolute;
-  right: 6px;
-  top: 0;
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-  border-radius: 50%;
-  background-color: #fff;
-  line-height: 20px;
-  font-size: 18px;
-  color: var(--avatar-selector-remove-icon-color);
-  transition: all var(--avatar-selector-transitio-duration) ease;
-
-  &:hover {
-    opacity: 1;
-    transform: scale(1.2);
-    color: var(--avatar-selector-remove-icon-color-hover);
-  }
+  fill: var(--avatar-selector-remove-icon-color);
 }

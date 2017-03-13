@@ -96,6 +96,8 @@
   background-color: #fff;
   box-shadow: 0 0 0 2px color(#000 alpha(20%)) inset;
   flex: 0 0 auto;
+  padding: 5px;
+  box-sizing: border-box;
 }
 
 .selected {
@@ -104,13 +106,9 @@
   background-color: var(--color-success);
   box-shadow: none;
   composes: circle;
-  color: #fff;
 }
 
 .icon {
-  width: 26px;
-  height: 26px;
-  font-size: 16px;
-  line-height: 26px;
-  color: #fff;
+  fill: #fff;
+  display: block;
 }

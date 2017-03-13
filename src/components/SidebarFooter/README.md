@@ -1,26 +1,17 @@
 ```
 const SidebarFooterButton = require('./SidebarFooterButton').default;
-const renderButtons = () => {
-  const buttons = [{
-    glyph: 'logo', handler: console.debug
+const variants = [
+  {
+    id: 'messages', title: 'Messages', glyph: 'logo', pending: false
   }, {
-    glyph: 'history', handler: console.debug
-  }]
-
-  return buttons.map((button) => {
-    return (
-      <SidebarFooterButton
-        glyph={button.glyph}
-        onClick={button.handler}
-        active={false}
-      />
-    );
-  });
-};
+    id: 'archive', title: 'Archive', glyph: 'schedule', pending: true
+  }
+];
 
 <div style={{ width: 270, background: '#f5f5f5' }}>
   <SidebarFooter
-    renderButtons={renderButtons}
+    current={variants[0]}
+    variants={variants}
   />
 </div>
 ```

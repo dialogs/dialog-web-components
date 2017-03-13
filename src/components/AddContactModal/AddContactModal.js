@@ -100,7 +100,13 @@ class AddContactModal extends PureComponent {
                 image={contact.avatar}
                 placeholder={contact.placeholder}
               />
-              <Icon glyph="done" className={styles.iconSmall} />
+              <Icon
+                glyph="done"
+                className={styles.iconSmall}
+                inverted
+                size={14}
+                theme="success"
+              />
             </div>
             <Text
               id="AddContactModal.user_in_contact"
@@ -153,7 +159,13 @@ class AddContactModal extends PureComponent {
               image={contact.avatar}
               placeholder={contact.placeholder}
             />
-            <Icon glyph="clear" className={styles.iconError} />
+            <Icon
+              glyph="clear"
+              className={styles.iconError}
+              inverted
+              theme="danger"
+              size={32}
+            />
           </div>
           <ErrorMessage className={styles.error}>{error.message}</ErrorMessage>
         </div>
@@ -169,7 +181,13 @@ class AddContactModal extends PureComponent {
             image={contact.avatar}
             placeholder={contact.placeholder}
           />
-          <Icon glyph="done" className={styles.icon} />
+          <Icon
+            glyph="done"
+            className={styles.icon}
+            inverted
+            theme="success"
+            size={32}
+          />
         </div>
         <Text
           id="AddContactModal.user_added"

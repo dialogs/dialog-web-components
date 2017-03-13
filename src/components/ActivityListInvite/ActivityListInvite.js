@@ -25,6 +25,7 @@ function ActivityListInvite(props: Props): React.Element<any> {
         inverted
         theme="success"
         className={styles.icon}
+        size={28}
       />
       <Text
         tagName="div"

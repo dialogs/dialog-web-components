@@ -81,29 +81,22 @@
 
 .icon {
   position: absolute;
-  right: 2px;
-  bottom: 2px;
-  padding: 1px;
+  right: 0;
+  bottom: 0;
+  padding: 3px;
   user-select: none;
-  border-radius: 50%;
-  background-color: var(--color-success);
-  font-size: 20px;
-  color: #fff;
   @apply --no-select;
 }
 
 .iconError {
-  background-color: var(--color-danger);
   composes: icon;
 }
 
 .iconSmall {
   composes: icon;
-  font-size: 10px;
-  width: 14px;
-  height: 14px;
-  right: -2px;
-  bottom: -2px;
+  right: -1px;
+  bottom: -1px;
+  padding: 2px;
 }
 
 .text {

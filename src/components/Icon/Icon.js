@@ -23,7 +23,7 @@ class Icon extends PureComponent {
   props: Props;
 
   static defaultProps = {
-    size: 'default',
+    size: getIconSize('default'),
     theme: 'default',
     inverted: false
   };

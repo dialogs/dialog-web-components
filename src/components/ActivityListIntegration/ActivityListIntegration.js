@@ -25,6 +25,7 @@ function ActivityListIntegration(props: Props) {
         glyph="extension"
         theme="info"
         className={styles.icon}
+        size={28}
       />
       <Text
         tagName="div"

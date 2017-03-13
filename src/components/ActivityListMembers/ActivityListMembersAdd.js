@@ -15,7 +15,7 @@ export type Props = {
 function ActivityListMembersAdd(props: Props) {
   return (
     <div className={styles.addMember}>
-      <Icon glyph="add" className={styles.addMemberIcon} onClick={props.onClick} />
+      <Icon glyph="plus_outline" className={styles.addMemberIcon} onClick={props.onClick} size={32} />
       <div className={styles.title}>
         <Text
           onClick={props.onClick}

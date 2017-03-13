@@ -47,6 +47,7 @@ class ActivityListNotification extends Component {
           inverted
           theme="danger"
           className={styles.icon}
+          size={28}
         />
         <Text
           tagName="div"
