@@ -60,10 +60,10 @@
   user-select: none;
   transition: color var(--modal-close-transition-duration) linear;
   line-height: inherit;
-  color: var(--modal-close-color);
+  fill: var(--modal-close-color);
 
   &:hover {
-    color: var(--modal-close-color-hover);
+    fill: var(--modal-close-color-hover);
   }
 }
 
