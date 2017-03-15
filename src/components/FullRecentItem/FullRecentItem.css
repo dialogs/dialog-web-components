@@ -13,28 +13,36 @@
   display: flex;
   flex-direction: row;
   box-sizing: border-box;
-  height: var(--recent-item-large-height);
-  padding-top: var(--recent-item-large-top-padding);
-  padding-right: var(--recent-item-large-right-padding);
-  padding-bottom: var(--recent-item-large-bottom-padding);
-  padding-left: var(--recent-item-large-left-padding);
+  height: var(--full-recent-item-height);
+  padding-top: var(--full-recent-item-top-padding);
+  padding-right: var(--full-recent-item-right-padding);
+  padding-bottom: var(--full-recent-item-top-padding);
+  padding-left: var(--full-recent-item-left-padding);
   cursor: pointer;
   user-select: none;
-  font-family: var(--default-font-family);
+  font-family: var(--full-recent-item-font-family);
   flex-wrap: nowrap;
   justify-content: flex-start;
   align-content: stretch;
   align-items: center;
-  color: var(--recent-item-default-color);
+  color: var(--full-recent-item-default-color);
 
   &:hover {
-    background-color: var(--recent-item-hover-background-color);
-    color: var(--recent-item-hover-color);
+    background-color: var(--full-recent-item-hover-background-color);
+    color: var(--full-recent-item-hover-color);
+  }
+
+  &:active{
+    background-color: var(--full-recent-item-pressed-background-color);
   }
 }
 
+.withDoubleAvatar {
+  padding-bottom: var(--full-recent-item-bottom-padding);
+}
+
 .avatar {
-  margin-right: 10px;
+  margin-right: 11px;
   flex: 0 0 auto;
   align-self: auto;
 }
@@ -58,7 +66,7 @@
 .title {
   vertical-align: middle;
   letter-spacing: -0.27px;
-  font-size: var(--default-font-size-small);
+  font-size: var(--full-recent-item-font-size);
   font-weight: 500;
   line-height: 20px;
 
@@ -81,44 +89,45 @@
 
 .counter {
   display: flex;
-  width: var(--recent-item-counter-size);
-  height: var(--recent-item-counter-size);
+  width: var(--full-recent-item-counter-size);
+  height: var(--full-recent-item-counter-size);
   border-radius: 50%;
-  background-color: var(--recent-item-counter-background);
-  font-family: var(--default-font-family);
-  font-size: var(--recent-item-counter-font-size);
+  background-color: var(--full-recent-item-counter-background);
+  font-family: var(--full-recent-item-font-family);
+  font-size: var(--full-recent-item-counter-font-size);
   font-weight: 400;
   flex: 0 0 auto;
   justify-content: center;
   align-items: center;
   align-content: center;
-  color: var(--recent-item-counter-color);
+  margin-left: 6px;
+  color: var(--full-recent-item-counter-color);
 }
 
 .unread {
-  color: #000000;
+  color: var(--full-recent-item-unread-color);
 }
 
 /* State */
 .active {
-  background-color: var(--recent-item-active-background-color);
-  background-image: var(--recent-item-active-background-gradient);
-  color: var(--recent-item-active-color);
+  background-color: var(--full-recent-item-active-background-color);
+  background-image: var(--full-recent-item-active-background-gradient);
+  color: var(--full-recent-item-active-color);
 
   &:hover {
-    color: var(--recent-item-active-hover-color);
-    background-color: var(--recent-item-active-hover-background-color);
-    background-image: var(--recent-item-active-hover-background-gradient);
+    color: var(--full-recent-item-active-hover-color);
+    background-color: var(--full-recent-item-active-hover-background-color);
+    background-image: var(--full-recent-item-active-hover-background-gradient);
   }
 
   & .counter {
-    background-color: color(#fff alpha(50%));
+    background-color: var(--full-recent-item-active-counter-color);
   }
 
   & .message,
   & .sender,
   & .service,
   & .highlight {
-    color: color(#fff alpha(80%));
+    color: var(--full-recent-item-active-message-color);
   }
 }

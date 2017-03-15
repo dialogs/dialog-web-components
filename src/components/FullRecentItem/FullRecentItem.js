@@ -29,10 +29,15 @@ class FullRecentItem extends PureComponent {
     this.props.onSelect(this.props.info.peer);
   };
 
+  hasDoubleAvatar = (): boolean => {
+    const { info, message } = this.props;
+    return Boolean(message && message.sender && info.type === 'group');
+  };
+
   renderAvatar(): React.Element<any> {
     const { info, message, online } = this.props;
 
-    if (message && message.sender && info.type === 'group') {
+    if (this.hasDoubleAvatar()) {
       return (
         <DoublePeerAvatar
           className={styles.doubleAvatar}
@@ -131,7 +136,8 @@ class FullRecentItem extends PureComponent {
     const { info, active, counter } = this.props;
     const className = classNames(styles.container, this.props.className, {
       [styles.active]: active,
-      [styles.unread]: counter !== 0
+      [styles.unread]: counter !== 0,
+      [styles.withDoubleAvatar]: this.hasDoubleAvatar()
     });
 
     return (
