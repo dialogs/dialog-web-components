@@ -46,6 +46,7 @@
   font-weight: 500;
   line-height: 22px;
   color: var(--toolbar-title-color);
+  @apply --text-overflow-ellipsis;
 }
 
 .status {
