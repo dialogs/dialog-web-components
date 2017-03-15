@@ -40,6 +40,13 @@
     "url": "https://github.com/dialogs/dialog-web-components.git"
   },
   "author": "Nikita Gusakov <gusnkt@gmail.com>",
+  "contributors": [
+    {
+      "name": "Oleg Shilov",
+      "email": "me@olegshilov.com",
+      "url": "https://github.com/olegshilov"
+    }
+  ],
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/dialogs/dialog-web-components/issues"
