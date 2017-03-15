@@ -99,8 +99,8 @@
 }
 
 .addMemberIcon {
+  margin-right: 8px;
   margin-left: -2px;
-  margin-right: var(--default-padding-small);
   flex: 0 0 auto;
 }
 
