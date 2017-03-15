@@ -33,11 +33,11 @@
   }
 
   &:active {
-    background-color: color(var(--recent-call-item-hover-background-color) shade(2%));
+    background-color: var(--recent-call-item-active-background-color);
   }
 
   & .avatar {
-    margin-right: 6px;
+    margin-right: 8px;
     flex: 0 0 auto;
     align-self: auto;
     cursor: inherit;
@@ -65,6 +65,7 @@
   line-height: 17px;
   font-size: var(--recent-call-item-time-font-size);
   vertical-align: middle;
+  letter-spacing: -0.25px;
   @apply --text-overflow-ellipsis;
 }
 
