@@ -5,10 +5,6 @@
 @import '../../styles/variables.css';
 
 .container {
-  all: initial;
-}
-
-.container {
   display: inline-flex;
   cursor: inherit;
   user-select: none;
