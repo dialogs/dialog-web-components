@@ -73,7 +73,7 @@ class Avatar extends PureComponent {
     const style = {
       width: size,
       height: size,
-      fontSize: Math.min(Math.floor(twoChars ? (size / 2.2) : (size / 1.9)), 60),
+      fontSize: Math.min(Math.floor(twoChars ? (size / 2.4) : (size / 1.9)), 60),
       backgroundImage: `linear-gradient(38deg, ${colors.payload.from}, ${colors.payload.to})`
     };
 
