@@ -9,9 +9,12 @@
   all: initial;
   display: inline-block;
   box-sizing: border-box;
+  min-width: var(--button-min-width);
   cursor: pointer;
   user-select: none;
-  transition: background var(--button-transition-duration) ease, box-shadow var(--button-transition-duration) ease, color var(--button-transition-duration) ease;
+  transition-timing-function: ease;
+  transition-duration: var(--button-transition-duration);
+  transition-property: color, background, box-shadow, text-shadow;
   text-align: center;
   border: 0;
   outline: none;
@@ -19,7 +22,6 @@
   font-family: var(--button-font-family);
   font-weight: var(--button-font-weight);
   color: #000;
-  min-width: var(--button-min-width);
 
   &[disabled] {
     cursor: not-allowed;
@@ -173,6 +175,23 @@
   background-color: transparent !important;
   box-shadow: none !important;
 
+  &.default {
+    color: var(--button-default-background-color);
+
+    &:hover,
+    &:focus {
+      color: var(--button-default-hover-background-color);
+    }
+
+    &:active {
+      color: var(--button-default-active-background-color);
+    }
+
+    &[disabled] {
+      color: var(--button-default-disabled-background-color);
+    }
+  }
+
   &.primary {
     color: var(--button-primary-background-color);
 
@@ -261,16 +280,28 @@
 
 .outline {
   background-color: transparent;
+  text-shadow: 0 0 0 transparent;
+
+  &:hover,
+  &:focus,
+  &:active {
+    text-shadow: var(--button-default-text-shadow);
+  }
 
   &.default {
     box-shadow: inset 0 0 0 2px var(--button-default-background-color);
     color: var(--button-default-background-color);
 
     &:hover,
-    &:focus,
+    &:focus {
+      background-color: var(--button-default-hover-background-color);
+      box-shadow: inset 0 0 0 2px var(--button-default-hover-background-color);
+      color: #fff;
+    }
+
     &:active {
-      background-color: var(--button-default-background-color);
-      box-shadow: inset 0 0 0 2px var(--button-default-background-color);
+      background-color: var(--button-default-active-background-color);
+      box-shadow: inset 0 0 0 2px var(--button-default-active-background-color);
       color: #fff;
     }
   }
@@ -280,10 +311,15 @@
     color: var(--button-primary-background-color);
 
     &:hover,
-    &:focus,
+    &:focus {
+      background-color: var(--button-primary-hover-background-color);
+      box-shadow: inset 0 0 0 2px var(--button-primary-hover-background-color);
+      color: #fff;
+    }
+
     &:active {
-      background-color: var(--button-primary-background-color);
-      box-shadow: inset 0 0 0 2px var(--button-primary-background-color);
+      background-color: var(--button-primary-active-background-color);
+      box-shadow: inset 0 0 0 2px var(--button-primary-active-background-color);
       color: #fff;
     }
   }
@@ -293,10 +329,15 @@
     color: var(--button-success-background-color);
 
     &:hover,
-    &:focus,
+    &:focus {
+      background-color: var(--button-success-hover-background-color);
+      box-shadow: inset 0 0 0 2px var(--button-success-hover-background-color);
+      color: #fff;
+    }
+
     &:active {
-      background-color: var(--button-success-background-color);
-      box-shadow: inset 0 0 0 2px var(--button-success-background-color);
+      background-color: var(--button-success-active-background-color);
+      box-shadow: inset 0 0 0 2px var(--button-success-active-background-color);
       color: #fff;
     }
   }
@@ -306,10 +347,15 @@
     color: var(--button-danger-background-color);
 
     &:hover,
-    &:focus,
+    &:focus {
+      background-color: var(--button-danger-hover-background-color);
+      box-shadow: inset 0 0 0 2px var(--button-danger-hover-background-color);
+      color: #fff;
+    }
+
     &:active {
-      background-color: var(--button-danger-background-color);
-      box-shadow: inset 0 0 0 2px var(--button-danger-background-color);
+      background-color: var(--button-danger-active-background-color);
+      box-shadow: inset 0 0 0 2px var(--button-danger-active-background-color);
       color: #fff;
     }
   }
@@ -319,10 +365,15 @@
     color: var(--button-info-background-color);
 
     &:hover,
-    &:focus,
+    &:focus {
+      background-color: var(--button-info-hover-background-color);
+      box-shadow: inset 0 0 0 2px var(--button-info-hover-background-color);
+      color: #fff;
+    }
+
     &:active {
-      background-color: var(--button-info-background-color);
-      box-shadow: inset 0 0 0 2px var(--button-info-background-color);
+      background-color: var(--button-info-active-background-color);
+      box-shadow: inset 0 0 0 2px var(--button-info-active-background-color);
       color: #fff;
     }
   }
@@ -332,10 +383,15 @@
     color: var(--button-warning-background-color);
 
     &:hover,
-    &:focus,
+    &:focus {
+      background-color: var(--button-warning-hover-background-color);
+      box-shadow: inset 0 0 0 2px var(--button-warning-hover-background-color);
+      color: #fff;
+    }
+
     &:active {
-      background-color: var(--button-warning-background-color);
-      box-shadow: inset 0 0 0 2px var(--button-warning-background-color);
+      background-color: var(--button-warning-active-background-color);
+      box-shadow: inset 0 0 0 2px var(--button-warning-active-background-color);
       color: #fff;
     }
   }

@@ -13,6 +13,7 @@ It has different types of themes. You can change themes by changing `theme` prop
 
 ```
 <div>
+  <Button theme="default">Default</Button>
   <Button theme="primary">Primary</Button>
   <Button theme="success">Success</Button>
   <Button theme="danger">Danger</Button>
@@ -25,6 +26,7 @@ Outlined Button:
 
 ```
 <div>
+  <Button theme="default" view="outline">Default</Button>
   <Button theme="primary" view="outline">Primary</Button>
   <Button theme="success" view="outline">Success</Button>
   <Button theme="danger" view="outline">Danger</Button>
@@ -37,6 +39,7 @@ Link Button:
 
 ```
 <div>
+  <Button theme="default" view="link">Default</Button>
   <Button theme="primary" view="link">Primary</Button>
   <Button theme="success" view="link">Success</Button>
   <Button theme="danger" view="link">Danger</Button>
