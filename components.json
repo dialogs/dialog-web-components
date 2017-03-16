@@ -64,8 +64,8 @@
     "name": "Plug & Play Forms",
     "components": [
       "AuthForm",
+      "UserNameAuthForm",
       "AuthorizationForm",
-      "AuthorizationFormEE",
       "GenderSelect"
     ]
   },
