@@ -1,42 +1,46 @@
 Basic Select:
 
 ```
-const options = [
-  {
+initialState = {
+  value: 'user',
+  options: [{
     value: 'user', title: 'User'
   }, {
     value: 'group', title: 'Group'
-  }
-];
+  }]
+};
 
+<Select
+  name="select_default"
+  id="select_default"
+  onChange={(value) => setState({ value })}
+  value=""
+  placeholder="Hello"
+  options={state.options}
+/>
+```
+
+Disabled Select
+
+```
 initialState = {
   value: 'user',
-  options: options
+  options: [{
+    value: 'user', title: 'User'
+  }, {
+    value: 'group', title: 'Group'
+  }]
 };
 
-const handleChange = (value) => {
-  setState({ value });
-};
+<Select
+  name="select_disabled"
+  id="select_disabled"
+  disabled
+  onChange={(value) => setState({ value })}
+  value={state.value}
+  options={state.options}
+/>
 
-<div>
-  <Select
-    name="type"
-    id="type"
-    onChange={handleChange}
-    value=""
-    placeholder="Hello"
-    options={state.options}
-  />
-  <br />
-  <Select
-    name="type2"
-    id="type2"
-    disabled
-    onChange={handleChange}
-    value={state.value}
-    options={state.options}
-  />
-</div>
 ```
 
 Select with label
@@ -52,9 +56,9 @@ const options = [
 ];
 
 <Select
-  name="type"
+  id="select_labeled"
+  name="select_labeled"
   label="Select type"
-  id="type"
   onChange={console.debug}
   value={''}
   options={options}

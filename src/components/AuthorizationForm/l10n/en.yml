@@ -1,0 +1,22 @@
+phone: Phone number
+email: Email address
+code: Auth code
+name: Your name
+gender: Your gender
+wrong: Wrong?
+request_code: Request code
+resend_code: Resend code
+code_arrive: Your sms will arrive in {time}
+check_code: Check code
+sign_up: Sign up
+success: Success
+errors:
+  EMAIL_INVALID: Invalid email
+  PHONE_NUMBER_INVALID: Invalid phone number
+  NAME_INVALID: Invalid name
+  PHONE_CODE_INVALID: Invalid code
+  EMAIL_CODE_INVALID: Invalid code
+  PHONE_CODE_EXPIRED: Code has expired
+  EMAIL_CODE_EXPIRED: Code has expired
+  CODE_WAIT: Try to request code later
+  GATE_ERROR: Service unavailable, try later

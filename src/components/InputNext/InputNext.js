@@ -7,7 +7,7 @@ import type { ProviderContext } from '@dlghq/react-l10n';
 import React, { PureComponent } from 'react';
 import { LocalizationContextType } from '@dlghq/react-l10n';
 import classNames from 'classnames';
-import styles from './Input.css';
+import styles from './InputNext.css';
 
 export type StringProps = {
   type: 'text' | 'email' | 'search' | 'tel' | 'url' | 'password' | 'textarea',
@@ -25,13 +25,10 @@ export type Props = (StringProps | NumberProps) & {
   className?: string,
   inputClassName?: string,
   wrapperClassName?: string,
-  prefixClassName?: string,
   id: string,
   name?: string,
   label?: string,
-  large?: boolean,
   placeholder?: string,
-  prefix?: ?string,
   disabled?: bool,
   hint?: string,
   status: 'normal' | 'success' | 'error',
@@ -50,12 +47,10 @@ export type State = {
 
 export type Context = ProviderContext;
 
-class Input extends PureComponent {
+class InputNext extends PureComponent {
   props: Props;
   state: State;
   context: Context;
-
-  // refs
   input: ?(HTMLInputElement | HTMLTextAreaElement);
 
   static defaultProps = {
@@ -162,11 +157,12 @@ class Input extends PureComponent {
 
   renderHint(): ?React.Element<any> {
     const { hint } = this.props;
-    const { l10n } = this.context;
 
     if (!hint) {
       return null;
     }
+
+    const { l10n } = this.context;
 
     return (
       <p className={styles.hint}>
@@ -175,92 +171,51 @@ class Input extends PureComponent {
     );
   }
 
-  renderPrefix(): ?React.Element<any> {
-    const { prefix, id } = this.props;
-
-    if (!prefix) {
-      return null;
-    }
-    const className = classNames(
-      styles.prefix,
-      this.props.prefixClassName,
-    );
-
-    return (
-      <label
-        htmlFor={id}
-        className={className}
-        onMouseDown={this.handleLabelMouseDown}
-      >
-        {prefix}
-      </label>
-    );
-  }
-
   render(): React.Element<any> {
     const {
-      props: {
-        id, name, type, value, disabled, tabIndex,
-        status, large, placeholder,
-        onKeyUp, onKeyDown, onKeyPress
-      },
-      state: {
-        isFocused
-      },
-      context: {
-        l10n
-      }
-    } = this;
+      id, name, type, value, disabled, tabIndex, status,
+      placeholder, onKeyUp, onKeyDown, onKeyPress
+    } = this.props;
+    const { isFocused } = this.state;
+    const { l10n } = this.context;
 
     const className = classNames(
       styles.container,
-      this.props.className,
       status ? styles[status] : null,
       value ? styles.filled : null,
       isFocused ? styles.focused : null,
       disabled ? styles.disabled : null,
-      large ? styles.large : null
+      this.props.className
     );
 
-    const wrapperClassName = classNames(
-      styles.inputWrapper,
-      this.props.wrapperClassName,
-    );
-
-    const inputClassName = classNames(
-      styles.input,
-      this.props.inputClassName,
-    );
+    const inputClassName = classNames(styles.input, this.props.inputClassName);
 
     const TagName = type === 'textarea' ? 'textarea' : 'input';
 
     return (
       <div className={className}>
         {this.renderLabel()}
-        <div className={wrapperClassName}>
-          {this.renderPrefix()}
-          <TagName
-            className={inputClassName}
-            disabled={disabled}
-            id={id}
-            name={name}
-            placeholder={placeholder ? l10n.formatText(placeholder) : null}
-            type={type}
-            value={value}
-            ref={this.setInput}
-            tabIndex={tabIndex}
-            onChange={this.handleChange}
-            onBlur={this.handleBlur}
-            onFocus={this.handleFocus}
-            onKeyDown={onKeyDown}
-            onKeyPress={onKeyPress}
-            onKeyUp={onKeyUp}
-          />
-        </div>
+        <TagName
+          className={inputClassName}
+          disabled={disabled}
+          id={id}
+          name={name}
+          placeholder={placeholder ? l10n.formatText(placeholder) : null}
+          type={type}
+          value={value}
+          ref={this.setInput}
+          tabIndex={tabIndex}
+          onChange={this.handleChange}
+          onBlur={this.handleBlur}
+          onFocus={this.handleFocus}
+          onKeyDown={onKeyDown}
+          onKeyPress={onKeyPress}
+          onKeyUp={onKeyUp}
+        />
         {this.renderHint()}
       </div>
     );
   }
 }
 
-export default Input;
+export default InputNext;

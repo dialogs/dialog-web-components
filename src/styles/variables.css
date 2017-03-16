@@ -55,7 +55,8 @@
   --color-error: var(--color-danger);
   /* Gradients */
   --default-gradient: linear-gradient(89deg, var(--violet-blue), var(--color-primary));
-  --login-gradient: linear-gradient(-45deg, #3023AE 0%, #6339B1 61%, #8347B3 100%);
+  --login-gradient: var(--default-gradient);
+  --login-background: var(--login-gradient);
   /* Avatar */
   --avatar-placeholder-color: #fff;
   /* PeerAvatar */
@@ -512,17 +513,15 @@
   --switcher-active-offset: calc(var(--switcher-width) - var(--switcher-dot-size) - ((var(--switcher-height) - var(--switcher-dot-size)) / 2)); /* stylelint-disable-line */
   /* Select */
   --select-font-family: var(--default-font-family);
-  --select-font-size: 15px;
-  --select-border-radius: var(--default-border-radius);
-  --select-horizontal-padding: 15px;
-  --select-height: 34px;
-  --select-min-width: 200px;
-  --select-color: #000;
+  --select-font-size: var(--default-font-size);
+  --select-border-radius: var(--default-border-radius-small);
+  --select-horizontal-padding: var(--default-padding);
+  --select-height: 56px;
+  --select-color: #333;
   --select-background-color: #fff;
-  --select-border-color: #ccc;
-  --select-label-font-size: var(--input-label-font-size);
+  --select-label-font-size: var(--default-font-size);
   --select-line-height: var(--input-label-line-height);
-  --select-label-color: var(--input-label-color);
+  --select-label-color: #676C75;
   /* Tabs */
   --tabs-font-family: var(--default-font-family);
   --tabs-width: 220px;

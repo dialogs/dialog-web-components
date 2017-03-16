@@ -1,0 +1,170 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+:root {
+  --country-code-selector-font-family: var(--default-font-family);
+  --country-code-selector-border-radius: var(--default-border-radius-small);
+  --country-code-selector-border-color: #D1D3D8;
+  --country-code-selector-label-color: #676C75;
+  --country-code-selector-height: 56px;
+  --country-code-selector-color: #414752;
+  --country-code-selector-border-hover-color: color(var(--country-code-selector-border-color) shade(10%));
+  --country-code-selector-z-index: var(--z-index-dropdown);
+  --country-code-selector-focus-border-color: var(--color-primary);
+}
+
+/* Styles */
+.container {
+  font-family: var(--country-code-selector-font-family);
+  color: var(--country-code-selector-color);
+  text-align: left;
+
+  & :global(.Select) {
+
+    &:global(.is-focused) {
+      & :global(.Select-control) {
+        box-shadow: 0 0 0 1px var(--country-code-selector-focus-border-color);
+      }
+
+      &:global(.is-open) {
+        & :global(.Select-control) {
+          box-shadow: 0 0 0 1px var(--country-code-selector-focus-border-color);
+          border-radius: var(--country-code-selector-border-radius) var(--country-code-selector-border-radius) 0 0;
+        }
+      }
+    }
+
+    &:global(.is-disabled) {
+      & :global(.Select-control) {
+        background-color: #fff;
+        cursor: not-allowed;
+        opacity: .6;
+        box-shadow: 0 0 0 1px var(--country-code-selector-border-color) !important;
+      }
+    }
+
+    &-control {
+      border: 0;
+      border-radius: var(--country-code-selector-border-radius);
+      box-shadow: 0 0 0 1px var(--country-code-selector-border-color);
+      transition: box-shadow var(--default-transition-duration) ease;
+      height: var(--country-code-selector-height);
+      position: relative;
+      z-index: calc(var(--country-code-selector-z-index) + 1);
+
+      &:hover {
+        box-shadow: 0 0 0 1px var(--country-code-selector-border-hover-color);
+      }
+    }
+
+    &:global(.has-value) {
+      & :global(.Select-input) {
+        padding-left: 52px;
+      }
+    }
+
+    &-input {
+      height: var(--country-code-selector-height);
+      padding: 0 var(--default-padding);
+
+      & > input {
+        line-height: 24px;
+        padding: var(--default-padding) 0;
+      }
+    }
+
+    &-noresults {
+      text-align: center;
+      padding: 8px 16px;
+      line-height: 24px;
+    }
+
+    &-menu-outer {
+      border: 0;
+      box-shadow: 0 0 0 1px var(--country-code-selector-border-color), 0 3px 3px 0 color(#000 alpha(26%));
+      overflow: hidden;
+      z-index: var(--country-code-selector-z-index);
+    }
+
+    &-placeholder {
+      line-height: var(--country-code-selector-height);
+      padding: 0 var(--default-padding);
+    }
+
+    &-arrow-zone {
+      width: 32px;
+      padding-right: 10px;
+    }
+
+    &-value {
+      padding: 0 var(--default-padding) !important;
+      &-label {
+        padding: var(--default-padding) 0;
+        display: block;
+      }
+    }
+
+    &-option {
+      padding: 6px var(--default-padding);
+      color: var(--country-code-selector-color);
+      &:global(.is-focused) {
+        background-color: #F0F1F4;
+        color: var(--country-code-selector-color);
+      }
+
+      &:global(.is-selected) {
+        background-color: var(--color-primary);
+        color: white;
+      }
+    }
+  }
+}
+
+.disabled {
+  & .label {
+    cursor: not-allowed;
+  }
+}
+
+.label {
+  color: var(--country-code-selector-label-color);
+  font-size: var(--default-font-size);
+  display: inline-block;
+  line-height: 32px;
+  @apply --no-select;
+}
+
+.option {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  line-height: 24px;
+  padding-right: 22px;
+}
+
+.optionFlag {
+  flex: 0 0 auto;
+  height: 22px;
+}
+
+.optionLabel {
+  flex: 1 1 auto;
+  padding: 0 8px;
+  @apply --flex-fix;
+  overflow: hidden;
+}
+
+.optionCountry {
+  font-size: var(--default-font-size);
+  @apply --text-overflow-ellipsis;
+}
+
+.optionCode {
+  font-size: var(--default-font-size);
+  flex: 0 0 auto;
+  font-weight: 500;
+}

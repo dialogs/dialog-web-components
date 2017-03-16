@@ -25,7 +25,7 @@ export { default as AvatarSelector } from './components/AvatarSelector/AvatarSel
 export { default as Archive } from './components/Archive/Archive';
 export { default as Lightbox } from './components/Lightbox/Lightbox';
 export { default as Dragndrop } from './components/Dragndrop/Dragndrop';
-export { default as Select } from './components/Select/Select';
+export { default as CountryCodeSelector } from './components/CountryCodeSelector/CountryCodeSelector';
 
 // Toolbar
 export { default as Toolbar } from './components/Toolbar/Toolbar';
@@ -38,6 +38,7 @@ export { default as ToolbarFavouriteButton } from './components/ToolbarFavourite
 
 // Buttons
 export { default as Button } from './components/Button/Button';
+export { default as ButtonNext } from './components/ButtonNext/ButtonNext';
 export { default as LinkButton } from './components/LinkButton/LinkButton';
 export { default as CopyButton } from './components/CopyButton/CopyButton';
 export { default as IconButton } from './components/IconButton/IconButton';
@@ -45,6 +46,8 @@ export { default as LinkIconButton } from './components/LinkIconButton/LinkIconB
 
 // Forms
 export { default as Input } from './components/Input/Input';
+export { default as InputNext } from './components/InputNext/InputNext';
+export { default as Select } from './components/Select/Select';
 export { default as Checkbox } from './components/Checkbox/Checkbox';
 export { default as Radio } from './components/Radio/Radio';
 export { default as Switcher } from './components/Switcher/Switcher';
@@ -52,6 +55,8 @@ export { default as Fieldset } from './components/Fieldset/Fieldset';
 
 // Plug & Play Forms
 export { default as AuthForm } from './components/AuthForm/AuthForm';
+export { default as UserNameAuthForm } from './components/UserNameAuthForm/UserNameAuthForm';
+export { default as AuthorizationForm } from './components/AuthorizationForm/AuthorizationForm';
 export { default as GenderSelect } from './components/GenderSelect/GenderSelect';
 
 // Modals

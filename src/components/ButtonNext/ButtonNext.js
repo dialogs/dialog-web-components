@@ -6,7 +6,7 @@
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import Spinner from '../Spinner/Spinner';
-import styles from './Button.css';
+import styles from './ButtonNext.css';
 
 export type Props = {
   id?: string,
@@ -16,20 +16,16 @@ export type Props = {
   wide: boolean,
   rounded: boolean,
   loading: boolean,
-  view: 'button' | 'outline' | 'link' | 'next',
   type: 'submit' | 'reset' | 'button' | 'menu',
-  theme: 'default' | 'primary' | 'success' | 'danger' | 'info' | 'warning' | 'link',
   size: 'small' | 'normal' | 'large',
   onClick?: (event: SyntheticEvent) => any
 }
 
-class Button extends PureComponent {
+class ButtonNext extends PureComponent {
   props: Props;
 
   static defaultProps = {
     type: 'button',
-    theme: 'default',
-    view: 'button',
     size: 'normal',
     wide: false,
     rounded: true,
@@ -45,15 +41,16 @@ class Button extends PureComponent {
     }
 
     return (
-      <Spinner type="dotted" className={styles.loading} size={size} />
+      <Spinner type="round" className={styles.spinner} size={size} />
     );
   }
 
   render(): React.Element<any> {
-    const { id, type, disabled, theme, size, wide, rounded, children, view, loading } = this.props;
-    const className = classNames(styles.container, styles[theme], styles[view], styles[size], {
+    const { id, type, disabled, wide, rounded, children, loading, size } = this.props;
+    const className = classNames(styles.container, styles[size], {
       [styles.wide]: wide,
-      [styles.rounded]: rounded
+      [styles.rounded]: rounded,
+      [styles.loading]: loading
     }, this.props.className);
 
     return (
@@ -64,11 +61,14 @@ class Button extends PureComponent {
         disabled={disabled || loading}
         onClick={this.props.onClick}
       >
-        {children}
-        {this.renderLoading()}
+        {
+          loading
+            ? this.renderLoading()
+            : children
+        }
       </button>
     );
   }
 }
 
-export default Button;
+export default ButtonNext;

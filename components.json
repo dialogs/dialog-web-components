@@ -24,15 +24,16 @@
       "Archive",
       "Lightbox",
       "Dragndrop",
-      "Select",
       "Markdown",
-      "Image"
+      "Image",
+      "CountryCodeSelector"
     ]
   },
   {
     "name": "Buttons",
     "components": [
       "Button",
+      "ButtonNext",
       "LinkButton",
       "IconButton",
       "LinkIconButton"
@@ -43,6 +44,8 @@
     "content": "forms",
     "components": [
       "Input",
+      "InputNext",
+      "Select",
       "Checkbox",
       "Radio",
       "Switcher",
@@ -61,6 +64,8 @@
     "name": "Plug & Play Forms",
     "components": [
       "AuthForm",
+      "UserNameAuthForm",
+      "AuthorizationForm",
       "GenderSelect"
     ]
   },

@@ -1,0 +1,37 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+/* Reset */
+.container {
+  all: initial;
+}
+
+/* Styles */
+.container {
+  font-family: var(--default-font-family);
+  text-align: center;
+  display: block;
+}
+
+.inputWrapper {
+  position: relative;
+}
+
+.retry {
+  position: absolute;
+  right: var(--default-padding);
+  line-height: 30px;
+  bottom: 13px;
+  cursor: pointer;
+  color: var(--color-primary);
+}
+
+.endpoint {
+  margin-top: var(--default-padding);
+  display: inline-block;
+  cursor: pointer;
+  color: var(--color-primary);
+}

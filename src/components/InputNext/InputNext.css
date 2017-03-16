@@ -1,0 +1,141 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+:root {
+  --input-next-font-family: var(--default-font-family);
+  --input-next-font-size: var(--default-font-size);
+  --input-next-border-radius: var(--default-border-radius-small);
+  --input-next-height: 56px;
+  --input-next-line-height: 20px;
+  --input-next-background-color: #fff;
+  --input-next-text-color: #333;
+  --input-next-placeholder-color: #aaa;
+  --input-next-border-color: #D1D3D8;
+  --input-next-label-font-size: var(--default-font-size);
+  --input-next-label-color: #676C75;
+  --input-next-hover-border-color: color(var(--input-next-border-color) shade(10%));
+  --input-next-focus-border-color: var(--color-primary);
+  --input-next-transition-dudarion: var(--default-transition-duration);
+  --input-next-success-color: var(--color-success);
+  --input-next-error-color: var(--color-danger);
+  --input-next-hint-font-family: var(--input-next-font-family);
+  --input-next-hint-font-size: var(--default-font-size-small);
+  --input-next-hint-line-height: 20px;
+  --input-next-hint-color: var(--input-next-placeholder-color);
+}
+
+/* Reset */
+.container,
+.input,
+.label,
+.hint {
+  all: initial;
+}
+
+/* Styles */
+.container {
+  display: block;
+  width: 100%;
+  margin-bottom: var(--default-padding);
+  line-height: 0;
+}
+
+.input {
+  border: 0;
+  outline: none;
+  border-radius: var(--input-next-border-radius);
+  box-shadow: 0 0 0 1px var(--input-next-border-color);
+  min-height: var(--input-next-height);
+  font-family: var(--input-next-font-family);
+  font-size: var(--input-next-font-size);
+  cursor: text;
+  background-color: var(--input-next-background-color);
+  color: var(--input-next-text-color);
+  line-height: var(--input-next-line-height);
+  box-sizing: border-box;
+  width: 100%;
+  transition: box-shadow var(--input-next-transition-dudarion) ease;
+  padding: calc((var(--input-next-height) - var(--input-next-line-height)) / 2) var(--default-padding);
+
+  &::-webkit-input-placeholder {
+    color: var(--input-next-placeholder-color);
+  }
+
+  &:-moz-placeholder {
+    color: var(--input-next-placeholder-color);
+  }
+
+  &::-moz-placeholder {
+    color: var(--input-next-placeholder-color);
+  }
+
+  &:-ms-input-placeholder {
+    color: var(--input-next-placeholder-color);
+  }
+
+  &:hover {
+    box-shadow: 0 0 0 1px var(--input-next-hover-border-color);
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 1px var(--input-next-focus-border-color);
+  }
+}
+
+.label {
+  display: inline-block;
+  cursor: pointer;
+  user-select: none;
+  font-family: var(--input-next-font-family);
+  font-size: var(--input-next-label-font-size);
+  line-height: 30px;
+  color: var(--input-next-label-color);
+}
+
+.hint {
+  display: inline-block;
+  margin: 6px 0;
+  user-select: none;
+  font-family: var(--input-next-hint-font-family);
+  font-size: var(--input-next-hint-font-size);
+  line-height: var(--input-next-hint-line-height);
+  color: var(--input-next-hint-color);
+  @apply --no-select;
+}
+
+.disabled {
+  & .label {
+    cursor: not-allowed;
+  }
+
+  & .input {
+    cursor: not-allowed;
+    opacity: .6;
+    box-shadow: 0 0 0 1px var(--input-next-border-color) !important;
+  }
+}
+
+/* Success state */
+.success {
+  & .input {
+    box-shadow: 0 0 0 1px var(--input-next-success-color);
+  }
+
+  & .hint {
+    color: var(--input-next-success-color);
+  }
+}
+
+/* Error state */
+.error {
+  & .input {
+    box-shadow: 0 0 0 1px var(--input-next-error-color);
+  }
+
+  & .hint {
+    color: var(--input-next-error-color);
+  }
+}

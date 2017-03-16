@@ -1,0 +1,91 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+@import '../../styles/variables.css';
+
+:root {
+  --button-next-background-color: #705eff;
+  --button-next-hover-background-color: #9b40ff;
+  --button-next-border-radius: 50px;
+  --button-next-min-width: 140px;
+}
+
+/* Main */
+.container {
+  all: initial;
+  display: inline-block;
+  box-sizing: border-box;
+  cursor: pointer;
+  user-select: none;
+  transition: all var(--button-transition-duration) ease;
+  text-align: center;
+  border: 0;
+  outline: none;
+  font-family: var(--button-font-family);
+  font-weight: var(--button-font-weight);
+  box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.15);
+  background-color: var(--button-next-background-color);
+  color: white;
+  min-width: var(--button-next-min-width);
+
+  &:hover,
+  &:focus {
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.25);
+    background-color: var(--button-next-hover-background-color);
+  }
+  &:active {
+    background-color: var(--button-next-hover-background-color);
+    box-shadow: 0 5px 15px -2px rgba(0, 0, 0, 0.3);
+  }
+
+  &[disabled] {
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.15);
+    background-color: var(--button-next-background-color);
+    color: white;
+    opacity: .8;
+    cursor: not-allowed;
+  }
+}
+
+.wide {
+  width: 100%;
+}
+
+.loading {
+}
+
+.spinner {
+  stroke: white;
+}
+
+.rounded {
+  border-radius: var(--button-next-border-radius);
+}
+
+/* Sizes */
+.small {
+  padding-top: calc(var(--button-padding-top) * (1 - var(--button-size-modifier)));
+  padding-right: calc(var(--button-padding-right) * (1 - var(--button-size-modifier)));
+  padding-bottom: calc(var(--button-padding-bottom) * (1 - var(--button-size-modifier)));
+  padding-left: calc(var(--button-padding-left) * (1 - var(--button-size-modifier)));
+  font-size: calc(var(--button-font-size) * (1 - var(--button-size-modifier)));
+  line-height: calc(var(--button-line-height) * (1 - var(--button-size-modifier)));
+}
+
+.normal {
+  padding-top: var(--button-padding-top);
+  padding-right: var(--button-padding-right);
+  padding-bottom: var(--button-padding-bottom);
+  padding-left: var(--button-padding-left);
+  font-size: var(--button-font-size);
+  line-height: var(--button-line-height);
+}
+
+.large {
+  padding-top: calc(var(--button-padding-top) * (1 + var(--button-size-modifier)));
+  padding-right: calc(var(--button-padding-right) * (1 + var(--button-size-modifier)));
+  padding-bottom: calc(var(--button-padding-bottom) * (1 + var(--button-size-modifier)));
+  padding-left: calc(var(--button-padding-left) * (1 + var(--button-size-modifier)));
+  font-size: calc(var(--button-font-size) * (1 + var(--button-size-modifier)));
+  line-height: calc(var(--button-line-height) * (1 + var(--button-size-modifier)));
+}

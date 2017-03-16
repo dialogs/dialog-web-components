@@ -43,24 +43,17 @@ class AuthForm extends PureComponent {
     isGenderEnabled: true
   };
 
-  constructor(props) {
-    super(props);
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleChange(value, { target }) {
+  handleChange = (value, { target }) => {
     this.props.onChange({
       ...this.props.value,
       [target.name]: value
     });
-  }
+  };
 
-  handleSubmit(event) {
+  handleSubmit = (event) => {
     event.preventDefault();
     this.props.onSubmit(this.props.value);
-  }
+  };
 
   isLoading() {
     switch (this.props.step) {
@@ -119,9 +112,13 @@ class AuthForm extends PureComponent {
           onChange={this.handleChange}
         />
         {
-          step >= LOGIN_SENT
-            ? <span className={styles.retry} onClick={this.props.onRetry}>Wrong?</span>
-            : null
+          step >= LOGIN_SENT && step <= CODE_REQUESTED ? (
+            <Text
+              id="AuthForm.wrong"
+              onClick={this.props.onRetry}
+              className={styles.retry}
+            />
+          ) : null
         }
       </div>
     );

@@ -29,11 +29,16 @@ module.exports = {
       resolve('node_modules/@dlghq/markdown'),
       resolve('node_modules/@dlghq/react-l10n'),
       resolve('node_modules/@dlghq/dialog-types'),
-      resolve('node_modules/@dlghq/dialog-utils')
+      resolve('node_modules/@dlghq/dialog-utils'),
+      resolve('node_modules/@dlghq/country-codes')
     ];
 
     config.entry.push(
       resolve('src/styles/styleguide.css')
+    );
+
+    config.entry.push(
+      resolve('src/styles/global.css')
     );
 
     config.resolve.alias['rsg-components/Wrapper'] = resolve('src/styleguide/Wrapper.js');
@@ -55,7 +60,33 @@ module.exports = {
       }
     }, {
       test: /\.css$/,
+      use: [
+        'style-loader',
+        {
+          loader: 'css-loader',
+          options: {
+            modules: false,
+            importLoaders: 1
+          }
+        },
+        {
+          loader: 'postcss-loader',
+          options: {
+            plugins() {
+              return require('@dlghq/postcss-dialog')({ initial: false });
+            }
+          }
+        }
+      ],
+      include: [
+        resolve('src/styles/global.css')
+      ]
+    }, {
+      test: /\.css$/,
       include: whitelist,
+      exclude: [
+        resolve('src/styles/global.css')
+      ],
       use: [
         'style-loader',
         {
@@ -81,19 +112,19 @@ module.exports = {
         ...whitelist,
         path.join(__dirname, 'node_modules/entities')
       ],
-      loader: 'json-loader'
+      use: ['json-loader']
     }, {
       test: /\.yml$/,
       include: whitelist,
-      loader: 'yml-loader'
+      use: ['yml-loader']
     }, {
       test: /\.(jpg|png|svg|gif)$/,
       include: /./,
-      loader: 'file-loader'
+      use: ['file-loader']
     }, {
       test: /\.txt$/,
       include: whitelist,
-      loader: 'raw-loader'
+      use: ['raw-loader']
     });
 
     return config;
