@@ -1,6 +1,3 @@
 ```
-<div>
-  <ToolbarInfoButton active={false} onClick={() => {}} />
-  <ToolbarInfoButton active onClick={() => {}} />
-</div>
+<ToolbarInfoButton active={state.value} onClick={() => setState({ value: !state.value })} />
 ```
