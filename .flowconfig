@@ -32,6 +32,7 @@ module.file_ext=.js
 module.name_mapper='.*\.css$' -> 'CSSModule'
 module.name_mapper='.*\.mp3$' -> 'AssetModule'
 module.name_mapper='.*\.png$' -> 'AssetModule'
+module.name_mapper='.*\.svg$' -> 'AssetModule'
 
 suppress_type=$FlowIssue
 suppress_comment= \\(.\\|\n\\)*\\$FlowFixMe

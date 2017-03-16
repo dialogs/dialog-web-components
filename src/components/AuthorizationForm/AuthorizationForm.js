@@ -36,16 +36,14 @@ export type Props = {
   error: ?AuthError,
   autoFocus?: boolean,
   isGenderEnabled: boolean,
-  onChange: (value : AuthValue) => any,
-  onSubmit: (value : AuthValue) => any,
+  onChange: (value: AuthValue) => any,
+  onSubmit: (value: AuthValue) => any,
   onRetry: () => any,
   onCodeResend: () => any
 };
 
-export type LoginType = 'phone' | 'email';
-
 export type State = {
-  loginType: LoginType,
+  loginType: string,
   country: ?Country,
   isCodeResendRequested: boolean,
   resendTimeout: number
