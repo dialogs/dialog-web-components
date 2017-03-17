@@ -6,3 +6,7 @@ password: Пароль
 sign_in: Авторизоваться
 wrong: Ошиблись?
 success: Успешно
+
+errors:
+  SHORTNAME_INVALID: Невалидный логин.
+  PASSWORD_INVALID: Неправильный логин или пароль.

@@ -20,7 +20,7 @@ type Props = {
   id: string,
   className?: string,
   value: AuthValue,
-  error: ?AuthError,
+  errors: { [field: string]: AuthError },
   pending: boolean,
   onChange: (value: AuthValue) => any,
   onSubmit: (value: AuthValue) => any
@@ -45,12 +45,12 @@ class UserNameAuthForm extends PureComponent {
     this.props.onSubmit(this.props.value);
   };
 
-  getInputState(): ?{ hint: string, status: 'error' } {
-    const { error } = this.props;
-
-    if (error) {
+  getInputState(field: string): ?{ hint: string, status: 'error' } {
+    const { errors } = this.props;
+    if (errors[field]) {
+      const error = errors[field];
       return {
-        hint: error.message,
+        hint: `UserNameAuthForm.errors.${error.tag}`,
         status: 'error'
       };
     }
@@ -66,7 +66,7 @@ class UserNameAuthForm extends PureComponent {
       <form className={className} id={id} autoComplete="off" onSubmit={this.handleSubmit}>
         <div className={styles.inputWrapper}>
           <InputNext
-            {...this.getInputState()}
+            {...this.getInputState('login')}
             className={styles.input}
             name="login"
             id={`${id}_login`}
@@ -79,7 +79,7 @@ class UserNameAuthForm extends PureComponent {
         </div>
         <div className={styles.inputWrapper}>
           <InputNext
-            {...this.getInputState()}
+            {...this.getInputState('password')}
             className={styles.input}
             name="password"
             id={`${id}_pass`}

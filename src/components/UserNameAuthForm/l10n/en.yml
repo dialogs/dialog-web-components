@@ -6,3 +6,7 @@ password: Password
 sign_in: Sign in
 wrong: Wrong?
 success: Success
+
+errors:
+  SHORTNAME_INVALID: Incorrect username
+  PASSWORD_INVALID: Wrong username or password
