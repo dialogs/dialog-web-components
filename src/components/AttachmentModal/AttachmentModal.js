@@ -72,7 +72,7 @@ class AttachmentModal extends PureComponent {
           onClick={this.handlePrevious}
         />
         <span className={styles.paginationNumbers}>
-          {current + 1} / {attachments.length}
+          {`${current + 1} / ${attachments.length}`}
         </span>
         <Icon
           className={styles.paginationArrow}
