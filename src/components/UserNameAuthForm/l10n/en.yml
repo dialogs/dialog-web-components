@@ -1,7 +1,7 @@
 endpoint: Address
 change_endpoint: Change endpoint
 save_endpoint: Change endpoint
-login: Login
+login: Username
 password: Password
 sign_in: Sign in
 wrong: Wrong?
