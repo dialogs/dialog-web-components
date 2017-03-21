@@ -5,3 +5,5 @@ export const CODE_SENT = 4;
 export const SIGNUP_STARTED = 5;
 export const NAME_SENT = 6;
 export const AUTH_FINISHED = 7;
+
+export const RESEND_TIMEOUT = 120;

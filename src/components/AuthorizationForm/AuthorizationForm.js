@@ -4,53 +4,22 @@
  */
 /* eslint max-lines: ["error", 500] */
 
-import type { AuthError } from '@dlghq/dialog-types';
 import type { Country } from '../CountryCodeSelector/types';
+import type { Props, State, InputState } from './types';
 import React, { PureComponent } from 'react';
 import { Text } from '@dlghq/react-l10n';
 import classNames from 'classnames';
 import ButtonNext from '../ButtonNext/ButtonNext';
 import CountryCodeSelector from '../CountryCodeSelector/CountryCodeSelector';
 import InputNext from '../InputNext/InputNext';
-import Radio from '../Radio/Radio';
-import RadioGroup from '../Radio/RadioGroup';
 import GenderSelect from '../GenderSelect/GenderSelect';
+import LoginTypeSelector from './LoginTypeSelector';
+import getHumanTime from '../../utils/getHumanTime';
 import {
-  AUTH_STARTED, LOGIN_SENT, CODE_REQUESTED, CODE_SENT, SIGNUP_STARTED, NAME_SENT, AUTH_FINISHED
+  AUTH_STARTED, LOGIN_SENT, CODE_REQUESTED, CODE_SENT, SIGNUP_STARTED, NAME_SENT, AUTH_FINISHED,
+  RESEND_TIMEOUT
 } from './constants';
 import styles from './AuthorizationForm.css';
-import getHumanTime from '../../utils/getHumanTime';
-
-export type AuthValue = {
-  login: string,
-  code: string,
-  name: string,
-  gender: string
-};
-
-export type Props = {
-  id: string,
-  className?: string,
-  step: 1 | 2 | 3 | 4 | 5 | 6 | 7,
-  value: AuthValue,
-  error: ?AuthError,
-  autoFocus?: boolean,
-  isGenderEnabled: boolean,
-  onChange: (value: AuthValue) => any,
-  onSubmit: (value: AuthValue) => any,
-  onRetry: () => any,
-  onResendCode: () => any
-};
-
-export type State = {
-  loginType: string,
-  country: ?Country,
-  isCodeResendRequested: boolean,
-  resendTimeout: number,
-  lastLogin: string
-};
-
-const RESEND_TIMEOUT = 120;
 
 class AuthorizationForm extends PureComponent {
   props: Props;
@@ -60,23 +29,21 @@ class AuthorizationForm extends PureComponent {
 
   static defaultProps = {
     id: 'form_login',
-    isGenderEnabled: true
+    isGenderEnabled: true,
+    allowed: ['phone', 'email']
   };
 
   constructor(props: Props) {
     super(props);
 
     this.state = {
-      loginType: 'phone',
-      country: null,
       isCodeResendRequested: false,
-      resendTimeout: RESEND_TIMEOUT,
-      lastLogin: ''
+      resendTimeout: RESEND_TIMEOUT
     };
   }
 
   componentWillReceiveProps(nextProps: Props): void {
-    if (nextProps.step > CODE_REQUESTED && nextProps.step < CODE_SENT) {
+    if (nextProps.step < CODE_REQUESTED || nextProps.step > CODE_SENT) {
       this.handleIntervalClear();
     }
   }
@@ -89,6 +56,13 @@ class AuthorizationForm extends PureComponent {
     this.props.onChange({
       ...this.props.value,
       [target.name]: value
+    }, this.props.info);
+  };
+
+  handleInfoChange = (value: any, { target }: $FlowIssue) => {
+    this.props.onChange(this.props.value, {
+      ...this.props.info,
+      [target.name]: value
     });
   };
 
@@ -98,27 +72,14 @@ class AuthorizationForm extends PureComponent {
   };
 
   handleCountryChange = (country: Country): void => {
-    this.setState({ country });
     this.props.onChange({
       ...this.props.value,
-      login: country.code
-    });
+      country
+    }, this.props.info);
 
     if (this.phoneInput) {
       this.phoneInput.focus();
     }
-  };
-
-  handleLoginTypeChange = (type: string): void => {
-    this.props.onChange({
-      ...this.props.value,
-      login: this.state.lastLogin
-    });
-
-    this.setState({
-      loginType: type,
-      lastLogin: this.props.value.login
-    });
   };
 
   handleCodeResend = (): void => {
@@ -158,12 +119,13 @@ class AuthorizationForm extends PureComponent {
     }
   }
 
-  getInputState(): ?{ hint: string, status: 'error' } {
-    const { error } = this.props;
+  getInputState(field: string): ?InputState {
+    const { errors } = this.props;
 
-    if (error) {
+    if (errors[field]) {
+      const error = errors[field];
       return {
-        hint: error.message,
+        hint: `AuthorizationForm.errors.${error.tag}`,
         status: 'error'
       };
     }
@@ -198,9 +160,9 @@ class AuthorizationForm extends PureComponent {
 
     return (
       <CountryCodeSelector
-        label="Choose country"
+        label="AuthorizationForm.choose_country"
         onChange={this.handleCountryChange}
-        value={this.state.country}
+        value={this.props.value.country}
         className={styles.input}
         disabled={step >= LOGIN_SENT}
       />
@@ -213,14 +175,14 @@ class AuthorizationForm extends PureComponent {
     return (
       <div className={styles.inputWrapper}>
         <InputNext
-          {...this.getInputState()}
+          {...this.getInputState('login')}
           className={styles.input}
-          name="login"
+          name="phone"
           id={`${id}_login`}
           type="tel"
           ref={this.setPhoneInput}
           label="AuthorizationForm.phone"
-          value={this.props.value.login}
+          value={this.props.value.phone}
           disabled={step >= LOGIN_SENT}
           onChange={this.handleChange}
         />
@@ -235,17 +197,18 @@ class AuthorizationForm extends PureComponent {
     return (
       <div className={styles.inputWrapper}>
         <InputNext
-          {...this.getInputState()}
+          {...this.getInputState('login')}
           className={styles.input}
-          name="login"
+          name="email"
           id={`${id}_login`}
           type="email"
           label="AuthorizationForm.email"
-          value={this.props.value.login}
+          value={this.props.value.email}
           disabled={step >= LOGIN_SENT}
           onChange={this.handleChange}
           autoFocus={this.props.autoFocus}
         />
+        {this.renderRetry()}
       </div>
     );
   }
@@ -256,7 +219,7 @@ class AuthorizationForm extends PureComponent {
     if (step >= LOGIN_SENT && step <= CODE_REQUESTED) {
       return (
         <Text
-          id="AuthForm.wrong"
+          id="AuthorizationForm.wrong"
           onClick={this.props.onRetry}
           className={styles.retry}
           tagName="a"
@@ -269,6 +232,10 @@ class AuthorizationForm extends PureComponent {
 
   renderResendCode(): ?React.Element<any> {
     const { isCodeResendRequested, resendTimeout } = this.state;
+
+    if (this.props.value.type !== 'phone') {
+      return null;
+    }
 
     if (isCodeResendRequested) {
       return (
@@ -296,7 +263,7 @@ class AuthorizationForm extends PureComponent {
     return (
       <div className={styles.inputWrapper}>
         <InputNext
-          {...this.getInputState()}
+          {...this.getInputState('code')}
           className={styles.input}
           name="code"
           id={`${id}_code`}
@@ -316,13 +283,13 @@ class AuthorizationForm extends PureComponent {
 
     return (
       <InputNext
-        {...this.getInputState()}
+        {...this.getInputState('name')}
         name="name"
         id={`${id}_name`}
         label="AuthorizationForm.name"
-        value={this.props.value.name}
+        value={this.props.info.name}
         disabled={step >= NAME_SENT}
-        onChange={this.handleChange}
+        onChange={this.handleInfoChange}
         autoFocus={this.props.autoFocus}
       />
     );
@@ -340,9 +307,10 @@ class AuthorizationForm extends PureComponent {
         className={styles.input}
         name="gender"
         id={`${id}_gender`}
-        label="AuthForm.gender"
-        value={this.props.value.gender}
-        onChange={this.handleChange}
+        label="AuthorizationForm.gender"
+        value={this.props.info.gender}
+        disabled={step >= NAME_SENT}
+        onChange={this.handleInfoChange}
       />
     );
   }
@@ -365,46 +333,53 @@ class AuthorizationForm extends PureComponent {
   }
 
   renderLogin(): ?React.Element<any> {
-    const { loginType } = this.state;
+    const { value: { type } } = this.props;
 
-    switch (loginType) {
+    switch (type) {
       case 'phone':
         return this.renderPhoneLogin();
       case 'email':
         return this.renderEmailLogin();
       default:
+        console.error('This form doesn\'t support this type of login "%s"', type);
         return null;
     }
   }
 
   renderLoginStep(): React.Element<any> {
-    const { loginType } = this.state;
+    const { allowed, value: { type } } = this.props;
 
     return (
       <div key="login" className={styles.stepWrapper}>
-        <RadioGroup name="login_type" value={loginType} onChange={this.handleLoginTypeChange}>
-          <Radio value="phone" className={styles.type}>
-            Phone
-          </Radio>
-          <Radio value="email" className={styles.type}>
-            Email
-          </Radio>
-        </RadioGroup>
+        {allowed.length > 1 ? (
+          <LoginTypeSelector
+            allowed={allowed}
+            type={type}
+            onTypeChange={this.props.onTypeChange}
+          />
+        ) : null}
         {this.renderLogin()}
       </div>
     );
   }
 
+  renderInputByType(type) {
+    switch (type) {
+      case 'phone':
+        return this.renderPhoneInput();
+      case 'email':
+        return this.renderEmailInput();
+      default:
+        return null;
+    }
+  }
+
   renderCodeStep(): React.Element<any> {
-    const { loginType } = this.state;
+    const { value: { type } } = this.props;
 
     return (
       <div className={styles.stepWrapper} key="code">
-        {
-          loginType === 'phone'
-            ? this.renderPhoneInput()
-            : this.renderEmailInput()
-        }
+        {this.renderInputByType(type)}
         {this.renderCodeInput()}
         {this.renderResendCode()}
       </div>
@@ -439,7 +414,6 @@ class AuthorizationForm extends PureComponent {
   }
 
   render() {
-    console.debug(this.props)
     const { id } = this.props;
     const className = classNames(styles.container, this.props.className);
 
