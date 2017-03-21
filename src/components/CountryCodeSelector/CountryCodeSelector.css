@@ -134,7 +134,7 @@
   color: var(--country-code-selector-label-color);
   font-size: var(--default-font-size);
   display: inline-block;
-  line-height: 32px;
+  line-height: 30px;
   @apply --no-select;
 }
 
