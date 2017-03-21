@@ -46,7 +46,8 @@ export type State = {
   loginType: string,
   country: ?Country,
   isCodeResendRequested: boolean,
-  resendTimeout: number
+  resendTimeout: number,
+  lastLogin: string
 };
 
 const RESEND_TIMEOUT = 120;
@@ -69,7 +70,8 @@ class AuthorizationForm extends PureComponent {
       loginType: 'phone',
       country: null,
       isCodeResendRequested: false,
-      resendTimeout: RESEND_TIMEOUT
+      resendTimeout: RESEND_TIMEOUT,
+      lastLogin: ''
     };
   }
 
@@ -108,7 +110,15 @@ class AuthorizationForm extends PureComponent {
   };
 
   handleLoginTypeChange = (type: string): void => {
-    this.setState({ loginType: type });
+    this.props.onChange({
+      ...this.props.value,
+      login: this.state.lastLogin
+    });
+
+    this.setState({
+      loginType: type,
+      lastLogin: this.props.value.login
+    });
   };
 
   handleCodeResend = (): void => {
@@ -429,6 +439,7 @@ class AuthorizationForm extends PureComponent {
   }
 
   render() {
+    console.debug(this.props)
     const { id } = this.props;
     const className = classNames(styles.container, this.props.className);
 
