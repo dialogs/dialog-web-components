@@ -39,7 +39,7 @@ export type Props = {
   onChange: (value: AuthValue) => any,
   onSubmit: (value: AuthValue) => any,
   onRetry: () => any,
-  onCodeResend: () => any
+  onResendCode: () => any
 };
 
 export type State = {
@@ -72,6 +72,12 @@ class AuthorizationForm extends PureComponent {
     };
   }
 
+  componentWillReceiveProps(nextProps: Props): void {
+    if (nextProps.step > CODE_REQUESTED && nextProps.step < CODE_SENT) {
+      this.handleIntervalClear();
+    }
+  }
+
   componentWillUnmount() {
     this.handleIntervalClear();
   }
@@ -101,7 +107,7 @@ class AuthorizationForm extends PureComponent {
   };
 
   handleCodeResend = (): void => {
-    this.props.onCodeResend();
+    this.props.onResendCode();
     this.setState({ isCodeResendRequested: true });
     this.interval = setInterval(this.handleIntervalUpdate, 1000);
   };
@@ -250,7 +256,6 @@ class AuthorizationForm extends PureComponent {
         <Text
           className={styles.resendTimer}
           id="AuthorizationForm.code_arrive"
-          onClick={this.handleCodeResend}
           values={{ time: getHumanTime(resendTimeout * 1000) }}
         />
       );
