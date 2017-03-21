@@ -1,5 +1,7 @@
-calling_in: вызов
-calling_out: звонит вам
-connecting: соединение
-ended: завершен
+connecting_to_server: Ожидание сети…
+connecting_to_peer: вызов
+ringing_incoming: входящий звонок
+ringing_outgoing: исходящий звонок
+connecting: подключение…
+ended: вызов завершён
 unknown: неизвестно

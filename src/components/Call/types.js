@@ -42,15 +42,13 @@ export type CallInfoProps = {
 
 export type CallInfoStateProps = {
   state: CallState,
-  duration: number,
-  isOutgoing: boolean
+  duration: number
 };
 
 export type CallControlsProps = {
   state: CallState,
   small: boolean,
   isMuted: boolean,
-  isOutgoing: boolean,
   onEnd: () => void,
   onAnswer: () => void,
   onSizeToggle: () => void,

@@ -10,14 +10,13 @@ const initialState = {
 };
 
 const call = {
-  state: 'calling',
+  state: 'ringing_outgoing',
   peer: {
     id: 1,
     type: 'user'
   },
   members: [],
-  isMuted: false,
-  isOutgoing: false
+  isMuted: false
 };
 
 const caller = {

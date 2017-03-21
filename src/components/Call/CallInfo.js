@@ -23,7 +23,6 @@ function CallInfo(props: CallInfoProps): React.Element<any> {
         <CallInfoState
           state={props.call.state}
           duration={props.duration}
-          isOutgoing={props.call.isOutgoing}
         />
       </div>
     </div>

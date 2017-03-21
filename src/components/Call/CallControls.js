@@ -27,8 +27,7 @@ function CallControls(props: CallControlsProps): React.Element<any> {
     />
   );
 
-  // incomming
-  if (!props.isOutgoing && props.state === 'calling') {
+  if (props.state === 'ringing_incoming') {
     buttons.push(
       <IconButton
         flat

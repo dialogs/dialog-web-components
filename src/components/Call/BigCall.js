@@ -30,7 +30,6 @@ function BigCall(props: CallProps) {
           small={false}
           state={props.call.state}
           isMuted={props.call.isMuted}
-          isOutgoing={props.call.isOutgoing}
           onEnd={props.onEnd}
           onAnswer={props.onAnswer}
           onSizeToggle={props.onSizeToggle}

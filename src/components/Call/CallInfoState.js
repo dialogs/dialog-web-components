@@ -10,37 +10,22 @@ import { formatTime } from '@dlghq/dialog-utils';
 
 function CallInfoState(props: CallInfoStateProps): React.Element<any> {
   switch (props.state) {
-    case 'calling':
-      if (props.isOutgoing) {
-        return (
-          <Text id="Call.calling_in" />
-        );
-      }
-
-      return (
-        <Text id="Call.calling_out" />
-      );
-
+    case 'connecting_to_server':
+    case 'connecting_to_peer':
+    case 'ringing_outgoing':
+    case 'ringing_incoming':
     case 'connecting':
+    case 'ended':
       return (
-        <Text id="Call.connecting" />
+        <Text id={`Call.${props.state}`} />
       );
 
     case 'in_progress':
       return (
-        <span>
-          {formatTime(props.duration)}
-        </span>
-      );
-
-    case 'ended':
-      return (
-        <Text id="Call.ended" />
+        <span>{formatTime(props.duration)}</span>
       );
 
     default:
-      // eslint-disable-next-line
-      (props.state: null);
       return (
         <Text id="Call.unknown" />
       );

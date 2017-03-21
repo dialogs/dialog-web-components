@@ -1,5 +1,7 @@
-calling_in: calling
-calling_out: calling you
-connecting: connecting
-ended: ended
+connecting_to_server: waiting for network…
+connecting_to_peer: dialing…
+ringing_incoming: incoming call
+ringing_outgoing: ringing
+connecting: connecting…
+ended: call ended
 unknown: unknown
