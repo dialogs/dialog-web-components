@@ -55,6 +55,7 @@ class AuthorizationForm extends PureComponent {
   props: Props;
   state: State;
   interval: ?number;
+  phoneInput: ?InputNext;
 
   static defaultProps = {
     id: 'form_login',
@@ -100,6 +101,10 @@ class AuthorizationForm extends PureComponent {
       ...this.props.value,
       login: country.code
     });
+
+    if (this.phoneInput) {
+      this.phoneInput.focus();
+    }
   };
 
   handleLoginTypeChange = (type: string): void => {
@@ -156,6 +161,10 @@ class AuthorizationForm extends PureComponent {
     return null;
   }
 
+  setPhoneInput = (input: InputNext): void => {
+    this.phoneInput = input;
+  };
+
   renderButtonText(): React.Element<any> {
     const { step } = this.props;
 
@@ -199,10 +208,10 @@ class AuthorizationForm extends PureComponent {
           name="login"
           id={`${id}_login`}
           type="tel"
+          ref={this.setPhoneInput}
           label="AuthorizationForm.phone"
           value={this.props.value.login}
           disabled={step >= LOGIN_SENT}
-          autoFocus={this.props.autoFocus}
           onChange={this.handleChange}
         />
         {this.renderRetry()}
