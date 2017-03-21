@@ -36,10 +36,10 @@
 
 .retry {
   position: absolute;
+  top: 43px;
   right: var(--default-padding);
-  line-height: 30px;
-  bottom: 13px;
   cursor: pointer;
+  line-height: 30px;
   color: var(--color-primary);
 }
 
