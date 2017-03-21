@@ -92,6 +92,7 @@
     &-placeholder {
       line-height: var(--country-code-selector-height);
       padding: 0 var(--default-padding);
+      user-select: none;
     }
 
     &-arrow-zone {

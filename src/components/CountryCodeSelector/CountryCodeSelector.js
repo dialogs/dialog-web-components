@@ -4,7 +4,7 @@
  */
 
 import type { Props, Country, Context } from './types';
-import { LocalizationContextType } from '@dlghq/react-l10n';
+import { LocalizationContextType, Text } from '@dlghq/react-l10n';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import Select from 'react-select';
@@ -46,7 +46,7 @@ class CountryCodeSelector extends PureComponent {
     }
 
     return (
-      <span className={styles.label}>{label}</span>
+      <Text className={styles.label} id={label} />
     );
   }
 
