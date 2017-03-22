@@ -20,7 +20,6 @@ export type PhoneValue = {
     code: string,
     country: ?Country,
     phone: string,
-    country: string
   }
 };
 
@@ -49,7 +48,7 @@ export type Props = {
   id: string,
   className?: string,
   step: 1 | 2 | 3 | 4 | 5 | 6 | 7,
-  value: EmailValue | PhoneValue | UserNameValue,
+  value: AuthValue,
   info: SignupInfo,
   errors: { [field: string]: AuthError },
   allowed: AuthType[],

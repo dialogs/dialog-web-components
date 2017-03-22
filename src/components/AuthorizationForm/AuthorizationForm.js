@@ -5,7 +5,7 @@
 /* eslint max-lines: ["error", 500] */
 
 import type { Country } from '../CountryCodeSelector/types';
-import type { Props, State, InputState } from './types';
+import type { Props, State, InputState, AuthType } from './types';
 import React, { PureComponent } from 'react';
 import { Text } from '@dlghq/react-l10n';
 import classNames from 'classnames';
@@ -54,8 +54,11 @@ class AuthorizationForm extends PureComponent {
 
   handleChange = (value: any, { target }: $FlowIssue) => {
     this.props.onChange({
-      ...this.props.value,
-      [target.name]: value
+      type: this.props.value.type,
+      credentials: {
+        ...this.props.value.credentials,
+        [target.name]: value
+      }
     }, this.props.info);
   };
 
@@ -73,8 +76,11 @@ class AuthorizationForm extends PureComponent {
 
   handleCountryChange = (country: Country): void => {
     this.props.onChange({
-      ...this.props.value,
-      country
+      type: this.props.value.type,
+      credentials: {
+        ...this.props.value.credentials,
+        country
+      }
     }, this.props.info);
 
     if (this.phoneInput) {
@@ -83,9 +89,9 @@ class AuthorizationForm extends PureComponent {
   };
 
   handleCodeResend = (): void => {
-    this.props.onResendCode();
     this.setState({ isCodeResendRequested: true });
     this.interval = setInterval(this.handleIntervalUpdate, 1000);
+    this.props.onResendCode();
   };
 
   handleIntervalUpdate = (): void => {
@@ -155,14 +161,18 @@ class AuthorizationForm extends PureComponent {
     return <Text id="AuthorizationForm.success" />;
   }
 
-  renderCountrySelector(): React.Element<any> {
+  renderCountrySelector(): ?React.Element<any> {
     const { step } = this.props;
+
+    if (this.props.value.type !== 'phone') {
+      return null;
+    }
 
     return (
       <CountryCodeSelector
         label="AuthorizationForm.choose_country"
         onChange={this.handleCountryChange}
-        value={this.props.value.country}
+        value={this.props.value.credentials.country}
         className={styles.input}
         disabled={step >= LOGIN_SENT}
       />
@@ -182,7 +192,7 @@ class AuthorizationForm extends PureComponent {
           type="tel"
           ref={this.setPhoneInput}
           label="AuthorizationForm.phone"
-          value={this.props.value.phone}
+          value={this.props.value.credentials.phone}
           disabled={step >= LOGIN_SENT}
           onChange={this.handleChange}
         />
@@ -191,8 +201,12 @@ class AuthorizationForm extends PureComponent {
     );
   }
 
-  renderEmailInput(): React.Element<any> {
+  renderEmailInput(): ?React.Element<any> {
     const { step, id } = this.props;
+
+    if (this.props.value.type !== 'email') {
+      return null;
+    }
 
     return (
       <div className={styles.inputWrapper}>
@@ -203,7 +217,7 @@ class AuthorizationForm extends PureComponent {
           id={`${id}_login`}
           type="email"
           label="AuthorizationForm.email"
-          value={this.props.value.email}
+          value={this.props.value.credentials.email}
           disabled={step >= LOGIN_SENT}
           onChange={this.handleChange}
           autoFocus={this.props.autoFocus}
@@ -269,7 +283,7 @@ class AuthorizationForm extends PureComponent {
           id={`${id}_code`}
           type="text"
           label="AuthorizationForm.code"
-          value={this.props.value.code}
+          value={this.props.value.credentials.code}
           disabled={step >= CODE_SENT}
           onChange={this.handleChange}
           autoFocus={this.props.autoFocus}
@@ -363,7 +377,7 @@ class AuthorizationForm extends PureComponent {
     );
   }
 
-  renderInputByType(type) {
+  renderInputByType(type: AuthType) {
     switch (type) {
       case 'phone':
         return this.renderPhoneInput();

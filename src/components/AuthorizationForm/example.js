@@ -9,14 +9,24 @@ import {
   AUTH_FINISHED
 } from './constants';
 
+const defaultAuthCredentials = {
+  email: {
+    code: '',
+    email: ''
+  },
+  phone: {
+    code: '',
+    country: null,
+    phone: ''
+  }
+};
+
 class ExampleAuthForm extends Component {
   static initialState = {
     step: AUTH_STARTED,
     value: {
-      type: 'phone',
-      country: null,
-      phone: '',
-      code: ''
+      type: 'email',
+      credentials: defaultAuthCredentials.email
     },
     info: {
       name: '',
@@ -63,8 +73,8 @@ class ExampleAuthForm extends Component {
   handleTypeChange = (type) => {
     this.setState({
       value: {
-        ...this.state.value,
-        type
+        type,
+        credentials: defaultAuthCredentials[type]
       }
     });
   };
