@@ -50,7 +50,7 @@ export type Props = {
   step: 1 | 2 | 3 | 4 | 5 | 6 | 7,
   value: AuthValue,
   info: SignupInfo,
-  errors: { [field: string]: AuthError },
+  errors: ?{ [field: string]: AuthError },
   allowed: AuthType[],
   autoFocus?: boolean,
   isGenderEnabled: boolean,
