@@ -3,7 +3,7 @@
  * @flow
  */
 
-import type { Props } from './types';
+import type { Props, AuthValue, SignupInfo } from './types';
 import React, { PureComponent } from 'react';
 import { Text } from '@dlghq/react-l10n';
 import classNames from 'classnames';
@@ -24,11 +24,11 @@ class AuthorizationForm extends PureComponent {
     allowed: ['phone', 'email']
   };
 
-  handleChange = (value: any) => {
+  handleChange = (value: AuthValue) => {
     this.props.onChange(value, this.props.info);
   };
 
-  handleInfoChange = (info) => {
+  handleInfoChange = (info: SignupInfo) => {
     this.props.onChange(this.props.value, info);
   };
 

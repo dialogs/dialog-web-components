@@ -13,7 +13,7 @@ import styles from './AuthorizationForm.css';
 export type Props = {
   type: AuthType,
   allowed: AuthType[],
-  onTypeChange: (type: AuthType) => any
+  onTypeChange: (type: string) => any
 };
 
 class LoginTypeSelector extends PureComponent {

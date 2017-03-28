@@ -3,7 +3,8 @@
  * @flow
  */
 
-import type { PhoneValue, AuthError, InputState } from './types';
+import type { AuthError } from '@dlghq/dialog-types';
+import type { PhoneValue, InputState } from './types';
 import type { Country } from '../CountryCodeSelector/types';
 import React, { PureComponent } from 'react';
 import { Text } from '@dlghq/react-l10n';
@@ -116,7 +117,7 @@ class AuthorizationPhoneLogin extends PureComponent {
   getInputState(field: string): ?InputState {
     const { errors } = this.props;
 
-    if (errors[field]) {
+    if (errors && errors[field]) {
       const error = errors[field];
       return {
         hint: `AuthorizationForm.errors.${error.tag}`,
@@ -144,6 +145,7 @@ class AuthorizationPhoneLogin extends PureComponent {
           label="AuthorizationForm.choose_country"
           onChange={this.handleCountryChange}
           value={this.props.value.credentials.country}
+          disabled={step >= LOGIN_SENT}
           className={styles.input}
         />
       </div>
@@ -167,7 +169,7 @@ class AuthorizationPhoneLogin extends PureComponent {
     );
   }
 
-  renderResendCode(): React.Element<any> {
+  renderResendCode(): ?React.Element<any> {
     const { step } = this.props;
     const { isCodeResendRequested, resendTimeout } = this.state;
 

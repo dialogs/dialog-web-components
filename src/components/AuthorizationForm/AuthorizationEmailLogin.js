@@ -3,7 +3,8 @@
  * @flow
  */
 
-import type { EmailValue, AuthError, InputState } from './types';
+import type { AuthError } from '@dlghq/dialog-types';
+import type { EmailValue, InputState } from './types';
 import React, { PureComponent } from 'react';
 import { Text } from '@dlghq/react-l10n';
 import InputNext from '../InputNext/InputNext';
@@ -38,7 +39,7 @@ class AuthorizationEmailLogin extends PureComponent {
   getInputState(field: string): ?InputState {
     const { errors } = this.props;
 
-    if (errors[field]) {
+    if (errors && errors[field]) {
       const error = errors[field];
       return {
         hint: `AuthorizationForm.errors.${error.tag}`,

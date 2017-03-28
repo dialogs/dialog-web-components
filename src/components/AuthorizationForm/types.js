@@ -55,7 +55,7 @@ export type Props = {
   autoFocus?: boolean,
   isGenderEnabled: boolean,
   onChange: (value: AuthValue, info: SignupInfo) => any,
-  onTypeChange: (type: AuthType) => any,
+  onTypeChange: (type: string) => any,
   onSubmit: (value: AuthValue) => any,
   onRetry: () => any,
   onResendCode: () => any

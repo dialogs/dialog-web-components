@@ -3,7 +3,8 @@
 * @flow
 */
 
-import type { SignupInfo, AuthError, InputState } from './types';
+import type { AuthError } from '@dlghq/dialog-types';
+import type { SignupInfo, InputState } from './types';
 import React, { PureComponent } from 'react';
 import InputNext from '../InputNext/InputNext';
 import GenderSelect from '../GenderSelect/GenderSelect';
@@ -35,7 +36,7 @@ class AuthorizationSignUp extends PureComponent {
   getInputState(field: string): ?InputState {
     const { errors } = this.props;
 
-    if (errors[field]) {
+    if (errors && errors[field]) {
       const error = errors[field];
       return {
         hint: `AuthorizationForm.errors.${error.tag}`,
