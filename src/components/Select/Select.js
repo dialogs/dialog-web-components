@@ -112,7 +112,11 @@ class Select extends PureComponent {
           >
             {this.renderOptions()}
           </select>
-          <Icon glyph="arrow_drop_down" className={styles.arrow} />
+          <Icon
+            size={32}
+            glyph="arrow_drop_down"
+            className={styles.arrow}
+          />
         </div>
       </div>
     );

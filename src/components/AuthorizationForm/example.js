@@ -1,3 +1,4 @@
+import type { AuthValue, SignupInfo } from './types';
 import React, { Component } from 'react';
 import AuthorizationForm from './AuthorizationForm';
 import Button from '../ButtonNext/ButtonNext';
@@ -8,15 +9,30 @@ import {
   AUTH_FINISHED
 } from './constants';
 
+const defaultAuthCredentials = {
+  email: {
+    code: '',
+    email: ''
+  },
+  phone: {
+    code: '',
+    country: null,
+    phone: ''
+  }
+};
+
 class ExampleAuthForm extends Component {
   static initialState = {
     step: AUTH_STARTED,
     value: {
-      login: '',
-      code: '',
+      type: 'email',
+      credentials: defaultAuthCredentials.email
+    },
+    info: {
       name: '',
       gender: 'unknown'
-    }
+    },
+    errors: {}
   };
 
   constructor(props) {
@@ -25,8 +41,8 @@ class ExampleAuthForm extends Component {
     this.state = { ...ExampleAuthForm.initialState };
   }
 
-  handleChange = (value) => {
-    this.setState({ value });
+  handleChange = (value: AuthValue, info: SignupInfo) => {
+    this.setState({ value, info });
   };
 
   handleSubmit = () => {
@@ -54,7 +70,16 @@ class ExampleAuthForm extends Component {
     }
   };
 
-  handleCodeResend = () => {
+  handleTypeChange = (type) => {
+    this.setState({
+      value: {
+        type,
+        credentials: defaultAuthCredentials[type]
+      }
+    });
+  };
+
+  handleResendCode = () => {
     console.debug('Resend code request');
   };
 
@@ -86,10 +111,14 @@ class ExampleAuthForm extends Component {
         <AuthorizationForm
           step={this.state.step}
           value={this.state.value}
+          info={this.state.info}
+          errors={this.state.errors}
           onChange={this.handleChange}
+          allowed={['email', 'phone']}
+          onTypeChange={this.handleTypeChange}
           onSubmit={this.handleSubmit}
           onRetry={this.handleRetry}
-          onCodeResend={this.handleCodeResend}
+          onResendCode={this.handleResendCode}
         />
         {this.renderFinished()}
       </div>

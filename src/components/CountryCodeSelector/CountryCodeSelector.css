@@ -92,6 +92,7 @@
     &-placeholder {
       line-height: var(--country-code-selector-height);
       padding: 0 var(--default-padding);
+      user-select: none;
     }
 
     &-arrow-zone {
@@ -133,7 +134,7 @@
   color: var(--country-code-selector-label-color);
   font-size: var(--default-font-size);
   display: inline-block;
-  line-height: 32px;
+  line-height: 30px;
   @apply --no-select;
 }
 

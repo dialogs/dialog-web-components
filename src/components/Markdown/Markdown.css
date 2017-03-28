@@ -22,6 +22,10 @@
   font-size: 12px;
   font-family: var(--code-font-family);
   line-height: 1.5;
+
+  & code {
+    font-family: var(--code-font-family);
+  }
 }
 
 .paragraph {
