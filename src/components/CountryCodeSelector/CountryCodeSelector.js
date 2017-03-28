@@ -38,6 +38,13 @@ class CountryCodeSelector extends PureComponent {
     });
   }
 
+  componentWillMount() {
+    const currentCountry = this.countries.find((country) => country.alpha === navigator.language.split('-')[1]);
+    if (currentCountry) {
+      this.props.onChange(currentCountry);
+    }
+  }
+
   renderLabel(): ?React.Element<any> {
     const { label } = this.props;
 
