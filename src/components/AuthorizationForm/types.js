@@ -60,8 +60,3 @@ export type Props = {
   onRetry: () => any,
   onResendCode: () => any
 };
-
-export type State = {
-  isCodeResendRequested: boolean,
-  resendTimeout: number
-};

@@ -19,6 +19,11 @@
   display: block;
   text-align: center;
 }
+
+.typeSelector {
+  margin-bottom: 1rem;
+}
+
 .type {
   margin: 0 var(--default-padding-small);
 }
@@ -26,6 +31,10 @@
 .input {
   display: block;
   margin-bottom: var(--default-padding-large);
+}
+
+.formWrapper {
+  margin-bottom: 1rem;
 }
 
 .stepWrapper {}

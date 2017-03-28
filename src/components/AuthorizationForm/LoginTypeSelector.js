@@ -31,7 +31,12 @@ class LoginTypeSelector extends PureComponent {
 
   render() {
     return (
-      <RadioGroup name="login_type" value={this.props.type} onChange={this.props.onTypeChange}>
+      <RadioGroup
+        name="login_type"
+        value={this.props.type}
+        onChange={this.props.onTypeChange}
+        className={styles.typeSelector}
+      >
         {this.renderOptions()}
       </RadioGroup>
     );
