@@ -24,12 +24,16 @@
   flex-wrap: nowrap;
   justify-content: flex-start;
   align-content: stretch;
-  align-items: center;
+  align-items: flex-start;
   color: var(--full-recent-item-default-color);
 
   &:hover {
     background-color: var(--full-recent-item-hover-background-color);
     color: var(--full-recent-item-hover-color);
+
+    & .icon {
+      fill: var(--full-recent-item-hover-color);
+    }
   }
 
   &:active{
@@ -64,13 +68,23 @@
 }
 
 .title {
+  display: inline-block;
   vertical-align: middle;
   letter-spacing: -0.27px;
   font-size: var(--full-recent-item-font-size);
   font-weight: 500;
   line-height: 20px;
+  height: 20px;
 
   @apply --text-overflow-ellipsis;
+}
+
+.icon {
+  display: inline-block;
+  margin-right: 4px;
+  margin-top: -2px;
+  vertical-align: middle;
+  fill: var(--full-recent-item-icon-color);
 }
 
 .message {
@@ -100,7 +114,8 @@
   justify-content: center;
   align-items: center;
   align-content: center;
-  margin-left: 6px;
+  align-self: center;
+  margin-left: 4px;
   color: var(--full-recent-item-counter-color);
 }
 
@@ -129,5 +144,9 @@
   & .service,
   & .highlight {
     color: var(--full-recent-item-active-message-color);
+  }
+
+  & .icon {
+    fill: var(--full-recent-item-active-icon-color) !important;
   }
 }

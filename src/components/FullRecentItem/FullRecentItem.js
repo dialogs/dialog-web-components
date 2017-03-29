@@ -9,6 +9,7 @@ import { Text } from '@dlghq/react-l10n';
 import classNames from 'classnames';
 import PeerAvatar from '../PeerAvatar/PeerAvatar';
 import DoublePeerAvatar from '../DoublePeerAvatar/DoublePeerAvatar';
+import Icon from '../Icon/Icon';
 import styles from './FullRecentItem.css';
 
 export type Props = {
@@ -63,9 +64,12 @@ class FullRecentItem extends PureComponent {
       }
 
       if (info.type === 'group') {
+        const senderWords = message.sender.title.split(' ');
+        const senderTitle = senderWords.length > 1 ? senderWords[0] : message.sender.title;
+
         return (
           <span className={styles.sender}>
-            {message.sender.title + ': '}
+            {senderTitle + ': '}
           </span>
         );
       }
@@ -127,6 +131,23 @@ class FullRecentItem extends PureComponent {
     );
   }
 
+  renderIcon(): ?React.Element<any> {
+    switch (this.props.info.type) {
+      case 'group':
+        return (
+          <Icon glyph="group" className={styles.icon} size={22} />
+        );
+
+      case 'channel':
+        return (
+          <Icon glyph="channel" className={styles.icon} size={22} />
+        );
+
+      default:
+        return null;
+    }
+  }
+
   render() {
     const { info, message, active, counter } = this.props;
     const className = classNames(styles.container, this.props.className, {
@@ -139,7 +160,10 @@ class FullRecentItem extends PureComponent {
       <div className={className} onClick={this.handleClick}>
         {this.renderAvatar()}
         <div className={styles.text}>
-          <div className={styles.title}>{info.title}</div>
+          <div className={styles.title}>
+            {this.renderIcon()}
+            <span>{info.title}</span>
+          </div>
           {this.renderStatus()}
         </div>
         {this.renderCounter()}
