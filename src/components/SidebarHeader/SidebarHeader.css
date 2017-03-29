@@ -47,6 +47,7 @@
 }
 
 .arrow {
+  margin-left: -4px;
   cursor: inherit;
   fill: var(--sidebar-header-menu-color);
 }
