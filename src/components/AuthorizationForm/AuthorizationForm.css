@@ -34,12 +34,16 @@
 }
 
 .formWrapper {
+  width: 100%;
   margin-bottom: 1rem;
 }
 
-.stepWrapper {}
+.stepWrapper {
+  width: 100%;
+}
 
 .inputWrapper {
+  width: 100%;
   position: relative;
 }
 
