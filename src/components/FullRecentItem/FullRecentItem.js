@@ -30,6 +30,10 @@ class FullRecentItem extends PureComponent {
     this.props.onSelect(this.props.info.peer);
   };
 
+  getFirstWord = (string: string): string => {
+    return string.split(' ')[0];
+  };
+
   renderAvatar(): React.Element<any> {
     const { info, message, online } = this.props;
 
@@ -64,14 +68,15 @@ class FullRecentItem extends PureComponent {
       }
 
       if (info.type === 'group') {
-        const senderWords = message.sender.title.split(' ');
-        const senderTitle = senderWords.length > 1 ? senderWords[0] : message.sender.title;
+        if (message.sender.title) {
+          const title = this.getFirstWord(message.sender.title);
 
-        return (
-          <span className={styles.sender}>
-            {senderTitle + ': '}
-          </span>
-        );
+          return (
+            <span className={styles.sender}>
+              {title + ': '}
+            </span>
+          );
+        }
       }
     }
 
