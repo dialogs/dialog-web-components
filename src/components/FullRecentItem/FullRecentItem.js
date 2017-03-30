@@ -23,15 +23,15 @@ export type Props = {
   onSelect: (peer: Peer) => any
 };
 
+function getSenderTitle(title: string): string {
+  return title.split(' ')[0];
+}
+
 class FullRecentItem extends PureComponent {
   props: Props;
 
   handleClick = (): void => {
     this.props.onSelect(this.props.info.peer);
-  };
-
-  getFirstWord = (string: string): string => {
-    return string.split(' ')[0];
   };
 
   renderAvatar(): React.Element<any> {
@@ -68,15 +68,13 @@ class FullRecentItem extends PureComponent {
       }
 
       if (info.type === 'group') {
-        if (message.sender.title) {
-          const title = this.getFirstWord(message.sender.title);
+        const title = getSenderTitle(message.sender.title);
 
-          return (
-            <span className={styles.sender}>
-              {title + ': '}
-            </span>
-          );
-        }
+        return (
+          <span className={styles.sender}>
+            {title + ': '}
+          </span>
+        );
       }
     }
 
