@@ -86,6 +86,10 @@
     }
   }
 
+  & .label {
+    cursor: not-allowed;
+  }
+
   &.checked {
     & .switcher {
       background-color: var(--switcher-checked-background-color) !important;
