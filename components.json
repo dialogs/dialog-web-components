@@ -86,7 +86,8 @@
       "ProfileModal",
       "PreferencesModal",
       "AddMembersModal",
-      "EditGroupModal"
+      "EditGroupModal",
+      "AvatarEditModal"
     ]
   },
   {
