@@ -51,6 +51,7 @@ export { default as Select } from './components/Select/Select';
 export { default as Checkbox } from './components/Checkbox/Checkbox';
 export { default as Radio } from './components/Radio/Radio';
 export { default as Switcher } from './components/Switcher/Switcher';
+export { default as Range } from './components/Range/Range';
 export { default as Fieldset } from './components/Fieldset/Fieldset';
 
 // Plug & Play Forms

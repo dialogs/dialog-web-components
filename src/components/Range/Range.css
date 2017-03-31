@@ -1,0 +1,57 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+:root {
+  --range-font-family: var(--default-font-family);
+}
+
+/* Reset */
+.container {
+  all: initial;
+}
+
+/* Styles */
+.container {
+  display: block;
+  box-sizing: border-box;
+  height: 20px;
+  padding: 7px 0;
+  font-family: var(--range-font-family);
+
+  & :global(.rangeslider) {
+    position: relative;
+
+    &-horizontal {
+      height: 6px;
+      cursor: pointer;
+      border-radius: 6px;
+      background-color: var(--color-primary);
+    }
+
+    &__fill {
+      top: 0;
+      display: block;
+      height: 100%;
+      border-radius: 10px;
+      background-color: var(--color-primary);
+    }
+
+    &__handle {
+      position: absolute;
+      top: -5px;
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+      border-radius: 1000px;
+      background-color: var(--color-primary);
+      box-shadow: 0 0 0 2px #fff;
+      transform: translateZ(0);
+    }
+  }
+}
+
+
