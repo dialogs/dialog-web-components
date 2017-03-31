@@ -8,7 +8,7 @@
 .container {
   z-index: var(--z-index-call);
   width: var(--call-default-width);
-  height: var(--call-default-height);
+  min-height: var(--call-default-height);
   background-color: var(--call-background-color);
   font-family: var(--default-font-family);
 }
@@ -16,7 +16,7 @@
 .body {
   display: flex;
   flex-direction: column;
-  padding: var(--call-default-padding);
+  padding: var(--call-default-padding) calc(var(--call-default-padding) / 2);
   align-items: center;
   align-content: center;
   justify-content: center;
