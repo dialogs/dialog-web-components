@@ -6,12 +6,14 @@
 import type { Peer, ShortRecent } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
 import { Text } from '@dlghq/react-l10n';
+import { isSamePeer } from '@dlghq/dialog-types/utils';
 import { AutoSizer, List } from 'react-virtualized';
 import RecentItem from '../RecentItem/RecentItem';
 import styles from './Archive.css';
 
 export type Props = {
   className?: string,
+  peer: ?Peer,
   items: ShortRecent[],
   onLoadMore: () => void,
   onSelect: (peer: Peer) => void
@@ -19,11 +21,22 @@ export type Props = {
 
 class ArchiveList extends PureComponent {
   props: Props;
+  list: ?List;
+
+  componentWillReceiveProps(nextProps: Props) {
+    if (!isSamePeer(nextProps.peer, this.props.peer)) {
+      this.list.forceUpdateGrid();
+    }
+  }
 
   handleRowsRendered = ({ overscanStopIndex }: Object) => {
     if (overscanStopIndex === this.props.items.length - 1) {
       this.props.onLoadMore();
     }
+  };
+
+  setList = (list: ?List): void => {
+    this.list = list;
   };
 
   renderEmpty = () => {
@@ -39,7 +52,7 @@ class ArchiveList extends PureComponent {
       <div key={key} style={style}>
         <RecentItem
           info={peer}
-          active={false}
+          active={isSamePeer(peer.peer, this.props.peer)}
           counter={counter}
           onSelect={this.props.onSelect}
         />
@@ -59,6 +72,7 @@ class ArchiveList extends PureComponent {
                 noRowsRenderer={this.renderEmpty}
                 onRowsRendered={this.handleRowsRendered}
                 rowHeight={46}
+                ref={this.setList}
                 rowRenderer={this.renderRow}
                 rowCount={this.props.items.length}
               />

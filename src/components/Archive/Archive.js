@@ -12,6 +12,7 @@ import styles from './Archive.css';
 export type Props = {
   className?: string,
   pending: boolean,
+  peer?: Peer,
   archive: ShortRecent[],
   onLoadMore: () => void,
   onSelect: (peer: Peer) => void
@@ -28,6 +29,7 @@ function Archive(props: Props): ?React.Element<any> {
     <ArchiveList
       className={className}
       items={props.archive}
+      peer={props.peer}
       pending={props.pending}
       onLoadMore={props.onLoadMore}
       onSelect={props.onSelect}
