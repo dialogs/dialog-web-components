@@ -28,8 +28,10 @@ class Switcher extends PureComponent {
   };
 
   handleChange = (event: $FlowIssue): void => {
-    this.props.onChange(event.target.checked, event);
-  }
+    if (!this.props.disabled) {
+      this.props.onChange(event.target.checked, event);
+    }
+  };
 
   setInput = (input: ?HTMLInputElement): void => {
     this.input = input;
