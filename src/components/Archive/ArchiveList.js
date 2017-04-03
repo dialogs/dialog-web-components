@@ -25,7 +25,9 @@ class ArchiveList extends PureComponent {
 
   componentWillReceiveProps(nextProps: Props) {
     if (!isSamePeer(nextProps.peer, this.props.peer)) {
-      this.list.forceUpdateGrid();
+      if (this.list) {
+        this.list.forceUpdateGrid();
+      }
     }
   }
 
