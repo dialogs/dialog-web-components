@@ -25,8 +25,19 @@ export type Props = {
   onSubmit: (image: File) => any
 };
 
+export type State = {
+  zoom: {
+    min: number,
+    max: number,
+    current: number
+  }
+};
+
 class AvatarEditModal extends PureComponent {
   props: Props;
+  state: State;
+  croppieElement: ?HTMLElement;
+  croppie: ?Object;
   listeners: ?{ remove(): void }[];
 
   constructor(props: Props) {
@@ -40,34 +51,43 @@ class AvatarEditModal extends PureComponent {
       }
     };
 
+    this.croppie = null;
     this.listeners = null;
   }
 
   componentWillUnmount() {
     this.removeListeners();
-    this.croppie.destroy();
+    if (this.croppie) {
+      this.croppie.destroy();
+    }
   }
 
   handleSubmit = (): void => {
-    this.croppie.result({
-      type: 'blob',
-      size: 'original',
-      format: 'png',
-      circle: false
-    }).then((blob) => {
-      this.props.onSubmit(new File([blob], 'avatar.png'));
-    });
+    if (this.croppie) {
+      this.croppie.result({
+        type: 'blob',
+        size: 'original',
+        format: 'png',
+        circle: false
+      }).then((blob) => {
+        this.props.onSubmit(new File([blob], 'avatar.png'));
+      });
+    }
   };
 
   handleRotateLeft = (): void => {
-    this.croppie.rotate(-90);
+    if (this.croppie) {
+      this.croppie.rotate(-90);
+    }
   };
 
   handleRotateRight = (): void => {
-    this.croppie.rotate(90);
+    if (this.croppie) {
+      this.croppie.rotate(90);
+    }
   };
 
-  handleCroppieUpdate = (event) => {
+  handleCroppieUpdate = (event: $FlowIssue) => {
     this.setState({
       zoom: {
         ...this.state.zoom,
@@ -77,10 +97,12 @@ class AvatarEditModal extends PureComponent {
   };
 
   handleZoomChange = (value: number) => {
-    this.croppie.setZoom(value);
+    if (this.croppie) {
+      this.croppie.setZoom(value);
+    }
   };
 
-  setCropper = (cropper: ?HTMLImageElement): void => {
+  setCropper = (cropper: ?HTMLElement): void => {
     if (cropper) {
       this.croppieElement = cropper;
       this.croppie = new Croppie(this.croppieElement, {
@@ -98,13 +120,15 @@ class AvatarEditModal extends PureComponent {
         url: this.props.image,
         zoom: 0
       }).then(() => {
-        this.setState({
-          zoom: {
-            ...this.state.zoom,
-            min: this.croppie._currentZoom,
-            current: this.croppie._currentZoom
-          }
-        });
+        if (this.croppie) {
+          this.setState({
+            zoom: {
+              ...this.state.zoom,
+              min: this.croppie._currentZoom,
+              current: this.croppie._currentZoom
+            }
+          });
+        }
       });
 
       this.listeners = [
