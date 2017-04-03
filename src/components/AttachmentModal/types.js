@@ -28,5 +28,6 @@ export type AttachmentPreviewProps = {
 
 export type AttachmentMetaProps = {
   attachment: Attachment,
+  sendAsFile: boolean,
   onSendAsFileChange: (sendAsFIle: boolean) => any
 };
