@@ -4,41 +4,22 @@
  */
 
 import type { AttachmentMetaProps } from './types';
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Text } from '@dlghq/react-l10n';
 import { getReadableFileSize } from '@dlghq/dialog-utils';
 import getFilenameExtension from '../../utils/getFilenameExtension';
 import Switcher from '../Switcher/Switcher';
 import styles from './AttachmentModal.css';
 
-class AttachmentMeta extends Component {
+class AttachmentMeta extends PureComponent {
   props: AttachmentMetaProps;
 
-  handleIsDocumentChange: Function;
-
-  constructor(props: AttachmentMetaProps) {
-    super(props);
-
-    this.handleIsDocumentChange = this.handleIsDocumentChange.bind(this);
-  }
-
-  shouldComponentUpdate(nextProps: AttachmentMetaProps) {
-    return nextProps.attachment !== this.props.attachment;
-  }
-
-  handleIsDocumentChange(isDocument: boolean) {
-    this.props.onChange({
-      ...this.props.attachment,
-      isDocument
-    });
-  }
+  handleSendAsFileChange = (): void => {
+    this.props.onSendAsFileChange(!this.props.sendAsFile);
+  };
 
   renderMethod() {
-    const { attachment: { file, isDocument } } = this.props;
-
-    if (file.type.indexOf('image/') !== 0) {
-      return null;
-    }
+    const { attachment: { isDocument } } = this.props;
 
     return (
       <td className={styles.metaBlock}>
@@ -48,8 +29,9 @@ class AttachmentMeta extends Component {
             id="send_as_file"
             name="send_as_file"
             className={styles.metaMethodSwitcher}
-            value={isDocument}
-            onChange={this.handleIsDocumentChange}
+            value={isDocument ? true : this.props.sendAsFile}
+            disabled={isDocument}
+            onChange={this.handleSendAsFileChange}
           >
             <Text id="AttachmentModal.send_as_file" />
           </Switcher>

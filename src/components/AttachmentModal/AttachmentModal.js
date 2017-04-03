@@ -3,7 +3,7 @@
  * @flow
  */
 
-import type { Attachment, AttachmentModalProps } from './types';
+import type { Attachment, AttachmentModalProps as Props } from './types';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import { Text } from '@dlghq/react-l10n';
@@ -19,10 +19,11 @@ import AttachmentPreview from './AttachmentPreview';
 import styles from './AttachmentModal.css';
 
 class AttachmentModal extends PureComponent {
-  props: AttachmentModalProps;
+  props: Props;
 
   handleSend = (): void => {
     const { attachments } = this.props;
+
     if (attachments.length === 1) {
       this.props.onSendAll(attachments);
     } else {
@@ -32,25 +33,20 @@ class AttachmentModal extends PureComponent {
 
   handleSendAll = (): void => {
     const { attachments } = this.props;
+
     this.props.onSendAll(attachments);
   };
 
   handleNext = (): void => {
     const { current, attachments } = this.props;
-    this.props.onCurrentChange(
-      Math.min(attachments.length - 1, current + 1)
-    );
+
+    this.props.onCurrentChange(Math.min(attachments.length - 1, current + 1));
   };
 
   handlePrevious = (): void => {
     const { current } = this.props;
-    this.props.onCurrentChange(
-      Math.max(0, current - 1)
-    );
-  };
 
-  handleChange = (attachment: Attachment): void => {
-    this.props.onAttachmentChange(this.props.current, attachment);
+    this.props.onCurrentChange(Math.max(0, current - 1));
   };
 
   getCurrentAttachment(): Attachment {
@@ -92,7 +88,11 @@ class AttachmentModal extends PureComponent {
     return (
       <ModalBody className={styles.body}>
         <AttachmentPreview file={attachment.file} />
-        <AttachmentMeta attachment={attachment} onChange={this.handleChange} />
+        <AttachmentMeta
+          attachment={attachment}
+          onSendAsFileChange={this.props.onSendAsFileChange}
+          sendAsFile={this.props.sendAsFile}
+        />
       </ModalBody>
     );
   }

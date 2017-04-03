@@ -13,12 +13,13 @@ export type Attachment = {
 export type AttachmentModalProps = {
   className?: string,
   current: number,
+  sendAsFile: boolean,
   attachments: Attachment[],
   onClose: () => any,
   onSend: (attachments: Attachment[]) => any,
   onSendAll: (attachments: Attachment[]) => any,
   onCurrentChange: (current: number) => any,
-  onAttachmentChange: (index: number, attachment: Attachment) => any
+  onSendAsFileChange: (sendAsFIle: boolean) => any
 };
 
 export type AttachmentPreviewProps = {
@@ -27,5 +28,5 @@ export type AttachmentPreviewProps = {
 
 export type AttachmentMetaProps = {
   attachment: Attachment,
-  onChange: (attachment: Attachment) => any
+  onSendAsFileChange: (sendAsFIle: boolean) => any
 };
