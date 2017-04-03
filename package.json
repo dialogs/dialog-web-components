@@ -61,6 +61,7 @@
     "@dlghq/react-l10n": "0.7.1",
     "classnames": "2.2.5",
     "clipboard": "1.6.1",
+    "croppie": "2.4.1",
     "date-fns": "1.28.2",
     "immutable": "3.8.1",
     "lodash": "4.17.4",
@@ -72,6 +73,7 @@
     "react-draggable": "2.2.3",
     "react-hotkeys": "0.9.0",
     "react-modal": "1.7.3",
+    "react-rangeslider": "2.0.1",
     "react-select": "1.0.0-rc.3",
     "react-tether": "0.5.6",
     "react-virtualized": "9.4.0"

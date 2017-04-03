@@ -1,0 +1,78 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+:root {
+  --modal-avatar-edit-font-family: var(--default-font-family);
+  --modal-avatar-edit-width: 400px;
+  --modal-avatar-edit-cropper-z-index: 100;
+  --modal-avatar-edit-control-z-index: calc(var(--modal-avatar-edit-cropper-z-index) + 1);
+  --modal-avatar-edit-cropper-overlay-color: color(#000 alpha(45%));
+  --modal-avatar-edit-cropper-overlay-border-color: #fff;
+}
+
+/* Styles */
+.container {
+  width: var(--modal-avatar-edit-width);
+  font-family: var(--modal-avatar-edit-font-family);
+}
+
+.header {
+}
+
+.body {
+  position: relative;
+  z-index: var(--modal-avatar-edit-cropper-z-index);
+  width: var(--modal-avatar-edit-width);
+  height: var(--modal-avatar-edit-width);
+  padding: 0;
+}
+
+.footer {
+  padding: 0;
+}
+
+.icon {
+  fill: #fff;
+  opacity: 0.6;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.rotateLeft {
+  composes: icon;
+  position: absolute;
+  z-index: var(--modal-avatar-edit-control-z-index);
+  top: 10px;
+  right: 40px;
+}
+
+.rotateRight {
+  composes: icon;
+  position: absolute;
+  z-index: var(--modal-avatar-edit-control-z-index);
+  top: 10px;
+  right: 10px;
+}
+
+.zoom {
+  position: absolute;
+  z-index: var(--modal-avatar-edit-control-z-index);
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 28px 60px;
+}
+
+.cropper {
+  & :global(.croppie-container) {
+    &:global(.cr-viewport) {
+      border: 1px solid var(--modal-avatar-edit-cropper-overlay-border-color);
+      box-shadow: 0 0 2000px 2000px var(--modal-avatar-edit-cropper-overlay-color);
+    }
+  }
+}

@@ -51,6 +51,7 @@ export { default as Select } from './components/Select/Select';
 export { default as Checkbox } from './components/Checkbox/Checkbox';
 export { default as Radio } from './components/Radio/Radio';
 export { default as Switcher } from './components/Switcher/Switcher';
+export { default as Range } from './components/Range/Range';
 export { default as Fieldset } from './components/Fieldset/Fieldset';
 
 // Plug & Play Forms
@@ -75,6 +76,7 @@ export { default as EditGroupModal } from './components/EditGroupModal/EditGroup
 export { default as ProfileModal } from './components/ProfileModal/ProfileModal';
 export { default as PreferencesModal } from './components/PreferencesModal/PreferencesModal';
 export { default as AddMembersModal } from './components/AddMembersModal/AddMembersModal';
+export { default as AvatarEditModal } from './components/AvatarEditModal/AvatarEditModal';
 
 // Sidebar
 export { default as SidebarHeader } from './components/SidebarHeader/SidebarHeader';

@@ -49,6 +49,7 @@
       "Checkbox",
       "Radio",
       "Switcher",
+      "Range",
       "Fieldset"
     ]
   },
@@ -85,7 +86,8 @@
       "ProfileModal",
       "PreferencesModal",
       "AddMembersModal",
-      "EditGroupModal"
+      "EditGroupModal",
+      "AvatarEditModal"
     ]
   },
   {
