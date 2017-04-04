@@ -128,9 +128,12 @@
       padding: 8px;
     }
 
-    & .Button__container,
-    & .IconButton__container {
-      margin: 4px;
+    & .styleguide__buttons {
+      & .Button__container,
+      & .ButtonNext__container,
+      & .IconButton__container {
+        margin: 4px;
+      }
     }
 
     & hr {

@@ -1,7 +1,7 @@
 Basic LinkButton:
 
 ```
-<div>
+<div className="styleguide__buttons">
   <LinkButton theme="primary" href="#" target="_blank">Primary</LinkButton>
   <LinkButton theme="success" href="#" target="_blank">Success</LinkButton>
   <LinkButton theme="danger" href="#" target="_blank">Danger</LinkButton>

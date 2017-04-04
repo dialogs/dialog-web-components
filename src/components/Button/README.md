@@ -1,7 +1,7 @@
 Sizable Button
 
 ```
-<div>
+<div className="styleguide__buttons">
   <Button size="small">Small Button</Button>
   <Button size="normal">Normal Button</Button>
   <Button size="large">Large Button</Button>
@@ -12,7 +12,7 @@ Sizable Button
 It has different types of themes. You can change themes by changing `theme` prop.
 
 ```
-<div>
+<div className="styleguide__buttons">
   <Button theme="default">Default</Button>
   <Button theme="primary">Primary</Button>
   <Button theme="success">Success</Button>
@@ -25,7 +25,7 @@ It has different types of themes. You can change themes by changing `theme` prop
 Outlined Button:
 
 ```
-<div>
+<div className="styleguide__buttons">
   <Button theme="default" view="outline">Default</Button>
   <Button theme="primary" view="outline">Primary</Button>
   <Button theme="success" view="outline">Success</Button>
@@ -38,7 +38,7 @@ Outlined Button:
 Link Button:
 
 ```
-<div>
+<div className="styleguide__buttons">
   <Button theme="default" view="link">Default</Button>
   <Button theme="primary" view="link">Primary</Button>
   <Button theme="success" view="link">Success</Button>
@@ -51,7 +51,7 @@ Link Button:
 Wide Button:
 
 ```
-<div>
+<div className="styleguide__buttons">
   <Button theme="primary" size="small" wide>Small</Button>
   <Button theme="primary" wide>Default</Button>
   <Button theme="primary" size="large" wide>Large</Button>
