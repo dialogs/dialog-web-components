@@ -23,6 +23,18 @@
   flex: 0 0 auto;
 }
 
+.back {
+  width: var(--modal-close-size);
+  height: var(--modal-close-size);
+  margin-right: 16px;
+  transition: color var(--modal-close-transition-duration) linear;
+  fill: var(--modal-close-color);
+
+  &:hover {
+    fill: var(--modal-close-color-hover);
+  }
+}
+
 .form {
   width: var(--modal-profile-form-width);
   flex: 0 0 auto;
@@ -43,13 +55,13 @@
   justify-content: flex-start;
   align-content: center;
   align-items: center;
+  color: var(--color-primary);
+  fill: var(--color-primary);
 }
 
 .nickButtonIcon {
   margin-right: 6px;
   cursor: inherit !important;
-  font-size: 22px;
-  color: inherit !important;
   fill: inherit !important;
 }
 

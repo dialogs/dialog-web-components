@@ -5,6 +5,8 @@
 
 import type { User } from '@dlghq/dialog-types';
 
+export type Screen = 'profile' | 'avatar';
+
 export type Props = {
   className?: string,
   profile: User,
@@ -31,8 +33,10 @@ export type Props = {
 };
 
 export type State = {
+  screen: Screen,
   name: string,
   nick: ?string,
   about: ?string,
-  avatar: ?string
+  avatar: ?string,
+  avatarFile: ?File
 };

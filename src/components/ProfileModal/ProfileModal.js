@@ -15,8 +15,10 @@ import Input from '../Input/Input';
 import Icon from '../Icon/Icon';
 import Button from '../Button/Button';
 import AvatarSelector from '../AvatarSelector/AvatarSelector';
+import ImageEdit from '../ImageEdit/ImageEdit';
 import styles from './ProfileModal.css';
 import type { Props, State } from './types';
+import { fileToBase64 } from '@dlghq/dialog-utils';
 
 class ProfileModal extends PureComponent {
   props: Props;
@@ -30,16 +32,18 @@ class ProfileModal extends PureComponent {
     super(props);
 
     this.state = {
+      screen: 'profile',
       name: props.profile.name,
       nick: props.profile.nick,
       about: props.profile.about,
-      avatar: props.profile.avatar
+      avatar: props.profile.avatar,
+      avatarFile: null
     };
   }
 
-  handleChange = (value: string, event: SyntheticInputEvent): void => {
+  handleChange = (value: string, { target }: SyntheticInputEvent) => {
     this.setState({
-      [event.target.name]: value
+      [target.name]: value
     });
   };
 
@@ -57,24 +61,50 @@ class ProfileModal extends PureComponent {
     if (this.state.about && this.state.about !== this.props.profile.about) {
       this.props.onAboutChange(this.state.about);
     }
+
+    if (this.state.avatarFile) {
+      this.props.onAvatarChange(this.state.avatarFile);
+    }
   };
 
   handleNickChooserClick = (): void => {
     this.setState({ nick: '' });
   };
 
+  handleAvatarEdit = (avatar: string): void => {
+    this.setState({
+      avatar,
+      screen: 'avatar'
+    });
+  };
+
   handleAvatarChange = (avatar: File): void => {
-    this.props.onAvatarChange(avatar);
+    this.setState({ avatarFile: avatar });
+    fileToBase64(avatar, (avatarBase64: string) => {
+      this.setState({
+        avatar: avatarBase64,
+        screen: 'profile'
+      });
+    });
+  };
+
+  handleGoToProfile = (): void => {
+    this.setState({
+      avatar: null,
+      avatarFile: null,
+      screen: 'profile'
+    });
   };
 
   isChanged(): boolean {
     return this.state.name !== this.props.profile.name ||
            this.state.nick !== this.props.profile.nick ||
-           this.state.about !== this.props.profile.about;
+           this.state.about !== this.props.profile.about ||
+           this.state.avatarFile !== null;
   }
 
   renderAvatar(): React.Element<any> {
-    const { profile: { name, placeholder, avatar } } = this.props;
+    const { name, placeholder, avatar } = this.state;
 
     return (
       <div className={styles.avatarBlock}>
@@ -82,7 +112,7 @@ class ProfileModal extends PureComponent {
           name={name}
           placeholder={placeholder}
           avatar={avatar}
-          onChange={this.handleAvatarChange}
+          onChange={this.handleAvatarEdit}
           onRemove={this.props.onAvatarRemove}
         />
       </div>
@@ -162,58 +192,119 @@ class ProfileModal extends PureComponent {
     );
   }
 
-  render(): React.Element<any> {
-    const { name, about } = this.state;
-    const className = classNames(styles.container, this.props.className);
-    const { l10n: { formatText } } = this.context;
-
-    return (
-      <Modal className={className} isOpen onClose={this.props.onClose}>
-        <form autoComplete="off" onSubmit={this.handleSubmit}>
+  renderHeader() {
+    switch (this.state.screen) {
+      case 'profile':
+        return (
           <ModalHeader withBorder>
             <Text id="ProfileModal.title" />
             <ModalClose onClick={this.props.onClose} />
           </ModalHeader>
+        );
+      case 'avatar':
+        return (
+          <ModalHeader withBorder>
+            <Icon
+              glyph="arrow_back"
+              onClick={this.handleGoToProfile}
+              className={styles.back}
+            />
+            <Text id="ProfileModal.title_avatar" />
+            <ModalClose onClick={this.props.onClose} />
+          </ModalHeader>
+        );
+      default:
+        return null;
+    }
+  }
 
-          <ModalBody className={styles.body}>
-            {this.renderAvatar()}
-            <div className={styles.form}>
-              <Input
-                className={styles.input}
-                large
-                id="name"
-                name="name"
-                label={formatText('ProfileModal.name')}
-                value={name}
-                onChange={this.handleChange}
-              />
-              {this.renderNick()}
-              <Input
-                className={styles.about}
-                large
-                id="about"
-                name="about"
-                type="textarea"
-                label={formatText('ProfileModal.about')}
-                placeholder={formatText('ProfileModal.about_placeholder')}
-                value={about || ''}
-                onChange={this.handleChange}
-              />
-              {this.renderContacts()}
-            </div>
-          </ModalBody>
+  renderProfile(): React.Element<any> {
+    const { name, about } = this.state;
+    const { l10n: { formatText } } = this.context;
 
-          <ModalFooter className={styles.footer}>
-            <Button
-              wide
-              type="submit"
-              theme="success"
-              rounded={false}
-              disabled={!this.isChanged()}
-            >
-              <Text id="ProfileModal.save" />
-            </Button>
-          </ModalFooter>
+    return (
+      <ModalBody className={styles.body}>
+        {this.renderAvatar()}
+        <div className={styles.form}>
+          <Input
+            className={styles.input}
+            large
+            id="name"
+            name="name"
+            label={formatText('ProfileModal.name')}
+            value={name}
+            onChange={this.handleChange}
+          />
+          {this.renderNick()}
+          <Input
+            className={styles.about}
+            large
+            id="about"
+            name="about"
+            type="textarea"
+            label={formatText('ProfileModal.about')}
+            placeholder={formatText('ProfileModal.about_placeholder')}
+            value={about || ''}
+            onChange={this.handleChange}
+          />
+          {this.renderContacts()}
+        </div>
+      </ModalBody>
+    );
+  }
+
+  renderAvatarEdit(): React.Element<any> {
+    return (
+      <ImageEdit
+        image={this.state.avatar}
+        type="circle"
+        size={200}
+        height={400}
+        onSubmit={this.handleAvatarChange}
+      />
+    );
+  }
+
+  renderFooter(): ?React.Element<any> {
+    if (this.state.screen === 'profile') {
+      return (
+        <ModalFooter className={styles.footer}>
+          <Button
+            wide
+            type="submit"
+            theme="success"
+            rounded={false}
+            disabled={!this.isChanged()}
+          >
+            <Text id="ProfileModal.save" />
+          </Button>
+        </ModalFooter>
+      );
+    }
+
+    return null;
+  }
+
+  renderBody(): ?React.Element<any> {
+    switch (this.state.screen) {
+      case 'profile':
+        return this.renderProfile();
+      case 'avatar':
+        return this.renderAvatarEdit();
+      default:
+        return null;
+    }
+  };
+
+  render(): React.Element<any> {
+    const className = classNames(styles.container, this.props.className);
+
+    return (
+      <Modal className={className} isOpen onClose={this.props.onClose}>
+        <form autoComplete="off" onSubmit={this.handleSubmit}>
+          {this.renderHeader()}
+          {this.renderBody()}
+          {this.renderFooter()}
         </form>
       </Modal>
     );
