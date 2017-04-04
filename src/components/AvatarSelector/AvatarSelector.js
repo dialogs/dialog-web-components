@@ -15,41 +15,27 @@ export type Props = {
   name: string,
   placeholder: string,
   avatar: ?string,
-  onChange: (avatar: File) => void,
+  onChange: (avatar: string) => void,
   onRemove?: () => void
-};
-
-export type State = {
-  avatar: ?string
 };
 
 class AvatarSelector extends PureComponent {
   props: Props;
-  state: State;
-
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      avatar: props.avatar
-    };
-  }
 
   componentWillReceiveProps(nextProps: Props): void {
     this.setState({ avatar: nextProps.avatar });
   }
 
-  handleAvatarChange = (files: File[]): void => {
-    fileToBase64(files[0], (avatar) => this.setState({ avatar }));
-    this.props.onChange(files[0]);
-  };
-
   handleAvatarChangerClick = (): void => {
-    selectFiles(this.handleAvatarChange, false);
+    selectFiles((files) => {
+      fileToBase64(files[0], (avatar) => {
+        this.props.onChange(avatar);
+      });
+    }, false);
   };
 
   renderRemoveIcon(): ?React.Element<any> {
-    const { avatar } = this.state;
+    const { avatar } = this.props;
 
     if (avatar && this.props.onRemove) {
       return (
@@ -63,8 +49,7 @@ class AvatarSelector extends PureComponent {
   }
 
   render(): React.Element<any> {
-    const { name, placeholder } = this.props;
-    const { avatar } = this.state;
+    const { name, placeholder, avatar } = this.props;
     const className = classNames(styles.container, this.props.className);
 
     return (
