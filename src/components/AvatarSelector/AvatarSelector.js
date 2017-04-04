@@ -3,6 +3,7 @@
  * @flow
  */
 
+import type { AvatarPlaceholder } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import { selectFiles, fileToBase64 } from '@dlghq/dialog-utils';
@@ -13,25 +14,53 @@ import styles from './AvatarSelector.css';
 export type Props = {
   className?: string,
   name: string,
-  placeholder: string,
-  avatar: ?string,
-  onChange: (avatar: string) => void,
+  placeholder: AvatarPlaceholder,
+  avatar: ?(string | File),
+  onChange: (avatar: File) => void,
   onRemove?: () => void
+};
+
+type State = {
+  avatar: ?string
 };
 
 class AvatarSelector extends PureComponent {
   props: Props;
+  state: State;
+
+  constructor(props: Props) {
+    super(props);
+
+    if (!props.avatar || typeof props.avatar === 'string') {
+      this.state = {
+        avatar: props.avatar
+      };
+    } else {
+      this.state = {
+        avatar: null
+      };
+      fileToBase64(props.avatar, (avatar) => {
+        this.setState({ avatar });
+      });
+    }
+  }
 
   componentWillReceiveProps(nextProps: Props): void {
-    this.setState({ avatar: nextProps.avatar });
+    if (!nextProps.avatar || typeof nextProps.avatar === 'string') {
+      this.setState({ avatar: nextProps.avatar });
+    } else {
+      fileToBase64(nextProps.avatar, (avatar) => {
+        this.setState({ avatar });
+      });
+    }
   }
 
   handleAvatarChangerClick = (): void => {
     selectFiles((files) => {
-      fileToBase64(files[0], (avatar) => {
-        this.props.onChange(avatar);
-      });
-    }, false);
+      if (files.length) {
+        this.props.onChange(files[0]);
+      }
+    }, false, 'image/*');
   };
 
   renderRemoveIcon(): ?React.Element<any> {
@@ -49,7 +78,8 @@ class AvatarSelector extends PureComponent {
   }
 
   render(): React.Element<any> {
-    const { name, placeholder, avatar } = this.props;
+    const { name, placeholder } = this.props;
+    const { avatar } = this.state;
     const className = classNames(styles.container, this.props.className);
 
     return (
