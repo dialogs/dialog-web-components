@@ -11,12 +11,12 @@ import Icon from '../Icon/Icon';
 import Range from '../Range/Range';
 import styles from './ImageEdit.css';
 import Croppie from 'croppie';
-import { listen } from '@dlghq/dialog-utils';
+import { listen, fileToBase64 } from '@dlghq/dialog-utils';
 import format from 'date-fns/format';
 
 export type Props = {
   className?: string,
-  image: string,
+  image: File,
   type: 'circle' | 'square',
   size: number,
   height: number,
@@ -57,6 +57,41 @@ class ImageEdit extends PureComponent {
 
     this.croppie = null;
     this.listeners = null;
+  }
+
+  componentDidMount() {
+    if (this.croppieElement) {
+      const croppie = new Croppie(this.croppieElement, {
+        viewport: {
+          width: this.props.size,
+          height: this.props.size,
+          type: this.props.type
+        },
+        showZoomer: false,
+        enableOrientation: true,
+        customClass: styles.cropper
+      });
+
+      fileToBase64(this.props.image, (image) => {
+        croppie.bind({
+          url: image,
+          zoom: 0
+        }).then(() => {
+          this.setState({
+            zoom: {
+              ...this.state.zoom,
+              min: croppie._currentZoom,
+              current: croppie._currentZoom
+            }
+          });
+        });
+      });
+
+      this.croppie = croppie;
+      this.listeners = [
+        listen(this.croppieElement, 'update', this.handleCroppieUpdate, { capture: false, passive: true })
+      ];
+    }
   }
 
   componentWillUnmount() {
@@ -110,35 +145,6 @@ class ImageEdit extends PureComponent {
   setCropper = (cropper: ?HTMLElement): void => {
     if (cropper) {
       this.croppieElement = cropper;
-      this.croppie = new Croppie(this.croppieElement, {
-        viewport: {
-          width: this.props.size,
-          height: this.props.size,
-          type: this.props.type
-        },
-        showZoomer: false,
-        enableOrientation: true,
-        customClass: styles.cropper
-      });
-
-      this.croppie.bind({
-        url: this.props.image,
-        zoom: 0
-      }).then(() => {
-        if (this.croppie) {
-          this.setState({
-            zoom: {
-              ...this.state.zoom,
-              min: this.croppie._currentZoom,
-              current: this.croppie._currentZoom
-            }
-          });
-        }
-      });
-
-      this.listeners = [
-        listen(this.croppieElement, 'update', this.handleCroppieUpdate, { capture: false, passive: true })
-      ];
     }
   };
 
