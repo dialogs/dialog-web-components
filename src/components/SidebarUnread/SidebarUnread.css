@@ -48,6 +48,7 @@
   left: 0;
   right: 0;
   overflow: hidden;
+  transform: translateZ(0);
   transition: height var(--sidebar-unread-transition-duration) ease-in-out, background var(--sidebar-unread-transition-duration) ease-in-out;
   background-color: var(--sidebar-unread-background-color);
   font-family: var(--sidebar-unread-font-family);
