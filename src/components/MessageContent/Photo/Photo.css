@@ -6,4 +6,5 @@
 
 .container {
   border-radius: var(--message-photo-border-raduis);
+  overflow: hidden;
 }
