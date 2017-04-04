@@ -308,7 +308,7 @@ class ProfileModal extends PureComponent {
       default:
         return null;
     }
-  };
+  }
 
   render(): React.Element<any> {
     const className = classNames(styles.container, this.props.className);
