@@ -26,7 +26,8 @@
       "Dragndrop",
       "Markdown",
       "Image",
-      "CountryCodeSelector"
+      "CountryCodeSelector",
+      "ImageEdit"
     ]
   },
   {
@@ -86,8 +87,7 @@
       "ProfileModal",
       "PreferencesModal",
       "AddMembersModal",
-      "EditGroupModal",
-      "AvatarEditModal"
+      "EditGroupModal"
     ]
   },
   {

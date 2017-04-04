@@ -6,22 +6,20 @@
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import { Text } from '@dlghq/react-l10n';
-import Modal from '../Modal/Modal';
-import ModalClose from '../Modal/ModalClose';
-import ModalHeader from '../Modal/ModalHeader';
-import ModalBody from '../Modal/ModalBody';
-import ModalFooter from '../Modal/ModalFooter';
 import Button from '../Button/Button';
 import Icon from '../Icon/Icon';
 import Range from '../Range/Range';
-import styles from './AvatarEditModal.css';
+import styles from './ImageEdit.css';
 import Croppie from 'croppie';
 import { listen } from '@dlghq/dialog-utils';
+import format from 'date-fns/format';
 
 export type Props = {
   className?: string,
   image: string,
-  onClose: () => any,
+  type: 'circle' | 'square',
+  size: number,
+  height: number,
   onSubmit: (image: File) => any
 };
 
@@ -33,12 +31,18 @@ export type State = {
   }
 };
 
-class AvatarEditModal extends PureComponent {
+class ImageEdit extends PureComponent {
   props: Props;
   state: State;
   croppieElement: ?HTMLElement;
   croppie: ?Object;
   listeners: ?{ remove(): void }[];
+
+  static defaultProps = {
+    type: 'circle',
+    size: 250,
+    height: 400
+  };
 
   constructor(props: Props) {
     super(props);
@@ -70,7 +74,8 @@ class AvatarEditModal extends PureComponent {
         format: 'png',
         circle: false
       }).then((blob) => {
-        this.props.onSubmit(new File([blob], 'avatar.png'));
+        const fileName = format(new Date(), 'YYYY.MM.DD-HH:mm:ss.SSS');
+        this.props.onSubmit(new File([blob], `${fileName}.png`));
       });
     }
   };
@@ -107,9 +112,9 @@ class AvatarEditModal extends PureComponent {
       this.croppieElement = cropper;
       this.croppie = new Croppie(this.croppieElement, {
         viewport: {
-          width: 250,
-          height: 250,
-          type: 'circle'
+          width: this.props.size,
+          height: this.props.size,
+          type: this.props.type
         },
         showZoomer: false,
         enableOrientation: true,
@@ -171,44 +176,28 @@ class AvatarEditModal extends PureComponent {
     );
   }
 
-  renderBody(): React.Element<any> {
-    return (
-      <ModalBody className={styles.body}>
-        <div ref={this.setCropper} />
-        {this.renderControls()}
-      </ModalBody>
-    );
-  }
-
-  renderFooter(): React.Element<any> {
-    return (
-      <ModalFooter className={styles.footer}>
-        <Button
-          wide
-          theme="primary"
-          rounded={false}
-          onClick={this.handleSubmit}
-        >
-          <Text id="AvatarEditModal.save" />
-        </Button>
-      </ModalFooter>
-    );
-  }
-
   render(): React.Element<any> {
     const className = classNames(styles.container, this.props.className);
 
     return (
-      <Modal className={className} onClose={this.props.onClose}>
-        <ModalHeader withBorder className={styles.header}>
-          <Text id="AvatarEditModal.title" />
-          <ModalClose onClick={this.props.onClose} />
-        </ModalHeader>
-        {this.renderBody()}
-        {this.renderFooter()}
-      </Modal>
+      <div className={className}>
+        <div className={styles.body} style={{ height: this.props.height }}>
+          <div ref={this.setCropper} />
+          {this.renderControls()}
+        </div>
+        <div className={styles.footer}>
+          <Button
+            wide
+            theme="primary"
+            rounded={false}
+            onClick={this.handleSubmit}
+          >
+            <Text id="ImageEdit.save" />
+          </Button>
+        </div>
+      </div>
     );
   }
 }
 
-export default AvatarEditModal;
+export default ImageEdit;

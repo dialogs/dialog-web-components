@@ -6,6 +6,9 @@ const { selectFiles, fileToBase64 } = require('@dlghq/dialog-utils');
 initialState = {
   image: null,
   cropped: null,
+  height: 400,
+  cropType: 'circle',
+  cropSize: 300
 };
 
 const actions = {
@@ -30,13 +33,14 @@ const actions = {
 };
 
 <div>
-  <Button onClick={actions.onSelect} theme="primary" size="small">
+  <Button onClick={actions.onSelect} theme="primary">
     Select file
   </Button>
+
   <hr />
   {
     state.image ? (
-      <AvatarEditModal {...state} {...actions} />
+      <ImageEdit {...state} {...actions} />
     ) : null
   }
   {

@@ -26,6 +26,7 @@ export { default as Archive } from './components/Archive/Archive';
 export { default as Lightbox } from './components/Lightbox/Lightbox';
 export { default as Dragndrop } from './components/Dragndrop/Dragndrop';
 export { default as CountryCodeSelector } from './components/CountryCodeSelector/CountryCodeSelector';
+export { default as ImageEdit } from './components/ImageEdit/ImageEdit';
 
 // Toolbar
 export { default as Toolbar } from './components/Toolbar/Toolbar';
@@ -76,7 +77,6 @@ export { default as EditGroupModal } from './components/EditGroupModal/EditGroup
 export { default as ProfileModal } from './components/ProfileModal/ProfileModal';
 export { default as PreferencesModal } from './components/PreferencesModal/PreferencesModal';
 export { default as AddMembersModal } from './components/AddMembersModal/AddMembersModal';
-export { default as AvatarEditModal } from './components/AvatarEditModal/AvatarEditModal';
 
 // Sidebar
 export { default as SidebarHeader } from './components/SidebarHeader/SidebarHeader';
