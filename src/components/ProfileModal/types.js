@@ -7,6 +7,14 @@ import type { User } from '@dlghq/dialog-types';
 
 export type Screen = 'profile' | 'avatar';
 
+export type Profile = {
+  name: string,
+  nick: ?string,
+  about: ?string,
+  avatar: ?string,
+  avatarFile: ?File
+};
+
 export type Props = {
   className?: string,
   profile: User,
@@ -25,18 +33,10 @@ export type Props = {
     }
   },
   onClose: () => void,
-  onNameChange: (name: string) => any,
-  onNickChange: (nick: string) => any,
-  onAboutChange: (about: string) => any,
-  onAvatarChange: (avatar: File) => any,
-  onAvatarRemove: () => any
+  onSubmit: (profile: Profile) => any,
 };
 
 export type State = {
   screen: Screen,
-  name: string,
-  nick: ?string,
-  about: ?string,
-  avatar: ?string,
-  avatarFile: ?File
+  profile: Profile
 };

@@ -3,45 +3,56 @@ Basic ProfileModal:
 ```
 const initialState = {
   isOpen: false,
-  state: {
-    profile: {
-      name: 'Some user',
-      nick: null,
-      about: null,
-      avatar: null,
-      phones: [{
-        number: '71233218855',
-        title: 'Mobile phone'
-      }],
-      emails: [{
-        email: 'someuser@domain.com',
-        title: 'Email'
-      }]
-    }
+  profile: {
+    name: 'Some user',
+    nick: null,
+    about: null,
+    avatar: null,
+    phones: [{
+      number: '71233218855',
+      title: 'Mobile phone'
+    }],
+    emails: [{
+      email: 'someuser@domain.com',
+      title: 'Email'
+    }]
   }
 }
+
 const actions = {
-  onChange: (profile) => {
+  onSubmit: (profile) => {
     console.debug(profile);
     setState({
-      state: {
-        ...state.state,
-        profile
+      isOpen: false,
+      profile: {
+        ...state.profile,
+        ...profile
       }
     });
   },
-  onSubmit: (profile) => {
-    console.debug(profile);
-    setState({ ...initialState });
-  },
-  onAvatarChange: (avatar) => {
-    console.debug(avatar);
+  onAvatarRemove: () => {
+    console.debug('onAvatarRemove');
+    setState({ 
+      profile: {
+        ...state.profile,
+        avatar: null
+      }
+    });
   },
   onClose: () => setState({ ...initialState })
 };
 
 <div>
   <Button theme="primary" onClick={() => setState({ isOpen: true })}>Edit profile</Button>
-  {state.isOpen ? <ProfileModal {...state.state} {...actions} /> : null}
+  {
+    state.isOpen
+      ? (
+       <ProfileModal
+          profile={state.profile}
+          {...actions}
+        />
+      )
+      : null
+  }
 </div>
 ```

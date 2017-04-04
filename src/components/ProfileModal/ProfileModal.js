@@ -33,38 +33,28 @@ class ProfileModal extends PureComponent {
 
     this.state = {
       screen: 'profile',
-      name: props.profile.name,
-      nick: props.profile.nick,
-      about: props.profile.about,
-      avatar: props.profile.avatar,
-      avatarFile: null
+      profile: {
+        name: props.profile.name,
+        nick: props.profile.nick,
+        about: props.profile.about,
+        avatar: props.profile.avatar,
+        avatarFile: null
+      }
     };
   }
 
   handleChange = (value: string, { target }: SyntheticInputEvent) => {
     this.setState({
-      [target.name]: value
+      profile: {
+        ...this.state.profile,
+        [target.name]: value
+      }
     });
   };
 
   handleSubmit = (event: SyntheticEvent): void => {
     event.preventDefault();
-
-    if (this.state.name !== this.props.profile.name) {
-      this.props.onNameChange(this.state.name);
-    }
-
-    if (this.state.nick && this.state.nick !== this.props.profile.nick) {
-      this.props.onNickChange(this.state.nick);
-    }
-
-    if (this.state.about && this.state.about !== this.props.profile.about) {
-      this.props.onAboutChange(this.state.about);
-    }
-
-    if (this.state.avatarFile) {
-      this.props.onAvatarChange(this.state.avatarFile);
-    }
+    this.props.onSubmit(this.state.profile);
   };
 
   handleNickChooserClick = (): void => {
@@ -73,38 +63,61 @@ class ProfileModal extends PureComponent {
 
   handleAvatarEdit = (avatar: string): void => {
     this.setState({
-      avatar,
-      screen: 'avatar'
+      screen: 'avatar',
+      profile: {
+        ...this.state.profile,
+        avatar
+      }
     });
   };
 
   handleAvatarChange = (avatar: File): void => {
-    this.setState({ avatarFile: avatar });
     fileToBase64(avatar, (avatarBase64: string) => {
       this.setState({
-        avatar: avatarBase64,
-        screen: 'profile'
+        screen: 'profile',
+        profile: {
+          ...this.state.profile,
+          avatar: avatarBase64,
+          avatarFile: avatar
+        }
       });
     });
   };
 
   handleGoToProfile = (): void => {
     this.setState({
-      avatar: null,
-      avatarFile: null,
-      screen: 'profile'
+      screen: 'profile',
+      profile: {
+        ...this.state.profile,
+        avatar: this.props.profile.avatar,
+        avatarFile: null
+      }
+    });
+  };
+
+  handleAvatarRemove = (): void => {
+    this.setState({
+      screen: 'profile',
+      profile: {
+        ...this.state.profile,
+        avatar: null,
+        avatarFile: null
+      }
     });
   };
 
   isChanged(): boolean {
-    return this.state.name !== this.props.profile.name ||
-           this.state.nick !== this.props.profile.nick ||
-           this.state.about !== this.props.profile.about ||
-           this.state.avatarFile !== null;
+    return this.state.profile.name !== this.props.profile.name ||
+           this.state.profile.nick !== this.props.profile.nick ||
+           this.state.profile.about !== this.props.profile.about ||
+           this.state.profile.avatar !== this.props.profile.avatar ||
+           this.state.profile.avatarFile !== null;
   }
 
   renderAvatar(): React.Element<any> {
-    const { name, placeholder, avatar } = this.state;
+    const { profile: { placeholder } } = this.props;
+    const { profile: { name, avatar } } = this.state;
+    const handlers = this.state.profile.avatar ? { onRemove: this.handleAvatarRemove } : {};
 
     return (
       <div className={styles.avatarBlock}>
@@ -113,14 +126,14 @@ class ProfileModal extends PureComponent {
           placeholder={placeholder}
           avatar={avatar}
           onChange={this.handleAvatarEdit}
-          onRemove={this.props.onAvatarRemove}
+          {...handlers}
         />
       </div>
     );
   }
 
   renderNick(): React.Element<any> {
-    const { nick } = this.state;
+    const { profile: { nick } } = this.state;
     const { l10n: { formatText } } = this.context;
 
     if (nick === null) {
@@ -219,7 +232,7 @@ class ProfileModal extends PureComponent {
   }
 
   renderProfile(): React.Element<any> {
-    const { name, about } = this.state;
+    const { profile: { name, about } } = this.state;
     const { l10n: { formatText } } = this.context;
 
     return (
@@ -256,7 +269,7 @@ class ProfileModal extends PureComponent {
   renderAvatarEdit(): React.Element<any> {
     return (
       <ImageEdit
-        image={this.state.avatar}
+        image={this.state.profile.avatar}
         type="circle"
         size={200}
         height={400}
