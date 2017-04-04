@@ -11,8 +11,7 @@ export type Profile = {
   name: string,
   nick: ?string,
   about: ?string,
-  avatar: ?string,
-  avatarFile: ?File
+  avatar: ?(string | File)
 };
 
 export type Props = {

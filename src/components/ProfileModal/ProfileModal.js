@@ -18,7 +18,6 @@ import AvatarSelector from '../AvatarSelector/AvatarSelector';
 import ImageEdit from '../ImageEdit/ImageEdit';
 import styles from './ProfileModal.css';
 import type { Props, State } from './types';
-import { fileToBase64 } from '@dlghq/dialog-utils';
 
 class ProfileModal extends PureComponent {
   props: Props;
@@ -37,8 +36,7 @@ class ProfileModal extends PureComponent {
         name: props.profile.name,
         nick: props.profile.nick,
         about: props.profile.about,
-        avatar: props.profile.avatar,
-        avatarFile: null
+        avatar: props.profile.avatar
       }
     };
   }
@@ -58,10 +56,15 @@ class ProfileModal extends PureComponent {
   };
 
   handleNickChooserClick = (): void => {
-    this.setState({ nick: '' });
+    this.setState({
+      profile: {
+        ...this.state.profile,
+        nick: ''
+      }
+    });
   };
 
-  handleAvatarEdit = (avatar: string): void => {
+  handleAvatarEdit = (avatar: File): void => {
     this.setState({
       screen: 'avatar',
       profile: {
@@ -72,15 +75,12 @@ class ProfileModal extends PureComponent {
   };
 
   handleAvatarChange = (avatar: File): void => {
-    fileToBase64(avatar, (avatarBase64: string) => {
-      this.setState({
-        screen: 'profile',
-        profile: {
-          ...this.state.profile,
-          avatar: avatarBase64,
-          avatarFile: avatar
-        }
-      });
+    this.setState({
+      screen: 'profile',
+      profile: {
+        ...this.state.profile,
+        avatar
+      }
     });
   };
 
@@ -89,8 +89,7 @@ class ProfileModal extends PureComponent {
       screen: 'profile',
       profile: {
         ...this.state.profile,
-        avatar: this.props.profile.avatar,
-        avatarFile: null
+        avatar: this.props.profile.avatar
       }
     });
   };
@@ -100,8 +99,7 @@ class ProfileModal extends PureComponent {
       screen: 'profile',
       profile: {
         ...this.state.profile,
-        avatar: null,
-        avatarFile: null
+        avatar: null
       }
     });
   };
@@ -110,8 +108,7 @@ class ProfileModal extends PureComponent {
     return this.state.profile.name !== this.props.profile.name ||
            this.state.profile.nick !== this.props.profile.nick ||
            this.state.profile.about !== this.props.profile.about ||
-           this.state.profile.avatar !== this.props.profile.avatar ||
-           this.state.profile.avatarFile !== null;
+           this.state.profile.avatar !== this.props.profile.avatar;
   }
 
   renderAvatar(): React.Element<any> {
@@ -266,16 +263,20 @@ class ProfileModal extends PureComponent {
     );
   }
 
-  renderAvatarEdit(): React.Element<any> {
-    return (
-      <ImageEdit
-        image={this.state.profile.avatar}
-        type="circle"
-        size={200}
-        height={400}
-        onSubmit={this.handleAvatarChange}
-      />
-    );
+  renderAvatarEdit(): ?React.Element<any> {
+    if (this.state.profile.avatar && typeof this.state.profile.avatar !== 'string') {
+      return (
+        <ImageEdit
+          image={this.state.profile.avatar}
+          type="circle"
+          size={250}
+          height={400}
+          onSubmit={this.handleAvatarChange}
+        />
+      );
+    }
+
+    return null;
   }
 
   renderFooter(): ?React.Element<any> {
