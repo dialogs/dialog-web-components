@@ -48,10 +48,10 @@ class CreateNewModal extends PureComponent {
     }
   };
 
-  handleChange = (value: string, event: SyntheticInputEvent): void => {
+  handleChange = (value: string, { target }: SyntheticInputEvent) => {
     this.props.onRequestChange({
       ...this.props.request,
-      [event.target.name]: value
+      [target.name]: value
     });
   };
 
