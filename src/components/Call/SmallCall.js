@@ -21,7 +21,7 @@ function SmallCall(props: CallProps) {
         <div className={styles.smallInfoWrapper}>
           <Avatar
             className={styles.smallInfoAvatar}
-            size="large"
+            size={48}
             peer={props.caller}
             title={props.caller.name}
             image={props.caller.avatar}
