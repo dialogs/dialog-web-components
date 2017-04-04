@@ -22,7 +22,12 @@ export type Props = {
   onClick?: (event: SyntheticMouseEvent) => any
 };
 
-class Avatar extends PureComponent {
+type DefaultProps = {
+  size: AvatarSize,
+  placeholder: AvatarPlaceholder
+};
+
+class Avatar extends PureComponent<DefaultProps, Props, void> {
   props: Props;
 
   static defaultProps = {
