@@ -15,7 +15,7 @@ export type Request = {
   members: SelectorState<Contact>,
 };
 
-export type Step = 'type' | 'info' | 'members';
+export type Step = 'type' | 'info' | 'avatar' | 'members';
 
 export type Props = {
   className?: string,
@@ -30,3 +30,7 @@ export type Props = {
   onStepChange: (step: Step) => any,
   onRequestChange: (request: Request) => any
 }
+
+export type State = {
+  avatar: ?(string | File)
+};

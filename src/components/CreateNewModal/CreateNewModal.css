@@ -45,7 +45,7 @@
 
 .typeHint {
   padding-right: calc(var(--default-padding-large) * 1.5);
-  padding-left: 46px;
+  padding-left: 38px;
   cursor: default;
   user-select: none;
   font-size: var(--modal-create-new-hint-font-size);

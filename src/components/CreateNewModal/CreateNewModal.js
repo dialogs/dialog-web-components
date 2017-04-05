@@ -16,13 +16,23 @@ import Button from '../Button/Button';
 import CreateNewType from './CreateNewType';
 import CreateNewInfo from './CreateNewInfo';
 import CreateNewMembers from './CreateNewMembers';
+import ImageEdit from '../ImageEdit/ImageEdit';
 import styles from './CreateNewModal.css';
 import type { SelectorState } from '../../entities';
 import type { Contact } from '@dlghq/dialog-types';
-import type { Props } from './types';
+import type { Props, State } from './types';
 
 class CreateNewModal extends PureComponent {
   props: Props;
+  state: State;
+
+  constructor(props: Props) {
+    super(props);
+
+    this.state = {
+      avatar: props.request.avatar
+    };
+  }
 
   handlePrevStepClick = (): void => {
     const { step } = this.props;
@@ -67,11 +77,30 @@ class CreateNewModal extends PureComponent {
       ...this.props.request,
       avatar
     });
+    this.props.onStepChange('info');
+  };
+
+  handleAvatarRemove = (): void => {
+    this.setState({ avatar: null });
+    this.props.onRequestChange({
+      ...this.props.request,
+      avatar: null
+    });
+  };
+
+  handleAvatarEdit = (avatar: File): void => {
+    this.setState({ avatar });
+    this.props.onStepChange('avatar');
   };
 
   handleSubmit = (event: SyntheticEvent): void => {
     event.preventDefault();
     this.props.onSubmit(this.props.request);
+  };
+
+  handleCancelAvatarEdit = (): void => {
+    this.setState({ avatar: this.props.request.avatar });
+    this.props.onStepChange('info');
   };
 
   renderError(): ?React.Element<any> {
@@ -113,7 +142,8 @@ class CreateNewModal extends PureComponent {
   }
 
   renderInfoStep(): React.Element<any> {
-    const { step, request: { type, about, title, shortname, avatar }, shortnamePrefix } = this.props;
+    const { step, request: { type, about, title, shortname }, shortnamePrefix } = this.props;
+    const { avatar } = this.state;
 
     return (
       <div className={styles.wrapper}>
@@ -137,7 +167,8 @@ class CreateNewModal extends PureComponent {
             shortname={shortname}
             shortnamePrefix={shortnamePrefix}
             onChange={this.handleChange}
-            onAvatarChange={this.handleAvatarChange}
+            onAvatarRemove={this.handleAvatarRemove}
+            onAvatarChange={this.handleAvatarEdit}
           />
         </ModalBody>
         <ModalFooter className={styles.footer}>
@@ -152,6 +183,36 @@ class CreateNewModal extends PureComponent {
         </ModalFooter>
       </div>
     );
+  }
+
+  renderAvatarStep(): ?React.Element<any> {
+    if (this.state.avatar && typeof this.state.avatar !== 'string') {
+      return (
+        <div className={styles.wrapper}>
+          <ModalHeader className={styles.header} withBorder>
+            <Icon
+              glyph="arrow_back"
+              onClick={this.handleCancelAvatarEdit}
+              className={styles.back}
+            />
+            <Text id="CreateNewModal.avatar_edit" />
+            <ModalClose onClick={this.props.onClose} />
+          </ModalHeader>
+          {this.renderError()}
+          <ModalBody className={styles.body}>
+            <ImageEdit
+              image={this.state.avatar}
+              type="circle"
+              size={250}
+              height={400}
+              onSubmit={this.handleAvatarChange}
+            />
+          </ModalBody>
+        </div>
+      );
+    }
+
+    return null;
   }
 
   renderMembersStep(): React.Element<any> {
@@ -199,6 +260,8 @@ class CreateNewModal extends PureComponent {
         return this.renderTypeStep();
       case 'info':
         return this.renderInfoStep();
+      case 'avatar':
+        return this.renderAvatarStep();
       case 'members':
         return this.renderMembersStep();
       default:

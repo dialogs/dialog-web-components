@@ -22,6 +22,7 @@ export type Props = {
   className?: string,
   vertical: boolean,
   onChange: (value: string, event: SyntheticInputEvent) => void,
+  onAvatarRemove: () => void,
   onAvatarChange: (avatar: File) => void
 }
 export type State = {
@@ -59,6 +60,8 @@ class CreateNewInfo extends PureComponent {
   componentWillReceiveProps(nextProps: Props) {
     if (nextProps.avatar) {
       fileToBase64(nextProps.avatar, (avatar) => this.setState({ avatar }));
+    } else {
+      this.setState({ avatar: nextProps.avatar });
     }
   }
 
@@ -72,6 +75,7 @@ class CreateNewInfo extends PureComponent {
           name={title}
           placeholder="empty"
           avatar={avatar}
+          onRemove={this.props.onAvatarRemove}
           onChange={this.props.onAvatarChange}
         />
       </div>

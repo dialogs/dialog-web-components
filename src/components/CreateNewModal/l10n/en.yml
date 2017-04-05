@@ -28,5 +28,4 @@ next:
   type: Add Info
   info: Add Members
 
-avatar:
-  remove: Remove
+avatar_edit: Edit avatar
