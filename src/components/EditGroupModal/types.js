@@ -5,32 +5,22 @@
 
 import type { Group } from '@dlghq/dialog-types';
 
+type GroupUpdate = {
+  name: string,
+  about: ?string,
+  shortname: ?string,
+  avatar: ?(string | File)
+}
+
 export type Props = {
   group: Group,
   className?: string,
-  name: {
-    error: ?string,
-    pending: boolean
-  },
-  shortname: {
-    error: ?string,
-    pending: boolean
-  },
-  about: {
-    error: ?string,
-    pending: boolean
-  },
   shortnamePrefix?: ?string,
   onClose: () => void,
-  onNameChange: (gid: number, name: string) => any,
-  onShortnameChange: (gid: number, shortname: string) => any,
-  onAboutChange: (gid: number, about: string) => any,
-  onAvatarChange: (gid: number, avatar: File) => any,
-  onAvatarRemove: (gid: number) => any
+  onSubmit: (gid: number, group: GroupUpdate) => any
 };
 
 export type State = {
-  name: string,
-  about: ?string,
-  shortname: ?string
+  screen: 'info' | 'avatar',
+  group: GroupUpdate
 }

@@ -6,13 +6,13 @@
 /* eslint-disable react/no-unused-prop-types */
 
 import type { ProviderContext } from '@dlghq/react-l10n';
+import type { AvatarPlaceholder } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import { LocalizationContextType } from '@dlghq/react-l10n';
 import { fileToBase64 } from '@dlghq/dialog-utils';
 import AvatarSelector from '../AvatarSelector/AvatarSelector';
 import Input from '../Input/Input';
-import Button from '../Button/Button';
 import styles from '../CreateNewModal/CreateNewModal.css';
 
 type Field<T> = {
@@ -26,7 +26,8 @@ export type Props = {
   name: Field<string>,
   shortname: Field<?string>,
   about: Field<?string>,
-  avatar: ?string | ?File,
+  avatar: ?(string | File),
+  placeholder: AvatarPlaceholder,
   className?: string,
   vertical: boolean,
   shortnamePrefix?: ?string,
@@ -56,47 +57,43 @@ class EditGroupModalForm extends PureComponent {
   constructor(props: Props, context: Context) {
     super(props, context);
 
-    this.state = {
-      avatar: typeof props.avatar === 'string' ? props.avatar : null
-    };
-  }
-
-  componentDidMount() {
-    if (this.props.avatar && typeof this.props.avatar !== 'string') {
-      fileToBase64(this.props.avatar, (avatar) => this.setState({ avatar }));
+    if (!props.avatar || typeof props.avatar === 'string') {
+      this.state = {
+        avatar: props.avatar
+      };
+    } else {
+      this.state = {
+        avatar: null
+      };
+      fileToBase64(props.avatar, (avatar) => {
+        this.setState({ avatar });
+      });
     }
   }
 
   componentWillReceiveProps(nextProps: Props) {
-    if (nextProps.avatar) {
-      if (typeof nextProps.avatar === 'string') {
-        this.setState({ avatar: nextProps.avatar });
-      } else {
-        fileToBase64(nextProps.avatar, (avatar) => this.setState({ avatar }));
-      }
+    if (!nextProps.avatar || typeof nextProps.avatar === 'string') {
+      this.setState({ avatar: nextProps.avatar });
+    } else {
+      fileToBase64(nextProps.avatar, (avatar) => {
+        this.setState({ avatar });
+      });
     }
   }
 
   renderAvatar(): React.Element<any> {
-    const { name } = this.props;
+    const { name, placeholder } = this.props;
     const { avatar } = this.state;
-    const { l10n } = this.context;
 
     return (
       <div className={styles.avatarBlock}>
         <AvatarSelector
           name={name.value}
-          placeholder="empty"
+          placeholder={placeholder}
           avatar={avatar}
+          onRemove={this.props.onAvatarRemove}
           onChange={this.props.onAvatarChange}
         />
-        {
-          this.state.avatar ? (
-            <Button onClick={this.props.onAvatarRemove} theme="danger" view="link" size="small">
-              {l10n.formatText('CreateNewModal.avatar.remove')}
-            </Button>
-          ) : null
-        }
       </div>
     );
   }

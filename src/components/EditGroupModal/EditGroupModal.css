@@ -10,6 +10,18 @@
   font-family: var(--modal-font-family);
 }
 
+.back {
+  width: var(--modal-close-size);
+  height: var(--modal-close-size);
+  margin-right: 16px;
+  transition: color var(--modal-close-transition-duration) linear;
+  fill: var(--modal-close-color);
+
+  &:hover {
+    fill: var(--modal-close-color-hover);
+  }
+}
+
 .body {
   padding: 0;
 }

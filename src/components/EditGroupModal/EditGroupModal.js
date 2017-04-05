@@ -13,6 +13,8 @@ import ModalBody from '../Modal/ModalBody';
 import ModalFooter from '../Modal/ModalFooter';
 import ModalClose from '../Modal/ModalClose';
 import EditGroupModalForm from './EditGroupModalForm';
+import ImageEdit from '../ImageEdit/ImageEdit';
+import Icon from '../Icon/Icon';
 import styles from './EditGroupModal.css';
 import type { Props, State } from './types';
 
@@ -24,78 +26,165 @@ class EditGroupModal extends PureComponent {
     super(props);
 
     this.state = {
-      name: props.group.name,
-      about: props.group.about,
-      shortname: props.group.shortname
+      screen: 'info',
+      group: {
+        name: props.group.name,
+        about: props.group.about,
+        shortname: props.group.shortname,
+        avatar: props.group.avatar
+      }
     };
   }
 
   handleChange = (value: any, { target }: $FlowIssue) => {
-    this.setState({ [target.name]: value });
-  };
-
-  handleSubmit = (event: SyntheticEvent): void => {
-    const { group } = this.props;
-    const { name, about, shortname } = this.state;
-
-    event.preventDefault();
-
-    if (name !== group.name) {
-      this.props.onNameChange(group.id, name);
-    }
-
-    if (about && about !== group.about) {
-      this.props.onAboutChange(group.id, about);
-    }
-
-    if (shortname && shortname !== group.shortname) {
-      this.props.onShortnameChange(group.id, shortname);
-    }
+    this.setState({
+      group: {
+        ...this.state.group,
+        [target.name]: value
+      }
+    });
   };
 
   handleAvatarChange = (avatar: File): void => {
-    this.props.onAvatarChange(this.props.group.id, avatar);
+    this.setState({
+      screen: 'info',
+      group: {
+        ...this.state.group,
+        avatar
+      }
+    });
   };
 
   handleAvatarRemove = (): void => {
-    this.props.onAvatarRemove(this.props.group.id);
+    this.setState({
+      group: {
+        ...this.state.group,
+        avatar: null
+      }
+    });
+  };
+
+  handleAvatarEdit = (avatar: File): void => {
+    this.setState({
+      screen: 'avatar',
+      group: {
+        ...this.state.group,
+        avatar
+      }
+    });
+  };
+
+  handleGoToInfo = (): void => {
+    this.setState({
+      screen: 'info',
+      group: {
+        ...this.state.group,
+        avatar: this.props.group.avatar
+      }
+    });
+  };
+
+  handleSubmit = (event: SyntheticEvent): void => {
+    event.preventDefault();
+    this.props.onSubmit(this.props.group.id, this.state.group);
   };
 
   isChanged(): boolean {
     const { group } = this.props;
-    const { name, about, shortname } = this.state;
+    const { group: { name, about, shortname, avatar } } = this.state;
 
     return name !== group.name ||
            about !== group.about ||
-           shortname !== group.shortname;
+           shortname !== group.shortname ||
+           avatar !== group.avatar;
   }
 
-  render(): React.Element<any> {
+
+  renderHeader(): ?React.Element<any> {
+    switch (this.state.screen) {
+      case 'info':
+        return (
+          <ModalHeader withBorder>
+            <Text id={`EditGroupModal.title.${this.props.group.type}`} />
+            <ModalClose onClick={this.props.onClose} />
+          </ModalHeader>
+        );
+      case 'avatar':
+        return (
+          <ModalHeader withBorder>
+            <Icon
+              glyph="arrow_back"
+              onClick={this.handleGoToInfo}
+              className={styles.back}
+            />
+            <Text id="EditGroupModal.title.avatar" />
+            <ModalClose onClick={this.props.onClose} />
+          </ModalHeader>
+        );
+      default:
+        return null;
+    }
+  }
+
+  renderForm(): React.Element<any> {
     const { group } = this.props;
-    const className = classNames(styles.container, this.props.className);
 
     return (
-      <Modal className={className} onClose={this.props.onClose}>
-        <ModalHeader withBorder>
-          <Text id={`EditGroupModal.title.${this.props.group.type}`} />
-          <ModalClose onClick={this.props.onClose} />
-        </ModalHeader>
+      <EditGroupModalForm
+        className={styles.info}
+        type={group.type}
+        name={{ ...this.props.name, value: this.state.group.name }}
+        about={{ ...this.props.about, value: this.state.group.about }}
+        shortname={{ ...this.props.shortname, value: this.state.group.shortname }}
+        avatar={this.state.group.avatar}
+        placeholder={this.props.group.placeholder}
+        shortnamePrefix={this.props.shortnamePrefix}
+        onChange={this.handleChange}
+        onAvatarChange={this.handleAvatarEdit}
+        onAvatarRemove={this.handleAvatarRemove}
+      />
+    );
+  }
 
-        <ModalBody className={styles.body}>
-          <EditGroupModalForm
-            className={styles.info}
-            type={group.type}
-            name={{ ...this.props.name, value: this.state.name }}
-            about={{ ...this.props.about, value: this.state.about }}
-            shortname={{ ...this.props.shortname, value: this.state.shortname }}
-            avatar={group.avatar}
-            shortnamePrefix={this.props.shortnamePrefix}
-            onChange={this.handleChange}
-            onAvatarChange={this.handleAvatarChange}
-            onAvatarRemove={this.handleAvatarRemove}
-          />
-        </ModalBody>
+  renderAvatarEdit(): ?React.Element<any> {
+    if (this.state.group.avatar && typeof this.state.group.avatar !== 'string') {
+      return (
+        <ImageEdit
+          image={this.state.group.avatar}
+          type="circle"
+          size={250}
+          height={400}
+          onSubmit={this.handleAvatarChange}
+        />
+      );
+    }
 
+    return null;
+  }
+
+
+  renderBody(): ?React.Element<any> {
+    switch (this.state.screen) {
+      case 'info':
+        return (
+          <ModalBody className={styles.body}>
+            {this.renderForm()}
+          </ModalBody>
+        );
+      case 'avatar':
+        return (
+          <ModalBody className={styles.body}>
+            {this.renderAvatarEdit()}
+          </ModalBody>
+        );
+      default:
+        return null;
+    }
+  }
+
+  renderFooter(): ?React.Element<any> {
+    if (this.state.screen === 'info') {
+      return (
         <ModalFooter className={styles.footer}>
           <Button
             wide
@@ -107,6 +196,20 @@ class EditGroupModal extends PureComponent {
             <Text id="EditGroupModal.submit" />
           </Button>
         </ModalFooter>
+      );
+    }
+
+    return null;
+  }
+
+  render(): React.Element<any> {
+    const className = classNames(styles.container, this.props.className);
+
+    return (
+      <Modal className={className} onClose={this.props.onClose}>
+        {this.renderHeader()}
+        {this.renderBody()}
+        {this.renderFooter()}
       </Modal>
     );
   }

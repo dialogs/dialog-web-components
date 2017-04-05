@@ -24,15 +24,6 @@ import type { Props, State } from './types';
 
 class CreateNewModal extends PureComponent {
   props: Props;
-  state: State;
-
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      avatar: props.request.avatar
-    };
-  }
 
   handlePrevStepClick = (): void => {
     const { step } = this.props;
@@ -89,7 +80,10 @@ class CreateNewModal extends PureComponent {
   };
 
   handleAvatarEdit = (avatar: File): void => {
-    this.setState({ avatar });
+    this.props.onRequestChange({
+      ...this.props.request,
+      avatar
+    });
     this.props.onStepChange('avatar');
   };
 
@@ -142,8 +136,7 @@ class CreateNewModal extends PureComponent {
   }
 
   renderInfoStep(): React.Element<any> {
-    const { step, request: { type, about, title, shortname }, shortnamePrefix } = this.props;
-    const { avatar } = this.state;
+    const { step, request: { type, about, title, shortname, avatar }, shortnamePrefix } = this.props;
 
     return (
       <div className={styles.wrapper}>
@@ -186,7 +179,7 @@ class CreateNewModal extends PureComponent {
   }
 
   renderAvatarStep(): ?React.Element<any> {
-    if (this.state.avatar && typeof this.state.avatar !== 'string') {
+    if (this.props.request.avatar && typeof this.props.request.avatar !== 'string') {
       return (
         <div className={styles.wrapper}>
           <ModalHeader className={styles.header} withBorder>
@@ -201,7 +194,7 @@ class CreateNewModal extends PureComponent {
           {this.renderError()}
           <ModalBody className={styles.body}>
             <ImageEdit
-              image={this.state.avatar}
+              image={this.props.request.avatar}
               type="circle"
               size={250}
               height={400}

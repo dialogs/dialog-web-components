@@ -30,7 +30,3 @@ export type Props = {
   onStepChange: (step: Step) => any,
   onRequestChange: (request: Request) => any
 }
-
-export type State = {
-  avatar: ?(string | File)
-};
