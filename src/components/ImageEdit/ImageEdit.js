@@ -61,7 +61,7 @@ class ImageEdit extends PureComponent {
 
   componentDidMount() {
     if (this.croppieElement) {
-      const croppie = new Croppie(this.croppieElement, {
+      this.croppie = new Croppie(this.croppieElement, {
         viewport: {
           width: this.props.size,
           height: this.props.size,
@@ -73,21 +73,24 @@ class ImageEdit extends PureComponent {
       });
 
       fileToBase64(this.props.image, (image) => {
-        croppie.bind({
-          url: image,
-          zoom: 0
-        }).then(() => {
-          this.setState({
-            zoom: {
-              ...this.state.zoom,
-              min: croppie._currentZoom,
-              current: croppie._currentZoom
+        if (this.croppie) {
+          this.croppie.bind({
+            url: image,
+            zoom: 0
+          }).then(() => {
+            if (this.croppie) {
+              this.setState({
+                zoom: {
+                  ...this.state.zoom,
+                  min: this.croppie._currentZoom,
+                  current: this.croppie._currentZoom
+                }
+              });
             }
           });
-        });
+        }
       });
 
-      this.croppie = croppie;
       this.listeners = [
         listen(this.croppieElement, 'update', this.handleCroppieUpdate, { capture: false, passive: true })
       ];
@@ -98,6 +101,7 @@ class ImageEdit extends PureComponent {
     this.removeListeners();
     if (this.croppie) {
       this.croppie.destroy();
+      this.croppie = null;
     }
   }
 
