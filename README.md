@@ -1,7 +1,7 @@
 dialog web components
 =====================
 
-[![CircleCI](https://img.shields.io/circleci/project/github/dialogs/dialog-web-components.svg)](https://circleci.com/gh/dialogs/dialog-web-components/tree/master)
+[![CircleCI](https://img.shields.io/circleci/project/github/dialogs/dialog-web-components/master.svg)](https://circleci.com/gh/dialogs/dialog-web-components/tree/master)
 
 [![dependencies](https://img.shields.io/david/dialogs/dialog-web-components.svg)](package.json)
 [![devDependencies](https://img.shields.io/david/dev/dialogs/dialog-web-components.svg)](package.json)
