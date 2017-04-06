@@ -9,7 +9,7 @@ function resolve(...paths) {
 }
 
 module.exports = {
-  title: `dialog Components v${pkg.version}`,
+  title: `dialog components v${pkg.version}`,
   serverPort: 5000,
   highlightTheme: 'dracula',
   sections: schema.map(({ name, content, components }) => {
