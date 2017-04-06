@@ -131,6 +131,7 @@ class ProfileModal extends PureComponent {
 
   renderNick(): React.Element<any> {
     const { profile: { nick } } = this.state;
+    const { context } = this.props;
     const { l10n: { formatText } } = this.context;
 
     if (nick === null) {
@@ -164,6 +165,7 @@ class ProfileModal extends PureComponent {
         prefix="@"
         onChange={this.handleChange}
         value={nick}
+        status={context.nick.error ? 'error' : 'normal'}
       />
     );
   }
@@ -230,6 +232,7 @@ class ProfileModal extends PureComponent {
 
   renderProfile(): React.Element<any> {
     const { profile: { name, about } } = this.state;
+    const { context } = this.props;
     const { l10n: { formatText } } = this.context;
 
     return (
@@ -243,6 +246,7 @@ class ProfileModal extends PureComponent {
             name="name"
             label={formatText('ProfileModal.name')}
             value={name}
+            status={context.name.error ? 'error' : 'normal'}
             onChange={this.handleChange}
           />
           {this.renderNick()}
@@ -255,6 +259,7 @@ class ProfileModal extends PureComponent {
             label={formatText('ProfileModal.about')}
             placeholder={formatText('ProfileModal.about_placeholder')}
             value={about || ''}
+            status={context.about.error ? 'error' : 'normal'}
             onChange={this.handleChange}
           />
           {this.renderContacts()}
@@ -264,10 +269,12 @@ class ProfileModal extends PureComponent {
   }
 
   renderAvatarEdit(): ?React.Element<any> {
-    if (this.state.profile.avatar && typeof this.state.profile.avatar !== 'string') {
+    const { profile: { avatar } } = this.state;
+
+    if (avatar && typeof avatar !== 'string') {
       return (
         <ImageEdit
-          image={this.state.profile.avatar}
+          image={avatar}
           type="circle"
           size={250}
           height={400}

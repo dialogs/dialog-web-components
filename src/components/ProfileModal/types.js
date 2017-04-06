@@ -14,23 +14,29 @@ export type Profile = {
   avatar: ?(string | File)
 };
 
+type ProfileContext = {
+  name: {
+    pending: boolean,
+    error: ?Error
+  },
+  nick: {
+    pending: boolean,
+    error: ?Error
+  },
+  about: {
+    pending: boolean,
+    error: ?Error
+  },
+  avatar: {
+    pending: boolean,
+    error: ?Error
+  },
+};
+
 export type Props = {
   className?: string,
   profile: User,
-  context: {
-    name: {
-      error: ?Error,
-      pending: boolean
-    },
-    nick: {
-      error: ?Error,
-      pending: boolean
-    },
-    about: {
-      error: ?Error,
-      pending: boolean
-    }
-  },
+  context: ProfileContext,
   onClose: () => void,
   onSubmit: (profile: Profile) => any,
 };
