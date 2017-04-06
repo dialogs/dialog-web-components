@@ -30,7 +30,7 @@ type ProfileContext = {
   avatar: {
     pending: boolean,
     error: ?Error
-  },
+  }
 };
 
 export type Props = {

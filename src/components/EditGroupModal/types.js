@@ -12,8 +12,28 @@ type GroupUpdate = {
   avatar: ?(string | File)
 }
 
+type GroupContext = {
+  name: {
+    pending: boolean,
+    error: ?Error
+  },
+  about: {
+    pending: boolean,
+    error: ?Error
+  },
+  shortname: {
+    pending: boolean,
+    error: ?Error
+  },
+  avatar: {
+    pending: boolean,
+    error: ?Error
+  }
+};
+
 export type Props = {
   group: Group,
+  context: GroupContext,
   className?: string,
   shortnamePrefix?: ?string,
   onClose: () => void,

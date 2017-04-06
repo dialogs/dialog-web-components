@@ -17,7 +17,7 @@ import styles from '../CreateNewModal/CreateNewModal.css';
 
 type Field<T> = {
   value: T,
-  error: ?string,
+  error: ?Error,
   pending: boolean
 };
 
