@@ -20,7 +20,7 @@ import ImageEdit from '../ImageEdit/ImageEdit';
 import styles from './CreateNewModal.css';
 import type { SelectorState } from '../../entities';
 import type { Contact } from '@dlghq/dialog-types';
-import type { Props, State } from './types';
+import type { Props } from './types';
 
 class CreateNewModal extends PureComponent {
   props: Props;
@@ -72,7 +72,6 @@ class CreateNewModal extends PureComponent {
   };
 
   handleAvatarRemove = (): void => {
-    this.setState({ avatar: null });
     this.props.onRequestChange({
       ...this.props.request,
       avatar: null
@@ -93,7 +92,6 @@ class CreateNewModal extends PureComponent {
   };
 
   handleCancelAvatarEdit = (): void => {
-    this.setState({ avatar: this.props.request.avatar });
     this.props.onStepChange('info');
   };
 
@@ -179,7 +177,9 @@ class CreateNewModal extends PureComponent {
   }
 
   renderAvatarStep(): ?React.Element<any> {
-    if (this.props.request.avatar && typeof this.props.request.avatar !== 'string') {
+    const { request: { avatar } } = this.props;
+
+    if (avatar && typeof avatar !== 'string') {
       return (
         <div className={styles.wrapper}>
           <ModalHeader className={styles.header} withBorder>
@@ -194,7 +194,7 @@ class CreateNewModal extends PureComponent {
           {this.renderError()}
           <ModalBody className={styles.body}>
             <ImageEdit
-              image={this.props.request.avatar}
+              image={avatar}
               type="circle"
               size={250}
               height={400}
