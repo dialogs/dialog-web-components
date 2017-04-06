@@ -13,11 +13,7 @@ initialState = {
 
 const actions = {
   onSelect(event) {
-    selectFiles((files) => {
-      fileToBase64(files[0], (image) => {
-        setState({ image })
-      });
-    }, false, 'image/*');
+    selectFiles((files) => setState({ image: files[0] }), false, 'image/*');
   },
   onClose() {
     setState({ image: null });
