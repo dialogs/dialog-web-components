@@ -104,12 +104,31 @@ class ProfileModal extends PureComponent {
     });
   };
 
-  isChanged(): boolean {
-    return this.state.profile.name !== this.props.profile.name ||
-           this.state.profile.nick !== this.props.profile.nick ||
-           this.state.profile.about !== this.props.profile.about ||
-           this.state.profile.avatar !== this.props.profile.avatar;
+  isPending(): boolean {
+    const { context: { name, nick, about, avatar } } = this.props;
+
+    return name.pending || nick.pending || about.pending || avatar.pending;
   }
+
+  isChanged(): boolean {
+    const { profile: { name, nick, about, avatar } } = this.props;
+
+    return this.state.profile.name !== name ||
+           this.state.profile.nick !== nick||
+           this.state.profile.about !== about||
+           this.state.profile.avatar !== avatar;
+  }
+
+  getInputState = (field: string): Object => {
+    if (this.props.context[field].error) {
+      return {
+        status: 'error',
+        hint: this.props.context[field].error
+      };
+    }
+
+    return {};
+  };
 
   renderAvatar(): React.Element<any> {
     const { profile: { placeholder } } = this.props;
@@ -131,7 +150,6 @@ class ProfileModal extends PureComponent {
 
   renderNick(): React.Element<any> {
     const { profile: { nick } } = this.state;
-    const { context } = this.props;
     const { l10n: { formatText } } = this.context;
 
     if (nick === null) {
@@ -165,7 +183,7 @@ class ProfileModal extends PureComponent {
         prefix="@"
         onChange={this.handleChange}
         value={nick}
-        status={context.nick.error ? 'error' : 'normal'}
+        {...this.getInputState('nick')}
       />
     );
   }
@@ -210,7 +228,7 @@ class ProfileModal extends PureComponent {
         return (
           <ModalHeader withBorder>
             <Text id="ProfileModal.title" />
-            <ModalClose onClick={this.props.onClose} />
+            <ModalClose pending={this.isPending()} onClick={this.props.onClose} />
           </ModalHeader>
         );
       case 'avatar':
@@ -222,7 +240,7 @@ class ProfileModal extends PureComponent {
               className={styles.back}
             />
             <Text id="ProfileModal.title_avatar" />
-            <ModalClose onClick={this.props.onClose} />
+            <ModalClose pending={this.isPending()} onClick={this.props.onClose} />
           </ModalHeader>
         );
       default:
@@ -246,7 +264,7 @@ class ProfileModal extends PureComponent {
             name="name"
             label={formatText('ProfileModal.name')}
             value={name}
-            status={context.name.error ? 'error' : 'normal'}
+            {...this.getInputState('name')}
             onChange={this.handleChange}
           />
           {this.renderNick()}
@@ -259,7 +277,7 @@ class ProfileModal extends PureComponent {
             label={formatText('ProfileModal.about')}
             placeholder={formatText('ProfileModal.about_placeholder')}
             value={about || ''}
-            status={context.about.error ? 'error' : 'normal'}
+            {...this.getInputState('about')}
             onChange={this.handleChange}
           />
           {this.renderContacts()}
@@ -295,7 +313,8 @@ class ProfileModal extends PureComponent {
             type="submit"
             theme="success"
             rounded={false}
-            disabled={!this.isChanged()}
+            loading={this.isPending()}
+            disabled={!this.isChanged() || this.isPending()}
           >
             <Text id="ProfileModal.save" />
           </Button>
