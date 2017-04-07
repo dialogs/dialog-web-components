@@ -114,7 +114,7 @@ class CreateNewModal extends PureComponent {
       <div className={styles.wrapper}>
         <ModalHeader className={styles.header} withBorder>
           <Text id={`CreateNewModal.${type}.title`} />
-          <ModalClose onClick={this.props.onClose} />
+          <ModalClose pending={this.props.pending} onClick={this.props.onClose} />
         </ModalHeader>
         <ModalBody className={styles.body}>
           <CreateNewType onChange={this.handleChange} type={type} />
@@ -145,7 +145,7 @@ class CreateNewModal extends PureComponent {
             className={styles.back}
           />
           <Text id={`CreateNewModal.${type}.title`} />
-          <ModalClose onClick={this.props.onClose} />
+          <ModalClose pending={this.props.pending} onClick={this.props.onClose} />
         </ModalHeader>
         {this.renderError()}
         <ModalBody className={styles.body}>
@@ -189,7 +189,7 @@ class CreateNewModal extends PureComponent {
               className={styles.back}
             />
             <Text id="CreateNewModal.avatar_edit" />
-            <ModalClose onClick={this.props.onClose} />
+            <ModalClose pending={this.props.pending} onClick={this.props.onClose} />
           </ModalHeader>
           {this.renderError()}
           <ModalBody className={styles.body}>
@@ -220,7 +220,7 @@ class CreateNewModal extends PureComponent {
             className={styles.back}
           />
           <Text id={`CreateNewModal.${type}.title`} />
-          <ModalClose onClick={this.props.onClose} />
+          <ModalClose pending={this.props.pending} onClick={this.props.onClose} />
         </ModalHeader>
         <ModalBody className={styles.body}>
           <CreateNewMembers
@@ -235,6 +235,7 @@ class CreateNewModal extends PureComponent {
             onClick={this.handleSubmit}
             rounded={false}
             theme="success"
+            loading={this.props.pending}
             disabled={this.props.pending}
             wide
           >

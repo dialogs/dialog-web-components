@@ -4,12 +4,12 @@ group:
     title: Group
     hint: Groups are ideal for limited communities, they can have up to 10000 members
   info:
-    name: Name this Group
+    name: Name this group
     description:
       label: Description - optional
       placeholder: Describe the Purpose of This Conversation
     shortname: Group link
-  finish: Create Group
+  finish: Create group
 
 channel:
   title: Create new channel
@@ -17,15 +17,15 @@ channel:
     title: Channel
     hint: Channels are tool for broadcasting your messages to unlimited audiences
   info:
-    name: Name This Channel
+    name: Name this channel
     description:
       label: Description - optional
-      placeholder: Describe the Purpose of This Conversation
+      placeholder: Describe the purpose of this conversation
     shortname: Channel link
-  finish: Create Channel
+  finish: Create channel
 
 next:
-  type: Add Info
-  info: Add Members
+  type: Add info
+  info: Add members
 
 avatar_edit: Edit avatar
