@@ -55,7 +55,7 @@
   "dependencies": {
     "@dlghq/country-codes": "0.1.1",
     "@dlghq/dialog-types": "1.17.2",
-    "@dlghq/dialog-utils": "0.6.1",
+    "@dlghq/dialog-utils": "0.6.2",
     "@dlghq/emoji": "0.5.2",
     "@dlghq/markdown": "0.8.2",
     "@dlghq/react-l10n": "0.7.1",
@@ -66,16 +66,15 @@
     "immutable": "3.8.1",
     "lodash": "4.17.4",
     "photoswipe": "4.1.1",
-    "react": "15.4.2",
-    "react-addons-css-transition-group": "15.4.2",
-    "react-addons-shallow-compare": "15.4.2",
-    "react-dom": "15.4.2",
+    "react": "15.5.1",
+    "react-dom": "15.5.1",
     "react-draggable": "2.2.3",
     "react-hotkeys": "0.9.0",
     "react-modal": "1.7.3",
     "react-rangeslider": "2.0.1",
     "react-select": "1.0.0-rc.3",
     "react-tether": "0.5.6",
+    "react-transition-group": "1.1.1",
     "react-virtualized": "9.7.0"
   },
   "devDependencies": {

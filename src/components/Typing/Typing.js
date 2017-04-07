@@ -6,7 +6,7 @@
 import type { Typing as TypingType } from '@dlghq/dialog-types';
 import React, { Component } from 'react';
 import Spinner from '../Spinner/Spinner';
-import CSSTransitionGroup from 'react-addons-css-transition-group';
+import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 import classNames from 'classnames';
 import styles from './Typing.css';
 

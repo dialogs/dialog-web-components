@@ -5,7 +5,7 @@
 
 import type { ConnectionStatus as ConnectionStatusType } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
-import CSSTransitionGroup from 'react-addons-css-transition-group';
+import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 import { Text } from '@dlghq/react-l10n';
 import classNames from 'classnames';
 import styles from './ConnectionStatus.css';

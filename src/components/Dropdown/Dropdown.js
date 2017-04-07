@@ -5,7 +5,7 @@
 
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
-import CSSTransitionGroup from 'react-addons-css-transition-group';
+import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 import styles from './Dropdown.css';
 
 export type Props = {

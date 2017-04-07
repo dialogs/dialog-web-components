@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import { Text } from '@dlghq/react-l10n';
 import Trigger from '../Trigger/Trigger';
 import classNames from 'classnames';
-import CSSTransitionGroup from 'react-addons-css-transition-group';
+import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 import styles from './Tooltip.css';
 
 export type Props = {
