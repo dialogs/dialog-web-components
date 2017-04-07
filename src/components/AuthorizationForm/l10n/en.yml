@@ -7,7 +7,7 @@ gender: Your gender
 wrong: Wrong?
 request_code: Request code
 resend_code: Resend code
-code_arrive: Your sms will arrive in {time}
+code_arrive: Your sms with code will arrive in {time}
 check_code: Check code
 sign_up: Sign up
 success: Success

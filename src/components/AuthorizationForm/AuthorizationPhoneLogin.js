@@ -56,6 +56,10 @@ class AuthorizationPhoneLogin extends PureComponent {
   componentWillReceiveProps(nextProps: Props): void {
     if (nextProps.step < CODE_REQUESTED || nextProps.step > CODE_SENT) {
       this.handleIntervalClear();
+    } else if (this.props.step === LOGIN_SENT && nextProps.step === CODE_REQUESTED) {
+      this.setState({ isCodeResendRequested: true });
+      this.handleIntervalClear();
+      this.interval = setInterval(this.handleIntervalUpdate, 1000);
     }
   }
 
@@ -90,6 +94,7 @@ class AuthorizationPhoneLogin extends PureComponent {
 
   handleCodeResend = (): void => {
     this.setState({ isCodeResendRequested: true });
+    this.handleIntervalClear();
     this.interval = setInterval(this.handleIntervalUpdate, 1000);
     this.props.onResendCode();
   };
