@@ -12,32 +12,24 @@ type GroupUpdate = {
   avatar: ?(string | File)
 }
 
-type GroupContext = {
-  name: {
-    pending: boolean,
-    error: ?Error
-  },
-  about: {
-    pending: boolean,
-    error: ?Error
-  },
-  shortname: {
-    pending: boolean,
-    error: ?Error
-  },
-  avatar: {
-    pending: boolean,
-    error: ?Error
-  }
+export type Field<P> = {
+  value: P,
+  error: ?Error,
+  pending: boolean
 };
 
 export type Props = {
   group: Group,
-  context: GroupContext,
+  context: {
+    name: Field<string>,
+    about: Field<string>,
+    shortname: Field<string>,
+    avatar: Field<string>
+  },
   className?: string,
   shortnamePrefix?: ?string,
   onClose: () => void,
-  onSubmit: (gid: number, group: GroupUpdate) => any
+  onSubmit: (group: Group, update: GroupUpdate) => any
 };
 
 export type State = {

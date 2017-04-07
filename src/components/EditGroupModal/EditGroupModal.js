@@ -28,10 +28,10 @@ class EditGroupModal extends PureComponent {
     this.state = {
       screen: 'info',
       group: {
-        name: props.group.name,
-        about: props.group.about,
-        shortname: props.group.shortname,
-        avatar: props.group.avatar
+        name: props.context.name.value,
+        about: props.context.about.value,
+        shortname: props.context.shortname.value,
+        avatar: props.context.avatar.value
       }
     };
   }
@@ -86,17 +86,16 @@ class EditGroupModal extends PureComponent {
 
   handleSubmit = (event: SyntheticEvent): void => {
     event.preventDefault();
-    this.props.onSubmit(this.props.group.id, this.state.group);
+    this.props.onSubmit(this.props.group, this.state.group);
   };
 
   isChanged(): boolean {
-    const { group } = this.props;
-    const { group: { name, about, shortname, avatar } } = this.state;
+    const { context: { avatar, name, about, shortname} } = this.props;
 
-    return name !== group.name ||
-           about !== group.about ||
-           shortname !== group.shortname ||
-           avatar !== group.avatar;
+    return this.state.group.name !== name.value ||
+           this.state.group.about !== about.value ||
+           this.state.group.shortname !== shortname.value ||
+           this.state.group.avatar !== avatar.value;
   }
 
 

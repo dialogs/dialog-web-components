@@ -81,6 +81,17 @@ class EditGroupModalForm extends PureComponent {
     }
   }
 
+  getInputState = (field: string) => {
+    if (this.props[field].error) {
+      return {
+        status: 'error',
+        hint: this.props[field].error
+      };
+    }
+
+    return {};
+  };
+
   renderAvatar(): React.Element<any> {
     const { name, placeholder } = this.props;
     const { avatar } = this.state;
@@ -114,7 +125,7 @@ class EditGroupModalForm extends PureComponent {
         onChange={this.props.onChange}
         prefix={this.props.shortnamePrefix}
         value={shortname.value || ''}
-        status={shortname.error ? 'error' : 'normal'}
+        {...this.getInputState('shortname')}
       />
     );
   }
@@ -139,6 +150,7 @@ class EditGroupModalForm extends PureComponent {
             status={name.error ? 'error' : 'normal'}
             placeholder={l10n.formatText(`CreateNewModal.${type}.info.name`)}
             value={name.value}
+            {...this.getInputState('name')}
           />
           {this.renderShortname()}
           <Input
@@ -152,6 +164,7 @@ class EditGroupModalForm extends PureComponent {
             placeholder={l10n.formatText(`CreateNewModal.${type}.info.description.placeholder`)}
             type="textarea"
             value={about.value || ''}
+            {...this.getInputState('about')}
           />
         </form>
       </div>
