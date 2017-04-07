@@ -90,12 +90,18 @@ class EditGroupModal extends PureComponent {
   };
 
   isChanged(): boolean {
-    const { context: { avatar, name, about, shortname} } = this.props;
+    const { context: { avatar, name, about, shortname } } = this.props;
 
     return this.state.group.name !== name.value ||
            this.state.group.about !== about.value ||
            this.state.group.shortname !== shortname.value ||
            this.state.group.avatar !== avatar.value;
+  }
+
+  isPending(): boolean {
+    const { context: { avatar, name, about, shortname } } = this.props;
+
+    return avatar.pending || name.pending || about.pending || shortname.pending;
   }
 
 
@@ -105,7 +111,7 @@ class EditGroupModal extends PureComponent {
         return (
           <ModalHeader withBorder>
             <Text id={`EditGroupModal.title.${this.props.group.type}`} />
-            <ModalClose onClick={this.props.onClose} />
+            <ModalClose pending={this.isPending()} onClick={this.props.onClose} />
           </ModalHeader>
         );
       case 'avatar':
@@ -117,7 +123,7 @@ class EditGroupModal extends PureComponent {
               className={styles.back}
             />
             <Text id="EditGroupModal.title.avatar" />
-            <ModalClose onClick={this.props.onClose} />
+            <ModalClose pending={this.isPending()} onClick={this.props.onClose} />
           </ModalHeader>
         );
       default:
@@ -189,7 +195,8 @@ class EditGroupModal extends PureComponent {
             wide
             theme="success"
             rounded={false}
-            disabled={!this.isChanged()}
+            loading={this.isPending()}
+            disabled={!this.isChanged() || this.isPending()}
             onClick={this.handleSubmit}
           >
             <Text id="EditGroupModal.submit" />

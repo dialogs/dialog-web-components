@@ -81,7 +81,7 @@ class EditGroupModalForm extends PureComponent {
     }
   }
 
-  getInputState = (field: string) => {
+  getInputState = (field: string): Object => {
     if (this.props[field].error) {
       return {
         status: 'error',
