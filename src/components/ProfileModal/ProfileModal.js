@@ -2,6 +2,8 @@
  * Copyright 2017 dialog LLC <info@dlg.im>
  * @flow
  */
+/* eslint max-lines: ["error", 500] */
+
 
 import React, { PureComponent } from 'react';
 import { Text, LocalizationContextType } from '@dlghq/react-l10n';
@@ -114,8 +116,8 @@ class ProfileModal extends PureComponent {
     const { profile: { name, nick, about, avatar } } = this.props;
 
     return this.state.profile.name !== name ||
-           this.state.profile.nick !== nick||
-           this.state.profile.about !== about||
+           this.state.profile.nick !== nick ||
+           this.state.profile.about !== about ||
            this.state.profile.avatar !== avatar;
   }
 
@@ -250,7 +252,6 @@ class ProfileModal extends PureComponent {
 
   renderProfile(): React.Element<any> {
     const { profile: { name, about } } = this.state;
-    const { context } = this.props;
     const { l10n: { formatText } } = this.context;
 
     return (
