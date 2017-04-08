@@ -98,7 +98,7 @@
 }
 
 .sender, .service, .highlight {
-  color: var(--color-info);
+  color: var(--full-recent-item-highlight-color);
 }
 
 .counter {
