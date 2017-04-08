@@ -144,6 +144,11 @@
     background-color: var(--full-recent-item-active-counter-color);
   }
 
+  /* TODO: shitty code, remove this ASAP */
+  & .typing > div {
+    background-color: var(--full-recent-item-active-message-color);
+  }
+
   & .message,
   & .sender,
   & .service,
