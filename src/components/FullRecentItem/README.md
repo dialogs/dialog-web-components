@@ -103,5 +103,14 @@ function handleSelect(peer) {
     online={null}
     onSelect={handleSelect}
   />
+  <FullRecentItem
+    uid={1}
+    info={group}
+    draft="Today we introducing fully featured"
+    active={channel.peer.key === state.current}
+    counter={0}
+    online={null}
+    onSelect={handleSelect}
+  />
 </div>
 ```

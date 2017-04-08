@@ -427,6 +427,7 @@
   --full-recent-item-icon-color: var(--full-recent-item-default-color);
   --full-recent-item-active-icon-color: var(--full-recent-item-active-color);
   --full-recent-item-highlight-color: var(--color-info);
+  --full-recent-item-draft-color: var(--color-danger);
   /* Sidebar */
   /* SidebarGroupTitle */
   --sidebar-group-title-font-family: var(--default-font-family);

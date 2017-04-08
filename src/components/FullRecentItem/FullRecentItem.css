@@ -101,6 +101,10 @@
   color: var(--full-recent-item-highlight-color);
 }
 
+.draft {
+  color: var(--full-recent-item-draft-color);
+}
+
 .counter {
   display: flex;
   width: var(--full-recent-item-counter-size);
@@ -154,8 +158,9 @@
     background-color: var(--full-recent-item-active-message-color);
   }
 
-  & .message,
+  & .draft,
   & .sender,
+  & .message,
   & .service,
   & .highlight {
     color: var(--full-recent-item-active-message-color);

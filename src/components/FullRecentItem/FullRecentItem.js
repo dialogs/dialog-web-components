@@ -20,6 +20,7 @@ export type Props = {
   muted: boolean,
   active: boolean,
   counter: number,
+  draft: ?string,
   typing: ?string,
   online: ?boolean,
   message: ?Message,
@@ -91,7 +92,7 @@ class FullRecentItem extends PureComponent {
   }
 
   renderStatus() {
-    const { message, typing } = this.props;
+    const { message, typing, draft } = this.props;
     if (typing) {
       return (
         <div className={styles.message}>
@@ -99,6 +100,15 @@ class FullRecentItem extends PureComponent {
           <span className={styles.highlight}>
             {typing}
           </span>
+        </div>
+      );
+    }
+
+    if (draft) {
+      return (
+        <div className={styles.message}>
+          <Text className={styles.draft} id="FullRecentItem.draft" />
+          {draft}
         </div>
       );
     }
