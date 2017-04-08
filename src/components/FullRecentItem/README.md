@@ -96,8 +96,9 @@ function handleSelect(peer) {
   <FullRecentItem
     uid={1}
     info={channel}
+    muted={true}
     active={channel.peer.key === state.current}
-    counter={1}
+    counter={57}
     message={{ content: { type: 'text', text: 'Today we introducing fully featured' } }}
     online={null}
     onSelect={handleSelect}

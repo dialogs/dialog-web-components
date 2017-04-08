@@ -17,6 +17,7 @@ export type Props = {
   className?: string,
   uid: number,
   info: PeerInfo,
+  muted: boolean,
   active: boolean,
   counter: number,
   typing: ?string,
@@ -36,6 +37,11 @@ class FullRecentItem extends PureComponent {
   handleClick = (): void => {
     this.props.onSelect(this.props.info.peer);
   };
+
+  isDoubleAvatar(): boolean {
+    const { info, message } = this.props;
+    return Boolean(message && message.sender && info.type === 'group');
+  }
 
   renderAvatar(): React.Element<any> {
     const { info, message, online } = this.props;
@@ -138,14 +144,19 @@ class FullRecentItem extends PureComponent {
   }
 
   renderCounter() {
-    const { counter } = this.props;
+    const { muted, counter } = this.props;
 
     if (counter === 0) {
       return null;
     }
 
+    const className = classNames(
+      styles.counter,
+      muted ? styles.muted : null
+    );
+
     return (
-      <div className={styles.counter}>
+      <div className={className}>
         {counter}
       </div>
     );
@@ -180,12 +191,13 @@ class FullRecentItem extends PureComponent {
   }
 
   render() {
-    const { info, message, active, counter } = this.props;
-    const className = classNames(styles.container, this.props.className, {
-      [styles.active]: active,
-      [styles.unread]: counter !== 0,
-      [styles.withDoubleAvatar]: message && message.sender && info.type === 'group'
-    });
+    const className = classNames(
+      styles.container,
+      this.props.className,
+      this.props.active ? styles.active : null,
+      this.props.counter ? styles.unread : null,
+      this.isDoubleAvatar() ? styles.withDoubleAvatar : null
+    );
 
     return (
       <div className={className} onClick={this.handleClick}>
@@ -193,7 +205,7 @@ class FullRecentItem extends PureComponent {
         <div className={styles.text}>
           <div className={styles.title}>
             {this.renderIcons()}
-            <span>{info.title}</span>
+            <span>{this.props.info.title}</span>
           </div>
           {this.renderStatus()}
         </div>

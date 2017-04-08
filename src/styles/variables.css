@@ -1,11 +1,11 @@
 /**
  * Copyright 2017 dialog LLC <info@dlg.im>
  */
-
 @import './colors.css';
 @import './helpers.css';
 
 @custom-media --small (width < 800px);
+
 @custom-media --medium (width < 1090px);
 
 :root {
@@ -192,8 +192,8 @@
   --emoji-button-font-size: var(--default-font-size);
   --emoji-button-size: 30px;
   --emoji-button-background: #fff;
-  --emoji-button-background-active: #F6F2FC;
-  --emoji-button-border-color: #D9D9D9;
+  --emoji-button-background-active: #f6f2fc;
+  --emoji-button-border-color: #d9d9d9;
   --emoji-button-border-color-hover: var(--color-primary);
   --emoji-button-border-color-active: var(--emoji-button-border-color-hover);
   --emoji-button-border-radius: var(--emoji-button-size);
@@ -322,8 +322,6 @@
   --voice-border-radius: var(--default-border-radius);
   --voice-background-color: #fff;
   --voice-border-color: color(#000 alpha(14%));
-  /*--voice-transcript-button-color: color(var(--color-primary) alpha(24%));*/
-  /*--voice-transcript-button-icon-color: var(--voice-transcript-button-color);*/
   --voice-transcript-button-color: #baa2e5;
   --voice-transcript-button-icon-color: #d4c2f3;
   --voice-transcript-button-hover-color: var(--color-primary);
@@ -416,6 +414,8 @@
   --full-recent-item-counter-background: var(--recent-item-counter-background);
   --full-recent-item-counter-font-size: var(--recent-item-counter-font-size);
   --full-recent-item-counter-color: var(--recent-item-counter-color);
+  --full-recent-item-counter-muted-color: var(--full-recent-item-counter-color);
+  --full-recent-item-counter-muted-background: #a4a4a4;
   --full-recent-item-active-background-color: var(--recent-item-active-background-color);
   --full-recent-item-active-background-gradient: var(--recent-item-active-background-gradient);
   --full-recent-item-active-color: var(--recent-item-active-color);
@@ -525,7 +525,7 @@
   --select-background-color: #fff;
   --select-label-font-size: var(--default-font-size);
   --select-line-height: var(--input-label-line-height);
-  --select-label-color: #676C75;
+  --select-label-color: #676c75;
   /* Tabs */
   --tabs-font-family: var(--default-font-family);
   --tabs-width: 220px;
