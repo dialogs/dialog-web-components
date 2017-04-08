@@ -69,6 +69,7 @@ function handleSelect(peer) {
     info={oleg}
     active={oleg.peer.key === state.current}
     counter={0}
+    typing="is typing"
     message={{ sender: oleg, content: { type: 'photo' } }}
     online={false}
     onSelect={handleSelect}

@@ -7,6 +7,7 @@ import type { Peer, PeerInfo, Message } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
 import { Text } from '@dlghq/react-l10n';
 import classNames from 'classnames';
+import Spinner from '../Spinner/Spinner';
 import PeerAvatar from '../PeerAvatar/PeerAvatar';
 import DoublePeerAvatar from '../DoublePeerAvatar/DoublePeerAvatar';
 import Icon from '../Icon/Icon';
@@ -18,6 +19,7 @@ export type Props = {
   info: PeerInfo,
   active: boolean,
   counter: number,
+  typing: ?string,
   online: ?boolean,
   message: ?Message,
   favourite: ?boolean,
@@ -83,42 +85,53 @@ class FullRecentItem extends PureComponent {
   }
 
   renderStatus() {
-    const { message } = this.props;
-    if (!message) {
-      return null;
+    const { message, typing } = this.props;
+    if (typing) {
+      return (
+        <div className={styles.message}>
+          <Spinner className={styles.typing} type="dotted" />
+          <span className={styles.highlight}>
+            {typing}
+          </span>
+        </div>
+      );
     }
 
-    const { content } = message;
+    if (message) {
+      const { content } = message;
 
-    switch (content.type) {
-      case 'text':
-        return (
-          <div className={styles.message}>
-            {this.renderStatusSender()}
-            {content.text}
-          </div>
-        );
-
-      case 'service':
-        return (
-          <div className={styles.message}>
-            <span className={styles.service}>
+      switch (content.type) {
+        case 'text':
+          return (
+            <div className={styles.message}>
+              {this.renderStatusSender()}
               {content.text}
-            </span>
-          </div>
-        );
+            </div>
+          );
 
-      default:
-        return (
-          <div className={styles.message}>
-            {this.renderStatusSender()}
-            <Text
-              className={styles.highlight}
-              id={`FullRecentItem.${content.type}`}
-            />
-          </div>
-        );
+        case 'service':
+          return (
+            <div className={styles.message}>
+              <span className={styles.service}>
+                {content.text}
+              </span>
+            </div>
+          );
+
+        default:
+          return (
+            <div className={styles.message}>
+              {this.renderStatusSender()}
+              <Text
+                className={styles.highlight}
+                id={`FullRecentItem.${content.type}`}
+              />
+            </div>
+          );
+      }
     }
+
+    return null;
   }
 
   renderCounter() {

@@ -123,6 +123,11 @@
   color: var(--full-recent-item-unread-color);
 }
 
+.typing {
+  height: 6px !important;
+  margin-right: 6px;
+}
+
 /* State */
 .active {
   background-color: var(--full-recent-item-active-background-color);
