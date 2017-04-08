@@ -118,6 +118,9 @@ class FullRecentItem extends PureComponent {
             </div>
           );
 
+        case 'unsupported':
+          return null;
+
         default:
           return (
             <div className={styles.message}>
