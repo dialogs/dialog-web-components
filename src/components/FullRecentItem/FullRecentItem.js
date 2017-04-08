@@ -18,8 +18,9 @@ export type Props = {
   info: PeerInfo,
   active: boolean,
   counter: number,
-  message: ?Message,
   online: ?boolean,
+  message: ?Message,
+  favourite: ?boolean,
   onSelect: (peer: Peer) => any
 };
 
@@ -134,21 +135,32 @@ class FullRecentItem extends PureComponent {
     );
   }
 
-  renderIcon(): ?React.Element<any> {
+  renderIcons() {
+    const icons = [];
+    if (this.props.favourite) {
+      icons.push(
+        <Icon key="favourite" glyph="star" className={styles.icon} size={14} />
+      );
+    }
+
     switch (this.props.info.type) {
       case 'group':
-        return (
-          <Icon glyph="group" className={styles.icon} size={22} />
+        icons.push(
+          <Icon key="type" glyph="group" className={styles.icon} size={22} />
         );
+        break;
 
       case 'channel':
-        return (
-          <Icon glyph="channel" className={styles.icon} size={22} />
+        icons.push(
+          <Icon key="type" glyph="channel" className={styles.icon} size={22} />
         );
+        break;
 
       default:
-        return null;
+        // do nothing
     }
+
+    return icons;
   }
 
   render() {
@@ -164,7 +176,7 @@ class FullRecentItem extends PureComponent {
         {this.renderAvatar()}
         <div className={styles.text}>
           <div className={styles.title}>
-            {this.renderIcon()}
+            {this.renderIcons()}
             <span>{info.title}</span>
           </div>
           {this.renderStatus()}

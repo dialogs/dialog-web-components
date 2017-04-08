@@ -7,4 +7,5 @@ document: Document
 voice: Voice
 location: Location
 contact: Contact
-unknown: Unknown
+unknown: ""
+unsupported: ""

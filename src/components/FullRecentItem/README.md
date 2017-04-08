@@ -59,6 +59,7 @@ function handleSelect(peer) {
     info={nkt}
     active={nkt.peer.key === state.current}
     counter={0}
+    favourite={true}
     message={{ sender: nkt, content: { type: 'text', text: '-----BEGIN RSA PRIVATE KEY-----' } }}
     online={true}
     onSelect={handleSelect}
@@ -77,6 +78,7 @@ function handleSelect(peer) {
     info={group}
     active={group.peer.key === state.current}
     counter={3}
+    favourite={true}
     message={{ sender: oleg, content: { type: 'service', text: 'Nikita added Oleg' } }}
     online={null}
     onSelect={handleSelect}
@@ -86,7 +88,7 @@ function handleSelect(peer) {
     info={publicGroup}
     active={publicGroup.peer.key === state.current}
     counter={0}
-    message={{ sender: nkt, content: { type: 'text', text: 'We\'ve just got another one star' } }}
+    message={{ sender: nkt, content: { type: 'text', text: `We've got another one star` } }}
     online={null}
     onSelect={handleSelect}
   />

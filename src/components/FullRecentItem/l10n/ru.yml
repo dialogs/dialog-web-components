@@ -7,4 +7,5 @@ document: Документ
 voice: Голос
 location: Местоположение
 contact: Контакт
-unknown: Неизвестно
+unknown: ""
+unsupported: ""
