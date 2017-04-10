@@ -28,10 +28,10 @@ class EditGroupModal extends PureComponent {
     this.state = {
       screen: 'info',
       group: {
-        name: props.context.name.value,
-        about: props.context.about.value,
-        shortname: props.context.shortname.value,
-        avatar: props.context.avatar.value
+        name: props.group.name,
+        about: props.group.about,
+        shortname: props.group.shortname,
+        avatar: props.group.avatar
       }
     };
   }
