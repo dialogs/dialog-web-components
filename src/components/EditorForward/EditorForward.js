@@ -30,7 +30,7 @@ class EditorForward extends PureComponent {
           <Text id="EditorForward.delete" className={styles.buttonText} />
         </Button>
         <div className={styles.text}>
-          <Text id="EditorForward.text" values={{ count: this.props.count }} />
+          <Text id="EditorForward.text" values={{ count: this.props.count.toString() }} />
         </div>
         <Button onClick={this.props.onForward} view="link" theme="primary" className={styles.button}>
           <Icon glyph="forward" className={styles.buttonIcon} />
