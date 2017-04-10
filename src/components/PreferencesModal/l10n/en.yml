@@ -18,6 +18,7 @@ notifications:
   preview_hint: Show message text in notification
   mention: Mention Only Notifications
   mention_hint: You can enable notifications only for messages that contains you mention.
+  counter_include_muted: Include muted chats in unread counter
 security:
   title: Security
   legend:

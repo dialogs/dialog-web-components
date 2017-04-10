@@ -3,9 +3,12 @@ initialState = {
   isOpen: false,
   screen: 'general',
   settings: {
-    value: null,
-    error: null,
-    pending: true
+    isSendByEnter: true,
+    isCounterIncludeMuted: true,
+    isSoundEffectsEnabled: false,
+    isOnlyMentionNotifications: true,
+    isGroupsNotificationsEnabled: false,
+    isShowNotificationsTextEnabled: true
   },
   sessions: {
     value: null,
@@ -26,47 +29,8 @@ const actions = {
   onScreenChange(screen) {
     setState({ screen });
   },
-  onSettingsLoad() {
-    setState({
-      settings: {
-        ...state.settings,
-        pending: true
-      }
-    });
-
-    setTimeout(() => {
-      setState({
-        settings: {
-          value: {
-            isSendByEnter: true,
-            isSoundEffectsEnabled: false,
-            isOnlyMentionNotifications: true,
-            isGroupsNotificationsEnabled: false,
-            isShowNotificationsTextEnabled: true
-          },
-          error: null,
-          pending: false
-        }
-      });
-    }, 1000);
-  },
-  onSettingsChange(value) {
-    setState({
-      settings: {
-        ...state.settings,
-        pending: true
-      }
-    });
-
-    setTimeout(() => {
-      setState({
-        settings: {
-          ...state.settings,
-          value,
-          pending: false
-        }
-      });
-    }, 500);
+  onSettingsChange(settings) {
+    setState({ settings });
   },
   onSessionsLoad() {
 

@@ -11,6 +11,7 @@ import Switcher from '../Switcher/Switcher';
 import styles from './PreferencesModal.css';
 
 export type Settings = {
+  isCounterIncludeMuted: boolean,
   isOnlyMentionNotifications: boolean,
   isGroupsNotificationsEnabled: boolean,
   isShowNotificationsTextEnabled: boolean
@@ -18,49 +19,41 @@ export type Settings = {
 
 export type Props = {
   settings: Settings,
-  onChange: (settings: Settings) => any
+  onChange: (settings: $Shape<Settings>) => void
 };
 
 class PreferencesNotifications extends PureComponent {
   props: Props;
 
-  handleOnlyMentionChange: Function;
-  handleGroupsChange: Function;
-  handleShowTextChange: Function;
-
-  constructor(props: Props) {
-    super(props);
-
-    this.handleOnlyMentionChange = this.handleOnlyMentionChange.bind(this);
-    this.handleGroupsChange = this.handleGroupsChange.bind(this);
-    this.handleShowTextChange = this.handleShowTextChange.bind(this);
-  }
-
-  handleOnlyMentionChange(value: boolean): void {
+  handleOnlyMentionChange = (value: boolean) => {
     this.props.onChange({
-      ...this.props.settings,
       isOnlyMentionNotifications: value
     });
-  }
+  };
 
-  handleGroupsChange(value: boolean): void {
+  handleGroupsChange = (value: boolean) => {
     this.props.onChange({
-      ...this.props.settings,
       isGroupsNotificationsEnabled: value
     });
-  }
+  };
 
-  handleShowTextChange(value: boolean): void {
+  handleShowTextChange = (value: boolean) => {
     this.props.onChange({
-      ...this.props.settings,
       isShowNotificationsTextEnabled: value
     });
-  }
+  };
+
+  handleIncludeMutedChange = (value: boolean) => {
+    this.props.onChange({
+      isCounterIncludeMuted: value
+    });
+  };
 
   render(): React.Element<any> {
     const onlyMention = this.props.settings.isOnlyMentionNotifications;
     const groupsEnabled = this.props.settings.isGroupsNotificationsEnabled;
     const showText = this.props.settings.isShowNotificationsTextEnabled;
+    const includeMuted = this.props.settings.isCounterIncludeMuted;
 
     return (
       <div className={styles.screen}>
@@ -85,6 +78,16 @@ class PreferencesNotifications extends PureComponent {
               <Text id="PreferencesModal.notifications.mention" />
             </Switcher>
             <Text id="PreferencesModal.notifications.mention_hint" className={styles.hint} />
+          </Field>
+          <Field>
+            <Switcher
+              id="includeMuted"
+              name="includeMuted"
+              value={includeMuted}
+              onChange={this.handleIncludeMutedChange}
+            >
+              <Text id="PreferencesModal.notifications.counter_include_muted" />
+            </Switcher>
           </Field>
         </Fieldset>
         <Fieldset legend="PreferencesModal.security.title">

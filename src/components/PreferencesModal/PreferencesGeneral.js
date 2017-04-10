@@ -20,35 +20,23 @@ export type Settings = {
 
 export type Props = {
   settings: Settings,
-  onChange: (settings: Settings) => any
+  onChange: (settings: $Shape<Settings>) => any
 };
 
 class PreferencesGeneral extends PureComponent {
   props: Props;
 
-  handleSendByChange: Function;
-  handleSoundChange: Function;
-
-  constructor(props: Props) {
-    super(props);
-
-    this.handleSendByChange = this.handleSendByChange.bind(this);
-    this.handleSoundChange = this.handleSoundChange.bind(this);
-  }
-
-  handleSendByChange(value: string): void {
+  handleSendByChange = (value: string): void => {
     this.props.onChange({
-      ...this.props.settings,
       isSendByEnter: value === 'enter'
     });
-  }
+  };
 
-  handleSoundChange(value: boolean): void {
+  handleSoundChange = (value: boolean): void => {
     this.props.onChange({
-      ...this.props.settings,
       isSoundEffectsEnabled: value
     });
-  }
+  };
 
   render() {
     const sendBy = this.props.settings.isSendByEnter ? 'enter' : 'shift_enter';

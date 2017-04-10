@@ -3,8 +3,7 @@
  * @flow
  */
 
-import type { Settings as GeneralSettings } from './PreferencesGeneral';
-import type { Settings as NotificationSettings } from './PreferencesNotifications';
+import type { ProfileSettings } from '@dlghq/dialog-types';
 import type { Props } from './types';
 import React, { PureComponent } from 'react';
 import { Text } from '@dlghq/react-l10n';
@@ -25,19 +24,15 @@ import styles from './PreferencesModal.css';
 class PreferencesModal extends PureComponent {
   props: Props;
 
-  componentDidMount() {
-    this.props.onSettingsLoad();
-  }
-
   handleClose = (): void => {
     if (!this.isPending()) {
       this.props.onClose();
     }
   };
 
-  handleSettingsChange = (settings: GeneralSettings | NotificationSettings): void => {
+  handleSettingsChange = (settings: $Shape<ProfileSettings>): void => {
     this.props.onSettingsChange({
-      ...this.props.settings.value,
+      ...this.props.settings,
       ...settings
     });
   };
@@ -45,11 +40,6 @@ class PreferencesModal extends PureComponent {
   handleScreenChange = (value: string): void => {
     this.props.onScreenChange(value);
     switch (value) {
-      case 'general':
-      case 'notifications':
-        this.props.onSettingsLoad();
-        break;
-
       case 'security':
         this.props.onSessionsLoad();
         break;
@@ -59,17 +49,13 @@ class PreferencesModal extends PureComponent {
         break;
 
       default:
-        // do nothing
+      // do nothing
     }
   };
 
   isPending(): boolean {
-    const { screen, settings, sessions, blocked } = this.props;
+    const { screen, sessions, blocked } = this.props;
     switch (screen) {
-      case 'general':
-      case 'notifications':
-        return settings.pending;
-
       case 'security':
         return sessions.pending;
 
@@ -92,25 +78,17 @@ class PreferencesModal extends PureComponent {
 
     switch (screen) {
       case 'general':
-        if (!settings.value) {
-          return spinner;
-        }
-
         return (
           <PreferencesGeneral
-            settings={settings.value}
+            settings={settings}
             onChange={this.handleSettingsChange}
           />
         );
 
       case 'notifications':
-        if (!settings.value) {
-          return spinner;
-        }
-
         return (
           <PreferencesNotifications
-            settings={settings.value}
+            settings={settings}
             onChange={this.handleSettingsChange}
           />
         );

@@ -10,11 +10,7 @@ export type PreferencesScreen = 'general' | 'notifications' | 'security' | 'shor
 export type Props = {
   className?: string,
   screen: string,
-  settings: {
-    value: ?ProfileSettings,
-    error: ?Error,
-    pending: boolean
-  },
+  settings: ProfileSettings,
   sessions: {
     value: ?AuthSession[],
     error: ?Error,
@@ -27,7 +23,6 @@ export type Props = {
   },
   onClose: close,
   onScreenChange: (screen: string) => any,
-  onSettingsLoad: () => any,
   onSettingsChange: (value: ProfileSettings) => any,
   onSessionsLoad: () => any,
   onSessionTerminate: (id: number) => any,
