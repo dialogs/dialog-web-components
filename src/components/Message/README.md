@@ -1,14 +1,14 @@
 Message:
 
 ```
-const messages = require('./fixtures/messages');
+const messages = require('./fixtures/messages').messages;
 
 <div style={{background: '#fff'}}>
   {messages.map((message, index) => (
     <Message
       key={index}
       message={message} 
-      short={index > 0} 
+      short={index > 0}
     />
   ))}
 </div>
@@ -17,7 +17,7 @@ const messages = require('./fixtures/messages');
 Selected Message:
 
 ```
-const messages = require('./fixtures/messages');
+const messages = require('./fixtures/messages').messages;
 
 initialState = {
   selected: []
@@ -41,12 +41,59 @@ const handleSelect = (message) => {
     return (
       <Message
         key={index}
-        message={message} 
-        short={index > 0} 
+        message={message}
+        short={index > 0}
         selected={state.selected.indexOf(message.rid) > -1}
         onSelect={handleSelect}
       />
     );
   })}
+</div>
+```
+
+Attached Message:
+
+```
+const messages = require('./fixtures/messages').messages;
+const peerInfo = require('./fixtures/messages').peerInfo;
+
+initialState = {
+  message: messages[0],
+  attachment: {
+    type: 'forward',
+    from: peerInfo,
+    messages: [
+      messages[3],
+      messages[4]
+    ]
+  }
+};
+
+<div style={{background: '#fff'}}>
+  <Message
+    message={messages[0]}
+    attachment={{
+      type: 'forward',
+      from: peerInfo,
+      messages: [
+        messages[3],
+        messages[4]
+      ]
+    }}
+    goToPeer={console.debug}
+    goToMessage={console.debug}
+  />
+  <Message
+    message={{
+      ...messages[2],
+      state: 'read'
+    }}
+    attachment={{
+      type: 'reply',
+      message: messages[3]
+    }}
+    goToPeer={console.debug}
+    goToMessage={console.debug}
+  />
 </div>
 ```

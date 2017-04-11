@@ -18,7 +18,7 @@ export type Props = {
   className?: string,
   content: MessageContentTypes,
   isPending?: boolean,
-  onLightboxOpen: () => any
+  onLightboxOpen?: () => any
 };
 
 function MessageContent({ className, content, isPending, onLightboxOpen }: Props) {

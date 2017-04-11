@@ -6,8 +6,9 @@
 import type {
   Message as MessageType,
   MessageState as MessageStateType,
-  PeerInfo
+  PeerInfo, Peer
 } from '@dlghq/dialog-types';
+import type { MessageAttachmentType } from '../MessageAttachment/types';
 import classNames from 'classnames';
 import React, { PureComponent } from 'react';
 import MessageContent from '../MessageContent/MessageContent';
@@ -17,6 +18,7 @@ import EmojiButton from '../EmojiButton/EmojiButton';
 import Icon from '../Icon/Icon';
 import Hover from '../Hover/Hover';
 import CopyOnly from '../CopyOnly/CopyOnly';
+import MessageAttachment from '../MessageAttachment/MessageAttachment';
 import styles from './Message.css';
 
 export type Props = {
@@ -27,6 +29,7 @@ export type Props = {
   className?: string,
   forceHover?: boolean,
   selected: ?boolean,
+  attachment: ?MessageAttachmentType,
   onSelect?: (message: MessageType) => any,
   onTitleClick?: (message: MessageType) => any,
   onAvatarClick?: (message: MessageType) => any,
@@ -34,7 +37,9 @@ export type Props = {
   onLightboxOpen?: (message: MessageType) => any,
   onReaction?: (char: string) => any,
   isReactionsEnabled: boolean,
-  renderActions?: () => React.Element<any>[]
+  renderActions?: () => React.Element<any>[],
+  goToPeer: (peer: Peer) => any,
+  goToMessage: (message: MessageType) => any
 };
 
 export type State = {
@@ -237,7 +242,7 @@ class Message extends PureComponent {
     if (selected) {
       return (
         <div className={styles.selectorActive} onClick={this.handleSelect}>
-          <Icon className={styles.selectorIcon} glyph="done" size={12} />
+          <Icon className={styles.selectorIcon} glyph="done" size={14} />
         </div>
       );
     }
@@ -247,8 +252,24 @@ class Message extends PureComponent {
     );
   }
 
+  renderAttachments(): ?React.Element<any> {
+    const { attachment } = this.props;
+
+    if (!attachment) {
+      return null;
+    }
+
+    return (
+      <MessageAttachment
+        attachment={attachment}
+        goToPeer={this.props.goToPeer}
+        goToMessage={this.props.goToMessage}
+      />
+    );
+  }
+
   render(): React.Element<any> {
-    const { short, message: { content }, selected } = this.props;
+    const { short, message: { content } } = this.props;
     const hover = this.isHover();
     const state = this.getState();
     const isError = state === 'error';
@@ -260,8 +281,7 @@ class Message extends PureComponent {
       this.props.className,
       hover ? styles.hover : null,
       isError ? styles.error : null,
-      isUnread ? styles.unread : null,
-      typeof selected === 'boolean' ? styles.selectMode : null
+      isUnread ? styles.unread : null
     );
 
     return (
@@ -281,6 +301,7 @@ class Message extends PureComponent {
               isPending={isPending}
               onLightboxOpen={this.handleLightboxOpen}
             />
+            {this.renderAttachments()}
             {this.renderReactions()}
           </div>
         </div>

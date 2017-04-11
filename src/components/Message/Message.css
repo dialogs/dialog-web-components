@@ -4,12 +4,17 @@
 
 @import '../../styles/variables.css';
 
+/* Reset */
 .container {
   all: initial;
+}
+
+/* Styles */
+.container {
   position: relative;
   display: flex;
   flex-direction: row;
-  padding: var(--message-vertical-padding) var(--message-horizontal-padding);
+  padding: var(--message-vertical-padding) 36px var(--message-vertical-padding) var(--message-horizontal-padding);
   transition: box-shadow var(--message-transition-duration) ease-in-out, opacity var(--message-transition-duration) ease-in;
   font-family: var(--message-font-family);
 }
@@ -116,10 +121,6 @@
   margin-right: calc(var(--default-padding) / 2);
 }
 
-.selectMode {
-  padding-right: 36px;
-}
-
 .selector {
   width: var(--message-selector-size);
   height: var(--message-selector-size);
@@ -129,7 +130,7 @@
   background-color: #fff;
   box-shadow: 0 0 0 1px color(#000 alpha(20%)) inset;
   flex: 0 0 auto;
-  padding: 5px;
+  padding: 4px;
   box-sizing: border-box;
   position: absolute;
   top: 7px;
