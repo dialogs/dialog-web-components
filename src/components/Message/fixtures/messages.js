@@ -19,6 +19,7 @@ const sender = {
 module.exports = [
   {
     sender,
+    rid: Math.random(),
     date: '20:30',
     state: 'read',
     content: {
@@ -28,6 +29,7 @@ module.exports = [
   },
   {
     sender,
+    rid: Math.random(),
     date: '20:30',
     state: 'error',
     content: {
@@ -37,6 +39,7 @@ module.exports = [
   },
   {
     sender,
+    rid: Math.random(),
     date: '20:31',
     state: 'pending',
     content: {
@@ -46,6 +49,7 @@ module.exports = [
   },
   {
     sender,
+    rid: Math.random(),
     date: '20:31',
     state: 'sent',
     content: {
@@ -55,6 +59,7 @@ module.exports = [
   },
   {
     sender,
+    rid: Math.random(),
     date: '20:32',
     state: 'received',
     content: {

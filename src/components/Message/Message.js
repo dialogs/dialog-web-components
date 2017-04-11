@@ -14,6 +14,7 @@ import MessageContent from '../MessageContent/MessageContent';
 import PeerAvatar from '../PeerAvatar/PeerAvatar';
 import MessageState from '../MessageState/MessageState';
 import EmojiButton from '../EmojiButton/EmojiButton';
+import Icon from '../Icon/Icon';
 import Hover from '../Hover/Hover';
 import CopyOnly from '../CopyOnly/CopyOnly';
 import styles from './Message.css';
@@ -25,6 +26,8 @@ export type Props = {
   sender: ?PeerInfo,
   className?: string,
   forceHover?: boolean,
+  selected: ?boolean,
+  onSelect?: (message: MessageType) => any,
   onTitleClick?: (message: MessageType) => any,
   onAvatarClick?: (message: MessageType) => any,
   onMentionClick?: (message: MessageType) => any,
@@ -76,6 +79,12 @@ class Message extends PureComponent {
 
   handleHover = (hover: boolean): void => {
     this.setState({ hover });
+  };
+
+  handleSelect = (): void => {
+    if (this.props.onSelect) {
+      this.props.onSelect(this.props.message);
+    }
   };
 
   isHover(): boolean {
@@ -176,7 +185,11 @@ class Message extends PureComponent {
   }
 
   renderActions(): ?React.Element<any> {
-    if (this.isHover() && this.props.renderActions) {
+    if (
+      this.isHover() &&
+      this.props.renderActions &&
+      typeof this.props.selected !== 'boolean'
+    ) {
       return (
         <div className={styles.actions}>
           {this.props.renderActions()}
@@ -214,8 +227,28 @@ class Message extends PureComponent {
     );
   }
 
+  renderSelector(): ?React.Element<any> {
+    const { selected } = this.props;
+
+    if (typeof selected !== 'boolean') {
+      return null;
+    }
+
+    if (selected) {
+      return (
+        <div className={styles.selectorActive} onClick={this.handleSelect}>
+          <Icon className={styles.selectorIcon} glyph="done" size={12} />
+        </div>
+      );
+    }
+
+    return (
+      <div className={styles.selector} onClick={this.handleSelect} />
+    );
+  }
+
   render(): React.Element<any> {
-    const { short, message: { content } } = this.props;
+    const { short, message: { content }, selected } = this.props;
     const hover = this.isHover();
     const state = this.getState();
     const isError = state === 'error';
@@ -227,13 +260,15 @@ class Message extends PureComponent {
       this.props.className,
       hover ? styles.hover : null,
       isError ? styles.error : null,
-      isUnread ? styles.unread : null
+      isUnread ? styles.unread : null,
+      typeof selected === 'boolean' ? styles.selectMode : null
     );
 
     return (
       <Hover className={className} onHover={this.handleHover}>
         <CopyOnly block />
         {this.renderActions()}
+        {this.renderSelector()}
         <div className={styles.info}>
           {short ? null : this.renderAvatar()}
           {short && hover ? this.renderState() : null}

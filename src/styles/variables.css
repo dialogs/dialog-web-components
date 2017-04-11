@@ -279,6 +279,7 @@
   --message-unread-color: color(#f2f2f2 alpha(25%));
   --message-state-border-width: 3px;
   --message-transition-duration: var(--default-transition-duration);
+  --message-selector-size: 22px;
   /* Contact */
   --contact-font-family: var(--default-font-family);
   --contact-border-radius: var(--default-border-radius);
