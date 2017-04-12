@@ -29,7 +29,8 @@
       "CountryCodeSelector",
       "ImageEdit",
       "Overlay",
-      "EditorForward"
+      "EditorForward",
+      "CheckButton"
     ]
   },
   {

@@ -1,0 +1,83 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+:root {
+  --check-button-transition-duration: calc(var(--default-transition-duration) * 0.5);
+  --check-button-transition-border-color: color(#000 alpha(20%));
+  --check-button-transition-border-hover-color: color(#000 alpha(30%));
+  --check-button-transition-border-width: 2px;
+}
+
+/* Reset */
+.container {
+  all: initial;
+}
+
+/* Styles */
+.container {
+  cursor: pointer;
+  transition-property: transform, box-shadow;
+  transition-duration: var(--check-button-transition-duration);
+  transition-timing-function: linear;
+  transform-origin: 50% 50%;
+  border-radius: 500px;
+  background-color: #fff;
+  box-shadow: inset 0 0 0 var(--check-button-transition-border-width) var(--check-button-transition-border-color);
+  box-sizing: border-box;
+  display: inline-block;
+
+  &:hover {
+    box-shadow: inset 0 0 0 var(--check-button-transition-border-width) var(--check-button-transition-border-hover-color);
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
+}
+
+.checked {
+  box-shadow: none;
+
+  &:hover,
+  &:active {
+    box-shadow: none;
+  }
+}
+
+.icon {
+  fill: #fff;
+  display: block;
+}
+
+.primary {
+  &.checked {
+    background-color: var(--color-primary);
+  }
+}
+
+.success {
+  &.checked {
+    background-color: var(--color-success);
+  }
+}
+
+.danger {
+  &.checked {
+    background-color: var(--color-danger);
+  }
+}
+
+.info {
+  &.checked {
+    background-color: var(--color-info);
+  }
+}
+
+.warning {
+  &.checked {
+    background-color: var(--color-warning);
+  }
+}
