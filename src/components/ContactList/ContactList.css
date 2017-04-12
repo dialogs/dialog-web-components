@@ -36,8 +36,7 @@
   @apply --no-select;
 
   &:active {
-    & .selected,
-    & .circle {
+    & .selector {
       transform: scale(0.9);
     }
   }
@@ -92,28 +91,6 @@
   color: color(#000 alpha(50%));
 }
 
-.circle {
-  width: 26px;
-  height: 26px;
-  transition: transform var(--contact-list-switcher-transition-duration) linear;
-  transform-origin: 50% 50%;
-  border-radius: 50%;
-  background-color: #fff;
-  box-shadow: 0 0 0 2px color(#000 alpha(20%)) inset;
+.selector {
   flex: 0 0 auto;
-  padding: 5px;
-  box-sizing: border-box;
-}
-
-.selected {
-  transition: transform var(--contact-list-switcher-transition-duration) linear;
-  transform-origin: 50% 50%;
-  background-color: var(--color-success);
-  box-shadow: none;
-  composes: circle;
-}
-
-.icon {
-  fill: #fff;
-  display: block;
 }

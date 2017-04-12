@@ -5,11 +5,10 @@
 
 import type { Contact } from '@dlghq/dialog-types';
 import type { ItemProps } from '../SelectList/SelectList';
-
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import Avatar from '../Avatar/Avatar';
-import SelectSwitcher from './SelectSwitcher';
+import CheckButton from '../CheckButton/CheckButton';
 import styles from './ContactList.css';
 
 class ContactListItem extends PureComponent {
@@ -40,7 +39,7 @@ class ContactListItem extends PureComponent {
           <div className={styles.text}>
             <span className={styles.name}>{name}</span>
           </div>
-          <SelectSwitcher value={selected} />
+          <CheckButton checked={selected} className={styles.selector} theme="success" />
         </div>
       </div>
     );
