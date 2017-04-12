@@ -122,31 +122,8 @@
 }
 
 .selector {
-  width: var(--message-selector-size);
-  height: var(--message-selector-size);
-  transition: transform var(--message-transition-duration) linear;
-  transform-origin: 50% 50%;
-  border-radius: 50%;
-  background-color: #fff;
-  box-shadow: 0 0 0 1px color(#000 alpha(20%)) inset;
-  flex: 0 0 auto;
-  padding: 4px;
-  box-sizing: border-box;
   position: absolute;
+  display: block;
   top: 7px;
   right: 8px;
-  cursor: pointer;
-}
-
-.selectorActive {
-  composes: selector;
-  transition: transform var(--message-transition-duration) linear;
-  transform-origin: 50% 50%;
-  background-color: var(--color-primary);
-  box-shadow: none;
-}
-
-.selectorIcon {
-  fill: #fff;
-  display: block;
 }

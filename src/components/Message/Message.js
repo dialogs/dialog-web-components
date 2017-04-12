@@ -15,10 +15,10 @@ import MessageContent from '../MessageContent/MessageContent';
 import PeerAvatar from '../PeerAvatar/PeerAvatar';
 import MessageState from '../MessageState/MessageState';
 import EmojiButton from '../EmojiButton/EmojiButton';
-import Icon from '../Icon/Icon';
 import Hover from '../Hover/Hover';
 import CopyOnly from '../CopyOnly/CopyOnly';
 import MessageAttachment from '../MessageAttachment/MessageAttachment';
+import CheckButton from '../CheckButton/CheckButton';
 import styles from './Message.css';
 
 export type Props = {
@@ -190,15 +190,21 @@ class Message extends PureComponent {
   }
 
   renderActions(): ?React.Element<any> {
-    if (
-      this.isHover() &&
-      this.props.renderActions &&
-      typeof this.props.selected !== 'boolean'
-    ) {
+    const { selected, renderActions } = this.props;
+    if (this.isHover() && renderActions) {
       return (
         <div className={styles.actions}>
-          {this.props.renderActions()}
+          {renderActions()}
         </div>
+      );
+    } else if (typeof selected === 'boolean') {
+      return (
+        <CheckButton
+          checked={selected}
+          onClick={this.handleSelect}
+          className={styles.selector}
+          theme="primary"
+        />
       );
     }
 
@@ -229,26 +235,6 @@ class Message extends PureComponent {
       <div className={styles.reactions}>
         {children}
       </div>
-    );
-  }
-
-  renderSelector(): ?React.Element<any> {
-    const { selected } = this.props;
-
-    if (typeof selected !== 'boolean') {
-      return null;
-    }
-
-    if (selected) {
-      return (
-        <div className={styles.selectorActive} onClick={this.handleSelect}>
-          <Icon className={styles.selectorIcon} glyph="done" size={14} />
-        </div>
-      );
-    }
-
-    return (
-      <div className={styles.selector} onClick={this.handleSelect} />
     );
   }
 
@@ -288,7 +274,6 @@ class Message extends PureComponent {
       <Hover className={className} onHover={this.handleHover}>
         <CopyOnly block />
         {this.renderActions()}
-        {this.renderSelector()}
         <div className={styles.info}>
           {short ? null : this.renderAvatar()}
           {short && hover ? this.renderState() : null}
