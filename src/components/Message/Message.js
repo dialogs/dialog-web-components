@@ -6,7 +6,8 @@
 import type {
   Message as MessageType,
   MessageState as MessageStateType,
-  PeerInfo, Peer
+  PeerInfo,
+  Peer
 } from '@dlghq/dialog-types';
 import type { MessageAttachmentType } from '../MessageAttachment/types';
 import classNames from 'classnames';
