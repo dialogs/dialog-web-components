@@ -3,6 +3,10 @@
  * @flow
  */
 
+
+import type { PeerInfo } from '@dlghq/dialog-types';
+import type { Props } from './types';
+import type { SelectorState } from '../../entities';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import { Text } from '@dlghq/react-l10n';
@@ -18,9 +22,6 @@ import CreateNewInfo from './CreateNewInfo';
 import CreateNewMembers from './CreateNewMembers';
 import ImageEdit from '../ImageEdit/ImageEdit';
 import styles from './CreateNewModal.css';
-import type { SelectorState } from '../../entities';
-import type { Contact } from '@dlghq/dialog-types';
-import type { Props } from './types';
 
 class CreateNewModal extends PureComponent {
   props: Props;
@@ -56,7 +57,7 @@ class CreateNewModal extends PureComponent {
     });
   };
 
-  handleMembersChange = (members: SelectorState<Contact>): void => {
+  handleMembersChange = (members: SelectorState<PeerInfo>): void => {
     this.props.onRequestChange({
       ...this.props.request,
       members

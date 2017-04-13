@@ -3,7 +3,7 @@
  * @flow
  */
 
-import type { Contact } from '@dlghq/dialog-types';
+import type { PeerInfo } from '@dlghq/dialog-types';
 import type { SelectorState } from '../../entities';
 
 import React from 'react';
@@ -14,8 +14,8 @@ import styles from './ContactList.css';
 
 export type Props = {
   className?: string,
-  selector: SelectorState<Contact>,
-  onChange: (selector: SelectorState<Contact>) => void
+  selector: SelectorState<PeerInfo>,
+  onChange: (selector: SelectorState<PeerInfo>) => void
 };
 
 function ContactList(props: Props) {

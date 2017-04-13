@@ -1,11 +1,11 @@
 Basic ContactSelector:
 
 ```
-const { ContactSelectorState } = require('../../entities');
+const { PeerInfoSelectorState } = require('../../entities');
 const contacts = require('../ContactList/mock/contacts.json');
 
 initialState = {
-  selector: ContactSelectorState.create(contacts)
+  selector: PeerInfoSelectorState.create(contacts)
 };
 
 <div style={{ width: 500, background: 'white'}}>

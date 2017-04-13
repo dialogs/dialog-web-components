@@ -3,26 +3,26 @@
  * @flow
  */
 
-import type { Contact } from '@dlghq/dialog-types';
+import type { PeerInfo } from '@dlghq/dialog-types';
 import type { ItemProps } from '../SelectList/SelectList';
 
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
-import Avatar from '../Avatar/Avatar';
+import PeerAvatar from '../PeerAvatar/PeerAvatar';
 import SelectSwitcher from './SelectSwitcher';
 import styles from './ContactList.css';
 
 class ContactListItem extends PureComponent {
-  props: ItemProps<Contact>;
+  props: ItemProps<PeerInfo>;
 
-  static render(props: ItemProps<Contact>): React.Element<any> {
+  static render(props: ItemProps<PeerInfo>) {
     return (
       <ContactListItem {...props} />
     );
   }
 
-  render(): React.Element<any> {
-    const { item: { avatar, placeholder, name }, hovered, selected } = this.props;
+  render() {
+    const { item, hovered, selected } = this.props;
     const className = classNames(styles.contact, {
       [styles.hovered]: hovered
     });
@@ -30,15 +30,13 @@ class ContactListItem extends PureComponent {
     return (
       <div className={className}>
         <div className={styles.wrapper}>
-          <Avatar
+          <PeerAvatar
             className={styles.avatar}
             size="large"
-            title={name}
-            image={avatar}
-            placeholder={placeholder}
+            peer={item}
           />
           <div className={styles.text}>
-            <span className={styles.name}>{name}</span>
+            <span className={styles.name}>{item.title}</span>
           </div>
           <SelectSwitcher value={selected} />
         </div>

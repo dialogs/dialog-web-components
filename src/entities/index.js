@@ -3,13 +3,13 @@
  * @flow
  */
 
-import type { Contact } from '@dlghq/dialog-types';
+import type { PeerInfo } from '@dlghq/dialog-types';
 import type { SelectorState } from './types';
 import createSelectorState from './createSelectorState';
 
-const ContactSelectorState = createSelectorState(
-  'ContactSelectorState',
-  (contact: Contact) => contact.name,
+const PeerInfoSelectorState = createSelectorState(
+  'PeerInfoSelectorState',
+  (peerInfo: PeerInfo) => peerInfo.title,
   true
 );
 
@@ -18,5 +18,5 @@ export type {
 };
 
 export {
-  ContactSelectorState
+  PeerInfoSelectorState
 };

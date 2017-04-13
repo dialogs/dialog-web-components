@@ -13,6 +13,7 @@ import getAvatarSize from '../Avatar/getAvatarSize';
 import getAvatarText from '../Avatar/getAvatarText';
 import getAvatarColor from '../Avatar/getAvatarColor';
 import createSequence from '../../utils/createSequence';
+import getAvatarPlaceholder from '../../utils/getAvatarPlaceholder';
 import styles from './PeerAvatar.css';
 
 export type Props = {
@@ -51,7 +52,8 @@ class PeerAvatar extends PureComponent<DefaultProps, Props, void> {
   }
 
   getAvatarColor(): Gradient {
-    return getAvatarColor(this.props.peer.placeholder);
+    const placeholder = getAvatarPlaceholder(this.props.peer.peer.id);
+    return getAvatarColor(placeholder);
   }
 
   renderDefs(): React.Element<any> {

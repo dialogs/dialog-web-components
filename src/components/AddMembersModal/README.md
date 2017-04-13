@@ -1,11 +1,11 @@
 Basic AddMembersModal:
 ```
-const { ContactSelectorState } = require('../../entities');
+const { PeerInfoSelectorState } = require('../../entities');
 const contacts = require('../ContactList/mock/contacts.json');
 
 initialState = {
   isOpen: false,
-  selector: ContactSelectorState.create(contacts),
+  selector: PeerInfoSelectorState.create(contacts),
   pending: false
 };
 

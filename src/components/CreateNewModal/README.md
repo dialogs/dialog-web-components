@@ -1,7 +1,7 @@
 Basic CreateNewModal:
 
 ```
-const { ContactSelectorState } = require('../../entities');
+const { PeerInfoSelectorState } = require('../../entities');
 const contacts = require('../ContactList/mock/contacts.json');
 
 initialState = {
@@ -13,7 +13,7 @@ initialState = {
     shortname: '',
     about: '',
     avatar: null,
-    members: ContactSelectorState.create(contacts),
+    members: PeerInfoSelectorState.create(contacts),
   }
 };
 

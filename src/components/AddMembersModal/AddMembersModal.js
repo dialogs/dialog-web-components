@@ -4,7 +4,7 @@
  */
 
 import type { SelectorState } from '../../entities';
-import type { Contact, Group } from '@dlghq/dialog-types';
+import type { PeerInfo, Group } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import { Text } from '@dlghq/react-l10n';
@@ -21,11 +21,11 @@ export type Props = {
   className?: string,
   group: Group,
   pending: boolean,
-  selector: SelectorState<Contact>,
+  selector: SelectorState<PeerInfo>,
   autoFocus: boolean,
   onClose: () => any,
   onSubmit: (gid: number, uids: number[]) => any,
-  onChange: (selector: SelectorState<Contact>) => any
+  onChange: (selector: SelectorState<PeerInfo>) => any
 };
 
 class AddMembersModal extends PureComponent {
@@ -41,7 +41,7 @@ class AddMembersModal extends PureComponent {
     const selected = this.props.selector.getSelected();
     this.props.onSubmit(
       this.props.group.id,
-      selected.map((contact) => contact.uid).toArray()
+      selected.map((contact) => contact.peer.id).toArray()
     );
   };
 

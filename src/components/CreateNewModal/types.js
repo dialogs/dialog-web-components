@@ -4,7 +4,7 @@
  */
 
 import type { SelectorState } from '../../entities';
-import type { Contact } from '@dlghq/dialog-types';
+import type { PeerInfo } from '@dlghq/dialog-types';
 
 export type Request = {
   type: 'group' | 'channel',
@@ -12,7 +12,7 @@ export type Request = {
   shortname: string,
   about: string,
   avatar: ?File,
-  members: SelectorState<Contact>,
+  members: SelectorState<PeerInfo>
 };
 
 export type Step = 'type' | 'info' | 'avatar' | 'members';

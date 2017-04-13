@@ -3,35 +3,33 @@
  * @flow
  */
 
-import type { Contact } from '@dlghq/dialog-types';
+import type { PeerInfo } from '@dlghq/dialog-types';
 
 import React, { PureComponent } from 'react';
-import Avatar from '../Avatar/Avatar';
+import PeerAvatar from '../PeerAvatar/PeerAvatar';
 import classNames from 'classnames';
 import styles from './ContactSelector.css';
 
 export type Props = {
   className?: string,
-  contact: Contact
+  contact: PeerInfo
 };
 
 class ContactSelectorChip extends PureComponent {
   props: Props;
 
-  render(): React.Element<any> {
+  render() {
     const { contact } = this.props;
     const className = classNames(styles.chip, this.props.className);
 
     return (
       <div className={className}>
-        <Avatar
+        <PeerAvatar
           className={styles.chipAvatar}
           size="medium"
-          title={contact.name}
-          image={contact.avatar}
-          placeholder={contact.placeholder}
+          peer={contact}
         />
-        <div className={styles.chipText}>{contact.name}</div>
+        <div className={styles.chipText}>{contact.title}</div>
       </div>
     );
   }

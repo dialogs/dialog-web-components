@@ -4,15 +4,15 @@
  */
 
 import type { SelectorState } from '../../entities';
-import type { Contact } from '@dlghq/dialog-types';
+import type { PeerInfo } from '@dlghq/dialog-types';
 import React from 'react';
 import ContactSelector from '../ContactSelector/ContactSelector';
 import styles from './CreateNewModal.css';
 
 export type Props = {
   autoFocus: boolean,
-  members: SelectorState<Contact>,
-  onChange: (members: SelectorState<Contact>) => any,
+  members: SelectorState<PeerInfo>,
+  onChange: (members: SelectorState<PeerInfo>) => any,
 }
 
 function CreateNewMembers(props: Props) {

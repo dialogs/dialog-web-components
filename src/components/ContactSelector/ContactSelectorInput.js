@@ -3,7 +3,7 @@
  * @flow
  */
 
-import type { Contact } from '@dlghq/dialog-types';
+import type { PeerInfo } from '@dlghq/dialog-types';
 import type { SelectorState } from '../../entities';
 
 import React, { PureComponent } from 'react';
@@ -15,8 +15,8 @@ import styles from './ContactSelector.css';
 export type Props = {
   className?: string,
   autoFocus: boolean,
-  selector: SelectorState<Contact>,
-  onChange: (selector: SelectorState<Contact>) => void
+  selector: SelectorState<PeerInfo>,
+  onChange: (selector: SelectorState<PeerInfo>) => void
 };
 
 class ContactSelectorInput extends PureComponent {
@@ -66,7 +66,7 @@ class ContactSelectorInput extends PureComponent {
 
     return selected.map((contact) => {
       return (
-        <ContactSelectorChip key={contact.uid} contact={contact} />
+        <ContactSelectorChip key={contact.peer.id} contact={contact} />
       );
     });
   }
