@@ -51,7 +51,13 @@ class ActivityIntegration extends PureComponent {
         </div>
         <hr className={styles.hr} />
         <div className={styles.block}>
-          <Button theme="danger" view="link" onClick={this.props.onRevoke}>
+          <Button
+            theme="danger"
+            view="link"
+            onClick={this.props.onRevoke}
+            size="small"
+            className={styles.revoke}
+          >
             <Text id="ActivityIntegration.revoke" />
           </Button>
         </div>
