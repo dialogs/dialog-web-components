@@ -12,7 +12,10 @@ const handleClick = () => alert('menu clicked');
 const user = {
   title: 'Someone',
   placeholder: 'green',
-  avatar: null
+  avatar: null,
+  peer: {
+    id: 4412
+  }
 };
 
 <Dropdown>

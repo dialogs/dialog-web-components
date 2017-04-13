@@ -1,4 +1,4 @@
-Basic Archive:
+Basic calls list:
 
 ```
 function getArchives(offset = 0) {

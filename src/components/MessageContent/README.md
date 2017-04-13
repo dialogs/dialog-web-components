@@ -43,7 +43,8 @@ const content = {
   preview: '',
   fileName: 'dialog.dmg',
   fileExtension: 'dmg',
-  fileUrl: 'https://dlg.im/dl/osx'
+  fileUrl: 'https://dlg.im/dl/osx',
+  fileSize: '666 Mb'
 };
 
 <div>

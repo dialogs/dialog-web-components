@@ -16,6 +16,24 @@ const initialState = {
       email: 'someuser@domain.com',
       title: 'Email'
     }]
+  },
+  context: {
+    name: {
+      error: null,
+      pending: false
+    },
+    nick: {
+      error: null,
+      pending: false
+    },
+    about: {
+      error: null,
+      pending: false
+    },
+    avatar: {
+      error: null,
+      pending: false
+    }
   }
 }
 
@@ -23,6 +41,7 @@ const actions = {
   onSubmit: (profile) => {
     console.debug(profile);
     setState({
+      ...state,
       isOpen: false,
       profile: {
         ...state.profile,
@@ -49,6 +68,7 @@ const actions = {
       ? (
        <ProfileModal
           profile={state.profile}
+          context={state.context}
           {...actions}
         />
       )

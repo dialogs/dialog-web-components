@@ -11,17 +11,23 @@ initialState = {
     shortname: null,
     about: null,
   },
-  name: {
-    error: null,
-    pending: false
-  },
-  shortname: {
-    error: null,
-    pending: false
-  },
-  about: {
-    error: null,
-    pending: false
+  context: {
+    name: {
+      error: null,
+      pending: false
+    },
+    shortname: {
+      error: null,
+      pending: false
+    },
+    about: {
+      error: null,
+      pending: false
+    },
+    avatar: {
+      error: null,
+      pending: false
+    }
   }
 };
 
@@ -31,15 +37,9 @@ initialState = {
     state.isOpen
       ? <EditGroupModal
           group={state.group}
-          name={state.name}
-          shortname={state.shortname}
-          about={state.about}
+          context={state.context}
           onClose={() => setState(initialState)}
-          onNameChange={console.debug}
-          onShortnameChange={console.debug}
-          onAboutChange={console.debug}
-          onAvatarChange={console.debug}
-          onAvatarRemove={console.debug}
+          onSubmit={console.debug}
         />
       : null
   }
