@@ -192,13 +192,8 @@ class Message extends PureComponent {
 
   renderActions(): ?React.Element<any> {
     const { selected, renderActions } = this.props;
-    if (this.isHover() && renderActions) {
-      return (
-        <div className={styles.actions}>
-          {renderActions()}
-        </div>
-      );
-    } else if (typeof selected === 'boolean') {
+
+    if (typeof selected === 'boolean') {
       return (
         <CheckButton
           checked={selected}
@@ -206,6 +201,12 @@ class Message extends PureComponent {
           className={styles.selector}
           theme="primary"
         />
+      );
+    } else if (this.isHover() && renderActions) {
+      return (
+        <div className={styles.actions}>
+          {renderActions()}
+        </div>
       );
     }
 
