@@ -15,12 +15,17 @@ errors:
   EMAIL_INVALID: Некорректный email
   PHONE_NUMBER_INVALID: Некорректный телефон
   NAME_INVALID: Некорректное имя
+  CODE_INVALID: Неверный код
   PHONE_CODE_INVALID: Неверный код
   EMAIL_CODE_INVALID: Неверный код
+  CODE_EXPIRED: Время действия кода истекло
   PHONE_CODE_EXPIRED: Время действия кода истекло
   EMAIL_CODE_EXPIRED: Время действия кода истекло
   CODE_WAIT: Попытайтесь запросить код позже
   GATE_ERROR: Сервис не доступен, попробуйте позже
+  TIMEOUT: Тайм-аут запроса
+  SHORTNAME_INVALID: Неправильный логин.
+  PASSWORD_INVALID: Неправильный логин или пароль.
 type:
   phone: Телефон
   email: Email

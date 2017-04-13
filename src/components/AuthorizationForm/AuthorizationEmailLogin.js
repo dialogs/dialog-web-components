@@ -73,7 +73,7 @@ class AuthorizationEmailLogin extends PureComponent {
     return (
       <div className={styles.inputWrapper}>
         <InputNext
-          {...this.getInputState('login')}
+          {...this.getInputState('email')}
           className={styles.input}
           name="email"
           id={`${id}_login`}

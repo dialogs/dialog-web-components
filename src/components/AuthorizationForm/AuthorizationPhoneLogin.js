@@ -208,7 +208,7 @@ class AuthorizationPhoneLogin extends PureComponent {
     return (
       <div className={styles.inputWrapper}>
         <InputNext
-          {...this.getInputState('login')}
+          {...this.getInputState('phone')}
           className={styles.input}
           name="phone"
           id={`${id}_login`}
