@@ -80,7 +80,7 @@
 
 .downloadArrow {
   fill: var(--document-download-arrow-color);
-  margin-right: var(--default-padding-small);
+  margin-right: calc(var(--default-padding) / 2);
 }
 
 /* File type colors */
