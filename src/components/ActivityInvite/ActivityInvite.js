@@ -53,7 +53,13 @@ class ActivityInvite extends PureComponent {
         </div>
         <hr className={styles.hr} />
         <div className={styles.block}>
-          <Button theme="danger" view="link" onClick={this.props.onRevoke}>
+          <Button
+            theme="danger"
+            view="link"
+            onClick={this.props.onRevoke}
+            className={styles.revoke}
+            size="small"
+          >
             <Text id="ActivityInvite.revoke" />
           </Button>
         </div>

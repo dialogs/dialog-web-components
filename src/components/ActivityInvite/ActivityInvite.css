@@ -21,7 +21,7 @@
   display: block;
   width: 100%;
   height: 1px;
-  margin: var(--default-padding-small) 0;
+  margin: 0;
   background-color: var(--activity-border-color);
 }
 
@@ -60,5 +60,4 @@
 .revoke {
   cursor: pointer;
   user-select: none;
-  color: var(--color-danger);
 }
