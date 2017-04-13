@@ -47,10 +47,11 @@ class UserNameAuthForm extends PureComponent {
 
   getInputState(field: string): ?{ hint: string, status: 'error' } {
     const { errors } = this.props;
+
     if (errors[field]) {
       const error = errors[field];
       return {
-        hint: `UserNameAuthForm.errors.${error.tag}`,
+        hint: `AuthorizationForm.errors.${error.tag}`,
         status: 'error'
       };
     }
