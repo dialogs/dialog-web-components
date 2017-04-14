@@ -109,12 +109,12 @@ class ImageEdit extends PureComponent {
     if (this.croppie) {
       this.croppie.result({
         type: 'blob',
-        size: 'original',
-        format: 'png',
+        // size: 'original',
+        format: 'jpeg',
         circle: false
       }).then((blob) => {
         const fileName = format(new Date(), 'YYYY.MM.DD-HH:mm:ss.SSS');
-        this.props.onSubmit(new File([blob], `${fileName}.png`));
+        this.props.onSubmit(new File([blob], `${fileName}.jpeg`));
       });
     }
   };
