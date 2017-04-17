@@ -53,7 +53,7 @@
   },
   "homepage": "https://dialogs.github.io/dialog-web-components",
   "dependencies": {
-    "@dlghq/country-codes": "0.1.1",
+    "@dlghq/country-codes": "0.1.2",
     "@dlghq/dialog-types": "1.18.0",
     "@dlghq/dialog-utils": "0.6.2",
     "@dlghq/emoji": "0.5.2",
@@ -62,7 +62,7 @@
     "classnames": "2.2.5",
     "clipboard": "1.6.1",
     "croppie": "2.4.1",
-    "date-fns": "1.28.2",
+    "date-fns": "1.28.3",
     "immutable": "3.8.1",
     "lodash": "4.17.4",
     "photoswipe": "4.1.1",
@@ -100,7 +100,7 @@
     "stylefmt": "5.3.2",
     "stylelint": "7.10.1",
     "svg-sprite": "1.3.6",
-    "webpack": "2.3.3",
+    "webpack": "2.4.1",
     "yml-loader": "1.1.0"
   }
 }
