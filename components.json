@@ -29,7 +29,7 @@
       "CountryCodeSelector",
       "ImageEdit",
       "Overlay",
-      "EditorForward",
+      "SelectedMessagesActions",
       "CheckButton"
     ]
   },

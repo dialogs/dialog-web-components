@@ -8,7 +8,7 @@ import classNames from 'classnames';
 import { Text } from '@dlghq/react-l10n';
 import Button from '../Button/Button';
 import Icon from '../Icon/Icon';
-import styles from './EditorForward.css';
+import styles from './SelectedMessagesActions.css';
 
 export type Props = {
   className?: string,
@@ -17,7 +17,7 @@ export type Props = {
   onForward: () => any,
 };
 
-class EditorForward extends PureComponent {
+class SelectedMessagesActions extends PureComponent {
   props: Props;
 
   render(): React.Element<any> {
@@ -41,4 +41,4 @@ class EditorForward extends PureComponent {
   }
 }
 
-export default EditorForward;
+export default SelectedMessagesActions;

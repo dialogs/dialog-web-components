@@ -28,7 +28,7 @@ export { default as Dragndrop } from './components/Dragndrop/Dragndrop';
 export { default as CountryCodeSelector } from './components/CountryCodeSelector/CountryCodeSelector';
 export { default as ImageEdit } from './components/ImageEdit/ImageEdit';
 export { default as Overlay } from './components/Overlay/Overlay';
-export { default as EditorForward } from './components/EditorForward/EditorForward';
+export { default as SelectedMessagesActions } from './components/SelectedMessagesActions/SelectedMessagesActions';
 export { default as CheckButton } from './components/CheckButton/CheckButton';
 
 // Toolbar
