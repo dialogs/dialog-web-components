@@ -5,11 +5,10 @@
 
 import type { PeerInfo } from '@dlghq/dialog-types';
 import type { ItemProps } from '../SelectList/SelectList';
-
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import PeerAvatar from '../PeerAvatar/PeerAvatar';
-import SelectSwitcher from './SelectSwitcher';
+import CheckButton from '../CheckButton/CheckButton';
 import styles from './ContactList.css';
 
 class ContactListItem extends PureComponent {
@@ -38,7 +37,7 @@ class ContactListItem extends PureComponent {
           <div className={styles.text}>
             <span className={styles.name}>{item.title}</span>
           </div>
-          <SelectSwitcher value={selected} />
+          <CheckButton checked={selected} className={styles.selector} theme="success" />
         </div>
       </div>
     );

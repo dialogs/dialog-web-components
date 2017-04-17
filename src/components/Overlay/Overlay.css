@@ -1,0 +1,63 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+:root {
+  --overlay-font-family: var(--default-font-family);
+  --overlay-background: color(#333 alpha(65%));
+  --overlay-caption-color: #fff;
+}
+
+/* Reset */
+.container {
+  all: initial;
+}
+
+/* Styles */
+.container {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  font-family: var(--overlay-font-family);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  background-color: var(--overlay-background);
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.caption {
+  text-align: center;
+  font-family: var(--overlay-font-family);
+  color: var(--overlay-caption-color);
+}
+
+/* Animation */
+.enter {
+  opacity: 0.01;
+}
+
+.enterActive {
+  transition: opacity 100ms ease-in;
+  opacity: 1;
+}
+
+.leave {
+  opacity: 1;
+}
+
+.leaveActive {
+  transition: opacity 100ms ease-in;
+  opacity: 0.01;
+}

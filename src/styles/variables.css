@@ -142,7 +142,6 @@
   --contact-list-item-border-color: color(#000 alpha(10%));
   --contact-list-item-padding: var(--default-padding-large);
   --contact-list-item-hover-background: #f2f2f2;
-  --contact-list-switcher-transition-duration: calc(var(--default-transition-duration) * 0.5);
   /* ContactSelector */
   --contact-selector-background-color: #f2f0f5;
   /* Dragndrop */

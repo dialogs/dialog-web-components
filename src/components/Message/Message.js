@@ -6,8 +6,10 @@
 import type {
   Message as MessageType,
   MessageState as MessageStateType,
-  PeerInfo
+  PeerInfo,
+  Peer
 } from '@dlghq/dialog-types';
+import type { MessageAttachmentType } from '../MessageAttachment/types';
 import classNames from 'classnames';
 import React, { PureComponent } from 'react';
 import MessageContent from '../MessageContent/MessageContent';
@@ -16,6 +18,8 @@ import MessageState from '../MessageState/MessageState';
 import EmojiButton from '../EmojiButton/EmojiButton';
 import Hover from '../Hover/Hover';
 import CopyOnly from '../CopyOnly/CopyOnly';
+import MessageAttachment from '../MessageAttachment/MessageAttachment';
+import CheckButton from '../CheckButton/CheckButton';
 import styles from './Message.css';
 
 export type Props = {
@@ -25,13 +29,18 @@ export type Props = {
   sender: ?PeerInfo,
   className?: string,
   forceHover?: boolean,
+  selected: ?boolean,
+  attachment: ?MessageAttachmentType,
+  onSelect?: (message: MessageType) => any,
   onTitleClick?: (message: MessageType) => any,
   onAvatarClick?: (message: MessageType) => any,
   onMentionClick?: (message: MessageType) => any,
   onLightboxOpen?: (message: MessageType) => any,
   onReaction?: (char: string) => any,
   isReactionsEnabled: boolean,
-  renderActions?: () => React.Element<any>[]
+  renderActions?: () => React.Element<any>[],
+  goToPeer: (peer: Peer) => any,
+  goToMessage: (message: MessageType) => any
 };
 
 export type State = {
@@ -76,6 +85,12 @@ class Message extends PureComponent {
 
   handleHover = (hover: boolean): void => {
     this.setState({ hover });
+  };
+
+  handleSelect = (): void => {
+    if (this.props.onSelect) {
+      this.props.onSelect(this.props.message);
+    }
   };
 
   isHover(): boolean {
@@ -176,10 +191,21 @@ class Message extends PureComponent {
   }
 
   renderActions(): ?React.Element<any> {
-    if (this.isHover() && this.props.renderActions) {
+    const { selected, renderActions } = this.props;
+
+    if (typeof selected === 'boolean') {
+      return (
+        <CheckButton
+          checked={selected}
+          onClick={this.handleSelect}
+          className={styles.selector}
+          theme="primary"
+        />
+      );
+    } else if (this.isHover() && renderActions) {
       return (
         <div className={styles.actions}>
-          {this.props.renderActions()}
+          {renderActions()}
         </div>
       );
     }
@@ -211,6 +237,22 @@ class Message extends PureComponent {
       <div className={styles.reactions}>
         {children}
       </div>
+    );
+  }
+
+  renderAttachments(): ?React.Element<any> {
+    const { attachment } = this.props;
+
+    if (!attachment) {
+      return null;
+    }
+
+    return (
+      <MessageAttachment
+        attachment={attachment}
+        goToPeer={this.props.goToPeer}
+        goToMessage={this.props.goToMessage}
+      />
     );
   }
 
@@ -246,6 +288,7 @@ class Message extends PureComponent {
               isPending={isPending}
               onLightboxOpen={this.handleLightboxOpen}
             />
+            {this.renderAttachments()}
             {this.renderReactions()}
           </div>
         </div>

@@ -27,7 +27,10 @@
       "Markdown",
       "Image",
       "CountryCodeSelector",
-      "ImageEdit"
+      "ImageEdit",
+      "Overlay",
+      "SelectedMessagesActions",
+      "CheckButton"
     ]
   },
   {

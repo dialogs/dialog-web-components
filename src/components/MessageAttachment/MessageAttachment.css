@@ -1,0 +1,120 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+:root {
+  --message-attachment-font-family: var(--default-font-family);
+  --message-attachment-background: color(#000 alpha(4%));
+  --message-attachment-font-size: var(--default-font-size-small);
+  --message-attachment-padding: var(--default-padding-small);
+  --message-attachment-border-radius: var(--default-border-radius-small);
+  --message-attachment-border-color: color(var(--message-attachment-background) shade(2%));
+  --message-attachment-from-font-size: var(--default-font-size);
+  --message-attachment-from-color: #939393;
+  --message-attachment-header-height: 20px;
+  --message-attachment-nick-color: color(#000 alpha(60%));
+  --message-attachment-timestamp-font-size: 12px;
+  --message-attachment-timestamp-color: var(--message-attachment-nick-color);
+}
+
+.container {
+  all: initial;
+}
+
+.container {
+  font-family: var(--message-attachment-font-family);
+  background-color: var(--message-attachment-background);
+  border-radius: var(--message-attachment-border-radius);
+  box-shadow: inset 0 0 0 1px var(--message-attachment-border-color);
+  display: block;
+  margin-top: var(--default-padding-small);
+}
+
+.itemContainer {
+  margin-top: 6px;
+  padding: 6px var(--message-attachment-padding);
+  cursor: pointer;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.from {
+  height: var(--message-attachment-header-height);
+  line-height: var(--message-attachment-header-height);
+  padding: var(--message-attachment-padding) var(--message-attachment-padding) 0;
+  color: var(--message-attachment-from-color);
+}
+
+.fromIcon {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: -2px;
+  margin-right: 4px;
+  fill: currentColor;
+}
+
+.fromButton {
+  padding: 0;
+  min-width: 0;
+  margin-left: 6px;
+  height: var(--message-attachment-header-height);
+  line-height: var(--message-attachment-header-height);
+  font-size: var(--message-attachment-from-font-size);
+}
+
+.header {
+  height: var(--message-attachment-header-height);
+  margin-bottom: 6px;
+}
+
+.icon {
+  display: inline-block;
+  margin-right: 4px;
+  fill: var(--color-primary);
+}
+
+.name {
+  cursor: pointer;
+  font-weight: 500;
+  font-size: var(--default-font-size);
+  line-height: var(--message-attachment-header-height);
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.nick {
+  cursor: pointer;
+  margin-left: 4px;
+  font-size: var(--default-font-size-small);
+  line-height: var(--message-attachment-header-height);
+  display: inline-block;
+  vertical-align: middle;
+  color: var(--message-attachment-nick-color);
+}
+
+.timeWrapper {
+  text-align: right;
+}
+
+.time {
+  display: inline-block;
+  color: var(--message-attachment-timestamp-color);
+  line-height: 18px;
+  margin-left: 6px;
+  font-size: var(--message-attachment-timestamp-font-size);
+  vertical-align: bottom;
+}
+
+.content {
+  cursor: pointer;
+  font-size: var(--message-attachment-font-size);
+}
+
+.short {
+  margin-top: 0;
+  border-top: 1px solid var(--message-attachment-border-color);
+}

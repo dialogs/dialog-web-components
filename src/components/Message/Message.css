@@ -4,12 +4,17 @@
 
 @import '../../styles/variables.css';
 
+/* Reset */
 .container {
   all: initial;
+}
+
+/* Styles */
+.container {
   position: relative;
   display: flex;
   flex-direction: row;
-  padding: var(--message-vertical-padding) var(--message-horizontal-padding);
+  padding: var(--message-vertical-padding) 36px var(--message-vertical-padding) var(--message-horizontal-padding);
   transition: box-shadow var(--message-transition-duration) ease-in-out, opacity var(--message-transition-duration) ease-in;
   font-family: var(--message-font-family);
   backface-visibility: hidden;
@@ -115,4 +120,11 @@
 
 .reactionButton {
   margin-right: calc(var(--default-padding) / 2);
+}
+
+.selector {
+  position: absolute;
+  display: block;
+  top: 7px;
+  right: 8px;
 }
