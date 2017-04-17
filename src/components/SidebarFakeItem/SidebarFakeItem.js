@@ -3,10 +3,10 @@
  */
 
 import React from 'react';
-import styles from './FakeRecentItem.css';
+import styles from './SidebarFakeItem.css';
 import { random } from 'lodash';
 
-function FakeRecentItem() {
+function SidebarFakeItem() {
   function renderAvatar() {
     return (
       <div className={styles.avatar} />
@@ -44,4 +44,4 @@ function FakeRecentItem() {
   );
 }
 
-export default FakeRecentItem;
+export default SidebarFakeItem;

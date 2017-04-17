@@ -24,11 +24,11 @@
 }
 
 .avatar {
-  width: var(--fake-recent-avatar-size);
-  height: var(--fake-recent-avatar-size);
+  width: var(--sidebar-fake-item-avatar-size);
+  height: var(--sidebar-fake-item-avatar-size);
   margin-right: var(--default-padding);
   border-radius: 50%;
-  background-color: var(--fake-recent-avatar-color);
+  background-color: var(--sidebar-fake-item-avatar-color);
   flex: 0 0 auto;
   align-self: flex-start;
 }
@@ -38,14 +38,14 @@
 }
 
 .line {
-  height: var(--fake-recent-line-height);
+  height: var(--sidebar-fake-item-line-height);
   border-radius: 10px;
-  background-color: var(--fake-recent-text-color);
+  background-color: var(--sidebar-fake-item-text-color);
 }
 
 .counter {
-  width: var(--fake-recent-counter-size);
-  height: var(--fake-recent-counter-size);
+  width: var(--sidebar-fake-item-counter-size);
+  height: var(--sidebar-fake-item-counter-size);
   margin-left: 6px;
   border-radius: 50%;
   background-color: var(--color-primary);
