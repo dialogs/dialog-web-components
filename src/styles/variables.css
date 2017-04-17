@@ -426,7 +426,7 @@
   --full-recent-item-active-hover-background-gradient: var(--recent-item-active-hover-background-gradient);
   --full-recent-item-icon-color: var(--full-recent-item-default-color);
   --full-recent-item-active-icon-color: var(--full-recent-item-active-color);
-  --full-recent-item-highlight-color: var(--color-info);
+  --full-recent-item-highlight-color: var(--color-primary);
   --full-recent-item-draft-color: var(--color-danger);
   /* Sidebar */
   /* SidebarGroupTitle */
