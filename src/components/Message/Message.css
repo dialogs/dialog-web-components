@@ -12,6 +12,7 @@
   padding: var(--message-vertical-padding) var(--message-horizontal-padding);
   transition: box-shadow var(--message-transition-duration) ease-in-out, opacity var(--message-transition-duration) ease-in;
   font-family: var(--message-font-family);
+  backface-visibility: hidden;
 }
 
 .avatar {

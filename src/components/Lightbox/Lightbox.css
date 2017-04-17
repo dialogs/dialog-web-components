@@ -20,6 +20,7 @@
 
 .background {
   background-color: var(--lightbox-background-color) !important;
+  backface-visibility: hidden;
 }
 
 .item {
@@ -69,6 +70,7 @@
 .toolbar {
   /*height: 74px;*/
   background-color: var(--lightbox-toolbar-background-color) !important;
+  backface-visibility: hidden;
 }
 
 .buttonZoom {
