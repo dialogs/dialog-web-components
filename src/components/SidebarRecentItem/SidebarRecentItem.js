@@ -11,7 +11,7 @@ import Spinner from '../Spinner/Spinner';
 import PeerAvatar from '../PeerAvatar/PeerAvatar';
 import DoublePeerAvatar from '../DoublePeerAvatar/DoublePeerAvatar';
 import Icon from '../Icon/Icon';
-import styles from './FullRecentItem.css';
+import styles from './SidebarRecentItem.css';
 
 export type Props = {
   className?: string,
@@ -32,7 +32,7 @@ function getSenderTitle(title: string): string {
   return title.split(' ')[0];
 }
 
-class FullRecentItem extends PureComponent {
+class SidebarRecentItem extends PureComponent {
   props: Props;
 
   handleClick = (): void => {
@@ -73,7 +73,7 @@ class FullRecentItem extends PureComponent {
     if (message && message.sender) {
       if (uid === message.sender.peer.id) {
         return (
-          <Text className={styles.sender} id="FullRecentItem.you" />
+          <Text className={styles.sender} id="SidebarRecentItem.you" />
         );
       }
 
@@ -107,7 +107,7 @@ class FullRecentItem extends PureComponent {
     if (draft) {
       return (
         <div className={styles.message}>
-          <Text className={styles.draft} id="FullRecentItem.draft" />
+          <Text className={styles.draft} id="SidebarRecentItem.draft" />
           {draft}
         </div>
       );
@@ -143,7 +143,7 @@ class FullRecentItem extends PureComponent {
               {this.renderStatusSender()}
               <Text
                 className={styles.highlight}
-                id={`FullRecentItem.${content.type}`}
+                id={`SidebarRecentItem.${content.type}`}
               />
             </div>
           );
@@ -225,4 +225,4 @@ class FullRecentItem extends PureComponent {
   }
 }
 
-export default FullRecentItem;
+export default SidebarRecentItem;

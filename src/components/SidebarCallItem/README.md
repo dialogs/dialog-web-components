@@ -62,19 +62,14 @@ const info = {
 };
 
 <div style={{ width: 270, background: '#f5f5f5' }}>
-  <RecentCallItem
+  <SidebarCallItem
     call={call}
     uid={1}
     onSelect={console.debug}
   />
-  <RecentCallItem
+  <SidebarCallItem
     call={call2}
     uid={1}
-    onSelect={console.debug}
-  />
-  <RecentItem
-    info={info}
-    counter={10}
     onSelect={console.debug}
   />
 </div>

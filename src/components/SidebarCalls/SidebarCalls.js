@@ -8,7 +8,7 @@ import React, { Component } from 'react';
 import classNames from 'classnames';
 import { Text } from '@dlghq/react-l10n';
 import { AutoSizer, List } from 'react-virtualized';
-import RecentCallItem from '../RecentCallItem/RecentCallItem';
+import SidebarCallItem from '../SidebarCallItem/SidebarCallItem';
 import styles from './SidebarCalls.css';
 
 export type Props = {
@@ -38,7 +38,7 @@ class SidebarCalls extends Component {
   renderRow = ({ index, key, style }: Object) => {
     return (
       <div key={key} style={style}>
-        <RecentCallItem
+        <SidebarCallItem
           uid={this.props.uid}
           call={this.props.calls[index]}
           onSelect={this.props.onSelect}

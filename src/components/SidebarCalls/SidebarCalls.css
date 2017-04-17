@@ -13,7 +13,7 @@
 }
 
 .empty {
-  padding: var(--recent-item-default-left-padding);
+  padding: var(--sidebar-peer-item-default-left-padding);
   display: flex;
   justify-content: center;
   color: var(--icon-default-color);

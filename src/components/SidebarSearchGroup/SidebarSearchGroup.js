@@ -4,10 +4,9 @@
  */
 
 import type { Peer, SearchEntity } from '@dlghq/dialog-types';
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { peerToString } from '@dlghq/dialog-types/utils';
-import SidebarGroup from '../SidebarGroup/SidebarGroup';
-import RecentItem from '../RecentItem/RecentItem';
+import SidebarPeerItem from '../SidebarPeerItem/SidebarPeerItem';
 
 export type SidebarSearchGroupProps = {
   className?: string,
@@ -16,20 +15,14 @@ export type SidebarSearchGroupProps = {
   onSelect: (peer: Peer) => any
 };
 
-class SidebarSearchGroup extends Component {
+class SidebarSearchGroup extends PureComponent {
   props: SidebarSearchGroupProps;
-
-  shouldComponentUpdate(nextProps: SidebarSearchGroupProps) {
-    return nextProps.items !== this.props.items ||
-           nextProps.title !== this.props.title ||
-           nextProps.className !== this.props.className;
-  }
 
   renderItems() {
     const { items, onSelect } = this.props;
 
     return items.map(({ peerInfo }) => (
-      <RecentItem
+      <SidebarPeerItem
         key={peerToString(peerInfo.peer)}
         info={peerInfo}
         active={false}
@@ -43,9 +36,9 @@ class SidebarSearchGroup extends Component {
     const { className, title } = this.props;
 
     return (
-      <SidebarGroup className={className} title={title}>
+      <div className={className} title={title}>
         {this.renderItems()}
-      </SidebarGroup>
+      </div>
     );
   }
 }

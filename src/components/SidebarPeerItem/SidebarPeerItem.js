@@ -5,7 +5,7 @@
 import type { Peer, PeerInfo } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
-import styles from './SidebarContactItem.css';
+import styles from './SidebarPeerItem.css';
 import PeerAvatar from '../PeerAvatar/PeerAvatar';
 
 export type Props = {
@@ -17,7 +17,7 @@ export type Props = {
   onSelect: (peer: Peer) => any
 };
 
-class SidebarContactItem extends PureComponent {
+class SidebarPeerItem extends PureComponent {
   props: Props;
 
   static defaultProps = {
@@ -42,7 +42,6 @@ class SidebarContactItem extends PureComponent {
       <div className={className} onClick={this.handleClick}>
         <PeerAvatar
           className={styles.avatar}
-          size="medium"
           peer={info}
           online={online}
         />
@@ -57,4 +56,4 @@ class SidebarContactItem extends PureComponent {
   }
 }
 
-export default SidebarContactItem;
+export default SidebarPeerItem;

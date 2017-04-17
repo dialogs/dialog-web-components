@@ -14,26 +14,26 @@
   display: flex;
   flex-direction: row;
   box-sizing: border-box;
-  height: var(--recent-call-item-height);
-  padding-top: var(--recent-call-item-top-padding);
-  padding-right: var(--recent-call-item-right-padding);
-  padding-bottom: var(--recent-call-item-bottom-padding);
-  padding-left: var(--recent-call-item-left-padding);
+  height: var(--sidebar-call-item-height);
+  padding-top: var(--sidebar-call-item-top-padding);
+  padding-right: var(--sidebar-call-item-right-padding);
+  padding-bottom: var(--sidebar-call-item-bottom-padding);
+  padding-left: var(--sidebar-call-item-left-padding);
   cursor: pointer;
   user-select: none;
-  font-family: var(--recent-call-item-font-family);
+  font-family: var(--sidebar-call-item-font-family);
   flex-wrap: nowrap;
   justify-content: flex-start;
   align-items: flex-start;
-  color: var(--recent-call-item-default-color);
+  color: var(--sidebar-call-item-default-color);
 
   &:hover {
-    background-color: var(--recent-call-item-hover-background-color);
-    color: var(--recent-call-item-hover-color);
+    background-color: var(--sidebar-call-item-hover-background-color);
+    color: var(--sidebar-call-item-hover-color);
   }
 
   &:active {
-    background-color: var(--recent-call-item-active-background-color);
+    background-color: var(--sidebar-call-item-active-background-color);
   }
 
   & .avatar {
@@ -49,7 +49,7 @@
   flex-flow: column;
   vertical-align: middle;
   flex: 1 1 auto;
-  height: var(--recent-call-item-text-height);
+  height: var(--sidebar-call-item-text-height);
   position: relative;
   @apply --flex-fix;
 }
@@ -57,13 +57,13 @@
 .state {
   font-weight: 500;
   line-height: 20px;
-  font-size: var(--recent-call-item-font-size);
+  font-size: var(--sidebar-call-item-font-size);
   @apply --text-overflow-ellipsis;
 }
 
 .time {
   line-height: 17px;
-  font-size: var(--recent-call-item-time-font-size);
+  font-size: var(--sidebar-call-item-time-font-size);
   vertical-align: middle;
   letter-spacing: -0.25px;
   @apply --text-overflow-ellipsis;

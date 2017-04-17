@@ -10,7 +10,7 @@ import { formatTime } from '@dlghq/dialog-utils';
 import classNames from 'classnames';
 import DoublePeerAvatar from '../DoublePeerAvatar/DoublePeerAvatar';
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
-import styles from './RecentCallItem.css';
+import styles from './SidebarCallItem.css';
 
 export type CallState = 'outgoing' | 'incoming' | 'canceled' | 'missed';
 
@@ -21,7 +21,7 @@ export type Props = {
   onSelect: (call: CallInfo) => any
 };
 
-class RecentCallItem extends PureComponent {
+class SidebarCallItem extends PureComponent {
   props: Props;
 
   handleClick = (): void => {
@@ -66,7 +66,7 @@ class RecentCallItem extends PureComponent {
 
     return (
       <div className={styles.state}>
-        <Text id={`RecentCallItem.${state}`} />
+        <Text id={`SidebarCallItem.${state}`} />
         {this.renderDuration()}
       </div>
     );
@@ -115,4 +115,4 @@ class RecentCallItem extends PureComponent {
   }
 }
 
-export default RecentCallItem;
+export default SidebarCallItem;

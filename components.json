@@ -99,13 +99,10 @@
       "SidebarHeader",
       "SidebarSearch",
       "SidebarUnread",
-      "SidebarGroup",
-      "SidebarCalls",
-      "RecentItem",
-      "FullRecentItem",
-      "RecentCallItem",
-      "RecentGroup",
-      "FakeRecentItem",
+      "SidebarPeerItem",
+      "SidebarRecentItem",
+      "SidebarCallItem",
+      "SidebarFakeItem",
       "SidebarFooter"
     ]
   },

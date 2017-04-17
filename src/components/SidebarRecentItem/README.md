@@ -1,5 +1,3 @@
-Full Recent Item:
-
 ```
 const nkt = {
   peer: { id: 1, type: 'user', key: 'u1' },
@@ -20,7 +18,15 @@ const oleg = {
 };
 
 const group = {
-  peer: { id: 1, type: 'group', key: 'g1' },
+  peer: { id: 3, type: 'group', key: 'g3' },
+  type: 'group',
+  title: 'Dialog Web',
+  userName: null,
+  placeholder: 'lblue'
+};
+
+const group2 = {
+  peer: { id: 6, type: 'group', key: 'g6' },
   type: 'group',
   title: 'Dialog Web',
   userName: null,
@@ -28,7 +34,7 @@ const group = {
 };
 
 const publicGroup = {
-  peer: { id: 2, type: 'group', key: 'g2' },
+  peer: { id: 4, type: 'group', key: 'g4' },
   type: 'group',
   title: 'Dialog OpenSource',
   userName: 'dlgoss',
@@ -36,7 +42,7 @@ const publicGroup = {
 };
 
 const channel = {
-  peer: { id: 3, type: 'group', key: 'g3' },
+  peer: { id: 5, type: 'group', key: 'g5' },
   type: 'channel',
   title: 'Dialog News',
   userName: 'dlgnews',
@@ -51,10 +57,11 @@ initialState = {
 
 function handleSelect(peer) {
   setState({ current: peer.key });
+  console.debug(peer.key);
 }
 
 <div style={{ width: 300, background: '#f5f5f5' }}>
-  <FullRecentItem
+  <SidebarRecentItem
     uid={1}
     info={nkt}
     active={nkt.peer.key === state.current}
@@ -64,8 +71,8 @@ function handleSelect(peer) {
     online={true}
     onSelect={handleSelect}
   />
-  <FullRecentItem
-    uid={1}
+  <SidebarRecentItem
+    uid={2}
     info={oleg}
     active={oleg.peer.key === state.current}
     counter={0}
@@ -74,8 +81,8 @@ function handleSelect(peer) {
     online={false}
     onSelect={handleSelect}
   />
-  <FullRecentItem
-    uid={1}
+  <SidebarRecentItem
+    uid={3}
     info={group}
     active={group.peer.key === state.current}
     counter={3}
@@ -84,8 +91,8 @@ function handleSelect(peer) {
     online={null}
     onSelect={handleSelect}
   />
-  <FullRecentItem
-    uid={1}
+  <SidebarRecentItem
+    uid={4}
     info={publicGroup}
     active={publicGroup.peer.key === state.current}
     counter={0}
@@ -93,8 +100,8 @@ function handleSelect(peer) {
     online={null}
     onSelect={handleSelect}
   />
-  <FullRecentItem
-    uid={1}
+  <SidebarRecentItem
+    uid={5}
     info={channel}
     muted={true}
     active={channel.peer.key === state.current}
@@ -103,11 +110,11 @@ function handleSelect(peer) {
     online={null}
     onSelect={handleSelect}
   />
-  <FullRecentItem
-    uid={1}
-    info={group}
+  <SidebarRecentItem
+    uid={6}
+    info={group2}
     draft="Today we introducing fully featured"
-    active={channel.peer.key === state.current}
+    active={group2.peer.key === state.current}
     counter={0}
     online={null}
     onSelect={handleSelect}

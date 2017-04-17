@@ -4,28 +4,19 @@
  */
 
 import type { Peer, ShortRecent } from '@dlghq/dialog-types';
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { isSamePeer } from '@dlghq/dialog-types/utils';
-import SidebarGroup from '../SidebarGroup/SidebarGroup';
-import RecentItem from '../RecentItem/RecentItem';
+import SidebarPeerItem from '../SidebarPeerItem/SidebarPeerItem';
 
 export type Props = {
   className?: string,
-  title: string,
   items: ShortRecent[],
   currentPeer: ?Peer,
   onSelect: Function
 }
 
-class RecentGroup extends Component {
+class RecentGroup extends PureComponent {
   props: Props;
-
-  shouldComponentUpdate(nextProps: Props): boolean {
-    return nextProps.items !== this.props.items ||
-           nextProps.currentPeer !== this.props.currentPeer ||
-           nextProps.title !== this.props.title ||
-           nextProps.className !== this.props.className;
-  }
 
   renderItems(): React.Element<any>[] {
     const { items, currentPeer, onSelect } = this.props;
@@ -34,7 +25,7 @@ class RecentGroup extends Component {
       const isActive = isSamePeer(currentPeer, item.peer.peer);
 
       return (
-        <RecentItem
+        <SidebarPeerItem
           key={index}
           info={item.peer}
           active={isActive}
@@ -46,14 +37,16 @@ class RecentGroup extends Component {
   }
 
   render(): React.Element<any> {
-    const { className, title } = this.props;
+    const { className } = this.props;
 
     return (
-      <SidebarGroup className={className} title={title}>
+      <div className={className}>
         {this.renderItems()}
-      </SidebarGroup>
+      </div>
     );
   }
 }
+
+console.warn('RecentGroup component deprecated, and will be removed on near future.');
 
 export default RecentGroup;

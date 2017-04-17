@@ -8,7 +8,7 @@ import React, { PureComponent } from 'react';
 import { Text } from '@dlghq/react-l10n';
 import { isSamePeer } from '@dlghq/dialog-types/utils';
 import { AutoSizer, List } from 'react-virtualized';
-import RecentItem from '../RecentItem/RecentItem';
+import SidebarPeerItem from '../SidebarPeerItem/SidebarPeerItem';
 import styles from './Archive.css';
 
 export type Props = {
@@ -52,7 +52,7 @@ class ArchiveList extends PureComponent {
 
     return (
       <div key={key} style={style}>
-        <RecentItem
+        <SidebarPeerItem
           info={peer}
           active={isSamePeer(peer.peer, this.props.peer)}
           counter={counter}
