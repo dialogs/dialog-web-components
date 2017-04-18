@@ -27,14 +27,14 @@ class SelectedMessagesActions extends PureComponent {
       <div className={className}>
         <Button onClick={this.props.onDelete} view="link" theme="primary" className={styles.button}>
           <Icon glyph="delete" className={styles.buttonIcon} />
-          <Text id="EditorForward.delete" className={styles.buttonText} />
+          <Text id="SelectedMessagesActions.delete" className={styles.buttonText} />
         </Button>
         <div className={styles.text}>
-          <Text id="EditorForward.text" values={{ count: this.props.count.toString() }} />
+          <Text id="SelectedMessagesActions.text" values={{ count: this.props.count.toString() }} />
         </div>
         <Button onClick={this.props.onForward} view="link" theme="primary" className={styles.button}>
           <Icon glyph="forward" className={styles.buttonIcon} />
-          <Text id="EditorForward.forward" className={styles.buttonText} />
+          <Text id="SelectedMessagesActions.forward" className={styles.buttonText} />
         </Button>
       </div>
     );
