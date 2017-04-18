@@ -19,6 +19,7 @@ notifications:
   mention: Mention Only Notifications
   mention_hint: You can enable notifications only for messages that contains you mention.
   counter_include_muted: Include muted chats in unread counter
+  counter_include_muted_hint: If disabled, global app unread counter will not include unread messages from muted chats
 security:
   title: Security
   legend:

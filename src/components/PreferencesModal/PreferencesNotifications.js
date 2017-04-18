@@ -88,6 +88,7 @@ class PreferencesNotifications extends PureComponent {
             >
               <Text id="PreferencesModal.notifications.counter_include_muted" />
             </Switcher>
+            <Text id="PreferencesModal.notifications.counter_include_muted_hint" className={styles.hint} />
           </Field>
         </Fieldset>
         <Fieldset legend="PreferencesModal.security.title">
