@@ -89,7 +89,7 @@ export { default as SidebarUnread } from './components/SidebarUnread/SidebarUnre
 export { default as SidebarSearch } from './components/SidebarSearch/SidebarSearch';
 export { default as SidebarSearchGroup } from './components/SidebarSearchGroup/SidebarSearchGroup';
 export { default as SidebarCalls } from './components/SidebarCalls/SidebarCalls';
-export { default as SidebarItem } from './components/SidebarPeerItem/SidebarPeerItem';
+export { default as SidebarPeerItem } from './components/SidebarPeerItem/SidebarPeerItem';
 export { default as SidebarRecentItem } from './components/SidebarRecentItem/SidebarRecentItem';
 export { default as SidebarCallItem } from './components/SidebarCallItem/SidebarCallItem';
 export { default as SidebarFakeItem } from './components/SidebarFakeItem/SidebarFakeItem';
