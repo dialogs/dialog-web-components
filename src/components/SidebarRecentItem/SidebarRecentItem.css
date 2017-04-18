@@ -31,6 +31,9 @@
     background-color: var(--sidebar-recent-item-hover-background-color);
     color: var(--sidebar-recent-item-hover-color);
 
+    & .message {
+      color: var(--sidebar-recent-item-hover-message-color);
+    }
     & .icon {
       fill: currentColor;
     }
@@ -150,6 +153,10 @@
     fill: currentColor;
     background-color: var(--sidebar-recent-item-active-hover-background-color);
     background-image: var(--sidebar-recent-item-active-hover-background-gradient);
+
+    & .message {
+      color: var(--sidebar-recent-item-active-message-color);
+    }
   }
 
   & .counter {
