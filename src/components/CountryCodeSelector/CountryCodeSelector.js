@@ -22,7 +22,6 @@ class CountryCodeSelector extends PureComponent {
 
   constructor(props: Props, context: Context) {
     super(props, context);
-    const { l10n: { formatText } } = context;
 
     this.countries = [];
 
@@ -31,8 +30,8 @@ class CountryCodeSelector extends PureComponent {
         this.countries.push({
           alpha: country.alpha,
           code,
-          label: country.alpha ? formatText(`CountryCodeSelector.country.${country.alpha}`) : null,
-          flag: country.emoji || null
+          label: `CountryCodeSelector.country.${country.alpha}`,
+          flag: country.emoji
         });
       });
     });

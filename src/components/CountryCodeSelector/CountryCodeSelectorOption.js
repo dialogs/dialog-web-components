@@ -6,6 +6,7 @@
 import React from 'react';
 import type { Country } from './types';
 import Emoji from '../Emoji/Emoji';
+import { Text } from '@dlghq/react-l10n';
 import styles from './CountryCodeSelector.css';
 
 function CountryCodeSelectorOption(country: Country): React.Element<any> {
@@ -17,7 +18,7 @@ function CountryCodeSelectorOption(country: Country): React.Element<any> {
           : null
       }
       <div className={styles.optionLabel}>
-        <div className={styles.optionCountry}>{country.label}</div>
+        <Text className={styles.optionCountry} id={country.label} tagName="div" />
       </div>
       <span className={styles.optionCode}>{country.code}</span>
     </div>

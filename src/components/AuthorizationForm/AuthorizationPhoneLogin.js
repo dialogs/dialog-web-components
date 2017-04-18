@@ -11,6 +11,7 @@ import { Text } from '@dlghq/react-l10n';
 import CountryCodeSelector from '../CountryCodeSelector/CountryCodeSelector';
 import InputNext from '../InputNext/InputNext';
 import getHumanTime from '../../utils/getHumanTime';
+import getCountryByPhone from './getCountryByPhone';
 import { LOGIN_SENT, CODE_REQUESTED, CODE_SENT, RESEND_TIMEOUT } from './constants';
 import styles from './AuthorizationForm.css';
 
@@ -68,11 +69,22 @@ class AuthorizationPhoneLogin extends PureComponent {
   }
 
   handleChange = (value: any, { target }: $FlowIssue): void => {
+    let newCountry = null;
+    let newValue = value;
+    if (target.name === 'phone') {
+      newCountry = getCountryByPhone(value);
+
+      if (!newValue.length) {
+        newValue = '+';
+      }
+    }
+
     this.props.onChange({
       type: this.props.value.type,
       credentials: {
         ...this.props.value.credentials,
-        [target.name]: value
+        [target.name]: newValue,
+        country: newCountry ? newCountry : this.props.value.credentials.country
       }
     });
   };
