@@ -15,6 +15,7 @@ export type Props = {
   id: string,
   title: string,
   glyph: string,
+  counter?: number,
   active: boolean,
   pending: boolean,
   onPick: (id: string) => any
@@ -31,8 +32,37 @@ class SidebarFooterButton extends PureComponent {
     }
   };
 
+  renderIcon(): React.Element<any> {
+    const { glyph, pending } = this.props;
+
+    if (pending) {
+      return (
+        <Spinner size="normal" />
+      );
+    }
+
+    return (
+      <Icon glyph={glyph} className={styles.icon} />
+    );
+  }
+
+  renderCounter(): ?React.Element<any> {
+    const { counter, pending } = this.props;
+
+    if (!counter || counter === 0 || pending) {
+      return null;
+    }
+
+    const isBig = counter > 99;
+    const counterClassName = classNames(styles.counter, isBig ? styles.counterBig : null);
+
+    return (
+      <div className={counterClassName}>{isBig ? '99+' : counter}</div>
+    );
+  }
+
   render(): React.Element<any> {
-    const { glyph, active, title, id, pending } = this.props;
+    const { active, title, id } = this.props;
     const className = classNames(styles.button, {
       [styles.active]: active
     }, this.props.className);
@@ -40,11 +70,10 @@ class SidebarFooterButton extends PureComponent {
     return (
       <Tooltip text={title} key={id} className={styles.tooltip}>
         <div className={className} onClick={this.handleClick}>
-          {
-            pending
-              ? <div className={styles.spinner}><Spinner size="normal" /></div>
-              : <Icon glyph={glyph} className={styles.icon} />
-          }
+          <div className={styles.wrapper}>
+            {this.renderIcon()}
+            {this.renderCounter()}
+          </div>
         </div>
       </Tooltip>
     );

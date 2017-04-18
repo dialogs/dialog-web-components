@@ -3,17 +3,11 @@
  * @flow
  */
 
+import type { Props, SidebarFooterButtonVariant } from './types';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import SidebarFooterButton from './SidebarFooterButton';
 import styles from './SidebarFooter.css';
-
-export type Props = {
-  className?: string,
-  current: string,
-  variants: Array<{ id: string, title: string, glyph: string, pending: boolean }>,
-  onPick: (current: string) => any
-};
 
 class SidebarFooter extends PureComponent {
   props: Props;
@@ -21,9 +15,7 @@ class SidebarFooter extends PureComponent {
   rendereFooterButtons(): React.Element<any>[] {
     const { current, variants } = this.props;
 
-    return variants.map(({ id, title, glyph, pending }) => {
-      const active = id === current;
-
+    return variants.map(({ id, title, glyph, pending, counter }: SidebarFooterButtonVariant) => {
       return (
         <SidebarFooterButton
           id={id}
@@ -31,7 +23,8 @@ class SidebarFooter extends PureComponent {
           title={title}
           glyph={glyph}
           pending={pending}
-          active={active}
+          active={id === current}
+          counter={counter}
           onPick={this.props.onPick}
         />
       );

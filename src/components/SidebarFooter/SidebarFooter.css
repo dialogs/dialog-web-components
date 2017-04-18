@@ -66,7 +66,7 @@
   @apply --flex-fix;
 }
 
-.spinner {
+.wrapper {
   flex: 0 0 auto;
   display: flex;
   align-content: center;
@@ -74,4 +74,26 @@
   justify-content: center;
   height: var(--sidebar-footer-button-icon-size);
   width: var(--sidebar-footer-button-icon-size);
+  position: relative;
+}
+
+.counter {
+  position: absolute;
+  right: -3px;
+  top: -3px;
+  display: flex;
+  background-color: var(--sidebar-footer-button-counter-background);
+  color: var(--sidebar-footer-button-counter-color);
+  border-radius: 100px;
+  font-size: var(--sidebar-footer-button-counter-font-size);
+  height: var(--sidebar-footer-button-counter-size);
+  width: var(--sidebar-footer-button-counter-size);
+  line-height: 1;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.counterBig {
+  font-size: calc(var(--sidebar-footer-button-counter-font-size) - 2);
 }

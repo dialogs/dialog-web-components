@@ -443,6 +443,10 @@
   --sidebar-footer-button-icon-size: 28px;
   --sidebar-footer-button-color-hover: #808080;
   --sidebar-footer-button-color-active: var(--color-primary);
+  --sidebar-footer-button-counter-background: var(--color-danger);
+  --sidebar-footer-button-counter-color: #fff;
+  --sidebar-footer-button-counter-size: 14px;
+  --sidebar-footer-button-counter-font-size: calc(var(--sidebar-footer-button-counter-size) - 6);
   /* SidebarSearch */
   --sidebar-search-font-family: var(--default-font-family);
   --sidebar-search-padding: 12px;

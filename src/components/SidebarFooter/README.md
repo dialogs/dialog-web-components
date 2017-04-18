@@ -1,17 +1,25 @@
 ```
-const SidebarFooterButton = require('./SidebarFooterButton').default;
 const variants = [
   {
-    id: 'messages', title: 'Messages', glyph: 'logo', pending: false
+    id: 'messages', title: 'Messages', glyph: 'logo', pending: false, counter: 140
   }, {
-    id: 'archive', title: 'Archive', glyph: 'schedule', pending: true
+    id: 'contacts', title: 'Contacts', glyph: 'person', pending: false, counter: 41
+  }, {
+    id: 'call', title: 'Calls', glyph: 'call', pending: true, counter: 0
   }
 ];
 
+initialState = {
+  current: 'messages'
+};
+
+const handlePick = (current) => setState({ current });
+
 <div style={{ width: 270, background: '#f5f5f5' }}>
   <SidebarFooter
-    current={variants[0]}
+    current={state.current}
     variants={variants}
+    onPick={handlePick}
   />
 </div>
 ```
