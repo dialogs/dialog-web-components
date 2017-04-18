@@ -75,8 +75,7 @@
     "react-select": "1.0.0-rc.3",
     "react-tether": "0.5.6",
     "react-transition-group": "1.1.1",
-    "react-virtualized": "9.7.3",
-    "svg-sprite-loader": "0.3.0"
+    "react-virtualized": "9.7.3"
   },
   "devDependencies": {
     "@dlghq/babel-preset-dialog": "3.2.1",

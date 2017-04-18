@@ -29,8 +29,8 @@ Basic Icon:
   <Icon glyph="edit" />
   <Icon glyph="error" />
   <Icon glyph="file_download" />
-  <Icon glyph="star" />
-  <Icon glyph="star_outline" />
+  <Icon glyph="favourite" />
+  <Icon glyph="favourite_outline" />
   <Icon glyph="finder" />
   <Icon glyph="group" />
   <Icon glyph="info" />

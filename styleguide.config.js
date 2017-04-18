@@ -120,12 +120,7 @@ module.exports = {
     }, {
       test: /\.(jpg|png|svg|gif)$/,
       include: /./,
-      exclude: resolve('src/components/Icon/svg'),
       use: ['file-loader']
-    }, {
-      test: /\.(svg)$/,
-      include: resolve('src/components/Icon/svg'),
-      use: ['svg-sprite-loader']
     }, {
       test: /\.txt$/,
       include: whitelist,
