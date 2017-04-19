@@ -109,7 +109,7 @@ class ImageEdit extends PureComponent {
     if (this.croppie) {
       this.croppie.result({
         type: 'blob',
-        // size: 'original',
+        size: 'viewport',
         format: 'jpeg',
         circle: false
       }).then((blob) => {
