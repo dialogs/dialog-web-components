@@ -6,9 +6,12 @@
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import styles from './Icon.css';
-import sprite from './Icons.svg';
 import getIconSize from './getIconSize';
 import type { IconSize } from './getIconSize';
+
+// $FlowFixMe
+const files = require.context('./svg', false, /.*\.svg$/);
+files.keys().forEach(files);
 
 export type Props = {
   className?: string,
@@ -60,7 +63,7 @@ class Icon extends PureComponent {
     return (
       <div className={className} onClick={onClick} style={style}>
         <svg className={styles.icon} width="100%" height="100%">
-          <use xlinkHref={`${sprite}#${this.props.glyph}`} />
+          <use xlinkHref={`#${this.props.glyph}`} />
         </svg>
       </div>
     );
@@ -76,7 +79,7 @@ class Icon extends PureComponent {
 
     return (
       <svg className={className} width={size} height={size} onClick={onClick}>
-        <use xlinkHref={`${sprite}#${this.props.glyph}`} />
+        <use xlinkHref={`#${this.props.glyph}`} />
       </svg>
     );
   }
