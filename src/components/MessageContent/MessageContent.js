@@ -6,6 +6,7 @@
 import type { MessageContent as MessageContentTypes } from '@dlghq/dialog-types';
 import React from 'react';
 import Text from './Text/Text';
+import Service from './Text/Service';
 import Photo from './Photo/Photo';
 import Sticker from './Sticker/Sticker';
 import Document from './Document/Document';
@@ -35,8 +36,7 @@ function MessageContent({ className, content, isPending, onLightboxOpen }: Props
 
     case 'service':
       return (
-        <Text
-          service
+        <Service
           className={className}
           text={content.text}
           isPending={isPending}
@@ -126,8 +126,12 @@ function MessageContent({ className, content, isPending, onLightboxOpen }: Props
       );
 
     default:
-      console.warn('Unsupported message content: ', content); // eslint-disable-line
-      return <Text text={`Unsupported message content (${content.type}).`} service />;
+      return (
+        <Service
+          className={className}
+          text={`Unsupported message content (${content.type}).`}
+        />
+      );
   }
 }
 

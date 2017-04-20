@@ -13,8 +13,7 @@ import styles from './Text.css';
 export type Props = {|
   className?: string,
   text: string,
-  media?: ?MessageMediaType,
-  service?: boolean,
+  media: MessageMediaType[],
   isPending?: boolean
 |};
 
@@ -28,34 +27,36 @@ class Text extends Component {
            this.props.className !== nextProps.className;
   }
 
-  render(): React.Element<any> {
+  render() {
     const className = classNames(
       styles.container,
       this.props.className,
-      this.props.service ? styles.service : null,
       this.props.isPending ? styles.pending : null
     );
 
-    if (this.props.service) {
-      return (
-        <div className={className}>
-          {this.props.text}
-        </div>
-      );
-    }
-
-    if (this.props.media) {
-      return (
-        <div className={className}>
-          <Markdown className={styles.wrapper} text={this.props.text} />
-          <MessageMedia media={this.props.media} />
-        </div>
-      );
-    }
-
-    return (
+    const markdown = (
       <Markdown className={className} text={this.props.text} />
     );
+
+    if (this.props.media.length) {
+      const media = this.props.media.map((item, key) => {
+        return (
+          <MessageMedia
+            key={key} // eslint-disable-line
+            media={item}
+          />
+        );
+      });
+
+      return (
+        <div className={className}>
+          {markdown}
+          {media}
+        </div>
+      );
+    }
+
+    return markdown;
   }
 }
 
