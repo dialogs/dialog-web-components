@@ -20,6 +20,8 @@
   align-content: stretch;
   align-items: stretch;
   justify-content: space-around;
+  position: relative;
+  overflow: hidden;
 }
 
 .button {
@@ -96,4 +98,23 @@
 
 .counterBig {
   font-size: calc(var(--sidebar-footer-button-counter-font-size) - 2);
+}
+
+.update {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--layout-sidebar-width);
+  height: var(--sidebar-footer-height);
+}
+
+.appear {
+  transform: translateZ(0) translateY(var(--sidebar-footer-height));
+  transform-origin: 50% 50%;
+}
+
+.appearActive {
+  transition: all var(--tooltip-transition-duration) ease-out;
+  transform: translateZ(0) translateY(0);
 }

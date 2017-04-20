@@ -15,5 +15,7 @@ export type Props = {
   className?: string,
   current: string,
   variants: SidebarFooterButtonVariant[],
-  onPick: (current: string) => any
+  onPick: (current: string) => any,
+  isUpdateAvailable: boolean,
+  onUpdate: () => mixed
 };

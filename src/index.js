@@ -95,6 +95,7 @@ export { default as SidebarCallItem } from './components/SidebarCallItem/Sidebar
 export { default as SidebarFakeItem } from './components/SidebarFakeItem/SidebarFakeItem';
 export { default as SidebarFooter } from './components/SidebarFooter/SidebarFooter';
 export { default as SidebarFooterButton } from './components/SidebarFooter/SidebarFooterButton';
+export { default as SidebarUpdateButton } from './components/SidebarFooter/SidebarUpdateButton';
 export { default as RecentGroup } from './components/RecentGroup/RecentGroup';
 
 // Chat

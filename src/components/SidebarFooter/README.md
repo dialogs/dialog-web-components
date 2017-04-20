@@ -10,16 +10,19 @@ const variants = [
 ];
 
 initialState = {
-  current: 'messages'
+  current: 'messages',
+  isUpdateAvailable: false
 };
 
-const handlePick = (current) => setState({ current });
+const handlePick = (current) => setState({ current, isUpdateAvailable: true });
 
 <div style={{ width: 270, background: '#f5f5f5' }}>
   <SidebarFooter
     current={state.current}
     variants={variants}
     onPick={handlePick}
+    isUpdateAvailable={state.isUpdateAvailable}
+    onUpdate={() => setState({ isUpdateAvailable: false })}
   />
 </div>
 ```
