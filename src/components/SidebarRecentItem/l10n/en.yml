@@ -2,10 +2,11 @@ you: "You: "
 draft: "Draft: "
 
 photo: Photo
+voice: Voice
+video: Video
+contact: Contact
 sticker: Sticker
 document: Document
-voice: Voice
 location: Location
-contact: Contact
 unknown: ""
 unsupported: ""

@@ -2,10 +2,11 @@ you: "Вы: "
 draft: "Черновик: "
 
 photo: Фото
-sticker: Стикер
-document: Документ
 voice: Голос
-location: Местоположение
+video: Видео
+sticker: Стикер
 contact: Контакт
+document: Документ
+location: Местоположение
 unknown: ""
 unsupported: ""
