@@ -11,7 +11,7 @@ import { Text } from '@dlghq/react-l10n';
 import CountryCodeSelector from '../CountryCodeSelector/CountryCodeSelector';
 import InputNext from '../InputNext/InputNext';
 import getHumanTime from '../../utils/getHumanTime';
-import getCountryByPhone from './getCountryByPhone';
+import getCountryByPhone from '../../utils/getCountryByPhone';
 import { LOGIN_SENT, CODE_REQUESTED, CODE_SENT, RESEND_TIMEOUT } from './constants';
 import styles from './AuthorizationForm.css';
 
@@ -68,25 +68,31 @@ class AuthorizationPhoneLogin extends PureComponent {
     this.handleIntervalClear();
   }
 
-  handleChange = (value: any, { target }: $FlowIssue): void => {
-    let newCountry = null;
-    let newValue = value;
-    if (target.name === 'phone') {
-      newCountry = getCountryByPhone(value);
-
-      if (!newValue.length) {
-        newValue = '+';
-      }
-    }
+  handlePhoneChange = (value: any) => {
+    const newCountry = getCountryByPhone(value);
 
     this.props.onChange({
       type: this.props.value.type,
       credentials: {
         ...this.props.value.credentials,
-        [target.name]: newValue,
+        phone: value.length ? value : '+',
         country: newCountry ? newCountry : this.props.value.credentials.country
       }
     });
+  };
+
+  handleChange = (value: any, event: $FlowIssue): void => {
+    if (event.target.name === 'phone') {
+      this.handlePhoneChange(value);
+    } else {
+      this.props.onChange({
+        type: this.props.value.type,
+        credentials: {
+          ...this.props.value.credentials,
+          [event.target.name]: value
+        }
+      });
+    }
   };
 
   handleCountryChange = (country: Country): void => {
