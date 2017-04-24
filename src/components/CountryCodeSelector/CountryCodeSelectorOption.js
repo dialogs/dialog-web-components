@@ -18,7 +18,7 @@ function CountryCodeSelectorOption(country: Country): React.Element<any> {
           : null
       }
       <div className={styles.optionLabel}>
-        <Text className={styles.optionCountry} id={country.label} tagName="div" />
+        <Text className={styles.optionCountry} id={`CountryCodeSelector.country.${country.alpha}`} tagName="div" />
       </div>
       <span className={styles.optionCode}>{country.code}</span>
     </div>

@@ -8,7 +8,6 @@ import type { LocalizationContext } from '@dlghq/react-l10n';
 export type Country = {
   alpha: string,
   code: string,
-  label: ?string,
   flag: ?string
 };
 

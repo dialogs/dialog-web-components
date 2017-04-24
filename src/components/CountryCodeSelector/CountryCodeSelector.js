@@ -10,7 +10,7 @@ import classNames from 'classnames';
 import Select from 'react-select';
 import styles from './CountryCodeSelector.css';
 import CountryCodeSelectorOption from './CountryCodeSelectorOption';
-import { getCountries } from '@dlghq/country-codes';
+import getCountries from '../../utils/getCountries';
 
 class CountryCodeSelector extends PureComponent {
   props: Props;
@@ -23,18 +23,7 @@ class CountryCodeSelector extends PureComponent {
   constructor(props: Props, context: Context) {
     super(props, context);
 
-    this.countries = [];
-
-    getCountries().forEach((country) => {
-      country.codes.forEach((code) => {
-        this.countries.push({
-          alpha: country.alpha,
-          code,
-          label: `CountryCodeSelector.country.${country.alpha}`,
-          flag: country.emoji
-        });
-      });
-    });
+    this.countries = getCountries();
   }
 
   componentWillMount() {
