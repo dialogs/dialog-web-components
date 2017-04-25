@@ -19,6 +19,7 @@
   justify-content: flex-start;
   align-items: center;
   align-content: center;
+  overflow: hidden;
 
   &:hover {
     & .radio {
@@ -36,7 +37,10 @@
 }
 
 .input {
-  display: none;
+  position: absolute;
+  opacity: 0;
+  top: -9999px;
+  left: -9999px;
 
   & + .radio {
     &:before {

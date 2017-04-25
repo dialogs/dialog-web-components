@@ -36,6 +36,7 @@ export type Props = (StringProps | NumberProps) & {
   hint?: string,
   status: 'normal' | 'success' | 'error',
   autoFocus?: boolean,
+  htmlAutoFocus?: boolean,
   tabIndex?: number,
   onFocus?: (event: SyntheticFocusEvent) => any,
   onBlur?: (event: SyntheticFocusEvent) => any,
@@ -201,7 +202,7 @@ class Input extends PureComponent {
     const {
       props: {
         id, name, type, value, disabled, tabIndex,
-        status, large, placeholder,
+        status, large, placeholder, htmlAutoFocus,
         onKeyUp, onKeyDown, onKeyPress
       },
       state: {
@@ -249,6 +250,7 @@ class Input extends PureComponent {
             value={value}
             ref={this.setInput}
             tabIndex={tabIndex}
+            autoFocus={htmlAutoFocus}
             onChange={this.handleChange}
             onBlur={this.handleBlur}
             onFocus={this.handleFocus}

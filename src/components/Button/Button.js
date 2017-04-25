@@ -16,6 +16,7 @@ export type Props = {
   wide: boolean,
   rounded: boolean,
   loading: boolean,
+  form?: string,
   view: 'button' | 'outline' | 'link' | 'next',
   type: 'submit' | 'reset' | 'button' | 'menu',
   theme: 'default' | 'primary' | 'success' | 'danger' | 'info' | 'warning' | 'link',
@@ -50,7 +51,7 @@ class Button extends PureComponent {
   }
 
   render(): React.Element<any> {
-    const { id, type, disabled, theme, size, wide, rounded, children, view, loading } = this.props;
+    const { id, type, form, disabled, theme, size, wide, rounded, children, view, loading } = this.props;
     const className = classNames(styles.container, styles[theme], styles[view], styles[size], {
       [styles.wide]: wide,
       [styles.rounded]: rounded
@@ -61,6 +62,7 @@ class Button extends PureComponent {
         id={id}
         className={className}
         type={type}
+        form={form}
         disabled={disabled || loading}
         onClick={this.props.onClick}
       >

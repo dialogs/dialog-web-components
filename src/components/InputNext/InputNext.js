@@ -34,6 +34,7 @@ export type Props = (StringProps | NumberProps) & {
   status: 'normal' | 'success' | 'error',
   autoFocus?: boolean,
   tabIndex?: number,
+  htmlAutoFocus?: boolean,
   onFocus?: (event: SyntheticFocusEvent) => any,
   onBlur?: (event: SyntheticFocusEvent) => any,
   onKeyUp?: (event: SyntheticKeyboardEvent) => any,
@@ -174,7 +175,7 @@ class InputNext extends PureComponent {
   render(): React.Element<any> {
     const {
       id, name, type, value, disabled, tabIndex, status,
-      placeholder, onKeyUp, onKeyDown, onKeyPress
+      htmlAutoFocus, placeholder, onKeyUp, onKeyDown, onKeyPress
     } = this.props;
     const { isFocused } = this.state;
     const { l10n } = this.context;
@@ -205,6 +206,7 @@ class InputNext extends PureComponent {
           value={value}
           ref={this.setInput}
           tabIndex={tabIndex}
+          autoFocus={htmlAutoFocus}
           onChange={this.handleChange}
           onBlur={this.handleBlur}
           onFocus={this.handleFocus}

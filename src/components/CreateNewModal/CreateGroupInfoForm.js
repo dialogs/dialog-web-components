@@ -13,6 +13,7 @@ import Input from '../Input/Input';
 import styles from './CreateNewModal.css';
 
 export type Props = {
+  id: string,
   type: 'group' | 'channel',
   title: string,
   shortname: ?string,
@@ -21,6 +22,7 @@ export type Props = {
   avatar: ?File,
   className?: string,
   vertical: boolean,
+  onSubmit: (event: SyntheticEvent) => void,
   onChange: (value: string, event: SyntheticInputEvent) => void,
   onAvatarRemove: () => void,
   onAvatarChange: (avatar: File) => void
@@ -31,7 +33,7 @@ export type State = {
 
 export type Context = ProviderContext;
 
-class CreateNewInfo extends PureComponent {
+class CreateGroupInfoForm extends PureComponent {
   props: Props;
   state: State;
 
@@ -64,6 +66,12 @@ class CreateNewInfo extends PureComponent {
       this.setState({ avatar: nextProps.avatar });
     }
   }
+
+  handleSubmit = (event: SyntheticEvent) => {
+    event.preventDefault();
+
+    this.props.onSubmit(event);
+  };
 
   renderAvatar(): React.Element<any> {
     const { title } = this.props;
@@ -102,7 +110,7 @@ class CreateNewInfo extends PureComponent {
   }
 
   render(): React.Element<any> {
-    const { type, about, title, vertical } = this.props;
+    const { id, type, about, title, vertical } = this.props;
     const { l10n } = this.context;
     const className = classNames(styles.info, {
       [styles.vertical]: vertical
@@ -111,7 +119,7 @@ class CreateNewInfo extends PureComponent {
     return (
       <div className={className}>
         {this.renderAvatar()}
-        <form autoComplete="off" className={styles.form}>
+        <form id={id} autoComplete="off" className={styles.form} onSubmit={this.handleSubmit}>
           <Input
             className={styles.input}
             id="title"
@@ -120,6 +128,7 @@ class CreateNewInfo extends PureComponent {
             onChange={this.props.onChange}
             placeholder={l10n.formatText(`CreateNewModal.${type}.info.name`)}
             value={title}
+            htmlAutoFocus
           />
           <Input
             className={styles.input}
@@ -139,4 +148,4 @@ class CreateNewInfo extends PureComponent {
   }
 }
 
-export default CreateNewInfo;
+export default CreateGroupInfoForm;

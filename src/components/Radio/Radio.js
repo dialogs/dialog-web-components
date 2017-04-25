@@ -13,7 +13,8 @@ export type Props = {
   children?: any,
   id?: string,
   value: string,
-  tabIndex?: number
+  tabIndex?: number,
+  htmlAutoFocus?: boolean
 };
 
 class Radio extends PureComponent {
@@ -57,7 +58,7 @@ class Radio extends PureComponent {
   }
 
   render(): React.Element<any> {
-    const { children, id, value, tabIndex } = this.props;
+    const { children, id, value, tabIndex, htmlAutoFocus } = this.props;
     const { radioGroup } = this.context;
     const className = classNames(styles.container, this.props.className, {
       [styles.labeled]: Boolean(children)
@@ -72,6 +73,7 @@ class Radio extends PureComponent {
           name={radioGroup.name}
           tabIndex={tabIndex}
           value={value}
+          autoFocus={htmlAutoFocus}
           checked={value === radioGroup.value}
           ref={this.setInput}
           onChange={this.handleChange}

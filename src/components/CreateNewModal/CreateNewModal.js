@@ -17,14 +17,18 @@ import ModalBody from '../Modal/ModalBody';
 import ModalFooter from '../Modal/ModalFooter';
 import Icon from '../Icon/Icon';
 import Button from '../Button/Button';
-import CreateNewType from './CreateNewType';
-import CreateNewInfo from './CreateNewInfo';
-import CreateNewMembers from './CreateNewMembers';
+import CreateGroupTypeForm from './CreateGroupTypeForm';
+import CreateGroupInfoForm from './CreateGroupInfoForm';
+import CreateGroupMembersForm from './CreateGroupMembersForm';
 import ImageEdit from '../ImageEdit/ImageEdit';
 import styles from './CreateNewModal.css';
 
 class CreateNewModal extends PureComponent {
   props: Props;
+
+  static defaultProps = {
+    id: 'create_new_group'
+  };
 
   handlePrevStepClick = (): void => {
     const { step } = this.props;
@@ -109,7 +113,7 @@ class CreateNewModal extends PureComponent {
   }
 
   renderTypeStep(): React.Element<any> {
-    const { request: { type }, step } = this.props;
+    const { id, request: { type }, step } = this.props;
 
     return (
       <div className={styles.wrapper}>
@@ -118,11 +122,18 @@ class CreateNewModal extends PureComponent {
           <ModalClose pending={this.props.pending} onClick={this.props.onClose} />
         </ModalHeader>
         <ModalBody className={styles.body}>
-          <CreateNewType onChange={this.handleChange} type={type} />
+          <CreateGroupTypeForm
+            id={id}
+            type={type}
+            onChange={this.handleChange}
+            onSubmit={this.handleNextStepClick}
+          />
         </ModalBody>
         <ModalFooter className={styles.footer}>
           <Button
             wide
+            form={id}
+            type="submit"
             theme="success"
             rounded={false}
             onClick={this.handleNextStepClick}
@@ -135,7 +146,7 @@ class CreateNewModal extends PureComponent {
   }
 
   renderInfoStep(): React.Element<any> {
-    const { step, request: { type, about, title, shortname, avatar }, shortnamePrefix } = this.props;
+    const { id, step, request: { type, about, title, shortname, avatar }, shortnamePrefix } = this.props;
 
     return (
       <div className={styles.wrapper}>
@@ -150,8 +161,9 @@ class CreateNewModal extends PureComponent {
         </ModalHeader>
         {this.renderError()}
         <ModalBody className={styles.body}>
-          <CreateNewInfo
+          <CreateGroupInfoForm
             vertical
+            id={id}
             type={type}
             about={about}
             title={title}
@@ -159,6 +171,7 @@ class CreateNewModal extends PureComponent {
             shortname={shortname}
             shortnamePrefix={shortnamePrefix}
             onChange={this.handleChange}
+            onSubmit={this.handleNextStepClick}
             onAvatarRemove={this.handleAvatarRemove}
             onAvatarChange={this.handleAvatarEdit}
           />
@@ -166,6 +179,8 @@ class CreateNewModal extends PureComponent {
         <ModalFooter className={styles.footer}>
           <Button
             wide
+            id={id}
+            type="submit"
             theme="success"
             rounded={false}
             onClick={this.handleNextStepClick}
@@ -210,7 +225,7 @@ class CreateNewModal extends PureComponent {
   }
 
   renderMembersStep(): React.Element<any> {
-    const { request: { type, members } } = this.props;
+    const { id, request: { type, members } } = this.props;
 
     return (
       <div className={styles.wrapper}>
@@ -224,10 +239,12 @@ class CreateNewModal extends PureComponent {
           <ModalClose pending={this.props.pending} onClick={this.props.onClose} />
         </ModalHeader>
         <ModalBody className={styles.body}>
-          <CreateNewMembers
+          <CreateGroupMembersForm
+            id={id}
             members={members}
             autoFocus={this.props.autoFocus}
             onChange={this.handleMembersChange}
+            onSubmit={this.handleSubmit}
           />
         </ModalBody>
         <ModalFooter className={styles.footer}>
@@ -235,6 +252,8 @@ class CreateNewModal extends PureComponent {
             className={styles.halfButton}
             onClick={this.handleSubmit}
             rounded={false}
+            form={id}
+            type="submit"
             theme="success"
             loading={this.props.pending}
             disabled={this.props.pending}

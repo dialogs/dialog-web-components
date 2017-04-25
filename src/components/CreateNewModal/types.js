@@ -18,6 +18,7 @@ export type Request = {
 export type Step = 'type' | 'info' | 'avatar' | 'members';
 
 export type Props = {
+  id: string,
   className?: string,
   step: Step,
   error: ?string,
