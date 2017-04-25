@@ -1,4 +1,5 @@
-Text:
+Text
+----
 
 ```
 const content = {
@@ -9,7 +10,18 @@ const content = {
 <MessageContent content={content} />
 ```
 
-Service:
+```
+const content = {
+  type: 'text',
+  text: 'Text with media',
+  media: [null]
+};
+
+<MessageContent content={content} />
+```
+
+Service
+-------
 
 ```
 const content = {
@@ -20,7 +32,8 @@ const content = {
 <MessageContent content={content} />
 ```
 
-Photo:
+Photo
+-----
 
 ```
 const content = {
@@ -35,7 +48,8 @@ const content = {
 <MessageContent content={content} />
 ```
 
-Document:
+Document
+--------
 
 ```
 const content = {
@@ -54,7 +68,8 @@ const content = {
 </div>
 ```
 
-Voice:
+Voice
+-----
 
 ```
 const initialState = {
@@ -84,8 +99,8 @@ const onGetTranscription = () => {
 </div>
 ```
 
-Video:
-
+Video
+-----
 
 ```
 const content = {
@@ -102,8 +117,6 @@ const content = {
 
 <MessageContent content={content} />
 ```
-
-Null Video:
 
 ```
 const content = {

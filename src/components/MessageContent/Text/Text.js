@@ -13,7 +13,7 @@ import styles from './Text.css';
 export type Props = {|
   className?: string,
   text: string,
-  media: MessageMediaType[],
+  media?: Array<?MessageMediaType>,
   isPending?: boolean
 |};
 
@@ -38,14 +38,18 @@ class Text extends Component {
       <Markdown className={className} text={this.props.text} />
     );
 
-    if (this.props.media.length) {
+    if (this.props.media && this.props.media.length) {
       const media = this.props.media.map((item, key) => {
-        return (
-          <MessageMedia
-            key={key} // eslint-disable-line
-            media={item}
-          />
-        );
+        if (item) {
+          return (
+            <MessageMedia
+              key={key} // eslint-disable-line
+              media={item}
+            />
+          );
+        }
+
+        return null;
       });
 
       return (

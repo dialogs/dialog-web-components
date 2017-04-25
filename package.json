@@ -54,7 +54,7 @@
   "homepage": "https://dialogs.github.io/dialog-web-components",
   "dependencies": {
     "@dlghq/country-codes": "0.1.2",
-    "@dlghq/dialog-types": "1.19.1",
+    "@dlghq/dialog-types": "1.19.2",
     "@dlghq/dialog-utils": "0.6.2",
     "@dlghq/emoji": "0.5.2",
     "@dlghq/markdown": "0.8.2",
@@ -102,6 +102,6 @@
     "stylelint": "7.10.1",
     "svg-sprite": "1.3.6",
     "webpack": "2.4.1",
-    "yml-loader": "1.1.0"
+    "yml-loader": "2.0.0"
   }
 }
