@@ -73,6 +73,12 @@
   backface-visibility: hidden;
 }
 
+.button {
+  &:before {
+    display: none;
+  }
+}
+
 .buttonZoom {
 }
 
@@ -112,4 +118,9 @@
   &:hover {
     opacity: 1;
   }
+}
+
+.arrowIcon {
+  fill: #fff;
+  pointer-events: none;
 }
