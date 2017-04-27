@@ -3,14 +3,15 @@
  * @flow
  */
 
-import type { Props, Country } from './types';
-import { LocalizationContextType, Text } from '@dlghq/react-l10n';
+import type { Props } from './types';
+import { Text, LocalizationContextType } from '@dlghq/react-l10n';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
-import Select from 'react-select';
+import VirtualizedSelect from 'react-virtualized-select';
 import styles from './CountryCodeSelector.css';
 import CountryCodeSelectorOption from './CountryCodeSelectorOption';
-import countries from '../../utils/getCountries';
+import countries from '../PhoneInput/utils/countries';
+import { getPreferredCountryCode } from '../../utils/language';
 
 class CountryCodeSelector extends PureComponent {
   props: Props;
@@ -24,9 +25,12 @@ class CountryCodeSelector extends PureComponent {
   };
 
   componentWillMount() {
-    const currentCountry = this.props.countries.find((country) => country.alpha === navigator.language.split('-')[1]);
-    if (currentCountry) {
-      this.props.onChange(currentCountry);
+    const preferredCountryCode = getPreferredCountryCode();
+    if (preferredCountryCode) {
+      const currentCountry = this.props.countries.find((country) => country.alpha === preferredCountryCode);
+      if (currentCountry) {
+        this.props.onChange(currentCountry);
+      }
     }
   }
 
@@ -42,31 +46,29 @@ class CountryCodeSelector extends PureComponent {
     );
   }
 
-  renderOption = (country: Country): React.Element<any> => {
-    return (
-      <CountryCodeSelectorOption {...country} />
-    );
-  };
-
   render(): React.Element<any> {
-    const { disabled } = this.props;
-    const { l10n: { formatText } } = this.context;
-    const className = classNames(styles.container, disabled ? styles.disabled : null, this.props.className);
+    const { l10n } = this.context;
+    const className = classNames(
+      styles.container,
+      this.props.className,
+      this.props.disabled ? styles.disabled : null
+    );
 
     return (
       <div className={className}>
         {this.renderLabel()}
-        <Select
+        <VirtualizedSelect
           name="country-code"
           value={this.props.value}
           clearable={false}
+          optionHeight={56}
           options={this.props.countries}
-          placeholder={formatText('CountryCodeSelector.search')}
-          noResultsText={formatText('CountryCodeSelector.not_found')}
-          onChange={this.props.onChange}
+          placeholder={l10n.formatText('CountryCodeSelector.search')}
+          noResultsText={l10n.formatText('CountryCodeSelector.not_found')}
           disabled={this.props.disabled}
-          optionRenderer={this.renderOption}
-          valueRenderer={this.renderOption}
+          valueRenderer={CountryCodeSelectorOption.renderValue}
+          optionRenderer={CountryCodeSelectorOption.renderOption}
+          onChange={this.props.onChange}
         />
       </div>
     );

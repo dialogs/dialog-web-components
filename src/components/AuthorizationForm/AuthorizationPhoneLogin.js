@@ -10,8 +10,8 @@ import React, { PureComponent } from 'react';
 import { Text } from '@dlghq/react-l10n';
 import CountryCodeSelector from '../CountryCodeSelector/CountryCodeSelector';
 import InputNext from '../InputNext/InputNext';
+import PhoneInput from '../PhoneInput/PhoneInput';
 import getHumanTime from '../../utils/getHumanTime';
-import getCountryByPhone from '../../utils/getCountryByPhone';
 import { LOGIN_SENT, CODE_REQUESTED, CODE_SENT, RESEND_TIMEOUT } from './constants';
 import styles from './AuthorizationForm.css';
 
@@ -35,7 +35,7 @@ class AuthorizationPhoneLogin extends PureComponent {
   props: Props;
   state: State;
   interval: ?number;
-  phoneInput: ?InputNext;
+  phoneInput: ?PhoneInput;
 
   constructor(props: Props) {
     super(props);
@@ -68,31 +68,25 @@ class AuthorizationPhoneLogin extends PureComponent {
     this.handleIntervalClear();
   }
 
-  handlePhoneChange = (value: any) => {
-    const newCountry = getCountryByPhone(value);
-
+  handleChange = (value: string, event: SyntheticInputEvent): void => {
     this.props.onChange({
       type: this.props.value.type,
       credentials: {
         ...this.props.value.credentials,
-        phone: value.length ? value : '+',
-        country: newCountry ? newCountry : this.props.value.credentials.country
+        [event.target.name]: value
       }
     });
   };
 
-  handleChange = (value: any, event: $FlowIssue): void => {
-    if (event.target.name === 'phone') {
-      this.handlePhoneChange(value);
-    } else {
-      this.props.onChange({
-        type: this.props.value.type,
-        credentials: {
-          ...this.props.value.credentials,
-          [event.target.name]: value
-        }
-      });
-    }
+  handlePhoneChange = (phone: string, country: ?Country) => {
+    this.props.onChange({
+      type: this.props.value.type,
+      credentials: {
+        ...this.props.value.credentials,
+        phone,
+        country: country || this.props.value.credentials.country
+      }
+    });
   };
 
   handleCountryChange = (country: Country): void => {
@@ -151,7 +145,7 @@ class AuthorizationPhoneLogin extends PureComponent {
     return null;
   }
 
-  setPhoneInput = (input: InputNext): void => {
+  setPhoneInput = (input: PhoneInput): void => {
     this.phoneInput = input;
   };
 
@@ -225,17 +219,16 @@ class AuthorizationPhoneLogin extends PureComponent {
 
     return (
       <div className={styles.inputWrapper}>
-        <InputNext
+        <PhoneInput
           {...this.getInputState('phone')}
           className={styles.input}
-          name="phone"
           id={`${id}_login`}
-          type="tel"
-          ref={this.setPhoneInput}
+          name="phone"
           label="AuthorizationForm.phone"
           value={credentials.phone}
           disabled={step >= LOGIN_SENT}
-          onChange={this.handleChange}
+          ref={this.setPhoneInput}
+          onChange={this.handlePhoneChange}
         />
         {this.renderRetry()}
       </div>

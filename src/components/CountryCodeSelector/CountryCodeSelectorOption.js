@@ -1,28 +1,107 @@
-/**
+/*
  * Copyright 2017 dialog LLC <info@dlg.im>
  * @flow
  */
 
-import React from 'react';
 import type { Country } from './types';
+import { noop } from 'lodash';
+import React, { PureComponent } from 'react';
+import classNames from 'classnames';
 import Emoji from '../Emoji/Emoji';
 import { Text } from '@dlghq/react-l10n';
 import styles from './CountryCodeSelector.css';
 
-function CountryCodeSelectorOption(country: Country): React.Element<any> {
-  return (
-    <div className={styles.option}>
-      {
-        country.flag
-          ? <Emoji char={country.flag} className={styles.optionFlag} size={26} />
-          : null
-      }
-      <div className={styles.optionLabel}>
-        <Text className={styles.optionCountry} id={`CountryCodeSelector.country.${country.alpha}`} tagName="div" />
+type Props = {
+  style?: Object,
+  country: Country,
+  isFocused: boolean,
+  isSelected: boolean,
+  onFocus: (country: Country) => void,
+  onSelect: (country: Country) => void
+};
+
+class CountryCodeSelectorOption extends PureComponent {
+  props: Props;
+
+  static renderOption({ focusedOption, focusOption, key, option, selectValue, style, valueArray }) {
+    return (
+      <CountryCodeSelectorOption
+        key={key}
+        style={style}
+        country={option}
+        isFocused={option === focusedOption}
+        isSelected={valueArray.indexOf(option) >= 0}
+        onFocus={focusOption}
+        onSelect={selectValue}
+      />
+    );
+  }
+
+  static renderValue(country) {
+    return (
+      <CountryCodeSelectorOption
+        country={country}
+        isFocused={false}
+        isSelected={false}
+        onFocus={noop}
+        onSelect={noop}
+      />
+    );
+  }
+
+  handleClick = () => {
+    this.props.onSelect(this.props.country);
+  };
+
+  handleMouseOver = () => {
+    this.props.onFocus(this.props.country);
+  };
+
+  renderFlag() {
+    const { country } = this.props;
+    if (country.flag) {
+      return (
+        <Emoji
+          className={styles.optionFlag}
+          char={country.flag}
+          size={26}
+        />
+      );
+    }
+
+    return null;
+  }
+
+  render() {
+    const { style, country, isFocused, isSelected } = this.props;
+
+    const className = classNames(
+      styles.option,
+      isFocused ? 'is-focused' : null,
+      isSelected ? 'is-selected' : null
+    );
+
+    return (
+      <div
+        className={className}
+        style={style}
+        onClick={this.handleClick}
+        onMouseOver={this.handleMouseOver}
+      >
+        {this.renderFlag()}
+        <div className={styles.optionLabel}>
+          <Text
+            className={styles.optionCountry}
+            id={`CountryCodeSelector.country.${country.alpha}`}
+            tagName="div"
+          />
+        </div>
+        <span className={styles.optionCode}>
+          {country.code}
+        </span>
       </div>
-      <span className={styles.optionCode}>{country.code}</span>
-    </div>
-  );
+    );
+  }
 }
 
 export default CountryCodeSelectorOption;

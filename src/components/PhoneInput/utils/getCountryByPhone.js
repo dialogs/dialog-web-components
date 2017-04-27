@@ -3,12 +3,16 @@
  * @flow
  */
 
-import type { Country } from '../CountryCodeSelector/types';
-import countries from '../../utils/getCountries';
+import type { Country } from './countries';
+import countries from './countries';
+
+function normalize(code: string): string {
+  return code.replace(/\s/g, '');
+}
 
 function getCountryByPhone(phone: string, languages: string[]): ?Country {
   const variants = countries.filter((country) => {
-    return phone.startsWith(country.code.replace(/\s/g, ''));
+    return phone.startsWith(normalize(country.code));
   });
 
   if (!variants.length) {
@@ -16,7 +20,7 @@ function getCountryByPhone(phone: string, languages: string[]): ?Country {
   }
 
   variants.sort((a, b) => {
-    const lengthDiff = b.code.replace(/\s/g, '').length - a.code.replace(/\s/g, '').length;
+    const lengthDiff = normalize(b.code).length - normalize(a.code).length;
 
     if (lengthDiff === 0) {
       return languages.indexOf(b.alpha) - languages.indexOf(a.alpha);

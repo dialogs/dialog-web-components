@@ -1,33 +1,48 @@
-/**
+/*
  * Copyright 2017 dialog LLC <info@dlg.im>
  * @flow
  */
 
-import type { Props } from './types';
+import type { Country } from './utils/countries';
 import React, { PureComponent } from 'react';
 import InputNext from '../InputNext/InputNext';
-import getCountryByPhone from './getCountryByPhone';
+import getCountryByPhone from './utils/getCountryByPhone';
+import { getPreferredCountryCodes } from '../../utils/language';
+
+type Props = {
+  value: string,
+  className?: string,
+  id: string,
+  name?: string,
+  label?: string,
+  large?: boolean,
+  placeholder?: string,
+  disabled?: boolean,
+  hint?: string,
+  status?: 'normal' | 'success' | 'error',
+  autoFocus?: boolean,
+  tabIndex?: number,
+  preferredCountryCodes: string[],
+  onChange: (value: string, country: ?Country) => any
+};
 
 class PhoneInput extends PureComponent {
   props: Props;
   input: ?HTMLInputElement;
-  languages: string[];
 
-  constructor(props: Props) {
-    super(props);
+  static defaultProps = {
+    preferredCountryCodes: getPreferredCountryCodes()
+  };
 
-    this.languages = navigator.languages.map((lang) => {
-      if (lang.length === 2) {
-        return lang.toUpperCase();
-      }
-
-      return lang.slice(3).toUpperCase();
-    });
+  componentWillMount() {
+    this.handleChange(this.props.value);
   }
 
   handleChange = (value: string): void => {
-    const country = getCountryByPhone(value, this.languages);
-    this.props.onChange(value, country);
+    this.props.onChange(
+      value || '+',
+      getCountryByPhone(value, this.props.preferredCountryCodes)
+    );
   };
 
   setInput = (element: HTMLInputElement): void => {
@@ -40,13 +55,23 @@ class PhoneInput extends PureComponent {
     }
   }
 
-  render(): React.Element<any> {
+  render() {
     return (
       <InputNext
-        {...this.props}
         type="tel"
+        value={this.props.value}
+        className={this.props.className}
+        id={this.props.id}
+        name={this.props.name}
+        label={this.props.label}
+        large={this.props.large}
+        placeholder={this.props.placeholder}
+        disabled={this.props.disabled}
+        hint={this.props.hint}
+        status={this.props.status}
+        autoFocus={this.props.autoFocus}
+        tabIndex={this.props.tabIndex}
         onChange={this.handleChange}
-        ref={this.setInput}
       />
     );
   }

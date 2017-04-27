@@ -5,14 +5,20 @@
 
 import { getCountries } from '@dlghq/country-codes';
 
-const countries = [];
+export type Country = {
+  code: string,
+  flag: ?string,
+  alpha: string
+};
+
+const countries: Country[] = [];
 
 getCountries().forEach((country) => {
   country.codes.forEach((code) => {
     countries.push({
-      alpha: country.alpha,
       code,
-      flag: country.emoji
+      flag: country.emoji,
+      alpha: country.alpha
     });
   });
 });
