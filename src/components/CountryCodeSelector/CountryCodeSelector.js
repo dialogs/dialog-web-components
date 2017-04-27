@@ -3,31 +3,28 @@
  * @flow
  */
 
-import type { Props, Country, Context } from './types';
+import type { Props, Country } from './types';
 import { LocalizationContextType, Text } from '@dlghq/react-l10n';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import Select from 'react-select';
 import styles from './CountryCodeSelector.css';
 import CountryCodeSelectorOption from './CountryCodeSelectorOption';
-import getCountries from '../../utils/getCountries';
+import countries from '../../utils/getCountries';
 
 class CountryCodeSelector extends PureComponent {
   props: Props;
-  countries: Country[];
 
   static contextTypes = {
     l10n: LocalizationContextType
   };
 
-  constructor(props: Props, context: Context) {
-    super(props, context);
-
-    this.countries = getCountries();
-  }
+  static defaultProps = {
+    countries
+  };
 
   componentWillMount() {
-    const currentCountry = this.countries.find((country) => country.alpha === navigator.language.split('-')[1]);
+    const currentCountry = this.props.countries.find((country) => country.alpha === navigator.language.split('-')[1]);
     if (currentCountry) {
       this.props.onChange(currentCountry);
     }
@@ -63,7 +60,7 @@ class CountryCodeSelector extends PureComponent {
           name="country-code"
           value={this.props.value}
           clearable={false}
-          options={this.countries}
+          options={this.props.countries}
           placeholder={formatText('CountryCodeSelector.search')}
           noResultsText={formatText('CountryCodeSelector.not_found')}
           onChange={this.props.onChange}
