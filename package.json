@@ -18,7 +18,7 @@
     "build:l10n": "node scripts/compile-translations.js",
     "build:icons": "node scripts/build-icons.js",
     "pretest": "npm run lint",
-    "test": "exit 0",
+    "test": "jest",
     "lint": "npm-run-all lint:js lint:flow",
     "lint:js": "eslint src/",
     "lint:flow": "flow check",
@@ -53,7 +53,7 @@
   },
   "homepage": "https://dialogs.github.io/dialog-web-components",
   "dependencies": {
-    "@dlghq/country-codes": "0.1.2",
+    "@dlghq/country-codes": "0.1.3",
     "@dlghq/dialog-types": "1.19.2",
     "@dlghq/dialog-utils": "0.6.2",
     "@dlghq/emoji": "0.5.2",
@@ -76,6 +76,7 @@
     "react-tether": "0.5.6",
     "react-transition-group": "1.1.2",
     "react-virtualized": "9.7.3",
+    "react-virtualized-select": "3.0.1",
     "svg-sprite-loader": "0.3.1"
   },
   "devDependencies": {
@@ -83,6 +84,7 @@
     "@dlghq/eslint-config-dialog": "1.25.0",
     "@dlghq/postcss-dialog": "1.11.1",
     "@dlghq/stylelint-config-dialog": "0.11.0",
+    "babel-jest": "19.0.0",
     "buildbranch": "2.0.0",
     "chalk": "1.1.3",
     "ejs": "2.5.6",
@@ -93,6 +95,7 @@
     "flow-coverage-report": "0.3.0",
     "glob": "7.1.1",
     "inquirer": "3.0.6",
+    "jest": "19.0.2",
     "jest-cli": "19.0.2",
     "npm-run-all": "4.0.2",
     "postcss-loader": "1.3.3",
@@ -103,5 +106,10 @@
     "svg-sprite": "1.3.6",
     "webpack": "2.4.1",
     "yml-loader": "2.0.1"
+  },
+  "jest": {
+    "transformIgnorePatterns": [
+      "node_modules/(?!@dlghq)"
+    ]
   }
 }

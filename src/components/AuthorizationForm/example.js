@@ -25,8 +25,8 @@ class ExampleAuthForm extends Component {
   static initialState = {
     step: AUTH_STARTED,
     value: {
-      type: 'email',
-      credentials: defaultAuthCredentials.email
+      type: 'phone',
+      credentials: defaultAuthCredentials.phone
     },
     info: {
       name: '',
@@ -114,7 +114,7 @@ class ExampleAuthForm extends Component {
           info={this.state.info}
           errors={this.state.errors}
           onChange={this.handleChange}
-          allowed={['email', 'phone']}
+          allowed={['phone', 'email']}
           onTypeChange={this.handleTypeChange}
           onSubmit={this.handleSubmit}
           onRetry={this.handleRetry}
