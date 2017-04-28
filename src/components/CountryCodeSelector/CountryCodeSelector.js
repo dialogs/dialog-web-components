@@ -61,7 +61,7 @@ class CountryCodeSelector extends PureComponent {
           name="country-code"
           value={this.props.value}
           clearable={false}
-          optionHeight={56}
+          optionHeight={37}
           options={this.props.countries}
           placeholder={l10n.formatText('CountryCodeSelector.search')}
           noResultsText={l10n.formatText('CountryCodeSelector.not_found')}
