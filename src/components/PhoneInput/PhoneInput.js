@@ -28,7 +28,7 @@ type Props = {
 
 class PhoneInput extends PureComponent {
   props: Props;
-  input: ?HTMLInputElement;
+  input: ?InputNext;
 
   static defaultProps = {
     preferredCountryCodes: getPreferredCountryCodes()
@@ -45,7 +45,7 @@ class PhoneInput extends PureComponent {
     );
   };
 
-  setInput = (element: HTMLInputElement): void => {
+  setInput = (element: InputNext): void => {
     this.input = element;
   };
 
