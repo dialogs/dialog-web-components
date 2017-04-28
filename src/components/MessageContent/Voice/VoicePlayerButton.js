@@ -61,6 +61,7 @@ class VoicePlayerButton extends PureComponent {
           cy="25"
           r="23"
           fill="none"
+          strokeLinecap="round"
           strokeMiterlimit="10"
         />
       </svg>
