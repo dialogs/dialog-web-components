@@ -3,11 +3,9 @@
  * @flow
  */
 
-import React from 'react';
+import React, { PureComponent } from 'react';
 import classNames from 'classnames';
-import getExtensionType from '../../../utils/getExtensionType';
-import Icon from '../../Icon/Icon';
-import Spinner from '../../Spinner/Spinner';
+import DownloadButton from './DownloadButton';
 import styles from './Document.css';
 
 type Props = {
@@ -19,18 +17,25 @@ type Props = {
   isUploading: boolean
 };
 
-function Document(props: Props) {
-  const { fileUrl, fileName, fileSize, fileExtension, isUploading } = props;
-  const type = fileExtension ? getExtensionType(fileExtension) : 'unknown';
-  const className = classNames(styles.container, props.className, {
-    [styles.uploading]: isUploading
-  });
-  const previewClassName = classNames(styles.preview, styles[type]);
+class Document extends PureComponent {
+  props: Props;
 
-  if (isUploading) {
+  handleDownload = (): void => {
+    console.debug('handleDownload');
+  };
+
+  render() {
+    const { fileUrl, fileName, fileSize, fileExtension, isUploading } = this.props;
+    const className = classNames(styles.container, this.props.className, {
+      [styles.uploading]: isUploading
+    });
+
+    const tagName = isUploading ? 'a' : 'div';
+    const tagProps = isUploading ? {} : { href: fileUrl, download: fileName, rel: 'noopener noreferrer' };
+
     return (
-      <div className={className}>
-        <div className={previewClassName}>{fileExtension}</div>
+      <tagName className={className} {...tagProps}>
+        <DownloadButton isUploading={isUploading} onClick={this.handleDownload} />
         <div className={styles.info}>
           <div className={styles.filename}>
             <div className={styles.text} title={fileName}>{fileName}</div>
@@ -39,25 +44,9 @@ function Document(props: Props) {
             <span className={styles.size}>{fileSize}</span>
           </div>
         </div>
-        <Spinner className={styles.spinner} />
-      </div>
+      </tagName>
     );
   }
-
-  return (
-    <a className={className} href={fileUrl} download={fileName} rel="noopener noreferrer">
-      <div className={previewClassName}>{fileExtension}</div>
-      <div className={styles.info}>
-        <div className={styles.filename}>
-          <div className={styles.text} title={fileName}>{fileName}</div>
-        </div>
-        <div className={styles.sizeBlock}>
-          <Icon glyph="arrow_down" className={styles.downloadArrow} size={20} />
-          <span className={styles.size}>{fileSize}</span>
-        </div>
-      </div>
-    </a>
-  );
 }
 
 export default Document;

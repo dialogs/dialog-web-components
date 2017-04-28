@@ -52,19 +52,23 @@ Document
 --------
 
 ```
-const content = {
+initialState = {
   type: 'document',
   preview: '',
   fileName: 'dialog.dmg',
   fileExtension: 'dmg',
   fileUrl: 'https://dlg.im/dl/osx',
-  fileSize: '666 Mb'
+  fileSize: '666 Mb',
+  isUploading: true
 };
 
+const handleClick = () => setState({ isUploading: !state.isUploading });
+
 <div>
-  <MessageContent content={content} />
-  <br/>
-  <MessageContent content={{ ...content, isUploading: true }} />
+  <Button onClick={handleClick} theme="primary" size="small">Toggle upload</Button>
+  <br />
+  <br />
+  <MessageContent content={state} />
 </div>
 ```
 
