@@ -107,7 +107,12 @@ class Lightbox extends Component {
     }
 
     return (
-      <a className={styles.buttonDownload} href={current.src} download={current.src} title={l10n.formatText('Lightbox.download')}>
+      <a
+        className={styles.buttonDownload}
+        href={current.src}
+        download={current.src}
+        title={l10n.formatText('Lightbox.download')}
+      >
         <Icon glyph="file_download" className={styles.icon} size={20} />
       </a>
     );
@@ -154,10 +159,16 @@ class Lightbox extends Component {
             <div className="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
               <div className="pswp__share-tooltip" />
             </div>
-            <button className={cx('pswp__button pswp__button--arrow--left', styles.button)} title={l10n.formatText('Lightbox.prev')}>
+            <button
+              className={cx('pswp__button pswp__button--arrow--left', styles.button)}
+              title={l10n.formatText('Lightbox.prev')}
+            >
               <Icon glyph="arrow_left" className={styles.arrowIcon} size={42} />
             </button>
-            <button className={cx('pswp__button pswp__button--arrow--right', styles.button)} title={l10n.formatText('Lightbox.next')}>
+            <button
+              className={cx('pswp__button pswp__button--arrow--right', styles.button)}
+              title={l10n.formatText('Lightbox.next')}
+            >
               <Icon glyph="arrow_right" className={styles.arrowIcon} size={42} />
             </button>
             <div className="pswp__caption">
