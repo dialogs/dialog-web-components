@@ -77,8 +77,8 @@ class CountryCodeSelectorOption extends PureComponent {
 
     const className = classNames(
       styles.option,
-      isFocused ? 'is-focused' : null,
-      isSelected ? 'is-selected' : null
+      isFocused ? styles.optionFocused : null,
+      isSelected ? styles.optionSelected : null
     );
 
     return (

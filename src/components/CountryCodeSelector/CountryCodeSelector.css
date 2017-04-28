@@ -25,8 +25,13 @@
   & :global(.Select) {
 
     &:global(.is-focused) {
+
       & :global(.Select-control) {
         box-shadow: 0 0 0 1px var(--country-code-selector-focus-border-color);
+
+        & .optionLabel {
+          opacity: 0.5;
+        }
       }
 
       &:global(.is-open) {
@@ -36,6 +41,15 @@
         }
       }
     }
+
+    &:global(.is-pseudo-focused) {
+      & :global(.Select-control) {
+        & .optionLabel {
+          opacity: 1;
+        }
+      }
+    }
+
 
     &:global(.is-disabled) {
       & :global(.Select-control) {
@@ -102,24 +116,21 @@
 
     &-value {
       padding: 0 var(--default-padding) !important;
+
       &-label {
         padding: var(--default-padding) 0;
         display: block;
+      }
+
+      & .option {
+        padding-left: 0;
+        padding-right: 24px;
       }
     }
 
     &-option {
       padding: 6px var(--default-padding);
       color: var(--country-code-selector-color);
-      &:global(.is-focused) {
-        background-color: #F0F1F4;
-        color: var(--country-code-selector-color);
-      }
-
-      &:global(.is-selected) {
-        background-color: var(--color-primary);
-        color: white;
-      }
     }
   }
 }
@@ -145,7 +156,18 @@
   justify-content: center;
   align-items: center;
   line-height: 24px;
-  padding-right: 22px;
+  padding-left: 16px;
+  padding-right: 40px;
+}
+
+.optionFocused {
+  background-color: #F0F1F4;
+  color: var(--country-code-selector-color);
+}
+
+.optionSelected {
+  background-color: var(--color-primary);
+  color: white;
 }
 
 .optionFlag {
