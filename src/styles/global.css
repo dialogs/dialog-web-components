@@ -1,4 +1,10 @@
+/*
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
 @import 'croppie/croppie.css';
 @import 'react-select/dist/react-select.css';
 @import 'react-virtualized/styles.css';
 @import 'react-virtualized-select/styles.css';
+@import 'photoswipe/dist/photoswipe.css';
+@import 'photoswipe/dist/default-skin/default-skin.css';

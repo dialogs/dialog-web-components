@@ -3,12 +3,9 @@
  * @flow
  */
 
-// TODO: move this to css
-import '!style!css!./photoswipe.css';
-
 import type { ProviderContext } from '@dlghq/react-l10n';
-import { LocalizationContextType } from '@dlghq/react-l10n';
 import type { PhotoSwipeItem, PhotoSwipeOptions } from 'photoswipe';
+import { LocalizationContextType } from '@dlghq/react-l10n';
 import React, { Component } from 'react';
 import cx from 'classnames';
 import PhotoSwipe from 'photoswipe';
