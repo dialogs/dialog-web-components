@@ -3,6 +3,9 @@
  * @flow
  */
 
+import '!style-loader!css-loader!photoswipe/dist/photoswipe.css';
+import '!style-loader!css-loader!photoswipe/dist/default-skin/default-skin.css';
+
 import type { ProviderContext } from '@dlghq/react-l10n';
 import type { PhotoSwipeItem, PhotoSwipeOptions } from 'photoswipe';
 import { LocalizationContextType } from '@dlghq/react-l10n';

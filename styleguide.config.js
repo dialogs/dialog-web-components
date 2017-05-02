@@ -26,6 +26,11 @@ module.exports = {
 
   webpackConfig: require('./webpack.config'),
 
+  dangerouslyUpdateWebpackConfig(config) {
+    config.entry.push(resolve('src/styles/global.css'));
+    return config;
+  },
+
   getComponentPathLine(componentPath) {
     const name = path.basename(componentPath, '.js');
     return `import { ${name} } from '${pkg.name}';`;
