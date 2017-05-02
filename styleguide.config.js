@@ -26,10 +26,9 @@ module.exports = {
 
   webpackConfig: require('./webpack.config'),
 
-  dangerouslyUpdateWebpackConfig(config) {
-    config.entry.push(resolve('src/styles/global.css'));
-    return config;
-  },
+  require: [
+    resolve('src/styles/global.css')
+  ],
 
   getComponentPathLine(componentPath) {
     const name = path.basename(componentPath, '.js');
