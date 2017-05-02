@@ -54,7 +54,7 @@
   "homepage": "https://dialogs.github.io/dialog-web-components",
   "dependencies": {
     "@dlghq/country-codes": "0.1.3",
-    "@dlghq/dialog-types": "1.19.2",
+    "@dlghq/dialog-types": "1.20.0",
     "@dlghq/dialog-utils": "0.6.2",
     "@dlghq/emoji": "0.5.2",
     "@dlghq/markdown": "0.8.3",
@@ -77,7 +77,7 @@
     "react-transition-group": "1.1.2",
     "react-virtualized": "9.7.4",
     "react-virtualized-select": "3.0.1",
-    "svg-sprite-loader": "0.3.1"
+    "svg-sprite-loader": "2.0.2"
   },
   "devDependencies": {
     "@dlghq/babel-preset-dialog": "3.3.0",
@@ -101,11 +101,10 @@
     "npm-run-all": "4.0.2",
     "postcss-loader": "1.3.3",
     "raw-loader": "0.5.1",
-    "react-styleguidist": "5.1.8",
+    "react-styleguidist": "5.1.9",
     "style-loader": "0.17.0",
     "stylefmt": "5.3.2",
     "stylelint": "7.10.1",
-    "svg-sprite": "1.3.6",
     "webpack": "2.4.1",
     "yml-loader": "2.0.1"
   },
