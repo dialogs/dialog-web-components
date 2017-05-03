@@ -16,7 +16,6 @@
     "create": "node scripts/create-component.js",
     "build": "npm-run-all --parallel build:*",
     "build:l10n": "node scripts/compile-translations.js",
-    "build:icons": "node scripts/build-icons.js",
     "pretest": "npm run lint",
     "test": "jest",
     "lint": "npm-run-all lint:js lint:flow",
