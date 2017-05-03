@@ -6,6 +6,7 @@
 .*/fbjs/node_modules/.*
 .*/node_modules/invariant/.*
 .*/node_modules/flow-coverage-report/.*
+.*/node_modules/jss/.*
 <PROJECT_ROOT>/src/utils/compileMessages.js
 
 # Incorrect parsing
