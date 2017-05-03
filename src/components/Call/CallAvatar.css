@@ -1,0 +1,12 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+.container {
+  display: inline-block;
+  flex: 0 0 auto;
+  line-height: 1px;
+  margin-right: var(--default-padding);
+}

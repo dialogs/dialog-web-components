@@ -4,48 +4,87 @@
  */
 
 import type { CallProps } from './types';
-import React from 'react';
+import React, { PureComponent } from 'react';
 import Draggable from 'react-draggable';
 import classNames from 'classnames';
-import CallInfo from './CallInfo';
+import CallHeader from './CallHeader';
+import CallVideo from './CallVideo';
 import CallControls from './CallControls';
-import Avatar from '../Avatar/Avatar';
+import Hover from '../Hover/Hover';
 import styles from './Call.css';
 
-function SmallCall(props: CallProps) {
-  const className = classNames(styles.container, styles.small, props.className);
+type State = {
+  hover: boolean
+};
 
-  return (
-    <Draggable>
-      <div className={className}>
-        <div className={styles.smallInfoWrapper}>
-          <Avatar
-            className={styles.smallInfoAvatar}
-            size={48}
-            peer={props.caller}
-            title={props.caller.name}
-            image={props.caller.avatar}
-            placeholder={props.caller.placeholder}
-          />
-          <CallInfo
-            small
-            call={props.call}
-            caller={props.caller}
-            duration={props.duration}
-          />
-        </div>
-        <CallControls
+class SmallCall extends PureComponent {
+  props: CallProps;
+  state: State;
+
+  constructor(props: CallProps) {
+    super(props);
+
+    this.state = {
+      hover: true
+    };
+  }
+
+  handleHover = (hover: boolean) => {
+    this.setState({ hover });
+  };
+
+
+  renderVideo(): ?React.Element<any> {
+    const { call } = this.props;
+
+    if (call.theirVideos.length) {
+      return (
+        <CallVideo
           small
-          state={props.call.state}
-          isMuted={props.call.isMuted}
-          onEnd={props.onEnd}
-          onAnswer={props.onAnswer}
-          onSizeToggle={props.onSizeToggle}
-          onMuteToggle={props.onMuteToggle}
+          isCameraOn={call.isCameraOn}
+          ownVideos={call.ownVideos}
+          theirVideos={call.theirVideos}
         />
-      </div>
-    </Draggable>
-  );
+      );
+    }
+
+    return null;
+  }
+
+  render() {
+    const { caller, call, duration } = this.props;
+    const className = classNames(styles.container, styles.small, this.props.className);
+
+    return (
+      <Draggable>
+        <div className={className}>
+          <Hover onHover={this.handleHover} className={styles.hoverElement}>
+            <CallHeader
+              small
+              isHover={this.state.hover}
+              caller={caller}
+              call={call}
+              duration={duration}
+              onSizeToggle={this.props.onSizeToggle}
+            />
+            {this.renderVideo()}
+            <CallControls
+              small
+              isHover={this.state.hover}
+              state={call.state}
+              isMuted={call.isMuted}
+              isCameraOn={call.isCameraOn}
+              onEnd={this.props.onEnd}
+              onAnswer={this.props.onAnswer}
+              onSizeToggle={this.props.onSizeToggle}
+              onMuteToggle={this.props.onMuteToggle}
+              onCameraToggle={this.props.onCameraToggle}
+            />
+          </Hover>
+        </div>
+      </Draggable>
+    );
+  }
 }
 
 export default SmallCall;

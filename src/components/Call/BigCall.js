@@ -4,40 +4,87 @@
  */
 
 import type { CallProps } from './types';
-import React from 'react';
+import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import Modal from '../Modal/Modal';
 import ModalBody from '../Modal/ModalBody';
-import CallAvatar from './CallAvatar';
+import Hover from '../Hover/Hover';
+import CallHeader from './CallHeader';
 import CallControls from './CallControls';
-import CallInfo from './CallInfo';
+import CallVideo from './CallVideo';
 import styles from './Call.css';
 
-function BigCall(props: CallProps) {
-  const className = classNames(styles.container, props.className);
+type State = {
+  hover: boolean
+};
 
-  return (
-    <Modal className={className} onClose={props.onSizeToggle}>
-      <ModalBody className={styles.body}>
-        <CallAvatar caller={props.caller} />
-        <CallInfo
+class BigCall extends PureComponent {
+  props: CallProps;
+  state: State;
+
+  constructor(props: CallProps) {
+    super(props);
+
+    this.state = {
+      hover: true
+    };
+  }
+
+  handleHover = (hover: boolean) => {
+    this.setState({ hover });
+  };
+
+  renderVideo(): ?React.Element<any> {
+    const { call } = this.props;
+
+    if (call.theirVideos.length) {
+      return (
+        <CallVideo
           small={false}
-          call={props.call}
-          caller={props.caller}
-          duration={props.duration}
+          isCameraOn={call.isCameraOn}
+          ownVideos={call.ownVideos}
+          theirVideos={call.theirVideos}
         />
-        <CallControls
-          small={false}
-          state={props.call.state}
-          isMuted={props.call.isMuted}
-          onEnd={props.onEnd}
-          onAnswer={props.onAnswer}
-          onSizeToggle={props.onSizeToggle}
-          onMuteToggle={props.onMuteToggle}
-        />
-      </ModalBody>
-    </Modal>
-  );
+      );
+    }
+
+    return null;
+  }
+
+  render() {
+    const { caller, call, duration } = this.props;
+    const className = classNames(styles.container, this.props.className);
+
+    return (
+      <Modal className={className} onClose={this.props.onSizeToggle}>
+        <Hover onHover={this.handleHover} className={styles.hoverElement}>
+          <ModalBody className={styles.body}>
+            <CallHeader
+              isHover={this.state.hover}
+              caller={caller}
+              call={call}
+              duration={duration}
+              small={false}
+              onSizeToggle={this.props.onSizeToggle}
+            />
+            {this.renderVideo()}
+            <CallControls
+              small={false}
+              isHover={this.state.hover}
+              state={call.state}
+              isMuted={call.isMuted}
+              isCameraOn={call.isCameraOn}
+              onEnd={this.props.onEnd}
+              onAnswer={this.props.onAnswer}
+              onMuteToggle={this.props.onMuteToggle}
+              onCameraToggle={this.props.onCameraToggle}
+            />
+          </ModalBody>
+        </Hover>
+      </Modal>
+    );
+  }
 }
+
 
 export default BigCall;

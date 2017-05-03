@@ -63,6 +63,13 @@ class Call extends PureComponent {
     }
   };
 
+  handleCameraToggle = (): void => {
+    const { id, call } = this.props;
+    if (id && call) {
+      this.props.onCameraToggle(id, !call.isCameraOn);
+    }
+  };
+
   setTimer(): void {
     this.clearTimer();
 
@@ -97,6 +104,7 @@ class Call extends PureComponent {
         onAnswer={this.handleAnswer}
         onSizeToggle={this.handleSizeToggle}
         onMuteToggle={this.handleMuteToggle}
+        onCameraToggle={this.handleCameraToggle}
       />
     );
   }

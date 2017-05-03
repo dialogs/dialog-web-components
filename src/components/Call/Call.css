@@ -11,12 +11,14 @@
   min-height: var(--call-default-height);
   background-color: var(--call-background-color);
   font-family: var(--default-font-family);
+  overflow: hidden;
 }
 
 .body {
   display: flex;
   flex-direction: column;
-  padding: var(--call-default-padding) calc(var(--call-default-padding) / 2);
+  //padding: var(--call-default-padding) calc(var(--call-default-padding) / 2);
+  padding: 0;
   align-items: center;
   align-content: center;
   justify-content: center;
@@ -24,13 +26,7 @@
 
 .avatar {
   flex: 1 1 auto;
-}
-
-.info {
-  width: 100%;
-  margin-top: 22px;
-  text-align: center;
-  flex: 1 1 auto;
+  padding-top: var(--call-default-padding);
 }
 
 .smallInfoWrapper {
@@ -47,70 +43,23 @@
   flex: 0 0 auto;
 }
 
-.smallInfo {
-  margin: 0;
-  text-align: left;
+.hoverElement {
+  display: flex;
   flex: 1 1 auto;
-
-  & .infoCaller {
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 20px;
-  }
-
-  & .infoState {
-    font-size: 16px;
-    line-height: 16px;
-  }
-}
-
-.infoCaller {
-  letter-spacing: -0.5px;
-  font-size: var(--call-info-caller-font-size);
-  line-height: 40px;
-  color: var(--call-info-caller-color);
-}
-
-.infoState {
-  letter-spacing: -0.3px;
-  font-size: var(--call-info-duration-font-size);
-  line-height: 30px;
-  color: var(--call-info-duration-color);
-}
-
-.control {
-  margin-top: 24px;
-  text-align: center;
-  flex: 0 0 auto;
-}
-
-.smallControl {
-  margin: 0;
-  padding: var(--default-padding) 0 0;
-  box-shadow: 0 -1px 0 0 color(#000 alpha(10%));
-}
-
-.controlButton {
-  margin: 0 10px !important;
 }
 
 /* Small */
 .small {
   position: absolute;
+  display: flex;
   top: 50px;
   right: 50px;
   box-sizing: border-box;
   width: var(--call-small-width);
-  height: auto;
+  height: var(--call-small-height);
   min-height: 0;
-  padding: var(--default-padding-large);
   cursor: grab;
-  opacity: 0.98;
   border-radius: 6px;
-  background-color: #fff;
+  background-color: var(--call-background-color);
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.12), inset 0 0 0 1px rgba(0, 0, 0, 0.15);
-
-  & .controlButton {
-    margin: 0 5px !important;
-  }
 }

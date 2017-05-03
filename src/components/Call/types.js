@@ -14,7 +14,8 @@ export type CallWrapperProps = {
   onEnd: (id: string) => any,
   onAnswer: (id: string) => any,
   onSizeToggle: (id: string, small: boolean) => any,
-  onMuteToggle: (id: string, isMuted: boolean) => any
+  onMuteToggle: (id: string, isMuted: boolean) => any,
+  onCameraToggle: (id: string, isCameraOn: boolean) => any
 };
 
 export type CallProps = {
@@ -25,10 +26,12 @@ export type CallProps = {
   onEnd: () => void,
   onAnswer: () => void,
   onSizeToggle: () => void,
-  onMuteToggle: () => void
+  onMuteToggle: () => void,
+  onCameraToggle: () => void
 };
 
 export type CallAvatarProps = {
+  small: boolean,
   state: CallState,
   caller: User
 };
@@ -49,8 +52,22 @@ export type CallControlsProps = {
   state: CallState,
   small: boolean,
   isMuted: boolean,
+  isHover: boolean,
+  isCameraOn: boolean,
   onEnd: () => void,
   onAnswer: () => void,
-  onSizeToggle: () => void,
-  onMuteToggle: () => void
+  onMuteToggle: () => void,
+  onCameraToggle: () => void
 };
+
+export type CallVideoProps = {
+  small: boolean,
+  isCameraOn: boolean,
+  ownVideos: HTMLVideoElement[],
+  theirVideos: HTMLVideoElement[]
+}
+
+export type CallHeaderProps = CallInfoProps & {
+  isHover: boolean,
+  onSizeToggle: () => void
+}

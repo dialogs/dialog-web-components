@@ -1,7 +1,5 @@
-Call:
-
 ```
-const initialState = {
+initialState = {
   id: 1,
   call: null,
   caller: null,
@@ -16,7 +14,14 @@ const call = {
     type: 'user'
   },
   members: [],
-  isMuted: false
+  isMuted: false,
+  isCameraOn: false,
+  ownVideos: [
+    <video src="http://download.blender.org/peach/bigbuckbunny_movies/big_buck_bunny_720p_stereo.ogg" autoPlay />
+  ],
+  theirVideos:[
+    <video src="http://download.blender.org/peach/bigbuckbunny_movies/big_buck_bunny_720p_stereo.ogg" autoPlay />
+  ]
 };
 
 const caller = {
@@ -26,10 +31,7 @@ const caller = {
   avatar: 'https://avatars0.githubusercontent.com/u/3505878'
 };
 
-const handleCall = () => {
-  setState({ call, caller });
-  setTimeout(handleConnect, 3000);
-};
+let interval = null;
 
 const handleConnect = () => {
   setState({
@@ -38,11 +40,12 @@ const handleConnect = () => {
       state: 'connecting'
     }
   });
+  interval = setInterval(handleInProgress, 1000);
 };
 
 const handleInProgress = () => {
   setState({
-    duration,
+    duration: state.duration++,
     call: {
       ...call,
       state: 'in_progress'
@@ -50,12 +53,25 @@ const handleInProgress = () => {
   });
 };
 
+
+const handleCall = () => {
+  setState({ call, caller });
+  //setTimeout(handleConnect, 4000);
+};
+
 const handleAnswer = () => {
   setTimeout(handleInProgress, 1000);
 };
 
 const handleEnd = () => {
-  setState(initialState);
+  clearInterval(interval);
+  setState({
+    id: 1,
+    call: null,
+    caller: null,
+    small: false,
+    duration: 0
+  });
 };
 
 const handleSizeToggle = () => {
@@ -67,6 +83,15 @@ const handleMuteToggle = () => {
     call: {
       ...state.call,
       isMuted: !state.call.isMuted
+    }
+  });
+};
+
+const handleCameraToggle = () => {
+  setState({
+    call: {
+      ...state.call,
+      isCameraOn: !state.call.isCameraOn
     }
   });
 };
@@ -83,6 +108,7 @@ const handleMuteToggle = () => {
     onAnswer={handleAnswer}
     onSizeToggle={handleSizeToggle}
     onMuteToggle={handleMuteToggle}
+    onCameraToggle={handleCameraToggle}
   />
 </div>
 ```

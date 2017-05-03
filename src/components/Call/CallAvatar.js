@@ -6,15 +6,15 @@ import type { CallAvatarProps } from './types';
 import React from 'react';
 import classNames from 'classnames';
 import Avatar from '../Avatar/Avatar';
-import styles from './Call.css';
+import styles from './CallAvatar.css';
 
 function CallAvatar(props: CallAvatarProps): React.Element<any> {
-  const className = classNames(styles.avatar, styles[props.state]);
+  const className = classNames(styles.container, styles[props.state]);
 
   return (
     <div className={className}>
       <Avatar
-        size="super"
+        size={props.small ? 30 : 50}
         image={props.caller.avatar}
         title={props.caller.name}
         placeholder={props.caller.placeholder}

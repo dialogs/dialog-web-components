@@ -7,25 +7,16 @@ import type { CallControlsProps } from './types';
 import React from 'react';
 import classNames from 'classnames';
 import IconButton from '../IconButton/IconButton';
-import styles from './Call.css';
+import styles from './CallControls.css';
 
 function CallControls(props: CallControlsProps): React.Element<any> {
-  const size = props.small ? 'normal' : 'large';
-  const className = classNames(styles.control, {
-    [styles.smallControl]: props.small
+  const size = 'normal';
+  const className = classNames(styles.container, {
+    [styles.small]: props.small,
+    [styles.hide]: !props.isHover
   });
 
   const buttons = [];
-  buttons.push(
-    <IconButton
-      flat
-      key="size"
-      size={size}
-      glyph={props.small ? 'maximize' : 'minimize'}
-      className={styles.controlButton}
-      onClick={props.onSizeToggle}
-    />
-  );
 
   if (props.state === 'ringing_incoming') {
     buttons.push(
@@ -35,7 +26,7 @@ function CallControls(props: CallControlsProps): React.Element<any> {
         size={size}
         theme="success"
         glyph="call"
-        className={styles.controlButton}
+        className={styles.button}
         onClick={props.onAnswer}
       />
     );
@@ -48,7 +39,7 @@ function CallControls(props: CallControlsProps): React.Element<any> {
       size={size}
       theme="danger"
       glyph="call_end"
-      className={styles.controlButton}
+      className={styles.button}
       onClick={props.onEnd}
     />
   );
@@ -60,10 +51,24 @@ function CallControls(props: CallControlsProps): React.Element<any> {
       size={size}
       theme="primary"
       glyph={props.isMuted ? 'mic_material_off' : 'mic_material'}
-      className={styles.controlButton}
+      className={styles.button}
       onClick={props.onMuteToggle}
     />
   );
+
+  if (!props.small) {
+    buttons.push(
+      <IconButton
+        flat
+        key="camera"
+        size={size}
+        theme="info"
+        glyph={props.isCameraOn ? 'videocam_off' : 'videocam'}
+        className={styles.button}
+        onClick={props.onCameraToggle}
+      />
+    );
+  }
 
   return (
     <div className={className}>
