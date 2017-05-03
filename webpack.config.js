@@ -111,7 +111,12 @@ module.exports = {
       }, {
         test: /\.(svg)$/,
         include: resolve('src/components/Icon/svg'),
-        use: ['svg-sprite-loader']
+        use: [{
+          loader: 'svg-sprite-loader',
+          options: {
+            runtimeCompat: true
+          }
+        }]
       }, {
         test: /\.txt$/,
         include: whitelist,
