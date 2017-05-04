@@ -12,6 +12,7 @@ import styles from './CountryCodeSelector.css';
 import CountryCodeSelectorOption from './CountryCodeSelectorOption';
 import countries from './utils/countries';
 import { getPreferredCountryCode } from '../../utils/language';
+import { isCountryMatches } from './utils/isCountryMatches';
 
 class CountryCodeSelector extends PureComponent {
   props: Props;
@@ -80,6 +81,7 @@ class CountryCodeSelector extends PureComponent {
           disabled={this.props.disabled}
           valueRenderer={CountryCodeSelectorOption.renderValue}
           optionRenderer={CountryCodeSelectorOption.renderOption}
+          filterOption={isCountryMatches}
           onChange={this.props.onChange}
         />
       </div>

@@ -8,7 +8,8 @@ import { noop } from 'lodash';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import Emoji from '../Emoji/Emoji';
-import { Text } from '@dlghq/react-l10n';
+import { LocalizationContextType } from '@dlghq/react-l10n';
+import { getCountryName } from '@dlghq/country-codes';
 import styles from './CountryCodeSelector.css';
 
 type Props = {
@@ -22,6 +23,10 @@ type Props = {
 
 class CountryCodeSelectorOption extends PureComponent {
   props: Props;
+
+  static contextTypes = {
+    l10n: LocalizationContextType
+  };
 
   static renderOption({ focusedOption, focusOption, key, option, selectValue, style, valueArray }) {
     return (
@@ -73,6 +78,7 @@ class CountryCodeSelectorOption extends PureComponent {
   }
 
   render() {
+    const { l10n: { locale } } = this.context;
     const { style, country, isFocused, isSelected } = this.props;
 
     const className = classNames(
@@ -80,6 +86,7 @@ class CountryCodeSelectorOption extends PureComponent {
       isFocused ? styles.optionFocused : null,
       isSelected ? styles.optionSelected : null
     );
+    const title = getCountryName(country.alpha, locale);
 
     return (
       <div
@@ -89,16 +96,8 @@ class CountryCodeSelectorOption extends PureComponent {
         onMouseOver={this.handleMouseOver}
       >
         {this.renderFlag()}
-        <div className={styles.optionLabel}>
-          <Text
-            className={styles.optionCountry}
-            id={`CountryCodeSelector.country.${country.alpha}`}
-            tagName="div"
-          />
-        </div>
-        <span className={styles.optionCode}>
-          {country.code}
-        </span>
+        <div className={styles.optionLabel}>{title}</div>
+        <span className={styles.optionCode}>{country.code}</span>
       </div>
     );
   }
