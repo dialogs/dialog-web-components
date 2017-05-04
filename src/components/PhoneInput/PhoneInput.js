@@ -34,10 +34,6 @@ class PhoneInput extends PureComponent {
     preferredCountryCodes: getPreferredCountryCodes()
   };
 
-  componentWillMount() {
-    this.handleChange(this.props.value);
-  }
-
   handleChange = (value: string): void => {
     this.props.onChange(
       value || '+',
@@ -72,6 +68,7 @@ class PhoneInput extends PureComponent {
         autoFocus={this.props.autoFocus}
         tabIndex={this.props.tabIndex}
         onChange={this.handleChange}
+        ref={this.setInput}
       />
     );
   }
