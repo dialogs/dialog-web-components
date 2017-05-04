@@ -26,11 +26,11 @@ class Document extends PureComponent {
       [styles.uploading]: isUploading
     });
 
-    const tagName = isUploading ? 'a' : 'div';
+    const TagName = isUploading ? 'a' : 'div';
     const tagProps = isUploading ? {} : { href: fileUrl, download: fileName, rel: 'noopener noreferrer' };
 
     return (
-      <tagName className={className} {...tagProps}>
+      <TagName className={className} {...tagProps}>
         <DownloadButton isUploading={isUploading} />
         <div className={styles.info}>
           <div className={styles.filename}>
@@ -40,7 +40,7 @@ class Document extends PureComponent {
             <span className={styles.size}>{fileSize}</span>
           </div>
         </div>
-      </tagName>
+      </TagName>
     );
   }
 }
