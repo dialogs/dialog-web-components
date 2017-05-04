@@ -57,7 +57,7 @@
     "@dlghq/dialog-utils": "0.6.2",
     "@dlghq/emoji": "0.5.2",
     "@dlghq/markdown": "0.8.3",
-    "@dlghq/react-l10n": "0.7.2",
+    "@dlghq/react-l10n": "0.7.4",
     "classnames": "2.2.5",
     "clipboard": "1.6.1",
     "croppie": "2.4.1",
@@ -73,10 +73,10 @@
     "react-rangeslider": "2.0.1",
     "react-select": "1.0.0-rc.3",
     "react-tether": "0.5.7",
-    "react-transition-group": "1.1.2",
+    "react-transition-group": "1.1.3",
     "react-virtualized": "9.7.4",
     "react-virtualized-select": "3.0.1",
-    "svg-sprite-loader": "2.0.2"
+    "svg-sprite-loader": "2.0.4"
   },
   "devDependencies": {
     "@dlghq/babel-preset-dialog": "3.3.0",
@@ -104,7 +104,7 @@
     "style-loader": "0.17.0",
     "stylefmt": "5.3.2",
     "stylelint": "7.10.1",
-    "webpack": "2.4.1",
+    "webpack": "2.5.0",
     "yml-loader": "2.0.1"
   },
   "jest": {
