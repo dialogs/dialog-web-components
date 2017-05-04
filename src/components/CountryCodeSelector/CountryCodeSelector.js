@@ -10,7 +10,7 @@ import classNames from 'classnames';
 import VirtualizedSelect from 'react-virtualized-select';
 import styles from './CountryCodeSelector.css';
 import CountryCodeSelectorOption from './CountryCodeSelectorOption';
-import countries from '../PhoneInput/utils/countries';
+import countries from './utils/countries';
 import { getPreferredCountryCode } from '../../utils/language';
 
 class CountryCodeSelector extends PureComponent {

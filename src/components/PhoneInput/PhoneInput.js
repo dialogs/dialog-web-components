@@ -3,7 +3,7 @@
  * @flow
  */
 
-import type { Country } from './utils/countries';
+import type { Country } from '../CountryCodeSelector/utils/countries';
 import React, { PureComponent } from 'react';
 import InputNext from '../InputNext/InputNext';
 import getCountryByPhone from './utils/getCountryByPhone';

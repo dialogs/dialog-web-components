@@ -3,8 +3,8 @@
  * @flow
  */
 
-import type { Country } from './countries';
-import countries from './countries';
+import type { Country } from '../../CountryCodeSelector/utils/countries';
+import countries from '../../CountryCodeSelector/utils/countries';
 
 function normalize(code: string): string {
   return code.replace(/\s/g, '');
