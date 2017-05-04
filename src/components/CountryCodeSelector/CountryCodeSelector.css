@@ -147,6 +147,7 @@
   display: inline-block;
   line-height: 30px;
   @apply --no-select;
+  cursor: pointer;
 }
 
 .option {

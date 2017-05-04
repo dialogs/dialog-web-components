@@ -15,6 +15,7 @@ import { getPreferredCountryCode } from '../../utils/language';
 
 class CountryCodeSelector extends PureComponent {
   props: Props;
+  select: ?VirtualizedSelect;
 
   static contextTypes = {
     l10n: LocalizationContextType
@@ -34,6 +35,16 @@ class CountryCodeSelector extends PureComponent {
     }
   }
 
+  handleLabelClick = () => {
+    if (this.select) {
+      this.select.focus();
+    }
+  };
+
+  setSelect = (select: VirtualizedSelect) => {
+    this.select = select;
+  };
+
   renderLabel(): ?React.Element<any> {
     const { label } = this.props;
 
@@ -42,7 +53,7 @@ class CountryCodeSelector extends PureComponent {
     }
 
     return (
-      <Text className={styles.label} id={label} />
+      <Text className={styles.label} id={label} onClick={this.handleLabelClick} />
     );
   }
 
@@ -58,6 +69,7 @@ class CountryCodeSelector extends PureComponent {
       <div className={className}>
         {this.renderLabel()}
         <VirtualizedSelect
+          ref={this.setSelect}
           name="country-code"
           value={this.props.value}
           clearable={false}
