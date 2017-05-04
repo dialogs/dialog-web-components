@@ -30,6 +30,7 @@ module.system=haste
 module.use_strict=true
 
 module.file_ext=.js
+module.file_ext=.json
 module.name_mapper='.*\.css$' -> 'CSSModule'
 module.name_mapper='.*\.mp3$' -> 'AssetModule'
 module.name_mapper='.*\.png$' -> 'AssetModule'
