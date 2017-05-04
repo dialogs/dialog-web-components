@@ -3,13 +3,20 @@
  * @flow
  */
 
-import type { CallInfoProps } from './types';
+import type { Call, User } from '@dlghq/dialog-types';
 import React from 'react';
 import classNames from 'classnames';
 import CallInfoState from './CallInfoState';
 import styles from './CallInfo.css';
 
-function CallInfo(props: CallInfoProps): React.Element<any> {
+export type Props = {
+  call: Call,
+  caller: User,
+  small: boolean,
+  duration: number
+};
+
+function CallInfo(props: Props): React.Element<any> {
   const className = classNames(styles.container, {
     [styles.small]: props.small
   });

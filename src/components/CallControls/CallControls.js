@@ -3,13 +3,29 @@
  * @flow
  */
 
-import type { CallControlsProps } from './types';
+import type { CallState } from '@dlghq/dialog-types';
 import React from 'react';
 import classNames from 'classnames';
 import IconButton from '../IconButton/IconButton';
 import styles from './CallControls.css';
 
-function CallControls(props: CallControlsProps): React.Element<any> {
+export type Props = {
+  state: CallState,
+  small: boolean,
+  isMuted: boolean,
+  isHover: boolean,
+  isCameraOn: boolean,
+  isScreenShareOn: boolean,
+  onEnd: () => void,
+  onAnswer: () => void,
+  onMuteToggle: () => void,
+  onCameraToggle: () => void,
+  onScreenShareToggle: () => void,
+  isVideoEnabled: boolean,
+  isScreenSharingEnabled: boolean
+};
+
+function CallControls(props: Props): React.Element<any> {
   const size = 'normal';
   const className = classNames(styles.container, {
     [styles.small]: props.small,
@@ -56,7 +72,7 @@ function CallControls(props: CallControlsProps): React.Element<any> {
     />
   );
 
-  if (!props.small) {
+  if (!props.small && props.isVideoEnabled) {
     buttons.push(
       <IconButton
         flat
@@ -66,6 +82,20 @@ function CallControls(props: CallControlsProps): React.Element<any> {
         glyph={props.isCameraOn ? 'videocam_off' : 'videocam'}
         className={styles.button}
         onClick={props.onCameraToggle}
+      />
+    );
+  }
+
+  if (!props.small && props.isScreenSharingEnabled) {
+    buttons.push(
+      <IconButton
+        flat
+        key="screen_share"
+        size={size}
+        theme="info"
+        glyph={props.isScreenShareOn ? 'screen_share_stop' : 'screen_share'}
+        className={styles.button}
+        onClick={props.onScreenShareToggle}
       />
     );
   }

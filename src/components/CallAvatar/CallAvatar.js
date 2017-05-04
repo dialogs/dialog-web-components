@@ -2,13 +2,19 @@
  * Copyright 2017 dialog LLC <info@dlg.im>
  */
 
-import type { CallAvatarProps } from './types';
+import type { CallState, User } from '@dlghq/dialog-types';
 import React from 'react';
 import classNames from 'classnames';
 import Avatar from '../Avatar/Avatar';
 import styles from './CallAvatar.css';
 
-function CallAvatar(props: CallAvatarProps): React.Element<any> {
+export type Props = {
+  small: boolean,
+  state: CallState,
+  caller: User
+};
+
+function CallAvatar(props: Props): React.Element<any> {
   const className = classNames(styles.container, styles[props.state]);
 
   return (

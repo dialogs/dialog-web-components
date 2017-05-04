@@ -8,7 +8,7 @@
 .container {
   z-index: var(--z-index-call);
   width: var(--call-default-width);
-  min-height: var(--call-default-height);
+  height: var(--call-default-height);
   background-color: var(--call-background-color);
   font-family: var(--default-font-family);
   overflow: hidden;

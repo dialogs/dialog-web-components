@@ -9,9 +9,9 @@ import classNames from 'classnames';
 import Modal from '../Modal/Modal';
 import ModalBody from '../Modal/ModalBody';
 import Hover from '../Hover/Hover';
-import CallHeader from './CallHeader';
-import CallControls from './CallControls';
-import CallVideo from './CallVideo';
+import CallHeader from '../CallHeader/CallHeader';
+import CallControls from '../CallControls/CallControls';
+import CallVideo from '../CallVideo/CallVideo';
 import styles from './Call.css';
 
 type State = {
@@ -34,14 +34,13 @@ class BigCall extends PureComponent {
     this.setState({ hover });
   };
 
-  renderVideo(): ?React.Element<any> {
+  renderVideo() {
     const { call } = this.props;
 
-    if (call.theirVideos.length) {
+    if (call.theirVideos.length || call.ownVideos.length) {
       return (
         <CallVideo
           small={false}
-          isCameraOn={call.isCameraOn}
           ownVideos={call.ownVideos}
           theirVideos={call.theirVideos}
         />
@@ -52,7 +51,7 @@ class BigCall extends PureComponent {
   }
 
   render() {
-    const { caller, call, duration } = this.props;
+    const { caller, call, duration, isVideoEnabled, isScreenSharingEnabled } = this.props;
     const className = classNames(styles.container, this.props.className);
 
     return (
@@ -74,10 +73,14 @@ class BigCall extends PureComponent {
               state={call.state}
               isMuted={call.isMuted}
               isCameraOn={call.isCameraOn}
+              isScreenShareOn={call.isScreenShareOn}
               onEnd={this.props.onEnd}
               onAnswer={this.props.onAnswer}
               onMuteToggle={this.props.onMuteToggle}
               onCameraToggle={this.props.onCameraToggle}
+              onScreenShareToggle={this.props.onScreenShareToggle}
+              isVideoEnabled={isVideoEnabled}
+              isScreenSharingEnabled={isScreenSharingEnabled}
             />
           </ModalBody>
         </Hover>

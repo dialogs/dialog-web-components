@@ -3,7 +3,7 @@
  * @flow
  */
 
-import type { Call, CallState, User } from '@dlghq/dialog-types';
+import type { Call, User } from '@dlghq/dialog-types';
 
 export type CallWrapperProps = {
   className?: string,
@@ -15,7 +15,10 @@ export type CallWrapperProps = {
   onAnswer: (id: string) => any,
   onSizeToggle: (id: string, small: boolean) => any,
   onMuteToggle: (id: string, isMuted: boolean) => any,
-  onCameraToggle: (id: string, isCameraOn: boolean) => any
+  onCameraToggle: (id: string, isCameraOn: boolean) => any,
+  onScreenShareToggle: (id: string, isScreenShareOn: boolean) => any,
+  isVideoEnabled: boolean,
+  isScreenSharingEnabled: boolean
 };
 
 export type CallProps = {
@@ -27,47 +30,8 @@ export type CallProps = {
   onAnswer: () => void,
   onSizeToggle: () => void,
   onMuteToggle: () => void,
-  onCameraToggle: () => void
+  onCameraToggle: () => void,
+  onScreenShareToggle: () => void,
+  isVideoEnabled: boolean,
+  isScreenSharingEnabled: boolean
 };
-
-export type CallAvatarProps = {
-  small: boolean,
-  state: CallState,
-  caller: User
-};
-
-export type CallInfoProps = {
-  call: Call,
-  caller: User,
-  small: boolean,
-  duration: number
-};
-
-export type CallInfoStateProps = {
-  state: CallState,
-  duration: number
-};
-
-export type CallControlsProps = {
-  state: CallState,
-  small: boolean,
-  isMuted: boolean,
-  isHover: boolean,
-  isCameraOn: boolean,
-  onEnd: () => void,
-  onAnswer: () => void,
-  onMuteToggle: () => void,
-  onCameraToggle: () => void
-};
-
-export type CallVideoProps = {
-  small: boolean,
-  isCameraOn: boolean,
-  ownVideos: HTMLVideoElement[],
-  theirVideos: HTMLVideoElement[]
-}
-
-export type CallHeaderProps = CallInfoProps & {
-  isHover: boolean,
-  onSizeToggle: () => void
-}

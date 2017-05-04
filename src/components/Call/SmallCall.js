@@ -7,9 +7,9 @@ import type { CallProps } from './types';
 import React, { PureComponent } from 'react';
 import Draggable from 'react-draggable';
 import classNames from 'classnames';
-import CallHeader from './CallHeader';
-import CallVideo from './CallVideo';
-import CallControls from './CallControls';
+import CallHeader from '../CallHeader/CallHeader';
+import CallVideo from '../CallVideo/CallVideo';
+import CallControls from '../CallControls/CallControls';
 import Hover from '../Hover/Hover';
 import styles from './Call.css';
 

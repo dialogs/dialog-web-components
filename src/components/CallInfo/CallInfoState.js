@@ -3,12 +3,17 @@
  * @flow
  */
 
-import type { CallInfoStateProps } from './types';
+import type { CallState } from '@dlghq/dialog-types';
 import React from 'react';
 import { Text } from '@dlghq/react-l10n';
 import { formatTime } from '@dlghq/dialog-utils';
 
-function CallInfoState(props: CallInfoStateProps): React.Element<any> {
+export type Props = {
+  state: CallState,
+  duration: number
+};
+
+function CallInfoState(props: Props): React.Element<any> {
   switch (props.state) {
     case 'connecting_to_server':
     case 'connecting_to_peer':

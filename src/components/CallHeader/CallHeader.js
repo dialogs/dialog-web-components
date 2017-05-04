@@ -2,16 +2,22 @@
  * Copyright 2017 dialog LLC <info@dlg.im>
  * @flow
  */
-import type { CallHeaderProps } from './types';
+
+import type { CallInfoProps } from '../Call/types';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
-import CallAvatar from './CallAvatar';
-import CallInfo from './CallInfo';
+import CallAvatar from '../CallAvatar/CallAvatar';
+import CallInfo from '../CallInfo/CallInfo';
 import Icon from '../Icon/Icon';
 import styles from './CallHeader.css';
 
+export type Props = CallInfoProps & {
+  isHover: boolean,
+  onSizeToggle: () => void
+};
+
 class CallHeader extends PureComponent {
-  props: CallHeaderProps;
+  props: Props;
 
   render() {
     const { caller, call, duration, small, isHover } = this.props;
