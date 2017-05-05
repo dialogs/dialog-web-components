@@ -55,8 +55,11 @@ class Lightbox extends Component {
         index: this.props.startIndex,
         history: false,
         closeOnScroll: false,
+        hideAnimationDuration: 0,
+        showAnimationDuration: 150,
         // UI options
-        shareEl: false
+        shareEl: false,
+        getThumbBoundsFn: this.getThumbBoundsFn
       });
 
       photoSwipe.listen('close', this.handleClose);
@@ -92,6 +95,18 @@ class Lightbox extends Component {
   handleClose = (): void => {
     this.photoSwipe = null;
     this.props.onClose();
+  };
+
+  getThumbBoundsFn = (index) => {
+    const thumbnail = document.getElementById(this.props.items[index].id);
+    const pageYScroll = window.pageYOffset || document.documentElement.scrollTop;
+    const rect = thumbnail.getBoundingClientRect();
+
+    return {
+      x: rect.left,
+      y: rect.top + pageYScroll,
+      w: rect.width
+    };
   };
 
   setContainer = (container: HTMLElement): void => {

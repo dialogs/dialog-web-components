@@ -7,15 +7,18 @@ initialState = {
   items: [{
     src: 'https://s3.amazonaws.com/psiu/wallpapers/ESP_017348_1910/ESP_017348_1910_desktop.jpg',
     w: 2560,
-    h: 1440
+    h: 1440,
+    id: 'photo_0'
   },{
     src: 'https://s3.amazonaws.com/psiu/wallpapers/ESP_034234_1255/ESP_034234_1255_desktop.jpg',
     w: 2560,
-    h: 1440
+    h: 1440,
+    id: 'photo_1'
   },{
     src: 'https://s3.amazonaws.com/psiu/wallpapers/ESP_022405_1910/ESP_022405_1910_desktop.jpg',
     w: 2560,
-    h: 1440
+    h: 1440,
+    id: 'photo_2'
   }]
 };
 
@@ -29,6 +32,7 @@ const handleClose = () => {
     state.items.map((image, index) => {
       return (
         <img
+          id={`photo_${index}`}
           key={index}
           src={image.src}
           style={{ width: 200, margin: 10 }}

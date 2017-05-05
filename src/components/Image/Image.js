@@ -15,6 +15,7 @@ const STATE_ERROR = 3;
 export type Props = {
   className?: string,
   src: ?string,
+  id: string,
   alt?: ?string,
   preview?: ?string,
   width: number,
@@ -136,6 +137,7 @@ class Image extends Component {
         {
           source ? (
             <img
+              id={this.props.id}
               src={source}
               width={width}
               height={height}

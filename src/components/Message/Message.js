@@ -257,7 +257,7 @@ class Message extends PureComponent {
   }
 
   render(): React.Element<any> {
-    const { short, message: { content } } = this.props;
+    const { short, message: { content, rid } } = this.props;
     const hover = this.isHover();
     const state = this.getState();
     const isError = state === 'error';
@@ -285,6 +285,7 @@ class Message extends PureComponent {
           <div className={styles.content}>
             <MessageContent
               content={content}
+              rid={rid}
               isPending={isPending}
               onLightboxOpen={this.handleLightboxOpen}
             />

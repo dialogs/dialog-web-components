@@ -17,12 +17,13 @@ import Contact from './Contact/Contact';
 
 export type Props = {
   className?: string,
+  rid: string,
   content: MessageContentTypes,
   isPending?: boolean,
   onLightboxOpen?: () => any
 };
 
-function MessageContent({ className, content, isPending, onLightboxOpen }: Props) {
+function MessageContent({ className, content, isPending, onLightboxOpen, rid }: Props) {
   switch (content.type) {
     case 'text':
       return (
@@ -46,6 +47,7 @@ function MessageContent({ className, content, isPending, onLightboxOpen }: Props
     case 'photo':
       return (
         <Photo
+          rid={rid}
           className={className}
           width={content.width}
           height={content.height}

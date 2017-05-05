@@ -12,6 +12,7 @@ export type Props = {
   className?: string,
   width: number,
   height: number,
+  rid: string,
   preview: ?string,
   fileUrl: ?string,
   fileName: ?string,
@@ -19,11 +20,12 @@ export type Props = {
 };
 
 function Photo(props: Props): React.Element<any> {
-  const { fileUrl, fileName, preview, width, height } = props;
+  const { fileUrl, fileName, preview, width, height, rid } = props;
   const className = classNames(styles.container, props.className);
 
   return (
     <Image
+      id={`photo_${rid}`}
       className={className}
       src={fileUrl}
       alt={fileName}
