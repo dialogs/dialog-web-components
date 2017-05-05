@@ -67,7 +67,7 @@ class AuthorizationForm extends PureComponent {
   }
 
   renderTypeSelector(): ?React.Element<any> {
-    const { allowed, value: { type } } = this.props;
+    const { allowed, value: { type }, step } = this.props;
 
     if (allowed.length <= 1) {
       return null;
@@ -77,6 +77,7 @@ class AuthorizationForm extends PureComponent {
       <LoginTypeSelector
         allowed={allowed}
         type={type}
+        disabled={step > CODE_SENT}
         onTypeChange={this.props.onTypeChange}
       />
     );

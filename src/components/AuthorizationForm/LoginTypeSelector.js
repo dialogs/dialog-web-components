@@ -12,6 +12,7 @@ import styles from './AuthorizationForm.css';
 
 export type Props = {
   type: AuthType,
+  disabled: boolean,
   allowed: AuthType[],
   onTypeChange: (type: string) => any
 };
@@ -34,6 +35,7 @@ class LoginTypeSelector extends PureComponent {
       <RadioGroup
         name="login_type"
         value={this.props.type}
+        disabled={this.props.disabled}
         onChange={this.props.onTypeChange}
         className={styles.typeSelector}
       >
