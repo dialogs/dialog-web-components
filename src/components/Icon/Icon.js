@@ -3,11 +3,11 @@
  * @flow
  */
 
+import type { IconSize } from './getIconSize';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
-import styles from './Icon.css';
 import getIconSize from './getIconSize';
-import type { IconSize } from './getIconSize';
+import styles from './Icon.css';
 
 // $FlowFixMe
 const files = require.context('./svg', false, /.*\.svg$/);
