@@ -17,7 +17,7 @@ class SidebarUpdateButton extends PureComponent {
 
   render(): React.Element<any> {
     return (
-      <Button className={styles.update} onClick={this.props.onClick} theme="primary" rounded={false}>
+      <Button className={styles.update} onClick={this.props.onClick} theme="info" rounded={false}>
         <Text id="SidebarFooter.update" />
       </Button>
     );
