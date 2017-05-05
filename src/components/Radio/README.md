@@ -25,12 +25,23 @@ initialState = { value: 'group' };
 const handleChange = (value) => setState({ value });
 
 <RadioGroup name="radio_labeled" value={state.value} onChange={handleChange}>
-  <Radio value="group">
-    Group
-  </Radio>
+  <Radio value="group">Group</Radio>
   <br />
-  <Radio value="channel">
-    Channel
-  </Radio>
+  <Radio value="channel">Channel</Radio>
+</RadioGroup>
+```
+
+Also you can disable radio group by adding `disabled` attribute:
+
+```
+const RadioGroup = require('./RadioGroup').default;
+
+initialState = { value: 'group' };
+const handleChange = (value) => setState({ value });
+
+<RadioGroup name="radio_disabled" value={state.value} onChange={handleChange} disabled>
+  <Radio value="group">Group</Radio>
+  <br />
+  <Radio value="channel">Channel</Radio>
 </RadioGroup>
 ```

@@ -345,9 +345,11 @@
   --radio-font-family: var(--default-font-family);
   --radio-size: 22px;
   --radio-inactive-color: #c0c0c0;
+  --radio-disabled-color: var(--radio-inactive-color);
   --radio-active-color: var(--color-primary);
   --radio-label-font-size: 15px;
   --radio-label-padding: var(--default-padding);
+  --radio-disabled-label-color: #cbcbcb;
   /* Sidebar */
   /* SidebarItem */
   --sidebar-peer-item-default-top-padding: 9px;

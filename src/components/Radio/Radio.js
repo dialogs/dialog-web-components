@@ -61,7 +61,8 @@ class Radio extends PureComponent {
     const { children, id, value, tabIndex, htmlAutoFocus } = this.props;
     const { radioGroup } = this.context;
     const className = classNames(styles.container, this.props.className, {
-      [styles.labeled]: Boolean(children)
+      [styles.labeled]: Boolean(children),
+      [styles.disabled]: radioGroup.disabled
     });
 
     return (
@@ -77,6 +78,7 @@ class Radio extends PureComponent {
           checked={value === radioGroup.value}
           ref={this.setInput}
           onChange={this.handleChange}
+          disabled={radioGroup.disabled}
         />
         <span className={styles.radio} />
         {this.renderChildren()}

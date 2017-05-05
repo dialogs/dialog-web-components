@@ -97,4 +97,22 @@
   }
 }
 
-.labeled {}
+.labeled {
+}
+
+.disabled {
+  cursor: not-allowed;
+
+  &.labeled {
+    color: var(--radio-disabled-label-color)
+  }
+
+  & .radio {
+    cursor: not-allowed;
+    box-shadow: 0 0 0 2px var(--radio-disabled-color) inset !important;
+
+    &:before {
+      background-color: var(--radio-disabled-color) !important;
+    }
+  }
+}

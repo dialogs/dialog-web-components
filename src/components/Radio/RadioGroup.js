@@ -7,6 +7,7 @@ import React, { PureComponent, PropTypes } from 'react';
 
 export type Props = {
   className?: string,
+  disabled?: boolean,
   children?: mixed,
   name: string,
   value: string,
@@ -17,6 +18,7 @@ export type Context = {
   radioGroup: {
     name: string,
     value: string,
+    disabled?: boolean,
     onChange: (value: string, event: SyntheticInputEvent) => mixed
   }
 };
@@ -33,7 +35,8 @@ class RadioGroup extends PureComponent {
       radioGroup: {
         name: this.props.name,
         value: this.props.value,
-        onChange: this.props.onChange
+        onChange: this.props.onChange,
+        disabled: this.props.disabled
       }
     };
   }
