@@ -74,6 +74,8 @@
 }
 
 .button {
+  background-color: var(--lightbox-button-background-color) !important;
+
   &:before {
     display: none;
   }
