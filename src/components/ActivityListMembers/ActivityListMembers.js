@@ -15,6 +15,7 @@ import styles from './ActivityListMembers.css';
 
 export type Props = {
   className?: string,
+  uid: number,
   members: ChatMember[],
   online: GroupOnline,
   onMemberAdd: () => void,
@@ -85,11 +86,12 @@ class ActivityListMembers extends PureComponent {
   }
 
   renderMembersList(): React.Element<any>[] {
-    const { members } = this.props;
+    const { members, uid } = this.props;
 
     return members.map((member) => {
       return (
         <ActivityListMembersItem
+          uid={uid}
           member={member}
           key={member.peerInfo.peer.key}
           onKick={this.props.onMemberKick}

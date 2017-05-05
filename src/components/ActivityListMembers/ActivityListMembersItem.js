@@ -11,6 +11,7 @@ import ActivityListMembersKick from './ActivityListMembersKick';
 import styles from './ActivityListMembers.css';
 
 export type Props = {
+  uid: number,
   member: ChatMember,
   onKick: (peer: Peer) => void,
   onClick: (peer: Peer) => void
@@ -30,8 +31,8 @@ class ActivityListMembersItem extends PureComponent {
   };
 
   renderKick(): ?React.Element<any> {
-    const { member } = this.props;
-    if (!member.canKick) {
+    const { member, uid } = this.props;
+    if (!member.canKick || member.isAdmin || uid === member.peerInfo.peer.id) {
       return null;
     }
 
