@@ -24,6 +24,9 @@
 }
 
 .item {
+  & :global(.pswp__img) {
+    transform: translateZ(0);
+  }
 }
 
 .image {
