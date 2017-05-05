@@ -26,7 +26,7 @@ class Document extends PureComponent {
       [styles.uploading]: isUploading
     });
 
-    const TagName = isUploading ? 'a' : 'div';
+    const TagName = isUploading ? 'div' : 'a';
     const tagProps = isUploading ? {} : { href: fileUrl, download: fileName, rel: 'noopener noreferrer' };
 
     return (
