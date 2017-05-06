@@ -10,7 +10,9 @@ import StickerItem from './StickerItem';
 
 type Props = {
   pack: StickerPack,
-  active: boolean,
+  height: number,
+  isActive: boolean,
+  isVisible: boolean,
   isAtBottom: boolean,
   onClick: (sticker: Object) => any
 };
@@ -18,9 +20,12 @@ type Props = {
 class StickerCategory extends PureComponent {
   props: Props;
 
-  render(): React.Element<any> {
-    const { pack } = this.props;
-    const children = pack.stickers.map((sticker) => {
+  renderPacks() {
+    if (!this.props.isVisible) {
+      return null;
+    }
+
+    return this.props.pack.stickers.map((sticker) => {
       return (
         <StickerItem
           key={sticker.id}
@@ -29,11 +34,18 @@ class StickerCategory extends PureComponent {
         />
       );
     });
+  }
 
-    const containerStyles = {};
+  render(): React.Element<any> {
+    const { pack } = this.props;
+
+    const containerStyles: Object = {
+      height: this.props.height
+    };
+
     const titleStyles = {};
 
-    if (this.props.active) {
+    if (this.props.isActive) {
       if (this.props.isAtBottom) {
         containerStyles.position = 'relative';
         titleStyles.bottom = 0;
@@ -52,7 +64,7 @@ class StickerCategory extends PureComponent {
           {pack.title}
         </div>
         <div className={styles.categoryList}>
-          {children}
+          {this.renderPacks()}
         </div>
       </div>
     );

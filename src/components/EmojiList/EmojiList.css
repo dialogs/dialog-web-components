@@ -28,6 +28,7 @@
   overflow-x: hidden;
   overflow-y: scroll;
   flex: 1 1 auto;
+  width: 100%;
   @apply --flex-fix;
 }
 

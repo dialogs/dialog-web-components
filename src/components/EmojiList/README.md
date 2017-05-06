@@ -1,13 +1,35 @@
-EmojiList:
+Emoji List
+----------
 
 ```
-<EmojiList
-  recent={['😀', '👻']}
-  onClick={console.debug} 
-/>
+initialState = { 
+  open: true,
+  recent: ['😀', '👻']
+};
+
+const handleOpenClick = () => {
+  setState({ open: !state.open });
+};
+
+const handleEmojiClick = (emoji) => {
+  setState({ recent: [emoji, ...state.recent.filter((item) => item !== emoji)] });
+};
+
+<div>
+  <button onClick={handleOpenClick}>
+    toggle
+  </button>
+  {state.open ? (
+    <EmojiList
+      recent={state.recent}
+      onClick={handleEmojiClick} 
+    />
+  ): null}
+</div>
 ```
 
-EmojiList with stickers:
+Stickers List
+-------------
 
 ```
 const images = require('./fixtures/octodex.json');

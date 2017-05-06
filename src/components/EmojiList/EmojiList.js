@@ -4,16 +4,18 @@
  */
 
 import type { StickerPack, Sticker } from '@dlghq/dialog-types';
+import type { EmojiCategory as EmojiCategoryType } from './utils/categories';
 import React, { PureComponent } from 'react';
-import { findDOMNode } from 'react-dom';
 import { Text } from '@dlghq/react-l10n';
 import { listen } from '@dlghq/dialog-utils';
 import classNames from 'classnames';
-import categories from './categories';
+import { calculateStickerCategoryHeight } from './utils/calculator';
+import { createEmojiCategories } from './utils/categories';
 import EmojiTab from './EmojiTab';
 import EmojiCategory from './EmojiCategory';
 import StickerTab from './StickerTab';
 import StickerCategory from './StickerCategory';
+import { handleScroll, scrollToCategory } from './utils/runtime';
 import styles from './EmojiList.css';
 
 export type Props = {
@@ -37,7 +39,8 @@ class EmojiList extends PureComponent {
   props: Props;
   state: State;
   container: ?HTMLElement;
-  categories: { [key: string]: HTMLElement };
+  height: number;
+  categories: EmojiCategoryType[];
   listener: ?{ remove(): void };
 
   static defaultProps = {
@@ -46,20 +49,28 @@ class EmojiList extends PureComponent {
 
   constructor(props: Props) {
     super(props);
+    const { height, categories } = createEmojiCategories(props.recent);
 
     this.state = {
       screen: 'emoji',
-      current: (props.recent && props.recent.length) ? 'recent' : categories[0].name,
+      current: categories[0].name,
       isAtBottom: false
     };
 
-    this.categories = {};
+    this.height = height;
+    this.categories = categories;
   }
 
   componentDidMount(): void {
     if (this.container) {
       this.listener = listen(this.container, 'scroll', this.handleScroll, { passive: true });
     }
+  }
+
+  componentWillReceiveProps(nextProps: Props) {
+    const { height, categories } = createEmojiCategories(nextProps.recent);
+    this.height = height;
+    this.categories = categories;
   }
 
   componentWillUnmount(): void {
@@ -74,69 +85,114 @@ class EmojiList extends PureComponent {
     event.stopPropagation();
     event.nativeEvent.stopImmediatePropagation();
 
-    this.setState(() => {
-      const { stickers } = this.props;
+    this.scrollTo(0);
 
-      if (stickers && stickers.length) {
-        this.categories = {};
-        if (this.container) {
-          this.container.scrollTop = 0;
-        }
+    const nextScreen = this.getNextScreen();
 
-        return {
-          screen: this.getNextScreen(),
-          current: String(stickers[0].id)
-        };
+    switch (nextScreen) {
+      case 'emoji': {
+        this.setState({
+          screen: nextScreen,
+          current: this.categories[0].name
+        });
+
+        break;
       }
 
-      return {};
-    });
+      case 'stickers': {
+        const { stickers } = this.props;
+        if (stickers && stickers.length) {
+          this.setState({
+            screen: nextScreen,
+            current: String(stickers[0].id)
+          });
+        }
+
+        break;
+      }
+
+      default:
+        break;
+    }
   };
 
   handleTabClick = (next: string): void => {
-    this.setState(() => {
-      const node = this.categories[next];
-      if (node && this.container) {
-        this.container.scrollTop = node.offsetTop;
+    this.setState({ current: next });
+
+    switch (this.state.screen) {
+      case 'emoji': {
+        const scrollTo = scrollToCategory(
+          this.categories,
+          next,
+          (category) => category.name,
+          (category) => category.height
+        );
+
+        if (scrollTo !== -1) {
+          this.scrollTo(scrollTo);
+        }
+
+        break;
       }
 
-      return {
-        current: next
-      };
-    });
+      case 'stickers': {
+        if (this.props.stickers) {
+          const scrollTo = scrollToCategory(
+            this.props.stickers,
+            next,
+            (pack) => String(pack.id),
+            (pack) => calculateStickerCategoryHeight(pack.stickers.length)
+          );
+
+          if (scrollTo !== -1) {
+            this.scrollTo(scrollTo);
+          }
+        }
+
+        break;
+      }
+
+      default:
+        break;
+    }
   };
 
   handleScroll = ({ target }: $FlowIssue): void => {
     const { scrollTop } = target;
-    const breakpoints = Object.keys(this.categories).map((name) => {
-      const node = this.categories[name];
-      return {
-        name,
-        offset: node.offsetTop
-      };
-    });
 
-    if (breakpoints.length) {
-      breakpoints.sort((left, right) => left.offset - right.offset);
-
-      const firstOffset = breakpoints[0].offset;
-
-      for (let i = breakpoints.length - 1; i >= 0; i--) {
-        const breakpoint = breakpoints[i];
-        if (breakpoint.offset - firstOffset <= scrollTop) {
-          let isAtBottom = false;
-          if (i !== breakpoints.length - 1) {
-            const next = breakpoints[i + 1];
-            isAtBottom = scrollTop >= next.offset - this.props.categoryHeight;
-          }
-
-          this.setState({
-            isAtBottom,
-            current: breakpoint.name
-          });
-          break;
+    switch (this.state.screen) {
+      case 'emoji': {
+        const nextState = handleScroll(
+          scrollTop,
+          this.categories,
+          (category) => category.name,
+          (category) => category.height
+        );
+        if (nextState) {
+          this.setState(nextState);
         }
+
+        break;
       }
+
+      case 'stickers': {
+        if (this.props.stickers) {
+          const nextState = handleScroll(
+            scrollTop,
+            this.props.stickers,
+            (pack) => String(pack.id),
+            (pack) => calculateStickerCategoryHeight(pack.stickers.length)
+          );
+          if (nextState) {
+            this.setState(nextState);
+          }
+        }
+
+        break;
+      }
+
+      default:
+        break;
     }
   };
 
@@ -148,112 +204,119 @@ class EmojiList extends PureComponent {
     this.container = container;
   };
 
-  setCategory = (category: ?EmojiCategory): void => {
-    if (category) {
-      const node = findDOMNode(category);
-      if (node) {
-        this.categories[node.dataset.category] = node;
-      }
+  scrollTo(scrollTo: number) {
+    if (this.container) {
+      this.container.scrollTop = scrollTo;
     }
-  };
-
-  renderCategories(): React.Element<any>[] {
-    const result = [];
-
-    if (this.state.screen === 'emoji') {
-      if (this.props.recent && this.props.recent.length) {
-        result.push(
-          <EmojiCategory
-            key="recent"
-            name="recent"
-            chars={this.props.recent}
-            ref={this.setCategory}
-            isAtBottom={this.state.isAtBottom}
-            active={this.state.current === 'recent'}
-            onClick={this.props.onClick}
-          />
-        );
-      }
-
-      for (const { name, chars } of categories) {
-        result.push(
-          <EmojiCategory
-            key={name}
-            name={name}
-            chars={chars}
-            ref={this.setCategory}
-            isAtBottom={this.state.isAtBottom}
-            active={this.state.current === name}
-            onClick={this.props.onClick}
-          />
-        );
-      }
-    } else if (this.props.stickers) {
-      for (const pack of this.props.stickers) {
-        result.push(
-          <StickerCategory
-            key={pack.id}
-            pack={pack}
-            ref={this.setCategory}
-            isAtBottom={this.state.isAtBottom}
-            active={this.state.current === String(pack.id)}
-            onClick={this.props.onStickerClick}
-          />
-        );
-      }
-    }
-
-    return result;
   }
 
-  renderTabs(): React.Element<any> {
-    const children = [];
+  renderCategories() {
+    const { current } = this.state;
 
-    if (this.state.screen === 'emoji') {
-      children.push(
-        <EmojiTab
-          key="recent"
-          name="recent"
-          glyph="schedule"
-          disabled={this.props.recent && this.props.recent.length === 0}
-          active={this.state.current === 'recent'}
-          onClick={this.handleTabClick}
-        />
-      );
+    switch (this.state.screen) {
+      case 'emoji':
+        return this.categories.map((category, idx) => {
+          const isActive = current === category.name;
+          const isVisible =
+            isActive ||
+            (idx > 0 && current === this.categories[idx - 1].name) ||
+            (idx + 1 < this.categories.length && current === this.categories[idx + 1].name);
 
-      for (const { name, glyph } of categories) {
-        children.push(
-          <EmojiTab
-            key={name}
-            name={name}
-            glyph={glyph}
-            active={this.state.current === name}
-            onClick={this.handleTabClick}
-          />
-        );
+          return (
+            <EmojiCategory
+              key={category.name}
+              name={category.name}
+              chars={category.chars}
+              height={category.height}
+              isActive={isActive}
+              isVisible={isVisible}
+              isAtBottom={this.state.isAtBottom}
+              onClick={this.props.onClick}
+            />
+          );
+        });
+
+      case 'stickers': {
+        const { stickers } = this.props;
+
+        if (stickers) {
+          return stickers.map((pack, idx) => {
+            const isActive = current === String(pack.id);
+            const isVisible =
+              isActive ||
+              (idx > 0 && current === String(stickers[idx - 1].id)) ||
+              (idx + 1 < stickers.length && current === String(stickers[idx + 1].id));
+
+            return (
+              <StickerCategory
+                key={pack.id}
+                pack={pack}
+                height={calculateStickerCategoryHeight(pack.stickers.length)}
+                isActive={isActive}
+                isVisible={isVisible}
+                isAtBottom={this.state.isAtBottom}
+                onClick={this.props.onStickerClick}
+              />
+            );
+          });
+        }
+
+        return null;
       }
-    } else if (this.props.stickers) {
-      for (const pack of this.props.stickers) {
-        children.push(
-          <StickerTab
-            key={pack.id}
-            pack={pack}
-            active={this.state.current === String(pack.id)}
-            onClick={this.handleTabClick}
-          />
-        );
-      }
+
+      default:
+        return null;
     }
+  }
 
-    const className = classNames(styles.footer, {
-      [styles.footerStickers]: this.state.screen === 'stickers'
-    });
+  renderTabs() {
+    switch (this.state.screen) {
+      case 'emoji': {
+        const children = this.categories.map((category) => {
+          return (
+            <EmojiTab
+              key={category.name}
+              name={category.name}
+              glyph={category.glyph}
+              active={this.state.current === category.name}
+              onClick={this.handleTabClick}
+            />
+          );
+        });
 
-    return (
-      <footer className={className}>
-        {children}
-      </footer>
-    );
+        return (
+          <footer className={styles.footer}>
+            {children}
+          </footer>
+        );
+      }
+
+      case 'stickers': {
+        if (this.props.stickers) {
+          const children = this.props.stickers.map((pack) => {
+            return (
+              <StickerTab
+                key={pack.id}
+                pack={pack}
+                active={this.state.current === String(pack.id)}
+                onClick={this.handleTabClick}
+              />
+            );
+          });
+
+          return (
+            <footer className={classNames(styles.footer, styles.footerStickers)}>
+              {children}
+            </footer>
+          );
+        }
+
+        return null;
+      }
+
+      default:
+        return null;
+    }
   }
 
   renderGoToButton(): ?React.Element<any> {

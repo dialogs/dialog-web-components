@@ -20,12 +20,10 @@ class EmojiListItem extends PureComponent {
     this.props.onClick(this.props.char);
   };
 
-  render(): ?React.Element<any> {
-    const { char } = this.props;
-
+  render() {
     return (
       <div className={this.props.className} onClick={this.handleClick}>
-        <Emoji char={char} className={styles.emoji} />
+        <Emoji char={this.props.char} className={styles.emoji} />
       </div>
     );
   }

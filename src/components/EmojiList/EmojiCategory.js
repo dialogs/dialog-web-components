@@ -11,7 +11,9 @@ import EmojiListItem from './EmojiListItem';
 type Props = {
   name: string,
   chars: string[],
-  active: boolean,
+  height: number,
+  isActive: boolean,
+  isVisible: boolean,
   isAtBottom: boolean,
   onClick: (char: string) => any
 };
@@ -19,8 +21,12 @@ type Props = {
 class EmojiCategory extends PureComponent {
   props: Props;
 
-  render(): React.Element<any> {
-    const children = this.props.chars.map((char) => {
+  renderChars() {
+    if (!this.props.isVisible) {
+      return null;
+    }
+
+    return this.props.chars.map((char) => {
       return (
         <EmojiListItem
           key={char}
@@ -30,11 +36,16 @@ class EmojiCategory extends PureComponent {
         />
       );
     });
+  }
 
-    const containerStyles = {};
+  render() {
+    const containerStyles: Object = {
+      height: this.props.height
+    };
+
     const titleStyles = {};
 
-    if (this.props.active) {
+    if (this.props.isActive) {
       if (this.props.isAtBottom) {
         containerStyles.position = 'relative';
         titleStyles.bottom = 0;
@@ -55,7 +66,7 @@ class EmojiCategory extends PureComponent {
           className={styles.categoryTitle}
           style={titleStyles}
         />
-        <div className={styles.categoryList}>{children}</div>
+        <div className={styles.categoryList}>{this.renderChars()}</div>
       </div>
     );
   }
