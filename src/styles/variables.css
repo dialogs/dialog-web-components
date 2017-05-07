@@ -118,15 +118,16 @@
   --button-warning-color: var(--button-default-color);
   --button-transition-duration: var(--default-transition-duration);
   /* Call */
-  --call-default-width: 500px;
-  --call-default-height: 464px;
-  --call-small-width: 260px;
-  --call-background-color: #fff;
+  --call-default-width: 640px;
+  --call-default-height: 400px;
+  --call-small-width: 355px;
+  --call-small-height: 200px;
+  --call-background-color: #000;
   --call-default-padding: calc(var(--default-padding-large) * 3);
   --call-info-caller-font-size: 34px;
-  --call-info-caller-color: var(--default-font-color);
+  --call-info-caller-color: #fff;
   --call-info-duration-font-size: 24px;
-  --call-info-duration-color: var(--default-font-color-light);
+  --call-info-duration-color: var(--call-info-caller-color);
   /* Checkbox */
   --checkbox-size: 16px;
   /* Confirm */

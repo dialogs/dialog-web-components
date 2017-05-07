@@ -38,6 +38,10 @@ class Call extends PureComponent {
     }
   }
 
+  componentWillUnmount() {
+    this.clearTimer();
+  }
+
   handleEnd = (): void => {
     if (this.props.id) {
       this.props.onEnd(this.props.id);
@@ -63,13 +67,34 @@ class Call extends PureComponent {
     }
   };
 
+  handleCameraToggle = (): void => {
+    const { id, call } = this.props;
+    if (id && call) {
+      this.props.onCameraToggle(id, !call.isCameraOn);
+    }
+  };
+
+  handleScreenShareToggle = (): void => {
+    const { id, call } = this.props;
+    if (id && call) {
+      this.props.onScreenShareToggle(id, !call.isScreenSharingOn);
+    }
+  };
+
   setTimer(): void {
     this.clearTimer();
 
-    let duration = 0;
-    this.timer = setInterval(() => {
-      this.setState({ duration: ++duration });
-    }, 1000);
+    this.setState({ duration: 0 });
+    this.timer = setInterval(
+      () => {
+        this.setState((prevState) => {
+          return {
+            duration: prevState.duration + 1
+          };
+        });
+      },
+      1000
+    );
   }
 
   clearTimer(): void {
@@ -79,7 +104,7 @@ class Call extends PureComponent {
   }
 
   render(): ?React.Element<any> {
-    const { id, call, caller, small } = this.props;
+    const { id, call, caller, small, isVideoEnabled, isScreenSharingEnabled } = this.props;
     const { duration } = this.state;
 
     if (!id || !call || !caller) {
@@ -97,6 +122,10 @@ class Call extends PureComponent {
         onAnswer={this.handleAnswer}
         onSizeToggle={this.handleSizeToggle}
         onMuteToggle={this.handleMuteToggle}
+        onCameraToggle={this.handleCameraToggle}
+        onScreenShareToggle={this.handleScreenShareToggle}
+        isVideoEnabled={isVideoEnabled}
+        isScreenSharingEnabled={isScreenSharingEnabled}
       />
     );
   }

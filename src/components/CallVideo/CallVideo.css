@@ -1,0 +1,38 @@
+/*
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+.container {
+  display: flex;
+  flex: 1 1 auto;
+  position: relative;
+  background-color: var(--call-background-color);
+  width: 100%;
+  height: 100%;
+}
+
+.ownVideos {
+  position: absolute;
+  bottom: var(--default-padding);
+  right: var(--default-padding);
+  line-height: 0;
+}
+
+.videoContainer {
+  flex: 1 1 auto;
+  line-height: 0;
+  @apply --flex-fix;
+}
+
+.video {
+  object-fit: scale-down;
+  width: 100%;
+  height: 100%;
+}
+
+.ownVideo {
+  width: 160px;
+  height: 90px;
+}
