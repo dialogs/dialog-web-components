@@ -73,7 +73,7 @@ class BigCall extends PureComponent {
               state={call.state}
               isMuted={call.isMuted}
               isCameraOn={call.isCameraOn}
-              isScreenShareOn={call.isScreenShareOn}
+              isScreenShareOn={call.isScreenSharingOn}
               onEnd={this.props.onEnd}
               onAnswer={this.props.onAnswer}
               onMuteToggle={this.props.onMuteToggle}

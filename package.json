@@ -53,7 +53,7 @@
   "homepage": "https://dialogs.github.io/dialog-web-components",
   "dependencies": {
     "@dlghq/country-codes": "0.2.0",
-    "@dlghq/dialog-types": "1.20.0",
+    "@dlghq/dialog-types": "1.21.0",
     "@dlghq/dialog-utils": "0.6.2",
     "@dlghq/emoji": "1.0.0",
     "@dlghq/markdown": "0.9.0",

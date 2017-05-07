@@ -77,7 +77,7 @@ class Call extends PureComponent {
   handleScreenShareToggle = (): void => {
     const { id, call } = this.props;
     if (id && call) {
-      this.props.onScreenShareToggle(id, !call.isScreenShareOn);
+      this.props.onScreenShareToggle(id, !call.isScreenSharingOn);
     }
   };
 

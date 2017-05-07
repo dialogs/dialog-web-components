@@ -74,11 +74,15 @@ class SmallCall extends PureComponent {
               state={call.state}
               isMuted={call.isMuted}
               isCameraOn={call.isCameraOn}
+              isScreenShareOn={call.isScreenSharingOn}
+              isVideoEnabled={this.props.isVideoEnabled}
+              isScreenSharingEnabled={this.props.isScreenSharingEnabled}
               onEnd={this.props.onEnd}
               onAnswer={this.props.onAnswer}
               onSizeToggle={this.props.onSizeToggle}
               onMuteToggle={this.props.onMuteToggle}
               onCameraToggle={this.props.onCameraToggle}
+              onScreenShareToggle={this.props.onScreenShareToggle}
             />
           </Hover>
         </div>

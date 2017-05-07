@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2017 dialog LLC <info@dlg.im>
  * @flow
  */
@@ -21,6 +21,7 @@ class CallVideo extends PureComponent {
 
     return theirVideos.map((stream) => {
       return (
+        // $FlowFixMe: stream.id exists
         <div key={stream.id} className={styles.videoContainer}>
           <CallVideoStream
             className={styles.video}
@@ -41,6 +42,7 @@ class CallVideo extends PureComponent {
     const videos = ownVideos.map((stream) => {
       return (
         <CallVideoStream
+          // $FlowFixMe: stream.id exists
           key={stream.id}
           className={styles.ownVideo}
           stream={stream}

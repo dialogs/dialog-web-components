@@ -12,34 +12,27 @@ type Props = {
 
 class CallVideoStream extends PureComponent {
   props: Props;
-  video: ?HTMLVideoElement;
+  video: HTMLVideoElement;
 
   componentDidMount() {
-    if (this.video) {
-      if ('srcObject' in this.video) {
-        this.video.srcObject = this.props.stream;
-      } else {
-        this.video.src = URL.createObjectURL(this.props.stream);
-      }
-
-      this.video.play();
+    if ('srcObject' in this.video) {
+      this.video.srcObject = this.props.stream;
+    } else {
+      this.video.src = URL.createObjectURL(this.props.stream);
     }
+
+    this.video.play();
   }
 
   componentWillUnmount() {
-    if (this.video) {
-      if ('srcObject' in this.video) {
-        this.video.srcObject = null;
-      } else {
-        URL.revokeObjectURL(this.video.src);
-        this.video.src = null;
-      }
-
-      this.video = null;
+    if ('srcObject' in this.video) {
+      this.video.srcObject = null;
+    } else {
+      URL.revokeObjectURL(this.video.src);
     }
   }
 
-  setVideo = (video: ?HTMLVideoElement) => {
+  setVideo = (video: HTMLVideoElement) => {
     this.video = video;
   };
 
