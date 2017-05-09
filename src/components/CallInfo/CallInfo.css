@@ -58,7 +58,7 @@
   & .caller {
     font-size: var(--call-audio-info-caller-font-size);
     color: var(--call-audio-info-caller-color);
-    line-height: 1.2;
+    line-height: 1.4;
   }
 
   & .state {

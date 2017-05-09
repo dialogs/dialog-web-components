@@ -137,7 +137,7 @@
   --call-info-small-state-font-size: 13px;
   --call-audio-info-caller-color: #000;
   --call-audio-info-state-color: color(var(--call-audio-info-caller-color) alpha(50%));
-  --call-audio-info-caller-font-size: 28px;
+  --call-audio-info-caller-font-size: 24px;
   --call-audio-info-state-font-size: 18px;
   /* Checkbox */
   --checkbox-size: 16px;
