@@ -7,7 +7,7 @@ import '!style-loader!css-loader!photoswipe/dist/photoswipe.css';
 import '!style-loader!css-loader!photoswipe/dist/default-skin/default-skin.css';
 
 import type { ProviderContext } from '@dlghq/react-l10n';
-import type { PhotoSwipeItem, PhotoSwipeOptions } from 'photoswipe';
+import type { PhotoSwipeItem, PhotoSwipeOptions, PhotoSwipeThumbBounds } from 'photoswipe';
 import { LocalizationContextType } from '@dlghq/react-l10n';
 import React, { Component } from 'react';
 import cx from 'classnames';
@@ -59,7 +59,7 @@ class Lightbox extends Component {
         showAnimationDuration: 150,
         // UI options
         shareEl: false,
-        getThumbBoundsFn: this.getThumbBoundsFn
+        getThumbBoundsFn: this.getThumbBounds
       });
 
       photoSwipe.listen('close', this.handleClose);
@@ -97,16 +97,24 @@ class Lightbox extends Component {
     this.props.onClose();
   };
 
-  getThumbBoundsFn = (index: number): { x: number, y: number, w: number } => {
-    const thumbnail = document.getElementById(this.props.items[index].id);
-    const pageYScroll = window.pageYOffset || document.documentElement.scrollTop;
-    const rect = thumbnail.getBoundingClientRect();
+  getThumbBounds = (index: number): ?PhotoSwipeThumbBounds => {
+    const item = this.props.items[index];
+    if (item) {
+      const thumbnail = document.getElementById(item.id);
+      if (thumbnail) {
+        const pageYScroll = window.pageYOffset || 0;
+        const rect = thumbnail.getBoundingClientRect();
+        if (rect) {
+          return {
+            x: rect.left,
+            y: rect.top + pageYScroll,
+            w: rect.width
+          };
+        }
+      }
+    }
 
-    return {
-      x: rect.left,
-      y: rect.top + pageYScroll,
-      w: rect.width
-    };
+    return null;
   };
 
   setContainer = (container: HTMLElement): void => {
