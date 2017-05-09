@@ -55,7 +55,7 @@ class Contact extends PureComponent {
     return phones.map((phone) => {
       return (
         <div className={styles.phone} key={phone}>
-          <Icon glyph="phone" className={styles.icon} />
+          <Icon glyph="phone_outline" className={styles.icon} />
           <a href={`tel:${phone}`} className={styles.link}>{phone}</a>
         </div>
       );
