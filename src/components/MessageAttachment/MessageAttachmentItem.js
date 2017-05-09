@@ -64,7 +64,7 @@ class MessageAttachmentItem extends Component {
   }
 
   render(): React.Element<any> {
-    const { message: { content }, short, type } = this.props;
+    const { message: { content, rid }, short, type } = this.props;
 
     const className = classNames(styles.itemContainer, {
       [styles.short]: short
@@ -76,6 +76,7 @@ class MessageAttachmentItem extends Component {
         <MessageContent
           className={styles.content}
           content={content}
+          rid={rid}
         />
         {type === 'forward' ? (
           <div className={styles.timeWrapper}>{this.renderTimestamp()}</div>

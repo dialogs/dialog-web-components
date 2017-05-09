@@ -15,7 +15,7 @@ const STATE_ERROR = 3;
 export type Props = {
   className?: string,
   src: ?string,
-  id: string,
+  id?: string,
   alt?: ?string,
   preview?: ?string,
   width: number,

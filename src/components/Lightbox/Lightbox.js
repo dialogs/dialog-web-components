@@ -97,7 +97,7 @@ class Lightbox extends Component {
     this.props.onClose();
   };
 
-  getThumbBoundsFn = (index) => {
+  getThumbBoundsFn = (index: number): { x: number, y: number, w: number } => {
     const thumbnail = document.getElementById(this.props.items[index].id);
     const pageYScroll = window.pageYOffset || document.documentElement.scrollTop;
     const rect = thumbnail.getBoundingClientRect();
