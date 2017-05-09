@@ -72,7 +72,7 @@ class CallExample extends PureComponent {
         avatar: 'https://avatars0.githubusercontent.com/u/3505878'
       }
     }, () => {
-      setTimeout(this.handleConnecting, 1000);
+      setTimeout(this.handleConnecting, 2000);
     });
   };
 
@@ -105,7 +105,7 @@ class CallExample extends PureComponent {
   };
 
   handleAnswer = () => {
-    setTimeout(this.handleInProgress, 1000);
+    setTimeout(this.handleInProgress, 2000);
   };
 
   handleInProgress = () => {

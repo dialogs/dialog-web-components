@@ -11,6 +11,8 @@ import ModalBody from '../Modal/ModalBody';
 import Hover from '../Hover/Hover';
 import CallHeader from '../CallHeader/CallHeader';
 import CallControls from '../CallControls/CallControls';
+import CallAvatar from '../CallAvatar/CallAvatar';
+import CallInfo from '../CallInfo/CallInfo';
 import CallVideo from '../CallVideo/CallVideo';
 import styles from './Call.css';
 
@@ -31,18 +33,70 @@ class BigCall extends PureComponent {
   }
 
   handleHover = (hover: boolean) => {
-    this.setState({ hover });
+    if (this.isCallWithVideo()) {
+      this.setState({ hover });
+    }
   };
 
-  renderVideo() {
-    const { call } = this.props;
+  isCallWithVideo = (): boolean => {
+    return Boolean(this.props.call.ownVideos.length || this.props.call.theirVideos.length);
+  };
 
-    if (call.theirVideos.length || call.ownVideos.length) {
+  renderCallInfo(): ?React.Element<any> {
+    const { caller, duration, call } = this.props;
+
+    if (this.isCallWithVideo()) {
+      return null;
+    }
+
+    return (
+      <div className={styles.info}>
+        <CallAvatar
+          small={false}
+          isAudioCall
+          state={call.state}
+          caller={caller}
+        />
+        <CallInfo
+          small={false}
+          call={call}
+          isAudioCall
+          caller={caller}
+          duration={duration}
+        />
+      </div>
+    );
+  }
+
+  renderHeader(): ?React.Element<any> {
+    const { caller, duration, call } = this.props;
+
+    if (this.isCallWithVideo()) {
+      return (
+        <CallHeader
+          isAudioCall={false}
+          isHover={this.state.hover}
+          caller={caller}
+          call={call}
+          duration={duration}
+          small={false}
+          onSizeToggle={this.props.onSizeToggle}
+        />
+      );
+    }
+
+    return null;
+  }
+
+  renderVideo(): ?React.Element<any> {
+    const { call: { ownVideos, theirVideos } } = this.props;
+
+    if (this.isCallWithVideo()) {
       return (
         <CallVideo
           small={false}
-          ownVideos={call.ownVideos}
-          theirVideos={call.theirVideos}
+          ownVideos={ownVideos}
+          theirVideos={theirVideos}
         />
       );
     }
@@ -51,25 +105,23 @@ class BigCall extends PureComponent {
   }
 
   render() {
-    const { caller, call, duration, isVideoEnabled, isScreenSharingEnabled } = this.props;
-    const className = classNames(styles.container, this.props.className);
+    const { call, isVideoEnabled, isScreenSharingEnabled } = this.props;
+    const isVideoCall = this.isCallWithVideo();
+    const className = classNames(styles.container, {
+      [styles.video]: isVideoCall
+    }, this.props.className);
 
     return (
       <Modal className={className} onClose={this.props.onSizeToggle}>
         <Hover onHover={this.handleHover} className={styles.hoverElement}>
           <ModalBody className={styles.body}>
-            <CallHeader
-              isHover={this.state.hover}
-              caller={caller}
-              call={call}
-              duration={duration}
-              small={false}
-              onSizeToggle={this.props.onSizeToggle}
-            />
+            {this.renderHeader()}
+            {this.renderCallInfo()}
             {this.renderVideo()}
             <CallControls
               small={false}
               isHover={this.state.hover}
+              isAudioCall={!isVideoCall}
               state={call.state}
               isMuted={call.isMuted}
               isCameraOn={call.isCameraOn}
@@ -81,6 +133,7 @@ class BigCall extends PureComponent {
               onScreenShareToggle={this.props.onScreenShareToggle}
               isVideoEnabled={isVideoEnabled}
               isScreenSharingEnabled={isScreenSharingEnabled}
+              onSizeToggle={this.props.onSizeToggle}
             />
           </ModalBody>
         </Hover>

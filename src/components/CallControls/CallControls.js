@@ -22,17 +22,34 @@ export type Props = {
   onCameraToggle: () => void,
   onScreenShareToggle: () => void,
   isVideoEnabled: boolean,
-  isScreenSharingEnabled: boolean
+  isScreenSharingEnabled: boolean,
+  isAudioCall: boolean,
+  onSizeToggle: () => void
 };
 
 function CallControls(props: Props): React.Element<any> {
   const size = 'normal';
   const className = classNames(styles.container, {
     [styles.small]: props.small,
+    [styles.audio]: props.isAudioCall,
     [styles.hide]: !props.isHover
   });
 
   const buttons = [];
+
+  if (props.isAudioCall) {
+    buttons.push(
+      <IconButton
+        flat
+        key="size"
+        size={size}
+        theme="default"
+        glyph={props.small ? 'maximize' : 'minimize'}
+        className={styles.button}
+        onClick={props.onSizeToggle}
+      />
+    );
+  }
 
   if (props.state === 'ringing_incoming') {
     buttons.push(

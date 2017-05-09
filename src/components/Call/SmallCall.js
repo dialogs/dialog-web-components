@@ -10,6 +10,8 @@ import classNames from 'classnames';
 import CallHeader from '../CallHeader/CallHeader';
 import CallVideo from '../CallVideo/CallVideo';
 import CallControls from '../CallControls/CallControls';
+import CallAvatar from '../CallAvatar/CallAvatar';
+import CallInfo from '../CallInfo/CallInfo';
 import Hover from '../Hover/Hover';
 import styles from './Call.css';
 
@@ -30,14 +32,65 @@ class SmallCall extends PureComponent {
   }
 
   handleHover = (hover: boolean) => {
-    this.setState({ hover });
+    if (this.isCallWithVideo()) {
+      this.setState({ hover });
+    }
   };
 
+  isCallWithVideo = (): boolean => {
+    return Boolean(this.props.call.theirVideos.length);
+  };
+
+  renderHeader(): ?React.Element<any> {
+    const { caller, call, duration } = this.props;
+
+    if (this.isCallWithVideo()) {
+      return (
+        <CallHeader
+          small
+          isAudioCall={false}
+          isHover={this.state.hover}
+          caller={caller}
+          call={call}
+          duration={duration}
+          onSizeToggle={this.props.onSizeToggle}
+        />
+      );
+    }
+
+    return null;
+  }
+
+  renderCallInfo(): ?React.Element<any> {
+    const { caller, duration, call } = this.props;
+
+    if (this.isCallWithVideo()) {
+      return null;
+    }
+
+    return (
+      <div className={styles.infoSmall}>
+        <CallAvatar
+          small
+          isAudioCall
+          state={call.state}
+          caller={caller}
+        />
+        <CallInfo
+          small
+          call={call}
+          isAudioCall
+          caller={caller}
+          duration={duration}
+        />
+      </div>
+    );
+  }
 
   renderVideo(): ?React.Element<any> {
     const { call } = this.props;
 
-    if (call.theirVideos.length) {
+    if (this.isCallWithVideo()) {
       return (
         <CallVideo
           small
@@ -52,21 +105,18 @@ class SmallCall extends PureComponent {
   }
 
   render() {
-    const { caller, call, duration } = this.props;
-    const className = classNames(styles.container, styles.small, this.props.className);
+    const { call, isVideoEnabled, isScreenSharingEnabled } = this.props;
+    const isVideoCall = this.isCallWithVideo();
+    const className = classNames(styles.container, styles.small, {
+      [styles.video]: isVideoCall
+    }, this.props.className);
 
     return (
       <Draggable>
         <div className={className}>
           <Hover onHover={this.handleHover} className={styles.hoverElement}>
-            <CallHeader
-              small
-              isHover={this.state.hover}
-              caller={caller}
-              call={call}
-              duration={duration}
-              onSizeToggle={this.props.onSizeToggle}
-            />
+            {this.renderHeader()}
+            {this.renderCallInfo()}
             {this.renderVideo()}
             <CallControls
               small
@@ -75,13 +125,14 @@ class SmallCall extends PureComponent {
               isMuted={call.isMuted}
               isCameraOn={call.isCameraOn}
               isScreenShareOn={call.isScreenSharingOn}
-              isVideoEnabled={this.props.isVideoEnabled}
-              isScreenSharingEnabled={this.props.isScreenSharingEnabled}
+              isVideoEnabled={isVideoEnabled}
+              isScreenSharingEnabled={isScreenSharingEnabled}
               onEnd={this.props.onEnd}
               onAnswer={this.props.onAnswer}
               onSizeToggle={this.props.onSizeToggle}
               onMuteToggle={this.props.onMuteToggle}
               onCameraToggle={this.props.onCameraToggle}
+              isAudioCall={!isVideoCall}
               onScreenShareToggle={this.props.onScreenShareToggle}
             />
           </Hover>

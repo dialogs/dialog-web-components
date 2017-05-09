@@ -10,6 +10,7 @@ import CallInfoState from './CallInfoState';
 import styles from './CallInfo.css';
 
 export type Props = {
+  isAudioCall: boolean,
   call: Call,
   caller: User,
   small: boolean,
@@ -18,6 +19,7 @@ export type Props = {
 
 function CallInfo(props: Props): React.Element<any> {
   const className = classNames(styles.container, {
+    [styles.audio]: props.isAudioCall,
     [styles.small]: props.small
   });
 

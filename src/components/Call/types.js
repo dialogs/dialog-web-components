@@ -35,10 +35,3 @@ export type CallProps = {
   isVideoEnabled: boolean,
   isScreenSharingEnabled: boolean
 };
-
-export type CallInfoProps = {
-  call: Call,
-  caller: User,
-  small: boolean,
-  duration: number
-};

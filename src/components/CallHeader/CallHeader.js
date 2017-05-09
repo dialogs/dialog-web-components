@@ -3,7 +3,7 @@
  * @flow
  */
 
-import type { CallInfoProps } from '../Call/types';
+import type { Props as CallInfoProps } from '../CallInfo/CallInfo';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import CallAvatar from '../CallAvatar/CallAvatar';
@@ -31,9 +31,11 @@ class CallHeader extends PureComponent {
         <CallAvatar
           small={small}
           caller={caller}
+          isAudioCall={false}
         />
         <CallInfo
           small={small}
+          isAudioCall={false}
           call={call}
           caller={caller}
           duration={duration}

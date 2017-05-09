@@ -8,7 +8,7 @@
   display: flex;
   flex: 1 1 auto;
   position: relative;
-  background-color: var(--call-background-color);
+  background-color: var(--call-video-background-color);
   width: 100%;
   height: 100%;
 }
