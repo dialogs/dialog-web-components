@@ -37,19 +37,19 @@ function CallControls(props: Props): React.Element<any> {
 
   const buttons = [];
 
-  if (props.isAudioCall) {
-    buttons.push(
-      <IconButton
-        flat
-        key="size"
-        size={size}
-        theme="default"
-        glyph={props.small ? 'maximize' : 'minimize'}
-        className={styles.button}
-        onClick={props.onSizeToggle}
-      />
-    );
-  }
+  // if (props.isAudioCall) {
+  //   buttons.push(
+  //     <IconButton
+  //       flat
+  //       key="size"
+  //       size={size}
+  //       theme="default"
+  //       glyph={props.small ? 'maximize' : 'minimize'}
+  //       className={styles.button}
+  //       onClick={props.onSizeToggle}
+  //     />
+  //   );
+  // }
 
   if (props.state === 'ringing_incoming') {
     buttons.push(

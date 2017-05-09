@@ -36,7 +36,7 @@
 }
 
 .avatarSmall {
-  margin-right: var(--default-padding-small);
+  margin-right: 14px;
 }
 
 .animation {

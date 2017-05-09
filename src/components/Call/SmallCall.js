@@ -13,6 +13,7 @@ import CallControls from '../CallControls/CallControls';
 import CallAvatar from '../CallAvatar/CallAvatar';
 import CallInfo from '../CallInfo/CallInfo';
 import Hover from '../Hover/Hover';
+import Icon from '../Icon/Icon';
 import styles from './Call.css';
 
 type State = {
@@ -82,6 +83,13 @@ class SmallCall extends PureComponent {
           isAudioCall
           caller={caller}
           duration={duration}
+        />
+        <Icon
+          flat
+          size={18}
+          glyph="maximize"
+          className={styles.toggleSize}
+          onClick={this.props.onSizeToggle}
         />
       </div>
     );

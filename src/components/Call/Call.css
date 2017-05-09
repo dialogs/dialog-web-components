@@ -6,6 +6,7 @@
 
 /* Styles */
 .container {
+  position: relative;
   z-index: var(--z-index-call);
   width: var(--call-default-width);
   height: var(--call-default-height);
@@ -72,7 +73,6 @@
   @apply --flex-fix;
 }
 
-/* Small */
 .small {
   position: absolute;
   display: flex;
@@ -85,4 +85,16 @@
   cursor: grab;
   border-radius: 6px;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.12), inset 0 0 0 1px rgba(0, 0, 0, 0.15);
+
+  & .toggleSize {
+    top: 8px;
+    right: 8px;
+  }
+}
+
+.toggleSize {
+  position: absolute;
+  padding: 2px;
+  top: 12px;
+  right: 12px;
 }
