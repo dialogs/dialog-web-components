@@ -9,7 +9,7 @@ import { getEmojiByChar, shouldUseImage } from '@dlghq/emoji';
 import emojiImage from '@dlghq/emoji/dist/apple.png';
 import styles from './Emoji.css';
 
-const SPRITE_SIZE = 40;
+const SPRITE_SIZE = 49;
 
 export type Props = {
   className?: string,
@@ -29,10 +29,11 @@ class Emoji extends PureComponent {
 
     if (shouldUseImage(emoji.char)) {
       const className = classNames(styles.image, this.props.className);
+      const mul = 100 / (SPRITE_SIZE - 1);
 
       let style = {
         backgroundImage: `url(${emojiImage})`,
-        backgroundPosition: `${(100 / SPRITE_SIZE) * emoji.x}% ${(100 / SPRITE_SIZE) * emoji.y}%`,
+        backgroundPosition: `${mul * emoji.x}% ${mul * emoji.y}%`,
         backgroundSize: `${SPRITE_SIZE * 100}%`
       };
 
