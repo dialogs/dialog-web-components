@@ -32,6 +32,7 @@
 
 /* Styles */
 .container {
+  flex: 0 0 auto;
   display: block;
   width: 46px;
   height: 46px;
