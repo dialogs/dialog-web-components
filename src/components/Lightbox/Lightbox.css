@@ -23,6 +23,10 @@
   backface-visibility: hidden;
 }
 
+:global(.pswp__img) {
+  transform: translateZ(0);
+}
+
 .item {
   & :global(.pswp__img) {
     transform: translateZ(0);
