@@ -1,0 +1,33 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+/* Reset */
+.container {
+  all: initial;
+}
+
+/* Styles */
+.container {
+  display: inline-flex;
+  cursor: pointer;
+  fill: var(--toolbar-messages-button-color);
+
+  &:hover {
+    fill: var(--toolbar-messages-button-color-hover);
+  }
+
+  &:active {
+    fill: var(--toolbar-messages-button-color-active);
+  }
+}
+
+.active {
+  fill: var(--toolbar-messages-button-active-color) !important;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}

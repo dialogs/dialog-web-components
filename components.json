@@ -13,6 +13,7 @@
       "ToolbarInfoButton",
       "ToolbarCallButton",
       "ToolbarFavouriteButton",
+      "ToolbarMessagesButton",
       "Logo",
       "Typing",
       "ConnectionStatus",
