@@ -46,6 +46,7 @@
   --z-index-sidebar-unread: 20;
   --z-index-connection-status: 10;
   --z-index-message-actions: 10;
+  --z-index-dragndrop: 1000;
   /* Colors */
   --color-primary: var(--violet-blue);
   --color-success: var(--medium-green);
@@ -160,8 +161,7 @@
   --dragndrop-width: 740px;
   --dragndrop-height: 440px;
   --dragndrop-border-radius: var(--default-border-radius);
-  --dragndrop-background-color: #333;
-  --dragndrop-hover-background-color: var(--color-primary);
+  --dragndrop-background-color: var(--color-primary);
   /* Dropdown */
   --dropdown-font-size: var(--default-font-size);
   --dropdown-font-color: #000;
