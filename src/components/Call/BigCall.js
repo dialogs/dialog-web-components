@@ -113,20 +113,25 @@ class BigCall extends PureComponent {
   }
 
   render() {
-    const { call, isVideoEnabled, isScreenSharingEnabled } = this.props;
+    const { call, isVideoEnabled, isScreenSharingEnabled, isOnCall } = this.props;
     const isVideoCall = this.isCallWithVideo();
     const className = classNames(styles.container, {
-      [styles.video]: isVideoCall
+      [styles.video]: isVideoCall,
+      [styles.inChat]: isOnCall
     }, this.props.className);
 
+    const Wrapper = isOnCall ? 'div' : Modal;
+    const handlers = isOnCall ? {} : { onClose: this.props.onSizeToggle };
+
     return (
-      <Modal className={className} onClose={this.props.onSizeToggle}>
+      <Wrapper className={className} {...handlers} >
         <Hover onHover={this.handleHover} className={styles.hoverElement}>
           <ModalBody className={styles.body}>
             {this.renderHeader()}
             {this.renderCallInfo()}
             {this.renderVideo()}
             <CallControls
+              isOnCall={isOnCall}
               small={false}
               isHover={this.state.hover}
               isAudioCall={!isVideoCall}
@@ -145,7 +150,7 @@ class BigCall extends PureComponent {
             />
           </ModalBody>
         </Hover>
-      </Modal>
+      </Wrapper>
     );
   }
 }

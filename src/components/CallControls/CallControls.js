@@ -23,11 +23,12 @@ export type Props = {
   onScreenShareToggle: () => void,
   isVideoEnabled: boolean,
   isScreenSharingEnabled: boolean,
-  isAudioCall: boolean
+  isAudioCall: boolean,
+  isOnCall: boolean
 };
 
 function CallControls(props: Props): React.Element<any> {
-  const size = 'normal';
+  const size = props.isOnCall ? 'large' : 'normal';
   const className = classNames(styles.container, {
     [styles.small]: props.small,
     [styles.audio]: props.isAudioCall,

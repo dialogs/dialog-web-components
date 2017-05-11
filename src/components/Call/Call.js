@@ -104,7 +104,7 @@ class Call extends PureComponent {
   }
 
   render(): ?React.Element<any> {
-    const { id, call, caller, small, isVideoEnabled, isScreenSharingEnabled } = this.props;
+    const { id, call, caller, small, isVideoEnabled, isScreenSharingEnabled, isOnCall } = this.props;
     const { duration } = this.state;
 
     if (!id || !call || !caller) {
@@ -115,6 +115,7 @@ class Call extends PureComponent {
 
     return (
       <ChildCall
+        isOnCall={isOnCall}
         call={call}
         caller={caller}
         duration={duration}

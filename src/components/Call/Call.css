@@ -38,6 +38,14 @@
   }
 }
 
+.inChat {
+  width: auto;
+  height: auto;
+  display: flex;
+  flex: 1 1 auto;
+  @apply --flex-fix;
+}
+
 .body {
   display: flex;
   flex-direction: column;

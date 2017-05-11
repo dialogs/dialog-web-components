@@ -18,7 +18,8 @@ export type CallWrapperProps = {
   onCameraToggle: (id: string, isCameraOn: boolean) => any,
   onScreenShareToggle: (id: string, isScreenShareOn: boolean) => any,
   isVideoEnabled: boolean,
-  isScreenSharingEnabled: boolean
+  isScreenSharingEnabled: boolean,
+  isOnCall: boolean
 };
 
 export type CallProps = {
@@ -33,5 +34,6 @@ export type CallProps = {
   onCameraToggle: () => void,
   onScreenShareToggle: () => void,
   isVideoEnabled: boolean,
-  isScreenSharingEnabled: boolean
+  isScreenSharingEnabled: boolean,
+  isOnCall: boolean
 };
