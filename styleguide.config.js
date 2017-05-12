@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const pkg = require('./package.json');
 const schema = require('./components.json');
+const { theme, styles } = require('./src/styleguide/styles');
 
 function resolve(...paths) {
   return fs.realpathSync(path.join(__dirname, ...paths));
@@ -29,6 +30,9 @@ module.exports = {
   require: [
     resolve('src/styles/global.css')
   ],
+
+  theme,
+  styles,
 
   getComponentPathLine(componentPath) {
     const name = path.basename(componentPath, '.js');
