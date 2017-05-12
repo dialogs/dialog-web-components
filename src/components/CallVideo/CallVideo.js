@@ -9,7 +9,7 @@ import styles from './CallVideo.css';
 
 export type Props = {
   small: boolean,
-  ownVideos: MediaSource[],
+  ownVideos?: MediaSource[],
   theirVideos: MediaSource[]
 };
 
@@ -33,9 +33,9 @@ class CallVideo extends PureComponent {
   }
 
   renderOwnVideos() {
-    const { ownVideos, small } = this.props;
+    const { ownVideos } = this.props;
 
-    if (small) {
+    if (!ownVideos) {
       return null;
     }
 
@@ -58,6 +58,7 @@ class CallVideo extends PureComponent {
   }
 
   render() {
+    console.debug(this.props);
     return (
       <div className={styles.container}>
         {this.renderTheirVideos()}

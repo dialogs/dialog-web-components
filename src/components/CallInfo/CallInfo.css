@@ -9,8 +9,8 @@
   height: 50px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  align-content: flex-start;
+  align-items: center;
+  align-content: center;
   justify-content: center;
   width: 100%;
   box-sizing: border-box;
@@ -20,66 +20,30 @@
 .caller {
   letter-spacing: -0.5px;
   font-size: var(--call-info-caller-font-size);
-  line-height: 20px;
   color: var(--call-info-caller-color);
+  line-height: 30px;
   @apply --text-overflow-ellipsis;
 }
 
 .state {
   letter-spacing: -0.3px;
   font-size: var(--call-info-state-font-size);
-  line-height: 20px;
   color: var(--call-info-state-color);
+  line-height: 20px;
 }
 
-.small {
-  margin: 0;
-  height: 30px;
-  text-align: left;
-
-  & .caller {
-    font-size: var(--call-info-small-caller-font-size);
-    line-height: 15px;
-  }
-
-  & .state {
-    font-size: var(--call-info-small-state-font-size);
-    line-height: 15px;
-  }
-}
-
-.audio {
+.onCall {
   display: block;
-  margin-top: calc(var(--default-padding) * 2.75);
-  padding: 0 var(--default-padding-large);
-  height: auto;
-  text-align: center;
+  text-align: left;
+  height: 40px;
+  padding-left: var(--default-padding);
 
   & .caller {
-    font-size: var(--call-audio-info-caller-font-size);
-    color: var(--call-audio-info-caller-color);
-    line-height: 1.4;
+    font-size: var(--call-info-oncall-caller-font-size);
+    line-height: 25px;
   }
-
   & .state {
-    font-size: var(--call-audio-info-state-font-size);
-    color: var(--call-audio-info-state-color);
-    line-height: 1.1;
-  }
-
-  &.small {
-    margin: 0;
-    padding: 0;
-    text-align: left;
-
-    & .caller {
-      font-size: 16px;
-      font-weight: 500;
-      line-height: 20px;
-    }
-    & .state {
-      font-size: 16px;
-      line-height: 16px;
-    }
+    font-size: var(--call-info-oncall-state-font-size);
+    line-height: 15px;
   }
 }
