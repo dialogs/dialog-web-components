@@ -10,9 +10,9 @@ import styles from './CallAvatar.css';
 
 export type Props = {
   small: boolean,
-  isAudioCall: boolean,
   state: CallState,
-  caller: User
+  caller: User,
+  isAudioCall: boolean
 };
 
 class CallAvatar extends PureComponent {
@@ -28,7 +28,7 @@ class CallAvatar extends PureComponent {
     return small ? 30 : 50;
   };
 
-  renderAnimation(): ?React.Element<any> {
+  renderAnimation() {
     const { state, isAudioCall, small } = this.props;
     const className = classNames(styles.animation, {
       [styles.animationSmall]: small,
@@ -44,7 +44,7 @@ class CallAvatar extends PureComponent {
     );
   }
 
-  render(): React.Element<any> {
+  render() {
     const { isAudioCall, caller: { avatar, name, placeholder }, small } = this.props;
     const className = classNames(styles.container, {
       [styles.audioAvatar]: isAudioCall,

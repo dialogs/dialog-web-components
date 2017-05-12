@@ -5,8 +5,8 @@
 
 import type { CallWrapperProps as Props } from './types';
 import React, { PureComponent } from 'react';
-import BigCall from './BigCall';
-import SmallCall from './SmallCall';
+import BigCall from './ChatCall';
+import SmallCall from './WindowCall';
 
 export type State = {
   duration: number

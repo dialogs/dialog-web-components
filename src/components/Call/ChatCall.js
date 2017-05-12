@@ -6,8 +6,6 @@
 import type { CallProps } from './types';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
-import Modal from '../Modal/Modal';
-import ModalBody from '../Modal/ModalBody';
 import Hover from '../Hover/Hover';
 import CallHeader from '../CallHeader/CallHeader';
 import CallControls from '../CallControls/CallControls';
@@ -120,13 +118,10 @@ class BigCall extends PureComponent {
       [styles.inChat]: isOnCall
     }, this.props.className);
 
-    const Wrapper = isOnCall ? 'div' : Modal;
-    const handlers = isOnCall ? {} : { onClose: this.props.onSizeToggle };
-
     return (
-      <Wrapper className={className} {...handlers} >
+      <div className={className}>
         <Hover onHover={this.handleHover} className={styles.hoverElement}>
-          <ModalBody className={styles.body}>
+          <div className={styles.body}>
             {this.renderHeader()}
             {this.renderCallInfo()}
             {this.renderVideo()}
@@ -139,18 +134,18 @@ class BigCall extends PureComponent {
               isMuted={call.isMuted}
               isCameraOn={call.isCameraOn}
               isScreenShareOn={call.isScreenSharingOn}
+              isVideoEnabled={isVideoEnabled}
+              isScreenSharingEnabled={isScreenSharingEnabled}
               onEnd={this.props.onEnd}
               onAnswer={this.props.onAnswer}
+              onSizeToggle={this.props.onSizeToggle}
               onMuteToggle={this.props.onMuteToggle}
               onCameraToggle={this.props.onCameraToggle}
               onScreenShareToggle={this.props.onScreenShareToggle}
-              isVideoEnabled={isVideoEnabled}
-              isScreenSharingEnabled={isScreenSharingEnabled}
-              onSizeToggle={this.props.onSizeToggle}
             />
-          </ModalBody>
+          </div>
         </Hover>
-      </Wrapper>
+      </div>
     );
   }
 }

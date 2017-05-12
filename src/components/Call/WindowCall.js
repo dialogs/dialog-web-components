@@ -5,7 +5,6 @@
 
 import type { CallProps } from './types';
 import React, { PureComponent } from 'react';
-import Draggable from 'react-draggable';
 import classNames from 'classnames';
 import CallHeader from '../CallHeader/CallHeader';
 import CallVideo from '../CallVideo/CallVideo';
@@ -120,32 +119,30 @@ class SmallCall extends PureComponent {
     }, this.props.className);
 
     return (
-      <Draggable>
-        <div className={className}>
-          <Hover onHover={this.handleHover} className={styles.hoverElement}>
-            {this.renderHeader()}
-            {this.renderCallInfo()}
-            {this.renderVideo()}
-            <CallControls
-              small
-              isHover={this.state.hover}
-              state={call.state}
-              isMuted={call.isMuted}
-              isCameraOn={call.isCameraOn}
-              isScreenShareOn={call.isScreenSharingOn}
-              isVideoEnabled={isVideoEnabled}
-              isScreenSharingEnabled={isScreenSharingEnabled}
-              onEnd={this.props.onEnd}
-              onAnswer={this.props.onAnswer}
-              onSizeToggle={this.props.onSizeToggle}
-              onMuteToggle={this.props.onMuteToggle}
-              onCameraToggle={this.props.onCameraToggle}
-              isAudioCall={!isVideoCall}
-              onScreenShareToggle={this.props.onScreenShareToggle}
-            />
-          </Hover>
-        </div>
-      </Draggable>
+      <div className={className}>
+        <Hover onHover={this.handleHover} className={styles.hoverElement}>
+          {this.renderHeader()}
+          {this.renderCallInfo()}
+          {this.renderVideo()}
+          <CallControls
+            small
+            isHover={this.state.hover}
+            state={call.state}
+            isMuted={call.isMuted}
+            isCameraOn={call.isCameraOn}
+            isScreenShareOn={call.isScreenSharingOn}
+            isVideoEnabled={isVideoEnabled}
+            isScreenSharingEnabled={isScreenSharingEnabled}
+            onEnd={this.props.onEnd}
+            onAnswer={this.props.onAnswer}
+            onSizeToggle={this.props.onSizeToggle}
+            onMuteToggle={this.props.onMuteToggle}
+            onCameraToggle={this.props.onCameraToggle}
+            isAudioCall={!isVideoCall}
+            onScreenShareToggle={this.props.onScreenShareToggle}
+          />
+        </Hover>
+      </div>
     );
   }
 }

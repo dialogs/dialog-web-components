@@ -20,8 +20,8 @@
 
   &.audio {
     position: relative;
-    background-color: color(#000 alpha(1%));
     border-top: 1px solid color(#000 alpha(4%));
+    background-color: color(#000 alpha(1%));
   }
 }
 
