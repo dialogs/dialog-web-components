@@ -5,7 +5,7 @@
 
 import type { List, OrderedSet } from 'immutable';
 
-export type SelectorState<T> = {
+export interface SelectorState<T> {
   hasQuery(): boolean;
   getQuery(): string;
   setQuery(query: string): SelectorState<T>;
