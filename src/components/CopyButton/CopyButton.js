@@ -22,7 +22,7 @@ type State = {
 class CopyButton extends Component {
   props: Props;
   state: State;
-  button: ?HTMLButtonElement;
+  button: ?Node;
   clipboard: ?Clipboard;
   timeout: ?number;
 
@@ -88,11 +88,7 @@ class CopyButton extends Component {
   }
 
   setButton = (button: ?Button): void => {
-    if (button) {
-      this.button = findDOMNode(button);
-    } else {
-      this.button = null;
-    }
+    this.button = findDOMNode(button);
   };
 
   render(): React.Element<any> {
