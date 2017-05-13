@@ -14,6 +14,8 @@
   position: relative;
   display: flex;
   flex-direction: row;
+  min-height: 36px;
+  box-sizing: border-box;
   padding: var(--message-vertical-padding) 36px var(--message-vertical-padding) var(--message-horizontal-padding);
   transition: box-shadow var(--message-transition-duration) ease-in-out, opacity var(--message-transition-duration) ease-in;
   font-family: var(--message-font-family);
