@@ -8,7 +8,7 @@ import React from 'react';
 import Emoji from '../Emoji/Emoji';
 import styles from './Markdown.css';
 
-export function renderText(tokens: TextToken[]): React.Element<any>[] {
+export function renderText(tokens: TextToken[], bigEmoji: boolean): React.Element<any>[] {
   const result = [];
 
   for (let index = 0; index < tokens.length; index++) {
@@ -35,7 +35,7 @@ export function renderText(tokens: TextToken[]): React.Element<any>[] {
 
       case 'emoji':
         result.push(
-          <Emoji key={index} char={content} />
+          <Emoji key={index} char={content} size={bigEmoji ? 30 : 20} />
         );
 
         break;
@@ -57,8 +57,21 @@ export function renderText(tokens: TextToken[]): React.Element<any>[] {
   return result;
 }
 
+function containsOnlyEmoji(tokens: BlockToken[]): boolean {
+  if (tokens.length === 1) {
+    const token = tokens[0];
+    if (token.type === 'paragraph') {
+      return token.content.every((child) => child.highlight === 'emoji');
+    }
+  }
+
+  return false;
+}
+
 export function renderBlocks(tokens: BlockToken[]): React.Element<any>[] {
   const result = [];
+
+  const isOnlyEmoji = containsOnlyEmoji(tokens);
 
   for (let i = 0; i < tokens.length; i++) {
     const token = tokens[i];
@@ -68,7 +81,7 @@ export function renderBlocks(tokens: BlockToken[]): React.Element<any>[] {
         if (token.content.length) {
           result.push(
             <p key={i} className={styles.paragraph}>
-              {renderText(token.content)}
+              {renderText(token.content, isOnlyEmoji)}
             </p>
           );
         } else {
