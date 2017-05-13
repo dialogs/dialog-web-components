@@ -6,22 +6,30 @@
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import { getEmojiByChar, shouldUseImage } from '@dlghq/emoji';
-import emojiImage from '@dlghq/emoji/dist/apple.png';
+import emojiImage from '@dlghq/emoji/lib/apple.png';
 import styles from './Emoji.css';
 
 const SPRITE_SIZE = 49;
+const SPRITE_BG_SIZE = SPRITE_SIZE * 100;
+const SPRITE_POSITION_MUL = 100 / (SPRITE_SIZE - 1);
+
+const SPRITE_IMAGE = `url(${emojiImage})`;
 
 export type Props = {
   className?: string,
   char: string,
-  size?: number,
+  size: number,
   children?: any
 };
 
 class Emoji extends PureComponent {
   props: Props;
 
-  render(): ?React.Element<any> {
+  static defaultProps = {
+    size: 20
+  };
+
+  render() {
     const emoji = getEmojiByChar(this.props.char);
     if (!emoji) {
       return null;
@@ -29,21 +37,14 @@ class Emoji extends PureComponent {
 
     if (shouldUseImage(emoji.char)) {
       const className = classNames(styles.image, this.props.className);
-      const mul = 100 / (SPRITE_SIZE - 1);
 
-      let style = {
-        backgroundImage: `url(${emojiImage})`,
-        backgroundPosition: `${mul * emoji.x}% ${mul * emoji.y}%`,
-        backgroundSize: `${SPRITE_SIZE * 100}%`
+      const style = {
+        width: this.props.size,
+        height: this.props.size,
+        backgroundImage: SPRITE_IMAGE,
+        backgroundPosition: `${SPRITE_POSITION_MUL * emoji.x}% ${SPRITE_POSITION_MUL * emoji.y}%`,
+        backgroundSize: `${SPRITE_BG_SIZE}%`
       };
-
-      if (this.props.size) {
-        style = {
-          ...style,
-          width: this.props.size,
-          height: this.props.size
-        };
-      }
 
       return (
         <span className={className} style={style} title={emoji.name}>
@@ -54,13 +55,10 @@ class Emoji extends PureComponent {
 
     const className = classNames(styles.char, this.props.className);
 
-    let style = {};
-    if (this.props.size) {
-      style = {
-        fontSize: this.props.size + 'px',
-        lineHeight: 1
-      };
-    }
+    const style = {
+      fontSize: this.props.size + 'px',
+      lineHeight: 1.2
+    };
 
     return (
       <span className={className} style={style} title={emoji.name}>

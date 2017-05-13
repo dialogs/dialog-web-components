@@ -3,7 +3,7 @@
  * @flow
  */
 
-import type { BlockToken, TextToken } from '@dlghq/markdown/src/types';
+import type { BlockToken, TextToken } from '@dlghq/markdown';
 import React from 'react';
 import Emoji from '../Emoji/Emoji';
 import styles from './Markdown.css';
@@ -16,13 +16,13 @@ export function renderText(tokens: TextToken[]): React.Element<any>[] {
 
     switch (highlight) {
       case 'link': {
-        const href = (options && options.href) ? options.href : content;
+        const url = (options && (options.url || options.href)) || content;
 
         result.push(
           <a
             key={index}
             className={styles.link}
-            href={href}
+            href={url}
             target="_blank"
             rel="noopener noreferrer"
           >

@@ -23,7 +23,7 @@ class EmojiListItem extends PureComponent {
   render() {
     return (
       <div className={this.props.className} onClick={this.handleClick}>
-        <Emoji char={this.props.char} className={styles.emoji} />
+        <Emoji className={styles.emoji} char={this.props.char} size={26} />
       </div>
     );
   }

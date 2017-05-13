@@ -7,8 +7,6 @@
 .image {
   display: inline-block;
   overflow: hidden;
-  width: var(--emoji-size);
-  height: var(--emoji-size);
   cursor: inherit;
   vertical-align: middle;
   background-size: 100%;
@@ -19,13 +17,12 @@
 }
 
 .char {
+  display: inline-block;
   text-align: center;
   vertical-align: middle;
   word-break: normal;
-  font-family: var(--emoji-font-family);
-  font-size: var(--emoji-font-size);
+  font-family: var(--font-emoji);
   font-weight: normal;
-  line-height: var(--emoji-line-height);
   text-size-adjust: 100%;
   letter-spacing: 2px;
 }
