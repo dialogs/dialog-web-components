@@ -16,11 +16,12 @@
   --code-font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', 'Fira Mono', 'Droid Sans Mono', 'Consolas', 'Roboto Mono', 'Source Code Pro', monospace;
 
   /* Sizes */
+  --default-background-color: #fff;
   --default-font-size-small: 14px;
   --default-font-size: 16px;
   --default-font-size-large: 18px;
   --default-font-color: #000;
-  --default-font-color-light: color(var(--default-font-color) alpha(50%));
+  --default-font-color-light: color(var(--default-font-color) blend(var(--default-background-color) 50%));
   --default-line-height-small: 1.25;
   --default-line-height: 1.5;
   --default-line-height-large: 2;
@@ -402,12 +403,13 @@
   --sidebar-recent-item-right-padding: 14px;
   --sidebar-recent-item-bottom-padding: 9px;
   --sidebar-recent-item-left-padding: 10px;
-  --sidebar-recent-item-default-color: var(--sidebar-peer-item-default-color);
+  --sidebar-recent-item-background: #fafafa;
+  --sidebar-recent-item-default-color: color(var(--sidebar-recent-item-background) blend(#000 40%));
   --sidebar-recent-item-hover-color: var(--sidebar-peer-item-hover-color);
   --sidebar-recent-item-unread-color: var(--sidebar-recent-item-hover-color);
   --sidebar-recent-item-hover-background-color: var(--sidebar-peer-item-hover-background-color);
   --sidebar-recent-item-pressed-background-color: color(var(--sidebar-recent-item-hover-background-color) shade(2%));
-  --sidebar-recent-item-message-color: color(#000 alpha(40%));
+  --sidebar-recent-item-message-color: color(var(--sidebar-recent-item-background) blend(#000 40%));
   --sidebar-recent-item-hover-message-color: color(var(--sidebar-recent-item-message-color) shade(20%));
   --sidebar-recent-item-counter-size: var(--sidebar-peer-item-counter-size);
   --sidebar-recent-item-counter-background: var(--sidebar-peer-item-counter-background);
@@ -419,7 +421,7 @@
   --sidebar-recent-item-active-background-gradient: var(--sidebar-peer-item-active-background-image);
   --sidebar-recent-item-active-color: var(--sidebar-peer-item-active-color);
   --sidebar-recent-item-active-hover-color: var(--sidebar-peer-item-active-hover-color);
-  --sidebar-recent-item-active-message-color: color(#fff alpha(80%));
+  --sidebar-recent-item-active-message-color: color(var(--sidebar-recent-item-active-background-color) blend(#fff 80%));
   --sidebar-recent-item-active-counter-color: color(#fff alpha(50%));
   --sidebar-recent-item-active-hover-background-color: var(--sidebar-peer-item-active-hover-background-color);
   --sidebar-recent-item-active-hover-background-gradient: var(--sidebar-peer-item-active-hover-background-image);

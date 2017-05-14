@@ -4,11 +4,12 @@
  */
 
 import type { User, UserOnline } from '@dlghq/dialog-types';
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Text } from '@dlghq/react-l10n';
 import classNames from 'classnames';
 import Avatar from '../Avatar/Avatar';
 import Markdown from '../Markdown/Markdown';
+import PeerInfoTitle from '../PeerInfoTitle/PeerInfoTitle';
 import styles from './ActivityProfile.css';
 
 export type Props = {
@@ -18,17 +19,10 @@ export type Props = {
   children?: mixed
 };
 
-class ActivityUserProfile extends Component {
+class ActivityUserProfile extends PureComponent {
   props: Props;
 
-  shouldComponentUpdate(nextProps: Props): boolean {
-    return nextProps.info !== this.props.info ||
-           nextProps.online !== this.props.online ||
-           nextProps.children !== this.props.children ||
-           nextProps.className !== this.props.className;
-  }
-
-  renderAvatar(): React.Element<any> {
+  renderAvatar() {
     const { info: { name, bigAvatar, placeholder } } = this.props;
 
     return (
@@ -42,31 +36,20 @@ class ActivityUserProfile extends Component {
     );
   }
 
-  renderName(): ?React.Element<any> {
-    const { info: { name } } = this.props;
-
-    if (!name) {
-      return null;
-    }
+  renderTitle() {
+    const { info: { name, nick } } = this.props;
 
     return (
-      <div className={styles.name}>{name}</div>
+      <PeerInfoTitle
+        title={name}
+        userName={nick}
+        titleClassName={styles.name}
+        userNameClassName={styles.nick}
+      />
     );
   }
 
-  renderNick(): ?React.Element<any> {
-    const { info: { nick } } = this.props;
-
-    if (!nick) {
-      return null;
-    }
-
-    return (
-      <div className={styles.nick}>{`@${nick}`}</div>
-    );
-  }
-
-  renderOnline(): ?React.Element<any> {
+  renderOnline() {
     const { online } = this.props;
 
     if (!online) {
@@ -78,7 +61,7 @@ class ActivityUserProfile extends Component {
     );
   }
 
-  renderAbout(): ?React.Element<any> {
+  renderAbout() {
     const { info: { about } } = this.props;
 
     if (!about) {
@@ -92,7 +75,7 @@ class ActivityUserProfile extends Component {
     );
   }
 
-  renderChildren(): ?React.Element<any> {
+  renderChildren() {
     const { children } = this.props;
 
     if (!children) {
@@ -105,7 +88,7 @@ class ActivityUserProfile extends Component {
   }
 
 
-  renderProfileContacts(): ?React.Element<any> {
+  renderProfileContacts() {
     const { info } = this.props;
 
     if (!info.phones.length && !info.emails.length) {
@@ -134,15 +117,14 @@ class ActivityUserProfile extends Component {
     );
   }
 
-  render(): React.Element<any> {
+  render() {
     const { className } = this.props;
     const userProfileClassName = classNames(styles.container, className);
 
     return (
       <div className={userProfileClassName}>
         {this.renderAvatar()}
-        {this.renderName()}
-        {this.renderNick()}
+        {this.renderTitle()}
         {this.renderOnline()}
         {this.renderAbout()}
         {this.renderChildren()}

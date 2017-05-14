@@ -26,6 +26,7 @@
   align-content: stretch;
   align-items: flex-start;
   color: var(--sidebar-recent-item-default-color);
+  background-color: var(--sidebar-recent-item-background);
 
   &:hover {
     background-color: var(--sidebar-recent-item-hover-background-color);

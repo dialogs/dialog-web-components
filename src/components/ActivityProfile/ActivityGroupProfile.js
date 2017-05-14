@@ -9,6 +9,7 @@ import { Text } from '@dlghq/react-l10n';
 import classNames from 'classnames';
 import Avatar from '../Avatar/Avatar';
 import Markdown from '../Markdown/Markdown';
+import PeerInfoTitle from '../PeerInfoTitle/PeerInfoTitle';
 import styles from './ActivityProfile.css';
 
 export type Props = {
@@ -20,7 +21,7 @@ export type Props = {
 class ActivityGroupProfile extends PureComponent {
   props: Props;
 
-  renderAvatar(): React.Element<any> {
+  renderAvatar() {
     const { info: { name, bigAvatar, placeholder } } = this.props;
 
     return (
@@ -34,19 +35,20 @@ class ActivityGroupProfile extends PureComponent {
     );
   }
 
-  renderName(): ?React.Element<any> {
-    const { info: { name } } = this.props;
-
-    if (!name) {
-      return null;
-    }
+  renderName() {
+    const { info: { name, shortname } } = this.props;
 
     return (
-      <div className={styles.name}>{name}</div>
+      <PeerInfoTitle
+        title={name}
+        userName={shortname}
+        titleClassName={styles.name}
+        userNameClassName={styles.nick}
+      />
     );
   }
 
-  renderCreator(): ?React.Element<any> {
+  renderCreator() {
     const { info: { type, adminId, members } } = this.props;
 
     if (type !== 'group') {
@@ -61,6 +63,7 @@ class ActivityGroupProfile extends PureComponent {
       return null;
     }
 
+    // TODO: use PeerInfoTitle
     return (
       <Text
         tagName="div"
@@ -71,7 +74,7 @@ class ActivityGroupProfile extends PureComponent {
     );
   }
 
-  renderAbout(): ?React.Element<any> {
+  renderAbout() {
     const { info: { about } } = this.props;
 
     if (!about) {
@@ -85,7 +88,7 @@ class ActivityGroupProfile extends PureComponent {
     );
   }
 
-  renderChildren(): ?React.Element<any> {
+  renderChildren() {
     const { children } = this.props;
 
     if (!children) {
@@ -97,7 +100,7 @@ class ActivityGroupProfile extends PureComponent {
     );
   }
 
-  render(): React.Element<any> {
+  render() {
     const className = classNames(styles.container, this.props.className);
 
     return (

@@ -17,3 +17,10 @@ Emoji only
 ```
 <Markdown text=">😀"  />
 ```
+
+Inline mode
+-----------
+
+```
+<Markdown text="*Hello*, :dog:" inline />
+```

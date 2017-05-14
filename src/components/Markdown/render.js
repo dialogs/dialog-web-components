@@ -3,12 +3,12 @@
  * @flow
  */
 
-import type { BlockToken, TextToken } from '@dlghq/markdown';
+import type { BlockToken, TextToken } from '@dlghq/markdown/src/types';
 import React from 'react';
 import Emoji from '../Emoji/Emoji';
 import styles from './Markdown.css';
 
-export function renderText(tokens: TextToken[], bigEmoji: boolean): React.Element<any>[] {
+export function renderText(tokens: TextToken[], bigEmoji?: boolean): React.Element<any>[] {
   const result = [];
 
   for (let index = 0; index < tokens.length; index++) {

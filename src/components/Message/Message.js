@@ -14,6 +14,7 @@ import classNames from 'classnames';
 import React, { PureComponent } from 'react';
 import MessageContent from '../MessageContent/MessageContent';
 import PeerAvatar from '../PeerAvatar/PeerAvatar';
+import PeerInfoTitle from '../PeerInfoTitle/PeerInfoTitle';
 import MessageState from '../MessageState/MessageState';
 import EmojiButton from '../EmojiButton/EmojiButton';
 import Hover from '../Hover/Hover';
@@ -157,17 +158,18 @@ class Message extends PureComponent {
       [styles.clickable]: this.props.onMentionClick
     });
 
-    const username = sender.userName ? (
-      <span className={mentionClassName} onClick={onMentionClick}>
-        {`@${sender.userName}`}
-      </span>
-      ) : null;
-
     return (
       <header className={styles.header}>
         <span>
-          <span className={titleClassName} onClick={onTitleClick}>{sender.title + ' '}</span>
-          {username}
+          <PeerInfoTitle
+            info={sender}
+            title={sender.title}
+            userName={sender.userName}
+            titleClassName={titleClassName}
+            userNameClassName={mentionClassName}
+            onTitleClick={onTitleClick}
+            onUserNameClick={onMentionClick}
+          />
           {this.renderState()}
         </span>
       </header>

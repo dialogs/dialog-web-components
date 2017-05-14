@@ -9,6 +9,7 @@ import React, { PureComponent } from 'react';
 import PeerAvatar from '../PeerAvatar/PeerAvatar';
 import ActivityListMembersKick from './ActivityListMembersKick';
 import styles from './ActivityListMembers.css';
+import PeerInfoTitle from '../PeerInfoTitle/PeerInfoTitle';
 
 export type Props = {
   uid: number,
@@ -59,7 +60,11 @@ class ActivityListMembersItem extends PureComponent {
           />
         </div>
         <div className={styles.body}>
-          <div className={styles.title} onClick={this.handleClick}>{member.peerInfo.title}</div>
+          <PeerInfoTitle
+            title={member.peerInfo.title}
+            titleClassName={styles.title}
+            onTitleClick={this.handleClick}
+          />
         </div>
         {this.renderKick()}
       </div>

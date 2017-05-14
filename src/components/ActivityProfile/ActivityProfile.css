@@ -25,6 +25,7 @@
 }
 
 .name {
+  display: block;
   margin-top: var(--default-padding);
   letter-spacing: -0.4px;
   font-size: var(--activity-profile-title-font-size);
@@ -35,6 +36,7 @@
 .nick,
 .status,
 .about {
+  display: block;
   letter-spacing: -0.4px;
   font-size: var(--activity-font-size);
   line-height: 1.3;

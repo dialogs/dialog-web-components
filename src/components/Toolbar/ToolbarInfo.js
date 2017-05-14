@@ -3,8 +3,9 @@
  * @flow
  */
 
-import React from 'react';
+import React, { PureComponent } from 'react';
 import classNames from 'classnames';
+import PeerInfoTitle from '../PeerInfoTitle/PeerInfoTitle';
 import styles from './Toolbar.css';
 
 export type Props = {
@@ -13,15 +14,23 @@ export type Props = {
   status: string
 };
 
-function ToolbarInfo(props: Props): React.Element<any> {
-  const className = classNames(styles.info, props.className);
+class ToolbarInfo extends PureComponent {
+  props: Props;
 
-  return (
-    <div className={className}>
-      <div className={styles.name}>{props.title}</div>
-      <div className={styles.status}>{props.status}</div>
-    </div>
-  );
+  render() {
+    const className = classNames(styles.info, this.props.className);
+
+    return (
+      <div className={className}>
+        <PeerInfoTitle
+          tagName="div"
+          title={this.props.title}
+          titleClassName={styles.name}
+        />
+        <div className={styles.status}>{this.props.status}</div>
+      </div>
+    );
+  }
 }
 
 export default ToolbarInfo;

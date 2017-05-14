@@ -9,7 +9,9 @@ import { Text } from '@dlghq/react-l10n';
 import classNames from 'classnames';
 import Spinner from '../Spinner/Spinner';
 import PeerAvatar from '../PeerAvatar/PeerAvatar';
+import PeerInfoTitle from '../PeerInfoTitle/PeerInfoTitle';
 import DoublePeerAvatar from '../DoublePeerAvatar/DoublePeerAvatar';
+import MessagePreview from './MessagePreview/MessagePreview';
 import Icon from '../Icon/Icon';
 import styles from './SidebarRecentItem.css';
 
@@ -27,10 +29,6 @@ export type Props = {
   favourite: ?boolean,
   onSelect: (peer: Peer) => any
 };
-
-function getSenderTitle(title: string): string {
-  return title.split(' ')[0];
-}
 
 class SidebarRecentItem extends PureComponent {
   props: Props;
@@ -68,31 +66,8 @@ class SidebarRecentItem extends PureComponent {
     );
   }
 
-  renderStatusSender() {
-    const { uid, info, message } = this.props;
-    if (message && message.sender) {
-      if (uid === message.sender.peer.id) {
-        return (
-          <Text className={styles.sender} id="SidebarRecentItem.you" />
-        );
-      }
-
-      if (info.type === 'group') {
-        const title = getSenderTitle(message.sender.title);
-
-        return (
-          <span className={styles.sender}>
-            {title + ': '}
-          </span>
-        );
-      }
-    }
-
-    return null;
-  }
-
   renderStatus() {
-    const { message, typing, draft } = this.props;
+    const { uid, info, message, typing, draft, active } = this.props;
     if (typing) {
       return (
         <div className={styles.message}>
@@ -114,40 +89,15 @@ class SidebarRecentItem extends PureComponent {
     }
 
     if (message) {
-      const { content } = message;
-
-      switch (content.type) {
-        case 'text':
-          return (
-            <div className={styles.message}>
-              {this.renderStatusSender()}
-              {content.text}
-            </div>
-          );
-
-        case 'service':
-          return (
-            <div className={styles.message}>
-              <span className={styles.service}>
-                {content.text}
-              </span>
-            </div>
-          );
-
-        case 'unsupported':
-          return null;
-
-        default:
-          return (
-            <div className={styles.message}>
-              {this.renderStatusSender()}
-              <Text
-                className={styles.highlight}
-                id={`SidebarRecentItem.${content.type}`}
-              />
-            </div>
-          );
-      }
+      return (
+        <MessagePreview
+          className={styles.message}
+          uid={uid}
+          info={info}
+          message={message}
+          active={active}
+        />
+      );
     }
 
     return null;
@@ -194,7 +144,7 @@ class SidebarRecentItem extends PureComponent {
         break;
 
       default:
-        // do nothing
+      // do nothing
     }
 
     return icons;
@@ -215,7 +165,7 @@ class SidebarRecentItem extends PureComponent {
         <div className={styles.text}>
           <div className={styles.title}>
             {this.renderIcons()}
-            <span>{this.props.info.title}</span>
+            <PeerInfoTitle title={this.props.info.title} />
           </div>
           {this.renderStatus()}
         </div>

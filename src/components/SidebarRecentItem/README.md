@@ -2,7 +2,7 @@
 const nkt = {
   peer: { id: 1, type: 'user', key: 'u1' },
   type: 'user',
-  title: 'Nikita',
+  title: 'Nikita 👨‍💻',
   userName: 'gusnkt',
   avatar: 'https://avatars3.githubusercontent.com/u/3505878',
   placeholder: 'red'

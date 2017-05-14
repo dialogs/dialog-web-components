@@ -5,8 +5,9 @@
 import type { Peer, PeerInfo } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
-import styles from './SidebarPeerItem.css';
 import PeerAvatar from '../PeerAvatar/PeerAvatar';
+import PeerInfoTitle from '../PeerInfoTitle/PeerInfoTitle';
+import styles from './SidebarPeerItem.css';
 
 export type Props = {
   className?: string,
@@ -33,10 +34,10 @@ class SidebarPeerItem extends PureComponent {
 
   render() {
     const { active, counter, info, online } = this.props;
-    const className = classNames(styles.container, {
+    const className = classNames(styles.container, this.props.className, {
       [styles.active]: active,
       [styles.unread]: counter !== 0
-    }, this.props.className);
+    });
 
     return (
       <div className={className} onClick={this.handleClick}>
@@ -46,7 +47,7 @@ class SidebarPeerItem extends PureComponent {
           online={online}
         />
         <div className={styles.text}>
-          <div className={styles.title}>{info.title}</div>
+          <PeerInfoTitle title={info.title} titleClassName={styles.title} />
         </div>
         {counter > 0 ? (
           <div className={styles.counter}>{counter}</div>
