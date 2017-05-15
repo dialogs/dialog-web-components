@@ -6,7 +6,7 @@
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import { getEmojiByChar, shouldUseImage } from '@dlghq/emoji';
-import emojiImage from '@dlghq/emoji/dist/apple.png';
+import emojiImage from '@dlghq/emoji/lib/apple.png';
 import styles from './Emoji.css';
 
 const SPRITE_SIZE = 49;
