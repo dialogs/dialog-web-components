@@ -111,8 +111,7 @@ class Call extends PureComponent {
       return null;
     }
 
-    // const ChildCall = small ? CallWindow : CallChat;
-    const ChildCall = CallWindow;
+    const ChildCall = small ? CallWindow : CallChat;
 
     return (
       <ChildCall

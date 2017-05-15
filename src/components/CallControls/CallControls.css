@@ -34,3 +34,9 @@
     background-color: transparent;
   }
 }
+
+.large {
+  padding: 0 0 var(--default-padding-large);
+  box-shadow: none;
+  background-color: transparent;
+}

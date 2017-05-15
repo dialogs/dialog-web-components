@@ -8,6 +8,11 @@ import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import Hover from '../Hover/Hover';
 import CallVideo from '../CallVideo/CallVideo';
+import CallAvatar from '../CallAvatar/CallAvatar';
+import CallInfo from '../CallInfo/CallInfo';
+import CallControls from '../CallControls/CallControls';
+import isOnCall from './utils/isOnCall';
+import { hasVideos } from './utils/hasVideo';
 import styles from './Call.css';
 
 type State = {
@@ -27,67 +32,99 @@ class CallChat extends PureComponent {
   }
 
   handleHover = (hover: boolean) => {
-    if (this.isCallWithVideo()) {
+    const { call } = this.props;
+
+    if (hasVideos(call)) {
       this.setState({ hover });
     }
   };
 
-  isCallWithVideo = (): boolean => {
-    return Boolean(this.props.call.ownVideos.length || this.props.call.theirVideos.length);
-  };
-
-
   renderVideo(): ?React.Element<any> {
-    const { call: { ownVideos, theirVideos } } = this.props;
+    const { call } = this.props;
 
-    if (this.isCallWithVideo()) {
-      return (
-        <CallVideo
-          ownVideos={ownVideos}
-          theirVideos={theirVideos}
-        />
-      );
+    if (!hasVideos(call) || !isOnCall(call.state)) {
+      return null;
     }
 
-    return null;
+    return (
+      <CallVideo
+        ownVideos={call.ownVideos}
+        theirVideos={call.theirVideos}
+      />
+    );
   }
 
-  renderAvatar(): React.Element<any> {
-    const { caller, duration, call } = this.props;
+  renderAvatar(): ?React.Element<any> {
+    const { caller, call } = this.props;
 
-    if (this.isCallWithVideo()) {
+    if (hasVideos(call)) {
       return null;
     }
 
     return (
       <CallAvatar
-        small={false}
-        isAudioCall
+        animated={!isOnCall(call.state)}
+        size={200}
         state={call.state}
         caller={caller}
       />
     );
-
   }
 
-  renderInfo(): React.Element<any> {
+  renderInfo(): ?React.Element<any> {
+    const { call, caller, duration } = this.props;
 
+    if (hasVideos(call)) {
+      return null;
+    }
+
+    return (
+      <div className={styles.info}>
+        {this.renderAvatar()}
+        <CallInfo
+          className={styles.chatCallState}
+          onCall={false}
+          call={call}
+          caller={caller}
+          duration={duration}
+          withVideo={false}
+        />
+      </div>
+    );
   }
 
   renderControls(): React.Element<any> {
+    const { call } = this.props;
 
+    return (
+      <CallControls
+        onCall={isOnCall(call.state)}
+        withVideo={hasVideos(call)}
+        size="large"
+        isVisible={this.state.hover}
+        state={call.state}
+        isMuted={call.isMuted}
+        isCameraOn={call.isCameraOn}
+        isScreenShareOn={call.isScreenSharingOn}
+        onEnd={this.props.onEnd}
+        onAnswer={this.props.onAnswer}
+        onMuteToggle={this.props.onMuteToggle}
+        onCameraToggle={this.props.onCameraToggle}
+        onScreenShareToggle={this.props.onScreenShareToggle}
+      />
+    );
   }
 
   render() {
-    const { call, isVideoEnabled, isScreenSharingEnabled } = this.props;
     const className = classNames(styles.container, this.props.className);
 
     return (
       <div className={className}>
         <Hover onHover={this.handleHover} className={styles.hover}>
-          {this.renderVideo()}
-          {this.renderAvatar()}
-          {this.renderInfo()}
+          <div className={styles.content}>
+            {this.renderVideo()}
+            {this.renderInfo()}
+          </div>
           {this.renderControls()}
         </Hover>
       </div>

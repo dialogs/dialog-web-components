@@ -73,6 +73,7 @@ class CallWindow extends PureComponent {
           call={call}
           caller={caller}
           duration={duration}
+          withVideo={false}
         />
       </div>
     );

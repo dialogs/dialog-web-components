@@ -5,19 +5,37 @@
 @import '../../styles/variables.css';
 
 /* Styles */
-.window {
+.container {
   position: relative;
   z-index: var(--z-index-call);
   overflow: hidden;
-  border-radius: 6px;
   background-color: var(--call-background-color);
-  box-shadow: 0 1px 2px 0 color(#000 alpha(12%)), inset 0 0 0 1px color(#000 alpha(15%));
   font-family: var(--default-font-family);
   display: flex;
   flex-direction: column;
   align-content: center;
   align-items: center;
   justify-content: center;
+  min-height: 500px;
+}
+
+.window {
+  border-radius: 6px;
+  box-shadow: 0 1px 2px 0 color(#000 alpha(12%)), inset 0 0 0 1px color(#000 alpha(15%));
+  position: relative;
+  z-index: var(--z-index-call);
+  overflow: hidden;
+  background-color: var(--call-background-color);
+  font-family: var(--default-font-family);
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+
+  & .info {
+    padding: calc(var(--default-padding-large) * 2.5) 0 0;
+  }
 }
 
 .hover {
@@ -31,6 +49,9 @@
 .content {
   display: flex;
   flex: 1 1 auto;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
   @apply --flex-fix;
 }
 
@@ -42,9 +63,13 @@
   align-items: center;
   align-content: center;
   justify-content: center;
-  padding: calc(var(--default-padding-large) * 2.5) 0 0;
 }
 
 .callState {
   padding-top: calc(var(--default-padding-large) * 2);
+}
+
+.chatCallState {
+  height: auto;
+  padding-top: calc(var(--default-padding-large) * 3);
 }

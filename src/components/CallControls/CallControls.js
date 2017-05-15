@@ -33,7 +33,8 @@ class CallControls extends PureComponent {
     const className = classNames(styles.container, {
       [styles.hide]: !isVisible,
       [styles.onCall]: onCall,
-      [styles.withVideo]: withVideo
+      [styles.withVideo]: withVideo,
+      [styles.large]: size === 'large'
     });
 
     const buttons = [];
