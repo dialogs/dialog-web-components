@@ -10,10 +10,21 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
+  align-content: center;
+  justify-content: flex-start;
+  align-items: center;
   z-index: calc(var(--z-index-call) + 10);
-  transition: opacity 150ms ease;
+  transition: opacity 150ms ease-out;
 }
 
 .hide {
   opacity: 0;
+}
+
+.withVideo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: var(--default-padding-small) var(--default-padding);
+  background-color: color(#000 alpha(45%));
 }

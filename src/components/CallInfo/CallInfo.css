@@ -32,18 +32,31 @@
   line-height: 20px;
 }
 
+
 .onCall {
-  display: block;
-  text-align: left;
+  align-items: flex-start;
+  align-content: flex-start;
+  justify-content: center;
   height: 40px;
   padding-left: var(--default-padding);
 
   & .caller {
     font-size: var(--call-info-oncall-caller-font-size);
-    line-height: 25px;
+    line-height: 20px;
   }
   & .state {
     font-size: var(--call-info-oncall-state-font-size);
     line-height: 15px;
+  }
+
+  &.withVideo {
+    & .caller {
+      font-size: var(--call-info-video-caller-font-size);
+      color: var(--call-info-oncall-caller-color);
+    }
+    & .state {
+      font-size: var(--call-info-video-state-font-size);
+      color: var(--call-info-oncall-state-color);
+    }
   }
 }

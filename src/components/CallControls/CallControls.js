@@ -10,7 +10,6 @@ import IconButton from '../IconButton/IconButton';
 import styles from './CallControls.css';
 
 export type Props = {
-  className?: string,
   state: CallState,
   size: 'normal' | 'large',
   isVisible: boolean,
@@ -22,16 +21,20 @@ export type Props = {
   onMuteToggle?: () => void,
   onCameraToggle?: ?() => void,
   onScreenShareToggle?: ?() => void,
+  onCall: boolean,
+  withVideo: boolean
 };
 
 class CallControls extends PureComponent {
   props: Props;
 
   render() {
-    const { state, size } = this.props;
+    const { state, size, isVisible, onCall, withVideo } = this.props;
     const className = classNames(styles.container, {
-      [styles.hide]: !this.props.isVisible
-    }, this.props.className);
+      [styles.hide]: !isVisible,
+      [styles.onCall]: onCall,
+      [styles.withVideo]: withVideo
+    });
 
     const buttons = [];
 

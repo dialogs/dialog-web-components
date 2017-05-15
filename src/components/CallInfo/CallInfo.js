@@ -14,12 +14,14 @@ export type Props = {
   call: Call,
   caller: User,
   duration: number,
-  onCall: boolean
+  onCall: boolean,
+  withVideo: boolean
 };
 
 function CallInfo(props: Props): React.Element<any> {
   const className = classNames(styles.container, {
-    [styles.onCall]: props.onCall
+    [styles.onCall]: props.onCall,
+    [styles.withVideo]: props.withVideo
   }, props.className);
 
   return (

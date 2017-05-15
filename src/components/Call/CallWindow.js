@@ -36,18 +36,18 @@ class CallWindow extends PureComponent {
   handleHover = (hover: boolean) => {
     const { call } = this.props;
 
-    if (hasTheirVideos(call)) {
+    if (hasTheirVideos(call) && isOnCall(call.state)) {
       this.setState({ hover });
     }
   };
 
   renderHeader(): React.Element<any> {
     const { call, caller, duration } = this.props;
-    const className = classNames(hasTheirVideos(call) ? styles.headerVideo : styles.header);
+    const withVideo = hasTheirVideos(call);
 
     return (
       <CallHeader
-        className={className}
+        withVideo={withVideo}
         call={call}
         caller={caller}
         duration={duration}
@@ -101,29 +101,21 @@ class CallWindow extends PureComponent {
       );
     }
 
-    if (hasTheirVideos(call)) {
-      return (
-        <div className={styles.content}>
-          {this.renderHeader()}
-          {this.renderVideo()}
-        </div>
-      );
-    }
-
     return (
       <div className={styles.content}>
         {this.renderHeader()}
+        {this.renderVideo()}
       </div>
     );
   }
 
   renderControls(): React.Element<any> {
     const { call } = this.props;
-    const className = classNames(isOnCall(call.state) ? styles.controlsOnCall : styles.controls);
 
     return (
       <CallControls
-        className={className}
+        onCall={isOnCall(call.state)}
+        withVideo={hasTheirVideos(call)}
         size="normal"
         isVisible={this.state.hover}
         state={call.state}

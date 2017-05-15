@@ -29,7 +29,7 @@ function getWindowSize(call: Call): Dimension {
 
   return {
     width: 300,
-    height: 130
+    height: 138
   };
 }
 

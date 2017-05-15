@@ -131,6 +131,8 @@
   --call-info-oncall-state-color: var(--call-info-oncall-caller-color);
   --call-info-oncall-caller-font-size: 18px;
   --call-info-oncall-state-font-size: 14px;
+  --call-info-video-caller-font-size: 16px;
+  --call-info-video-state-font-size: 12px;
   /* Checkbox */
   --checkbox-size: 16px;
   /* Confirm */
