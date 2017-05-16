@@ -4,7 +4,6 @@
  */
 
 import React, { PureComponent } from 'react';
-import classNames from 'classnames';
 import CallVideoStream from './CallVideoStream';
 import styles from './CallVideo.css';
 
