@@ -58,13 +58,8 @@ class CallVideo extends PureComponent {
   }
 
   render() {
-    const { ownVideos } = this.props;
-    const className = classNames(styles.container, {
-      [styles.onlyOwnVideo]: ownVideos && ownVideos.length
-    });
-
     return (
-      <div className={className}>
+      <div className={styles.container}>
         {this.renderTheirVideos()}
         {this.renderOwnVideos()}
       </div>
