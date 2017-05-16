@@ -54,12 +54,6 @@ class Call extends PureComponent {
     }
   };
 
-  handleSizeToggle = (): void => {
-    if (this.props.id) {
-      this.props.onSizeToggle(this.props.id, !this.props.small);
-    }
-  };
-
   handleMuteToggle = (): void => {
     const { id, call } = this.props;
     if (id && call) {
@@ -120,7 +114,7 @@ class Call extends PureComponent {
         duration={duration}
         onEnd={this.handleEnd}
         onAnswer={this.handleAnswer}
-        onSizeToggle={this.handleSizeToggle}
+        onResize={this.props.onResize}
         onMuteToggle={this.handleMuteToggle}
         onCameraToggle={isVideoEnabled ? this.handleCameraToggle : null}
         onScreenShareToggle={isScreenSharingEnabled ? this.handleScreenShareToggle : null}

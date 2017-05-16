@@ -117,10 +117,6 @@ class CallExample extends PureComponent {
     });
   };
 
-  handleSizeToggle = () => {
-    this.setState({ small: !this.state.small });
-  };
-
   handleMuteToggle = () => {
     this.setState({
       call: {
@@ -181,6 +177,10 @@ class CallExample extends PureComponent {
     }
   };
 
+  handleResize = (dimension) => {
+    console.debug(dimension);
+  };
+
   render() {
     return (
       <div>
@@ -196,7 +196,7 @@ class CallExample extends PureComponent {
           isScreenSharingEnabled={this.props.withScreenSharing}
           onEnd={this.handleEnd}
           onAnswer={this.handleAnswer}
-          onSizeToggle={this.handleSizeToggle}
+          onResize={this.handleResize}
           onMuteToggle={this.handleMuteToggle}
           onCameraToggle={this.handleCameraToggle}
           onScreenShareToggle={this.handleScreenShareToggle}

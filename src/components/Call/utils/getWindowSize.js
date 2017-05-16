@@ -7,7 +7,7 @@ import type { Call } from '@dlghq/dialog-types';
 import { hasTheirVideos } from './hasVideo';
 import isOnCall from './isOnCall';
 
-type Dimension = {
+export type Dimension = {
   width: number,
   height: number
 };
@@ -16,7 +16,7 @@ function getWindowSize(call: Call): Dimension {
   if (!isOnCall(call.state)) {
     return {
       width: 340,
-      height: 360
+      height: 380
     };
   }
 

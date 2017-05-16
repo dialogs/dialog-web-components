@@ -54,23 +54,6 @@ class CallChat extends PureComponent {
     );
   }
 
-  renderAvatar(): ?React.Element<any> {
-    const { caller, call } = this.props;
-
-    if (hasVideos(call)) {
-      return null;
-    }
-
-    return (
-      <CallAvatar
-        animated={!isOnCall(call.state)}
-        size={200}
-        state={call.state}
-        caller={caller}
-      />
-    );
-  }
-
   renderInfo(): ?React.Element<any> {
     const { call, caller, duration } = this.props;
 
@@ -80,7 +63,12 @@ class CallChat extends PureComponent {
 
     return (
       <div className={styles.info}>
-        {this.renderAvatar()}
+        <CallAvatar
+          animated={!isOnCall(call.state)}
+          size={200}
+          state={call.state}
+          caller={caller}
+        />
         <CallInfo
           className={styles.chatCallState}
           onCall={false}

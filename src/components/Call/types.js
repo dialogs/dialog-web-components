@@ -4,6 +4,7 @@
  */
 
 import type { Call, User } from '@dlghq/dialog-types';
+import type { Dimension } from './utils/getWindowSize';
 
 export type CallWrapperProps = {
   className?: string,
@@ -13,10 +14,10 @@ export type CallWrapperProps = {
   small: boolean,
   onEnd: (id: string) => any,
   onAnswer: (id: string) => any,
-  onSizeToggle: (id: string, small: boolean) => any,
   onMuteToggle: (id: string, isMuted: boolean) => any,
   onCameraToggle: (id: string, isCameraOn: boolean) => any,
   onScreenShareToggle: (id: string, isScreenShareOn: boolean) => any,
+  onResize: (dimension: Dimension) => void,
   isVideoEnabled: boolean,
   isScreenSharingEnabled: boolean
 };
@@ -28,8 +29,8 @@ export type CallProps = {
   duration: number,
   onEnd: () => void,
   onAnswer: () => void,
-  onSizeToggle: () => void,
   onMuteToggle: () => void,
   onCameraToggle?: ?() => void,
   onScreenShareToggle?: ?() => void,
+  onResize: (dimension: Dimension) => void
 };

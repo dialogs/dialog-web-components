@@ -33,6 +33,16 @@ class CallWindow extends PureComponent {
     };
   }
 
+  componentDidMount() {
+    const { call } = this.props;
+    this.props.onResize(getWindowSize(call));
+  }
+
+  componentDidUpdate() {
+    const { call } = this.props;
+    this.props.onResize(getWindowSize(call));
+  }
+
   handleHover = (hover: boolean) => {
     const { call } = this.props;
 

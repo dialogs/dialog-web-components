@@ -16,9 +16,13 @@
   align-content: center;
   align-items: center;
   justify-content: center;
-  min-height: 500px;
   flex: 1 1 auto;
   @apply --flex-fix;
+  min-height: 500px;
+
+  & .info {
+    padding: calc(var(--default-padding-large) * 2.5) 0 0;
+  }
 }
 
 .window {
@@ -42,33 +46,35 @@
 
 .hover {
   display: flex;
-  flex: 1 1 auto;
   flex-direction: column;
   width: 100%;
+  flex: 1 1 auto;
   @apply --flex-fix;
 }
 
 .content {
   display: flex;
-  flex: 1 1 auto;
   align-content: center;
   align-items: center;
   justify-content: center;
+  flex: 1 1 auto;
   @apply --flex-fix;
 }
 
 .info {
   display: flex;
-  flex: 1 1 auto;
-  @apply --flex-fix;
   flex-direction: column;
   align-items: center;
   align-content: center;
   justify-content: center;
+  flex: 1 1 auto;
+  @apply --flex-fix;
+  box-sizing: border-box;
 }
 
 .callState {
-  padding-top: calc(var(--default-padding-large) * 2);
+  box-sizing: border-box;
+  padding-top: calc(var(--default-padding-large) * 2.5);
 }
 
 .chatCallState {
