@@ -5,38 +5,38 @@
 @import '../../styles/variables.css';
 
 .container {
-  position: absolute;
   text-align: center;
-  bottom: 0;
-  right: 0;
-  width: 100%;
+  transition: transform 150ms ease-out;
+  z-index: calc(var(--z-index-call) + 10);
   padding: var(--default-padding-large) 0;
-  transition: transform 250ms ease;
-}
-
-.small {
-  margin: 0;
-  padding: calc(var(--default-padding) / 2) 0;
-
-  &.audio {
-    position: relative;
-    background-color: color(#000 alpha(1%));
-    border-top: 1px solid color(#000 alpha(4%));
-  }
+  position: relative;
 }
 
 .button {
   margin: 0 5px;
 }
 
-.sizeButton {
-  composes: button;
-  position: absolute;
-  top: var(--default-padding);
-  right: var(--default-padding);
-  margin: 0;
+.hide {
+  transform: translateY(100px);
 }
 
-.hide {
-  transform: translateY(150px);
+.onCall {
+  padding: calc(var(--default-padding) / 2) 0;
+  box-shadow: inset 0 1px 0 0 color(#000 alpha(4%));
+  background-color: color(#000 alpha(1%));
+
+  &.withVideo {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    box-shadow: none;
+    background-color: transparent;
+  }
+}
+
+.large {
+  padding: 0 0 var(--default-padding-large);
+  box-shadow: none;
+  background-color: transparent;
 }

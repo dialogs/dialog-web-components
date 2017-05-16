@@ -10,18 +10,19 @@ import CallInfoState from './CallInfoState';
 import styles from './CallInfo.css';
 
 export type Props = {
-  isAudioCall: boolean,
+  className?: string,
   call: Call,
   caller: User,
-  small: boolean,
-  duration: number
+  duration: number,
+  onCall: boolean,
+  withVideo: boolean
 };
 
 function CallInfo(props: Props): React.Element<any> {
   const className = classNames(styles.container, {
-    [styles.audio]: props.isAudioCall,
-    [styles.small]: props.small
-  });
+    [styles.onCall]: props.onCall,
+    [styles.withVideo]: props.withVideo
+  }, props.className);
 
   return (
     <div className={className}>

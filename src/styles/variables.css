@@ -120,27 +120,19 @@
   --button-warning-color: var(--button-default-color);
   --button-transition-duration: var(--default-transition-duration);
   /* Call */
-  --call-default-width: 400px;
-  --call-default-height: 360px;
-  --call-small-width: 300px;
-  --call-small-height: 140px;
-  --call-video-width: 640px;
-  --call-video-height: 400px;
-  --call-video-small-width: 355px;
-  --call-video-small-height: 200px;
   --call-background-color: #fff;
   --call-video-background-color: #000;
   --call-default-padding: calc(var(--default-padding-large) * 3);
-  --call-info-caller-color: #fff;
-  --call-info-state-color: var(--call-info-caller-color);
-  --call-info-caller-font-size: 18px;
-  --call-info-state-font-size: 14px;
-  --call-info-small-caller-font-size: 14px;
-  --call-info-small-state-font-size: 13px;
-  --call-audio-info-caller-color: #000;
-  --call-audio-info-state-color: color(var(--call-audio-info-caller-color) alpha(50%));
-  --call-audio-info-caller-font-size: 24px;
-  --call-audio-info-state-font-size: 18px;
+  --call-info-caller-color: #000;
+  --call-info-state-color: color(var(--call-info-caller-color) alpha(50%));
+  --call-info-caller-font-size: 24px;
+  --call-info-state-font-size: 18px;
+  --call-info-oncall-caller-color: #fff;
+  --call-info-oncall-state-color: var(--call-info-oncall-caller-color);
+  --call-info-oncall-caller-font-size: 18px;
+  --call-info-oncall-state-font-size: 14px;
+  --call-info-video-caller-font-size: 16px;
+  --call-info-video-state-font-size: 12px;
   /* Checkbox */
   --checkbox-size: 16px;
   /* Confirm */

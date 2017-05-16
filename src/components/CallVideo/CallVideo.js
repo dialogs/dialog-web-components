@@ -4,12 +4,12 @@
  */
 
 import React, { PureComponent } from 'react';
+import classNames from 'classnames';
 import CallVideoStream from './CallVideoStream';
 import styles from './CallVideo.css';
 
 export type Props = {
-  small: boolean,
-  ownVideos: MediaSource[],
+  ownVideos?: MediaSource[],
   theirVideos: MediaSource[]
 };
 
@@ -33,9 +33,9 @@ class CallVideo extends PureComponent {
   }
 
   renderOwnVideos() {
-    const { ownVideos, small } = this.props;
+    const { ownVideos } = this.props;
 
-    if (small) {
+    if (!ownVideos) {
       return null;
     }
 
@@ -58,8 +58,13 @@ class CallVideo extends PureComponent {
   }
 
   render() {
+    const { ownVideos } = this.props;
+    const className = classNames(styles.container, {
+      [styles.onlyOwnVideo]: ownVideos && ownVideos.length
+    });
+
     return (
-      <div className={styles.container}>
+      <div className={className}>
         {this.renderTheirVideos()}
         {this.renderOwnVideos()}
       </div>

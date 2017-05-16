@@ -5,8 +5,8 @@
 
 import type { CallWrapperProps as Props } from './types';
 import React, { PureComponent } from 'react';
-import BigCall from './BigCall';
-import SmallCall from './SmallCall';
+import CallChat from './CallChat';
+import CallWindow from './CallWindow';
 
 export type State = {
   duration: number
@@ -104,18 +104,17 @@ class Call extends PureComponent {
   }
 
   render(): ?React.Element<any> {
-    const { id, call, caller, small, isVideoEnabled, isScreenSharingEnabled, isOnCall } = this.props;
+    const { id, call, caller, small, isVideoEnabled, isScreenSharingEnabled } = this.props;
     const { duration } = this.state;
 
     if (!id || !call || !caller) {
       return null;
     }
 
-    const ChildCall = small ? SmallCall : BigCall;
+    const ChildCall = small ? CallWindow : CallChat;
 
     return (
       <ChildCall
-        isOnCall={isOnCall}
         call={call}
         caller={caller}
         duration={duration}
@@ -123,10 +122,8 @@ class Call extends PureComponent {
         onAnswer={this.handleAnswer}
         onSizeToggle={this.handleSizeToggle}
         onMuteToggle={this.handleMuteToggle}
-        onCameraToggle={this.handleCameraToggle}
-        onScreenShareToggle={this.handleScreenShareToggle}
-        isVideoEnabled={isVideoEnabled}
-        isScreenSharingEnabled={isScreenSharingEnabled}
+        onCameraToggle={isVideoEnabled ? this.handleCameraToggle : null}
+        onScreenShareToggle={isScreenSharingEnabled ? this.handleScreenShareToggle : null}
       />
     );
   }

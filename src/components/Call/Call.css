@@ -8,101 +8,68 @@
 .container {
   position: relative;
   z-index: var(--z-index-call);
-  width: var(--call-default-width);
-  height: var(--call-default-height);
+  overflow: hidden;
   background-color: var(--call-background-color);
   font-family: var(--default-font-family);
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  min-height: 500px;
+}
+
+.window {
+  border-radius: 6px;
+  box-shadow: 0 1px 2px 0 color(#000 alpha(12%)), inset 0 0 0 1px color(#000 alpha(15%));
+  position: relative;
+  z-index: var(--z-index-call);
   overflow: hidden;
-  transition-property: width, height, background;
-  transition-duration: 250ms;
-  transition-timing-function: ease-out;
-  transform: translateZ(0);
+  background-color: var(--call-background-color);
+  font-family: var(--default-font-family);
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
 
-  & .body {
-    padding: var(--default-padding-large) 0 calc(var(--default-padding-large) * 2.5);
+  & .info {
+    padding: calc(var(--default-padding-large) * 2.5) 0 0;
   }
 }
 
-.video {
-  width: var(--call-video-width);
-  height: var(--call-video-height);
-  background-color: var(--call-video-background-color);
-
-  &.small {
-    width: var(--call-video-small-width);
-    height: var(--call-video-small-height);
-  }
-
-  & .body {
-    padding: 0;
-  }
-}
-
-.inChat {
-  width: auto;
-  height: auto;
+.hover {
   display: flex;
   flex: 1 1 auto;
+  flex-direction: column;
+  width: 100%;
   @apply --flex-fix;
 }
 
-.body {
+.content {
   display: flex;
-  flex-direction: column;
-  padding: 0;
-  align-items: center;
+  flex: 1 1 auto;
   align-content: center;
+  align-items: center;
   justify-content: center;
+  @apply --flex-fix;
 }
 
 .info {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  align-content: center;
-  justify-content: center;
-  width: 100%;
-}
-
-.infoSmall {
-  padding: var(--default-padding-large);
-  height: 48px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  align-content: center;
-  justify-content: center;
-}
-
-.hoverElement {
-  display: flex;
   flex: 1 1 auto;
-  flex-direction: column;
   @apply --flex-fix;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
 }
 
-.small {
-  position: absolute;
-  display: flex;
-  top: 50px;
-  right: 50px;
-  box-sizing: border-box;
-  width: var(--call-small-width);
-  min-height: var(--call-small-height);
+.callState {
+  padding-top: calc(var(--default-padding-large) * 2);
+}
+
+.chatCallState {
   height: auto;
-  cursor: grab;
-  border-radius: 6px;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.12), inset 0 0 0 1px rgba(0, 0, 0, 0.15);
-
-  & .toggleSize {
-    top: 8px;
-    right: 8px;
-  }
-}
-
-.toggleSize {
-  position: absolute;
-  padding: 2px;
-  top: 12px;
-  right: 12px;
+  padding-top: calc(var(--default-padding-large) * 3);
 }
