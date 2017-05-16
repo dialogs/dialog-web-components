@@ -67,17 +67,17 @@ module.exports = {
       },
       item: {
         '& a': {
-          'fontWeight': 500,
           'color': 'rgba(255, 255, 255, 0.9) !important',
           '&:hover': {
             textDecoration: 'underline',
+            fontWeight: 500,
             color: '#fff !important'
           }
         }
       },
       heading: {
         fontSize: '18px !important',
-        fontWeight: 500,
+        fontWeight: '600 !important',
         color: '#fff !important'
       }
     },
@@ -92,45 +92,42 @@ module.exports = {
         'backgroundColor': 'transparent',
         '&::-webkit-input-placeholder': {
           opacity: 1,
-          color: 'rgba(255, 255, 255, 0.6)'
+          color: 'rgba(255, 255, 255, 0.7)'
         },
         '&:-moz-placeholder': {
           opacity: 1,
-          color: 'rgba(255, 255, 255, 0.6)'
+          color: 'rgba(255, 255, 255, 0.7)'
         },
         '&::-moz-placeholder': {
           opacity: 1,
-          color: 'rgba(255, 255, 255, 0.6)'
+          color: 'rgba(255, 255, 255, 0.7)'
         },
         '&:-ms-input-placeholder': {
           opacity: 1,
-          color: 'rgba(255, 255, 255, 0.6)'
+          color: 'rgba(255, 255, 255, 0.7)'
         },
         '&:hover': {
-          borderColor: 'rgba(255, 255, 255, 0.6)'
+          borderColor: 'rgba(255, 255, 255, 0.7)'
         },
         '&:focus': {
           'borderColor': '#fff !important',
           '&::-webkit-input-placeholder': {
-            color: 'rgba(255, 255, 255, 0.8)'
+            color: 'rgba(255, 255, 255, 0.9)'
           },
           '&:-moz-placeholder': {
-            color: 'rgba(255, 255, 255, 0.8)'
+            color: 'rgba(255, 255, 255, 0.9)'
           },
           '&::-moz-placeholder': {
-            color: 'rgba(255, 255, 255, 0.8)'
+            color: 'rgba(255, 255, 255, 0.9)'
           },
           '&:-ms-input-placeholder': {
-            color: 'rgba(255, 255, 255, 0.8)'
+            color: 'rgba(255, 255, 255, 0.9)'
           }
         }
       }
     },
     Playground: {
       root: {
-        '& .Wrapper__container': {
-          padding: 8
-        },
         '& .styleguide__buttons': {
           '& .Button__container': {
             margin: 4

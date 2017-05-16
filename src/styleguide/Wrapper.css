@@ -7,6 +7,7 @@
     linear-gradient(45deg, #efefef 25%, transparent 25%, transparent 75%, #efefef 75%, #efefef);
   background-position: 0 0, 10px 10px;
   background-size: 20px 20px;
+  padding: 8px;
 }
 
 .select {
