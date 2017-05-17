@@ -10,10 +10,15 @@
   z-index: calc(var(--z-index-call) + 10);
   padding: var(--default-padding-large) 0;
   position: relative;
+  transform: translateZ(0);
 }
 
 .button {
   margin: 0 5px;
+}
+
+.bigButton {
+  padding: 4px;
 }
 
 .hide {

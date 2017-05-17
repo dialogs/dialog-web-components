@@ -12,7 +12,7 @@ import CallAvatar from '../CallAvatar/CallAvatar';
 import CallInfo from '../CallInfo/CallInfo';
 import CallControls from '../CallControls/CallControls';
 import isOnCall from './utils/isOnCall';
-import { hasVideos } from './utils/hasVideo';
+import { hasVideos, hasTheirVideos } from './utils/hasVideo';
 import styles from './Call.css';
 
 type State = {
@@ -48,6 +48,7 @@ class CallChat extends PureComponent {
 
     return (
       <CallVideo
+        isHovered={this.state.hover}
         ownVideos={call.ownVideos}
         theirVideos={call.theirVideos}
       />
@@ -57,7 +58,7 @@ class CallChat extends PureComponent {
   renderInfo(): ?React.Element<any> {
     const { call, caller, duration } = this.props;
 
-    if (hasVideos(call)) {
+    if (hasTheirVideos(call)) {
       return null;
     }
 

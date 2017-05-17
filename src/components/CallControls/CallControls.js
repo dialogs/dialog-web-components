@@ -36,6 +36,9 @@ class CallControls extends PureComponent {
       [styles.withVideo]: withVideo,
       [styles.large]: size === 'large'
     });
+    const buttonClassName = classNames(styles.button, {
+      [styles.bigButton]: size === 'large'
+    });
 
     const buttons = [];
 
@@ -44,10 +47,10 @@ class CallControls extends PureComponent {
         <IconButton
           flat
           key="answer"
-          size={size}
+          size="normal"
           theme="success"
           glyph="call"
-          className={styles.button}
+          className={buttonClassName}
           onClick={this.props.onAnswer}
         />
       );
@@ -57,10 +60,10 @@ class CallControls extends PureComponent {
       <IconButton
         flat
         key="end"
-        size={size}
+        size="normal"
         theme="danger"
         glyph="call_end"
-        className={styles.button}
+        className={buttonClassName}
         onClick={this.props.onEnd}
       />
     );
@@ -70,10 +73,10 @@ class CallControls extends PureComponent {
         <IconButton
           flat
           key="mic"
-          size={size}
+          size="normal"
           theme="primary"
           glyph={this.props.isMuted ? 'mic_material_off' : 'mic_material'}
-          className={styles.button}
+          className={buttonClassName}
           onClick={this.props.onMuteToggle}
         />
       );
@@ -85,10 +88,10 @@ class CallControls extends PureComponent {
         <IconButton
           flat
           key="camera"
-          size={size}
+          size="normal"
           theme="info"
           glyph={this.props.isCameraOn ? 'videocam_off' : 'videocam'}
-          className={styles.button}
+          className={buttonClassName}
           onClick={this.props.onCameraToggle}
         />
       );
@@ -99,10 +102,10 @@ class CallControls extends PureComponent {
         <IconButton
           flat
           key="screen_share"
-          size={size}
+          size="normal"
           theme="info"
           glyph={this.props.isScreenShareOn ? 'screen_share_stop' : 'screen_share'}
-          className={styles.button}
+          className={buttonClassName}
           onClick={this.props.onScreenShareToggle}
         />
       );
