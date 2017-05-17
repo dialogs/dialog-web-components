@@ -68,7 +68,7 @@ class CallExample extends PureComponent {
       caller: {
         id: 1,
         name: 'Nikita',
-        placeholder: 'red',
+        placeholder: 'green',
         avatar: 'https://avatars0.githubusercontent.com/u/3505878'
       }
     }, () => {
@@ -181,26 +181,33 @@ class CallExample extends PureComponent {
     console.debug(dimension);
   };
 
+  handleSizeToggle = () => {
+    this.setState({ small: !this.state.small });
+  };
+
   render() {
     return (
       <div>
-        <Button onClick={this.handleCall} theme="primary">Call</Button>
-
-        <Call
-          key={this.state.id}
-          id={this.state.id}
-          call={this.state.call}
-          caller={this.state.caller}
-          small={this.state.small}
-          isVideoEnabled={this.props.withVideo}
-          isScreenSharingEnabled={this.props.withScreenSharing}
-          onEnd={this.handleEnd}
-          onAnswer={this.handleAnswer}
-          onResize={this.handleResize}
-          onMuteToggle={this.handleMuteToggle}
-          onCameraToggle={this.handleCameraToggle}
-          onScreenShareToggle={this.handleScreenShareToggle}
-        />
+        <Button onClick={this.handleCall} theme="primary" size="small">Call</Button>
+        <div style={{ width: 6, display: 'inline-block' }} />
+        <Button onClick={this.handleSizeToggle} theme="primary" size="small">Toggle size</Button>
+        <div style={{ height: 500, width: '100%' }}>
+          <Call
+            key={this.state.id}
+            id={this.state.id}
+            call={this.state.call}
+            caller={this.state.caller}
+            small={this.state.small}
+            isVideoEnabled={this.props.withVideo}
+            isScreenSharingEnabled={this.props.withScreenSharing}
+            onEnd={this.handleEnd}
+            onAnswer={this.handleAnswer}
+            onResize={this.handleResize}
+            onMuteToggle={this.handleMuteToggle}
+            onCameraToggle={this.handleCameraToggle}
+            onScreenShareToggle={this.handleScreenShareToggle}
+          />
+        </div>
       </div>
     );
   }
