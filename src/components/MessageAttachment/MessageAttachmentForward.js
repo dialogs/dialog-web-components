@@ -3,7 +3,7 @@
  * @flow
  */
 
-import type { Message, PeerInfo, Peer } from '@dlghq/dialog-types';
+import type { Peer, Message, PeerInfo } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
 import { Text } from '@dlghq/react-l10n';
 import classNames from 'classnames';
@@ -17,7 +17,7 @@ type Props = {
   from: ?PeerInfo,
   messages: Message[],
   onGoToPeer: (peer: Peer) => any,
-  onGoToMessage: (message: Message) => any
+  onGoToMessage: (peer: ?Peer, message: Message) => any
 };
 
 class MessageAttachmentForward extends PureComponent {
@@ -27,10 +27,19 @@ class MessageAttachmentForward extends PureComponent {
     event.preventDefault();
     event.stopPropagation();
 
-    if (this.props.from) {
-      this.props.onGoToPeer(this.props.from.peer);
+    const peer = this.getPeer();
+    if (peer) {
+      this.props.onGoToPeer(peer);
     }
   };
+
+  handleGoToMessage = (message: Message) => {
+    this.props.onGoToMessage(this.getPeer(), message);
+  };
+
+  getPeer(): ?Peer {
+    return this.props.from ? this.props.from.peer : null;
+  }
 
   renderHeader() {
     const { from } = this.props;
@@ -72,7 +81,7 @@ class MessageAttachmentForward extends PureComponent {
           type="forward"
           short={isShort}
           onGoToPeer={this.props.onGoToPeer}
-          onGoToMessage={this.props.onGoToMessage}
+          onGoToMessage={this.handleGoToMessage}
         />
       );
     });

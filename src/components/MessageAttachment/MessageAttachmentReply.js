@@ -3,7 +3,7 @@
  * @flow
  */
 
-import type { Message, Peer } from '@dlghq/dialog-types';
+import type { Peer, Message } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import MessageAttachmentItem from './MessageAttachmentItem';
@@ -13,11 +13,15 @@ type Props = {
   className?: string,
   messages: Message[],
   onGoToPeer: (peer: Peer) => any,
-  onGoToMessage: (message: Message) => any
+  onGoToMessage: (peer: ?Peer, message: Message) => any
 };
 
 class MessageAttachmentReply extends PureComponent {
   props: Props;
+
+  handleGoToMessage = (message: Message) => {
+    this.props.onGoToMessage(null, message);
+  };
 
   render() {
     const className = classNames(styles.container, this.props.className);
@@ -31,7 +35,7 @@ class MessageAttachmentReply extends PureComponent {
           peer={null}
           message={message}
           onGoToPeer={this.props.onGoToPeer}
-          onGoToMessage={this.props.onGoToMessage}
+          onGoToMessage={this.handleGoToMessage}
         />
       );
     });

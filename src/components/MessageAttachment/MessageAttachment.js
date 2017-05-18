@@ -12,7 +12,7 @@ type Props = {
   className?: string,
   attachment: MessageAttachmentType,
   onGoToPeer: (peer: Peer) => any,
-  onGoToMessage: (message: Message) => any
+  onGoToMessage: (peer: ?Peer, message: Message) => any
 };
 
 class MessageAttachment extends PureComponent {

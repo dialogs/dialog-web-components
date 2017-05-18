@@ -39,7 +39,7 @@ export type Props = {
   isReactionsEnabled: boolean,
   renderActions?: () => React.Element<any>[],
   onGoToPeer: (peer: Peer) => any,
-  onGoToMessage: (message: MessageType) => any
+  onGoToMessage: (peer: ?Peer, message: MessageType) => any
 };
 
 export type State = {

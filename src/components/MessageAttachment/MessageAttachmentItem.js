@@ -3,7 +3,7 @@
  * @flow
  */
 
-import type { Message, Peer } from '@dlghq/dialog-types';
+import type { Peer, Message } from '@dlghq/dialog-types';
 import React, { Component } from 'react';
 import classNames from 'classnames';
 import Icon from '../Icon/Icon';
