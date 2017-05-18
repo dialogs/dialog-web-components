@@ -128,8 +128,7 @@ class Image extends Component {
 
     const style = {
       width,
-      height,
-      display: 'block'
+      height
     };
 
     return (
