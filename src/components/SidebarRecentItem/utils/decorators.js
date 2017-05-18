@@ -5,7 +5,6 @@
 
 import {
   code,
-  link,
   bold,
   italic,
   strike,
@@ -15,7 +14,6 @@ import {
 
 const decorators = [
   code,
-  link,
   bold,
   italic,
   strike,
