@@ -12,6 +12,7 @@
 .container {
   display: block;
   font-family: var(--message-media-font-family);
+  margin-top: var(--default-padding-small);
 }
 
 .webpage {
