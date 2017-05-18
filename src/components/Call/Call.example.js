@@ -1,5 +1,6 @@
 /*
  * Copyright 2017 dialog LLC <info@dlg.im>
+ * @flow
  */
 
 import type { User, Call as CallType } from '@dlghq/dialog-types';
@@ -20,13 +21,18 @@ type State = {
 };
 
 function getVideoStream(callback) {
-  navigator.mediaDevices.getUserMedia({
-    video: true
-  }).then((stream) => {
-    callback(stream);
-  }).catch((error) => {
-    console.error(error);
-  });
+  if (navigator.mediaDevices) {
+    navigator.mediaDevices.getUserMedia({
+      video: true
+    }).then((stream) => {
+      callback({
+        stream,
+        isMirrored: true
+      });
+    }).catch((error) => {
+      console.error(error);
+    });
+  }
 }
 
 class CallExample extends PureComponent {
@@ -42,7 +48,7 @@ class CallExample extends PureComponent {
     };
   }
 
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
 
     this.state = CallExample.getInitialState();
@@ -57,19 +63,31 @@ class CallExample extends PureComponent {
           id: 1,
           type: 'user'
         },
+        startTime: 0,
         members: [],
         ownVideos: [],
         theirVideos: [],
         isMuted: false,
         isOutgoing: true,
         isCameraOn: false,
-        isScreenShareOn: false
+        isScreenSharingOn: false
       },
       caller: {
         id: 1,
         name: 'Nikita',
         placeholder: 'green',
-        avatar: 'https://avatars0.githubusercontent.com/u/3505878'
+        avatar: 'https://avatars0.githubusercontent.com/u/3505878',
+        about: null,
+        bigAvatar: null,
+        emails: [],
+        phones: [],
+        isBlocked: false,
+        isBot: false,
+        isContact: true,
+        timeZone: '',
+        isOnline: false,
+        nick: 'nkt',
+        sex: 'unknown'
       }
     }, () => {
       setTimeout(this.handleConnecting, 2000);
@@ -88,13 +106,18 @@ class CallExample extends PureComponent {
   };
 
   handleEnd = () => {
-    if (this.state.call) {
-      this.state.call.ownVideos.forEach((stream) => {
+    const { call } = this.state;
+
+    if (call) {
+      call.ownVideos.forEach(({ stream }) => {
+        // $FlowFixMe: webrtc support
         for (const track of stream.getTracks()) {
           track.stop();
         }
       });
-      this.state.call.theirVideos.forEach((stream) => {
+
+      call.theirVideos.forEach(({ stream }) => {
+        // $FlowFixMe: webrtc support
         for (const track of stream.getTracks()) {
           track.stop();
         }
@@ -118,67 +141,75 @@ class CallExample extends PureComponent {
   };
 
   handleMuteToggle = () => {
-    this.setState({
-      call: {
-        ...this.state.call,
-        isMuted: !this.state.call.isMuted
-      }
-    });
+    const { call } = this.state;
+
+    if (call) {
+      this.setState({
+        call: {
+          ...call,
+          isMuted: !call.isMuted
+        }
+      });
+    }
   };
 
   handleCameraToggle = () => {
     const { call } = this.state;
 
-    if (call.isCameraOn) {
-      this.setState({
-        call: {
-          ...call,
-          isCameraOn: false,
-          ownVideos: []
-        }
-      });
-    } else {
-      this.setState({
-        call: {
-          ...call,
-          isCameraOn: true
-        }
-      }, () => {
-        getVideoStream((stream) => {
-          this.setState({
-            call: {
-              ...this.state.call,
-              ownVideos: [stream],
-              theirVideos: [stream]
-            }
+    if (call) {
+      if (call.isCameraOn) {
+        this.setState({
+          call: {
+            ...call,
+            isCameraOn: false,
+            ownVideos: []
+          }
+        });
+      } else {
+        this.setState({
+          call: {
+            ...call,
+            isCameraOn: true
+          }
+        }, () => {
+          getVideoStream((stream) => {
+            this.setState({
+              call: {
+                ...this.state.call,
+                ownVideos: [stream],
+                theirVideos: [stream]
+              }
+            });
           });
         });
-      });
+      }
     }
   };
 
   handleScreenShareToggle = () => {
     const { call } = this.state;
 
-    if (call.isScreenShareOn) {
-      this.setState({
-        call: {
-          ...call,
-          isScreenShareOn: false
-        }
-      });
-    } else {
-      this.setState({
-        call: {
-          ...call,
-          isScreenShareOn: true
-        }
-      });
+    if (call) {
+      if (call.isScreenSharingOn) {
+        this.setState({
+          call: {
+            ...call,
+            isScreenSharingOn: false
+          }
+        });
+      } else {
+        this.setState({
+          call: {
+            ...call,
+            isScreenSharingOn: true
+          }
+        });
+      }
     }
   };
 
-  handleResize = (dimension) => {
-    console.debug(dimension);
+  handleResize = (dimensions: $FlowIssue) => {
+    console.debug('[call] resize', dimensions); // eslint-disable-line
   };
 
   handleSizeToggle = () => {

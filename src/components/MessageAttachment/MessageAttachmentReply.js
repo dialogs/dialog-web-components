@@ -4,32 +4,44 @@
  */
 
 import type { Message, Peer } from '@dlghq/dialog-types';
-import React from 'react';
+import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import MessageAttachmentItem from './MessageAttachmentItem';
 import styles from './MessageAttachment.css';
 
 type Props = {
   className?: string,
-  message: Message,
-  goToPeer: (peer: Peer) => any,
-  goToMessage: (message: Message) => any
+  messages: Message[],
+  onGoToPeer: (peer: Peer) => any,
+  onGoToMessage: (message: Message) => any
 };
 
-function MessageAttachmentReply(props: Props): React.Element<any> {
-  const className = classNames(styles.container, props.className);
+class MessageAttachmentReply extends PureComponent {
+  props: Props;
 
-  return (
-    <div className={className}>
-      <MessageAttachmentItem
-        message={props.message}
-        type="reply"
-        short={false}
-        goToPeer={props.goToPeer}
-        goToMessage={props.goToMessage}
-      />
-    </div>
-  );
+  render() {
+    const className = classNames(styles.container, this.props.className);
+
+    const children = this.props.messages.map((message) => {
+      return (
+        <MessageAttachmentItem
+          key={message.rid}
+          type="reply"
+          short={false}
+          peer={null}
+          message={message}
+          onGoToPeer={this.props.onGoToPeer}
+          onGoToMessage={this.props.onGoToMessage}
+        />
+      );
+    });
+
+    return (
+      <div className={className}>
+        {children}
+      </div>
+    );
+  }
 }
 
 export default MessageAttachmentReply;

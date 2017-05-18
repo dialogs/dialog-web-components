@@ -35,3 +35,7 @@
   width: 160px;
   height: 90px;
 }
+
+.mirrored {
+  transform: scaleX(-1);
+}

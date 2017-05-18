@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2017 dialog LLC <info@dlg.im>
  * @flow
  */
@@ -14,10 +14,10 @@ import styles from './MessageAttachment.css';
 
 type Props = {
   className?: string,
-  from: PeerInfo,
+  from: ?PeerInfo,
   messages: Message[],
-  goToPeer: (peer: Peer) => any,
-  goToMessage: (message: Message) => any
+  onGoToPeer: (peer: Peer) => any,
+  onGoToMessage: (message: Message) => any
 };
 
 class MessageAttachmentForward extends PureComponent {
@@ -26,11 +26,17 @@ class MessageAttachmentForward extends PureComponent {
   handleGoToPeer = (event: SyntheticEvent) => {
     event.preventDefault();
     event.stopPropagation();
-    this.props.goToPeer(this.props.from.peer);
+
+    if (this.props.from) {
+      this.props.onGoToPeer(this.props.from.peer);
+    }
   };
 
-  renderHeader(): React.Element<any> {
+  renderHeader() {
     const { from } = this.props;
+    if (!from) {
+      return null;
+    }
 
     return (
       <div className={styles.from}>
@@ -51,7 +57,7 @@ class MessageAttachmentForward extends PureComponent {
     );
   }
 
-  renderMessages(): React.Element<any>[] {
+  renderMessages() {
     const { messages } = this.props;
     let lastSenderId = 0;
 
@@ -65,8 +71,8 @@ class MessageAttachmentForward extends PureComponent {
           message={message}
           type="forward"
           short={isShort}
-          goToPeer={this.props.goToPeer}
-          goToMessage={this.props.goToMessage}
+          onGoToPeer={this.props.onGoToPeer}
+          onGoToMessage={this.props.onGoToMessage}
         />
       );
     });

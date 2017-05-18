@@ -11,12 +11,12 @@ import MessageContent from '../MessageContent/MessageContent';
 import styles from './MessageAttachment.css';
 
 type Props = {
-  message: Message,
-  type: 'forward' | 'reply',
   className?: string,
+  type: 'forward' | 'reply',
+  message: Message,
   short: boolean,
-  goToPeer: (peer: Peer) => any,
-  goToMessage: (message: Message) => any,
+  onGoToPeer: (peer: Peer) => any,
+  onGoToMessage: (message: Message) => any,
 }
 
 class MessageAttachmentItem extends Component {
@@ -26,12 +26,12 @@ class MessageAttachmentItem extends Component {
     event.preventDefault();
     event.stopPropagation();
     if (this.props.message.sender) {
-      this.props.goToPeer(this.props.message.sender.peer);
+      this.props.onGoToPeer(this.props.message.sender.peer);
     }
   };
 
   handleGoToMessage = (): void => {
-    this.props.goToMessage(this.props.message);
+    this.props.onGoToMessage(this.props.message);
   };
 
   renderHeader(): ?React.Element<any> {

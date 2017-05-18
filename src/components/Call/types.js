@@ -16,7 +16,7 @@ export type CallWrapperProps = {
   onAnswer: (id: string) => any,
   onMuteToggle: (id: string, isMuted: boolean) => any,
   onCameraToggle: (id: string, isCameraOn: boolean) => any,
-  onScreenShareToggle: (id: string, isScreenShareOn: boolean) => any,
+  onScreenShareToggle: (id: string, isScreenSharingOn: boolean) => any,
   onResize: (dimension: Dimension) => void,
   isVideoEnabled: boolean,
   isScreenSharingEnabled: boolean

@@ -9,7 +9,6 @@ import type {
   PeerInfo,
   Peer
 } from '@dlghq/dialog-types';
-import type { MessageAttachmentType } from '../MessageAttachment/types';
 import classNames from 'classnames';
 import React, { PureComponent } from 'react';
 import MessageContent from '../MessageContent/MessageContent';
@@ -31,7 +30,6 @@ export type Props = {
   className?: string,
   forceHover?: boolean,
   selected: ?boolean,
-  attachment: ?MessageAttachmentType,
   onSelect?: (message: MessageType) => any,
   onTitleClick?: (message: MessageType) => any,
   onAvatarClick?: (message: MessageType) => any,
@@ -40,8 +38,8 @@ export type Props = {
   onReaction?: (char: string) => any,
   isReactionsEnabled: boolean,
   renderActions?: () => React.Element<any>[],
-  goToPeer: (peer: Peer) => any,
-  goToMessage: (message: MessageType) => any
+  onGoToPeer: (peer: Peer) => any,
+  onGoToMessage: (message: MessageType) => any
 };
 
 export type State = {
@@ -110,7 +108,7 @@ class Message extends PureComponent {
     return this.props.sender || this.props.message.sender;
   }
 
-  renderState(): ?React.Element<any> {
+  renderState() {
     const state = this.getState();
     const { short } = this.props;
     const className = classNames(short ? styles.stateShort : null);
@@ -124,7 +122,7 @@ class Message extends PureComponent {
     );
   }
 
-  renderAvatar(): ?React.Element<any> {
+  renderAvatar() {
     const sender = this.getSender();
     if (!sender) {
       return null;
@@ -142,7 +140,7 @@ class Message extends PureComponent {
     );
   }
 
-  renderHeader(): ?React.Element<any> {
+  renderHeader() {
     const sender = this.getSender();
     if (!sender) {
       return null;
@@ -176,7 +174,7 @@ class Message extends PureComponent {
     );
   }
 
-  renderShortHeader(): ?React.Element<any> {
+  renderShortHeader() {
     const { message: { date } } = this.props;
     const sender = this.getSender();
     if (!sender) {
@@ -192,7 +190,7 @@ class Message extends PureComponent {
     );
   }
 
-  renderActions(): ?React.Element<any> {
+  renderActions() {
     const { selected, renderActions } = this.props;
 
     if (typeof selected === 'boolean') {
@@ -215,7 +213,7 @@ class Message extends PureComponent {
     return null;
   }
 
-  renderReactions(): ?React.Element<any> {
+  renderReactions() {
     const { message } = this.props;
 
     if (!message.reactions || !message.reactions.length || !this.props.isReactionsEnabled) {
@@ -242,8 +240,8 @@ class Message extends PureComponent {
     );
   }
 
-  renderAttachments(): ?React.Element<any> {
-    const { attachment } = this.props;
+  renderAttachments() {
+    const { message: { attachment } } = this.props;
 
     if (!attachment) {
       return null;
@@ -252,13 +250,13 @@ class Message extends PureComponent {
     return (
       <MessageAttachment
         attachment={attachment}
-        goToPeer={this.props.goToPeer}
-        goToMessage={this.props.goToMessage}
+        onGoToPeer={this.props.onGoToPeer}
+        onGoToMessage={this.props.onGoToMessage}
       />
     );
   }
 
-  render(): React.Element<any> {
+  render() {
     const { short, message: { content, rid } } = this.props;
     const hover = this.isHover();
     const state = this.getState();

@@ -3,13 +3,14 @@
  * @flow
  */
 
+import type { CallVideo as CallVideoType } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
 import CallVideoStream from './CallVideoStream';
 import styles from './CallVideo.css';
 
 export type Props = {
-  ownVideos?: MediaSource[],
-  theirVideos: MediaSource[]
+  ownVideos?: CallVideoType[],
+  theirVideos: CallVideoType[]
 };
 
 class CallVideo extends PureComponent {
@@ -18,13 +19,14 @@ class CallVideo extends PureComponent {
   renderTheirVideos() {
     const { theirVideos } = this.props;
 
-    return theirVideos.map((stream) => {
+    return theirVideos.map(({ stream, isMirrored }) => {
       return (
         // $FlowFixMe: stream.id exists
         <div key={stream.id} className={styles.videoContainer}>
           <CallVideoStream
             className={styles.video}
             stream={stream}
+            isMirrored={isMirrored}
           />
         </div>
       );
@@ -38,13 +40,14 @@ class CallVideo extends PureComponent {
       return null;
     }
 
-    const videos = ownVideos.map((stream) => {
+    const videos = ownVideos.map(({ stream, isMirrored }) => {
       return (
         <CallVideoStream
           // $FlowFixMe: stream.id exists
           key={stream.id}
           className={styles.ownVideo}
           stream={stream}
+          isMirrored={isMirrored}
         />
       );
     });

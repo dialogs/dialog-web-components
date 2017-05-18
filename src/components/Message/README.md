@@ -80,8 +80,8 @@ initialState = {
         messages[4]
       ]
     }}
-    goToPeer={console.debug}
-    goToMessage={console.debug}
+    onGoToPeer={console.debug}
+    onGoToMessage={console.debug}
   />
   <Message
     message={{
@@ -92,8 +92,8 @@ initialState = {
       type: 'reply',
       message: messages[3]
     }}
-    goToPeer={console.debug}
-    goToMessage={console.debug}
+    onGoToPeer={console.debug}
+    onGoToMessage={console.debug}
   />
 </div>
 ```

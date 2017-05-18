@@ -132,7 +132,7 @@ class CallWindow extends PureComponent {
         state={call.state}
         isMuted={call.isMuted}
         isCameraOn={call.isCameraOn}
-        isScreenShareOn={call.isScreenSharingOn}
+        isScreenSharingOn={call.isScreenSharingOn}
         onEnd={this.props.onEnd}
         onAnswer={this.props.onAnswer}
         onMuteToggle={this.props.onMuteToggle}

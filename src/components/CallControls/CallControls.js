@@ -15,7 +15,7 @@ export type Props = {
   isVisible: boolean,
   isMuted?: boolean,
   isCameraOn?: boolean,
-  isScreenShareOn?: boolean,
+  isScreenSharingOn?: boolean,
   onEnd: () => void,
   onAnswer: () => void,
   onMuteToggle?: () => void,
@@ -104,7 +104,7 @@ class CallControls extends PureComponent {
           key="screen_share"
           size="normal"
           theme="info"
-          glyph={this.props.isScreenShareOn ? 'screen_share_stop' : 'screen_share'}
+          glyph={this.props.isScreenSharingOn ? 'screen_share_stop' : 'screen_share'}
           className={buttonClassName}
           onClick={this.props.onScreenShareToggle}
         />

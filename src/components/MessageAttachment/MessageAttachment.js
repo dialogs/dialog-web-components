@@ -3,10 +3,17 @@
  * @flow
  */
 
-import type { Props } from './types';
+import type { Peer, Message, MessageAttachment as MessageAttachmentType } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
 import MessageAttachmentReply from './MessageAttachmentReply';
 import MessageAttachmentForward from './MessageAttachmentForward';
+
+type Props = {
+  className?: string,
+  attachment: MessageAttachmentType,
+  onGoToPeer: (peer: Peer) => any,
+  onGoToMessage: (message: Message) => any
+};
 
 class MessageAttachment extends PureComponent {
   props: Props;
@@ -19,21 +26,23 @@ class MessageAttachment extends PureComponent {
         return (
           <MessageAttachmentReply
             className={this.props.className}
-            message={attachment.message}
-            goToPeer={this.props.goToPeer}
-            goToMessage={this.props.goToMessage}
+            messages={attachment.messages}
+            onGoToPeer={this.props.onGoToPeer}
+            onGoToMessage={this.props.onGoToMessage}
           />
         );
+
       case 'forward':
         return (
           <MessageAttachmentForward
             className={this.props.className}
             from={attachment.from}
             messages={attachment.messages}
-            goToPeer={this.props.goToPeer}
-            goToMessage={this.props.goToMessage}
+            onGoToPeer={this.props.onGoToPeer}
+            onGoToMessage={this.props.onGoToMessage}
           />
         );
+
       default:
         console.error(`Unsupported message attachment type: ${attachment.type}`);
         return null;
