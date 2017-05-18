@@ -127,14 +127,12 @@ class Image extends Component {
     const className = classNames(styles.root, this.props.className);
 
     const style = {
-      width: '100%',
-      height: 'auto',
-      maxWidth: width,
-      maxHeight: height
+      width,
+      height
     };
 
     return (
-      <div className={className} title={this.props.alt}>
+      <div className={className} style={style} title={this.props.alt}>
         {
           source ? (
             <img
@@ -144,7 +142,6 @@ class Image extends Component {
               height={height}
               alt={this.props.alt}
               onClick={this.props.onClick}
-              style={style}
             />
           ) : null
         }
