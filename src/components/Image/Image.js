@@ -129,7 +129,7 @@ class Image extends Component {
     const style = {
       width,
       height,
-      display: 'inline-block'
+      display: 'block'
     };
 
     return (
