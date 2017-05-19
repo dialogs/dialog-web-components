@@ -31,6 +31,7 @@ class Voice extends PureComponent {
     return (
       <div className={className} style={{ width: maxWidth }}>
         <VoicePlayer
+          short={maxWidth < 300}
           isUploading={isUploading}
           fileUrl={this.props.fileUrl}
           duration={this.props.duration}

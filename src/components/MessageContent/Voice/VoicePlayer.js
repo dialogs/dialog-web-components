@@ -12,7 +12,8 @@ import styles from './Voice.css';
 export type VoicePlayerProps = {
   fileUrl: ?string,
   duration: number,
-  isUploading: boolean
+  isUploading: boolean,
+  short: boolean
 };
 
 export type VoicePlayerState = {
@@ -178,6 +179,7 @@ class VoicePlayer extends PureComponent {
   }
 
   render(): React.Element<any> {
+    const { short } = this.props;
     const { duration } = this.state;
 
     const total = getHumanTime(duration * 1000);
@@ -188,7 +190,11 @@ class VoicePlayer extends PureComponent {
         <div className={styles.playerControls}>
           {this.renderPlayerSeeker()}
           <div className={styles.playerTime}>
-            <Text tagName="span" className={styles.playerControlsText} id="MessageContent.voice" />
+            <Text
+              tagName="span"
+              className={styles.playerControlsText}
+              id={`MessageContent.${short ? 'voice_short' : 'voice'}`}
+            />
             {total}
           </div>
         </div>

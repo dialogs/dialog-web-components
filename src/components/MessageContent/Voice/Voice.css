@@ -19,7 +19,7 @@
   user-select: none;
   border-radius: var(--voice-border-radius);
   background-color: var(--voice-background-color);
-  box-shadow: inset 0 0 0 1px var(--voice-border-color);
+  box-shadow: 0 0 0 1px var(--voice-border-color);
   font-family: var(--voice-font-family);
   padding: var(--voice-padding);
   position: relative;
