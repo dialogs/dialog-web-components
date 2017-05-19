@@ -17,6 +17,8 @@ type Props = {
   short: boolean,
   onGoToPeer: (peer: Peer) => any,
   onGoToMessage: (message: Message) => any,
+  maxHeight: number,
+  maxWidth: number
 }
 
 class MessageAttachmentItem extends Component {
@@ -64,7 +66,7 @@ class MessageAttachmentItem extends Component {
   }
 
   render(): React.Element<any> {
-    const { message: { content, rid }, short, type } = this.props;
+    const { message: { content, rid }, short, type, maxWidth, maxHeight } = this.props;
 
     const className = classNames(styles.itemContainer, {
       [styles.short]: short
@@ -77,6 +79,8 @@ class MessageAttachmentItem extends Component {
           className={styles.content}
           content={content}
           rid={rid}
+          maxWidth={maxWidth}
+          maxHeight={maxHeight}
         />
         {type === 'forward' ? (
           <div className={styles.timeWrapper}>{this.renderTimestamp()}</div>

@@ -17,7 +17,9 @@ type Props = {
   from: ?PeerInfo,
   messages: Message[],
   onGoToPeer: (peer: Peer) => any,
-  onGoToMessage: (peer: ?Peer, message: Message) => any
+  onGoToMessage: (peer: ?Peer, message: Message) => any,
+  maxHeight: number,
+  maxWidth: number
 };
 
 class MessageAttachmentForward extends PureComponent {
@@ -67,7 +69,7 @@ class MessageAttachmentForward extends PureComponent {
   }
 
   renderMessages() {
-    const { messages } = this.props;
+    const { messages, maxHeight, maxWidth } = this.props;
     let lastSenderId = 0;
 
     return messages.map((message) => {
@@ -82,6 +84,8 @@ class MessageAttachmentForward extends PureComponent {
           short={isShort}
           onGoToPeer={this.props.onGoToPeer}
           onGoToMessage={this.handleGoToMessage}
+          maxWidth={maxWidth}
+          maxHeight={maxHeight}
         />
       );
     });

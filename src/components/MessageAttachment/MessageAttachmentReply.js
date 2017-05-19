@@ -13,7 +13,9 @@ type Props = {
   className?: string,
   messages: Message[],
   onGoToPeer: (peer: Peer) => any,
-  onGoToMessage: (peer: ?Peer, message: Message) => any
+  onGoToMessage: (peer: ?Peer, message: Message) => any,
+  maxHeight: number,
+  maxWidth: number
 };
 
 class MessageAttachmentReply extends PureComponent {
@@ -24,6 +26,7 @@ class MessageAttachmentReply extends PureComponent {
   };
 
   render() {
+    const { maxHeight, maxWidth } = this.props;
     const className = classNames(styles.container, this.props.className);
 
     const children = this.props.messages.map((message) => {
@@ -36,6 +39,8 @@ class MessageAttachmentReply extends PureComponent {
           message={message}
           onGoToPeer={this.props.onGoToPeer}
           onGoToMessage={this.handleGoToMessage}
+          maxWidth={maxWidth}
+          maxHeight={maxHeight}
         />
       );
     });

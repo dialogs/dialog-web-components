@@ -14,7 +14,9 @@ export type Props = {|
   className?: string,
   text: string,
   media?: Array<?MessageMediaType>,
-  isPending?: boolean
+  isPending?: boolean,
+  maxWidth: number,
+  maxHeight: number
 |};
 
 class Text extends Component {
@@ -28,6 +30,7 @@ class Text extends Component {
   }
 
   render() {
+    const { maxWidth, maxHeight } = this.props;
     const className = classNames(
       styles.container,
       this.props.className,
@@ -45,6 +48,8 @@ class Text extends Component {
             <MessageMedia
               key={key} // eslint-disable-line
               media={item}
+              maxWidth={maxWidth}
+              maxHeight={maxHeight}
             />
           );
         }

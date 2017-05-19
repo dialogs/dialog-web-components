@@ -34,6 +34,8 @@ function MessageContent({ className, content, isPending, onLightboxOpen, rid, ma
           text={content.text}
           media={content.media}
           isPending={isPending}
+          maxWidth={maxWidth}
+          maxHeight={maxHeight}
         />
       );
 

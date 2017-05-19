@@ -12,14 +12,16 @@ type Props = {
   className?: string,
   attachment: MessageAttachmentType,
   onGoToPeer: (peer: Peer) => any,
-  onGoToMessage: (peer: ?Peer, message: Message) => any
+  onGoToMessage: (peer: ?Peer, message: Message) => any,
+  maxHeight: number,
+  maxWidth: number
 };
 
 class MessageAttachment extends PureComponent {
   props: Props;
 
   render() {
-    const { attachment } = this.props;
+    const { attachment, maxWidth, maxHeight } = this.props;
 
     switch (attachment.type) {
       case 'reply':
@@ -29,6 +31,8 @@ class MessageAttachment extends PureComponent {
             messages={attachment.messages}
             onGoToPeer={this.props.onGoToPeer}
             onGoToMessage={this.props.onGoToMessage}
+            maxWidth={maxWidth}
+            maxHeight={maxHeight}
           />
         );
 
@@ -40,6 +44,8 @@ class MessageAttachment extends PureComponent {
             messages={attachment.messages}
             onGoToPeer={this.props.onGoToPeer}
             onGoToMessage={this.props.onGoToMessage}
+            maxWidth={maxWidth}
+            maxHeight={maxHeight}
           />
         );
 

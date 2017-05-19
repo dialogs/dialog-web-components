@@ -11,12 +11,14 @@ import styles from './MessageMedia.css';
 
 export type Props = {
   className?: string,
-  media: MessageMediaImageType
+  media: MessageMediaImageType,
+  maxWidth: number,
+  maxHeight: number
 };
 
 function MessageMediaImage(props: Props): React.Element<any> {
   const className = classNames(styles.container, styles.image, props.className);
-  const { media: { content: { url, width, height } } } = props;
+  const { media: { content: { url, width, height } }, maxWidth, maxHeight } = props;
 
   return (
     <Image
@@ -24,8 +26,8 @@ function MessageMediaImage(props: Props): React.Element<any> {
       src={url}
       width={width}
       height={height}
-      maxWidth={400}
-      maxHeight={400}
+      maxWidth={maxWidth}
+      maxHeight={maxHeight}
     />
   );
 }

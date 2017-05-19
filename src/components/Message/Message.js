@@ -243,7 +243,7 @@ class Message extends PureComponent {
   }
 
   renderAttachments() {
-    const { message: { attachment } } = this.props;
+    const { message: { attachment }, maxWidth, maxHeight } = this.props;
 
     if (!attachment) {
       return null;
@@ -254,6 +254,8 @@ class Message extends PureComponent {
         attachment={attachment}
         onGoToPeer={this.props.onGoToPeer}
         onGoToMessage={this.props.onGoToMessage}
+        maxWidth={maxWidth}
+        maxHeight={maxHeight}
       />
     );
   }

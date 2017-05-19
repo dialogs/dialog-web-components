@@ -11,7 +11,9 @@ import MessageMediaImage from './MessageMediaImage';
 
 export type Props = {
   className?: string,
-  media: MessageMediaType
+  media: MessageMediaType,
+  maxWidth: number,
+  maxHeight: number
 };
 
 function MessageMedia(props: Props): ?React.Element<any> {
@@ -20,10 +22,23 @@ function MessageMedia(props: Props): ?React.Element<any> {
       return <MessageMediaWebpage media={props.media} className={props.className} />;
 
     case 'voice':
-      return <MessageMediaVoice media={props.media} className={props.className} />;
+      return (
+        <MessageMediaVoice
+          media={props.media}
+          className={props.className}
+          maxWidth={props.maxWidth}
+        />
+      );
 
     case 'image':
-      return <MessageMediaImage media={props.media} className={props.className} />;
+      return (
+        <MessageMediaImage
+          media={props.media}
+          className={props.className}
+          maxWidth={props.maxWidth}
+          maxHeight={props.maxHeight}
+        />
+      );
 
     default:
       console.warn('Unsupported message media: ', props.media.type); // eslint-disable-line
