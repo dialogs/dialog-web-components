@@ -39,7 +39,9 @@ export type Props = {
   isReactionsEnabled: boolean,
   renderActions?: () => React.Element<any>[],
   onGoToPeer: (peer: Peer) => any,
-  onGoToMessage: (peer: ?Peer, message: MessageType) => any
+  onGoToMessage: (peer: ?Peer, message: MessageType) => any,
+  maxWidth: number,
+  maxHeight: number
 };
 
 export type State = {
@@ -257,7 +259,7 @@ class Message extends PureComponent {
   }
 
   render() {
-    const { short, message: { content, rid } } = this.props;
+    const { short, message: { content, rid }, maxWidth, maxHeight } = this.props;
     const hover = this.isHover();
     const state = this.getState();
     const isError = state === 'error';
@@ -288,6 +290,8 @@ class Message extends PureComponent {
               rid={rid}
               isPending={isPending}
               onLightboxOpen={this.handleLightboxOpen}
+              maxWidth={maxWidth}
+              maxHeight={maxHeight}
             />
             {this.renderAttachments()}
             {this.renderReactions()}

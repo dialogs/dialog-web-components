@@ -20,10 +20,12 @@ export type Props = {
   rid: string,
   content: MessageContentTypes,
   isPending?: boolean,
-  onLightboxOpen?: () => any
+  onLightboxOpen?: () => any,
+  maxHeight: number,
+  maxWidth: number
 };
 
-function MessageContent({ className, content, isPending, onLightboxOpen, rid }: Props) {
+function MessageContent({ className, content, isPending, onLightboxOpen, rid, maxHeight, maxWidth }: Props) {
   switch (content.type) {
     case 'text':
       return (
@@ -56,6 +58,8 @@ function MessageContent({ className, content, isPending, onLightboxOpen, rid }: 
           fileName={content.fileName}
           isUploading={isPending || content.isUploading}
           onClick={onLightboxOpen}
+          maxWidth={maxWidth}
+          maxHeight={maxHeight}
         />
       );
 
@@ -80,6 +84,7 @@ function MessageContent({ className, content, isPending, onLightboxOpen, rid }: 
           fileSize={content.fileSize}
           fileExtension={content.fileExtension}
           isUploading={isPending || content.isUploading}
+          maxWidth={maxWidth}
         />
       );
 
@@ -92,6 +97,7 @@ function MessageContent({ className, content, isPending, onLightboxOpen, rid }: 
           fileSize={content.fileSize}
           fileExtension={content.fileExtension}
           isUploading={isPending || content.isUploading}
+          maxWidth={maxWidth}
         />
       );
 
@@ -106,6 +112,8 @@ function MessageContent({ className, content, isPending, onLightboxOpen, rid }: 
           fileName={content.fileName}
           duration={content.duration}
           isUploading={isPending || content.isUploading}
+          maxWidth={maxWidth}
+          maxHeight={maxHeight}
         />
       );
 
@@ -114,6 +122,7 @@ function MessageContent({ className, content, isPending, onLightboxOpen, rid }: 
         <Location
           latitude={content.latitude}
           longitude={content.longitude}
+          maxWidth={maxWidth}
         />
       );
 
@@ -124,6 +133,7 @@ function MessageContent({ className, content, isPending, onLightboxOpen, rid }: 
           photo64={content.photo64}
           phones={content.phones}
           emails={content.emails}
+          maxWidth={maxWidth}
         />
       );
 
