@@ -68,9 +68,9 @@ module.exports = {
       item: {
         '& a': {
           'color': 'rgba(255, 255, 255, 0.9) !important',
+          fontWeight: 500,
           '&:hover': {
             textDecoration: 'underline',
-            fontWeight: 500,
             color: '#fff !important'
           }
         }
