@@ -3,7 +3,7 @@
  * @flow
  */
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import getImageSize from '../../utils/getImageSize';
 import styles from './Image.css';
@@ -30,7 +30,7 @@ export type State = {
   error: ?any
 }
 
-class Image extends Component {
+class Image extends PureComponent {
   props: Props;
   state: State;
 
@@ -61,15 +61,6 @@ class Image extends Component {
     if (src && this.props.src !== src) {
       this.startFetch(src);
     }
-  }
-
-  shouldComponentUpdate(nextProps: Props, nextState: State): boolean {
-    return nextState.state !== this.state.state ||
-           nextProps.src !== this.props.src ||
-           nextProps.alt !== this.props.alt ||
-           nextProps.preview !== this.props.preview ||
-           nextProps.width !== this.props.width ||
-           nextProps.height !== this.props.height;
   }
 
   componentWillUnmount(): void {
@@ -124,15 +115,10 @@ class Image extends Component {
     const isPreview = state !== STATE_SUCCESS;
     const source = isPreview ? preview : src;
     const { width, height } = this.getSize();
-    const className = classNames(styles.root, this.props.className);
-
-    const style = {
-      width,
-      height
-    };
+    const className = classNames(styles.container, this.props.className);
 
     return (
-      <div className={className} style={style} title={this.props.alt}>
+      <div className={className} title={this.props.alt} style={{ width, height }}>
         {
           source ? (
             <img

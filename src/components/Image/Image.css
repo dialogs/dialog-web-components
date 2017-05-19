@@ -4,7 +4,7 @@
 
 @import '../../styles/variables.css';
 
-.root {
+.container {
   display: inline-block;
   line-height: 0;
 }
