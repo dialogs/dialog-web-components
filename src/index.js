@@ -6,6 +6,7 @@
 // Interface
 export { default as Avatar } from './components/Avatar/Avatar';
 export { default as PeerAvatar } from './components/PeerAvatar/PeerAvatar';
+export { default as PeerInfoTitle } from './components/PeerInfoTitle/PeerInfoTitle';
 export { default as DoublePeerAvatar } from './components/DoublePeerAvatar/DoublePeerAvatar';
 export { default as Scroller } from './components/Scroller/Scroller';
 export { default as Dropdown } from './components/Dropdown/Dropdown';
@@ -17,7 +18,6 @@ export { default as Spinner } from './components/Spinner/Spinner';
 export { default as Logo } from './components/Logo/Logo';
 export { default as Typing } from './components/Typing/Typing';
 export { default as ConnectionStatus } from './components/ConnectionStatus/ConnectionStatus';
-export { default as Call } from './components/Call/Call';
 export { default as Tabs } from './components/Tabs/Tabs';
 export { default as Tooltip } from './components/Tooltip/Tooltip';
 export { default as ContextMenu } from './components/ContextMenu/ContextMenu';
@@ -30,6 +30,12 @@ export { default as ImageEdit } from './components/ImageEdit/ImageEdit';
 export { default as Overlay } from './components/Overlay/Overlay';
 export { default as SelectedMessagesActions } from './components/SelectedMessagesActions/SelectedMessagesActions';
 export { default as CheckButton } from './components/CheckButton/CheckButton';
+
+// Calls
+export { default as Call } from './components/Call/Call';
+export { default as CallChat } from './components/Call/CallChat';
+export { default as CallWindow } from './components/Call/CallWindow';
+
 
 // Toolbar
 export { default as Toolbar } from './components/Toolbar/Toolbar';
