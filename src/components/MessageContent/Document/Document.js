@@ -14,14 +14,15 @@ type Props = {
   fileName: ?string,
   fileSize: ?string,
   // fileExtension: ?string,
-  isUploading: boolean
+  isUploading: boolean,
+  maxWidth: number
 };
 
 class Document extends PureComponent {
   props: Props;
 
   render() {
-    const { fileUrl, fileName, fileSize, isUploading } = this.props;
+    const { fileUrl, fileName, fileSize, isUploading, maxWidth } = this.props;
     const className = classNames(styles.container, this.props.className, {
       [styles.uploading]: isUploading
     });
@@ -30,7 +31,7 @@ class Document extends PureComponent {
     const tagProps = isUploading ? {} : { href: fileUrl, download: fileName, rel: 'noopener noreferrer' };
 
     return (
-      <TagName className={className} {...tagProps}>
+      <TagName className={className} {...tagProps} style={{ width: maxWidth }}>
         <DownloadButton isUploading={isUploading} />
         <div className={styles.info}>
           <div className={styles.filename}>

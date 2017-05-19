@@ -10,14 +10,12 @@
   flex-direction: row;
   box-sizing: border-box;
   height: var(--document-height);
-  min-width: var(--document-min-width);
-  max-width: var(--document-max-width);
   padding: var(--document-padding);
   cursor: pointer;
   user-select: none;
   border-radius: var(--document-border-radius);
   background-color: var(--document-background-color);
-  box-shadow: inset 0 0 0 1px var(--document-border-color);
+  box-shadow: 0 0 0 1px var(--document-border-color);
   font-family: var(--document-font-family);
 }
 
