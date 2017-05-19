@@ -26,7 +26,6 @@ export type CallProps = {
   className?: string,
   call: Call,
   caller: User,
-  duration: number,
   onEnd: () => void,
   onAnswer: () => void,
   onMuteToggle: () => void,

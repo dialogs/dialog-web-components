@@ -52,7 +52,7 @@ class CallWindow extends PureComponent {
   };
 
   renderHeader(): React.Element<any> {
-    const { call, caller, duration } = this.props;
+    const { call, caller } = this.props;
     const withVideo = hasTheirVideos(call);
 
     return (
@@ -60,14 +60,13 @@ class CallWindow extends PureComponent {
         withVideo={withVideo}
         call={call}
         caller={caller}
-        duration={duration}
         isVisible={this.state.hover}
       />
     );
   }
 
   renderInfo(): React.Element<any> {
-    const { call, caller, duration } = this.props;
+    const { call, caller } = this.props;
 
     return (
       <div className={styles.info}>
@@ -82,7 +81,6 @@ class CallWindow extends PureComponent {
           onCall={false}
           call={call}
           caller={caller}
-          duration={duration}
           withVideo={false}
         />
       </div>

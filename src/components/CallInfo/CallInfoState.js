@@ -6,11 +6,11 @@
 import type { CallState } from '@dlghq/dialog-types';
 import React from 'react';
 import { Text } from '@dlghq/react-l10n';
-import { formatTime } from '@dlghq/dialog-utils';
+import TimeTimer from '../Timer/TimeTimer';
 
 export type Props = {
   state: CallState,
-  duration: number
+  startTime: number
 };
 
 function CallInfoState(props: Props): React.Element<any> {
@@ -27,7 +27,7 @@ function CallInfoState(props: Props): React.Element<any> {
 
     case 'in_progress':
       return (
-        <span>{formatTime(props.duration)}</span>
+        <TimeTimer start={props.startTime} />
       );
 
     default:

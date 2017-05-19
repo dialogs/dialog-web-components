@@ -14,7 +14,6 @@ import styles from './CallHeader.css';
 export type Props = {
   call: Call,
   caller: User,
-  duration: number,
   isVisible: boolean,
   withVideo: boolean
 };
@@ -23,7 +22,7 @@ class CallHeader extends PureComponent {
   props: Props;
 
   render() {
-    const { caller, call, duration, isVisible, withVideo } = this.props;
+    const { caller, call, isVisible, withVideo } = this.props;
     const onCall = isOnCall(call.state);
     const className = classNames(styles.container, {
       [styles.hide]: !isVisible,
@@ -43,7 +42,6 @@ class CallHeader extends PureComponent {
           className={styles.info}
           call={call}
           caller={caller}
-          duration={duration}
         />
       </header>
     );

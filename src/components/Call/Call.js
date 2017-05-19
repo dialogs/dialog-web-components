@@ -8,39 +8,8 @@ import React, { PureComponent } from 'react';
 import CallChat from './CallChat';
 import CallWindow from './CallWindow';
 
-export type State = {
-  duration: number
-};
-
 class Call extends PureComponent {
   props: Props;
-  state: State;
-  timer: ?number;
-
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      duration: 0
-    };
-  }
-
-  componentWillReceiveProps(nextProps: Props) {
-    if (this.props.call && nextProps.call) {
-      const { state } = this.props.call;
-      const { state: nextState } = nextProps.call;
-
-      if (nextState === 'in_progress' && state !== 'in_progress') {
-        this.setTimer();
-      } else if (state === 'in_progress' && nextState !== 'in_progress') {
-        this.clearTimer();
-      }
-    }
-  }
-
-  componentWillUnmount() {
-    this.clearTimer();
-  }
 
   handleEnd = (): void => {
     if (this.props.id) {
@@ -75,31 +44,8 @@ class Call extends PureComponent {
     }
   };
 
-  setTimer(): void {
-    this.clearTimer();
-
-    this.setState({ duration: 0 });
-    this.timer = setInterval(
-      () => {
-        this.setState((prevState) => {
-          return {
-            duration: prevState.duration + 1
-          };
-        });
-      },
-      1000
-    );
-  }
-
-  clearTimer(): void {
-    if (this.timer) {
-      clearInterval(this.timer);
-    }
-  }
-
   render(): ?React.Element<any> {
     const { id, call, caller, small, isVideoEnabled, isScreenSharingEnabled } = this.props;
-    const { duration } = this.state;
 
     if (!id || !call || !caller) {
       return null;
@@ -111,7 +57,6 @@ class Call extends PureComponent {
       <ChildCall
         call={call}
         caller={caller}
-        duration={duration}
         onEnd={this.handleEnd}
         onAnswer={this.handleAnswer}
         onResize={this.props.onResize}

@@ -135,7 +135,8 @@ class CallExample extends PureComponent {
     this.setState({
       call: {
         ...this.state.call,
-        state: 'in_progress'
+        state: 'in_progress',
+        startTime: Date.now()
       }
     });
   };

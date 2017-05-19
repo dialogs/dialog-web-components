@@ -56,7 +56,7 @@ class CallChat extends PureComponent {
   }
 
   renderInfo(): ?React.Element<any> {
-    const { call, caller, duration } = this.props;
+    const { call, caller } = this.props;
 
     if (hasTheirVideos(call)) {
       return null;
@@ -75,7 +75,6 @@ class CallChat extends PureComponent {
           onCall={false}
           call={call}
           caller={caller}
-          duration={duration}
           withVideo={false}
         />
       </div>

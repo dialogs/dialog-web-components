@@ -13,7 +13,6 @@ export type Props = {
   className?: string,
   call: Call,
   caller: User,
-  duration: number,
   onCall: boolean,
   withVideo: boolean
 };
@@ -32,7 +31,7 @@ function CallInfo(props: Props): React.Element<any> {
       <div className={styles.state}>
         <CallInfoState
           state={props.call.state}
-          duration={props.duration}
+          startTime={props.call.startTime}
         />
       </div>
     </div>
