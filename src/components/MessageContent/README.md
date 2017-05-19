@@ -62,10 +62,10 @@ initialState = {
   isUploading: true
 };
 
-const handleClick = () => setState({ isUploading: !state.isUploading });
+const toggleUpload = () => setState({ isUploading: !state.isUploading });
 
 <div>
-  <Button onClick={handleClick} theme="primary" size="small">Toggle upload</Button>
+  <Button onClick={toggleUpload} theme="primary" size="small">Toggle upload</Button>
   <br />
   <br />
   <MessageContent content={state} />
@@ -76,10 +76,7 @@ Voice
 -----
 
 ```
-const initialState = {
-  transcription: null
-};
-const content = {
+initialState = {
   content: 'voice',
   type: 'voice',
   duration: 4920,
@@ -88,18 +85,15 @@ const content = {
   fileSize: '30 KB',
   fileUrl: 'http://www.html5tutorial.info/media/vincent.mp3',
   isUploading: false,
-  transcription: state.transcription,
-  isTranscriptionEnabled: true
 };
-const onGetTranscription = () => {
-  setTimeout(() => {
-    setState({ transcription: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore maiores aliquam libero alias asperiores reprehenderit esse tenetur, praesentium labore nisi, repudiandae totam. Explicabo saepe illum, ipsa exercitationem molestias nobis culpa.'});
-  }, 1000);
-};
+
+const toggleUpload = () => setState({ isUploading: !state.isUploading });
+
 <div>
-  <MessageContent content={content} getTranscription={onGetTranscription} />
-  <br/>
-  <MessageContent content={{ ...content, isUploading: true}} getTranscription={onGetTranscription} />
+  <Button size="small" theme="primary" onClick={toggleUpload}>Toggle Upload</Button>
+  <br />
+  <br />
+  <MessageContent content={state} />
 </div>
 ```
 

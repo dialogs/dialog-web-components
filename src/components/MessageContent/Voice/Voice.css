@@ -5,27 +5,16 @@
 @import '../../../styles/variables.css';
 
 /* Reset */
-.container,
-.transctiptButton {
+.container {
   all: initial;
 }
 
 /* Styles */
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  align-content: center;
-}
-
 .container {
   display: flex;
   height: var(--voice-height);
   flex-direction: row;
   box-sizing: border-box;
-  min-width: var(--voice-min-width);
-  max-width: var(--voice-max-width);
   cursor: default;
   user-select: none;
   border-radius: var(--voice-border-radius);
@@ -80,86 +69,11 @@
   background-color: var(--color-primary);
 }
 
-.transctiptButton {
-  display: flex;
-  flex-direction: column;
-  width: var(--voice-transcript-button-wdith);
-  cursor: pointer;
-  user-select: none;
-  transition: color var(--default-transition-duration) ease-out;
-  border-left: 1px solid var(--voice-border-color);
-  font-family: var(--voice-font-family);
-  flex: 0 0 auto;
-  align-content: center;
-  align-items: center;
-  justify-content: center;
-  color: var(--voice-transcript-button-color);
-
-  &:hover,
-  &.transctiptButtonActive {
-    fill: var(--voice-transcript-button-hover-color);
-
-    & .transctiptButtonIcon {
-      fill: var(--voice-transcript-button-hover-color);
-    }
-  }
-}
-
 .uploading {
   opacity: 0.7;
   position: relative;
   cursor: default !important;
   pointer-events: none;
-}
-
-.transctiptButtonIcon {
-  width: 30px;
-  height: 30px;
-  cursor: inherit;
-  transition: fill var(--default-transition-duration) ease-out;
-  fill: var(--voice-transcript-button-icon-color);
-}
-
-.transcriptButtonText {
-  margin-top: 4px;
-  letter-spacing: 0.1px;
-  font-size: 10px;
-}
-
-.transcription {
-  position: relative;
-  z-index: 10;
-  box-sizing: border-box;
-  min-width: var(--voice-min-width);
-  margin-top: 16px;
-  padding: var(--voice-transcription-padding);
-  letter-spacing: -0.24px;
-  border-radius: var(--voice-border-radius);
-  background-color: var(--voice-background-color);
-  box-shadow: 0 0 0 1px var(--voice-border-color);
-  font-family: var(--voice-font-family);
-  font-size: var(--voice-transcription-font-size);
-  line-height: 21px;
-  color: var(--voice-transcription-color);
-
-  &::before {
-    position: absolute;
-    top: calc(0 - var(--voice-transcription-stem-size) / 2);
-    left: calc(var(--voice-min-width) - (var(--voice-transcript-button-wdith) / 2) - (var(--voice-transcription-stem-size) / 2));
-    width: var(--voice-transcription-stem-size);
-    height: var(--voice-transcription-stem-size);
-    content: '';
-    transform: rotate(45deg);
-    background-color: var(--voice-background-color);
-    box-shadow: -1px -1px 0 0 var(--voice-border-color);
-  }
-}
-
-.transcriptionEmpty {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
 }
 
 .spinner {
