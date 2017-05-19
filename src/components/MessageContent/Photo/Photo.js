@@ -12,6 +12,8 @@ export type Props = {
   className?: string,
   width: number,
   height: number,
+  maxHeight: number,
+  maxWidth: number,
   rid: string,
   preview: ?string,
   fileUrl: ?string,
@@ -20,7 +22,7 @@ export type Props = {
 };
 
 function Photo(props: Props): React.Element<any> {
-  const { fileUrl, fileName, preview, width, height, rid } = props;
+  const { fileUrl, fileName, preview, width, height, rid, maxWidth, maxHeight } = props;
   const className = classNames(styles.container, props.className);
 
   return (
@@ -32,6 +34,8 @@ function Photo(props: Props): React.Element<any> {
       preview={preview}
       width={width}
       height={height}
+      maxWidth={maxWidth}
+      maxHeight={maxHeight}
       onClick={props.onClick}
     />
   );

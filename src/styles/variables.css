@@ -300,6 +300,7 @@
   --location-border-color: color(#000 alpha(14%));
   /* Photo */
   --message-photo-border-raduis: var(--default-border-radius);
+  --message-photo-border-color: color(#000 alpha(14%));
   /* Text */
   --message-text-color: #000;
   --message-text-font-size: var(--default-font-size);
