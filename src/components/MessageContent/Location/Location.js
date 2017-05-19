@@ -9,7 +9,8 @@ import styles from './Location.css';
 
 export type Props = {|
   latitude: number,
-  longitude: number
+  longitude: number,
+  maxWidth: number
 |};
 
 function Location(props: Props) {
@@ -17,8 +18,8 @@ function Location(props: Props) {
     <Map
       className={styles.container}
       apiKey="AIzaSyCV9I5_GAlbDMcVnD87TcONL2YaPv_d-LA"
-      width={400}
-      height={200}
+      width={props.maxWidth}
+      height={props.maxWidth / 2}
       latitude={props.latitude}
       longitude={props.longitude}
     />

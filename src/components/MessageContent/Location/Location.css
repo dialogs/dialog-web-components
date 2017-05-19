@@ -7,4 +7,5 @@
 .container {
   border-radius: var(--location-border-radius);
   line-height: 0;
+  box-shadow: 0 0 0 1px var(--location-border-color);
 }

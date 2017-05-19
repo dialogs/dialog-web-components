@@ -297,6 +297,7 @@
   --document-download-arrow-size: 20px;
   /* Location */
   --location-border-radius: var(--default-border-radius);
+  --location-border-color: color(#000 alpha(14%));
   /* Photo */
   --message-photo-border-raduis: var(--default-border-radius);
   /* Text */
