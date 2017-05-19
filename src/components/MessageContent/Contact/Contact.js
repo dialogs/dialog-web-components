@@ -3,6 +3,7 @@
  * @flow
  */
 import React, { PureComponent } from 'react';
+import classNames from 'classnames';
 import Icon from '../../Icon/Icon';
 import styles from './Contact.css';
 
@@ -10,11 +11,26 @@ export type Props = {|
   name: string,
   photo64: string,
   phones: string[],
-  emails: string[]
+  emails: string[],
+  maxWidth: number
 |};
 
 class Contact extends PureComponent {
   props: Props;
+
+  getAvatarSize = (): number => {
+    const { maxWidth } = this.props;
+
+    if (maxWidth < 300) {
+      return 80;
+    }
+
+    if (maxWidth < 400) {
+      return 64;
+    }
+
+    return 96;
+  };
 
   renderAvatar(): ?React.Element<any> {
     const { name, photo64 } = this.props;
@@ -23,8 +39,15 @@ class Contact extends PureComponent {
       return null;
     }
 
+    const size = this.getAvatarSize();
+
     return (
-      <img src={`data:image/jpeg;base64,${photo64}`} alt={name} className={styles.avatar} />
+      <img
+        src={`data:image/jpeg;base64,${photo64}`}
+        alt={name}
+        className={styles.avatar}
+        style={{ width: size, height: size }}
+      />
     );
   }
 
@@ -64,10 +87,13 @@ class Contact extends PureComponent {
 
 
   render(): React.Element<any> {
-    const { name } = this.props;
+    const { name, maxWidth } = this.props;
+    const className = classNames(styles.container, {
+      [styles.vertical]: maxWidth < 300
+    });
 
     return (
-      <div className={styles.container}>
+      <div className={className} style={{ width: maxWidth }}>
         {this.renderAvatar()}
         <div className={styles.credentials}>
           <div className={styles.name}>{name}</div>

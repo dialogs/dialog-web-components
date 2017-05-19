@@ -277,8 +277,6 @@
   /* Contact */
   --contact-font-family: var(--default-font-family);
   --contact-border-radius: var(--default-border-radius);
-  --contact-avatar-size: 96px;
-  --contact-width: 400px;
   --contact-border-color: color(#000 alpha(14%));
   --contact-padding: var(--default-padding);
   --contact-link-color: var(--color-info);

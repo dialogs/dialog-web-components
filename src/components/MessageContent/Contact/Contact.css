@@ -7,20 +7,18 @@
 .container {
   all: initial;
   display: flex;
-  width: var(--contact-width);
   padding: var(--contact-padding);
   border-radius: var(--contact-border-radius);
   background-color: #fff;
   box-shadow: 0 0 0 1px var(--contact-border-color);
   font-family: var(--contact-font-family);
   flex-flow: row-reverse;
+  box-sizing: border-box;
 }
 
 .avatar {
   overflow: hidden;
-  width: var(--contact-avatar-size);
-  height: var(--contact-avatar-size);
-  border-radius: calc(var(--contact-avatar-size) / 2);
+  border-radius: 1000px;
   line-height: 0;
   flex: 0 0 auto;
 }
@@ -68,3 +66,23 @@
   }
 }
 
+.vertical {
+  flex-flow: column;
+
+  & .avatar {
+    align-self: center;
+    margin-bottom: var(--default-padding);
+  }
+
+  & .name {
+    text-align: center;
+  }
+
+  & .icon {
+    display: none;
+  }
+
+  & .link {
+    line-height: 1.4;
+  }
+}
