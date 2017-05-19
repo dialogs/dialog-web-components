@@ -150,6 +150,7 @@
   {
     "name": "Helpers",
     "components": [
+      "Timer",
       "Trigger",
       "Confirm"
     ]

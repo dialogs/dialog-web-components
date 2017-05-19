@@ -143,6 +143,8 @@ export { default as Image } from './components/Image/Image';
 export { default as Map } from './components/Map/Map';
 export { default as SelectList } from './components/SelectList/SelectList';
 export { default as Hover } from './components/Hover/Hover';
+export { default as Timer } from './components/Timer/Timer';
+export { default as TimeTimer } from './components/Timer/TimeTimer';
 
 // Emoji
 export { default as Emoji } from './components/Emoji/Emoji';
