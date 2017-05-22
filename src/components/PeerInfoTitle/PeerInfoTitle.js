@@ -22,13 +22,13 @@ class PeerInfoTitle extends PureComponent {
 
   render() {
     const title = (
-      <Markdown
-        inline
-        decorators={decorators}
-        className={this.props.titleClassName}
-        text={this.props.title}
-        onClick={this.props.onTitleClick}
-      />
+      <span className={this.props.titleClassName} onClick={this.props.onTitleClick}>
+        <Markdown
+          inline
+          decorators={decorators}
+          text={this.props.title}
+        />
+      </span>
     );
 
     if (this.props.userName) {
