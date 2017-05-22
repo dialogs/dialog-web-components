@@ -5,7 +5,8 @@
 @import '../../styles/variables.css';
 
 :root {
-  --editor-forward-font-family: var(--default-font-family);
+  --selected-messages-actions-font-family: var(--default-font-family);
+  --selected-messages-actions-height: 54px;
 }
 
 /* Reset */
@@ -15,8 +16,9 @@
 
 /* Styles */
 .container {
-  font-family: var(--editor-forward-font-family);
+  font-family: var(--selected-messages-actions-font-family);
   width: 100%;
+  height: var(--selected-messages-actions-height);
   display: flex;
   flex-direction: row;
   align-items: center;
