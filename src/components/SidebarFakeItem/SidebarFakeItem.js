@@ -14,13 +14,10 @@ function SidebarFakeItem() {
   }
 
   function renderText() {
-    const lineStyle = {
-      width: random(90, 160)
-    };
-
     return (
       <div className={styles.text}>
-        <div className={styles.line} style={lineStyle} />
+        <div className={styles.line} style={{ width: random(60, 120) }} />
+        <div className={styles.lineAbout} style={{ width: random(90, 150) }} />
       </div>
     );
   }

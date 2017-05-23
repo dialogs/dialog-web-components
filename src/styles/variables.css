@@ -204,7 +204,7 @@
   --fake-message-avatar-size: 40px;
   --fake-message-avatar-color: #c5c5c5;
   --fake-message-text-color: #e5e5e5;
-  --fake-message-header-text-color: var(--sidebar-fake-item-text-color);
+  --fake-message-header-text-color: var(--sidebar-fake-item-line-color);
   --fake-message-line-height: 12px;
   /* Field */
   --field-border-color: color(#000 alpha(10%));
@@ -409,9 +409,11 @@
   --sidebar-recent-item-highlight-color: var(--color-primary);
   --sidebar-recent-item-draft-color: var(--color-danger);
   /* SidebarFakeItem */
-  --sidebar-fake-item-line-height: 12px;
-  --sidebar-fake-item-text-color: #cacaca;
-  --sidebar-fake-item-avatar-size: 28px;
+  --sidebar-fake-item-line-height: 9px;
+  --sidebar-fake-item-second-line-height: 8px;
+  --sidebar-fake-item-line-color: #cacaca;
+  --sidebar-fake-item-second-line-color: color(var(--sidebar-fake-item-line-color) alpha(60%));
+  --sidebar-fake-item-avatar-size: 37px;
   --sidebar-fake-item-avatar-color: #c5c5c5;
   --sidebar-fake-item-counter-size: var(--sidebar-peer-item-counter-size);
   /* SidebarHeader */
