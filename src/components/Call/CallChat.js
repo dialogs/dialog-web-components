@@ -12,12 +12,13 @@ import CallVideo from '../CallVideo/CallVideo';
 import CallAvatar from '../CallAvatar/CallAvatar';
 import CallInfo from '../CallInfo/CallInfo';
 import CallControls from '../CallControls/CallControls';
+import Icon from '../Icon/Icon';
 import isOnCall from './utils/isOnCall';
 import { hasVideos, hasTheirVideos } from './utils/hasVideo';
 import styles from './Call.css';
 
 type State = {
-  hover: boolean,
+  isControlsVisible: boolean,
   isFullScreen: boolean
 };
 
@@ -30,7 +31,7 @@ class CallChat extends PureComponent {
     super(props);
 
     this.state = {
-      hover: true,
+      isControlsVisible: true,
       isFullScreen: false
     };
   }
@@ -39,7 +40,7 @@ class CallChat extends PureComponent {
     const { call } = this.props;
 
     if (hasVideos(call)) {
-      this.setState({ hover });
+      this.setState({ isControlsVisible: hover });
     }
   };
 
@@ -108,7 +109,7 @@ class CallChat extends PureComponent {
         onCall={isOnCall(call.state)}
         withVideo={hasVideos(call)}
         size="large"
-        isVisible={this.state.hover}
+        isVisible={this.state.isControlsVisible}
         state={call.state}
         isMuted={call.isMuted}
         isCameraOn={call.isCameraOn}
@@ -128,9 +129,12 @@ class CallChat extends PureComponent {
     }
 
     return (
-      <button style={{ zIndex: 10000 }} onClick={this.handleFullScreen}>
-        {this.state.isFullScreen ? 'normal' : 'full'}
-      </button>
+      <Icon
+        glyph={this.state.isFullScreen ? 'minimize' : 'maximize'}
+        className={styles.fullScreen}
+        size={24}
+        onClick={this.handleFullScreen}
+      />
     );
   }
 
@@ -141,10 +145,10 @@ class CallChat extends PureComponent {
       <div className={className} ref={this.setContainer}>
         <Hover onHover={this.handleHover} className={styles.hover}>
           <div className={styles.content}>
-            {this.renderFullScreen()}
             {this.renderVideo()}
             {this.renderInfo()}
           </div>
+          {this.renderFullScreen()}
           {this.renderControls()}
         </Hover>
       </div>

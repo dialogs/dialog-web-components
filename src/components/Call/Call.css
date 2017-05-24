@@ -76,3 +76,14 @@
   height: auto;
   padding-top: calc(var(--default-padding-large) * 3);
 }
+
+.fullScreen {
+  position: absolute;
+  top: var(--default-padding-large);
+  right: var(--default-padding-large);
+  z-index: calc(var(--z-index-call) + 10);
+  fill: #fff;
+  background-color: color(#000 alpha(30%));
+  padding: 8px;
+  border-radius: 50%;
+}
