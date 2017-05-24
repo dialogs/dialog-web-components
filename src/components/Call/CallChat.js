@@ -6,28 +6,33 @@
 import type { CallProps } from './types';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
+import fullScreen from 'screenfull';
 import Hover from '../Hover/Hover';
 import CallVideo from '../CallVideo/CallVideo';
 import CallAvatar from '../CallAvatar/CallAvatar';
 import CallInfo from '../CallInfo/CallInfo';
 import CallControls from '../CallControls/CallControls';
+import Icon from '../Icon/Icon';
 import isOnCall from './utils/isOnCall';
 import { hasVideos, hasTheirVideos } from './utils/hasVideo';
 import styles from './Call.css';
 
 type State = {
-  hover: boolean
+  isControlsVisible: boolean,
+  isFullScreen: boolean
 };
 
 class CallChat extends PureComponent {
   props: CallProps;
   state: State;
+  container: ?Node;
 
   constructor(props: CallProps) {
     super(props);
 
     this.state = {
-      hover: true
+      isControlsVisible: true,
+      isFullScreen: false
     };
   }
 
@@ -35,11 +40,26 @@ class CallChat extends PureComponent {
     const { call } = this.props;
 
     if (hasVideos(call)) {
-      this.setState({ hover });
+      this.setState({ isControlsVisible: hover });
     }
   };
 
-  renderVideo(): ?React.Element<any> {
+  handleFullScreen = () => {
+    if (fullScreen.enabled && this.container) {
+      fullScreen.toggle(this.container);
+      this.setState((state) => {
+        return {
+          isFullScreen: !state.isFullScreen
+        };
+      });
+    }
+  };
+
+  setContainer = (container: ?Node) => {
+    this.container = container;
+  };
+
+  renderVideo() {
     const { call } = this.props;
 
     if (!hasVideos(call) || !isOnCall(call.state)) {
@@ -48,14 +68,14 @@ class CallChat extends PureComponent {
 
     return (
       <CallVideo
-        isHovered={this.state.hover}
+        isHovered={this.state.isControlsVisible}
         ownVideos={call.ownVideos}
         theirVideos={call.theirVideos}
       />
     );
   }
 
-  renderInfo(): ?React.Element<any> {
+  renderInfo() {
     const { call, caller } = this.props;
 
     if (hasTheirVideos(call)) {
@@ -81,7 +101,7 @@ class CallChat extends PureComponent {
     );
   }
 
-  renderControls(): React.Element<any> {
+  renderControls() {
     const { call } = this.props;
 
     return (
@@ -89,7 +109,7 @@ class CallChat extends PureComponent {
         onCall={isOnCall(call.state)}
         withVideo={hasVideos(call)}
         size="large"
-        isVisible={this.state.hover}
+        isVisible={this.state.isControlsVisible}
         state={call.state}
         isMuted={call.isMuted}
         isCameraOn={call.isCameraOn}
@@ -103,16 +123,32 @@ class CallChat extends PureComponent {
     );
   }
 
+  renderFullScreen() {
+    if (!fullScreen.enabled) {
+      return null;
+    }
+
+    return (
+      <Icon
+        glyph={this.state.isFullScreen ? 'minimize' : 'maximize'}
+        className={styles.fullScreen}
+        size={24}
+        onClick={this.handleFullScreen}
+      />
+    );
+  }
+
   render() {
     const className = classNames(styles.container, this.props.className);
 
     return (
-      <div className={className}>
+      <div className={className} ref={this.setContainer}>
         <Hover onHover={this.handleHover} className={styles.hover}>
           <div className={styles.content}>
             {this.renderVideo()}
             {this.renderInfo()}
           </div>
+          {this.renderFullScreen()}
           {this.renderControls()}
         </Hover>
       </div>
