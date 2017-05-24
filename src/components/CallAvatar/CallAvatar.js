@@ -73,7 +73,7 @@ class CallAvatar extends PureComponent {
   }
 
   render() {
-    const { caller: { bigAvatar, name, placeholder }, size } = this.props;
+    const { caller: { avatar, bigAvatar, name, placeholder }, size } = this.props;
     const className = classNames(styles.container, this.props.className);
 
     return (
@@ -81,7 +81,7 @@ class CallAvatar extends PureComponent {
         <Avatar
           className={styles.avatar}
           size={size}
-          image={bigAvatar}
+          image={bigAvatar || avatar}
           title={name}
           placeholder={placeholder}
         />
