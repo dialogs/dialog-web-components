@@ -68,7 +68,7 @@ class CallChat extends PureComponent {
 
     return (
       <CallVideo
-        isHovered={this.state.hover}
+        isHovered={this.state.isControlsVisible}
         ownVideos={call.ownVideos}
         theirVideos={call.theirVideos}
       />
