@@ -114,6 +114,7 @@
       "Message",
       "MessageState",
       "MessageContent",
+      "MessageAttachment",
       "MessageDivider",
       "FakeMessage",
       "EmptyChat"
