@@ -15,6 +15,7 @@
   display: flex;
   flex-direction: row;
   padding: var(--message-vertical-padding) var(--message-horizontal-padding);
+  flex: 0 0 auto;
 }
 
 .avatar {
@@ -44,7 +45,7 @@
   display: inline-block;
   height: var(--fake-message-line-height);
   margin-right: 12px;
-  margin-bottom: 15px;
+  margin-bottom: 8px;
   border-radius: 10px;
   background-color: var(--fake-message-text-color);
   line-height: 0;
@@ -52,5 +53,7 @@
 
 .lineHeader {
   composes: line;
+  height: var(--fake-message-header-height);
+  margin-bottom: 15px;
   background-color: var(--fake-message-header-text-color);
 }

@@ -203,9 +203,10 @@
   /* FakeMessage */
   --fake-message-avatar-size: 40px;
   --fake-message-avatar-color: #c5c5c5;
-  --fake-message-text-color: #e5e5e5;
-  --fake-message-header-text-color: var(--sidebar-fake-item-line-color);
-  --fake-message-line-height: 12px;
+  --fake-message-header-height: 12px;
+  --fake-message-header-text-color: #cacaca;
+  --fake-message-line-height: 10px;
+  --fake-message-text-color: color(var(--fake-message-header-text-color) alpha(60%));
   /* Field */
   --field-border-color: color(#000 alpha(10%));
   /* Fieldset */

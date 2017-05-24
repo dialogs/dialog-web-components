@@ -8,7 +8,7 @@ import { random } from 'lodash';
 
 function FakeMessage() {
   function renderText() {
-    const linesCount = random(5, 10);
+    const linesCount = random(2, 6);
     const linesArray = [];
 
     for (let i = 1; i <= linesCount; i++) {
@@ -30,7 +30,7 @@ function FakeMessage() {
       <div className={styles.body}>
         <header className={styles.header}>
           <div className={styles.lineHeader} style={{ width: 136 }} />
-          <div className={styles.lineHeader} style={{ width: 49 }} />
+          <div className={styles.lineHeader} style={{ width: 50 }} />
         </header>
         <div className={styles.text}>
           {renderText()}
