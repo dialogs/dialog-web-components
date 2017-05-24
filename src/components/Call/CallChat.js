@@ -6,6 +6,7 @@
 import type { CallProps } from './types';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
+import fullScreen from 'screenfull';
 import Hover from '../Hover/Hover';
 import CallVideo from '../CallVideo/CallVideo';
 import CallAvatar from '../CallAvatar/CallAvatar';
@@ -16,18 +17,21 @@ import { hasVideos, hasTheirVideos } from './utils/hasVideo';
 import styles from './Call.css';
 
 type State = {
-  hover: boolean
+  hover: boolean,
+  isFullScreen: boolean
 };
 
 class CallChat extends PureComponent {
   props: CallProps;
   state: State;
+  container: ?Node;
 
   constructor(props: CallProps) {
     super(props);
 
     this.state = {
-      hover: true
+      hover: true,
+      isFullScreen: false
     };
   }
 
@@ -39,7 +43,22 @@ class CallChat extends PureComponent {
     }
   };
 
-  renderVideo(): ?React.Element<any> {
+  handleFullScreen = () => {
+    if (fullScreen.enabled && this.container) {
+      fullScreen.toggle(this.container);
+      this.setState((state) => {
+        return {
+          isFullScreen: !state.isFullScreen
+        };
+      });
+    }
+  };
+
+  setContainer = (container: ?Node) => {
+    this.container = container;
+  };
+
+  renderVideo() {
     const { call } = this.props;
 
     if (!hasVideos(call) || !isOnCall(call.state)) {
@@ -55,7 +74,7 @@ class CallChat extends PureComponent {
     );
   }
 
-  renderInfo(): ?React.Element<any> {
+  renderInfo() {
     const { call, caller } = this.props;
 
     if (hasTheirVideos(call)) {
@@ -81,7 +100,7 @@ class CallChat extends PureComponent {
     );
   }
 
-  renderControls(): React.Element<any> {
+  renderControls() {
     const { call } = this.props;
 
     return (
@@ -103,13 +122,26 @@ class CallChat extends PureComponent {
     );
   }
 
+  renderFullScreen() {
+    if (!fullScreen.enabled) {
+      return null;
+    }
+
+    return (
+      <button style={{ zIndex: 10000 }} onClick={this.handleFullScreen}>
+        {this.state.isFullScreen ? 'normal' : 'full'}
+      </button>
+    );
+  }
+
   render() {
     const className = classNames(styles.container, this.props.className);
 
     return (
-      <div className={className}>
+      <div className={className} ref={this.setContainer}>
         <Hover onHover={this.handleHover} className={styles.hover}>
           <div className={styles.content}>
+            {this.renderFullScreen()}
             {this.renderVideo()}
             {this.renderInfo()}
           </div>
