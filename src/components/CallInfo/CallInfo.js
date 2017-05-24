@@ -25,14 +25,16 @@ function CallInfo(props: Props): React.Element<any> {
 
   return (
     <div className={className}>
-      <div className={styles.caller}>
-        {props.caller.name}
-      </div>
-      <div className={styles.state}>
-        <CallInfoState
-          state={props.call.state}
-          startTime={props.call.startTime}
-        />
+      <div className={styles.wrapper}>
+        <div className={styles.caller}>
+          {props.caller.name}
+        </div>
+        <div className={styles.state}>
+          <CallInfoState
+            state={props.call.state}
+            startTime={props.call.startTime}
+          />
+        </div>
       </div>
     </div>
   );

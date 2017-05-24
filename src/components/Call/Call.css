@@ -69,7 +69,7 @@
 
 .callState {
   box-sizing: border-box;
-  padding-top: calc(var(--default-padding-large) * 2.5);
+  padding: calc(var(--default-padding-large) * 2.5) var(--default-padding) 0;
 }
 
 .chatCallState {
