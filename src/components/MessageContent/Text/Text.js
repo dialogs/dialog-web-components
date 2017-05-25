@@ -37,7 +37,7 @@ class Text extends Component {
       this.props.isPending ? styles.pending : null
     );
 
-    const markdown = (
+    const markdown = this.props.text === '' ? null : (
       <Markdown className={className} text={this.props.text} />
     );
 
