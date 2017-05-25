@@ -12,11 +12,13 @@ export type Props = {
   height: number,
   preview: ?string,
   fileUrl: ?string,
-  fileName: ?string
+  fileName: ?string,
+  maxHeight: number,
+  maxWidth: number
 };
 
 function Video(props: Props) {
-  const style = getImageSize(props.width, props.height, 400, 400);
+  const style = getImageSize(props.width, props.height, props.maxWidth, props.maxHeight);
 
   return (
     <div className={props.className} style={style} title={props.fileName}>
