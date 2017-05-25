@@ -11,43 +11,45 @@ import CallWindow from './CallWindow';
 class Call extends PureComponent {
   props: Props;
 
-  handleEnd = (): void => {
-    if (this.props.id) {
-      this.props.onEnd(this.props.id);
+  handleEnd = () => {
+    const { call } = this.props;
+    if (call) {
+      this.props.onEnd(call.id);
     }
   };
 
-  handleAnswer = (): void => {
-    if (this.props.id) {
-      this.props.onAnswer(this.props.id);
+  handleAnswer = () => {
+    const { call } = this.props;
+    if (call) {
+      this.props.onAnswer(call.id);
     }
   };
 
-  handleMuteToggle = (): void => {
-    const { id, call } = this.props;
-    if (id && call) {
-      this.props.onMuteToggle(id, !call.isMuted);
+  handleMuteToggle = () => {
+    const { call } = this.props;
+    if (call) {
+      this.props.onMuteToggle(call.id, !call.isMuted);
     }
   };
 
-  handleCameraToggle = (): void => {
-    const { id, call } = this.props;
-    if (id && call) {
-      this.props.onCameraToggle(id, !call.isCameraOn);
+  handleCameraToggle = () => {
+    const { call } = this.props;
+    if (call) {
+      this.props.onCameraToggle(call.id, !call.isCameraOn);
     }
   };
 
-  handleScreenShareToggle = (): void => {
-    const { id, call } = this.props;
-    if (id && call) {
-      this.props.onScreenShareToggle(id, !call.isScreenSharingOn);
+  handleScreenShareToggle = () => {
+    const { call } = this.props;
+    if (call) {
+      this.props.onScreenShareToggle(call.id, !call.isScreenSharingOn);
     }
   };
 
-  render(): ?React.Element<any> {
-    const { id, call, caller, small, isVideoEnabled, isScreenSharingEnabled } = this.props;
+  render() {
+    const { call, small, isVideoEnabled, isScreenSharingEnabled } = this.props;
 
-    if (!id || !call || !caller) {
+    if (!call) {
       return null;
     }
 
@@ -56,10 +58,10 @@ class Call extends PureComponent {
     return (
       <ChildCall
         call={call}
-        caller={caller}
         onEnd={this.handleEnd}
         onAnswer={this.handleAnswer}
         onResize={this.props.onResize}
+        onGoToPeer={this.props.onGoToPeer}
         onMuteToggle={this.handleMuteToggle}
         onCameraToggle={isVideoEnabled ? this.handleCameraToggle : null}
         onScreenShareToggle={isScreenSharingEnabled ? this.handleScreenShareToggle : null}

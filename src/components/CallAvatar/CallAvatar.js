@@ -2,29 +2,30 @@
  * Copyright 2017 dialog LLC <info@dlg.im>
  */
 
-import type { User } from '@dlghq/dialog-types';
+import type { PeerInfo } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
-import Avatar from '../Avatar/Avatar';
+import PeerAvatar from '../PeerAvatar/PeerAvatar';
 import styles from './CallAvatar.css';
 
-export type Props = {
+type Props = {
   className?: string,
+  peer: PeerInfo,
   size: number,
   animated: boolean,
-  caller: User
+  onClick?: () => mixed
 };
 
 class CallAvatar extends PureComponent {
   props: Props;
 
-  isAvatarSmall = (): boolean => {
-    return Boolean(this.props.size <= 50);
-  };
+  isSmall(): boolean {
+    return this.props.size <= 50;
+  }
 
   getAnimationRingSize = (position: number): number => {
     const { size } = this.props;
-    const isSmall = this.isAvatarSmall();
+    const isSmall = this.isSmall();
     const indent = isSmall ? 6 : 12;
     const mod = isSmall ? 10 : 20;
 
@@ -32,7 +33,7 @@ class CallAvatar extends PureComponent {
   };
 
   renderRings() {
-    const ringsCount = this.isAvatarSmall() ? 2 : 3;
+    const ringsCount = this.isSmall() ? 2 : 3;
     const rings = [];
     for (let i = 0; i < ringsCount; i++) {
       const size = this.getAnimationRingSize(i);
@@ -73,17 +74,16 @@ class CallAvatar extends PureComponent {
   }
 
   render() {
-    const { caller: { avatar, bigAvatar, name, placeholder }, size } = this.props;
+    console.debug(this.props);
     const className = classNames(styles.container, this.props.className);
 
     return (
       <div className={className}>
-        <Avatar
+        <PeerAvatar
           className={styles.avatar}
-          size={size}
-          image={bigAvatar || avatar}
-          title={name}
-          placeholder={placeholder}
+          peer={this.props.peer}
+          size={this.props.size}
+          onClick={this.props.onClick}
         />
         {this.renderAnimation()}
       </div>

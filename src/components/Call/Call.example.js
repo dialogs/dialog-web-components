@@ -3,7 +3,7 @@
  * @flow
  */
 
-import type { User, Call as CallType } from '@dlghq/dialog-types';
+import type { Call as CallType } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
 import Button from '../Button/Button';
 import Call from './Call';
@@ -14,9 +14,7 @@ type Props = {
 };
 
 type State = {
-  id: ?string,
   call: ?CallType,
-  caller: ?User,
   small: boolean
 };
 
@@ -30,7 +28,7 @@ function getVideoStream(callback) {
         isMirrored: true
       });
     }).catch((error) => {
-      console.error(error);
+      console.error(error); // eslint-disable-line
     });
   }
 }
@@ -41,9 +39,7 @@ class CallExample extends PureComponent {
 
   static getInitialState(): State {
     return {
-      id: null,
       call: null,
-      caller: null,
       small: false
     };
   }
@@ -56,12 +52,20 @@ class CallExample extends PureComponent {
 
   handleCall = () => {
     this.setState({
-      id: String(Math.random()),
       call: {
+        id: String(Math.random()),
         state: 'ringing_outgoing',
         peer: {
-          id: 1,
-          type: 'user'
+          peer: {
+            id: 1,
+            type: 'user'
+          },
+          type: 'user',
+          avatar: 'https://avatars0.githubusercontent.com/u/3505878',
+          bigAvatar: null,
+          placeholder: 'green',
+          title: 'Nikita',
+          userName: 'nkt'
         },
         startTime: 0,
         members: [],
@@ -71,23 +75,6 @@ class CallExample extends PureComponent {
         isOutgoing: true,
         isCameraOn: false,
         isScreenSharingOn: false
-      },
-      caller: {
-        id: 1,
-        name: 'Nikita',
-        placeholder: 'green',
-        avatar: 'https://avatars0.githubusercontent.com/u/3505878',
-        about: null,
-        bigAvatar: null,
-        emails: [],
-        phones: [],
-        isBlocked: false,
-        isBot: false,
-        isContact: true,
-        timeZone: '',
-        isOnline: false,
-        nick: 'nkt',
-        sex: 'unknown'
       }
     }, () => {
       setTimeout(this.handleConnecting, 2000);
@@ -217,6 +204,33 @@ class CallExample extends PureComponent {
     this.setState({ small: !this.state.small });
   };
 
+  handleGoToPeer = (peer: $FlowIssue) => {
+    console.debug('[call] go to', peer); // eslint-disable-line
+  };
+
+  renderCall() {
+    if (!this.state.call) {
+      return null;
+    }
+
+    return (
+      <Call
+        key={this.state.call.id}
+        call={this.state.call}
+        small={this.state.small}
+        isVideoEnabled={this.props.withVideo}
+        isScreenSharingEnabled={this.props.withScreenSharing}
+        onEnd={this.handleEnd}
+        onAnswer={this.handleAnswer}
+        onResize={this.handleResize}
+        onGoToPeer={this.handleGoToPeer}
+        onMuteToggle={this.handleMuteToggle}
+        onCameraToggle={this.handleCameraToggle}
+        onScreenShareToggle={this.handleScreenShareToggle}
+      />
+    );
+  }
+
   render() {
     return (
       <div>
@@ -224,21 +238,7 @@ class CallExample extends PureComponent {
         <div style={{ width: 6, display: 'inline-block' }} />
         <Button onClick={this.handleSizeToggle} theme="primary" size="small">Toggle size</Button>
         <div style={{ height: 500, width: '100%' }}>
-          <Call
-            key={this.state.id}
-            id={this.state.id}
-            call={this.state.call}
-            caller={this.state.caller}
-            small={this.state.small}
-            isVideoEnabled={this.props.withVideo}
-            isScreenSharingEnabled={this.props.withScreenSharing}
-            onEnd={this.handleEnd}
-            onAnswer={this.handleAnswer}
-            onResize={this.handleResize}
-            onMuteToggle={this.handleMuteToggle}
-            onCameraToggle={this.handleCameraToggle}
-            onScreenShareToggle={this.handleScreenShareToggle}
-          />
+          {this.renderCall()}
         </div>
       </div>
     );

@@ -8,12 +8,12 @@ import React from 'react';
 import { Text } from '@dlghq/react-l10n';
 import TimeTimer from '../Timer/TimeTimer';
 
-export type Props = {
+type Props = {
   state: CallState,
   startTime: number
 };
 
-function CallInfoState(props: Props): React.Element<any> {
+function CallInfoState(props: Props) {
   switch (props.state) {
     case 'connecting_to_server':
     case 'connecting_to_peer':

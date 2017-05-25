@@ -3,7 +3,7 @@
  * @flow
  */
 
-import type { CallProps } from './types';
+import type { CallProps as Props } from './types';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import Hover from '../Hover/Hover';
@@ -22,10 +22,10 @@ type State = {
 };
 
 class CallWindow extends PureComponent {
-  props: CallProps;
+  props: Props;
   state: State;
 
-  constructor(props: CallProps) {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
@@ -43,6 +43,10 @@ class CallWindow extends PureComponent {
     this.props.onResize(getWindowSize(call));
   }
 
+  handleGoToPeer = () => {
+    this.props.onGoToPeer(this.props.call.peer.peer);
+  };
+
   handleHover = (hover: boolean) => {
     const { call } = this.props;
 
@@ -51,43 +55,21 @@ class CallWindow extends PureComponent {
     }
   };
 
-  renderHeader(): React.Element<any> {
-    const { call, caller } = this.props;
+  renderHeader() {
+    const { call } = this.props;
     const withVideo = hasTheirVideos(call);
 
     return (
       <CallHeader
         withVideo={withVideo}
         call={call}
-        caller={caller}
         isVisible={this.state.hover}
+        onClick={this.handleGoToPeer}
       />
     );
   }
 
-  renderInfo(): React.Element<any> {
-    const { call, caller } = this.props;
-
-    return (
-      <div className={styles.info}>
-        <CallAvatar
-          size={136}
-          animated
-          state={call.state}
-          caller={caller}
-        />
-        <CallInfo
-          className={styles.callState}
-          onCall={false}
-          call={call}
-          caller={caller}
-          withVideo={false}
-        />
-      </div>
-    );
-  }
-
-  renderVideo(): ?React.Element<any> {
+  renderVideo() {
     const { call } = this.props;
 
     if (hasTheirVideos(call)) {
@@ -99,13 +81,27 @@ class CallWindow extends PureComponent {
     return null;
   }
 
-  renderContent(): React.Element<any> {
+  renderContent() {
     const { call } = this.props;
 
     if (!isOnCall(call.state)) {
       return (
         <div className={styles.content}>
-          {this.renderInfo()}
+          <div className={styles.info}>
+            <CallAvatar
+              animated
+              size={136}
+              peer={call.peer}
+              state={call.state}
+              onClick={this.handleGoToPeer}
+            />
+            <CallInfo
+              className={styles.callState}
+              call={call}
+              onCall={false}
+              withVideo={false}
+            />
+          </div>
         </div>
       );
     }
@@ -118,7 +114,7 @@ class CallWindow extends PureComponent {
     );
   }
 
-  renderControls(): React.Element<any> {
+  renderControls() {
     const { call } = this.props;
 
     return (

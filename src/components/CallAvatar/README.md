@@ -1,12 +1,6 @@
 ```
 initialState = {
-  size: 130,
-  animated: false,
-  caller: {
-    avatar: 'https://octodex.github.com/images/octotron.jpg',
-    name: 'Spidertocat',
-    placeholder: 'red'
-  }
+  animated: false
 };
 
 const toggleAnimation = () => setState({ animated: !state.animated });
@@ -15,7 +9,12 @@ const toggleAnimation = () => setState({ animated: !state.animated });
   <Button theme="primary" size="small" onClick={toggleAnimation}>Toggle Animation</Button>
   <div style={{ textAlign: 'center'}}>
     <CallAvatar
-      {...state}
+      size={130}
+      peer={{
+        avatar: 'https://octodex.github.com/images/octotron.jpg',
+        name: 'Spidertocat',
+        placeholder: 'red'
+      }}
     />
   </div>
 </div>

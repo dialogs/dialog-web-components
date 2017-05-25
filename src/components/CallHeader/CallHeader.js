@@ -3,7 +3,7 @@
  * @flow
  */
 
-import type { Call, User } from '@dlghq/dialog-types';
+import type { Call } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import CallAvatar from '../CallAvatar/CallAvatar';
@@ -11,18 +11,18 @@ import CallInfo from '../CallInfo/CallInfo';
 import isOnCall from '../Call/utils/isOnCall';
 import styles from './CallHeader.css';
 
-export type Props = {
+type Props = {
   call: Call,
-  caller: User,
   isVisible: boolean,
-  withVideo: boolean
+  withVideo: boolean,
+  onClick?: () => mixed
 };
 
 class CallHeader extends PureComponent {
   props: Props;
 
   render() {
-    const { caller, call, isVisible, withVideo } = this.props;
+    const { call, isVisible, withVideo } = this.props;
     const onCall = isOnCall(call.state);
     const className = classNames(styles.container, {
       [styles.hide]: !isVisible,
@@ -32,16 +32,17 @@ class CallHeader extends PureComponent {
     return (
       <header className={className}>
         <CallAvatar
-          caller={caller}
+          peer={call.peer}
           size={withVideo ? 40 : 50}
           animated={!onCall}
+          onClick={this.props.onClick}
         />
         <CallInfo
-          withVideo={withVideo}
-          onCall={onCall}
           className={styles.info}
           call={call}
-          caller={caller}
+          onCall={onCall}
+          withVideo={withVideo}
+          onClick={this.props.onClick}
         />
       </header>
     );

@@ -3,41 +3,47 @@
  * @flow
  */
 
-import type { Call, User } from '@dlghq/dialog-types';
-import React from 'react';
+import type { Call } from '@dlghq/dialog-types';
+import React, { PureComponent } from 'react';
 import classNames from 'classnames';
+import PeerInfoTitle from '../PeerInfoTitle/PeerInfoTitle';
 import CallInfoState from './CallInfoState';
 import styles from './CallInfo.css';
 
-export type Props = {
+type Props = {
   className?: string,
   call: Call,
-  caller: User,
   onCall: boolean,
-  withVideo: boolean
+  withVideo: boolean,
+  onClick?: () => mixed
 };
 
-function CallInfo(props: Props): React.Element<any> {
-  const className = classNames(styles.container, {
-    [styles.onCall]: props.onCall,
-    [styles.withVideo]: props.withVideo
-  }, props.className);
+class CallInfo extends PureComponent {
+  props: Props;
 
-  return (
-    <div className={className}>
-      <div className={styles.wrapper}>
-        <div className={styles.caller}>
-          {props.caller.name}
-        </div>
-        <div className={styles.state}>
-          <CallInfoState
-            state={props.call.state}
-            startTime={props.call.startTime}
-          />
+  render() {
+    const { call } = this.props;
+    const className = classNames(styles.container, this.props.className, {
+      [styles.onCall]: this.props.onCall,
+      [styles.withVideo]: this.props.withVideo
+    });
+
+    return (
+      <div className={className}>
+        <div className={styles.wrapper}>
+          <div className={styles.caller}>
+            <PeerInfoTitle title={call.peer.title} onTitleClick={this.props.onClick} />
+          </div>
+          <div className={styles.state}>
+            <CallInfoState
+              state={call.state}
+              startTime={call.startTime}
+            />
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default CallInfo;

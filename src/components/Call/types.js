@@ -3,33 +3,32 @@
  * @flow
  */
 
-import type { Call, User } from '@dlghq/dialog-types';
-import type { Dimension } from './utils/getWindowSize';
+import type { Call, Peer } from '@dlghq/dialog-types';
+import type { Size } from './utils/getWindowSize';
 
 export type CallWrapperProps = {
   className?: string,
-  id: ?string,
   call: ?Call,
-  caller: ?User,
   small: boolean,
-  onEnd: (id: string) => any,
-  onAnswer: (id: string) => any,
-  onMuteToggle: (id: string, isMuted: boolean) => any,
-  onCameraToggle: (id: string, isCameraOn: boolean) => any,
-  onScreenShareToggle: (id: string, isScreenSharingOn: boolean) => any,
-  onResize: (dimension: Dimension) => void,
   isVideoEnabled: boolean,
-  isScreenSharingEnabled: boolean
+  isScreenSharingEnabled: boolean,
+  onEnd: (id: string) => mixed,
+  onAnswer: (id: string) => mixed,
+  onResize: (size: Size) => mixed,
+  onGoToPeer: (peer: Peer) => mixed,
+  onMuteToggle: (id: string, isMuted: boolean) => mixed,
+  onCameraToggle: (id: string, isCameraOn: boolean) => mixed,
+  onScreenShareToggle: (id: string, isScreenSharingOn: boolean) => mixed
 };
 
 export type CallProps = {
   className?: string,
   call: Call,
-  caller: User,
-  onEnd: () => void,
-  onAnswer: () => void,
-  onMuteToggle: () => void,
-  onCameraToggle?: ?() => void,
-  onScreenShareToggle?: ?() => void,
-  onResize: (dimension: Dimension) => void
+  onEnd: () => mixed,
+  onAnswer: () => mixed,
+  onResize: (size: Size) => mixed,
+  onGoToPeer: (peer: Peer) => mixed,
+  onMuteToggle: () => mixed,
+  onCameraToggle?: ?() => mixed,
+  onScreenShareToggle?: ?() => mixed
 };

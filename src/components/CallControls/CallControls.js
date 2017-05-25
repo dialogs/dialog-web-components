@@ -14,15 +14,15 @@ export type Props = {
   size: 'normal' | 'large',
   isVisible: boolean,
   isMuted?: boolean,
+  onCall: boolean,
+  withVideo: boolean,
   isCameraOn?: boolean,
   isScreenSharingOn?: boolean,
-  onEnd: () => void,
-  onAnswer: () => void,
-  onMuteToggle?: () => void,
-  onCameraToggle?: ?() => void,
-  onScreenShareToggle?: ?() => void,
-  onCall: boolean,
-  withVideo: boolean
+  onEnd: () => mixed,
+  onAnswer: () => mixed,
+  onMuteToggle?: () => mixed,
+  onCameraToggle?: ?() => mixed,
+  onScreenShareToggle?: ?() => mixed
 };
 
 class CallControls extends PureComponent {

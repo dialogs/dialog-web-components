@@ -3,7 +3,7 @@
  * @flow
  */
 
-import type { CallProps } from './types';
+import type { CallProps as Props } from './types';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import fullScreen from 'screenfull';
@@ -18,21 +18,21 @@ import { hasVideos, hasTheirVideos } from './utils/hasVideo';
 import styles from './Call.css';
 
 type State = {
-  isControlsVisible: boolean,
-  isFullScreen: boolean
+  isFullScreen: boolean,
+  isControlsVisible: boolean
 };
 
 class CallChat extends PureComponent {
-  props: CallProps;
+  props: Props;
   state: State;
   container: ?Node;
 
-  constructor(props: CallProps) {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
-      isControlsVisible: true,
-      isFullScreen: false
+      isFullScreen: false,
+      isControlsVisible: true
     };
   }
 
@@ -76,7 +76,7 @@ class CallChat extends PureComponent {
   }
 
   renderInfo() {
-    const { call, caller } = this.props;
+    const { call } = this.props;
 
     if (hasTheirVideos(call)) {
       return null;
@@ -87,14 +87,13 @@ class CallChat extends PureComponent {
         <CallAvatar
           animated={!isOnCall(call.state)}
           size={200}
+          peer={call.peer}
           state={call.state}
-          caller={caller}
         />
         <CallInfo
           className={styles.chatCallState}
-          onCall={false}
           call={call}
-          caller={caller}
+          onCall={false}
           withVideo={false}
         />
       </div>
