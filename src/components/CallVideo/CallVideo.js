@@ -21,8 +21,8 @@ class CallVideo extends PureComponent {
 
     return theirVideos.map(({ stream, isMirrored }) => {
       return (
-        // $FlowFixMe: stream.id exists
         <CallVideoStream
+          // $FlowFixMe: stream.id exists
           key={stream.id}
           className={styles.video}
           stream={stream}
