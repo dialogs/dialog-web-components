@@ -19,6 +19,8 @@ import EmojiButton from '../EmojiButton/EmojiButton';
 import Hover from '../Hover/Hover';
 import CopyOnly from '../CopyOnly/CopyOnly';
 import MessageAttachment from '../MessageAttachment/MessageAttachment';
+import MessageAttachmentReply from '../MessageAttachment/MessageAttachmentReply';
+import MessageAttachmentForward from '../MessageAttachment/MessageAttachmentForward';
 import CheckButton from '../CheckButton/CheckButton';
 import styles from './Message.css';
 
@@ -260,6 +262,41 @@ class Message extends PureComponent {
     );
   }
 
+  renderReply() {
+    const { message: { attachment }, maxWidth, maxHeight } = this.props;
+    if (attachment && attachment.type === 'reply') {
+      return (
+        <MessageAttachmentReply
+          messages={attachment.messages}
+          onGoToPeer={this.props.onGoToPeer}
+          onGoToMessage={this.props.onGoToMessage}
+          maxWidth={maxWidth}
+          maxHeight={maxHeight}
+        />
+      );
+    }
+
+    return null;
+  }
+
+  renderForward() {
+    const { message: { attachment }, maxWidth, maxHeight } = this.props;
+    if (attachment && attachment.type === 'forward') {
+      return (
+        <MessageAttachmentForward
+          from={attachment.from}
+          messages={attachment.messages}
+          onGoToPeer={this.props.onGoToPeer}
+          onGoToMessage={this.props.onGoToMessage}
+          maxWidth={maxWidth}
+          maxHeight={maxHeight}
+        />
+      );
+    }
+
+    return null;
+  }
+
   render() {
     const { short, message: { content, rid }, maxWidth, maxHeight } = this.props;
     const hover = this.isHover();
@@ -287,6 +324,7 @@ class Message extends PureComponent {
         <div className={styles.body}>
           {short ? this.renderShortHeader() : this.renderHeader()}
           <div className={styles.content}>
+            {this.renderReply()}
             <MessageContent
               content={content}
               rid={rid}
@@ -295,7 +333,7 @@ class Message extends PureComponent {
               maxWidth={maxWidth}
               maxHeight={maxHeight}
             />
-            {this.renderAttachments()}
+            {this.renderForward()}
             {this.renderReactions()}
           </div>
         </div>
