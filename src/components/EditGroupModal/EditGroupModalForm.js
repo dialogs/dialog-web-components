@@ -31,9 +31,10 @@ export type Props = {
   className?: string,
   vertical: boolean,
   shortnamePrefix?: ?string,
-  onChange: () => void;
-  onAvatarChange: (avatar: File) => void;
-  onAvatarRemove: () => void;
+  onChange: () => void,
+  onSubmit: () => void,
+  onAvatarChange: (avatar: File) => void,
+  onAvatarRemove: () => void
 }
 
 export type State = {
@@ -81,6 +82,12 @@ class EditGroupModalForm extends PureComponent {
     }
   }
 
+  handleSubmit = (event: SyntheticEvent) => {
+    event.preventDefault();
+
+    this.props.onSubmit();
+  };
+
   getInputState = (field: string): Object => {
     if (this.props[field].error) {
       return {
@@ -92,7 +99,7 @@ class EditGroupModalForm extends PureComponent {
     return {};
   };
 
-  renderAvatar(): React.Element<any> {
+  renderAvatar() {
     const { name, placeholder } = this.props;
     const { avatar } = this.state;
 
@@ -109,7 +116,7 @@ class EditGroupModalForm extends PureComponent {
     );
   }
 
-  renderShortname(): ?React.Element<any> {
+  renderShortname() {
     const { type, shortname } = this.props;
     const { l10n } = this.context;
 
@@ -130,7 +137,7 @@ class EditGroupModalForm extends PureComponent {
     );
   }
 
-  render(): React.Element<any> {
+  render() {
     const { type, about, name, vertical } = this.props;
     const { l10n } = this.context;
     const className = classNames(styles.info, {
@@ -140,7 +147,7 @@ class EditGroupModalForm extends PureComponent {
     return (
       <div className={className}>
         {this.renderAvatar()}
-        <form autoComplete="off" className={styles.form}>
+        <form className={styles.form} autoComplete="off" onSubmit={this.handleSubmit}>
           <Input
             className={styles.input}
             id="name"

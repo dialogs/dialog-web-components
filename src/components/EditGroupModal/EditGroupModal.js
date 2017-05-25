@@ -84,8 +84,11 @@ class EditGroupModal extends PureComponent {
     });
   };
 
-  handleSubmit = (event: SyntheticEvent): void => {
-    event.preventDefault();
+  handleSubmit = (event?: SyntheticEvent): void => {
+    if (event) {
+      event.preventDefault();
+    }
+
     this.props.onSubmit(this.props.group, this.state.group);
   };
 
@@ -104,8 +107,7 @@ class EditGroupModal extends PureComponent {
     return avatar.pending || name.pending || about.pending || shortname.pending;
   }
 
-
-  renderHeader(): ?React.Element<any> {
+  renderHeader() {
     switch (this.state.screen) {
       case 'info':
         return (
@@ -131,7 +133,7 @@ class EditGroupModal extends PureComponent {
     }
   }
 
-  renderForm(): React.Element<any> {
+  renderForm() {
     const { group } = this.props;
 
     return (
@@ -145,13 +147,14 @@ class EditGroupModal extends PureComponent {
         placeholder={this.props.group.placeholder}
         shortnamePrefix={this.props.shortnamePrefix}
         onChange={this.handleChange}
+        onSubmit={this.handleSubmit}
         onAvatarChange={this.handleAvatarEdit}
         onAvatarRemove={this.handleAvatarRemove}
       />
     );
   }
 
-  renderAvatarEdit(): ?React.Element<any> {
+  renderAvatarEdit() {
     if (this.state.group.avatar && typeof this.state.group.avatar !== 'string') {
       return (
         <ImageEdit
@@ -168,7 +171,7 @@ class EditGroupModal extends PureComponent {
   }
 
 
-  renderBody(): ?React.Element<any> {
+  renderBody() {
     switch (this.state.screen) {
       case 'info':
         return (
@@ -187,7 +190,7 @@ class EditGroupModal extends PureComponent {
     }
   }
 
-  renderFooter(): ?React.Element<any> {
+  renderFooter() {
     if (this.state.screen === 'info') {
       return (
         <ModalFooter className={styles.footer}>
@@ -208,7 +211,7 @@ class EditGroupModal extends PureComponent {
     return null;
   }
 
-  render(): React.Element<any> {
+  render() {
     const className = classNames(styles.container, this.props.className);
 
     return (
