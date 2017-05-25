@@ -15,6 +15,9 @@
 
 .fromBottom {
   display: flex;
-  justify-content: flex-end;
-  flex-direction: column;
+  flex-flow: column nowrap;
+
+  & > div:first-child {
+    margin-top: auto;
+  }
 }
