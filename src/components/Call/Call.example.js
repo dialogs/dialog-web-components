@@ -165,7 +165,7 @@ class CallExample extends PureComponent {
               call: {
                 ...this.state.call,
                 ownVideos: [stream],
-                theirVideos: [stream]
+                theirVideos: [stream, stream]
               }
             });
           });

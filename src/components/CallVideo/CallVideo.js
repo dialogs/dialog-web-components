@@ -22,13 +22,12 @@ class CallVideo extends PureComponent {
     return theirVideos.map(({ stream, isMirrored }) => {
       return (
         // $FlowFixMe: stream.id exists
-        <div key={stream.id} className={styles.videoContainer}>
-          <CallVideoStream
-            className={styles.video}
-            stream={stream}
-            isMirrored={isMirrored}
-          />
-        </div>
+        <CallVideoStream
+          key={stream.id}
+          className={styles.video}
+          stream={stream}
+          isMirrored={isMirrored}
+        />
       );
     });
   }
@@ -62,7 +61,9 @@ class CallVideo extends PureComponent {
   render() {
     return (
       <div className={styles.container}>
-        {this.renderTheirVideos()}
+        <div className={styles.videoContainer}>
+          {this.renderTheirVideos()}
+        </div>
         {this.renderOwnVideos()}
       </div>
     );
