@@ -56,8 +56,17 @@ class PeerAvatar extends PureComponent<DefaultProps, Props, void> {
     return getAvatarColor(placeholder);
   }
 
-  renderDefs(): React.Element<any> {
-    if (this.props.peer.avatar) {
+  getAvatarImage(): ?string {
+    if (this.getAvatarSize() >= 100) {
+      return this.props.peer.bigAvatar || this.props.peer.avatar;
+    }
+
+    return this.props.peer.avatar;
+  }
+
+  renderDefs() {
+    const avatar = this.getAvatarImage();
+    if (avatar) {
       return (
         <pattern id={this.id} width="100%" height="100%" patternUnits="objectBoundingBox">
           <image
@@ -65,7 +74,7 @@ class PeerAvatar extends PureComponent<DefaultProps, Props, void> {
             y="0"
             width="100%"
             height="100%"
-            xlinkHref={this.props.peer.avatar}
+            xlinkHref={avatar}
           />
         </pattern>
       );
@@ -88,7 +97,7 @@ class PeerAvatar extends PureComponent<DefaultProps, Props, void> {
     );
   }
 
-  renderMask(): React.Element<any> {
+  renderMask() {
     if (!this.props.online) {
       return (
         <circle fill={`url(#${this.id})`} cx="50" cy="50" r="50" />
@@ -104,8 +113,9 @@ class PeerAvatar extends PureComponent<DefaultProps, Props, void> {
     );
   }
 
-  renderText(): ?React.Element<any> {
-    if (this.props.peer.avatar) {
+  renderText() {
+    const avatar = this.getAvatarImage();
+    if (avatar) {
       return null;
     }
 
@@ -131,7 +141,7 @@ class PeerAvatar extends PureComponent<DefaultProps, Props, void> {
     );
   }
 
-  renderOnline(): ?React.Element<any> {
+  renderOnline() {
     if (!this.props.online) {
       return null;
     }
@@ -141,10 +151,13 @@ class PeerAvatar extends PureComponent<DefaultProps, Props, void> {
     );
   }
 
-  render(): React.Element<any> {
-    const className = classNames(styles.container, {
-      [styles.clickable]: this.props.onClick
-    }, this.props.className);
+  render() {
+    const className = classNames(
+      styles.container,
+      this.props.className,
+      this.props.onClick ? styles.clickable : null
+    );
+
     const size = this.getAvatarSize();
 
     return (
