@@ -19,7 +19,7 @@ class Select extends PureComponent {
   };
 
   handleChange = (event: $FlowIssue): void => {
-    this.props.onChange(event.target.value, event);
+    this.props.onChange(event.target.value);
   };
 
   // renderPlaceholder(): ?React.Element<any> {

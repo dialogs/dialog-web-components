@@ -13,7 +13,7 @@ export type Props = {
   checked: boolean,
   theme: 'primary' | 'success' | 'danger' | 'info' | 'warning',
   size: number,
-  onClick?: () => any
+  onClick?: (checked: boolean) => any
 };
 
 class CheckButton extends PureComponent {
