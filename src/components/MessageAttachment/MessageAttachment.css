@@ -9,7 +9,7 @@
   --message-attachment-background: #f8f8f8;
   --message-attachment-font-size: var(--default-font-size-small);
   --message-attachment-padding: var(--default-padding-small);
-  --message-attachment-border-color: color(var(--message-attachment-background) shade(2%));
+  --message-attachment-border-color: color(var(--message-attachment-background) shade(5%));
   --message-attachment-from-font-size: var(--default-font-size);
   --message-attachment-from-color: #939393;
   --message-attachment-header-height: 20px;
@@ -26,11 +26,9 @@
   font-family: var(--message-attachment-font-family);
   background-color: var(--message-attachment-background);
   display: block;
-  margin-top: var(--default-padding-small);
 }
 
 .itemContainer {
-  margin-top: 6px;
   padding: 6px var(--message-attachment-padding);
   cursor: pointer;
 
@@ -71,7 +69,7 @@
 .icon {
   display: inline-block;
   margin-right: 4px;
-  fill: var(--color-primary);
+  fill: var(--message-attachment-from-color);
 }
 
 .name {

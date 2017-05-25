@@ -267,6 +267,7 @@ class Message extends PureComponent {
     if (attachment && attachment.type === 'reply') {
       return (
         <MessageAttachmentReply
+          className={styles.reply}
           messages={attachment.messages}
           onGoToPeer={this.props.onGoToPeer}
           onGoToMessage={this.props.onGoToMessage}
@@ -284,6 +285,7 @@ class Message extends PureComponent {
     if (attachment && attachment.type === 'forward') {
       return (
         <MessageAttachmentForward
+          className={styles.forward}
           from={attachment.from}
           messages={attachment.messages}
           onGoToPeer={this.props.onGoToPeer}

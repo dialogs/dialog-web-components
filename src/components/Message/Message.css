@@ -130,3 +130,11 @@
   top: 7px;
   right: 8px;
 }
+
+.reply {
+  margin: 0 calc(0 - var(--default-padding-small)) 4px;
+}
+
+.forward {
+  margin: 0 calc(0 - var(--default-padding-small));
+}
