@@ -12,6 +12,7 @@ import ModalClose from '../Modal/ModalClose';
 import ModalHeader from '../Modal/ModalHeader';
 import ModalBody from '../Modal/ModalBody';
 import ModalFooter from '../Modal/ModalFooter';
+import HotKeys from '../HotKeys/HotKeys';
 import Button from '../Button/Button';
 import Icon from '../Icon/Icon';
 import AttachmentMeta from './AttachmentMeta';
@@ -47,6 +48,33 @@ class AttachmentModal extends PureComponent {
     const { current } = this.props;
 
     this.props.onCurrentChange(Math.max(0, current - 1));
+  };
+
+  handleHotKey = (key: string, event: KeyboardEvent) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    switch (key) {
+      case 'Left':
+        this.handlePrevious();
+        break;
+
+      case 'Right':
+        this.handleNext();
+        break;
+
+      case 'Enter':
+        this.handleSend();
+        break;
+
+      case 'Cmd + Enter':
+      case 'Ctrl + Enter':
+        this.handleSendAll();
+        break;
+
+      default:
+        // do nothing
+    }
   };
 
   getCurrentAttachment(): Attachment {
@@ -142,30 +170,18 @@ class AttachmentModal extends PureComponent {
   render() {
     const className = classNames(styles.container, this.props.className);
 
-    const hotKeyMap = {
-      next: 'right',
-      previous: 'left',
-      send: 'enter',
-      sendAll: 'mod+enter'
-    };
-
-    const hotKeyHandlers = {
-      next: this.handleNext,
-      previous: this.handlePrevious,
-      send: this.handleSend,
-      sendAll: this.handleSendAll
-    };
-
     return (
-      <Modal className={className} onClose={this.props.onClose} keyMap={hotKeyMap} handlers={hotKeyHandlers}>
-        <ModalHeader withBorder className={styles.header}>
-          <Text id="AttachmentModal.title" />
-          {this.renderPagination()}
-          <ModalClose onClick={this.props.onClose} />
-        </ModalHeader>
-        {this.renderBody()}
-        {this.renderFooter()}
-      </Modal>
+      <HotKeys onHotKey={this.handleHotKey}>
+        <Modal className={className} onClose={this.props.onClose}>
+          <ModalHeader withBorder className={styles.header}>
+            <Text id="AttachmentModal.title" />
+            {this.renderPagination()}
+            <ModalClose onClick={this.props.onClose} />
+          </ModalHeader>
+          {this.renderBody()}
+          {this.renderFooter()}
+        </Modal>
+      </HotKeys>
     );
   }
 }

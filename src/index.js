@@ -135,6 +135,7 @@ export { default as ActivityListMembersItem } from './components/ActivityListMem
 // Helpers
 export { default as Trigger } from './components/Trigger/Trigger';
 export { default as Confirm } from './components/Confirm/Confirm';
+export { default as HotKeys } from './components/HotKeys/HotKeys';
 
 // Other
 export { default as Error } from './components/Error/Error';
