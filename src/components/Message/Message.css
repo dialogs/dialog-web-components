@@ -65,7 +65,6 @@
 
 .username {
   display: inline-block;
-  margin-left: 6px;
   font-size: 14px;
   color: var(--message-username-color);
 }
