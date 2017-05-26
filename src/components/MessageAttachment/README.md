@@ -1,20 +1,25 @@
 ```
 const messages = require('../Message/fixtures/messages').messages;
+const from = require('../Message/fixtures/messages').peerInfo;
 
-<div>
-  <MessageAttachment
-    attachment={{
-      type: 'reply',
-      messages: [messages[0]]
+<div style={{background: '#fff'}}>
+  <Message
+    message={{
+      ...messages[0],
+      attachment: {
+        type: 'reply',
+        messages: [messages[1]]
+      }
     }}
   />
-  <MessageAttachment
-    attachment={{
-      type: 'forward',
-      messages: [
-        messages[1],
-        messages[3]
-      ]
+  <Message
+    message={{
+      ...messages[0],
+      attachment: {
+        from,
+        type: 'forward',
+        messages: [messages[1], messages[3]]
+      }
     }}
   />
 </div>

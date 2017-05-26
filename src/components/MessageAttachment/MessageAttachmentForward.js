@@ -60,7 +60,7 @@ class MessageAttachmentForward extends PureComponent {
           className={styles.fromButton}
         >
           {(from.type === 'channel' || from.type === 'group') ? (
-            <Icon glyph={from.type} className={styles.fromIcon} size={24} />
+            <Icon glyph={from.type} className={styles.fromIcon} size={20} />
           ) : null}
           {from.title}
         </Button>
