@@ -33,9 +33,11 @@ class PeerInfoTitle extends PureComponent {
 
     if (this.props.userName) {
       return (
-        <span className={this.props.className}>
-          {title}
-          {' '}
+        <span style={{ lineHeight: '1' }}>
+          <span className={this.props.className}>
+            {title}
+            {' '}
+          </span>
           <span className={this.props.userNameClassName} onClick={this.props.onUserNameClick}>
             {`@${this.props.userName}`}
           </span>

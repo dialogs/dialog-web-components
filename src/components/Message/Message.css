@@ -51,6 +51,7 @@
   margin-bottom: 4px;
   vertical-align: bottom;
   flex: 0 1 auto;
+  height: 20px;
 }
 
 .sender {
@@ -61,9 +62,11 @@
   display: inline-block;
   font-size: 16px;
   font-weight: 500;
+  line-height: 20px;
 }
 
 .username {
+  line-height: 20px;
   display: inline-block;
   font-size: 14px;
   color: var(--message-username-color);
@@ -131,9 +134,9 @@
 }
 
 .reply {
-  margin: 0 calc(0 - var(--default-padding-small)) 4px;
+  margin: 0 calc(0 - var(--default-padding-small)) 6px;
 }
 
 .forward {
-  margin: 0 calc(0 - var(--default-padding-small));
+  margin: 6px calc(0 - var(--default-padding-small)) 0;
 }

@@ -162,18 +162,16 @@ class Message extends PureComponent {
 
     return (
       <header className={styles.header}>
-        <span>
-          <PeerInfoTitle
-            info={sender}
-            title={sender.title}
-            userName={sender.userName}
-            titleClassName={titleClassName}
-            userNameClassName={mentionClassName}
-            onTitleClick={onTitleClick}
-            onUserNameClick={onMentionClick}
-          />
-          {this.renderState()}
-        </span>
+        <PeerInfoTitle
+          info={sender}
+          title={sender.title}
+          userName={sender.userName}
+          titleClassName={titleClassName}
+          userNameClassName={mentionClassName}
+          onTitleClick={onTitleClick}
+          onUserNameClick={onMentionClick}
+        />
+        {this.renderState()}
       </header>
     );
   }
