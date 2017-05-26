@@ -40,5 +40,3 @@ suppress_type=$FlowIssue
 suppress_comment= \\(.\\|\n\\)*\\$FlowFixMe
 
 esproposal.class_static_fields=enable
-
-experimental.strict_call_arity=true
