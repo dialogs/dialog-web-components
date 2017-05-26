@@ -82,7 +82,10 @@
 .emojiWrapper {
   display: inline-block;
   box-sizing: border-box;
+  width: calc((var(--emoji-list-emoji-wrapper-padding) * 2) + var(--emoji-list-emoji-size));
+  height: calc((var(--emoji-list-emoji-wrapper-padding) * 2) + var(--emoji-list-emoji-size));
   padding: var(--emoji-list-emoji-wrapper-padding);
+  vertical-align: middle;
   cursor: pointer;
   user-select: none;
   transition: background calc(var(--default-transition-duration) / 2) linear;
@@ -95,10 +98,10 @@
 
 .emoji {
   display: inline-block;
-  width: var(--emoji-list-emoji-size);
-  height: var(--emoji-list-emoji-size);
-  font-size: var(--emoji-list-emoji-font-size);
-  line-height: var(--emoji-list-emoji-line-height);
+  width: var(--emoji-list-emoji-size) !important;
+  height: var(--emoji-list-emoji-size) !important;
+  font-size: var(--emoji-list-emoji-font-size) !important;
+  line-height: var(--emoji-list-emoji-line-height) !important;
 }
 
 .sticker {

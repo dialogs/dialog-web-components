@@ -55,13 +55,8 @@ class Emoji extends PureComponent {
 
     const className = classNames(styles.char, this.props.className);
 
-    const style = {
-      fontSize: this.props.size + 'px',
-      lineHeight: 1.2
-    };
-
     return (
-      <span className={className} style={style} title={emoji.name}>
+      <span className={className} style={{ fontSize: `${this.props.size}px` }} title={emoji.name}>
         {this.props.children || emoji.char}
       </span>
     );
