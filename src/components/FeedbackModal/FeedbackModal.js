@@ -1,3 +1,8 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ * @flow
+ */
+
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import { Text } from '@dlghq/react-l10n';
@@ -16,7 +21,8 @@ type Feedback = {
   addLogs: boolean
 };
 
-export type Props = {
+type Props = {
+  id: string,
   className?: string,
   onSubmit: (feedback: Feedback) => any,
   onClose: () => any
@@ -28,6 +34,10 @@ class FeedbackModal extends PureComponent {
   props: Props;
   state: State;
 
+  static defaultProps = {
+    id: 'feedback_modal'
+  };
+
   constructor(props: Props) {
     super(props);
 
@@ -37,16 +47,17 @@ class FeedbackModal extends PureComponent {
     };
   }
 
-  handleSubmit = (): void => {
+  handleSubmit = (event: SyntheticEvent): void => {
+    event.preventDefault();
     this.props.onSubmit(this.state);
-  }
-
-  handleFeedbackChange = (value: string): void => {
-    this.setState({ text: value });
   };
 
-  handleAddLogsToggle = (value: string): void => {
-    this.setState({ addLogs: value });
+  handleFeedbackChange = (text: string): void => {
+    this.setState({ text });
+  };
+
+  handleAddLogsToggle = (addLogs: boolean): void => {
+    this.setState({ addLogs });
   };
 
   render() {
@@ -54,38 +65,41 @@ class FeedbackModal extends PureComponent {
 
     return (
       <Modal className={className} onClose={this.props.onClose}>
-        <ModalHeader withBorder>
-          <Text id="FeedbackModal.title" />
-          <ModalClose onClick={this.props.onClose} />
-        </ModalHeader>
-        <ModalBody className={styles.body}>
-          <InputNext
-            autoFocus
-            type="textarea"
-            placeholder="FeedbackModal.label"
-            inputClassName={styles.text}
-            value={this.state.text}
-            onChange={this.handleFeedbackChange}
-          />
-          <Switcher
-            id="addLogs"
-            name="addLogs"
-            value={this.state.addLogs}
-            onChange={this.handleAddLogsToggle}
-          >
-            <Text id="FeedbackModal.add_logs" />
-          </Switcher>
-        </ModalBody>
-        <ModalFooter className={styles.footer}>
-          <Button
-            wide
-            theme="success"
-            rounded={false}
-            onClick={this.handleSubmit}
-          >
-            <Text id="FeedbackModal.submit" />
-          </Button>
-        </ModalFooter>
+        <form id={this.props.id} autoComplete="off" onSubmit={this.handleSubmit}>
+          <ModalHeader withBorder>
+            <Text id="FeedbackModal.title" />
+            <ModalClose onClick={this.props.onClose} />
+          </ModalHeader>
+          <ModalBody className={styles.body}>
+            <InputNext
+              htmlAutoFocus
+              id={this.props.id + '_text'}
+              type="textarea"
+              placeholder="FeedbackModal.label"
+              inputClassName={styles.text}
+              value={this.state.text}
+              onChange={this.handleFeedbackChange}
+            />
+            <Switcher
+              id={this.props.id + '_add_logs'}
+              name="addLogs"
+              value={this.state.addLogs}
+              onChange={this.handleAddLogsToggle}
+            >
+              <Text id="FeedbackModal.add_logs" />
+            </Switcher>
+          </ModalBody>
+          <ModalFooter className={styles.footer}>
+            <Button
+              wide
+              type="submit"
+              theme="success"
+              rounded={false}
+            >
+              <Text id="FeedbackModal.submit" />
+            </Button>
+          </ModalFooter>
+        </form>
       </Modal>
     );
   }

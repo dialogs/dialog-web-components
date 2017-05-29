@@ -3,7 +3,7 @@
  * @flow
  */
 
-import type { Group } from '@dlghq/dialog-types';
+import type { Field, Group } from '@dlghq/dialog-types';
 
 type GroupUpdate = {
   name: string,
@@ -11,12 +11,6 @@ type GroupUpdate = {
   shortname: ?string,
   avatar: ?(string | File)
 }
-
-export type Field<P> = {
-  value: P,
-  error: ?Error,
-  pending: boolean
-};
 
 export type Props = {
   group: Group,

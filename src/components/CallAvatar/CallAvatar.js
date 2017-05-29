@@ -74,7 +74,6 @@ class CallAvatar extends PureComponent {
   }
 
   render() {
-    console.debug(this.props);
     const className = classNames(styles.container, this.props.className);
 
     return (

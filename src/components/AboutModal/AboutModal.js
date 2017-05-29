@@ -3,7 +3,7 @@
  * @flow
  */
 
-import type { Props } from './types';
+import type { Field } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import { Text } from '@dlghq/react-l10n';
@@ -13,6 +13,16 @@ import ModalBody from '../Modal/ModalBody';
 import Logo from '../Logo/Logo';
 import ButtonNext from '../ButtonNext/ButtonNext';
 import styles from './AboutModal.css';
+
+type Props = {
+  className?: string,
+  appName: string,
+  appVersion: string,
+  updateState: Field<'upToDate' | 'available'>,
+  onCheck: () => any,
+  onUpdate: () => any,
+  onClose: () => any
+}
 
 class AboutModal extends PureComponent {
   props: Props;
@@ -64,7 +74,7 @@ class AboutModal extends PureComponent {
     );
   }
 
-  render(): React.Element<any> {
+  render() {
     const { appName, appVersion } = this.props;
     const className = classNames(styles.container, this.props.className);
 

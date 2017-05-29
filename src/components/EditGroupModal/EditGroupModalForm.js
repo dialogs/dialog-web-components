@@ -6,7 +6,7 @@
 /* eslint-disable react/no-unused-prop-types */
 
 import type { ProviderContext } from '@dlghq/react-l10n';
-import type { AvatarPlaceholder } from '@dlghq/dialog-types';
+import type { Field, AvatarPlaceholder } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import { LocalizationContextType } from '@dlghq/react-l10n';
@@ -14,12 +14,6 @@ import { fileToBase64 } from '@dlghq/dialog-utils';
 import AvatarSelector from '../AvatarSelector/AvatarSelector';
 import Input from '../Input/Input';
 import styles from '../CreateNewModal/CreateNewModal.css';
-
-type Field<T> = {
-  value: T,
-  error: ?Error,
-  pending: boolean
-};
 
 export type Props = {
   type: 'group' | 'channel',

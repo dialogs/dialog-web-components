@@ -3,7 +3,7 @@
  * @flow
  */
 
-import type { User } from '@dlghq/dialog-types';
+import type { Field, User } from '@dlghq/dialog-types';
 
 export type Screen = 'profile' | 'avatar';
 
@@ -12,12 +12,6 @@ export type Profile = {
   nick: ?string,
   about: ?string,
   avatar: ?(string | File)
-};
-
-export type Field<P> = {
-  value: P,
-  error: ?Error,
-  pending: boolean
 };
 
 export type Props = {
