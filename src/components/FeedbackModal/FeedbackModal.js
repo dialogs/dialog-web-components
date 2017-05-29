@@ -38,7 +38,7 @@ class FeedbackModal extends PureComponent {
   }
 
   handleSubmit = (): void => {
-    this.props.onSubmit(this.state.feedback);
+    this.props.onSubmit(this.state);
   }
 
   handleFeedbackChange = (value: string): void => {

@@ -12,6 +12,7 @@ const handleOpen = () => setState({ isOpen: true });
     state.isOpen ? (
       <FeedbackModal
         onClose={handleClose}
+        onSubmit={(feedback) => console.debug(feedback)}
       />
     ) : null
   }
