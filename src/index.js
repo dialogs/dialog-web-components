@@ -80,6 +80,7 @@ export { default as ModalFooter } from './components/Modal/ModalFooter';
 export { default as ModalHeader } from './components/Modal/ModalHeader';
 
 // Plug & Play Modals
+export { default as AboutModal } from './components/AboutModal/AboutModal';
 export { default as JoinModal } from './components/JoinModal/JoinModal';
 export { default as AddContactModal } from './components/AddContactModal/AddContactModal';
 export { default as AttachmentModal } from './components/AttachmentModal/AttachmentModal';
