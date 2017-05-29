@@ -1,0 +1,8 @@
+version: "version {appVersion}"
+state:
+  upToDate: "{appName} is up to date"
+  available: New version available
+error: "Error: {error}"
+pending: Checking for updates
+check: Check for updates
+update: Install update

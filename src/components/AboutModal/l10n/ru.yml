@@ -1,0 +1,8 @@
+version: "версия {appVersion}"
+state:
+  upToDate: "{appName} не нуждается в обновлении"
+  available: Доступна новая версия
+error: "Ошибка: {error}"
+pending: Проверка обновлений
+check: Проверить обновление
+update: Обновить приложение

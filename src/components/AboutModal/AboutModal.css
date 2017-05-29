@@ -1,0 +1,74 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+:root {
+  --modal-about-font-family: var(--default-font-family);
+  --modal-about-width: 300px;
+  --modal-about-logo-size: 62px;
+  --modal-about-divider-color: color(#000 alpha(5%));
+  --modal-about-appName-font-size: 22px;
+  --modal-about-appName-color: color(#000 alpha(80%));
+  --modal-about-state-font-size: 14px;
+  --modal-about-state-color: color(#000 alpha(60%));
+}
+
+/* Styles */
+.container {
+  font-family: var(--modal-about-font-family);
+  width: var(--modal-about-width);
+}
+
+.body {
+  padding: var(--default-padding-large);
+  text-align: center;
+}
+
+.close {
+  position: absolute;
+  top: var(--default-padding-small);
+  right: var(--default-padding-small);
+  fill: color(#000 alpha(40%));
+  transition: fill 150ms linear;
+
+  &:hover {
+    fill: color(#000 alpha(60%))
+  }
+}
+
+.logo {
+  display: block;
+  width: var(--modal-about-logo-size);
+  height: var(--modal-about-logo-size);
+  margin: 0.5rem auto 1rem;
+}
+
+.appName {
+  margin: 0 0 0.4rem;
+  padding: 0;
+  font-weight: 500;
+  font-size: var(--modal-about-appName-font-size);
+  line-height: 1.2;
+  display: block;
+  position: relative;
+  color: var(--modal-about-appName-color);
+}
+
+.version {
+  font-size: 13px;
+  line-height: 1;
+  color: color(var(--modal-about-appName-color) alpha(40%));
+  margin-bottom: 1rem;
+}
+
+.state {
+  margin-bottom: 1rem;
+  font-size: var(--modal-about-state-font-size);
+  color: var(--modal-about-state-color);
+}
+
+.button {
+  margin-bottom: 0.5rem;
+}
