@@ -1,0 +1,28 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+:root {
+  --feedback-modal-font-family: var(--default-font-family);
+  --feedback-modal-width: 450px;
+  --feedback-modal-textarea-height: 140px;
+}
+
+/* Styles */
+.container {
+  width: var(--feedback-modal-width);
+  font-family: var(--feedback-modal-font-family);
+}
+
+.body {
+}
+
+.text {
+  height: var(--feedback-modal-textarea-height);
+}
+
+.footer {
+  padding: 0;
+}

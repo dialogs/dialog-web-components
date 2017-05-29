@@ -92,7 +92,8 @@
       "ProfileModal",
       "PreferencesModal",
       "AddMembersModal",
-      "EditGroupModal"
+      "EditGroupModal",
+      "FeedbackModal"
     ]
   },
   {
