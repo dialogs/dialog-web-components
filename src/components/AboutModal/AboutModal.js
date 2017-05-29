@@ -3,6 +3,7 @@
  * @flow
  */
 
+import type { Props } from './types';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import { Text } from '@dlghq/react-l10n';
@@ -13,22 +14,6 @@ import Logo from '../Logo/Logo';
 import ButtonNext from '../ButtonNext/ButtonNext';
 import styles from './AboutModal.css';
 
-export type Field<P> = {
-  value: P,
-  error: ?Error,
-  pending: boolean
-};
-
-export type Props = {
-  className?: string,
-  appName: string,
-  appVersion: string,
-  updateState: Field<'upToDate' | 'available'>,
-  onCheck: () => any,
-  onUpdate: () => any,
-  onClose: () => any
-};
-
 class AboutModal extends PureComponent {
   props: Props;
 
@@ -37,11 +22,7 @@ class AboutModal extends PureComponent {
 
     if (updateState.error) {
       return (
-        <Text
-          id="AboutModal.error"
-          values={{ error: updateState.error }}
-          className={styles.error}
-        />
+        <div className={styles.error}>{updateState.error.message}</div>
       );
     }
 
