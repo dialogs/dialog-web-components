@@ -12,7 +12,9 @@ import decorators from '../utils/decorators';
 import styles from '../SidebarRecentItem.css';
 
 export type Props = {
-  content: MessageContentText
+  className?: string,
+  content: MessageContentText,
+  emojiSize: number
 };
 
 class TextMessagePreview extends PureComponent {
@@ -35,9 +37,11 @@ class TextMessagePreview extends PureComponent {
 
     return (
       <Markdown
+        className={this.props.className}
         inline
         text={getInlineText(content.text)}
         decorators={decorators}
+        emojiSize={this.props.emojiSize}
       />
     );
   }

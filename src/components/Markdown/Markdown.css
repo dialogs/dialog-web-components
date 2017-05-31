@@ -6,7 +6,14 @@
 
 .container {
   font-family: var(--default-font-family);
-  line-height: 20px;
+
+  & span {
+    vertical-align: middle;
+  }
+}
+
+.inline {
+  font-family: var(--default-font-family);
 }
 
 .pre {

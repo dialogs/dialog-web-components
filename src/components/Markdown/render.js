@@ -8,7 +8,7 @@ import React from 'react';
 import Emoji from '../Emoji/Emoji';
 import styles from './Markdown.css';
 
-export function renderText(tokens: TextToken[], bigEmoji?: boolean): React.Element<any>[] {
+export function renderText(tokens: TextToken[], emojiSize?: number = 20, isInline?: boolean): React.Element<any>[] {
   const result = [];
 
   for (let index = 0; index < tokens.length; index++) {
@@ -35,7 +35,12 @@ export function renderText(tokens: TextToken[], bigEmoji?: boolean): React.Eleme
 
       case 'emoji':
         result.push(
-          <Emoji key={index} char={content} size={bigEmoji ? 30 : 20} />
+          <Emoji
+            key={index}
+            char={content}
+            size={emojiSize}
+            inline={isInline}
+          />
         );
 
         break;
@@ -81,7 +86,7 @@ export function renderBlocks(tokens: BlockToken[]): React.Element<any>[] {
         if (token.content.length) {
           result.push(
             <p key={i} className={styles.paragraph}>
-              {renderText(token.content, isOnlyEmoji)}
+              {renderText(token.content, isOnlyEmoji ? 36 : 20)}
             </p>
           );
         } else {

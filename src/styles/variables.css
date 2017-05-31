@@ -262,7 +262,7 @@
   --lightbox-button-background-color: color(var(--lightbox-toolbar-background-color) alpha(50%));
   /* Message */
   --message-font-family: var(--default-font-family);
-  --message-vertical-padding: 8px;
+  --message-vertical-padding: 6px;
   --message-horizontal-padding: 20px;
   --message-small-vertical-padding: 6px;
   --message-small-horizontal-padding: 20px;

@@ -20,10 +20,9 @@
   display: inline-block;
   text-align: center;
   vertical-align: middle;
-  word-break: normal;
+  word-break: break-all;
   font-family: var(--font-emoji);
   font-weight: normal;
   text-size-adjust: 100%;
-  letter-spacing: 1px;
-  line-height: inherit;
+  letter-spacing: 2px;
 }

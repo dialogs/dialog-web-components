@@ -16,7 +16,8 @@ export type Props = {
   tagName?: string,
   decorators: typeof decorators,
   renderText: typeof renderText,
-  renderBlocks: typeof renderBlocks
+  renderBlocks: typeof renderBlocks,
+  emojiSize: number
 };
 
 class Markdown extends Component {
@@ -25,7 +26,8 @@ class Markdown extends Component {
   static defaultProps = {
     decorators,
     renderText,
-    renderBlocks
+    renderBlocks,
+    emojiSize: 18
   };
 
   shouldComponentUpdate(nextProps: Props): boolean {
@@ -37,9 +39,11 @@ class Markdown extends Component {
     if (this.props.inline) {
       const TagName = this.props.tagName || 'span';
       const tokens = parseInline(this.props.text, this.props.decorators);
+      const inlineClassName = classNames(styles.inline, this.props.className);
+
       return (
-        <TagName className={this.props.className}>
-          {this.props.renderText(tokens)}
+        <TagName className={inlineClassName}>
+          {this.props.renderText(tokens, this.props.emojiSize, true)}
         </TagName>
       );
     }
