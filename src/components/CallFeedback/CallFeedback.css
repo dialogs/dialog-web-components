@@ -1,0 +1,38 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+:root {
+  --call-feedback-font-family: var(--default-font-family);
+  --call-feedback-width: 400px;
+  --call-feedback-textarea-height: 120px;
+}
+
+/* Styles */
+.container {
+  font-family: var(--call-feedback-font-family);
+  width: var(--call-feedback-width);
+}
+
+.text {
+  height: var(--call-feedback-textarea-height);
+}
+
+.footer {
+  padding: 0;
+}
+
+.rating {
+  text-align: center;
+  margin-bottom: 1.2rem;
+}
+.star {
+  transition: fill 100ms ease;
+  display: inline-block;
+}
+
+.starActive {
+  fill: var(--color-primary);
+}

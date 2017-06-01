@@ -35,7 +35,7 @@ export { default as CheckButton } from './components/CheckButton/CheckButton';
 export { default as Call } from './components/Call/Call';
 export { default as CallChat } from './components/Call/CallChat';
 export { default as CallWindow } from './components/Call/CallWindow';
-
+export { default as CallFeedback } from './components/CallFeedback/CallFeedback';
 
 // Toolbar
 export { default as Toolbar } from './components/Toolbar/Toolbar';

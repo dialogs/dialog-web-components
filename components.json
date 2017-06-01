@@ -126,7 +126,8 @@
     "name": "Call",
     "components": [
       "Call",
-      "CallAvatar"
+      "CallAvatar",
+      "CallFeedback"
     ]
   },
   {
