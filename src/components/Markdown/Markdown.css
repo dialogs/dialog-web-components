@@ -83,6 +83,7 @@
   text-decoration: none;
   border-bottom: 1px dotted var(--color-info);
   color: var(--color-info);
+  vertical-align: middle;
 
   &:hover {
     border-bottom: 1px solid var(--color-info);
