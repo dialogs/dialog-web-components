@@ -19,6 +19,15 @@ Default Avatar with image:
 />
 ```
 
+Default Avatar with image, but have 404:
+
+```
+<Avatar
+  title="Test"
+  image="https://octodex.github.com/images/total-eclipse-of-the-octocat__404__.jpg"
+/>
+```
+
 Avatar sizes:
 
 ```

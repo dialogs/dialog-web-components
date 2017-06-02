@@ -35,6 +35,29 @@ class Avatar extends PureComponent<DefaultProps, Props, void> {
     placeholder: 'empty'
   };
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      errorImg: false
+    };
+  }
+
+  handleErrorImg = () : void => {
+    this.setState({
+      ...this.state,
+      errorImg: true
+    });
+  }
+
+  handleLoadedImg = () : void => {
+    this.setState({
+      ...this.state,
+      errorImg: false
+    });
+  }
+
+
   getAvatarText(): string {
     return getAvatarText(this.props.title);
   }
@@ -55,11 +78,11 @@ class Avatar extends PureComponent<DefaultProps, Props, void> {
 
     const className = classNames(
       this.props.className,
-      image ? styles.image : styles.placeholder,
+      (image && !this.state.errorImg) ? styles.image : styles.placeholder,
       this.props.onClick ? styles.clickable : null
     );
 
-    if (image) {
+    if (image && !this.state.errorImg) {
       return (
         <img
           className={className}
@@ -69,6 +92,8 @@ class Avatar extends PureComponent<DefaultProps, Props, void> {
           height={size}
           style={{ width: size, height: size }}
           onClick={this.props.onClick}
+          onError={this.handleErrorImg}
+          onLoad={this.handleLoadedImg}
         />
       );
     }
