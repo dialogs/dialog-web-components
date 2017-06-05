@@ -93,8 +93,8 @@ class MessageAttachmentItem extends Component {
             className={messageClassName}
             content={content}
             rid={rid}
-            maxWidth={100}
-            maxHeight={100}
+            maxWidth={50}
+            maxHeight={50}
           />
         );
 
