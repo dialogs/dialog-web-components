@@ -6,6 +6,9 @@
 import type { Peer, Message } from '@dlghq/dialog-types';
 import React, { Component } from 'react';
 import classNames from 'classnames';
+import Markdown from '../Markdown/Markdown';
+import getInlineText from '../SidebarRecentItem/utils/getInlineText';
+import decorators from '../SidebarRecentItem/utils/decorators';
 import Icon from '../Icon/Icon';
 import MessageContent from '../MessageContent/MessageContent';
 import styles from './MessageAttachment.css';
@@ -65,8 +68,54 @@ class MessageAttachmentItem extends Component {
     );
   }
 
+  renderContent() {
+    const { message: { content, rid }, type, maxWidth, maxHeight } = this.props;
+    const messageClassName = classNames(styles.message, {
+      [styles.reply]: type === 'reply'
+    });
+
+    switch (type) {
+      case 'reply':
+        if (content.type === 'text') {
+          return (
+            <Markdown
+              className={messageClassName}
+              inline
+              text={getInlineText(content.text)}
+              decorators={decorators}
+              emojiSize={16}
+            />
+          );
+        }
+
+        return (
+          <MessageContent
+            className={messageClassName}
+            content={content}
+            rid={rid}
+            maxWidth={100}
+            maxHeight={100}
+          />
+        );
+
+      case 'forward':
+        return (
+          <MessageContent
+            className={messageClassName}
+            content={content}
+            rid={rid}
+            maxWidth={maxWidth}
+            maxHeight={maxHeight}
+          />
+        );
+
+      default:
+        return null;
+    }
+  }
+
   render(): React.Element<any> {
-    const { message: { content, rid }, short, type, maxWidth, maxHeight } = this.props;
+    const { short, type } = this.props;
 
     const className = classNames(styles.itemContainer, {
       [styles.short]: short
@@ -76,13 +125,7 @@ class MessageAttachmentItem extends Component {
       <div className={className} onClick={this.handleGoToMessage}>
         {this.renderHeader()}
         <div className={styles.content}>
-          <MessageContent
-            className={styles.message}
-            content={content}
-            rid={rid}
-            maxWidth={maxWidth}
-            maxHeight={maxHeight}
-          />
+          {this.renderContent()}
           {type === 'forward' ? (
             <div className={styles.timeWrapper}>{this.renderTimestamp()}</div>
           ) : null}

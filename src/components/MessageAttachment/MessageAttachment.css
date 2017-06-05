@@ -19,10 +19,6 @@
 }
 
 .container {
-  all: initial;
-}
-
-.container {
   font-family: var(--message-attachment-font-family);
   border-radius: 2px;
   background-color: var(--message-attachment-background);
@@ -92,6 +88,12 @@
   color: var(--message-attachment-nick-color);
 }
 
+.reply {
+  display: block;
+  width: 100%;
+  @apply --text-overflow-ellipsis;
+}
+
 .content {
   display: flex;
   flex-flow: row nowrap;
@@ -107,10 +109,10 @@
   flex: 1 1 auto;
   @apply --flex-fix;
   text-align: right;
-  margin-left: 6px;
 }
 
 .time {
+  margin-left: 6px;
   margin-top: 2px;
   display: inline-block;
   color: var(--message-attachment-timestamp-color);

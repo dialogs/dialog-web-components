@@ -10,7 +10,7 @@
   text-transform: uppercase;
   font-family: var(--message-state-font-family);
   font-size: var(--message-state-font-size);
-  line-height: 24px;
+  line-height: 22px;
   color: var(--message-state-color);
   margin-left: 6px;
   vertical-align: middle;
