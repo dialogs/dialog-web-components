@@ -75,16 +75,18 @@ class MessageAttachmentItem extends Component {
     return (
       <div className={className} onClick={this.handleGoToMessage}>
         {this.renderHeader()}
-        <MessageContent
-          className={styles.content}
-          content={content}
-          rid={rid}
-          maxWidth={maxWidth}
-          maxHeight={maxHeight}
-        />
-        {type === 'forward' ? (
-          <div className={styles.timeWrapper}>{this.renderTimestamp()}</div>
-        ) : null}
+        <div className={styles.content}>
+          <MessageContent
+            className={styles.message}
+            content={content}
+            rid={rid}
+            maxWidth={maxWidth}
+            maxHeight={maxHeight}
+          />
+          {type === 'forward' ? (
+            <div className={styles.timeWrapper}>{this.renderTimestamp()}</div>
+          ) : null}
+        </div>
       </div>
     );
   }

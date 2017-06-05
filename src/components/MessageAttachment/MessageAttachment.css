@@ -92,25 +92,33 @@
   color: var(--message-attachment-nick-color);
 }
 
+.content {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.message {
+  flex: 0 0 auto;
+  font-size: var(--message-attachment-font-size);
+  line-height: 18px;
+}
+
 .timeWrapper {
+  flex: 1 1 auto;
+  @apply --flex-fix;
   text-align: right;
+  margin-left: 6px;
 }
 
 .time {
+  margin-top: 2px;
   display: inline-block;
   color: var(--message-attachment-timestamp-color);
   line-height: 18px;
-  margin-left: 6px;
   font-size: var(--message-attachment-timestamp-font-size);
   vertical-align: bottom;
 }
 
-.content {
-  cursor: pointer;
-  font-size: var(--message-attachment-font-size);
-}
-
 .short {
   margin-top: 0;
-  border-top: 1px solid var(--message-attachment-border-color);
 }
