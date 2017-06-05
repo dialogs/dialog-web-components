@@ -1,3 +1,4 @@
 delete: Delete
 forward: Forward
-text: "{count} messages selected"
+reply: Reply
+text: "<b>{count}</b> messages selected"

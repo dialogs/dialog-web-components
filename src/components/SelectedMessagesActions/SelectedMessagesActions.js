@@ -15,6 +15,7 @@ export type Props = {
   count: number,
   onDelete: () => any,
   onForward: () => any,
+  onReply: () => any
 };
 
 class SelectedMessagesActions extends PureComponent {
@@ -25,14 +26,36 @@ class SelectedMessagesActions extends PureComponent {
 
     return (
       <div className={className}>
-        <Button onClick={this.props.onDelete} view="link" theme="primary" className={styles.button}>
+        <Button
+          onClick={this.props.onDelete}
+          view="link"
+          size="small"
+          theme="primary"
+          className={styles.button}
+        >
           <Icon glyph="delete" className={styles.buttonIcon} />
           <Text id="SelectedMessagesActions.delete" className={styles.buttonText} />
         </Button>
         <div className={styles.text}>
-          <Text id="SelectedMessagesActions.text" values={{ count: this.props.count.toString() }} />
+          <Text id="SelectedMessagesActions.text" values={{ count: this.props.count.toString() }} html />
         </div>
-        <Button onClick={this.props.onForward} view="link" theme="primary" className={styles.button}>
+        <Button
+          onClick={this.props.onReply}
+          view="link"
+          size="small"
+          theme="primary"
+          className={styles.button}
+        >
+          <Icon glyph="reply" className={styles.buttonIcon} />
+          <Text id="SelectedMessagesActions.reply" className={styles.buttonText} />
+        </Button>
+        <Button
+          onClick={this.props.onForward}
+          view="link"
+          size="small"
+          theme="primary"
+          className={styles.button}
+        >
           <Icon glyph="forward" className={styles.buttonIcon} />
           <Text id="SelectedMessagesActions.forward" className={styles.buttonText} />
         </Button>

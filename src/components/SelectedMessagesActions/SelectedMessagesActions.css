@@ -27,6 +27,7 @@
 }
 
 .button {
+  padding: var(--default-padding-small);
   flex: 0 0 auto;
 }
 
@@ -41,6 +42,7 @@
 }
 
 .text {
+  font-size: var(--default-font-size-small);
   flex: 1 1 auto;
   text-align: center;
   @apply --flex-fix;
