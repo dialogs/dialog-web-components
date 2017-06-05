@@ -114,9 +114,11 @@
 
 .counter {
   display: flex;
-  width: var(--sidebar-recent-item-counter-size);
+  min-width: var(--sidebar-recent-item-counter-size);
+  padding: 2px 4px;
+  box-sizing: border-box;
   height: var(--sidebar-recent-item-counter-size);
-  border-radius: 50%;
+  border-radius: calc(var(--sidebar-recent-item-counter-size) / 2);
   background-color: var(--sidebar-recent-item-counter-background);
   font-family: var(--sidebar-recent-item-font-family);
   font-size: var(--sidebar-recent-item-counter-font-size);
