@@ -8,7 +8,7 @@
   display: inline-block;
   overflow: hidden;
   cursor: inherit;
-  vertical-align: middle;
+  vertical-align: text-bottom;
   background-size: 100%;
 
   /* hide emoji char */
@@ -19,7 +19,7 @@
 .char {
   display: inline-block;
   text-align: center;
-  vertical-align: middle;
+  vertical-align: text-bottom;
   word-break: break-all;
   font-family: var(--font-emoji);
   font-weight: normal;

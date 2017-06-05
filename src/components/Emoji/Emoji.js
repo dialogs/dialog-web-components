@@ -61,7 +61,7 @@ class Emoji extends PureComponent {
       height: this.props.size,
       fontSize: `${this.props.size}px`,
       lineHeight: `${this.props.size * (this.props.inline ? 1.1 : 1.2)}px`,
-      marginTop: this.props.inline ? '-1px' : 0
+      marginTop: this.props.inline ? '-2px' : '-1px'
     };
 
     return (
