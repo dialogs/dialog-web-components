@@ -19,11 +19,13 @@
   font-family: var(--selected-messages-actions-font-family);
   width: 100%;
   height: var(--selected-messages-actions-height);
+  padding: 0 var(--default-padding-small);
   display: flex;
   flex-direction: row;
   align-items: center;
   align-content: center;
   justify-content: center;
+  box-sizing: border-box;
 }
 
 .button {
