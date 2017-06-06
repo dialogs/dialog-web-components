@@ -34,6 +34,8 @@
   }
 }
 
+.messages {}
+
 .from {
   height: var(--message-attachment-header-height);
   line-height: var(--message-attachment-header-height);
@@ -99,15 +101,18 @@
   flex-flow: row nowrap;
 }
 
+.messageWrapper {
+  flex: 1 1 auto;
+  @apply --flex-fix;
+}
+
 .message {
-  flex: 0 0 auto;
   font-size: var(--message-attachment-font-size);
   line-height: 18px;
 }
 
 .timeWrapper {
-  flex: 1 1 auto;
-  @apply --flex-fix;
+  flex: 0 0 auto;
   text-align: right;
 }
 
