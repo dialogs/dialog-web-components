@@ -3,11 +3,7 @@
  * @flow
  */
 
-<% if (stateless) { -%>
-import React from 'react';
-<% } else { -%>
-import React, { Component } from 'react';
-<% } -%>
+import React, { PureComponent } from 'react';
 <% if (styles) { -%>
 import classNames from 'classnames';
 import styles from './<%= name %>.css';
@@ -20,36 +16,8 @@ export type Props = {
   children?: any
 };
 
-<% if (stateless) { -%>
-function <%= name %>(props: Props): React.Element<any> {
-<% if (styles) { -%>
-  const className = classNames(styles.container, props.className);
-
-  return (
-    <div className={className}>
-      {props.children}
-    </div>
-  );
-<% } else { -%>
-  return (
-    <div>
-      {props.children}
-    </div>
-  );
-<% } -%>
-}
-<% } else { -%>
-class <%= name %> extends Component {
+class <%= name %> extends PureComponent {
   props: Props;
-
-  shouldComponentUpdate(nextProps: Props): boolean {
-<% if (styles) { -%>
-    return nextProps.children !== this.props.children ||
-           nextProps.className !== this.props.className;
-<% } else { -%>
-    return nextProps.children !== this.props.children;
-<% } -%>
-  }
 
   render(): React.Element<any> {
 <% if (styles) { -%>
@@ -69,6 +37,5 @@ class <%= name %> extends Component {
 <% } -%>
   }
 }
-<% } -%>
 
 export default <%= name %>;
