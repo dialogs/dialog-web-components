@@ -45,7 +45,7 @@ class ActivityHeader extends PureComponent {
     return (
       <header className={className}>
         {this.renderBackButton()}
-        <div className={styles.text}>{children}</div>
+        {children}
         {this.renderCloseButton()}
       </header>
     );
