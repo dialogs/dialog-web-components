@@ -148,7 +148,8 @@
       "ActivityInvite",
       "ActivityListIntegration",
       "ActivityIntegration",
-      "ActivityListMembers"
+      "ActivityListMembers",
+      "ActivitySearch"
     ]
   },
   {

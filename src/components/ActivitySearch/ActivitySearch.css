@@ -1,0 +1,60 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+:root {
+  --activity-search-font-family: var(--default-font-family);
+  --activity-search-header-background: #F5F5F5;
+  --activity-search-border-color: #e6e6e6;
+}
+
+/* Reset */
+.container {
+  all: initial;
+}
+
+/* Styles */
+.container {
+  font-family: var(--activity-search-font-family);
+  display: block;
+}
+
+.header {
+  text-align: left;
+  padding-left: var(--default-padding);
+  padding-right: var(--default-padding);
+  background-color: var(--activity-search-header-background);
+  box-shadow: 0 1px 0 0 var(--activity-search-border-color);
+}
+
+.headerText {
+  //margin-bottom: 10px;
+}
+
+.filter {
+  padding: var(--default-padding-small) var(--default-padding);
+  background-color: var(--activity-search-header-background);
+  box-shadow: 0 1px 0 0 var(--activity-search-border-color);
+  line-height: 20px;
+  display: flex;
+}
+
+.filterBlock {
+  flex: 1 1 auto;
+  @apply --flex-fix;
+  & span {
+    color: #7A7A7A;
+  }
+}
+
+.filterRel {
+  composes: filterBlock;
+  text-align: left;
+}
+
+.filterInc {
+  composes: filterBlock;
+  text-align: right;
+}

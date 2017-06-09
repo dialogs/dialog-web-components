@@ -133,6 +133,7 @@ export { default as ActivityListIntegration } from './components/ActivityListInt
 export { default as ActivityListMembers } from './components/ActivityListMembers/ActivityListMembers';
 export { default as ActivityListMembersAdd } from './components/ActivityListMembers/ActivityListMembersAdd';
 export { default as ActivityListMembersItem } from './components/ActivityListMembers/ActivityListMembersItem';
+export { default as ActivitySearch } from './components/ActivitySearch/ActivitySearch';
 
 // Helpers
 export { default as Trigger } from './components/Trigger/Trigger';
