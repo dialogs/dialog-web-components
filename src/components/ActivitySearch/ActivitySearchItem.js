@@ -5,6 +5,7 @@
 
 import type { ActivitySearchItemProps as Props } from './types';
 import React, { PureComponent } from 'react';
+import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 import { find, findIndex } from 'lodash';
 import { format } from 'date-fns';
 import { Text } from '@dlghq/react-l10n';
@@ -75,7 +76,7 @@ class ActivitySearchItem extends PureComponent {
       collapsedMessages.push(messages[focusedIndex + 1]);
     }
 
-    const messagesToRender = collapsedMessages.map((message) => {
+    return collapsedMessages.map((message) => {
       return (
         <ActivitySearchItemMessage
           key={message.rid}
@@ -83,16 +84,9 @@ class ActivitySearchItem extends PureComponent {
           highlited={message.rid === focus}
           short
           collapsed
-          onCollapseToggle={this.handleCollapseToggle}
         />
       );
     });
-
-    return (
-      <div className={styles.messagesCollapsed}>
-        {messagesToRender}
-      </div>
-    );
   }
 
   renderMessages() {
@@ -102,7 +96,7 @@ class ActivitySearchItem extends PureComponent {
       return this.renderCollapsedMessages();
     }
 
-    const messagesToRender = messages.map((message) => {
+    return messages.map((message) => {
       return (
         <ActivitySearchItemMessage
           key={message.rid}
@@ -110,25 +104,31 @@ class ActivitySearchItem extends PureComponent {
           highlited={message.rid === focus}
           short={false}
           collapsed={false}
-          onCollapseToggle={this.handleCollapseToggle}
         />
       );
     });
-
-    return (
-      <div className={styles.messages}>
-        {messagesToRender}
-      </div>
-    );
   }
 
   render() {
     const className = classNames(styles.container, this.props.className);
+    const messagesClassName = classNames(this.state.collapsed ? styles.messagesCollapsed : styles.messages);
 
     return (
       <div className={className}>
         {this.renderHeader()}
-        {this.renderMessages()}
+        <div className={messagesClassName} onClick={this.handleCollapseToggle}>
+          <CSSTransitionGroup
+            transitionName={{
+              enter: styles.enter,
+              enterActive: styles.enterActive
+            }}
+            transitionEnter
+            transitionEnterTimeout={100}
+            transitionLeave={false}
+          >
+            {this.renderMessages()}
+          </CSSTransitionGroup>
+        </div>
       </div>
     );
   }

@@ -29,6 +29,8 @@
   flex-flow: row nowrap;
   position: relative;
   z-index: var(--activity-search-item-message-z-index);
+  transition: opacity 100ms ease;
+  cursor: inherit;
 }
 
 .highlited {
@@ -45,6 +47,7 @@
 .short {
   position: relative;
   opacity: 0.3;
+
   & .content {
     height: 44px;
     overflow: hidden;
@@ -110,6 +113,10 @@
   top: 0;
 }
 
-.content {
+.contentWrapper {
   flex: 0 0 auto;
+}
+
+.content {
+  cursor: inherit;
 }

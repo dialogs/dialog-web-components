@@ -17,12 +17,27 @@ type Props = {
   highlited: boolean,
   short: boolean,
   collapsed: boolean,
-  message: Message,
-  onCollapseToggle?: () => any
+  message: Message
 };
 
 class ActivitySearchItemMessage extends PureComponent {
   props: Props;
+
+  rederCollapseToggler() {
+    const { collapsed, highlited } = this.props;
+
+    if (!highlited) {
+      return null;
+    }
+
+    return (
+      <Icon
+        glyph={collapsed ? 'expand' : 'collapse'}
+        size={18}
+        className={styles.collapser}
+      />
+    );
+  }
 
   renderAvatar() {
     const { message: { sender: { avatar, title, peer: { id } } } } = this.props;
@@ -35,23 +50,6 @@ class ActivitySearchItemMessage extends PureComponent {
         title={title}
         placeholder={placeholder}
         size={30}
-      />
-    );
-  }
-
-  rederCollapseToggler() {
-    const { collapsed, highlited } = this.props;
-
-    if (!highlited) {
-      return null;
-    }
-
-    return (
-      <Icon
-        onClick={this.props.onCollapseToggle}
-        glyph={collapsed ? 'expand' : 'collapse'}
-        size={18}
-        className={styles.collapser}
       />
     );
   }
@@ -73,6 +71,7 @@ class ActivitySearchItemMessage extends PureComponent {
 
     return (
       <MessageContent
+        className={styles.content}
         rid={rid}
         content={content}
       />
@@ -91,7 +90,7 @@ class ActivitySearchItemMessage extends PureComponent {
         {this.renderAvatar()}
         <div className={styles.wrapper}>
           {this.renderHeader()}
-          <div className={styles.content}>
+          <div className={styles.contentWrapper}>
             {this.renderContent()}
           </div>
         </div>

@@ -13,11 +13,6 @@
   --activity-search-item-messages-border-color: #e6e6e6;
 }
 
-/* Reset */
-.container {
-  all: initial;
-}
-
 /* Styles */
 .container {
   font-family: var(--activity-search-item-font-family);
@@ -58,9 +53,30 @@
 }
 
 .messages {
+  display: block;
+  cursor: pointer !important;
   border-radius: 3px;
   box-shadow: 0 0 0 1px var(--activity-search-item-messages-border-color);
 }
 
 .messagesCollapsed {
+  cursor: pointer !important;
+}
+
+.enter {
+  opacity: 0.01;
+}
+
+.enterActive {
+  opacity: 1;
+  transition: opacity 100ms ease;
+}
+
+.leave {
+  opacity: 1;
+}
+
+.leaveActive {
+  opacity: 0.01;
+  transition: opacity 0 ease-out;
 }
