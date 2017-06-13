@@ -23,33 +23,37 @@
 /* Styles */
 .container {
   font-family: var(--activity-search-item-message-font-family);
-  padding: 10px 6px;
+  padding: 8px 6px;
   box-sizing: border-box;
   display: flex;
   flex-flow: row nowrap;
   position: relative;
   z-index: var(--activity-search-item-message-z-index);
-  transition: opacity 100ms ease;
+  transition: opacity 100ms linear;
   cursor: inherit;
 }
 
 .highlited {
   background-color: var(--activity-search-item-message-highlited-background);
   z-index: calc(var(--activity-search-item-message-z-index) + 2);
-  border-radius: 3px;
   opacity: 1 !important;
 
   & .title {
     color: var(--activity-search-item-message-highlited-title-color) !important;
   }
+
+  &:before {
+    display: none !important;
+  }
 }
 
 .short {
   position: relative;
+  border-radius: 3px;
   opacity: 0.3;
 
   & .content {
-    height: 44px;
+    height: 36px;
     overflow: hidden;
   }
 
@@ -68,6 +72,7 @@
     display: block;
     background-image: linear-gradient(0deg,color(#fff alpha(0%)) 0%, color(#fff alpha(100%)) 100%);
   }
+
   &:last-child:before {
     display: block;
     background-image: linear-gradient(180deg, color(#fff alpha(0%)) 0%, color(#fff alpha(100%)) 100%);
@@ -89,6 +94,7 @@
 .header {
   position: relative;
   flex: 0 0 auto;
+  margin-bottom: 2px;
 }
 
 .title {
@@ -119,4 +125,6 @@
 
 .content {
   cursor: inherit;
+  font-size: 14px;
+  line-height: 16px;
 }

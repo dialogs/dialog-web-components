@@ -6,6 +6,11 @@ const results = [{
     messages: messages,
     focus: messages[2].rid,
     highlight: [[0, 5]]
+},{
+    info: peerInfo,
+    messages: messages,
+    focus: messages[1].rid,
+    highlight: [[10, 15]]
 }];
 
 <div style={{ background: '#fff', width: 320 }}>

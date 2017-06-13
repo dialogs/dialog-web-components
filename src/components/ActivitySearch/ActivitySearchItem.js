@@ -122,9 +122,8 @@ class ActivitySearchItem extends PureComponent {
               enter: styles.enter,
               enterActive: styles.enterActive
             }}
-            transitionEnter
-            transitionEnterTimeout={100}
             transitionLeave={false}
+            transitionEnterTimeout={100}
           >
             {this.renderMessages()}
           </CSSTransitionGroup>

@@ -10,7 +10,7 @@
   --activity-search-item-header-title-font-size: var(--default-font-size);
   --activity-search-item-header-date-font-size: 13px;
   --activity-search-item-header-date-color: #8E8E8E;
-  --activity-search-item-messages-border-color: #e6e6e6;
+  --activity-search-item-messages-border-color: #ececec;
 }
 
 /* Styles */
@@ -19,6 +19,8 @@
   display: block;
   padding: 0 var(--default-padding) var(--default-padding);
   box-shadow: 0 1px 0 0 var(--activity-search-item-border-color);
+  transform: translateZ(0);
+  height: auto;
 }
 
 .header {
@@ -69,7 +71,7 @@
 
 .enterActive {
   opacity: 1;
-  transition: opacity 100ms ease;
+  transition: opacity 100ms linear;
 }
 
 .leave {
@@ -78,5 +80,5 @@
 
 .leaveActive {
   opacity: 0.01;
-  transition: opacity 0 ease-out;
+  transition: opacity 100ms linear;
 }

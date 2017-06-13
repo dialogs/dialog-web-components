@@ -79,9 +79,9 @@ class ActivitySearchItemMessage extends PureComponent {
   }
 
   render() {
-    const { highlited, short, collapsed } = this.props;
+    const { highlited, short } = this.props;
     const className = classNames(styles.container, {
-      [styles.highlited]: highlited && collapsed,
+      [styles.highlited]: highlited,
       [styles.short]: short
     }, this.props.className);
 
