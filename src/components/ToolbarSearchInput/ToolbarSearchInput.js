@@ -14,7 +14,7 @@ export type Props = {
   className?: string,
   onFocus: (query: string) => any,
   onBlur: () => any,
-  onChange: (query: string, event: $FlowIssue) => any,
+  onChange: (query: string) => any,
   onSearch: (query: string) => any
 };
 
@@ -29,12 +29,12 @@ class ToolbarSearchInput extends PureComponent {
   }
 
   handleChange = (event: $FlowIssue) => {
-    this.props.onChange(event.target.value, event);
+    this.props.onChange(event.target.value);
     this.handleSearch();
   };
 
-  handleClear = (event: $FlowIssue) => {
-    this.props.onChange('', event);
+  handleClear = () => {
+    this.props.onChange('');
     this.focus();
   };
 
