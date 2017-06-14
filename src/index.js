@@ -46,6 +46,7 @@ export { default as ToolbarInfoButton } from './components/ToolbarInfoButton/Too
 export { default as ToolbarCallButton } from './components/ToolbarCallButton/ToolbarCallButton';
 export { default as ToolbarFavouriteButton } from './components/ToolbarFavouriteButton/ToolbarFavouriteButton';
 export { default as ToolbarMessagesButton } from './components/ToolbarMessagesButton/ToolbarMessagesButton';
+export { default as ToolbarSearchInput } from './components/ToolbarSearchInput/ToolbarSearchInput';
 
 // Buttons
 export { default as Button } from './components/Button/Button';

@@ -1,5 +1,4 @@
-[
-  {
+[{
     "name": "Interface",
     "components": [
       "Avatar",
@@ -10,11 +9,6 @@
       "Dropdown",
       "Icon",
       "Spinner",
-      "Toolbar",
-      "ToolbarInfoButton",
-      "ToolbarCallButton",
-      "ToolbarFavouriteButton",
-      "ToolbarMessagesButton",
       "Logo",
       "Typing",
       "ConnectionStatus",
@@ -111,6 +105,17 @@
     ]
   },
   {
+    "name": "Toolbar",
+    "components": [
+      "Toolbar",
+      "ToolbarInfoButton",
+      "ToolbarCallButton",
+      "ToolbarFavouriteButton",
+      "ToolbarMessagesButton",
+      "ToolbarSearchInput"
+    ]
+  },
+  {
     "name": "Chat",
     "components": [
       "Message",
@@ -120,21 +125,6 @@
       "MessageDivider",
       "FakeMessage",
       "EmptyChat"
-    ]
-  },
-  {
-    "name": "Call",
-    "components": [
-      "Call",
-      "CallAvatar",
-      "CallFeedback"
-    ]
-  },
-  {
-    "name": "Contacts",
-    "components": [
-      "ContactSelector",
-      "ContactList"
     ]
   },
   {
@@ -150,6 +140,21 @@
       "ActivityIntegration",
       "ActivityListMembers",
       "ActivitySearch"
+    ]
+  },
+  {
+    "name": "Call",
+    "components": [
+      "Call",
+      "CallAvatar",
+      "CallFeedback"
+    ]
+  },
+  {
+    "name": "Contacts",
+    "components": [
+      "ContactSelector",
+      "ContactList"
     ]
   },
   {

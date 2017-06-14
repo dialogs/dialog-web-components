@@ -29,6 +29,7 @@ class ActivitySearch extends PureComponent {
 
         <ActivitySearchList
           results={this.props.results}
+          onJumpToMessage={this.props.onJumpToMessage}
         />
       </div>
     );

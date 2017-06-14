@@ -11,7 +11,6 @@ import { format } from 'date-fns';
 import { Text } from '@dlghq/react-l10n';
 import classNames from 'classnames';
 import ActivitySearchItemMessage from './ActivitySearchItemMessage';
-import Icon from '../Icon/Icon';
 import styles from './ActivitySearchItem.css';
 
 type State = {
@@ -22,7 +21,7 @@ class ActivitySearchItem extends PureComponent {
   props: Props;
   state: State;
 
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
 
     this.state = {

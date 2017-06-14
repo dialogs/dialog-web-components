@@ -23,7 +23,7 @@ class ActivitySearchList extends PureComponent {
           messages={item.messages}
           focus={item.focus}
           highlight={item.highlight}
-          onJump={this.props.onJumpToMessage}
+          onJumpToMessage={this.props.onJumpToMessage}
         />
       );
     });
