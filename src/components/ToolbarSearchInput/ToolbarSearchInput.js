@@ -20,6 +20,7 @@ export type Props = {
 
 class ToolbarSearchInput extends PureComponent {
   props: Props;
+  input: HTMLInputElement;
 
   constructor(props) {
     super(props);
@@ -34,11 +35,20 @@ class ToolbarSearchInput extends PureComponent {
 
   handleClear = (event) => {
     this.props.onChange('', event);
+    this.focus();
   };
 
   handleSearch = () => {
     this.props.onSearch(this.props.query);
   };
+
+  setInput = (input: HTMLInputElement) => {
+    this.input = input;
+  };
+
+  focus() {
+    this.input.focus();
+  }
 
   renderClearIcon() {
     if (!this.props.query) {
@@ -63,6 +73,7 @@ class ToolbarSearchInput extends PureComponent {
         <Icon glyph="search" className={styles.icon} size={22} />
         <input
           type="search"
+          ref={this.setInput}
           className={styles.input}
           value={this.props.query}
           onFocus={this.props.onFocus}
