@@ -12,7 +12,7 @@ import styles from './ToolbarSearchInput.css';
 export type Props = {
   query: string,
   className?: string,
-  onFocus: () => any,
+  onFocus: (query: string) => any,
   onBlur: () => any,
   onChange: (query: string, event: $FlowIssue) => any,
   onSearch: (query: string) => any
@@ -40,6 +40,14 @@ class ToolbarSearchInput extends PureComponent {
 
   handleSearch = () => {
     this.props.onSearch(this.props.query);
+  };
+
+  handleFocus = () => {
+    this.props.onFocus(this.props.query);
+  };
+
+  handleBlur = () => {
+    this.props.onBlur();
   };
 
   setInput = (input: HTMLInputElement) => {
@@ -76,8 +84,8 @@ class ToolbarSearchInput extends PureComponent {
           ref={this.setInput}
           className={styles.input}
           value={this.props.query}
-          onFocus={this.props.onFocus}
-          onBlur={this.props.onBlur}
+          onFocus={this.handleFocus}
+          onBlur={this.handleBlur}
           onChange={this.handleChange}
         />
         {this.renderClearIcon()}
