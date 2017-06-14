@@ -15,6 +15,16 @@ import styles from './ActivitySearch.css';
 class ActivitySearch extends PureComponent {
   props: Props;
 
+  renderFilter() {
+    if (!this.props.filter) {
+      return null;
+    }
+
+    return (
+      <ActivitySearchFilter />
+    );
+  }
+
   render() {
     const className = classNames(styles.container, this.props.className);
 
@@ -22,10 +32,9 @@ class ActivitySearch extends PureComponent {
       <div className={className}>
         <ActivityHeader onClose={this.props.onClose} className={styles.header}>
           <Text id="ActivitySearch.header" tagName="div" className={styles.headerText} />
-          {/* Tabs here */}
         </ActivityHeader>
 
-        <ActivitySearchFilter />
+        {this.renderFilter()}
 
         <ActivitySearchList
           results={this.props.results}

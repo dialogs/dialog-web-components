@@ -10,11 +10,11 @@ import Icon from '../Icon/Icon';
 import styles from './ToolbarSearchInput.css';
 
 export type Props = {
-  query: ?string,
+  query: string,
   className?: string,
   onFocus: () => any,
   onBlur: () => any,
-  onChange: () => any,
+  onChange: (query: string, event: $FlowIssue) => any,
   onSearch: (query: string) => any
 };
 
@@ -22,18 +22,18 @@ class ToolbarSearchInput extends PureComponent {
   props: Props;
   input: HTMLInputElement;
 
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
 
     this.handleSearch = throttle(this.handleSearch, 300);
   }
 
-  handleChange = (event) => {
+  handleChange = (event: $FlowIssue) => {
     this.props.onChange(event.target.value, event);
     this.handleSearch();
   };
 
-  handleClear = (event) => {
+  handleClear = (event: $FlowIssue) => {
     this.props.onChange('', event);
     this.focus();
   };

@@ -40,7 +40,13 @@ class ActivitySearchItemMessage extends PureComponent {
   }
 
   renderAvatar() {
-    const { message: { sender: { avatar, title, peer: { id } } } } = this.props;
+    const { message: { sender } } = this.props;
+
+    if (!sender) {
+      return null;
+    }
+
+    const { avatar, title, peer: { id } } = sender;
     const placeholder = getAvatarPlaceholder(id);
 
     return (
@@ -55,7 +61,8 @@ class ActivitySearchItemMessage extends PureComponent {
   }
 
   renderHeader() {
-    const { message: { date, sender: { title } } } = this.props;
+    const { message: { date, sender } } = this.props;
+    const title = sender ? sender.title : '';
 
     return (
       <div className={styles.header}>
@@ -74,6 +81,8 @@ class ActivitySearchItemMessage extends PureComponent {
         className={styles.content}
         rid={rid}
         content={content}
+        maxHeight={100}
+        maxWidth={100}
       />
     );
   }

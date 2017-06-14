@@ -15,6 +15,7 @@ export type SearchEntity = {
 export type ActivitySearchProps = {
   className?: string,
   results: SearchEntity[],
+  filter?: any,
   onClose: () => any,
   onJumpToMessage: () => any
 };
