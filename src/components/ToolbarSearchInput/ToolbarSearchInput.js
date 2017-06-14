@@ -10,12 +10,13 @@ import Icon from '../Icon/Icon';
 import styles from './ToolbarSearchInput.css';
 
 export type Props = {
-  query: string,
   className?: string,
-  onFocus: (query: string) => any,
-  onBlur: () => any,
-  onChange: (query: string) => any,
-  onSearch: (query: string) => any
+  query: string,
+  focus: boolean,
+  onFocus: () => mixed,
+  onBlur: () => mixed,
+  onChange: (query: string) => mixed,
+  onSearch: (query: string) => mixed
 };
 
 class ToolbarSearchInput extends PureComponent {
@@ -28,9 +29,9 @@ class ToolbarSearchInput extends PureComponent {
     this.handleSearch = throttle(this.handleSearch, 300);
   }
 
-  handleChange = (event: $FlowIssue) => {
+  handleChange = (event: SyntheticInputEvent) => {
+    this.handleSearch(event.target.value);
     this.props.onChange(event.target.value);
-    this.handleSearch();
   };
 
   handleClear = () => {
@@ -38,12 +39,12 @@ class ToolbarSearchInput extends PureComponent {
     this.focus();
   };
 
-  handleSearch = () => {
-    this.props.onSearch(this.props.query);
+  handleSearch = (query: string) => {
+    this.props.onSearch(query);
   };
 
   handleFocus = () => {
-    this.props.onFocus(this.props.query);
+    this.props.onFocus();
   };
 
   handleBlur = () => {
@@ -73,7 +74,7 @@ class ToolbarSearchInput extends PureComponent {
     );
   }
 
-  render(): React.Element<any> {
+  render() {
     const className = classNames(styles.container, this.props.className);
 
     return (
@@ -84,6 +85,7 @@ class ToolbarSearchInput extends PureComponent {
           ref={this.setInput}
           className={styles.input}
           value={this.props.query}
+          autoFocus={this.props.focus}
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
           onChange={this.handleChange}
