@@ -5,6 +5,7 @@
 
 import type { ActivitySearchItemProps as Props } from './types';
 import React, { PureComponent } from 'react';
+import { findDOMNode } from 'react-dom';
 import { format } from 'date-fns';
 import { Text } from '@dlghq/react-l10n';
 import classNames from 'classnames';
@@ -33,12 +34,24 @@ class ActivitySearchItem extends PureComponent {
   };
 
   handleCollapseToggle = () => {
-    this.setState(({ collapsed }) => {
-      return {
-        collapsed: !collapsed
-      };
-    });
+    if (!this.hasSelection()) {
+      this.setState(({ collapsed }) => {
+        return {
+          collapsed: !collapsed
+        };
+      });
+    }
   };
+
+  hasSelection(): boolean {
+    const container = findDOMNode(this);
+    if (container) {
+      const selection = document.getSelection();
+      return Boolean(selection && selection.toString());
+    }
+
+    return false;
+  }
 
   renderHeader() {
     const { info, focus } = this.props;
