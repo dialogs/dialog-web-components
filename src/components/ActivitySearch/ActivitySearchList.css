@@ -22,3 +22,31 @@
   flex: 1 1 auto;
   @apply --flex-fix;
 }
+
+.spinnerWrapper {
+  padding: calc(var(--default-padding-large) * 2.5) 0;
+  text-align: center;
+}
+
+.spinner {
+  display: inline-block;
+}
+
+.error {
+  padding: calc(var(--default-padding-large) * 2) var(--default-padding-large);
+  text-align: center;
+}
+
+.notFound {
+  padding: calc(var(--default-padding-large) * 2) var(--default-padding);
+  text-align: center;
+
+  & strong {
+    font-weight: 500;
+  }
+}
+
+.notFoundEmoji {
+  display: inline-block;
+  margin-bottom: 1rem;
+}

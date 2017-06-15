@@ -6,7 +6,7 @@
 
 :root {
   --activity-search-item-font-family: var(--default-font-family);
-  --activity-search-item-border-color: #DBDBDB;
+  --activity-search-item-border-color: color(#000 alpha(14%));
   --activity-search-item-header-title-font-size: var(--default-font-size);
   --activity-search-item-header-date-font-size: 13px;
   --activity-search-item-header-date-color: #8E8E8E;

@@ -4,8 +4,12 @@
  */
 
 import type { ActivitySearchListProps as Props } from './types';
+import { Text } from '@dlghq/react-l10n';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
+import Spinner from '../Spinner/Spinner';
+import Error from '../Error/Error';
+import Emoji from '../Emoji/Emoji';
 import ActivitySearchItem from './ActivitySearchItem';
 import styles from './ActivitySearchList.css';
 
@@ -13,9 +17,39 @@ class ActivitySearchList extends PureComponent {
   props: Props;
 
   renderResults() {
-    const { results } = this.props;
+    const { result } = this.props;
 
-    return results.map((item) => {
+    if (result.pending) {
+      return (
+        <div className={styles.spinnerWrapper}>
+          <Spinner className={styles.spinner} size="large" />
+        </div>
+      );
+    }
+
+    if (result.error) {
+      return (
+        <div className={styles.error}>
+          <Error>{result.error}</Error>
+        </div>
+      );
+    }
+
+    if (!result.value.length) {
+      return (
+        <div className={styles.notFound}>
+          <Emoji char="☹" size={64} className={styles.notFoundEmoji} />
+          <Text
+            html
+            tagName="div"
+            id="ActivitySearch.not_found"
+            values={{ query: this.props.query }}
+          />
+        </div>
+      );
+    }
+
+    return result.value.map((item) => {
       return (
         <ActivitySearchItem
           key={item.focus.rid}
@@ -30,10 +64,6 @@ class ActivitySearchList extends PureComponent {
   }
 
   render() {
-    if (!this.props.results.length) {
-      return null;
-    }
-
     const className = classNames(styles.container, this.props.className);
 
     return (

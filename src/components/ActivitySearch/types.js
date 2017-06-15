@@ -29,8 +29,10 @@ export type ActivitySearchProps = {
 
 export type ActivitySearchListProps = {
   className?: string,
-  results: SearchEntity[],
-  onGoToMessage: (peer: Peer, message: Message) => mixed
+  query: string,
+  result: Field<SearchEntity[]>,
+  onGoToMessage: (peer: Peer, message: Message) => mixed,
+  onGoToPeer: (peer: Peer) => mixed
 };
 
 export type ActivitySearchItemProps = {
@@ -39,5 +41,6 @@ export type ActivitySearchItemProps = {
   focus: Message,
   before: Message[],
   after: Message[],
-  onGoToMessage: (peer: Peer, message: Message) => mixed
+  onGoToMessage: (peer: Peer, message: Message) => mixed,
+  onGoToPeer: (peer: Peer) => mixed
 };
