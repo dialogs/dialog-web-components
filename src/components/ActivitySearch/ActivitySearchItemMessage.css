@@ -69,7 +69,7 @@
 
   &:first-child:before {
     display: block;
-    background-image: linear-gradient(0deg,color(#fff alpha(0%)) 0%, color(#fff alpha(100%)) 100%);
+    background-image: linear-gradient(0deg, color(#fff alpha(0%)) 0%, color(#fff alpha(100%)) 100%);
   }
 
   &:last-child:before {

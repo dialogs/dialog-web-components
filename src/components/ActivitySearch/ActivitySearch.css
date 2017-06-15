@@ -30,40 +30,4 @@
 }
 
 .headerText {
-  //margin-bottom: 10px;
-}
-
-.filter {
-  padding: var(--default-padding-small) var(--default-padding);
-  background-color: var(--activity-search-header-background);
-  box-shadow: 0 1px 0 0 var(--activity-search-border-color);
-  line-height: 20px;
-  display: flex;
-  font-size: 14px;
-}
-
-.filterBlock {
-  flex: 1 1 auto;
-  @apply --flex-fix;
-  color: #7A7A7A;
-
-  & span {
-    cursor: pointer;
-    color: #000;
-    border-bottom: 1px dotted color(#000 alpha(40%));
-
-    &:hover {
-      border-bottom: 1px solid color(#000 alpha(40%));
-    }
-  }
-}
-
-.filterRel {
-  composes: filterBlock;
-  text-align: left;
-}
-
-.filterInc {
-  composes: filterBlock;
-  text-align: right;
 }
