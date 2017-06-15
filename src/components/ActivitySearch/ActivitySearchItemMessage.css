@@ -29,7 +29,6 @@
   flex-flow: row nowrap;
   position: relative;
   z-index: var(--activity-search-item-message-z-index);
-  transition: opacity 100ms linear;
   cursor: inherit;
 }
 
@@ -53,7 +52,7 @@
   opacity: 0.3;
 
   & .content {
-    height: 36px;
+    max-height: 36px;
     overflow: hidden;
   }
 
@@ -121,6 +120,7 @@
 
 .contentWrapper {
   flex: 0 0 auto;
+  line-height: 0;
 }
 
 .content {

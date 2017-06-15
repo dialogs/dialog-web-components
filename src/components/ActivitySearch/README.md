@@ -3,14 +3,9 @@ const messages = require('../../fixtures/messages');
 const peerInfo = require('../../fixtures/peerInfo');
 const results = [{
     info: peerInfo,
-    messages: messages,
-    focus: messages[2].rid,
-    highlight: [[0, 5]]
-},{
-    info: peerInfo,
-    messages: messages,
-    focus: messages[1].rid,
-    highlight: [[10, 15]]
+    before: [messages[0]],
+    focus: messages[1],
+    after: [messages[2]],
 }];
 
 <div style={{ background: '#fff', width: 320 }}>

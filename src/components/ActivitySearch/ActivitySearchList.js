@@ -20,9 +20,9 @@ class ActivitySearchList extends PureComponent {
         <ActivitySearchItem
           key={`search_resilt_${index}`}
           info={item.info}
-          messages={item.messages}
+          before={item.before}
+          after={item.after}
           focus={item.focus}
-          highlight={item.highlight}
           onJumpToMessage={this.props.onJumpToMessage}
         />
       );

@@ -64,21 +64,3 @@
 .messagesCollapsed {
   cursor: pointer !important;
 }
-
-.enter {
-  opacity: 0.01;
-}
-
-.enterActive {
-  opacity: 1;
-  transition: opacity 100ms linear;
-}
-
-.leave {
-  opacity: 1;
-}
-
-.leaveActive {
-  opacity: 0.01;
-  transition: opacity 100ms linear;
-}

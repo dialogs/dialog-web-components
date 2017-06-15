@@ -7,9 +7,9 @@ import type { Message, PeerInfo } from '@dlghq/dialog-types';
 
 export type SearchEntity = {
   info: PeerInfo,
-  messages: Message[],
-  focus: number,
-  highlight: Array<[number, number]>
+  focus: Message,
+  before: Message[],
+  after: Message[]
 };
 
 export type ActivitySearchProps = {
@@ -17,16 +17,20 @@ export type ActivitySearchProps = {
   results: SearchEntity[],
   filter?: any,
   onClose: () => any,
-  onJumpToMessage: () => any
+  onJumpToMessage: (rid: string) => any
 };
 
 export type ActivitySearchListProps = {
   className?: string,
   results: SearchEntity[],
-  onJumpToMessage: () => any
+  onJumpToMessage: (rid: string) => any
 };
 
-export type ActivitySearchItemProps = SearchEntity & {
+export type ActivitySearchItemProps = {
   className?: string,
-  onJumpToMessage: () => any
+  info: PeerInfo,
+  focus: Message,
+  before: Message[],
+  after: Message[],
+  onJumpToMessage: (rid: string) => any
 };
