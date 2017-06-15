@@ -4,7 +4,7 @@
  */
 
 import React, { PureComponent } from 'react';
-import { throttle } from 'lodash';
+import { debounce } from 'lodash';
 import classNames from 'classnames';
 import Icon from '../Icon/Icon';
 import styles from './ToolbarSearchInput.css';
@@ -26,7 +26,7 @@ class ToolbarSearchInput extends PureComponent {
   constructor(props: Props) {
     super(props);
 
-    this.handleSearch = throttle(this.handleSearch, 600);
+    this.handleSearch = debounce(this.handleSearch, 300);
   }
 
   handleChange = (event: SyntheticInputEvent) => {
