@@ -26,7 +26,7 @@ class ToolbarSearchInput extends PureComponent {
   constructor(props: Props) {
     super(props);
 
-    this.handleSearch = throttle(this.handleSearch, 300);
+    this.handleSearch = throttle(this.handleSearch, 600);
   }
 
   handleChange = (event: SyntheticInputEvent) => {
