@@ -18,7 +18,10 @@
 /* Styles */
 .container {
   font-family: var(--activity-search-font-family);
-  display: block;
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+  height: 100%;
 }
 
 .header {
@@ -27,6 +30,7 @@
   padding-right: var(--default-padding);
   background-color: var(--activity-search-header-background);
   box-shadow: 0 1px 0 0 var(--activity-search-border-color);
+  flex: 0 0 auto;
 }
 
 .headerText {
