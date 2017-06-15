@@ -37,8 +37,8 @@ class ActivitySearch extends PureComponent {
         {this.renderFilter()}
 
         <ActivitySearchList
-          results={this.props.results}
-          onJumpToMessage={this.props.onJumpToMessage}
+          results={this.props.result.value}
+          onGoToMessage={this.props.onGoToMessage}
         />
       </div>
     );

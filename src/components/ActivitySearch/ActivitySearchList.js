@@ -15,15 +15,15 @@ class ActivitySearchList extends PureComponent {
   renderResults() {
     const { results } = this.props;
 
-    return results.map((item, index) => {
+    return results.map((item) => {
       return (
         <ActivitySearchItem
-          key={`search_resilt_${index}`}
+          key={item.focus.rid}
           info={item.info}
           before={item.before}
           after={item.after}
           focus={item.focus}
-          onJumpToMessage={this.props.onJumpToMessage}
+          onGoToMessage={this.props.onGoToMessage}
         />
       );
     });

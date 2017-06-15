@@ -29,8 +29,7 @@ class ActivitySearchItem extends PureComponent {
   }
 
   handleJumpToMessage = () => {
-    const { focus } = this.props;
-    this.props.onJumpToMessage(focus.rid);
+    this.props.onGoToMessage(this.props.info.peer, this.props.focus);
   };
 
   handleCollapseToggle = () => {

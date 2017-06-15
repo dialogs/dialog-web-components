@@ -3,7 +3,7 @@
  * @flow
  */
 
-import type { Message, PeerInfo } from '@dlghq/dialog-types';
+import type { Peer, Message, PeerInfo, Field } from '@dlghq/dialog-types';
 
 export type SearchEntity = {
   info: PeerInfo,
@@ -12,18 +12,25 @@ export type SearchEntity = {
   after: Message[]
 };
 
+export type SearchOptions = {
+  ordering: 'recent' | 'relevant'
+};
+
 export type ActivitySearchProps = {
   className?: string,
-  results: SearchEntity[],
-  filter?: any,
-  onClose: () => any,
-  onJumpToMessage: (rid: string) => any
+  query: string,
+  result: Field<SearchEntity[]>,
+  options?: SearchOptions,
+  onChangeOptions: (options: SearchOptions) => mixed,
+  onClose: () => mixed,
+  onGoToPeer: (peer: Peer) => mixed,
+  onGoToMessage: (peer: Peer, message: Message) => mixed
 };
 
 export type ActivitySearchListProps = {
   className?: string,
   results: SearchEntity[],
-  onJumpToMessage: (rid: string) => any
+  onGoToMessage: (peer: Peer, message: Message) => mixed
 };
 
 export type ActivitySearchItemProps = {
@@ -32,5 +39,5 @@ export type ActivitySearchItemProps = {
   focus: Message,
   before: Message[],
   after: Message[],
-  onJumpToMessage: (rid: string) => any
+  onGoToMessage: (peer: Peer, message: Message) => mixed
 };
