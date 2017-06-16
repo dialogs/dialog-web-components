@@ -73,7 +73,7 @@ class ActivitySearchItem extends PureComponent {
   }
 
   renderBeforeMessages() {
-    const { before } = this.props;
+    const { info, before } = this.props;
 
     if (!before.length) {
       return null;
@@ -82,6 +82,7 @@ class ActivitySearchItem extends PureComponent {
     if (this.state.collapsed) {
       return (
         <ActivitySearchItemMessage
+          info={info}
           message={before[before.length - 1]}
           highlited={false}
           short
@@ -94,6 +95,7 @@ class ActivitySearchItem extends PureComponent {
       return (
         <ActivitySearchItemMessage
           key={message.rid}
+          info={info}
           message={message}
           highlited={false}
           short={false}
@@ -104,10 +106,11 @@ class ActivitySearchItem extends PureComponent {
   }
 
   renderFocusMessage() {
-    const { focus } = this.props;
+    const { info, focus } = this.props;
 
     return (
       <ActivitySearchItemMessage
+        info={info}
         message={focus}
         highlited
         short={this.state.collapsed}
@@ -117,7 +120,7 @@ class ActivitySearchItem extends PureComponent {
   }
 
   renderAfterMessages() {
-    const { after } = this.props;
+    const { info, after } = this.props;
 
     if (!after.length) {
       return null;
@@ -126,6 +129,7 @@ class ActivitySearchItem extends PureComponent {
     if (this.state.collapsed) {
       return (
         <ActivitySearchItemMessage
+          info={info}
           message={after[0]}
           highlited={false}
           short
@@ -137,6 +141,7 @@ class ActivitySearchItem extends PureComponent {
     return after.map((message) => {
       return (
         <ActivitySearchItemMessage
+          info={info}
           key={message.rid}
           message={message}
           highlited={false}

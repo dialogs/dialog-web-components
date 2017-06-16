@@ -3,7 +3,7 @@
  * @flow
  */
 
-import type { Message } from '@dlghq/dialog-types';
+import type { Message, PeerInfo } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import Avatar from '../Avatar/Avatar';
@@ -17,6 +17,7 @@ type Props = {
   highlited: boolean,
   short: boolean,
   collapsed: boolean,
+  info: PeerInfo,
   message: Message
 };
 
@@ -40,13 +41,10 @@ class ActivitySearchItemMessage extends PureComponent {
   }
 
   renderAvatar() {
-    const { message: { sender } } = this.props;
-
-    if (!sender) {
-      return null;
-    }
-
-    const { avatar, title, peer: { id } } = sender;
+    const { message: { sender }, info } = this.props;
+    const avatar = sender ? sender.avatar : info.avatar;
+    const title = sender ? sender.title : info.title;
+    const id = sender ? sender.peer.id : info.peer.id;
     const placeholder = getAvatarPlaceholder(id);
 
     return (
@@ -61,8 +59,8 @@ class ActivitySearchItemMessage extends PureComponent {
   }
 
   renderHeader() {
-    const { message: { date, sender } } = this.props;
-    const title = sender ? sender.title : '';
+    const { message: { date, sender }, info } = this.props;
+    const title = sender ? sender.title : info.title;
 
     return (
       <div className={styles.header}>
