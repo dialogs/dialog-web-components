@@ -6,7 +6,7 @@
 
 @custom-media --small (width < 800px);
 
-@custom-media --medium (width < 1090px);
+@custom-media --medium (width < 1100px);
 
 :root {
   --font-apple: -apple-system, 'BlinkMacSystemFont';
