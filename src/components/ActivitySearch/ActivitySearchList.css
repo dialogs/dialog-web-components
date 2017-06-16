@@ -32,12 +32,7 @@
   display: inline-block;
 }
 
-.error {
-  padding: calc(var(--default-padding-large) * 2) var(--default-padding-large);
-  text-align: center;
-}
-
-.notFound {
+.text {
   padding: calc(var(--default-padding-large) * 2) var(--default-padding);
   text-align: center;
 
@@ -46,7 +41,12 @@
   }
 }
 
-.notFoundEmoji {
+.textEmoji {
   display: inline-block;
   margin-bottom: 1rem;
+}
+
+.error {
+  display: inline-block;
+  text-align: center;
 }

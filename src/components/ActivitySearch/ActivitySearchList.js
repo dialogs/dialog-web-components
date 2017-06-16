@@ -29,16 +29,25 @@ class ActivitySearchList extends PureComponent {
 
     if (result.error) {
       return (
-        <div className={styles.error}>
-          <Error>{result.error}</Error>
+        <div className={styles.text}>
+          <Emoji char="❗" size={50} className={styles.textEmoji} />
+          <Error>
+            <Text
+              html
+              tagName="div"
+              className={styles.error}
+              id="ActivitySearch.error"
+              values={{ error: result.error.message }}
+            />
+          </Error>
         </div>
       );
     }
 
     if (!result.value.length) {
       return (
-        <div className={styles.notFound}>
-          <Emoji char="☹" size={64} className={styles.notFoundEmoji} />
+        <div className={styles.text}>
+          <Emoji char="☹" size={50} className={styles.textEmoji} />
           <Text
             html
             tagName="div"
