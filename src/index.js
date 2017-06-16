@@ -46,6 +46,7 @@ export { default as ToolbarInfoButton } from './components/ToolbarInfoButton/Too
 export { default as ToolbarCallButton } from './components/ToolbarCallButton/ToolbarCallButton';
 export { default as ToolbarFavouriteButton } from './components/ToolbarFavouriteButton/ToolbarFavouriteButton';
 export { default as ToolbarMessagesButton } from './components/ToolbarMessagesButton/ToolbarMessagesButton';
+export { default as ToolbarSearchInput } from './components/ToolbarSearchInput/ToolbarSearchInput';
 
 // Buttons
 export { default as Button } from './components/Button/Button';
@@ -133,6 +134,7 @@ export { default as ActivityListIntegration } from './components/ActivityListInt
 export { default as ActivityListMembers } from './components/ActivityListMembers/ActivityListMembers';
 export { default as ActivityListMembersAdd } from './components/ActivityListMembers/ActivityListMembersAdd';
 export { default as ActivityListMembersItem } from './components/ActivityListMembers/ActivityListMembersItem';
+export { default as ActivitySearch } from './components/ActivitySearch/ActivitySearch';
 
 // Helpers
 export { default as Trigger } from './components/Trigger/Trigger';

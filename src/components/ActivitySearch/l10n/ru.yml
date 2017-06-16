@@ -1,0 +1,4 @@
+header: Результаты поиска
+jump: Перейти
+not_found: "Не найдено сообщений содержащих: <strong>{query}</strong>"
+error: "<strong>Ошибка:</strong> {error}"

@@ -1,0 +1,52 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+:root {
+  --activity-search-list-font-family: var(--default-font-family);
+}
+
+/* Reset */
+.container {
+  all: initial;
+}
+
+/* Styles */
+.container {
+  font-family: var(--activity-search-list-font-family);
+  display: block;
+  overflow-x: hidden;
+  overflow-y: auto;
+  flex: 1 1 auto;
+  @apply --flex-fix;
+}
+
+.spinnerWrapper {
+  padding: calc(var(--default-padding-large) * 2.5) 0;
+  text-align: center;
+}
+
+.spinner {
+  display: inline-block;
+}
+
+.text {
+  padding: calc(var(--default-padding-large) * 2) var(--default-padding);
+  text-align: center;
+
+  & strong {
+    font-weight: 500;
+  }
+}
+
+.textEmoji {
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.error {
+  display: block;
+  text-align: center;
+}

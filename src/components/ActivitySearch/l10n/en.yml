@@ -1,0 +1,4 @@
+header: Search results
+jump: Jump
+not_found: "No messages found matching: <strong>{query}</strong>"
+error: "<strong>Error:</strong> {error}"

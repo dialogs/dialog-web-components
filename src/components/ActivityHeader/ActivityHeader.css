@@ -12,24 +12,18 @@
 /* Styles */
 .container {
   position: relative;
-  display: flex;
-  flex-direction: row;
-  height: var(--activity-header-height);
+  display: block;
+  min-height: var(--activity-header-height);
   font-family: var(--activity-font-family);
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-}
-
-.text {
-  padding: 0 40px;
-  text-align: center;
-  letter-spacing: -0.3px;
   font-size: var(--activity-header-font-size);
   font-weight: 500;
-  line-height: 1.6;
+  line-height: 28px;
   flex: 1 1 auto;
+  padding: var(--default-padding) 40px;
+  text-align: center;
+  letter-spacing: -0.3px;
   @apply --no-select;
+  box-sizing: border-box;
 }
 
 .icon {

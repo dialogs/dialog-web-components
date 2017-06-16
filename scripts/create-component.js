@@ -13,7 +13,7 @@ const questions = [
   {
     name: 'name',
     message: 'Component name',
-    default: 'dialogComponent',
+    default: 'DialogComponent',
     validate(value) {
       const valid = (/^[A-Z][a-zA-Z]+$/).test(value);
       return valid || 'Component name should match /^[A-Z][a-zA-Z]+$/';
@@ -24,12 +24,6 @@ const questions = [
     type: 'confirm',
     message: 'With styles?',
     default: true
-  },
-  {
-    name: 'stateless',
-    type: 'confirm',
-    message: 'Stateless?',
-    default: false
   }
 ];
 
