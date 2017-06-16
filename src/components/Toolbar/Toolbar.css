@@ -39,7 +39,13 @@
 }
 
 /* Theming */
+.nameWrapper {
+  display: block;
+  width: 100%;
+}
+
 .name {
+  display: inherit;
   vertical-align: middle;
   letter-spacing: -0.3px;
   font-size: var(--toolbar-title-font-size);

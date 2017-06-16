@@ -25,6 +25,7 @@ class ToolbarInfo extends PureComponent {
         <PeerInfoTitle
           tagName="div"
           title={this.props.title}
+          className={styles.nameWrapper}
           titleClassName={styles.name}
         />
         <div className={styles.status}>{this.props.status}</div>
