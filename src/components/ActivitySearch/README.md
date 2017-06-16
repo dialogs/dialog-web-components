@@ -62,6 +62,8 @@ const toggleResults = () => {
   });
 };
 
+const onGoToPeer = (peer) => console.debug('onGoToPeer', { peer });
+
 <div>
   <div className="styleguide__buttons">
     <Button onClick={togglePending} size="small" theme="primary" style={{ marginRight: 4 }}>Toggle Pending</Button>
@@ -72,6 +74,7 @@ const toggleResults = () => {
     <ActivitySearch
       query={state.query}
       result={state.result}
+      onGoToPeer={onGoToPeer}
       onClose={() => {console.debug('Close search')}}
     />
   </div>

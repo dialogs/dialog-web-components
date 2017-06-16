@@ -3,7 +3,7 @@
  * @flow
  */
 
-import type { Message, PeerInfo } from '@dlghq/dialog-types';
+import type { Message, PeerInfo, Peer } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import Avatar from '../Avatar/Avatar';
@@ -18,11 +18,22 @@ type Props = {
   short: boolean,
   collapsed: boolean,
   info: PeerInfo,
-  message: Message
+  message: Message,
+  onGoToPeer?: (peer: Peer) => mixed
 };
 
 class ActivitySearchItemMessage extends PureComponent {
   props: Props;
+
+  handleGoToPeer = (event: Event) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    if (this.props.onGoToPeer) {
+      const { message: { sender }, info } = this.props;
+      this.props.onGoToPeer(sender ? sender.peer : info.peer);
+    }
+  };
 
   rederCollapseToggler() {
     const { collapsed, highlited } = this.props;
@@ -58,16 +69,21 @@ class ActivitySearchItemMessage extends PureComponent {
     );
   }
 
-  renderHeader() {
-    const { message: { date, sender }, info } = this.props;
+  renderTitle() {
+    const { message: { sender }, info } = this.props;
     const title = sender ? sender.title : info.title;
+    const className = classNames(styles.title, {
+      [styles.titleClickable]: this.props.onGoToPeer
+    });
+
+    if (this.props.onGoToPeer) {
+      return (
+        <div className={className} onClick={this.handleGoToPeer}>{title}</div>
+      );
+    }
 
     return (
-      <div className={styles.header}>
-        <div className={styles.title}>{title}</div>
-        <div className={styles.time}>{date}</div>
-        {this.rederCollapseToggler()}
-      </div>
+      <div className={className}>{title}</div>
     );
   }
 
@@ -86,7 +102,7 @@ class ActivitySearchItemMessage extends PureComponent {
   }
 
   render() {
-    const { highlited, short } = this.props;
+    const { highlited, short, message: { date, fullDate } } = this.props;
     const className = classNames(styles.container, {
       [styles.highlited]: highlited,
       [styles.short]: short
@@ -96,7 +112,11 @@ class ActivitySearchItemMessage extends PureComponent {
       <div className={className}>
         {this.renderAvatar()}
         <div className={styles.wrapper}>
-          {this.renderHeader()}
+          <div className={styles.header}>
+            {this.renderTitle()}
+            <time className={styles.time} dateTime={fullDate.toISOString()}>{date}</time>
+            {this.rederCollapseToggler()}
+          </div>
           <div className={styles.contentWrapper}>
             {this.renderContent()}
           </div>

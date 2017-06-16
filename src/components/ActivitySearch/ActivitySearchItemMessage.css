@@ -37,10 +37,6 @@
   z-index: calc(var(--activity-search-item-message-z-index) + 2);
   opacity: 1 !important;
 
-  & .title {
-    color: var(--activity-search-item-message-highlited-title-color) !important;
-  }
-
   &:before {
     display: none !important;
   }
@@ -102,6 +98,11 @@
   color: var(--activity-search-item-message-title-color);
   font-size: var(--activity-search-item-message-title-font-size);
   margin-right: 8px;
+}
+
+.titleClickable {
+  cursor: pointer;
+  color: var(--activity-search-item-message-highlited-title-color);
 }
 
 .time {

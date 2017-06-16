@@ -100,6 +100,7 @@ class ActivitySearchItem extends PureComponent {
           highlited={false}
           short={false}
           collapsed={false}
+          onGoToPeer={this.props.onGoToPeer}
         />
       );
     });
@@ -115,6 +116,7 @@ class ActivitySearchItem extends PureComponent {
         highlited
         short={this.state.collapsed}
         collapsed={this.state.collapsed}
+        onGoToPeer={this.props.onGoToPeer}
       />
     );
   }
@@ -147,6 +149,7 @@ class ActivitySearchItem extends PureComponent {
           highlited={false}
           short={false}
           collapsed={false}
+          onGoToPeer={this.props.onGoToPeer}
         />
       );
     });
