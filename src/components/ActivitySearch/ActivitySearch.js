@@ -39,6 +39,7 @@ class ActivitySearch extends PureComponent {
         <ActivitySearchList
           query={this.props.query}
           result={this.props.result}
+          onGoToPeer={this.props.onGoToPeer}
           onGoToMessage={this.props.onGoToMessage}
         />
       </div>

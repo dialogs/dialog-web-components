@@ -66,6 +66,7 @@ class ActivitySearchList extends PureComponent {
           before={item.before}
           after={item.after}
           focus={item.focus}
+          onGoToPeer={this.props.onGoToPeer}
           onGoToMessage={this.props.onGoToMessage}
         />
       );
