@@ -34,6 +34,13 @@
   pointer-events: none;
 }
 
+.spinner {
+  position: absolute;
+  top: 9px;
+  left: 9px;
+  pointer-events: none;
+}
+
 .input {
   font-family: var(--toolbar-search-input-font-family);
   box-sizing: border-box;

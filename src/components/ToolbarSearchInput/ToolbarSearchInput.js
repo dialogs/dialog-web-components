@@ -7,12 +7,14 @@ import React, { PureComponent } from 'react';
 import { debounce } from 'lodash';
 import classNames from 'classnames';
 import Icon from '../Icon/Icon';
+import Spinner from '../Spinner/Spinner';
 import styles from './ToolbarSearchInput.css';
 
 export type Props = {
   className?: string,
   query: string,
   focus: boolean,
+  pending: boolean,
   onFocus: (query: string) => mixed,
   onBlur: () => mixed,
   onChange: (query: string) => mixed,
@@ -59,6 +61,20 @@ class ToolbarSearchInput extends PureComponent {
     this.input.focus();
   }
 
+  renderIcon() {
+    const { pending } = this.props;
+
+    if (pending) {
+      return (
+        <Spinner size="small" className={styles.spinner} />
+      );
+    }
+
+    return (
+      <Icon glyph="search" className={styles.icon} size={22} />
+    );
+  }
+
   renderClearIcon() {
     if (!this.props.query) {
       return null;
@@ -79,7 +95,7 @@ class ToolbarSearchInput extends PureComponent {
 
     return (
       <div className={className}>
-        <Icon glyph="search" className={styles.icon} size={22} />
+        {this.renderIcon()}
         <input
           type="search"
           ref={this.setInput}
