@@ -10,6 +10,7 @@ const toggleAnimation = () => setState({ animated: !state.animated });
   <div style={{ textAlign: 'center'}}>
     <CallAvatar
       size={130}
+      animated={state.animated}
       peer={{
         avatar: 'https://octodex.github.com/images/octotron.jpg',
         name: 'Spidertocat',
