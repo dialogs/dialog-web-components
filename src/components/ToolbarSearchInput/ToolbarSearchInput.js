@@ -13,7 +13,7 @@ export type Props = {
   className?: string,
   query: string,
   focus: boolean,
-  onFocus: () => mixed,
+  onFocus: (query: string) => mixed,
   onBlur: () => mixed,
   onChange: (query: string) => mixed,
   onSearch: (query: string) => mixed
@@ -44,7 +44,7 @@ class ToolbarSearchInput extends PureComponent {
   };
 
   handleFocus = () => {
-    this.props.onFocus();
+    this.props.onFocus(this.props.query);
   };
 
   handleBlur = () => {
