@@ -31,11 +31,10 @@ class ActivitySearchList extends PureComponent {
       return (
         <div className={styles.text}>
           <Emoji char="❗" size={50} className={styles.textEmoji} />
-          <Error>
+          <Error className={styles.error}>
             <Text
               html
               tagName="div"
-              className={styles.error}
               id="ActivitySearch.error"
               values={{ error: result.error.message }}
             />
