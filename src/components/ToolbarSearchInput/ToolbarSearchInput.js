@@ -24,9 +24,11 @@ export type Props = {
 class ToolbarSearchInput extends PureComponent {
   props: Props;
   input: HTMLInputElement;
+  isUserAction: boolean;
 
   constructor(props: Props) {
     super(props);
+    this.isUserAction = false;
 
     this.handleSearch = debounce(this.handleSearch, 300);
   }
@@ -38,7 +40,7 @@ class ToolbarSearchInput extends PureComponent {
 
   handleClear = () => {
     this.props.onChange('');
-    this.focus();
+    this.focus(true);
   };
 
   handleSearch = (query: string) => {
@@ -46,7 +48,7 @@ class ToolbarSearchInput extends PureComponent {
   };
 
   handleFocus = () => {
-    this.props.onFocus(this.props.query);
+    this.props.onFocus(this.isUserAction ? '' : this.props.query);
   };
 
   handleBlur = () => {
@@ -57,7 +59,8 @@ class ToolbarSearchInput extends PureComponent {
     this.input = input;
   };
 
-  focus() {
+  focus(triggeredByUser: boolean = false) {
+    this.isUserAction = triggeredByUser;
     this.input.focus();
   }
 
