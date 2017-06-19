@@ -23,12 +23,10 @@ export type Props = {
 
 class ToolbarSearchInput extends PureComponent {
   props: Props;
-  input: HTMLInputElement;
-  isUserAction: boolean;
+  input: ?HTMLInputElement;
 
   constructor(props: Props) {
     super(props);
-    this.isUserAction = false;
 
     this.handleSearch = debounce(this.handleSearch, 300);
   }
@@ -40,7 +38,7 @@ class ToolbarSearchInput extends PureComponent {
 
   handleClear = () => {
     this.props.onChange('');
-    this.focus(true);
+    this.props.onSearch('');
   };
 
   handleSearch = (query: string) => {
@@ -48,20 +46,21 @@ class ToolbarSearchInput extends PureComponent {
   };
 
   handleFocus = () => {
-    this.props.onFocus(this.isUserAction ? '' : this.props.query);
+    this.props.onFocus(this.props.query);
   };
 
   handleBlur = () => {
     this.props.onBlur();
   };
 
-  setInput = (input: HTMLInputElement) => {
+  setInput = (input: ?HTMLInputElement) => {
     this.input = input;
   };
 
-  focus(triggeredByUser: boolean = false) {
-    this.isUserAction = triggeredByUser;
-    this.input.focus();
+  focus() {
+    if (this.input && document.activeElement !== this.input) {
+      this.input.focus();
+    }
   }
 
   renderIcon() {
