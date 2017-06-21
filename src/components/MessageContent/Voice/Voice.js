@@ -5,16 +5,13 @@
 
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
-import VoicePlayer from './VoicePlayer';
+import AudioPlayer from '../../AudioPlayer/AudioPlayer';
 import styles from './Voice.css';
 
 export type Props = {
   className?: string,
   duration: number,
   fileUrl: ?string,
-  // fileName: ?string,
-  // fileSize: ?string,
-  // fileExtension: ?string,
   isUploading: boolean,
   maxWidth: number
 };
@@ -30,11 +27,10 @@ class Voice extends PureComponent {
 
     return (
       <div className={className} style={{ width: maxWidth }}>
-        <VoicePlayer
-          short={maxWidth < 300}
-          isUploading={isUploading}
-          fileUrl={this.props.fileUrl}
+        <AudioPlayer
+          src={this.props.fileUrl}
           duration={this.props.duration}
+          pending={this.props.isUploading}
         />
       </div>
     );

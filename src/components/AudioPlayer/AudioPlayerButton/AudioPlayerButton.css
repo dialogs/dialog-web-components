@@ -66,3 +66,13 @@
   cursor: default;
   opacity: 0.9;
 }
+
+.error {
+  & .icon {
+    fill: var(--color-danger);
+  }
+
+  & .border {
+    stroke: var(--color-danger);
+  }
+}

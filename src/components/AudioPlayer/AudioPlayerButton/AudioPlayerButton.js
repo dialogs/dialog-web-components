@@ -5,9 +5,10 @@
 
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
-import styles from './VoicePlayerButton.css';
+import styles from './AudioPlayerButton.css';
 
 export type Props = {
+  error: ?MediaError,
   pending: boolean,
   isPlaying: boolean,
   onPlay: () => any,
@@ -15,7 +16,7 @@ export type Props = {
   className?: string
 }
 
-class VoicePlayerButton extends PureComponent {
+class AudioPlayerButton extends PureComponent {
   props: Props;
 
   handleButtonClick = () => {
@@ -30,7 +31,7 @@ class VoicePlayerButton extends PureComponent {
     }
   };
 
-  renderIcon(): ?React.Element<any> {
+  renderIcon() {
     const { isPlaying } = this.props;
 
     if (!isPlaying) {
@@ -48,9 +49,10 @@ class VoicePlayerButton extends PureComponent {
   }
 
   render() {
-    const className = classNames(styles.container, {
+    const className = classNames(styles.container, this.props.className, {
+      [styles.error]: this.props.error,
       [styles.pending]: this.props.pending
-    }, this.props.className);
+    });
 
     return (
       <svg viewBox="0 0 50 50" className={className} onClick={this.handleButtonClick}>
@@ -69,4 +71,4 @@ class VoicePlayerButton extends PureComponent {
   }
 }
 
-export default VoicePlayerButton;
+export default AudioPlayerButton;

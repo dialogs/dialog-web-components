@@ -1,0 +1,4 @@
+MEDIA_ERR_ABORTED: Загрузка прервана.
+MEDIA_ERR_NETWORK: Не удалось загрузить.
+MEDIA_ERR_DECODE: Ошибка декодирования.
+MEDIA_ERR_SRC_NOT_SUPPORTED: Файл не поддерживается.

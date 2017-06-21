@@ -25,7 +25,8 @@
       "ImageEdit",
       "Overlay",
       "SelectedMessagesActions",
-      "CheckButton"
+      "CheckButton",
+      "AudioPlayer"
     ]
   },
   {

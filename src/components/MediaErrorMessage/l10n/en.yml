@@ -1,0 +1,4 @@
+MEDIA_ERR_ABORTED: The fetching of the associated resource was aborted by the user's request.
+MEDIA_ERR_NETWORK: Some kind of network error occurred which prevented the media from being successfully fetched.
+MEDIA_ERR_DECODE: An error occurred while trying to decode the media resource.
+MEDIA_ERR_SRC_NOT_SUPPORTED: Source not supported.
