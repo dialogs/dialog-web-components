@@ -3,23 +3,47 @@
  * @flow
  */
 
-import type { ActivitySearchListProps as Props } from './types';
+import type { Peer, Message, PeerInfo, Field } from '@dlghq/dialog-types';
+import type { SearchEntity } from '../types';
 import { Text } from '@dlghq/react-l10n';
+import { peerToString } from '@dlghq/dialog-types/utils';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
-import Spinner from '../Spinner/Spinner';
-import Error from '../Error/Error';
-import Emoji from '../Emoji/Emoji';
-import ActivitySearchItem from './ActivitySearchItem';
-import styles from './ActivitySearchList.css';
+import Spinner from '../../Spinner/Spinner';
+import Error from '../../Error/Error';
+import Emoji from '../../Emoji/Emoji';
+import ActivitySearchMessage from '../ActivitySearchItem/ActivitySearchItem';
+import ActivitySearchItemPeer from '../ActivitySearchItemPeer/ActivitySearchItemPeer';
+import styles from './ActivitySearchResult.css';
 
-class ActivitySearchList extends PureComponent {
+type Props = {
+  className?: string,
+  query: string,
+  peers: PeerInfo[],
+  messages: Field<SearchEntity[]>,
+  onGoToMessage: (peer: Peer, message: Message) => mixed,
+  onGoToPeer: (peer: Peer) => mixed
+};
+
+class ActivitySearchMessages extends PureComponent {
   props: Props;
 
-  renderResults() {
-    const { result } = this.props;
+  renderPeers() {
+    return this.props.peers.map((item) => {
+      return (
+        <ActivitySearchItemPeer
+          key={peerToString(item.peer)}
+          info={item}
+          onGoToPeer={this.props.onGoToPeer}
+        />
+      );
+    });
+  }
 
-    if (result.pending) {
+  renderMessages() {
+    const { messages } = this.props;
+
+    if (messages.pending) {
       return (
         <div className={styles.spinnerWrapper}>
           <Spinner className={styles.spinner} size="large" />
@@ -27,7 +51,7 @@ class ActivitySearchList extends PureComponent {
       );
     }
 
-    if (result.error) {
+    if (messages.error) {
       return (
         <div className={styles.text}>
           <Emoji char="❗" size={50} className={styles.textEmoji} />
@@ -36,14 +60,14 @@ class ActivitySearchList extends PureComponent {
               html
               tagName="div"
               id="ActivitySearch.error"
-              values={{ error: result.error.message }}
+              values={{ error: messages.error.message }}
             />
           </Error>
         </div>
       );
     }
 
-    if (!result.value.length) {
+    if (!messages.value.length) {
       return (
         <div className={styles.text}>
           <Emoji char="☹" size={50} className={styles.textEmoji} />
@@ -57,9 +81,9 @@ class ActivitySearchList extends PureComponent {
       );
     }
 
-    return result.value.map((item) => {
+    return messages.value.map((item) => {
       return (
-        <ActivitySearchItem
+        <ActivitySearchMessage
           key={item.focus.rid}
           info={item.info}
           before={item.before}
@@ -77,10 +101,11 @@ class ActivitySearchList extends PureComponent {
 
     return (
       <div className={className}>
-        {this.renderResults()}
+        {this.renderPeers()}
+        {this.renderMessages()}
       </div>
     );
   }
 }
 
-export default ActivitySearchList;
+export default ActivitySearchMessages;

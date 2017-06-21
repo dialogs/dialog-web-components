@@ -8,8 +8,8 @@ import React, { PureComponent } from 'react';
 import { Text } from '@dlghq/react-l10n';
 import classNames from 'classnames';
 import ActivityHeader from '../ActivityHeader/ActivityHeader';
-import ActivitySearchFilter from './ActivitySearchFilter';
-import ActivitySearchList from './ActivitySearchList';
+import ActivitySearchFilter from './ActivitySearchFilter/ActivitySearchFilter';
+import ActivitySearchResult from './ActivitySearchResult/ActivitySearchResult';
 import styles from './ActivitySearch.css';
 
 class ActivitySearch extends PureComponent {
@@ -36,9 +36,10 @@ class ActivitySearch extends PureComponent {
 
         {this.renderFilter()}
 
-        <ActivitySearchList
+        <ActivitySearchResult
           query={this.props.query}
-          result={this.props.result}
+          peers={this.props.peers}
+          messages={this.props.messages}
           onGoToPeer={this.props.onGoToPeer}
           onGoToMessage={this.props.onGoToMessage}
         />

@@ -1,0 +1,132 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../../styles/variables.css';
+
+:root {
+  --activity-search-item-message-font-family: var(--default-font-family);
+  --activity-search-item-message-highlighted-background: #F5F5F5;
+  --activity-search-item-message-highlighted-title-color: #2174D3;
+  --activity-search-item-message-title-color: #000;
+  --activity-search-item-message-title-font-size: var(--default-font-size);
+  --activity-search-item-message-time-color: #868686;
+  --activity-search-item-message-time-font-size: 13px;
+  --activity-search-item-message-z-index: 10;
+}
+
+/* Reset */
+.container {
+  all: initial;
+}
+
+/* Styles */
+.container {
+  font-family: var(--activity-search-item-message-font-family);
+  padding: 8px 6px;
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: row nowrap;
+  position: relative;
+  z-index: var(--activity-search-item-message-z-index);
+  cursor: inherit;
+}
+
+.highlighted {
+  background-color: var(--activity-search-item-message-highlighted-background);
+  z-index: calc(var(--activity-search-item-message-z-index) + 2);
+  opacity: 1 !important;
+
+  &:before {
+    display: none !important;
+  }
+}
+
+.short {
+  position: relative;
+  border-radius: 3px;
+  opacity: 0.3;
+
+  & .content {
+    max-height: 36px;
+    overflow: hidden;
+  }
+
+  &:before {
+    display: none;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: calc(var(--activity-search-item-message-z-index) + 1);
+  }
+
+  &:first-child:before {
+    display: block;
+    background-image: linear-gradient(0deg, color(#fff alpha(0%)) 0%, color(#fff alpha(100%)) 100%);
+  }
+
+  &:last-child:before {
+    display: block;
+    background-image: linear-gradient(180deg, color(#fff alpha(0%)) 0%, color(#fff alpha(100%)) 100%);
+  }
+}
+
+.avatar {
+  flex: 0 0 auto;
+  margin-right: 11px;
+}
+
+.wrapper {
+  flex: 1 1 auto;
+  @apply --flex-fix;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.header {
+  position: relative;
+  flex: 0 0 auto;
+  margin-bottom: 2px;
+}
+
+.title {
+  display: inline-block;
+  font-weight: 500;
+  color: var(--activity-search-item-message-title-color);
+  font-size: var(--activity-search-item-message-title-font-size);
+  margin-right: 8px;
+}
+
+.titleClickable {
+  cursor: pointer;
+  color: var(--activity-search-item-message-highlighted-title-color);
+}
+
+.time {
+  display: inline-block;
+  font-size: var(--activity-search-item-message-time-font-size);
+  color: var(--activity-search-item-message-time-color);
+  cursor: pointer;
+}
+
+.collapser {
+  fill: var(--color-primary);
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.contentWrapper {
+  flex: 0 0 auto;
+  line-height: 0;
+}
+
+.content {
+  cursor: inherit;
+  font-size: 14px;
+  line-height: 16px;
+}

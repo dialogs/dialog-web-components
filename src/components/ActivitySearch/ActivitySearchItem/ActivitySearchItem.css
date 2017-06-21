@@ -2,7 +2,7 @@
  * Copyright 2017 dialog LLC <info@dlg.im>
  */
 
-@import '../../styles/variables.css';
+@import '../../../styles/variables.css';
 
 :root {
   --activity-search-item-font-family: var(--default-font-family);
@@ -46,12 +46,12 @@
   line-height: 20px;
   font-size: var(--activity-search-item-header-date-font-size);
   color: var(--activity-search-item-header-date-color);
+  cursor: pointer;
 }
 
 .headerInfoJump {
   color: var(--color-primary);
   font-size: var(--activity-search-item-header-date-font-size);
-  cursor: pointer;
 }
 
 .messages {

@@ -13,16 +13,17 @@ type Props = {
   className?: string,
   titleClassName?: string,
   userNameClassName?: string,
-  onTitleClick?: ?(event: SyntheticEvent) => mixed,
-  onUserNameClick?: ?(event: SyntheticEvent) => mixed
+  onTitleClick?: ?(event: SyntheticMouseEvent) => mixed,
+  onUserNameClick?: ?(event: SyntheticMouseEvent) => mixed
 };
 
 class PeerInfoTitle extends PureComponent {
   props: Props;
 
   render() {
+    const titleStyle = this.props.onTitleClick ? { cursor: 'pointer' } : undefined;
     const title = (
-      <span className={this.props.titleClassName} onClick={this.props.onTitleClick}>
+      <span className={this.props.titleClassName} style={titleStyle} onClick={this.props.onTitleClick}>
         <Markdown
           inline
           decorators={decorators}
@@ -32,13 +33,15 @@ class PeerInfoTitle extends PureComponent {
     );
 
     if (this.props.userName) {
+      const userNameStyle = this.props.onUserNameClick ? { cursor: 'pointer' } : undefined;
+
       return (
         <span style={{ lineHeight: '1' }}>
           <span className={this.props.className}>
             {title}
             {' '}
           </span>
-          <span className={this.props.userNameClassName} onClick={this.props.onUserNameClick}>
+          <span className={this.props.userNameClassName} style={userNameStyle} onClick={this.props.onUserNameClick}>
             {`@${this.props.userName}`}
           </span>
         </span>

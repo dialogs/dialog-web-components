@@ -1,13 +1,12 @@
 /**
  * Copyright 2017 dialog LLC <info@dlg.im>
  */
-
-@import '../../styles/variables.css';
+@import '../../../styles/variables.css';
 
 :root {
   --activity-search-item-message-font-family: var(--default-font-family);
-  --activity-search-item-message-highlited-background: #F5F5F5;
-  --activity-search-item-message-highlited-title-color: #2174D3;
+  --activity-search-item-message-highlighted-background: #f5f5f5;
+  --activity-search-item-message-highlighted-title-color: #2174d3;
   --activity-search-item-message-title-color: #000;
   --activity-search-item-message-title-font-size: var(--default-font-size);
   --activity-search-item-message-time-color: #868686;
@@ -32,8 +31,8 @@
   cursor: inherit;
 }
 
-.highlited {
-  background-color: var(--activity-search-item-message-highlited-background);
+.highlighted {
+  background-color: var(--activity-search-item-message-highlighted-background);
   z-index: calc(var(--activity-search-item-message-z-index) + 2);
   opacity: 1 !important;
 
@@ -102,13 +101,14 @@
 
 .titleClickable {
   cursor: pointer;
-  color: var(--activity-search-item-message-highlited-title-color);
+  color: var(--activity-search-item-message-highlighted-title-color);
 }
 
 .time {
   display: inline-block;
   font-size: var(--activity-search-item-message-time-font-size);
   color: var(--activity-search-item-message-time-color);
+  cursor: pointer;
 }
 
 .collapser {
@@ -128,4 +128,18 @@
   cursor: inherit;
   font-size: 14px;
   line-height: 16px;
+}
+
+.peer {
+  position: relative;
+  display: flex;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding: 8px 24px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f5f5f5;
+  }
 }

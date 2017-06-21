@@ -3,14 +3,26 @@
  * @flow
  */
 
-import type { ActivitySearchItemProps as Props } from './types';
+import type { Peer, Message, PeerInfo } from '@dlghq/dialog-types';
+
 import React, { PureComponent } from 'react';
 import { findDOMNode } from 'react-dom';
 import { format } from 'date-fns';
 import { Text } from '@dlghq/react-l10n';
 import classNames from 'classnames';
-import ActivitySearchItemMessage from './ActivitySearchItemMessage';
+import ActivitySearchItemMessage from '../ActivitySearchItemMessage/ActivitySearchItemMessage';
 import styles from './ActivitySearchItem.css';
+import PeerInfoTitle from '../../PeerInfoTitle/PeerInfoTitle';
+
+type Props = {
+  className?: string,
+  info: PeerInfo,
+  focus: Message,
+  before: Message[],
+  after: Message[],
+  onGoToPeer: (peer: Peer) => mixed,
+  onGoToMessage: (peer: Peer, message: Message) => mixed
+}
 
 type State = {
   collapsed: boolean
@@ -27,6 +39,10 @@ class ActivitySearchItem extends PureComponent {
       collapsed: true
     };
   }
+
+  handleGoToPeer = () => {
+    this.props.onGoToPeer(this.props.info.peer);
+  };
 
   handleJumpToMessage = () => {
     this.props.onGoToMessage(this.props.info.peer, this.props.focus);
@@ -58,14 +74,17 @@ class ActivitySearchItem extends PureComponent {
 
     return (
       <div className={styles.header}>
-        <div className={styles.headerTitle}>{info.title}</div>
-        <div className={styles.headerInfo}>
+        <PeerInfoTitle
+          titleClassName={styles.headerTitle}
+          title={info.title}
+          onTitleClick={this.handleGoToPeer}
+        />
+        <div className={styles.headerInfo} onClick={this.handleJumpToMessage}>
           <time dateTime={focus.fullDate.toISOString()}>{messageDate}</time>
           ・
           <Text
             id="ActivitySearch.jump"
             className={styles.headerInfoJump}
-            onClick={this.handleJumpToMessage}
           />
         </div>
       </div>
@@ -84,7 +103,7 @@ class ActivitySearchItem extends PureComponent {
         <ActivitySearchItemMessage
           info={info}
           message={before[before.length - 1]}
-          highlited={false}
+          highlighted={false}
           short
           collapsed
         />
@@ -97,10 +116,11 @@ class ActivitySearchItem extends PureComponent {
           key={message.rid}
           info={info}
           message={message}
-          highlited={false}
+          highlighted={false}
           short={false}
           collapsed={false}
           onGoToPeer={this.props.onGoToPeer}
+          onGoToMessage={this.props.onGoToMessage}
         />
       );
     });
@@ -113,10 +133,11 @@ class ActivitySearchItem extends PureComponent {
       <ActivitySearchItemMessage
         info={info}
         message={focus}
-        highlited
+        highlighted
         short={this.state.collapsed}
         collapsed={this.state.collapsed}
         onGoToPeer={this.props.onGoToPeer}
+        onGoToMessage={this.props.onGoToMessage}
       />
     );
   }
@@ -133,7 +154,7 @@ class ActivitySearchItem extends PureComponent {
         <ActivitySearchItemMessage
           info={info}
           message={after[0]}
-          highlited={false}
+          highlighted={false}
           short
           collapsed
         />
@@ -146,10 +167,11 @@ class ActivitySearchItem extends PureComponent {
           info={info}
           key={message.rid}
           message={message}
-          highlited={false}
+          highlighted={false}
           short={false}
           collapsed={false}
           onGoToPeer={this.props.onGoToPeer}
+          onGoToMessage={this.props.onGoToMessage}
         />
       );
     });

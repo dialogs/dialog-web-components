@@ -2,7 +2,7 @@
 const messages = require('../../fixtures/messages');
 const peerInfo = require('../../fixtures/peerInfo');
 
-const results = [{
+const searchMessages = [{
     info: peerInfo,
     before: [messages[0]],
     focus: messages[1],
@@ -24,7 +24,8 @@ const results = [{
 
 initialState = {
   query: 'Test query',
-  result: {
+  peers: [],
+  messages: {
     pending: false,
     error: null,
     value: []
@@ -33,9 +34,9 @@ initialState = {
 
 const togglePending = () => {
   setState({
-    result: {
-      ...state.result,
-      pending: state.result.pending ? false : true
+    messages: {
+      ...state.messages,
+      pending: state.messages.pending ? false : true
     }
   });
 };
@@ -43,21 +44,20 @@ const togglePending = () => {
 const toggleError = () => {
   console.debug('toggleError', state);
   setState({
-    result: {
-      ...state.result,
-      error: state.result.error ? null : {
-        message: 'Something went wrong'
-      }
+    messages: {
+      ...state.messages,
+      error: state.messages.error ? null : new Error('Something went wrong')
     }
   });
 };
 
 const toggleResults = () => {
-  console.debug('toggleResults', state);
+  console.debug('toggleMessages', state);
   setState({
-    result: {
-      ...state.result,
-      value: state.result.value.length ? [] : results
+    peers: [peerInfo, messages[0].sender],
+    messages: {
+      ...state.messages,
+      value: state.messages.value.length ? [] : searchMessages
     }
   });
 };
@@ -73,9 +73,11 @@ const onGoToPeer = (peer) => console.debug('onGoToPeer', { peer });
   <div style={{ background: '#fff', width: 320, height: 400 }}>
     <ActivitySearch
       query={state.query}
-      result={state.result}
-      onGoToPeer={onGoToPeer}
-      onClose={() => {console.debug('Close search')}}
+      peers={state.peers}
+      messages={state.messages}
+      onClose={() => console.debug('Close search')}
+      onGoToPeer={(peer) => console.debug('Go to peer', peer)}
+      onGoToMessage={(peer, message) => console.debug('Go to message', peer, message)}
     />
   </div>
 </div>

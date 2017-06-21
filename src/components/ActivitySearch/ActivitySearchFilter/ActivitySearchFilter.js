@@ -7,7 +7,7 @@ import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import styles from './ActivitySearchFilter.css';
 
-export type Props = {
+type Props = {
   className?: string
 };
 
