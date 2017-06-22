@@ -31,6 +31,12 @@ class ToolbarSearchInput extends PureComponent {
     this.handleSearch = debounce(this.handleSearch, 300);
   }
 
+  componentDidUpdate(prevProps: Props) {
+    if (this.props.focus && !prevProps.focus) {
+      this.focus();
+    }
+  }
+
   handleChange = (event: SyntheticInputEvent) => {
     this.handleSearch(event.target.value);
     this.props.onChange(event.target.value);

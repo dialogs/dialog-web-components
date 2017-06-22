@@ -97,6 +97,7 @@
   color: var(--activity-search-item-message-title-color);
   font-size: var(--activity-search-item-message-title-font-size);
   margin-right: 8px;
+  line-height: 1.8;
 }
 
 .titleClickable {
