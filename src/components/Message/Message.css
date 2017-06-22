@@ -141,3 +141,19 @@
 .forward {
   margin: 6px calc(0 - var(--default-padding-small)) 0;
 }
+
+@keyframes highlight {
+  0% {
+    background-color: var(--message-highlight-background-color);
+  }
+
+  100% {
+    background-color: none;
+  }
+}
+
+.highlight {
+  animation-name: highlight;
+  animation-duration: 3s;
+  transition: background-color 3s ease-out;
+}

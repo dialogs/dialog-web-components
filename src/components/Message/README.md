@@ -14,6 +14,31 @@ const messages = require('./fixtures/messages').messages;
 </div>
 ```
 
+Highlighted Message
+-------------------
+
+```
+const messages = require('./fixtures/messages').messages;
+
+initialState = {
+  highlight: false
+};
+
+handleClick = () => {
+  setState({ highlight: true });
+  setTimeout(() => setState({ highlight: false }), 3000);
+};
+
+<div style={{background: '#fff'}}>
+  <button onClick={handleClick}>Highlight</button>
+  <Message
+    short={false}
+    message={messages[0]}
+    highlight={state.highlight}
+  />
+</div>
+```
+
 Selected Message:
 
 ```

@@ -32,6 +32,7 @@ export type Props = {
   className?: string,
   forceHover?: boolean,
   selected: ?boolean,
+  highlight?: boolean,
   onSelect?: (message: MessageType) => any,
   onTitleClick?: (message: MessageType) => any,
   onAvatarClick?: (message: MessageType) => any,
@@ -298,7 +299,7 @@ class Message extends PureComponent {
   }
 
   render() {
-    const { short, message: { content, rid }, maxWidth, maxHeight } = this.props;
+    const { short, message: { content, rid }, highlight, maxWidth, maxHeight } = this.props;
     const hover = this.isHover();
     const state = this.getState();
     const isError = state === 'error';
@@ -310,7 +311,8 @@ class Message extends PureComponent {
       this.props.className,
       hover ? styles.hover : null,
       isError ? styles.error : null,
-      isUnread ? styles.unread : null
+      isUnread ? styles.unread : null,
+      highlight ? styles.highlight : null
     );
 
     return (
