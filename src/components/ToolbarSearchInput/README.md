@@ -1,6 +1,7 @@
 ```
 initialState = {
-  query: ''
+  query: '',
+  pending: false
 };
 
 const onFocus = () => console.debug('focus');
@@ -15,6 +16,10 @@ const onSearch = (query) => {
   setState({ pending: false });
 };
 
+const onCancel = () => {
+  setState({ ...initialState });
+};
+
 <ToolbarSearchInput
   query={state.query}
   pending={state.pending}
@@ -22,5 +27,6 @@ const onSearch = (query) => {
   onBlur={onBlur}
   onChange={onChange}
   onSearch={onSearch}
+  onCancel={onCancel}
 />
 ```

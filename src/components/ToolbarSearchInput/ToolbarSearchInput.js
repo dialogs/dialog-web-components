@@ -17,6 +17,7 @@ export type Props = {
   pending: boolean,
   onFocus: (query: string) => mixed,
   onBlur: () => mixed,
+  onCancel: () => mixed,
   onChange: (query: string) => mixed,
   onSearch: (query: string) => mixed
 };
@@ -42,9 +43,8 @@ class ToolbarSearchInput extends PureComponent {
     this.props.onChange(event.target.value);
   };
 
-  handleClear = () => {
-    this.props.onChange('');
-    this.props.onSearch('');
+  handleCancel = () => {
+    this.props.onCancel();
   };
 
   handleSearch = (query: string) => {
@@ -91,9 +91,9 @@ class ToolbarSearchInput extends PureComponent {
     return (
       <Icon
         glyph="close"
-        className={styles.clear}
+        className={styles.cancel}
         size={18}
-        onClick={this.handleClear}
+        onClick={this.handleCancel}
       />
     );
   }
