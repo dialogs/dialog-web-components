@@ -214,7 +214,7 @@ class Message extends PureComponent {
           checked={selected}
           className={styles.selector}
           theme="primary"
-          size="24"
+          size={24}
         />
       );
     } else if (this.isHover() && renderActions) {
