@@ -116,6 +116,7 @@
 .stateShort {
   display: inline-block;
   line-height: 24px;
+  margin-left: 0;
   vertical-align: middle;
 }
 
