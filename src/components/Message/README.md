@@ -1,7 +1,7 @@
 Message:
 
 ```
-const messages = require('./fixtures/messages').messages;
+const messages = require('../../fixtures/messages');
 
 <div style={{background: '#fff'}}>
   {messages.map((message, index) => (
@@ -18,7 +18,7 @@ Highlighted Message
 -------------------
 
 ```
-const messages = require('./fixtures/messages').messages;
+const messages = require('../../fixtures/messages');
 
 initialState = {
   highlight: false
@@ -39,10 +39,10 @@ handleClick = () => {
 </div>
 ```
 
-Selected Message:
+Message selection:
 
 ```
-const messages = require('./fixtures/messages').messages;
+const messages = require('../../fixtures/messages');
 
 initialState = {
   selected: []
@@ -55,10 +55,18 @@ const handleSelect = (message) => {
   if (index > -1) {
     selected.splice(index, 1);
   } else {
-    selected.push(message.rid);    
+    selected.push(message.rid);
   }
 
   setState({ selected });
+};
+
+const getSelected = (message) => {
+  if (state.selected.length) {
+    return state.selected.indexOf(message.rid) > -1;
+  }
+
+  return null;
 };
 
 <div style={{background: '#fff'}}>
@@ -68,7 +76,7 @@ const handleSelect = (message) => {
         key={index}
         message={message}
         short={index > 0}
-        selected={state.selected.indexOf(message.rid) > -1}
+        selected={getSelected(message)}
         onSelect={handleSelect}
       />
     );

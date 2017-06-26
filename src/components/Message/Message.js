@@ -2,6 +2,7 @@
  * Copyright 2017 dialog LLC <info@dlg.im>
  * @flow
  */
+/* eslint max-lines: ["error", 500] */
 
 import type {
   Message as MessageType,
@@ -11,6 +12,7 @@ import type {
 } from '@dlghq/dialog-types';
 import classNames from 'classnames';
 import React, { PureComponent } from 'react';
+import { findDOMNode } from 'react-dom';
 import MessageContent from '../MessageContent/MessageContent';
 import PeerAvatar from '../PeerAvatar/PeerAvatar';
 import PeerInfoTitle from '../PeerInfoTitle/PeerInfoTitle';
@@ -92,7 +94,7 @@ class Message extends PureComponent {
   };
 
   handleSelect = (): void => {
-    if (this.props.onSelect) {
+    if (this.props.onSelect && !this.hasSelection()) {
       this.props.onSelect(this.props.message);
     }
   };
@@ -103,6 +105,16 @@ class Message extends PureComponent {
     }
 
     return this.state.hover;
+  }
+
+  hasSelection(): boolean {
+    const container = findDOMNode(this);
+    if (container) {
+      const selection = document.getSelection();
+      return Boolean(selection && selection.toString());
+    }
+
+    return false;
   }
 
   getState(): MessageStateType {
@@ -200,9 +212,9 @@ class Message extends PureComponent {
       return (
         <CheckButton
           checked={selected}
-          onClick={this.handleSelect}
           className={styles.selector}
           theme="primary"
+          size="24"
         />
       );
     } else if (this.isHover() && renderActions) {
@@ -312,31 +324,34 @@ class Message extends PureComponent {
       hover ? styles.hover : null,
       isError ? styles.error : null,
       isUnread ? styles.unread : null,
-      highlight ? styles.highlight : null
+      highlight ? styles.highlight : null,
+      this.props.onSelect ? styles.selectable : null,
     );
 
     return (
-      <Hover className={className} onHover={this.handleHover}>
-        <CopyOnly block />
-        {this.renderActions()}
-        <div className={styles.info}>
-          {short ? null : this.renderAvatar()}
-          {short && hover ? this.renderState() : null}
-        </div>
-        <div className={styles.body}>
-          {short ? this.renderShortHeader() : this.renderHeader()}
-          <div className={styles.content}>
-            {this.renderReply()}
-            <MessageContent
-              content={content}
-              rid={rid}
-              isPending={isPending}
-              onLightboxOpen={this.handleLightboxOpen}
-              maxWidth={maxWidth}
-              maxHeight={maxHeight}
-            />
-            {this.renderForward()}
-            {this.renderReactions()}
+      <Hover onHover={this.handleHover}>
+        <div className={className} onClick={this.handleSelect}>
+          <CopyOnly block />
+          {this.renderActions()}
+          <div className={styles.info}>
+            {short ? null : this.renderAvatar()}
+            {short && hover ? this.renderState() : null}
+          </div>
+          <div className={styles.body}>
+            {short ? this.renderShortHeader() : this.renderHeader()}
+            <div className={styles.content}>
+              {this.renderReply()}
+              <MessageContent
+                content={content}
+                rid={rid}
+                isPending={isPending}
+                onLightboxOpen={this.handleLightboxOpen}
+                maxWidth={maxWidth}
+                maxHeight={maxHeight}
+              />
+              {this.renderForward()}
+              {this.renderReactions()}
+            </div>
           </div>
         </div>
       </Hover>

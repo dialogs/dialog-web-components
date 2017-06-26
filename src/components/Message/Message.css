@@ -131,7 +131,7 @@
 .selector {
   position: absolute;
   display: block;
-  top: 7px;
+  top: 6px;
   right: 8px;
 }
 
@@ -157,4 +157,14 @@
   animation-name: highlight;
   animation-duration: 3s;
   transition: background-color 3s ease-out;
+}
+
+.selectable {
+  cursor: pointer;
+
+  &:active {
+    & .selector {
+      transform: scale(0.9);
+    }
+  }
 }

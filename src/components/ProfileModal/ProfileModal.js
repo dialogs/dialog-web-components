@@ -4,7 +4,6 @@
  */
 /* eslint max-lines: ["error", 500] */
 
-
 import React, { PureComponent } from 'react';
 import { Text, LocalizationContextType } from '@dlghq/react-l10n';
 import classNames from 'classnames';
