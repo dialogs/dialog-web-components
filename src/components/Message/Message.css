@@ -39,7 +39,7 @@
 .body {
   display: flex;
   flex-direction: column;
-  flex: 1 1 auto;
+  flex: 1 1 100%;
   align-content: flex-start;
   justify-content: flex-start;
   @apply --flex-fix;
@@ -137,6 +137,9 @@
 
 .reply {
   margin: 0 calc(0 - var(--default-padding-small)) 6px;
+  background-color: transparent;
+  border-radius: 0;
+  box-shadow: inset 3px 0 0 0 var(--color-primary);
 }
 
 .forward {
