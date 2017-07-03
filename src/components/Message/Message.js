@@ -124,6 +124,7 @@ class Message extends PureComponent {
     const container = findDOMNode(this);
     if (container) {
       const selection = document.getSelection();
+
       return Boolean(selection && selection.toString());
     }
 
@@ -148,6 +149,7 @@ class Message extends PureComponent {
         className={className}
         state={state}
         time={this.props.message.date}
+        onClick={this.handleSelect}
       />
     );
   }
@@ -343,14 +345,14 @@ class Message extends PureComponent {
 
     return (
       <Hover onHover={this.handleHover}>
-        <div className={className} onClick={this.handleSelect}>
+        <div className={className}>
           <CopyOnly block />
           {this.renderActions()}
           <div className={styles.info}>
             {short ? null : this.renderAvatar()}
             {short && hover ? this.renderState() : null}
           </div>
-          <div className={styles.body}>
+          <div className={styles.body} onClick={this.handleSelect}>
             {short ? this.renderShortHeader() : this.renderHeader()}
             <div className={styles.content}>
               {this.renderReply()}

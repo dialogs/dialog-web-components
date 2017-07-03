@@ -3,15 +3,20 @@
  * @flow
  */
 
-import type { MessageReadProps } from './types';
+import type { PeerInfo } from '@dlghq/dialog-types';
 import React, { Component } from 'react';
 import classNames from 'classnames';
 import { Text } from '@dlghq/react-l10n';
+import { peerToString } from '@dlghq/dialog-types/utils';
 import PeerAvatar from '../PeerAvatar/PeerAvatar';
 import styles from './MessageState.css';
 
+type Props = {
+  readBy?: PeerInfo[]
+};
+
 class MessageRead extends Component {
-  props: MessageReadProps;
+  props: Props;
 
   renderAvatars() {
     const { readBy } = this.props;
@@ -19,12 +24,11 @@ class MessageRead extends Component {
       return null;
     }
 
-    // TODO: remove index as key
-    return readBy.map((reader, index) => (
+    return readBy.map((reader) => (
       <PeerAvatar
+        key={peerToString(reader.peer)}
         className={styles.avatar}
         peer={reader}
-        key={index}
         size="tiny"
       />
     ));

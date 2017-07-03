@@ -3,20 +3,27 @@
  * @flow
  */
 
-import type { MessageStateProps } from './types';
+import type { MessageState as MessageStateType } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import Tooltip from '../Tooltip/Tooltip';
 import styles from './MessageState.css';
 
+type Props = {
+  className?: string,
+  state: MessageStateType,
+  time: string,
+  onClick: (event: SyntheticMouseEvent) => mixed
+}
+
 class MessageState extends PureComponent {
-  props: MessageStateProps;
+  props: Props;
 
   render() {
     const className = classNames(styles.container, this.props.className);
 
     const time = (
-      <time className={className}>
+      <time className={className} onClick={this.props.onClick}>
         {' ' + this.props.time}
       </time>
     );
