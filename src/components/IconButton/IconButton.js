@@ -32,7 +32,7 @@ class IconButton extends PureComponent {
     disabled: false
   };
 
-  render(): React.Element<any> {
+  render() {
     const { glyph, className, theme, size, disabled, flat, style, active, ...otherProps } = this.props;
 
     const buttonClassName = classNames(styles.container, styles[size], {

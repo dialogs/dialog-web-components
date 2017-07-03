@@ -20,7 +20,7 @@ export type Props = {
   rid: string,
   content: MessageContentTypes,
   isPending?: boolean,
-  onLightboxOpen?: () => any,
+  onLightboxOpen?: (event: SyntheticMouseEvent) => any,
   maxHeight: number,
   maxWidth: number
 };

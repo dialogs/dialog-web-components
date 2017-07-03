@@ -35,18 +35,19 @@ export type Props = {
   forceHover?: boolean,
   selected: ?boolean,
   highlight?: boolean,
+  maxWidth: number,
+  maxHeight: number,
+  isSelectionEnabled?: boolean,
+  isReactionsEnabled?: boolean,
+  renderActions?: () => React.Element<any>[],
   onSelect?: (message: MessageType) => any,
   onTitleClick?: (message: MessageType) => any,
   onAvatarClick?: (message: MessageType) => any,
   onMentionClick?: (message: MessageType) => any,
   onLightboxOpen?: (message: MessageType) => any,
   onReaction?: (char: string) => any,
-  isReactionsEnabled: boolean,
-  renderActions?: () => React.Element<any>[],
   onGoToPeer: (peer: Peer) => any,
-  onGoToMessage: (peer: ?Peer, message: MessageType) => any,
-  maxWidth: number,
-  maxHeight: number
+  onGoToMessage: (peer: ?Peer, message: MessageType) => any
 };
 
 export type State = {
@@ -65,25 +66,37 @@ class Message extends PureComponent {
     };
   }
 
-  handleTitleClick = () => {
+  handleTitleClick = (event: SyntheticMouseEvent) => {
+    event.preventDefault();
+    event.nativeEvent.stopImmediatePropagation();
+
     if (this.props.onTitleClick) {
       this.props.onTitleClick(this.props.message);
     }
   };
 
-  handleAvatarClick = () => {
+  handleAvatarClick = (event: SyntheticMouseEvent) => {
+    event.preventDefault();
+    event.nativeEvent.stopImmediatePropagation();
+
     if (this.props.onAvatarClick) {
       this.props.onAvatarClick(this.props.message);
     }
   };
 
-  handleMentionClick = () => {
+  handleMentionClick = (event: SyntheticMouseEvent) => {
+    event.preventDefault();
+    event.nativeEvent.stopImmediatePropagation();
+
     if (this.props.onMentionClick) {
       this.props.onMentionClick(this.props.message);
     }
   };
 
-  handleLightboxOpen = () => {
+  handleLightboxOpen = (event: SyntheticMouseEvent) => {
+    event.preventDefault();
+    event.nativeEvent.stopImmediatePropagation();
+
     if (this.props.onLightboxOpen) {
       this.props.onLightboxOpen(this.props.message);
     }
@@ -94,7 +107,7 @@ class Message extends PureComponent {
   };
 
   handleSelect = (): void => {
-    if (this.props.onSelect && !this.hasSelection()) {
+    if (this.props.isSelectionEnabled && this.props.onSelect && !this.hasSelection()) {
       this.props.onSelect(this.props.message);
     }
   };

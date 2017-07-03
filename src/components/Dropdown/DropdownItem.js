@@ -11,10 +11,10 @@ export type Props = {
   children?: any,
   active?: boolean,
   className?: string,
-  onClick?: () => void
+  onClick?: (event: SyntheticMouseEvent) => void
 };
 
-function DropdownItem(props: Props): React.Element<any> {
+function DropdownItem(props: Props) {
   const className = classNames(
     styles.item,
     props.className,
