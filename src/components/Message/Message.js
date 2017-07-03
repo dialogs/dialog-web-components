@@ -68,7 +68,7 @@ class Message extends PureComponent {
 
   handleTitleClick = (event: SyntheticMouseEvent) => {
     event.preventDefault();
-    event.nativeEvent.stopImmediatePropagation();
+    event.stopPropagation();
 
     if (this.props.onTitleClick) {
       this.props.onTitleClick(this.props.message);
@@ -77,7 +77,7 @@ class Message extends PureComponent {
 
   handleAvatarClick = (event: SyntheticMouseEvent) => {
     event.preventDefault();
-    event.nativeEvent.stopImmediatePropagation();
+    event.stopPropagation();
 
     if (this.props.onAvatarClick) {
       this.props.onAvatarClick(this.props.message);
@@ -86,7 +86,7 @@ class Message extends PureComponent {
 
   handleMentionClick = (event: SyntheticMouseEvent) => {
     event.preventDefault();
-    event.nativeEvent.stopImmediatePropagation();
+    event.stopPropagation();
 
     if (this.props.onMentionClick) {
       this.props.onMentionClick(this.props.message);
@@ -95,7 +95,7 @@ class Message extends PureComponent {
 
   handleLightboxOpen = (event: SyntheticMouseEvent) => {
     event.preventDefault();
-    event.nativeEvent.stopImmediatePropagation();
+    event.stopPropagation();
 
     if (this.props.onLightboxOpen) {
       this.props.onLightboxOpen(this.props.message);
