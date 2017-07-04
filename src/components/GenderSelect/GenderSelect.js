@@ -12,16 +12,23 @@ class GenderSelect extends PureComponent {
 
   static defaultProps = {
     options: [
-      { value: 'unknown', title: 'GenderSelect.unknown' },
-      { value: 'female', title: 'GenderSelect.female' },
-      { value: 'male', title: 'GenderSelect.male' }
+      {
+        value: 'unknown',
+        title: 'GenderSelect.unknown'
+      },
+      {
+        value: 'female',
+        title: 'GenderSelect.female'
+      },
+      {
+        value: 'male',
+        title: 'GenderSelect.male'
+      }
     ]
   };
 
-  render(): React.Element<any> {
-    return (
-      <Select {...this.props} />
-    );
+  render() {
+    return <Select {...this.props} />;
   }
 }
 

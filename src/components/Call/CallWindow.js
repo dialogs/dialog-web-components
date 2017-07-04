@@ -150,7 +150,6 @@ class CallWindow extends PureComponent {
       </div>
     );
   }
-
 }
 
 export default CallWindow;

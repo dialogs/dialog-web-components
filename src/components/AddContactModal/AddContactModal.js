@@ -71,6 +71,7 @@ class AddContactModal extends PureComponent {
 
   isLocked(): boolean {
     const { pending, contact } = this.props;
+
     return pending || !contact;
   }
 

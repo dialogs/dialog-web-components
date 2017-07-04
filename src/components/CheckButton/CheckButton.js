@@ -56,7 +56,6 @@ class CheckButton extends PureComponent {
       </div>
     );
   }
-
 }
 
 export default CheckButton;

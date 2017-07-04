@@ -56,10 +56,12 @@ class ContextMenu extends PureComponent {
       attachment: 'top left',
       targetAttachment: 'top left',
       target: document.body,
-      constraints: [{
-        to: 'window',
-        attachment: 'together'
-      }]
+      constraints: [
+        {
+          to: 'window',
+          attachment: 'together'
+        }
+      ]
     };
 
     return (

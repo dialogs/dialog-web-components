@@ -29,6 +29,7 @@ class SearchInput extends PureComponent {
 
   render() {
     const { placeholder } = this.props;
+
     return (
       <Field className={styles.inputField}>
         <input

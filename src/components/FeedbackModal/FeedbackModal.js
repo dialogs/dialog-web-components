@@ -103,7 +103,6 @@ class FeedbackModal extends PureComponent {
       </Modal>
     );
   }
-
 }
 
 export default FeedbackModal;

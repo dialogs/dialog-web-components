@@ -31,6 +31,7 @@ class CallFeedbackRating extends PureComponent {
         />
       );
     }
+
     return stars;
   }
 

@@ -3,14 +3,14 @@
  * @flow
  */
 
- const pattern = /^Mac/;
+const pattern = /^Mac/;
 
- function isMacOS(): boolean {
-   if (typeof navigator === 'undefined') {
-     return false;
-   }
+function isMacOS(): boolean {
+  if (typeof navigator === 'undefined') {
+    return false;
+  }
 
-   return pattern.test(navigator.platform);
- }
+  return pattern.test(navigator.platform);
+}
 
- export default isMacOS;
+export default isMacOS;

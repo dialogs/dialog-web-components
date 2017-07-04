@@ -52,7 +52,7 @@ class AudioPlayer extends PureComponent {
         currentTime: 0
       });
 
-      console.error(error);
+      console.error(error); // eslint-disable-line
     }
   };
 

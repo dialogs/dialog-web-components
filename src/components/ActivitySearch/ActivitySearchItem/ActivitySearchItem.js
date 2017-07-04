@@ -62,6 +62,7 @@ class ActivitySearchItem extends PureComponent {
     const container = findDOMNode(this);
     if (container) {
       const selection = document.getSelection();
+
       return Boolean(selection && selection.toString());
     }
 

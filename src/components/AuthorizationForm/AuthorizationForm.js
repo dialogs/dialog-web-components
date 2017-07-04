@@ -115,6 +115,7 @@ class AuthorizationForm extends PureComponent {
           );
         default:
           console.error('This form doesn\'t support this type of login "%s"', value.type);
+
           return null;
       }
     } else {

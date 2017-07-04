@@ -53,6 +53,7 @@ class PeerAvatar extends PureComponent<DefaultProps, Props, void> {
 
   getAvatarColor(): Gradient {
     const placeholder = getAvatarPlaceholder(this.props.peer.peer.id);
+
     return getAvatarColor(placeholder);
   }
 

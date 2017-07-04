@@ -95,6 +95,7 @@ class InputNext extends PureComponent {
     if (this.isAutoFocus()) {
       event.preventDefault();
       event.target.focus();
+
       return;
     }
 

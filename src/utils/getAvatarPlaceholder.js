@@ -17,6 +17,7 @@ const placeholders = [
 
 function getAvatarPlaceholder(id: number): AvatarPlaceholder {
   const idx = Math.abs(id) % placeholders.length;
+
   return placeholders[idx];
 }
 

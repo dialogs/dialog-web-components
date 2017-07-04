@@ -17,6 +17,7 @@ type State = {
 
 function diffTime(time): number {
   const now = Date.now();
+
   return Math.max(now - time, 0);
 }
 
@@ -41,7 +42,7 @@ class Timer extends PureComponent {
     this.startTimer();
   }
 
-  componentWillUpdate(nextProps: Props) {
+  componentWillReceiveProps(nextProps: Props) {
     if (this.props.start !== nextProps.start) {
       this.stopTimer();
       this.setState({

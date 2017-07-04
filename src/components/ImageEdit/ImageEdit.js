@@ -92,7 +92,15 @@ class ImageEdit extends PureComponent {
       });
 
       this.listeners = [
-        listen(this.croppieElement, 'update', this.handleCroppieUpdate, { capture: false, passive: true })
+        listen(
+          this.croppieElement,
+          'update',
+          this.handleCroppieUpdate,
+          {
+            capture: false,
+            passive: true
+          }
+        )
       ];
     }
   }

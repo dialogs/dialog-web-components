@@ -39,6 +39,7 @@ class SidebarRecentItem extends PureComponent {
 
   isDoubleAvatar(): boolean {
     const { info, message } = this.props;
+
     return Boolean(message && message.sender && info.type === 'group');
   }
 

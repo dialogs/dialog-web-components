@@ -31,11 +31,13 @@ class SidebarHeaderPlus extends PureComponent {
     const options = {
       attachment: 'top center',
       targetAttachment: 'bottom center',
-      constraints: [{
-        to: 'scrollParent',
-        attachment: 'together',
-        pin: true
-      }],
+      constraints: [
+        {
+          to: 'scrollParent',
+          attachment: 'together',
+          pin: true
+        }
+      ],
       targetOffset: '0 0'
     };
 

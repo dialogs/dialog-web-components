@@ -51,6 +51,7 @@ class MessageAttachment extends PureComponent {
 
       default:
         console.error(`Unsupported message attachment type: ${attachment.type}`);
+
         return null;
     }
   }

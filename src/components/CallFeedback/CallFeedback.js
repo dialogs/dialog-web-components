@@ -116,7 +116,6 @@ class CallFeedback extends PureComponent {
       </Modal>
     );
   }
-
 }
 
 export default CallFeedback;

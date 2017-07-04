@@ -68,11 +68,13 @@ class Tooltip extends Component {
     const options = {
       attachment: 'bottom center',
       targetAttachment: 'top center',
-      constraints: [{
-        to: 'scrollParent',
-        attachment: 'together',
-        pin: true
-      }],
+      constraints: [
+        {
+          to: 'scrollParent',
+          attachment: 'together',
+          pin: true
+        }
+      ],
       ...this.props.options
     };
 

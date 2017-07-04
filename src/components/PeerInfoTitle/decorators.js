@@ -5,8 +5,6 @@
 
 import { emoji } from '@dlghq/markdown/src/decorators';
 
-const decorators = [
-  emoji
-];
+const decorators = [emoji];
 
 export default decorators;

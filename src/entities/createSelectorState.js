@@ -51,8 +51,8 @@ function createSelectorState<T>(
       }
 
       return this.set('query', query)
-                 .set('filtered', filtered)
-                 .set('hoverIndex', hoverIndex);
+        .set('filtered', filtered)
+        .set('hoverIndex', hoverIndex);
     }
 
     getShow(): boolean {
@@ -81,6 +81,7 @@ function createSelectorState<T>(
 
     setHoverIndex(hoverIndex: number): SelectorState {
       const max = this.getItems().size;
+
       return this.set('hoverIndex', calculateCursor({ max, next: hoverIndex }));
     }
 
@@ -114,6 +115,7 @@ function createSelectorState<T>(
 
     toggleSelected(item: T): SelectorState {
       const selected = this.get('selected');
+
       return selected.has(item) ? this.deleteSelected(item) : this.addSelected(item);
     }
 
@@ -121,28 +123,33 @@ function createSelectorState<T>(
       switch (event.key) {
         case 'Esc':
           event.preventDefault();
+
           return this.setShow(false).setQuery('');
 
         case 'Tab':
           event.preventDefault();
+
           return this.addSelected(
             this.getHovered()
           );
 
         case 'Enter':
           event.preventDefault();
+
           return this.toggleSelected(
             this.getHovered()
           );
 
         case 'ArrowUp':
           event.preventDefault();
+
           return this.setHoverIndex(
             this.getHoverIndex() - 1
           );
 
         case 'ArrowDown':
           event.preventDefault();
+
           return this.setHoverIndex(
             this.getHoverIndex() + 1
           );
@@ -167,6 +174,7 @@ function createSelectorState<T>(
   return {
     create(items: T[]): SelectorState {
       const list = List(items);
+
       return new SelectorState({
         items: list,
         filtered: list

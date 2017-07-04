@@ -33,10 +33,12 @@ function ActivityListMembersKick(props: Props) {
         options={{
           attachment: 'middle right',
           targetAttachment: 'middle left',
-          constraints: [{
-            to: 'window',
-            attachment: 'together'
-          }]
+          constraints: [
+            {
+              to: 'window',
+              attachment: 'together'
+            }
+          ]
         }}
       >
         <Icon glyph="error" className={styles.kickMemberError} onClick={props.onClick} />

@@ -67,7 +67,7 @@ class PreferencesModal extends PureComponent {
     }
   }
 
-  renderScreen(): ?React.Element<any> {
+  renderScreen() {
     const { screen, settings, sessions, blocked } = this.props;
 
     const spinner = (
@@ -123,7 +123,7 @@ class PreferencesModal extends PureComponent {
     }
   }
 
-  render(): React.Element<any> {
+  render() {
     const { screen } = this.props;
     const className = classNames(styles.container, this.props.className);
 
@@ -138,10 +138,22 @@ class PreferencesModal extends PureComponent {
             className={styles.tabs}
             current={screen}
             variants={[
-              { id: 'general', title: 'PreferencesModal.general.title' },
-              { id: 'notifications', title: 'PreferencesModal.notifications.title' },
-              { id: 'security', title: 'PreferencesModal.security.title' },
-              { id: 'blocked', title: 'PreferencesModal.blocked.title' }
+              {
+                id: 'general',
+                title: 'PreferencesModal.general.title'
+              },
+              {
+                id: 'notifications',
+                title: 'PreferencesModal.notifications.title'
+              },
+              {
+                id: 'security',
+                title: 'PreferencesModal.security.title'
+              },
+              {
+                id: 'blocked',
+                title: 'PreferencesModal.blocked.title'
+              }
             ]}
             onPick={this.handleScreenChange}
           />

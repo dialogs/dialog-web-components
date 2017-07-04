@@ -41,6 +41,7 @@ class AuthorizationEmailLogin extends PureComponent {
 
     if (errors && errors[field]) {
       const error = errors[field];
+
       return {
         hint: `AuthorizationForm.errors.${error.tag}`,
         status: 'error'

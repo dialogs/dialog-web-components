@@ -45,10 +45,12 @@ class SidebarHeaderMenu extends PureComponent {
     const options = {
       attachment: 'top left',
       targetAttachment: 'bottom left',
-      constraints: [{
-        to: 'window',
-        attachment: 'together'
-      }],
+      constraints: [
+        {
+          to: 'window',
+          attachment: 'together'
+        }
+      ],
       targetOffset: '0px 23px'
     };
 
