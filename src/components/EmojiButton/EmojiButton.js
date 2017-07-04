@@ -19,11 +19,14 @@ export type Props = {
 class EmojiButton extends PureComponent {
   props: Props;
 
-  handleClick = (): void => {
+  handleClick = (event: SyntheticMouseEvent): void => {
+    event.preventDefault();
+    event.stopPropagation();
+
     this.props.onClick(this.props.char);
   };
 
-  render(): React.Element<any> {
+  render() {
     const className = classNames(styles.container, {
       [styles.active]: this.props.active
     }, this.props.className);

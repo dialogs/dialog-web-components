@@ -230,6 +230,7 @@ class Message extends PureComponent {
           className={styles.selector}
           theme="primary"
           size={24}
+          onClick={this.handleSelect}
         />
       );
     } else if (this.isHover() && renderActions) {
