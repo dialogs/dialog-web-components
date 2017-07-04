@@ -13,17 +13,24 @@ type Props = {
   className?: string,
   state: MessageStateType,
   time: string,
-  onClick: (event: SyntheticMouseEvent) => mixed
+  onClick: () => mixed
 }
 
 class MessageState extends PureComponent {
   props: Props;
 
+  handleClick = (event: SyntheticMouseEvent): void => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    this.props.onClick();
+  };
+
   render() {
     const className = classNames(styles.container, this.props.className);
 
     const time = (
-      <time className={className} onClick={this.props.onClick}>
+      <time className={className} onClick={this.handleClick}>
         {' ' + this.props.time}
       </time>
     );

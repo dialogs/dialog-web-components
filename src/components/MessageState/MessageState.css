@@ -6,7 +6,7 @@
 
 .container {
   display: inline-block;
-  cursor: default;
+  cursor: pointer;
   text-transform: uppercase;
   font-family: var(--message-state-font-family);
   font-size: var(--message-state-font-size);

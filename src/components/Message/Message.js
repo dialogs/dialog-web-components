@@ -67,38 +67,46 @@ class Message extends PureComponent {
   }
 
   handleTitleClick = (event: SyntheticMouseEvent) => {
-    event.preventDefault();
-    event.stopPropagation();
+    if (!this.isSelectionMode()) {
+      event.preventDefault();
+      event.stopPropagation();
 
-    if (this.props.onTitleClick) {
-      this.props.onTitleClick(this.props.message);
+      if (this.props.onTitleClick) {
+        this.props.onTitleClick(this.props.message);
+      }
     }
   };
 
   handleAvatarClick = (event: SyntheticMouseEvent) => {
-    event.preventDefault();
-    event.stopPropagation();
+    if (!this.isSelectionMode()) {
+      event.preventDefault();
+      event.stopPropagation();
 
-    if (this.props.onAvatarClick) {
-      this.props.onAvatarClick(this.props.message);
+      if (this.props.onAvatarClick) {
+        this.props.onAvatarClick(this.props.message);
+      }
     }
   };
 
   handleMentionClick = (event: SyntheticMouseEvent) => {
-    event.preventDefault();
-    event.stopPropagation();
+    if (!this.isSelectionMode()) {
+      event.preventDefault();
+      event.stopPropagation();
 
-    if (this.props.onMentionClick) {
-      this.props.onMentionClick(this.props.message);
+      if (this.props.onMentionClick) {
+        this.props.onMentionClick(this.props.message);
+      }
     }
   };
 
   handleLightboxOpen = (event: SyntheticMouseEvent) => {
-    event.preventDefault();
-    event.stopPropagation();
+    if (!this.isSelectionMode()) {
+      event.preventDefault();
+      event.stopPropagation();
 
-    if (this.props.onLightboxOpen) {
-      this.props.onLightboxOpen(this.props.message);
+      if (this.props.onLightboxOpen) {
+        this.props.onLightboxOpen(this.props.message);
+      }
     }
   };
 
@@ -106,11 +114,23 @@ class Message extends PureComponent {
     this.setState({ hover });
   };
 
-  handleSelect = (): void => {
-    if (this.props.isSelectionEnabled && this.props.onSelect && !this.hasSelection()) {
+  handleSelect = (event: SyntheticEvent): void => {
+    if (this.isSelectionMode()) {
+      event.preventDefault();
+      event.stopPropagation();
+      this.handleForceSelect();
+    }
+  };
+
+  handleForceSelect = (): void => {
+    if (this.props.onSelect) {
       this.props.onSelect(this.props.message);
     }
   };
+
+  isSelectionMode(): boolean {
+    return Boolean(this.props.isSelectionEnabled) && typeof this.props.selected === 'boolean';
+  }
 
   isHover(): boolean {
     if (this.props.forceHover) {
@@ -149,7 +169,7 @@ class Message extends PureComponent {
         className={className}
         state={state}
         time={this.props.message.date}
-        onClick={this.handleSelect}
+        onClick={this.handleForceSelect}
       />
     );
   }
@@ -230,7 +250,7 @@ class Message extends PureComponent {
           className={styles.selector}
           theme="primary"
           size={24}
-          onClick={this.handleSelect}
+          onClick={this.handleForceSelect}
         />
       );
     } else if (this.isHover() && renderActions) {
@@ -341,33 +361,31 @@ class Message extends PureComponent {
       isError ? styles.error : null,
       isUnread ? styles.unread : null,
       highlight ? styles.highlight : null,
-      this.props.onSelect ? styles.selectable : null,
+      this.isSelectionMode() ? styles.selectable : null,
     );
 
     return (
-      <Hover onHover={this.handleHover}>
-        <div className={className}>
-          <CopyOnly block />
-          {this.renderActions()}
-          <div className={styles.info}>
-            {short ? null : this.renderAvatar()}
-            {short && hover ? this.renderState() : null}
-          </div>
-          <div className={styles.body} onClick={this.handleSelect}>
-            {short ? this.renderShortHeader() : this.renderHeader()}
-            <div className={styles.content}>
-              {this.renderReply()}
-              <MessageContent
-                content={content}
-                rid={rid}
-                isPending={isPending}
-                onLightboxOpen={this.handleLightboxOpen}
-                maxWidth={maxWidth}
-                maxHeight={maxHeight}
-              />
-              {this.renderForward()}
-              {this.renderReactions()}
-            </div>
+      <Hover className={className} onHover={this.handleHover} onClick={this.handleSelect}>
+        <CopyOnly block />
+        {this.renderActions()}
+        <div className={styles.info}>
+          {short ? null : this.renderAvatar()}
+          {short && hover ? this.renderState() : null}
+        </div>
+        <div className={styles.body}>
+          {short ? this.renderShortHeader() : this.renderHeader()}
+          <div className={styles.content}>
+            {this.renderReply()}
+            <MessageContent
+              content={content}
+              rid={rid}
+              isPending={isPending}
+              maxWidth={maxWidth}
+              maxHeight={maxHeight}
+              onLightboxOpen={this.handleLightboxOpen}
+            />
+            {this.renderForward()}
+            {this.renderReactions()}
           </div>
         </div>
       </Hover>

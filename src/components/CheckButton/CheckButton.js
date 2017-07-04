@@ -24,7 +24,10 @@ class CheckButton extends PureComponent {
     theme: 'primary'
   };
 
-  handleClick = () => {
+  handleClick = (event: SyntheticMouseEvent) => {
+    event.preventDefault();
+    event.stopPropagation();
+
     if (this.props.onClick) {
       this.props.onClick(!this.props.checked);
     }
