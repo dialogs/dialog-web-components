@@ -39,6 +39,7 @@ export type Props = {
   maxHeight: number,
   isSelectionEnabled?: boolean,
   isReactionsEnabled?: boolean,
+  isNicknameShowEnable?: boolean,
   renderActions?: () => React.Element<any>[],
   onSelect?: (message: MessageType) => any,
   onTitleClick?: (message: MessageType) => any,
@@ -213,7 +214,7 @@ class Message extends PureComponent {
         <PeerInfoTitle
           info={sender}
           title={sender.title}
-          userName={sender.userName}
+          userName={this.props.maxWidth > 300 ? sender.userName : null}
           titleClassName={titleClassName}
           userNameClassName={mentionClassName}
           onTitleClick={onTitleClick}
@@ -288,24 +289,6 @@ class Message extends PureComponent {
       <div className={styles.reactions}>
         {children}
       </div>
-    );
-  }
-
-  renderAttachments() {
-    const { message: { attachment }, maxWidth, maxHeight } = this.props;
-
-    if (!attachment) {
-      return null;
-    }
-
-    return (
-      <MessageAttachment
-        attachment={attachment}
-        onGoToPeer={this.props.onGoToPeer}
-        onGoToMessage={this.props.onGoToMessage}
-        maxWidth={maxWidth}
-        maxHeight={maxHeight}
-      />
     );
   }
 
