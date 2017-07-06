@@ -121,6 +121,10 @@ export { default as EmptyChat } from './components/EmptyChat/EmptyChat';
 export { default as ContactSelector } from './components/ContactSelector/ContactSelector';
 export { default as ContactList } from './components/ContactList/ContactList';
 
+// Discover
+export { default as Discover } from './components/Discover/Discover';
+export { default as DiscoverCard } from './components/DiscoverCard/DiscoverCard';
+
 // Activity
 export { default as ActivityHeader } from './components/ActivityHeader/ActivityHeader';
 export { default as ActivityProfile } from './components/ActivityProfile/ActivityProfile';

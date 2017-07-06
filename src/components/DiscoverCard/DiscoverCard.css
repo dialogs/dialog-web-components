@@ -1,0 +1,141 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+:root {
+  --discover-card-font-family: var(--default-font-family);
+  --discover-card-border-color: color(#000 alpha(8%));
+  --discover-card-border-radius: 4px;
+  --discover-card-background-color: #fff;
+  --discover-card-title-font-size: 20px;
+  --discover-card-title-color: #000;
+  --discover-card-shortname-font-size: var(--default-font-size-small);
+  --discover-card-shortname-color: color(#000 alpha(50%));
+  --discover-card-description-font-size: 15px;
+  --discover-card-description-color: color(#000 alpha(40%));
+  --discover-card-members-color: color(#000 alpha(40%));
+  --discover-card-members-font-size: var(--default-font-size);
+  --discover-card-creator-color: color(#000 alpha(50%));
+  --discover-card-creator-font-size: var(--default-font-size-small);
+}
+
+/* Reset */
+.container {
+  all: initial;
+}
+
+/* Styles */
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  font-family: var(--discover-card-font-family);
+  box-shadow: inset 0 0 0 1px var(--discover-card-border-color);
+  border-radius: var(--discover-card-border-radius);
+  background-color: var(--discover-card-background-color);
+  overflow: hidden;
+
+  &:hover {
+    & .button {
+      display: block;
+    }
+  }
+}
+
+.body {
+  display: flex;
+  flex-flow: row nowrap;
+  flex: 1 1 auto;
+  box-sizing: border-box;
+  padding: var(--default-padding);
+  @apply --flex-fix;
+}
+
+.side {
+  flex: 0 0 auto;
+  padding-right: var(--default-padding);
+}
+
+.info {
+  overflow: hidden;
+}
+
+.title {
+  font-size: var(--discover-card-title-font-size);
+  color: var(--discover-card-title-color);
+  font-weight: 500;
+  line-height: 30px;
+  height: 30px;
+  @apply --text-overflow-ellipsis;
+
+  & span {
+    vertical-align: middle;
+  }
+}
+
+
+.icon {
+  display: inline-block;
+  margin-right: 4px;
+  fill: currentColor;
+}
+
+.shortname {
+  font-size: var(--discover-card-shortname-font-size);
+  color: var(--discover-card-shortname-color);
+  line-height: 24px;
+}
+
+.description {
+  font-size: var(--discover-card-description-font-size);
+  color: var(--discover-card-description-color);
+  margin-top: 4px;
+  line-height: 16px;
+}
+
+.footer {
+  padding: 13px var(--default-padding);
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  height: 46px;
+  position: relative;
+  display: flex;
+}
+
+.button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: none;
+}
+
+.membersIcon {
+  margin-right: 4px;
+  fill: currentColor;
+}
+
+.members {
+  flex: 0 0 auto;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--discover-card-members-font-size);
+  color: var(--discover-card-members-color);
+  font-weight: 500;
+  line-height: 20px;
+  width: 80px;
+}
+
+.creator {
+  text-align: right;
+  font-size: var(--discover-card-creator-font-size);
+  line-height: 20px;
+  color: var(--discover-card-creator-color);
+  flex: 1 1 auto;
+  @apply --flex-fix;
+}

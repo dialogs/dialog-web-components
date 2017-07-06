@@ -7,7 +7,7 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-  }
+  };
 
   --clearfix: {
     &::after {
@@ -15,15 +15,15 @@
       clear: both;
       content: '';
     }
-  }
+  };
 
-  --no-select {
+  --no-select: {
     cursor: default;
     user-select: none;
-  }
+  };
 
-  --flex-fix {
+  --flex-fix: {
     min-width: 0;
     min-height: 0;
-  }
+  };
 }
