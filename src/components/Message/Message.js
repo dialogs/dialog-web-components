@@ -20,7 +20,6 @@ import MessageState from '../MessageState/MessageState';
 import EmojiButton from '../EmojiButton/EmojiButton';
 import Hover from '../Hover/Hover';
 import CopyOnly from '../CopyOnly/CopyOnly';
-import MessageAttachment from '../MessageAttachment/MessageAttachment';
 import MessageAttachmentReply from '../MessageAttachment/MessageAttachmentReply';
 import MessageAttachmentForward from '../MessageAttachment/MessageAttachmentForward';
 import CheckButton from '../CheckButton/CheckButton';
@@ -39,7 +38,6 @@ export type Props = {
   maxHeight: number,
   isSelectionEnabled?: boolean,
   isReactionsEnabled?: boolean,
-  isNicknameShowEnable?: boolean,
   renderActions?: () => React.Element<any>[],
   onSelect?: (message: MessageType) => any,
   onTitleClick?: (message: MessageType) => any,
