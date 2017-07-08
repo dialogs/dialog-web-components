@@ -94,10 +94,11 @@ class Scroller extends Component {
     }
   }
 
-  scrollToNode(node: HTMLElement): void {
+  scrollToNode(node: HTMLElement, withGap: boolean = false): void {
     if (this.container) {
+      const gap = withGap ? Math.floor(this.container.clientHeight * 0.4) : 0;
       this.scrollTo(
-        Math.min(node.offsetTop, this.container.scrollHeight)
+        Math.min(node.offsetTop - gap, this.container.scrollHeight)
       );
     }
   }
