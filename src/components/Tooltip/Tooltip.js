@@ -17,7 +17,7 @@ export type Props = {
   /**
    * Tooltip text. Will be translated using @dlghq/react-l10n.
    */
-  text: string,
+  text: string | React.Element<*>,
 
   /**
    * [Tether options](http://tether.io/#options)
@@ -39,6 +39,16 @@ class Tooltip extends Component {
     this.trigger = trigger;
   };
 
+  renderContent() {
+    if (typeof this.props.text === 'string') {
+      return (
+        <Text id={this.props.text} />
+      );
+    }
+
+    return this.props.text;
+  }
+
   renderTooltip = () => {
     return (
       <CSSTransitionGroup
@@ -51,7 +61,9 @@ class Tooltip extends Component {
           appearActive: styles.appearActive
         }}
       >
-        <Text id={this.props.text} className={styles.tooltip} tagName="div" />
+        <div className={styles.tooltip}>
+          {this.renderContent()}
+        </div>
       </CSSTransitionGroup>
     );
   };

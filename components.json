@@ -122,6 +122,7 @@
       "Message",
       "MessageState",
       "MessageContent",
+      "MessageReaction",
       "MessageAttachment",
       "MessageDivider",
       "FakeMessage",

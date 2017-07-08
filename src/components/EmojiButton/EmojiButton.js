@@ -10,10 +10,10 @@ import styles from './EmojiButton.css';
 
 export type Props = {
   className?: string,
-  count: number,
   char: string,
-  onClick: (char: string) => void,
-  active: boolean
+  count: number,
+  active: boolean,
+  onClick: (char: string) => mixed
 };
 
 class EmojiButton extends PureComponent {

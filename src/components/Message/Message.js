@@ -4,6 +4,7 @@
  */
 /* eslint max-lines: ["error", 500] */
 
+import type { Map } from 'immutable';
 import type {
   Message as MessageType,
   MessageState as MessageStateType,
@@ -17,7 +18,7 @@ import MessageContent from '../MessageContent/MessageContent';
 import PeerAvatar from '../PeerAvatar/PeerAvatar';
 import PeerInfoTitle from '../PeerInfoTitle/PeerInfoTitle';
 import MessageState from '../MessageState/MessageState';
-import EmojiButton from '../EmojiButton/EmojiButton';
+import MessageReaction from '../MessageReaction/MessageReaction';
 import Hover from '../Hover/Hover';
 import CopyOnly from '../CopyOnly/CopyOnly';
 import MessageAttachmentReply from '../MessageAttachment/MessageAttachmentReply';
@@ -26,6 +27,7 @@ import CheckButton from '../CheckButton/CheckButton';
 import styles from './Message.css';
 
 export type Props = {
+  users: Map<number, PeerInfo>,
   message: MessageType,
   short: boolean,
   state: ?MessageStateType,
@@ -264,7 +266,7 @@ class Message extends PureComponent {
   }
 
   renderReactions() {
-    const { message } = this.props;
+    const { message, users } = this.props;
 
     if (!message.reactions || !message.reactions.length || !this.props.isReactionsEnabled) {
       return null;
@@ -272,13 +274,12 @@ class Message extends PureComponent {
 
     const children = message.reactions.map((reaction) => {
       return (
-        <EmojiButton
-          className={styles.reactionButton}
-          char={reaction.reaction}
-          onClick={this.props.onReaction}
-          active={reaction.isOwnSet}
+        <MessageReaction
           key={reaction.reaction}
-          count={reaction.uids.length}
+          className={styles.reactionButton}
+          reaction={reaction}
+          users={users}
+          onToggle={this.props.onReaction}
         />
       );
     });

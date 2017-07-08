@@ -1,0 +1,17 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+.container {
+  display: inline-block;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-family: var(--message-state-font-family);
+  font-size: var(--message-state-font-size);
+  line-height: 22px;
+  color: var(--message-state-color);
+  margin-left: 6px;
+  vertical-align: middle;
+}
