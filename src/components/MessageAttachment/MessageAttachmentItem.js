@@ -6,11 +6,11 @@
 import type { Peer, Message } from '@dlghq/dialog-types';
 import React, { Component } from 'react';
 import classNames from 'classnames';
-import Markdown from '../Markdown/Markdown';
-import getInlineText from '../SidebarRecentItem/utils/getInlineText';
-import decorators from '../SidebarRecentItem/utils/decorators';
+import TextMessagePreview from '../SidebarRecentItem/MessagePreview/TextMessagePreview';
 import Icon from '../Icon/Icon';
 import MessageContent from '../MessageContent/MessageContent';
+import decorators from './utils/decorators';
+
 import styles from './MessageAttachment.css';
 
 type Props = {
@@ -35,7 +35,14 @@ class MessageAttachmentItem extends Component {
     }
   };
 
-  handleGoToMessage = (): void => {
+  handleGoToMessage = (event: SyntheticMouseEvent): void => {
+    if (event.target.tagName === 'A') {
+      return;
+    }
+
+    event.preventDefault();
+    event.stopPropagation();
+
     this.props.onGoToMessage(this.props.message);
   };
 
@@ -78,12 +85,11 @@ class MessageAttachmentItem extends Component {
       case 'reply':
         if (content.type === 'text') {
           return (
-            <Markdown
+            <TextMessagePreview
               className={messageClassName}
-              inline
-              text={getInlineText(content.text)}
-              decorators={decorators}
+              content={content}
               emojiSize={16}
+              decorators={decorators}
             />
           );
         }
@@ -114,7 +120,7 @@ class MessageAttachmentItem extends Component {
     }
   }
 
-  render(): React.Element<any> {
+  render() {
     const { short, type } = this.props;
 
     const className = classNames(styles.itemContainer, {

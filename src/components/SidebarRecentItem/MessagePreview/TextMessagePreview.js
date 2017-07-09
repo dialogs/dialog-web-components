@@ -14,11 +14,16 @@ import styles from '../SidebarRecentItem.css';
 export type Props = {
   className?: string,
   content: MessageContentText,
-  emojiSize: number
+  emojiSize: number,
+  decorators: typeof decorators
 };
 
 class TextMessagePreview extends PureComponent {
   props: Props;
+
+  static defaultProps = {
+    decorators
+  };
 
   render() {
     const { content } = this.props;
@@ -40,7 +45,7 @@ class TextMessagePreview extends PureComponent {
         className={this.props.className}
         inline
         text={getInlineText(content.text)}
-        decorators={decorators}
+        decorators={this.props.decorators}
         emojiSize={this.props.emojiSize}
       />
     );
