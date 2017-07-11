@@ -275,10 +275,10 @@ class Message extends PureComponent {
     const children = message.reactions.map((reaction) => {
       return (
         <MessageReaction
-          key={reaction.reaction}
+          key={reaction.code}
           className={styles.reactionButton}
-          reaction={reaction}
           users={users}
+          reaction={reaction}
           onToggle={this.props.onReaction}
         />
       );

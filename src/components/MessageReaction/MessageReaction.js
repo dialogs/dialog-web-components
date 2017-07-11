@@ -42,7 +42,7 @@ class MessageReaction extends PureComponent {
       }
     }
 
-    const emoji = getEmojiByChar(reaction.reaction);
+    const emoji = getEmojiByChar(reaction.code);
     const name = (emoji ? emoji.name : null) || 'unknown';
 
     return (
@@ -60,8 +60,8 @@ class MessageReaction extends PureComponent {
       <Tooltip text={this.renderTooltip()}>
         <EmojiButton
           className={className}
-          count={reaction.uids.length}
-          char={reaction.reaction}
+          count={reaction.count}
+          char={reaction.code}
           active={reaction.isOwnSet}
           onClick={this.props.onToggle}
         />

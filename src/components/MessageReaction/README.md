@@ -30,21 +30,21 @@ const users = new Map([
 
 initialState = {
   reactions: [
-    { uids: [1, 2], reaction: '😀', isOwnSet: false },
-    { uids: [1, 2, 3], reaction: '🤣', isOwnSet: true },
-    { uids: [1], reaction: '🔑', isOwnSet: false }
+    { uids: [1, 2], count: 2, code: '😀', isOwnSet: false },
+    { uids: [1, 2], count: 3, code: '🤣', isOwnSet: true },
+    { uids: [1], count: 1, code: '🔑', isOwnSet: false }
   ]
 };
 
 const handleToggle = (char) => {
   setState({
     reactions: state.reactions.map((reaction) => {
-      if (reaction.reaction === char) {
+      if (reaction.code === char) {
         const idx = reaction.uids.indexOf(uid);
         return {
           ...reaction,
           isOwnSet: !reaction.isOwnSet,
-          uids: _.xor(reaction.uids, [uid])
+          count: reaction.count + (reaction.isOwnSet ? -1 : +1)
         };
       }
 
@@ -57,7 +57,7 @@ const handleToggle = (char) => {
   {state.reactions.map((reaction) => {
     return (
       <MessageReaction
-        key={reaction.reaction}
+        key={reaction.code}
         users={users}
         reaction={reaction}
         onToggle={handleToggle}
