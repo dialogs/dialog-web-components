@@ -160,6 +160,13 @@
     ]
   },
   {
+    "name": "Discover",
+    "components": [
+      "Discover",
+      "DiscoverCard"
+    ]
+  },
+  {
     "name": "Helpers",
     "components": [
       "Timer",

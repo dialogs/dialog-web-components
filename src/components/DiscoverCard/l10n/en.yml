@@ -1,0 +1,7 @@
+creator: "created by: <b>{title}</b>"
+
+join:
+  group: Join group
+  channel: Join channel
+  user: Start chat
+  bot: Chat with bot

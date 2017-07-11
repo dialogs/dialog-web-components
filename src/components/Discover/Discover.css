@@ -1,0 +1,89 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+:root {
+  --discover-font-family: var(--default-font-family);
+  --discover-background-color: #fff;
+  --discover-title-font-size: 28px;
+  --discover-title-color: #000;
+  --discover-subtitle-font-size: var(--default-font-size-large);
+  --discover-subtitle-color: color(#000 alpha(40%));
+}
+
+/* Reset */
+.container {
+  all: initial;
+}
+
+/* Styles */
+.container {
+  display: block;
+  background-color: var(--discover-background-color);
+  font-family: var(--discover-font-family);
+}
+
+.header {
+  border-bottom: 1px solid color(#000 alpha(10%));
+  display: flex;
+  flex-flow: row nowrap;
+  align-content: flex-start;
+  justify-content: flex-start;
+  align-items: center;
+  padding: var(--default-padding);
+}
+
+.headerText {
+  flex: 1 1 auto;
+  @apply --flex-fix;
+}
+
+.headerControls {
+  flex: 0 0 auto;
+}
+
+.headerButton {
+}
+
+.title {
+  font-size: var(--discover-title-font-size);
+  color: var(--discover-title-color);
+  font-weight: 500;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.subTitle {
+  font-weight: 400;
+  margin: 0;
+  font-size: var(--discover-subtitle-font-size);
+  color: var(--discover-subtitle-color);
+}
+
+.cards {
+  display: flex;
+  flex-flow: row wrap;
+  padding: calc(var(--default-padding) / 2);
+  box-sizing: border-box;
+}
+
+.cardWrapper {
+  height: 200px;
+  flex: 0 0 33.3333%;
+  max-width: 33.3333%;
+  padding: calc(var(--default-padding) / 2);
+  box-sizing: border-box;
+
+  @media (--medium) {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+
+  @media (--small) {
+    height: auto;
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
