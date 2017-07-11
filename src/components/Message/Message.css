@@ -126,6 +126,7 @@
 
 .reactionButton {
   margin-right: calc(var(--default-padding) / 2);
+  margin-bottom: calc(var(--default-padding) / 4);
 }
 
 .selector {
