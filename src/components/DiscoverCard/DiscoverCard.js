@@ -20,6 +20,7 @@ export type Card = {
   description: ?string,
   avatar: ?string,
   peer: Peer,
+  joined?: boolean,
   members?: number,
   creator?: string
 }
@@ -137,8 +138,8 @@ class DiscoverCard extends PureComponent {
     );
   }
 
-  render(): React.Element<any> {
-    const { type } = this.props;
+  render() {
+    const { type, joined } = this.props;
     const className = classNames(styles.container, this.props.className);
 
     return (
@@ -157,7 +158,7 @@ class DiscoverCard extends PureComponent {
             onClick={this.handleClick}
             className={styles.button}
           >
-            <Text id={`DiscoverCard.join.${type}`} />
+            <Text id={`DiscoverCard.${joined ? 'enter' : 'join'}.${type}`} />
           </Button>
         </footer>
       </div>

@@ -5,3 +5,9 @@ join:
   channel: Join channel
   user: Start chat
   bot: Chat with bot
+
+enter:
+  group: Enter group
+  channel: Enter channel
+  user: Start chat
+  bot: Chat with bot
