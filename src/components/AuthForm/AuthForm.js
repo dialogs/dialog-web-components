@@ -188,6 +188,20 @@ class AuthForm extends PureComponent {
     );
   }
 
+  renderDataProcessingAgreement() {
+    if (this.props.step > LOGIN_SENT) {
+      return null;
+    }
+
+    return (
+      <Text
+        tagName="div"
+        className={styles.dataProcessingAgreement}
+        id="AuthForm.data_processing_agreement"
+      />
+    );
+  }
+
   render() {
     const { id } = this.props;
     const className = classNames(styles.container, this.props.className);
@@ -201,6 +215,7 @@ class AuthForm extends PureComponent {
         <Button type="submit" theme="primary" loading={this.isLoading()} wide>
           {this.renderButtonText()}
         </Button>
+        {this.renderDataProcessingAgreement()}
       </form>
     );
   }

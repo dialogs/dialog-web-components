@@ -7,6 +7,7 @@ request_code: Request code
 check_code: Check code
 sign_up: Sign up
 success: Success
+data_processing_agreement: By pressing "Request code", I agree to the Terms of Service and Privacy Policy of this website.
 errors:
   EMAIL_INVALID: Invalid email
   PHONE_NUMBER_INVALID: Invalid phone number

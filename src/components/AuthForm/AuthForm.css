@@ -25,3 +25,10 @@
   font-size: 12px;
   cursor: pointer;
 }
+
+.dataProcessingAgreement {
+  margin: 8px;
+  color: #6d6c6f;
+  font-family: var(--default-font-family);
+  font-size: 14px;
+}
