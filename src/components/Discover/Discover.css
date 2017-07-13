@@ -20,7 +20,9 @@
 
 /* Styles */
 .container {
-  display: block;
+  display: flex;
+  overflow: hidden;
+  flex-flow: column nowrap;
   background-color: var(--discover-background-color);
   font-family: var(--discover-font-family);
 }
@@ -28,6 +30,7 @@
 .header {
   border-bottom: 1px solid color(#000 alpha(10%));
   display: flex;
+  flex: 0 0 auto;
   flex-flow: row nowrap;
   align-content: flex-start;
   justify-content: flex-start;
@@ -64,6 +67,9 @@
 
 .cards {
   display: flex;
+  flex: 1 1 auto;
+  @apply --flex-fix;
+  overflow: auto;
   flex-flow: row wrap;
   padding: calc(var(--default-padding) / 2);
   box-sizing: border-box;
