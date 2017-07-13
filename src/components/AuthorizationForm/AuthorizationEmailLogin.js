@@ -115,11 +115,26 @@ class AuthorizationEmailLogin extends PureComponent {
     );
   }
 
+  renderDataProcessingAgreement() {
+    if (this.props.step > LOGIN_SENT) {
+      return null;
+    }
+
+    return (
+      <Text
+        tagName="div"
+        className={styles.dataProcessingAgreement}
+        id="AuthorizationForm.data_processing_agreement"
+      />
+    );
+  }
+
   render() {
     return (
       <div className={styles.formWrapper}>
         {this.renderEmailInput()}
         {this.renderCodeInput()}
+        {this.renderDataProcessingAgreement()}
       </div>
     );
   }

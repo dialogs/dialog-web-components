@@ -261,6 +261,20 @@ class AuthorizationPhoneLogin extends PureComponent {
     );
   }
 
+  renderDataProcessingAgreement() {
+    if (this.props.step > LOGIN_SENT) {
+      return null;
+    }
+
+    return (
+      <Text
+        tagName="div"
+        className={styles.dataProcessingAgreement}
+        id="AuthorizationForm.data_processing_agreement"
+      />
+    );
+  }
+
   render() {
     return (
       <div className={styles.formWrapper}>
@@ -268,6 +282,7 @@ class AuthorizationPhoneLogin extends PureComponent {
         {this.renderPhoneInput()}
         {this.renderCodeInput()}
         {this.renderResendCode()}
+        {this.renderDataProcessingAgreement()}
       </div>
     );
   }

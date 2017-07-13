@@ -68,3 +68,10 @@
   color: var(--cool-grey-two);
   margin-bottom: var(--default-padding-large);
 }
+
+.dataProcessingAgreement {
+  margin: 8px;
+  color: #6d6c6f;
+  font-family: var(--default-font-family);
+  font-size: 14px;
+}

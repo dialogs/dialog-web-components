@@ -11,6 +11,7 @@ code_arrive: Сообщение с кодом придет в течении {ti
 check_code: Проверить код
 sign_up: Зарегистрироваться
 success: Успешно
+data_processing_agreement: Нажимая "Запросить код", я даю согласие на обработку моих персональных данных.
 errors:
   EMAIL_INVALID: Некорректный email
   PHONE_NUMBER_INVALID: Некорректный телефон
