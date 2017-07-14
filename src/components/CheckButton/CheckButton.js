@@ -13,6 +13,7 @@ export type Props = {
   checked: boolean,
   theme: 'primary' | 'success' | 'danger' | 'info' | 'warning',
   size: number,
+  stopPropagation: boolean,
   onClick?: (checked: boolean) => any
 };
 
@@ -21,12 +22,15 @@ class CheckButton extends PureComponent {
 
   static defaultProps = {
     size: 26,
-    theme: 'primary'
+    theme: 'primary',
+    stopPropagation: false
   };
 
   handleClick = (event: SyntheticMouseEvent) => {
-    event.preventDefault();
-    event.stopPropagation();
+    if (this.props.stopPropagation) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
 
     if (this.props.onClick) {
       this.props.onClick(!this.props.checked);

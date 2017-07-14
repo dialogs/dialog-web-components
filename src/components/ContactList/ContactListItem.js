@@ -37,7 +37,11 @@ class ContactListItem extends PureComponent {
           <div className={styles.text}>
             <span className={styles.name}>{item.title}</span>
           </div>
-          <CheckButton checked={selected} className={styles.selector} theme="success" />
+          <CheckButton
+            className={styles.selector}
+            theme="success"
+            checked={selected}
+          />
         </div>
       </div>
     );

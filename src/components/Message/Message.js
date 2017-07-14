@@ -247,6 +247,7 @@ class Message extends PureComponent {
     if (typeof selected === 'boolean') {
       return (
         <CheckButton
+          stopPropagation
           checked={selected}
           className={styles.selector}
           theme="primary"
