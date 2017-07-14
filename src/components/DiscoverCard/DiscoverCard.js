@@ -143,7 +143,7 @@ class DiscoverCard extends PureComponent {
     const className = classNames(styles.container, this.props.className);
 
     return (
-      <div className={className}>
+      <div className={className} onClick={this.handleClick}>
         <div className={styles.body}>
           {this.renderAvatar()}
           {this.renderInfo()}
@@ -155,7 +155,6 @@ class DiscoverCard extends PureComponent {
             wide
             theme="primary"
             rounded={false}
-            onClick={this.handleClick}
             className={styles.button}
           >
             <Text id={`DiscoverCard.${joined ? 'enter' : 'join'}.${type}`} />

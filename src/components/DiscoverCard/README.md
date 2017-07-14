@@ -9,5 +9,6 @@ const { group } = require('../../fixtures/peerInfo');
   avatar={group.avatar}
   peer={group.peer}
   members={23}
+  onGoToPeer={(peer) => console.log({ peer })}
 />
 ```

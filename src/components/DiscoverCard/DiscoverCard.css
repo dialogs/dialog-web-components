@@ -37,6 +37,7 @@
   border-radius: var(--discover-card-border-radius);
   background-color: var(--discover-card-background-color);
   overflow: hidden;
+  cursor: pointer;
 
   &:hover {
     & .button {
