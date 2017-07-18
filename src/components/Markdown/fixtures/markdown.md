@@ -21,6 +21,8 @@ https://dlg.im
 
 [Dialog](https://dlg.im)
 
+Dialog info: info@dlg.im
+
 Hello, @dialog
 
 ## List items
