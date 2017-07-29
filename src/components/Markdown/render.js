@@ -17,14 +17,15 @@ export function renderText(tokens: TextToken[], emojiSize?: number = 20, isInlin
     switch (highlight) {
       case 'link': {
         const url = (options && (options.url || options.href)) || content;
+        const target = (options && options.target) || '_blank';
 
         result.push(
           <a
             key={index}
             className={styles.link}
             href={url}
-            target="_blank"
-            rel="noopener noreferrer"
+            target={target}
+            rel={target === '_blank' ? 'noopener noreferrer' : undefined}
           >
             {content}
           </a>
@@ -32,6 +33,19 @@ export function renderText(tokens: TextToken[], emojiSize?: number = 20, isInlin
 
         break;
       }
+
+      case 'email':
+        result.push(
+          <a
+            key={index}
+            className={styles.link}
+            href={`mailto:${content}`}
+          >
+            {content}
+          </a>
+        );
+
+        break;
 
       case 'emoji':
         result.push(
