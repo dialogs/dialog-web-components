@@ -22,12 +22,17 @@ export type Props = {
   /**
    * [Tether options](http://tether.io/#options)
    */
-  options?: Object
+  options?: Object,
+  theme: 'default' | 'primary' | 'success' | 'danger' | 'info' | 'warning'
 };
 
 class Tooltip extends Component {
   props: Props;
   trigger: ?Trigger;
+
+  static defaultProps = {
+    theme: 'default'
+  }
 
   componentWillUpdate(): void {
     if (this.trigger) {
@@ -50,6 +55,7 @@ class Tooltip extends Component {
   }
 
   renderTooltip = () => {
+    const className = classNames(styles.tooltip, styles[this.props.theme])
     return (
       <CSSTransitionGroup
         transitionAppear
@@ -61,7 +67,7 @@ class Tooltip extends Component {
           appearActive: styles.appearActive
         }}
       >
-        <div className={styles.tooltip}>
+        <div className={className}>
           {this.renderContent()}
         </div>
       </CSSTransitionGroup>

@@ -31,7 +31,6 @@
   letter-spacing: -0.3px;
   pointer-events: none;
   border-radius: 3px;
-  background-color: var(--tooltip-background-color);
   font-family: var(--tooltip-font-family);
   font-size: var(--tooltip-font-size);
   line-height: 20px;
@@ -41,6 +40,30 @@
   & strong {
     font-weight: 500;
   }
+}
+
+.default {
+  background-color: var(--tooltip-background-color);
+}
+
+.primary {
+  background-color: var(--color-primary);
+}
+
+.danger {
+  background-color: var(--color-danger);
+}
+
+.info {
+  background-color: var(--color-info);
+}
+
+.warning {
+  background-color: var(--color-warning);
+}
+
+.success {
+  background-color: var(--color-success);
 }
 
 /* Animations */
