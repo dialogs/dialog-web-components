@@ -212,6 +212,7 @@ class Message extends PureComponent {
     return (
       <header className={styles.header}>
         <PeerInfoTitle
+          className={styles.peerInfo}
           info={sender}
           title={sender.title}
           userName={this.props.maxWidth > 300 ? sender.userName : null}

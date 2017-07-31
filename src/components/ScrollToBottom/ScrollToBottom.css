@@ -1,0 +1,69 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+:root {
+  --scroll-to-bottom-font-family: var(--default-font-family);
+  --scroll-to-bottom-background-color: #fff;
+  --scroll-to-bottom-arrow-color: var(--color-primary);
+  --scroll-to-bottom-counter-color: var(--color-primary);
+  --scroll-to-bottom-counter-size: 24px;
+  --scroll-to-bottom-counter-text-color: #fff;
+  --scroll-to-bottom-transition-duration: var(--default-transition-duration);
+}
+
+/* Reset */
+.container {
+  all: initial;
+}
+
+/* Styles */
+.container {
+  font-family: var(--scroll-to-bottom-font-family);
+  background-color: var(--scroll-to-bottom-background-color);
+  display: block;
+  padding: var(--default-padding);
+  border-radius: 1000px;
+  position: relative;
+  box-shadow: 0 0 0 1px color(#000 alpha(3%));
+  border:1px solid var(--color-primary);
+  cursor: pointer;
+  transition-timing-function: ease;
+  transition-duration: var(--scroll-to-bottom-transition-duration);
+  transition-property: box-shadow, transform;
+
+  &:hover {
+    /*box-shadow: 0 10px 20px -8px color(#000 alpha(25%));*/
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+  }
+
+  &:active {
+    /*box-shadow: 0 5px 15px -2px color(#000 alpha(25%));*/
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.25);
+  }
+}
+
+.icon {
+  fill: var(--scroll-to-bottom-arrow-color);
+}
+
+.counter {
+  background-color: var(--scroll-to-bottom-counter-color);
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  font-size: 11px;
+  font-weight: 500;
+  vertical-align: middle;
+  padding: 0 5px;
+  box-sizing: border-box;
+  min-width: var(--scroll-to-bottom-counter-size);
+  height: var(--scroll-to-bottom-counter-size);
+  line-height: var(--scroll-to-bottom-counter-size);
+  text-align: center;
+  border-radius: 1000px;
+  color: var(--scroll-to-bottom-counter-text-color);
+  @apply --no-select;
+}

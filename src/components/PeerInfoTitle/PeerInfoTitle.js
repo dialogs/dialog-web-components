@@ -23,12 +23,18 @@ class PeerInfoTitle extends PureComponent {
   render() {
     const titleStyle = this.props.onTitleClick ? { cursor: 'pointer' } : undefined;
     const title = (
-      <span className={this.props.titleClassName} style={titleStyle} onClick={this.props.onTitleClick}>
+      <span
+        className={this.props.titleClassName}
+        style={titleStyle}
+        onClick={this.props.onTitleClick}
+        title={this.props.title}
+      >
         <Markdown
           inline
           decorators={decorators}
           text={this.props.title}
         />
+        &nbsp;&nbsp;
       </span>
     );
 
@@ -36,13 +42,16 @@ class PeerInfoTitle extends PureComponent {
       const userNameStyle = this.props.onUserNameClick ? { cursor: 'pointer' } : undefined;
 
       return (
-        <span style={{ lineHeight: '1' }}>
-          <span className={this.props.className}>
-            {title}
-            {' '}
-          </span>
-          <span className={this.props.userNameClassName} style={userNameStyle} onClick={this.props.onUserNameClick}>
+        <span className={this.props.className}>
+          {title}
+          <span
+            className={this.props.userNameClassName}
+            style={userNameStyle}
+            onClick={this.props.onUserNameClick}
+            title={`@${this.props.userName}`}
+          >
             {`@${this.props.userName}`}
+            &nbsp;&nbsp;
           </span>
         </span>
       );

@@ -30,6 +30,7 @@ export { default as ImageEdit } from './components/ImageEdit/ImageEdit';
 export { default as Overlay } from './components/Overlay/Overlay';
 export { default as SelectedMessagesActions } from './components/SelectedMessagesActions/SelectedMessagesActions';
 export { default as CheckButton } from './components/CheckButton/CheckButton';
+export { default as ScrollToBottom } from './components/ScrollToBottom/ScrollToBottom';
 
 // Calls
 export { default as Call } from './components/Call/Call';
