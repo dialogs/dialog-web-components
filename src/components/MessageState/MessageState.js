@@ -30,9 +30,7 @@ class MessageState extends PureComponent {
     const className = classNames(styles.container, this.props.className);
 
     const time = (
-      <time className={className} onClick={this.handleClick}>
-        {' ' + this.props.time}
-      </time>
+      <time className={className} onClick={this.handleClick}>{this.props.time}</time>
     );
 
     if (this.props.state === 'unknown') {
