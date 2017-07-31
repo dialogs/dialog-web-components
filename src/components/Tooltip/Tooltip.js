@@ -55,7 +55,8 @@ class Tooltip extends Component {
   }
 
   renderTooltip = () => {
-    const className = classNames(styles.tooltip, styles[this.props.theme])
+    const className = classNames(styles.tooltip, styles[this.props.theme]);
+
     return (
       <CSSTransitionGroup
         transitionAppear
