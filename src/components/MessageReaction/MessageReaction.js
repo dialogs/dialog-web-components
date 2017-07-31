@@ -38,7 +38,8 @@ class MessageReaction extends PureComponent {
         if (children.length > 0) {
           children.push(<span key={i}>, </span>);
         }
-        children.push(<b key={peerToString(user.peer)}>{nickname}</b>);
+
+        children.push(<strong key={peerToString(user.peer)}>{nickname}</strong>);
       }
     }
 

@@ -37,6 +37,10 @@
   line-height: 20px;
   color: var(--tooltip-color);
   @apply --no-select;
+
+  & strong {
+    font-weight: 500;
+  }
 }
 
 /* Animations */
