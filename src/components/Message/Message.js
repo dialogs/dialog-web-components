@@ -220,6 +220,7 @@ class Message extends PureComponent {
           userNameClassName={mentionClassName}
           onTitleClick={onTitleClick}
           onUserNameClick={onMentionClick}
+          addSpacebars
         />
         {this.renderState()}
       </header>
