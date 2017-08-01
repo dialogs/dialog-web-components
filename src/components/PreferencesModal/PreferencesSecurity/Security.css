@@ -37,10 +37,12 @@
   line-height: 1.4;
   flex: 0 0 auto;
   color: color(#000 alpha(70%));
+  @apply --text-overflow-ellipsis;
 }
 
 .terminateButton {
   display: none;
+  min-width: auto;
 }
 
 .termnateAllButton {
