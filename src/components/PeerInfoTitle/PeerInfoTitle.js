@@ -14,14 +14,20 @@ type Props = {
   titleClassName?: string,
   userNameClassName?: string,
   onTitleClick?: ?(event: SyntheticMouseEvent) => mixed,
-  onUserNameClick?: ?(event: SyntheticMouseEvent) => mixed
+  onUserNameClick?: ?(event: SyntheticMouseEvent) => mixed,
+  addSpacebars: boolean
 };
 
 class PeerInfoTitle extends PureComponent {
   props: Props;
 
+  static defaultProps = {
+    addSpacebars: false
+  };
+
   render() {
     const titleStyle = this.props.onTitleClick ? { cursor: 'pointer' } : undefined;
+    const spacebars = this.props.addSpacebars ? '\u00A0\u00A0' : null;
     const title = (
       <span
         className={this.props.titleClassName}
@@ -34,7 +40,7 @@ class PeerInfoTitle extends PureComponent {
           decorators={decorators}
           text={this.props.title}
         />
-        &nbsp;&nbsp;
+        {spacebars}
       </span>
     );
 
@@ -51,7 +57,7 @@ class PeerInfoTitle extends PureComponent {
             title={`@${this.props.userName}`}
           >
             {`@${this.props.userName}`}
-            &nbsp;&nbsp;
+            {spacebars}
           </span>
         </span>
       );

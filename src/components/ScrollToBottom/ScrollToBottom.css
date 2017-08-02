@@ -24,11 +24,10 @@
   font-family: var(--scroll-to-bottom-font-family);
   background-color: var(--scroll-to-bottom-background-color);
   display: block;
-  padding: var(--default-padding);
+  padding: 12px;
   border-radius: 1000px;
   position: relative;
-  box-shadow: 0 0 0 1px color(#000 alpha(3%));
-  border:1px solid var(--color-primary);
+  border: 1px solid color(#000 alpha(20%));
   cursor: pointer;
   transition-timing-function: ease;
   transition-duration: var(--scroll-to-bottom-transition-duration);
