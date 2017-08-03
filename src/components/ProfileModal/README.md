@@ -58,7 +58,7 @@ const actions = {
       }
     });
   },
-  onClose: () => setState({ ...initialState })
+  onClose: () => setState({ isOpen: false })
 };
 
 <div>

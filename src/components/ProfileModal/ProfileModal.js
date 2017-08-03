@@ -23,6 +23,7 @@ import type { Props, State } from './types';
 class ProfileModal extends PureComponent {
   props: Props;
   state: State;
+  nickInput: ?HTMLInputElement;
 
   static contextTypes = {
     l10n: LocalizationContextType
@@ -61,6 +62,10 @@ class ProfileModal extends PureComponent {
       profile: {
         ...this.state.profile,
         nick: ''
+      }
+    }, () => {
+      if (this.nickInput) {
+        this.nickInput.focus();
       }
     });
   };
@@ -131,6 +136,10 @@ class ProfileModal extends PureComponent {
     return {};
   };
 
+  setNickInput = (input: ?HTMLInputElement): void => {
+    this.nickInput = input;
+  };
+
   renderAvatar(): React.Element<any> {
     const { profile: { placeholder } } = this.props;
     const { profile: { name, avatar } } = this.state;
@@ -176,6 +185,7 @@ class ProfileModal extends PureComponent {
 
     return (
       <Input
+        ref={this.setNickInput}
         className={styles.nickInput}
         id="nick"
         name="nick"

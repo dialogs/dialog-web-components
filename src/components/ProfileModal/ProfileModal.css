@@ -79,6 +79,14 @@
 
 .contacts {
   margin-top: 32px;
+
+  & > div {
+    margin-top: 6px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
 }
 
 .contactTitle {
