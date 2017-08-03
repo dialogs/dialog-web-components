@@ -86,6 +86,7 @@
     "babel-loader": "7.1.1",
     "buildbranch": "2.0.0",
     "chalk": "2.0.1",
+    "core-js": "2.4.1",
     "ejs": "2.5.6",
     "eslint": "4.3.0",
     "eslint-plugin-react": "7.1.0",
