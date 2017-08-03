@@ -118,3 +118,11 @@
 .footer {
   padding: 0;
 }
+
+.pendingWrapper {
+  min-height: 421px;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}

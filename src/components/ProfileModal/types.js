@@ -16,7 +16,7 @@ export type Profile = {
 
 export type Props = {
   className?: string,
-  profile: User,
+  profile: ?User,
   context: {
     name: Field<string>,
     nick: Field<?string>,
@@ -29,5 +29,5 @@ export type Props = {
 
 export type State = {
   screen: Screen,
-  profile: Profile
+  profile: ?Profile
 };
