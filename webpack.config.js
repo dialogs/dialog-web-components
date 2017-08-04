@@ -19,9 +19,6 @@ const whitelist = [
 ];
 
 module.exports = {
-  entry: [
-    resolve('src/styles/global.css')
-  ],
   resolve: {
     alias: {
       'rsg-components/Wrapper': resolve('src/styleguide/Wrapper.js')

@@ -20,17 +20,28 @@ export function getPreferredCountryCode(): ?string {
 }
 
 export function getPreferredCountryCodes(): string[] {
-  if (typeof navigator === 'undefined') {
-    return [];
-  }
+  if (navigator) {
+    if ('languages' in navigator) {
+      return navigator.languages.map((lang) => {
+        if (lang.length === 2) {
+          return lang.toUpperCase();
+        }
 
-  return navigator.languages.map((lang) => {
-    if (lang.length === 2) {
-      return lang.toUpperCase();
+        return lang.slice(3).toUpperCase();
+      });
     }
 
-    return lang.slice(3).toUpperCase();
-  });
+    if ('language' in navigator) {
+      const lang = navigator.language;
+      if (lang.length === 2) {
+        return [lang.toUpperCase()];
+      }
+
+      return [lang.slice(3).toUpperCase()];
+    }
+  }
+
+  return [];
 }
 
 export default getPreferredCountryCodes;

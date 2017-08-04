@@ -85,7 +85,9 @@
       padding: 0 var(--default-padding);
 
       & > input {
-        line-height: 24px;
+        line-height: 26px;
+        height: 26px;
+        padding: 15px 0;
         padding: var(--default-padding) 0;
       }
     }
@@ -178,9 +180,9 @@
 
 .optionLabel {
   flex: 1 1 auto;
-  padding: 0 8px;
-  @apply --flex-fix;
+  padding: 0 8px 0 10px;
   overflow: hidden;
+  @apply --flex-fix;
 }
 
 .optionCountry {

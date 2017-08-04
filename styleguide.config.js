@@ -28,6 +28,7 @@ module.exports = {
   webpackConfig: require('./webpack.config'),
 
   require: [
+    resolve('node_modules/core-js/shim.js'),
     resolve('src/styles/global.css')
   ],
 
@@ -36,6 +37,7 @@ module.exports = {
 
   getComponentPathLine(componentPath) {
     const name = path.basename(componentPath, '.js');
+
     return `import { ${name} } from '${pkg.name}';`;
   },
 
