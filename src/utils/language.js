@@ -8,7 +8,7 @@ export function languageToCountryCode(language: string): string {
     return language.toUpperCase();
   }
 
-  return language.slice(3).toUpperCase();
+  return language.slice(0, 2).toUpperCase();
 }
 
 export function getPreferredCountryCode(): ?string {
@@ -19,29 +19,22 @@ export function getPreferredCountryCode(): ?string {
   return languageToCountryCode(navigator.language);
 }
 
-export function getPreferredCountryCodes(): string[] {
-  if (navigator) {
-    if ('languages' in navigator) {
-      return navigator.languages.map((lang) => {
-        if (lang.length === 2) {
-          return lang.toUpperCase();
-        }
-
-        return lang.slice(3).toUpperCase();
-      });
+export function getLanguages(): string[] {
+  if (typeof navigator !== 'undefined') {
+    if (navigator.languages) {
+      return navigator.languages;
     }
 
-    if ('language' in navigator) {
-      const lang = navigator.language;
-      if (lang.length === 2) {
-        return [lang.toUpperCase()];
-      }
-
-      return [lang.slice(3).toUpperCase()];
+    if (navigator.language) {
+      return [navigator.language];
     }
   }
 
   return [];
 }
 
-export default getPreferredCountryCodes;
+export function getPreferredCountryCodes(): string[] {
+  const languages = getLanguages();
+
+  return languages.map(languageToCountryCode);
+}
