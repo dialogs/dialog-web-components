@@ -36,17 +36,17 @@ class ProfileModal extends PureComponent {
 
     this.state = {
       screen: 'profile',
-      profile: props.profile ? {
-        name: props.profile.name,
-        nick: props.profile.nick,
-        about: props.profile.about,
-        avatar: props.profile.avatar
-      } : null
+      profile: {
+        name: '',
+        nick: null,
+        about: null,
+        avatar: null
+      }
     };
   }
 
   componentWillReceiveProps(nextProps: Props) {
-    if (this.props.profile === null && nextProps.profile) {
+    if (!this.props.profile && nextProps.profile) {
       this.setState({
         profile: {
           name: nextProps.profile.name,
@@ -112,13 +112,15 @@ class ProfileModal extends PureComponent {
   };
 
   handleGoToProfile = (): void => {
-    this.setState({
-      screen: 'profile',
-      profile: {
-        ...this.state.profile,
-        avatar: this.props.profile.avatar
-      }
-    });
+    if (this.props.profile) {
+      this.setState({
+        screen: 'profile',
+        profile: {
+          ...this.state.profile,
+          avatar: this.props.profile.avatar
+        }
+      });
+    }
   };
 
   handleAvatarRemove = (): void => {
@@ -138,7 +140,7 @@ class ProfileModal extends PureComponent {
   }
 
   isChanged(): boolean {
-    if (!this.props.profile || !this.state.profile) {
+    if (!this.props.profile) {
       return false;
     }
 
@@ -167,8 +169,12 @@ class ProfileModal extends PureComponent {
     this.nameInput = input;
   };
 
-  renderAvatar(): React.Element<any> {
-    const { profile: { placeholder } } = this.props;
+  renderAvatar() {
+    const { profile } = this.props;
+    if (!profile) {
+      return null;
+    }
+
     const { profile: { name, avatar } } = this.state;
     const handlers = this.state.profile.avatar ? { onRemove: this.handleAvatarRemove } : {};
 
@@ -176,8 +182,8 @@ class ProfileModal extends PureComponent {
       <div className={styles.avatarBlock}>
         <AvatarSelector
           name={name}
-          placeholder={placeholder}
           avatar={avatar}
+          placeholder={profile.placeholder}
           onChange={this.handleAvatarEdit}
           {...handlers}
         />
@@ -185,7 +191,7 @@ class ProfileModal extends PureComponent {
     );
   }
 
-  renderNick(): React.Element<any> {
+  renderNick() {
     const { profile: { nick } } = this.state;
     const { l10n: { formatText } } = this.context;
 
@@ -226,9 +232,13 @@ class ProfileModal extends PureComponent {
     );
   }
 
-  renderContacts(): ?React.Element<any> {
-    const { profile: { phones, emails } } = this.props;
+  renderContacts() {
+    const { profile } = this.props;
+    if (!profile) {
+      return null;
+    }
 
+    const { phones, emails } = profile;
     if (!phones.length && !emails.length) {
       return null;
     }
@@ -286,11 +296,11 @@ class ProfileModal extends PureComponent {
     }
   }
 
-  renderProfile(): React.Element<any> {
+  renderProfile() {
     const { profile } = this.state;
     const { l10n: { formatText } } = this.context;
 
-    if (!profile) {
+    if (!this.props.profile) {
       return (
         <div className={styles.pendingWrapper}>
           <Spinner
@@ -334,7 +344,7 @@ class ProfileModal extends PureComponent {
     );
   }
 
-  renderAvatarEdit(): ?React.Element<any> {
+  renderAvatarEdit() {
     const { profile: { avatar } } = this.state;
 
     if (avatar && typeof avatar !== 'string') {
@@ -352,7 +362,7 @@ class ProfileModal extends PureComponent {
     return null;
   }
 
-  renderFooter(): ?React.Element<any> {
+  renderFooter() {
     if (this.state.screen === 'profile') {
       return (
         <ModalFooter className={styles.footer}>
@@ -373,7 +383,7 @@ class ProfileModal extends PureComponent {
     return null;
   }
 
-  renderBody(): ?React.Element<any> {
+  renderBody() {
     switch (this.state.screen) {
       case 'profile':
         return this.renderProfile();
@@ -384,7 +394,7 @@ class ProfileModal extends PureComponent {
     }
   }
 
-  render(): React.Element<any> {
+  render() {
     const className = classNames(styles.container, this.props.className);
 
     return (

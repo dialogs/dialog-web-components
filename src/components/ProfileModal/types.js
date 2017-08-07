@@ -29,5 +29,5 @@ export type Props = {
 
 export type State = {
   screen: Screen,
-  profile: ?Profile
+  profile: Profile
 };
