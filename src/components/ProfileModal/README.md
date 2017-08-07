@@ -3,20 +3,7 @@ Basic ProfileModal:
 ```
 const initialState = {
   isOpen: false,
-  profile: {
-    name: 'Some user',
-    nick: null,
-    about: null,
-    avatar: null,
-    phones: [{
-      number: '71233218855',
-      title: 'Mobile phone'
-    }],
-    emails: [{
-      email: 'someuser@domain.com',
-      title: 'Email'
-    }]
-  },
+  profile: null,
   context: {
     name: {
       error: null,
@@ -58,11 +45,33 @@ const actions = {
       }
     });
   },
-  onClose: () => setState({ ...initialState })
+  onClose: () => setState({ isOpen: false })
+};
+
+const openModal = () => {
+  setState({ isOpen: true });
+  setTimeout(() => {
+    setState({
+      profile: {
+        name: 'Some user',
+        nick: null,
+        about: null,
+        avatar: null,
+        phones: [{
+          number: '71233218855',
+          title: 'Mobile phone'
+        }],
+        emails: [{
+          email: 'someuser@domain.com',
+          title: 'Email'
+        }]
+      } 
+    });
+  }, 4000);
 };
 
 <div>
-  <Button theme="primary" onClick={() => setState({ isOpen: true })}>Edit profile</Button>
+  <Button theme="primary" onClick={openModal}>Edit profile</Button>
   {
     state.isOpen
       ? (

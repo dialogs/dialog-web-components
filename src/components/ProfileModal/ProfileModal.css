@@ -79,6 +79,14 @@
 
 .contacts {
   margin-top: 32px;
+
+  & > div {
+    margin-top: 6px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
 }
 
 .contactTitle {
@@ -109,4 +117,12 @@
 
 .footer {
   padding: 0;
+}
+
+.pendingWrapper {
+  min-height: 421px;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
 }
