@@ -26,7 +26,7 @@ class Voice extends PureComponent {
     }, this.props.className);
 
     return (
-      <div className={className} style={{ width: maxWidth }}>
+      <div className={className} style={{ width: maxWidth === 0 ? '100%' : maxWidth }}>
         <AudioPlayer
           src={this.props.fileUrl}
           duration={this.props.duration}
