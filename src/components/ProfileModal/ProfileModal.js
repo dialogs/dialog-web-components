@@ -34,9 +34,16 @@ class ProfileModal extends PureComponent {
   constructor(props: Props): void {
     super(props);
 
+    const { profile } = props;
+
     this.state = {
       screen: 'profile',
-      profile: {
+      profile: profile ? {
+        name: profile.name,
+        nick: profile.nick,
+        about: profile.about,
+        avatar: profile.avatar
+      } : {
         name: '',
         nick: null,
         about: null,
