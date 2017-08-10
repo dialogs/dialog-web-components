@@ -118,6 +118,7 @@
   padding: 2px 4px;
   box-sizing: border-box;
   height: var(--sidebar-recent-item-counter-size);
+  line-height: var(--sidebar-recent-item-counter-size);
   border-radius: calc(var(--sidebar-recent-item-counter-size) / 2);
   background-color: var(--sidebar-recent-item-counter-background);
   font-family: var(--sidebar-recent-item-font-family);
