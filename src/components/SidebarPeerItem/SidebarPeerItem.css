@@ -67,8 +67,9 @@
 
 .counter {
   display: flex;
-  width: var(--sidebar-peer-item-counter-size);
+  min-width: var(--sidebar-peer-item-counter-size);
   height: var(--sidebar-peer-item-counter-size);
+  line-height: var(--sidebar-peer-item-counter-size);
   margin-left: 6px;
   border-radius: 50%;
   background-color: var(--sidebar-peer-item-counter-background);
