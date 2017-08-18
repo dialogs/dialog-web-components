@@ -3,12 +3,14 @@
  * @flow
  */
 
+import uniq from 'lodash/uniq';
+
 export function languageToCountryCode(language: string): string {
   if (language.length === 2) {
     return language.toUpperCase();
   }
 
-  return language.slice(0, 2).toUpperCase();
+  return language.slice(3, 5).toUpperCase();
 }
 
 export function getPreferredCountryCode(): ?string {
@@ -36,5 +38,5 @@ export function getLanguages(): string[] {
 export function getPreferredCountryCodes(): string[] {
   const languages = getLanguages();
 
-  return languages.map(languageToCountryCode);
+  return uniq(languages.map(languageToCountryCode));
 }
