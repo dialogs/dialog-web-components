@@ -27,6 +27,7 @@ errors:
   TIMEOUT: Request timeout
   SHORTNAME_INVALID: Incorrect username
   PASSWORD_INVALID: Wrong username or password
+  USERNAME_UNOCCUPIED: Wrong username or password
 type:
   phone: Phone
   email: Email

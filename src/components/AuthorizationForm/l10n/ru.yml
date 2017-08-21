@@ -27,6 +27,7 @@ errors:
   TIMEOUT: Тайм-аут запроса
   SHORTNAME_INVALID: Неправильный логин.
   PASSWORD_INVALID: Неправильный логин или пароль.
+  USERNAME_UNOCCUPIED: Неправильный логин или пароль.
 type:
   phone: Телефон
   email: Email
