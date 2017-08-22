@@ -161,15 +161,13 @@ class Message extends PureComponent {
   }
 
   renderState() {
-    const state = this.getState();
-    const { short } = this.props;
-    const className = classNames(short ? styles.stateShort : null);
-
     return (
       <MessageState
-        className={className}
-        state={state}
+        state={this.getState()}
+        compact={this.props.short}
+        hover={this.state.hover}
         time={this.props.message.date}
+        isEdited={this.props.message.isEdited}
         onClick={this.handleForceSelect}
       />
     );
@@ -355,7 +353,7 @@ class Message extends PureComponent {
         {this.renderActions()}
         <div className={styles.info}>
           {short ? null : this.renderAvatar()}
-          {short && hover ? this.renderState() : null}
+          {short ? this.renderState() : null}
         </div>
         <div className={styles.body}>
           {short ? this.renderShortHeader() : this.renderHeader()}

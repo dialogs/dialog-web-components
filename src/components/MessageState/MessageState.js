@@ -6,6 +6,7 @@
 import type { MessageState as MessageStateType } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
+import { Text } from '@dlghq/react-l10n';
 import Tooltip from '../Tooltip/Tooltip';
 import styles from './MessageState.css';
 
@@ -13,8 +14,11 @@ type Props = {
   className?: string,
   state: MessageStateType,
   time: string,
+  isEdited?: boolean,
+  hover: boolean,
+  compact: boolean,
   onClick: () => mixed
-}
+};
 
 class MessageState extends PureComponent {
   props: Props;
@@ -26,11 +30,35 @@ class MessageState extends PureComponent {
     this.props.onClick();
   };
 
+  renderState() {
+    const children = [];
+    if (!this.props.compact || this.props.hover || !this.props.isEdited) {
+      children.push(
+        <time key="t" className={styles.time} onClick={this.handleClick}>
+          {this.props.time}
+        </time>
+      );
+    }
+
+    if (!this.props.compact || (!this.props.hover && this.props.isEdited)) {
+      children.push(
+        <Text key="e" className={styles.edited} id="MessageState.edited" />
+      );
+    }
+
+    return children;
+  }
+
   render() {
-    const className = classNames(styles.container, this.props.className);
+    const className = classNames(
+      styles.container,
+      this.props.className
+    );
 
     const time = (
-      <time className={className} onClick={this.handleClick}>{this.props.time}</time>
+      <div className={className}>
+        {this.renderState()}
+      </div>
     );
 
     if (this.props.state === 'unknown') {
