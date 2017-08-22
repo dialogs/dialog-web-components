@@ -73,7 +73,7 @@ class CreateGroupInfoForm extends PureComponent {
     this.props.onSubmit(event);
   };
 
-  renderAvatar(): React.Element<any> {
+  renderAvatar() {
     const { title } = this.props;
     const { avatar } = this.state;
 
@@ -90,12 +90,8 @@ class CreateGroupInfoForm extends PureComponent {
     );
   }
 
-  renderShortname(): ?React.Element<any> {
+  renderShortname() {
     const { type, shortname } = this.props;
-
-    if (type === 'group') {
-      return null;
-    }
 
     return (
       <Input
@@ -103,13 +99,14 @@ class CreateGroupInfoForm extends PureComponent {
         name="shortname"
         value={shortname || ''}
         prefix={this.props.shortnamePrefix}
+        hint={`CreateNewModal.${type}.${shortname ? 'public' : 'private'}`}
         label={`CreateNewModal.${type}.info.shortname`}
         onChange={this.props.onChange}
       />
     );
   }
 
-  render(): React.Element<any> {
+  render() {
     const { id, type, about, title, vertical } = this.props;
     const { l10n } = this.context;
     const className = classNames(styles.info, {

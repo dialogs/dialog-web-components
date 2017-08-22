@@ -3,3 +3,9 @@ title:
   channel: Информация о канале
   avatar: Редактировать аватар
 submit: Обновить
+
+group:
+  become_public: Эта группа станет общедоступна
+
+channel:
+  become_public: Этот канал станет общедоступен

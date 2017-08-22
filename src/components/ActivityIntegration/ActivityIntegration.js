@@ -21,7 +21,7 @@ export type Props = {
 class ActivityIntegration extends PureComponent {
   props: Props;
 
-  renderLink(): React.Element<any> {
+  renderLink() {
     const { link, pending } = this.props;
 
     if (pending) {
@@ -33,7 +33,7 @@ class ActivityIntegration extends PureComponent {
     );
   }
 
-  render(): React.Element<any> {
+  render() {
     const { pending } = this.props;
     const className = classNames(styles.container, this.props.className);
 

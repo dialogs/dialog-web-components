@@ -34,7 +34,7 @@ export type Props = (StringProps | NumberProps) & {
   prefix?: ?string,
   disabled?: bool,
   hint?: string,
-  status: 'normal' | 'success' | 'error',
+  status: 'normal' | 'success' | 'error' | 'warning',
   autoFocus?: boolean,
   htmlAutoFocus?: boolean,
   tabIndex?: number,

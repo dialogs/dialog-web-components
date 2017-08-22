@@ -187,3 +187,19 @@
     color: var(--input-error-color);
   }
 }
+
+.warning {
+  & .inputWrapper {
+    box-shadow: 0 var(--input-border-width) 0 0 var(--input-warning-color);
+  }
+
+  &.focused {
+    & .inputWrapper {
+      box-shadow: 0 var(--input-focus-border-width) 0 0 var(--input-warning-color);
+    }
+  }
+
+  & .hint {
+    color: var(--input-warning-color);
+  }
+}

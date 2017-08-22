@@ -134,17 +134,14 @@ class EditGroupModal extends PureComponent {
   }
 
   renderForm() {
-    const { group } = this.props;
-
     return (
       <EditGroupModalForm
         className={styles.info}
-        type={group.type}
+        group={this.props.group}
         name={{ ...this.props.context.name, value: this.state.group.name }}
         about={{ ...this.props.context.about, value: this.state.group.about }}
         shortname={{ ...this.props.context.shortname, value: this.state.group.shortname }}
         avatar={this.state.group.avatar}
-        placeholder={this.props.group.placeholder}
         shortnamePrefix={this.props.shortnamePrefix}
         onChange={this.handleChange}
         onSubmit={this.handleSubmit}

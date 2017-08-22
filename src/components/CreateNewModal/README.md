@@ -34,6 +34,7 @@ const handleSubmit = (request) => {
         isOpen={state.isOpen}
         step={state.step}
         request={state.request}
+        shortnamePrefix="https://dlg.im/@"
         onClose={handleClose}
         onRequestChange={handleRequestChange}
         onStepChange={handleStepChange}

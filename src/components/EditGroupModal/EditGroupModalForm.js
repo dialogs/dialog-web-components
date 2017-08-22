@@ -6,7 +6,7 @@
 /* eslint-disable react/no-unused-prop-types */
 
 import type { ProviderContext } from '@dlghq/react-l10n';
-import type { Field, AvatarPlaceholder } from '@dlghq/dialog-types';
+import type { Field, Group } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import { LocalizationContextType } from '@dlghq/react-l10n';
@@ -16,12 +16,11 @@ import Input from '../Input/Input';
 import styles from '../CreateNewModal/CreateNewModal.css';
 
 export type Props = {
-  type: 'group' | 'channel',
+  group: Group,
   name: Field<string>,
   shortname: Field<?string>,
   about: Field<?string>,
   avatar: ?(string | File),
-  placeholder: AvatarPlaceholder,
   className?: string,
   vertical: boolean,
   shortnamePrefix?: ?string,
@@ -94,14 +93,14 @@ class EditGroupModalForm extends PureComponent {
   };
 
   renderAvatar() {
-    const { name, placeholder } = this.props;
+    const { group, name } = this.props;
     const { avatar } = this.state;
 
     return (
       <div className={styles.avatarBlock}>
         <AvatarSelector
           name={name.value}
-          placeholder={placeholder}
+          placeholder={group.placeholder}
           avatar={avatar}
           onRemove={this.props.onAvatarRemove}
           onChange={this.props.onAvatarChange}
@@ -111,28 +110,28 @@ class EditGroupModalForm extends PureComponent {
   }
 
   renderShortname() {
-    const { type, shortname } = this.props;
+    const { group, shortname } = this.props;
     const { l10n } = this.context;
 
-    if (type === 'group') {
-      return null;
-    }
+    const isBecomePublic = !group.shortname && shortname.value;
 
     return (
       <Input
         id="shortname"
         name="shortname"
-        label={l10n.formatText(`CreateNewModal.${type}.info.shortname`)}
+        label={l10n.formatText(`CreateNewModal.${group.type}.info.shortname`)}
         onChange={this.props.onChange}
         prefix={this.props.shortnamePrefix}
         value={shortname.value || ''}
+        hint={isBecomePublic ? `EditGroupModal.${group.type}.become_public` : undefined}
+        status={isBecomePublic ? 'warning' : 'normal'}
         {...this.getInputState('shortname')}
       />
     );
   }
 
   render() {
-    const { type, about, name, vertical } = this.props;
+    const { group, about, name, vertical } = this.props;
     const { l10n } = this.context;
     const className = classNames(styles.info, {
       [styles.vertical]: vertical
@@ -149,7 +148,7 @@ class EditGroupModalForm extends PureComponent {
             name="name"
             onChange={this.props.onChange}
             status={name.error ? 'error' : 'normal'}
-            placeholder={l10n.formatText(`CreateNewModal.${type}.info.name`)}
+            placeholder={l10n.formatText(`CreateNewModal.${group.type}.info.name`)}
             value={name.value}
             {...this.getInputState('name')}
           />
@@ -157,12 +156,12 @@ class EditGroupModalForm extends PureComponent {
           <Input
             className={styles.input}
             id="about"
-            label={l10n.formatText(`CreateNewModal.${type}.info.description.label`)}
+            label={l10n.formatText(`CreateNewModal.${group.type}.info.description.label`)}
             large
             name="about"
             status={about.error ? 'error' : 'normal'}
             onChange={this.props.onChange}
-            placeholder={l10n.formatText(`CreateNewModal.${type}.info.description.placeholder`)}
+            placeholder={l10n.formatText(`CreateNewModal.${group.type}.info.description.placeholder`)}
             type="textarea"
             value={about.value || ''}
             {...this.getInputState('about')}

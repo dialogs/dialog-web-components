@@ -10,6 +10,8 @@ group:
       placeholder: Describe the Purpose of This Conversation
     shortname: Group link
   finish: Create group
+  public: This group will be public
+  private: This group will be private
 
 channel:
   title: Create new channel
@@ -23,6 +25,8 @@ channel:
       placeholder: Describe the purpose of this conversation
     shortname: Channel link
   finish: Create channel
+  public: This channel will be public
+  private: This channel will be private
 
 next:
   type: Add info
