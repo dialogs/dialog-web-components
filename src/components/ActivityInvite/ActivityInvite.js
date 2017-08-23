@@ -16,7 +16,7 @@ export type Props = {
   className?: string,
   link: string,
   pending: boolean,
-  onRevoke: () => any
+  onRevoke: ?() => any
 };
 
 class ActivityInvite extends PureComponent {
@@ -34,7 +34,30 @@ class ActivityInvite extends PureComponent {
     );
   }
 
-  render(): React.Element<any> {
+  renderRevoke() {
+    if (!this.props.onRevoke) {
+      return null;
+    }
+
+    return (
+      <div>
+        <hr className={styles.hr} />
+        <div className={styles.block}>
+          <Button
+            theme="danger"
+            view="link"
+            onClick={this.props.onRevoke}
+            className={styles.revoke}
+            size="small"
+          >
+            <Text id="ActivityInvite.revoke" />
+          </Button>
+        </div>
+      </div>
+    );
+  }
+
+  render() {
     const { pending } = this.props;
     const className = classNames(styles.container, this.props.className);
 
@@ -51,18 +74,7 @@ class ActivityInvite extends PureComponent {
             text={this.props.link}
           />
         </div>
-        <hr className={styles.hr} />
-        <div className={styles.block}>
-          <Button
-            theme="danger"
-            view="link"
-            onClick={this.props.onRevoke}
-            className={styles.revoke}
-            size="small"
-          >
-            <Text id="ActivityInvite.revoke" />
-          </Button>
-        </div>
+        {this.renderRevoke()}
       </div>
     );
   }

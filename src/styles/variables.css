@@ -232,6 +232,7 @@
   --icon-button-flat-large-size: 72px;
   /* Input */
   --input-error-color: var(--color-danger);
+  --input-warning-color: var(--color-warning);
   --input-success-color: var(--color-success);
   --input-text-color: #000;
   --input-placeholder-color: color(#000 alpha(30%));

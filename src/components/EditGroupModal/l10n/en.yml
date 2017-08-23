@@ -3,3 +3,9 @@ title:
   channel: Update channel info
   avatar: Edit avatar
 submit: Update info
+
+group:
+  become_public: This group become public
+
+channel:
+  become_public: This channel become public
