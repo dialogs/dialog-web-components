@@ -133,7 +133,7 @@ class DiscoverCard extends PureComponent {
           <span>{title}</span>
         </div>
         {this.renderShortname()}
-        <div className={styles.description} title={description}>{description}</div>
+        <div className={styles.description} title={description}><span>{description}</span></div>
       </div>
     );
   }

@@ -94,7 +94,12 @@
   font-size: var(--discover-card-description-font-size);
   color: var(--discover-card-description-color);
   margin-top: 4px;
+  display: flex;
   line-height: 16px;
+  & span {
+    @apply --text-overflow-ellipsis;
+    white-space: initial;
+  }
 }
 
 .footer {
@@ -139,4 +144,5 @@
   color: var(--discover-card-creator-color);
   flex: 1 1 auto;
   @apply --flex-fix;
+  @apply --text-overflow-ellipsis;
 }
