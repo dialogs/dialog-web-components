@@ -5,8 +5,8 @@
 @import './colors.css';
 @import './helpers.css';
 
+@custom-media --smaller (width < 500px);
 @custom-media --small (width < 800px);
-
 @custom-media --medium (width < 1100px);
 
 :root {
