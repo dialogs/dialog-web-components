@@ -85,7 +85,7 @@
   @media (--medium) {
     flex: 0 0 50%;
     max-width: 50%;
-    height: 240px;
+    height: 250px;
   }
 
   @media (--small) {
