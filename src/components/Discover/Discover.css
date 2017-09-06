@@ -76,7 +76,6 @@
 }
 
 .cardWrapper {
-  height: 200px;
   flex: 0 0 33.3333%;
   max-width: 33.3333%;
   padding: calc(var(--default-padding) / 2);
@@ -88,7 +87,6 @@
   }
 
   @media (--small) {
-    height: auto;
     flex: 0 0 100%;
     max-width: 100%;
   }
