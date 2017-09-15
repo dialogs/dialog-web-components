@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import { Text } from '@dlghq/react-l10n';
 import Trigger from '../Trigger/Trigger';
 import classNames from 'classnames';
-import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import styles from './Tooltip.css';
 
 export type Props = {
@@ -32,7 +32,7 @@ class Tooltip extends Component {
 
   static defaultProps = {
     theme: 'default'
-  }
+  };
 
   componentWillUpdate(): void {
     if (this.trigger) {
@@ -45,41 +45,39 @@ class Tooltip extends Component {
   };
 
   renderContent() {
-    if (typeof this.props.text === 'string') {
-      return (
-        <Text id={this.props.text} />
-      );
-    }
-
-    return this.props.text;
-  }
-
-  renderTooltip = () => {
     const className = classNames(styles.tooltip, styles[this.props.theme]);
 
     return (
-      <CSSTransitionGroup
-        transitionAppear
-        transitionEnter={false}
-        transitionLeave={false}
-        transitionAppearTimeout={100}
-        transitionName={{
+      <CSSTransition
+        appear
+        timeout={{ appear: 100 }}
+        classNames={{
           appear: styles.appear,
           appearActive: styles.appearActive
         }}
       >
         <div className={className}>
-          {this.renderContent()}
+          {this.props.text === 'string' ? (
+            <Text id={this.props.text} />
+          ) : (
+            this.props.text
+          )}
         </div>
-      </CSSTransitionGroup>
+      </CSSTransition>
     );
+  }
+
+  renderTooltip = () => {
+    return <TransitionGroup>{this.renderContent()}</TransitionGroup>;
   };
 
   renderTrigger = (handlers: Object) => {
     const className = classNames(styles.wrapper, this.props.className);
 
     return (
-      <div {...handlers} className={className}>{this.props.children}</div>
+      <div {...handlers} className={className}>
+        {this.props.children}
+      </div>
     );
   };
 

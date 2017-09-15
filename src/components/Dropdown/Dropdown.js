@@ -5,7 +5,7 @@
 
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
-import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import styles from './Dropdown.css';
 
 export type Props = {
@@ -24,23 +24,27 @@ class Dropdown extends PureComponent {
 
   render(): React.Element<any> {
     const { theme, style } = this.props;
-    const className = classNames(styles.container, styles[theme], this.props.className);
+    const className = classNames(
+      styles.container,
+      styles[theme],
+      this.props.className
+    );
 
     return (
-      <CSSTransitionGroup
-        transitionAppear
-        transitionAppearTimeout={150}
-        transitionEnter={false}
-        transitionLeave={false}
-        transitionName={{
-          appear: styles.appear,
-          appearActive: styles.appearActive
-        }}
-      >
-        <div className={className} style={style}>
-          {this.props.children}
-        </div>
-      </CSSTransitionGroup>
+      <TransitionGroup>
+        <CSSTransition
+          appear
+          timeout={{ appear: 150 }}
+          classNames={{
+            appear: styles.appear,
+            appearActive: styles.appearActive
+          }}
+        >
+          <div className={className} style={style}>
+            {this.props.children}
+          </div>
+        </CSSTransition>
+      </TransitionGroup>
     );
   }
 }

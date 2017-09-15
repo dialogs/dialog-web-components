@@ -4,24 +4,19 @@
  */
 
 import type { Typing as TypingType } from '@dlghq/dialog-types';
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import Spinner from '../Spinner/Spinner';
-import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import classNames from 'classnames';
 import styles from './Typing.css';
 
 export type TypingProps = {
   typing: TypingType,
   className?: string
-}
+};
 
-class Typing extends Component {
+class Typing extends PureComponent {
   props: TypingProps;
-
-  shouldComponentUpdate(nextProps: TypingProps): boolean {
-    return nextProps.typing !== this.props.typing ||
-           nextProps.className !== this.props.className;
-  }
 
   renderTyping(): ?React.Element<any> {
     const { typing } = this.props;
@@ -31,10 +26,20 @@ class Typing extends Component {
     }
 
     return (
-      <div className={styles.typing}>
-        <Spinner type="dotted" className={styles.indicator} />
-        <div className={styles.text}>{typing}</div>
-      </div>
+      <CSSTransition
+        classNames={{
+          enter: styles.enter,
+          enterActive: styles.enterActive,
+          exit: styles.leave,
+          exitActive: styles.leaveActive
+        }}
+        timeout={{ enter: 100, exit: 100 }}
+      >
+        <div className={styles.typing}>
+          <Spinner type="dotted" className={styles.indicator} />
+          <div className={styles.text}>{typing}</div>
+        </div>
+      </CSSTransition>
     );
   }
 
@@ -43,18 +48,7 @@ class Typing extends Component {
 
     return (
       <div className={className}>
-        <CSSTransitionGroup
-          transitionName={{
-            enter: styles.enter,
-            enterActive: styles.enterActive,
-            leave: styles.leave,
-            leaveActive: styles.leaveActive
-          }}
-          transitionEnterTimeout={100}
-          transitionLeaveTimeout={100}
-        >
-          {this.renderTyping()}
-        </CSSTransitionGroup>
+        <TransitionGroup>{this.renderTyping()}</TransitionGroup>
       </div>
     );
   }
