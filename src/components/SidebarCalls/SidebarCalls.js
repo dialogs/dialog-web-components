@@ -29,12 +29,6 @@ class SidebarCalls extends Component {
     }
   };
 
-  renderEmpty = () => {
-    return (
-      <Text id="SidebarCalls.empty" className={styles.empty} />
-    );
-  };
-
   renderRow = ({ index, key, style }: Object) => {
     return (
       <div key={key} style={style}>
@@ -42,6 +36,19 @@ class SidebarCalls extends Component {
           uid={this.props.uid}
           call={this.props.calls[index]}
           onSelect={this.props.onSelect}
+        />
+      </div>
+    );
+  };
+
+  renderEmpty = () => {
+    return (
+      <div className={styles.empty}>
+        <Text
+          id="SidebarCalls.empty"
+          html
+          tagName="div"
+          className={styles.emptyText}
         />
       </div>
     );
