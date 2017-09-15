@@ -1,5 +1,3 @@
-Empty Chat:
-
-```
+```jsx
 <EmptyChat />
 ```

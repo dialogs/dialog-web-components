@@ -1,6 +1,4 @@
-Basic ActivityProfile:
-
-```
+```jsx
 const user = {
   name: 'Steve Rodgers',
   nick: 'rodgers',

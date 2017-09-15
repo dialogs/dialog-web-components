@@ -1,7 +1,7 @@
 Timer
 -----
 
-```
+```jsx
 const start = Date.now();
 
 <div>
@@ -13,7 +13,7 @@ const start = Date.now();
 TimeTimer
 ---------
 
-```
+```jsx
 const { default: TimeTimer } = require('./TimeTimer');
 
 initialState = {

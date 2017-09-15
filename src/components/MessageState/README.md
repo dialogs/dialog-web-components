@@ -1,6 +1,4 @@
-Message states:
-
-```
+```jsx
 <div>
   <MessageState state="pending" time="pending" />
   <br />

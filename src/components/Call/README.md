@@ -1,7 +1,7 @@
 Audio Call
 -----------
 
-```
+```jsx
 const CallExample = require('./Call.example').default;
 
 <CallExample />
@@ -11,7 +11,7 @@ const CallExample = require('./Call.example').default;
 Video Call
 ----------
 
-```
+```jsx
 const CallExample = require('./Call.example').default;
 
 <CallExample withVideo />
@@ -20,7 +20,7 @@ const CallExample = require('./Call.example').default;
 Screen sharing
 --------------
 
-```
+```jsx
 const CallExample = require('./Call.example').default;
 
 <CallExample withVideo withScreenSharing />

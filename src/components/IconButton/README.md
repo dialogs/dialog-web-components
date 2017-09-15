@@ -1,6 +1,6 @@
 Basic IconButton:
 
-```
+```jsx
 <div className="styleguide__buttons">
   <IconButton glyph="attach_file" onClick={() => alert('Clicked')} />
   <IconButton glyph="apple" onClick={() => alert('Clicked')} />
@@ -9,7 +9,7 @@ Basic IconButton:
 
 IconButton sizes:
 
-```
+```jsx
 <div className="styleguide__buttons">
   <IconButton glyph="more_outline" size="normal" onClick={() => alert('Clicked')} />
   <IconButton glyph="phone_outline" size="large" onClick={() => alert('Clicked')} />
@@ -18,7 +18,7 @@ IconButton sizes:
 
 Flat Themed IconButton:
 
-```
+```jsx
 <div className="styleguide__buttons">
   <IconButton glyph="logo" size="normal" onClick={() => {}} flat theme="default" />
   <IconButton glyph="logo" size="normal" onClick={() => {}} flat theme="primary" />
@@ -38,7 +38,7 @@ Flat Themed IconButton:
 
 Disabled IconButton:
 
-```
+```jsx
 <div className="styleguide__buttons">
   <IconButton glyph="attach_file" size="normal" disabled />
   <IconButton glyph="apple" size="large" disabled />

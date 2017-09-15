@@ -1,4 +1,4 @@
-```
+```jsx
 const nkt = {
   peer: { id: 1, type: 'user', key: 'u1' },
   type: 'user',

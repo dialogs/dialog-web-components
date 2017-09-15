@@ -1,4 +1,4 @@
-```
+```jsx
 const initial = {
   isOpen: false,
   appName: 'dialog',

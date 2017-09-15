@@ -1,6 +1,6 @@
 Basic Icon:
 
-```
+```jsx
 <div>
   <Icon glyph="add_member" />
   <Icon glyph="apple" />
@@ -67,7 +67,7 @@ Basic Icon:
 
 Themed Icons:
 
-```
+```jsx
 <div>
   <Icon glyph="logo" theme="primary" />
   <Icon glyph="done" theme="success" />
@@ -79,7 +79,7 @@ Themed Icons:
 
 Inverted Icon:
 
-```
+```jsx
 <div>
   <Icon glyph="logo" theme="primary" inverted />
   <Icon glyph="done" theme="success" inverted />
@@ -91,7 +91,7 @@ Inverted Icon:
 
 Sizable icon:
 
-```
+```jsx
 <div>
   <Icon glyph="logo" theme="primary" size="small" />
   <Icon glyph="done" theme="success" size="small" inverted />
@@ -104,7 +104,7 @@ Sizable icon:
 
 Clickable Icon:
 
-```
+```jsx
 <div>
   <Icon glyph="logo" theme="primary" inverted onClick={() => {}} />
   <Icon glyph="done" theme="success" onClick={() => {}} />

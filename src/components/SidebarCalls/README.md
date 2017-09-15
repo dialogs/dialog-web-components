@@ -1,7 +1,5 @@
-Basic calls list:
-
-```
-function getArchives(offset = 0) {
+```jsx
+function getCalls(offset = 0) {
   const archive = [];
   for (let i = 0; i < 10; i++) {
     const id = i + offset * 10;
@@ -23,7 +21,7 @@ function getArchives(offset = 0) {
 }
 
 initialState = {
-  archive: getArchives(0),
+  archive: getCalls(0),
   offset: 0,
   pending: false
 };
@@ -35,7 +33,7 @@ const handleLoad = () => {
       setState({
         archive: [
           ...state.archive, 
-          ...getArchives(state.offset)
+          ...getCalls(state.offset)
         ],
         offset: state.offset + 1,
         pending: false

@@ -1,5 +1,3 @@
-Basic Field:
-
-```
+```jsx
 <Field>Hello from Field!</Field>
 ```

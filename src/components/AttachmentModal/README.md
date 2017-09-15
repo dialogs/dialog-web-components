@@ -1,6 +1,4 @@
-Basic AttachmentModal:
-
-```
+```jsx
 const { selectFiles } = require('@dlghq/dialog-utils');
 
 initialState = {

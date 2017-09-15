@@ -1,5 +1,3 @@
-Basic Dragndrop:
-
-```
-<Dragndrop>Hello from Dragndrop!</Dragndrop>
+```jsx
+<Dragndrop />
 ```

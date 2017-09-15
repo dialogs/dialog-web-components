@@ -1,19 +1,23 @@
-Basic Checkbox:
+Basic checkbox:
 
-    initialState = { value: true };
-    <Checkbox
-      id="basic"
-      value={state.value}
-      label="Hello, world!"
-      onChange={() => setState({ value: !state.value })}
-    />
+```jsx
+  initialState = { value: true };
+  <Checkbox
+    id="basic"
+    value={state.value}
+    label="Hello, world!"
+    onChange={() => setState({ value: !state.value })}
+  />
+```
 
-Disabled Checkbox:
+Disabled state:
 
-    <Checkbox
-      id="disabled"
-      label="I'm, disabled )="
-      value
-      disabled
-      onChange={() => {}}
-    />
+```jsx
+<Checkbox
+  id="disabled"
+  label="I'm, disabled )="
+  value
+  disabled
+  onChange={() => {}}
+/>
+```

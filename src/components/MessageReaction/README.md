@@ -1,7 +1,7 @@
 Message Reaction
 ----------------
 
-```
+```jsx
 const _ = require('lodash');
 const { Map } = require('immutable');
 

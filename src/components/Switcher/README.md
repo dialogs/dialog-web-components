@@ -1,7 +1,8 @@
 Basic Switcher:
 
-```
-const initialState = { value: true };
+```jsx
+initialState = { value: true };
+
 <Switcher
   id="example"
   name="example"
@@ -12,8 +13,9 @@ const initialState = { value: true };
 
 Switcher with label:
 
-```
-const initialState = { value: true };
+```jsx
+initialState = { value: true };
+
 <Switcher
   id="label"
   name="label"
@@ -26,8 +28,9 @@ const initialState = { value: true };
 
 Disabled Switcher:
 
-```
-const initialState = { value: true };
+```jsx
+initialState = { value: true };
+
 <Switcher
   disabled
   id="disabled"

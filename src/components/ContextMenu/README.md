@@ -1,6 +1,4 @@
-Basic ContextMenu:
-
-```
+```jsx
 const onClick = () => alert('!!!');
 const getMenu = () => {
   return ([{
@@ -8,6 +6,7 @@ const getMenu = () => {
     handler: onClick
   }]);
 };
+
 <ContextMenu getMenu={getMenu}>
   Hello from ContextMenu!
 </ContextMenu>

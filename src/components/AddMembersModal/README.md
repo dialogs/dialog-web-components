@@ -1,5 +1,4 @@
-Basic AddMembersModal:
-```
+```jsx
 const { PeerInfoSelectorState } = require('../../entities');
 const contacts = require('../ContactList/mock/contacts.json');
 

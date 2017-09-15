@@ -1,6 +1,4 @@
-Basic RecentCallItem:
-
-```
+```jsx
 const peers = [{
   avatar: 'https://avatars1.githubusercontent.com/u/930121',
   isVerified: false,

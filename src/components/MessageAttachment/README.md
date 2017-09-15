@@ -1,4 +1,4 @@
-```
+```jsx
 const messages = require('../../fixtures/messages');
 const from = require('../../fixtures/peerInfo');
 const onGoToMessage = () => console.debug('onGoToMessage');

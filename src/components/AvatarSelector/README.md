@@ -1,6 +1,4 @@
-Basic AvatarSelector:
-
-```
+```jsx
 initialState = {
   avatar: null,
   placeholder: "empty",

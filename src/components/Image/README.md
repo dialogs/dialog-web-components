@@ -1,7 +1,6 @@
 Image:
 
-```
-
+```jsx
 const preview = require('./fixtures/welcome-cat-preview.txt');
 
 <Image
@@ -14,7 +13,8 @@ const preview = require('./fixtures/welcome-cat-preview.txt');
 ```
 
 Empty Image:
-```
+
+```jsx
 <Image
   src={null}
   alt="Empty Image"

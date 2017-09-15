@@ -1,6 +1,6 @@
 Danger:
 
-```
+```jsx
 <Confirm 
   request={{
     question: 'Are you going to delete this message?',
@@ -14,7 +14,7 @@ Danger:
 
 Warning:
 
-```
+```jsx
 <Confirm 
   request={{
     question: 'Are you going to clear chat history?',
@@ -28,7 +28,7 @@ Warning:
 
 Success:
 
-```
+```jsx
 <Confirm 
   request={{
     question: 'Are you going to add this user to contacts?',

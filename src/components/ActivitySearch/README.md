@@ -1,4 +1,4 @@
-```
+```jsx
 const messages = require('../../fixtures/messages');
 const peerInfo = require('../../fixtures/peerInfo');
 

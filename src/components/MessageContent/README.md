@@ -1,7 +1,7 @@
 Text
 ----
 
-```
+```jsx
 const content = {
   type: 'text',
   text: 'Hello, world :+1:'
@@ -10,7 +10,7 @@ const content = {
 <MessageContent content={content} />
 ```
 
-```
+```jsx
 const content = {
   type: 'text',
   text: 'Text with media',
@@ -23,7 +23,7 @@ const content = {
 Service
 -------
 
-```
+```jsx
 const content = {
   type: 'service',
   text: 'Octocat joined group!'
@@ -35,7 +35,7 @@ const content = {
 Photo
 -----
 
-```
+```jsx
 const content = {
   type: 'photo',
   fileUrl: 'https://s3.amazonaws.com/psiu/wallpapers/heic0604a/heic0604a_desktop.jpg',
@@ -51,7 +51,7 @@ const content = {
 Document
 --------
 
-```
+```jsx
 initialState = {
   type: 'document',
   preview: '',
@@ -75,7 +75,7 @@ const toggleUpload = () => setState({ isUploading: !state.isUploading });
 Voice
 -----
 
-```
+```jsx
 initialState = {
   content: 'voice',
   type: 'voice',
@@ -100,7 +100,7 @@ const toggleUpload = () => setState({ isUploading: !state.isUploading });
 Video
 -----
 
-```
+```jsx
 const content = {
   type: 'video',
   width: 640,
@@ -116,7 +116,7 @@ const content = {
 <MessageContent content={content} />
 ```
 
-```
+```jsx
 const content = {
   type: 'video',
   width: 640,

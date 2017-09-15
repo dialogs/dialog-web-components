@@ -1,6 +1,4 @@
-Basic LinkButton:
-
-```
+```jsx
 <div className="styleguide__buttons">
   <LinkButton theme="primary" href="#" target="_blank">Primary</LinkButton>
   <LinkButton theme="success" href="#" target="_blank">Success</LinkButton>
@@ -8,5 +6,4 @@ Basic LinkButton:
   <LinkButton theme="info" href="#" target="_blank">Info</LinkButton>
   <LinkButton theme="warning" href="#" target="_blank">Warning</LinkButton>
 </div>
-```
 ```

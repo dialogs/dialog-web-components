@@ -1,6 +1,4 @@
-Basic ActivityListMembers:
-
-```
+```jsx
 const members = [{
   peerInfo: {
     peer: {

@@ -1,6 +1,4 @@
-Basic Lightbox:
-
-```
+```jsx
 initialState = {
   isOpen: false,
   index: 0,

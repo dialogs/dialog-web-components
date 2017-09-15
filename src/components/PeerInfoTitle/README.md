@@ -1,7 +1,4 @@
-PeerInfoTitle
--------------
-
-```
+```jsx
 <PeerInfoTitle 
   title="🤖👾👽"
   userName="lol"

@@ -1,6 +1,4 @@
-Basic Range:
-
-```
+```jsx
 initialState = {
  value: 5
 };

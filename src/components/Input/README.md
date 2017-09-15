@@ -1,6 +1,6 @@
 Basic Input:
 
-```
+```jsx
 <Input
   id="input_basic"
   label="Basic"
@@ -12,7 +12,7 @@ Basic Input:
 
 Input without label:
 
-```
+```jsx
 <Input
   id="input_no_label"
   value={state.value || ''}
@@ -22,7 +22,7 @@ Input without label:
 
 Disabled Input:
 
-```
+```jsx
 <Input
   disabled
   id="input_disabled"
@@ -33,7 +33,7 @@ Disabled Input:
 
 Success Input with hint:
 
-```
+```jsx
 <Input
   hint="Correct email"
   id="input_success_hint"
@@ -46,7 +46,7 @@ Success Input with hint:
 
 Error Input with hint:
 
-```
+```jsx
 <Input
   hint="Incorrect email"
   id="input_error_hint"
@@ -59,7 +59,7 @@ Error Input with hint:
 
 Prefixed Input
 
-```
+```jsx
 <Input
   id="shortname"
   label="Channel link"
@@ -72,7 +72,7 @@ Prefixed Input
 
 Since `<textarea />` has the same interface as `<input />`, there is `textarea` type:
 
-```
+```jsx
 const initialState = { value: '' };
 <Input
   id="input_textarea"
@@ -86,7 +86,7 @@ const initialState = { value: '' };
 
 You can make `Input` even larger. Just add `large` to props:
 
-```
+```jsx
 <Input
   id="title"
   label="Group name"

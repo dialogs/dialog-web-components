@@ -1,6 +1,4 @@
-Basic ConnectionStatus:
-
-```
+```jsx
 const statuses = ['online', 'connecting', 'updating'];
 const initialState = {
   id: null,

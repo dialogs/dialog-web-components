@@ -1,6 +1,4 @@
-Basic ProfileModal:
-
-```
+```jsx
 const initialState = {
   isOpen: false,
   profile: null,

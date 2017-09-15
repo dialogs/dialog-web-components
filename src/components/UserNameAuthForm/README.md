@@ -1,6 +1,4 @@
-Example:
-
-```
+```jsx
 initialState = {
   value: { login: '', password: '' },
   error: null,

@@ -1,5 +1,3 @@
-Basic Tooltip:
-
-```
+```jsx
 <Tooltip text="Tooltip">Hover me!</Tooltip>
 ```

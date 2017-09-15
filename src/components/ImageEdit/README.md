@@ -1,6 +1,4 @@
-Basic AvatarEditModal:
-
-```
+```jsx
 const { selectFiles, fileToBase64 } = require('@dlghq/dialog-utils');
 
 initialState = {

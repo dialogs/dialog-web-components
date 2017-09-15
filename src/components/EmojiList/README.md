@@ -1,7 +1,7 @@
 Emoji List
 ----------
 
-```
+```jsx
 initialState = { 
   open: true,
   recent: ['😀', '👻']
@@ -31,7 +31,7 @@ const handleEmojiClick = (emoji) => {
 Stickers List
 -------------
 
-```
+```jsx
 const images = require('./fixtures/octodex.json');
 
 const stickers = [];

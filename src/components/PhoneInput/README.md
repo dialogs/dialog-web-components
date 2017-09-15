@@ -1,7 +1,4 @@
-PhoneInput
-----------
-
-```
+```jsx
 initialState = { value: '', country: null };
 
 handleChange = (value, country) => {

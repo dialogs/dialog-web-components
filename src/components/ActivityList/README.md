@@ -1,5 +1,4 @@
-Basic ActivityList:
-```
+```jsx
 const ActivityListItem = require('./ActivityListItem').default;
 
 <div style={{ background: '#fff', width: 320 }}>

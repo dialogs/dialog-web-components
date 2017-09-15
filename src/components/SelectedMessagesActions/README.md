@@ -1,6 +1,4 @@
-Basic EditorForward:
-
-```
+```jsx
 <SelectedMessagesActions
   count={4}
   onDelete={console.debug}

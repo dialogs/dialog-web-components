@@ -1,6 +1,6 @@
 Message:
 
-```
+```jsx
 const messages = require('../../fixtures/messages');
 
 <div style={{background: '#fff'}}>
@@ -17,7 +17,7 @@ const messages = require('../../fixtures/messages');
 Highlighted Message
 -------------------
 
-```
+```jsx
 const messages = require('../../fixtures/messages');
 
 initialState = {
@@ -41,7 +41,7 @@ handleClick = () => {
 
 Message selection:
 
-```
+```jsx
 const messages = require('../../fixtures/messages');
 
 initialState = {

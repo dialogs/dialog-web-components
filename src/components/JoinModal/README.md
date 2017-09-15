@@ -1,6 +1,4 @@
-JoinModal:
-
-```
+```jsx
 initialState = { isOpen: false };
 const handleOpen = () => setState({ isOpen: true });
 const handleClose = () => setState({ isOpen: false });
