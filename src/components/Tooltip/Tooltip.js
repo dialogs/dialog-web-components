@@ -44,31 +44,29 @@ class Tooltip extends Component {
     this.trigger = trigger;
   };
 
-  renderContent() {
+  renderTooltip = () => {
     const className = classNames(styles.tooltip, styles[this.props.theme]);
 
     return (
-      <CSSTransition
-        appear
-        timeout={{ appear: 100 }}
-        classNames={{
-          appear: styles.appear,
-          appearActive: styles.appearActive
-        }}
-      >
-        <div className={className}>
-          {this.props.text === 'string' ? (
-            <Text id={this.props.text} />
-          ) : (
-            this.props.text
-          )}
-        </div>
-      </CSSTransition>
+      <TransitionGroup>
+        <CSSTransition
+          appear
+          timeout={{ appear: 100 }}
+          classNames={{
+            appear: styles.appear,
+            appearActive: styles.appearActive
+          }}
+        >
+          <div className={className}>
+            {typeof this.props.text === 'string' ? (
+              <Text id={this.props.text} />
+            ) : (
+              this.props.text
+            )}
+          </div>
+        </CSSTransition>
+      </TransitionGroup>
     );
-  }
-
-  renderTooltip = () => {
-    return <TransitionGroup>{this.renderContent()}</TransitionGroup>;
   };
 
   renderTrigger = (handlers: Object) => {
