@@ -4,10 +4,32 @@
 
 @import '../../styles/variables.css';
 
+:root {
+  --message-state-edited-font-size: calc(var(--message-state-font-size) * 0.7)
+}
+
 .container {
-  cursor: pointer;
-  text-transform: uppercase;
+  display: inline-block;
+  text-align: center;
+  height: 22px;
   font-family: var(--message-state-font-family);
+}
+
+.time {
+  cursor: pointer;
   font-size: var(--message-state-font-size);
   color: var(--message-state-color);
+}
+
+.edited {
+  font-size: var(--message-state-edited-font-size);
+  color: color(#000 alpha(50%));
+  cursor: default;
+}
+
+.compact {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
 }

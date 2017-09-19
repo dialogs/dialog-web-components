@@ -36,7 +36,8 @@ module.exports = [
     content: {
       type: 'text',
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ipsum viverra, eleifend ante nec, porta enim.'
-    }
+    },
+    isEdited: true
   },
   {
     sender: senders[0],
@@ -58,7 +59,8 @@ module.exports = [
     content: {
       type: 'text',
       text: 'Donec iaculis augue eu blandit scelerisque.'
-    }
+    },
+    isEdited: true
   },
   {
     sender: senders[1],

@@ -1,6 +1,6 @@
 ```jsx
 <div>
-  <MessageState state="pending" time="pending" />
+  <MessageState state="pending" time="pending" isEdited />
   <br />
   <MessageState state="sent" time="sent" />
   <br />
