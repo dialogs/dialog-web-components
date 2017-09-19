@@ -5,7 +5,7 @@
 @import '../../styles/variables.css';
 
 :root {
-  --message-state-edited-font-size: calc(var(--message-state-font-size) * 0.7)
+  --message-state-edited-font-size: 11px;
 }
 
 .container {
@@ -23,7 +23,8 @@
 
 .edited {
   font-size: var(--message-state-edited-font-size);
-  color: color(#000 alpha(50%));
+  color: color(#000 alpha(40%));
+  font-weight: 500;
   cursor: default;
 }
 
