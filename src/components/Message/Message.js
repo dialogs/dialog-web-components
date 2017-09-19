@@ -170,6 +170,7 @@ class Message extends PureComponent {
         compact={this.props.short}
         hover={this.state.hover}
         time={this.props.message.date}
+        fullTime={this.props.message.fullDate}
         isEdited={this.props.message.isEdited}
         onClick={this.handleForceSelect}
       />
@@ -281,7 +282,7 @@ class Message extends PureComponent {
       return null;
     }
 
-    const children = message.reactions.map(reaction => {
+    const children = message.reactions.map((reaction) => {
       return (
         <MessageReaction
           key={reaction.code}

@@ -14,6 +14,7 @@ type Props = {
   className?: string,
   state: MessageStateType,
   time: string,
+  fullTime: Date,
   isEdited?: boolean,
   hover: boolean,
   compact: boolean,
@@ -30,35 +31,19 @@ class MessageState extends PureComponent {
     this.props.onClick();
   };
 
-  renderState() {
-    const children = [];
-    if (!this.props.compact || this.props.hover || !this.props.isEdited) {
-      children.push(
-        <time key="t" className={styles.time} onClick={this.handleClick}>
-          {this.props.time}
-        </time>
-      );
+  renderTimestamp() {
+    if (this.props.compact && !this.props.hover) {
+      return null;
     }
-
-    if (!this.props.compact || (!this.props.hover && this.props.isEdited)) {
-      children.push(
-        <Text key="e" className={styles.edited} id="MessageState.edited" />
-      );
-    }
-
-    return children;
-  }
-
-  render() {
-    const className = classNames(
-      styles.container,
-      this.props.className
-    );
 
     const time = (
-      <div className={className}>
-        {this.renderState()}
-      </div>
+      <time
+        className={styles.time}
+        onClick={this.handleClick}
+        dateTime={this.props.fullTime.toISOString()}
+      >
+        {this.props.time}
+      </time>
     );
 
     if (this.props.state === 'unknown') {
@@ -66,9 +51,36 @@ class MessageState extends PureComponent {
     }
 
     return (
-      <Tooltip text={`MessageState.${this.props.state}`}>
-        {time}
-      </Tooltip>
+      <Tooltip text={`MessageState.${this.props.state}`}>{time}</Tooltip>
+    );
+  }
+
+  renderRenderEdited() {
+    if ((this.props.compact && this.props.hover) || !this.props.isEdited) {
+      return null;
+    }
+
+    return (
+      <Text key="edited" className={styles.edited} id="MessageState.edited" />
+    );
+  }
+
+  render() {
+    if (this.props.compact && !(this.props.hover || this.props.isEdited)) {
+      return null;
+    }
+
+    const className = classNames(styles.container, this.props.className, {
+      [styles.compact]: this.props.compact
+    });
+    const spacebars = (this.props.isEdited && !this.props.compact) ? '\u00A0\u00A0' : null;
+
+    return (
+      <div className={className}>
+        {this.renderTimestamp()}
+        {spacebars}
+        {this.renderRenderEdited()}
+      </div>
     );
   }
 }
