@@ -14,12 +14,16 @@
   position: relative;
   display: flex;
   flex-direction: row;
-  min-height: 36px;
+  min-height: 34px;
   box-sizing: border-box;
   padding: var(--message-vertical-padding) 36px var(--message-vertical-padding) var(--message-horizontal-padding);
   transition: box-shadow var(--message-transition-duration) ease-in-out, opacity var(--message-transition-duration) ease-in;
   font-family: var(--message-font-family);
   backface-visibility: hidden;
+}
+
+.short {
+  padding: var(--message-small-vertical-padding) 36px var(--message-small-vertical-padding) var(--message-small-horizontal-padding);
 }
 
 .avatar {
@@ -108,13 +112,6 @@
 
 .hover {
   background-color: var(--message-hover-background-color) !important;
-}
-
-.stateShort {
-  display: inline-block;
-  line-height: 24px;
-  margin-left: 0;
-  vertical-align: middle;
 }
 
 .reactions {

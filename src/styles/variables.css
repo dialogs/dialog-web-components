@@ -266,7 +266,7 @@
   --message-font-family: var(--default-font-family);
   --message-vertical-padding: 6px;
   --message-horizontal-padding: 20px;
-  --message-small-vertical-padding: 6px;
+  --message-small-vertical-padding: 4px;
   --message-small-horizontal-padding: 20px;
   --message-hover-background-color: #f6f6f6;
   --message-highlight-background-color: color(var(--color-primary) alpha(30%));

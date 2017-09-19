@@ -130,7 +130,10 @@ class Message extends PureComponent {
   };
 
   isSelectionMode(): boolean {
-    return Boolean(this.props.isSelectionEnabled) && typeof this.props.selected === 'boolean';
+    return (
+      Boolean(this.props.isSelectionEnabled) &&
+      typeof this.props.selected === 'boolean'
+    );
   }
 
   isHover(): boolean {
@@ -179,14 +182,21 @@ class Message extends PureComponent {
       return null;
     }
 
-    const onClick = this.props.onAvatarClick ? this.handleAvatarClick : undefined;
+    const onClick = this.props.onAvatarClick
+      ? this.handleAvatarClick
+      : undefined;
     const avatarClassName = classNames({
       [styles.clickable]: this.props.onAvatarClick
     });
 
     return (
       <div className={styles.avatar}>
-        <PeerAvatar peer={sender} size={40} onClick={onClick} className={avatarClassName} />
+        <PeerAvatar
+          peer={sender}
+          size={40}
+          onClick={onClick}
+          className={avatarClassName}
+        />
       </div>
     );
   }
@@ -202,7 +212,9 @@ class Message extends PureComponent {
       [styles.clickable]: this.props.onTitleClick
     });
 
-    const onMentionClick = this.props.onMentionClick ? this.handleMentionClick : null;
+    const onMentionClick = this.props.onMentionClick
+      ? this.handleMentionClick
+      : null;
     const mentionClassName = classNames(styles.username, {
       [styles.clickable]: this.props.onMentionClick
     });
@@ -234,11 +246,7 @@ class Message extends PureComponent {
 
     const username = sender.userName ? ` @${sender.userName}` : '';
 
-    return (
-      <CopyOnly>
-        {sender.title + username + ' ' + date}
-      </CopyOnly>
-    );
+    return <CopyOnly>{sender.title + username + ' ' + date}</CopyOnly>;
   }
 
   renderActions() {
@@ -256,11 +264,7 @@ class Message extends PureComponent {
         />
       );
     } else if (this.isHover() && renderActions) {
-      return (
-        <div className={styles.actions}>
-          {renderActions()}
-        </div>
-      );
+      return <div className={styles.actions}>{renderActions()}</div>;
     }
 
     return null;
@@ -269,11 +273,15 @@ class Message extends PureComponent {
   renderReactions() {
     const { message, users } = this.props;
 
-    if (!message.reactions || !message.reactions.length || !this.props.isReactionsEnabled) {
+    if (
+      !message.reactions ||
+      !message.reactions.length ||
+      !this.props.isReactionsEnabled
+    ) {
       return null;
     }
 
-    const children = message.reactions.map((reaction) => {
+    const children = message.reactions.map(reaction => {
       return (
         <MessageReaction
           key={reaction.code}
@@ -285,11 +293,7 @@ class Message extends PureComponent {
       );
     });
 
-    return (
-      <div className={styles.reactions}>
-        {children}
-      </div>
-    );
+    return <div className={styles.reactions}>{children}</div>;
   }
 
   renderReply() {
@@ -330,7 +334,13 @@ class Message extends PureComponent {
   }
 
   render() {
-    const { short, message: { content, rid }, highlight, maxWidth, maxHeight } = this.props;
+    const {
+      short,
+      message: { content, rid },
+      highlight,
+      maxWidth,
+      maxHeight
+    } = this.props;
     const hover = this.isHover();
     const state = this.getState();
     const isError = state === 'error';
@@ -340,15 +350,20 @@ class Message extends PureComponent {
     const className = classNames(
       styles.container,
       this.props.className,
+      short ? styles.short : null,
       hover ? styles.hover : null,
       isError ? styles.error : null,
       isUnread ? styles.unread : null,
       highlight ? styles.highlight : null,
-      this.isSelectionMode() ? styles.selectable : null,
+      this.isSelectionMode() ? styles.selectable : null
     );
 
     return (
-      <Hover className={className} onHover={this.handleHover} onClick={this.handleSelect}>
+      <Hover
+        className={className}
+        onHover={this.handleHover}
+        onClick={this.handleSelect}
+      >
         <CopyOnly block />
         {this.renderActions()}
         <div className={styles.info}>
