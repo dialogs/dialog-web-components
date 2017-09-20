@@ -18,8 +18,12 @@ module.exports = {
       name,
       content: content ? resolve('docs', content + '.md') : null,
       components() {
-        return components.map((componentName) => {
-          return resolve('src/components', componentName, componentName + '.js');
+        return components.map(componentName => {
+          return resolve(
+            'src/components',
+            componentName,
+            componentName + '.js'
+          );
         });
       }
     };

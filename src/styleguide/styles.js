@@ -1,3 +1,9 @@
+const color = {
+  primary: '#6b00cb',
+  danger: '#e22d44',
+  info: '#5856d6'
+};
+
 module.exports = {
   theme: {
     maxWidth: '100%',
@@ -33,10 +39,10 @@ module.exports = {
       ]
     },
     color: {
-      link: '#5856d6',
+      link: color.info,
       linkHover: 'rgb(70, 69, 171)',
-      sidebarBackground: '#6b00cb',
-      errorBackground: '#e22d44'
+      sidebarBackground: color.primary,
+      errorBackground: color.danger
     }
   },
   styles: {
@@ -46,7 +52,24 @@ module.exports = {
         '-moz-osx-font-smoothing': 'grayscale',
         '-webkit-font-smoothing': 'antialiased'
       },
-      sidebar: {},
+      sidebar: {
+        '&::-webkit-scrollbar': {
+          width: 12
+        },
+        '&::-webkit-scrollbar-track': {
+          backgroundColor: color.primary
+        },
+        '&::-webkit-scrollbar-thumb': {
+          'border': `4px solid ${color.primary}`,
+          'borderTopWidth': 0,
+          'borderBottomWidth': 0,
+          'backgroundColor': '#fff',
+          '&:active': {
+            borderLeftWidth: 2,
+            borderWightWidth: 2
+          }
+        }
+      },
       content: {},
       logo: {
         border: 'none',
