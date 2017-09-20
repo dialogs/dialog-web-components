@@ -170,21 +170,6 @@ module.exports = {
       copyButton: {
         border: 0
       }
-    },
-    Playground: {
-      root: {
-        '& .styleguide__buttons': {
-          '& .Button__container': {
-            margin: 4
-          },
-          '& .ButtonNext__container': {
-            margin: 4
-          },
-          '& .IconButton__container': {
-            margin: 4
-          }
-        }
-      }
     }
   }
 };

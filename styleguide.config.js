@@ -31,7 +31,11 @@ module.exports = {
 
   webpackConfig: require('./webpack.config'),
 
-  require: [resolve('node_modules/core-js/shim.js'), resolve('src/styles/global.css')],
+  require: [
+    resolve('node_modules/core-js/shim.js'),
+    resolve('src/styles/global.css'),
+    resolve('src/styleguide/styles.css')
+  ],
 
   theme,
   styles,
