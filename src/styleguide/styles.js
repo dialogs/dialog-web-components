@@ -76,6 +76,23 @@ module.exports = {
         paddingBottom: 0
       }
     },
+    SectionHeading: {
+      heading: {
+        'textDecoration': 'none',
+        '&::after': {
+          'content': '"#"',
+          'display': 'none',
+          'marginLeft': 6,
+          'color': 'rgba(0, 0, 0, 0.2)'
+        },
+        '&:hover': {
+          'textDecoration': 'none'
+        },
+        '&:hover::after': {
+          'display': 'inline-block'
+        }
+      }
+    },
     Logo: {
       logo: {
         color: '#fff',
@@ -147,6 +164,11 @@ module.exports = {
             color: 'rgba(255, 255, 255, 0.9)'
           }
         }
+      }
+    },
+    Pathline: {
+      copyButton: {
+        border: 0
       }
     },
     Playground: {

@@ -18,7 +18,7 @@ module.exports = {
       name,
       content: content ? resolve('docs', content + '.md') : null,
       components() {
-        return components.map(componentName => {
+        return components.map((componentName) => {
           return resolve(
             'src/components',
             componentName,
@@ -31,13 +31,12 @@ module.exports = {
 
   webpackConfig: require('./webpack.config'),
 
-  require: [
-    resolve('node_modules/core-js/shim.js'),
-    resolve('src/styles/global.css')
-  ],
+  require: [resolve('node_modules/core-js/shim.js'), resolve('src/styles/global.css')],
 
   theme,
   styles,
+
+  template: resolve('src/styleguide/index.html'),
 
   getComponentPathLine(componentPath) {
     const name = path.basename(componentPath, '.js');
