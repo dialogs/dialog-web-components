@@ -1,3 +1,5 @@
+User profile:
+
 ```jsx
 const user = {
   name: 'Steve Rodgers',
@@ -9,6 +11,18 @@ const user = {
   phones: [{ number: '+1 234 567 89 00', title: 'Mobile phone' }],
   emails: [{ email: 'cap@america.com', title: 'Home email' }]
 };
+const online = {
+  message: '3 minutes ago'
+};
+
+<div style={{ background: '#fff', width: 320 }}>
+  <ActivityProfile info={user} online={online} type="user" />
+</div>
+```
+
+Group profile:
+
+```jsx
 const group = {
   name: 'American Option Buddies',
   shortname: null,
@@ -20,23 +34,34 @@ const group = {
   adminId: 1001
 };
 const online = {
-  message: '3 minutes ago'
+  message: '2 hours ago'
 };
-const alert = () => window.alert('!!!');
+const onAboutEdit = () => console.debug('Edit about action');
 
-<div>
-  <div style={{ background: '#fff', width: 320, float: 'left'  }}>
-    <ActivityProfile info={user} online={online} type="user" />
+<div style={{ background: '#fff', width: 320 }}>
+  <ActivityProfile info={group} onAboutEdit={onAboutEdit} online={online} type="group">
+  <div style={{ margin: '0px 5px', display: 'inline-block' }}>
+    <IconButton
+      glyph="star"
+      key="more"
+      size="large"
+    />
   </div>
-  <div style={{ background: '#fff', width: 320, float: 'left'  }}>
-    <ActivityProfile info={group} onAboutEdit={alert} online={online} type="group">
-      <IconButton
-        glyph="more_outline"
-        key="more"
-        size="large"
-      />
-    </ActivityProfile>
+  <div style={{ margin: '0px 5px', display: 'inline-block' }}>
+    <IconButton
+      glyph="add_member"
+      key="more"
+      size="large"
+    />
   </div>
-  <div style={{ clear: 'both' }} />
+  <div style={{ margin: '0px 5px', display: 'inline-block' }}>
+    <IconButton
+      glyph="more_outline"
+      key="more"
+      size="large"
+    />
+  </div>
+  </ActivityProfile>
 </div>
+
 ```
