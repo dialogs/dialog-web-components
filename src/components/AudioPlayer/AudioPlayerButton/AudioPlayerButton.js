@@ -22,7 +22,7 @@ class AudioPlayerButton extends PureComponent {
   handleButtonClick = (event: SyntheticMouseEvent) => {
     event.stopPropagation();
 
-    const { pending, isPlaying } = this.props;
+    const { pending, isPlaying, error } = this.props;
 
     if (!pending || !error) {
       if (isPlaying) {
