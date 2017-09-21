@@ -14,7 +14,7 @@ export type Props = {
   children?: any,
   fullscreen?: boolean,
   shouldCloseOnOverlayClick?: boolean,
-  onClose: () => any
+  onClose?: () => any
 };
 
 class Modal extends PureComponent {
