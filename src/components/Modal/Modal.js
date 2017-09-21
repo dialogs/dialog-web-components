@@ -10,6 +10,7 @@ import styles from './Modal.css';
 
 export type Props = {
   className?: string,
+  overlayClassName?: string,
   children?: any,
   fullscreen?: boolean,
   shouldCloseOnOverlayClick?: boolean,
@@ -21,7 +22,7 @@ class Modal extends PureComponent {
 
   render(): React.Element<any> {
     const className = classNames(styles.container, this.props.className);
-    const overlayClassName = classNames(styles.overlay, {
+    const overlayClassName = classNames(styles.overlay, this.props.overlayClassName, {
       [styles.fullscreen]: this.props.fullscreen
     });
 
