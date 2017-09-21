@@ -25,6 +25,20 @@ body {
   & :global(.Button__container),
   & :global(.ButtonNext__container),
   & :global(.IconButton__container) {
-    margin: 4px
+    margin: 4px !important;
+  }
+}
+
+:global(.WelcomeMessage__button) {
+  padding: 8px 0 !important;
+  display: inline-flex !important;
+  align-content: center !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin-right: 30px !important;
+
+  & :global(.WelcomeMessage__button__icon) {
+    margin-right: 6px !important;
+    fill: currentColor !important;
   }
 }

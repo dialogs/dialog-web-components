@@ -1,0 +1,60 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+:root {
+  --welcome-message-font-family: var(--default-font-family);
+  --welcome-message-title-font-size: 34px;
+  --welcome-message-hint-background-color: color(var(--color-info) alpha(20%));
+  --welcome-message-hint-font-size: var(--default-font-size-large);
+  --welcome-message-creator-font-size: 16px;
+  --welcome-message-creator-color: color(#000 alpha(50%));
+}
+
+/* Reset */
+.container {
+  all: initial;
+}
+
+/* Styles */
+.container {
+  display: block;
+  font-family: var(--welcome-message-font-family);
+  box-sizing: border-box;
+  padding: var(--message-horizontal-padding);
+}
+
+.hint {
+  padding: 26px;
+  background-color: var(--welcome-message-hint-background-color);
+  border-radius: 6px;
+  margin-bottom: 36px;
+}
+
+.hintText {
+  font-size: var(--welcome-message-hint-font-size);
+  line-height: 24px;
+  letter-spacing: -0.25px;
+}
+
+.title {
+  margin: 0 0 12px;
+  font-size: var(--welcome-message-title-font-size);
+  font-weight: 500;
+  line-height: 36px;
+  letter-spacing: -0.485714px;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: var(--welcome-message-creator-font-size);
+  color: var(--welcome-message-creator-color);
+  line-height: 20px;
+  letter-spacing: -0.355556px;
+}
+
+.actions {
+  margin-top: 18px;
+}

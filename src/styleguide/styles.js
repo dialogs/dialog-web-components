@@ -80,16 +80,16 @@ module.exports = {
       heading: {
         'textDecoration': 'none',
         '&::after': {
-          'content': '"#"',
-          'display': 'none',
-          'marginLeft': 6,
-          'color': 'rgba(0, 0, 0, 0.2)'
+          content: '"#"',
+          display: 'none',
+          marginLeft: 6,
+          color: 'rgba(0, 0, 0, 0.2)'
         },
         '&:hover': {
-          'textDecoration': 'none'
+          textDecoration: 'none'
         },
         '&:hover::after': {
-          'display': 'inline-block'
+          display: 'inline-block'
         }
       }
     },
