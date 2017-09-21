@@ -7,10 +7,10 @@
 :root {
   --welcome-message-font-family: var(--default-font-family);
   --welcome-message-title-font-size: 34px;
-  --welcome-message-hint-background-color: color(var(--color-info) alpha(20%));
+  --welcome-message-hint-background-color: color(var(--color-info) alpha(25%));
   --welcome-message-hint-font-size: var(--default-font-size-large);
-  --welcome-message-creator-font-size: 16px;
-  --welcome-message-creator-color: color(#000 alpha(50%));
+  --welcome-message-subtitle-font-size: 16px;
+  --welcome-message-subtitle-color: color(#000 alpha(50%));
 }
 
 /* Reset */
@@ -49,12 +49,26 @@
 
 .subtitle {
   margin: 0;
-  font-size: var(--welcome-message-creator-font-size);
-  color: var(--welcome-message-creator-color);
+  font-size: var(--welcome-message-subtitle-font-size);
+  color: var(--welcome-message-subtitle-color);
   line-height: 20px;
   letter-spacing: -0.355556px;
 }
 
 .actions {
   margin-top: 18px;
+}
+
+.about {
+  margin-top: 16px;
+}
+
+.user {
+  & .hintText {
+    margin-bottom: 20px;
+  }
+
+  & .subtitle {
+    margin-left: -4px;
+  }
 }
