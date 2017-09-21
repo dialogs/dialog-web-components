@@ -99,7 +99,7 @@ class AudioPlayer extends PureComponent {
   handleRewind = (event: SyntheticMouseEvent) => {
     event.stopPropagation();
 
-    if (this.rewind) {
+    if (this.rewind || !this.state.error) {
       const rewindRect: ClientRect = this.rewind.getBoundingClientRect();
       const rewindPosition = (event.clientX - rewindRect.left) / rewindRect.width;
 
@@ -166,7 +166,7 @@ class AudioPlayer extends PureComponent {
     const current = getHumanTime(currentTime);
 
     const className = classNames(styles.seeker, {
-      [styles.error]: this.state.error
+      [styles.seekerError]: this.state.error
     });
 
     return (

@@ -1,5 +1,4 @@
-AudioPlayer
------------
+### AudioPlayer
 
 ```jsx
 <AudioPlayer
@@ -8,8 +7,7 @@ AudioPlayer
 />
 ```
 
-Pending
--------
+### Pending
 
 ```jsx
 <AudioPlayer
@@ -18,8 +16,7 @@ Pending
 />
 ```
 
-Error
--------
+### Error
 
 ```jsx
 <AudioPlayer

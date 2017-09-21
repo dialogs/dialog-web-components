@@ -68,6 +68,7 @@
 }
 
 .error {
+  cursor: default;
   & .icon {
     fill: var(--color-danger);
   }

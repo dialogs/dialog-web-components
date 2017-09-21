@@ -24,7 +24,7 @@ class AudioPlayerButton extends PureComponent {
 
     const { pending, isPlaying } = this.props;
 
-    if (!pending) {
+    if (!pending || !error) {
       if (isPlaying) {
         this.props.onPause();
       } else {
