@@ -99,7 +99,7 @@ class AudioPlayer extends PureComponent {
   handleRewind = (event: SyntheticMouseEvent) => {
     event.stopPropagation();
 
-    if (this.rewind || !this.state.error) {
+    if (this.rewind && !this.state.error) {
       const rewindRect: ClientRect = this.rewind.getBoundingClientRect();
       const rewindPosition = (event.clientX - rewindRect.left) / rewindRect.width;
 
