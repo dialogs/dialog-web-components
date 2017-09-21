@@ -23,12 +23,12 @@ class WelcomeMessageGroup extends PureComponent {
   renderCreated() {
     const { createdAt, creator } = this.props;
 
-    if (createdAt && creator) {
+    if (creator) {
       return (
         <Text
           id="WelcomeMessage.group.created"
           className={styles.subtitle}
-          values={{ createdAt, creator }}
+          values={{ createdAt: createdAt || '', creator }}
         />
       );
     }

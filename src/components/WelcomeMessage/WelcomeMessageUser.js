@@ -5,7 +5,6 @@
 
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
-import { Text } from '@dlghq/react-l10n';
 import PeerInfoTitle from '../PeerInfoTitle/PeerInfoTitle';
 import styles from './WelcomeMessage.css';
 
@@ -49,7 +48,6 @@ class WelcomeMessageUser extends PureComponent {
     return (
       <div className={className}>
         <div className={styles.user}>
-          <Text id="WelcomeMessage.user.hint" className={styles.hintText} tagName="div" />
           <PeerInfoTitle
             title={title}
             userName={userName}

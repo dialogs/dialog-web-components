@@ -1,5 +1,3 @@
 group:
   created: Group created by {creator} at {createdAt}
   hint: You created a group chat. You can change its name, set a nice picture, describe the purpose and invite your friends or teammates to join you.
-user:
-  hint: This is beginning of your conversation with

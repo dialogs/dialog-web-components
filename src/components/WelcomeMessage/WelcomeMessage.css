@@ -23,7 +23,7 @@
   display: block;
   font-family: var(--welcome-message-font-family);
   box-sizing: border-box;
-  padding: var(--message-horizontal-padding);
+  padding: 10rem var(--message-horizontal-padding) var(--message-horizontal-padding);
 }
 
 .hint {
