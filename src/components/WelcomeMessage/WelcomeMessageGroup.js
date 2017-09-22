@@ -11,6 +11,8 @@ import styles from './WelcomeMessage.css';
 export type Props = {
   className?: string,
   title: string,
+  isAdmin?: ?boolean,
+  isOwner?: ?boolean,
   about?: string,
   creator?: ?string,
   createdAt?: ?string,
@@ -21,7 +23,17 @@ class WelcomeMessageGroup extends PureComponent {
   props: Props;
 
   renderCreated() {
-    const { createdAt, creator } = this.props;
+    const { createdAt, creator, isOwner } = this.props;
+
+    if (isOwner) {
+      return (
+        <Text
+          id="WelcomeMessage.group.created_by_you"
+          className={styles.subtitle}
+          values={{ createdAt: createdAt || '' }}
+        />
+      );
+    }
 
     if (creator) {
       return (
@@ -43,11 +55,7 @@ class WelcomeMessageGroup extends PureComponent {
       return null;
     }
 
-    return (
-      <div className={styles.about}>
-        {about}
-      </div>
-    );
+    return <div className={styles.about}>{about}</div>;
   }
 
   renderActions() {
@@ -58,6 +66,23 @@ class WelcomeMessageGroup extends PureComponent {
     return <div className={styles.actions}>{this.props.renderActions()}</div>;
   }
 
+  renderHint() {
+    const { isAdmin } = this.props;
+
+    if (!isAdmin) {
+      return null;
+    }
+
+    return (
+      <div className={styles.hint}>
+        <Text
+          id="WelcomeMessage.group.hint"
+          className={styles.hintText}
+          tagName="div"
+        />
+      </div>
+    );
+  }
   render(): React.Element<any> {
     const { title } = this.props;
     const className = classNames(styles.container, this.props.className);
@@ -65,9 +90,8 @@ class WelcomeMessageGroup extends PureComponent {
     return (
       <div className={className}>
         <div className={styles.group}>
-          <div className={styles.hint}>
-            <Text id="WelcomeMessage.group.hint" className={styles.hintText} tagName="div" />
-          </div>
+          {this.renderHint()}
+
           <h1 className={styles.title}>{title}</h1>
           {this.renderCreated()}
           {this.renderAbout()}
