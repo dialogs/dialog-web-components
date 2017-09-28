@@ -47,6 +47,122 @@ render(
 
 [More components.](https://dialogs.github.io/dialog-web-components/)
 
+Webpack configuration
+---------------------
+
+We're not compiling JS & CSS code before publishing.
+You have to update or add webpack configuration to your build pipeline.
+
+```
+yarn add babel-loader postcss-loader css-loader style-loader svg-sprite-loader
+yarn add @dlghq/babel-preset-dialog @dlghq/postcss-dialog
+```
+
+```javascript
+// webpack.config.js
+
+const fs = require('fs');
+const path = require('path');
+
+function resolve(...paths) {
+  return fs.realpathSync(path.join(__dirname, ...paths));
+}
+
+const whitelist = [
+  resolve('src'), // your application code
+  resolve('node_modules/@dlghq/dialog-components/src'),
+  resolve('node_modules/@dlghq/markdown'),
+  resolve('node_modules/@dlghq/react-l10n'),
+  resolve('node_modules/@dlghq/dialog-types'),
+  resolve('node_modules/@dlghq/dialog-utils'),
+  resolve('node_modules/@dlghq/country-codes')
+];
+
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        include: whitelist,
+        loader: 'babel-loader',
+        options: {
+          babelrc: false,
+          cacheDirectory: true,
+          presets: [
+            [
+              '@dlghq/dialog',
+              {
+                modules: false,
+                runtime: false
+              }
+            ]
+          ]
+        }
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: false,
+              importLoaders: 1
+            }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins() {
+                return require('@dlghq/postcss-dialog')();
+              }
+            }
+          }
+        ],
+        include: [
+          resolve('node_modules/@dlghq/dialog-components/src/styles/global.css')
+        ]
+      },
+      {
+        test: /\.css$/,
+        include: whitelist,
+        exclude: [
+          resolve('node_modules/@dlghq/dialog-components/src/styles/global.css')
+        ],
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              importLoaders: 1,
+              localIdentName: '[name]__[local]'
+            }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins() {
+                return require('@dlghq/postcss-dialog')();
+              }
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(jpg|png|svg|gif)$/,
+        exclude: resolve('node_modules/@dlghq/dialog-components/src/components/Icon/svg'),
+        loader: 'file-loader'
+      },
+      {
+        test: /\.svg$/,
+        include: resolve('node_modules/@dlghq/dialog-components/src/components/Icon/svg'),
+        loader: 'svg-sprite-loader'
+      }
+    ]
+  }
+};
+```
 
 Translations
 ------------
