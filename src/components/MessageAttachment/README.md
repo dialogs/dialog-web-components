@@ -25,5 +25,16 @@ const onGoToMessage = () => console.debug('onGoToMessage');
       }
     }}
   />
+  <Message
+    onGoToMessage={onGoToMessage}
+    message={{
+      ...messages[0],
+      attachment: {
+        from,
+        type: 'forward',
+        messages: [messages[5]]
+      }
+    }}
+  />
 </div>
 ```

@@ -21,6 +21,10 @@ type Props = {
 class Document extends PureComponent {
   props: Props;
 
+  handleClick = (event: SyntheticMouseEvent) => {
+    event.stopPropagation();
+  };
+
   render() {
     const { fileUrl, fileName, fileSize, isUploading, maxWidth } = this.props;
     const className = classNames(styles.container, this.props.className, {
@@ -31,7 +35,12 @@ class Document extends PureComponent {
     const tagProps = isUploading ? {} : { href: fileUrl, download: fileName, rel: 'noopener noreferrer' };
 
     return (
-      <TagName className={className} {...tagProps} style={{ width: maxWidth }}>
+      <TagName
+        {...tagProps}
+        className={className}
+        style={{ width: maxWidth }}
+        onClick={this.handleClick}
+      >
         <DownloadButton isUploading={isUploading} />
         <div className={styles.info}>
           <div className={styles.filename}>

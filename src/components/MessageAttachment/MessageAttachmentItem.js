@@ -46,7 +46,7 @@ class MessageAttachmentItem extends Component {
     this.props.onGoToMessage(this.props.message);
   };
 
-  renderHeader(): ?React.Element<any> {
+  renderHeader() {
     const { message: { sender }, short, type } = this.props;
 
     if (short || !sender) {
