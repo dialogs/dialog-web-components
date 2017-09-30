@@ -1,6 +1,6 @@
 Basic Input:
 
-```
+```jsx
 const initialState = {
   value: ''
 };
@@ -16,7 +16,7 @@ const initialState = {
 
 Input without label:
 
-```
+```jsx
 const initialState = {
   value: ''
 };
@@ -30,7 +30,7 @@ const initialState = {
 
 Disabled Input:
 
-```
+```jsx
 <InputNext
   disabled
   id="input_disabled"
@@ -41,7 +41,7 @@ Disabled Input:
 
 Success Input with hint:
 
-```
+```jsx
 <InputNext
   hint="Correct email"
   id="input_success_hint"
@@ -54,7 +54,7 @@ Success Input with hint:
 
 Error Input with hint:
 
-```
+```jsx
 <InputNext
   hint="Incorrect email"
   id="input_error_hint"
@@ -67,7 +67,7 @@ Error Input with hint:
 
 Since `<textarea />` has the same interface as `<input />`, there is `textarea` type:
 
-```
+```jsx
 const initialState = {
   value: ''
 };

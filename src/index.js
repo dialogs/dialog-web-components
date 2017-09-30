@@ -117,6 +117,7 @@ export { default as MessageDivider } from './components/MessageDivider/MessageDi
 export { default as MessageMedia } from './components/MessageMedia/MessageMedia';
 export { default as FakeMessage } from './components/FakeMessage/FakeMessage';
 export { default as EmptyChat } from './components/EmptyChat/EmptyChat';
+export { default as WelcomeMessage } from './components/WelcomeMessage/WelcomeMessage';
 
 // Contacts
 export { default as ContactSelector } from './components/ContactSelector/ContactSelector';

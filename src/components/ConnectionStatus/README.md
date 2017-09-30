@@ -1,34 +1,17 @@
-Basic ConnectionStatus:
-
-```
-const statuses = ['online', 'connecting', 'updating'];
-const initialState = {
-  id: null,
+```jsx
+initialState = {
   status: 'online'
 };
 
-const start = () => {
-  clearInterval(state.id);
-
-  const id = setInterval(() => {
-    const idx = parseInt(Math.random() * 1000, 10) % statuses.length;
-    setState({
-      status: statuses[idx]
-    });
-  }, 10000);
-
-  setState({ id });
-};
-
-const stop = () => {
-  clearInterval(state.id);
-  setState({ id: null });
-};
+const handleOnline = () => setState({ status: 'online'});
+const handleConnecting = () => setState({ status: 'connecting'});
+const handleUpdaing = () => setState({ status: 'updating'});
 
 <div>
-  <div style={{ margin: 8, textAlign: 'center' }}>
-    <Button theme="success" size="small" onClick={start}>Start</Button>
-    <Button theme="danger" size="small" onClick={stop}>Stop</Button>
+  <div className="styleguide__buttons">
+    <Button theme="success" size="small" onClick={handleOnline}>Set online</Button>
+    <Button theme="danger" size="small" onClick={handleConnecting}>Set connecting</Button>
+    <Button theme="warning" size="small" onClick={handleUpdaing}>Set updating</Button>
   </div>
 
   <div style={{ height: 30, overflow: 'hidden' }}>

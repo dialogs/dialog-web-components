@@ -1,4 +1,4 @@
-```
+```jsx
 const { group } = require('../../fixtures/peerInfo');
 
 <DiscoverCard

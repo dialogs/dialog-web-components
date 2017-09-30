@@ -5,45 +5,43 @@
 
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
+import { Text } from '@dlghq/react-l10n';
 import modalStyles from '../Modal/Modal.css';
 import styles from './Confirm.css';
+import Modal from '../Modal/Modal';
 import ModalBody from '../Modal/ModalBody';
 import ModalFooter from '../Modal/ModalFooter';
 import Button from '../Button/Button';
 
-export type ConfirmRequest = {
-  question: string,
+export type Props = {
+  message: string,
   submit: string,
   cancel: string,
-  theme: 'danger' | 'success' | 'warning'
-};
-
-export type Props = {
-  request: ConfirmRequest,
-  onSubmit: (confirmed: boolean) => void
+  theme: 'danger' | 'success' | 'warning',
+  action: any,
+  onSubmit: (action: any) => void,
+  onClose: () => mixed
 };
 
 class Confirm extends PureComponent {
   props: Props;
 
   handleSuccess = (): void => {
-    this.props.onSubmit(true);
+    this.props.onSubmit(this.props.action);
   };
 
   handleCancel = (): void => {
-    this.props.onSubmit(false);
+    this.props.onClose();
   };
 
   render() {
     const className = classNames(modalStyles.container, styles.container);
 
     return (
-      <div className={className}>
+      <Modal isOpen className={className} overlayClassName={styles.overlay}>
         <div className={modalStyles.wrapper}>
           <ModalBody className={styles.body}>
-            <h3 className={styles.question}>
-              {this.props.request.question}
-            </h3>
+            <Text id={this.props.message} tagName="h3" className={styles.message} />
           </ModalBody>
           <ModalFooter className={styles.footer}>
             <Button
@@ -53,20 +51,20 @@ class Confirm extends PureComponent {
               view="outline"
               onClick={this.handleCancel}
             >
-              {this.props.request.cancel}
+              <Text id={this.props.cancel} />
             </Button>
             <Button
               className={styles.button}
               view="outline"
               size="small"
-              theme={this.props.request.theme}
+              theme={this.props.theme}
               onClick={this.handleSuccess}
             >
-              {this.props.request.submit}
+              <Text id={this.props.submit} />
             </Button>
           </ModalFooter>
         </div>
-      </div>
+      </Modal>
     );
   }
 }

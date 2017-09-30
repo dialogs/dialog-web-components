@@ -1,6 +1,4 @@
-Basic ContactList:
-
-```
+```jsx
 const { PeerInfoSelectorState } = require('../../entities');
 const contacts = require('./mock/contacts.json');
 

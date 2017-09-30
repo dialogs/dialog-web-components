@@ -19,10 +19,12 @@ export type Props = {
 class AudioPlayerButton extends PureComponent {
   props: Props;
 
-  handleButtonClick = () => {
-    const { pending, isPlaying } = this.props;
+  handleButtonClick = (event: SyntheticMouseEvent) => {
+    event.stopPropagation();
 
-    if (!pending) {
+    const { pending, isPlaying, error } = this.props;
+
+    if (!pending || !error) {
       if (isPlaying) {
         this.props.onPause();
       } else {

@@ -127,7 +127,8 @@
       "MessageAttachment",
       "MessageDivider",
       "FakeMessage",
-      "EmptyChat"
+      "EmptyChat",
+      "WelcomeMessage"
     ]
   },
   {

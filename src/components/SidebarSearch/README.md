@@ -1,6 +1,4 @@
-Basic SidebarSearch:
-
-```
+```jsx
 initialState = { value: '' };
 
 <div style={{ width: 270, background: '#f5f5f5' }}>

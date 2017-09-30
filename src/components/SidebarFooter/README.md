@@ -1,4 +1,4 @@
-```
+```jsx
 const variants = [
   {
     id: 'messages', title: 'Messages', glyph: 'logo', pending: false, counter: 140

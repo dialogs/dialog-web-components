@@ -1,6 +1,6 @@
 Default ButtonNext:
 
-```
+```jsx
 <div className="styleguide__buttons">
   <ButtonNext view="next" size="small">Small ButtonNext</ButtonNext>
   <ButtonNext view="next">Default ButtonNext</ButtonNext>
@@ -11,7 +11,7 @@ Default ButtonNext:
 
 Loading ButtonNext:
 
-```
+```jsx
 <div className="styleguide__buttons">
   <ButtonNext view="next" size="small" loading>Small ButtonNext</ButtonNext>
   <ButtonNext view="next" loading>Default ButtonNext</ButtonNext>

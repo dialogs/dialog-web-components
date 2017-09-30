@@ -1,6 +1,4 @@
-Basic Toolbar:
-
-```
+```jsx
 const ToolbarAvatar = require('./ToolbarAvatar').default;
 const ToolbarInfo = require('./ToolbarInfo').default;
 const ToolbarButtons = require('./ToolbarButtons').default;

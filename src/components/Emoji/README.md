@@ -1,6 +1,6 @@
 Default Emoji
 
-```
+```jsx
 <div>
   <Emoji char="⏯" />
   <Emoji char="🐜" />
@@ -10,7 +10,7 @@ Default Emoji
 
 For changing Emoji size just add `size` prop to component. Maximum size for emoji is 120;
 
-```
+```jsx
 <div>
   <Emoji char="⏯" size="30" />
   <Emoji char="🐜" size="60" />

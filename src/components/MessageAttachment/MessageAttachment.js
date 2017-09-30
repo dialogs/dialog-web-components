@@ -11,10 +11,10 @@ import MessageAttachmentForward from './MessageAttachmentForward';
 type Props = {
   className?: string,
   attachment: MessageAttachmentType,
-  onGoToPeer: (peer: Peer) => any,
-  onGoToMessage: (peer: ?Peer, message: Message) => any,
   maxHeight: number,
-  maxWidth: number
+  maxWidth: number,
+  onGoToPeer: (peer: Peer) => any,
+  onGoToMessage: (peer: ?Peer, message: Message) => any
 };
 
 class MessageAttachment extends PureComponent {

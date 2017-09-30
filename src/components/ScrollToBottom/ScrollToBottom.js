@@ -18,7 +18,6 @@ export type Props = {
 class ScrollToBottom extends PureComponent {
   props: Props;
 
-
   renderCounter() {
     const { counter } = this.props;
 

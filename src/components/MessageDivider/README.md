@@ -1,6 +1,6 @@
 Basic MessageDivider:
 
-```
+```jsx
 <div>
   <MessageDivider>Today</MessageDivider>
 </div>
@@ -8,7 +8,7 @@ Basic MessageDivider:
 
 Themable MessageDivider:
 
-```
+```jsx
 <div>
   <MessageDivider theme="primary">Primary</MessageDivider>
   <MessageDivider theme="success">Success</MessageDivider>

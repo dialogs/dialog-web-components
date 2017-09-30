@@ -1,6 +1,4 @@
-Basic CheckButton:
-
-```
+```jsx
 initialState = {
   checked: true
 };

@@ -1,4 +1,4 @@
-```
+```jsx
 const { group, user, channel, bot } = require('../../fixtures/peerInfo');
 const items = [{
   ...group,

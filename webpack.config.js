@@ -34,14 +34,18 @@ module.exports = {
           babelrc: false,
           cacheDirectory: true,
           presets: [
-            ['@dlghq/dialog', {
-              modules: false,
-              runtime: false,
-              development: true
-            }]
+            [
+              '@dlghq/dialog',
+              {
+                modules: false,
+                runtime: false,
+                development: true
+              }
+            ]
           ]
         }
-      }, {
+      },
+      {
         test: /\.css$/,
         use: [
           'style-loader',
@@ -61,15 +65,12 @@ module.exports = {
             }
           }
         ],
-        include: [
-          resolve('src/styles/global.css')
-        ]
-      }, {
+        include: [resolve('src/styles/global.css')]
+      },
+      {
         test: /\.css$/,
         include: whitelist,
-        exclude: [
-          resolve('src/styles/global.css')
-        ],
+        exclude: [resolve('src/styles/global.css')],
         use: [
           'style-loader',
           {
@@ -89,27 +90,29 @@ module.exports = {
             }
           }
         ]
-      }, {
+      },
+      {
         test: /\.json$/,
-        include: [
-          ...whitelist,
-          path.join(__dirname, 'node_modules/entities')
-        ],
+        include: [...whitelist, path.join(__dirname, 'node_modules/entities')],
         use: ['json-loader']
-      }, {
+      },
+      {
         test: /\.yml$/,
         include: whitelist,
         use: ['yml-loader']
-      }, {
+      },
+      {
         test: /\.(jpg|png|svg|gif)$/,
         include: /./,
         exclude: resolve('src/components/Icon/svg'),
         use: ['file-loader']
-      }, {
+      },
+      {
         test: /\.(svg)$/,
         include: resolve('src/components/Icon/svg'),
         loader: 'svg-sprite-loader'
-      }, {
+      },
+      {
         test: /\.txt$/,
         include: whitelist,
         use: ['raw-loader']

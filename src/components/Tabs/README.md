@@ -1,4 +1,4 @@
-```
+```jsx
 initialState = { current: 'profile' };
 const handlePick = (current) => setState({ current });
 

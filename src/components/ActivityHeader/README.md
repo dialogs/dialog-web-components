@@ -1,6 +1,4 @@
-Basic ActivityHeader:
-
-```
+```jsx
 <div style={{ background: '#fff', width: 320 }}>
   <ActivityHeader onClose={() => {}} onBack={() => {}}>
     Activity header!

@@ -11,14 +11,14 @@
 
 .container {
   display: block;
-  height: var(--typing-height);
   font-family: var(--typing-font-family);
+  height: var(--typing-height);
 }
 
 .typing {
   display: flex;
   flex-direction: row;
-  height: 100%;
+  height: var(--typing-height);
   justify-content: flex-start;
   align-content: center;
   align-items: center;

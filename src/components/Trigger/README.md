@@ -4,7 +4,7 @@ returns `false` inside of this component.
 
 Example:
 
-```
+```jsx
 const Button = require('../Button/Button').default;
 initialState = {
   openHandler: ['onClick'],

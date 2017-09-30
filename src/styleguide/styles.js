@@ -1,3 +1,9 @@
+const color = {
+  primary: '#6b00cb',
+  danger: '#e22d44',
+  info: '#5856d6'
+};
+
 module.exports = {
   theme: {
     maxWidth: '100%',
@@ -33,10 +39,10 @@ module.exports = {
       ]
     },
     color: {
-      link: '#5856d6',
+      link: color.info,
       linkHover: 'rgb(70, 69, 171)',
-      sidebarBackground: '#6b00cb',
-      errorBackground: '#e22d44'
+      sidebarBackground: color.primary,
+      errorBackground: color.danger
     }
   },
   styles: {
@@ -46,11 +52,47 @@ module.exports = {
         '-moz-osx-font-smoothing': 'grayscale',
         '-webkit-font-smoothing': 'antialiased'
       },
-      sidebar: {},
+      sidebar: {
+        '&::-webkit-scrollbar': {
+          width: 12
+        },
+        '&::-webkit-scrollbar-track': {
+          backgroundColor: color.primary
+        },
+        '&::-webkit-scrollbar-thumb': {
+          'border': `4px solid ${color.primary}`,
+          'borderTopWidth': 0,
+          'borderBottomWidth': 0,
+          'backgroundColor': '#fff',
+          '&:active': {
+            borderLeftWidth: 2,
+            borderWightWidth: 2
+          }
+        }
+      },
       content: {},
       logo: {
         border: 'none',
         paddingBottom: 0
+      }
+    },
+    SectionHeading: {
+      heading: {
+        'textDecoration': 'none',
+        '&::after': {
+          content: '"#"',
+          display: 'none',
+          marginLeft: 6,
+          color: 'rgba(0, 0, 0, 0.3)',
+          fontSize: 30,
+          fontWeight: '600'
+        },
+        '&:hover': {
+          textDecoration: 'none'
+        },
+        '&:hover::after': {
+          display: 'inline-block'
+        }
       }
     },
     Logo: {
@@ -126,19 +168,9 @@ module.exports = {
         }
       }
     },
-    Playground: {
-      root: {
-        '& .styleguide__buttons': {
-          '& .Button__container': {
-            margin: 4
-          },
-          '& .ButtonNext__container': {
-            margin: 4
-          },
-          '& .IconButton__container': {
-            margin: 4
-          }
-        }
+    Pathline: {
+      copyButton: {
+        border: 0
       }
     }
   }

@@ -1,6 +1,6 @@
 Default DoublePeerAvatar
 
-```
+```jsx
 const users = [
   {
     title: 'Nikita Gusakov',
@@ -22,7 +22,7 @@ const users = [
 
 DoublePeerAvatar with placeholders
 
-```
+```jsx
 const users = [
   {
     title: 'Nikita Gusakov',

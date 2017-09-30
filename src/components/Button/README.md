@@ -1,6 +1,6 @@
 Sizable Button
 
-```
+```jsx
 <div className="styleguide__buttons">
   <Button size="small">Small Button</Button>
   <Button size="normal">Normal Button</Button>
@@ -11,7 +11,7 @@ Sizable Button
 
 It has different types of themes. You can change themes by changing `theme` prop.
 
-```
+```jsx
 <div className="styleguide__buttons">
   <Button theme="default">Default</Button>
   <Button theme="primary">Primary</Button>
@@ -24,7 +24,7 @@ It has different types of themes. You can change themes by changing `theme` prop
 
 Outlined Button:
 
-```
+```jsx
 <div className="styleguide__buttons">
   <Button theme="default" view="outline">Default</Button>
   <Button theme="primary" view="outline">Primary</Button>
@@ -37,7 +37,7 @@ Outlined Button:
 
 Link Button:
 
-```
+```jsx
 <div className="styleguide__buttons">
   <Button theme="default" view="link">Default</Button>
   <Button theme="primary" view="link">Primary</Button>
@@ -50,7 +50,7 @@ Link Button:
 
 Wide Button:
 
-```
+```jsx
 <div className="styleguide__buttons">
   <Button theme="primary" size="small" wide>Small</Button>
   <Button theme="primary" wide>Default</Button>
@@ -61,7 +61,7 @@ Wide Button:
 
 Loading Button:
 
-```
+```jsx
 <Button theme="primary" loading>
   Loading
 </Button>

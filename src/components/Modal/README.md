@@ -1,6 +1,6 @@
 Basic Modal:
 
-```
+```jsx
 const {
   ModalHeader,
   ModalBody,
@@ -34,7 +34,7 @@ const handleClose = () => setState({ isOpen: false });
 
 Fullscreen Modal:
 
-```
+```jsx
 const {
   ModalHeader,
   ModalBody,

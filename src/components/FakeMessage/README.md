@@ -1,4 +1,4 @@
-```
+```jsx
 <div>
   <FakeMessage />
   <FakeMessage />

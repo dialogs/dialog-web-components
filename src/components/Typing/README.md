@@ -1,6 +1,4 @@
-Basic Typing:
-
-```
+```jsx
 const initialState = {
   typing: null
 }

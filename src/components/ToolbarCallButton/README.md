@@ -1,3 +1,3 @@
-```
+```jsx
 <ToolbarCallButton onClick={() => {}} />
 ```

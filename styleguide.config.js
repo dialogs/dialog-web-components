@@ -19,7 +19,11 @@ module.exports = {
       content: content ? resolve('docs', content + '.md') : null,
       components() {
         return components.map((componentName) => {
-          return resolve('src/components', componentName, componentName + '.js');
+          return resolve(
+            'src/components',
+            componentName,
+            componentName + '.js'
+          );
         });
       }
     };
@@ -29,11 +33,14 @@ module.exports = {
 
   require: [
     resolve('node_modules/core-js/shim.js'),
-    resolve('src/styles/global.css')
+    resolve('src/styles/global.css'),
+    resolve('src/styleguide/styles.css')
   ],
 
   theme,
   styles,
+
+  template: resolve('src/styleguide/index.html'),
 
   getComponentPathLine(componentPath) {
     const name = path.basename(componentPath, '.js');

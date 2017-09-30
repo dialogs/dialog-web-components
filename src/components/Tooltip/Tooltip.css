@@ -68,8 +68,8 @@
 
 /* Animations */
 .appear {
-  transform: translateZ(0) scale(0.6);
-  transform-origin: 50% 100%;
+  transform: translateZ(0) scale(0.3);
+  transform-origin: 50% 50%;
   opacity: 0.01;
 }
 

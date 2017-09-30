@@ -1,6 +1,4 @@
-Authorization Form:
-
-```
+```jsx
 const ExampleAuthForm = require('./example').default;
 
 <div style={{ margin: 'auto', width: 350 }}>

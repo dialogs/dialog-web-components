@@ -1,6 +1,4 @@
-Basic Dropdown:
-
-```
+```jsx
 const {
   DropdownItem,
   DropdownDivider,
@@ -32,7 +30,7 @@ const user = {
 
 Dropdown with Divider:
 
-```
+```jsx
 const {
   DropdownItem,
   DropdownDivider
@@ -50,7 +48,7 @@ const handleClick = () => alert('menu clicked');
 
 Dropdown with Header:
 
-```
+```jsx
 const {
   DropdownItem,
   DropdownHeader
@@ -68,7 +66,7 @@ const handleClick = () => alert('menu clicked');
 
 Themed Dropdown:
 
-```
+```jsx
 const {
   DropdownItem,
   DropdownHeader,

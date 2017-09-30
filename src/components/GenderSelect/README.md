@@ -1,6 +1,4 @@
-GenderSelect:
-
-```
+```jsx
 initialState = { value: 'unknown' };
 
 const handleChange = (value) => {

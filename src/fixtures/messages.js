@@ -36,7 +36,8 @@ module.exports = [
     content: {
       type: 'text',
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ipsum viverra, eleifend ante nec, porta enim.'
-    }
+    },
+    isEdited: true
   },
   {
     sender: senders[0],
@@ -58,7 +59,8 @@ module.exports = [
     content: {
       type: 'text',
       text: 'Donec iaculis augue eu blandit scelerisque.'
-    }
+    },
+    isEdited: true
   },
   {
     sender: senders[1],
@@ -80,6 +82,18 @@ module.exports = [
     content: {
       type: 'text',
       text: 'Suspendisse sodales purus tellus, non sollicitudin dolor consectetur vel. Sed non facilisis ex. Pellentesque eu urna ac quam eleifend tristique ut at est. Aliquam condimentum nec quam congue imperdiet.'
+    }
+  },
+  {
+    sender: senders[0],
+    rid: Math.random(),
+    date: '00:00',
+    fullDate: new Date(),
+    state: 'read',
+    content: {
+      type: 'document',
+      fileName: 'DialogMessenger.zip',
+      fileUrl: 'https://dlg.im/dl/osx'
     }
   }
 ];

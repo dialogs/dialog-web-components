@@ -1,6 +1,6 @@
 Basic Overlay:
 
-```
+```jsx
 initialState = {
   active: false
 };
@@ -22,7 +22,7 @@ const toggleOverlay = () => {
 
 Overlay with caption:
 
-```
+```jsx
 initialState = {
   active: false
 };

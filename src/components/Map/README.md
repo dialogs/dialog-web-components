@@ -1,5 +1,3 @@
-Basic Map:
-
-```
-<Map>Hello from Map!</Map>
+```jsx
+<Map />
 ```

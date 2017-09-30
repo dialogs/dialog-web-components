@@ -1,6 +1,6 @@
 Spinner types:
 
-```
+```jsx
 <div>
   <Spinner type="round" />
   <br />
@@ -12,7 +12,7 @@ Spinner types:
 
 Spinners sizes:
 
-```
+```jsx
 <div>
   <Spinner type="round" size="small" />
   <Spinner type="round" size="normal" />

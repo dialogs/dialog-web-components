@@ -89,10 +89,10 @@
 
 .error {
   color: var(--color-danger);
+}
 
-  & .seeker {
-    background-color: color(var(--color-danger) alpha(10%));
-  }
+.seekerError {
+  background-color: color(var(--color-danger) alpha(10%));
 
   & .seekerPlayed {
     background-color: var(--color-danger);

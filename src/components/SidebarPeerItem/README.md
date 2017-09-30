@@ -1,4 +1,4 @@
-```
+```jsx
 initialState = {
   current: 0 
 };

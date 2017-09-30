@@ -7,13 +7,21 @@
 .container {
   width: var(--confirm-width);
   min-width: 0;
+  margin: 0;
+}
+
+.overlay {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
 }
 
 .body {
   padding: calc(var(--default-padding) * 2) calc(var(--default-padding) * 2) var(--default-padding);
 }
 
-.question {
+.message {
   margin: 0;
   padding: 0;
   text-align: center;

@@ -1,6 +1,4 @@
-Basic ActivityListNotification:
-
-```
+```jsx
 const initialState = { isEnabled: true };
 
 <div style={{ background: '#fff', width: 320 }}>

@@ -1,6 +1,4 @@
-Basic Archive:
-
-```
+```jsx
 function getArchives(offset = 0) {
   const archive = [];
   for (let i = 0; i < 10; i++) {

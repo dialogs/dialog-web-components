@@ -4,7 +4,7 @@
  */
 
 import React, { PureComponent } from 'react';
-import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import classNames from 'classnames';
 import styles from './Overlay.css';
 
@@ -19,8 +19,8 @@ export type Props = {
 const transitionStyles = {
   enter: styles.enter,
   enterActive: styles.enterActive,
-  leave: styles.leave,
-  leaveActive: styles.leaveActive
+  exit: styles.leave,
+  exitActive: styles.leaveActive
 };
 
 class Overlay extends PureComponent {
@@ -34,13 +34,18 @@ class Overlay extends PureComponent {
     }
 
     return (
-      <div className={styles.overlay} onClick={this.props.onClick}>
-        {this.props.renderCaption ? (
-          <div className={styles.caption}>
-            {this.props.renderCaption()}
-          </div>
-        ) : null}
-      </div>
+      <CSSTransition
+        classNames={transitionStyles}
+        timeout={{ enter: 100, exit: 100 }}
+      >
+        <div className={styles.overlay} onClick={this.props.onClick}>
+          {this.props.renderCaption ? (
+            <div className={styles.caption}>
+              {this.props.renderCaption()}
+            </div>
+          ) : null}
+        </div>
+      </CSSTransition>
     );
   }
 
@@ -49,13 +54,9 @@ class Overlay extends PureComponent {
 
     return (
       <div className={className}>
-        <CSSTransitionGroup
-          transitionName={transitionStyles}
-          transitionEnterTimeout={100}
-          transitionLeaveTimeout={100}
-        >
+        <TransitionGroup>
           {this.renderOverlay()}
-        </CSSTransitionGroup>
+        </TransitionGroup>
         {this.props.children}
       </div>
     );

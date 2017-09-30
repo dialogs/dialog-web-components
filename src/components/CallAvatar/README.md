@@ -1,4 +1,4 @@
-```
+```jsx
 initialState = {
   animated: false
 };

@@ -1,6 +1,4 @@
-Basic EditGroupModal:
-
-```
+```jsx
 initialState = {
   isOpen: false,
   group: {

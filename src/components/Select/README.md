@@ -1,6 +1,6 @@
 Basic Select:
 
-```
+```jsx
 initialState = {
   value: 'user',
   options: [{
@@ -22,7 +22,7 @@ initialState = {
 
 Disabled Select
 
-```
+```jsx
 initialState = {
   value: 'user',
   options: [{
@@ -40,13 +40,11 @@ initialState = {
   value={state.value}
   options={state.options}
 />
-
 ```
 
 Select with label
 
-```
-
+```jsx
 const options = [
   {
     value: 'user', title: 'User'

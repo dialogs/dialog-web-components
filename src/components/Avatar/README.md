@@ -1,18 +1,18 @@
 Default Avatar:
 
-```
+```jsx
 <Avatar />
 ```
 
 Avatar with custom background color:
 
-```
+```jsx
 <Avatar title="Test" placeholder="blue" />
 ```
 
 Default Avatar with image:
 
-```
+```jsx
 <Avatar
   title="Test"
   image="https://octodex.github.com/images/total-eclipse-of-the-octocat.jpg"
@@ -21,7 +21,7 @@ Default Avatar with image:
 
 Avatar sizes:
 
-```
+```jsx
 <div>
   <Avatar title="Super Size" placeholder="green" size="super" />
   <Avatar title="Valera Kotovski" placeholder="empty" size="big" />
@@ -34,7 +34,7 @@ Avatar sizes:
 
 You can set avatar size in pixels:
 
-```
+```jsx
 <div>
   <Avatar title="Valera Kotovski" placeholder="empty" size={50} />
   <Avatar title="Hello World" placeholder="lblue" size={100} />
@@ -44,7 +44,7 @@ You can set avatar size in pixels:
 
 Clickable Avatar:
 
-```
+```jsx
 <Avatar
   title="Test"
   placeholder="green"

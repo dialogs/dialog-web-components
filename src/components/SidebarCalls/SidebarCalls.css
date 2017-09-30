@@ -13,8 +13,21 @@
 }
 
 .empty {
-  padding: var(--sidebar-peer-item-default-left-padding);
-  display: flex;
-  justify-content: center;
-  color: var(--icon-default-color);
+  padding: 12px 14px;
+  text-align: center;
+}
+
+.emptyText {
+  & h4 {
+    font-size: var(--default-font-size);
+    margin: 0 0 1rem;
+    font-weight: 500;
+  }
+
+  & p {
+    margin: 0;
+    line-height: 16px;
+    color: var(--default-font-color-light);
+    font-size: var(--default-font-size-small);
+  }
 }

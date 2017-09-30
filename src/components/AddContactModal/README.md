@@ -1,6 +1,4 @@
-Basic AddContactModal:
-
-```
+```jsx
 const users = [{
   id: 3505878,
   name: 'Nikita',

@@ -5,7 +5,7 @@
 
 import type { ConnectionStatus as ConnectionStatusType } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
-import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import { Text } from '@dlghq/react-l10n';
 import classNames from 'classnames';
 import styles from './ConnectionStatus.css';
@@ -64,32 +64,35 @@ class ConnectionStatus extends PureComponent {
       return null;
     }
 
-    const className = classNames(styles.container, styles[status], this.props.className);
+    const className = classNames(
+      styles.container,
+      styles[status],
+      this.props.className
+    );
 
     return (
-      <Text
-        tagName="div"
-        className={className}
-        id={`ConnectionStatus.${status}`}
-      />
+      <CSSTransition
+        classNames={{
+          enter: styles.enter,
+          enterActive: styles.enterActive,
+          exit: styles.leave,
+          exitActive: styles.leaveActive
+        }}
+        timeout={{ enter: 150, exit: 150 }}
+      >
+        <Text
+          tagName="div"
+          className={className}
+          id={`ConnectionStatus.${status}`}
+        />
+      </CSSTransition>
     );
   }
 
   render() {
     return (
       <div className={styles.wrapper}>
-        <CSSTransitionGroup
-          transitionName={{
-            enter: styles.enter,
-            enterActive: styles.enterActive,
-            leave: styles.leave,
-            leaveActive: styles.leaveActive
-          }}
-          transitionEnterTimeout={150}
-          transitionLeaveTimeout={150}
-        >
-          {this.renderContent()}
-        </CSSTransitionGroup>
+        <TransitionGroup>{this.renderContent()}</TransitionGroup>
       </div>
     );
   }

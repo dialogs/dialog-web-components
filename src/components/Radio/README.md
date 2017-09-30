@@ -1,6 +1,6 @@
 Basic Radio:
 
-```
+```jsx
 const RadioGroup = require('./RadioGroup').default;
 
 initialState = { value: 'group' };
@@ -18,7 +18,7 @@ const handleChange = (value) => setState({ value });
 
 You can render labeled content as children of Radio component:
 
-```
+```jsx
 const RadioGroup = require('./RadioGroup').default;
 
 initialState = { value: 'group' };
@@ -33,7 +33,7 @@ const handleChange = (value) => setState({ value });
 
 Also you can disable radio group by adding `disabled` attribute:
 
-```
+```jsx
 const RadioGroup = require('./RadioGroup').default;
 
 initialState = { value: 'group' };
