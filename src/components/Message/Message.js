@@ -22,7 +22,7 @@ import MessageReaction from '../MessageReaction/MessageReaction';
 import Hover from '../Hover/Hover';
 import CopyOnly from '../CopyOnly/CopyOnly';
 import MessageAttachmentReply from '../MessageAttachment/MessageAttachmentReply';
-import MessageAttachmentForward from '../MessageAttachment/MessageAttachmentForward';
+import MessageFlattenAttachment from '../MessageAttachment/MessageFlattenAttachment';
 import CheckButton from '../CheckButton/CheckButton';
 import styles from './Message.css';
 
@@ -319,14 +319,13 @@ class Message extends PureComponent {
     const { message: { attachment }, maxWidth, maxHeight } = this.props;
     if (attachment && attachment.type === 'forward') {
       return (
-        <MessageAttachmentForward
+        <MessageFlattenAttachment
           className={styles.forward}
-          from={attachment.from}
-          messages={attachment.messages}
-          onGoToPeer={this.props.onGoToPeer}
-          onGoToMessage={this.props.onGoToMessage}
+          attachment={attachment}
           maxWidth={maxWidth}
           maxHeight={maxHeight}
+          onGoToPeer={this.props.onGoToPeer}
+          onGoToMessage={this.props.onGoToMessage}
         />
       );
     }
