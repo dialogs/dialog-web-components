@@ -1,0 +1,80 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../../styles/variables.css';
+
+:root {
+  --activity-media-photo-title-font-size: var(--default-font-size);
+  --activity-media-photo-title-color: #000;
+  --activity-media-photo-info-font-size: var(--default-font-size-small);
+  --activity-media-photo-info-color: #7f7f7f;
+  --activity-media-photo-image-size: 50px;
+}
+
+/* Reset */
+.container {
+  all: initial;
+}
+
+/* Styles */
+.container {
+  cursor: inherit;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  padding: 12px 0;
+  flex: 1 1 auto;
+  overflow: hidden;
+  font-family: var(--default-font-family);
+}
+
+.photo {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.preview {
+  position: relative;
+  width: var(--activity-media-photo-image-size);
+  height: var(--activity-media-photo-image-size);
+  flex: 0 0 auto;
+  overflow: hidden;
+  margin-right: 14px;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.meta {
+  display: flex;
+  flex-flow: column nowrap;
+  flex: 1 1 auto;
+  @apply --flex-fix;
+}
+
+.title {
+  font-weight: 500;
+  line-height: 22px;
+  font-size: var(--activity-media-photo-title-font-size);
+  letter-spacing: -0.384px;
+  color: var(--activity-media-photo-title-color);
+  flex: 0 0 auto;
+  @apply --text-overflow-ellipsis;
+}
+
+.info {
+  line-height: 22px;
+  font-size: var(--activity-media-photo-info-font-size);
+  color: var(--activity-media-photo-info-color);
+  letter-spacing: -0.336px;
+  display: inline-flex;
+  align-items: center;
+  @apply --text-overflow-ellipsis;
+}

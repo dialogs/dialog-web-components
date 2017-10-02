@@ -7,8 +7,9 @@ const messages = require('../../fixtures/messages');
   {messages.map((message, index) => (
     <Message
       key={index}
+      maxWidth={400}
       message={message}
-      short={index > 0}
+      short={false}
     />
   ))}
 </div>
@@ -29,13 +30,17 @@ handleClick = () => {
   setTimeout(() => setState({ highlight: false }), 3000);
 };
 
-<div style={{background: '#fff'}}>
-  <button onClick={handleClick}>Highlight</button>
-  <Message
-    short={false}
-    message={messages[0]}
-    highlight={state.highlight}
-  />
+<div>
+  <Button theme="primary" size="small" onClick={handleClick}>Highlight</Button>
+  <br />
+  <br />
+  <div style={{background: '#fff'}}>
+    <Message
+      short={false}
+      message={messages[0]}
+      highlight={state.highlight}
+    />
+  </div>
 </div>
 ```
 
@@ -74,8 +79,9 @@ const getSelected = (message) => {
     return (
       <Message
         key={index}
+        maxWidth={400}
         message={message}
-        short={index > 0}
+        short={false}
         selected={getSelected(message)}
         onSelect={handleSelect}
       />
