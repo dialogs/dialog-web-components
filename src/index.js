@@ -141,6 +141,7 @@ export { default as ActivityListMembers } from './components/ActivityListMembers
 export { default as ActivityListMembersAdd } from './components/ActivityListMembers/ActivityListMembersAdd';
 export { default as ActivityListMembersItem } from './components/ActivityListMembers/ActivityListMembersItem';
 export { default as ActivitySearch } from './components/ActivitySearch/ActivitySearch';
+export { default as ActivityMediaHeader } from './components/ActivityMediaHeader/ActivityMediaHeader';
 export { default as ActivityListMedia } from './components/ActivityListMedia/ActivityListMedia';
 export { default as ActivityMedia } from './components/ActivityMedia/ActivityMedia';
 

@@ -9,9 +9,9 @@ import PeerInfoTitle from '../../PeerInfoTitle/PeerInfoTitle';
 import styles from './ActivityMediaPhoto.css';
 
 type Props = {
-  photo: string,
-  preview: string,
-  sender: string,
+  photo: ?string,
+  preview: ?string,
+  sender: ?string,
   title: ?string
 };
 
@@ -23,13 +23,15 @@ class ActivityMediaPhoto extends PureComponent {
 
     if (!title || title === '') {
       return (
-        <Text id="ActivityMediaPhoto.title" className={styles.title} tagName="div" />
+        <Text
+          id="ActivityMediaPhoto.title"
+          className={styles.title}
+          tagName="div"
+        />
       );
     }
 
-    return (
-      <div className={styles.title}>{title}</div>
-    );
+    return <div className={styles.title}>{title}</div>;
   }
 
   render() {
@@ -37,12 +39,24 @@ class ActivityMediaPhoto extends PureComponent {
 
     return (
       <div className={styles.container}>
-        <div className={styles.preview} style={{ backgroundImage: `url(${preview})` }}>
-          <div className={styles.photo} style={{ backgroundImage: `url(${photo})` }} />
-        </div>
+        {photo && preview ? (
+          <div
+            className={styles.preview}
+            style={{ backgroundImage: `url(${preview})` }}
+          >
+            <div
+              className={styles.photo}
+              style={{ backgroundImage: `url(${photo})` }}
+            />
+          </div>
+        ) : null}
         <div className={styles.meta}>
           {this.renderTitle()}
-          <div className={styles.info}><PeerInfoTitle title={sender} /></div>
+          {sender ? (
+            <div className={styles.info}>
+              <PeerInfoTitle title={sender} />
+            </div>
+          ) : null}
         </div>
       </div>
     );

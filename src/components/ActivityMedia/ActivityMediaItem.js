@@ -31,7 +31,7 @@ class ActivityMediaItem extends PureComponent {
             title={message.content.fileName}
             photo={message.content.fileUrl}
             preview={message.content.preview}
-            sender={message.sender.title}
+            sender={message.sender ? message.sender.title : null}
           />
         );
       case 'document':
@@ -39,12 +39,13 @@ class ActivityMediaItem extends PureComponent {
           <ActivityMediaDocument
             title={message.content.fileName}
             size={message.content.fileSize}
-            sender={message.sender.title}
-            extension={'asdasddsd'}
+            extension={message.content.fileExtension}
+            sender={message.sender ? message.sender.title : null}
           />
         );
       default:
         console.warn('Unsupported message type');
+
         return null;
     }
   }
