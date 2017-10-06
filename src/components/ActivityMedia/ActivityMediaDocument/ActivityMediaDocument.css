@@ -9,7 +9,7 @@
   --activity-media-document-title-color: #000;
   --activity-media-document-info-font-size: var(--default-font-size-small);
   --activity-media-document-info-color: #7f7f7f;
-  --activity-media-preview-image-size: 50px;
+  --activity-media-preview-image-size: 46px;
 }
 
 /* Reset */
@@ -43,7 +43,7 @@
   justify-content: center;
   box-sizing: border-box;
   padding: 4px;
-  margin-right: 13px;
+  margin-right: 14px;
   border-radius: 1000px;
 }
 
