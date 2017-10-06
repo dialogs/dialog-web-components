@@ -8,6 +8,7 @@ import React, { PureComponent } from 'react';
 import ActivityListItem from '../ActivityList/ActivityListItem';
 import ActivityMediaDocument from './ActivityMediaDocument/ActivityMediaDocument';
 import ActivityMediaPhoto from './ActivityMediaPhoto/ActivityMediaPhoto';
+import ActivityMediaVoice from './ActivityMediaVoice/ActivityMediaVoice';
 
 type Props = {
   message: Message,
@@ -40,6 +41,14 @@ class ActivityMediaItem extends PureComponent {
             title={message.content.fileName}
             size={message.content.fileSize}
             extension={message.content.fileExtension}
+            sender={message.sender ? message.sender.title : null}
+          />
+        );
+      case 'voice':
+        return (
+          <ActivityMediaVoice
+            url={message.content.fileUrl}
+            duration={message.content.duration}
             sender={message.sender ? message.sender.title : null}
           />
         );
