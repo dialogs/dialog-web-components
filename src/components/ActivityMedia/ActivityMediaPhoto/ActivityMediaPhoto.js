@@ -24,7 +24,7 @@ class ActivityMediaPhoto extends PureComponent {
     if (!title || title === '') {
       return (
         <Text
-          id="ActivityMediaPhoto.title"
+          id="ActivityMedia.photo.title"
           className={styles.title}
           tagName="div"
         />

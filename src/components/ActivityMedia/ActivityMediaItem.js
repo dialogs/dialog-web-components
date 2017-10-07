@@ -9,6 +9,7 @@ import ActivityListItem from '../ActivityList/ActivityListItem';
 import ActivityMediaDocument from './ActivityMediaDocument/ActivityMediaDocument';
 import ActivityMediaPhoto from './ActivityMediaPhoto/ActivityMediaPhoto';
 import ActivityMediaVoice from './ActivityMediaVoice/ActivityMediaVoice';
+import ActivityMediaVideo from './ActivityMediaVideo/ActivityMediaVideo';
 
 type Props = {
   message: Message,
@@ -22,49 +23,57 @@ class ActivityMediaItem extends PureComponent {
     this.props.onClick(this.props.message);
   };
 
-  renderContent() {
+  render() {
     const { message } = this.props;
 
     switch (message.content.type) {
       case 'photo':
         return (
-          <ActivityMediaPhoto
-            title={message.content.fileName}
-            photo={message.content.fileUrl}
-            preview={message.content.preview}
-            sender={message.sender ? message.sender.title : null}
-          />
+          <ActivityListItem onClick={this.handleClick}>
+            <ActivityMediaPhoto
+              title={message.content.fileName}
+              photo={message.content.fileUrl}
+              preview={message.content.preview}
+              sender={message.sender ? message.sender.title : null}
+            />
+          </ActivityListItem>
         );
       case 'document':
         return (
-          <ActivityMediaDocument
-            title={message.content.fileName}
-            size={message.content.fileSize}
-            extension={message.content.fileExtension}
-            sender={message.sender ? message.sender.title : null}
-          />
+          <ActivityListItem onClick={this.handleClick}>
+            <ActivityMediaDocument
+              title={message.content.fileName}
+              size={message.content.fileSize}
+              extension={message.content.fileExtension}
+              sender={message.sender ? message.sender.title : null}
+            />
+          </ActivityListItem>
         );
       case 'voice':
         return (
-          <ActivityMediaVoice
-            url={message.content.fileUrl}
-            duration={message.content.duration}
-            sender={message.sender ? message.sender.title : null}
-          />
+          <ActivityListItem onClick={this.handleClick}>
+            <ActivityMediaVoice
+              url={message.content.fileUrl}
+              duration={message.content.duration}
+              sender={message.sender ? message.sender.title : null}
+            />
+          </ActivityListItem>
+        );
+      case 'video':
+        return (
+          <ActivityListItem onClick={this.handleClick}>
+            <ActivityMediaVideo
+              url={message.content.fileUrl}
+              duration={message.content.duration}
+              sender={message.sender ? message.sender.title : null}
+            />
+          </ActivityListItem>
         );
       default:
         console.warn('Unsupported message type');
 
         return null;
     }
-  }
-
-  render() {
-    return (
-      <ActivityListItem onClick={this.handleClick}>
-        {this.renderContent()}
-      </ActivityListItem>
-    );
   }
 }
 

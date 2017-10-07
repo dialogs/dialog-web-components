@@ -12,7 +12,7 @@ import styles from './ActivityMediaDocument.css';
 type Props = {
   title: ?string,
   size: ?string,
-  sender: ?string,
+  sender?: ?string,
   extension: ?string
 };
 
@@ -35,7 +35,7 @@ class ActivityMediaDocument extends PureComponent {
     if (!title || title === '') {
       return (
         <Text
-          id="ActivityMediaDocumment.title"
+          id="ActivityMedia.document.title"
           className={styles.title}
           tagName="div"
         />
@@ -45,8 +45,23 @@ class ActivityMediaDocument extends PureComponent {
     return <div className={styles.title}>{title}</div>;
   }
 
+  renderSender() {
+    const { sender } = this.props;
+
+    if (!sender) {
+      return null;
+    }
+
+    return (
+      <div className={styles.sender}>
+        {'\u00A0'}-{'\u00A0'}
+        <PeerInfoTitle title={sender || ''} />
+      </div>
+    );
+  }
+
   render() {
-    const { size, sender } = this.props;
+    const { size } = this.props;
 
     return (
       <div className={styles.container}>
@@ -56,8 +71,7 @@ class ActivityMediaDocument extends PureComponent {
           <div className={styles.info}>
             <Icon glyph="arrow_down" className={styles.arrow} size={16} />
             {size}
-            {'\u00A0'}-{'\u00A0'}
-            <PeerInfoTitle title={sender || ''} />
+            {this.renderSender()}
           </div>
         </div>
       </div>

@@ -1,0 +1,8 @@
+photo:
+  title: Image
+document:
+  title: Document
+voice:
+  title: Voice
+video:
+ title: Video

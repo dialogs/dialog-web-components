@@ -8,7 +8,8 @@ const handleMediaClick = (message) => console.debug(message);
     collection={[
       messages[2],
       messages[4],
-      messages[3]
+      messages[3],
+      messages[5]
     ]}
   />
 </div>
