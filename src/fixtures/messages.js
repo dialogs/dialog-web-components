@@ -80,7 +80,7 @@ module.exports = [
       fileName: 'voice.opus',
       fileSize: '30 KB',
       fileUrl: 'http://www.html5tutorial.info/media/vincent.mp3',
-      isUploading: false,
+      isUploading: false
     }
   },
   {
@@ -106,9 +106,15 @@ module.exports = [
     fullDate: new Date(),
     state: 'read',
     content: {
-      type: 'document',
-      fileName: 'DialogMessenger.zip',
-      fileUrl: 'https://dlg.im/dl/osx'
+      type: 'video',
+      width: 640,
+      height: 352,
+      duration: 600,
+      fileName: 'test.mp4',
+      fileSize: '30 KB',
+      preview: null,
+      fileUrl: 'https://www.w3schools.com/html/mov_bbb.mp4',
+      isUploading: false
     }
   }
 ];

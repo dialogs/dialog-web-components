@@ -81,33 +81,15 @@ Video
 -----
 
 ```jsx
-const content = {
-  type: 'video',
-  width: 640,
-  height: 352,
-  duration: 600,
-  fileName: 'test.mp4',
-  fileSize: '30 KB',
-  preview: null,
-  fileUrl: 'https://www.w3schools.com/html/mov_bbb.mp4',
-  isUploading: false
-};
+const messages = require('../../fixtures/messages');
+initialState = messages[5].content;
 
-<MessageContent content={content} />
+<MessageContent content={state} />
 ```
 
 ```jsx
-const content = {
-  type: 'video',
-  width: 640,
-  height: 352,
-  duration: 600,
-  fileName: 'test.mp4',
-  fileSize: '30 KB',
-  preview: null,
-  fileUrl: null,
-  isUploading: false
-};
+const messages = require('../../fixtures/messages');
+initialState = Object.assign({}, messages[5].content, { fileUrl: null });
 
-<MessageContent content={content} />
+<MessageContent content={state} />
 ```
