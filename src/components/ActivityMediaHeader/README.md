@@ -3,7 +3,7 @@
 initialState = {
   current: 'all'
 };
-const types = ['all', 'photo', 'documents'];
+const types = ['all', 'photo', 'documents', 'voice', 'video'];
 const handleChange = (type) => setState({ current: type });
 
 <div style={{ background: '#fff', width: 320 }}>

@@ -92,7 +92,7 @@ class ActivityMediaHeader extends PureComponent {
       targetAttachment: 'bottom center',
       constraints: [
         {
-          to: 'scrollParent',
+          to: 'window',
           attachment: 'together',
           pin: true
         }
