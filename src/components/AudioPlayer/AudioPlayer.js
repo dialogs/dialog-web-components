@@ -227,7 +227,8 @@ class AudioPlayer extends PureComponent {
 
     return (
       <div className={styles.sender}>
-        <PeerInfoTitle title={this.props.sender} />
+        {'\u00A0'}-{'\u00A0'}
+        <PeerInfoTitle title={this.props.sender || ''} />
       </div>
     );
   }
