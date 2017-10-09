@@ -1,5 +1,5 @@
 ```jsx
-initialState = {
+const initial = {
   isOpen: false,
   group: {
     id: '1001',
@@ -28,6 +28,7 @@ initialState = {
     }
   }
 };
+initialState = initial;
 
 <div>
   <Button theme="primary" onClick={() => setState({ isOpen: true })}>Edit Group</Button>
@@ -36,7 +37,7 @@ initialState = {
       ? <EditGroupModal
           group={state.group}
           context={state.context}
-          onClose={() => setState(initialState)}
+          onClose={() => setState(initial)}
           onSubmit={console.debug}
         />
       : null

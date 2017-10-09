@@ -2,7 +2,7 @@
 const { PeerInfoSelectorState } = require('../../entities');
 const contacts = require('../ContactList/mock/contacts.json');
 
-initialState = {
+const initial = {
   isOpen: false,
   step: 'type',
   request: {
@@ -14,14 +14,15 @@ initialState = {
     members: PeerInfoSelectorState.create(contacts),
   }
 };
+initialState = initial;
 
 const handleOpen = () => setState({ isOpen: true });
-const handleClose = () => setState(initialState);
+const handleClose = () => setState(initial);
 const handleRequestChange = (request) => setState({ request });
 const handleStepChange = (step) => setState({ step });
 const handleSubmit = (request) => {
   console.debug(request);
-  setState(initialState);
+  setState(initial);
 };
 
 <div>

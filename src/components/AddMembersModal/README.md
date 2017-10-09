@@ -1,12 +1,12 @@
 ```jsx
 const { PeerInfoSelectorState } = require('../../entities');
 const contacts = require('../ContactList/mock/contacts.json');
-
-initialState = {
+const initial = {
   isOpen: false,
   selector: PeerInfoSelectorState.create(contacts),
   pending: false
 };
+initialState = initial;
 
 <div>
   <Button theme="primary" onClick={() => setState({ isOpen: true })}>
@@ -17,7 +17,7 @@ initialState = {
       ? <AddMembersModal
           selector={state.selector}
           onChange={(selector) => setState({ selector })}
-          onClose={() => setState(initialState)}
+          onClose={() => setState(initial)}
         />
       : null
   }
