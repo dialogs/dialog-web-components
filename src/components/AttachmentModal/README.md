@@ -1,10 +1,11 @@
 ```jsx
 const { selectFiles } = require('@dlghq/dialog-utils');
-
-initialState = {
+const initial = {
   current: 0,
   attachments: []
 };
+
+initialState = initial;
 
 const actions = {
   onOpen(event) {
@@ -26,10 +27,10 @@ const actions = {
     });
   },
   onSendAll() {
-    setState(initialState);
+    setState(initial);
   },
   onClose() {
-    setState(initialState);
+    setState(initial);
   },
   onCurrentChange(current) {
     setState({ current });

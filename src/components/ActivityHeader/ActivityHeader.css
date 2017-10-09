@@ -4,6 +4,10 @@
 
 @import '../../styles/variables.css';
 
+:root {
+  --activity-header-z-index: var(--z-index-chat);
+}
+
 /* Reset */
 .container {
   all: initial;
@@ -24,6 +28,7 @@
   letter-spacing: -0.3px;
   @apply --no-select;
   box-sizing: border-box;
+  z-index: var(--activity-header-z-index);
 }
 
 .icon {

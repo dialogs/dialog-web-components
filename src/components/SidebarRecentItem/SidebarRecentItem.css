@@ -92,7 +92,6 @@
 }
 
 .message {
-  vertical-align: middle !important;
   letter-spacing: -0.25px;
   font-size: 13px;
   line-height: 17px;
@@ -104,7 +103,6 @@
 .sender, .service, .highlight {
   height: 17px;
   line-height: 17px;
-  vertical-align: middle;
   color: var(--sidebar-recent-item-highlight-color);
 }
 
@@ -187,5 +185,4 @@
 .preview {
   overflow: hidden;
   height: 17px;
-  vertical-align: middle;
 }
