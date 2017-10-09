@@ -5,7 +5,7 @@
 
 import type { Props, SidebarFooterButtonVariant } from './types';
 import React, { PureComponent } from 'react';
-import { CSSTransitionGroup } from 'react-transition-group';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import classNames from 'classnames';
 import SidebarFooterButton from './SidebarFooterButton';
 import SidebarUpdateButton from './SidebarUpdateButton';
@@ -41,18 +41,18 @@ class SidebarFooter extends PureComponent {
     }
 
     return (
-      <CSSTransitionGroup
-        transitionAppear
-        transitionEnter={false}
-        transitionLeave={false}
-        transitionAppearTimeout={100}
-        transitionName={{
-          appear: styles.appear,
-          appearActive: styles.appearActive
-        }}
-      >
-        <SidebarUpdateButton onClick={this.props.onUpdate} />
-      </CSSTransitionGroup>
+      <TransitionGroup>
+        <CSSTransition
+          appear
+          timeout={{ appear: 100 }}
+          classNames={{
+            appear: styles.appear,
+            appearActive: styles.appearActive
+          }}
+        >
+          <SidebarUpdateButton onClick={this.props.onUpdate} />
+        </CSSTransition>
+      </TransitionGroup>
     );
   }
 
