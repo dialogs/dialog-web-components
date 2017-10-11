@@ -16,13 +16,6 @@ export type Props = {
   onClick: () => any
 };
 
-const transitionStyles = {
-  enter: styles.enter,
-  enterActive: styles.enterActive,
-  exit: styles.leave,
-  exitActive: styles.leaveActive
-};
-
 class Overlay extends PureComponent {
   props: Props;
 
@@ -35,7 +28,12 @@ class Overlay extends PureComponent {
 
     return (
       <CSSTransition
-        classNames={transitionStyles}
+        classNames={{
+          enter: styles.enter,
+          enterActive: styles.enterActive,
+          exit: styles.leave,
+          exitActive: styles.leaveActive
+        }}
         timeout={{ enter: 100, exit: 100 }}
       >
         <div className={styles.overlay} onClick={this.props.onClick}>
