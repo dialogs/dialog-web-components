@@ -28,7 +28,7 @@
   border-radius: var(--sidebar-search-border-radius);
   background-color: var(--sidebar-search-background-color);
   font-family: var(--sidebar-search-font-family);
-  font-size: 15px;
+  font-size: 14px;
   line-height: 18px;
   color: inherit;
   box-shadow: inset 0 0 0 1px var(--sidebar-search-border-color);
