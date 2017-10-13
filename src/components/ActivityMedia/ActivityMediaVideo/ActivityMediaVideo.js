@@ -41,7 +41,7 @@ class ActivityMediaVideo extends PureComponent {
     if (!title || title === '') {
       return (
         <Text
-          id="ActivityMedia.video.title"
+          id="ActivityMedia.video"
           className={styles.title}
           tagName="div"
         />

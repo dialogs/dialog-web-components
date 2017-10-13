@@ -1,8 +1,5 @@
-photo:
-  title: Изображение
-document:
-  title: Документ
-voice:
-  title: Голосовое сообщение
-video:
- title: Видео
+empty: Сожалею. Сообщений содержащих медиа не найдено.
+photo: Изображение
+document: Документ
+voice: Голосовое сообщение
+video: Видео

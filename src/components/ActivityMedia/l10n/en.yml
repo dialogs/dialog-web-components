@@ -1,8 +1,5 @@
-photo:
-  title: Image
-document:
-  title: Document
-voice:
-  title: Voice
-video:
- title: Video
+empty: Sorry. No media has been found.
+photo: Image
+document: Document
+voice: Voice
+video: Video

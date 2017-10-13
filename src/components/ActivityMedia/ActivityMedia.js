@@ -4,6 +4,7 @@
  */
 
 import type { Message } from '@dlghq/dialog-types';
+import { Text } from '@dlghq/react-l10n';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import ActivityList from '../ActivityList/ActivityList';
@@ -23,8 +24,11 @@ class ActivityMedia extends PureComponent {
     const { collection } = this.props;
 
     if (!collection.length) {
-      // TODO: Render empty list message
-      return null;
+      return (
+        <div className={styles.empty}>
+          <Text id="ActivityMedia.empty" />
+        </div>
+      );
     }
 
     return collection.map((message) => {
