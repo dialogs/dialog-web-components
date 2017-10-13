@@ -75,11 +75,12 @@ class ActivitySearchItem extends PureComponent {
 
     return (
       <div className={styles.header}>
-        <PeerInfoTitle
-          titleClassName={styles.headerTitle}
-          title={info.title}
-          onTitleClick={this.handleGoToPeer}
-        />
+        <div className={styles.headerTitle}>
+          <PeerInfoTitle
+            title={info.title}
+            onTitleClick={this.handleGoToPeer}
+          />
+        </div>
         <div className={styles.headerInfo} onClick={this.handleJumpToMessage}>
           <time dateTime={focus.fullDate.toISOString()}>{messageDate}</time>
           ・
