@@ -111,7 +111,7 @@ module.exports = [
       height: 352,
       duration: 600,
       fileName: 'test.mp4',
-      fileSize: '30 KB',
+      fileSize: '788 KB',
       preview: null,
       fileUrl: 'https://www.w3schools.com/html/mov_bbb.mp4',
       isUploading: false

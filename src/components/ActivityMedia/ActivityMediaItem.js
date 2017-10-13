@@ -63,8 +63,10 @@ class ActivityMediaItem extends PureComponent {
         return (
           <ActivityListItem onClick={this.handleClick}>
             <ActivityMediaVideo
-              url={message.content.fileUrl}
+              title={message.content.fileName}
               duration={message.content.duration}
+              preview={message.content.preview}
+              size={message.content.fileSize}
               sender={message.sender ? message.sender.title : null}
             />
           </ActivityListItem>

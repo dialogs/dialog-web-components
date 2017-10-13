@@ -12,11 +12,10 @@ import styles from './ActivityMediaVideo.css';
 import getHumanTime from '../../../utils/getHumanTime';
 
 type Props = {
-  url: ?string,
   title: ?string,
   size: ?string,
   preview: ?string,
-  duration: ?string,
+  duration: ?number,
   sender: ?string
 };
 
@@ -29,7 +28,7 @@ class ActivityMediaVideo extends PureComponent {
     });
 
     return (
-      <div className={className} style={this.props.preview ? { backgroundImage: `url(${this.props.preview})`} : {}}>
+      <div className={className} style={this.props.preview ? { backgroundImage: `url(${this.props.preview})` } : {}}>
         <Icon glyph="play_arrow" size={22} className={styles.play} />
       </div>
     );
@@ -61,17 +60,17 @@ class ActivityMediaVideo extends PureComponent {
           {this.renderTitle()}
           <div className={styles.info}>
             {
-              size ? (
+              duration ? (
                 <span>
-                  {size}
+                  {getHumanTime(duration * 10)}
                   {'\u00A0'}-{'\u00A0'}
                 </span>
               ) : null
             }
             {
-              duration ? (
+              size ? (
                 <span>
-                  {getHumanTime(duration * 10)}
+                  {size}
                   {'\u00A0'}-{'\u00A0'}
                 </span>
               ) : null

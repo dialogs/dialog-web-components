@@ -9,7 +9,7 @@ import styles from './ActivityMediaVoice.css';
 
 type Props = {
   url: ?string,
-  duration: ?string,
+  duration: ?number,
   sender: ?string
 };
 

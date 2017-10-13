@@ -42,6 +42,8 @@
   justify-content: center;
   box-sizing: border-box;
   margin-right: 14px;
+  background-size: cover;
+  background-position: 50% 50%;
 }
 
 .meta {
