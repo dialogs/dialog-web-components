@@ -1,0 +1,63 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+:root {
+  --sidebar-search-result-font-size: var(--default-font-family);
+  --sidebar-search-result-header-background: #dcdcdc;
+  --sidebar-search-result-header-font-size: 13px;
+}
+
+/* Reset */
+.container {
+  all: initial;
+}
+
+/* Styles */
+.container {
+  font-family: var(--sidebar-search-result-font-size);
+  position: relative;
+  flex: 1 1 auto;
+  overflow: auto;
+  @apply --flex-fix;
+}
+
+.spinnerWrapper {
+  padding: calc(var(--default-padding-large) * 2.5) 0;
+  text-align: center;
+}
+
+.spinner {
+  display: inline-block;
+}
+
+.text {
+  padding: calc(var(--default-padding-large) * 2) var(--default-padding);
+  text-align: center;
+
+  & b {
+    font-weight: 500;
+  }
+}
+
+.textEmoji {
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.error {
+  display: block;
+  text-align: center;
+
+  & b {
+    font-weight: 500;
+  }
+}
+
+.header {
+  background-color: var(--sidebar-search-result-header-background);
+  padding: 6px 14px;
+  font-size: var(--sidebar-search-result-header-font-size)
+}

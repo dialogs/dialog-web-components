@@ -100,6 +100,7 @@ export { default as SidebarHeaderPlus } from './components/SidebarHeader/Sidebar
 export { default as SidebarUnread } from './components/SidebarUnread/SidebarUnread';
 export { default as SidebarSearch } from './components/SidebarSearch/SidebarSearch';
 export { default as SidebarSearchGroup } from './components/SidebarSearchGroup/SidebarSearchGroup';
+export { default as SidebarSearchResults } from './components/SidebarSearchResults/SidebarSearchResults';
 export { default as SidebarCalls } from './components/SidebarCalls/SidebarCalls';
 export { default as SidebarPeerItem } from './components/SidebarPeerItem/SidebarPeerItem';
 export { default as SidebarRecentItem } from './components/SidebarRecentItem/SidebarRecentItem';
