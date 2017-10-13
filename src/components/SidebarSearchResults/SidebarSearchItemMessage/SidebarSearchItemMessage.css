@@ -6,7 +6,7 @@
 
 :root {
   --sidebar-search-item-message-font-family: var(--default-font-family);
-  --sidebar-search-item-message-background: #f5f5f5;
+  --sidebar-search-item-message-background: #fafafa;
   --sidebar-search-item-message-highlighted-background: #e6e6e6;
   --sidebar-search-item-message-highlighted-title-color: #2174D3;
   --sidebar-search-item-message-title-color: #000;
