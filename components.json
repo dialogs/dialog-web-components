@@ -98,6 +98,7 @@
     "components": [
       "SidebarHeader",
       "SidebarSearch",
+      "SidebarSearchResults",
       "SidebarUnread",
       "SidebarPeerItem",
       "SidebarRecentItem",
