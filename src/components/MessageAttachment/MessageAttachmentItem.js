@@ -10,7 +10,6 @@ import TextMessagePreview from '../SidebarRecentItem/MessagePreview/TextMessageP
 import Icon from '../Icon/Icon';
 import MessageContent from '../MessageContent/MessageContent';
 import decorators from './utils/decorators';
-
 import styles from './MessageAttachment.css';
 
 type Props = {
@@ -78,7 +77,8 @@ class MessageAttachmentItem extends Component {
   renderContent() {
     const { message: { content, rid }, type, maxWidth, maxHeight } = this.props;
     const messageClassName = classNames(styles.message, {
-      [styles.reply]: type === 'reply'
+      [styles.reply]: type === 'reply',
+      [styles.replyDocument]: content.type === 'document'
     });
 
     switch (type) {
@@ -99,7 +99,7 @@ class MessageAttachmentItem extends Component {
             className={messageClassName}
             content={content}
             rid={rid}
-            maxWidth={content.type === 'voice' ? 0 : 70}
+            maxWidth={content.type === 'voice' ? 0 : maxWidth}
             maxHeight={70}
           />
         );
