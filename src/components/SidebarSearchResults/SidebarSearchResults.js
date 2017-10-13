@@ -100,7 +100,7 @@ class SidebarSearchResults extends PureComponent {
           html
           tagName="header"
           id="SidebarSearchResults.count"
-          values={{ count: messages.value.length }}
+          values={{ count: messages.value.length.toString() }}
         />
         {children}
       </div>
