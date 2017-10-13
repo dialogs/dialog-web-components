@@ -6,17 +6,22 @@
 import type { ProviderContext } from '@dlghq/react-l10n';
 import React, { Component } from 'react';
 import { LocalizationContextType } from '@dlghq/react-l10n';
+import { debounce } from 'lodash';
 import classNames from 'classnames';
 import Icon from '../Icon/Icon';
+import Spinner from '../Spinner/Spinner';
 import styles from './SidebarSearch.css';
 
 export type Props = {
   className?: string,
-  value: string,
-  onChange: (value: string) => any,
-  onFocus?: () => any,
-  onBlur?: () => any,
-  onKeyDown?: (event: SyntheticInputEvent) => any
+  query: string,
+  focus: boolean,
+  pending: boolean,
+  onFocus: (query: string) => mixed,
+  onBlur: () => mixed,
+  onCancel: () => mixed,
+  onChange: (query: string) => mixed,
+  onSearch: (query: string) => mixed
 };
 
 export type Context = ProviderContext;
@@ -30,57 +35,106 @@ class SidebarSearch extends Component {
     l10n: LocalizationContextType
   };
 
-  shouldComponentUpdate(nextProps: Props): boolean {
-    return nextProps.value !== this.props.value ||
-           nextProps.className !== this.props.className;
+  constructor(props: Props) {
+    super(props);
+
+    this.handleSearch = debounce(this.handleSearch, 300);
   }
 
-  handleChange = (event: SyntheticInputEvent): void => {
+  componentDidUpdate(prevProps: Props) {
+    if (this.props.focus && !prevProps.focus) {
+      this.focus();
+    }
+  }
+
+  handleChange = (event: SyntheticInputEvent) => {
+    this.handleSearch(event.target.value);
     this.props.onChange(event.target.value);
   };
 
-  setInput = (input: ?HTMLInputElement): void => {
+  handleCancel = () => {
+    this.props.onCancel();
+  };
+
+  handleSearch = (query: string) => {
+    this.props.onSearch(query);
+  };
+
+  handleFocus = () => {
+    this.props.onFocus(this.props.query);
+  };
+
+  handleBlur = () => {
+    this.props.onBlur();
+  };
+
+  setInput = (input: ?HTMLInputElement) => {
     this.input = input;
   };
 
-  focus(): void {
-    if (this.input) {
+  focus() {
+    if (this.input && document.activeElement !== this.input) {
       this.input.focus();
     }
   }
 
-  blur(): void {
-    if (this.input) {
-      this.input.blur();
+  renderIcon() {
+    const { pending } = this.props;
+
+    if (pending) {
+      return (
+        <Spinner size="small" className={styles.spinner} />
+      );
     }
+
+    return (
+      <Icon glyph="search" className={styles.icon} size={22} />
+    );
+  }
+
+  renderClearIcon() {
+    if (!this.props.query) {
+      return null;
+    }
+
+    return (
+      <Icon
+        glyph="close"
+        className={styles.cancel}
+        size={20}
+        onClick={this.handleCancel}
+      />
+    );
   }
 
   render(): React.Element<any> {
-    const { value } = this.props;
     const { l10n } = this.context;
 
     const className = classNames(
       styles.container,
-      value ? styles.filled : null,
+      this.props.query ? styles.filled : null,
       this.props.className
     );
 
     const placeholder = l10n.formatText('SidebarSearch.placeholder');
 
     return (
-      <div className={className}>
-        <Icon glyph="search" className={styles.icon} size={22} />
-        <input
-          type="search"
-          value={value}
-          className={styles.input}
-          placeholder={placeholder}
-          ref={this.setInput}
-          onChange={this.handleChange}
-          onFocus={this.props.onFocus}
-          onBlur={this.props.onBlur}
-          onKeyDown={this.props.onKeyDown}
-        />
+      <div className={styles.wrapper}>
+        <div className={className}>
+          {this.renderIcon()}
+          <input
+            type="search"
+            ref={this.setInput}
+            placeholder={placeholder}
+            className={styles.input}
+            value={this.props.query}
+            autoFocus={this.props.focus}
+            onFocus={this.handleFocus}
+            onBlur={this.handleBlur}
+            onChange={this.handleChange}
+          />
+          {this.renderClearIcon()}
+        </div>
       </div>
     );
   }

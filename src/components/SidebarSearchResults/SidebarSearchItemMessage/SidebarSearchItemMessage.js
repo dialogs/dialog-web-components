@@ -79,7 +79,7 @@ class SidebarSearchItemMessage extends PureComponent {
         <PeerAvatar
           className={styles.avatar}
           peer={sender}
-          size={30}
+          size={28}
           onClick={this.handleGoToPeer}
         />
         <div className={styles.wrapper}>
@@ -105,7 +105,7 @@ class SidebarSearchItemMessage extends PureComponent {
               rid={message.rid}
               content={message.content}
               maxHeight={100}
-              maxWidth={100}
+              maxWidth={300}
             />
           </div>
         </div>

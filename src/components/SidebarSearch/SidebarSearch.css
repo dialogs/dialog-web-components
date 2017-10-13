@@ -9,11 +9,14 @@
   all: initial;
 }
 
+.wrapper {
+  padding: 0 var(--sidebar-search-padding) var(--sidebar-search-padding);
+}
+
 .container {
   position: relative;
   display: flex;
   box-sizing: border-box;
-  padding: 0 var(--sidebar-search-padding) var(--sidebar-search-padding);
   color: var(--sidebar-search-color);
 }
 
@@ -22,7 +25,7 @@
   box-sizing: border-box;
   width: 100%;
   height: var(--sidebar-search-input-height);
-  padding: 8px 12px 8px 44px;
+  padding: 8px 12px 8px 48px;
   transition: padding var(--default-transition-duration) ease;
   letter-spacing: -0.2px;
   border-radius: var(--sidebar-search-border-radius);
@@ -67,7 +70,20 @@
 .icon {
   position: absolute;
   top: 7px;
-  left: calc(var(--sidebar-search-padding) + 10px);
+  left: calc(var(--sidebar-search-padding));
   transition: opacity calc(var(--default-transition-duration)) ease;
   fill: var(--sidebar-search-color);
+}
+
+.spinner {
+  position: absolute;
+  top: 9px;
+  left: 9px;
+  pointer-events: none;
+}
+
+.cancel {
+  position: absolute;
+  top: 7px;
+  right: 8px;
 }

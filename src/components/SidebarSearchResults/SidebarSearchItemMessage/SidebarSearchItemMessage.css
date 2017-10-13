@@ -150,4 +150,8 @@
   cursor: inherit;
   font-size: 14px;
   line-height: 16px;
+
+  & p {
+    margin: 0;
+  }
 }
