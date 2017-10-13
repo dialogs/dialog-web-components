@@ -69,7 +69,7 @@ class SidebarSearch extends Component {
 
     return (
       <div className={className}>
-        <Icon glyph="search" className={styles.icon} size={20} />
+        <Icon glyph="search" className={styles.icon} size={22} />
         <input
           type="search"
           value={value}

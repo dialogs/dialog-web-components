@@ -55,11 +55,18 @@
   &:-ms-input-placeholder {
     color: var(--sidebar-search-placeholder-color);
   }
+
+  &::-webkit-search-decoration,
+  &::-webkit-search-cancel-button,
+  &::-webkit-search-results-button,
+  &::-webkit-search-results-decoration {
+    display: none;
+  }
 }
 
 .icon {
   position: absolute;
-  top: 8px;
+  top: 7px;
   left: calc(var(--sidebar-search-padding) + 10px);
   transition: opacity calc(var(--default-transition-duration)) ease;
   fill: var(--sidebar-search-color);
