@@ -84,7 +84,6 @@ module.exports = {
           display: 'none',
           marginLeft: 6,
           color: 'rgba(0, 0, 0, 0.3)',
-          fontSize: 30,
           fontWeight: '600'
         },
         '&:hover': {
