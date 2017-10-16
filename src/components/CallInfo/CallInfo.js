@@ -15,7 +15,7 @@ type Props = {
   call: Call,
   onCall: boolean,
   withVideo: boolean,
-  onClick?: () => mixed
+  onClick?: ?() => mixed
 };
 
 class CallInfo extends PureComponent {
