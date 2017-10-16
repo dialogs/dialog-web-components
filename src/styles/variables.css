@@ -566,7 +566,7 @@
   --activity-font-size: var(--default-font-size);
   --activity-font-color: var(--default-font-color);
   --activity-text-color-light: var(--default-font-color-light);
-  --activity-border-color: color(#000 alpha(10%));
+  --activity-border-color: #e5e5e5;
   /* ActivityHeader */
   --activity-header-height: 60px;
   --activity-header-transition-duration: var(--default-transition-duration);

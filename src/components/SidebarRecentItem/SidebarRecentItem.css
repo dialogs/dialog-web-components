@@ -73,7 +73,6 @@
 
 .title {
   display: inline-block;
-  vertical-align: middle;
   letter-spacing: -0.27px;
   font-size: var(--sidebar-recent-item-font-size);
   font-weight: 500;
@@ -87,7 +86,6 @@
   display: inline-block;
   margin-right: 4px;
   margin-top: -4px;
-  vertical-align: middle;
   fill: currentColor;
 }
 

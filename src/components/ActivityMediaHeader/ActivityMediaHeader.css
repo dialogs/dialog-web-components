@@ -1,0 +1,89 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+/* Reset */
+.container {
+  all: initial;
+}
+
+/* Styles */
+.container {
+  position: relative;
+  display: block;
+  min-height: var(--activity-header-height);
+  font-family: var(--activity-font-family);
+  font-size: var(--activity-header-font-size);
+  font-weight: 500;
+  line-height: 28px;
+  flex: 1 1 auto;
+  padding: var(--default-padding) 50px;
+  text-align: center;
+  letter-spacing: -0.3px;
+  @apply --no-select;
+  box-sizing: border-box;
+}
+
+.icon {
+  position: absolute;
+  top: 17px;
+  width: var(--activity-header-icon-size);
+  height: var(--activity-header-icon-size);
+  transition: color var(--activity-header-transition-duration) linear;
+  fill: var(--activity-header-icon-color);
+
+  &:hover {
+    fill: var(--activity-header-icon-color-hover);
+  }
+}
+
+.iconBack {
+  left: 20px;
+  composes: icon;
+}
+
+.iconClose {
+  right: 20px;
+  composes: icon;
+}
+
+.current {
+  cursor: pointer;
+  @apply --no-select;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  flex-flow: row nowrap;
+
+  & .arrow {
+    fill: var(--activity-header-icon-color);
+  }
+
+  &:hover {
+    & .arrow {
+      fill: var(--activity-header-icon-color-hover);
+    }
+  }
+}
+
+.currentActive {
+  & .arrow {
+    fill: var(--activity-header-icon-color-hover);
+  }
+}
+
+.currentText {
+  cursor: pointer;
+  flex: 0 0 auto;
+  @apply --text-overflow-ellipsis;
+}
+
+.arrow {
+  cursor: pointer;
+  flex: 0 0 auto;
+  margin: 4px 0 0 2px;
+}

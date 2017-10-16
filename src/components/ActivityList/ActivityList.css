@@ -45,6 +45,12 @@
     display: none;
   }
 
+  &:first-child {
+    &::before {
+      display: none;
+    }
+  }
+
   &:last-child {
     &::after {
       display: block;

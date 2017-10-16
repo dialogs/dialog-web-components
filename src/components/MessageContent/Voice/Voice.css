@@ -23,7 +23,6 @@
   font-family: var(--voice-font-family);
   padding: var(--voice-padding);
   position: relative;
-  max-width: 400px;
 }
 
 .player {

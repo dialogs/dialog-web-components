@@ -1,0 +1,88 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../../styles/variables.css';
+
+:root {
+  --activity-media-document-title-font-size: var(--default-font-size);
+  --activity-media-document-title-color: #000;
+  --activity-media-document-info-font-size: var(--default-font-size-small);
+  --activity-media-document-info-color: #7f7f7f;
+  --activity-media-preview-image-size: 46px;
+}
+
+/* Reset */
+.container {
+  all: initial;
+}
+
+/* Styles */
+.container {
+  cursor: inherit;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  padding: 12px 0;
+  flex: 1 1 auto;
+  overflow: hidden;
+  font-family: var(--default-font-family);
+}
+
+.preview {
+  width: var(--activity-media-preview-image-size);
+  height: var(--activity-media-preview-image-size);
+  background-color: #FF3939;
+  flex: 0 0 auto;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 4px;
+  margin-right: 14px;
+  border-radius: 1000px;
+}
+
+.extension {
+  color: white;
+  font-weight: 500;
+  font-size: 14px;
+  text-transform: uppercase;
+  @apply --text-overflow-ellipsis;
+}
+
+.meta {
+  display: flex;
+  flex-flow: column nowrap;
+  flex: 1 1 auto;
+  @apply --flex-fix;
+}
+
+.title {
+  font-weight: 500;
+  line-height: 22px;
+  font-size: var(--activity-media-document-title-font-size);
+  letter-spacing: -0.384px;
+  color: var(--activity-media-document-title-color);
+  flex: 0 0 auto;
+  @apply --text-overflow-ellipsis;
+}
+
+.info {
+  display: inline-flex;
+  align-items: center;
+  line-height: 22px;
+  font-size: var(--activity-media-document-info-font-size);
+  color: var(--activity-media-document-info-color);
+  letter-spacing: -0.336px;
+  @apply --text-overflow-ellipsis;
+}
+
+.arrow {
+  fill: var(--color-primary);
+  margin-right: 4px;
+}

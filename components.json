@@ -143,7 +143,10 @@
       "ActivityListIntegration",
       "ActivityIntegration",
       "ActivityListMembers",
-      "ActivitySearch"
+      "ActivitySearch",
+      "ActivityMediaHeader",
+      "ActivityListMedia",
+      "ActivityMedia"
     ]
   },
   {
