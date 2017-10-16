@@ -446,12 +446,12 @@
   --sidebar-footer-button-counter-font-size: calc(var(--sidebar-footer-button-counter-size) - 6);
   /* SidebarSearch */
   --sidebar-search-font-family: var(--default-font-family);
-  --sidebar-search-padding: 12px;
-  --sidebar-search-border-radius: 6px;
+  --sidebar-search-padding: 10px;
+  --sidebar-search-border-radius: 4px;
   --sidebar-search-border-color: transparent;
   --sidebar-search-border-color-focus: var(--pinkish-grey);
   --sidebar-search-background-color: var(--white-two);
-  --sidebar-search-color: color(#000 alpha(50%));
+  --sidebar-search-color: #999;
   --sidebar-search-placeholder-color: color(#000 alpha(50%));
   --sidebar-search-focus-color: #000;
   --sidebar-search-focus-background-color: #fff;

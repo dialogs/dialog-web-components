@@ -1,0 +1,5 @@
+count: "<b>{count}</b> messages found"
+header: Search results
+jump: Jump
+not_found: "No messages found matching: <b>{query}</b>"
+error: "<b>Error:</b> {error}"

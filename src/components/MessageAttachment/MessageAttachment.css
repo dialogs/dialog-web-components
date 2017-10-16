@@ -91,9 +91,14 @@
 }
 
 .reply {
-  display: block;
   width: 100%;
+  display: block;
   @apply --text-overflow-ellipsis;
+}
+
+.replyDocument {
+  width: 100%;
+  display: flex;
 }
 
 .content {

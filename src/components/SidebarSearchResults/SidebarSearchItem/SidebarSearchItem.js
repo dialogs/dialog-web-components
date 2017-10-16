@@ -4,14 +4,13 @@
  */
 
 import type { Peer, Message, PeerInfo } from '@dlghq/dialog-types';
-
 import React, { PureComponent } from 'react';
 import { findDOMNode } from 'react-dom';
 import { format } from 'date-fns';
 import { Text } from '@dlghq/react-l10n';
 import classNames from 'classnames';
-import ActivitySearchItemMessage from '../ActivitySearchItemMessage/ActivitySearchItemMessage';
-import styles from './ActivitySearchItem.css';
+import SidebarSearchItemMessage from '../SidebarSearchItemMessage/SidebarSearchItemMessage';
+import styles from './SidebarSearchItem.css';
 import PeerInfoTitle from '../../PeerInfoTitle/PeerInfoTitle';
 
 type Props = {
@@ -28,7 +27,7 @@ type State = {
   collapsed: boolean
 };
 
-class ActivitySearchItem extends PureComponent {
+class SidebarSearchItem extends PureComponent {
   props: Props;
   state: State;
 
@@ -102,7 +101,7 @@ class ActivitySearchItem extends PureComponent {
 
     if (this.state.collapsed) {
       return (
-        <ActivitySearchItemMessage
+        <SidebarSearchItemMessage
           info={info}
           message={before[before.length - 1]}
           highlighted={false}
@@ -114,7 +113,7 @@ class ActivitySearchItem extends PureComponent {
 
     return before.map((message) => {
       return (
-        <ActivitySearchItemMessage
+        <SidebarSearchItemMessage
           key={message.rid}
           info={info}
           message={message}
@@ -132,7 +131,7 @@ class ActivitySearchItem extends PureComponent {
     const { info, focus } = this.props;
 
     return (
-      <ActivitySearchItemMessage
+      <SidebarSearchItemMessage
         info={info}
         message={focus}
         highlighted
@@ -153,7 +152,7 @@ class ActivitySearchItem extends PureComponent {
 
     if (this.state.collapsed) {
       return (
-        <ActivitySearchItemMessage
+        <SidebarSearchItemMessage
           info={info}
           message={after[0]}
           highlighted={false}
@@ -165,7 +164,7 @@ class ActivitySearchItem extends PureComponent {
 
     return after.map((message) => {
       return (
-        <ActivitySearchItemMessage
+        <SidebarSearchItemMessage
           info={info}
           key={message.rid}
           message={message}
@@ -196,4 +195,4 @@ class ActivitySearchItem extends PureComponent {
   }
 }
 
-export default ActivitySearchItem;
+export default SidebarSearchItem;
