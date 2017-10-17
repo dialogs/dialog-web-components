@@ -105,7 +105,7 @@ class SidebarSearchItemMessage extends PureComponent {
               rid={message.rid}
               content={message.content}
               maxHeight={100}
-              maxWidth={300}
+              maxWidth={170}
             />
           </div>
         </div>

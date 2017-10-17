@@ -14,6 +14,8 @@
   --sidebar-search-item-message-time-color: #868686;
   --sidebar-search-item-message-time-font-size: 13px;
   --sidebar-search-item-message-z-index: 10;
+  --sidebar-search-item-message-content-color: #000;
+  --sidebar-search-item-message-content-font-size: 14px;
 }
 
 /* Reset */
@@ -148,7 +150,8 @@
 
 .content {
   cursor: inherit;
-  font-size: 14px;
+  color: var(--sidebar-search-item-message-content-color);
+  font-size: var(--sidebar-search-item-message-content-font-size);
   line-height: 16px;
 
   & p {

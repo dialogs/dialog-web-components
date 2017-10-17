@@ -8,6 +8,7 @@
   --sidebar-search-result-font-size: var(--default-font-family);
   --sidebar-search-result-header-background: #dcdcdc;
   --sidebar-search-result-header-font-size: 13px;
+  --sidebar-search-result-header-color: #000;
 }
 
 /* Reset */
@@ -58,6 +59,8 @@
 
 .header {
   background-color: var(--sidebar-search-result-header-background);
+  color: var(--sidebar-search-result-header-color);
   padding: 6px 14px;
+  line-height: 20px;
   font-size: var(--sidebar-search-result-header-font-size)
 }

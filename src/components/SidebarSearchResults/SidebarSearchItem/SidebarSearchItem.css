@@ -8,9 +8,9 @@
   --activity-search-item-font-family: var(--default-font-family);
   --activity-search-item-border-color: #dcdcdc;
   --activity-search-item-header-title-font-size: var(--default-font-size);
+  --activity-search-item-header-title-color: #000;
   --activity-search-item-header-date-font-size: 13px;
   --activity-search-item-header-date-color: #8E8E8E;
-  --activity-search-item-messages-border-color: #ececec;
 }
 
 /* Styles */
@@ -36,6 +36,8 @@
   flex: 1 1 auto;
   font-weight: 500;
   line-height: 20px;
+  font-size: var(--activity-search-item-header-title-font-size);
+  color: var(--activity-search-item-header-title-color);
   @apply --text-overflow-ellipsis;
   @apply --flex-fix;
 }
