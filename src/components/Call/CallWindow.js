@@ -44,7 +44,9 @@ class CallWindow extends PureComponent {
   }
 
   handleGoToPeer = () => {
-    this.props.onGoToPeer(this.props.call.peer.peer);
+    if (!this.isSIP()) {
+      this.props.onGoToPeer(this.props.call.peer.peer);
+    }
   };
 
   handleHover = (hover: boolean) => {
@@ -55,6 +57,10 @@ class CallWindow extends PureComponent {
     }
   };
 
+  isSIP(): boolean {
+    return this.props.call.peer.peer.type === 'sip';
+  }
+
   renderHeader() {
     const { call } = this.props;
     const withVideo = hasTheirVideos(call);
@@ -64,7 +70,7 @@ class CallWindow extends PureComponent {
         withVideo={withVideo}
         call={call}
         isVisible={this.state.hover}
-        onClick={this.handleGoToPeer}
+        onClick={this.isSIP() ? null : this.handleGoToPeer}
       />
     );
   }
@@ -93,7 +99,7 @@ class CallWindow extends PureComponent {
               size={136}
               peer={call.peer}
               state={call.state}
-              onClick={this.handleGoToPeer}
+              onClick={this.isSIP() ? null : this.handleGoToPeer}
             />
             <CallInfo
               className={styles.callState}
@@ -142,7 +148,11 @@ class CallWindow extends PureComponent {
     const style = getWindowSize(call);
 
     return (
-      <div className={className} style={style}>
+      <div
+        className={className}
+        style={style}
+        onDoubleClick={this.isSIP() ? null : this.handleGoToPeer}
+      >
         <Hover onHover={this.handleHover} className={styles.hover}>
           {this.renderContent()}
           {this.renderControls()}

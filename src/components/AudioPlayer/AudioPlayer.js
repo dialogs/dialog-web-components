@@ -8,12 +8,14 @@ import classNames from 'classnames';
 import getHumanTime from '../../utils/getHumanTime';
 import MediaErrorMessage from '../MediaErrorMessage/MediaErrorMessage';
 import AudioPlayerButton from './AudioPlayerButton/AudioPlayerButton';
+import PeerInfoTitle from '../PeerInfoTitle/PeerInfoTitle';
 import styles from './AudioPlayer.css';
 
 type Props = {
   src: ?string,
   duration?: ?number,
-  pending?: ?boolean
+  pending?: ?boolean,
+  sender?: ?string
 };
 
 type State = {
@@ -211,7 +213,24 @@ class AudioPlayer extends PureComponent {
       );
     }
 
-    return getHumanTime(this.state.duration);
+    return (
+      <div className={styles.state}>
+        {getHumanTime(this.state.duration)}
+      </div>
+    );
+  }
+
+  renderSender() {
+    if (!this.props.sender) {
+      return null;
+    }
+
+    return (
+      <div className={styles.sender}>
+        {'\u00A0'}-{'\u00A0'}
+        <PeerInfoTitle title={this.props.sender || ''} />
+      </div>
+    );
   }
 
   render() {
@@ -222,6 +241,7 @@ class AudioPlayer extends PureComponent {
           {this.renderPlayerSeeker()}
           <div className={styles.playerTime}>
             {this.renderState()}
+            {this.renderSender()}
           </div>
         </div>
         {this.renderAudioElement()}

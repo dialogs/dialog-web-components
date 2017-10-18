@@ -9,6 +9,8 @@ import classNames from 'classnames';
 import ArchiveList from './ArchiveList';
 import styles from './Archive.css';
 
+console.warn('Archive component is deprecated and will be removed in future.');
+
 export type Props = {
   className?: string,
   pending: boolean,

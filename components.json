@@ -98,6 +98,7 @@
     "components": [
       "SidebarHeader",
       "SidebarSearch",
+      "SidebarSearchResults",
       "SidebarUnread",
       "SidebarPeerItem",
       "SidebarRecentItem",
@@ -143,7 +144,10 @@
       "ActivityListIntegration",
       "ActivityIntegration",
       "ActivityListMembers",
-      "ActivitySearch"
+      "ActivitySearch",
+      "ActivityMediaHeader",
+      "ActivityListMedia",
+      "ActivityMedia"
     ]
   },
   {

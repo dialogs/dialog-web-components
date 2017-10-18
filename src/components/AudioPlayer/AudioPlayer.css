@@ -98,3 +98,11 @@
     background-color: var(--color-danger);
   }
 }
+
+.state {
+  flex: 0 0 auto;
+}
+
+.sender {
+  flex: 0 0 auto;
+}

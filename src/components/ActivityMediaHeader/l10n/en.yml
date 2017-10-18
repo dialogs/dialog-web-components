@@ -1,0 +1,5 @@
+all: All media
+photo: Images
+documents: Documents
+voice: Voice
+video: Video

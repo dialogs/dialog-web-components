@@ -100,6 +100,7 @@ export { default as SidebarHeaderPlus } from './components/SidebarHeader/Sidebar
 export { default as SidebarUnread } from './components/SidebarUnread/SidebarUnread';
 export { default as SidebarSearch } from './components/SidebarSearch/SidebarSearch';
 export { default as SidebarSearchGroup } from './components/SidebarSearchGroup/SidebarSearchGroup';
+export { default as SidebarSearchResults } from './components/SidebarSearchResults/SidebarSearchResults';
 export { default as SidebarCalls } from './components/SidebarCalls/SidebarCalls';
 export { default as SidebarPeerItem } from './components/SidebarPeerItem/SidebarPeerItem';
 export { default as SidebarRecentItem } from './components/SidebarRecentItem/SidebarRecentItem';
@@ -141,6 +142,9 @@ export { default as ActivityListMembers } from './components/ActivityListMembers
 export { default as ActivityListMembersAdd } from './components/ActivityListMembers/ActivityListMembersAdd';
 export { default as ActivityListMembersItem } from './components/ActivityListMembers/ActivityListMembersItem';
 export { default as ActivitySearch } from './components/ActivitySearch/ActivitySearch';
+export { default as ActivityMediaHeader } from './components/ActivityMediaHeader/ActivityMediaHeader';
+export { default as ActivityListMedia } from './components/ActivityListMedia/ActivityListMedia';
+export { default as ActivityMedia } from './components/ActivityMedia/ActivityMedia';
 
 // Helpers
 export { default as Trigger } from './components/Trigger/Trigger';

@@ -6,7 +6,7 @@ Default states:
   <br />
   <MessageState state="sent" time="sent" fullTime={new Date()} />
   <br />
-  <MessageState state="received" time="received"fullTime={new Date()}  />
+  <MessageState state="received" time="received" fullTime={new Date()} />
   <br />
   <MessageState state="read" time="read" fullTime={new Date()} />
   <br />

@@ -15,7 +15,7 @@ type Props = {
   call: Call,
   isVisible: boolean,
   withVideo: boolean,
-  onClick?: () => mixed
+  onClick?: ?() => mixed
 };
 
 class CallHeader extends PureComponent {

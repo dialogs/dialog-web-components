@@ -4,12 +4,15 @@
  */
 
 import type { CallInfo } from '@dlghq/dialog-types';
+import type { ProviderContext } from '@dlghq/react-l10n';
 import React, { PureComponent } from 'react';
+import { LocalizationContextType } from '@dlghq/react-l10n';
 import { Text } from '@dlghq/react-l10n';
 import { formatTime } from '@dlghq/dialog-utils';
 import classNames from 'classnames';
 import DoublePeerAvatar from '../DoublePeerAvatar/DoublePeerAvatar';
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
+import getDateFnsLocale from '../../utils/getDateFnsLocale';
 import styles from './SidebarCallItem.css';
 
 export type CallState = 'outgoing' | 'incoming' | 'canceled' | 'missed';
@@ -21,8 +24,15 @@ export type Props = {
   onSelect: (call: CallInfo) => any
 };
 
+type Context = ProviderContext;
+
 class SidebarCallItem extends PureComponent {
   props: Props;
+  context: Context;
+
+  static contextTypes = {
+    l10n: LocalizationContextType
+  };
 
   handleClick = (): void => {
     this.props.onSelect(this.props.call);
@@ -74,10 +84,11 @@ class SidebarCallItem extends PureComponent {
 
   renderTime(): React.Element<any> {
     const { call: { date } } = this.props;
+    const locale = getDateFnsLocale(this.context.l10n.locale);
 
     return (
       <time className={styles.time}>
-        {distanceInWordsToNow(date, { addSuffix: true, includeSeconds: true })}
+        {distanceInWordsToNow(date, { addSuffix: true, includeSeconds: true, locale })}
       </time>
     );
   }
