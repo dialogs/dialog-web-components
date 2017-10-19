@@ -77,7 +77,7 @@ class MessageAttachmentItem extends Component {
   renderContent() {
     const { message: { content, rid }, type, maxWidth, maxHeight } = this.props;
     const messageClassName = classNames(styles.message, {
-      [styles.reply]: type === 'reply',
+      [styles.replyContent]: type === 'reply',
       [styles.replyDocument]: content.type === 'document'
     });
 
@@ -99,7 +99,7 @@ class MessageAttachmentItem extends Component {
             className={messageClassName}
             content={content}
             rid={rid}
-            maxWidth={content.type === 'voice' ? 0 : maxWidth}
+            maxWidth={maxWidth}
             maxHeight={70}
           />
         );

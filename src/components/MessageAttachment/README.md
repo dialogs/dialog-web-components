@@ -29,6 +29,7 @@ const onGoToMessage = () => console.debug('onGoToMessage');
   />
   <Message
     onGoToMessage={onGoToMessage}
+    maxWidth={400}
     message={{
       ...messages[0],
       attachment: {

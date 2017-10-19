@@ -94,6 +94,12 @@
   padding: 6px var(--message-attachment-padding);
 }
 
+.replyContent {
+  width: 100%;
+  display: block;
+  @apply --text-overflow-ellipsis;
+}
+
 .forward {
   padding: 6px var(--message-attachment-forward-padding);
 }
