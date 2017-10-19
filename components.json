@@ -129,7 +129,8 @@
       "MessageDivider",
       "FakeMessage",
       "EmptyChat",
-      "WelcomeMessage"
+      "WelcomeMessage",
+      "MessageMediaInteractive"
     ]
   },
   {

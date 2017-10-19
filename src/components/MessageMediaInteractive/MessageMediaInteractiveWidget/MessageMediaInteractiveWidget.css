@@ -1,0 +1,27 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../../styles/variables.css';
+
+:root {
+  --message-media-interactive-font-family: var(--default-font-family);
+}
+
+/* Reset */
+.widget {
+  all: initial;
+}
+
+/* Styles */
+.widget {
+  font-family: var(--message-media-interactive-font-family);
+  display: inline-block;
+  margin-right: 8px;
+}
+
+.select {
+  margin: 0;
+}
+
+.button {}

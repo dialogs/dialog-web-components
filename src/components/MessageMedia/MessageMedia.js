@@ -8,6 +8,7 @@ import React from 'react';
 import MessageMediaWebpage from './MessageMediaWebpage';
 import MessageMediaVoice from './MessageMediaVoice';
 import MessageMediaImage from './MessageMediaImage';
+import MessageMediaInteractive from '../MessageMediaInteractive/MessageMediaInteractive';
 
 export type Props = {
   className?: string,
@@ -19,7 +20,12 @@ export type Props = {
 function MessageMedia(props: Props): ?React.Element<any> {
   switch (props.media.type) {
     case 'webpage':
-      return <MessageMediaWebpage media={props.media} className={props.className} />;
+      return (
+        <MessageMediaWebpage
+          media={props.media}
+          className={props.className}
+        />
+      );
 
     case 'voice':
       return (
@@ -37,6 +43,14 @@ function MessageMedia(props: Props): ?React.Element<any> {
           className={props.className}
           maxWidth={props.maxWidth}
           maxHeight={props.maxHeight}
+        />
+      );
+
+    case 'interactive':
+      return (
+        <MessageMediaInteractive
+          media={props.media}
+          className={props.className}
         />
       );
 
