@@ -60,7 +60,7 @@
     "@dlghq/react-l10n": "0.7.4",
     "classnames": "2.2.5",
     "clipboard": "1.7.1",
-    "croppie": "2.5.0",
+    "croppie": "2.5.1",
     "date-fns": "1.29.0",
     "immutable": "3.8.2",
     "key-event-to-string": "1.1.1",
@@ -85,7 +85,7 @@
     "babel-jest": "21.2.0",
     "babel-loader": "7.1.2",
     "buildbranch": "2.0.0",
-    "chalk": "2.1.0",
+    "chalk": "2.2.0",
     "core-js": "2.5.1",
     "ejs": "2.5.7",
     "eslint": "4.7.2",
@@ -105,7 +105,7 @@
     "stylefmt": "6.0.0",
     "stylelint": "8.2.0",
     "svg-sprite-loader": "0.3.1",
-    "webpack": "3.7.1",
+    "webpack": "3.8.1",
     "yml-loader": "2.1.0"
   },
   "jest": {
