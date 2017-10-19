@@ -20,12 +20,22 @@ export type Props = {
   rid: string,
   content: MessageContentTypes,
   isPending?: boolean,
-  onLightboxOpen?: (event: SyntheticMouseEvent) => any,
   maxHeight: number,
-  maxWidth: number
+  maxWidth: number,
+  onLightboxOpen?: (event: SyntheticMouseEvent) => any,
+  onInteractiveAction?: (id: string, value: string) => mixed
 };
 
-function MessageContent({ className, content, isPending, onLightboxOpen, rid, maxHeight, maxWidth }: Props) {
+function MessageContent({
+  className,
+  content,
+  isPending,
+  rid,
+  maxHeight,
+  maxWidth,
+  onLightboxOpen,
+  onInteractiveAction
+}: Props) {
   switch (content.type) {
     case 'text':
       return (
@@ -36,17 +46,12 @@ function MessageContent({ className, content, isPending, onLightboxOpen, rid, ma
           isPending={isPending}
           maxWidth={maxWidth}
           maxHeight={maxHeight}
+          onInteractiveAction={onInteractiveAction}
         />
       );
 
     case 'service':
-      return (
-        <Service
-          className={className}
-          text={content.text}
-          isPending={isPending}
-        />
-      );
+      return <Service className={className} text={content.text} isPending={isPending} />;
 
     case 'photo':
       return (
@@ -120,13 +125,7 @@ function MessageContent({ className, content, isPending, onLightboxOpen, rid, ma
       );
 
     case 'location':
-      return (
-        <Location
-          latitude={content.latitude}
-          longitude={content.longitude}
-          maxWidth={maxWidth}
-        />
-      );
+      return <Location latitude={content.latitude} longitude={content.longitude} maxWidth={maxWidth} />;
 
     case 'contact':
       return (
@@ -140,12 +139,7 @@ function MessageContent({ className, content, isPending, onLightboxOpen, rid, ma
       );
 
     default:
-      return (
-        <Service
-          className={className}
-          text={`Unsupported message content (${content.type}).`}
-        />
-      );
+      return <Service className={className} text={`Unsupported message content (${content.type}).`} />;
   }
 }
 

@@ -8,20 +8,28 @@ import React, { PureComponent } from 'react';
 import MessageMediaInteractiveWidget from '../MessageMediaInteractiveWidget/MessageMediaInteractiveWidget';
 
 export type Props = {
-  className?: string,
-  action: MessageMediaInteractiveActionType
+  action: MessageMediaInteractiveActionType,
+  onSubmit?: (id: string, value: string) => mixed
 };
 
 class MessageMediaInteractiveAction extends PureComponent {
   props: Props;
 
+  handleSubmit = (value: string) => {
+    if (this.props.onSubmit) {
+      this.props.onSubmit(this.props.action.id, value);
+    }
+  };
+
   render() {
+    const { action } = this.props;
+
     return (
       <MessageMediaInteractiveWidget
-        widget={this.props.widget}
-        style={this.props.style}
+        style={action.style}
+        widget={action.widget}
+        onSubmit={this.handleSubmit}
       />
-
     );
   }
 }

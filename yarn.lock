@@ -49,9 +49,9 @@
   version "0.2.0"
   resolved "https://registry.npmjs.org/@dlghq/country-codes/-/country-codes-0.2.0.tgz#675add2f3950d0c891fdaca56ba6ec9fa230ace3"
 
-"@dlghq/dialog-types@1.30.0":
-  version "1.30.0"
-  resolved "https://registry.npmjs.org/@dlghq/dialog-types/-/dialog-types-1.30.0.tgz#2394baea92dd4ab8340f5a64c60cf73487d0460e"
+"@dlghq/dialog-types@1.31.1":
+  version "1.31.1"
+  resolved "https://registry.npmjs.org/@dlghq/dialog-types/-/dialog-types-1.31.1.tgz#5d5ccfea871b73c2e195f57adc89137dfed6fc4f"
 
 "@dlghq/dialog-utils@0.7.0":
   version "0.7.0"

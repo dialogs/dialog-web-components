@@ -3,14 +3,18 @@
  * @flow
  */
 
-import type { MessageMediaInteractiveWidget as MessageMediaInteractiveWidgetType, MessageMediaInteractiveStyle } from '@dlghq/dialog-types';
+import type {
+  MessageMediaInteractiveStyle,
+  MessageMediaInteractiveWidget as MessageMediaInteractiveWidgetType
+} from '@dlghq/dialog-types';
 import React from 'react';
 import MessageMediaInteractiveWidgetButton from './MessageMediaInteractiveWidgetButton';
 import MessageMediaInteractiveWidgetSelect from './MessageMediaInteractiveWidgetSelect';
 
-export type Props = MessageMediaInteractiveWidgetType & {
-  className?: string,
-  style: MessageMediaInteractiveStyle
+export type Props = {
+  style?: ?MessageMediaInteractiveStyle,
+  widget: MessageMediaInteractiveWidgetType,
+  onSubmit: (value: string) => mixed
 };
 
 function MessageMediaInteractiveWidget(props: Props) {
@@ -19,20 +23,20 @@ function MessageMediaInteractiveWidget(props: Props) {
       return (
         <MessageMediaInteractiveWidgetButton
           style={props.style}
-          label={props.widget.label}
-          value={props.widget.value}
+          widget={props.widget}
+          onSubmit={props.onSubmit}
         />
       );
+
     case 'select':
       return (
         <MessageMediaInteractiveWidgetSelect
           style={props.style}
-          label={props.widget.label}
-          value={props.widget.value}
-          options={props.widget.options}
-          defaultValue={props.widget.defaultValue}
+          widget={props.widget}
+          onSubmit={props.onSubmit}
         />
       );
+
     default:
       return null;
   }

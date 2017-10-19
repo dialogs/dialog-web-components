@@ -26,25 +26,6 @@ class Select extends PureComponent {
     this.props.onChange(event.target.value);
   };
 
-  // renderPlaceholder(): ?React.Element<any> {
-  //   const { placeholder } = this.props;
-  //
-  //   if (!placeholder) {
-  //     return null;
-  //   }
-  //
-  //   return (
-  //     <Text
-  //       key={placeholder}
-  //       tagName="option"
-  //       id={placeholder}
-  //       disabled
-  //       selected="selected"
-  //       style={{ display: 'none' }}
-  //     />
-  //   );
-  // }
-
   handleLabelMouseDown = (event: $FlowIssue): void => {
     event.preventDefault();
 
@@ -63,7 +44,7 @@ class Select extends PureComponent {
     }
   }
 
-  renderOptions(): React.Element<any>[] {
+  renderOptions() {
     return this.props.options.map((option) => {
       return (
         <Text
@@ -76,7 +57,7 @@ class Select extends PureComponent {
     });
   }
 
-  renderLabel(): ?React.Element<any> {
+  renderLabel() {
     const { id, label } = this.props;
 
     if (!label) {
@@ -95,7 +76,7 @@ class Select extends PureComponent {
     );
   }
 
-  render(): React.Element<any> {
+  render() {
     const { id, name, disabled, size } = this.props;
     const className = classNames(styles.container, styles[size], {
       [styles.disabled]: disabled
@@ -110,7 +91,8 @@ class Select extends PureComponent {
             id={id}
             name={name}
             disabled={disabled}
-            defaultValue={this.props.value}
+            value={this.props.value}
+            defaultValue={this.props.defaultValue}
             ref={this.setSelect}
             onChange={this.handleChange}
           >

@@ -7,25 +7,27 @@ import type { MessageMediaInteractive as MessageMediaInteractiveType } from '@dl
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import styles from './MessageMediaInteractive.css';
-import MessageMediaInteractiveItem from './MessageMediaInteractiveItem/MessageMediaInteractiveItem';
+import MessageMediaInteractiveGroup from './MessageMediaInteractiveGroup/MessageMediaInteractiveGroup';
 
 export type Props = {
   className?: string,
-  media: MessageMediaInteractiveType
+  media: MessageMediaInteractiveType,
+  onSubmit?: (id: string, value: string) => mixed
 };
 
 class MessageMediaInteractive extends PureComponent {
   props: Props;
 
   renderContent() {
-    return this.props.media.content.map((item, index) => {
+    const { media } = this.props;
+
+    return media.content.map((group, index) => {
       return (
-        <MessageMediaInteractiveItem
-          key={`interactive_media_${index}`}
+        <MessageMediaInteractiveGroup
+          key={index}
           className={styles.action}
-          title={item.title}
-          description={item.description}
-          actions={item.actions}
+          group={group}
+          onSubmit={this.props.onSubmit}
         />
       );
     });

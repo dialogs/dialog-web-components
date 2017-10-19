@@ -16,7 +16,8 @@ export type Props = {|
   media?: Array<?MessageMediaType>,
   isPending?: boolean,
   maxWidth: number,
-  maxHeight: number
+  maxHeight: number,
+  onInteractiveAction?: (id: string, value: string) => mixed
 |};
 
 class Text extends Component {
@@ -50,6 +51,7 @@ class Text extends Component {
               media={item}
               maxWidth={maxWidth}
               maxHeight={maxHeight}
+              onInteractiveAction={this.props.onInteractiveAction}
             />
           );
         }

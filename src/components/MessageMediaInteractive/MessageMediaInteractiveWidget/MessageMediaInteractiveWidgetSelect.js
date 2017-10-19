@@ -4,48 +4,46 @@
  */
 
 import type {
-  MessageMediaInteractiveWidget as MessageMediaInteractiveWidgetType,
-  MessageMediaInteractiveStyle
+  MessageMediaInteractiveStyle,
+  MessageMediaInteractiveSelect
 } from '@dlghq/dialog-types';
-import React, {PureComponent} from 'react';
+import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import Select from '../../Select/Select';
 import styles from './MessageMediaInteractiveWidget.css';
 
 export type Props = {
   className?: string,
-  options: any,
-  label: string,
-  value: string,
-  defaultValue: string
+  style?: ?MessageMediaInteractiveStyle,
+  widget: MessageMediaInteractiveSelect,
+  onSubmit: (value: string) => mixed
 };
 
 class MessageMediaInteractiveWidgetSelect extends PureComponent {
   props: Props;
 
-  handleChange = () => {
-  };
-
-  getOptions = () => this.props.options.map((option) => {
-    return {
-      value: option.value,
-      title: option.label
-    };
-  });
-
   render() {
+    const { style, widget } = this.props;
     const className = classNames(styles.widget, this.props.className);
+
+    const options = widget.options.map((option) => {
+      return {
+        value: option.value,
+        title: option.label
+      };
+    });
 
     return (
       <div className={className}>
         <Select
+          className={styles.select}
           name="select_default"
           id="select_default"
           size="small"
-          className={styles.select}
-          onChange={this.handleChange}
-          value={this.props.value || this.props.defaultValue}
-          options={this.getOptions()}
+          style={style}
+          options={options}
+          defaultValue={widget.defaultValue}
+          onChange={this.props.onSubmit}
         />
       </div>
     );

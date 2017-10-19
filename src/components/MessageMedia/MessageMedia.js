@@ -14,10 +14,11 @@ export type Props = {
   className?: string,
   media: MessageMediaType,
   maxWidth: number,
-  maxHeight: number
+  maxHeight: number,
+  onInteractiveAction?: (id: string, value: string) => mixed
 };
 
-function MessageMedia(props: Props): ?React.Element<any> {
+function MessageMedia(props: Props) {
   switch (props.media.type) {
     case 'webpage':
       return (
@@ -49,8 +50,9 @@ function MessageMedia(props: Props): ?React.Element<any> {
     case 'interactive':
       return (
         <MessageMediaInteractive
-          media={props.media}
           className={props.className}
+          media={props.media}
+          onInteractiveAction={props.onInteractiveAction}
         />
       );
 
