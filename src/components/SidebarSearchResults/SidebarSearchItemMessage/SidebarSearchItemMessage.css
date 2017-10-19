@@ -8,7 +8,7 @@
   --sidebar-search-item-message-font-family: var(--default-font-family);
   --sidebar-search-item-message-background: #fafafa;
   --sidebar-search-item-message-highlighted-background: #e6e6e6;
-  --sidebar-search-item-message-highlighted-title-color: #2174D3;
+  --sidebar-search-item-message-highlighted-title-color: var(--color-primary);
   --sidebar-search-item-message-title-color: #000;
   --sidebar-search-item-message-title-font-size: var(--default-font-size);
   --sidebar-search-item-message-time-color: #868686;
@@ -16,6 +16,7 @@
   --sidebar-search-item-message-z-index: 10;
   --sidebar-search-item-message-content-color: #000;
   --sidebar-search-item-message-content-font-size: 14px;
+  --sidebar-search-item-message-collapser-color: var(--color-primary)
 }
 
 /* Reset */
@@ -136,7 +137,7 @@
 }
 
 .collapser {
-  fill: var(--color-primary);
+  fill: var(--sidebar-search-item-message-collapser-color);
   display: block;
   position: absolute;
   right: -4px;

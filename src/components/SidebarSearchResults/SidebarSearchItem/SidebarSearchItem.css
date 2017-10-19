@@ -11,6 +11,7 @@
   --activity-search-item-header-title-color: #000;
   --activity-search-item-header-date-font-size: 13px;
   --activity-search-item-header-date-color: #8E8E8E;
+  --activity-search-item-header-jump-color: var(--color-primary);
 }
 
 /* Styles */
@@ -52,7 +53,7 @@
 }
 
 .headerInfoJump {
-  color: var(--color-primary);
+  color: var(--activity-search-item-header-jump-color);
   font-size: var(--activity-search-item-header-date-font-size);
 }
 
