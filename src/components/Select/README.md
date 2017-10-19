@@ -42,6 +42,7 @@ initialState = {
   size="small"
 />
 ```
+
 Disabled Select
 
 ```jsx
@@ -82,5 +83,37 @@ const options = [
   onChange={console.debug}
   value={state.value}
   options={options}
+/>
+```
+
+Themable Select
+
+```jsx
+const options = [{
+  value: 'default', title: 'Default theme'
+}, {
+  value: 'primary', title: 'Primary theme'
+}, {
+  value: 'success', title: 'Success theme'
+}, {
+  value: 'danger', title: 'Danger theme'
+}, {
+  value: 'info', title: 'Info theme'
+}, {
+  value: 'warning', title: 'Warning theme'
+}];
+const handleThemeChange = (theme) => setState({ value: theme });
+initialState = {
+  value: 'default'
+};
+
+<Select
+  id="select_colored"
+  name="select_colored"
+  label="Select theme"
+  onChange={handleThemeChange}
+  value={state.value}
+  options={options}
+  theme={state.value}
 />
 ```

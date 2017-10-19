@@ -15,7 +15,8 @@ class Select extends PureComponent {
   select: HTMLSelectElement;
 
   static defaultProps = {
-    size: 'normal'
+    size: 'normal',
+    theme: 'default'
   };
 
   static contextTypes = {
@@ -77,8 +78,8 @@ class Select extends PureComponent {
   }
 
   render() {
-    const { id, name, disabled, size } = this.props;
-    const className = classNames(styles.container, styles[size], {
+    const { id, name, disabled, size, theme } = this.props;
+    const className = classNames(styles.container, styles[size], styles[theme], {
       [styles.disabled]: disabled
     }, this.props.className);
 

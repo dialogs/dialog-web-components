@@ -16,7 +16,8 @@ export type Props = {
   defaultValue?: ?string,
   disabled?: boolean,
   label?: string,
-  size: 'small' | 'normal' | 'default',
+  theme: 'default' | 'primary' | 'success' | 'danger' | 'info' | 'warning',
+  size: 'small' | 'normal',
   options: Option[],
   placeholder?: string,
   onChange: (value: string) => any
