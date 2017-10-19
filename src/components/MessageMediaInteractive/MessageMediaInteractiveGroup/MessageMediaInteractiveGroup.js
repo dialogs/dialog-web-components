@@ -24,6 +24,7 @@ class MessageMediaInteractiveGroup extends PureComponent {
       return (
         <Markdown
           inline
+          className={styles.title}
           text={this.props.group.title}
           tagName="h5"
         />
@@ -33,10 +34,11 @@ class MessageMediaInteractiveGroup extends PureComponent {
     return null;
   }
 
-  renderdescription() {
+  renderDescription() {
     if (this.props.group.description) {
       return (
         <Markdown
+          className={styles.description}
           text={this.props.group.description}
           tagName="p"
         />
@@ -48,7 +50,8 @@ class MessageMediaInteractiveGroup extends PureComponent {
 
   renderHeader() {
     const title = this.renderTitle();
-    const description = this.renderdescription();
+    const description = this.renderDescription();
+
     if (title || description) {
       return (
         <header className={styles.header}>
