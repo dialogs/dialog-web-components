@@ -14,6 +14,10 @@ class Select extends PureComponent {
   props: Props;
   select: HTMLSelectElement;
 
+  static defaultProps = {
+    size: 'normal'
+  };
+
   static contextTypes = {
     l10n: LocalizationContextType
   };
@@ -92,8 +96,8 @@ class Select extends PureComponent {
   }
 
   render(): React.Element<any> {
-    const { id, name, disabled } = this.props;
-    const className = classNames(styles.container, {
+    const { id, name, disabled, size } = this.props;
+    const className = classNames(styles.container, styles[size], {
       [styles.disabled]: disabled
     }, this.props.className);
 

@@ -15,6 +15,7 @@ export type Props = {
   value: string,
   disabled?: boolean,
   label?: string,
+  size: 'small' | 'default',
   options: Option[],
   placeholder?: string,
   onChange: (value: string) => any
