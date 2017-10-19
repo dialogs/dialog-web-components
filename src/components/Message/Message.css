@@ -129,14 +129,14 @@
 }
 
 .reply {
-  margin: 0 calc(0 - var(--default-padding-small)) 6px;
+  margin: 0 -12px 6px;
   background-color: transparent;
   border-radius: 0;
   box-shadow: inset 3px 0 0 0 var(--color-primary);
 }
 
 .forward {
-  margin: 6px calc(0 - var(--default-padding-small)) 0;
+  margin: 6px -10px 0;
 }
 
 @keyframes highlight {
@@ -145,7 +145,7 @@
   }
 
   100% {
-    background-color: none;
+    background-color: transparent;
   }
 }
 
