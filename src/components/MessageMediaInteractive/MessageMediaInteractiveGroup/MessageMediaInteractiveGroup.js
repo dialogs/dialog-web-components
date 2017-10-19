@@ -7,6 +7,7 @@ import type { MessageMediaInteractiveActionGroup } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import styles from './MessageMediaInteractiveGroup.css';
+import Markdown from '../../Markdown/Markdown';
 import MessageMediaInteractiveAction from '../MessageMediaInteractiveAction/MessageMediaInteractiveAction';
 
 export type Props = {
@@ -21,7 +22,11 @@ class MessageMediaInteractiveGroup extends PureComponent {
   renderTitle() {
     if (this.props.group.title) {
       return (
-        <h5 className={styles.title}>{this.props.group.title}</h5>
+        <Markdown
+          inline
+          text={this.props.group.title}
+          tagName="h5"
+        />
       );
     }
 
@@ -31,7 +36,10 @@ class MessageMediaInteractiveGroup extends PureComponent {
   renderdescription() {
     if (this.props.group.description) {
       return (
-        <p className={styles.description}>{this.props.group.description}</p>
+        <Markdown
+          text={this.props.group.description}
+          tagName="p"
+        />
       );
     }
 
