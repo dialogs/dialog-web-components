@@ -6,7 +6,7 @@
 
 :root {
   /* Select */
-  --select-font-family: var(---font-family);
+  --select-font-family: var(--default-font-family);
   --select-font-size: var(--default-font-size);
   --select-small-font-size: var(--default-font-size-small);
   --select-size-modifier: 0.25;
