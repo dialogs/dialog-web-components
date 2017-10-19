@@ -12,6 +12,7 @@ class GenderSelect extends PureComponent {
 
   static defaultProps = {
     size: 'normal',
+    theme: 'default',
     options: [
       {
         value: 'unknown',
