@@ -53,7 +53,7 @@
   border: 0;
   outline: none;
   border-radius: var(--input-next-border-radius);
-  box-shadow: 0 0 0 1px var(--input-next-border-color);
+  box-shadow: inset 0 0 0 1px var(--input-next-border-color);
   font-family: var(--input-next-font-family);
   font-size: var(--input-next-font-size);
   cursor: text;
@@ -81,11 +81,11 @@
   }
 
   &:hover {
-    box-shadow: 0 0 0 1px var(--input-next-hover-border-color);
+    box-shadow: inset 0 0 0 1px var(--input-next-hover-border-color);
   }
 
   &:focus {
-    box-shadow: 0 0 0 1px var(--input-next-focus-border-color);
+    box-shadow: inset 0 0 0 1px var(--input-next-focus-border-color);
   }
 }
 
