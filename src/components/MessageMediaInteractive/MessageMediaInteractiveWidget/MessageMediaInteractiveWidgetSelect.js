@@ -23,7 +23,7 @@ class MessageMediaInteractiveWidgetSelect extends PureComponent {
   props: Props;
 
   render() {
-    const { style, widget } = this.props;
+    const { widget } = this.props;
     const className = classNames(styles.widget, this.props.className);
 
     const options = widget.options.map((option) => {
@@ -40,7 +40,6 @@ class MessageMediaInteractiveWidgetSelect extends PureComponent {
           name="select_default"
           id="select_default"
           size="small"
-          style={style}
           options={options}
           defaultValue={widget.defaultValue}
           onChange={this.props.onSubmit}
