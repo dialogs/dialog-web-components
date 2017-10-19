@@ -12,9 +12,11 @@ export type Props = {
   className?: string,
   id: string,
   name?: string,
-  value: string,
+  value?: string,
+  defaultValue?: ?string,
   disabled?: boolean,
   label?: string,
+  size: 'small' | 'normal' | 'default',
   options: Option[],
   placeholder?: string,
   onChange: (value: string) => any

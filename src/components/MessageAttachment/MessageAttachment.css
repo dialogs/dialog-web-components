@@ -8,7 +8,8 @@
   --message-attachment-font-family: var(--default-font-family);
   --message-attachment-background: color(#000 alpha(3%));
   --message-attachment-font-size: var(--default-font-size-small);
-  --message-attachment-padding: var(--default-padding-small);
+  --message-attachment-padding: 12px;
+  --message-attachment-forward-padding: 10px;
   --message-attachment-border-color: color(var(--message-attachment-background) shade(5%));
   --message-attachment-from-font-size: 14px;
   --message-attachment-from-color: #939393;
@@ -26,7 +27,6 @@
 }
 
 .itemContainer {
-  padding: 6px var(--message-attachment-padding);
   cursor: pointer;
 
   &:first-child {
@@ -91,9 +91,11 @@
 }
 
 .reply {
-  width: 100%;
-  display: block;
-  @apply --text-overflow-ellipsis;
+  padding: 6px var(--message-attachment-padding);
+}
+
+.forward {
+  padding: 6px var(--message-attachment-forward-padding);
 }
 
 .replyDocument {

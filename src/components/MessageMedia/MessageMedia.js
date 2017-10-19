@@ -8,18 +8,25 @@ import React from 'react';
 import MessageMediaWebpage from './MessageMediaWebpage';
 import MessageMediaVoice from './MessageMediaVoice';
 import MessageMediaImage from './MessageMediaImage';
+import MessageMediaInteractive from '../MessageMediaInteractive/MessageMediaInteractive';
 
 export type Props = {
   className?: string,
   media: MessageMediaType,
   maxWidth: number,
-  maxHeight: number
+  maxHeight: number,
+  onInteractiveAction?: (id: string, value: string) => mixed
 };
 
-function MessageMedia(props: Props): ?React.Element<any> {
+function MessageMedia(props: Props) {
   switch (props.media.type) {
     case 'webpage':
-      return <MessageMediaWebpage media={props.media} className={props.className} />;
+      return (
+        <MessageMediaWebpage
+          media={props.media}
+          className={props.className}
+        />
+      );
 
     case 'voice':
       return (
@@ -37,6 +44,15 @@ function MessageMedia(props: Props): ?React.Element<any> {
           className={props.className}
           maxWidth={props.maxWidth}
           maxHeight={props.maxHeight}
+        />
+      );
+
+    case 'interactive':
+      return (
+        <MessageMediaInteractive
+          className={props.className}
+          media={props.media}
+          onInteractiveAction={props.onInteractiveAction}
         />
       );
 

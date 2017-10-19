@@ -1,0 +1,53 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../../styles/variables.css';
+
+:root {
+  --message-media-interactive-font-family: var(--default-font-family);
+  --message-media-interactive-description-font-size: 15px;
+  --message-media-interactive-title-font-size: 18px;
+  --message-media-interactive-border-color: var(--color-primary);
+  --message-media-interactive-border-width: 3px;
+}
+
+/* Reset */
+.container {
+  all: initial;
+}
+
+/* Styles */
+.container {
+  display: block;
+  font-family: var(--message-media-interactive-font-family);
+  margin: calc(var(--default-padding-small) / 2) 0;
+  padding: 6px 12px;
+  box-shadow: inset var(--message-media-interactive-border-width) 0 0 0 var(--message-media-interactive-border-color);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.header {
+  display: block;
+  margin-bottom: 12px;
+}
+
+.title {
+  font-weight: 500;
+  font-size: var(--message-media-interactive-title-font-size);
+  line-height: 26px;
+  margin: 0 0 4px;
+}
+
+.description {
+  margin: 0 0 4px;
+  font-size: var(--message-media-interactive-description-font-size);
+  line-height: 1.2;
+}
+
+.actions {
+  margin-bottom: 6px;
+}

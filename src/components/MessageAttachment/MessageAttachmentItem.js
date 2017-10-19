@@ -123,7 +123,7 @@ class MessageAttachmentItem extends Component {
   render() {
     const { short, type } = this.props;
 
-    const className = classNames(styles.itemContainer, {
+    const className = classNames(styles.itemContainer, styles[type], {
       [styles.short]: short
     }, this.props.className);
 

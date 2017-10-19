@@ -32,6 +32,7 @@ export type Props = (StringProps | NumberProps) & {
   disabled?: bool,
   hint?: string,
   status: 'normal' | 'success' | 'error',
+  size: 'small' | 'normal',
   autoFocus?: boolean,
   tabIndex?: number,
   htmlAutoFocus?: boolean,
@@ -56,7 +57,8 @@ class InputNext extends PureComponent {
 
   static defaultProps = {
     type: 'text',
-    status: 'normal'
+    status: 'normal',
+    size: 'normal'
   };
 
   static contextTypes = {
@@ -176,7 +178,7 @@ class InputNext extends PureComponent {
   render(): React.Element<any> {
     const {
       id, name, type, value, disabled, tabIndex, status,
-      htmlAutoFocus, placeholder, onKeyUp, onKeyDown, onKeyPress
+      htmlAutoFocus, placeholder, onKeyUp, onKeyDown, onKeyPress, size
     } = this.props;
     const { isFocused } = this.state;
     const { l10n } = this.context;
@@ -187,6 +189,7 @@ class InputNext extends PureComponent {
       value ? styles.filled : null,
       isFocused ? styles.focused : null,
       disabled ? styles.disabled : null,
+      styles[size],
       this.props.className
     );
 

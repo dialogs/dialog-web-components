@@ -14,6 +14,10 @@ class Select extends PureComponent {
   props: Props;
   select: HTMLSelectElement;
 
+  static defaultProps = {
+    size: 'normal'
+  };
+
   static contextTypes = {
     l10n: LocalizationContextType
   };
@@ -21,25 +25,6 @@ class Select extends PureComponent {
   handleChange = (event: $FlowIssue): void => {
     this.props.onChange(event.target.value);
   };
-
-  // renderPlaceholder(): ?React.Element<any> {
-  //   const { placeholder } = this.props;
-  //
-  //   if (!placeholder) {
-  //     return null;
-  //   }
-  //
-  //   return (
-  //     <Text
-  //       key={placeholder}
-  //       tagName="option"
-  //       id={placeholder}
-  //       disabled
-  //       selected="selected"
-  //       style={{ display: 'none' }}
-  //     />
-  //   );
-  // }
 
   handleLabelMouseDown = (event: $FlowIssue): void => {
     event.preventDefault();
@@ -59,7 +44,7 @@ class Select extends PureComponent {
     }
   }
 
-  renderOptions(): React.Element<any>[] {
+  renderOptions() {
     return this.props.options.map((option) => {
       return (
         <Text
@@ -72,7 +57,7 @@ class Select extends PureComponent {
     });
   }
 
-  renderLabel(): ?React.Element<any> {
+  renderLabel() {
     const { id, label } = this.props;
 
     if (!label) {
@@ -91,9 +76,9 @@ class Select extends PureComponent {
     );
   }
 
-  render(): React.Element<any> {
-    const { id, name, disabled } = this.props;
-    const className = classNames(styles.container, {
+  render() {
+    const { id, name, disabled, size } = this.props;
+    const className = classNames(styles.container, styles[size], {
       [styles.disabled]: disabled
     }, this.props.className);
 
@@ -106,7 +91,8 @@ class Select extends PureComponent {
             id={id}
             name={name}
             disabled={disabled}
-            defaultValue={this.props.value}
+            value={this.props.value}
+            defaultValue={this.props.defaultValue}
             ref={this.setSelect}
             onChange={this.handleChange}
           >

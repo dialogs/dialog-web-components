@@ -30,7 +30,7 @@
   --default-padding: 16px;
   --default-padding-large: 20px;
   --default-border-radius-small: 3px;
-  --default-border-radius: 5px;
+  --default-border-radius: 4px;
   --default-transition-duration: 150ms;
   --default-recent-item-font-size: 15px;
   /* Layout */
@@ -86,7 +86,7 @@
   --button-line-height: 26px;
   --button-font-family: var(--default-font-family);
   --button-size-modifier: 0.25;
-  --button-default-background-color: color(#e2e2e2 shade(10%));
+  --button-default-background-color: #757575;
   --button-default-text-shadow: 0 1px 1px color(#000 alpha(20%));
   --button-default-box-shadow: 0 2px 4px 0 color(#000 alpha(25%));
   --button-default-box-shadow-active: 0 1px 1px 0 color(#000 alpha(25%));
@@ -504,17 +504,6 @@
   --switcher-label-font-family: var(--default-font-family);
   --switcher-label-font-size: 15px;
   --switcher-active-offset: calc(var(--switcher-width) - var(--switcher-dot-size) - ((var(--switcher-height) - var(--switcher-dot-size)) / 2)); /* stylelint-disable-line */
-  /* Select */
-  --select-font-family: var(--default-font-family);
-  --select-font-size: var(--default-font-size);
-  --select-border-radius: var(--default-border-radius-small);
-  --select-horizontal-padding: var(--default-padding);
-  --select-height: 56px;
-  --select-color: #333;
-  --select-background-color: #fff;
-  --select-label-font-size: var(--default-font-size);
-  --select-line-height: var(--input-label-line-height);
-  --select-label-color: #676c75;
   /* Tabs */
   --tabs-font-family: var(--default-font-family);
   --tabs-width: 220px;

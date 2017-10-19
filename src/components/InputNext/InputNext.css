@@ -7,9 +7,9 @@
 :root {
   --input-next-font-family: var(--default-font-family);
   --input-next-font-size: var(--default-font-size);
-  --input-next-border-radius: var(--default-border-radius-small);
-  --input-next-height: 56px;
-  --input-next-line-height: 20px;
+  --input-next-border-radius: var(--default-border-radius);
+  --input-next-small-border-radius: var(--default-border-radius-small);
+  --input-next-line-height: 26px;
   --input-next-background-color: #fff;
   --input-next-text-color: #333;
   --input-next-placeholder-color: #aaa;
@@ -23,8 +23,14 @@
   --input-next-error-color: var(--color-danger);
   --input-next-hint-font-family: var(--input-next-font-family);
   --input-next-hint-font-size: var(--default-font-size-small);
-  --input-next-hint-line-height: 20px;
+  --input-next-hint-line-height: 26px;
+  --input-next-size-modifier: 0.25;
+  --input-next-small-font-size: var(--default-font-size-small);
   --input-next-hint-color: var(--input-next-placeholder-color);
+  --input-next-padding-top: var(--default-padding-small);
+  --input-next-padding-right: var(--default-padding);
+  --input-next-padding-bottom: var(--default-padding-small);
+  --input-next-padding-left: var(--default-padding);
 }
 
 /* Reset */
@@ -48,7 +54,6 @@
   outline: none;
   border-radius: var(--input-next-border-radius);
   box-shadow: 0 0 0 1px var(--input-next-border-color);
-  min-height: var(--input-next-height);
   font-family: var(--input-next-font-family);
   font-size: var(--input-next-font-size);
   cursor: text;
@@ -57,8 +62,7 @@
   line-height: var(--input-next-line-height);
   box-sizing: border-box;
   width: 100%;
-  transition: box-shadow var(--input-next-transition-dudarion) ease;
-  padding: calc((var(--input-next-height) - var(--input-next-line-height)) / 2) var(--default-padding);
+  //transition: box-shadow var(--input-next-transition-dudarion) linear;
 
   &::-webkit-input-placeholder {
     color: var(--input-next-placeholder-color);
@@ -137,5 +141,30 @@
 
   & .hint {
     color: var(--input-next-error-color);
+  }
+}
+
+
+.small {
+  & .select {
+    border-radius: var(--input-next-small-border-radius);
+    padding-top: calc(var(--input-next-padding-top) * (1 - var(--input-next-size-modifier)));
+    padding-right: var(--input-next-padding-right);
+    padding-bottom: calc(var(--input-next-padding-bottom) * (1 - var(--input-next-size-modifier)));
+    padding-left: var(--input-next-padding-left);
+    font-size: var(--input-next-small-font-size);
+    line-height: calc(var(--input-next-line-height) * (1 - var(--input-next-size-modifier)));
+  }
+}
+
+.normal {
+  & .input {
+    border-radius: var(--input-next-border-radius);
+    padding-top: var(--input-next-padding-top);
+    padding-right: var(--input-next-padding-right);
+    padding-bottom: var(--input-next-padding-bottom);
+    padding-left: var(--input-next-padding-left);
+    font-size: var(--input-next-font-size);
+    line-height: var(--input-next-line-height);
   }
 }

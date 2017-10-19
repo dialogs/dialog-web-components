@@ -5,9 +5,26 @@
 @import '../../styles/variables.css';
 
 :root {
+  /* Select */
+  --select-font-family: var(--default-font-family);
+  --select-font-size: var(--default-font-size);
+  --select-small-font-size: var(--default-font-size-small);
+  --select-size-modifier: 0.25;
+  --select-padding-top: var(--default-padding-small);
+  --select-padding-right: var(--default-padding);
+  --select-padding-bottom: var(--default-padding-small);
+  --select-padding-left: var(--default-padding);
+  --select-border-radius: var(--default-border-radius);
+  --select-small-border-radius: var(--default-border-radius-small);
+  --select-line-height: 26px;
+  --select-color: #333;
+  --select-background-color: #fff;
+  --select-label-font-size: var(--default-font-size);
+  --select-label-color: #676c75;
   --select-border-color: #D1D3D8;
   --select-hover-border-color: color(var(--select-border-color) shade(10%));
   --select-focus-border-color: var(--color-primary);
+  --select-transition-dudarion: var(--default-transition-duration);
 }
 
 /* Reset */
@@ -51,23 +68,22 @@
 
 .select {
   width: 100%;
-  border-radius: var(--select-border-radius);
   background-color: var(--select-background-color);
   box-shadow: 0 0 0 1px var(--select-border-color);
   font-family: var(--select-font-family);
   font-size: var(--select-font-size);
   color: var(--select-color);
-  padding: 0 var(--select-horizontal-padding);
   box-sizing: border-box;
   display: flex;
   flex-flow: row;
   align-content: center;
   align-items: center;
   justify-content: flex-start;
-  height: var(--select-height);
   cursor: pointer;
   flex: 1 1 auto;
   @apply --flex-fix;
+  //transition: box-shadow var(--select-transition-dudarion) linear;
+
 
   &:hover {
     box-shadow: 0 0 0 1px var(--select-hover-border-color);
@@ -85,6 +101,7 @@
     color: color(var(--select-color) alpha(60%));
     box-shadow: 0 0 0 1px var(--select-border-color) !important;
   }
+
   & .arrow {
     color: color(var(--select-color) alpha(40%));
   }
@@ -92,7 +109,43 @@
 
 .arrow {
   position: absolute;
-  right: 10px;
-  top: 12px;
   pointer-events: none;
+}
+
+.small {
+  & .select {
+    border-radius: var(--select-small-border-radius);
+    padding-top: calc(var(--select-padding-top) * (1 - var(--select-size-modifier)));
+    padding-right: calc(var(--select-padding-right) * 2.5);
+    padding-bottom: calc(var(--select-padding-bottom) * (1 - var(--select-size-modifier)));
+    padding-left: var(--select-padding-left);
+    font-size: var(--select-small-font-size);
+    line-height: calc(var(--select-line-height) * (1 - var(--select-size-modifier)));
+  }
+
+  & .arrow {
+    top: calc(var(--select-padding-top) * (1 - var(--select-size-modifier)));
+    right: calc(var(--select-padding-right) - (var(--select-line-height) * (1 - var(--select-size-modifier)) / 4));
+    height: calc(var(--select-line-height) * (1 - var(--select-size-modifier))) !important;
+    width: calc(var(--select-line-height) * (1 - var(--select-size-modifier))) !important;
+  }
+}
+
+.normal {
+  & .select {
+    border-radius: var(--select-border-radius);
+    padding-top: var(--select-padding-top);
+    padding-right: calc(var(--select-padding-right) * 2.5);
+    padding-bottom: var(--select-padding-bottom);
+    padding-left: var(--select-padding-left);
+    font-size: var(--select-font-size);
+    line-height: var(--select-line-height);
+  }
+
+  & .arrow {
+    top: var(--select-padding-top);
+    right: calc(var(--select-padding-right) - (var(--select-line-height) / 4));
+    height: var(--select-line-height) !important;
+    width: var(--select-line-height) !important;
+  }
 }
