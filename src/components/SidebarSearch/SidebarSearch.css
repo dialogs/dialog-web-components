@@ -78,7 +78,9 @@
 .spinner {
   position: absolute;
   top: 9px;
-  left: 9px;
+  left: 10px;
+  width: 16px !important;
+  height: 16px !important;
   pointer-events: none;
 }
 
