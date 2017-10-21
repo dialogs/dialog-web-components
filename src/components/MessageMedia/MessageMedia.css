@@ -16,7 +16,7 @@
 }
 
 .webpage {
-  padding-left: var(--default-padding);
+  padding-left: 12px;
   letter-spacing: -0.4px;
   box-shadow: inset 3px 0 0 0 color(#000 alpha(14%));
   font-size: var(--default-font-size);

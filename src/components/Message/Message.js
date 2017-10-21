@@ -48,7 +48,8 @@ export type Props = {
   onLightboxOpen?: (message: MessageType) => any,
   onReaction?: (char: string) => any,
   onGoToPeer: (peer: Peer) => any,
-  onGoToMessage: (peer: ?Peer, message: MessageType) => any
+  onGoToMessage: (peer: ?Peer, message: MessageType) => any,
+  onInteractiveAction: (id: string, value: string) => mixed
 };
 
 export type State = {
@@ -381,6 +382,7 @@ class Message extends PureComponent {
               maxWidth={maxWidth}
               maxHeight={maxHeight}
               onLightboxOpen={this.handleLightboxOpen}
+              onInteractiveAction={this.props.onInteractiveAction}
             />
             {this.renderForward()}
             {this.renderReactions()}
