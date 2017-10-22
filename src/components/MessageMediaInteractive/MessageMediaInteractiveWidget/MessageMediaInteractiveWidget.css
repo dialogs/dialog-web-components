@@ -6,6 +6,7 @@
 
 :root {
   --message-media-interactive-font-family: var(--default-font-family);
+  --message-media-interactive-label-font-size: 16px;
 }
 
 /* Reset */
@@ -18,10 +19,20 @@
   font-family: var(--message-media-interactive-font-family);
   display: inline-block;
   margin-right: 8px;
+  margin-top: 8px;
+}
+
+.widgetBlock {
+  display: block;
+  margin-right: 0;
 }
 
 .select {
   margin: 0 !important;
+}
+
+.selectWrapper {
+  width: auto !important;
 }
 
 .button {}
