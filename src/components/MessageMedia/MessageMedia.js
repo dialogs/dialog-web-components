@@ -3,7 +3,10 @@
  * @flow
  */
 
-import type { MessageMedia as MessageMediaType } from '@dlghq/dialog-types';
+import type {
+  MessageMedia as MessageMediaType,
+  MessageMediaInteractiveConfirm
+} from '@dlghq/dialog-types';
 import React from 'react';
 import MessageMediaWebpage from './MessageMediaWebpage';
 import MessageMediaVoice from './MessageMediaVoice';
@@ -15,7 +18,7 @@ export type Props = {
   media: MessageMediaType,
   maxWidth: number,
   maxHeight: number,
-  onInteractiveAction?: (id: string, value: string) => mixed
+  onInteractiveAction?: (id: string, value: string, confirm?: ?MessageMediaInteractiveConfirm) => mixed
 };
 
 function MessageMedia(props: Props) {

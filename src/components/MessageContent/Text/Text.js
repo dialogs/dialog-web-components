@@ -3,7 +3,10 @@
  * @flow
  */
 
-import type { MessageMedia as MessageMediaType } from '@dlghq/dialog-types';
+import type {
+  MessageMedia as MessageMediaType,
+  MessageMediaInteractiveConfirm
+} from '@dlghq/dialog-types';
 import React, { Component } from 'react';
 import classNames from 'classnames';
 import MessageMedia from '../../MessageMedia/MessageMedia';
@@ -17,7 +20,7 @@ export type Props = {|
   isPending?: boolean,
   maxWidth: number,
   maxHeight: number,
-  onInteractiveAction?: (id: string, value: string) => mixed
+  onInteractiveAction?: (id: string, value: string, confirm?: ?MessageMediaInteractiveConfirm) => mixed
 |};
 
 class Text extends Component {

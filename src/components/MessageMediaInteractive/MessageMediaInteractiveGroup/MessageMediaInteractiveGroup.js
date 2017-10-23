@@ -3,7 +3,7 @@
  * @flow
  */
 
-import type { MessageMediaInteractiveActionGroup } from '@dlghq/dialog-types';
+import type { MessageMediaInteractiveActionGroup, MessageMediaInteractiveConfirm } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import styles from './MessageMediaInteractiveGroup.css';
@@ -13,7 +13,7 @@ import MessageMediaInteractiveAction from '../MessageMediaInteractiveAction/Mess
 export type Props = {
   className?: string,
   group: MessageMediaInteractiveActionGroup,
-  onSubmit?: (id: string, value: string) => mixed
+  onSubmit?: (id: string, value: string, confirm?: ?MessageMediaInteractiveConfirm) => mixed
 };
 
 class MessageMediaInteractiveGroup extends PureComponent {

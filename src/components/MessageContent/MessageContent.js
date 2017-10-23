@@ -3,7 +3,10 @@
  * @flow
  */
 
-import type { MessageContent as MessageContentTypes } from '@dlghq/dialog-types';
+import type {
+  MessageContent as MessageContentTypes,
+  MessageMediaInteractiveConfirm
+} from '@dlghq/dialog-types';
 import React from 'react';
 import Text from './Text/Text';
 import Service from './Text/Service';
@@ -23,7 +26,7 @@ export type Props = {
   maxHeight: number,
   maxWidth: number,
   onLightboxOpen?: (event: SyntheticMouseEvent) => any,
-  onInteractiveAction?: (id: string, value: string) => mixed
+  onInteractiveAction?: (id: string, value: string, confirm?: ?MessageMediaInteractiveConfirm) => mixed
 };
 
 function MessageContent({
