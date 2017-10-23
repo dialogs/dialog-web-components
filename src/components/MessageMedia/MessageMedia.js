@@ -52,7 +52,7 @@ function MessageMedia(props: Props) {
         <MessageMediaInteractive
           className={props.className}
           media={props.media}
-          onInteractiveAction={props.onInteractiveAction}
+          onSubmit={props.onInteractiveAction}
         />
       );
 
