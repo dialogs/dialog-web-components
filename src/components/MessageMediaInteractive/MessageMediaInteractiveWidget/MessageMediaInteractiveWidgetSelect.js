@@ -19,8 +19,24 @@ export type Props = {
   onSubmit: (value: string) => mixed
 };
 
+type State = {
+  value?: string
+};
+
 class MessageMediaInteractiveWidgetSelect extends PureComponent {
   props: Props;
+  state: State;
+
+  constructor(props: Props) {
+    super(props);
+
+    this.state = {};
+  }
+
+  handleChange = (value: string) => {
+    this.setState({ value });
+    this.props.onSubmit(value);
+  };
 
   render() {
     const { widget, style } = this.props;
@@ -44,7 +60,8 @@ class MessageMediaInteractiveWidgetSelect extends PureComponent {
           theme={style || 'default'}
           placeholder={widget.label || undefined}
           options={options}
-          onChange={this.props.onSubmit}
+          value={this.state.value}
+          onChange={this.handleChange}
         />
       </div>
     );
