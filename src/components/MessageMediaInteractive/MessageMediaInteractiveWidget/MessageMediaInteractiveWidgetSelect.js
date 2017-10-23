@@ -9,7 +9,7 @@ import type {
 } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
-import SelectNext from '../../SelectNext/SelectNext';
+import Select from '../../Select/Select';
 import styles from './MessageMediaInteractiveWidget.css';
 
 export type Props = {
@@ -51,7 +51,7 @@ class MessageMediaInteractiveWidgetSelect extends PureComponent {
 
     return (
       <div className={className}>
-        <SelectNext
+        <Select
           className={styles.select}
           wrapperClassName={styles.selectWrapper}
           name="select_default"

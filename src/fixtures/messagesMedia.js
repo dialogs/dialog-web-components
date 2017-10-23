@@ -47,8 +47,7 @@ Et, sit, quas. Ad optio facere eligendi corporis ratione repellendus consectetur
                 value: 'address_2_value',
                 label: 'address_3_label'
               }
-            ],
-            defaultValue: 'address_1_value'
+            ]
           }
         }
       ]
