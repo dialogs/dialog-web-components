@@ -17,9 +17,16 @@ export type Props = {
   onBack?: () => any,
   onChange?: (type: string) => mixed,
   current: string,
-  types: string[],
   className?: string
 };
+
+const MEDIA_TYPES = [
+  'all',
+  'photo',
+  'document',
+  'voice',
+  'video'
+];
 
 class ActivityMediaHeader extends PureComponent {
   props: Props;
@@ -45,7 +52,7 @@ class ActivityMediaHeader extends PureComponent {
   renderMenu = () => {
     const { current } = this.props;
 
-    const children = this.props.types.map((type) => {
+    const children = MEDIA_TYPES.map((type) => {
       if (current === type) {
         return null;
       }
