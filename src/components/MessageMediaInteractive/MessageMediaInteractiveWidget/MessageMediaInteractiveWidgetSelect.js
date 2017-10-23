@@ -9,7 +9,7 @@ import type {
 } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
-import Select from '../../Select/Select';
+import SelectNext from '../../SelectNext/SelectNext';
 import styles from './MessageMediaInteractiveWidget.css';
 
 export type Props = {
@@ -24,7 +24,7 @@ class MessageMediaInteractiveWidgetSelect extends PureComponent {
 
   render() {
     const { widget, style } = this.props;
-    const className = classNames(styles.widget, styles.widgetBlock, this.props.className);
+    const className = classNames(styles.widget, this.props.className);
 
     const options = widget.options.map((option) => {
       return {
@@ -35,16 +35,15 @@ class MessageMediaInteractiveWidgetSelect extends PureComponent {
 
     return (
       <div className={className}>
-        <Select
+        <SelectNext
           className={styles.select}
           wrapperClassName={styles.selectWrapper}
           name="select_default"
           id="select_default"
           size="small"
           theme={style || 'default'}
-          label={widget.label || undefined}
+          placeholder={widget.label || undefined}
           options={options}
-          defaultValue={widget.defaultValue}
           onChange={this.props.onSubmit}
         />
       </div>

@@ -6,8 +6,8 @@
 
 :root {
   --message-media-interactive-font-family: var(--default-font-family);
-  --message-media-interactive-description-font-size: 15px;
-  --message-media-interactive-title-font-size: 18px;
+  --message-media-interactive-description-font-size: var(--default-font-size-small);
+  --message-media-interactive-title-font-size: var(--default-font-size);
   --message-media-interactive-border-color: var(--color-primary);
   --message-media-interactive-border-width: 3px;
 }
@@ -22,7 +22,7 @@
   display: block;
   font-family: var(--message-media-interactive-font-family);
   margin: calc(var(--default-padding-small) / 2) 0;
-  padding: 6px 12px;
+  padding: 2px 12px;
   box-shadow: inset var(--message-media-interactive-border-width) 0 0 0 var(--message-media-interactive-border-color);
 
   &:last-child {
@@ -32,22 +32,27 @@
 
 .header {
   display: block;
-  margin-bottom: 8px;
+  margin: 4px 0;
 }
 
 .title {
   font-weight: 500;
   font-size: var(--message-media-interactive-title-font-size);
-  line-height: 26px;
-  margin: 0 0 4px;
+  line-height: 20px;
+  margin: 4px 0;
 }
 
 .description {
   margin: 0 0 4px;
   font-size: var(--message-media-interactive-description-font-size);
-  line-height: 1.2;
+  line-height: 1.1;
 }
 
 .actions {
-  margin-bottom: 6px;
+  margin: 4px 0;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  align-content: center;
+  justify-content: flex-start;
 }
