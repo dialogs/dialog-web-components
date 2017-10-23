@@ -10,6 +10,7 @@ export type Option = {
 
 export type Props = {
   className?: string,
+  wrapperClassName?: string,
   id: string,
   name?: string,
   value?: string,

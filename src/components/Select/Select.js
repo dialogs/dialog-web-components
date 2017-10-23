@@ -82,11 +82,12 @@ class Select extends PureComponent {
     const className = classNames(styles.container, styles[size], styles[theme], {
       [styles.disabled]: disabled
     }, this.props.className);
+    const wrapperClassName = classNames(styles.wrapper, this.props.wrapperClassName);
 
     return (
       <div className={className}>
         {this.renderLabel()}
-        <div className={styles.wrapper}>
+        <div className={wrapperClassName}>
           <select
             className={styles.select}
             id={id}
