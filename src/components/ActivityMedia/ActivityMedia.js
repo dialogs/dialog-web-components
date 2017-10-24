@@ -13,17 +13,17 @@ import styles from './ActivityMedia.css';
 
 export type Props = {
   className?: string,
-  collection: Message[],
-  onMediaClick: (message: Message) => mixed
+  messages: Message[],
+  onGoToMessage: (message: Message) => mixed
 };
 
 class ActivityMedia extends PureComponent {
   props: Props;
 
-  renderCollection() {
-    const { collection } = this.props;
+  renderMessages() {
+    const { messages } = this.props;
 
-    if (!collection.length) {
+    if (!messages.length) {
       return (
         <div className={styles.empty}>
           <Text id="ActivityMedia.empty" />
@@ -31,12 +31,12 @@ class ActivityMedia extends PureComponent {
       );
     }
 
-    return collection.map((message) => {
+    return messages.map((message) => {
       return (
         <ActivityMediaItem
           key={message.rid}
           message={message}
-          onClick={this.props.onMediaClick}
+          onClick={this.props.onGoToMessage}
         />
       );
     });
@@ -47,7 +47,7 @@ class ActivityMedia extends PureComponent {
 
     return (
       <ActivityList className={className}>
-        {this.renderCollection()}
+        {this.renderMessages()}
       </ActivityList>
     );
   }

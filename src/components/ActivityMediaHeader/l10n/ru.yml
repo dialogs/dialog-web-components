@@ -1,5 +1,5 @@
 all: Все медиа
 photo: Изображения
-documents: Документы
+document: Документы
 voice: Голосовые сообщения
 video: Видео

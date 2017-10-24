@@ -17,3 +17,8 @@
 .container {
   font-family: var(--activity-media-font-family);
 }
+
+.empty {
+  padding: 2rem 30px;
+  text-align: center;
+}

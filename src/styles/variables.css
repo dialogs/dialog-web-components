@@ -168,7 +168,7 @@
   --dropdown-item-height: 37px;
   --dropdown-item-hover-color-default: #fff;
   --dropdown-item-hover-background-default: var(--color-primary);
-  --dropdown-item-hover-background-secondary: color(#000 alpha(10%));
+  --dropdown-item-hover-background-secondary: #e5e5e5;
   --dropdown-divider-color: color(#000 alpha(15%));
   --dropdown-min-width: 200px;
   --dropdown-header-font-size: var(--default-font-size-small);

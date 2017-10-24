@@ -1,0 +1,368 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+:root {
+  /* Select */
+  --select-next-font-family: var(--default-font-family);
+  --select-next-size-modifier: 0.25;
+
+  --select-next-font-size: var(--default-font-size);
+  --select-next-border-radius: var(--default-border-radius);
+  --select-next-line-height: 26px;
+  --select-next-padding-top: var(--default-padding-small);
+  --select-next-padding-right: var(--default-padding);
+  --select-next-padding-bottom: var(--default-padding-small);
+  --select-next-padding-left: var(--default-padding);
+
+  --select-next-small-font-size: var(--default-font-size-small);
+  --select-next-small-border-radius: var(--default-border-radius-small);
+  --select-next-small-line-height: calc(var(--select-next-line-height) * (1 - var(--select-next-size-modifier)));
+  --select-next-small-padding-top: calc(var(--select-next-padding-top) * (1 - var(--select-next-size-modifier)));
+  --select-next-small-padding-bottom: calc(var(--select-next-padding-bottom) * (1 - var(--select-next-size-modifier)));
+  --select-next-small-padding-left: var(--select-next-padding-left);
+  --select-next-small-padding-right: var(--select-next-padding-right);
+
+  --select-next-color: #333;
+  --select-next-background-color: #fff;
+  --select-next-label-font-size: var(--default-font-size);
+  --select-next-label-color: #676c75;
+  --select-next-border-color: #D1D3D8;
+  --select-next-hover-border-color: color(var(--select-next-border-color) shade(10%));
+  --select-next-focus-border-color: var(--color-primary);
+  --select-next-transition-dudarion: var(--default-transition-duration);
+  --select-next-placeholder-color: #aaa;
+  --select-next-option-focused-color: var(--select-next-color);
+  --select-next-option-focused-background-color: #e5e5e5;
+  --select-next-option-selected-color: #fff;
+  --select-next-option-selected-background-color: var(--color-primary);
+
+  --select-next-z-index: var(--z-index-dropdown);
+
+}
+
+/* Reset */
+.container {
+  all: initial;
+}
+
+/* Styles */
+.container {
+  display: inline-flex;
+  flex-flow: column;
+  align-items: flex-start;
+  align-content: center;
+  justify-content: center;
+  margin-bottom: var(--default-padding);
+  width: 100%;
+  font-family: var(--select-next-font-family);
+  min-width: 200px;
+}
+
+.label {
+  font-family: var(--select-next-font-family);
+  font-size: var(--select-next-label-font-size);
+  display: inline-block;
+  cursor: pointer;
+  user-select: none;
+  line-height: 30px;
+  color: var(--select-next-label-color);
+}
+
+.select {
+  flex: 1 1 auto;
+  @apply --flex-fix;
+  width: 100%;
+
+  & :global(.Select-control) {
+    background-color: var(--select-next-background-color);
+    border: 0;
+    z-index: calc(var(--select-next-z-index) + 1);
+
+    & :global(.Select-input) {
+      & > input {
+        color: var(--select-next-color);
+      }
+    }
+
+    & :global(.Select-placeholder) {
+      color: var(--select-next-placeholder-color);
+    }
+
+    & :global(.Select-value) {
+      color: var(--select-next-color);
+    }
+
+    & :global(.Select-arrow-zone) {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      align-content: center;
+      justify-content: center;
+      width: auto;
+    }
+  }
+
+  & :global(.Select-menu-outer) {
+    border: 0;
+    box-shadow: 0 2px 3px 0 color(#000 alpha(20%)), inset 0 0 0 1px var(--select-next-border-color);
+    overflow: hidden;
+    z-index: var(--select-next-z-index);
+  }
+
+  & :global(.Select-option) {
+    color: var(--select-next-color);
+    background-color: transparent;
+
+    &:global(.is-focused) {
+      color: var(--select-next-option-focused-color);
+      background-color: var(--select-next-option-focused-background-color);
+    }
+
+    &:global(.is-selected) {
+      color: var(--select-next-option-selected-color);
+      background-color: var(--select-next-option-selected-background-color);
+    }
+  }
+
+  &:global(.is-open) {
+    & :global(.Select-control) {
+      border-bottom-right-radius: 0 !important;
+      border-bottom-left-radius: 0 !important;
+    }
+  }
+
+  &:global(.is-focused) {
+    & :global(.Select-value) {
+      & :global(.Select-value-label) {
+        color: var(--select-next-placeholder-color) !important;
+      }
+    }
+  }
+
+  &:global(.is-pseudo-focused) {
+    & :global(.Select-value) {
+      & :global(.Select-value-label) {
+        color: var(--select-next-color) !important;
+      }
+    }
+  }
+
+  &:global(.is-disabled) {
+    & :global(.Select-control) {
+      background-color: var(--select-next-background-color);
+      cursor: not-allowed;
+      opacity: .6;
+      box-shadow: inset 0 0 0 1px var(--select-next-border-color) !important;
+    }
+  }
+}
+
+.arrow {}
+
+
+.disabled {
+  & .select {
+    cursor: not-allowed;
+    opacity: 0.7;
+    color: color(var(--select-next-color) alpha(60%));
+    box-shadow: inset 0 0 0 1px var(--select-next-border-color) !important;
+  }
+}
+
+/* Sizes */
+.normal {
+  & .select {
+    & :global(.Select-control) {
+      border-radius: var(--select-next-border-radius);
+      height: calc(var(--select-next-padding-top) + var(--select-next-line-height) + var(--select-next-padding-bottom));
+
+      & :global(.Select-input) {
+        height: calc(var(--select-next-padding-top) + var(--select-next-line-height) + var(--select-next-padding-bottom));
+        padding-right: var(--select-next-padding-right);
+        padding-left: var(--select-next-padding-left);
+
+        & > input {
+          padding-top: var(--select-next-padding-top);
+          padding-bottom: var(--select-next-padding-bottom);
+          font-size: var(--select-next-font-size);
+          line-height: var(--select-next-line-height);
+        }
+      }
+
+      & :global(.Select-placeholder),
+      & :global(.Select-value) {
+        padding-top: var(--select-next-padding-top);
+        padding-right: var(--select-next-padding-right);
+        padding-bottom: var(--select-next-padding-bottom);
+        padding-left: var(--select-next-padding-left);
+        font-size: var(--select-next-font-size);
+        line-height: var(--select-next-line-height);
+      }
+
+      & :global(.Select-arrow-zone) {
+        padding-right: calc(var(--select-next-padding-right) - (var(--select-next-line-height) / 4));
+      }
+
+      & .arrowIcon {
+        height: var(--select-next-line-height) !important;
+        width: var(--select-next-line-height) !important;
+      }
+    }
+
+    & :global(.Select-option),
+    & :global(.Select-noresults) {
+      padding-right: var(--select-next-padding-right);
+      padding-left: var(--select-next-padding-left);
+      padding-top: 0;
+      padding-bottom: 0;
+      font-size: var(--select-next-font-size);
+      line-height: calc(var(--select-next-line-height) * 1.5);
+    }
+  }
+}
+
+.small {
+  & .select {
+    & :global(.Select-control) {
+      border-radius: var(--select-next-small-border-radius);
+      height: calc(var(--select-next-small-padding-top) + var(--select-next-small-line-height) + var(--select-next-small-padding-bottom));
+
+      & :global(.Select-input) {
+        height: calc(var(--select-next-small-padding-top) + var(--select-next-small-line-height) + var(--select-next-small-padding-bottom));
+        padding-right: var(--select-next-small-padding-right);
+        padding-left: var(--select-next-small-padding-left);
+
+        & > input {
+          padding-top: var(--select-next-small-padding-top);
+          padding-bottom: var(--select-next-small-padding-bottom);
+          font-size: var(--select-next-small-font-size);
+          line-height: var(--select-next-small-line-height);
+        }
+      }
+
+      & :global(.Select-placeholder),
+      & :global(.Select-value) {
+        padding-top: var(--select-next-small-padding-top);
+        padding-right: var(--select-next-small-padding-right);
+        padding-bottom: var(--select-next-small-padding-bottom);
+        padding-left: var(--select-next-small-padding-left);
+        font-size: var(--select-next-small-font-size);
+        line-height: var(--select-next-small-line-height);
+      }
+
+      & :global(.Select-arrow-zone) {
+        padding-right: calc(var(--select-next-small-padding-right) - (var(--select-next-small-line-height) / 4));
+      }
+
+      & .arrowIcon {
+        height: var(--select-next-small-line-height) !important;
+        width: var(--select-next-small-line-height) !important;
+      }
+    }
+
+    & :global(.Select-option),
+    & :global(.Select-noresults) {
+      padding-right: var(--select-next-small-padding-right);
+      padding-left: var(--select-next-small-padding-left);
+      padding-top: 0;
+      padding-bottom: 0;
+      font-size: var(--select-next-small-font-size);
+      line-height: calc(var(--select-next-small-line-height) * 1.75);
+    }
+  }
+}
+
+/* Themes */
+.default {
+  & .select {
+    & :global(.Select-control) {
+      box-shadow: inset 0 0 0 1px var(--select-next-border-color);
+
+      &:hover {
+        box-shadow: inset 0 0 0 1px var(--select-next-hover-border-color);
+      }
+    }
+
+    &:global(.is-focused) {
+      & :global(.Select-control) {
+        box-shadow: inset 0 0 0 1px var(--select-next-focus-border-color);
+      }
+    }
+  }
+}
+
+.primary {
+  & .select {
+    & :global(.Select-control) {
+      box-shadow: inset 0 0 0 1px var(--color-primary);
+    }
+
+    &:global(.is-focused) {
+      & :global(.Select-control) {
+        box-shadow: inset 0 0 0 1px var(--color-primary);
+      }
+    }
+  }
+}
+
+.success {
+  & .select {
+    & :global(.Select-control) {
+      box-shadow: inset 0 0 0 1px var(--color-success);
+    }
+
+    &:global(.is-focused) {
+      & :global(.Select-control) {
+        box-shadow: inset 0 0 0 1px var(--color-success);
+      }
+    }
+  }
+}
+
+.danger {
+  & .select {
+    & :global(.Select-control) {
+      box-shadow: inset 0 0 0 1px var(--color-danger);
+    }
+
+    &:global(.is-focused) {
+      & :global(.Select-control) {
+        box-shadow: inset 0 0 0 1px var(--color-danger);
+      }
+    }
+  }
+}
+
+.info {
+  & .select {
+    & :global(.Select-control) {
+      box-shadow: inset 0 0 0 1px var(--color-info);
+    }
+
+    &:global(.is-focused) {
+      & :global(.Select-control) {
+        box-shadow: inset 0 0 0 1px var(--color-info);
+      }
+    }
+  }
+}
+
+.warning {
+  & .select {
+    & :global(.Select-control) {
+      box-shadow: inset 0 0 0 1px var(--color-warning);
+    }
+
+    &:global(.is-focused) {
+      & :global(.Select-control) {
+        box-shadow: inset 0 0 0 1px var(--color-warning);
+      }
+    }
+  }
+}

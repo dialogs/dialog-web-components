@@ -46,7 +46,7 @@ class Select extends PureComponent {
   }
 
   renderOptions() {
-    return this.props.options.map((option) => {
+    const options = this.props.options.map((option) => {
       return (
         <Text
           value={option.value}
@@ -56,6 +56,16 @@ class Select extends PureComponent {
         />
       );
     });
+
+    if (this.props.placeholder) {
+      options.unshift(
+        <option key="__placeholder__" value="" disabled>
+          {this.props.placeholder}
+        </option>
+      );
+    }
+
+    return options;
   }
 
   renderLabel() {
@@ -93,7 +103,7 @@ class Select extends PureComponent {
             id={id}
             name={name}
             disabled={disabled}
-            value={this.props.value}
+            value={this.props.value || ''}
             defaultValue={this.props.defaultValue}
             ref={this.setSelect}
             onChange={this.handleChange}

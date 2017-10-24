@@ -4,8 +4,8 @@ const handleMediaClick = (message) => console.debug(message);
 
 <div style={{ background: '#fff', width: 320 }}>
   <ActivityMedia
-    onMediaClick={handleMediaClick}
-    collection={[
+    onGoToMessage={handleMediaClick}
+    messages={[
       messages[2],
       messages[4],
       messages[3],

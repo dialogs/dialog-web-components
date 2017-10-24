@@ -62,6 +62,7 @@ export { default as Input } from './components/Input/Input';
 export { default as InputNext } from './components/InputNext/InputNext';
 export { default as PhoneInput } from './components/PhoneInput/PhoneInput';
 export { default as Select } from './components/Select/Select';
+export { default as SelectNext } from './components/SelectNext/SelectNext';
 export { default as Checkbox } from './components/Checkbox/Checkbox';
 export { default as Radio } from './components/Radio/Radio';
 export { default as Switcher } from './components/Switcher/Switcher';

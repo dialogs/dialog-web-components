@@ -17,14 +17,10 @@
 /* Styles */
 .widget {
   font-family: var(--message-media-interactive-font-family);
-  display: inline-block;
+  display: inline-flex;
+  flex: 0 0 auto;
   margin-right: 8px;
-  margin-top: 8px;
-}
-
-.widgetBlock {
-  display: block;
-  margin-right: 0;
+  margin-top: 6px;
 }
 
 .select {

@@ -3,7 +3,10 @@
  * @flow
  */
 
-import type { MessageMediaInteractive as MessageMediaInteractiveType } from '@dlghq/dialog-types';
+import type {
+  MessageMediaInteractive as MessageMediaInteractiveType,
+  MessageMediaInteractiveConfirm
+} from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import styles from './MessageMediaInteractive.css';
@@ -12,7 +15,7 @@ import MessageMediaInteractiveGroup from './MessageMediaInteractiveGroup/Message
 export type Props = {
   className?: string,
   media: MessageMediaInteractiveType,
-  onSubmit?: (id: string, value: string) => mixed
+  onSubmit?: (id: string, value: string, confirm?: ?MessageMediaInteractiveConfirm) => mixed
 };
 
 class MessageMediaInteractive extends PureComponent {

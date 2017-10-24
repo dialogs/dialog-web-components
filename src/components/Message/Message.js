@@ -9,7 +9,8 @@ import type {
   Message as MessageType,
   MessageState as MessageStateType,
   PeerInfo,
-  Peer
+  Peer,
+  MessageMediaInteractiveConfirm
 } from '@dlghq/dialog-types';
 import classNames from 'classnames';
 import React, { PureComponent } from 'react';
@@ -49,7 +50,7 @@ export type Props = {
   onReaction?: (char: string) => any,
   onGoToPeer: (peer: Peer) => any,
   onGoToMessage: (peer: ?Peer, message: MessageType) => any,
-  onInteractiveAction: (id: string, value: string) => mixed
+  onInteractiveAction: (id: string, value: string, confirm?: ?MessageMediaInteractiveConfirm) => mixed
 };
 
 export type State = {

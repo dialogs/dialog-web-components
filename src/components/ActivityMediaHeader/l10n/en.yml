@@ -1,5 +1,5 @@
 all: All media
 photo: Images
-documents: Documents
+document: Documents
 voice: Voice
 video: Video
