@@ -12,7 +12,8 @@ type Props = {
   photo: ?string,
   preview: ?string,
   sender: ?string,
-  title: ?string
+  title: ?string,
+  onClick: () => mixed
 };
 
 class ActivityMediaPhoto extends PureComponent {
@@ -43,6 +44,7 @@ class ActivityMediaPhoto extends PureComponent {
           <div
             className={styles.preview}
             style={{ backgroundImage: `url(${preview})` }}
+            onClick={this.props.onClick}
           >
             <div
               className={styles.photo}
