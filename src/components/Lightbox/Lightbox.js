@@ -100,11 +100,14 @@ class Lightbox extends Component {
 
   getThumbBounds = (index: number): ?PhotoSwipeThumbBounds => {
     const item = this.props.items[index];
+
     if (item) {
       const thumbnail = document.getElementById(item.id);
+
       if (thumbnail) {
         const pageYScroll = window.pageYOffset || 0;
         const rect = thumbnail.getBoundingClientRect();
+
         if (rect) {
           return {
             x: rect.left,
@@ -134,7 +137,7 @@ class Lightbox extends Component {
       <a
         className={styles.buttonDownload}
         href={current.src}
-        download={current.src}
+        download={current.fileName}
         title={l10n.formatText('Lightbox.download')}
       >
         <Icon glyph="file_download" className={styles.icon} size={20} />
