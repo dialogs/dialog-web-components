@@ -55,8 +55,8 @@ class Lightbox extends Component {
         index: this.props.startIndex,
         history: false,
         closeOnScroll: false,
-        hideAnimationDuration: 150,
-        showAnimationDuration: 150,
+        hideAnimationDuration: 0,
+        showAnimationDuration: 0,
         bgOpacity: 0.8,
         // UI options
         shareEl: false,
