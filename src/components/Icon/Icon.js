@@ -14,6 +14,7 @@ const files = require.context('./svg', false, /.*\.svg$/);
 files.keys().forEach(files);
 
 export type Props = {
+  id?: string,
   className?: string,
   glyph: string,
   theme: 'default' | 'primary' | 'success' | 'danger' | 'info' | 'warning',
@@ -61,7 +62,7 @@ class Icon extends PureComponent {
     };
 
     return (
-      <div className={className} onClick={onClick} style={style}>
+      <div className={className} onClick={onClick} style={style} id={this.props.id}>
         <svg className={styles.icon} width="100%" height="100%">
           <use xlinkHref={`#${this.props.glyph}`} />
         </svg>
