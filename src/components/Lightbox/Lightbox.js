@@ -55,8 +55,8 @@ class Lightbox extends Component {
         index: this.props.startIndex,
         history: false,
         closeOnScroll: false,
-        hideAnimationDuration: 150,
-        showAnimationDuration: 150,
+        hideAnimationDuration: 0,
+        showAnimationDuration: 0,
         bgOpacity: 0.8,
         // UI options
         shareEl: false,
@@ -100,11 +100,14 @@ class Lightbox extends Component {
 
   getThumbBounds = (index: number): ?PhotoSwipeThumbBounds => {
     const item = this.props.items[index];
+
     if (item) {
       const thumbnail = document.getElementById(item.id);
+
       if (thumbnail) {
         const pageYScroll = window.pageYOffset || 0;
         const rect = thumbnail.getBoundingClientRect();
+
         if (rect) {
           return {
             x: rect.left,
@@ -134,7 +137,7 @@ class Lightbox extends Component {
       <a
         className={styles.buttonDownload}
         href={current.src}
-        download={current.src}
+        download={current.fileName}
         title={l10n.formatText('Lightbox.download')}
       >
         <Icon glyph="file_download" className={styles.icon} size={20} />

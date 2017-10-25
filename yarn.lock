@@ -53,9 +53,9 @@
   version "1.31.1"
   resolved "https://registry.npmjs.org/@dlghq/dialog-types/-/dialog-types-1.31.1.tgz#5d5ccfea871b73c2e195f57adc89137dfed6fc4f"
 
-"@dlghq/dialog-utils@0.7.0":
-  version "0.7.0"
-  resolved "https://registry.npmjs.org/@dlghq/dialog-utils/-/dialog-utils-0.7.0.tgz#44e4f54902137b9d6635dc1fc777776f163db871"
+"@dlghq/dialog-utils@0.7.1":
+  version "0.7.1"
+  resolved "https://registry.npmjs.org/@dlghq/dialog-utils/-/dialog-utils-0.7.1.tgz#98703930bead61c991cc0d1c882d8ea98f21702d"
   dependencies:
     esdoc-standard-plugin "1.0.0"
     immutable "3.8.1"
@@ -1416,9 +1416,9 @@ chalk@1.1.3, chalk@^1.0.0, chalk@^1.1.0, chalk@^1.1.1, chalk@^1.1.3:
     strip-ansi "^3.0.0"
     supports-color "^2.0.0"
 
-chalk@2.2.0:
-  version "2.2.0"
-  resolved "https://registry.npmjs.org/chalk/-/chalk-2.2.0.tgz#477b3bf2f9b8fd5ca9e429747e37f724ee7af240"
+chalk@2.3.0:
+  version "2.3.0"
+  resolved "https://registry.npmjs.org/chalk/-/chalk-2.3.0.tgz#b5ea48efc9c1793dccc9b4767c93914d3f2d52ba"
   dependencies:
     ansi-styles "^3.1.0"
     escape-string-regexp "^1.0.5"

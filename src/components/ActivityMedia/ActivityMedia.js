@@ -14,7 +14,8 @@ import styles from './ActivityMedia.css';
 export type Props = {
   className?: string,
   messages: Message[],
-  onGoToMessage: (message: Message) => mixed
+  onGoToMessage: (message: Message) => mixed,
+  onLightboxOpen: (message: Message) => any
 };
 
 class ActivityMedia extends PureComponent {
@@ -36,7 +37,8 @@ class ActivityMedia extends PureComponent {
         <ActivityMediaItem
           key={message.rid}
           message={message}
-          onClick={this.props.onGoToMessage}
+          onGoToMessage={this.props.onGoToMessage}
+          onLightboxOpen={this.props.onLightboxOpen}
         />
       );
     });
