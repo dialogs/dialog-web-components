@@ -65,12 +65,18 @@ module.exports = {
             }
           }
         ],
-        include: [resolve('src/styles/global.css')]
+        include: [
+          resolve('src/styles/global.css'),
+          resolve('src/components/MessageMediaInteractive/example/CodeMirror.css')
+        ]
       },
       {
         test: /\.css$/,
         include: whitelist,
-        exclude: [resolve('src/styles/global.css')],
+        exclude: [
+          resolve('src/styles/global.css'),
+          resolve('src/components/MessageMediaInteractive/example/CodeMirror.css')
+        ],
         use: [
           'style-loader',
           {

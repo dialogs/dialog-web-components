@@ -1,0 +1,22 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../../styles/variables.css';
+
+.container {}
+
+.heading {
+  margin: 0;
+  font-family: var(--default-font-family);
+  line-height: 40px;
+  font-size: 20px;
+  margin-bottom: 0.5rem;
+}
+
+.code {
+  margin-bottom: 1rem;
+}
+
+.result {
+}

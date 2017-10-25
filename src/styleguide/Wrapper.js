@@ -29,11 +29,7 @@ class Wrapper extends Component {
   handleBackgroundToggle = (isTransparent) => this.setState({ isTransparent });
 
   renderLocaleSelect() {
-    const options = [{
-      value: 'en', title: 'English'
-    }, {
-      value: 'ru', title: 'Russian'
-    }];
+    const options = [{ value: 'en', title: 'English' }, { value: 'ru', title: 'Russian' }];
 
     return (
       <div className={styles.selectWrapper}>

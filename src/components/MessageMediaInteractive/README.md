@@ -1,12 +1,5 @@
 ```jsx
-const messagesMedia = require('../../fixtures/messagesMedia');
+const MessageMediaInteractiveExample = require('./example/MessageMediaInteractiveExample').default;
 
-const handleSubmit = (id, value) => {
-  alert(`Interactive action submit: ${id} => ${value}`);
-};
-
-<MessageMediaInteractive 
-  media={messagesMedia.interactive} 
-  onSubmit={handleSubmit}
-/>
+<MessageMediaInteractiveExample />
 ```
