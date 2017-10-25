@@ -171,6 +171,11 @@ module.exports = {
       copyButton: {
         border: 0
       }
+    },
+    Playground: {
+      preview: {
+        padding: 0
+      }
     }
   }
 };

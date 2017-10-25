@@ -1,7 +1,13 @@
 import React, { Component, PropTypes } from 'react';
 import { Provider } from '@dlghq/react-l10n';
+import classNames from 'classnames';
 import messages from './devMessages';
+import Select from '../components/Select/Select';
+import Switcher from '../components/Switcher/Switcher';
 import styles from './Wrapper.css';
+import createSequence from '../utils/createSequence';
+
+const seq = createSequence();
 
 class Wrapper extends Component {
   static propTypes = {
@@ -12,38 +18,72 @@ class Wrapper extends Component {
     super(props, context);
 
     this.state = {
-      locale: 'en'
+      locale: 'en',
+      isTransparent: false
     };
 
-    this.handleLocaleChange = this.handleLocaleChange.bind(this);
+    this.id = 'background_toggler_' + seq.next();
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    return nextState.locale !== this.state.locale ||
-           nextProps.children !== this.props.children;
+  handleLocaleChange = (locale) => this.setState({ locale });
+  handleBackgroundToggle = (isTransparent) => this.setState({ isTransparent });
+
+  renderLocaleSelect() {
+    const options = [{
+      value: 'en', title: 'English'
+    }, {
+      value: 'ru', title: 'Russian'
+    }];
+
+    return (
+      <div className={styles.selectWrapper}>
+        <Select
+          value={this.state.locale}
+          options={options}
+          size="small"
+          className={styles.select}
+          onChange={this.handleLocaleChange}
+        />
+      </div>
+    );
   }
 
-  handleLocaleChange({ target }) {
-    this.setState({ locale: target.value });
+  renderBackgroundToggle() {
+    const { isTransparent } = this.state;
+
+    return (
+      <Switcher
+        id={this.id}
+        name="toggle"
+        className={styles.toggle}
+        value={isTransparent}
+        onChange={this.handleBackgroundToggle}
+      >
+        Transparent background
+      </Switcher>
+    );
   }
 
   render() {
-    const { locale } = this.state;
+    const wrapperClassName = classNames(styles.wrapper, this.state.isTransparent ? styles.transparent : styles.white);
 
     return (
-      <div>
-        <div className={styles.select}>
-          <select value={locale} onChange={this.handleLocaleChange}>
-            <option value="en">English</option>
-            <option value="ru">Russian</option>
-          </select>
-        </div>
+      <Provider
+        locale={this.state.locale}
+        messages={messages}
+        globalValues={{ appName: 'dialog' }}
+      >
         <div className={styles.container}>
-          <Provider locale={locale} messages={messages} globalValues={{ appName: 'dialog' }}>
+          <header className={styles.header}>
+            {this.renderBackgroundToggle()}
+            <div className={styles.spacer} />
+            {this.renderLocaleSelect()}
+          </header>
+          <div className={wrapperClassName}>
             {this.props.children}
-          </Provider>
+          </div>
         </div>
-      </div>
+      </Provider>
     );
   }
 }
