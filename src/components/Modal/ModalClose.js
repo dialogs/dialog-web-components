@@ -12,6 +12,7 @@ import styles from './Modal.css';
 export type Props = {
   className?: string,
   pending?: boolean,
+  id?: string,
   onClick: () => any
 };
 
@@ -32,6 +33,7 @@ function ModalClose(props: Props): React.Element<any> {
         glyph="close"
         className={styles.close}
         onClick={props.onClick}
+        id={props.id}
       />
     </div>
   );
