@@ -26,7 +26,7 @@ class AttachmentMeta extends PureComponent {
         <Text id="AttachmentModal.sending_method" tagName="div" className={styles.metaHeading} />
         <div className={styles.metaText}>
           <Switcher
-            id="send_as_file"
+            id="attachment_send_as_file"
             name="send_as_file"
             className={styles.metaMethodSwitcher}
             value={isDocument ? true : this.props.sendAsFile}

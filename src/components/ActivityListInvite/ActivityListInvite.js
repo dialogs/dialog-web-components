@@ -19,7 +19,7 @@ function ActivityListInvite(props: Props): React.Element<any> {
   const className = classNames(styles.container, props.className);
 
   return (
-    <ActivityListItem className={className} onClick={props.onClick}>
+    <ActivityListItem className={className} onClick={props.onClick} id="activity_list_invite">
       <Icon
         glyph="link"
         inverted

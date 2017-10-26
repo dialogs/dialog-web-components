@@ -44,6 +44,7 @@ class ActivityIntegration extends PureComponent {
             {this.renderLink()}
           </div>
           <CopyButton
+            id="activity_integration_copy_button"
             wide
             disabled={pending}
             text={this.props.link}
@@ -52,6 +53,7 @@ class ActivityIntegration extends PureComponent {
         <hr className={styles.hr} />
         <div className={styles.block}>
           <Button
+            id="activity_integration_revoke_button"
             theme="danger"
             view="link"
             onClick={this.props.onRevoke}

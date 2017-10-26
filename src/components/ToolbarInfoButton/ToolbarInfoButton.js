@@ -21,7 +21,7 @@ function ToolbarInfoButton(props: Props): React.Element<any> {
   }, props.className);
 
   return (
-    <div className={className} onClick={props.onClick}>
+    <div className={className} onClick={props.onClick} id="toolbar_info_button">
       <svg viewBox="0 0 4 12" className={styles.icon}>
         <g fillRule="evenodd">
           <rect width="4" height="8" y="4" rx="1" />

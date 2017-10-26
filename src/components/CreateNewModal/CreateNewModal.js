@@ -119,7 +119,7 @@ class CreateNewModal extends PureComponent {
       <div className={styles.wrapper}>
         <ModalHeader className={styles.header} withBorder>
           <Text id={`CreateNewModal.${type}.title`} />
-          <ModalClose pending={this.props.pending} onClick={this.props.onClose} />
+          <ModalClose pending={this.props.pending} onClick={this.props.onClose} id={`${this.props.id}_close_button`} />
         </ModalHeader>
         <ModalBody className={styles.body}>
           <CreateGroupTypeForm
@@ -133,6 +133,7 @@ class CreateNewModal extends PureComponent {
           <Button
             wide
             form={id}
+            id={`${id}_step_${step}_submit_button`}
             type="submit"
             theme="success"
             rounded={false}
@@ -157,7 +158,7 @@ class CreateNewModal extends PureComponent {
             className={styles.back}
           />
           <Text id={`CreateNewModal.${type}.title`} />
-          <ModalClose pending={this.props.pending} onClick={this.props.onClose} />
+          <ModalClose pending={this.props.pending} onClick={this.props.onClose} id={`${this.props.id}_close_button`} />
         </ModalHeader>
         {this.renderError()}
         <ModalBody className={styles.body}>
@@ -179,7 +180,7 @@ class CreateNewModal extends PureComponent {
         <ModalFooter className={styles.footer}>
           <Button
             wide
-            id={id}
+            id={`${id}_step_${step}_submit_button`}
             type="submit"
             theme="success"
             rounded={false}
@@ -203,9 +204,14 @@ class CreateNewModal extends PureComponent {
               glyph="arrow_back"
               onClick={this.handleCancelAvatarEdit}
               className={styles.back}
+              id={`${this.props.id}_back_button`}
             />
             <Text id="CreateNewModal.avatar_edit" />
-            <ModalClose pending={this.props.pending} onClick={this.props.onClose} />
+            <ModalClose
+              pending={this.props.pending}
+              onClick={this.props.onClose}
+              id={`${this.props.id}_close_button`}
+            />
           </ModalHeader>
           {this.renderError()}
           <ModalBody className={styles.body}>
@@ -234,9 +240,14 @@ class CreateNewModal extends PureComponent {
             glyph="arrow_back"
             onClick={this.handlePrevStepClick}
             className={styles.back}
+            id={`${id}_back_button`}
           />
           <Text id={`CreateNewModal.${type}.title`} />
-          <ModalClose pending={this.props.pending} onClick={this.props.onClose} />
+          <ModalClose
+            pending={this.props.pending}
+            onClick={this.props.onClose}
+            id={`${id}_close_button`}
+          />
         </ModalHeader>
         <ModalBody className={styles.body}>
           <CreateGroupMembersForm
@@ -257,6 +268,7 @@ class CreateNewModal extends PureComponent {
             theme="success"
             loading={this.props.pending}
             disabled={this.props.pending}
+            id={`${id}_finish_button`}
             wide
           >
             <Text id={`CreateNewModal.${type}.finish`} />

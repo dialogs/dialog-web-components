@@ -209,6 +209,7 @@ class ProfileModal extends PureComponent {
             view="link"
             theme="primary"
             className={styles.nickButton}
+            id="profile_modal_nick_button"
             onClick={this.handleNickChooserClick}
           >
             <Icon glyph="plus_outline" className={styles.nickButtonIcon} />
@@ -227,7 +228,7 @@ class ProfileModal extends PureComponent {
       <Input
         ref={this.setNickInput}
         className={styles.nickInput}
-        id="nick"
+        id="profile_modal_nick"
         name="nick"
         large
         label={formatText('ProfileModal.nickname')}
@@ -283,7 +284,7 @@ class ProfileModal extends PureComponent {
         return (
           <ModalHeader withBorder>
             <Text id="ProfileModal.title" />
-            <ModalClose pending={this.isPending()} onClick={this.props.onClose} />
+            <ModalClose pending={this.isPending()} onClick={this.props.onClose} id="profile_modal_close_button" />
           </ModalHeader>
         );
       case 'avatar':
@@ -293,9 +294,10 @@ class ProfileModal extends PureComponent {
               glyph="arrow_back"
               onClick={this.handleGoToProfile}
               className={styles.back}
+              id="profile_modal_back_button"
             />
             <Text id="ProfileModal.title_avatar" />
-            <ModalClose pending={this.isPending()} onClick={this.props.onClose} />
+            <ModalClose pending={this.isPending()} onClick={this.props.onClose} id="profile_modal_close_button" />
           </ModalHeader>
         );
       default:
@@ -310,9 +312,7 @@ class ProfileModal extends PureComponent {
     if (!this.props.profile) {
       return (
         <div className={styles.pendingWrapper}>
-          <Spinner
-            size="large"
-          />
+          <Spinner size="large" />
         </div>
       );
     }
@@ -325,7 +325,7 @@ class ProfileModal extends PureComponent {
             ref={this.setNameInput}
             className={styles.input}
             large
-            id="name"
+            id="profile_modal_name"
             name="name"
             label={formatText('ProfileModal.name')}
             value={profile.name}
@@ -336,7 +336,7 @@ class ProfileModal extends PureComponent {
           <Input
             className={styles.about}
             large
-            id="about"
+            id="profile_modal_about"
             name="about"
             type="textarea"
             label={formatText('ProfileModal.about')}
@@ -377,6 +377,7 @@ class ProfileModal extends PureComponent {
             wide
             type="submit"
             theme="success"
+            id="profile_modal_submit_button"
             rounded={false}
             loading={this.isPending()}
             disabled={!this.isChanged() || this.isPending()}

@@ -143,7 +143,7 @@ class DiscoverCard extends PureComponent {
     const className = classNames(styles.container, this.props.className);
 
     return (
-      <div className={className} onClick={this.handleClick}>
+      <div className={className} onClick={this.handleClick} id={`discover_card_${this.props.peer.id}`}>
         <div className={styles.body}>
           {this.renderAvatar()}
           {this.renderInfo()}

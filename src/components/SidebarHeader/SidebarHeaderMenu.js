@@ -33,7 +33,7 @@ class SidebarHeaderMenu extends PureComponent {
     const { appName } = this.props;
 
     return (
-      <a className={styles.menu} {...handlers}>
+      <a className={styles.menu} {...handlers} id="sidebar_header_menu">
         {this.renderLogo()}
         <div className={styles.appName}>{appName}</div>
         <Icon glyph={isActive ? 'arrow_drop_up' : 'arrow_drop_down'} className={styles.arrow} size={30} />

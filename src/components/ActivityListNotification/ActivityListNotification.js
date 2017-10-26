@@ -41,7 +41,7 @@ class ActivityListNotification extends Component {
     const className = classNames(styles.container, this.props.className);
 
     return (
-      <ActivityListItem className={className} onClick={this.handleClick}>
+      <ActivityListItem className={className} onClick={this.handleClick} id="activity_list_notification">
         <Icon
           glyph="notifications"
           inverted
@@ -55,7 +55,7 @@ class ActivityListNotification extends Component {
           className={styles.text}
         />
         <Switcher
-          id="activity_notification"
+          id="activity_notification_switcher"
           name="activity_notification"
           value={this.props.value}
           className={styles.switcher}

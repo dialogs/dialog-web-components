@@ -12,6 +12,7 @@ export type Theme = 'default' | 'primary' | 'success' | 'danger' | 'info' | 'war
 
 export type Props = {
   className?: string,
+  id?: string,
   style?: Object,
   glyph: string,
   size: 'small' | 'normal' | 'large',
@@ -32,7 +33,7 @@ class LinkIconButton extends PureComponent {
   };
 
   render(): React.Element<any> {
-    const { glyph, theme, size, flat, style, active, href, target, ...otherProps } = this.props;
+    const { glyph, theme, size, flat, style, active, href, target, id, ...otherProps } = this.props;
 
     const className = classNames(styles.container, styles[size], {
       [styles.defaultStyle]: !flat,
@@ -47,6 +48,7 @@ class LinkIconButton extends PureComponent {
         target={target}
         className={className}
         style={style}
+        id={id}
         {...otherProps}
       >
         <span className={styles.fix}>

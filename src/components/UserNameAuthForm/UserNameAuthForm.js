@@ -92,7 +92,7 @@ class UserNameAuthForm extends PureComponent {
             onChange={this.handleChange}
           />
         </div>
-        <ButtonNext type="submit" loading={pending}>
+        <ButtonNext type="submit" loading={pending} id={`${id}_submit`}>
           <Text id="UserNameAuthForm.sign_in" />
         </ButtonNext>
       </form>

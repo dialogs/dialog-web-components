@@ -10,6 +10,7 @@ import styles from './CheckButton.css';
 
 export type Props = {
   className?: string,
+  id?: string,
   checked: boolean,
   theme: 'primary' | 'success' | 'danger' | 'info' | 'warning',
   size: number,
@@ -38,7 +39,7 @@ class CheckButton extends PureComponent {
   };
 
   render() {
-    const { checked, theme, size } = this.props;
+    const { checked, theme, size, id } = this.props;
     const className = classNames(styles.container, styles[theme], {
       [styles.checked]: checked
     }, this.props.className);
@@ -52,7 +53,7 @@ class CheckButton extends PureComponent {
     };
 
     return (
-      <div className={className} onClick={this.handleClick} style={style}>
+      <div className={className} onClick={this.handleClick} style={style} id={id}>
         {checked ? (
           <Icon
             className={styles.icon}

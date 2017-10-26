@@ -40,7 +40,7 @@ class SidebarPeerItem extends PureComponent {
     });
 
     return (
-      <div className={className} onClick={this.handleClick}>
+      <div className={className} onClick={this.handleClick} id={`sidebar_peer_item_${info.peer.id}`}>
         <PeerAvatar
           className={styles.avatar}
           peer={info}

@@ -12,6 +12,7 @@ import Button from '../Button/Button';
 type Props = {
   text: string,
   wide: ?boolean,
+  id?: string,
   disabled: boolean
 };
 
@@ -96,6 +97,7 @@ class CopyButton extends Component {
 
     return (
       <Button
+        id={this.props.id}
         ref={this.setButton}
         wide={Boolean(this.props.wide)}
         disabled={this.props.disabled}

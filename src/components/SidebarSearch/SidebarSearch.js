@@ -123,6 +123,7 @@ class SidebarSearch extends Component {
         <div className={className}>
           {this.renderIcon()}
           <input
+            id="sidebar_search_input"
             type="search"
             ref={this.setInput}
             placeholder={placeholder}

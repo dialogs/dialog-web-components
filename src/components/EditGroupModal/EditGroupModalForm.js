@@ -117,7 +117,7 @@ class EditGroupModalForm extends PureComponent {
 
     return (
       <Input
-        id="shortname"
+        id="edit_group_shortname"
         name="shortname"
         label={l10n.formatText(`CreateNewModal.${group.type}.info.shortname`)}
         onChange={this.props.onChange}
@@ -143,7 +143,7 @@ class EditGroupModalForm extends PureComponent {
         <form className={styles.form} autoComplete="off" onSubmit={this.handleSubmit}>
           <Input
             className={styles.input}
-            id="name"
+            id="edit_group_name"
             large
             name="name"
             onChange={this.props.onChange}
@@ -155,7 +155,7 @@ class EditGroupModalForm extends PureComponent {
           {this.renderShortname()}
           <Input
             className={styles.input}
-            id="about"
+            id="edit_group_about"
             label={l10n.formatText(`CreateNewModal.${group.type}.info.description.label`)}
             large
             name="about"

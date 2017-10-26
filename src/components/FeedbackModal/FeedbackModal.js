@@ -68,7 +68,7 @@ class FeedbackModal extends PureComponent {
         <form id={this.props.id} autoComplete="off" onSubmit={this.handleSubmit}>
           <ModalHeader withBorder>
             <Text id="FeedbackModal.title" />
-            <ModalClose onClick={this.props.onClose} />
+            <ModalClose onClick={this.props.onClose} id={this.props.id + '_close_button'} />
           </ModalHeader>
           <ModalBody className={styles.body}>
             <InputNext
@@ -92,6 +92,7 @@ class FeedbackModal extends PureComponent {
           <ModalFooter className={styles.footer}>
             <Button
               wide
+              id={`${this.props.id}_submit_button`}
               type="submit"
               theme="success"
               rounded={false}

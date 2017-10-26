@@ -16,7 +16,8 @@ export type Props = {
   theme:'default' | 'primary' | 'success' | 'danger' | 'info' | 'warning' | 'link',
   size: 'small' | 'normal' | 'large',
   href: string,
-  target?: string
+  target?: string,
+  id?: string
 }
 
 class LinkButton extends PureComponent {
@@ -31,14 +32,14 @@ class LinkButton extends PureComponent {
   };
 
   render(): React.Element<any> {
-    const { theme, size, wide, rounded, children, view, target, href } = this.props;
+    const { theme, size, wide, rounded, children, view, target, href, id } = this.props;
     const className = classNames(styles.container, styles[theme], styles[view], styles[size], {
       [styles.wide]: wide,
       [styles.rounded]: rounded
     }, this.props.className);
 
     return (
-      <a href={href} target={target} className={className}>
+      <a href={href} target={target} className={className} id={id}>
         {children}
       </a>
     );

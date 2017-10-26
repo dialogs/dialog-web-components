@@ -38,7 +38,7 @@ class ActivityMediaHeader extends PureComponent {
     });
 
     return (
-      <div className={className} {...handlers}>
+      <div className={className} {...handlers} id="activity_media_header_type_current">
         <Text id={`ActivityMediaHeader.${current}`} className={styles.currentText} />
         <Icon
           className={styles.arrow}
@@ -61,6 +61,7 @@ class ActivityMediaHeader extends PureComponent {
         <ActivityMediaHeaderItem
           key={type}
           type={type}
+          id={`activity_media_header_type_${type}`}
           onClick={this.props.onChange}
         />
       );
@@ -79,7 +80,12 @@ class ActivityMediaHeader extends PureComponent {
     }
 
     return (
-      <Icon onClick={this.props.onBack} className={styles.iconBack} glyph="arrow_back" />
+      <Icon
+        onClick={this.props.onBack}
+        className={styles.iconBack}
+        glyph="arrow_back"
+        id="activity_media_header_back_button"
+      />
     );
   }
 
@@ -89,7 +95,12 @@ class ActivityMediaHeader extends PureComponent {
     }
 
     return (
-      <Icon onClick={this.props.onClose} className={styles.iconClose} glyph="close" />
+      <Icon
+        onClick={this.props.onClose}
+        className={styles.iconClose}
+        glyph="close"
+        id="activity_media_header_close_button"
+      />
     );
   }
 

@@ -161,7 +161,7 @@ class SidebarRecentItem extends PureComponent {
     );
 
     return (
-      <div className={className} onClick={this.handleClick}>
+      <div className={className} onClick={this.handleClick} id={`sidebar_recent_item_${this.props.info.peer.id}`}>
         {this.renderAvatar()}
         <div className={styles.text}>
           <div className={styles.title}>

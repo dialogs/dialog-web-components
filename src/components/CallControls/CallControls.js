@@ -47,6 +47,7 @@ class CallControls extends PureComponent {
         <IconButton
           flat
           key="answer"
+          id="call_controls_answer_button"
           size="normal"
           theme="success"
           glyph="call"
@@ -60,6 +61,7 @@ class CallControls extends PureComponent {
       <IconButton
         flat
         key="end"
+        id="call_controls_end_button"
         size="normal"
         theme="danger"
         glyph="call_end"
@@ -73,6 +75,7 @@ class CallControls extends PureComponent {
         <IconButton
           flat
           key="mic"
+          id="call_controls_mic_button"
           size="normal"
           theme="primary"
           glyph={this.props.isMuted ? 'mic_material_off' : 'mic_material'}
@@ -88,6 +91,7 @@ class CallControls extends PureComponent {
         <IconButton
           flat
           key="camera"
+          id="call_controls_camera_button"
           size="normal"
           theme="info"
           glyph={this.props.isCameraOn ? 'videocam_off' : 'videocam'}
@@ -102,6 +106,7 @@ class CallControls extends PureComponent {
         <IconButton
           flat
           key="screen_share"
+          id="call_controls_screen_share_button"
           size="normal"
           theme="info"
           glyph={this.props.isScreenSharingOn ? 'screen_share_stop' : 'screen_share'}

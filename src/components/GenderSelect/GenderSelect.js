@@ -26,7 +26,8 @@ class GenderSelect extends PureComponent {
         value: 'male',
         title: 'GenderSelect.male'
       }
-    ]
+    ],
+    id: 'gender_select'
   };
 
   render() {

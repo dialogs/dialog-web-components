@@ -106,6 +106,7 @@ class ToolbarSearchInput extends PureComponent {
         {this.renderIcon()}
         <input
           type="search"
+          id="toolbar_search"
           ref={this.setInput}
           className={styles.input}
           value={this.props.query}

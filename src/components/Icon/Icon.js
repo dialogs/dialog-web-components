@@ -79,7 +79,10 @@ class Icon extends PureComponent {
     }, this.props.className);
 
     return (
-      <svg className={className} width={size} height={size} onClick={onClick} id={this.props.id}>
+      <svg
+        className={className} width={size} height={size} onClick={onClick}
+        id={this.props.id}
+      >
         <use xlinkHref={`#${this.props.glyph}`} />
       </svg>
     );

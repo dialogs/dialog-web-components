@@ -71,7 +71,7 @@ class ActivityListMembers extends PureComponent {
     const arrowGlyph = isOpen ? 'keyboard_arrow_up' : 'keyboard_arrow_down';
 
     return (
-      <ActivityListItem className={styles.header} onClick={this.handleMembersHeaderClick}>
+      <ActivityListItem className={styles.header} onClick={this.handleMembersHeaderClick} id="activity_list_members">
         <Icon
           glyph="person"
           inverted
