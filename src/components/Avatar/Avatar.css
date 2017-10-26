@@ -37,6 +37,7 @@
 
 .clickable {
   cursor: pointer;
+  pointer-events: auto;
   transition: opacity var(--default-transition-duration) ease-in-out;
 
   &:hover {
