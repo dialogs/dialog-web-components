@@ -10,6 +10,7 @@ import styles from './Dropdown.css';
 export type Props = {
   children?: any,
   active?: boolean,
+  id?: string,
   className?: string,
   onClick?: (event: SyntheticMouseEvent) => void
 };
@@ -23,7 +24,7 @@ function DropdownItem(props: Props) {
   );
 
   return (
-    <div className={className} onClick={props.onClick}>
+    <div className={className} onClick={props.onClick} id={props.id}>
       <span className={styles.text}>{props.children}</span>
     </div>
   );

@@ -52,7 +52,7 @@ class AddMembersModal extends PureComponent {
       <Modal className={className} onClose={this.handleClose}>
         <ModalHeader withBorder>
           <Text id="AddMembersModal.title" />
-          <ModalClose onClick={this.handleClose} />
+          <ModalClose onClick={this.handleClose} id="add_members_close_button" />
         </ModalHeader>
         <ModalBody className={styles.body}>
           <ContactSelector
@@ -68,6 +68,7 @@ class AddMembersModal extends PureComponent {
             rounded={false}
             disabled={this.props.pending}
             onClick={this.handleSubmit}
+            id="add_members_add_button"
           >
             <Text id="AddMembersModal.button_add" />
           </Button>

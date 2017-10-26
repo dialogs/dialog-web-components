@@ -243,6 +243,7 @@ class AddContactModal extends PureComponent {
             rounded={false}
             disabled={Boolean(error)}
             onClick={this.handleOpenChat}
+            id="add_contact_send_button"
           >
             <Text id="AddContactModal.button_send" />
           </Button>
@@ -258,6 +259,7 @@ class AddContactModal extends PureComponent {
           rounded={false}
           disabled={this.isLocked()}
           onClick={this.handleAddClick}
+          id="add_contact_add_button"
         >
           <Text id="AddContactModal.button_add" />
         </Button>
@@ -272,7 +274,7 @@ class AddContactModal extends PureComponent {
       <Modal className={className} onClose={this.props.onClose}>
         <ModalHeader withBorder>
           <Text id="AddContactModal.title" />
-          <ModalClose onClick={this.props.onClose} />
+          <ModalClose onClick={this.props.onClose} id="add_contact_close_button" />
         </ModalHeader>
         {this.renderBody()}
         {this.renderFooter()}

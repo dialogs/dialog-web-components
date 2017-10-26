@@ -108,6 +108,7 @@ class CallFeedback extends PureComponent {
               type="submit"
               theme="success"
               rounded={false}
+              id="call_feedback_submit_button"
             >
               <Text id="CallFeedback.submit" />
             </Button>

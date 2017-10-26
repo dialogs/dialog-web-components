@@ -51,6 +51,7 @@ class Discover extends PureComponent {
               theme="primary"
               view="outline"
               onClick={this.props.onCreateNew}
+              id="discover_create_new_button"
             >
               <Text id="Discover.create_new" />
             </Button>

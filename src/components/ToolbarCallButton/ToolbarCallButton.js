@@ -20,14 +20,14 @@ function ToolbarCallButton(props: Props): React.Element<any> {
 
   if (props.disabled) {
     return (
-      <div className={className}>
+      <div className={className} id="toolbar_call_button">
         <Icon glyph="phone_outline" className={styles.icon} />
       </div>
     );
   }
 
   return (
-    <div className={className} onClick={props.onClick}>
+    <div className={className} onClick={props.onClick} id="toolbar_call_button">
       <Icon glyph="phone_outline" className={styles.icon} />
     </div>
   );

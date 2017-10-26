@@ -92,7 +92,7 @@ class AvatarSelector extends PureComponent {
           placeholder={placeholder}
           onClick={this.handleAvatarChangerClick}
         />
-        <div onClick={this.handleAvatarChangerClick} className={styles.avatarChanger}>
+        <div onClick={this.handleAvatarChangerClick} className={styles.avatarChanger} id="avatar_selector_button">
           <Icon glyph="photo_camera" className={styles.avatarChangerIcon} size={22} />
         </div>
         {this.renderRemoveIcon()}

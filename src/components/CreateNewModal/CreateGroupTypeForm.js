@@ -29,7 +29,7 @@ class CreateGroupTypeForm extends PureComponent {
     return (
       <form id={this.props.id} className={styles.type} onSubmit={this.handleSubmit}>
         <RadioGroup name="type" value={this.props.type} onChange={this.props.onChange}>
-          <Radio value="group" htmlAutoFocus>
+          <Radio value="group" htmlAutoFocus id={`${this.props.id}_type_group`}>
             <Text id="CreateNewModal.group.type.title" className={styles.typeLabel} />
           </Radio>
           <Text
@@ -38,7 +38,7 @@ class CreateGroupTypeForm extends PureComponent {
             tagName="div"
           />
           <br />
-          <Radio value="channel">
+          <Radio value="channel" id={`${this.props.id}_type_channel`}>
             <Text id="CreateNewModal.channel.type.title" className={styles.typeLabel} />
           </Radio>
           <Text

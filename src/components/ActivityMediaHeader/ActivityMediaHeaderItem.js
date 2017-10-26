@@ -9,7 +9,8 @@ import DropdownItem from '../Dropdown/DropdownItem';
 
 export type Props = {
   onClick: (type: string) => mixed,
-  type: string
+  type: string,
+  id?: string
 };
 
 class ActivityMediaHeaderItem extends PureComponent {
@@ -21,7 +22,7 @@ class ActivityMediaHeaderItem extends PureComponent {
 
   render() {
     return (
-      <DropdownItem onClick={this.handleClick}>
+      <DropdownItem onClick={this.handleClick} id={this.props.id}>
         <Text id={`ActivityMediaHeader.${this.props.type}`} />
       </DropdownItem>
     );

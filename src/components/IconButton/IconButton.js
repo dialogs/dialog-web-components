@@ -12,6 +12,7 @@ export type Theme = 'default' | 'primary' | 'success' | 'danger' | 'info' | 'war
 
 export type Props = {
   className?: string,
+  id?: string,
   style?: Object,
   glyph: string,
   size: 'small' | 'normal' | 'large',
@@ -33,7 +34,7 @@ class IconButton extends PureComponent {
   };
 
   render() {
-    const { glyph, className, theme, size, disabled, flat, style, active, ...otherProps } = this.props;
+    const { glyph, className, theme, size, disabled, id, flat, style, active, ...otherProps } = this.props;
 
     const buttonClassName = classNames(styles.container, styles[size], {
       [styles.disabled]: disabled,
@@ -49,6 +50,7 @@ class IconButton extends PureComponent {
         onClick={this.props.onClick}
         disabled={disabled}
         style={style}
+        id={id}
         {...otherProps}
       >
         <span className={styles.fix}>

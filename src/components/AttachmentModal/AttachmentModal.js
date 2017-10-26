@@ -94,6 +94,7 @@ class AttachmentModal extends PureComponent {
           className={styles.paginationArrow}
           glyph="keyboard_arrow_left"
           onClick={this.handlePrevious}
+          id="attachment_prev_button"
         />
         <span className={styles.paginationNumbers}>
           {`${current + 1} / ${attachments.length}`}
@@ -102,6 +103,7 @@ class AttachmentModal extends PureComponent {
           className={styles.paginationArrow}
           glyph="keyboard_arrow_right"
           onClick={this.handleNext}
+          id="attachment_next_button"
         />
       </div>
     );
@@ -136,6 +138,7 @@ class AttachmentModal extends PureComponent {
             theme="primary"
             rounded={false}
             onClick={this.handleSendAll}
+            id="attachment_send_button"
           >
             <Text id="AttachmentModal.button_send" />
           </Button>
@@ -151,6 +154,7 @@ class AttachmentModal extends PureComponent {
           rounded={false}
           onClick={this.handleSendAll}
           className={styles.halfButton}
+          id="attachment_send_all_button"
         >
           <Text id="AttachmentModal.button_send_all" />
         </Button>
@@ -160,6 +164,7 @@ class AttachmentModal extends PureComponent {
           onClick={this.handleSend}
           className={styles.halfButton}
           theme="success"
+          id="attachment_send_button"
         >
           <Text id="AttachmentModal.button_send" />
         </Button>
@@ -176,7 +181,7 @@ class AttachmentModal extends PureComponent {
           <ModalHeader withBorder className={styles.header}>
             <Text id="AttachmentModal.title" />
             {this.renderPagination()}
-            <ModalClose onClick={this.props.onClose} />
+            <ModalClose onClick={this.props.onClose} id="attachment_close_button" />
           </ModalHeader>
           {this.renderBody()}
           {this.renderFooter()}

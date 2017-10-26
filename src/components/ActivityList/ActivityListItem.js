@@ -8,6 +8,7 @@ import classNames from 'classnames';
 import styles from './ActivityList.css';
 
 export type Props = {
+  id?: string,
   className?: string,
   children?: any,
   onClick?: (event: SyntheticMouseEvent) => any
@@ -19,7 +20,9 @@ function ActivityListItem(props: Props): React.Element<any> {
   }, props.className);
 
   return (
-    <div className={className} onClick={props.onClick}>{props.children}</div>
+    <div className={className} onClick={props.onClick} id={props.id}>
+      {props.children}
+    </div>
   );
 }
 

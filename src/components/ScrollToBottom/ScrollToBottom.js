@@ -35,7 +35,7 @@ class ScrollToBottom extends PureComponent {
 
     return (
       <Tooltip text="ScrollToBottom.text">
-        <div className={className} onClick={this.props.onClick}>
+        <div className={className} onClick={this.props.onClick} id="scroll_to_bottom_button">
           {this.renderCounter()}
           <Icon
             className={styles.icon}

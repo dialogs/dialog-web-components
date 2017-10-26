@@ -19,7 +19,7 @@ function ActivityListIntegration(props: Props) {
   const className = classNames(styles.container, props.className);
 
   return (
-    <ActivityListItem className={className} onClick={props.onClick}>
+    <ActivityListItem className={className} onClick={props.onClick} id="activity_list_integration">
       <Icon
         inverted
         glyph="extension"

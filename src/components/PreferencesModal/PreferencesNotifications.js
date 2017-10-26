@@ -60,7 +60,7 @@ class PreferencesNotifications extends PureComponent {
         <Fieldset legend="PreferencesModal.notifications.title">
           <Field>
             <Switcher
-              id="groupsEnabled"
+              id="preferences_notifications_groups_enabled"
               value={groupsEnabled}
               name="groupsEnabled"
               onChange={this.handleGroupsChange}
@@ -70,7 +70,7 @@ class PreferencesNotifications extends PureComponent {
           </Field>
           <Field>
             <Switcher
-              id="onlyMention"
+              id="preferences_notifications_only_mention"
               name="onlyMention"
               value={onlyMention}
               onChange={this.handleOnlyMentionChange}
@@ -81,7 +81,7 @@ class PreferencesNotifications extends PureComponent {
           </Field>
           <Field>
             <Switcher
-              id="includeMuted"
+              id="preferences_notifications_include_muted"
               name="includeMuted"
               value={includeMuted}
               onChange={this.handleIncludeMutedChange}
@@ -94,7 +94,7 @@ class PreferencesNotifications extends PureComponent {
         <Fieldset legend="PreferencesModal.security.title">
           <Field>
             <Switcher
-              id="showText"
+              id="preferences_notifications_show_text"
               name="showText"
               value={showText}
               onChange={this.handleShowTextChange}

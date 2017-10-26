@@ -23,18 +23,15 @@ class Tab extends PureComponent {
   };
 
   render(): React.Element<any> {
-    const { title, active } = this.props;
+    const { title, active, id } = this.props;
     const className = classNames(styles.tab, {
       [styles.active]: active
     });
 
     return (
-      <Text
-        id={title}
-        tagName="li"
-        className={className}
-        onClick={this.handleClick}
-      />
+      <li className={className} onClick={this.handleClick} id={`tabs_tab_${id}`}>
+        <Text id={title} />
+      </li>
     );
   }
 }

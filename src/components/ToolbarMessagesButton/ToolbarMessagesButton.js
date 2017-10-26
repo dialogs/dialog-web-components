@@ -21,6 +21,7 @@ function ToolbarMessagesButton(props: Props): React.Element<any> {
 
   return (
     <Icon
+      id="toolbar_messages_button"
       className={className}
       onClick={props.onClick}
       glyph="message"

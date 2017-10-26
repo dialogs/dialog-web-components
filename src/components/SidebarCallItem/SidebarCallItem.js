@@ -118,7 +118,7 @@ class SidebarCallItem extends PureComponent {
     const className = classNames(styles.container, this.props.className);
 
     return (
-      <div className={className} onClick={this.handleClick}>
+      <div className={className} onClick={this.handleClick} id={`sidebar_call_item_${this.props.call.id}`}>
         {this.renderAvatar()}
         {this.renderText()}
       </div>

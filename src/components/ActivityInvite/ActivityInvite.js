@@ -49,6 +49,7 @@ class ActivityInvite extends PureComponent {
             onClick={this.props.onRevoke}
             className={styles.revoke}
             size="small"
+            id="activity_invite_revoke_button"
           >
             <Text id="ActivityInvite.revoke" />
           </Button>
@@ -69,6 +70,7 @@ class ActivityInvite extends PureComponent {
           </div>
           <CopyOnly block />
           <CopyButton
+            id="activity_invite_copy_button"
             wide
             disabled={pending}
             text={this.props.link}

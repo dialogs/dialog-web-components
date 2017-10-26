@@ -20,7 +20,7 @@ function ToolbarFavouriteButton(props: Props) : React.Element<any> {
 
   if (props.value) {
     return (
-      <div className={className} onClick={props.onClick}>
+      <div className={className} onClick={props.onClick} id="toolbar_favourite_button">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" className={styles.icon}>
           <defs>
             <linearGradient
@@ -45,7 +45,7 @@ function ToolbarFavouriteButton(props: Props) : React.Element<any> {
   }
 
   return (
-    <div className={className} onClick={props.onClick}>
+    <div className={className} onClick={props.onClick} id="toolbar_favourite_button">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" className={styles.icon}>
         <path
           fill="rgba(0,0,0,.38)"

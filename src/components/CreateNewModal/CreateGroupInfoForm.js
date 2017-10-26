@@ -91,11 +91,11 @@ class CreateGroupInfoForm extends PureComponent {
   }
 
   renderShortname() {
-    const { type, shortname } = this.props;
+    const { type, shortname, id } = this.props;
 
     return (
       <Input
-        id="shortname"
+        id={`${id}_shortname`}
         name="shortname"
         value={shortname || ''}
         prefix={this.props.shortnamePrefix}
@@ -119,7 +119,7 @@ class CreateGroupInfoForm extends PureComponent {
         <form id={id} autoComplete="off" className={styles.form} onSubmit={this.handleSubmit}>
           <Input
             className={styles.input}
-            id="title"
+            id={`${id}_title`}
             large
             name="title"
             onChange={this.props.onChange}
@@ -129,7 +129,7 @@ class CreateGroupInfoForm extends PureComponent {
           />
           <Input
             className={styles.input}
-            id="about"
+            id={`${id}_about`}
             label={l10n.formatText(`CreateNewModal.${type}.info.description.label`)}
             large
             name="about"

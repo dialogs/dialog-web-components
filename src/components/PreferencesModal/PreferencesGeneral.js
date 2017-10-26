@@ -52,12 +52,12 @@ class PreferencesGeneral extends PureComponent {
             onChange={this.handleSendByChange}
           >
             <Field>
-              <Radio value="enter">
+              <Radio value="enter" id="preferences_general_send_by_enter">
                 <Text id="PreferencesModal.general.sendByEnter.enable" values={{ keyOS }} html />
               </Radio>
             </Field>
             <Field>
-              <Radio value="shift_enter">
+              <Radio value="shift_enter" id="preferences_general_send_by_shift_enter">
                 <Text id="PreferencesModal.general.sendByEnter.disable" values={{ keyOS }} html />
               </Radio>
             </Field>
@@ -66,7 +66,7 @@ class PreferencesGeneral extends PureComponent {
         <Fieldset legend="PreferencesModal.general.legend.other">
           <Field>
             <Switcher
-              id="isSoundEnabled"
+              id="preferences_general_is_sound_enabled"
               name="isSoundEnabled"
               value={isSoundEffectsEnabled}
               onChange={this.handleSoundChange}

@@ -53,6 +53,7 @@ class AboutModal extends PureComponent {
       return (
         <ButtonNext
           size="small"
+          id="about_update_button"
           loading={updateState.pending}
           onClick={this.props.onUpdate}
           className={styles.button}
@@ -65,6 +66,7 @@ class AboutModal extends PureComponent {
     return (
       <ButtonNext
         size="small"
+        id="about_check_button"
         loading={updateState.pending}
         onClick={this.props.onCheck}
         className={styles.button}
@@ -82,6 +84,7 @@ class AboutModal extends PureComponent {
       <Modal className={className} onClose={this.props.onClose}>
         <ModalBody className={styles.body}>
           <Icon
+            id="about_close_button"
             size={20}
             glyph="close"
             onClick={this.props.onClose}

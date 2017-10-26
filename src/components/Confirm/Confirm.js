@@ -50,6 +50,7 @@ class Confirm extends PureComponent {
               className={styles.button}
               view="outline"
               onClick={this.handleCancel}
+              id="confirm_cancel_button"
             >
               <Text id={this.props.cancel} />
             </Button>
@@ -59,6 +60,7 @@ class Confirm extends PureComponent {
               size="small"
               theme={this.props.theme}
               onClick={this.handleSuccess}
+              id="confirm_success_button"
             >
               <Text id={this.props.submit} />
             </Button>

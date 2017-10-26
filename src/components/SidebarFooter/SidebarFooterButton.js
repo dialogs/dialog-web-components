@@ -69,7 +69,7 @@ class SidebarFooterButton extends PureComponent {
 
     return (
       <Tooltip text={title} key={id} className={styles.tooltip}>
-        <div className={className} onClick={this.handleClick}>
+        <div className={className} onClick={this.handleClick} id={`sidebar_footer_${id}_button`}>
           <div className={styles.wrapper}>
             {this.renderIcon()}
             {this.renderCounter()}

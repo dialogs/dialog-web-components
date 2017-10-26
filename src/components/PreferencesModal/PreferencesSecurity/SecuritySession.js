@@ -45,6 +45,7 @@ class Session extends PureComponent {
         theme="danger"
         onClick={this.handleTerminateClick}
         className={styles.terminateButton}
+        id={`preferences_security_terminate_${this.props.session.id}_button`}
       >
         <Text id="PreferencesModal.security.terminate" />
       </Button>

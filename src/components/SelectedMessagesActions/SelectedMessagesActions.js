@@ -32,6 +32,7 @@ class SelectedMessagesActions extends PureComponent {
             view="link"
             size="small"
             theme="primary"
+            id="selected_messages_delete"
             className={styles.button}
           >
             <Icon glyph="delete" className={styles.buttonIcon} />
@@ -47,6 +48,7 @@ class SelectedMessagesActions extends PureComponent {
             view="link"
             size="small"
             theme="primary"
+            id="selected_messages_reply"
             className={styles.button}
           >
             <Icon glyph="reply" className={styles.buttonIcon} />
@@ -56,6 +58,7 @@ class SelectedMessagesActions extends PureComponent {
         {this.props.onForward ? (
           <Button
             onClick={this.props.onForward}
+            id="selected_messages_forward"
             view="link"
             size="small"
             theme="primary"

@@ -13,6 +13,7 @@ import styles from './AuthorizationForm.css';
 export type Props = {
   type: AuthType,
   disabled: boolean,
+  id: string,
   allowed: AuthType[],
   onTypeChange: (type: string) => any
 };
@@ -21,9 +22,11 @@ class LoginTypeSelector extends PureComponent {
   props: Props;
 
   renderOptions() {
+    const { id } = this.props;
+
     return this.props.allowed.map((type) => {
       return (
-        <Radio value={type} key={type} className={styles.type}>
+        <Radio value={type} key={type} className={styles.type} id={`${id}_type_${type}`}>
           <Text id={`AuthorizationForm.type.${type}`} />
         </Radio>
       );

@@ -113,7 +113,11 @@ class EditGroupModal extends PureComponent {
         return (
           <ModalHeader withBorder>
             <Text id={`EditGroupModal.title.${this.props.group.type}`} />
-            <ModalClose pending={this.isPending()} onClick={this.props.onClose} />
+            <ModalClose
+              pending={this.isPending()}
+              onClick={this.props.onClose}
+              id="edit_group_close_button"
+            />
           </ModalHeader>
         );
       case 'avatar':
@@ -123,9 +127,10 @@ class EditGroupModal extends PureComponent {
               glyph="arrow_back"
               onClick={this.handleGoToInfo}
               className={styles.back}
+              id="edit_group_back_button"
             />
             <Text id="EditGroupModal.title.avatar" />
-            <ModalClose pending={this.isPending()} onClick={this.props.onClose} />
+            <ModalClose pending={this.isPending()} onClick={this.props.onClose} id="edit_group_close_button" />
           </ModalHeader>
         );
       default:
@@ -198,6 +203,7 @@ class EditGroupModal extends PureComponent {
             loading={this.isPending()}
             disabled={!this.isChanged() || this.isPending()}
             onClick={this.handleSubmit}
+            id="edit_group_submit_button"
           >
             <Text id="EditGroupModal.submit" />
           </Button>

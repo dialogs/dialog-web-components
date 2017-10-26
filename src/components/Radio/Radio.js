@@ -66,7 +66,7 @@ class Radio extends PureComponent {
     });
 
     return (
-      <label className={className}>
+      <label className={className} htmlFor={id}>
         <input
           className={styles.input}
           type="radio"

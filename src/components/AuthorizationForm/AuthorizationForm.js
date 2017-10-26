@@ -67,7 +67,7 @@ class AuthorizationForm extends PureComponent {
   }
 
   renderTypeSelector(): ?React.Element<any> {
-    const { allowed, value: { type }, step } = this.props;
+    const { allowed, value: { type }, step, id } = this.props;
 
     if (allowed.length <= 1) {
       return null;
@@ -76,6 +76,7 @@ class AuthorizationForm extends PureComponent {
     return (
       <LoginTypeSelector
         allowed={allowed}
+        id={id}
         type={type}
         disabled={step > CODE_SENT}
         onTypeChange={this.props.onTypeChange}
@@ -134,14 +135,14 @@ class AuthorizationForm extends PureComponent {
   }
 
   render() {
-    const { id } = this.props;
+    const { id, step } = this.props;
     const className = classNames(styles.container, this.props.className);
 
     return (
       <form id={id} onSubmit={this.handleSubmit} className={className} autoComplete="off">
         {this.renderTypeSelector()}
         {this.renderForm()}
-        <ButtonNext type="submit" loading={this.isLoading()}>
+        <ButtonNext type="submit" loading={this.isLoading()} id={`${id}_step${step}_button`}>
           {this.renderButtonText()}
         </ButtonNext>
       </form>
