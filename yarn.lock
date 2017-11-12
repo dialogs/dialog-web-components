@@ -64,13 +64,13 @@
   version "2.0.1"
   resolved "https://registry.npmjs.org/@dlghq/emoji/-/emoji-2.0.1.tgz#0e77389dd52d1e099ccb5d7b56eed9757704d252"
 
-"@dlghq/eslint-config-dialog@3.2.1":
-  version "3.2.1"
-  resolved "https://registry.npmjs.org/@dlghq/eslint-config-dialog/-/eslint-config-dialog-3.2.1.tgz#430ebb48ba425b65acbc0276d5938d7f9474d646"
+"@dlghq/eslint-config-dialog@3.3.0":
+  version "3.3.0"
+  resolved "https://registry.npmjs.org/@dlghq/eslint-config-dialog/-/eslint-config-dialog-3.3.0.tgz#d5ddc9970a0184e91a6ecece9759b02099be1776"
   dependencies:
-    babel-eslint "8.0.0"
+    babel-eslint "^8.0.1"
   optionalDependencies:
-    eslint-plugin-react "7.3.x"
+    eslint-plugin-react "^7.4.0"
 
 "@dlghq/markdown@1.1.0":
   version "1.1.0"
@@ -504,9 +504,9 @@ babel-core@^6.0.0, babel-core@^6.26.0:
     slash "^1.0.0"
     source-map "^0.5.6"
 
-babel-eslint@8.0.0:
-  version "8.0.0"
-  resolved "https://registry.npmjs.org/babel-eslint/-/babel-eslint-8.0.0.tgz#ce06f385bdfb5b6d7e603f06222f891abd14c240"
+babel-eslint@^8.0.1:
+  version "8.0.1"
+  resolved "https://registry.npmjs.org/babel-eslint/-/babel-eslint-8.0.1.tgz#5d718be7a328625d006022eb293ed3008cbd6346"
   dependencies:
     babel-code-frame "7.0.0-beta.0"
     babel-traverse "7.0.0-beta.0"
@@ -2628,9 +2628,9 @@ esdoc-unexported-identifier-plugin@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/esdoc-unexported-identifier-plugin/-/esdoc-unexported-identifier-plugin-1.0.0.tgz#1f9874c6a7c2bebf9ad397c3ceb75c9c69dabab1"
 
-eslint-plugin-react@7.3.0, eslint-plugin-react@7.3.x:
-  version "7.3.0"
-  resolved "https://registry.npmjs.org/eslint-plugin-react/-/eslint-plugin-react-7.3.0.tgz#ca9368da36f733fbdc05718ae4e91f778f38e344"
+eslint-plugin-react@7.4.0, eslint-plugin-react@^7.4.0:
+  version "7.4.0"
+  resolved "https://registry.npmjs.org/eslint-plugin-react/-/eslint-plugin-react-7.4.0.tgz#300a95861b9729c087d362dd64abcc351a74364a"
   dependencies:
     doctrine "^2.0.0"
     has "^1.0.1"
@@ -2644,9 +2644,9 @@ eslint-scope@^3.7.1:
     esrecurse "^4.1.0"
     estraverse "^4.1.1"
 
-eslint@4.7.2:
-  version "4.7.2"
-  resolved "https://registry.npmjs.org/eslint/-/eslint-4.7.2.tgz#ff6f5f5193848a27ee9b627be3e73fb9cb5e662e"
+eslint@4.9.0:
+  version "4.9.0"
+  resolved "https://registry.npmjs.org/eslint/-/eslint-4.9.0.tgz#76879d274068261b191fe0f2f56c74c2f4208e8b"
   dependencies:
     ajv "^5.2.0"
     babel-code-frame "^6.22.0"
@@ -7065,9 +7065,9 @@ schema-utils@^0.3.0:
   dependencies:
     ajv "^5.0.0"
 
-screenfull@3.3.1:
-  version "3.3.1"
-  resolved "https://registry.npmjs.org/screenfull/-/screenfull-3.3.1.tgz#5eea886b412043af89e2e5cc4433f894d0ebb90b"
+screenfull@3.3.2:
+  version "3.3.2"
+  resolved "https://registry.npmjs.org/screenfull/-/screenfull-3.3.2.tgz#a6adf3b3f5556da812725385880600f5b39fbf25"
 
 select-hose@^2.0.0:
   version "2.0.0"
