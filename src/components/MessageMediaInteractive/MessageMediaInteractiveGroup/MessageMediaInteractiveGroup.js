@@ -21,14 +21,7 @@ class MessageMediaInteractiveGroup extends PureComponent {
 
   renderTitle() {
     if (this.props.group.title) {
-      return (
-        <Markdown
-          inline
-          className={styles.title}
-          text={this.props.group.title}
-          tagName="h5"
-        />
-      );
+      return <Markdown inline className={styles.title} text={this.props.group.title} tagName="h5" />;
     }
 
     return null;
@@ -36,13 +29,7 @@ class MessageMediaInteractiveGroup extends PureComponent {
 
   renderDescription() {
     if (this.props.group.description) {
-      return (
-        <Markdown
-          className={styles.description}
-          text={this.props.group.description}
-          tagName="p"
-        />
-      );
+      return <Markdown className={styles.description} text={this.props.group.description} />;
     }
 
     return null;
@@ -66,20 +53,10 @@ class MessageMediaInteractiveGroup extends PureComponent {
 
   renderActions() {
     const children = this.props.group.actions.map((action) => {
-      return (
-        <MessageMediaInteractiveAction
-          key={action.id}
-          action={action}
-          onSubmit={this.props.onSubmit}
-        />
-      );
+      return <MessageMediaInteractiveAction key={action.id} action={action} onSubmit={this.props.onSubmit} />;
     });
 
-    return (
-      <div className={styles.actions}>
-        {children}
-      </div>
-    );
+    return <div className={styles.actions}>{children}</div>;
   }
 
   render() {

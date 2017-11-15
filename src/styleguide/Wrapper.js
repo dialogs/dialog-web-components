@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import { Provider } from '@dlghq/react-l10n';
 import classNames from 'classnames';
 import messages from './devMessages';
@@ -9,7 +10,7 @@ import createSequence from '../utils/createSequence';
 
 const seq = createSequence();
 
-class Wrapper extends Component {
+class Wrapper extends PureComponent {
   static propTypes = {
     children: PropTypes.node.isRequired
   };
@@ -64,20 +65,14 @@ class Wrapper extends Component {
     const wrapperClassName = classNames(styles.wrapper, this.state.isTransparent ? styles.transparent : styles.white);
 
     return (
-      <Provider
-        locale={this.state.locale}
-        messages={messages}
-        globalValues={{ appName: 'dialog' }}
-      >
+      <Provider locale={this.state.locale} messages={messages} globalValues={{ appName: 'dialog' }}>
         <div className={styles.container}>
           <header className={styles.header}>
             {this.renderBackgroundToggle()}
             <div className={styles.spacer} />
             {this.renderLocaleSelect()}
           </header>
-          <div className={wrapperClassName}>
-            {this.props.children}
-          </div>
+          <div className={wrapperClassName}>{this.props.children}</div>
         </div>
       </Provider>
     );

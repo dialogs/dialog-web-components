@@ -105,7 +105,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: var(--layout-sidebar-width);
+  width: 100%;
   height: var(--sidebar-footer-height);
 }
 
