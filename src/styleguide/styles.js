@@ -54,19 +54,20 @@ module.exports = {
       },
       sidebar: {
         '&::-webkit-scrollbar': {
-          width: 12
+          width: 10
         },
         '&::-webkit-scrollbar-track': {
           backgroundColor: color.primary
         },
         '&::-webkit-scrollbar-thumb': {
-          'border': `4px solid ${color.primary}`,
+          'border': `3px solid ${color.primary}`,
           'borderTopWidth': 0,
           'borderBottomWidth': 0,
           'backgroundColor': '#fff',
+          'minHeight': 40,
           '&:active': {
             borderLeftWidth: 2,
-            borderWightWidth: 2
+            borderRightWidth: 2
           }
         }
       },

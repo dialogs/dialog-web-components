@@ -1,6 +1,9 @@
+@import '../styles/variables.css';
+
 .container {
   all: initial;
   display: block;
+  font-family: var(--default-font-family);
 }
 
 .header {
