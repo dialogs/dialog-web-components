@@ -4,7 +4,8 @@
  */
 
 import type { Context } from './RadioGroup';
-import React, { PureComponent, PropTypes } from 'react';
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import styles from './Radio.css';
 
@@ -52,9 +53,7 @@ class Radio extends PureComponent {
       return null;
     }
 
-    return (
-      <div className={styles.label}>{children}</div>
-    );
+    return <div className={styles.label}>{children}</div>;
   }
 
   render(): React.Element<any> {

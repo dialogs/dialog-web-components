@@ -3,7 +3,8 @@
  * @flow
  */
 
-import React, { PureComponent, PropTypes } from 'react';
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 
 export type Props = {
   className?: string,
@@ -42,11 +43,7 @@ class RadioGroup extends PureComponent {
   }
 
   render(): React.Element<any> {
-    return (
-      <div className={this.props.className}>
-        {this.props.children}
-      </div>
-    );
+    return <div className={this.props.className}>{this.props.children}</div>;
   }
 }
 
