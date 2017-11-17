@@ -1,8 +1,9 @@
 ```jsx
-initialState = {
+const state = {
   query: '',
   pending: false
 };
+initialState = state;
 
 const onFocus = () => console.debug('focus');
 const onBlur = () => console.debug('blur');
