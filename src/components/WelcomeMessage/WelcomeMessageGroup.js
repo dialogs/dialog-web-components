@@ -5,6 +5,7 @@
 
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
+import PeerInfoTitle from '../PeerInfoTitle/PeerInfoTitle';
 import { Text } from '@dlghq/react-l10n';
 import styles from './WelcomeMessage.css';
 
@@ -29,7 +30,7 @@ class WelcomeMessageGroup extends PureComponent {
       return (
         <Text
           id="WelcomeMessage.group.created_by_you"
-          className={styles.subtitle}
+          className={styles.created}
           values={{ createdAt: createdAt || '' }}
         />
       );
@@ -39,7 +40,7 @@ class WelcomeMessageGroup extends PureComponent {
       return (
         <Text
           id="WelcomeMessage.group.created"
-          className={styles.subtitle}
+          className={styles.created}
           values={{ createdAt: createdAt || '', creator }}
         />
       );
@@ -91,8 +92,7 @@ class WelcomeMessageGroup extends PureComponent {
       <div className={className}>
         <div className={styles.group}>
           {this.renderHint()}
-
-          <h1 className={styles.title}>{title}</h1>
+          <PeerInfoTitle title={title} titleClassName={styles.title} />
           {this.renderCreated()}
           {this.renderAbout()}
         </div>

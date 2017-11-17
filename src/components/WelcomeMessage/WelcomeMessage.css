@@ -59,7 +59,14 @@
   margin-top: 18px;
 }
 
+.created {
+  composes: subtitle;
+  margin-top: 16px;
+  display: block;
+}
+
 .about {
+  display: block;
   margin-top: 16px;
 }
 
