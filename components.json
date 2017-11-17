@@ -1,4 +1,5 @@
-[{
+[
+  {
     "name": "Interface",
     "components": [
       "Avatar",
@@ -31,13 +32,7 @@
   },
   {
     "name": "Buttons",
-    "components": [
-      "Button",
-      "ButtonNext",
-      "LinkButton",
-      "IconButton",
-      "LinkIconButton"
-    ]
+    "components": ["Button", "ButtonNext", "LinkButton", "IconButton", "LinkIconButton"]
   },
   {
     "name": "Forms",
@@ -57,26 +52,15 @@
   },
   {
     "name": "Emoji",
-    "components": [
-      "Emoji",
-      "EmojiList",
-      "EmojiButton"
-    ]
+    "components": ["Emoji", "EmojiList", "EmojiButton"]
   },
   {
     "name": "Plug & Play Forms",
-    "components": [
-      "AuthForm",
-      "UserNameAuthForm",
-      "AuthorizationForm",
-      "GenderSelect"
-    ]
+    "components": ["AuthForm", "UserNameAuthForm", "AuthorizationForm", "GenderSelect"]
   },
   {
     "name": "Modals",
-    "components": [
-      "Modal"
-    ]
+    "components": ["Modal"]
   },
   {
     "name": "Plug & Play Modals",
@@ -153,32 +137,22 @@
   },
   {
     "name": "Call",
-    "components": [
-      "Call",
-      "CallAvatar",
-      "CallFeedback"
-    ]
+    "components": ["Call", "CallAvatar", "CallFeedback"]
   },
   {
     "name": "Contacts",
-    "components": [
-      "ContactSelector",
-      "ContactList"
-    ]
+    "components": ["ContactSelector", "ContactList"]
   },
   {
     "name": "Discover",
-    "components": [
-      "Discover",
-      "DiscoverCard"
-    ]
+    "components": ["Discover", "DiscoverCard"]
   },
   {
     "name": "Helpers",
-    "components": [
-      "Timer",
-      "Trigger",
-      "Confirm"
-    ]
+    "components": ["Timer", "Trigger", "Confirm"]
+  },
+  {
+    "name": "Banners",
+    "components": ["PermissionBanner"]
   }
 ]

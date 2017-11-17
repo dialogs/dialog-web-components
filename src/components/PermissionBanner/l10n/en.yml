@@ -1,0 +1,8 @@
+text:
+  notifications: "<b>{appName}</b> needs your permission to enable desktop notifications."
+  mic: "<b>{appName}</b> needs your permission gain microphone access."
+  camera: "<b>{appName}</b> needs your permission gain camera access."
+request:
+  notifications: Enable notifications
+  mic: Enable microphone
+  camera: Enable camera
