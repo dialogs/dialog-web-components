@@ -22,8 +22,8 @@
   width: 100%;
   position: relative;
   text-align: center;
-  padding: 16px var(--default-padding);
-  height: 52px;
+  padding: 16px calc(var(--default-padding) * 3);
+  min-height: 52px;
   box-sizing: border-box;
 }
 
@@ -32,20 +32,28 @@
   color: var(--permission-banner-color);
   display: inline-block;
   line-height: 20px;
+  @apply --no-select;
+
   & b {
     font-weight: 500;
   }
 }
 
 .request {
+  height: 20px;
   line-height: 20px;
   margin-left: var(--default-padding-small);
   color: var(--permission-banner-color);
   font-size: var(--permission-banner-font-size);
   font-weight: 500;
-  border-bottom: 1px dotted var(--permission-banner-color);
+  border-bottom: 1px dotted color(var(--permission-banner-color) alpha(70%));
   display: inline-block;
+  @apply --no-select;
   cursor: pointer;
+
+  &:hover {
+    border-bottom: 1px solid var(--permission-banner-color);
+  }
 }
 
 .close {
@@ -56,6 +64,11 @@
   top: 13px;
   right: var(--default-padding);
   fill: color(var(--permission-banner-color) alpha(50%));
+  transition: fill var(--default-transition-duration) ease;
+
+  &:hover {
+    fill: color(var(--permission-banner-color) alpha(90%));
+  }
 }
 
 .notifications {
