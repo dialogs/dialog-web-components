@@ -54,6 +54,7 @@
 }
 
 .close {
+  display: block;
   width: var(--modal-close-size);
   height: var(--modal-close-size);
   cursor: pointer;
