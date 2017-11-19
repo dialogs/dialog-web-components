@@ -11,8 +11,8 @@ export type Props = {
   error: ?MediaError,
   pending: boolean,
   isPlaying: boolean,
-  onPlay: () => any,
-  onPause: () => any,
+  onPlay: () => mixed,
+  onPause: () => mixed,
   className?: string
 }
 

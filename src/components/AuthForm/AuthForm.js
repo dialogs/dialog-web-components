@@ -29,9 +29,9 @@ export type Props = {
   value: AuthValue,
   error: ?AuthError,
   autoFocus?: boolean,
-  onChange: (value: AuthValue) => any,
-  onSubmit: (value: AuthValue) => any,
-  onRetry: () => any,
+  onChange: (value: AuthValue) => mixed,
+  onSubmit: (value: AuthValue) => mixed,
+  onRetry: () => mixed,
   isGenderEnabled: boolean
 };
 

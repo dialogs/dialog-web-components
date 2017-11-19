@@ -17,8 +17,8 @@ type Props = {
   type: 'forward' | 'reply',
   message: Message,
   short: boolean,
-  onGoToPeer: (peer: Peer) => any,
-  onGoToMessage: (message: Message) => any,
+  onGoToPeer: (peer: Peer) => mixed,
+  onGoToMessage: (message: Message) => mixed,
   maxHeight: number,
   maxWidth: number
 }

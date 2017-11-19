@@ -3,17 +3,17 @@
  * @flow
  */
 
-import React, { PureComponent } from 'react';
+import React, { PureComponent, type Node } from 'react';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import classNames from 'classnames';
 import styles from './Overlay.css';
 
 export type Props = {
   className?: string,
-  children?: any,
+  children?: Node,
   active: boolean,
-  renderCaption?: () => any,
-  onClick: () => any
+  renderCaption?: () => Node,
+  onClick: () => mixed
 };
 
 class Overlay extends PureComponent<Props> {

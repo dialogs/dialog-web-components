@@ -13,9 +13,9 @@ import styles from './SelectedMessagesActions.css';
 export type Props = {
   className?: string,
   count: number,
-  onDelete?: () => any,
-  onForward?: () => any,
-  onReply?: () => any
+  onDelete?: () => mixed,
+  onForward?: () => mixed,
+  onReply?: () => mixed
 };
 
 class SelectedMessagesActions extends PureComponent<Props> {

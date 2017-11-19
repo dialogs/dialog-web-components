@@ -21,7 +21,7 @@ export type Props = {
   peer: PeerInfo,
   size: AvatarSize,
   online?: ?boolean,
-  onClick?: (event: SyntheticMouseEvent<>) => any
+  onClick?: ?(event: SyntheticMouseEvent<>) => mixed
 };
 
 const seq = createSequence();

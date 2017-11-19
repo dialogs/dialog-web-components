@@ -15,8 +15,8 @@ import styles from './Security.css';
 
 export type Props = {
   sessions: AuthSession[],
-  onSessionTerminate: (id: number) => void,
-  onAllSessionsTerminate: () => void
+  onSessionTerminate: (id: number) => mixed,
+  onAllSessionsTerminate: () => mixed
 };
 
 class PreferencesSecurity extends PureComponent<Props> {

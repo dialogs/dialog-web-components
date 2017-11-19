@@ -12,7 +12,7 @@ import styles from './Security.css';
 
 export type Props = {
   session: AuthSession,
-  onSessionTerminate?: (id: number) => void
+  onSessionTerminate?: (id: number) => mixed
 }
 
 class Session extends PureComponent<Props> {

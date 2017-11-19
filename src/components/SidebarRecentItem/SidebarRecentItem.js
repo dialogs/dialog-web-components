@@ -27,7 +27,7 @@ export type Props = {
   online: ?boolean,
   message: ?Message,
   favourite: ?boolean,
-  onSelect: (peer: Peer) => any
+  onSelect: (peer: Peer) => mixed
 };
 
 class SidebarRecentItem extends PureComponent<Props> {

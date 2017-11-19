@@ -21,7 +21,7 @@ export type Props = {
   startIndex: number,
   items: PhotoSwipeItem[],
   options: $Shape<PhotoSwipeOptions>,
-  onClose: () => any
+  onClose: () => mixed
 };
 
 type State = {

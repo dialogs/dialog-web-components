@@ -14,7 +14,7 @@ type Props = {
   isActive: boolean,
   isVisible: boolean,
   isAtBottom: boolean,
-  onClick: (sticker: Object) => any
+  onClick: (sticker: Object) => mixed
 };
 
 class StickerCategory extends PureComponent<Props> {

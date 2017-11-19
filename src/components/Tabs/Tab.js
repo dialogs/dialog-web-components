@@ -12,7 +12,7 @@ export type Props = {
   id: string,
   title: string,
   active: boolean,
-  onPick: (id: string) => any
+  onPick: (id: string) => mixed
 };
 
 class Tab extends PureComponent<Props> {

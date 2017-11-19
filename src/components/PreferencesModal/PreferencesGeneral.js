@@ -20,7 +20,7 @@ export type Settings = {
 
 export type Props = {
   settings: Settings,
-  onChange: (settings: $Shape<Settings>) => any
+  onChange: (settings: $Shape<Settings>) => mixed
 };
 
 class PreferencesGeneral extends PureComponent<Props> {

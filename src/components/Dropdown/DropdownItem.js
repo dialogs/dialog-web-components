@@ -3,12 +3,12 @@
  * @flow
  */
 
-import * as React from 'react';
+import React, { type Node } from 'react';
 import classNames from 'classnames';
 import styles from './Dropdown.css';
 
 export type Props = {
-  children?: any,
+  children: Node,
   active?: boolean,
   id?: string,
   className?: string,

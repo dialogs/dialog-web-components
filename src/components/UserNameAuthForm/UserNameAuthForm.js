@@ -22,8 +22,8 @@ type Props = {
   value: AuthValue,
   errors: { [field: string]: AuthError },
   pending: boolean,
-  onChange: (value: AuthValue) => any,
-  onSubmit: (value: AuthValue) => any
+  onChange: (value: AuthValue) => mixed,
+  onSubmit: (value: AuthValue) => mixed
 };
 
 class UserNameAuthForm extends PureComponent<Props> {

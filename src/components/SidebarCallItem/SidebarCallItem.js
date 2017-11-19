@@ -21,7 +21,7 @@ export type Props = {
   className?: string,
   call: CallInfo,
   uid: number,
-  onSelect: (call: CallInfo) => any
+  onSelect: (call: CallInfo) => mixed
 };
 
 type Context = ProviderContext;

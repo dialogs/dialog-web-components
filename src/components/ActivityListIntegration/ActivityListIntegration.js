@@ -12,7 +12,7 @@ import styles from './ActivityListIntegration.css';
 
 export type Props = {
   className?: string,
-  onClick: () => any
+  onClick: () => mixed
 };
 
 function ActivityListIntegration(props: Props) {

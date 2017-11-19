@@ -15,7 +15,7 @@ type Props = {
   isActive: boolean,
   isVisible: boolean,
   isAtBottom: boolean,
-  onClick: (char: string) => any
+  onClick: (char: string) => mixed
 };
 
 class EmojiCategory extends PureComponent<Props> {

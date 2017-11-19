@@ -15,7 +15,7 @@ export type Props = {
   className?: string,
   messages: Message[],
   onGoToMessage: (message: Message) => mixed,
-  onLightboxOpen: (message: Message) => any
+  onLightboxOpen: (message: Message) => mixed
 };
 
 class ActivityMedia extends PureComponent<Props> {

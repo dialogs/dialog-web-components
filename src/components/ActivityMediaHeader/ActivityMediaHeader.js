@@ -15,8 +15,8 @@ import { Text } from '@dlghq/react-l10n';
 export type Props = {
   className?: string,
   current: string,
-  onClose?: () => any,
-  onBack?: () => any,
+  onClose?: () => mixed,
+  onBack?: () => mixed,
   onChange?: (type: string) => mixed
 };
 

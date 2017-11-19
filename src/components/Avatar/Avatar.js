@@ -19,7 +19,7 @@ export type Props = {
   title: string,
   size: AvatarSize,
   placeholder: AvatarPlaceholder,
-  onClick?: (event: SyntheticMouseEvent<>) => any
+  onClick?: (event: SyntheticMouseEvent<>) => mixed
 };
 
 class Avatar extends PureComponent<Props, void> {

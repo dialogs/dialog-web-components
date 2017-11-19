@@ -19,7 +19,7 @@ export type Settings = {
 
 export type Props = {
   settings: Settings,
-  onChange: (settings: $Shape<Settings>) => void
+  onChange: (settings: $Shape<Settings>) => mixed
 };
 
 class PreferencesNotifications extends PureComponent<Props> {

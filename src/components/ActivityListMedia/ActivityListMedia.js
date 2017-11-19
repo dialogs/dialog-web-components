@@ -12,7 +12,7 @@ import styles from './ActivityListMedia.css';
 
 export type Props = {
   className?: string,
-  onClick: () => any
+  onClick: () => mixed
 };
 
 function ActivityListMedia(props: Props) {

@@ -14,7 +14,7 @@ export type Props = {
   autoFocus: boolean,
   members: SelectorState<PeerInfo>,
   onSubmit: (event: SyntheticEvent<>) => void,
-  onChange: (members: SelectorState<PeerInfo>) => any,
+  onChange: (members: SelectorState<PeerInfo>) => mixed,
 }
 
 class CreateGroupMembersForm extends PureComponent<Props> {

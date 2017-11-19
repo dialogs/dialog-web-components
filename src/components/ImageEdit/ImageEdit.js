@@ -20,7 +20,7 @@ export type Props = {
   type: 'circle' | 'square',
   size: number,
   height: number,
-  onSubmit: (image: File) => any
+  onSubmit: (image: File) => mixed
 };
 
 export type State = {

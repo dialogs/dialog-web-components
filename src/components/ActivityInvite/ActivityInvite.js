@@ -16,7 +16,7 @@ export type Props = {
   className?: string,
   link: string,
   pending: boolean,
-  onRevoke: ?() => any
+  onRevoke: ?() => mixed
 };
 
 class ActivityInvite extends PureComponent<Props> {

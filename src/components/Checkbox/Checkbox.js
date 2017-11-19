@@ -14,7 +14,7 @@ export type Props = {
   value: boolean,
   disabled: boolean,
   tabIndex?: number,
-  onChange: (event: SyntheticInputEvent<>) => any
+  onChange: (event: SyntheticInputEvent<>) => mixed
 }
 
 class Checkbox extends PureComponent<Props> {

@@ -12,7 +12,7 @@ import styles from './Tooltip.css';
 
 export type Props = {
   className?: string,
-  children?: any,
+  children?: mixed,
 
   /**
    * Tooltip text. Will be translated using @dlghq/react-l10n.

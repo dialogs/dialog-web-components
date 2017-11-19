@@ -10,7 +10,7 @@ import styles from './EmojiList.css';
 export type Props = {
   className?: string,
   char: string,
-  onClick: (emoji: string) => void
+  onClick: (emoji: string) => mixed
 };
 
 class EmojiListItem extends PureComponent<Props> {

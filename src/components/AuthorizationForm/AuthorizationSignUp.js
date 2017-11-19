@@ -19,11 +19,11 @@ export type Props = {
   autoFocus?: boolean,
   step: 1 | 2 | 3 | 4 | 5 | 6 | 7,
   isGenderEnabled: boolean,
-  onChange: (info: SignupInfo) => any
+  onChange: (info: SignupInfo) => mixed
 };
 
 class AuthorizationSignUp extends PureComponent<Props> {
-  handleChange = (value: any, { target }: $FlowIssue): void => {
+  handleChange = (value: mixed, { target }: $FlowIssue): void => {
     this.props.onChange({
       ...this.props.info,
       [target.name]: value

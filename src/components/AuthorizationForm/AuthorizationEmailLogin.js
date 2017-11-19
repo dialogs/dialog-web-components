@@ -18,12 +18,12 @@ export type Props = {
   value: EmailValue,
   errors: ?{ [field: string]: AuthError },
   autoFocus?: boolean,
-  onRetry: () => any,
-  onChange: (value: EmailValue) => any
+  onRetry: () => mixed,
+  onChange: (value: EmailValue) => mixed
 };
 
 class AuthorizationEmailLogin extends PureComponent<Props> {
-  handleChange = (value: any, { target }: $FlowIssue): void => {
+  handleChange = (value: mixed, { target }: $FlowIssue): void => {
     this.props.onChange({
       type: this.props.value.type,
       credentials: {

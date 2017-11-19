@@ -15,7 +15,7 @@ import styles from './Blocked.css';
 
 export type Props = {
   blocked: User[],
-  onUnblockUser: (id: number) => void
+  onUnblockUser: (id: number) => mixed
 };
 
 export type State = {

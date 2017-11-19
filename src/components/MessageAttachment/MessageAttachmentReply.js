@@ -12,8 +12,8 @@ import styles from './MessageAttachment.css';
 type Props = {
   className?: string,
   messages: Message[],
-  onGoToPeer: (peer: Peer) => any,
-  onGoToMessage: (peer: ?Peer, message: Message) => any,
+  onGoToPeer: (peer: Peer) => mixed,
+  onGoToMessage: (peer: ?Peer, message: Message) => mixed,
   maxHeight: number,
   maxWidth: number
 };

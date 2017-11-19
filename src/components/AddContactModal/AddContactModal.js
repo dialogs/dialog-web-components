@@ -28,11 +28,11 @@ export type Props = {
   pending: boolean,
   added: boolean,
   contact: ?User,
-  onClose: () => any,
-  onChange: (query: string) => any,
-  onSearch: (query: string) => any,
-  onAdd: (id: number) => any,
-  onOpenChat: (id: number) => any
+  onClose: () => mixed,
+  onChange: (query: string) => mixed,
+  onSearch: (query: string) => mixed,
+  onAdd: (id: number) => mixed,
+  onOpenChat: (id: number) => mixed
 };
 
 class AddContactModal extends PureComponent<Props> {

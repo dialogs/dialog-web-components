@@ -24,8 +24,8 @@ type Feedback = {
 type Props = {
   id: string,
   className?: string,
-  onSubmit: (feedback: Feedback) => any,
-  onClose: () => any
+  onSubmit: (feedback: Feedback) => mixed,
+  onClose: () => mixed
 };
 
 type State = Feedback

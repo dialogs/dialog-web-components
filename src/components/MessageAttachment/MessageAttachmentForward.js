@@ -16,8 +16,8 @@ type Props = {
   className?: string,
   from: ?PeerInfo,
   messages: Message[],
-  onGoToPeer: (peer: Peer) => any,
-  onGoToMessage: (peer: ?Peer, message: Message) => any,
+  onGoToPeer: (peer: Peer) => mixed,
+  onGoToMessage: (peer: ?Peer, message: Message) => mixed,
   maxHeight: number,
   maxWidth: number
 };

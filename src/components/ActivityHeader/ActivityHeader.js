@@ -3,15 +3,15 @@
  * @flow
  */
 
-import React, { PureComponent } from 'react';
+import React, { PureComponent, type Node } from 'react';
 import classNames from 'classnames';
 import Icon from '../Icon/Icon';
 import styles from './ActivityHeader.css';
 
 export type Props = {
-  onClose?: () => any,
-  onBack?: () => any,
-  children?: any,
+  onClose?: () => mixed,
+  onBack?: () => mixed,
+  children: Node,
   className?: string
 };
 

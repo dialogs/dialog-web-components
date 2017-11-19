@@ -15,7 +15,7 @@ export type Props = {
   theme: 'primary' | 'success' | 'danger' | 'info' | 'warning',
   size: number,
   stopPropagation: boolean,
-  onClick?: (checked: boolean) => any
+  onClick?: (checked: boolean) => mixed
 };
 
 class CheckButton extends PureComponent<Props> {

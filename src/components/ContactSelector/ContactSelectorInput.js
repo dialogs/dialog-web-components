@@ -16,7 +16,7 @@ export type Props = {
   className?: string,
   autoFocus: boolean,
   selector: SelectorState<PeerInfo>,
-  onChange: (selector: SelectorState<PeerInfo>) => void
+  onChange: (selector: SelectorState<PeerInfo>) => mixed
 };
 
 class ContactSelectorInput extends PureComponent<Props> {

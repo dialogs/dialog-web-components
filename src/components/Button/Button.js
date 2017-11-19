@@ -21,7 +21,7 @@ export type Props = {
   type: 'submit' | 'reset' | 'button' | 'menu',
   theme: 'default' | 'primary' | 'success' | 'danger' | 'info' | 'warning' | 'link',
   size: 'small' | 'normal' | 'large',
-  onClick?: (event: SyntheticEvent<>) => any
+  onClick?: (event: SyntheticEvent<>) => mixed
 }
 
 class Button extends PureComponent<Props> {

@@ -12,7 +12,7 @@ export type Props = {
   image: ?string,
   width: number,
   height: number,
-  onClick?: (event: SyntheticMouseEvent<>) => any
+  onClick?: (event: SyntheticMouseEvent<>) => mixed
 };
 
 function Sticker(props: Props) {

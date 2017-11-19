@@ -15,11 +15,11 @@ export type AttachmentModalProps = {
   current: number,
   sendAsFile: boolean,
   attachments: Attachment[],
-  onClose: () => any,
-  onSend: (attachments: Attachment[]) => any,
-  onSendAll: (attachments: Attachment[]) => any,
-  onCurrentChange: (current: number) => any,
-  onSendAsFileChange: (sendAsFIle: boolean) => any
+  onClose: () => mixed,
+  onSend: (attachments: Attachment[]) => mixed,
+  onSendAll: (attachments: Attachment[]) => mixed,
+  onCurrentChange: (current: number) => mixed,
+  onSendAsFileChange: (sendAsFIle: boolean) => mixed
 };
 
 export type AttachmentPreviewProps = {
@@ -29,5 +29,5 @@ export type AttachmentPreviewProps = {
 export type AttachmentMetaProps = {
   attachment: Attachment,
   sendAsFile: boolean,
-  onSendAsFileChange: (sendAsFIle: boolean) => any
+  onSendAsFileChange: (sendAsFIle: boolean) => mixed
 };

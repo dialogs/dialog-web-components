@@ -11,7 +11,7 @@ import styles from './CallFeedback.css';
 type Props = {
   value: number,
   active: boolean,
-  onChange: (value: number) => any
+  onChange: (value: number) => mixed
 };
 
 class CallFeedbackRatingStar extends PureComponent<Props> {

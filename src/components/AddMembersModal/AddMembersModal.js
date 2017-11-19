@@ -23,9 +23,9 @@ export type Props = {
   pending: boolean,
   selector: SelectorState<PeerInfo>,
   autoFocus: boolean,
-  onClose: () => any,
-  onSubmit: (gid: number, uids: number[]) => any,
-  onChange: (selector: SelectorState<PeerInfo>) => any
+  onClose: () => mixed,
+  onSubmit: (gid: number, uids: number[]) => mixed,
+  onChange: (selector: SelectorState<PeerInfo>) => mixed
 };
 
 class AddMembersModal extends PureComponent<Props> {

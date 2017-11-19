@@ -13,7 +13,7 @@ export type Props = {
   className?: string,
   pending?: boolean,
   id?: string,
-  onClick: () => any
+  onClick: () => mixed
 };
 
 function ModalClose(props: Props) {

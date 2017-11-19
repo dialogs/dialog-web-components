@@ -27,5 +27,5 @@ export type Props = {
   size: 'small' | 'normal',
   options: Option[],
   placeholder?: string,
-  onChange: (value: string) => any
+  onChange: (value: string) => mixed
 };

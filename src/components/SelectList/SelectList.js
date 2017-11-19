@@ -23,7 +23,7 @@ export type Props<T> = {
   itemHeight: number,
   itemVisibleCount: number,
   selector: SelectorState<T>,
-  onChange: (selector: SelectorState<T>) => void,
+  onChange: (selector: SelectorState<T>) => mixed,
   renderItem: (props: ItemProps<T>) => Node,
   renderEmpty?: () => Node
 };

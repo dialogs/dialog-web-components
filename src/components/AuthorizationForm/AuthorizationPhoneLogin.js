@@ -21,9 +21,9 @@ export type Props = {
   value: PhoneValue,
   errors: ?{ [field: string]: AuthError },
   autoFocus?: boolean,
-  onChange: (value: PhoneValue) => any,
-  onRetry: () => any,
-  onResendCode: () => any
+  onChange: (value: PhoneValue) => mixed,
+  onRetry: () => mixed,
+  onResendCode: () => mixed
 };
 
 export type State = {

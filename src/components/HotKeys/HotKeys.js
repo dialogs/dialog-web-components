@@ -3,13 +3,13 @@
  * @flow
  */
 
-import { Component } from 'react';
+import { Component, type Node } from 'react';
 import { listen } from '@dlghq/dialog-utils';
 import createKeyHotKey from 'key-event-to-string';
 
 type Props = {
-  children?: any,
-  onHotKey: (trigger: string, event: KeyboardEvent) => any
+  children: Node,
+  onHotKey: (trigger: string, event: KeyboardEvent) => mixed
 };
 
 class HotKeys extends Component<Props> {

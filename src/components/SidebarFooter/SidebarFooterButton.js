@@ -18,7 +18,7 @@ export type Props = {
   counter?: number,
   active: boolean,
   pending: boolean,
-  onPick: (id: string) => any
+  onPick: (id: string) => mixed
 };
 
 class SidebarFooterButton extends PureComponent<Props> {

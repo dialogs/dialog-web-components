@@ -25,7 +25,7 @@ export type Props = {
   isPending?: boolean,
   maxHeight: number,
   maxWidth: number,
-  onLightboxOpen?: (event: SyntheticMouseEvent<>) => any,
+  onLightboxOpen?: (event: SyntheticMouseEvent<>) => mixed,
   onInteractiveAction?: (id: string, value: string, confirm?: ?MessageMediaInteractiveConfirm) => mixed
 };
 

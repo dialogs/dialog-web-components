@@ -23,7 +23,7 @@ type Props = {
   autoFocus?: boolean,
   tabIndex?: number,
   preferredCountryCodes: string[],
-  onChange: (value: string, country: ?Country) => any
+  onChange: (value: string, country: ?Country) => mixed
 };
 
 class PhoneInput extends PureComponent<Props> {

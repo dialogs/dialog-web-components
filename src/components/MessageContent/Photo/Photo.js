@@ -18,7 +18,7 @@ export type Props = {
   preview: ?string,
   fileUrl: ?string,
   fileName: ?string,
-  onClick?: (event: SyntheticMouseEvent<>) => any
+  onClick?: (event: SyntheticMouseEvent<>) => mixed
 };
 
 function Photo(props: Props) {

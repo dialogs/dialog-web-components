@@ -1,5 +1,6 @@
 /**
  * Copyright 2017 dialog LLC <info@dlg.im>
+ * @flow
  */
 
 import type { Peer, PeerInfo } from '@dlghq/dialog-types';
@@ -15,12 +16,10 @@ export type Props = {
   active: boolean,
   counter: number,
   online?: ?boolean,
-  onSelect: (peer: Peer) => any
+  onSelect: (peer: Peer) => mixed
 };
 
-class SidebarPeerItem extends PureComponent {
-  props: Props;
-
+class SidebarPeerItem extends PureComponent<Props> {
   static defaultProps = {
     counter: 0,
     active: false

@@ -18,8 +18,8 @@ export type Props = {
   submit: string,
   cancel: string,
   theme: 'danger' | 'success' | 'warning',
-  action: any,
-  onSubmit: (action: any) => void,
+  action: mixed,
+  onSubmit: (action: mixed) => void,
   onClose: () => mixed
 };
 

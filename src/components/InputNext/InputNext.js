@@ -27,12 +27,12 @@ export type Props = {
   autoFocus?: boolean,
   tabIndex?: number,
   htmlAutoFocus?: boolean,
-  onChange: (value: string, event: SyntheticInputEvent<HTMLAbstractInputElement>) => any,
-  onFocus?: (event: SyntheticFocusEvent<HTMLAbstractInputElement>) => any,
-  onBlur?: (event: SyntheticFocusEvent<HTMLAbstractInputElement>) => any,
-  onKeyUp?: (event: SyntheticKeyboardEvent<HTMLAbstractInputElement>) => any,
-  onKeyDown?: (event: SyntheticKeyboardEvent<HTMLAbstractInputElement>) => any,
-  onKeyPress?: (event: SyntheticKeyboardEvent<HTMLAbstractInputElement>) => any
+  onChange: (value: string, event: SyntheticInputEvent<HTMLAbstractInputElement>) => mixed,
+  onFocus?: (event: SyntheticFocusEvent<HTMLAbstractInputElement>) => mixed,
+  onBlur?: (event: SyntheticFocusEvent<HTMLAbstractInputElement>) => mixed,
+  onKeyUp?: (event: SyntheticKeyboardEvent<HTMLAbstractInputElement>) => mixed,
+  onKeyDown?: (event: SyntheticKeyboardEvent<HTMLAbstractInputElement>) => mixed,
+  onKeyPress?: (event: SyntheticKeyboardEvent<HTMLAbstractInputElement>) => mixed
 };
 
 export type State = {

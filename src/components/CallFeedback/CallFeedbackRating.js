@@ -11,7 +11,7 @@ type Props = {
   id: string,
   value: number,
   maxRating: number,
-  onChange: (value: number) => any
+  onChange: (value: number) => mixed
 };
 
 class CallFeedbackRating extends PureComponent<Props> {

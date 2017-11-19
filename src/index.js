@@ -22,7 +22,6 @@ export { default as Tabs } from './components/Tabs/Tabs';
 export { default as Tooltip } from './components/Tooltip/Tooltip';
 export { default as ContextMenu } from './components/ContextMenu/ContextMenu';
 export { default as AvatarSelector } from './components/AvatarSelector/AvatarSelector';
-export { default as Archive } from './components/Archive/Archive';
 export { default as Lightbox } from './components/Lightbox/Lightbox';
 export { default as Dragndrop } from './components/Dragndrop/Dragndrop';
 export { default as CountryCodeSelector } from './components/CountryCodeSelector/CountryCodeSelector';
@@ -84,7 +83,6 @@ export { default as ModalHeader } from './components/Modal/ModalHeader';
 
 // Plug & Play Modals
 export { default as AboutModal } from './components/AboutModal/AboutModal';
-export { default as JoinModal } from './components/JoinModal/JoinModal';
 export { default as AddContactModal } from './components/AddContactModal/AddContactModal';
 export { default as AttachmentModal } from './components/AttachmentModal/AttachmentModal';
 export { default as CreateNewModal } from './components/CreateNewModal/CreateNewModal';
@@ -100,7 +98,6 @@ export { default as SidebarHeaderMenu } from './components/SidebarHeader/Sidebar
 export { default as SidebarHeaderPlus } from './components/SidebarHeader/SidebarHeaderPlus';
 export { default as SidebarUnread } from './components/SidebarUnread/SidebarUnread';
 export { default as SidebarSearch } from './components/SidebarSearch/SidebarSearch';
-export { default as SidebarSearchGroup } from './components/SidebarSearchGroup/SidebarSearchGroup';
 export { default as SidebarSearchResults } from './components/SidebarSearchResults/SidebarSearchResults';
 export { default as SidebarCalls } from './components/SidebarCalls/SidebarCalls';
 export { default as SidebarPeerItem } from './components/SidebarPeerItem/SidebarPeerItem';

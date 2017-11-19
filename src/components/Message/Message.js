@@ -42,14 +42,14 @@ export type Props = {
   isSelectionEnabled?: boolean,
   isReactionsEnabled?: boolean,
   renderActions?: () => Node,
-  onSelect?: (message: MessageType) => any,
-  onTitleClick?: (message: MessageType) => any,
-  onAvatarClick?: (message: MessageType) => any,
-  onMentionClick?: (message: MessageType) => any,
-  onLightboxOpen?: (message: MessageType) => any,
+  onSelect?: (message: MessageType) => mixed,
+  onTitleClick?: (message: MessageType) => mixed,
+  onAvatarClick?: (message: MessageType) => mixed,
+  onMentionClick?: (message: MessageType) => mixed,
+  onLightboxOpen?: (message: MessageType) => mixed,
   onReaction?: (char: string) => mixed,
-  onGoToPeer: (peer: Peer) => any,
-  onGoToMessage: (peer: ?Peer, message: MessageType) => any,
+  onGoToPeer: (peer: Peer) => mixed,
+  onGoToMessage: (peer: ?Peer, message: MessageType) => mixed,
   onInteractiveAction: (id: string, value: string, confirm?: ?MessageMediaInteractiveConfirm) => mixed
 };
 

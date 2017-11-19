@@ -15,7 +15,7 @@ export type Props = {
   disabled: boolean,
   id: string,
   allowed: AuthType[],
-  onTypeChange: (type: string) => any
+  onTypeChange: (type: string) => mixed
 };
 
 class LoginTypeSelector extends PureComponent<Props> {

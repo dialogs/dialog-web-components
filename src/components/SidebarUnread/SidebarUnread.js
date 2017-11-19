@@ -11,7 +11,7 @@ import styles from './SidebarUnread.css';
 export type Props = {
   className?: string,
   position: 'top' | 'bottom',
-  onClick: () => any
+  onClick: () => mixed
 };
 
 class SidebarUnread extends PureComponent<Props> {

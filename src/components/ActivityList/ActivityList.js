@@ -3,13 +3,13 @@
  * @flow
  */
 
-import * as React from 'react';
+import React, { type Node } from 'react';
 import classNames from 'classnames';
 import styles from './ActivityList.css';
 
 export type ActivityListProps = {
   className?: string,
-  children?: any
+  children: Node
 }
 
 function ActivityList(props: ActivityListProps) {

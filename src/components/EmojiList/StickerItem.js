@@ -10,7 +10,7 @@ import styles from './EmojiList.css';
 
 export type Props = {
   sticker: Sticker,
-  onClick: (sticker: Sticker) => void
+  onClick: (sticker: Sticker) => mixed
 };
 
 class StickerItem extends PureComponent<Props> {

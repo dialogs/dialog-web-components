@@ -13,7 +13,7 @@ import styles from './Blocked.css';
 
 export type Props = {
   user: User,
-  onUnblockUser: (id: number) => void
+  onUnblockUser: (id: number) => mixed
 };
 
 class BlockedUser extends PureComponent<Props> {

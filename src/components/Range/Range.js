@@ -15,7 +15,7 @@ export type Props = {
   value: number,
   step: number,
   orientation: 'vertical' | 'horizontal',
-  onChange: (value: number) => any
+  onChange: (value: number) => mixed
 };
 
 class Range extends PureComponent<Props> {

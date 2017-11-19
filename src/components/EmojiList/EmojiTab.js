@@ -13,7 +13,7 @@ type Props = {
   glyph: string,
   active: boolean,
   disabled: ?boolean,
-  onClick: (name: string) => any
+  onClick: (name: string) => mixed
 };
 
 class EmojiTab extends PureComponent<Props> {

@@ -3,13 +3,13 @@
  * @flow
  */
 
-import React, { PureComponent } from 'react';
+import React, { PureComponent, type Node } from 'react';
 import classNames from 'classnames';
 import styles from './Switcher.css';
 
 export type SwitcherProps = {
   className?: string,
-  children?: any,
+  children?: Node,
   id: string,
   name: string,
   value: boolean,

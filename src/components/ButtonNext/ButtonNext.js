@@ -18,7 +18,7 @@ export type Props = {
   loading: boolean,
   type: 'submit' | 'reset' | 'button' | 'menu',
   size: 'small' | 'normal' | 'large',
-  onClick?: (event: SyntheticEvent<>) => any
+  onClick?: (event: SyntheticEvent<>) => mixed
 }
 
 class ButtonNext extends PureComponent<Props> {

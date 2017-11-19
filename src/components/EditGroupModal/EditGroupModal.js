@@ -33,7 +33,7 @@ class EditGroupModal extends PureComponent<Props, State> {
     };
   }
 
-  handleChange = (value: any, { target }: $FlowIssue) => {
+  handleChange = (value: mixed, { target }: $FlowIssue) => {
     this.setState({
       group: {
         ...this.state.group,

@@ -26,8 +26,8 @@ export type Props = {
   request: Request,
   shortnamePrefix?: ?string,
   autoFocus: boolean,
-  onClose: () => any,
-  onSubmit: (request: Request) => any,
-  onStepChange: (step: Step) => any,
-  onRequestChange: (request: Request) => any
+  onClose: () => mixed,
+  onSubmit: (request: Request) => mixed,
+  onStepChange: (step: Step) => mixed,
+  onRequestChange: (request: Request) => mixed
 }

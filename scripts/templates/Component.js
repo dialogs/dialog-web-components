@@ -13,7 +13,7 @@ export type Props = {
 <% if (styles) { -%>
   className?: string,
 <% } -%>
-  children?: any
+  children?: mixed
 };
 
 class <%= name %> extends PureComponent {
