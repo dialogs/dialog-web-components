@@ -15,14 +15,12 @@ export type Props = {
   style?: Object
 };
 
-class Dropdown extends PureComponent {
-  props: Props;
-
+class Dropdown extends PureComponent<Props> {
   static defaultProps = {
     theme: 'primary'
   };
 
-  render(): React.Element<any> {
+  render() {
     const { theme, style } = this.props;
     const className = classNames(
       styles.container,

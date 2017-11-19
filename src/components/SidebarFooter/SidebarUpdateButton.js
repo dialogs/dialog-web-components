@@ -12,10 +12,8 @@ export type Props = {
   onClick: () => any
 };
 
-class SidebarUpdateButton extends PureComponent {
-  props: Props;
-
-  render(): React.Element<any> {
+class SidebarUpdateButton extends PureComponent<Props> {
+  render() {
     return (
       <Button
         className={styles.update}

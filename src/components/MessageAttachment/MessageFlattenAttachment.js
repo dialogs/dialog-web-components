@@ -17,9 +17,7 @@ type Props = {
   onGoToMessage: (peer: ?Peer, message: Message) => any
 };
 
-class MessageFlattenAttachment extends PureComponent {
-  props: Props;
-
+class MessageFlattenAttachment extends PureComponent<Props> {
   render() {
     const children = flattenMessageAttachment(this.props.attachment).map((attachment, key) => {
       return (

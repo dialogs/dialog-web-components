@@ -3,7 +3,7 @@
  * @flow
  */
 
-import React, { Component } from 'react';
+import React, { Component, type Node } from 'react';
 import { Text } from '@dlghq/react-l10n';
 import Trigger from '../Trigger/Trigger';
 import classNames from 'classnames';
@@ -17,7 +17,7 @@ export type Props = {
   /**
    * Tooltip text. Will be translated using @dlghq/react-l10n.
    */
-  text: string | React.Element<*>,
+  text: Node,
 
   /**
    * [Tether options](http://tether.io/#options)
@@ -26,8 +26,7 @@ export type Props = {
   theme: 'default' | 'primary' | 'success' | 'danger' | 'info' | 'warning'
 };
 
-class Tooltip extends Component {
-  props: Props;
+class Tooltip extends Component<Props> {
   trigger: ?Trigger;
 
   static defaultProps = {

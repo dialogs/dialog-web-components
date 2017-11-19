@@ -3,7 +3,7 @@
  * @flow
  */
 
-import React from 'react';
+import * as React from 'react';
 import classNames from 'classnames';
 import Image from '../../Image/Image';
 import styles from './Photo.css';
@@ -18,10 +18,10 @@ export type Props = {
   preview: ?string,
   fileUrl: ?string,
   fileName: ?string,
-  onClick?: (event: SyntheticMouseEvent) => any
+  onClick?: (event: SyntheticMouseEvent<>) => any
 };
 
-function Photo(props: Props): React.Element<any> {
+function Photo(props: Props) {
   const { fileUrl, fileName, preview, width, height, rid, maxWidth, maxHeight } = props;
   const className = classNames(styles.container, props.className);
 

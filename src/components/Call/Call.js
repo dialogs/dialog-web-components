@@ -8,9 +8,7 @@ import React, { PureComponent } from 'react';
 import CallChat from './CallChat';
 import CallWindow from './CallWindow';
 
-class Call extends PureComponent {
-  props: Props;
-
+class Call extends PureComponent<Props> {
   handleEnd = () => {
     const { call } = this.props;
     if (call) {

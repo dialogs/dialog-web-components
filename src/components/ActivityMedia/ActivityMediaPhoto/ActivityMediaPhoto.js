@@ -16,9 +16,7 @@ type Props = {
   onClick: () => mixed
 };
 
-class ActivityMediaPhoto extends PureComponent {
-  props: Props;
-
+class ActivityMediaPhoto extends PureComponent<Props> {
   renderTitle() {
     const { title } = this.props;
 

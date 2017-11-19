@@ -13,14 +13,12 @@ export type Props = {
   onClick: (sticker: Sticker) => void
 };
 
-class StickerItem extends PureComponent {
-  props: Props;
-
+class StickerItem extends PureComponent<Props> {
   handleClick = (): void => {
     this.props.onClick(this.props.sticker);
   };
 
-  render(): ?React.Element<any> {
+  render() {
     const { sticker } = this.props;
 
     return (

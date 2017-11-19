@@ -15,9 +15,7 @@ export type Props = {
   onSessionTerminate?: (id: number) => void
 }
 
-class Session extends PureComponent {
-  props: Props;
-
+class Session extends PureComponent<Props> {
   handleTerminateClick: () => void;
 
   constructor(props: Props) {
@@ -34,7 +32,7 @@ class Session extends PureComponent {
     }
   }
 
-  renderTerminateButton(): ?React.Element<any> {
+  renderTerminateButton() {
     if (!this.props.onSessionTerminate) {
       return null;
     }
@@ -52,7 +50,7 @@ class Session extends PureComponent {
     );
   }
 
-  render(): React.Element<any> {
+  render() {
     const { session } = this.props;
 
     return (

@@ -19,9 +19,7 @@ export type Props = {
   onSubmit: (value: string) => mixed
 };
 
-class MessageMediaInteractiveWidgetButton extends PureComponent {
-  props: Props;
-
+class MessageMediaInteractiveWidgetButton extends PureComponent<Props> {
   handleClick = () => {
     this.props.onSubmit(this.props.widget.value);
   };

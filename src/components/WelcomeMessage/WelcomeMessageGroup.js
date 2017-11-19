@@ -3,7 +3,7 @@
  * @flow
  */
 
-import React, { PureComponent } from 'react';
+import React, { PureComponent, type Node } from 'react';
 import classNames from 'classnames';
 import PeerInfoTitle from '../PeerInfoTitle/PeerInfoTitle';
 import { Text } from '@dlghq/react-l10n';
@@ -17,12 +17,10 @@ export type Props = {
   about?: string,
   creator?: ?string,
   createdAt?: ?string,
-  renderActions?: () => mixed
+  renderActions?: () => Node
 };
 
-class WelcomeMessageGroup extends PureComponent {
-  props: Props;
-
+class WelcomeMessageGroup extends PureComponent<Props> {
   renderCreated() {
     const { createdAt, creator, isOwner } = this.props;
 
@@ -84,7 +82,7 @@ class WelcomeMessageGroup extends PureComponent {
       </div>
     );
   }
-  render(): React.Element<any> {
+  render() {
     const { title } = this.props;
     const className = classNames(styles.container, this.props.className);
 

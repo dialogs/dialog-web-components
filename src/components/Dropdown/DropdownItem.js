@@ -3,7 +3,7 @@
  * @flow
  */
 
-import React from 'react';
+import * as React from 'react';
 import classNames from 'classnames';
 import styles from './Dropdown.css';
 
@@ -12,7 +12,7 @@ export type Props = {
   active?: boolean,
   id?: string,
   className?: string,
-  onClick?: (event: SyntheticMouseEvent) => void
+  onClick?: (event: SyntheticMouseEvent<>) => void
 };
 
 function DropdownItem(props: Props) {

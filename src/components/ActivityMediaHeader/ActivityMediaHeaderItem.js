@@ -8,16 +8,16 @@ import { Text } from '@dlghq/react-l10n';
 import DropdownItem from '../Dropdown/DropdownItem';
 
 export type Props = {
-  onClick: (type: string) => mixed,
+  id?: string,
   type: string,
-  id?: string
+  onClick?: (type: string) => mixed
 };
 
-class ActivityMediaHeaderItem extends PureComponent {
-  props: Props;
-
+class ActivityMediaHeaderItem extends PureComponent<Props> {
   handleClick = () => {
-    this.props.onClick(this.props.type);
+    if (this.props.onClick) {
+      this.props.onClick(this.props.type);
+    }
   };
 
   render() {

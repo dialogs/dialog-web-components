@@ -4,7 +4,7 @@
  */
 
 import type { User, UserOnline } from '@dlghq/dialog-types';
-import React, { PureComponent } from 'react';
+import React, { PureComponent, type Node } from 'react';
 import { Text } from '@dlghq/react-l10n';
 import classNames from 'classnames';
 import Avatar from '../Avatar/Avatar';
@@ -16,12 +16,10 @@ export type Props = {
   info: User,
   online: UserOnline,
   className?: string,
-  children?: mixed
+  children: Node
 };
 
-class ActivityUserProfile extends PureComponent {
-  props: Props;
-
+class ActivityUserProfile extends PureComponent<Props> {
   renderAvatar() {
     const { info: { name, bigAvatar, placeholder } } = this.props;
 

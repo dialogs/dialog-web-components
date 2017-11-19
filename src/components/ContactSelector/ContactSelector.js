@@ -19,10 +19,8 @@ export type Props = {
   onChange: (selector: SelectorState<PeerInfo>) => any
 };
 
-class ContactSelector extends PureComponent {
-  props: Props;
-
-  render(): React.Element<any> {
+class ContactSelector extends PureComponent<Props> {
+  render() {
     const className = classNames(styles.container, this.props.className);
 
     return (

@@ -9,23 +9,14 @@ import { LocalizationContextType } from '@dlghq/react-l10n';
 import classNames from 'classnames';
 import styles from './InputNext.css';
 
-export type StringProps = {
-  type: 'text' | 'email' | 'search' | 'tel' | 'url' | 'password' | 'textarea',
-  value: string,
-  onChange: (value: string, event: SyntheticInputEvent) => any
-};
+type HTMLAbstractInputElement = HTMLInputElement | HTMLTextAreaElement;
 
-export type NumberProps = {
-  type: 'number',
-  value: number,
-  onChange: (value: number, event: SyntheticInputEvent) => any
-};
-
-export type Props = (StringProps | NumberProps) & {
+export type Props = {
   className?: string,
   inputClassName?: string,
-  wrapperClassName?: string,
   id: string,
+  type: 'text' | 'number' | 'email' | 'search' | 'tel' | 'url' | 'password' | 'textarea',
+  value: string | number,
   name?: string,
   label?: string,
   placeholder?: string,
@@ -36,11 +27,12 @@ export type Props = (StringProps | NumberProps) & {
   autoFocus?: boolean,
   tabIndex?: number,
   htmlAutoFocus?: boolean,
-  onFocus?: (event: SyntheticFocusEvent) => any,
-  onBlur?: (event: SyntheticFocusEvent) => any,
-  onKeyUp?: (event: SyntheticKeyboardEvent) => any,
-  onKeyDown?: (event: SyntheticKeyboardEvent) => any,
-  onKeyPress?: (event: SyntheticKeyboardEvent) => any
+  onChange: (value: string, event: SyntheticInputEvent<HTMLAbstractInputElement>) => any,
+  onFocus?: (event: SyntheticFocusEvent<HTMLAbstractInputElement>) => any,
+  onBlur?: (event: SyntheticFocusEvent<HTMLAbstractInputElement>) => any,
+  onKeyUp?: (event: SyntheticKeyboardEvent<HTMLAbstractInputElement>) => any,
+  onKeyDown?: (event: SyntheticKeyboardEvent<HTMLAbstractInputElement>) => any,
+  onKeyPress?: (event: SyntheticKeyboardEvent<HTMLAbstractInputElement>) => any
 };
 
 export type State = {
@@ -49,11 +41,9 @@ export type State = {
 
 export type Context = ProviderContext;
 
-class InputNext extends PureComponent {
-  props: Props;
-  state: State;
+class InputNext extends PureComponent<Props, State> {
   context: Context;
-  input: ?(HTMLInputElement | HTMLTextAreaElement);
+  input: ?(HTMLAbstractInputElement);
 
   static defaultProps = {
     type: 'text',
@@ -81,11 +71,11 @@ class InputNext extends PureComponent {
     this.autoFocus();
   }
 
-  handleChange = (event: $FlowIssue): void => {
+  handleChange = (event: SyntheticInputEvent<HTMLAbstractInputElement>): void => {
     this.props.onChange(event.target.value, event);
   };
 
-  handleFocus = (event: $FlowIssue): void => {
+  handleFocus = (event: SyntheticFocusEvent<HTMLAbstractInputElement>): void => {
     this.setState({ isFocused: true });
 
     if (this.props.onFocus) {
@@ -93,10 +83,12 @@ class InputNext extends PureComponent {
     }
   };
 
-  handleBlur = (event: $FlowIssue): void => {
+  handleBlur = (event: SyntheticFocusEvent<HTMLAbstractInputElement>): void => {
+    const target = ((event.target: any): HTMLAbstractInputElement);
+
     if (this.isAutoFocus()) {
       event.preventDefault();
-      event.target.focus();
+      target.focus();
 
       return;
     }
@@ -120,7 +112,7 @@ class InputNext extends PureComponent {
     return Boolean(this.props.autoFocus) && !this.props.disabled;
   }
 
-  setInput = (element: HTMLInputElement | HTMLTextAreaElement): void => {
+  setInput = (element: *): void => {
     this.input = element;
   };
 
@@ -144,7 +136,7 @@ class InputNext extends PureComponent {
     }
   }
 
-  renderLabel(): ?React.Element<any> {
+  renderLabel() {
     const { id, label } = this.props;
     const { l10n } = this.context;
 
@@ -159,7 +151,7 @@ class InputNext extends PureComponent {
     );
   }
 
-  renderHint(): ?React.Element<any> {
+  renderHint() {
     const { hint } = this.props;
 
     if (!hint) {
@@ -175,7 +167,7 @@ class InputNext extends PureComponent {
     );
   }
 
-  render(): React.Element<any> {
+  render() {
     const {
       id, name, type, value, disabled, tabIndex, status,
       htmlAutoFocus, placeholder, onKeyUp, onKeyDown, onKeyPress, size

@@ -18,9 +18,7 @@ export type Props = {
   onLightboxOpen: (message: Message) => any
 };
 
-class ActivityMedia extends PureComponent {
-  props: Props;
-
+class ActivityMedia extends PureComponent<Props> {
   renderMessages() {
     const { messages } = this.props;
 
@@ -44,7 +42,7 @@ class ActivityMedia extends PureComponent {
     });
   }
 
-  render(): React.Element<any> {
+  render() {
     const className = classNames(styles.container, this.props.className);
 
     return (

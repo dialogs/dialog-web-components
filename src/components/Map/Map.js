@@ -2,7 +2,7 @@
  * Copyright 2017 dialog LLC <info@dlg.im>
  * @flow
  */
-import React from 'react';
+import * as React from 'react';
 
 export type Props = {
   className?: string,
@@ -13,7 +13,7 @@ export type Props = {
   longitude: number
 };
 
-function Map(props: Props): React.Element<any> {
+function Map(props: Props) {
   const href = `https://maps.google.com/?z=16&q=loc:${props.latitude},${props.longitude}`;
   let src = 'https://maps.googleapis.com/maps/api/staticmap?' +
                  `center=${props.latitude},${props.longitude}` +

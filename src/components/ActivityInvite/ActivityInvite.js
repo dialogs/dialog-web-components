@@ -19,10 +19,8 @@ export type Props = {
   onRevoke: ?() => any
 };
 
-class ActivityInvite extends PureComponent {
-  props: Props;
-
-  renderLink(): React.Element<any> {
+class ActivityInvite extends PureComponent<Props> {
+  renderLink() {
     const { link, pending } = this.props;
 
     if (pending) {

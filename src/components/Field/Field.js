@@ -12,10 +12,8 @@ export type Props = {
   children?: any
 }
 
-class Field extends PureComponent {
-  props: Props;
-
-  render(): React.Element<any> {
+class Field extends PureComponent<Props> {
+  render() {
     const className = classNames(styles.container, this.props.className);
 
     return (

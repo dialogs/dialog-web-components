@@ -11,9 +11,7 @@ type Props = {
   className?: string
 };
 
-class ActivitySearchFilter extends PureComponent {
-  props: Props;
-
+class ActivitySearchFilter extends PureComponent<Props> {
   render() {
     const className = classNames(styles.filter, this.props.className);
 

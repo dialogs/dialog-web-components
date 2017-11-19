@@ -15,9 +15,7 @@ export type Props = {
   contact: PeerInfo
 };
 
-class ContactSelectorChip extends PureComponent {
-  props: Props;
-
+class ContactSelectorChip extends PureComponent<Props> {
   render() {
     const { contact } = this.props;
     const className = classNames(styles.chip, this.props.className);

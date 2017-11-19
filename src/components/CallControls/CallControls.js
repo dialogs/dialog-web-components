@@ -25,9 +25,7 @@ export type Props = {
   onScreenShareToggle?: ?() => mixed
 };
 
-class CallControls extends PureComponent {
-  props: Props;
-
+class CallControls extends PureComponent<Props> {
   render() {
     const { state, size, isVisible, onCall, withVideo } = this.props;
     const className = classNames(styles.container, {

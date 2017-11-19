@@ -3,7 +3,7 @@
  * @flow
  */
 
-import React, { PureComponent } from 'react';
+import React, { PureComponent, type Node } from 'react';
 import classNames from 'classnames';
 import Spinner from '../Spinner/Spinner';
 import styles from './Button.css';
@@ -11,7 +11,7 @@ import styles from './Button.css';
 export type Props = {
   id?: string,
   className?: string,
-  children?: mixed,
+  children: Node,
   disabled: boolean,
   wide: boolean,
   rounded: boolean,
@@ -21,12 +21,10 @@ export type Props = {
   type: 'submit' | 'reset' | 'button' | 'menu',
   theme: 'default' | 'primary' | 'success' | 'danger' | 'info' | 'warning' | 'link',
   size: 'small' | 'normal' | 'large',
-  onClick?: (event: SyntheticEvent) => any
+  onClick?: (event: SyntheticEvent<>) => any
 }
 
-class Button extends PureComponent {
-  props: Props;
-
+class Button extends PureComponent<Props> {
   static defaultProps = {
     type: 'button',
     theme: 'default',
@@ -38,7 +36,7 @@ class Button extends PureComponent {
     disabled: false
   };
 
-  renderLoading(): ?React.Element<any> {
+  renderLoading() {
     const { loading, size } = this.props;
 
     if (!loading) {
@@ -50,7 +48,7 @@ class Button extends PureComponent {
     );
   }
 
-  render(): React.Element<any> {
+  render() {
     const { id, type, form, disabled, theme, size, wide, rounded, children, view, loading } = this.props;
     const className = classNames(styles.container, styles[theme], styles[view], styles[size], {
       [styles.wide]: wide,

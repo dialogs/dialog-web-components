@@ -11,10 +11,8 @@ import SidebarFooterButton from './SidebarFooterButton';
 import SidebarUpdateButton from './SidebarUpdateButton';
 import styles from './SidebarFooter.css';
 
-class SidebarFooter extends PureComponent {
-  props: Props;
-
-  rendereFooterButtons(): React.Element<any>[] {
+class SidebarFooter extends PureComponent<Props> {
+  rendereFooterButtons() {
     const { current, variants } = this.props;
 
     return variants.map(({ id, title, glyph, pending, counter }: SidebarFooterButtonVariant) => {
@@ -33,7 +31,7 @@ class SidebarFooter extends PureComponent {
     });
   }
 
-  renderUpdateButton(): ?React.Element<any> {
+  renderUpdateButton() {
     const { isUpdateAvailable } = this.props;
 
     if (!isUpdateAvailable) {
@@ -56,7 +54,7 @@ class SidebarFooter extends PureComponent {
     );
   }
 
-  render(): React.Element<any> {
+  render() {
     const className = classNames(styles.container, this.props.className);
 
     return (

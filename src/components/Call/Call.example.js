@@ -33,10 +33,7 @@ function getVideoStream(callback) {
   }
 }
 
-class CallExample extends PureComponent {
-  props: Props;
-  state: State;
-
+class CallExample extends PureComponent<Props, State> {
   static getInitialState(): State {
     return {
       call: null,
@@ -218,8 +215,8 @@ class CallExample extends PureComponent {
         key={this.state.call.id}
         call={this.state.call}
         small={this.state.small}
-        isVideoEnabled={this.props.withVideo}
-        isScreenSharingEnabled={this.props.withScreenSharing}
+        isVideoEnabled={Boolean(this.props.withVideo)}
+        isScreenSharingEnabled={Boolean(this.props.withScreenSharing)}
         onEnd={this.handleEnd}
         onAnswer={this.handleAnswer}
         onResize={this.handleResize}

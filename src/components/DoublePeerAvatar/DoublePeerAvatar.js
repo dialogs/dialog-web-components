@@ -20,16 +20,12 @@ export type Props = {
   peerBig: PeerInfo,
   peerSmall: PeerInfo,
   size: AvatarSize,
-  onClick?: (event: SyntheticMouseEvent) => any
-};
-
-type DefaultProps = {
-  size: AvatarSize
+  onClick?: (event: SyntheticMouseEvent<>) => any
 };
 
 const seq = createSequence();
 
-class DoublePeerAvatar extends PureComponent<DefaultProps, Props, void> {
+class DoublePeerAvatar extends PureComponent<Props, void> {
   id: string;
   ids: {
     big: string,
@@ -56,7 +52,7 @@ class DoublePeerAvatar extends PureComponent<DefaultProps, Props, void> {
     return getAvatarSize(this.props.size);
   }
 
-  renderDefsBig(): React.Element<any> {
+  renderDefsBig() {
     if (this.props.peerBig.avatar) {
       return (
         <pattern id={this.ids.big} width="100%" height="100%" patternUnits="userSpaceOnUse">
@@ -88,7 +84,7 @@ class DoublePeerAvatar extends PureComponent<DefaultProps, Props, void> {
     );
   }
 
-  renderClipMaskBig(): React.Element<any> {
+  renderClipMaskBig() {
     return (
       <clipPath id={this.ids.clip}>
         <path
@@ -99,7 +95,7 @@ class DoublePeerAvatar extends PureComponent<DefaultProps, Props, void> {
     );
   }
 
-  renderDefsSmall(): React.Element<any> {
+  renderDefsSmall() {
     if (this.props.peerSmall.avatar) {
       return (
         <pattern
@@ -139,13 +135,13 @@ class DoublePeerAvatar extends PureComponent<DefaultProps, Props, void> {
     );
   }
 
-  renderSmallAvatar(): React.Element<any> {
+  renderSmallAvatar() {
     return (
       <circle cx="84" cy="84" r="25" fill={`url(#${this.ids.small})`} />
     );
   }
 
-  renderBigAvatar(): React.Element<any> {
+  renderBigAvatar() {
     return (
       <path
         // eslint-disable-next-line
@@ -155,7 +151,7 @@ class DoublePeerAvatar extends PureComponent<DefaultProps, Props, void> {
     );
   }
 
-  renderPeerSmallText(): ?React.Element<any> {
+  renderPeerSmallText() {
     if (this.props.peerSmall.avatar) {
       return null;
     }
@@ -182,7 +178,7 @@ class DoublePeerAvatar extends PureComponent<DefaultProps, Props, void> {
     );
   }
 
-  renderPeerBigText(): ?React.Element<any> {
+  renderPeerBigText() {
     if (this.props.peerBig.avatar) {
       return null;
     }
@@ -210,7 +206,7 @@ class DoublePeerAvatar extends PureComponent<DefaultProps, Props, void> {
     );
   }
 
-  render(): React.Element<any> {
+  render() {
     const className = classNames(styles.container, {
       [styles.clickable]: this.props.onClick
     }, this.props.className);

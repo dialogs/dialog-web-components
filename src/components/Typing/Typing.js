@@ -15,10 +15,8 @@ export type TypingProps = {
   className?: string
 };
 
-class Typing extends PureComponent {
-  props: TypingProps;
-
-  renderTyping(): ?React.Element<any> {
+class Typing extends PureComponent<TypingProps> {
+  renderTyping() {
     const { typing } = this.props;
 
     if (!typing) {
@@ -37,13 +35,13 @@ class Typing extends PureComponent {
       >
         <div className={styles.typing}>
           <Spinner type="dotted" className={styles.indicator} />
-          <div className={styles.text}>{typing}</div>
+          <div className={styles.text}>{typing.typing}</div>
         </div>
       </CSSTransition>
     );
   }
 
-  render(): React.Element<any> {
+  render() {
     const className = classNames(styles.container, this.props.className);
 
     return (

@@ -18,14 +18,12 @@ export type Props = {
   onChange: (value: number) => any
 };
 
-class Range extends PureComponent {
-  props: Props;
-
+class Range extends PureComponent<Props> {
   static defaultProps = {
     orientation: 'horizontal'
   };
 
-  render(): React.Element<any> {
+  render() {
     const { min, max, step, value, orientation } = this.props;
     const className = classNames(styles.container, this.props.className);
 

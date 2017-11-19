@@ -14,10 +14,8 @@ export type Props = {
   onClick: () => any
 };
 
-class SidebarUnread extends PureComponent {
-  props: Props;
-
-  renderArrow(): ?React.Element<any> {
+class SidebarUnread extends PureComponent<Props> {
+  renderArrow() {
     const { position } = this.props;
 
     if (position === 'top') {
@@ -33,7 +31,7 @@ class SidebarUnread extends PureComponent {
     return null;
   }
 
-  render(): React.Element<any> {
+  render() {
     const { position } = this.props;
     const className = classNames(styles.container, styles[position], this.props.className);
 

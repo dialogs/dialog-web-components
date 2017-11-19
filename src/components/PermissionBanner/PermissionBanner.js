@@ -18,15 +18,13 @@ export type Props = {
   onPermissionRequest: () => mixed
 };
 
-class PermissionBanner extends PureComponent {
-  props: Props;
-
+class PermissionBanner extends PureComponent<Props> {
   handlePermissionRequest = () => {
     this.props.onPermissionRequest();
     this.props.onClose();
   };
 
-  render(): React.Element<any> {
+  render() {
     const className = classNames(styles.container, styles[this.props.type], this.props.className);
 
     return (

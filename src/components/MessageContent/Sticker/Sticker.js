@@ -3,7 +3,7 @@
  * @flow
  */
 
-import React from 'react';
+import * as React from 'react';
 import Image from '../../Image/Image';
 
 export type Props = {
@@ -12,10 +12,10 @@ export type Props = {
   image: ?string,
   width: number,
   height: number,
-  onClick?: (event: SyntheticMouseEvent) => any
+  onClick?: (event: SyntheticMouseEvent<>) => any
 };
 
-function Sticker(props: Props): React.Element<any> {
+function Sticker(props: Props) {
   return (
     <Image
       className={props.className}

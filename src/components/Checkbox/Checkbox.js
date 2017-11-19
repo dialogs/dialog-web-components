@@ -3,22 +3,21 @@
  * @flow
  */
 
-import React, { PureComponent } from 'react';
+import React, { PureComponent, type Node } from 'react';
 import classNames from 'classnames';
 import styles from './Checkbox.css';
 
 export type Props = {
   className?: string,
-  label?: string | React.Element<any>,
+  label?: Node,
   id: string,
   value: boolean,
   disabled: boolean,
   tabIndex?: number,
-  onChange: (event: SyntheticInputEvent) => any
+  onChange: (event: SyntheticInputEvent<>) => any
 }
 
-class Checkbox extends PureComponent {
-  props: Props;
+class Checkbox extends PureComponent<Props> {
   input: ?HTMLInputElement;
 
   static defaultProps = {

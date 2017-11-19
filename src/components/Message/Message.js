@@ -13,7 +13,7 @@ import type {
   MessageMediaInteractiveConfirm
 } from '@dlghq/dialog-types';
 import classNames from 'classnames';
-import React, { PureComponent } from 'react';
+import React, { PureComponent, type Node } from 'react';
 import { findDOMNode } from 'react-dom';
 import MessageContent from '../MessageContent/MessageContent';
 import PeerAvatar from '../PeerAvatar/PeerAvatar';
@@ -41,13 +41,13 @@ export type Props = {
   maxHeight: number,
   isSelectionEnabled?: boolean,
   isReactionsEnabled?: boolean,
-  renderActions?: () => React.Element<any>[],
+  renderActions?: () => Node,
   onSelect?: (message: MessageType) => any,
   onTitleClick?: (message: MessageType) => any,
   onAvatarClick?: (message: MessageType) => any,
   onMentionClick?: (message: MessageType) => any,
   onLightboxOpen?: (message: MessageType) => any,
-  onReaction?: (char: string) => any,
+  onReaction?: (char: string) => mixed,
   onGoToPeer: (peer: Peer) => any,
   onGoToMessage: (peer: ?Peer, message: MessageType) => any,
   onInteractiveAction: (id: string, value: string, confirm?: ?MessageMediaInteractiveConfirm) => mixed
@@ -57,10 +57,7 @@ export type State = {
   hover: boolean
 };
 
-class Message extends PureComponent {
-  props: Props;
-  state: State;
-
+class Message extends PureComponent<Props, State> {
   constructor(props: Props) {
     super(props);
 
@@ -69,7 +66,7 @@ class Message extends PureComponent {
     };
   }
 
-  handleTitleClick = (event: SyntheticMouseEvent) => {
+  handleTitleClick = (event: SyntheticMouseEvent<>) => {
     if (!this.isSelectionMode()) {
       event.preventDefault();
       event.stopPropagation();
@@ -80,7 +77,7 @@ class Message extends PureComponent {
     }
   };
 
-  handleAvatarClick = (event: SyntheticMouseEvent) => {
+  handleAvatarClick = (event: SyntheticMouseEvent<>) => {
     if (!this.isSelectionMode()) {
       event.preventDefault();
       event.stopPropagation();
@@ -91,7 +88,7 @@ class Message extends PureComponent {
     }
   };
 
-  handleMentionClick = (event: SyntheticMouseEvent) => {
+  handleMentionClick = (event: SyntheticMouseEvent<>) => {
     if (!this.isSelectionMode()) {
       event.preventDefault();
       event.stopPropagation();
@@ -102,7 +99,7 @@ class Message extends PureComponent {
     }
   };
 
-  handleLightboxOpen = (event: SyntheticMouseEvent) => {
+  handleLightboxOpen = (event: SyntheticMouseEvent<>) => {
     if (!this.isSelectionMode()) {
       event.preventDefault();
       event.stopPropagation();
@@ -117,7 +114,7 @@ class Message extends PureComponent {
     this.setState({ hover });
   };
 
-  handleSelect = (event: SyntheticEvent): void => {
+  handleSelect = (event: SyntheticEvent<>): void => {
     if (this.isSelectionMode()) {
       event.preventDefault();
       event.stopPropagation();
@@ -274,12 +271,13 @@ class Message extends PureComponent {
   }
 
   renderReactions() {
-    const { message, users } = this.props;
+    const { message, users, onReaction } = this.props;
 
     if (
       !message.reactions ||
       !message.reactions.length ||
-      !this.props.isReactionsEnabled
+      !this.props.isReactionsEnabled ||
+      !onReaction
     ) {
       return null;
     }
@@ -291,7 +289,7 @@ class Message extends PureComponent {
           className={styles.reactionButton}
           users={users}
           reaction={reaction}
-          onToggle={this.props.onReaction}
+          onToggle={onReaction}
         />
       );
     });

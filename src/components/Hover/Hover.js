@@ -3,18 +3,17 @@
  * @flow
  */
 
-import React, { Component } from 'react';
+import React, { Component, type Node } from 'react';
 import { listen } from '@dlghq/dialog-utils';
 
 export type Props = {
   className?: string,
-  children?: React.Element<any>,
+  children: Node,
   onHover: (hover: boolean) => void,
-  onClick?: (event: SyntheticMouseEvent) => void
+  onClick?: (event: SyntheticMouseEvent<>) => void
 };
 
-class Hover extends Component {
-  props: Props;
+class Hover extends Component<Props> {
   hover: boolean;
   selecting: boolean;
   listener: ?{ remove(): void };

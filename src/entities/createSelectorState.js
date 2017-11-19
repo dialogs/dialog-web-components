@@ -119,7 +119,7 @@ function createSelectorState<T>(
       return selected.has(item) ? this.deleteSelected(item) : this.addSelected(item);
     }
 
-    handleKeyboardEvent(event: SyntheticKeyboardEvent): SelectorState {
+    handleKeyboardEvent(event: SyntheticKeyboardEvent<>): SelectorState {
       switch (event.key) {
         case 'Esc':
           event.preventDefault();

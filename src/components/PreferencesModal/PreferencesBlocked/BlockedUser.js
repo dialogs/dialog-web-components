@@ -16,9 +16,7 @@ export type Props = {
   onUnblockUser: (id: number) => void
 };
 
-class BlockedUser extends PureComponent {
-  props: Props;
-
+class BlockedUser extends PureComponent<Props> {
   handleUnblock: () => void;
 
   constructor(props: Props) {
@@ -31,7 +29,7 @@ class BlockedUser extends PureComponent {
     this.props.onUnblockUser(this.props.user.id);
   }
 
-  render(): React.Element<any> {
+  render() {
     const { user } = this.props;
 
     return (

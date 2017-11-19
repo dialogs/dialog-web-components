@@ -6,7 +6,7 @@
 import type { ListRowProps } from './types';
 import type { SelectorState } from '../../entities';
 
-import React, { PureComponent } from 'react';
+import React, { PureComponent, type Node } from 'react';
 import { List } from 'react-virtualized';
 import SelectRow from './SelectRow';
 
@@ -24,11 +24,11 @@ export type Props<T> = {
   itemVisibleCount: number,
   selector: SelectorState<T>,
   onChange: (selector: SelectorState<T>) => void,
-  renderItem: (props: ItemProps<T>) => React.Element<any>,
-  renderEmpty?: () => React.Element<any>
+  renderItem: (props: ItemProps<T>) => Node,
+  renderEmpty?: () => Node
 };
 
-class SelectList<T> extends PureComponent<void, Props<T>, void> {
+class SelectList<T> extends PureComponent<Props<T>, void> {
   handleHover = (index: number): void => {
     this.props.onChange(
       this.props.selector.setHoverIndex(index)
@@ -43,7 +43,7 @@ class SelectList<T> extends PureComponent<void, Props<T>, void> {
     );
   };
 
-  renderRow = ({ index, isScrolling, key, style }: ListRowProps): React.Element<any> => {
+  renderRow = ({ index, isScrolling, key, style }: ListRowProps) => {
     const item: T = this.props.selector.getItem(index);
     const hovered = this.props.selector.getHoverIndex() === index;
     const selected = this.props.selector.isSelected(item);
@@ -67,7 +67,7 @@ class SelectList<T> extends PureComponent<void, Props<T>, void> {
     );
   };
 
-  render(): ?React.Element<any> {
+  render() {
     if (!this.props.selector.getShow()) {
       return null;
     }

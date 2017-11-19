@@ -13,9 +13,7 @@ export type Props = {
   onClick: (emoji: string) => void
 };
 
-class EmojiListItem extends PureComponent {
-  props: Props;
-
+class EmojiListItem extends PureComponent<Props> {
   handleClick = (): void => {
     this.props.onClick(this.props.char);
   };

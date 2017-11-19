@@ -35,9 +35,7 @@ export type State = {
   isAtBottom: boolean
 };
 
-class EmojiList extends PureComponent {
-  props: Props;
-  state: State;
+class EmojiList extends PureComponent<Props, State> {
   container: ?HTMLElement;
   height: number;
   categories: EmojiCategoryType[];
@@ -80,7 +78,7 @@ class EmojiList extends PureComponent {
     }
   }
 
-  handleToggleScreen = (event: SyntheticMouseEvent) => {
+  handleToggleScreen = (event: SyntheticMouseEvent<>) => {
     event.preventDefault();
     event.stopPropagation();
     event.nativeEvent.stopImmediatePropagation();
@@ -319,7 +317,7 @@ class EmojiList extends PureComponent {
     }
   }
 
-  renderGoToButton(): ?React.Element<any> {
+  renderGoToButton() {
     const { stickers } = this.props;
     if (!stickers || !stickers.length) {
       return null;
@@ -335,7 +333,7 @@ class EmojiList extends PureComponent {
     );
   }
 
-  render(): React.Element<any> {
+  render() {
     const className = classNames(styles.container, this.props.className);
 
     return (

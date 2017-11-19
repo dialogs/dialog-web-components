@@ -3,7 +3,7 @@
  * @flow
  */
 
-import React, { PureComponent } from 'react';
+import React, { PureComponent, type Node } from 'react';
 import classNames from 'classnames';
 import Spinner from '../Spinner/Spinner';
 import styles from './ButtonNext.css';
@@ -11,19 +11,17 @@ import styles from './ButtonNext.css';
 export type Props = {
   id?: string,
   className?: string,
-  children?: mixed,
+  children: Node,
   disabled: boolean,
   wide: boolean,
   rounded: boolean,
   loading: boolean,
   type: 'submit' | 'reset' | 'button' | 'menu',
   size: 'small' | 'normal' | 'large',
-  onClick?: (event: SyntheticEvent) => any
+  onClick?: (event: SyntheticEvent<>) => any
 }
 
-class ButtonNext extends PureComponent {
-  props: Props;
-
+class ButtonNext extends PureComponent<Props> {
   static defaultProps = {
     type: 'button',
     size: 'normal',
@@ -33,7 +31,7 @@ class ButtonNext extends PureComponent {
     disabled: false
   };
 
-  renderLoading(): ?React.Element<any> {
+  renderLoading() {
     const { loading, size } = this.props;
 
     if (!loading) {
@@ -45,7 +43,7 @@ class ButtonNext extends PureComponent {
     );
   }
 
-  render(): React.Element<any> {
+  render() {
     const { id, type, disabled, wide, rounded, children, loading, size } = this.props;
     const className = classNames(styles.container, styles[size], {
       [styles.wide]: wide,

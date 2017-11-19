@@ -23,10 +23,8 @@ type Props = {
   maxWidth: number
 }
 
-class MessageAttachmentItem extends Component {
-  props: Props;
-
-  handleGoToPeer = (event: SyntheticEvent): void => {
+class MessageAttachmentItem extends Component<Props> {
+  handleGoToPeer = (event: SyntheticEvent<>): void => {
     event.preventDefault();
     event.stopPropagation();
     if (this.props.message.sender) {
@@ -34,7 +32,7 @@ class MessageAttachmentItem extends Component {
     }
   };
 
-  handleGoToMessage = (event: SyntheticMouseEvent): void => {
+  handleGoToMessage = (event: SyntheticMouseEvent<>): void => {
     if (event.target.tagName === 'A') {
       return;
     }
@@ -66,7 +64,7 @@ class MessageAttachmentItem extends Component {
     );
   }
 
-  renderTimestamp(): React.Element<any> {
+  renderTimestamp() {
     const { message } = this.props;
 
     return (

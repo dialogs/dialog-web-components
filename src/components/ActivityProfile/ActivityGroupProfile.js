@@ -4,7 +4,7 @@
  */
 
 import type { Group } from '@dlghq/dialog-types';
-import React, { PureComponent } from 'react';
+import React, { PureComponent, type Node } from 'react';
 import { Text } from '@dlghq/react-l10n';
 import classNames from 'classnames';
 import Avatar from '../Avatar/Avatar';
@@ -15,12 +15,10 @@ import styles from './ActivityProfile.css';
 export type Props = {
   className?: string,
   info: Group,
-  children?: mixed
+  children: Node
 };
 
-class ActivityGroupProfile extends PureComponent {
-  props: Props;
-
+class ActivityGroupProfile extends PureComponent<Props> {
   renderAvatar() {
     const { info: { name, bigAvatar, placeholder } } = this.props;
 

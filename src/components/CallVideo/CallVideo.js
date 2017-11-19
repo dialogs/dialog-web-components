@@ -13,9 +13,7 @@ export type Props = {
   theirVideos: CallVideoType[]
 };
 
-class CallVideo extends PureComponent {
-  props: Props;
-
+class CallVideo extends PureComponent<Props> {
   renderTheirVideos() {
     const { theirVideos } = this.props;
 

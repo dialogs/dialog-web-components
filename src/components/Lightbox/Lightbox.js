@@ -30,9 +30,7 @@ type State = {
 
 type Context = ProviderContext;
 
-class Lightbox extends Component {
-  props: Props;
-  state: State;
+class Lightbox extends Component<Props, State> {
   container: ?HTMLElement;
   photoSwipe: ?PhotoSwipe;
 
@@ -121,11 +119,11 @@ class Lightbox extends Component {
     return null;
   };
 
-  setContainer = (container: HTMLElement): void => {
+  setContainer = (container: *): void => {
     this.container = container;
   };
 
-  renderDownload(): ?React.Element<any> {
+  renderDownload() {
     const { current } = this.state;
     const { l10n } = this.context;
 
@@ -145,7 +143,7 @@ class Lightbox extends Component {
     );
   }
 
-  render(): React.Element<any> {
+  render() {
     const className = cx('pswp', styles.container, this.props.className);
     const { l10n } = this.context;
 

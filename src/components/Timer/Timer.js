@@ -3,12 +3,12 @@
  * @flow
  */
 
-import React, { PureComponent } from 'react';
+import { PureComponent, type Node } from 'react';
 
 type Props = {
   start: number,
   delay: number,
-  renderTime: (time: number) => React.Element<any>
+  renderTime: (time: number) => Node
 };
 
 type State = {
@@ -21,9 +21,7 @@ function diffTime(time): number {
   return Math.max(now - time, 0);
 }
 
-class Timer extends PureComponent {
-  props: Props;
-  state: State;
+class Timer extends PureComponent<Props, State> {
   timer: ?number;
 
   static defaultProps = {

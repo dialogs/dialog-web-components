@@ -27,10 +27,7 @@ type State = {
   collapsed: boolean
 };
 
-class SidebarSearchItem extends PureComponent {
-  props: Props;
-  state: State;
-
+class SidebarSearchItem extends PureComponent<Props, State> {
   constructor(props: Props) {
     super(props);
 

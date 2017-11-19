@@ -11,9 +11,7 @@ import PeerAvatar from '../PeerAvatar/PeerAvatar';
 import CheckButton from '../CheckButton/CheckButton';
 import styles from './ContactList.css';
 
-class ContactListItem extends PureComponent {
-  props: ItemProps<PeerInfo>;
-
+class ContactListItem extends PureComponent<ItemProps<PeerInfo>> {
   static render(props: ItemProps<PeerInfo>) {
     return <ContactListItem {...props} />;
   }

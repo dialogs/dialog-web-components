@@ -15,9 +15,7 @@ type Props = {
   readBy?: PeerInfo[]
 };
 
-class MessageRead extends Component {
-  props: Props;
-
+class MessageRead extends Component<Props> {
   renderAvatars() {
     const { readBy } = this.props;
     if (!readBy) {

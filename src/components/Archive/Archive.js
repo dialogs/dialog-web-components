@@ -4,7 +4,7 @@
  */
 
 import type { Peer, ShortRecent } from '@dlghq/dialog-types';
-import React from 'react';
+import * as React from 'react';
 import classNames from 'classnames';
 import ArchiveList from './ArchiveList';
 import styles from './Archive.css';
@@ -20,7 +20,7 @@ export type Props = {
   onSelect: (peer: Peer) => void
 };
 
-function Archive(props: Props): ?React.Element<any> {
+function Archive(props: Props) {
   const className = classNames(styles.container, props.className);
 
   if (props.pending && !props.archive.length) {

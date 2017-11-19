@@ -21,7 +21,7 @@ export interface SelectorState<T> {
   addSelected(item: T): SelectorState<T>;
   deleteSelected(item: T): SelectorState<T>;
   toggleSelected(item: T): SelectorState<T>;
-  handleKeyboardEvent(event: SyntheticKeyboardEvent): SelectorState<T>;
+  handleKeyboardEvent(event: SyntheticKeyboardEvent<>): SelectorState<T>;
 }
 
 export type SelectorStateCreator<T> = {

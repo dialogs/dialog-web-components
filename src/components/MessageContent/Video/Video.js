@@ -3,7 +3,7 @@
  * @flow
  */
 
-import React from 'react';
+import * as React from 'react';
 import getImageSize from '../../../utils/getImageSize';
 
 export type Props = {

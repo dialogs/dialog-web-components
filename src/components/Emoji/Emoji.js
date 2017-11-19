@@ -23,9 +23,7 @@ export type Props = {
   inline?: boolean
 };
 
-class Emoji extends PureComponent {
-  props: Props;
-
+class Emoji extends PureComponent<Props> {
   static defaultProps = {
     size: 20
   };

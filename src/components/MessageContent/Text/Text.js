@@ -23,9 +23,7 @@ export type Props = {|
   onInteractiveAction?: (id: string, value: string, confirm?: ?MessageMediaInteractiveConfirm) => mixed
 |};
 
-class Text extends Component {
-  props: Props;
-
+class Text extends Component<Props> {
   shouldComponentUpdate(nextProps: Props): boolean {
     return this.props.text !== nextProps.text ||
            this.props.media !== nextProps.media ||

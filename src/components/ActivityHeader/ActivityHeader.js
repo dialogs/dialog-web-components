@@ -15,10 +15,8 @@ export type Props = {
   className?: string
 };
 
-class ActivityHeader extends PureComponent {
-  props: Props;
-
-  renderBackButton(): ?React.Element<any> {
+class ActivityHeader extends PureComponent<Props> {
+  renderBackButton() {
     if (!this.props.onBack) {
       return null;
     }
@@ -33,7 +31,7 @@ class ActivityHeader extends PureComponent {
     );
   }
 
-  renderCloseButton(): ?React.Element<any> {
+  renderCloseButton() {
     if (!this.props.onClose) {
       return null;
     }
@@ -48,7 +46,7 @@ class ActivityHeader extends PureComponent {
     );
   }
 
-  render(): React.Element<any> {
+  render() {
     const { children } = this.props;
     const className = classNames(styles.container, this.props.className);
 

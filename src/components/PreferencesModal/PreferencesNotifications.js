@@ -22,9 +22,7 @@ export type Props = {
   onChange: (settings: $Shape<Settings>) => void
 };
 
-class PreferencesNotifications extends PureComponent {
-  props: Props;
-
+class PreferencesNotifications extends PureComponent<Props> {
   handleOnlyMentionChange = (value: boolean) => {
     this.props.onChange({
       isOnlyMentionNotifications: value
@@ -49,7 +47,7 @@ class PreferencesNotifications extends PureComponent {
     });
   };
 
-  render(): React.Element<any> {
+  render() {
     const onlyMention = this.props.settings.isOnlyMentionNotifications;
     const groupsEnabled = this.props.settings.isGroupsNotificationsEnabled;
     const showText = this.props.settings.isShowNotificationsTextEnabled;

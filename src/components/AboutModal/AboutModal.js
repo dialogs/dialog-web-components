@@ -24,9 +24,7 @@ type Props = {
   onClose: () => any
 }
 
-class AboutModal extends PureComponent {
-  props: Props;
-
+class AboutModal extends PureComponent<Props> {
   renderState() {
     const { appName, updateState } = this.props;
 

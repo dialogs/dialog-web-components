@@ -23,9 +23,7 @@ export type Props = {
   onClose: () => mixed
 };
 
-class Confirm extends PureComponent {
-  props: Props;
-
+class Confirm extends PureComponent<Props> {
   handleSuccess = (): void => {
     this.props.onSubmit(this.props.action);
   };

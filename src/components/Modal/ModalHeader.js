@@ -3,17 +3,17 @@
  * @flow
  */
 
-import React from 'react';
+import * as React from 'react';
 import classNames from 'classnames';
 import styles from './Modal.css';
 
 export type Props = {
   className?: string,
   withBorder?: boolean,
-  children?: React.Element<any>
+  children: React.Node
 };
 
-function ModalHeader(props: Props): React.Element<any> {
+function ModalHeader(props: Props) {
   const className = classNames(styles.header, {
     [styles.border]: props.withBorder
   }, props.className);

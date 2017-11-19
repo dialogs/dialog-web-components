@@ -3,7 +3,7 @@
  * @flow
  */
 
-import React, { Component } from 'react';
+import React, { Component, type Node } from 'react';
 import { listen } from '@dlghq/dialog-utils';
 import { AutoSizer } from 'react-virtualized';
 import classNames from 'classnames';
@@ -17,14 +17,13 @@ export type Dimensions = {
 
 export type Props = {
   className?: string,
-  children?: React.Element<any>,
+  children: Node,
   onScroll?: () => void,
   onResize?: (size: {width: number, height: number}) => void,
   fromBottom: boolean
 };
 
-class Scroller extends Component {
-  props: Props;
+class Scroller extends Component<Props> {
   container: ?HTMLElement;
   listener: ?{ remove(): void };
 
@@ -76,7 +75,7 @@ class Scroller extends Component {
     return null;
   }
 
-  setContainer = (container: HTMLElement): void => {
+  setContainer = (container: *): void => {
     this.container = container;
   };
 
@@ -103,7 +102,7 @@ class Scroller extends Component {
     }
   }
 
-  render(): React.Element<any> {
+  render() {
     const className = classNames(styles.container, {
       [styles.fromBottom]: this.props.fromBottom
     });

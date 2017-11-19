@@ -10,9 +10,8 @@ import classNames from 'classnames';
 import Icon from '../Icon/Icon';
 import styles from './Select.css';
 
-class Select extends PureComponent {
-  props: Props;
-  select: HTMLSelectElement;
+class Select extends PureComponent<Props> {
+  select: ?HTMLSelectElement;
 
   static defaultProps = {
     size: 'normal',
@@ -23,11 +22,11 @@ class Select extends PureComponent {
     l10n: LocalizationContextType
   };
 
-  handleChange = (event: $FlowIssue): void => {
+  handleChange = (event: SyntheticInputEvent<HTMLSelectElement>): void => {
     this.props.onChange(event.target.value);
   };
 
-  handleLabelMouseDown = (event: $FlowIssue): void => {
+  handleLabelMouseDown = (event: SyntheticMouseEvent<>): void => {
     event.preventDefault();
 
     if (this.select) {
@@ -35,7 +34,7 @@ class Select extends PureComponent {
     }
   };
 
-  setSelect = (select: HTMLSelectElement): void => {
+  setSelect = (select: *): void => {
     this.select = select;
   };
 

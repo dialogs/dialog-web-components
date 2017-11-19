@@ -14,9 +14,7 @@ type Props = {
   onChange: (value: number) => any
 };
 
-class CallFeedbackRating extends PureComponent {
-  props: Props;
-
+class CallFeedbackRating extends PureComponent<Props> {
   renderStars() {
     const { maxRating, value, id } = this.props;
     const stars = [];

@@ -22,8 +22,7 @@ export type Props = {
   onSearch: (query: string) => mixed
 };
 
-class ToolbarSearchInput extends PureComponent {
-  props: Props;
+class ToolbarSearchInput extends PureComponent<Props> {
   input: ?HTMLInputElement;
 
   constructor(props: Props) {
@@ -38,7 +37,7 @@ class ToolbarSearchInput extends PureComponent {
     }
   }
 
-  handleChange = (event: SyntheticInputEvent) => {
+  handleChange = (event: SyntheticInputEvent<>) => {
     this.handleSearch(event.target.value);
     this.props.onChange(event.target.value);
   };

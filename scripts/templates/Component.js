@@ -19,7 +19,7 @@ export type Props = {
 class <%= name %> extends PureComponent {
   props: Props;
 
-  render(): React.Element<any> {
+  render() {
 <% if (styles) { -%>
     const className = classNames(styles.container, this.props.className);
 

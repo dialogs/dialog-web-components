@@ -22,10 +22,7 @@ export type Props = {
   onChange: (info: SignupInfo) => any
 };
 
-class AuthorizationSignUp extends PureComponent {
-  props: Props;
-
-
+class AuthorizationSignUp extends PureComponent<Props> {
   handleChange = (value: any, { target }: $FlowIssue): void => {
     this.props.onChange({
       ...this.props.info,
@@ -48,7 +45,7 @@ class AuthorizationSignUp extends PureComponent {
     return null;
   }
 
-  renderNameInput(): React.Element<any> {
+  renderNameInput() {
     const { step, id } = this.props;
 
     return (
@@ -67,7 +64,7 @@ class AuthorizationSignUp extends PureComponent {
     );
   }
 
-  renderGenderSelector(): ?React.Element<any> {
+  renderGenderSelector() {
     const { id, step, isGenderEnabled } = this.props;
 
     if (!isGenderEnabled) {

@@ -17,9 +17,7 @@ type Props = {
   onClick: (sticker: Object) => any
 };
 
-class StickerCategory extends PureComponent {
-  props: Props;
-
+class StickerCategory extends PureComponent<Props> {
   renderPacks() {
     if (!this.props.isVisible) {
       return null;
@@ -36,7 +34,7 @@ class StickerCategory extends PureComponent {
     });
   }
 
-  render(): React.Element<any> {
+  render() {
     const { pack } = this.props;
 
     const containerStyles: Object = {

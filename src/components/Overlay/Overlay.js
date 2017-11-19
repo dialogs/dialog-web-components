@@ -16,10 +16,8 @@ export type Props = {
   onClick: () => any
 };
 
-class Overlay extends PureComponent {
-  props: Props;
-
-  renderOverlay(): ?React.Element<any> {
+class Overlay extends PureComponent<Props> {
+  renderOverlay() {
     const { active } = this.props;
 
     if (!active) {
@@ -47,7 +45,7 @@ class Overlay extends PureComponent {
     );
   }
 
-  render(): React.Element<any> {
+  render() {
     const className = classNames(styles.container, this.props.className);
 
     return (

@@ -7,7 +7,7 @@ import type {
   MessageMedia as MessageMediaType,
   MessageMediaInteractiveConfirm
 } from '@dlghq/dialog-types';
-import React from 'react';
+import * as React from 'react';
 import MessageMediaWebpage from './MessageMediaWebpage';
 import MessageMediaVoice from './MessageMediaVoice';
 import MessageMediaImage from './MessageMediaImage';

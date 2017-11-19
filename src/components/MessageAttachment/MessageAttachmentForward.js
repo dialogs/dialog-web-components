@@ -22,10 +22,8 @@ type Props = {
   maxWidth: number
 };
 
-class MessageAttachmentForward extends PureComponent {
-  props: Props;
-
-  handleGoToPeer = (event: SyntheticEvent) => {
+class MessageAttachmentForward extends PureComponent<Props> {
+  handleGoToPeer = (event: SyntheticEvent<>) => {
     event.preventDefault();
     event.stopPropagation();
 

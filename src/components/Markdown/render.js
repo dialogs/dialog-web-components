@@ -4,11 +4,11 @@
  */
 
 import type { BlockToken, TextToken } from '@dlghq/markdown/src/types';
-import React from 'react';
+import * as React from 'react';
 import Emoji from '../Emoji/Emoji';
 import styles from './Markdown.css';
 
-export function renderText(tokens: TextToken[], emojiSize?: number = 20, isInline?: boolean): React.Element<any>[] {
+export function renderText(tokens: TextToken[], emojiSize?: number = 20, isInline?: boolean) {
   const result = [];
 
   for (let index = 0; index < tokens.length; index++) {
@@ -87,7 +87,7 @@ function containsOnlyEmoji(tokens: BlockToken[]): boolean {
   return false;
 }
 
-export function renderBlocks(tokens: BlockToken[]): React.Element<any>[] {
+export function renderBlocks(tokens: BlockToken[]) {
   const result = [];
 
   const isOnlyEmoji = containsOnlyEmoji(tokens);

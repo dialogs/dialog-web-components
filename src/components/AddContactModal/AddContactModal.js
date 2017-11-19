@@ -35,9 +35,7 @@ export type Props = {
   onOpenChat: (id: number) => any
 };
 
-class AddContactModal extends PureComponent {
-  props: Props;
-
+class AddContactModal extends PureComponent<Props> {
   constructor(props: Props) {
     super(props);
 
@@ -75,7 +73,7 @@ class AddContactModal extends PureComponent {
     return pending || !contact;
   }
 
-  renderStatus(): React.Element<any> {
+  renderStatus() {
     const { query, pending, contact } = this.props;
 
     if (!query) {
@@ -143,7 +141,7 @@ class AddContactModal extends PureComponent {
     );
   }
 
-  renderContact(): ?React.Element<any> {
+  renderContact() {
     const { error, contact } = this.props;
 
     if (!contact) {
@@ -201,7 +199,7 @@ class AddContactModal extends PureComponent {
     );
   }
 
-  renderBody(): React.Element<any> {
+  renderBody() {
     const { query, added } = this.props;
 
     if (added) {
@@ -231,7 +229,7 @@ class AddContactModal extends PureComponent {
     );
   }
 
-  renderFooter(): React.Element<any> {
+  renderFooter() {
     const { error, added, contact } = this.props;
 
     if (added || (contact && contact.isContact)) {
@@ -267,7 +265,7 @@ class AddContactModal extends PureComponent {
     );
   }
 
-  render(): React.Element<any> {
+  render() {
     const className = classNames(styles.container, this.props.className);
 
     return (

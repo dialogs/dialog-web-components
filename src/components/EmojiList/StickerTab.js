@@ -15,10 +15,8 @@ type Props = {
   onClick: (id: string) => void
 };
 
-class StickerTab extends PureComponent {
-  props: Props;
-
-  handleClick = (event: SyntheticMouseEvent) => {
+class StickerTab extends PureComponent<Props> {
+  handleClick = (event: SyntheticMouseEvent<>) => {
     event.preventDefault();
     event.stopPropagation();
     event.nativeEvent.stopImmediatePropagation();
@@ -35,7 +33,7 @@ class StickerTab extends PureComponent {
     return null;
   }
 
-  render(): React.Element<any> {
+  render() {
     const className = classNames(styles.footerTabSticker, {
       [styles.active]: this.props.active
     });

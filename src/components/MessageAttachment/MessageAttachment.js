@@ -17,9 +17,7 @@ type Props = {
   onGoToMessage: (peer: ?Peer, message: Message) => any
 };
 
-class MessageAttachment extends PureComponent {
-  props: Props;
-
+class MessageAttachment extends PureComponent<Props> {
   render() {
     const { attachment, maxWidth, maxHeight } = this.props;
 

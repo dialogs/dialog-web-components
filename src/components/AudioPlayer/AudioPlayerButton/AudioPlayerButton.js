@@ -16,10 +16,8 @@ export type Props = {
   className?: string
 }
 
-class AudioPlayerButton extends PureComponent {
-  props: Props;
-
-  handleButtonClick = (event: SyntheticMouseEvent) => {
+class AudioPlayerButton extends PureComponent<Props> {
+  handleButtonClick = (event: SyntheticMouseEvent<>) => {
     event.stopPropagation();
 
     const { pending, isPlaying, error } = this.props;

@@ -3,16 +3,16 @@
  * @flow
  */
 
-import React from 'react';
+import React, { type Node } from 'react';
 import classNames from 'classnames';
 import styles from './Error.css';
 
 export type Props = {
   className?: string,
-  children?: string
+  children?: Node
 };
 
-function Error(props: Props): React.Element<any> {
+function Error(props: Props) {
   const className = classNames(styles.container, props.className);
 
   return (

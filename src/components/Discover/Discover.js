@@ -19,9 +19,7 @@ export type Props = {
   onGoToPeer: (peer: Peer) => mixed
 };
 
-class Discover extends PureComponent {
-  props: Props;
-
+class Discover extends PureComponent<Props> {
   renderCards() {
     const { items } = this.props;
 
@@ -34,7 +32,7 @@ class Discover extends PureComponent {
     });
   }
 
-  render(): React.Element<any> {
+  render() {
     const className = classNames(styles.container, this.props.className);
 
     return (

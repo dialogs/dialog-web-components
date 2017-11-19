@@ -30,9 +30,7 @@ export type Props = {
   onSelect: (peer: Peer) => any
 };
 
-class SidebarRecentItem extends PureComponent {
-  props: Props;
-
+class SidebarRecentItem extends PureComponent<Props> {
   handleClick = (): void => {
     this.props.onSelect(this.props.info.peer);
   };
@@ -43,7 +41,7 @@ class SidebarRecentItem extends PureComponent {
     return Boolean(message && message.sender && info.type === 'group');
   }
 
-  renderAvatar(): React.Element<any> {
+  renderAvatar() {
     const { info, message, online } = this.props;
 
     if (message && message.sender && info.type === 'group') {

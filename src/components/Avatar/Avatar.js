@@ -19,15 +19,10 @@ export type Props = {
   title: string,
   size: AvatarSize,
   placeholder: AvatarPlaceholder,
-  onClick?: (event: SyntheticMouseEvent) => any
+  onClick?: (event: SyntheticMouseEvent<>) => any
 };
 
-type DefaultProps = {
-  size: AvatarSize,
-  placeholder: AvatarPlaceholder
-};
-
-class Avatar extends PureComponent<DefaultProps, Props, void> {
+class Avatar extends PureComponent<Props, void> {
   props: Props;
 
   static defaultProps = {
@@ -47,7 +42,7 @@ class Avatar extends PureComponent<DefaultProps, Props, void> {
     return getAvatarColor(this.props.placeholder);
   }
 
-  render(): React.Element<any> {
+  render() {
     const { image, title } = this.props;
     const size = this.getAvatarSize();
     const text = size >= 20 ? this.getAvatarText() : null;

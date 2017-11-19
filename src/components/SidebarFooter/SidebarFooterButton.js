@@ -21,9 +21,7 @@ export type Props = {
   onPick: (id: string) => any
 };
 
-class SidebarFooterButton extends PureComponent {
-  props: Props;
-
+class SidebarFooterButton extends PureComponent<Props> {
   handleClick = (): void => {
     const { active, id } = this.props;
 
@@ -32,7 +30,7 @@ class SidebarFooterButton extends PureComponent {
     }
   };
 
-  renderIcon(): React.Element<any> {
+  renderIcon() {
     const { glyph, pending } = this.props;
 
     if (pending) {
@@ -46,7 +44,7 @@ class SidebarFooterButton extends PureComponent {
     );
   }
 
-  renderCounter(): ?React.Element<any> {
+  renderCounter() {
     const { counter, pending } = this.props;
 
     if (!counter || counter === 0 || pending) {
@@ -61,7 +59,7 @@ class SidebarFooterButton extends PureComponent {
     );
   }
 
-  render(): React.Element<any> {
+  render() {
     const { active, title, id } = this.props;
     const className = classNames(styles.button, {
       [styles.active]: active

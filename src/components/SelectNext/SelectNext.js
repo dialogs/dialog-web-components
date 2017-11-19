@@ -11,8 +11,7 @@ import Select from 'react-select';
 import Icon from '../Icon/Icon';
 import styles from './SelectNext.css';
 
-class SelectNext extends PureComponent {
-  props: Props;
+class SelectNext extends PureComponent<Props> {
   select: Select;
 
   static defaultProps = {

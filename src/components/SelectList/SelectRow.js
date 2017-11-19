@@ -3,19 +3,17 @@
  * @flow
  */
 
-import React, { PureComponent } from 'react';
+import React, { PureComponent, type Node } from 'react';
 
 export type Props = {
-  children?: React.Element<any>,
+  children: Node,
   index: number,
   style: { [key: string]: string },
   onHover: (index: number) => void,
   onSelect: (index: number) => void
 };
 
-class SelectRow extends PureComponent {
-  props: Props;
-
+class SelectRow extends PureComponent<Props> {
   handleClick = (): void => {
     this.props.onSelect(this.props.index);
   };

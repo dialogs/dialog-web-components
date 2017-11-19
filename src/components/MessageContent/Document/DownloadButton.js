@@ -13,9 +13,7 @@ export type Props = {
   className?: string
 }
 
-class DownloadButton extends PureComponent {
-  props: Props;
-
+class DownloadButton extends PureComponent<Props> {
   render() {
     const { isUploading } = this.props;
     const className = classNames(styles.container, {

@@ -17,10 +17,8 @@ export type Props = {
   onClose?: () => any
 };
 
-class Modal extends PureComponent {
-  props: Props;
-
-  render(): React.Element<any> {
+class Modal extends PureComponent<Props> {
+  render() {
     const className = classNames(styles.container, this.props.className);
     const overlayClassName = classNames(styles.overlay, this.props.overlayClassName, {
       [styles.fullscreen]: this.props.fullscreen

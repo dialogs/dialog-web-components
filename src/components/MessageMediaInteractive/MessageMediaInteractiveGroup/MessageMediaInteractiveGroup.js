@@ -16,9 +16,7 @@ export type Props = {
   onSubmit?: (id: string, value: string, confirm?: ?MessageMediaInteractiveConfirm) => mixed
 };
 
-class MessageMediaInteractiveGroup extends PureComponent {
-  props: Props;
-
+class MessageMediaInteractiveGroup extends PureComponent<Props> {
   renderTitle() {
     if (this.props.group.title) {
       return <Markdown inline className={styles.title} text={this.props.group.title} tagName="h5" />;

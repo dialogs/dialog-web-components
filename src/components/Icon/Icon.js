@@ -20,12 +20,10 @@ export type Props = {
   theme: 'default' | 'primary' | 'success' | 'danger' | 'info' | 'warning',
   size: IconSize,
   inverted: boolean,
-  onClick?: (event: SyntheticMouseEvent) => mixed
+  onClick?: (event: SyntheticMouseEvent<>) => mixed
 };
 
-class Icon extends PureComponent {
-  props: Props;
-
+class Icon extends PureComponent<Props> {
   static defaultProps = {
     size: getIconSize('default'),
     theme: 'default',
@@ -48,7 +46,7 @@ class Icon extends PureComponent {
     return 6;
   }
 
-  renderInvertedIcon(): React.Element<any> {
+  renderInvertedIcon() {
     const { onClick, theme } = this.props;
     const size = this.getIconSize();
     const className = classNames(styles.container, styles.inverted, {
@@ -70,7 +68,7 @@ class Icon extends PureComponent {
     );
   }
 
-  renderIcon(): React.Element<any> {
+  renderIcon() {
     const { onClick, theme } = this.props;
     const size = this.getIconSize();
     const className = classNames(styles.container, {

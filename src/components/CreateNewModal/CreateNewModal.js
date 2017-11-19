@@ -23,9 +23,7 @@ import CreateGroupMembersForm from './CreateGroupMembersForm';
 import ImageEdit from '../ImageEdit/ImageEdit';
 import styles from './CreateNewModal.css';
 
-class CreateNewModal extends PureComponent {
-  props: Props;
-
+class CreateNewModal extends PureComponent<Props> {
   static defaultProps = {
     id: 'create_new_group'
   };
@@ -54,7 +52,7 @@ class CreateNewModal extends PureComponent {
     }
   };
 
-  handleChange = (value: string, { target }: SyntheticInputEvent) => {
+  handleChange = (value: string, { target }: SyntheticInputEvent<>) => {
     this.props.onRequestChange({
       ...this.props.request,
       [target.name]: value
@@ -91,7 +89,7 @@ class CreateNewModal extends PureComponent {
     this.props.onStepChange('avatar');
   };
 
-  handleSubmit = (event: SyntheticEvent): void => {
+  handleSubmit = (event: SyntheticEvent<>): void => {
     event.preventDefault();
     this.props.onSubmit(this.props.request);
   };
@@ -100,7 +98,7 @@ class CreateNewModal extends PureComponent {
     this.props.onStepChange('info');
   };
 
-  renderError(): ?React.Element<any> {
+  renderError() {
     const { error } = this.props;
 
     if (!error) {
@@ -112,7 +110,7 @@ class CreateNewModal extends PureComponent {
     );
   }
 
-  renderTypeStep(): React.Element<any> {
+  renderTypeStep() {
     const { id, request: { type }, step } = this.props;
 
     return (
@@ -146,7 +144,7 @@ class CreateNewModal extends PureComponent {
     );
   }
 
-  renderInfoStep(): React.Element<any> {
+  renderInfoStep() {
     const { id, step, request: { type, about, title, shortname, avatar }, shortnamePrefix } = this.props;
 
     return (
@@ -193,7 +191,7 @@ class CreateNewModal extends PureComponent {
     );
   }
 
-  renderAvatarStep(): ?React.Element<any> {
+  renderAvatarStep() {
     const { request: { avatar } } = this.props;
 
     if (avatar && typeof avatar !== 'string') {
@@ -230,7 +228,7 @@ class CreateNewModal extends PureComponent {
     return null;
   }
 
-  renderMembersStep(): React.Element<any> {
+  renderMembersStep() {
     const { id, request: { type, members } } = this.props;
 
     return (
@@ -278,7 +276,7 @@ class CreateNewModal extends PureComponent {
     );
   }
 
-  renderStep(): ?React.Element<any> {
+  renderStep() {
     const { step } = this.props;
 
     switch (step) {
@@ -295,7 +293,7 @@ class CreateNewModal extends PureComponent {
     }
   }
 
-  render(): React.Element<any> {
+  render() {
     const className = classNames(styles.container, this.props.className);
 
     return (

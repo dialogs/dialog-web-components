@@ -13,9 +13,7 @@ type Props = {
   sender: ?string
 };
 
-class ActivityMediaVoice extends PureComponent {
-  props: Props;
-
+class ActivityMediaVoice extends PureComponent<Props> {
   render() {
     return (
       <div className={styles.container}>

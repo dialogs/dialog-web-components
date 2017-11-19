@@ -7,7 +7,7 @@ import type {
   MessageContent as MessageContentTypes,
   MessageMediaInteractiveConfirm
 } from '@dlghq/dialog-types';
-import React from 'react';
+import * as React from 'react';
 import Text from './Text/Text';
 import Service from './Text/Service';
 import Photo from './Photo/Photo';
@@ -25,7 +25,7 @@ export type Props = {
   isPending?: boolean,
   maxHeight: number,
   maxWidth: number,
-  onLightboxOpen?: (event: SyntheticMouseEvent) => any,
+  onLightboxOpen?: (event: SyntheticMouseEvent<>) => any,
   onInteractiveAction?: (id: string, value: string, confirm?: ?MessageMediaInteractiveConfirm) => mixed
 };
 

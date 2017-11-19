@@ -32,10 +32,7 @@ type Props = {
 
 type State = Feedback;
 
-class CallFeedback extends PureComponent {
-  props: Props;
-  state: State;
-
+class CallFeedback extends PureComponent<Props, State> {
   static defaultProps = {
     id: 'call_feedback_modal'
   };
@@ -50,7 +47,7 @@ class CallFeedback extends PureComponent {
     };
   }
 
-  handleSubmit = (event: SyntheticEvent): void => {
+  handleSubmit = (event: SyntheticEvent<>): void => {
     event.preventDefault();
     this.props.onSubmit(this.state);
   };

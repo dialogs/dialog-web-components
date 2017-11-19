@@ -16,10 +16,8 @@ export type Props = {
   onClick: (char: string) => mixed
 };
 
-class EmojiButton extends PureComponent {
-  props: Props;
-
-  handleClick = (event: SyntheticMouseEvent): void => {
+class EmojiButton extends PureComponent<Props> {
+  handleClick = (event: SyntheticMouseEvent<>): void => {
     event.preventDefault();
     event.stopPropagation();
 

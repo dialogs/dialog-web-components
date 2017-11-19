@@ -22,7 +22,7 @@ export type Props = {
   height: number,
   maxWidth: number,
   maxHeight: number,
-  onClick?: (event: SyntheticMouseEvent) => void
+  onClick?: (event: SyntheticMouseEvent<>) => void
 }
 
 export type State = {
@@ -30,10 +30,7 @@ export type State = {
   error: ?any
 }
 
-class Image extends PureComponent {
-  props: Props;
-  state: State;
-
+class Image extends PureComponent<Props, State> {
   requestId: ?number;
   image: ?HTMLImageElement;
 
@@ -108,7 +105,7 @@ class Image extends PureComponent {
     }
   }
 
-  render(): React.Element<any> {
+  render() {
     const { preview, src } = this.props;
     const { state } = this.state;
 

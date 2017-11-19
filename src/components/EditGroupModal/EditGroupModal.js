@@ -18,10 +18,7 @@ import Icon from '../Icon/Icon';
 import styles from './EditGroupModal.css';
 import type { Props, State } from './types';
 
-class EditGroupModal extends PureComponent {
-  props: Props;
-  state: State;
-
+class EditGroupModal extends PureComponent<Props, State> {
   constructor(props: Props) {
     super(props);
 
@@ -84,7 +81,7 @@ class EditGroupModal extends PureComponent {
     });
   };
 
-  handleSubmit = (event?: SyntheticEvent): void => {
+  handleSubmit = (event?: SyntheticEvent<>): void => {
     if (event) {
       event.preventDefault();
     }

@@ -18,9 +18,7 @@ type Props = {
   maxWidth: number
 };
 
-class MessageAttachmentReply extends PureComponent {
-  props: Props;
-
+class MessageAttachmentReply extends PureComponent<Props> {
   handleGoToMessage = (message: Message) => {
     this.props.onGoToMessage(null, message);
   };

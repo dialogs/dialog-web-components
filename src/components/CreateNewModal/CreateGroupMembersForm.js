@@ -13,14 +13,12 @@ export type Props = {
   id: string,
   autoFocus: boolean,
   members: SelectorState<PeerInfo>,
-  onSubmit: (event: SyntheticEvent) => void,
+  onSubmit: (event: SyntheticEvent<>) => void,
   onChange: (members: SelectorState<PeerInfo>) => any,
 }
 
-class CreateGroupMembersForm extends PureComponent {
-  props: Props;
-
-  handleSubmit = (event: SyntheticEvent) => {
+class CreateGroupMembersForm extends PureComponent<Props> {
+  handleSubmit = (event: SyntheticEvent<>) => {
     event.preventDefault();
 
     this.props.onSubmit(event);

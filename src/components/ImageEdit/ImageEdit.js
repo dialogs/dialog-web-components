@@ -31,9 +31,7 @@ export type State = {
   }
 };
 
-class ImageEdit extends PureComponent {
-  props: Props;
-  state: State;
+class ImageEdit extends PureComponent<Props, State> {
   croppieElement: ?HTMLElement;
   croppie: ?Object;
   listeners: ?{ remove(): void }[];
@@ -194,7 +192,7 @@ class ImageEdit extends PureComponent {
     );
   }
 
-  render(): React.Element<any> {
+  render() {
     const className = classNames(styles.container, this.props.className);
 
     return (

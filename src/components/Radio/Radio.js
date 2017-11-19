@@ -18,8 +18,7 @@ export type Props = {
   htmlAutoFocus?: boolean
 };
 
-class Radio extends PureComponent {
-  props: Props;
+class Radio extends PureComponent<Props> {
   context: Context;
   input: ?HTMLInputElement;
 
@@ -27,7 +26,7 @@ class Radio extends PureComponent {
     radioGroup: PropTypes.object.isRequired
   };
 
-  handleChange = (event: SyntheticInputEvent): void => {
+  handleChange = (event: SyntheticInputEvent<HTMLInputElement>): void => {
     this.context.radioGroup.onChange(event.target.value, event);
   };
 
@@ -47,7 +46,7 @@ class Radio extends PureComponent {
     }
   }
 
-  renderChildren(): ?React.Element<any> {
+  renderChildren() {
     const { children } = this.props;
     if (!children) {
       return null;
@@ -56,7 +55,7 @@ class Radio extends PureComponent {
     return <div className={styles.label}>{children}</div>;
   }
 
-  render(): React.Element<any> {
+  render() {
     const { children, id, value, tabIndex, htmlAutoFocus } = this.props;
     const { radioGroup } = this.context;
     const className = classNames(styles.container, this.props.className, {

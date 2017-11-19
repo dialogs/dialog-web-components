@@ -19,8 +19,7 @@ export type Props = {
   onChange: (selector: SelectorState<PeerInfo>) => void
 };
 
-class ContactSelectorInput extends PureComponent {
-  props: Props;
+class ContactSelectorInput extends PureComponent<Props> {
   input: ?HTMLInputElement;
 
   static contextTypes = {
@@ -41,7 +40,7 @@ class ContactSelectorInput extends PureComponent {
     );
   };
 
-  handleKeyDown = (event: SyntheticKeyboardEvent): void => {
+  handleKeyDown = (event: SyntheticKeyboardEvent<>): void => {
     this.props.onChange(
       this.props.selector.handleKeyboardEvent(event)
     );
@@ -61,7 +60,7 @@ class ContactSelectorInput extends PureComponent {
     }
   }
 
-  renderChips(): React.Element<any>[] {
+  renderChips() {
     const selected = this.props.selector.getSelected().toArray();
 
     return selected.map((contact) => {
@@ -71,7 +70,7 @@ class ContactSelectorInput extends PureComponent {
     });
   }
 
-  render(): React.Element<any> {
+  render() {
     const className = classNames(styles.selector, this.props.className);
 
     return (

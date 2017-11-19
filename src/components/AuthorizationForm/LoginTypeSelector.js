@@ -18,9 +18,7 @@ export type Props = {
   onTypeChange: (type: string) => any
 };
 
-class LoginTypeSelector extends PureComponent {
-  props: Props;
-
+class LoginTypeSelector extends PureComponent<Props> {
   renderOptions() {
     const { id } = this.props;
 

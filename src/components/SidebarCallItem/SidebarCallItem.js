@@ -26,8 +26,7 @@ export type Props = {
 
 type Context = ProviderContext;
 
-class SidebarCallItem extends PureComponent {
-  props: Props;
+class SidebarCallItem extends PureComponent<Props> {
   context: Context;
 
   static contextTypes = {
@@ -60,7 +59,7 @@ class SidebarCallItem extends PureComponent {
     return state;
   };
 
-  renderAvatar(): React.Element<any> {
+  renderAvatar() {
     return (
       <DoublePeerAvatar
         className={styles.avatar}
@@ -71,7 +70,7 @@ class SidebarCallItem extends PureComponent {
     );
   }
 
-  renderState(): React.Element<any> {
+  renderState() {
     const state = this.getCallState();
 
     return (
@@ -82,7 +81,7 @@ class SidebarCallItem extends PureComponent {
     );
   }
 
-  renderTime(): React.Element<any> {
+  renderTime() {
     const { call: { date } } = this.props;
     const locale = getDateFnsLocale(this.context.l10n.locale);
 
@@ -93,7 +92,7 @@ class SidebarCallItem extends PureComponent {
     );
   }
 
-  renderDuration(): ?React.Element<any> {
+  renderDuration() {
     const { call: { duration, isAnswered } } = this.props;
 
     if (!isAnswered) {
@@ -105,7 +104,7 @@ class SidebarCallItem extends PureComponent {
     );
   }
 
-  renderText(): React.Element<any> {
+  renderText() {
     return (
       <div className={styles.text}>
         {this.renderState()}
@@ -114,7 +113,7 @@ class SidebarCallItem extends PureComponent {
     );
   }
 
-  render(): React.Element<any> {
+  render() {
     const className = classNames(styles.container, this.props.className);
 
     return (

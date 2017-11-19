@@ -18,9 +18,7 @@ type Props = {
   onClick?: ?() => mixed
 };
 
-class CallHeader extends PureComponent {
-  props: Props;
-
+class CallHeader extends PureComponent<Props> {
   render() {
     const { call, isVisible, withVideo } = this.props;
     const onCall = isOnCall(call.state);

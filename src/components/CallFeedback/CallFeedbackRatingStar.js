@@ -14,9 +14,7 @@ type Props = {
   onChange: (value: number) => any
 };
 
-class CallFeedbackRatingStar extends PureComponent {
-  props: Props;
-
+class CallFeedbackRatingStar extends PureComponent<Props> {
   handleChange = (): void => {
     this.props.onChange(this.props.value);
   };

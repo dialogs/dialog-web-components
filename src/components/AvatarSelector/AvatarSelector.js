@@ -24,10 +24,7 @@ type State = {
   avatar: ?string
 };
 
-class AvatarSelector extends PureComponent {
-  props: Props;
-  state: State;
-
+class AvatarSelector extends PureComponent<Props, State> {
   constructor(props: Props) {
     super(props);
 
@@ -63,7 +60,7 @@ class AvatarSelector extends PureComponent {
     }, false, 'image/*');
   };
 
-  renderRemoveIcon(): ?React.Element<any> {
+  renderRemoveIcon() {
     const { avatar } = this.props;
 
     if (avatar && this.props.onRemove) {
@@ -77,7 +74,7 @@ class AvatarSelector extends PureComponent {
     return null;
   }
 
-  render(): React.Element<any> {
+  render() {
     const { name, placeholder } = this.props;
     const { avatar } = this.state;
     const className = classNames(styles.container, this.props.className);

@@ -17,14 +17,12 @@ export type Props = {
   onFavouriteChange: (isFavourite: boolean) => void
 };
 
-class ToolbarAvatar extends PureComponent {
-  props: Props;
-
+class ToolbarAvatar extends PureComponent<Props> {
   handleFavouriteToggle = (): void => {
     this.props.onFavouriteChange(!this.props.isFavourite);
   };
 
-  render(): React.Element<any> {
+  render() {
     const className = classNames(styles.avatar, this.props.className);
 
     return (

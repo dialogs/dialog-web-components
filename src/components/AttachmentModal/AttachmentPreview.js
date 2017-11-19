@@ -4,7 +4,7 @@
  */
 
 import type { AttachmentPreviewProps } from './types';
-import React from 'react';
+import * as React from 'react';
 import classNames from 'classnames';
 import getDocumentType from '../../utils/getDocumentType';
 import getFilenameExtension from '../../utils/getFilenameExtension';

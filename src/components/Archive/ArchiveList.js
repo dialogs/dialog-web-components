@@ -19,8 +19,7 @@ export type Props = {
   onSelect: (peer: Peer) => void
 }
 
-class ArchiveList extends PureComponent {
-  props: Props;
+class ArchiveList extends PureComponent<Props> {
   list: ?List;
 
   componentWillReceiveProps(nextProps: Props) {

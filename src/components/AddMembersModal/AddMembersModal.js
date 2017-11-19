@@ -28,9 +28,7 @@ export type Props = {
   onChange: (selector: SelectorState<PeerInfo>) => any
 };
 
-class AddMembersModal extends PureComponent {
-  props: Props;
-
+class AddMembersModal extends PureComponent<Props> {
   handleClose = (): void => {
     if (!this.props.pending) {
       this.props.onClose();
@@ -45,7 +43,7 @@ class AddMembersModal extends PureComponent {
     );
   };
 
-  render(): React.Element<any> {
+  render() {
     const className = classNames(styles.container, this.props.className);
 
     return (

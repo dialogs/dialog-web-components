@@ -27,10 +27,7 @@ export type State = {
   isOpen: boolean
 };
 
-class ActivityListMembers extends PureComponent {
-  props: Props;
-  state: State;
-
+class ActivityListMembers extends PureComponent<Props, State> {
   constructor(props: Props) {
     super(props);
 
@@ -49,7 +46,7 @@ class ActivityListMembers extends PureComponent {
     this.setState({ isOpen: !this.state.isOpen });
   };
 
-  renderHeader(): React.Element<any> {
+  renderHeader() {
     const { online } = this.props;
 
     if (online.isNotMember) {
@@ -85,7 +82,7 @@ class ActivityListMembers extends PureComponent {
     );
   }
 
-  renderMembersList(): React.Element<any>[] {
+  renderMembersList() {
     const { members, uid } = this.props;
 
     return members.map((member) => {
@@ -102,7 +99,7 @@ class ActivityListMembers extends PureComponent {
   }
 
 
-  renderMembers(): ?React.Element<any> {
+  renderMembers() {
     const { isOpen } = this.state;
 
     if (!isOpen) {
@@ -117,7 +114,7 @@ class ActivityListMembers extends PureComponent {
     );
   }
 
-  render(): React.Element<any> {
+  render() {
     const className = classNames(styles.container, this.props.className);
 
     return (

@@ -21,10 +21,8 @@ type Props = {
   onClick: () => mixed
 };
 
-class MessageState extends PureComponent {
-  props: Props;
-
-  handleClick = (event: SyntheticMouseEvent): void => {
+class MessageState extends PureComponent<Props> {
+  handleClick = (event: SyntheticMouseEvent<>): void => {
     event.preventDefault();
     event.stopPropagation();
 

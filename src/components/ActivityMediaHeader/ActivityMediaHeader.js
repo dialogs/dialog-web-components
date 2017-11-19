@@ -13,11 +13,11 @@ import styles from './ActivityMediaHeader.css';
 import { Text } from '@dlghq/react-l10n';
 
 export type Props = {
+  className?: string,
+  current: string,
   onClose?: () => any,
   onBack?: () => any,
-  onChange?: (type: string) => mixed,
-  current: string,
-  className?: string
+  onChange?: (type: string) => mixed
 };
 
 const MEDIA_TYPES = [
@@ -28,9 +28,7 @@ const MEDIA_TYPES = [
   'video'
 ];
 
-class ActivityMediaHeader extends PureComponent {
-  props: Props;
-
+class ActivityMediaHeader extends PureComponent<Props> {
   renderTrigger = (handlers: Object, isActive: boolean) => {
     const { current } = this.props;
     const className = classNames(styles.current, {
@@ -74,7 +72,7 @@ class ActivityMediaHeader extends PureComponent {
     );
   };
 
-  renderBackButton(): ?React.Element<any> {
+  renderBackButton() {
     if (!this.props.onBack) {
       return null;
     }
@@ -89,7 +87,7 @@ class ActivityMediaHeader extends PureComponent {
     );
   }
 
-  renderCloseButton(): ?React.Element<any> {
+  renderCloseButton() {
     if (!this.props.onClose) {
       return null;
     }
@@ -131,7 +129,7 @@ class ActivityMediaHeader extends PureComponent {
     );
   }
 
-  render(): React.Element<any> {
+  render() {
     const className = classNames(styles.container, this.props.className);
 
     return (

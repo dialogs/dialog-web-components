@@ -18,9 +18,7 @@ type Props = {
   onClick: (char: string) => any
 };
 
-class EmojiCategory extends PureComponent {
-  props: Props;
-
+class EmojiCategory extends PureComponent<Props> {
   renderChars() {
     if (!this.props.isVisible) {
       return null;

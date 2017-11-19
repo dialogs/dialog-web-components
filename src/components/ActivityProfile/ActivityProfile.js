@@ -6,7 +6,7 @@
 import type { Props as UserProps } from './ActivityUserProfile';
 import type { Props as GroupProps } from './ActivityGroupProfile';
 
-import React from 'react';
+import * as React from 'react';
 import ActivityUserProfile from './ActivityUserProfile';
 import ActivityGroupProfile from './ActivityGroupProfile';
 
@@ -15,7 +15,7 @@ export type Props = (
   ({ type: 'group' } & GroupProps)
 );
 
-function ActivityProfile(props: Props): ?React.Element<any> {
+function ActivityProfile(props: Props) {
   switch (props.type) {
     case 'user':
       return (

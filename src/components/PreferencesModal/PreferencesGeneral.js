@@ -23,9 +23,7 @@ export type Props = {
   onChange: (settings: $Shape<Settings>) => any
 };
 
-class PreferencesGeneral extends PureComponent {
-  props: Props;
-
+class PreferencesGeneral extends PureComponent<Props> {
   handleSendByChange = (value: string): void => {
     this.props.onChange({
       isSendByEnter: value === 'enter'

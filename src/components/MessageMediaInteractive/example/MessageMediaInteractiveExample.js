@@ -17,10 +17,7 @@ type State = {
   code: string
 };
 
-class MessageMediaInteractiveExample extends PureComponent {
-  props: Props;
-  state: State;
-
+class MessageMediaInteractiveExample extends PureComponent<Props, State> {
   constructor(props: Props) {
     super(props);
 

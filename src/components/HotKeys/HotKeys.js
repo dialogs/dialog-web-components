@@ -12,8 +12,7 @@ type Props = {
   onHotKey: (trigger: string, event: KeyboardEvent) => any
 };
 
-class HotKeys extends Component {
-  props: Props;
+class HotKeys extends Component<Props> {
   listener: ?{ remove(): void };
   getHotKey: (event: KeyboardEvent) => string;
 

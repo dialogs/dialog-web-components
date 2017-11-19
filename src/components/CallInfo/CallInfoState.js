@@ -4,7 +4,7 @@
  */
 
 import type { CallState } from '@dlghq/dialog-types';
-import React from 'react';
+import * as React from 'react';
 import { Text } from '@dlghq/react-l10n';
 import TimeTimer from '../Timer/TimeTimer';
 

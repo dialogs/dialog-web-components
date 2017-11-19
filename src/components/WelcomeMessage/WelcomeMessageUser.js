@@ -3,7 +3,7 @@
  * @flow
  */
 
-import React, { PureComponent } from 'react';
+import React, { PureComponent, type Node } from 'react';
 import classNames from 'classnames';
 import PeerInfoTitle from '../PeerInfoTitle/PeerInfoTitle';
 import styles from './WelcomeMessage.css';
@@ -13,12 +13,10 @@ export type Props = {
   title: string,
   userName?: ?string,
   about?: ?string,
-  renderActions?: () => mixed
+  renderActions?: () => Node
 };
 
-class WelcomeMessageUser extends PureComponent {
-  props: Props;
-
+class WelcomeMessageUser extends PureComponent<Props> {
   renderActions() {
     if (!this.props.renderActions) {
       return null;
@@ -41,7 +39,7 @@ class WelcomeMessageUser extends PureComponent {
     );
   }
 
-  render(): React.Element<any> {
+  render() {
     const { title, userName } = this.props;
     const className = classNames(styles.container, this.props.className);
 

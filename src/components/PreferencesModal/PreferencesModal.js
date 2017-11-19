@@ -21,9 +21,7 @@ import PreferencesSecurity from './PreferencesSecurity/PreferencesSecurity';
 import PreferencesBlocked from './PreferencesBlocked/PreferencesBlocked';
 import styles from './PreferencesModal.css';
 
-class PreferencesModal extends PureComponent {
-  props: Props;
-
+class PreferencesModal extends PureComponent<Props> {
   handleClose = (): void => {
     if (!this.isPending()) {
       this.props.onClose();

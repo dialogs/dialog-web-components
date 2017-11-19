@@ -5,7 +5,7 @@
 
 /* eslint max-len:0 */
 
-import React from 'react';
+import * as React from 'react';
 import classNames from 'classnames';
 import { Text } from '@dlghq/react-l10n';
 import styles from './EmptyChat.css';

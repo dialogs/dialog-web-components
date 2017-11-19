@@ -6,7 +6,7 @@
 import type { PeerInfo } from '@dlghq/dialog-types';
 import type { SelectorState } from '../../entities';
 
-import React from 'react';
+import * as React from 'react';
 import classNames from 'classnames';
 import SelectList from '../SelectList/SelectList';
 import ContactListItem from './ContactListItem';

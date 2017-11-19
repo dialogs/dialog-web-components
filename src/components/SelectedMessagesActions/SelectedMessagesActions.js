@@ -18,10 +18,8 @@ export type Props = {
   onReply?: () => any
 };
 
-class SelectedMessagesActions extends PureComponent {
-  props: Props;
-
-  render(): React.Element<any> {
+class SelectedMessagesActions extends PureComponent<Props> {
+  render() {
     const className = classNames(styles.container, this.props.className);
 
     return (

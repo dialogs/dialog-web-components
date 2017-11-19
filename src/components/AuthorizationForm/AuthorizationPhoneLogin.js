@@ -31,9 +31,7 @@ export type State = {
   resendTimeout: number
 };
 
-class AuthorizationPhoneLogin extends PureComponent {
-  props: Props;
-  state: State;
+class AuthorizationPhoneLogin extends PureComponent<Props, State> {
   interval: ?number;
   phoneInput: ?PhoneInput;
 
@@ -68,7 +66,7 @@ class AuthorizationPhoneLogin extends PureComponent {
     this.handleIntervalClear();
   }
 
-  handleChange = (value: string, event: SyntheticInputEvent): void => {
+  handleChange = (value: string, event: SyntheticInputEvent<>): void => {
     this.props.onChange({
       type: this.props.value.type,
       credentials: {
@@ -146,11 +144,11 @@ class AuthorizationPhoneLogin extends PureComponent {
     return null;
   }
 
-  setPhoneInput = (input: PhoneInput): void => {
+  setPhoneInput = (input: *): void => {
     this.phoneInput = input;
   };
 
-  renderCountrySelector(): ?React.Element<any> {
+  renderCountrySelector() {
     const { step } = this.props;
 
     if (step >= LOGIN_SENT) {
@@ -170,7 +168,7 @@ class AuthorizationPhoneLogin extends PureComponent {
     );
   }
 
-  renderRetry(): ?React.Element<any> {
+  renderRetry() {
     const { step } = this.props;
 
     if (step < LOGIN_SENT || step > CODE_REQUESTED) {
@@ -187,7 +185,7 @@ class AuthorizationPhoneLogin extends PureComponent {
     );
   }
 
-  renderResendCode(): ?React.Element<any> {
+  renderResendCode() {
     const { step } = this.props;
     const { isCodeResendRequested, resendTimeout } = this.state;
 
@@ -215,7 +213,7 @@ class AuthorizationPhoneLogin extends PureComponent {
     );
   }
 
-  renderPhoneInput(): React.Element<any> {
+  renderPhoneInput() {
     const { step, id, value: { credentials } } = this.props;
 
     return (
@@ -236,7 +234,7 @@ class AuthorizationPhoneLogin extends PureComponent {
     );
   }
 
-  renderCodeInput(): ?React.Element<any> {
+  renderCodeInput() {
     const { step, id } = this.props;
 
     if (step < CODE_REQUESTED || step > CODE_SENT) {

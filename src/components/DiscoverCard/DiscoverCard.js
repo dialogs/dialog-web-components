@@ -30,9 +30,7 @@ export type Props = Card & {
   onGoToPeer: (peer: Peer) => mixed
 };
 
-class DiscoverCard extends PureComponent {
-  props: Props;
-
+class DiscoverCard extends PureComponent<Props> {
   handleClick = () => {
     this.props.onGoToPeer(this.props.peer);
   };

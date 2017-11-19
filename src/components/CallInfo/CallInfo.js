@@ -18,9 +18,7 @@ type Props = {
   onClick?: ?() => mixed
 };
 
-class CallInfo extends PureComponent {
-  props: Props;
-
+class CallInfo extends PureComponent<Props> {
   render() {
     const { call } = this.props;
     const className = classNames(styles.container, this.props.className, {

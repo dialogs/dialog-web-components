@@ -16,14 +16,12 @@ type Props = {
   onClick: (name: string) => any
 };
 
-class EmojiTab extends PureComponent {
-  props: Props;
-
+class EmojiTab extends PureComponent<Props> {
   static defaultProps = {
     disabled: false
   };
 
-  handleClick = (event: SyntheticMouseEvent) => {
+  handleClick = (event: SyntheticMouseEvent<>) => {
     event.preventDefault();
     event.stopPropagation();
     event.nativeEvent.stopImmediatePropagation();
@@ -33,7 +31,7 @@ class EmojiTab extends PureComponent {
     }
   };
 
-  render(): React.Element<any> {
+  render() {
     const className = classNames(styles.footerTabIcon, {
       [styles.active]: this.props.active,
       [styles.disabled]: this.props.disabled

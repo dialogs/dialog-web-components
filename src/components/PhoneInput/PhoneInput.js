@@ -26,8 +26,7 @@ type Props = {
   onChange: (value: string, country: ?Country) => any
 };
 
-class PhoneInput extends PureComponent {
-  props: Props;
+class PhoneInput extends PureComponent<Props> {
   input: ?InputNext;
 
   static defaultProps = {
@@ -41,7 +40,7 @@ class PhoneInput extends PureComponent {
     );
   };
 
-  setInput = (element: InputNext): void => {
+  setInput = (element: *): void => {
     this.input = element;
   };
 

@@ -22,9 +22,7 @@ type State = {
   isControlsVisible: boolean
 };
 
-class CallChat extends PureComponent {
-  props: Props;
-  state: State;
+class CallChat extends PureComponent<Props, State> {
   container: ?Node;
 
   constructor(props: Props) {

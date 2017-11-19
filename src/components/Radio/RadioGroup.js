@@ -3,16 +3,16 @@
  * @flow
  */
 
-import React, { PureComponent } from 'react';
+import React, { PureComponent, type Node } from 'react';
 import PropTypes from 'prop-types';
 
 export type Props = {
   className?: string,
   disabled?: boolean,
-  children?: mixed,
+  children: Node,
   name: string,
   value: string,
-  onChange: (value: string, event: SyntheticInputEvent) => mixed
+  onChange: (value: string, event: SyntheticInputEvent<HTMLInputElement>) => mixed
 };
 
 export type Context = {
@@ -20,13 +20,11 @@ export type Context = {
     name: string,
     value: string,
     disabled?: boolean,
-    onChange: (value: string, event: SyntheticInputEvent) => mixed
+    onChange: (value: string, event: SyntheticInputEvent<HTMLInputElement>) => mixed
   }
 };
 
-class RadioGroup extends PureComponent {
-  props: Props;
-
+class RadioGroup extends PureComponent<Props> {
   static childContextTypes = {
     radioGroup: PropTypes.object.isRequired
   };
@@ -42,7 +40,7 @@ class RadioGroup extends PureComponent {
     };
   }
 
-  render(): React.Element<any> {
+  render() {
     return <div className={this.props.className}>{this.props.children}</div>;
   }
 }

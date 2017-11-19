@@ -19,9 +19,7 @@ type Props = {
   sender: ?string
 };
 
-class ActivityMediaVideo extends PureComponent {
-  props: Props;
-
+class ActivityMediaVideo extends PureComponent<Props> {
   renderPreview() {
     const className = classNames(styles.preview, {
       [styles.previewEmpty]: !this.props.preview

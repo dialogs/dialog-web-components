@@ -15,9 +15,7 @@ import AuthorizationSignUp from './AuthorizationSignUp';
 import { LOGIN_SENT, CODE_REQUESTED, CODE_SENT, SIGNUP_STARTED, NAME_SENT, AUTH_FINISHED } from './constants';
 import styles from './AuthorizationForm.css';
 
-class AuthorizationForm extends PureComponent {
-  props: Props;
-
+class AuthorizationForm extends PureComponent<Props> {
   static defaultProps = {
     id: 'form_login',
     isGenderEnabled: true,
@@ -48,7 +46,7 @@ class AuthorizationForm extends PureComponent {
     }
   }
 
-  renderButtonText(): React.Element<any> {
+  renderButtonText() {
     const { step } = this.props;
 
     if (step < CODE_REQUESTED) {
@@ -66,7 +64,7 @@ class AuthorizationForm extends PureComponent {
     return <Text id="AuthorizationForm.success" />;
   }
 
-  renderTypeSelector(): ?React.Element<any> {
+  renderTypeSelector() {
     const { allowed, value: { type }, step, id } = this.props;
 
     if (allowed.length <= 1) {
@@ -84,7 +82,7 @@ class AuthorizationForm extends PureComponent {
     );
   }
 
-  renderForm(): ?React.Element<any> {
+  renderForm() {
     const { value, step, errors, info, autoFocus, id, isGenderEnabled } = this.props;
 
     if (step < SIGNUP_STARTED) {

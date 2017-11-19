@@ -17,9 +17,7 @@ type Props = {
   onLightboxOpen: (message: Message) => mixed
 };
 
-class ActivityMediaItem extends PureComponent {
-  props: Props;
-
+class ActivityMediaItem extends PureComponent<Props> {
   handleGoToMessage = () => {
     this.props.onGoToMessage(this.props.message);
   };

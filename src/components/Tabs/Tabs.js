@@ -15,10 +15,8 @@ export type Props = {
   onPick: (current: string) => any
 };
 
-class Tabs extends PureComponent {
-  props: Props;
-
-  render(): React.Element<any> {
+class Tabs extends PureComponent<Props> {
+  render() {
     const { current, variants } = this.props;
     const className = classNames(styles.container, this.props.className);
 

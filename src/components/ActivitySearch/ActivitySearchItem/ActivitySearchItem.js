@@ -28,10 +28,7 @@ type State = {
   collapsed: boolean
 };
 
-class ActivitySearchItem extends PureComponent {
-  props: Props;
-  state: State;
-
+class ActivitySearchItem extends PureComponent<Props, State> {
   constructor(props: Props) {
     super(props);
 

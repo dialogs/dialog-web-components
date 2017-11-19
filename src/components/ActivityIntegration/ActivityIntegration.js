@@ -18,9 +18,7 @@ export type Props = {
   onRevoke: () => any
 };
 
-class ActivityIntegration extends PureComponent {
-  props: Props;
-
+class ActivityIntegration extends PureComponent<Props> {
   renderLink() {
     const { link, pending } = this.props;
 

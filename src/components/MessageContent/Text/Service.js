@@ -13,16 +13,14 @@ export type Props = {|
   isPending?: boolean
 |};
 
-class Service extends Component {
-  props: Props;
-
+class Service extends Component<Props> {
   shouldComponentUpdate(nextProps: Props): boolean {
     return this.props.text !== nextProps.text ||
            this.props.isPending !== nextProps.isPending ||
            this.props.className !== nextProps.className;
   }
 
-  render(): React.Element<any> {
+  render() {
     const className = classNames(
       styles.container,
       styles.service,

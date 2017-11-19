@@ -9,24 +9,16 @@ import { LocalizationContextType } from '@dlghq/react-l10n';
 import classNames from 'classnames';
 import styles from './Input.css';
 
-export type StringProps = {
-  type: 'text' | 'email' | 'search' | 'tel' | 'url' | 'password' | 'textarea',
-  value: string,
-  onChange: (value: string, event: SyntheticInputEvent) => any
-};
+type HTMLAbstractInputElement = HTMLInputElement | HTMLTextAreaElement;
 
-export type NumberProps = {
-  type: 'number',
-  value: number,
-  onChange: (value: number, event: SyntheticInputEvent) => any
-};
-
-export type Props = (StringProps | NumberProps) & {
+export type Props = {
   className?: string,
   inputClassName?: string,
   wrapperClassName?: string,
   prefixClassName?: string,
   id: string,
+  type: 'text' | 'number' | 'email' | 'search' | 'tel' | 'url' | 'password' | 'textarea',
+  value: string | number,
   name?: string,
   label?: string,
   large?: boolean,
@@ -38,11 +30,13 @@ export type Props = (StringProps | NumberProps) & {
   autoFocus?: boolean,
   htmlAutoFocus?: boolean,
   tabIndex?: number,
-  onFocus?: (event: SyntheticFocusEvent) => any,
-  onBlur?: (event: SyntheticFocusEvent) => any,
-  onKeyUp?: (event: SyntheticKeyboardEvent) => any,
-  onKeyDown?: (event: SyntheticKeyboardEvent) => any,
-  onKeyPress?: (event: SyntheticKeyboardEvent) => any
+  htmlAutoFocus?: boolean,
+  onChange: (value: string, event: SyntheticInputEvent<HTMLAbstractInputElement>) => any,
+  onFocus?: (event: SyntheticFocusEvent<HTMLAbstractInputElement>) => any,
+  onBlur?: (event: SyntheticFocusEvent<HTMLAbstractInputElement>) => any,
+  onKeyUp?: (event: SyntheticKeyboardEvent<HTMLAbstractInputElement>) => any,
+  onKeyDown?: (event: SyntheticKeyboardEvent<HTMLAbstractInputElement>) => any,
+  onKeyPress?: (event: SyntheticKeyboardEvent<HTMLAbstractInputElement>) => any
 };
 
 export type State = {
@@ -51,9 +45,7 @@ export type State = {
 
 export type Context = ProviderContext;
 
-class Input extends PureComponent {
-  props: Props;
-  state: State;
+class Input extends PureComponent<Props, State> {
   context: Context;
 
   // refs
@@ -123,7 +115,7 @@ class Input extends PureComponent {
     return Boolean(this.props.autoFocus) && !this.props.disabled;
   }
 
-  setInput = (element: HTMLInputElement | HTMLTextAreaElement): void => {
+  setInput = (element: *): void => {
     this.input = element;
   };
 
@@ -147,7 +139,7 @@ class Input extends PureComponent {
     }
   }
 
-  renderLabel(): ?React.Element<any> {
+  renderLabel() {
     const { id, label } = this.props;
     const { l10n } = this.context;
 
@@ -162,7 +154,7 @@ class Input extends PureComponent {
     );
   }
 
-  renderHint(): ?React.Element<any> {
+  renderHint() {
     const { hint } = this.props;
     const { l10n } = this.context;
 
@@ -177,7 +169,7 @@ class Input extends PureComponent {
     );
   }
 
-  renderPrefix(): ?React.Element<any> {
+  renderPrefix() {
     const { prefix, id } = this.props;
 
     if (!prefix) {
@@ -199,19 +191,49 @@ class Input extends PureComponent {
     );
   }
 
-  render(): React.Element<any> {
+  renderInput() {
     const {
       props: {
         id, name, type, value, disabled, tabIndex,
-        status, large, placeholder, htmlAutoFocus,
+        placeholder, htmlAutoFocus,
         onKeyUp, onKeyDown, onKeyPress
       },
-      state: {
-        isFocused
-      },
-      context: {
-        l10n
-      }
+      context: { l10n }
+    } = this;
+
+    const props = {
+      className: classNames(
+        styles.input,
+        this.props.inputClassName,
+      ),
+      disabled,
+      id,
+      name,
+      placeholder: placeholder ? l10n.formatText(placeholder) : null,
+      type,
+      value,
+      ref: this.setInput,
+      tabIndex,
+      autoFocus: htmlAutoFocus,
+      onChange: this.handleChange,
+      onBlur: this.handleBlur,
+      onFocus: this.handleFocus,
+      onKeyDown,
+      onKeyPress,
+      onKeyUp
+    };
+
+    if (type === 'textarea') {
+      return <textarea {...props} />;
+    }
+
+    return <input {...props} />;
+  }
+
+  render() {
+    const {
+      props: { value, disabled, status, large },
+      state: { isFocused }
     } = this;
 
     const className = classNames(
@@ -229,36 +251,12 @@ class Input extends PureComponent {
       this.props.wrapperClassName,
     );
 
-    const inputClassName = classNames(
-      styles.input,
-      this.props.inputClassName,
-    );
-
-    const TagName = type === 'textarea' ? 'textarea' : 'input';
-
     return (
       <div className={className}>
         {this.renderLabel()}
         <div className={wrapperClassName}>
           {this.renderPrefix()}
-          <TagName
-            className={inputClassName}
-            disabled={disabled}
-            id={id}
-            name={name}
-            placeholder={placeholder ? l10n.formatText(placeholder) : null}
-            type={type}
-            value={value}
-            ref={this.setInput}
-            tabIndex={tabIndex}
-            autoFocus={htmlAutoFocus}
-            onChange={this.handleChange}
-            onBlur={this.handleBlur}
-            onFocus={this.handleFocus}
-            onKeyDown={onKeyDown}
-            onKeyPress={onKeyPress}
-            onKeyUp={onKeyUp}
-          />
+          {this.renderInput()}
         </div>
         {this.renderHint()}
       </div>

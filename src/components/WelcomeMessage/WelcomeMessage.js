@@ -3,7 +3,7 @@
  * @flow
  */
 
-import React from 'react';
+import React, { type Node } from 'react';
 import WelcomeMessageGroup from './WelcomeMessageGroup';
 import WelcomeMessageUser from './WelcomeMessageUser';
 
@@ -18,7 +18,7 @@ export type Props = {
   createdAt?: ?string,
   creator?: ?string,
   userName?: ?string,
-  renderActions?: () => mixed
+  renderActions?: () => Node
 };
 
 function WelcomeMessage(props: Props) {

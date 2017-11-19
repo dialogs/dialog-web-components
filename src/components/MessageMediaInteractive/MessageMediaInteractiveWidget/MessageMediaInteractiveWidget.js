@@ -7,7 +7,7 @@ import type {
   MessageMediaInteractiveStyle,
   MessageMediaInteractiveWidget as MessageMediaInteractiveWidgetType
 } from '@dlghq/dialog-types';
-import React from 'react';
+import * as React from 'react';
 import MessageMediaInteractiveWidgetButton from './MessageMediaInteractiveWidgetButton';
 import MessageMediaInteractiveWidgetSelect from './MessageMediaInteractiveWidgetSelect';
 

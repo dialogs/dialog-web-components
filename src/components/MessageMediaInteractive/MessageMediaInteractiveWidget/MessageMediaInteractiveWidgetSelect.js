@@ -23,10 +23,7 @@ type State = {
   value?: string
 };
 
-class MessageMediaInteractiveWidgetSelect extends PureComponent {
-  props: Props;
-  state: State;
-
+class MessageMediaInteractiveWidgetSelect extends PureComponent<Props, State> {
   constructor(props: Props) {
     super(props);
 
