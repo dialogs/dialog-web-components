@@ -66,7 +66,6 @@
     "name": "Plug & Play Modals",
     "components": [
       "AboutModal",
-      "JoinModal",
       "AddContactModal",
       "AttachmentModal",
       "CreateNewModal",
