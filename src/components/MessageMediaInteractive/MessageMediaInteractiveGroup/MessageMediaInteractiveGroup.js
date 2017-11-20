@@ -3,8 +3,10 @@
  * @flow
  */
 
+import type { ProviderContext as Context } from '@dlghq/react-l10n';
 import type { MessageMediaInteractiveActionGroup, MessageMediaInteractiveConfirm } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
+import { LocalizationContextType } from '@dlghq/react-l10n';
 import classNames from 'classnames';
 import styles from './MessageMediaInteractiveGroup.css';
 import Markdown from '../../Markdown/Markdown';
@@ -17,20 +19,40 @@ export type Props = {
 };
 
 class MessageMediaInteractiveGroup extends PureComponent<Props> {
+  props: Props;
+  context: Context;
+
+  static contextTypes = {
+    l10n: LocalizationContextType
+  };
+
   renderTitle() {
-    if (this.props.group.title) {
-      return <Markdown inline className={styles.title} text={this.props.group.title} tagName="h5" />;
+    if (!this.props.group.title) {
+      return null;
     }
 
-    return null;
+    return (
+      <Markdown
+        inline
+        className={styles.title}
+        text={this.context.l10n.formatText(this.props.group.title)}
+        tagName="h5"
+      />
+    );
   }
 
   renderDescription() {
-    if (this.props.group.description) {
-      return <Markdown className={styles.description} text={this.props.group.description} />;
+    if (!this.props.group.description) {
+      return null;
     }
 
-    return null;
+    return (
+      <Markdown
+        className={styles.description}
+        text={this.context.l10n.formatText(this.props.group.description)}
+        tagName="div"
+      />
+    );
   }
 
   renderHeader() {

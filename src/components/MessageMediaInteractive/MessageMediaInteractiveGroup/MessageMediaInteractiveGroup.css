@@ -22,7 +22,7 @@
   display: block;
   font-family: var(--message-media-interactive-font-family);
   margin: calc(var(--default-padding-small) / 2) 0;
-  padding: 2px 12px;
+  padding: 1px 12px;
   box-shadow: inset var(--message-media-interactive-border-width) 0 0 0 var(--message-media-interactive-border-color);
 
   &:last-child {
@@ -32,7 +32,6 @@
 
 .header {
   display: block;
-  margin: 4px 0;
 }
 
 .title {
@@ -43,7 +42,7 @@
 }
 
 .description {
-  margin: 0 0 4px;
+  margin: 4px 0;
   font-size: var(--message-media-interactive-description-font-size);
   line-height: 1.1;
 }

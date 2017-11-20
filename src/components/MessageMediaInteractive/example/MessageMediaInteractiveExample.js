@@ -54,7 +54,8 @@ class MessageMediaInteractiveExample extends PureComponent<Props, State> {
           <MessageMediaInteractive
             media={{
               type: 'interactive',
-              content: JSON.parse(this.state.code)
+              content: JSON.parse(this.state.code),
+              messages: interactive.messages
             }}
             onSubmit={this.handleSubmit}
           />
