@@ -19,9 +19,7 @@ import AttachmentMeta from './AttachmentMeta';
 import AttachmentPreview from './AttachmentPreview';
 import styles from './AttachmentModal.css';
 
-class AttachmentModal extends PureComponent {
-  props: Props;
-
+class AttachmentModal extends PureComponent<Props> {
   handleSend = (): void => {
     const { attachments } = this.props;
 

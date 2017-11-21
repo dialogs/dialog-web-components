@@ -18,15 +18,12 @@ export type Props = {
   value: EmailValue,
   errors: ?{ [field: string]: AuthError },
   autoFocus?: boolean,
-  onRetry: () => any,
-  onChange: (value: EmailValue) => any
+  onRetry: () => mixed,
+  onChange: (value: EmailValue) => mixed
 };
 
-class AuthorizationEmailLogin extends PureComponent {
-  props: Props;
-
-
-  handleChange = (value: any, { target }: $FlowIssue): void => {
+class AuthorizationEmailLogin extends PureComponent<Props> {
+  handleChange = (value: mixed, { target }: $FlowIssue): void => {
     this.props.onChange({
       type: this.props.value.type,
       credentials: {
@@ -51,7 +48,7 @@ class AuthorizationEmailLogin extends PureComponent {
     return null;
   }
 
-  renderRetry(): ?React.Element<any> {
+  renderRetry() {
     const { step } = this.props;
 
     if (step >= LOGIN_SENT) {
@@ -68,7 +65,7 @@ class AuthorizationEmailLogin extends PureComponent {
     return null;
   }
 
-  renderEmailInput(): React.Element<any> {
+  renderEmailInput() {
     const { step, id } = this.props;
 
     return (
@@ -90,7 +87,7 @@ class AuthorizationEmailLogin extends PureComponent {
     );
   }
 
-  renderCodeInput(): ?React.Element<any> {
+  renderCodeInput() {
     const { step, id } = this.props;
 
     if (step < CODE_REQUESTED || step > CODE_SENT) {

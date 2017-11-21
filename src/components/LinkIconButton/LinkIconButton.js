@@ -23,16 +23,14 @@ export type Props = {
   href: string
 }
 
-class LinkIconButton extends PureComponent {
-  props: Props;
-
+class LinkIconButton extends PureComponent<Props> {
   static defaultProps = {
     size: 'normal',
     flat: false,
     theme: 'default'
   };
 
-  render(): React.Element<any> {
+  render() {
     const { glyph, theme, size, flat, style, active, href, target, id, ...otherProps } = this.props;
 
     const className = classNames(styles.container, styles[size], {

@@ -23,14 +23,12 @@ export type Props = {
   pending: boolean,
   selector: SelectorState<PeerInfo>,
   autoFocus: boolean,
-  onClose: () => any,
-  onSubmit: (gid: number, uids: number[]) => any,
-  onChange: (selector: SelectorState<PeerInfo>) => any
+  onClose: () => mixed,
+  onSubmit: (gid: number, uids: number[]) => mixed,
+  onChange: (selector: SelectorState<PeerInfo>) => mixed
 };
 
-class AddMembersModal extends PureComponent {
-  props: Props;
-
+class AddMembersModal extends PureComponent<Props> {
   handleClose = (): void => {
     if (!this.props.pending) {
       this.props.onClose();
@@ -45,7 +43,7 @@ class AddMembersModal extends PureComponent {
     );
   };
 
-  render(): React.Element<any> {
+  render() {
     const className = classNames(styles.container, this.props.className);
 
     return (

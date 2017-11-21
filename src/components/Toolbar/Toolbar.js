@@ -3,16 +3,16 @@
  * @flow
  */
 
-import React from 'react';
+import * as React from 'react';
 import classNames from 'classnames';
 import styles from './Toolbar.css';
 
 export type Props = {
   className?: string,
-  children?: React.Element<any>
+  children: React.Node
 };
 
-function Toolbar(props: Props): React.Element<any> {
+function Toolbar(props: Props) {
   const className = classNames(styles.container, props.className);
 
   return (

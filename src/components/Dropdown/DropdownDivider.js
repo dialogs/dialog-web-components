@@ -3,7 +3,7 @@
  * @flow
  */
 
-import React from 'react';
+import * as React from 'react';
 import classNames from 'classnames';
 import styles from './Dropdown.css';
 
@@ -11,7 +11,7 @@ type Props = {
   className?: string
 };
 
-function DropdownDivider(props: Props): React.Element<any> {
+function DropdownDivider(props: Props) {
   const className = classNames(styles.divider, props.className);
 
   return (

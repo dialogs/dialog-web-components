@@ -15,9 +15,7 @@ export type Props = {|
   maxWidth: number
 |};
 
-class Contact extends PureComponent {
-  props: Props;
-
+class Contact extends PureComponent<Props> {
   getAvatarSize = (): number => {
     const { maxWidth } = this.props;
 
@@ -32,7 +30,7 @@ class Contact extends PureComponent {
     return 96;
   };
 
-  renderAvatar(): ?React.Element<any> {
+  renderAvatar() {
     const { name, photo64 } = this.props;
 
     if (!photo64) {
@@ -51,7 +49,7 @@ class Contact extends PureComponent {
     );
   }
 
-  renderEmails(): ?React.Element<any>[] {
+  renderEmails() {
     const { emails } = this.props;
 
     if (!emails.length) {
@@ -68,7 +66,7 @@ class Contact extends PureComponent {
     });
   }
 
-  renderPhones(): ?React.Element<any>[] {
+  renderPhones() {
     const { phones } = this.props;
 
     if (!phones.length) {
@@ -86,7 +84,7 @@ class Contact extends PureComponent {
   }
 
 
-  render(): React.Element<any> {
+  render() {
     const { name, maxWidth } = this.props;
     const className = classNames(styles.container, {
       [styles.vertical]: maxWidth < 300

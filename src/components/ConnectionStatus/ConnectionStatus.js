@@ -19,9 +19,7 @@ export type State = {
   show: boolean
 };
 
-class ConnectionStatus extends PureComponent {
-  props: Props;
-  state: State;
+class ConnectionStatus extends PureComponent<Props, State> {
   timeoutId: ?number;
 
   constructor(props: Props) {

@@ -13,13 +13,11 @@ type Props = {
   attachment: MessageAttachmentType,
   maxHeight: number,
   maxWidth: number,
-  onGoToPeer: (peer: Peer) => any,
-  onGoToMessage: (peer: ?Peer, message: Message) => any
+  onGoToPeer: (peer: Peer) => mixed,
+  onGoToMessage: (peer: ?Peer, message: Message) => mixed
 };
 
-class MessageAttachment extends PureComponent {
-  props: Props;
-
+class MessageAttachment extends PureComponent<Props> {
   render() {
     const { attachment, maxWidth, maxHeight } = this.props;
 

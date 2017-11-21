@@ -18,10 +18,8 @@ export type Props = {
   onClick: (peer: Peer) => void
 };
 
-class ActivityListMembersItem extends PureComponent {
-  props: Props;
-
-  handleKick = (event: SyntheticMouseEvent): void => {
+class ActivityListMembersItem extends PureComponent<Props> {
+  handleKick = (event: SyntheticMouseEvent<>): void => {
     event.preventDefault();
     event.stopPropagation();
     this.props.onKick(this.props.member.peerInfo.peer);
@@ -31,7 +29,7 @@ class ActivityListMembersItem extends PureComponent {
     this.props.onClick(this.props.member.peerInfo.peer);
   };
 
-  renderKick(): ?React.Element<any> {
+  renderKick() {
     const { member, uid } = this.props;
     if (!member.canKick || member.isAdmin || uid === member.peerInfo.peer.id) {
       return null;
@@ -46,7 +44,7 @@ class ActivityListMembersItem extends PureComponent {
     );
   }
 
-  render(): React.Element<any> {
+  render() {
     const { member } = this.props;
 
     return (

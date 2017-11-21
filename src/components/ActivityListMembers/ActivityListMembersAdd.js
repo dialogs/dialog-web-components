@@ -3,7 +3,7 @@
  * @flow
  */
 
-import React from 'react';
+import * as React from 'react';
 import Icon from '../Icon/Icon';
 import { Text } from '@dlghq/react-l10n';
 import styles from './ActivityListMembers.css';

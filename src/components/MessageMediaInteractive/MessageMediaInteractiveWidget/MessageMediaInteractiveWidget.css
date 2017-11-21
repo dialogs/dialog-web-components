@@ -19,8 +19,7 @@
   font-family: var(--message-media-interactive-font-family);
   display: inline-flex;
   flex: 0 0 auto;
-  margin-right: 8px;
-  margin-top: 6px;
+  margin: 4px 8px 4px 0;
 }
 
 .select {

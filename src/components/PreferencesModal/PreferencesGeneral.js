@@ -20,12 +20,10 @@ export type Settings = {
 
 export type Props = {
   settings: Settings,
-  onChange: (settings: $Shape<Settings>) => any
+  onChange: (settings: $Shape<Settings>) => mixed
 };
 
-class PreferencesGeneral extends PureComponent {
-  props: Props;
-
+class PreferencesGeneral extends PureComponent<Props> {
   handleSendByChange = (value: string): void => {
     this.props.onChange({
       isSendByEnter: value === 'enter'

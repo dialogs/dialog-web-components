@@ -177,6 +177,11 @@ module.exports = {
       preview: {
         padding: 0
       }
+    },
+    PlaygroundError: {
+      root: {
+        margin: 0
+      }
     }
   }
 };

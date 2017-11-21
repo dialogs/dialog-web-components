@@ -14,6 +14,7 @@
 .*/stylelint/.*
 .*/systemjs-builder/.*
 .*/node_modules/.*/node_modules/.*
+.*/node_modules/immutable/.*\.flow
 
 
 [include]

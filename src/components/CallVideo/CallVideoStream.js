@@ -13,29 +13,34 @@ type Props = {
   isMirrored: boolean
 };
 
-class CallVideoStream extends PureComponent {
-  props: Props;
-  video: HTMLVideoElement;
+class CallVideoStream extends PureComponent<Props> {
+  video: ?HTMLVideoElement;
 
   componentDidMount() {
-    if ('srcObject' in this.video) {
-      this.video.srcObject = this.props.stream;
-    } else {
-      this.video.src = URL.createObjectURL(this.props.stream);
-    }
+    const { video } = this;
+    if (video) {
+      if ('srcObject' in video) {
+        video.srcObject = this.props.stream;
+      } else {
+        video.src = URL.createObjectURL(this.props.stream);
+      }
 
-    this.video.play();
+      video.play();
+    }
   }
 
   componentWillUnmount() {
-    if ('srcObject' in this.video) {
-      this.video.srcObject = null;
-    } else {
-      URL.revokeObjectURL(this.video.src);
+    const { video } = this;
+    if (video) {
+      if ('srcObject' in video) {
+        video.srcObject = null;
+      } else {
+        URL.revokeObjectURL(video.src);
+      }
     }
   }
 
-  setVideo = (video: HTMLVideoElement) => {
+  setVideo = (video: *) => {
     this.video = video;
   };
 

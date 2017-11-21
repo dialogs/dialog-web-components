@@ -3,7 +3,7 @@
  * @flow
  */
 
-import React, { Component } from 'react';
+import React, { Component, type Node } from 'react';
 import Tether from 'react-tether';
 import { listen } from '@dlghq/dialog-utils';
 
@@ -47,8 +47,8 @@ export type Props = {
    */
   closeOnDocumentScroll: boolean,
 
-  renderTrigger: (handlers: Object, isActive: boolean) => React.Element<any>,
-  renderChild: (point: Point) => React.Element<any>,
+  renderTrigger: (handlers: Object, isActive: boolean) => Node,
+  renderChild: (point: Point) => Node,
 
   /**
    * Called whenever child is mounting or unmounting.
@@ -61,9 +61,7 @@ export type State = {
   position: Point
 };
 
-class Trigger extends Component {
-  props: Props;
-  state: State;
+class Trigger extends Component<Props, State> {
   listeners: ?{ remove(): void }[];
 
   static defaultProps = {
@@ -154,7 +152,7 @@ class Trigger extends Component {
     }
   };
 
-  renderChild(): ?React.Element<any> {
+  renderChild() {
     if (this.state.isOpen) {
       return this.props.renderChild(this.state.position);
     }
@@ -162,7 +160,7 @@ class Trigger extends Component {
     return null;
   }
 
-  renderTrigger(): React.Element<any> {
+  renderTrigger() {
     const { isOpen } = this.state;
     const handler = isOpen ? this.handleClose : this.handleOpen;
     const activeHandlers = isOpen ? this.props.closeHandler : this.props.openHandler;
@@ -175,7 +173,7 @@ class Trigger extends Component {
     return this.props.renderTrigger(props, isOpen);
   }
 
-  render(): React.Element<any> {
+  render() {
     const { options } = this.props;
 
     return (

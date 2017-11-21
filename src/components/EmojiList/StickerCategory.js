@@ -14,12 +14,10 @@ type Props = {
   isActive: boolean,
   isVisible: boolean,
   isAtBottom: boolean,
-  onClick: (sticker: Object) => any
+  onClick: (sticker: Object) => mixed
 };
 
-class StickerCategory extends PureComponent {
-  props: Props;
-
+class StickerCategory extends PureComponent<Props> {
   renderPacks() {
     if (!this.props.isVisible) {
       return null;
@@ -36,7 +34,7 @@ class StickerCategory extends PureComponent {
     });
   }
 
-  render(): React.Element<any> {
+  render() {
     const { pack } = this.props;
 
     const containerStyles: Object = {

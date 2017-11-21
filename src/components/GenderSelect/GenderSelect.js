@@ -7,9 +7,7 @@ import type { Props } from '../Select/types';
 import React, { PureComponent } from 'react';
 import Select from '../Select/Select';
 
-class GenderSelect extends PureComponent {
-  props: Props;
-
+class GenderSelect extends PureComponent<Props> {
   static defaultProps = {
     size: 'normal',
     theme: 'default',

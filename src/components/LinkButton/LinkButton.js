@@ -3,13 +3,13 @@
  * @flow
  */
 
-import React, { PureComponent } from 'react';
+import React, { PureComponent, type Node } from 'react';
 import classNames from 'classnames';
 import styles from '../Button/Button.css';
 
 export type Props = {
   className?: string,
-  children?: any,
+  children: Node,
   wide: boolean,
   rounded: boolean,
   view: 'button' | 'outline' | 'link',
@@ -20,9 +20,7 @@ export type Props = {
   id?: string
 }
 
-class LinkButton extends PureComponent {
-  props: Props;
-
+class LinkButton extends PureComponent<Props> {
   static defaultProps = {
     theme: 'default',
     view: 'button',
@@ -31,7 +29,7 @@ class LinkButton extends PureComponent {
     rounded: true
   };
 
-  render(): React.Element<any> {
+  render() {
     const { theme, size, wide, rounded, children, view, target, href, id } = this.props;
     const className = classNames(styles.container, styles[theme], styles[view], styles[size], {
       [styles.wide]: wide,

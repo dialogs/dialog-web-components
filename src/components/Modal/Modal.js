@@ -3,7 +3,7 @@
  * @flow
  */
 
-import React, { PureComponent } from 'react';
+import React, { PureComponent, type Node } from 'react';
 import classNames from 'classnames';
 import ReactModal from 'react-modal';
 import styles from './Modal.css';
@@ -11,16 +11,14 @@ import styles from './Modal.css';
 export type Props = {
   className?: string,
   overlayClassName?: string,
-  children?: any,
+  children?: Node,
   fullscreen?: boolean,
   shouldCloseOnOverlayClick?: boolean,
-  onClose?: () => any
+  onClose?: () => mixed
 };
 
-class Modal extends PureComponent {
-  props: Props;
-
-  render(): React.Element<any> {
+class Modal extends PureComponent<Props> {
+  render() {
     const className = classNames(styles.container, this.props.className);
     const overlayClassName = classNames(styles.overlay, this.props.overlayClassName, {
       [styles.fullscreen]: this.props.fullscreen

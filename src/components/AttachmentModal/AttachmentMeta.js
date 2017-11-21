@@ -11,9 +11,7 @@ import getFilenameExtension from '../../utils/getFilenameExtension';
 import Switcher from '../Switcher/Switcher';
 import styles from './AttachmentModal.css';
 
-class AttachmentMeta extends PureComponent {
-  props: AttachmentMetaProps;
-
+class AttachmentMeta extends PureComponent<AttachmentMetaProps> {
   handleSendAsFileChange = (): void => {
     this.props.onSendAsFileChange(!this.props.sendAsFile);
   };

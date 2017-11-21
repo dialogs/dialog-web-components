@@ -15,12 +15,10 @@ export type Props = {
   disabled: boolean,
   id: string,
   allowed: AuthType[],
-  onTypeChange: (type: string) => any
+  onTypeChange: (type: string) => mixed
 };
 
-class LoginTypeSelector extends PureComponent {
-  props: Props;
-
+class LoginTypeSelector extends PureComponent<Props> {
   renderOptions() {
     const { id } = this.props;
 

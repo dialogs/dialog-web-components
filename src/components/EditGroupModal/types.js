@@ -23,7 +23,7 @@ export type Props = {
   className?: string,
   shortnamePrefix?: ?string,
   onClose: () => void,
-  onSubmit: (group: Group, update: GroupUpdate) => any
+  onSubmit: (group: Group, update: GroupUpdate) => mixed
 };
 
 export type State = {

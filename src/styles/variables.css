@@ -11,10 +11,12 @@
 
 :root {
   --font-apple: -apple-system, 'BlinkMacSystemFont';
-  --font-fallback: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  --font-fallback: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
   --font-emoji: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   --default-font-family: var(--font-apple), var(--font-fallback), var(--font-emoji);
-  --code-font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', 'Fira Mono', 'Droid Sans Mono', 'Consolas', 'Roboto Mono', 'Source Code Pro', monospace;
+  --code-font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', 'Fira Mono', 'Droid Sans Mono', 'Consolas',
+    'Roboto Mono', 'Source Code Pro', monospace;
 
   /* Sizes */
   --default-background-color: #fff;
@@ -70,9 +72,9 @@
   --avatar-selector-size: 100px;
   --avatar-selector-transitio-duration: var(--default-transition-duration);
   --avatar-selector-camera-icon-color: var(--violet-blue-two);
-  --avatar-selector-camera-icon-color-hover: color(var(--avatar-selector-camera-icon-color) alpha(90%));;
+  --avatar-selector-camera-icon-color-hover: color(var(--avatar-selector-camera-icon-color) alpha(90%));
   --avatar-selector-remove-icon-color: var(--color-danger);
-  --avatar-selector-remove-icon-color-hover: color(var(--avatar-selector-remove-icon-color) alpha(90%));;
+  --avatar-selector-remove-icon-color-hover: color(var(--avatar-selector-remove-icon-color) alpha(90%));
   /* Button */
   --button-min-width: 90px;
   --button-border-radius: var(--default-border-radius);
@@ -503,7 +505,9 @@
   --switcher-transition-duration: var(--default-transition-duration);
   --switcher-label-font-family: var(--default-font-family);
   --switcher-label-font-size: 15px;
-  --switcher-active-offset: calc(var(--switcher-width) - var(--switcher-dot-size) - ((var(--switcher-height) - var(--switcher-dot-size)) / 2)); /* stylelint-disable-line */
+  --switcher-active-offset: calc(
+    var(--switcher-width) - var(--switcher-dot-size) - ((var(--switcher-height) - var(--switcher-dot-size)) / 2)
+  ); /* stylelint-disable-line */
   /* Tabs */
   --tabs-font-family: var(--default-font-family);
   --tabs-width: 220px;
@@ -601,14 +605,6 @@
   /* AddContactModal */
   --modal-add-contact-width: 500px;
   --modal-add-contact-heigth: 320px;
-  /* JoinModal */
-  --modal-join-width: 600px;
-  --modal-join-font-size: var(--default-font-size-large);
-  --modal-join-title-font-size: 34px;
-  --modal-join-padding-top: calc(var(--default-padding-large) * 3.5);
-  --modal-join-padding-right: calc(var(--default-padding-large) * 2.5);
-  --modal-join-padding-bottom: calc(var(--default-padding-large) * 3);
-  --modal-join-padding-left: calc(var(--default-padding-large) * 2.5);
   /* AttachmentModal */
   --modal-attachment-width: 520px;
   --modal-attachment-font-size: var(--default-font-size);

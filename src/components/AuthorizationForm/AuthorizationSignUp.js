@@ -19,14 +19,11 @@ export type Props = {
   autoFocus?: boolean,
   step: 1 | 2 | 3 | 4 | 5 | 6 | 7,
   isGenderEnabled: boolean,
-  onChange: (info: SignupInfo) => any
+  onChange: (info: SignupInfo) => mixed
 };
 
-class AuthorizationSignUp extends PureComponent {
-  props: Props;
-
-
-  handleChange = (value: any, { target }: $FlowIssue): void => {
+class AuthorizationSignUp extends PureComponent<Props> {
+  handleChange = (value: mixed, { target }: $FlowIssue): void => {
     this.props.onChange({
       ...this.props.info,
       [target.name]: value
@@ -48,7 +45,7 @@ class AuthorizationSignUp extends PureComponent {
     return null;
   }
 
-  renderNameInput(): React.Element<any> {
+  renderNameInput() {
     const { step, id } = this.props;
 
     return (
@@ -67,7 +64,7 @@ class AuthorizationSignUp extends PureComponent {
     );
   }
 
-  renderGenderSelector(): ?React.Element<any> {
+  renderGenderSelector() {
     const { id, step, isGenderEnabled } = this.props;
 
     if (!isGenderEnabled) {

@@ -15,12 +15,10 @@ export type Props = {
   className?: string,
   link: string,
   pending: boolean,
-  onRevoke: () => any
+  onRevoke: () => mixed
 };
 
-class ActivityIntegration extends PureComponent {
-  props: Props;
-
+class ActivityIntegration extends PureComponent<Props> {
   renderLink() {
     const { link, pending } = this.props;
 

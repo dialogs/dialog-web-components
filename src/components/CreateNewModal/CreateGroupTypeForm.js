@@ -12,14 +12,12 @@ import styles from './CreateNewModal.css';
 type Props = {
   id: string,
   type: 'group' | 'channel',
-  onSubmit: (event: SyntheticEvent) => void,
-  onChange: (value: string, event: SyntheticInputEvent) => void
+  onSubmit: (event: SyntheticEvent<>) => void,
+  onChange: (value: string, event: SyntheticInputEvent<>) => void
 };
 
-class CreateGroupTypeForm extends PureComponent {
-  props: Props;
-
-  handleSubmit = (event: SyntheticEvent) => {
+class CreateGroupTypeForm extends PureComponent<Props> {
+  handleSubmit = (event: SyntheticEvent<>) => {
     event.preventDefault();
 
     this.props.onSubmit(event);

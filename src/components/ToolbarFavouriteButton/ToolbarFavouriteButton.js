@@ -5,7 +5,7 @@
 
 /* eslint max-len: 0 */
 
-import React from 'react';
+import * as React from 'react';
 import classNames from 'classnames';
 import styles from './ToolbarFavouriteButton.css';
 
@@ -15,7 +15,7 @@ export type Props = {
   onClick: () => void
 };
 
-function ToolbarFavouriteButton(props: Props) : React.Element<any> {
+function ToolbarFavouriteButton(props: Props) {
   const className = classNames(styles.container, props.className);
 
   if (props.value) {

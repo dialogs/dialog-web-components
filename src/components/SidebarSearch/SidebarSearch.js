@@ -26,8 +26,7 @@ export type Props = {
 
 export type Context = ProviderContext;
 
-class SidebarSearch extends Component {
-  props: Props;
+class SidebarSearch extends Component<Props> {
   context: Context;
   input: ?HTMLInputElement;
 
@@ -47,7 +46,7 @@ class SidebarSearch extends Component {
     }
   }
 
-  handleChange = (event: SyntheticInputEvent) => {
+  handleChange = (event: SyntheticInputEvent<>) => {
     this.handleSearch(event.target.value);
     this.props.onChange(event.target.value);
   };
@@ -107,7 +106,7 @@ class SidebarSearch extends Component {
     );
   }
 
-  render(): React.Element<any> {
+  render() {
     const { l10n } = this.context;
 
     const className = classNames(

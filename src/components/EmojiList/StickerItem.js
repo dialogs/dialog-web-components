@@ -10,17 +10,15 @@ import styles from './EmojiList.css';
 
 export type Props = {
   sticker: Sticker,
-  onClick: (sticker: Sticker) => void
+  onClick: (sticker: Sticker) => mixed
 };
 
-class StickerItem extends PureComponent {
-  props: Props;
-
+class StickerItem extends PureComponent<Props> {
   handleClick = (): void => {
     this.props.onClick(this.props.sticker);
   };
 
-  render(): ?React.Element<any> {
+  render() {
     const { sticker } = this.props;
 
     return (

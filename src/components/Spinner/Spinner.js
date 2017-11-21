@@ -13,9 +13,7 @@ export type Props = {
   size: 'small' | 'normal' | 'large'
 };
 
-class Spinner extends PureComponent {
-  props: Props;
-
+class Spinner extends PureComponent<Props> {
   static defaultProps = {
     type: 'round',
     size: 'small'

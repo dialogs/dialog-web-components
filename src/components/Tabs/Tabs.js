@@ -12,13 +12,11 @@ export type Props = {
   className?: string,
   current: string,
   variants: Array<{ id: string, title: string }>,
-  onPick: (current: string) => any
+  onPick: (current: string) => mixed
 };
 
-class Tabs extends PureComponent {
-  props: Props;
-
-  render(): React.Element<any> {
+class Tabs extends PureComponent<Props> {
+  render() {
     const { current, variants } = this.props;
     const className = classNames(styles.container, this.props.className);
 

@@ -22,25 +22,23 @@ type Props = {
   value: AuthValue,
   errors: { [field: string]: AuthError },
   pending: boolean,
-  onChange: (value: AuthValue) => any,
-  onSubmit: (value: AuthValue) => any
+  onChange: (value: AuthValue) => mixed,
+  onSubmit: (value: AuthValue) => mixed
 };
 
-class UserNameAuthForm extends PureComponent {
-  props: Props;
-
+class UserNameAuthForm extends PureComponent<Props> {
   static defaultProps = {
     id: 'form_login'
   };
 
-  handleChange = (value: string, { target }: SyntheticInputEvent) => {
+  handleChange = (value: string, { target }: SyntheticInputEvent<>) => {
     this.props.onChange({
       ...this.props.value,
       [target.name]: value
     });
   };
 
-  handleSubmit = (event: SyntheticEvent): void => {
+  handleSubmit = (event: SyntheticEvent<>): void => {
     event.preventDefault();
     this.props.onSubmit(this.props.value);
   };

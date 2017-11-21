@@ -17,16 +17,14 @@ type Props = {
   type: 'forward' | 'reply',
   message: Message,
   short: boolean,
-  onGoToPeer: (peer: Peer) => any,
-  onGoToMessage: (message: Message) => any,
+  onGoToPeer: (peer: Peer) => mixed,
+  onGoToMessage: (message: Message) => mixed,
   maxHeight: number,
   maxWidth: number
 }
 
-class MessageAttachmentItem extends Component {
-  props: Props;
-
-  handleGoToPeer = (event: SyntheticEvent): void => {
+class MessageAttachmentItem extends Component<Props> {
+  handleGoToPeer = (event: SyntheticEvent<>): void => {
     event.preventDefault();
     event.stopPropagation();
     if (this.props.message.sender) {
@@ -34,7 +32,7 @@ class MessageAttachmentItem extends Component {
     }
   };
 
-  handleGoToMessage = (event: SyntheticMouseEvent): void => {
+  handleGoToMessage = (event: SyntheticMouseEvent<>): void => {
     if (event.target.tagName === 'A') {
       return;
     }
@@ -66,7 +64,7 @@ class MessageAttachmentItem extends Component {
     );
   }
 
-  renderTimestamp(): React.Element<any> {
+  renderTimestamp() {
     const { message } = this.props;
 
     return (

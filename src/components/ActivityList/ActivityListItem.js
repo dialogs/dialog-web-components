@@ -3,18 +3,18 @@
  * @flow
  */
 
-import React from 'react';
+import React, { type Node } from 'react';
 import classNames from 'classnames';
 import styles from './ActivityList.css';
 
 export type Props = {
   id?: string,
   className?: string,
-  children?: any,
-  onClick?: (event: SyntheticMouseEvent) => any
+  children: Node,
+  onClick?: (event: SyntheticMouseEvent<>) => mixed
 };
 
-function ActivityListItem(props: Props): React.Element<any> {
+function ActivityListItem(props: Props) {
   const className = classNames(styles.item, {
     [styles.clickable]: props.onClick
   }, props.className);

@@ -15,9 +15,7 @@ export type Props = {
   onClick: () => mixed
 };
 
-class ScrollToBottom extends PureComponent {
-  props: Props;
-
+class ScrollToBottom extends PureComponent<Props> {
   renderCounter() {
     const { counter } = this.props;
 
@@ -30,7 +28,7 @@ class ScrollToBottom extends PureComponent {
     );
   }
 
-  render(): React.Element<any> {
+  render() {
     const className = classNames(styles.container, this.props.className);
 
     return (

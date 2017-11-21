@@ -18,14 +18,12 @@ export type Props = {
   submit: string,
   cancel: string,
   theme: 'danger' | 'success' | 'warning',
-  action: any,
-  onSubmit: (action: any) => void,
+  action: mixed,
+  onSubmit: (action: mixed) => void,
   onClose: () => mixed
 };
 
-class Confirm extends PureComponent {
-  props: Props;
-
+class Confirm extends PureComponent<Props> {
   handleSuccess = (): void => {
     this.props.onSubmit(this.props.action);
   };

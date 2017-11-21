@@ -16,9 +16,7 @@ export type Props = {
   maxWidth: number
 };
 
-class Voice extends PureComponent {
-  props: Props;
-
+class Voice extends PureComponent<Props> {
   render() {
     const { isUploading, maxWidth } = this.props;
     const className = classNames(styles.container, {

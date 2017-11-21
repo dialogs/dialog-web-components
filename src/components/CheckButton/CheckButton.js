@@ -15,19 +15,17 @@ export type Props = {
   theme: 'primary' | 'success' | 'danger' | 'info' | 'warning',
   size: number,
   stopPropagation: boolean,
-  onClick?: (checked: boolean) => any
+  onClick?: (checked: boolean) => mixed
 };
 
-class CheckButton extends PureComponent {
-  props: Props;
-
+class CheckButton extends PureComponent<Props> {
   static defaultProps = {
     size: 26,
     theme: 'primary',
     stopPropagation: false
   };
 
-  handleClick = (event: SyntheticMouseEvent) => {
+  handleClick = (event: SyntheticMouseEvent<>) => {
     if (this.props.stopPropagation) {
       event.preventDefault();
       event.stopPropagation();

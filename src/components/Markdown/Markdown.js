@@ -20,9 +20,7 @@ export type Props = {
   emojiSize: number
 };
 
-class Markdown extends Component {
-  props: Props;
-
+class Markdown extends Component<Props> {
   static defaultProps = {
     decorators,
     renderText,

@@ -11,12 +11,10 @@ type Props = {
   id: string,
   value: number,
   maxRating: number,
-  onChange: (value: number) => any
+  onChange: (value: number) => mixed
 };
 
-class CallFeedbackRating extends PureComponent {
-  props: Props;
-
+class CallFeedbackRating extends PureComponent<Props> {
   renderStars() {
     const { maxRating, value, id } = this.props;
     const stars = [];

@@ -22,8 +22,8 @@ export type Props = {
   avatar: ?File,
   className?: string,
   vertical: boolean,
-  onSubmit: (event: SyntheticEvent) => void,
-  onChange: (value: string, event: SyntheticInputEvent) => void,
+  onSubmit: (event: SyntheticEvent<>) => void,
+  onChange: (value: string, event: SyntheticInputEvent<>) => void,
   onAvatarRemove: () => void,
   onAvatarChange: (avatar: File) => void
 }
@@ -33,10 +33,7 @@ export type State = {
 
 export type Context = ProviderContext;
 
-class CreateGroupInfoForm extends PureComponent {
-  props: Props;
-  state: State;
-
+class CreateGroupInfoForm extends PureComponent<Props, State> {
   static defaultProps = {
     vertical: false
   };
@@ -67,7 +64,7 @@ class CreateGroupInfoForm extends PureComponent {
     }
   }
 
-  handleSubmit = (event: SyntheticEvent) => {
+  handleSubmit = (event: SyntheticEvent<>) => {
     event.preventDefault();
 
     this.props.onSubmit(event);

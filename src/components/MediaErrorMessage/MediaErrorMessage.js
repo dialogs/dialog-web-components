@@ -3,7 +3,7 @@
  * @flow
  */
 
-import React from 'react';
+import * as React from 'react';
 import { Text } from '@dlghq/react-l10n';
 
 type Props = {

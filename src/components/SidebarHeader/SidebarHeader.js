@@ -3,16 +3,16 @@
  * @flow
  */
 
-import React from 'react';
+import React, { type Node } from 'react';
 import classNames from 'classnames';
 import styles from './SidebarHeader.css';
 
 export type Props = {
   className?: string,
-  children?: any
+  children: Node
 };
 
-function SidebarHeader(props: Props): React.Element<any> {
+function SidebarHeader(props: Props) {
   const className = classNames(styles.container, props.className);
 
   return (

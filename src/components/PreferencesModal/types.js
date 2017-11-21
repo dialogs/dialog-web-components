@@ -22,11 +22,11 @@ export type Props = {
     pending: boolean
   },
   onClose: close,
-  onScreenChange: (screen: string) => any,
-  onSettingsChange: (value: ProfileSettings) => any,
-  onSessionsLoad: () => any,
-  onSessionTerminate: (id: number) => any,
-  onAllSessionsTerminate: () => any,
-  onBlockedLoad: () => any,
-  onUnblockUser: (id: number) => any
+  onScreenChange: (screen: string) => mixed,
+  onSettingsChange: (value: ProfileSettings) => mixed,
+  onSessionsLoad: () => mixed,
+  onSessionTerminate: (id: number) => mixed,
+  onAllSessionsTerminate: () => mixed,
+  onBlockedLoad: () => mixed,
+  onUnblockUser: (id: number) => mixed
 };

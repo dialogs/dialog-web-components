@@ -3,8 +3,9 @@
  * @flow
  */
 
-import React, { PureComponent } from 'react';
+import React, { PureComponent, type Node } from 'react';
 import classNames from 'classnames';
+import PeerInfoTitle from '../PeerInfoTitle/PeerInfoTitle';
 import { Text } from '@dlghq/react-l10n';
 import styles from './WelcomeMessage.css';
 
@@ -16,12 +17,10 @@ export type Props = {
   about?: string,
   creator?: ?string,
   createdAt?: ?string,
-  renderActions?: () => mixed
+  renderActions?: () => Node
 };
 
-class WelcomeMessageGroup extends PureComponent {
-  props: Props;
-
+class WelcomeMessageGroup extends PureComponent<Props> {
   renderCreated() {
     const { createdAt, creator, isOwner } = this.props;
 
@@ -29,7 +28,7 @@ class WelcomeMessageGroup extends PureComponent {
       return (
         <Text
           id="WelcomeMessage.group.created_by_you"
-          className={styles.subtitle}
+          className={styles.created}
           values={{ createdAt: createdAt || '' }}
         />
       );
@@ -39,7 +38,7 @@ class WelcomeMessageGroup extends PureComponent {
       return (
         <Text
           id="WelcomeMessage.group.created"
-          className={styles.subtitle}
+          className={styles.created}
           values={{ createdAt: createdAt || '', creator }}
         />
       );
@@ -83,7 +82,7 @@ class WelcomeMessageGroup extends PureComponent {
       </div>
     );
   }
-  render(): React.Element<any> {
+  render() {
     const { title } = this.props;
     const className = classNames(styles.container, this.props.className);
 
@@ -91,8 +90,7 @@ class WelcomeMessageGroup extends PureComponent {
       <div className={className}>
         <div className={styles.group}>
           {this.renderHint()}
-
-          <h1 className={styles.title}>{title}</h1>
+          <PeerInfoTitle title={title} titleClassName={styles.title} />
           {this.renderCreated()}
           {this.renderAbout()}
         </div>

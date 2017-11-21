@@ -14,8 +14,7 @@ import DropdownItem from '../Dropdown/DropdownItem';
 
 export type Context = ProviderContext;
 
-class ContextMenu extends PureComponent {
-  props: Props;
+class ContextMenu extends PureComponent<Props> {
   context: Context;
 
   static contextTypes = {

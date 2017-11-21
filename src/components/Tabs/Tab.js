@@ -12,17 +12,15 @@ export type Props = {
   id: string,
   title: string,
   active: boolean,
-  onPick: (id: string) => any
+  onPick: (id: string) => mixed
 };
 
-class Tab extends PureComponent {
-  props: Props;
-
+class Tab extends PureComponent<Props> {
   handleClick = (): void => {
     this.props.onPick(this.props.id);
   };
 
-  render(): React.Element<any> {
+  render() {
     const { title, active, id } = this.props;
     const className = classNames(styles.tab, {
       [styles.active]: active

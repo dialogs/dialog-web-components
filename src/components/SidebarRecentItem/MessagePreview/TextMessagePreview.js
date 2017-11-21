@@ -18,9 +18,7 @@ export type Props = {
   decorators: typeof decorators
 };
 
-class TextMessagePreview extends PureComponent {
-  props: Props;
-
+class TextMessagePreview extends PureComponent<Props> {
   static defaultProps = {
     decorators
   };

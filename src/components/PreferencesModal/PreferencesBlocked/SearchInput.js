@@ -12,9 +12,7 @@ export type Props = {
   placeholder: string
 }
 
-class SearchInput extends PureComponent {
-  props: Props;
-
+class SearchInput extends PureComponent<Props> {
   handleChange: () => void;
 
   constructor(props: Props) {

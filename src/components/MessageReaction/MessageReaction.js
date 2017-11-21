@@ -19,9 +19,7 @@ type Props = {
   onToggle: (char: string) => mixed
 }
 
-class MessageReaction extends PureComponent {
-  props: Props;
-
+class MessageReaction extends PureComponent<Props> {
   renderTooltip() {
     const { users, reaction } = this.props;
     const children = [];

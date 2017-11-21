@@ -18,10 +18,8 @@ type Props = {
   maxWidth: number
 };
 
-class Document extends PureComponent {
-  props: Props;
-
-  handleClick = (event: SyntheticMouseEvent) => {
+class Document extends PureComponent<Props> {
+  handleClick = (event: SyntheticMouseEvent<>) => {
     event.stopPropagation();
   };
 

@@ -13,14 +13,12 @@ type Props = {
   className?: string,
   titleClassName?: string,
   userNameClassName?: string,
-  onTitleClick?: ?(event: SyntheticMouseEvent) => mixed,
-  onUserNameClick?: ?(event: SyntheticMouseEvent) => mixed,
+  onTitleClick?: ?(event: SyntheticMouseEvent<>) => mixed,
+  onUserNameClick?: ?(event: SyntheticMouseEvent<>) => mixed,
   addSpacebars: boolean
 };
 
-class PeerInfoTitle extends PureComponent {
-  props: Props;
-
+class PeerInfoTitle extends PureComponent<Props> {
   static defaultProps = {
     addSpacebars: false
   };

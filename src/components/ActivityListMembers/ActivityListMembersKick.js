@@ -3,7 +3,7 @@
  * @flow
  */
 
-import React from 'react';
+import * as React from 'react';
 import { Text } from '@dlghq/react-l10n';
 import Spinner from '../Spinner/Spinner';
 import Tooltip from '../Tooltip/Tooltip';
@@ -14,7 +14,7 @@ import errorToString from '../../utils/errorToString';
 export type Props = {
   error: ?(Error | string),
   pending: boolean,
-  onClick: (event: SyntheticMouseEvent) => void
+  onClick: (event: SyntheticMouseEvent<>) => void
 };
 
 function ActivityListMembersKick(props: Props) {

@@ -3,19 +3,17 @@
  * @flow
  */
 
-import React, { PureComponent } from 'react';
+import React, { PureComponent, type Node } from 'react';
 import classNames from 'classnames';
 import styles from './Field.css';
 
 export type Props = {
   className?: string,
-  children?: any
+  children: Node
 }
 
-class Field extends PureComponent {
-  props: Props;
-
-  render(): React.Element<any> {
+class Field extends PureComponent<Props> {
+  render() {
     const className = classNames(styles.container, this.props.className);
 
     return (

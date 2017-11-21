@@ -19,14 +19,12 @@ type Props = {
   appName: string,
   appVersion: string,
   updateState: Field<'upToDate' | 'available'>,
-  onCheck: () => any,
-  onUpdate: () => any,
-  onClose: () => any
+  onCheck: () => mixed,
+  onUpdate: () => mixed,
+  onClose: () => mixed
 }
 
-class AboutModal extends PureComponent {
-  props: Props;
-
+class AboutModal extends PureComponent<Props> {
   renderState() {
     const { appName, updateState } = this.props;
 

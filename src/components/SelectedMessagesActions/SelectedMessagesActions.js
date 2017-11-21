@@ -13,15 +13,13 @@ import styles from './SelectedMessagesActions.css';
 export type Props = {
   className?: string,
   count: number,
-  onDelete?: () => any,
-  onForward?: () => any,
-  onReply?: () => any
+  onDelete?: () => mixed,
+  onForward?: () => mixed,
+  onReply?: () => mixed
 };
 
-class SelectedMessagesActions extends PureComponent {
-  props: Props;
-
-  render(): React.Element<any> {
+class SelectedMessagesActions extends PureComponent<Props> {
+  render() {
     const className = classNames(styles.container, this.props.className);
 
     return (

@@ -11,13 +11,11 @@ import styles from './SidebarUnread.css';
 export type Props = {
   className?: string,
   position: 'top' | 'bottom',
-  onClick: () => any
+  onClick: () => mixed
 };
 
-class SidebarUnread extends PureComponent {
-  props: Props;
-
-  renderArrow(): ?React.Element<any> {
+class SidebarUnread extends PureComponent<Props> {
+  renderArrow() {
     const { position } = this.props;
 
     if (position === 'top') {
@@ -33,7 +31,7 @@ class SidebarUnread extends PureComponent {
     return null;
   }
 
-  render(): React.Element<any> {
+  render() {
     const { position } = this.props;
     const className = classNames(styles.container, styles[position], this.props.className);
 

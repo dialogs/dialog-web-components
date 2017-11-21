@@ -23,11 +23,10 @@ type Props = {
   autoFocus?: boolean,
   tabIndex?: number,
   preferredCountryCodes: string[],
-  onChange: (value: string, country: ?Country) => any
+  onChange: (value: string, country: ?Country) => mixed
 };
 
-class PhoneInput extends PureComponent {
-  props: Props;
+class PhoneInput extends PureComponent<Props> {
   input: ?InputNext;
 
   static defaultProps = {
@@ -41,7 +40,7 @@ class PhoneInput extends PureComponent {
     );
   };
 
-  setInput = (element: InputNext): void => {
+  setInput = (element: *): void => {
     this.input = element;
   };
 

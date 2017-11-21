@@ -16,13 +16,11 @@ export type Props = {
   className?: string,
   autoFocus: boolean,
   selector: SelectorState<PeerInfo>,
-  onChange: (selector: SelectorState<PeerInfo>) => any
+  onChange: (selector: SelectorState<PeerInfo>) => mixed
 };
 
-class ContactSelector extends PureComponent {
-  props: Props;
-
-  render(): React.Element<any> {
+class ContactSelector extends PureComponent<Props> {
+  render() {
     const className = classNames(styles.container, this.props.className);
 
     return (

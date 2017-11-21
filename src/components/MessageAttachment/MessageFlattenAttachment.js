@@ -13,13 +13,11 @@ type Props = {
   attachment: MessageAttachmentType,
   maxHeight: number,
   maxWidth: number,
-  onGoToPeer: (peer: Peer) => any,
-  onGoToMessage: (peer: ?Peer, message: Message) => any
+  onGoToPeer: (peer: Peer) => mixed,
+  onGoToMessage: (peer: ?Peer, message: Message) => mixed
 };
 
-class MessageFlattenAttachment extends PureComponent {
-  props: Props;
-
+class MessageFlattenAttachment extends PureComponent<Props> {
   render() {
     const children = flattenMessageAttachment(this.props.attachment).map((attachment, key) => {
       return (

@@ -15,26 +15,24 @@ import styles from './Security.css';
 
 export type Props = {
   sessions: AuthSession[],
-  onSessionTerminate: (id: number) => void,
-  onAllSessionsTerminate: () => void
+  onSessionTerminate: (id: number) => mixed,
+  onAllSessionsTerminate: () => mixed
 };
 
-class PreferencesSecurity extends PureComponent {
-  props: Props;
-
-  renderCurrentSessions(): React.Element<any> {
+class PreferencesSecurity extends PureComponent<Props> {
+  renderCurrentSessions() {
     const { sessions } = this.props;
-    const currentSession = sessions.find((session) => session.holder === 'THIS_DEVICE');
+    const current = sessions.find((session) => session.holder === 'THIS_DEVICE');
 
     return (
       <Fieldset legend="PreferencesModal.security.legend.current_session">
-        <Session session={currentSession} />
+        {current && <Session session={current} />}
         {this.renderTerminateAllSessions()}
       </Fieldset>
     );
   }
 
-  renderTerminateAllSessions(): ?React.Element<any> {
+  renderTerminateAllSessions() {
     const { sessions } = this.props;
 
     if (sessions.length === 1) {
@@ -57,7 +55,7 @@ class PreferencesSecurity extends PureComponent {
     );
   }
 
-  renderActiveSessions(): ?React.Element<any> {
+  renderActiveSessions() {
     const { sessions } = this.props;
     const activeSessions = sessions.filter((session) => session.holder === 'OTHER_DEVICE');
 
@@ -82,7 +80,7 @@ class PreferencesSecurity extends PureComponent {
     );
   }
 
-  render(): React.Element<any> {
+  render() {
     return (
       <div className={preferencesStyles.screen}>
         {this.renderCurrentSessions()}

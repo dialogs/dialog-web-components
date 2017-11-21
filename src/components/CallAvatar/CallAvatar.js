@@ -1,5 +1,6 @@
 /**
  * Copyright 2017 dialog LLC <info@dlg.im>
+ * @flow
  */
 
 import type { PeerInfo } from '@dlghq/dialog-types';
@@ -13,12 +14,10 @@ type Props = {
   peer: PeerInfo,
   size: number,
   animated: boolean,
-  onClick?: () => mixed
+  onClick?: ?() => mixed
 };
 
-class CallAvatar extends PureComponent {
-  props: Props;
-
+class CallAvatar extends PureComponent<Props> {
   isSmall(): boolean {
     return this.props.size <= 50;
   }

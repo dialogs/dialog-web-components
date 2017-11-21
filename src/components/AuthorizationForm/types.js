@@ -54,9 +54,9 @@ export type Props = {
   allowed: AuthType[],
   autoFocus?: boolean,
   isGenderEnabled: boolean,
-  onChange: (value: AuthValue, info: SignupInfo) => any,
-  onTypeChange: (type: string) => any,
-  onSubmit: (value: AuthValue) => any,
-  onRetry: () => any,
-  onResendCode: () => any
+  onChange: (value: AuthValue, info: SignupInfo) => mixed,
+  onTypeChange: (type: string) => mixed,
+  onSubmit: (value: AuthValue) => mixed,
+  onRetry: () => mixed,
+  onResendCode: () => mixed
 };

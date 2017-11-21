@@ -3,7 +3,7 @@
  * @flow
  */
 
-import React, { PureComponent } from 'react';
+import React, { PureComponent, type Node } from 'react';
 import classNames from 'classnames';
 import Trigger from '../Trigger/Trigger';
 import Icon from '../Icon/Icon';
@@ -11,13 +11,11 @@ import styles from './SidebarHeader.css';
 
 export type Props = {
   className?: string,
-  renderMenu: () => React.Element<any>
+  renderMenu: () => Node
 };
 
-class SidebarHeaderPlus extends PureComponent {
-  props: Props;
-
-  renderTrigger = (handlers: Object, isActive: boolean): React.Element<any> => {
+class SidebarHeaderPlus extends PureComponent<Props> {
+  renderTrigger = (handlers: Object, isActive: boolean) => {
     const plusClassName = classNames(styles.plus, {
       [styles.plusActive]: isActive
     }, this.props.className);
@@ -33,7 +31,7 @@ class SidebarHeaderPlus extends PureComponent {
     );
   };
 
-  render(): React.Element<any> {
+  render() {
     const options = {
       attachment: 'top center',
       targetAttachment: 'bottom center',

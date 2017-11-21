@@ -3,7 +3,7 @@
  * @flow
  */
 
-import React from 'react';
+import * as React from 'react';
 import classNames from 'classnames';
 import styles from './Logo.css';
 
@@ -11,7 +11,7 @@ type Props = {
   className?: string
 };
 
-function Logo(props: Props): React.Element<any> {
+function Logo(props: Props) {
   const className = classNames(styles.container, props.className);
 
   return (

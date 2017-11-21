@@ -3,23 +3,22 @@
  * @flow
  */
 
-import React, { PureComponent } from 'react';
+import React, { PureComponent, type Node } from 'react';
 import classNames from 'classnames';
 import styles from './Switcher.css';
 
 export type SwitcherProps = {
   className?: string,
-  children?: any,
+  children?: Node,
   id: string,
   name: string,
   value: boolean,
   disabled: boolean,
   tabIndex?: number,
-  onChange: (value: boolean, event: SyntheticEvent) => void
+  onChange: (value: boolean, event: SyntheticEvent<>) => void
 }
 
-class Switcher extends PureComponent {
-  props: SwitcherProps;
+class Switcher extends PureComponent<SwitcherProps> {
   input: ?HTMLInputElement;
 
   static defaultProps = {
@@ -49,7 +48,7 @@ class Switcher extends PureComponent {
     }
   }
 
-  renderChildren(): ?React.Element<any> {
+  renderChildren() {
     const { children, id } = this.props;
 
     if (!children) {
@@ -61,7 +60,7 @@ class Switcher extends PureComponent {
     );
   }
 
-  render(): React.Element<any> {
+  render() {
     const { id, value, disabled, name, tabIndex } = this.props;
     const className = classNames(styles.container, this.props.className, {
       [styles.checked]: value,

@@ -3,16 +3,16 @@
  * @flow
  */
 
-import React from 'react';
+import * as React from 'react';
 import classNames from 'classnames';
 import styles from './Dropdown.css';
 
 type Props = {
   className?: string,
-  children?: mixed
+  children: React.Node
 };
 
-function DropdownHeader(props: Props): React.Element<any> {
+function DropdownHeader(props: Props) {
   const className = classNames(styles.header, props.className);
 
   return (

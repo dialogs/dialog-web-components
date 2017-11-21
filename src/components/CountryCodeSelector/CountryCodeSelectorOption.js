@@ -21,14 +21,12 @@ type Props = {
   onSelect: (country: Country) => void
 };
 
-class CountryCodeSelectorOption extends PureComponent {
-  props: Props;
-
+class CountryCodeSelectorOption extends PureComponent<Props> {
   static contextTypes = {
     l10n: LocalizationContextType
   };
 
-  static renderOption({ focusedOption, focusOption, key, option, selectValue, style, valueArray }) {
+  static renderOption({ focusedOption, focusOption, key, option, selectValue, style, valueArray }: $FlowIssue) {
     return (
       <CountryCodeSelectorOption
         key={key}
@@ -42,7 +40,7 @@ class CountryCodeSelectorOption extends PureComponent {
     );
   }
 
-  static renderValue(country) {
+  static renderValue(country: Country) {
     return (
       <CountryCodeSelectorOption
         country={country}

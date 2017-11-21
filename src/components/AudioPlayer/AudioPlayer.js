@@ -26,10 +26,7 @@ type State = {
   currentTime: number
 };
 
-class AudioPlayer extends PureComponent {
-  props: Props;
-  state: State;
-
+class AudioPlayer extends PureComponent<Props, State> {
   audio: ?HTMLMediaElement;
   rewind: ?HTMLElement;
 
@@ -98,7 +95,7 @@ class AudioPlayer extends PureComponent {
     this.setState({ currentTime, isPlaying: false });
   };
 
-  handleRewind = (event: SyntheticMouseEvent) => {
+  handleRewind = (event: SyntheticMouseEvent<>) => {
     event.stopPropagation();
 
     if (this.rewind && !this.state.error) {
@@ -132,7 +129,7 @@ class AudioPlayer extends PureComponent {
     return 0;
   }
 
-  setAudio = (audio: ?HTMLAudioElement) => {
+  setAudio = (audio: *) => {
     if (audio) {
       audio.volume = 1;
       if (this.state.isPlaying) {
@@ -143,7 +140,7 @@ class AudioPlayer extends PureComponent {
     this.audio = audio;
   };
 
-  setRewind = (rewind: ?HTMLAudioElement) => {
+  setRewind = (rewind: *) => {
     this.rewind = rewind;
   };
 

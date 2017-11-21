@@ -3,22 +3,20 @@
  * @flow
  */
 
-import React, { PureComponent } from 'react';
+import React, { PureComponent, type Node } from 'react';
 import classNames from 'classnames';
 import Icon from '../Icon/Icon';
 import styles from './ActivityHeader.css';
 
 export type Props = {
-  onClose?: () => any,
-  onBack?: () => any,
-  children?: any,
+  onClose?: () => mixed,
+  onBack?: () => mixed,
+  children: Node,
   className?: string
 };
 
-class ActivityHeader extends PureComponent {
-  props: Props;
-
-  renderBackButton(): ?React.Element<any> {
+class ActivityHeader extends PureComponent<Props> {
+  renderBackButton() {
     if (!this.props.onBack) {
       return null;
     }
@@ -33,7 +31,7 @@ class ActivityHeader extends PureComponent {
     );
   }
 
-  renderCloseButton(): ?React.Element<any> {
+  renderCloseButton() {
     if (!this.props.onClose) {
       return null;
     }
@@ -48,7 +46,7 @@ class ActivityHeader extends PureComponent {
     );
   }
 
-  render(): React.Element<any> {
+  render() {
     const { children } = this.props;
     const className = classNames(styles.container, this.props.className);
 

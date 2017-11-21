@@ -1,6 +1,5 @@
 /*
  * Copyright 2017 dialog LLC <info@dlg.im>
- * @flow
  */
 /* eslint-disable */
 
@@ -17,10 +16,7 @@ type State = {
   code: string
 };
 
-class MessageMediaInteractiveExample extends PureComponent {
-  props: Props;
-  state: State;
-
+class MessageMediaInteractiveExample extends PureComponent<Props, State> {
   constructor(props: Props) {
     super(props);
 
@@ -57,7 +53,8 @@ class MessageMediaInteractiveExample extends PureComponent {
           <MessageMediaInteractive
             media={{
               type: 'interactive',
-              content: JSON.parse(this.state.code)
+              content: JSON.parse(this.state.code),
+              messages: interactive.messages
             }}
             onSubmit={this.handleSubmit}
           />

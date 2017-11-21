@@ -3,7 +3,7 @@
  * @flow
  */
 
-import React from 'react';
+import * as React from 'react';
 import { Text } from '@dlghq/react-l10n';
 import classNames from 'classnames';
 import styles from './Fieldset.css';
@@ -11,7 +11,7 @@ import styles from './Fieldset.css';
 type Props = {
   className?: string,
   legend: string,
-  children?: mixed
+  children: React.Node
 };
 
 function Fieldset(props: Props) {

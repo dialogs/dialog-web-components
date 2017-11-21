@@ -14,9 +14,7 @@ export type Props = {
   status: string
 };
 
-class ToolbarInfo extends PureComponent {
-  props: Props;
-
+class ToolbarInfo extends PureComponent<Props> {
   render() {
     const className = classNames(styles.info, this.props.className);
 

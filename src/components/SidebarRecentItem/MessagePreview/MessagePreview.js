@@ -20,9 +20,7 @@ export type Props = {
   active: boolean
 };
 
-class MessagePreview extends PureComponent {
-  props: Props;
-
+class MessagePreview extends PureComponent<Props> {
   renderStatusSender() {
     const { uid, info, message } = this.props;
     if (message && message.sender) {

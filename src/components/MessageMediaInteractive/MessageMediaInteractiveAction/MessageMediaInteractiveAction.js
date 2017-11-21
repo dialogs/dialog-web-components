@@ -15,9 +15,7 @@ export type Props = {
   onSubmit?: (id: string, value: string, confirm?: ?MessageMediaInteractiveConfirm) => mixed
 };
 
-class MessageMediaInteractiveAction extends PureComponent {
-  props: Props;
-
+class MessageMediaInteractiveAction extends PureComponent<Props> {
   handleSubmit = (value: string) => {
     if (this.props.onSubmit) {
       this.props.onSubmit(this.props.action.id, value, this.props.action.confirm);

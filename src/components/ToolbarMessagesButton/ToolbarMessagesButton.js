@@ -3,7 +3,7 @@
  * @flow
  */
 
-import React from 'react';
+import * as React from 'react';
 import classNames from 'classnames';
 import Icon from '../Icon/Icon';
 import styles from './ToolbarMessagesButton.css';
@@ -14,7 +14,7 @@ export type Props = {
   active: boolean
 };
 
-function ToolbarMessagesButton(props: Props): React.Element<any> {
+function ToolbarMessagesButton(props: Props) {
   const className = classNames(styles.container, {
     [styles.active]: props.active
   }, props.className);

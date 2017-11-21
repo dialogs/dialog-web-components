@@ -3,7 +3,7 @@
  * @flow
  */
 
-import React from 'react';
+import * as React from 'react';
 import classNames from 'classnames';
 import styles from './ToolbarInfoButton.css';
 
@@ -13,7 +13,7 @@ export type Props = {
   active: boolean
 };
 
-function ToolbarInfoButton(props: Props): React.Element<any> {
+function ToolbarInfoButton(props: Props) {
   const { active } = props;
   const className = classNames(styles.container, {
     [styles.outline]: !active,

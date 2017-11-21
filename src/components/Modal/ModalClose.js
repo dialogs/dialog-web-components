@@ -3,7 +3,7 @@
  * @flow
  */
 
-import React from 'react';
+import * as React from 'react';
 import classNames from 'classnames';
 import Icon from '../Icon/Icon';
 import Spinner from '../Spinner/Spinner';
@@ -13,10 +13,10 @@ export type Props = {
   className?: string,
   pending?: boolean,
   id?: string,
-  onClick: () => any
+  onClick: () => mixed
 };
 
-function ModalClose(props: Props): React.Element<any> {
+function ModalClose(props: Props) {
   const className = classNames(styles.closeContainer, props.className);
 
   if (props.pending) {

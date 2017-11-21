@@ -1,4 +1,10 @@
+/*
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ * @flow
+ */
+
 /* eslint-disable */
+
 const group = {
   avatar: 'https://avatars2.githubusercontent.com/u/19669610',
   title: 'Dialog',

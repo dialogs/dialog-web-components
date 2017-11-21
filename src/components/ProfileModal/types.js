@@ -24,7 +24,7 @@ export type Props = {
     avatar: Field<?(string | File)>
   },
   onClose: () => void,
-  onSubmit: (profile: Profile) => any,
+  onSubmit: (profile: Profile) => mixed,
 };
 
 export type State = {

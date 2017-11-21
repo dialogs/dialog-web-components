@@ -36,6 +36,15 @@ body {
   }
 }
 
+hr {
+  height: 1px;
+  width: 100%;
+  margin: 1rem 0;
+  display: block;
+  border: 0;
+  background-color: color(#000 alpha(10%));
+}
+
 :global(.styleguide__buttons) {
   & :global(.Button__container),
   & :global(.ButtonNext__container),

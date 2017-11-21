@@ -1,8 +1,9 @@
 ```jsx
-initialState = {
+const initial = {
   query: '',
   pending: false
 };
+initialState = initial;
 
 const onFocus = () => console.debug('focus');
 const onBlur = () => console.debug('blur');
@@ -17,7 +18,7 @@ const onSearch = (query) => {
 };
 
 const onCancel = () => {
-  setState({ ...initialState });
+  setState({ ...initial });
 };
 
 <ToolbarSearchInput

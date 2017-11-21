@@ -21,9 +21,7 @@ import Spinner from '../Spinner/Spinner';
 import styles from './ProfileModal.css';
 import type { Props, State } from './types';
 
-class ProfileModal extends PureComponent {
-  props: Props;
-  state: State;
+class ProfileModal extends PureComponent<Props, State> {
   nickInput: ?HTMLInputElement;
   nameInput: ?HTMLInputElement;
 
@@ -69,7 +67,7 @@ class ProfileModal extends PureComponent {
     }
   }
 
-  handleChange = (value: string, { target }: SyntheticInputEvent) => {
+  handleChange = (value: string, { target }: SyntheticInputEvent<>) => {
     this.setState({
       profile: {
         ...this.state.profile,
@@ -78,7 +76,7 @@ class ProfileModal extends PureComponent {
     });
   };
 
-  handleSubmit = (event: SyntheticEvent): void => {
+  handleSubmit = (event: SyntheticEvent<>): void => {
     event.preventDefault();
     if (this.state.profile) {
       this.props.onSubmit(this.state.profile);

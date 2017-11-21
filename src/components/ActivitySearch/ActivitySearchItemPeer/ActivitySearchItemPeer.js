@@ -14,10 +14,8 @@ type Props = {
   onGoToPeer: (peer: Peer) => mixed
 };
 
-class ActivitySearchItemMessage extends PureComponent {
-  props: Props;
-
-  handleGoToPeer = (event: SyntheticMouseEvent) => {
+class ActivitySearchItemMessage extends PureComponent<Props> {
+  handleGoToPeer = (event: SyntheticMouseEvent<>) => {
     event.preventDefault();
     event.stopPropagation();
 

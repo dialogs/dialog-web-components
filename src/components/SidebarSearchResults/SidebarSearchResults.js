@@ -15,9 +15,7 @@ import SidebarPeerItem from '../SidebarPeerItem/SidebarPeerItem';
 import SidebarSearchItem from './SidebarSearchItem/SidebarSearchItem';
 import styles from './SidebarSearchResults.css';
 
-class SidebarSearchResults extends PureComponent {
-  props: SidebarSearchResultsProps;
-
+class SidebarSearchResults extends PureComponent<SidebarSearchResultsProps> {
   renderPeers() {
     const { peers } = this.props;
 

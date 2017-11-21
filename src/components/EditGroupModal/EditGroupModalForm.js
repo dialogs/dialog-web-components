@@ -36,10 +36,7 @@ export type State = {
 
 export type Context = ProviderContext;
 
-class EditGroupModalForm extends PureComponent {
-  props: Props;
-  state: State;
-
+class EditGroupModalForm extends PureComponent<Props, State> {
   static defaultProps = {
     vertical: false
   };
@@ -75,7 +72,7 @@ class EditGroupModalForm extends PureComponent {
     }
   }
 
-  handleSubmit = (event: SyntheticEvent) => {
+  handleSubmit = (event: SyntheticEvent<>) => {
     event.preventDefault();
 
     this.props.onSubmit();

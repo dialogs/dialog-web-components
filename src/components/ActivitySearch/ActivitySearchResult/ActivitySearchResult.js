@@ -25,9 +25,7 @@ type Props = {
   onGoToPeer: (peer: Peer) => mixed
 };
 
-class ActivitySearchMessages extends PureComponent {
-  props: Props;
-
+class ActivitySearchMessages extends PureComponent<Props> {
   renderPeers() {
     return this.props.peers.map((item) => {
       return (

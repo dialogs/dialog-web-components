@@ -3,16 +3,16 @@
  * @flow
  */
 
-import React from 'react';
+import React, { type Node } from 'react';
 import classNames from 'classnames';
 import styles from './Dropdown.css';
 
 export type Props = {
-  children?: any,
+  children: Node,
   active?: boolean,
   id?: string,
   className?: string,
-  onClick?: (event: SyntheticMouseEvent) => void
+  onClick?: (event: SyntheticMouseEvent<>) => void
 };
 
 function DropdownItem(props: Props) {

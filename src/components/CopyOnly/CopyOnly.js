@@ -3,15 +3,15 @@
  * @flow
  */
 
-import React from 'react';
+import React, { type Node } from 'react';
 import styles from './CopyOnly.css';
 
 type Props = {
   block?: boolean,
-  children?: mixed
+  children?: Node
 };
 
-function CopyOnly(props: Props): React.Element<any> {
+function CopyOnly(props: Props) {
   if (props.block) {
     return (
       <div className={styles.block}>

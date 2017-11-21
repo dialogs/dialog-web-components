@@ -16,9 +16,7 @@ type Props = {
   extension: ?string
 };
 
-class ActivityMediaDocument extends PureComponent {
-  props: Props;
-
+class ActivityMediaDocument extends PureComponent<Props> {
   renderPreview() {
     const { extension } = this.props;
 

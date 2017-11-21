@@ -9,13 +9,11 @@ import { Text } from '@dlghq/react-l10n';
 import styles from './SidebarFooter.css';
 
 export type Props = {
-  onClick: () => any
+  onClick: () => mixed
 };
 
-class SidebarUpdateButton extends PureComponent {
-  props: Props;
-
-  render(): React.Element<any> {
+class SidebarUpdateButton extends PureComponent<Props> {
+  render() {
     return (
       <Button
         className={styles.update}

@@ -13,10 +13,8 @@ export type Props = {
   className?: string
 };
 
-class Dragndrop extends PureComponent {
-  props: Props;
-
-  render(): React.Element<any> {
+class Dragndrop extends PureComponent<Props> {
+  render() {
     const className = classNames(styles.container, this.props.className);
 
     return (

@@ -17,8 +17,7 @@ export type Props = {
   onChange: (value: boolean) => void
 }
 
-class ActivityListNotification extends Component {
-  props: Props;
+class ActivityListNotification extends Component<Props> {
   handleClick: Function;
 
   constructor(props: Props) {
@@ -32,7 +31,7 @@ class ActivityListNotification extends Component {
            nextProps.className !== this.props.className;
   }
 
-  handleClick(event: SyntheticEvent): void {
+  handleClick(event: SyntheticEvent<>): void {
     event.preventDefault();
     this.props.onChange(!this.props.value);
   }

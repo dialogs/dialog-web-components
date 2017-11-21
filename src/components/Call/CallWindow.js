@@ -21,10 +21,7 @@ type State = {
   hover: boolean
 };
 
-class CallWindow extends PureComponent {
-  props: Props;
-  state: State;
-
+class CallWindow extends PureComponent<Props, State> {
   constructor(props: Props) {
     super(props);
 

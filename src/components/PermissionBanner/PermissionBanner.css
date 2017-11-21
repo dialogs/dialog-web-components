@@ -1,0 +1,84 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+:root {
+  --permission-banner-font-family: var(--default-font-family);
+  --permission-banner-font-size: var(--default-font-size-large);
+  --permission-banner-color: #fff;
+}
+
+/* Reset */
+.container {
+  all: initial;
+}
+
+/* Styles */
+.container {
+  font-family: var(--permission-banner-font-family);
+  display: block;
+  width: 100%;
+  position: relative;
+  text-align: center;
+  padding: 16px calc(var(--default-padding) * 3);
+  min-height: 52px;
+  box-sizing: border-box;
+}
+
+.text {
+  font-size: var(--permission-banner-font-size);
+  color: var(--permission-banner-color);
+  display: inline-block;
+  line-height: 20px;
+  @apply --no-select;
+
+  & b {
+    font-weight: 500;
+  }
+}
+
+.request {
+  height: 20px;
+  line-height: 20px;
+  margin-left: var(--default-padding-small);
+  color: var(--permission-banner-color);
+  font-size: var(--permission-banner-font-size);
+  font-weight: 500;
+  border-bottom: 1px dotted color(var(--permission-banner-color) alpha(70%));
+  display: inline-block;
+  @apply --no-select;
+  cursor: pointer;
+
+  &:hover {
+    border-bottom: 1px solid var(--permission-banner-color);
+  }
+}
+
+.close {
+  display: inline-block;
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  top: 13px;
+  right: var(--default-padding);
+  fill: color(var(--permission-banner-color) alpha(50%));
+  transition: fill var(--default-transition-duration) ease;
+
+  &:hover {
+    fill: color(var(--permission-banner-color) alpha(90%));
+  }
+}
+
+.notifications {
+  background-color: var(--color-info);
+}
+
+.mic {
+  background-color: var(--color-warning);
+}
+
+.camera {
+  background-color: var(--color-success);
+}

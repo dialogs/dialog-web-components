@@ -14,8 +14,7 @@ import countries from './utils/countries';
 import { getPreferredCountryCode } from '../../utils/language';
 import { isCountryMatches } from './utils/isCountryMatches';
 
-class CountryCodeSelector extends PureComponent {
-  props: Props;
+class CountryCodeSelector extends PureComponent<Props> {
   select: ?VirtualizedSelect;
 
   static contextTypes = {
@@ -46,7 +45,7 @@ class CountryCodeSelector extends PureComponent {
     this.select = select;
   };
 
-  renderLabel(): ?React.Element<any> {
+  renderLabel() {
     const { label } = this.props;
 
     if (!label) {
@@ -58,7 +57,7 @@ class CountryCodeSelector extends PureComponent {
     );
   }
 
-  render(): React.Element<any> {
+  render() {
     const { l10n } = this.context;
     const className = classNames(
       styles.container,

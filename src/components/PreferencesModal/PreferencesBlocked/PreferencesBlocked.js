@@ -15,17 +15,14 @@ import styles from './Blocked.css';
 
 export type Props = {
   blocked: User[],
-  onUnblockUser: (id: number) => void
+  onUnblockUser: (id: number) => mixed
 };
 
 export type State = {
   query: string
 }
 
-class PreferencesSecurity extends PureComponent {
-  props: Props;
-  state: State;
-
+class PreferencesSecurity extends PureComponent<Props, State> {
   handleQueryChange: (value: string) => void;
 
   static contextTypes = {
@@ -46,7 +43,7 @@ class PreferencesSecurity extends PureComponent {
     this.setState({ query });
   }
 
-  renderSearchInput(): ?React.Element<any> {
+  renderSearchInput() {
     const { blocked } = this.props;
     const { l10n } = this.context;
 
@@ -62,7 +59,7 @@ class PreferencesSecurity extends PureComponent {
     );
   }
 
-  renderBlockedUsers(): React.Element<any>[] {
+  renderBlockedUsers() {
     const { blocked } = this.props;
     const { query } = this.state;
 
@@ -101,7 +98,7 @@ class PreferencesSecurity extends PureComponent {
     });
   }
 
-  render(): React.Element<any> {
+  render() {
     return (
       <div className={preferencesStyles.screen}>
         <Fieldset legend="PreferencesModal.blocked.legend">

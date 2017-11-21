@@ -20,9 +20,7 @@ export type Props = {
   onSelect: (call: CallInfo) => void
 };
 
-class SidebarCalls extends Component {
-  props: Props;
-
+class SidebarCalls extends Component<Props> {
   handleRowsRendered = ({ overscanStopIndex }: Object) => {
     if (overscanStopIndex === this.props.calls.length - 1) {
       this.props.onLoadMore();
@@ -54,7 +52,7 @@ class SidebarCalls extends Component {
     );
   };
 
-  render(): ?React.Element<any> {
+  render() {
     const className = classNames(styles.container, this.props.className);
 
     if (this.props.pending && !this.props.calls.length) {

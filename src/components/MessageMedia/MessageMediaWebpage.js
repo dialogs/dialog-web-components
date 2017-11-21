@@ -15,10 +15,8 @@ export type Props = {
   media: MessageMediaWebsite
 };
 
-class MessageMediaWebpage extends PureComponent {
-  props: Props;
-
-  renderTitle(): ?React.Element<any> {
+class MessageMediaWebpage extends PureComponent<Props> {
+  renderTitle() {
     const { media: { content: { title } } } = this.props;
 
     if (!title) {
@@ -30,7 +28,7 @@ class MessageMediaWebpage extends PureComponent {
     );
   }
 
-  renderDescription(): ?React.Element<any> {
+  renderDescription() {
     const { media: { content: { description } } } = this.props;
 
     if (!description) {
@@ -42,7 +40,7 @@ class MessageMediaWebpage extends PureComponent {
     );
   }
 
-  renderImage(): ?React.Element<any> {
+  renderImage() {
     const { media: { content: { image, title } } } = this.props;
 
     if (!image) {
@@ -62,7 +60,7 @@ class MessageMediaWebpage extends PureComponent {
     );
   }
 
-  render(): React.Element<any> {
+  render() {
     const className = classNames(styles.container, styles.webpage, this.props.className);
 
     return (

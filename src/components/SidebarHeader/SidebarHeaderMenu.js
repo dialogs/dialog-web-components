@@ -3,21 +3,19 @@
  * @flow
  */
 
-import React, { PureComponent } from 'react';
+import React, { PureComponent, type Node } from 'react';
 import Trigger from '../Trigger/Trigger';
 import Icon from '../Icon/Icon';
 import styles from './SidebarHeader.css';
 
 export type Props = {
   appName: string,
-  logo: React.Element<any>,
-  renderMenu: () => React.Element<any>
+  logo: Node,
+  renderMenu: () => Node
 };
 
-class SidebarHeaderMenu extends PureComponent {
-  props: Props;
-
-  renderLogo(): ?React.Element<any> {
+class SidebarHeaderMenu extends PureComponent<Props> {
+  renderLogo() {
     const { logo } = this.props;
 
     if (!logo) {
@@ -29,7 +27,7 @@ class SidebarHeaderMenu extends PureComponent {
     );
   }
 
-  renderTrigger = (handlers: Object, isActive: boolean): React.Element<any> => {
+  renderTrigger = (handlers: Object, isActive: boolean) => {
     const { appName } = this.props;
 
     return (
@@ -41,7 +39,7 @@ class SidebarHeaderMenu extends PureComponent {
     );
   };
 
-  render(): React.Element<any> {
+  render() {
     const options = {
       attachment: 'top left',
       targetAttachment: 'bottom left',

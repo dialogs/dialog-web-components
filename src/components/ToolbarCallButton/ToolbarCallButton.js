@@ -2,7 +2,7 @@
  * Copyright 2017 dialog LLC <info@dlg.im>
  * @flow
  */
-import React from 'react';
+import * as React from 'react';
 import classNames from 'classnames';
 import Icon from '../Icon/Icon';
 import styles from './ToolbarCallButton.css';
@@ -13,7 +13,7 @@ export type Props = {
   disabled: boolean
 };
 
-function ToolbarCallButton(props: Props): React.Element<any> {
+function ToolbarCallButton(props: Props) {
   const className = classNames(styles.container, {
     [styles.disabled]: props.disabled
   }, props.className);

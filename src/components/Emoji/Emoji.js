@@ -3,7 +3,7 @@
  * @flow
  */
 
-import React, { PureComponent } from 'react';
+import React, { PureComponent, type Node } from 'react';
 import classNames from 'classnames';
 import { getEmojiByChar, shouldUseImage } from '@dlghq/emoji';
 import emojiImage from '@dlghq/emoji/lib/apple.png';
@@ -19,13 +19,11 @@ export type Props = {
   className?: string,
   char: string,
   size: number,
-  children?: any,
+  children?: Node,
   inline?: boolean
 };
 
-class Emoji extends PureComponent {
-  props: Props;
-
+class Emoji extends PureComponent<Props> {
   static defaultProps = {
     size: 20
   };

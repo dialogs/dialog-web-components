@@ -3,19 +3,17 @@
  * @flow
  */
 
-import React, { PureComponent } from 'react';
+import React, { PureComponent, type Node } from 'react';
 import classNames from 'classnames';
 import styles from './MessageDivider.css';
 
 export type Props = {
   className?: string,
   theme: 'default' | 'primary' | 'success' | 'danger' | 'info' | 'warning',
-  children?: React.Element<any>
+  children: Node
 };
 
-class MessageDivider extends PureComponent {
-  props: Props;
-
+class MessageDivider extends PureComponent<Props> {
   static defaultProps = {
     theme: 'default'
   };

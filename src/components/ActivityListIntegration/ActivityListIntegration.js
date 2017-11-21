@@ -3,7 +3,7 @@
  * @flow
  */
 
-import React from 'react';
+import * as React from 'react';
 import { Text } from '@dlghq/react-l10n';
 import classNames from 'classnames';
 import ActivityListItem from '../ActivityList/ActivityListItem';
@@ -12,7 +12,7 @@ import styles from './ActivityListIntegration.css';
 
 export type Props = {
   className?: string,
-  onClick: () => any
+  onClick: () => mixed
 };
 
 function ActivityListIntegration(props: Props) {

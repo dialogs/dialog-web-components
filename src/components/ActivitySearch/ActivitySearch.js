@@ -12,9 +12,7 @@ import ActivitySearchFilter from './ActivitySearchFilter/ActivitySearchFilter';
 import ActivitySearchResult from './ActivitySearchResult/ActivitySearchResult';
 import styles from './ActivitySearch.css';
 
-class ActivitySearch extends PureComponent {
-  props: Props;
-
+class ActivitySearch extends PureComponent<Props> {
   renderFilter() {
     if (!this.props.filter) {
       return null;

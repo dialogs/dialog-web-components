@@ -3,23 +3,21 @@
  * @flow
  */
 
-import React, { PureComponent } from 'react';
+import React, { PureComponent, type Node } from 'react';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import classNames from 'classnames';
 import styles from './Overlay.css';
 
 export type Props = {
   className?: string,
-  children?: any,
+  children?: Node,
   active: boolean,
-  renderCaption?: () => any,
-  onClick: () => any
+  renderCaption?: () => Node,
+  onClick: () => mixed
 };
 
-class Overlay extends PureComponent {
-  props: Props;
-
-  renderOverlay(): ?React.Element<any> {
+class Overlay extends PureComponent<Props> {
+  renderOverlay() {
     const { active } = this.props;
 
     if (!active) {
@@ -47,7 +45,7 @@ class Overlay extends PureComponent {
     );
   }
 
-  render(): React.Element<any> {
+  render() {
     const className = classNames(styles.container, this.props.className);
 
     return (
