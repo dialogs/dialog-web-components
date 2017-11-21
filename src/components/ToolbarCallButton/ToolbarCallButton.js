@@ -1,16 +1,17 @@
-/**
+/*
  * Copyright 2017 dialog LLC <info@dlg.im>
  * @flow
  */
-import * as React from 'react';
+
+import React from 'react';
 import classNames from 'classnames';
 import Icon from '../Icon/Icon';
 import styles from './ToolbarCallButton.css';
 
 export type Props = {
   className?: string,
-  onClick: () => void,
-  disabled: boolean
+  disabled: boolean,
+  onClick: (event: SyntheticMouseEvent<>) => mixed
 };
 
 function ToolbarCallButton(props: Props) {
@@ -27,11 +28,10 @@ function ToolbarCallButton(props: Props) {
   }
 
   return (
-    <div className={className} onClick={props.onClick} id="toolbar_call_button">
+    <div className={className} id="toolbar_call_button" onClick={props.onClick}>
       <Icon glyph="phone_outline" className={styles.icon} />
     </div>
   );
 }
 
 export default ToolbarCallButton;
-

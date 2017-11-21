@@ -12,7 +12,7 @@ export type Props = {
   active?: boolean,
   id?: string,
   className?: string,
-  onClick?: (event: SyntheticMouseEvent<>) => void
+  onClick?: (event: SyntheticMouseEvent<>) => mixed
 };
 
 function DropdownItem(props: Props) {

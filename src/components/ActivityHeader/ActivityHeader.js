@@ -11,7 +11,7 @@ import styles from './ActivityHeader.css';
 export type Props = {
   onClose?: () => mixed,
   onBack?: () => mixed,
-  children: Node,
+  children?: Node,
   className?: string
 };
 
