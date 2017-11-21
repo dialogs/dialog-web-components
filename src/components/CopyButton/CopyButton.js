@@ -36,9 +36,11 @@ class CopyButton extends Component<Props, State> {
   componentDidMount(): void {
     if (this.button) {
       const clipboard = new Clipboard(this.button, {
+        /*
+         * this method will be called
+         * each time user press copy button
+         */
         text: () => {
-          // this method will be called
-          // each time user press copy button
           this.setState({ copied: null });
 
           return this.props.text;

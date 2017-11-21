@@ -1,7 +1,7 @@
 /*
-* Copyright 2017 dialog LLC <info@dlg.im>
-* @flow
-*/
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ * @flow
+ */
 
 import type { AuthError } from '@dlghq/dialog-types';
 import type { SignupInfo, InputState } from './types';
