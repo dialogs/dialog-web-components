@@ -14,6 +14,7 @@ import PeerInfoTitle from '../PeerInfoTitle/PeerInfoTitle';
 export type Props = {
   uid: number,
   member: ChatMember,
+  canKick: boolean,
   onKick: (peer: Peer) => void,
   onClick: (peer: Peer) => void
 };
@@ -30,8 +31,8 @@ class ActivityListMembersItem extends PureComponent<Props> {
   };
 
   renderKick() {
-    const { member, uid } = this.props;
-    if (!member.canKick || member.isAdmin || uid === member.peerInfo.peer.id) {
+    const { uid, canKick, member } = this.props;
+    if (!canKick || uid === member.peerInfo.peer.id) {
       return null;
     }
 
