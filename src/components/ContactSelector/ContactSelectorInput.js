@@ -35,15 +35,11 @@ class ContactSelectorInput extends PureComponent<Props> {
   };
 
   handleChange = (event: $FlowIssue): void => {
-    this.props.onChange(
-      this.props.selector.setQuery(event.target.value)
-    );
+    this.props.onChange(this.props.selector.setQuery(event.target.value));
   };
 
   handleKeyDown = (event: SyntheticKeyboardEvent<>): void => {
-    this.props.onChange(
-      this.props.selector.handleKeyboardEvent(event)
-    );
+    this.props.onChange(this.props.selector.handleKeyboardEvent(event));
   };
 
   getPlaceholder(): string {
@@ -64,9 +60,7 @@ class ContactSelectorInput extends PureComponent<Props> {
     const selected = this.props.selector.getSelected().toArray();
 
     return selected.map((contact) => {
-      return (
-        <ContactSelectorChip key={contact.peer.id} contact={contact} />
-      );
+      return <ContactSelectorChip key={contact.peer.id} contact={contact} />;
     });
   }
 
@@ -80,6 +74,7 @@ class ContactSelectorInput extends PureComponent<Props> {
           ref={this.setInput}
           className={styles.input}
           type="text"
+          id="contact_selector_input"
           value={this.props.selector.getQuery()}
           placeholder={this.getPlaceholder()}
           onBlur={this.handleBlur}

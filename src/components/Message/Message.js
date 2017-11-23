@@ -129,10 +129,7 @@ class Message extends PureComponent<Props, State> {
   };
 
   isSelectionMode(): boolean {
-    return (
-      Boolean(this.props.isSelectionEnabled) &&
-      typeof this.props.selected === 'boolean'
-    );
+    return Boolean(this.props.isSelectionEnabled) && typeof this.props.selected === 'boolean';
   }
 
   isHover(): boolean {
@@ -182,21 +179,14 @@ class Message extends PureComponent<Props, State> {
       return null;
     }
 
-    const onClick = this.props.onAvatarClick
-      ? this.handleAvatarClick
-      : undefined;
+    const onClick = this.props.onAvatarClick ? this.handleAvatarClick : undefined;
     const avatarClassName = classNames({
       [styles.clickable]: this.props.onAvatarClick
     });
 
     return (
       <div className={styles.avatar}>
-        <PeerAvatar
-          peer={sender}
-          size={40}
-          onClick={onClick}
-          className={avatarClassName}
-        />
+        <PeerAvatar peer={sender} size={40} onClick={onClick} className={avatarClassName} />
       </div>
     );
   }
@@ -212,9 +202,7 @@ class Message extends PureComponent<Props, State> {
       [styles.clickable]: this.props.onTitleClick
     });
 
-    const onMentionClick = this.props.onMentionClick
-      ? this.handleMentionClick
-      : null;
+    const onMentionClick = this.props.onMentionClick ? this.handleMentionClick : null;
     const mentionClassName = classNames(styles.username, {
       [styles.clickable]: this.props.onMentionClick
     });
@@ -273,12 +261,7 @@ class Message extends PureComponent<Props, State> {
   renderReactions() {
     const { message, users, onReaction } = this.props;
 
-    if (
-      !message.reactions ||
-      !message.reactions.length ||
-      !this.props.isReactionsEnabled ||
-      !onReaction
-    ) {
+    if (!message.reactions || !message.reactions.length || !this.props.isReactionsEnabled || !onReaction) {
       return null;
     }
 
@@ -334,13 +317,7 @@ class Message extends PureComponent<Props, State> {
   }
 
   render() {
-    const {
-      short,
-      message: { content, rid },
-      highlight,
-      maxWidth,
-      maxHeight
-    } = this.props;
+    const { short, message: { content, rid }, highlight, maxWidth, maxHeight } = this.props;
     const hover = this.isHover();
     const state = this.getState();
     const isError = state === 'error';
@@ -359,11 +336,7 @@ class Message extends PureComponent<Props, State> {
     );
 
     return (
-      <Hover
-        className={className}
-        onHover={this.handleHover}
-        onClick={this.handleSelect}
-      >
+      <Hover id={`message_${rid}`} className={className} onHover={this.handleHover} onClick={this.handleSelect}>
         <CopyOnly block />
         {this.renderActions()}
         <div className={styles.info}>

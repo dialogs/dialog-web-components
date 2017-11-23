@@ -8,6 +8,7 @@ import { listen } from '@dlghq/dialog-utils';
 
 export type Props = {
   className?: string,
+  id?: string,
   children: Node,
   onHover: (hover: boolean) => void,
   onClick?: (event: SyntheticMouseEvent<>) => void
@@ -64,6 +65,7 @@ class Hover extends Component<Props> {
   render() {
     return (
       <div
+        id={this.props.id}
         className={this.props.className}
         onClick={this.props.onClick}
         onMouseEnter={this.handleMouseEnter}
