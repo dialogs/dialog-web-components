@@ -68,6 +68,10 @@
   }
 }
 
+.closeSpinner {
+  vertical-align: inherit;
+}
+
 .header {
   position: relative;
   display: flex;
