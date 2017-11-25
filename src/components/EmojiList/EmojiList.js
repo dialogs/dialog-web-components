@@ -23,8 +23,8 @@ export type Props = {
   recent?: string[],
   stickers?: StickerPack[],
   categoryHeight: number,
-  onClick: (char: string) => void,
-  onStickerClick: (sticker: Sticker) => void
+  onClick: (char: string) => mixed,
+  onStickerClick: (sticker: Sticker) => mixed
 };
 
 type Screen = 'emoji' | 'stickers';

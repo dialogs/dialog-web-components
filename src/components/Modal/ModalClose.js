@@ -22,19 +22,14 @@ function ModalClose(props: Props) {
   if (props.pending) {
     return (
       <div className={className}>
-        <Spinner type="round" />
+        <Spinner type="round" className={styles.closeSpinner} />
       </div>
     );
   }
 
   return (
     <div className={className}>
-      <Icon
-        glyph="close"
-        className={styles.close}
-        onClick={props.onClick}
-        id={props.id}
-      />
+      <Icon glyph="close" className={styles.close} onClick={props.onClick} id={props.id} />
     </div>
   );
 }

@@ -3,10 +3,12 @@
  * @flow
  */
 
-import type { Peer, GroupOnline } from '@dlghq/dialog-types';
+import type { Peer, Group, GroupOnline } from '@dlghq/dialog-types';
 import type { ChatMember } from './types';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
+import { peerToString } from '@dlghq/dialog-types/utils';
+import { hasPermission } from '../../utils/acl';
 import ActivityListItem from '../ActivityList/ActivityListItem';
 import ActivityListMembersItem from './ActivityListMembersItem';
 import ActivityListMembersAdd from './ActivityListMembersAdd';
@@ -16,6 +18,7 @@ import styles from './ActivityListMembers.css';
 export type Props = {
   className?: string,
   uid: number,
+  group: Group,
   members: ChatMember[],
   online: GroupOnline,
   onMemberAdd: () => void,
@@ -45,6 +48,13 @@ class ActivityListMembers extends PureComponent<Props, State> {
   handleMembersHeaderClick = (): void => {
     this.setState({ isOpen: !this.state.isOpen });
   };
+
+  getSelfPermissions() {
+    const { uid, members } = this.props;
+    const self = members.find((member) => uid === member.peerInfo.peer.id);
+
+    return self ? self.permissions : [];
+  }
 
   renderHeader() {
     const { online } = this.props;
@@ -83,14 +93,20 @@ class ActivityListMembers extends PureComponent<Props, State> {
   }
 
   renderMembersList() {
-    const { members, uid } = this.props;
+    const { uid, group, members } = this.props;
+
+    const canKick = hasPermission(uid, group, 'kick');
+    const permissions = this.getSelfPermissions();
 
     return members.map((member) => {
       return (
         <ActivityListMembersItem
           uid={uid}
+          group={group}
           member={member}
-          key={member.peerInfo.peer.key}
+          canKick={canKick}
+          permissions={permissions}
+          key={peerToString(member.peerInfo.peer)}
           onKick={this.props.onMemberKick}
           onClick={this.props.onMemberClick}
         />

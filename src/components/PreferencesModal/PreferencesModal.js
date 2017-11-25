@@ -76,20 +76,10 @@ class PreferencesModal extends PureComponent<Props> {
 
     switch (screen) {
       case 'general':
-        return (
-          <PreferencesGeneral
-            settings={settings}
-            onChange={this.handleSettingsChange}
-          />
-        );
+        return <PreferencesGeneral settings={settings} onChange={this.handleSettingsChange} />;
 
       case 'notifications':
-        return (
-          <PreferencesNotifications
-            settings={settings}
-            onChange={this.handleSettingsChange}
-          />
-        );
+        return <PreferencesNotifications settings={settings} onChange={this.handleSettingsChange} />;
 
       case 'security':
         if (!sessions.value) {
@@ -109,12 +99,7 @@ class PreferencesModal extends PureComponent<Props> {
           return spinner;
         }
 
-        return (
-          <PreferencesBlocked
-            blocked={blocked.value}
-            onUnblockUser={this.props.onUnblockUser}
-          />
-        );
+        return <PreferencesBlocked blocked={blocked.value} onUnblockUser={this.props.onUnblockUser} />;
 
       default:
         return null;
@@ -129,7 +114,7 @@ class PreferencesModal extends PureComponent<Props> {
       <Modal className={className} onClose={this.props.onClose}>
         <ModalHeader withBorder>
           <Text id="PreferencesModal.title" />
-          <ModalClose pending={this.isPending()} onClick={this.props.onClose} />
+          <ModalClose pending={this.isPending()} onClick={this.props.onClose} id="preferences_modal_close" />
         </ModalHeader>
         <ModalBody className={styles.body}>
           <Tabs
@@ -156,9 +141,7 @@ class PreferencesModal extends PureComponent<Props> {
             onPick={this.handleScreenChange}
           />
           <div className={styles.scroller}>
-            <Scroller>
-              {this.renderScreen()}
-            </Scroller>
+            <Scroller>{this.renderScreen()}</Scroller>
           </div>
         </ModalBody>
       </Modal>
