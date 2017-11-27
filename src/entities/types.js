@@ -19,6 +19,7 @@ export interface SelectorState<T> {
   getSelected(): OrderedSet<T>;
   isSelected(item: T): boolean;
   addSelected(item: T): SelectorState<T>;
+  clearSelection(): SelectorState<T>;
   deleteSelected(item: T): SelectorState<T>;
   toggleSelected(item: T): SelectorState<T>;
   handleKeyboardEvent(event: SyntheticKeyboardEvent<>): SelectorState<T>;

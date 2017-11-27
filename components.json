@@ -73,7 +73,8 @@
       "PreferencesModal",
       "AddMembersModal",
       "EditGroupModal",
-      "FeedbackModal"
+      "FeedbackModal",
+      "AdminModal"
     ]
   },
   {

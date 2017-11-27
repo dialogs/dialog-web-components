@@ -4,6 +4,14 @@
 
 @import '../../styles/variables.css';
 
+:root {
+  --switcher-danger-background-color: var(--color-danger);
+  --switcher-danger-active-background-color: color(var(--color-danger) lightness(+8%));
+  --switcher-hint-font-size: var(--default-font-size-small);
+  --switcher-hint-color: var(--modal-font-color-light);
+  --switcher-hint-font-family: var(--switcher-label-font-family);
+}
+
 .container,
 .switcher,
 .label {
@@ -20,6 +28,37 @@
   align-content: center;
   align-items: center;
   max-width: 100%;
+
+  &:hover {
+    & .switcher {
+      background-color: var(--switcher-active-background-color);
+
+      &::before {
+        background-color: color(var(--switcher-dot-color) alpha(98%));
+        box-shadow: 0 2px 2px 0 color(#000 alpha(30%));
+      }
+    }
+
+    &.checked {
+      & .switcher {
+        background-color: var(--switcher-checked-active-background-color);
+      }
+    }
+  }
+}
+
+.danger {
+  &.checked {
+    & .switcher {
+      background-color: var(--switcher-danger-background-color) !important;
+    }
+
+    &:hover {
+      & .switcher {
+        background-color: var(--switcher-danger-active-background-color) !important;
+      }
+    }
+  }
 }
 
 .input {
@@ -51,15 +90,6 @@
     transform: translateZ(0);
     border-radius: 100%;
     background-color: var(--switcher-dot-color);
-  }
-
-  &:hover {
-    background-color: var(--switcher-active-background-color);
-
-    &::before {
-      background-color: color(var(--switcher-dot-color) alpha(98%));
-      box-shadow: 0 2px 2px 0 color(#000 alpha(30%));
-    }
   }
 
   &:active {
@@ -94,6 +124,31 @@
     & .switcher {
       background-color: var(--switcher-checked-background-color) !important;
     }
+
+    &.danger {
+      & .switcher {
+        background-color: var(--switcher-danger-background-color) !important;
+      }
+    }
+  }
+
+
+  &:hover {
+    & .switcher {
+      background-color: var(--switcher-background-color) !important;
+    }
+
+    &.checked {
+      & .switcher {
+        background-color: var(--switcher-checked-background-color) !important;
+      }
+
+      &.danger {
+        & .switcher {
+          background-color: var(--switcher-danger-background-color) !important;
+        }
+      }
+    }
   }
 }
 
@@ -106,9 +161,9 @@
       background-color: var(--switcher-active-dot-color);
     }
 
-    &:hover {
+    /*&:hover {
       background-color: var(--switcher-checked-active-background-color);
-    }
+    }*/
   }
 }
 
@@ -125,4 +180,15 @@
   & strong {
     font-weight: 500;
   }
+}
+
+.hint {
+  font-family: var(--switcher-hint-font-family);
+  padding-top: 6px;
+  padding-left: 46px;
+  cursor: default;
+  user-select: none;
+  font-size: var(--switcher-hint-font-size);
+  line-height: 1.3;
+  color: var(--switcher-hint-color);
 }

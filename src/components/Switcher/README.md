@@ -39,3 +39,17 @@ initialState = { value: true };
   onChange={(value) => setState({ value })}
 />
 ```
+
+Danger Switcher:
+
+```jsx
+initialState = { value: true };
+
+<Switcher
+  danger
+  id="danger"
+  name="danger"
+  value={state.value}
+  onChange={(value) => setState({ value })}
+/>
+```

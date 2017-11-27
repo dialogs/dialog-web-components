@@ -1,0 +1,32 @@
+title: Change member permissions
+legend: Admin permissions
+cancel: Cancel
+submit:
+  update: Update permissions
+  transfer:
+    group: Transfer ownership
+    channel: Transfer channel ownership
+
+kick: Kick other members
+invite: Add users
+get_integration_token: Get integration link
+send_message: Post messages
+edit_message: Edit messages of others
+delete_message: Delete messages of others
+
+group:
+  update_info: Change group info
+  edit_shortname: Change group short-link
+  transfer_ownership: Transfer group ownership
+
+channel:
+  update_info: Change channel info
+  edit_shortname: Change channel chort-link
+  transfer_ownership: Transfer channel ownership
+
+transfer_ownership_legend: Transfer ownership
+
+set_permissions: Add new administrators
+set_permissions_hint:
+  yes: This admin will be able to add new administrators with the same permissions
+  no: This admin will not be able to add new administrators

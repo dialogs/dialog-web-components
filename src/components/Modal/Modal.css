@@ -170,3 +170,7 @@
     }
   }
 }
+
+.spinner {
+  vertical-align: inherit;
+}

@@ -4,6 +4,7 @@
  */
 
 import React, { PureComponent, type Node } from 'react';
+import { Text } from '@dlghq/react-l10n';
 import classNames from 'classnames';
 import styles from './Switcher.css';
 
@@ -11,11 +12,13 @@ export type SwitcherProps = {
   className?: string,
   children?: Node,
   id: string,
+  danger: boolean,
   name: string,
   value: boolean,
   disabled: boolean,
+  hint?: ?string,
   tabIndex?: number,
-  onChange: (value: boolean, event: SyntheticEvent<>) => void
+  onChange: (value: boolean, event: SyntheticInputEvent<>) => mixed
 }
 
 class Switcher extends PureComponent<SwitcherProps> {
@@ -23,10 +26,11 @@ class Switcher extends PureComponent<SwitcherProps> {
 
   static defaultProps = {
     value: false,
+    danger: false,
     disabled: false
   };
 
-  handleChange = (event: $FlowIssue): void => {
+  handleChange = (event: SyntheticInputEvent<>): void => {
     if (!this.props.disabled) {
       this.props.onChange(event.target.checked, event);
     }
@@ -60,14 +64,30 @@ class Switcher extends PureComponent<SwitcherProps> {
     );
   }
 
-  render() {
-    const { id, value, disabled, name, tabIndex } = this.props;
-    const className = classNames(styles.container, this.props.className, {
-      [styles.checked]: value,
-      [styles.disabled]: disabled
-    });
+  renderHint() {
+    const { hint } = this.props;
+    if (!hint) {
+      return null;
+    }
 
     return (
+      <Text
+        className={styles.hint}
+        id={hint}
+        tagName="div"
+      />
+    );
+  }
+
+  render() {
+    const { id, value, disabled, name, tabIndex, danger } = this.props;
+    const className = classNames(styles.container, {
+      [styles.checked]: value,
+      [styles.disabled]: disabled,
+      [styles.danger]: danger
+    });
+
+    const switcher = (
       <div className={className}>
         <input
           className={styles.input}
@@ -81,6 +101,22 @@ class Switcher extends PureComponent<SwitcherProps> {
         />
         <label htmlFor={id} className={styles.switcher} />
         {this.renderChildren()}
+      </div>
+    );
+
+    const hint = this.renderHint();
+    if (hint) {
+      return (
+        <div className={this.props.className}>
+          {switcher}
+          {hint}
+        </div>
+      );
+    }
+
+    return (
+      <div className={this.props.className}>
+        {switcher}
       </div>
     );
   }

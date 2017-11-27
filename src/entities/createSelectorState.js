@@ -119,6 +119,10 @@ function createSelectorState<T>(
       return selected.has(item) ? this.deleteSelected(item) : this.addSelected(item);
     }
 
+    clearSelection(): SelectorState {
+      return this.set('selected', this.get('selected').clear());
+    }
+
     handleKeyboardEvent(event: SyntheticKeyboardEvent<>): SelectorState {
       switch (event.key) {
         case 'Esc':
