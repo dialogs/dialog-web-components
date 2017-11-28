@@ -3,13 +3,12 @@
  * @flow
  */
 
-import type { Group, GroupMember, GroupMemberPermission } from '@dlghq/dialog-types';
+import type { Field, Group, GroupMember, GroupMemberPermission } from '@dlghq/dialog-types';
 import type { Permission } from './types';
 import { Set } from 'immutable';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import { Text } from '@dlghq/react-l10n';
-import { getDefaultPermissions } from '../../utils/acl';
 import { MemberSelectorState, type SelectorState } from '../../entities';
 import Modal from '../Modal/Modal';
 import Button from '../Button/Button';
@@ -29,7 +28,7 @@ type Props = {
   uid: number,
   group: Group,
   members: GroupMember[],
-  forceMember?: ?GroupMember,
+  action: Field<void>,
   onAddAdmin: (gid: number, uid: number, permissions: GroupMemberPermission[]) => mixed,
   onTransferOwnership: (gid: number, uid: number) => mixed,
   onClose: () => mixed
@@ -44,21 +43,24 @@ class AdminModal extends PureComponent<Props, State> {
   constructor(props: Props) {
     super(props);
 
-    let selector = MemberSelectorState.create(props.members);
-    if (props.forceMember) {
-      selector = selector.addSelected(props.forceMember);
-    }
-
     this.state = {
-      selector,
-      permissions: Set(getDefaultPermissions(props.group))
+      selector: MemberSelectorState.create(props.members),
+      permissions: Set()
     };
+  }
+
+  componentWillReceiveProps(nextProps: Props) {
+    if (this.props.members !== nextProps.members) {
+      this.setState({
+        selector: this.state.selector.replaceItems(nextProps.members)
+      });
+    }
   }
 
   handleCancel = () => {
     this.setState({
       selector: this.state.selector.clearSelection(),
-      permissions: Set(getDefaultPermissions(this.props.group))
+      permissions: this.state.permissions.clear()
     });
   };
 
@@ -75,7 +77,12 @@ class AdminModal extends PureComponent<Props, State> {
   };
 
   handleChange = (selector: SelectorState<GroupMember>) => {
-    this.setState({ selector });
+    const member = selector.getSelected().first();
+    if (member) {
+      this.setState({ selector, permissions: Set(member.permissions) });
+    } else {
+      this.setState({ selector });
+    }
   };
 
   handlePermissionsChange = (permissions: Set<Permission>) => {
@@ -96,7 +103,7 @@ class AdminModal extends PureComponent<Props, State> {
   }
 
   renderContent() {
-    const { uid, group } = this.props;
+    const { uid, group, action } = this.props;
     const member = this.getSelectedMember();
 
     if (member) {
@@ -119,6 +126,7 @@ class AdminModal extends PureComponent<Props, State> {
               form="edit_user_permissions"
               type="submit"
               theme="success"
+              disabled={action.pending}
               className={styles.footerButton}
             >
               <Text id={this.getSubmitLabel()} />
@@ -145,13 +153,15 @@ class AdminModal extends PureComponent<Props, State> {
   }
 
   render() {
+    const { action } = this.props;
     const className = classNames(styles.container, this.props.className);
+    const member = this.getSelectedMember();
 
     return (
       <Modal className={className} onClose={this.props.onClose}>
         <ModalHeader withBorder>
           {
-            this.state.current ? (
+            member ? (
               <Icon
                 glyph="arrow_back"
                 onClick={this.handleCancel}
@@ -160,7 +170,7 @@ class AdminModal extends PureComponent<Props, State> {
             ) : null
           }
           <Text id="AdminModal.title" />
-          <ModalClose onClick={this.props.onClose} />
+          <ModalClose pending={action.pending} onClick={this.props.onClose} />
         </ModalHeader>
         {this.renderContent()}
       </Modal>

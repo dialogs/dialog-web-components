@@ -34,8 +34,8 @@ function createSelectorState<T>(
       return this.get('query');
     }
 
-    setQuery(query: string): SelectorState {
-      if (query === this.get('query')) {
+    setQuery(query: string, force: boolean = false): SelectorState {
+      if (!force && query === this.get('query')) {
         return this;
       }
 
@@ -83,6 +83,12 @@ function createSelectorState<T>(
       const max = this.getItems().size;
 
       return this.set('hoverIndex', calculateCursor({ max, next: hoverIndex }));
+    }
+
+    replaceItems(items: Iterable<T>): SelectorState {
+      return this
+        .set('items', List(items))
+        .setQuery(this.getQuery(), true);
     }
 
     getSelected(): OrderedSet<T> {

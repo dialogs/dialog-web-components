@@ -13,6 +13,7 @@ export interface SelectorState<T> {
   setShow(show: boolean): SelectorState<T>;
   getItems(): List<T>;
   getItem(index: number): T;
+  replaceItems(items: Iterable<T>): SelectorState<T>;
   getHovered(): T;
   getHoverIndex(): number;
   setHoverIndex(index: number): SelectorState<T>;

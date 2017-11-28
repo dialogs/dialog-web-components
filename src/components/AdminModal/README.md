@@ -23,12 +23,36 @@ const group = {
 };
 
 initialState = {
-  isOpen: false
+  isOpen: false,
+  action: {
+    pending: false,
+    error: null
+  }
 };
 
 const actions = {
-  onAddAdmin: (...args) => console.log('onAddAdmin', ...args),
-  onTransferOwnership: (...args) => console.log('onTransferOwnership', ...args),
+  onAddAdmin: (...args) => {
+    console.log('onAddAdmin', ...args)
+    setState({ action: { pending: true, error: null } });
+    setTimeout(() => {
+      if (Math.random() > 0.5) {
+        setState({ isOpen: true, action: { pending: false, error: new Error('Unexpected error') } });
+      } else {
+        setState({ isOpen: false, action: { pending: false, error: null } });
+      }
+    }, 3000);
+  },
+  onTransferOwnership: (...args) => {
+    console.log('onTransferOwnership', ...args)
+    setState({ action: { pending: true, error: null } });
+    setTimeout(() => {
+      if (Math.random() > 0.5) {
+        setState({ isOpen: true, action: { pending: false, error: new Error('Unexpected error') } });
+      } else {
+        setState({ isOpen: false, action: { pending: false, error: null } });
+      }
+    }, 3000);
+  },
   onClose: () => setState({ isOpen: false })
 };
 
@@ -42,6 +66,7 @@ const handleOpen = () => setState({ isOpen: true });
         uid={100500}
         group={group}
         members={group.members}
+        action={state.action}
         {...actions}
       />
     ) : null
