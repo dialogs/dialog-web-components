@@ -110,24 +110,35 @@ class AdminModalForm extends PureComponent<Props> {
       });
   }
 
+  renderOwnershipTransfering() {
+    const { id, uid, group, permissions } = this.props;
+    if (uid !== group.adminId) {
+      return null;
+    }
+
+    return (
+      <Fieldset legend="AdminModal.transfer_ownership_legend" className={styles.fieldset}>
+        <AdminModalSwitcher
+          danger
+          id={id}
+          type="transfer_ownership"
+          label={`AdminModal.${group.type}.transfer_ownership`}
+          value={permissions.has('transfer_ownership')}
+          onChange={this.handleChange}
+        />
+      </Fieldset>
+    );
+  }
+
   render() {
-    const { id, group, permissions } = this.props;
+    const { id } = this.props;
 
     return (
       <form className={styles.form} id={id} onSubmit={this.handleSubmit}>
         <Fieldset legend="AdminModal.legend" className={styles.fieldset}>
           {this.renderSwitchers()}
         </Fieldset>
-        <Fieldset legend="AdminModal.transfer_ownership_legend" className={styles.fieldset}>
-          <AdminModalSwitcher
-            danger
-            id={id}
-            type="transfer_ownership"
-            label={`AdminModal.${group.type}.transfer_ownership`}
-            value={permissions.has('transfer_ownership')}
-            onChange={this.handleChange}
-          />
-        </Fieldset>
+        {this.renderOwnershipTransfering()}
       </form>
     );
   }
