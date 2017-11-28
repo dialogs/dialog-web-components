@@ -37,7 +37,7 @@ class AdminModalUserSearch extends PureComponent<Props> {
   };
 
   getPlaceholder = (): string => {
-    return this.context.l10n.formatText('AdminModalUserSearch.placeholder');
+    return this.context.l10n.formatText('AdminModal.search_placeholder');
   };
 
   render() {
