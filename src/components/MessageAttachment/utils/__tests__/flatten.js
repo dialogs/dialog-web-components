@@ -6,7 +6,7 @@
 import type { Message, MessageAttachment } from '@dlghq/dialog-types';
 import flatten from '../flatten';
 
-function createMessage(attachment: ?MessageAttachment) {
+function createMessage(attachment: ?MessageAttachment, text: string = 'test') {
   return {
     attachment,
     rid: String(Math.random()),
@@ -15,8 +15,8 @@ function createMessage(attachment: ?MessageAttachment) {
     fullDate: new Date(),
     sender: null,
     content: {
-      type: 'text',
-      text: 'test'
+      text,
+      type: 'text'
     },
     reactions: [],
     state: 'unknown',
@@ -45,5 +45,14 @@ describe('Flatten message attachments', () => {
     const parent = createReply([createMessage(child1), createMessage(child2)]);
 
     expect(flatten(parent)).toEqual([child0, child1, child2, parent]);
+  });
+
+  test('empty message should be removed', () => {
+    const child0 = createReply([createMessage(null)]);
+    const empty = createReply([createMessage(child0, '')]);
+    const child2 = createReply([createMessage(null)]);
+    const parent = createReply([createMessage(empty), createMessage(child2)]);
+
+    expect(flatten(parent)).toEqual([child0, child2, parent]);
   });
 });
