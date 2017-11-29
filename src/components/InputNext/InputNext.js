@@ -20,13 +20,14 @@ export type Props = {
   name?: string,
   label?: string,
   placeholder?: string,
-  disabled?: bool,
+  disabled?: boolean,
   hint?: string,
   status: 'normal' | 'success' | 'error',
   size: 'small' | 'normal',
   autoFocus?: boolean,
   tabIndex?: number,
   htmlAutoFocus?: boolean,
+  spellcheck?: boolean,
   onChange: (value: string, event: SyntheticInputEvent<HTMLAbstractInputElement>) => mixed,
   onFocus?: (event: SyntheticFocusEvent<HTMLAbstractInputElement>) => mixed,
   onBlur?: (event: SyntheticFocusEvent<HTMLAbstractInputElement>) => mixed,
@@ -43,12 +44,13 @@ export type Context = ProviderContext;
 
 class InputNext extends PureComponent<Props, State> {
   context: Context;
-  input: ?(HTMLAbstractInputElement);
+  input: ?HTMLAbstractInputElement;
 
   static defaultProps = {
     type: 'text',
     status: 'normal',
-    size: 'normal'
+    size: 'normal',
+    spellcheck: false
   };
 
   static contextTypes = {
@@ -160,17 +162,24 @@ class InputNext extends PureComponent<Props, State> {
 
     const { l10n } = this.context;
 
-    return (
-      <p className={styles.hint}>
-        {l10n.formatText(hint)}
-      </p>
-    );
+    return <p className={styles.hint}>{l10n.formatText(hint)}</p>;
   }
 
   render() {
     const {
-      id, name, type, value, disabled, tabIndex, status,
-      htmlAutoFocus, placeholder, onKeyUp, onKeyDown, onKeyPress, size
+      id,
+      name,
+      type,
+      value,
+      disabled,
+      tabIndex,
+      status,
+      htmlAutoFocus,
+      placeholder,
+      onKeyUp,
+      onKeyDown,
+      onKeyPress,
+      size
     } = this.props;
     const { isFocused } = this.state;
     const { l10n } = this.context;
@@ -209,6 +218,7 @@ class InputNext extends PureComponent<Props, State> {
           onKeyDown={onKeyDown}
           onKeyPress={onKeyPress}
           onKeyUp={onKeyUp}
+          spellcheck={this.props.spellcheck ? 'true' : 'false'}
         />
         {this.renderHint()}
       </div>
