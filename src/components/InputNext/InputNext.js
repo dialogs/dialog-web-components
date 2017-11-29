@@ -218,7 +218,7 @@ class InputNext extends PureComponent<Props, State> {
           onKeyDown={onKeyDown}
           onKeyPress={onKeyPress}
           onKeyUp={onKeyUp}
-          spellcheck={this.props.spellcheck ? 'true' : 'false'}
+          spellCheck={this.props.spellcheck ? 'true' : 'false'}
         />
         {this.renderHint()}
       </div>
