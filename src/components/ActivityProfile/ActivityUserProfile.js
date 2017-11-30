@@ -23,10 +23,15 @@ class ActivityUserProfile extends PureComponent<Props> {
   renderAvatar() {
     const { info: { name, bigAvatar, placeholder } } = this.props;
 
-    return (<Avatar
-      className={styles.avatar} size="big" title={name} image={bigAvatar}
-      placeholder={placeholder}
-    />);
+    return (
+      <Avatar
+        className={styles.avatar}
+        size="big"
+        title={name}
+        image={bigAvatar}
+        placeholder={placeholder}
+      />
+    );
   }
 
   renderTitle() {
