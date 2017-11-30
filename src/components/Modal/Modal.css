@@ -20,7 +20,7 @@
   display: flex;
   overflow: hidden;
   min-width: var(--modal-min-width);
-  margin: calc(var(--default-padding-large) * 3) 0;
+  margin: calc(var(--default-padding-large) * 3) 0 0;
   border-radius: var(--modal-border-radius);
   outline: none;
   background-color: var(--modal-background-color);
