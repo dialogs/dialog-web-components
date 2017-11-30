@@ -146,6 +146,15 @@ class AdminModal extends PureComponent<Props, State> {
     );
   }
 
+  renderError() {
+    const { action } = this.props;
+    if (!action.error) {
+      return null;
+    }
+
+    return <div className={styles.error}>{action.error.message}</div>;
+  }
+
   render() {
     const { action } = this.props;
     const className = classNames(styles.container, this.props.className);
@@ -158,6 +167,7 @@ class AdminModal extends PureComponent<Props, State> {
           <Text id="AdminModal.title" />
           <ModalClose pending={action.pending} onClick={this.props.onClose} />
         </ModalHeader>
+        {this.renderError()}
         {this.renderContent()}
       </Modal>
     );
