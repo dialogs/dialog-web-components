@@ -16,7 +16,7 @@ type Props = {
   onTitleClick?: ?(event: SyntheticMouseEvent<>) => mixed,
   onUserNameClick?: ?(event: SyntheticMouseEvent<>) => mixed,
   addSpacebars: boolean,
-  emojiSize?: ?number
+  emojiSize?: number
 };
 
 class PeerInfoTitle extends PureComponent<Props> {
