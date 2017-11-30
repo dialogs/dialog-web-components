@@ -15,7 +15,8 @@ type Props = {
   userNameClassName?: string,
   onTitleClick?: ?(event: SyntheticMouseEvent<>) => mixed,
   onUserNameClick?: ?(event: SyntheticMouseEvent<>) => mixed,
-  addSpacebars: boolean
+  addSpacebars: boolean,
+  emojiSize?: ?number
 };
 
 class PeerInfoTitle extends PureComponent<Props> {
@@ -33,11 +34,7 @@ class PeerInfoTitle extends PureComponent<Props> {
         onClick={this.props.onTitleClick}
         title={this.props.title}
       >
-        <Markdown
-          inline
-          decorators={decorators}
-          text={this.props.title}
-        />
+        <Markdown inline emojiSize={this.props.emojiSize} decorators={decorators} text={this.props.title} />
         {spacebars}
       </span>
     );
@@ -61,11 +58,7 @@ class PeerInfoTitle extends PureComponent<Props> {
       );
     }
 
-    return (
-      <span className={this.props.className}>
-        {title}
-      </span>
-    );
+    return <span className={this.props.className}>{title}</span>;
   }
 }
 
