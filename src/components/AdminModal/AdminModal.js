@@ -32,7 +32,7 @@ type Props = {
   onAddAdmin: (gid: number, uid: number, permissions: GroupMemberPermission[]) => mixed,
   onTransferOwnership: (gid: number, uid: number) => mixed,
   onClose: () => mixed
-}
+};
 
 type State = {
   selector: SelectorState<GroupMember>,
@@ -138,15 +138,9 @@ class AdminModal extends PureComponent<Props, State> {
 
     return (
       <ModalBody className={styles.body}>
-        <AdminModalUserSearch
-          selector={this.state.selector}
-          onChange={this.handleChange}
-        />
+        <AdminModalUserSearch selector={this.state.selector} onChange={this.handleChange} />
         <div className={styles.list}>
-          <AdminModalUserList
-            selector={this.state.selector}
-            onChange={this.handleChange}
-          />
+          <AdminModalUserList selector={this.state.selector} onChange={this.handleChange} />
         </div>
       </ModalBody>
     );
@@ -160,15 +154,7 @@ class AdminModal extends PureComponent<Props, State> {
     return (
       <Modal className={className} onClose={this.props.onClose}>
         <ModalHeader withBorder>
-          {
-            member ? (
-              <Icon
-                glyph="arrow_back"
-                onClick={this.handleCancel}
-                className={styles.back}
-              />
-            ) : null
-          }
+          {member ? <Icon glyph="arrow_back" onClick={this.handleCancel} className={styles.back} /> : null}
           <Text id="AdminModal.title" />
           <ModalClose pending={action.pending} onClick={this.props.onClose} />
         </ModalHeader>

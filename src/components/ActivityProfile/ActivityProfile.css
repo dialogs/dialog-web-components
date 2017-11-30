@@ -55,6 +55,7 @@
 
 .about {
   margin-top: var(--default-padding);
+  word-break: break-all;
 }
 
 .actions {
