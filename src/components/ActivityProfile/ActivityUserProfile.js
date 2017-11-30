@@ -77,7 +77,7 @@ class ActivityUserProfile extends PureComponent<Props> {
   renderProfileContacts() {
     const { info } = this.props;
 
-    if (!info.phones.length && !info.emails.length) {
+    if (!info.isContact || (!info.phones.length && !info.emails.length)) {
       return null;
     }
 
