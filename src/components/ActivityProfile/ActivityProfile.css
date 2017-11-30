@@ -74,13 +74,16 @@
 .contactTitle {
   letter-spacing: -0.27px;
   font-size: var(--default-font-size-small);
-  line-height: 22px;
+  line-height: 20px;
+  margin-top: 6px;
   color: var(--activity-text-color-light);
 }
 
 .contactContent {
   letter-spacing: -0.4px;
   font-size: var(--activity-font-size);
-  line-height: 22px;
+  line-height: 20px;
   color: var(--activity-profile-contact-font-color);
+  text-decoration: none;
+  display: inline-block;
 }
