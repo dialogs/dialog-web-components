@@ -113,8 +113,5 @@ initialState = {
   value={state.value}
   options={options}
   theme={state.value}
-  clearable
 />
 ```
-
-
