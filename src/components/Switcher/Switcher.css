@@ -112,7 +112,7 @@
 
     &::before {
       background-color: var(--switcher-dot-color);
-      box-shadow: none;
+      box-shadow: none !important;
     }
   }
 
