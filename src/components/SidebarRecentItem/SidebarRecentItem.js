@@ -45,24 +45,10 @@ class SidebarRecentItem extends PureComponent<Props> {
     const { info, message, online } = this.props;
 
     if (message && message.sender && info.type === 'group') {
-      return (
-        <DoublePeerAvatar
-          className={styles.doubleAvatar}
-          size={40}
-          peerBig={info}
-          peerSmall={message.sender}
-        />
-      );
+      return <DoublePeerAvatar className={styles.doubleAvatar} size={40} peerBig={info} peerSmall={message.sender} />;
     }
 
-    return (
-      <PeerAvatar
-        className={styles.avatar}
-        size={37}
-        peer={info}
-        online={online}
-      />
-    );
+    return <PeerAvatar className={styles.avatar} size={37} peer={info} online={online} />;
   }
 
   renderStatus() {
@@ -71,9 +57,7 @@ class SidebarRecentItem extends PureComponent<Props> {
       return (
         <div className={styles.message}>
           <Spinner className={styles.typing} type="dotted" />
-          <span className={styles.highlight}>
-            {typing}
-          </span>
+          <span className={styles.highlight}>{typing}</span>
         </div>
       );
     }
@@ -88,15 +72,10 @@ class SidebarRecentItem extends PureComponent<Props> {
     }
 
     if (message) {
-      return (
-        <MessagePreview
-          className={styles.message}
-          uid={uid}
-          info={info}
-          message={message}
-          active={active}
-        />
-      );
+      return (<MessagePreview
+        className={styles.message} uid={uid} info={info} message={message}
+        active={active}
+      />);
     }
 
     return null;
@@ -109,37 +88,24 @@ class SidebarRecentItem extends PureComponent<Props> {
       return null;
     }
 
-    const className = classNames(
-      styles.counter,
-      muted ? styles.muted : null
-    );
+    const className = classNames(styles.counter, muted ? styles.muted : null);
 
-    return (
-      <div className={className}>
-        {counter}
-      </div>
-    );
+    return <div className={className}>{counter}</div>;
   }
 
   renderIcons() {
     const icons = [];
     if (this.props.favourite) {
-      icons.push(
-        <Icon key="favourite" glyph="star" className={styles.icon} size={14} />
-      );
+      icons.push(<Icon key="favourite" glyph="star" className={styles.icon} size={16} />);
     }
 
     switch (this.props.info.type) {
       case 'group':
-        icons.push(
-          <Icon key="type" glyph="group" className={styles.icon} size={22} />
-        );
+        icons.push(<Icon key="type" glyph="group" className={styles.icon} size={22} />);
         break;
 
       case 'channel':
-        icons.push(
-          <Icon key="type" glyph="channel" className={styles.icon} size={22} />
-        );
+        icons.push(<Icon key="type" glyph="channel" className={styles.icon} size={22} />);
         break;
 
       default:

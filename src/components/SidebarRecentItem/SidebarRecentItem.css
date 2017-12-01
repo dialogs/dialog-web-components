@@ -84,7 +84,7 @@
 
 .icon {
   display: inline-block;
-  margin-right: 4px;
+  margin-right: 2px;
   margin-top: -4px;
   fill: currentColor;
 }
@@ -98,7 +98,9 @@
   @apply --text-overflow-ellipsis;
 }
 
-.sender, .service, .highlight {
+.sender,
+.service,
+.highlight {
   height: 17px;
   line-height: 17px;
   color: var(--sidebar-recent-item-highlight-color);
