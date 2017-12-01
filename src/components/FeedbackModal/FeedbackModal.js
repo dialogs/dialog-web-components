@@ -28,7 +28,7 @@ type Props = {
   onClose: () => mixed
 };
 
-type State = Feedback
+type State = Feedback;
 
 class FeedbackModal extends PureComponent<Props, State> {
   static defaultProps = {
@@ -72,6 +72,7 @@ class FeedbackModal extends PureComponent<Props, State> {
               htmlAutoFocus
               id={this.props.id + '_text'}
               type="textarea"
+              spellcheck
               placeholder="FeedbackModal.label"
               inputClassName={styles.text}
               value={this.state.text}
@@ -88,10 +89,7 @@ class FeedbackModal extends PureComponent<Props, State> {
           </ModalBody>
           <ModalFooter className={styles.footer}>
             <Button
-              wide
-              id={`${this.props.id}_submit_button`}
-              type="submit"
-              theme="success"
+              wide id={`${this.props.id}_submit_button`} type="submit" theme="success"
               rounded={false}
             >
               <Text id="FeedbackModal.submit" />

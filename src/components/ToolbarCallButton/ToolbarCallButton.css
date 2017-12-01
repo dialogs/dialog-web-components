@@ -46,4 +46,8 @@
 .disabled {
   cursor: default;
   opacity: 0.15 !important;
+
+  & .icon {
+    fill: var(--toolbar-call-button-color) !important;
+  }
 }

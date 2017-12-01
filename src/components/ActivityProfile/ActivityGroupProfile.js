@@ -37,12 +37,7 @@ class ActivityGroupProfile extends PureComponent<Props> {
     const { info: { name, shortname } } = this.props;
 
     return (
-      <PeerInfoTitle
-        title={name}
-        userName={shortname}
-        titleClassName={styles.name}
-        userNameClassName={styles.nick}
-      />
+      <PeerInfoTitle title={name} userName={shortname} titleClassName={styles.name} userNameClassName={styles.nick} />
     );
   }
 
@@ -61,14 +56,12 @@ class ActivityGroupProfile extends PureComponent<Props> {
       return null;
     }
 
-    // TODO: use PeerInfoTitle
     return (
-      <Text
-        tagName="div"
-        className={styles.creator}
-        id="ActivityProfile.created_by"
-        values={{ name: admin.peerInfo.title }}
-      />
+      <div className={styles.creator}>
+        <Text id="ActivityProfile.created_by" />
+        {'\u00A0'}
+        <PeerInfoTitle title={admin.peerInfo.title} emojiSize={22} />
+      </div>
     );
   }
 
@@ -93,9 +86,7 @@ class ActivityGroupProfile extends PureComponent<Props> {
       return null;
     }
 
-    return (
-      <div className={styles.actions}>{children}</div>
-    );
+    return <div className={styles.actions}>{children}</div>;
   }
 
   render() {

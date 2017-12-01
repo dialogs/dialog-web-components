@@ -6,6 +6,12 @@
 import type { MessageAttachment } from '@dlghq/dialog-types';
 import mapNotNull from '../../../utils/mapNotNull';
 
+function isEmpty(attach: MessageAttachment): boolean {
+  return attach.messages.every((child) => {
+    return child.content.type === 'text' && !child.content.text;
+  });
+}
+
 function flattenTree(tree: MessageAttachment[], result: MessageAttachment[]) {
   tree.forEach((attach) => {
     if (attach.messages) {
@@ -13,7 +19,9 @@ function flattenTree(tree: MessageAttachment[], result: MessageAttachment[]) {
       flattenTree(childTree, result);
     }
 
-    result.push(attach);
+    if (!isEmpty(attach)) {
+      result.push(attach);
+    }
   });
 }
 

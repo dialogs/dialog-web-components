@@ -17,7 +17,7 @@ export type Props = {
   decorators: typeof decorators,
   renderText: typeof renderText,
   renderBlocks: typeof renderBlocks,
-  emojiSize: number
+  emojiSize?: number
 };
 
 class Markdown extends Component<Props> {

@@ -34,8 +34,8 @@ function createSelectorState<T>(
       return this.get('query');
     }
 
-    setQuery(query: string): SelectorState {
-      if (query === this.get('query')) {
+    setQuery(query: string, force: boolean = false): SelectorState {
+      if (!force && query === this.get('query')) {
         return this;
       }
 
@@ -85,6 +85,12 @@ function createSelectorState<T>(
       return this.set('hoverIndex', calculateCursor({ max, next: hoverIndex }));
     }
 
+    replaceItems(items: Iterable<T>): SelectorState {
+      return this
+        .set('items', List(items))
+        .setQuery(this.getQuery(), true);
+    }
+
     getSelected(): OrderedSet<T> {
       return this.get('selected');
     }
@@ -117,6 +123,10 @@ function createSelectorState<T>(
       const selected = this.get('selected');
 
       return selected.has(item) ? this.deleteSelected(item) : this.addSelected(item);
+    }
+
+    clearSelection(): SelectorState {
+      return this.set('selected', this.get('selected').clear());
     }
 
     handleKeyboardEvent(event: SyntheticKeyboardEvent<>): SelectorState {

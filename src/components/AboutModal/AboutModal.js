@@ -36,7 +36,7 @@ class AboutModal extends PureComponent<Props> {
 
     if (updateState.pending) {
       return (
-        <Text id="AboutModal.pending" values={{ appName }} />
+        <Text id={`AboutModal.pending.${updateState.value}`} values={{ appName }} />
       );
     }
 
@@ -47,7 +47,8 @@ class AboutModal extends PureComponent<Props> {
 
   renderUpdateButton() {
     const { updateState } = this.props;
-    if (updateState.value === 'available') {
+
+    if (!updateState.error && updateState.value === 'available') {
       return (
         <ButtonNext
           size="small"

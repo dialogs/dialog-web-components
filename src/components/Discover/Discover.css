@@ -7,10 +7,10 @@
 :root {
   --discover-font-family: var(--default-font-family);
   --discover-background-color: #fff;
-  --discover-title-font-size: 28px;
+  --discover-title-font-size: 18px;
   --discover-title-color: #000;
-  --discover-subtitle-font-size: var(--default-font-size-large);
-  --discover-subtitle-color: color(#000 alpha(40%));
+  --discover-subtitle-font-size: var(--default-font-size-small);
+  --discover-subtitle-color: var(--default-font-color-light);
 }
 
 /* Reset */
@@ -28,14 +28,17 @@
 }
 
 .header {
-  border-bottom: 1px solid color(#000 alpha(10%));
   display: flex;
   flex: 0 0 auto;
   flex-flow: row nowrap;
   align-content: flex-start;
   justify-content: flex-start;
   align-items: center;
-  padding: var(--default-padding);
+  padding-top: var(--toolbar-padding-top);
+  padding-right: var(--toolbar-padding-right);
+  padding-bottom: var(--toolbar-padding-bottom);
+  padding-left: var(--toolbar-padding-left);
+  box-shadow: inset 0 -1px 0 0 var(--toolbar-border-color);
 }
 
 .headerText {
@@ -52,17 +55,27 @@
 
 .title {
   font-size: var(--discover-title-font-size);
-  color: var(--discover-title-color);
+  display: inherit;
+  vertical-align: middle;
+  letter-spacing: -0.3px;
   font-weight: 500;
+  line-height: 22px;
   margin: 0;
-  line-height: 1.4;
+  color: var(--discover-title-color);
+  @apply --text-overflow-ellipsis;
 }
 
 .subTitle {
   font-weight: 400;
   margin: 0;
   font-size: var(--discover-subtitle-font-size);
-  color: var(--discover-subtitle-color);
+
+  vertical-align: middle;
+  letter-spacing: -0.2px;
+  font-size: var(--toolbar-status-font-size);
+  line-height: 18px;
+  color: var(--toolbar-status-color);
+  @apply --text-overflow-ellipsis;
 }
 
 .cards {

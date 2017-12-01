@@ -24,13 +24,14 @@ export type Props = {
   large?: boolean,
   placeholder?: string,
   prefix?: ?string,
-  disabled?: bool,
+  disabled?: boolean,
   hint?: string,
   status: 'normal' | 'success' | 'error' | 'warning',
   autoFocus?: boolean,
   htmlAutoFocus?: boolean,
   tabIndex?: number,
   htmlAutoFocus?: boolean,
+  spellcheck?: boolean,
   onChange: (value: string, event: SyntheticInputEvent<HTMLAbstractInputElement>) => mixed,
   onFocus?: (event: SyntheticFocusEvent<HTMLAbstractInputElement>) => mixed,
   onBlur?: (event: SyntheticFocusEvent<HTMLAbstractInputElement>) => mixed,
@@ -53,7 +54,8 @@ class Input extends PureComponent<Props, State> {
 
   static defaultProps = {
     type: 'text',
-    status: 'normal'
+    status: 'normal',
+    spellcheck: false
   };
 
   static contextTypes = {
@@ -162,11 +164,7 @@ class Input extends PureComponent<Props, State> {
       return null;
     }
 
-    return (
-      <p className={styles.hint}>
-        {l10n.formatText(hint)}
-      </p>
-    );
+    return <p className={styles.hint}>{l10n.formatText(hint)}</p>;
   }
 
   renderPrefix() {
@@ -175,17 +173,10 @@ class Input extends PureComponent<Props, State> {
     if (!prefix) {
       return null;
     }
-    const className = classNames(
-      styles.prefix,
-      this.props.prefixClassName,
-    );
+    const className = classNames(styles.prefix, this.props.prefixClassName);
 
     return (
-      <label
-        htmlFor={id}
-        className={className}
-        onMouseDown={this.handleLabelMouseDown}
-      >
+      <label htmlFor={id} className={className} onMouseDown={this.handleLabelMouseDown}>
         {prefix}
       </label>
     );
@@ -194,18 +185,24 @@ class Input extends PureComponent<Props, State> {
   renderInput() {
     const {
       props: {
-        id, name, type, value, disabled, tabIndex,
-        placeholder, htmlAutoFocus,
-        onKeyUp, onKeyDown, onKeyPress
+        id,
+        name,
+        type,
+        value,
+        disabled,
+        tabIndex,
+        placeholder,
+        htmlAutoFocus,
+        onKeyUp,
+        onKeyDown,
+        onKeyPress,
+        spellcheck
       },
       context: { l10n }
     } = this;
 
     const props = {
-      className: classNames(
-        styles.input,
-        this.props.inputClassName,
-      ),
+      className: classNames(styles.input, this.props.inputClassName),
       disabled,
       id,
       name,
@@ -224,17 +221,14 @@ class Input extends PureComponent<Props, State> {
     };
 
     if (type === 'textarea') {
-      return <textarea {...props} />;
+      return <textarea {...props} spellCheck={spellcheck ? 'true' : 'false'} />;
     }
 
-    return <input {...props} />;
+    return <input {...props} spellCheck={spellcheck ? 'true' : 'false'} />;
   }
 
   render() {
-    const {
-      props: { value, disabled, status, large },
-      state: { isFocused }
-    } = this;
+    const { props: { value, disabled, status, large }, state: { isFocused } } = this;
 
     const className = classNames(
       styles.container,
@@ -246,10 +240,7 @@ class Input extends PureComponent<Props, State> {
       large ? styles.large : null
     );
 
-    const wrapperClassName = classNames(
-      styles.inputWrapper,
-      this.props.wrapperClassName,
-    );
+    const wrapperClassName = classNames(styles.inputWrapper, this.props.wrapperClassName);
 
     return (
       <div className={className}>

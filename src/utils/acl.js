@@ -28,3 +28,27 @@ export function hasPermission(uid: number, group: Group, permission: GroupMember
 
   return false;
 }
+
+export function getDefaultPermissions(group: Group): GroupMemberPermission[] {
+  switch (group.type) {
+    case 'channel':
+      return [
+        'invite',
+        'update_info',
+        'send_message',
+        'edit_message',
+        'delete_message'
+      ];
+
+    default:
+      return [
+        'kick',
+        'invite',
+        'update_info',
+        'send_message',
+        'edit_message',
+        'delete_message',
+        'get_integration_token'
+      ];
+  }
+}

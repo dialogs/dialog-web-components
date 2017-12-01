@@ -1,13 +1,13 @@
 creator: "created by: <b>{title}</b>"
 
-join:
-  group: Join group
-  channel: Join channel
-  user: Start chat
-  bot: Chat with bot
+open:
+  group: Open
+  channel: Open
+  user: Write
+  bot: Write
 
 enter:
-  group: Enter group
-  channel: Enter channel
-  user: Start chat
-  bot: Chat with bot
+  group: Enter
+  channel: Read
+  user: Write
+  bot: Write

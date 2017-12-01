@@ -35,6 +35,8 @@
 .paragraph {
   margin: var(--message-text-padding) 0;
   word-wrap: break-word;
+  line-height: 22px;
+  vertical-align: baseline;
 
   & span {
     vertical-align: inherit;
@@ -60,16 +62,17 @@
 }
 
 .code {
-  padding: 2px 4px;
-  margin: -2px -2px;
-  font-size: 14px;
+  padding: 1px 2px;
+  margin: -1px;
+  font-size: var(--default-font-size-small);
   border-radius: var(--default-border-radius-small);
   box-shadow: inset 0 1px 1px 0 color(#000 alpha(10%));
   background-color: color(#000 alpha(7.5%));
   font-family: var(--code-font-family);
   display: inline-block;
-  height: 22px;
   box-sizing: border-box;
+  vertical-align: inherit;
+  height: 22px;
 }
 
 .bold {
@@ -88,6 +91,7 @@
   text-decoration: none;
   border-bottom: 1px dotted var(--color-info);
   color: var(--color-info);
+  vertical-align: inherit;
 
   &:hover {
     border-bottom: 1px solid var(--color-info);
@@ -96,10 +100,11 @@
 
 .mention {
   display: inline-block;
-  padding: 1px 4px;
-  margin: -1px -2px;
+  padding: 1px 2px;
+  margin: -1px;
   box-sizing: border-box;
   border-radius: var(--default-border-radius-small);
   box-shadow: inset 0 1px 1px 0 color(#000 alpha(10%));
   background-color: color(var(--color-primary) alpha(10%));
+  vertical-align: inherit;
 }

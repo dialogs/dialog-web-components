@@ -37,14 +37,7 @@ class ActivityUserProfile extends PureComponent<Props> {
   renderTitle() {
     const { info: { name, nick } } = this.props;
 
-    return (
-      <PeerInfoTitle
-        title={name}
-        userName={nick}
-        titleClassName={styles.name}
-        userNameClassName={styles.nick}
-      />
-    );
+    return <PeerInfoTitle title={name} userName={nick} titleClassName={styles.name} userNameClassName={styles.nick} />;
   }
 
   renderOnline() {
@@ -54,9 +47,7 @@ class ActivityUserProfile extends PureComponent<Props> {
       return null;
     }
 
-    return (
-      <div className={styles.online}>{online.message}</div>
-    );
+    return <div className={styles.online}>{online.message}</div>;
   }
 
   renderAbout() {
@@ -80,11 +71,8 @@ class ActivityUserProfile extends PureComponent<Props> {
       return null;
     }
 
-    return (
-      <div className={styles.actions}>{children}</div>
-    );
+    return <div className={styles.actions}>{children}</div>;
   }
-
 
   renderProfileContacts() {
     const { info } = this.props;
@@ -96,14 +84,18 @@ class ActivityUserProfile extends PureComponent<Props> {
     const phones = info.phones.map((phone) => (
       <div key={phone.number}>
         <Text className={styles.contactTitle} tagName="div" id="ActivityProfile.phone" />
-        <div className={styles.contactContent}>{phone.number}</div>
+        <a href={`tel:${phone.number}`} className={styles.contactContent}>
+          {phone.number}
+        </a>
       </div>
     ));
 
     const emails = info.emails.map((email) => (
       <div key={email.email}>
         <Text className={styles.contactTitle} tagName="div" id="ActivityProfile.email" />
-        <div className={styles.contactContent}>{email.email}</div>
+        <a href={`mailto:${email.email}`} className={styles.contactContent}>
+          {email.email}
+        </a>
       </div>
     ));
 

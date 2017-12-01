@@ -6,7 +6,7 @@ initialState = {
   selector: PeerInfoSelectorState.create(contacts)
 };
 
-<div style={{ width: 500, background: 'white'}}>
+<div style={{ width: 500, background: 'white' }}>
   <ContactSelector
     autoFocus={false}
     selector={state.selector}

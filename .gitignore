@@ -10,3 +10,5 @@ yarn-error.log
 /styleguide/
 /flow-coverage/
 /src/components/Icon/Icons.svg
+
+\.idea/
