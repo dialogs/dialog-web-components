@@ -3,6 +3,8 @@ state:
   upToDate: "{appName} не нуждается в обновлении"
   available: Доступна новая версия
 error: "Ошибка: {error}"
-pending: Проверка обновлений
+pending:
+  upToDate: Проверка обновлений
+  available: Скачивание обновления
 check: Проверить обновление
 update: Обновить приложение

@@ -18,19 +18,41 @@ const actions = {
   onCheck: () => {
     setState({
       updateState: {
-        ...state.updateState,
-        pending: true
+        value: 'upToDate',
+        pending: true,
+        error: null
       }
     });
+    
     setTimeout(() => {
       setState({
         updateState: {
           value: 'available',
-          pending: false,
+          pending: true,
           error: null
         }
       });
     }, 2000);
+    
+    setTimeout(() => {
+      if (Math.random() > 0.5) {
+        setState({
+          updateState: {
+            value: 'available',
+            pending: false,
+            error: null
+          }
+        });
+      } else {
+        setState({
+          updateState: {
+            value: 'available',
+            pending: false,
+            error: new Error('Update failed')
+          }
+        });
+      }
+    }, 10000);
   },
   onUpdate: () => {
     console.log('Update app');
