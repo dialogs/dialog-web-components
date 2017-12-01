@@ -5,6 +5,7 @@
 
 import React, { Component } from 'react';
 import classNames from 'classnames';
+import Markdown from '../../Markdown/Markdown';
 import styles from './Text.css';
 
 export type Props = {|
@@ -29,9 +30,7 @@ class Service extends Component<Props> {
     );
 
     return (
-      <div className={className}>
-        {this.props.text}
-      </div>
+      <Markdown className={className} text={this.props.text} />
     );
   }
 }
