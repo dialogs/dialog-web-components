@@ -122,8 +122,8 @@
     background-color: transparent;
 
     &:global(.is-focused) {
-      color: var(--select-next-option-focused-color);
-      background-color: var(--select-next-option-focused-background-color);
+      color: var(--select-next-option-focused-color) !important;
+      background-color: var(--select-next-option-focused-background-color) !important;
     }
 
     &:global(.is-selected) {
