@@ -72,10 +72,12 @@ class SidebarRecentItem extends PureComponent<Props> {
     }
 
     if (message) {
-      return (<MessagePreview
-        className={styles.message} uid={uid} info={info} message={message}
-        active={active}
-      />);
+      return (
+        <MessagePreview
+          className={styles.message} uid={uid} info={info} message={message}
+          active={active}
+        />
+      );
     }
 
     return null;

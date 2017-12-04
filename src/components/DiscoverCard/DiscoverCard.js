@@ -23,7 +23,7 @@ export type Card = {
   joined?: boolean,
   members?: number,
   creator?: string
-}
+};
 
 export type Props = Card & {
   className?: string,
@@ -42,10 +42,7 @@ class DiscoverCard extends PureComponent<Props> {
     return (
       <div className={styles.side}>
         <Avatar
-          title={title}
-          image={avatar}
-          placeholder={placeholder}
-          size={80}
+          title={title} image={avatar} placeholder={placeholder} size={80}
           className={styles.avatar}
         />
       </div>
@@ -61,11 +58,7 @@ class DiscoverCard extends PureComponent<Props> {
 
     return (
       <div className={styles.members}>
-        <Icon
-          glyph="person"
-          className={styles.membersIcon}
-          size={20}
-        />
+        <Icon glyph="person" className={styles.membersIcon} size={20} />
         {members}
       </div>
     );
@@ -80,10 +73,7 @@ class DiscoverCard extends PureComponent<Props> {
 
     return (
       <Text
-        id="DiscoverCard.creator"
-        values={{ title: creator }}
-        className={styles.creator}
-        html
+        id="DiscoverCard.creator" values={{ title: creator }} className={styles.creator} html
         tagName="div"
       />
     );
@@ -95,14 +85,10 @@ class DiscoverCard extends PureComponent<Props> {
 
     switch (type) {
       case 'channel':
-        return (
-          <Icon glyph="channel" className={styles.icon} size={size} />
-        );
+        return <Icon glyph="channel" className={styles.icon} size={size} />;
 
       case 'group':
-        return (
-          <Icon glyph="group" className={styles.icon} size={size} />
-        );
+        return <Icon glyph="group" className={styles.icon} size={size} />;
 
       default:
         return null;
@@ -116,9 +102,7 @@ class DiscoverCard extends PureComponent<Props> {
       return null;
     }
 
-    return (
-      <div className={styles.shortname}>@{shortname}</div>
-    );
+    return <div className={styles.shortname}>@{shortname}</div>;
   }
 
   renderInfo() {
@@ -131,7 +115,9 @@ class DiscoverCard extends PureComponent<Props> {
           <span>{title}</span>
         </div>
         {this.renderShortname()}
-        <div className={styles.description} title={description}><span>{description}</span></div>
+        <div className={styles.description} title={description}>
+          <span>{description}</span>
+        </div>
       </div>
     );
   }
@@ -149,13 +135,8 @@ class DiscoverCard extends PureComponent<Props> {
         <footer className={styles.footer}>
           {this.renderMembers()}
           {this.renderCreator()}
-          <Button
-            wide
-            theme="primary"
-            rounded={false}
-            className={styles.button}
-          >
-            <Text id={`DiscoverCard.${joined ? 'enter' : 'join'}.${type}`} />
+          <Button wide theme="primary" rounded={false} className={styles.button}>
+            <Text id={`DiscoverCard.${joined ? 'enter' : 'open'}.${type}`} />
           </Button>
         </footer>
       </div>
