@@ -69,7 +69,7 @@
     "prop-types": "^15.6.0",
     "react": "16.2.0",
     "react-dom": "16.2.0",
-    "react-modal": "3.1.6",
+    "react-modal": "3.1.7",
     "react-rangeslider": "2.2.0",
     "react-select": "1.1.0",
     "react-tether": "0.6.0",
@@ -92,7 +92,7 @@
     "eslint": "4.12.1",
     "eslint-plugin-react": "7.5.1",
     "file-loader": "1.1.5",
-    "flow-bin": "0.59.0",
+    "flow-bin": "0.60.1",
     "flow-coverage-report": "0.4.0",
     "glob": "7.1.2",
     "inquirer": "3.3.0",
@@ -106,7 +106,7 @@
     "stylefmt": "6.0.0",
     "stylelint": "8.3.1",
     "svg-sprite-loader": "0.3.1",
-    "webpack": "3.9.1",
+    "webpack": "3.10.0",
     "yml-loader": "2.1.0"
   },
   "jest": {
