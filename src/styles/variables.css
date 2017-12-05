@@ -214,7 +214,7 @@
   --field-border-color: color(#000 alpha(10%));
   /* Fieldset */
   --fieldset-legend-font-size: var(--default-font-size-small);
-  --fieldset-legend-font-color: var(--violet-blue-two);
+  --fieldset-legend-font-color: var(--color-info);
   /* Icon */
   --icon-default-color: rgb(178, 178, 178);
   --icon-inverted-color: #fff;
