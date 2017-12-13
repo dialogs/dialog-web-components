@@ -11,13 +11,17 @@ import {
 
 const defaultAuthCredentials = {
   email: {
-    code: '',
-    email: ''
+    email: '',
+    code: ''
   },
   phone: {
-    code: '',
+    phone: '',
     country: null,
-    phone: ''
+    code: ''
+  },
+  username: {
+    login: '',
+    pass: ''
   }
 };
 
