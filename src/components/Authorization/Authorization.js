@@ -1,8 +1,9 @@
 /**
  * Copyright 2017 dialog LLC <info@dlg.im>
+ * @flow
  */
 
-import type { AuthValue } from './types';
+import type { AuthorizationProps as Props, AuthValue } from './types';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import { Text } from '@dlghq/react-l10n';
@@ -13,8 +14,6 @@ import AuthorizationByUsername from './AuthorizationByUsername';
 import ButtonNext from '../ButtonNext/ButtonNext';
 import { LOGIN_SENT, CODE_REQUESTED, CODE_SENT, SIGNUP_STARTED, NAME_SENT, AUTH_FINISHED } from './constants';
 import styles from './Authorization.css';
-
-type Props = {};
 
 class Authorization extends PureComponent<Props> {
   static defaultProps = {
@@ -88,6 +87,7 @@ class Authorization extends PureComponent<Props> {
             step={step}
             value={value}
             errors={errors}
+            pending={this.isLoading()}
             autoFocus={autoFocus}
             onRetry={this.props.onRetry}
             onResendCode={this.props.onResendCode}
@@ -102,6 +102,7 @@ class Authorization extends PureComponent<Props> {
             step={step}
             value={value}
             errors={errors}
+            pending={this.isLoading()}
             autoFocus={autoFocus}
             onRetry={this.props.onRetry}
             onChange={this.handleChange}
@@ -114,6 +115,7 @@ class Authorization extends PureComponent<Props> {
             id={id}
             value={value}
             errors={errors}
+            pending={this.isLoading()}
             autoFocus={autoFocus}
             onChange={this.handleChange}
             onSubmit={this.props.onSubmit}
@@ -126,6 +128,13 @@ class Authorization extends PureComponent<Props> {
     }
   }
 
+  renderSignupForm() {
+    const { id } = this.props;
+    console.debug(id);
+
+    return null;
+  }
+
   render() {
     const { id, step } = this.props;
     const className = classNames(styles.container, this.props.className);
@@ -134,6 +143,7 @@ class Authorization extends PureComponent<Props> {
       <form id={id} onSubmit={this.handleSubmit} className={className} autoComplete="off">
         {this.renderTypeSelector()}
         {this.renderForm()}
+        {this.renderSignupForm()}
         <ButtonNext type="submit" loading={this.isLoading()} id={`${id}_step_${step}_button`}>
           {this.renderButtonText()}
         </ButtonNext>

@@ -39,7 +39,7 @@ export type InputState = {
   status: 'error'
 };
 
-export type Props = {
+export type AuthorizationProps = {
   id: string,
   className?: string,
   step: 1 | 2 | 3 | 4 | 5 | 6 | 7,

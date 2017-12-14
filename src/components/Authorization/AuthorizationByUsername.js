@@ -13,9 +13,9 @@ type Props = {
   id: string,
   className?: string,
   value: UserNameValue,
-  errors: { [field: string]: AuthError },
+  errors: ?{ [field: string]: AuthError },
   pending: boolean,
-  autoFocus: boolean,
+  autoFocus?: boolean,
   onChange: (value: UserNameValue) => mixed
 };
 
