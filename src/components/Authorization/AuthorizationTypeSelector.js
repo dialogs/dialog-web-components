@@ -8,17 +8,17 @@ import React, { PureComponent } from 'react';
 import { Text } from '@dlghq/react-l10n';
 import Radio from '../Radio/Radio';
 import RadioGroup from '../Radio/RadioGroup';
-import styles from './AuthorizationForm.css';
+import styles from './Authorization.css';
 
 export type Props = {
   type: AuthType,
   disabled: boolean,
   id: string,
   allowed: AuthType[],
-  onTypeChange: (type: string) => mixed
+  onChange: (type: string) => mixed
 };
 
-class LoginTypeSelector extends PureComponent<Props> {
+class AuthorizationTypeSelector extends PureComponent<Props> {
   renderOptions() {
     const { id } = this.props;
 
@@ -32,12 +32,16 @@ class LoginTypeSelector extends PureComponent<Props> {
   }
 
   render() {
+    if (this.props.allowed.length < 2) {
+      return null;
+    }
+
     return (
       <RadioGroup
         name="login_type"
         value={this.props.type}
         disabled={this.props.disabled}
-        onChange={this.props.onTypeChange}
+        onChange={this.props.onChange}
         className={styles.typeSelector}
       >
         {this.renderOptions()}
@@ -46,4 +50,4 @@ class LoginTypeSelector extends PureComponent<Props> {
   }
 }
 
-export default LoginTypeSelector;
+export default AuthorizationTypeSelector;

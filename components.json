@@ -56,7 +56,7 @@
   },
   {
     "name": "Plug & Play Forms",
-    "components": ["AuthForm", "UserNameAuthForm", "AuthorizationForm", "GenderSelect"]
+    "components": ["Authorization", "Registration", "GenderSelect"]
   },
   {
     "name": "Modals",

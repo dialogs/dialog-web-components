@@ -1,0 +1,30 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+:root {
+  --registration-font-family: var(--default-font-family);
+}
+
+/* Reset */
+.container {
+  all: initial;
+}
+
+/* Styles */
+.container {
+  font-family: var(--registration-font-family);
+  width: 100%;
+}
+
+.input {
+  display: block;
+  margin-bottom: var(--default-padding-large);
+}
+
+.inputWrapper {
+  width: 100%;
+  position: relative;
+}

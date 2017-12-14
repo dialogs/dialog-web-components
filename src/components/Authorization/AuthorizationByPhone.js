@@ -13,7 +13,7 @@ import InputNext from '../InputNext/InputNext';
 import PhoneInput from '../PhoneInput/PhoneInput';
 import getHumanTime from '../../utils/getHumanTime';
 import { LOGIN_SENT, CODE_REQUESTED, CODE_SENT, RESEND_TIMEOUT } from './constants';
-import styles from './AuthorizationForm.css';
+import styles from './Authorization.css';
 
 export type Props = {
   id: string,
@@ -31,7 +31,7 @@ export type State = {
   resendTimeout: number
 };
 
-class AuthorizationPhoneLogin extends PureComponent<Props, State> {
+class AuthorizationByPhone extends PureComponent<Props, State> {
   interval: ?number;
   phoneInput: ?PhoneInput;
 
@@ -136,7 +136,7 @@ class AuthorizationPhoneLogin extends PureComponent<Props, State> {
       const error = errors[field];
 
       return {
-        hint: `AuthorizationForm.errors.${error.tag}`,
+        hint: `Authorization.errors.${error.tag}`,
         status: 'error'
       };
     }
@@ -158,7 +158,7 @@ class AuthorizationPhoneLogin extends PureComponent<Props, State> {
     return (
       <div className={styles.inputWrapper}>
         <CountryCodeSelector
-          label="AuthorizationForm.choose_country"
+          label="Authorization.choose_country"
           onChange={this.handleCountryChange}
           value={this.props.value.credentials.country}
           disabled={step >= LOGIN_SENT}
@@ -175,14 +175,7 @@ class AuthorizationPhoneLogin extends PureComponent<Props, State> {
       return null;
     }
 
-    return (
-      <Text
-        id="AuthorizationForm.wrong"
-        onClick={this.props.onRetry}
-        className={styles.retry}
-        tagName="a"
-      />
-    );
+    return <Text id="Authorization.wrong" onClick={this.props.onRetry} className={styles.retry} tagName="a" />;
   }
 
   renderResendCode() {
@@ -197,19 +190,14 @@ class AuthorizationPhoneLogin extends PureComponent<Props, State> {
       return (
         <Text
           className={styles.resendTimer}
-          id="AuthorizationForm.code_arrive"
+          id="Authorization.code_arrive"
           values={{ time: getHumanTime(resendTimeout * 1000) }}
         />
       );
     }
 
     return (
-      <Text
-        tagName="a"
-        className={styles.resend}
-        id="AuthorizationForm.resend_code"
-        onClick={this.handleCodeResend}
-      />
+      <Text tagName="a" className={styles.resend} id="Authorization.resend_code" onClick={this.handleCodeResend} />
     );
   }
 
@@ -223,7 +211,7 @@ class AuthorizationPhoneLogin extends PureComponent<Props, State> {
           className={styles.input}
           id={`${id}_login`}
           name="phone"
-          label="AuthorizationForm.phone"
+          label="Authorization.phone"
           value={credentials.phone}
           disabled={step >= LOGIN_SENT}
           ref={this.setPhoneInput}
@@ -249,7 +237,7 @@ class AuthorizationPhoneLogin extends PureComponent<Props, State> {
           name="code"
           id={`${id}_code`}
           type="text"
-          label="AuthorizationForm.code"
+          label="Authorization.code"
           value={this.props.value.credentials.code}
           disabled={step >= CODE_SENT}
           onChange={this.handleChange}
@@ -265,11 +253,7 @@ class AuthorizationPhoneLogin extends PureComponent<Props, State> {
     }
 
     return (
-      <Text
-        tagName="div"
-        className={styles.dataProcessingAgreement}
-        id="AuthorizationForm.data_processing_agreement"
-      />
+      <Text tagName="div" className={styles.dataProcessingAgreement} id="Authorization.data_processing_agreement" />
     );
   }
 
@@ -286,4 +270,4 @@ class AuthorizationPhoneLogin extends PureComponent<Props, State> {
   }
 }
 
-export default AuthorizationPhoneLogin;
+export default AuthorizationByPhone;

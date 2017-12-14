@@ -4,43 +4,40 @@
  */
 
 import type { AuthError } from '@dlghq/dialog-types';
+import type { UserNameValue } from './types';
 import React, { PureComponent } from 'react';
-import { Text } from '@dlghq/react-l10n';
-import classNames from 'classnames';
-import ButtonNext from '../ButtonNext/ButtonNext';
 import InputNext from '../InputNext/InputNext';
-import styles from './UserNameAuthForm.css';
-
-type AuthValue = {
-  login: string,
-  password: string
-};
+import styles from './Authorization.css';
 
 type Props = {
   id: string,
   className?: string,
-  value: AuthValue,
-  errors: { [field: string]: AuthError },
+  value: UserNameValue,
+  errors: ?{ [field: string]: AuthError },
   pending: boolean,
-  onChange: (value: AuthValue) => mixed,
-  onSubmit: (value: AuthValue) => mixed
+  autoFocus?: boolean,
+  onChange: (value: UserNameValue) => mixed
 };
 
-class UserNameAuthForm extends PureComponent<Props> {
-  static defaultProps = {
-    id: 'form_login'
-  };
+class AuthorizationByUsername extends PureComponent<Props> {
+  input: ?InputNext;
+
+  componentDidMount() {
+    if (this.input) {
+      if (this.props.autoFocus) {
+        this.input.focus();
+      }
+    }
+  }
 
   handleChange = (value: string, { target }: SyntheticInputEvent<>) => {
     this.props.onChange({
-      ...this.props.value,
-      [target.name]: value
+      type: 'username',
+      credentials: {
+        ...this.props.value.credentials,
+        [target.name]: value
+      }
     });
-  };
-
-  handleSubmit = (event: SyntheticEvent<>): void => {
-    event.preventDefault();
-    this.props.onSubmit(this.props.value);
   };
 
   getInputState(field: string): ?{ hint: string, status: 'error' } {
@@ -50,7 +47,7 @@ class UserNameAuthForm extends PureComponent<Props> {
       const error = errors[field];
 
       return {
-        hint: `AuthorizationForm.errors.${error.tag}`,
+        hint: `Authorization.errors.${error.tag}`,
         status: 'error'
       };
     }
@@ -58,12 +55,15 @@ class UserNameAuthForm extends PureComponent<Props> {
     return null;
   }
 
+  setInput = (input: *): void => {
+    this.input = input;
+  };
+
   render() {
-    const { id, pending } = this.props;
-    const className = classNames(styles.container, this.props.className);
+    const { id, pending, value: { credentials } } = this.props;
 
     return (
-      <form className={className} id={id} autoComplete="off" onSubmit={this.handleSubmit}>
+      <div className={styles.formWrapper}>
         <div className={styles.inputWrapper}>
           <InputNext
             {...this.getInputState('login')}
@@ -71,8 +71,9 @@ class UserNameAuthForm extends PureComponent<Props> {
             name="login"
             id={`${id}_login`}
             type="text"
-            label="UserNameAuthForm.login"
-            value={this.props.value.login}
+            label="Authorization.login"
+            ref={this.setInput}
+            value={credentials.login}
             disabled={pending}
             onChange={this.handleChange}
           />
@@ -84,18 +85,15 @@ class UserNameAuthForm extends PureComponent<Props> {
             name="password"
             id={`${id}_pass`}
             type="password"
-            label="UserNameAuthForm.password"
-            value={this.props.value.password}
+            label="Authorization.password"
+            value={credentials.password}
             disabled={pending}
             onChange={this.handleChange}
           />
         </div>
-        <ButtonNext type="submit" loading={pending} id={`${id}_submit`}>
-          <Text id="UserNameAuthForm.sign_in" />
-        </ButtonNext>
-      </form>
+      </div>
     );
   }
 }
 
-export default UserNameAuthForm;
+export default AuthorizationByUsername;

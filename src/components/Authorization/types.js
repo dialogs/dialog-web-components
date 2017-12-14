@@ -19,21 +19,16 @@ export type PhoneValue = {
   credentials: {
     code: string,
     country: ?Country,
-    phone: string,
+    phone: string
   }
 };
 
 export type UserNameValue = {
   type: 'username',
   credentials: {
-    username: string,
+    login: string,
     password: string
   }
-};
-
-export type SignupInfo = {
-  name: string,
-  gender: string
 };
 
 export type AuthType = 'email' | 'phone' | 'username';
@@ -44,17 +39,16 @@ export type InputState = {
   status: 'error'
 };
 
-export type Props = {
+export type AuthorizationProps = {
   id: string,
   className?: string,
   step: 1 | 2 | 3 | 4 | 5 | 6 | 7,
   value: AuthValue,
-  info: SignupInfo,
   errors: ?{ [field: string]: AuthError },
   allowed: AuthType[],
   autoFocus?: boolean,
   isGenderEnabled: boolean,
-  onChange: (value: AuthValue, info: SignupInfo) => mixed,
+  onChange: (value: AuthValue) => mixed,
   onTypeChange: (type: string) => mixed,
   onSubmit: (value: AuthValue) => mixed,
   onRetry: () => mixed,
