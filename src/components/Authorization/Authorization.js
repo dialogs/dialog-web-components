@@ -24,7 +24,7 @@ class Authorization extends PureComponent<Props> {
   };
 
   handleChange = (value: AuthValue) => {
-    this.props.onChange(value, this.props.info);
+    this.props.onChange(value);
   };
 
   handleSubmit = (event: $FlowIssue): void => {

@@ -31,11 +31,6 @@ export type UserNameValue = {
   }
 };
 
-export type SignupInfo = {
-  name: string,
-  gender: string
-};
-
 export type AuthType = 'email' | 'phone' | 'username';
 export type AuthValue = EmailValue | PhoneValue | UserNameValue;
 
@@ -49,12 +44,11 @@ export type Props = {
   className?: string,
   step: 1 | 2 | 3 | 4 | 5 | 6 | 7,
   value: AuthValue,
-  info: SignupInfo,
   errors: ?{ [field: string]: AuthError },
   allowed: AuthType[],
   autoFocus?: boolean,
   isGenderEnabled: boolean,
-  onChange: (value: AuthValue, info: SignupInfo) => mixed,
+  onChange: (value: AuthValue) => mixed,
   onTypeChange: (type: string) => mixed,
   onSubmit: (value: AuthValue) => mixed,
   onRetry: () => mixed,
