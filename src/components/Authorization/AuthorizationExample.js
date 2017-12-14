@@ -29,6 +29,11 @@ const defaultAuthCredentials = {
   }
 };
 
+const defaultInfo = {
+  name: '',
+  gender: 'unknown'
+};
+
 class AuthorizationExample extends Component {
   constructor(props) {
     super(props);
@@ -39,6 +44,7 @@ class AuthorizationExample extends Component {
         type: 'phone',
         credentials: defaultAuthCredentials.phone
       },
+      info: defaultInfo,
       errors: {}
     };
   }
@@ -53,8 +59,8 @@ class AuthorizationExample extends Component {
     });
   };
 
-  handleChange = (value: AuthValue) => {
-    this.setState({ value });
+  handleChange = (value: AuthValue, info) => {
+    this.setState({ value, info });
   };
 
   handleSubmit = () => {
@@ -96,6 +102,17 @@ class AuthorizationExample extends Component {
     this.setState({ step: AUTH_STARTED });
   };
 
+  handleFinish = () => {
+    this.setState({
+      step: AUTH_STARTED,
+      info: defaultInfo,
+      value: {
+        type: 'phone',
+        credentials: defaultAuthCredentials.phone
+      }
+    });
+  };
+
   renderFinished() {
     if (this.state.step < AUTH_FINISHED) {
       return null;
@@ -116,12 +133,14 @@ class AuthorizationExample extends Component {
         <Authorization
           step={this.state.step}
           value={this.state.value}
+          info={this.state.info}
           errors={this.state.errors}
           allowed={['phone', 'email', 'username']}
           onChange={this.handleChange}
           onTypeChange={this.handleTypeChange}
           onSubmit={this.handleSubmit}
           onRetry={this.handleRetry}
+          isGenderEnabled
           onResendCode={this.handleResendCode}
         />
         {this.renderFinished()}

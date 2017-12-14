@@ -25,7 +25,7 @@ class AuthorizationTypeSelector extends PureComponent<Props> {
     return this.props.allowed.map((type) => {
       return (
         <Radio value={type} key={type} className={styles.type} id={`${id}_type_${type}`}>
-          <Text id={`AuthorizationForm.type.${type}`} />
+          <Text id={`Authorization.type.${type}`} />
         </Radio>
       );
     });

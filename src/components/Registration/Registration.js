@@ -3,32 +3,12 @@
  * @flow
  */
 
-import type { AuthError } from '@dlghq/dialog-types';
+import type { RegistrationProps as Props, InputState } from '../Authorization/types';
 import classNames from 'classnames';
 import React, { PureComponent } from 'react';
 import InputNext from '../InputNext/InputNext';
 import GenderSelect from '../GenderSelect/GenderSelect';
 import styles from './Registration.css';
-
-export type SignupInfo = {
-  name: string,
-  gender: string
-};
-
-export type InputState = {
-  hint: string,
-  status: 'error'
-};
-
-export type Props = {
-  className?: string,
-  id: string,
-  info: SignupInfo,
-  errors: ?{ [field: string]: AuthError },
-  autoFocus?: boolean,
-  isGenderEnabled: boolean,
-  onChange: (info: SignupInfo) => mixed
-};
 
 class Registration extends PureComponent<Props> {
   input: ?InputNext;
@@ -88,6 +68,7 @@ class Registration extends PureComponent<Props> {
           name="name"
           id={`${id}_name`}
           label="Registration.name"
+          disabled={this.props.pending}
           value={this.props.info.name}
           onChange={this.handleChange}
           ref={this.setInput}
@@ -110,6 +91,7 @@ class Registration extends PureComponent<Props> {
           name="gender"
           id={`${id}_gender`}
           label="Registration.gender"
+          disabled={this.props.pending}
           value={this.props.info.gender}
           onChange={this.handleGenderChange}
         />

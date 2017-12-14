@@ -3,7 +3,7 @@
  * @flow
  */
 
-import type { AuthorizationProps as Props, AuthValue } from './types';
+import type { AuthorizationProps as Props, AuthValue, SignupInfo } from './types';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import { Text } from '@dlghq/react-l10n';
@@ -11,6 +11,7 @@ import AuthorizationTypeSelector from './AuthorizationTypeSelector';
 import AuthorizationByPhone from './AuthorizationByPhone';
 import AuthorizationByEmail from './AuthorizationByEmail';
 import AuthorizationByUsername from './AuthorizationByUsername';
+import Registration from '../Registration/Registration';
 import ButtonNext from '../ButtonNext/ButtonNext';
 import { LOGIN_SENT, CODE_REQUESTED, CODE_SENT, SIGNUP_STARTED, NAME_SENT, AUTH_FINISHED } from './constants';
 import styles from './Authorization.css';
@@ -23,12 +24,16 @@ class Authorization extends PureComponent<Props> {
   };
 
   handleChange = (value: AuthValue) => {
-    this.props.onChange(value);
+    this.props.onChange(value, this.props.info);
+  };
+
+  handleInfoChange = (info: SignupInfo) => {
+    this.props.onChange(this.props.value, info);
   };
 
   handleSubmit = (event: $FlowIssue): void => {
     event.preventDefault();
-    this.props.onSubmit(this.props.value);
+    this.props.onSubmit(this.props.value, this.props.info);
   };
 
   isLoading(): boolean {
@@ -129,10 +134,23 @@ class Authorization extends PureComponent<Props> {
   }
 
   renderSignupForm() {
-    const { id } = this.props;
-    console.debug(id);
+    const { id, info, step, autoFocus, errors, isGenderEnabled } = this.props;
 
-    return null;
+    if (step < SIGNUP_STARTED) {
+      return null;
+    }
+
+    return (
+      <Registration
+        info={info}
+        id={id}
+        errors={errors}
+        autoFocus={autoFocus}
+        pending={this.isLoading()}
+        onChange={this.handleInfoChange}
+        isGenderEnabled={isGenderEnabled}
+      />
+    );
   }
 
   render() {
