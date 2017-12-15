@@ -8,9 +8,8 @@ import type { EmailValue, InputState } from './types';
 import React, { PureComponent } from 'react';
 import { Text } from '@dlghq/react-l10n';
 import InputNext from '../InputNext/InputNext';
-import styles from './AuthorizationForm.css';
-
 import { LOGIN_SENT, CODE_REQUESTED, CODE_SENT } from './constants';
+import styles from './Authorization.css';
 
 export type Props = {
   id: string,
@@ -22,7 +21,7 @@ export type Props = {
   onChange: (value: EmailValue) => mixed
 };
 
-class AuthorizationEmailLogin extends PureComponent<Props> {
+class AuthorizationByEmail extends PureComponent<Props> {
   handleChange = (value: mixed, { target }: $FlowIssue): void => {
     this.props.onChange({
       type: this.props.value.type,
@@ -40,7 +39,7 @@ class AuthorizationEmailLogin extends PureComponent<Props> {
       const error = errors[field];
 
       return {
-        hint: `AuthorizationForm.errors.${error.tag}`,
+        hint: `Authorization.errors.${error.tag}`,
         status: 'error'
       };
     }
@@ -52,14 +51,7 @@ class AuthorizationEmailLogin extends PureComponent<Props> {
     const { step } = this.props;
 
     if (step >= LOGIN_SENT) {
-      return (
-        <Text
-          id="AuthorizationForm.wrong"
-          onClick={this.props.onRetry}
-          className={styles.retry}
-          tagName="a"
-        />
-      );
+      return <Text id="Authorization.wrong" onClick={this.props.onRetry} className={styles.retry} tagName="a" />;
     }
 
     return null;
@@ -76,7 +68,7 @@ class AuthorizationEmailLogin extends PureComponent<Props> {
           name="email"
           id={`${id}_login`}
           type="email"
-          label="AuthorizationForm.email"
+          label="Authorization.email"
           value={this.props.value.credentials.email}
           disabled={step >= LOGIN_SENT}
           onChange={this.handleChange}
@@ -102,7 +94,7 @@ class AuthorizationEmailLogin extends PureComponent<Props> {
           name="code"
           id={`${id}_code`}
           type="text"
-          label="AuthorizationForm.code"
+          label="Authorization.code"
           value={this.props.value.credentials.code}
           disabled={step >= CODE_SENT}
           onChange={this.handleChange}
@@ -118,11 +110,7 @@ class AuthorizationEmailLogin extends PureComponent<Props> {
     }
 
     return (
-      <Text
-        tagName="div"
-        className={styles.dataProcessingAgreement}
-        id="AuthorizationForm.data_processing_agreement"
-      />
+      <Text tagName="div" className={styles.dataProcessingAgreement} id="Authorization.data_processing_agreement" />
     );
   }
 
@@ -137,4 +125,4 @@ class AuthorizationEmailLogin extends PureComponent<Props> {
   }
 }
 
-export default AuthorizationEmailLogin;
+export default AuthorizationByEmail;

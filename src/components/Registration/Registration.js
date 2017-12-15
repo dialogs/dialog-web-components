@@ -1,32 +1,41 @@
-/*
+/**
  * Copyright 2017 dialog LLC <info@dlg.im>
  * @flow
  */
 
-import type { AuthError } from '@dlghq/dialog-types';
-import type { SignupInfo, InputState } from './types';
+import type { RegistrationProps as Props, InputState } from '../Authorization/types';
+import classNames from 'classnames';
 import React, { PureComponent } from 'react';
 import InputNext from '../InputNext/InputNext';
 import GenderSelect from '../GenderSelect/GenderSelect';
-import styles from './AuthorizationForm.css';
+import styles from './Registration.css';
 
-import { NAME_SENT } from './constants';
+class Registration extends PureComponent<Props> {
+  input: ?InputNext;
 
-export type Props = {
-  id: string,
-  info: SignupInfo,
-  errors: ?{ [field: string]: AuthError },
-  autoFocus?: boolean,
-  step: 1 | 2 | 3 | 4 | 5 | 6 | 7,
-  isGenderEnabled: boolean,
-  onChange: (info: SignupInfo) => mixed
-};
+  static defaultProps = {
+    id: 'registration'
+  };
 
-class AuthorizationSignUp extends PureComponent<Props> {
+  componentDidMount() {
+    if (this.input) {
+      if (this.props.autoFocus) {
+        this.input.focus();
+      }
+    }
+  }
+
   handleChange = (value: mixed, { target }: $FlowIssue): void => {
     this.props.onChange({
       ...this.props.info,
       [target.name]: value
+    });
+  };
+
+  handleGenderChange = (value: string): void => {
+    this.props.onChange({
+      ...this.props.info,
+      gender: value
     });
   };
 
@@ -37,7 +46,7 @@ class AuthorizationSignUp extends PureComponent<Props> {
       const error = errors[field];
 
       return {
-        hint: `AuthorizationForm.errors.${error.tag}`,
+        hint: `Registration.errors.${error.tag}`,
         status: 'error'
       };
     }
@@ -45,8 +54,12 @@ class AuthorizationSignUp extends PureComponent<Props> {
     return null;
   }
 
+  setInput = (input: *) => {
+    this.input = input;
+  };
+
   renderNameInput() {
-    const { step, id } = this.props;
+    const { id } = this.props;
 
     return (
       <div className={styles.inputWrapper}>
@@ -54,18 +67,18 @@ class AuthorizationSignUp extends PureComponent<Props> {
           {...this.getInputState('name')}
           name="name"
           id={`${id}_name`}
-          label="AuthorizationForm.name"
+          label="Registration.name"
+          disabled={this.props.pending}
           value={this.props.info.name}
-          disabled={step >= NAME_SENT}
           onChange={this.handleChange}
-          autoFocus={this.props.autoFocus}
+          ref={this.setInput}
         />
       </div>
     );
   }
 
   renderGenderSelector() {
-    const { id, step, isGenderEnabled } = this.props;
+    const { id, isGenderEnabled } = this.props;
 
     if (!isGenderEnabled) {
       return null;
@@ -77,18 +90,20 @@ class AuthorizationSignUp extends PureComponent<Props> {
           className={styles.input}
           name="gender"
           id={`${id}_gender`}
-          label="AuthorizationForm.gender"
+          label="Registration.gender"
+          disabled={this.props.pending}
           value={this.props.info.gender}
-          disabled={step >= NAME_SENT}
-          onChange={this.handleChange}
+          onChange={this.handleGenderChange}
         />
       </div>
     );
   }
 
   render() {
+    const className = classNames(styles.container, this.props.className);
+
     return (
-      <div className={styles.formWrapper}>
+      <div className={className}>
         {this.renderNameInput()}
         {this.renderGenderSelector()}
       </div>
@@ -96,4 +111,4 @@ class AuthorizationSignUp extends PureComponent<Props> {
   }
 }
 
-export default AuthorizationSignUp;
+export default Registration;
