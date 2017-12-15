@@ -69,8 +69,8 @@ export { default as Range } from './components/Range/Range';
 export { default as Fieldset } from './components/Fieldset/Fieldset';
 
 // Plug & Play Forms
-export { default as AuthorizationForm } from './components/Authorization/Authorization';
-export { default as UserNameAuthForm } from './components/Registration/Registration';
+export { default as Authorization } from './components/Authorization/Authorization';
+export { default as Registration } from './components/Registration/Registration';
 export { default as GenderSelect } from './components/GenderSelect/GenderSelect';
 
 // Modals
