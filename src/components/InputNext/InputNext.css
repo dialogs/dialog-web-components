@@ -101,7 +101,6 @@
 
 .hint {
   display: inline-block;
-  margin: 6px 0;
   user-select: none;
   font-family: var(--input-next-hint-font-family);
   font-size: var(--input-next-hint-font-size);
