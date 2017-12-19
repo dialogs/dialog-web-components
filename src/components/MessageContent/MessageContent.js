@@ -3,10 +3,7 @@
  * @flow
  */
 
-import type {
-  MessageContent as MessageContentTypes,
-  MessageMediaInteractiveConfirm
-} from '@dlghq/dialog-types';
+import type { MessageContent as MessageContentTypes, MessageMediaInteractiveConfirm } from '@dlghq/dialog-types';
 import * as React from 'react';
 import Text from './Text/Text';
 import Service from './Text/Service';
@@ -17,6 +14,7 @@ import Voice from './Voice/Voice';
 import Video from './Video/Video';
 import Location from './Location/Location';
 import Contact from './Contact/Contact';
+import Deleted from './Deleted/Deleted';
 
 export type Props = {
   className?: string,
@@ -140,6 +138,9 @@ function MessageContent({
           maxWidth={maxWidth}
         />
       );
+
+    case 'deleted':
+      return <Deleted maxWidth={maxWidth} />;
 
     default:
       return <Service className={className} text={`Unsupported message content (${content.type}).`} />;

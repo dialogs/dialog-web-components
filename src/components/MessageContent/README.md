@@ -32,6 +32,17 @@ const content = {
 <MessageContent content={content} />
 ```
 
+Deleted
+-------
+
+```jsx
+const content = {
+  type: 'deleted'
+};
+
+<MessageContent content={content} />
+```
+
 Photo
 -----
 
