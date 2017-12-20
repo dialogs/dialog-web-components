@@ -263,7 +263,13 @@ class Message extends PureComponent<Props, State> {
   renderReactions() {
     const { message, users, onReaction } = this.props;
 
-    if (!message.reactions || !message.reactions.length || !this.props.isReactionsEnabled || !onReaction) {
+    if (
+      !message.reactions ||
+      !message.reactions.length ||
+      !this.props.isReactionsEnabled ||
+      !onReaction ||
+      message.content.type === 'deleted'
+    ) {
       return null;
     }
 
@@ -283,8 +289,8 @@ class Message extends PureComponent<Props, State> {
   }
 
   renderReply() {
-    const { message: { attachment }, maxWidth, maxHeight } = this.props;
-    if (attachment && attachment.type === 'reply') {
+    const { message: { content, attachment }, maxWidth, maxHeight } = this.props;
+    if (attachment && attachment.type === 'reply' && content.type !== 'deleted') {
       return (
         <MessageAttachmentReply
           className={styles.reply}
@@ -301,8 +307,8 @@ class Message extends PureComponent<Props, State> {
   }
 
   renderForward() {
-    const { message: { attachment }, maxWidth, maxHeight } = this.props;
-    if (attachment && attachment.type === 'forward') {
+    const { message: { content, attachment }, maxWidth, maxHeight } = this.props;
+    if (attachment && attachment.type === 'forward' && content.type !== 'deleted') {
       return (
         <MessageFlattenAttachment
           className={styles.forward}
