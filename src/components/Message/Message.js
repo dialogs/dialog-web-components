@@ -160,14 +160,16 @@ class Message extends PureComponent<Props, State> {
   }
 
   renderState() {
+    const { message } = this.props;
+
     return (
       <MessageState
         state={this.getState()}
         compact={this.props.short}
         hover={this.state.hover}
-        time={this.props.message.date}
-        fullTime={this.props.message.fullDate}
-        isEdited={this.props.message.isEdited}
+        time={message.date}
+        fullTime={message.fullDate}
+        isEdited={message.isEdited && message.content.type !== 'deleted'}
         onClick={this.handleForceSelect}
       />
     );
