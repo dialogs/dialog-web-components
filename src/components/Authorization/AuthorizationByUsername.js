@@ -5,13 +5,13 @@
 
 import type { AuthError } from '@dlghq/dialog-types';
 import type { UserNameValue } from './types';
+import { isEmpty } from 'lodash';
 import React, { PureComponent } from 'react';
 import InputNext from '../InputNext/InputNext';
 import styles from './Authorization.css';
 
 type Props = {
   id: string,
-  className?: string,
   value: UserNameValue,
   errors: ?{ [field: string]: AuthError },
   pending: boolean,
@@ -40,20 +40,28 @@ class AuthorizationByUsername extends PureComponent<Props> {
     });
   };
 
-  getInputState(field: string): ?{ hint: string, status: 'error' } {
+  getInputHint(): ?string {
     const { errors } = this.props;
 
-    if (errors && errors[field]) {
-      const error = errors[field];
-
-      return {
-        hint: `Authorization.errors.${error.tag}`,
-        status: 'error'
-      };
+    if (errors) {
+      const error = errors.login || errors.password;
+      if (error) {
+        return `Authorization.errors.${error.tag}`;
+      }
     }
 
     return null;
   }
+
+  getInputStatus = () => {
+    const { errors } = this.props;
+
+    if (isEmpty(errors)) {
+      return 'normal';
+    }
+
+    return 'error';
+  };
 
   setInput = (input: *): void => {
     this.input = input;
@@ -66,7 +74,7 @@ class AuthorizationByUsername extends PureComponent<Props> {
       <div className={styles.formWrapper}>
         <div className={styles.inputWrapper}>
           <InputNext
-            {...this.getInputState('login')}
+            status={this.getInputStatus()}
             className={styles.input}
             name="login"
             id={`${id}_login`}
@@ -80,7 +88,8 @@ class AuthorizationByUsername extends PureComponent<Props> {
         </div>
         <div className={styles.inputWrapper}>
           <InputNext
-            {...this.getInputState('password')}
+            hint={this.getInputHint()}
+            status={this.getInputStatus()}
             className={styles.input}
             name="password"
             id={`${id}_pass`}

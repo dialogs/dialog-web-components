@@ -46,7 +46,7 @@ class Registration extends PureComponent<Props> {
       const error = errors[field];
 
       return {
-        hint: `Registration.errors.${error.tag}`,
+        hint: `Authorization.errors.${error.tag}`,
         status: 'error'
       };
     }

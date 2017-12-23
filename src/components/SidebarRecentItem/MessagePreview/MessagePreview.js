@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2017 dialog LLC <info@dlg.im>
  * @flow
  */
@@ -6,7 +6,6 @@
 import type { Message, PeerInfo } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
 import { Text } from '@dlghq/react-l10n';
-import classNames from 'classnames';
 import PeerInfoTitle from '../../PeerInfoTitle/PeerInfoTitle';
 import TextMessagePreview from './TextMessagePreview';
 import getShortTitle from '../utils/getShortTitle';
@@ -16,8 +15,7 @@ export type Props = {
   className?: string,
   uid: number,
   info: PeerInfo,
-  message: Message,
-  active: boolean
+  message: Message
 };
 
 class MessagePreview extends PureComponent<Props> {
@@ -46,12 +44,7 @@ class MessagePreview extends PureComponent<Props> {
   }
 
   render() {
-    const { message: { content }, active } = this.props;
-
-    const className = classNames(
-      this.props.className,
-      active ? styles.active : null
-    );
+    const { className, message: { content } } = this.props;
 
     switch (content.type) {
       case 'text':

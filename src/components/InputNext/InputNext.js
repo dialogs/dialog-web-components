@@ -21,7 +21,7 @@ export type Props = {
   label?: string,
   placeholder?: string,
   disabled?: boolean,
-  hint?: string,
+  hint?: ?string,
   status: 'normal' | 'success' | 'error',
   size: 'small' | 'normal',
   autoFocus?: boolean,

@@ -75,7 +75,7 @@ class Authorization extends PureComponent<Props> {
         allowed={this.props.allowed}
         id={this.props.id}
         type={this.props.value.type}
-        disabled={false}
+        disabled={this.props.step >= CODE_REQUESTED}
         onChange={this.props.onTypeChange}
       />
     );
