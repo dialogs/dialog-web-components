@@ -27,9 +27,10 @@ errors:
   CODE_WAIT: Попытайтесь запросить код позже
   GATE_ERROR: Сервис не доступен, попробуйте позже
   TIMEOUT: Тайм-аут запроса
-  SHORTNAME_INVALID: Неправильный логин.
-  PASSWORD_INVALID: Неправильный логин или пароль.
-  USERNAME_UNOCCUPIED: Неправильный логин или пароль.
+  FORBIDDEN: Авторизация запрещена, данные некорректны
+  SHORTNAME_INVALID: Неправильный логин
+  PASSWORD_INVALID: Неправильный логин или пароль
+  USERNAME_UNOCCUPIED: Неправильный логин или пароль
 
 type:
   phone: Телефон

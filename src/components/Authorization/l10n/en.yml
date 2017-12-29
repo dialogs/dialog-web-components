@@ -27,6 +27,7 @@ errors:
   CODE_WAIT: Try to request code later
   GATE_ERROR: Service unavailable, try later
   TIMEOUT: Request timeout
+  FORBIDDEN: Forbidden to login, invalid credentials
   SHORTNAME_INVALID: Incorrect username
   PASSWORD_INVALID: Wrong username or password
   USERNAME_UNOCCUPIED: Wrong username or password
