@@ -19,6 +19,7 @@ errors:
   PHONE_NUMBER_INVALID: Invalid phone number
   NAME_INVALID: Invalid name
   CODE_INVALID: Invalid code
+  CODE_HASH_INVALID: Invalid code
   PHONE_CODE_INVALID: Invalid code
   EMAIL_CODE_INVALID: Invalid code
   CODE_EXPIRED: Code has expired

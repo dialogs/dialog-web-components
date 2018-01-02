@@ -19,6 +19,7 @@ errors:
   PHONE_AUTH_REQUIRED: Пожалуйста, используйте номер мобильного телефона для входа и регистрации
   NAME_INVALID: Некорректное имя
   CODE_INVALID: Неверный код
+  CODE_HASH_INVALID: Неверный код
   PHONE_CODE_INVALID: Неверный код
   EMAIL_CODE_INVALID: Неверный код
   CODE_EXPIRED: Время действия кода истекло
