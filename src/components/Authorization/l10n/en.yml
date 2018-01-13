@@ -15,7 +15,7 @@ success: Success
 data_processing_agreement: By pressing "Request code", I agree to the Terms of Service and Privacy Policy of this website.
 errors:
   EMAIL_INVALID: Invalid email
-  PHONE_AUTH_REQUIRED: Please use your mobile number to register and login
+  PHONE_AUTH_REQUIRED: According to the laws of the Russian Federation, it is necessary to add a mobile phone number for authorization. After adding the phone number, message history will be preserved.
   PHONE_NUMBER_INVALID: Invalid phone number
   NAME_INVALID: Invalid name
   CODE_INVALID: Invalid code
