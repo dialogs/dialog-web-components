@@ -1,0 +1,12 @@
+{
+  "fileExtensions": [
+    ".yml"
+  ],
+  "excludeFiles": [
+    ".git",
+    "node_modules"
+  ],
+  "ignoreUrls": true,
+  "ignoreUppercase": true,
+  "ignoreCapitalization": true
+}
