@@ -23,7 +23,7 @@ group:
 
 channel:
   update_info: Change channel info
-  edit_shortname: Change channel chort-link
+  edit_shortname: Change channel short-link
   transfer_ownership: Transfer channel ownership
 
 transfer_ownership_legend: Transfer ownership
