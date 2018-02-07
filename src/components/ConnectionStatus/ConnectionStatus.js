@@ -20,7 +20,7 @@ export type State = {
 };
 
 class ConnectionStatus extends PureComponent<Props, State> {
-  timeoutId: ?number;
+  timeout: ?TimeoutID;
 
   constructor(props: Props) {
     super(props);
@@ -39,7 +39,7 @@ class ConnectionStatus extends PureComponent<Props, State> {
 
   componentDidUpdate() {
     if (this.props.status === 'online') {
-      this.timeoutId = setTimeout(() => {
+      this.timeout = setTimeout(() => {
         this.setState({ show: false });
       }, 3000);
     }
@@ -50,9 +50,9 @@ class ConnectionStatus extends PureComponent<Props, State> {
   }
 
   clearTimeout() {
-    if (typeof this.timeoutId === 'number') {
-      clearTimeout(this.timeoutId);
-      this.timeoutId = null;
+    if (typeof this.timeout === 'number') {
+      clearTimeout(this.timeout);
+      this.timeout = null;
     }
   }
 
@@ -62,11 +62,7 @@ class ConnectionStatus extends PureComponent<Props, State> {
       return null;
     }
 
-    const className = classNames(
-      styles.container,
-      styles[status],
-      this.props.className
-    );
+    const className = classNames(styles.container, styles[status], this.props.className);
 
     return (
       <CSSTransition
@@ -78,11 +74,7 @@ class ConnectionStatus extends PureComponent<Props, State> {
         }}
         timeout={{ enter: 150, exit: 150 }}
       >
-        <Text
-          tagName="div"
-          className={className}
-          id={`ConnectionStatus.${status}`}
-        />
+        <Text tagName="div" className={className} id={`ConnectionStatus.${status}`} />
       </CSSTransition>
     );
   }

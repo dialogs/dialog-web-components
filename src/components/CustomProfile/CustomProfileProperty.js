@@ -10,6 +10,7 @@ import Markdown from '../Markdown/Markdown';
 import styles from './CustomProfile.css';
 
 export type Props = {
+  className?: string,
   type: string,
   value: mixed,
   title: string
@@ -24,12 +25,12 @@ class CustomProfileProperty extends PureComponent<Props> {
         return <Text id={value ? 'Yes' : 'No'} className={styles.boolean} />;
       case 'number':
       case 'integer':
-        return <div className={styles.number}>{value}</div>;
+        return <div className={styles.number}>{String(value)}</div>;
       case 'string':
       default:
         return (
           <div className={styles.string}>
-            <Markdown text={value} />
+            <Markdown text={String(value)} />
           </div>
         );
     }
