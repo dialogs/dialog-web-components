@@ -30,13 +30,15 @@ class PermissionBanner extends PureComponent<Props> {
     return (
       <div className={className}>
         <Icon glyph="close" className={styles.close} onClick={this.props.onClose} />
-        <Text id={`PermissionBanner.text.${this.props.type}`} className={styles.text} tagName="div" html />
-        <Text
-          id={`PermissionBanner.request.${this.props.type}`}
-          className={styles.request}
-          tagName="div"
-          onClick={this.props.onPermissionRequest}
-        />
+        <div className={styles.wrapper}>
+          <Text id={`PermissionBanner.text.${this.props.type}`} className={styles.text} tagName="div" html />
+          <Text
+            id={`PermissionBanner.request.${this.props.type}`}
+            className={styles.request}
+            tagName="div"
+            onClick={this.props.onPermissionRequest}
+          />
+        </div>
       </div>
     );
   }
