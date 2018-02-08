@@ -9,7 +9,7 @@
   --activity-profile-font-size: var(--default-font-size);
   --activity-profile-font-color: var(--default-font-color);
   --activity-profile-text-color-light: var(--default-font-color-light);
-  --activity-profile-padding: 24px;
+  --activity-profile-padding: var(--default-padding) 24px;
   --activity-profile-contact-font-color: var(--color-primary);
   --activity-profile-title-font-size: 22px;
 }
@@ -46,6 +46,10 @@
   font-size: var(--activity-profile-title-font-size);
   line-height: 1.2;
   color: var(--activity-profile-font-color);
+
+  & span {
+    vertical-align: middle;
+  }
 }
 
 .nick,
@@ -69,7 +73,7 @@
 }
 
 .actions {
-  margin-top: calc(var(--default-padding) * 1.6);
+  margin-top: var(--default-padding-large);
 }
 
 .button {
@@ -102,10 +106,10 @@
 }
 
 .contactLinkWrapper {
-  margin-top: 2px;
+  margin-bottom: 4px;
 
-  &:first-child {
-    margin-top: 0;
+  &:last-child {
+    margin-bottom: 0;
   }
 }
 

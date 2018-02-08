@@ -5,6 +5,14 @@
 @import '../../styles/variables.css';
 
 :root {
+  --activity-header-height: 60px;
+  --activity-header-font-family: var(--default-font-family);
+  --activity-header-transition-duration: var(--default-transition-duration);
+  --activity-header-font-size: var(--default-font-size-large);
+  --activity-header-icon-size: 26px;
+  --activity-header-icon-padding: 2px;
+  --activity-header-icon-color: color(#000 alpha(40%));
+  --activity-header-icon-color-hover: color(#000 alpha(60%));
   --activity-header-z-index: var(--z-index-chat);
 }
 
@@ -18,12 +26,12 @@
   position: relative;
   display: block;
   min-height: var(--activity-header-height);
-  font-family: var(--activity-font-family);
+  font-family: var(--activity-header-font-family);
   font-size: var(--activity-header-font-size);
   font-weight: 500;
-  line-height: 28px;
+  line-height: 30px;
   flex: 1 1 auto;
-  padding: var(--default-padding) 40px;
+  padding: 15px 40px;
   text-align: center;
   letter-spacing: -0.3px;
   @apply --no-select;
@@ -32,24 +40,38 @@
 }
 
 .icon {
-  position: absolute;
-  top: 17px;
   width: var(--activity-header-icon-size);
   height: var(--activity-header-icon-size);
-  transition: color var(--activity-header-transition-duration) linear;
+  transition: fill var(--activity-header-transition-duration) linear;
   fill: var(--activity-header-icon-color);
+}
+
+.iconWrapper {
+  cursor: pointer;
+  border-radius: 100px;
+  line-height: 0;
+  display: block;
+  position: absolute;
+  box-sizing: border-box;
+  padding: var(--activity-header-icon-padding);
+  width: calc(var(--activity-header-icon-size) + (var(--activity-header-icon-padding) * 2));
+  height: calc(var(--activity-header-icon-size) + (var(--activity-header-icon-padding) * 2));
+  background-color: color(#fff alpha(50%));
+  top: 15px;
 
   &:hover {
-    fill: var(--activity-header-icon-color-hover);
+    & .icon {
+      fill: var(--activity-header-icon-color-hover);
+    }
   }
 }
 
-.iconBack {
-  left: 20px;
-  composes: icon;
+.iconBackWrapper {
+  composes: iconWrapper;
+  left: 18px;
 }
 
-.iconClose {
-  right: 20px;
-  composes: icon;
+.iconCloseWrapper {
+  composes: iconWrapper;
+  right: 18px;
 }

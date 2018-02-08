@@ -560,13 +560,6 @@
   --activity-font-color: var(--default-font-color);
   --activity-text-color-light: var(--default-font-color-light);
   --activity-border-color: #e5e5e5;
-  /* ActivityHeader */
-  --activity-header-height: 60px;
-  --activity-header-transition-duration: var(--default-transition-duration);
-  --activity-header-font-size: var(--default-font-size-large);
-  --activity-header-icon-size: 26px;
-  --activity-header-icon-color: color(#000 alpha(40%));
-  --activity-header-icon-color-hover: color(#000 alpha(60%));
   /* ActivityList */
   --activity-list-min-height: 56px;
   --activity-list-vertical-padding: 14px;

@@ -4,6 +4,17 @@
 
 @import '../../styles/variables.css';
 
+:root {
+  --activity-media-header-height: 60px;
+  --activity-media-header-font-family: var(--default-font-family);
+  --activity-media-header-transition-duration: var(--default-transition-duration);
+  --activity-media-header-font-size: var(--default-font-size-large);
+  --activity-media-header-icon-size: 26px;
+  --activity-media-header-icon-padding: 2px;
+  --activity-media-header-icon-color: color(#000 alpha(40%));
+  --activity-media-header-icon-color-hover: color(#000 alpha(60%));
+}
+
 /* Reset */
 .container {
   all: initial;
@@ -13,13 +24,13 @@
 .container {
   position: relative;
   display: block;
-  min-height: var(--activity-header-height);
-  font-family: var(--activity-font-family);
-  font-size: var(--activity-header-font-size);
+  min-height: var(--activity-media-header-height);
+  font-family: var(--activity-media-header-font-family);
+  font-size: var(--activity-media-header-font-size);
   font-weight: 500;
-  line-height: 28px;
+  line-height: 30px;
   flex: 1 1 auto;
-  padding: var(--default-padding) 50px;
+  padding: 15px 40px;
   text-align: center;
   letter-spacing: -0.3px;
   @apply --no-select;
@@ -27,26 +38,40 @@
 }
 
 .icon {
+  width: var(--activity-media-header-icon-size);
+  height: var(--activity-media-header-icon-size);
+  transition: fill var(--activity-media-header-transition-duration) linear;
+  fill: var(--activity-media-header-icon-color);
+}
+
+.iconWrapper {
+  cursor: pointer;
+  border-radius: 100px;
+  line-height: 0;
+  display: block;
   position: absolute;
-  top: 17px;
-  width: var(--activity-header-icon-size);
-  height: var(--activity-header-icon-size);
-  transition: color var(--activity-header-transition-duration) linear;
-  fill: var(--activity-header-icon-color);
+  box-sizing: border-box;
+  padding: var(--activity-media-header-icon-padding);
+  width: calc(var(--activity-media-header-icon-size) + (var(--activity-media-header-icon-padding) * 2));
+  height: calc(var(--activity-media-header-icon-size) + (var(--activity-media-header-icon-padding) * 2));
+  background-color: color(#fff alpha(50%));
+  top: 15px;
 
   &:hover {
-    fill: var(--activity-header-icon-color-hover);
+    & .icon {
+      fill: var(--activity-media-header-icon-color-hover);
+    }
   }
 }
 
-.iconBack {
-  left: 20px;
-  composes: icon;
+.iconBackWrapper {
+  composes: iconWrapper;
+  left: 18px;
 }
 
-.iconClose {
-  right: 20px;
-  composes: icon;
+.iconCloseWrapper {
+  composes: iconWrapper;
+  right: 18px;
 }
 
 .current {
@@ -60,19 +85,19 @@
   flex-flow: row nowrap;
 
   & .arrow {
-    fill: var(--activity-header-icon-color);
+    fill: var(--activity-media-header-icon-color);
   }
 
   &:hover {
     & .arrow {
-      fill: var(--activity-header-icon-color-hover);
+      fill: var(--activity-media-header-icon-color-hover);
     }
   }
 }
 
 .currentActive {
   & .arrow {
-    fill: var(--activity-header-icon-color-hover);
+    fill: var(--activity-media-header-icon-color-hover);
   }
 }
 
