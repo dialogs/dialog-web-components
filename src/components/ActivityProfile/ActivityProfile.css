@@ -14,10 +14,15 @@
   display: flex;
   flex-direction: column;
   padding: var(--activity-profile-padding);
-  text-align: center;
   font-family: var(--activity-font-family);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  text-align: center;
 }
 
 .avatar {
@@ -53,37 +58,57 @@
   color: var(--activity-text-color-light);
 }
 
-.about {
-  margin-top: var(--default-padding);
-  word-break: break-all;
-}
-
 .actions {
   margin-top: calc(var(--default-padding) * 1.6);
 }
 
 .button {
-  margin: 0 7px;
+  margin: 0 5px;
 }
 
-.contacts {
-  margin-top: var(--default-padding-large);
-  text-align: center;
+.wrapper {
+  margin-top: var(--default-padding);
+  padding-top: var(--default-padding);
+  border-top: 1px solid #e5e5e5;
 }
 
-.contactTitle {
+.about {
+  word-break: break-all;
+}
+
+.title {
   letter-spacing: -0.27px;
   font-size: var(--default-font-size-small);
   line-height: 20px;
-  margin-top: 6px;
   color: var(--activity-text-color-light);
 }
 
 .contactContent {
+  margin-top: var(--default-padding-small);
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.contactLinkWrapper {
+  margin-top: 4px;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.contactLink {
   letter-spacing: -0.4px;
   font-size: var(--activity-font-size);
-  line-height: 20px;
+  margin: 4px 0;
+  line-height: 16px;
+  display: inline-block;
   color: var(--activity-profile-contact-font-color);
   text-decoration: none;
-  display: inline-block;
+  border-bottom: 1px dotted var(--activity-profile-contact-font-color);
+  &:hover {
+    border-bottom: 1px solid var(--activity-profile-contact-font-color);
+  }
 }

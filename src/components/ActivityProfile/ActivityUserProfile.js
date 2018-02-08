@@ -10,12 +10,14 @@ import classNames from 'classnames';
 import Avatar from '../Avatar/Avatar';
 import Markdown from '../Markdown/Markdown';
 import PeerInfoTitle from '../PeerInfoTitle/PeerInfoTitle';
+import CustomProfile from '../CustomProfile/CustomProfile';
 import styles from './ActivityProfile.css';
 
 export type Props = {
   info: User,
   online: UserOnline,
   className?: string,
+  schema: string,
   children: Node
 };
 
@@ -25,10 +27,7 @@ class ActivityUserProfile extends PureComponent<Props> {
 
     return (
       <Avatar
-        className={styles.avatar}
-        size="big"
-        title={name}
-        image={bigAvatar}
+        className={styles.avatar} size="big" title={name} image={bigAvatar}
         placeholder={placeholder}
       />
     );
@@ -58,8 +57,9 @@ class ActivityUserProfile extends PureComponent<Props> {
     }
 
     return (
-      <div className={styles.about}>
-        <Markdown text={about} />
+      <div className={styles.wrapper}>
+        <Text className={styles.title} tagName="div" id="ActivityProfile.about" />
+        <Markdown text={about} className={styles.about} />
       </div>
     );
   }
@@ -82,29 +82,46 @@ class ActivityUserProfile extends PureComponent<Props> {
     }
 
     const phones = info.phones.map((phone) => (
-      <div key={phone.number}>
-        <Text className={styles.contactTitle} tagName="div" id="ActivityProfile.phone" />
-        <a href={`tel:${phone.number}`} className={styles.contactContent}>
+      <div key={phone.number} className={styles.contactLinkWrapper}>
+        <a href={`tel:${phone.number}`} className={styles.contactLink}>
           {phone.number}
         </a>
       </div>
     ));
 
     const emails = info.emails.map((email) => (
-      <div key={email.email}>
-        <Text className={styles.contactTitle} tagName="div" id="ActivityProfile.email" />
-        <a href={`mailto:${email.email}`} className={styles.contactContent}>
+      <div key={email.email} className={styles.contactLinkWrapper}>
+        <a href={`mailto:${email.email}`} className={styles.contactLink}>
           {email.email}
         </a>
       </div>
     ));
 
     return (
-      <div className={styles.contacts}>
-        {phones}
-        {emails}
+      <div className={styles.wrapper}>
+        {phones ? (
+          <div className={styles.contactContent}>
+            <Text className={styles.title} tagName="div" id="ActivityProfile.phone" />
+            {phones}
+          </div>
+        ) : null}
+        {emails ? (
+          <div className={styles.contactContent}>
+            <Text className={styles.title} tagName="div" id="ActivityProfile.email" />
+            {emails}
+          </div>
+        ) : null}
       </div>
     );
+  }
+
+  renderCustomPropfile() {
+    const { schema, info: { customProfile } } = this.props;
+    if (!schema || !customProfile) {
+      return null;
+    }
+
+    return <CustomProfile value={customProfile} schema={schema} className={styles.wrapper} />;
   }
 
   render() {
@@ -113,12 +130,16 @@ class ActivityUserProfile extends PureComponent<Props> {
 
     return (
       <div className={userProfileClassName}>
-        {this.renderAvatar()}
-        {this.renderTitle()}
-        {this.renderOnline()}
+        <div className={styles.header}>
+          {this.renderAvatar()}
+          {this.renderTitle()}
+          {this.renderOnline()}
+          {this.renderChildren()}
+        </div>
+
         {this.renderAbout()}
-        {this.renderChildren()}
         {this.renderProfileContacts()}
+        {this.renderCustomPropfile()}
       </div>
     );
   }

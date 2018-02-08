@@ -24,10 +24,7 @@ class ActivityGroupProfile extends PureComponent<Props> {
 
     return (
       <Avatar
-        className={styles.avatar}
-        size="big"
-        title={name}
-        image={bigAvatar}
+        className={styles.avatar} size="big" title={name} image={bigAvatar}
         placeholder={placeholder}
       />
     );
@@ -94,11 +91,13 @@ class ActivityGroupProfile extends PureComponent<Props> {
 
     return (
       <div className={className}>
-        {this.renderAvatar()}
-        {this.renderName()}
-        {this.renderAbout()}
-        {this.renderCreator()}
-        {this.renderChildren()}
+        <div className={styles.header}>
+          {this.renderAvatar()}
+          {this.renderName()}
+          {this.renderAbout()}
+          {this.renderCreator()}
+          {this.renderChildren()}
+        </div>
       </div>
     );
   }

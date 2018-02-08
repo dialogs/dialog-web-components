@@ -572,13 +572,13 @@
   --activity-list-vertical-padding: 14px;
   --activity-list-icon-size: 28px;
   --activity-list-hover-background-color: #f2f2f2;
-  --activity-list-padding: calc(var(--default-padding-large) * 1.5);
+  --activity-list-padding: 24px;
   --activity-list-arrow-color: var(--cool-grey);
   /* ActivityInvite */
   --activity-invite-link-font-size: 24px;
   --activity-invite-link-color: color(#000 alpha(90%));
   /* ActivityProfile */
-  --activity-profile-padding: 25px;
+  --activity-profile-padding: 24px;
   --activity-profile-contact-font-color: var(--color-primary);
   --activity-profile-title-font-size: 26px;
   /* Modals */
