@@ -27,7 +27,9 @@ class ContactListItem extends PureComponent<ItemProps<PeerInfo>> {
         <div className={styles.wrapper}>
           <PeerAvatar className={styles.avatar} size="large" peer={item} />
           <div className={styles.text}>
-            <span className={styles.name}>{item.title}</span>
+            <div className={styles.nameWrapper}>
+              <span className={styles.nameText}>{item.title}</span>
+            </div>
           </div>
           <CheckButton className={styles.selector} theme="success" checked={selected} />
         </div>
