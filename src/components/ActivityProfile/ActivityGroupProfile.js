@@ -24,7 +24,10 @@ class ActivityGroupProfile extends PureComponent<Props> {
 
     return (
       <Avatar
-        className={styles.avatar} size="big" title={name} image={bigAvatar}
+        className={styles.avatar}
+        size="big"
+        title={name}
+        image={bigAvatar}
         placeholder={placeholder}
       />
     );

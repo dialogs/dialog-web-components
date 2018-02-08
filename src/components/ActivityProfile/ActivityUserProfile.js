@@ -27,7 +27,10 @@ class ActivityUserProfile extends PureComponent<Props> {
 
     return (
       <Avatar
-        className={styles.avatar} size="big" title={name} image={bigAvatar}
+        className={styles.avatar}
+        size="big"
+        title={name}
+        image={bigAvatar}
         placeholder={placeholder}
       />
     );
@@ -36,7 +39,15 @@ class ActivityUserProfile extends PureComponent<Props> {
   renderTitle() {
     const { info: { name, nick } } = this.props;
 
-    return <PeerInfoTitle title={name} userName={nick} titleClassName={styles.name} userNameClassName={styles.nick} emojiSize={26} />;
+    return (
+      <PeerInfoTitle
+        title={name}
+        userName={nick}
+        titleClassName={styles.name}
+        userNameClassName={styles.nick}
+        emojiSize={26}
+      />
+    );
   }
 
   renderOnline() {
