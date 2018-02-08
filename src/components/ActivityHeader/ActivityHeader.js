@@ -22,7 +22,7 @@ class ActivityHeader extends PureComponent<Props> {
     }
 
     return (
-      <div onClick={this.props.onBack} className={styles.iconCloseWrapper}>
+      <div onClick={this.props.onBack} className={styles.iconBackWrapper}>
         <Icon id="activity_header_back_button" className={styles.icon} glyph="arrow_back" />
       </div>
     );
