@@ -33,7 +33,7 @@
     color: var(--sidebar-peer-item-hover-color);
   }
 
-  &:active{
+  &:active {
     background-color: color(var(--sidebar-peer-item-hover-background-color) shade(2%));
   }
 
@@ -56,12 +56,13 @@
 }
 
 .title {
+  display: block;
+  width: 100%;
   vertical-align: middle;
   letter-spacing: -0.27px;
   font-size: var(--sidebar-peer-item-font-size);
   font-weight: 500;
   line-height: 21px;
-
   @apply --text-overflow-ellipsis;
 }
 
