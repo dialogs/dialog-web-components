@@ -577,10 +577,6 @@
   /* ActivityInvite */
   --activity-invite-link-font-size: 24px;
   --activity-invite-link-color: color(#000 alpha(90%));
-  /* ActivityProfile */
-  --activity-profile-padding: 24px;
-  --activity-profile-contact-font-color: var(--color-primary);
-  --activity-profile-title-font-size: 26px;
   /* Modals */
   --modal-font-family: var(--default-font-family);
   --modal-font-size: var(--default-font-size);
