@@ -46,10 +46,6 @@
   font-size: var(--activity-profile-title-font-size);
   line-height: 1.2;
   color: var(--activity-profile-font-color);
-
-  & span {
-    vertical-align: middle;
-  }
 }
 
 .nick,

@@ -36,7 +36,7 @@ class ActivityUserProfile extends PureComponent<Props> {
   renderTitle() {
     const { info: { name, nick } } = this.props;
 
-    return <PeerInfoTitle title={name} userName={nick} titleClassName={styles.name} userNameClassName={styles.nick} />;
+    return <PeerInfoTitle title={name} userName={nick} titleClassName={styles.name} userNameClassName={styles.nick} emojiSize={26} />;
   }
 
   renderOnline() {
