@@ -23,7 +23,7 @@
   --input-next-error-color: var(--color-danger);
   --input-next-hint-font-family: var(--input-next-font-family);
   --input-next-hint-font-size: var(--default-font-size-small);
-  --input-next-hint-line-height: 1.6;
+  --input-next-hint-line-height: 1.2;
   --input-next-size-modifier: 0.25;
   --input-next-small-font-size: var(--default-font-size-small);
   --input-next-hint-color: var(--input-next-placeholder-color);
@@ -99,7 +99,7 @@
   font-family: var(--input-next-font-family);
   font-size: var(--input-next-label-font-size);
   line-height: 1.4;
-  margin-bottom: calc(var(--default-padding) / 2);
+  margin-bottom: calc(var(--default-padding-small) / 2);
   color: var(--input-next-label-color);
 
   & small {
@@ -123,6 +123,7 @@
   font-size: var(--input-next-hint-font-size);
   line-height: var(--input-next-hint-line-height);
   color: var(--input-next-hint-color);
+  margin-top: calc(var(--default-padding-small) / 2);
   @apply --no-select;
 }
 
