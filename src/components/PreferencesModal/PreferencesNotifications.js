@@ -4,7 +4,6 @@
  */
 
 import React, { PureComponent } from 'react';
-import { Text } from '@dlghq/react-l10n';
 import Fieldset from '../Fieldset/Fieldset';
 import Field from '../Field/Field';
 import Switcher from '../Switcher/Switcher';
