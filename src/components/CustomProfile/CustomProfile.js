@@ -42,7 +42,6 @@ class CustomProfile extends PureComponent<Props> {
   }
 
   render() {
-    console.log('CustomProfile', this.props);
     const className = classNames(styles.container, this.props.className);
 
     return <div className={className}>{this.renderProperties()}</div>;

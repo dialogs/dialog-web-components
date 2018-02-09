@@ -44,11 +44,7 @@ class PreferencesGeneral extends PureComponent<Props> {
     return (
       <div className={styles.screen}>
         <Fieldset legend="PreferencesModal.general.legend.sending">
-          <RadioGroup
-            name="sendBy"
-            value={sendBy}
-            onChange={this.handleSendByChange}
-          >
+          <RadioGroup name="sendBy" value={sendBy} onChange={this.handleSendByChange}>
             <Field>
               <Radio value="enter" id="preferences_general_send_by_enter">
                 <Text id="PreferencesModal.general.sendByEnter.enable" values={{ keyOS }} html />
@@ -66,11 +62,10 @@ class PreferencesGeneral extends PureComponent<Props> {
             <Switcher
               id="preferences_general_is_sound_enabled"
               name="isSoundEnabled"
+              label="PreferencesModal.general.sound"
               value={isSoundEffectsEnabled}
               onChange={this.handleSoundChange}
-            >
-              <Text id="PreferencesModal.general.sound" />
-            </Switcher>
+            />
           </Field>
         </Fieldset>
       </div>

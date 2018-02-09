@@ -55,9 +55,8 @@ class Wrapper extends PureComponent {
         className={styles.toggle}
         value={isTransparent}
         onChange={this.handleBackgroundToggle}
-      >
-        Transparent background
-      </Switcher>
+        label="Transparent background"
+      />
     );
   }
 

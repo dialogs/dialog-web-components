@@ -62,9 +62,8 @@ class PreferencesNotifications extends PureComponent<Props> {
               value={groupsEnabled}
               name="groupsEnabled"
               onChange={this.handleGroupsChange}
-            >
-              <Text id="PreferencesModal.notifications.notifications" />
-            </Switcher>
+              label="PreferencesModal.notifications.notifications"
+            />
           </Field>
           <Field>
             <Switcher
@@ -72,10 +71,9 @@ class PreferencesNotifications extends PureComponent<Props> {
               name="onlyMention"
               value={onlyMention}
               onChange={this.handleOnlyMentionChange}
-            >
-              <Text id="PreferencesModal.notifications.mention" />
-            </Switcher>
-            <Text id="PreferencesModal.notifications.mention_hint" className={styles.hint} />
+              label="PreferencesModal.notifications.mention"
+              hint="PreferencesModal.notifications.mention_hint"
+            />
           </Field>
           <Field>
             <Switcher
@@ -83,10 +81,9 @@ class PreferencesNotifications extends PureComponent<Props> {
               name="includeMuted"
               value={includeMuted}
               onChange={this.handleIncludeMutedChange}
-            >
-              <Text id="PreferencesModal.notifications.counter_include_muted" />
-            </Switcher>
-            <Text id="PreferencesModal.notifications.counter_include_muted_hint" className={styles.hint} />
+              label="PreferencesModal.notifications.counter_include_muted"
+              hint="PreferencesModal.notifications.counter_include_muted_hint"
+            />
           </Field>
         </Fieldset>
         <Fieldset legend="PreferencesModal.security.title">
@@ -96,10 +93,9 @@ class PreferencesNotifications extends PureComponent<Props> {
               name="showText"
               value={showText}
               onChange={this.handleShowTextChange}
-            >
-              <Text id="PreferencesModal.notifications.preview" />
-            </Switcher>
-            <Text id="PreferencesModal.notifications.preview_hint" className={styles.hint} />
+              label="PreferencesModal.notifications.preview"
+              hint="PreferencesModal.notifications.preview_hint"
+            />
           </Field>
         </Fieldset>
       </div>

@@ -545,7 +545,7 @@
   --modal-font-color: var(--default-font-color);
   --modal-font-color-light: var(--default-font-color-light);
   --modal-border-radius: var(--default-border-radius);
-  --modal-border-color: color(#000 alpha(20%));
+  --modal-border-color: color(#000 alpha(10%));
   --modal-min-width: 500px;
   --modal-overlay-color: color(#000 alpha(45%));
   --modal-close-size: 28px;
