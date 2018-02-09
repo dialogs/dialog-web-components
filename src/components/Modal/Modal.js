@@ -32,6 +32,7 @@ class Modal extends PureComponent<Props> {
         onRequestClose={this.props.onClose}
         shouldCloseOnOverlayClick={this.props.shouldCloseOnOverlayClick}
         contentLabel=""
+        ariaHideApp={false}
       >
         <div className={styles.wrapper}>
           {this.props.children}
