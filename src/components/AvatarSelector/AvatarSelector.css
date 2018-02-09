@@ -4,6 +4,14 @@
 
 @import '../../styles/variables.css';
 
+:root {
+  --avatar-selector-transitio-duration: var(--default-transition-duration);
+  --avatar-selector-camera-icon-color: var(--color-primary);
+  --avatar-selector-camera-icon-color-hover: color(var(--avatar-selector-camera-icon-color) alpha(90%));
+  --avatar-selector-remove-icon-color: var(--color-danger);
+  --avatar-selector-remove-icon-color-hover: color(var(--avatar-selector-remove-icon-color) alpha(90%));
+}
+
 /* Reset */
 .container {
   all: initial;
@@ -13,8 +21,6 @@
 .container {
   position: relative;
   display: block;
-  width: var(--avatar-selector-size);
-  height: var(--avatar-selector-size);
   line-height: 0;
 }
 
@@ -24,8 +30,8 @@
 
 .avatarChanger {
   position: absolute;
-  right: 0;
-  bottom: 0;
+  right: 6px;
+  bottom: 6px;
   cursor: pointer;
   border-radius: 100px;
   background-color: #fff;
@@ -45,8 +51,8 @@
 
 .avatarRemove {
   position: absolute;
-  right: 6px;
-  top: 0;
+  right: 10px;
+  top: 6px;
   cursor: pointer;
   border-radius: 100px;
   background-color: #fff;
