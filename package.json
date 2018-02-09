@@ -3,14 +3,8 @@
   "version": "0.151.3",
   "description": "dialog Web Components",
   "main": "src/index.js",
-  "files": [
-    "src"
-  ],
-  "keywords": [
-    "react",
-    "components",
-    "dialog"
-  ],
+  "files": ["src"],
+  "keywords": ["react", "components", "dialog"],
   "scripts": {
     "start": "styleguidist server",
     "create": "node scripts/create-component.js",
@@ -69,6 +63,7 @@
     "prop-types": "15.6.0",
     "react": "16.2.0",
     "react-dom": "16.2.0",
+    "react-jsonschema-form": "1.0.1",
     "react-modal": "3.1.11",
     "react-rangeslider": "2.2.0",
     "react-select": "1.2.1",
@@ -111,8 +106,6 @@
     "yml-loader": "2.1.0"
   },
   "jest": {
-    "transformIgnorePatterns": [
-      "node_modules/(?!@dlghq)"
-    ]
+    "transformIgnorePatterns": ["node_modules/(?!@dlghq)"]
   }
 }
