@@ -68,6 +68,7 @@ export { default as Radio } from './components/Radio/Radio';
 export { default as Switcher } from './components/Switcher/Switcher';
 export { default as Range } from './components/Range/Range';
 export { default as Fieldset } from './components/Fieldset/Fieldset';
+export { default as CustomForm } from './components/CustomForm/CustomForm';
 
 // Plug & Play Forms
 export { default as Authorization } from './components/Authorization/Authorization';

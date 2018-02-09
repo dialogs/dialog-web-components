@@ -48,7 +48,8 @@
       "Radio",
       "Switcher",
       "Range",
-      "Fieldset"
+      "Fieldset",
+      "CustomForm"
     ]
   },
   {

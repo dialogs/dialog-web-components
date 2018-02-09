@@ -1,0 +1,22 @@
+/**
+ * Copyright 2018 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+:root {
+  --custom-form-font-family: var(--default-font-family);
+  --custom-form-description-font-size: var(--default-font-size);
+  --custom-form-text-color: #000;
+}
+
+.description {
+  margin: var(--default-padding-small) 0 0;
+  color: var(--custom-form-text-color);
+  line-height: 1.4;
+  font-family: var(--custom-form-font-family);
+}
+
+.input {
+  margin-bottom: 0 !important;
+}
