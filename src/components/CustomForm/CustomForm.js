@@ -21,7 +21,7 @@ export type Props = {
   liveValidate: boolean,
   value: JSONValue,
   schema: JSONSchema,
-  uiSchema: JSONSchema,
+  uiSchema?: ?JSONSchema,
   onChange: (value: JSONValue) => mixed
 };
 
@@ -47,22 +47,9 @@ class CustomForm extends PureComponent<Props> {
     this.props.onChange(value.formData);
   };
 
-  /*
-   * handleError = (errors) => {
-   *   console.debug(errors);
-   * };
-   */
-
-  /*
-   * handleSubmit = (value: { formData: JSONValue }) => {
-   *   this.props.onChange(value.formData);
-   * };
-   */
-
-  getCustomFieldTemplate = (field: { children: Node }) => field.children;
+  getCustomFieldTemplate = (field: { children: Node }): Node => field.children;
 
   render() {
-    // console.log(this.props);
     const className = classNames(styles.container, this.props.className);
 
     return (
@@ -76,10 +63,6 @@ class CustomForm extends PureComponent<Props> {
           id={this.props.id}
           name={this.props.name}
           onChange={this.handleChange}
-          /*
-           * onError={this.handleError}
-           * onSubmit={this.handleSubmit}
-           */
           ObjectFieldTemplate={ObjectFieldTemplate}
           FieldTemplate={this.getCustomFieldTemplate}
           showErrorList={false}

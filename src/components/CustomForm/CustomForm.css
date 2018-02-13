@@ -10,11 +10,34 @@
   --custom-form-text-color: #000;
 }
 
+/* Reset */
+.container {
+  all: initial;
+}
+
+/* Styles */
+.container {
+  width: 100%;
+}
+
 .description {
   margin: var(--default-padding-small) 0 0;
   color: var(--custom-form-text-color);
   line-height: 1.4;
   font-family: var(--custom-form-font-family);
+}
+
+.field {
+  padding: var(--default-padding-small) 0;
+  width: 100%;
+
+  &:first-child {
+    padding-top: 0;
+  }
+
+  &:last-child {
+    padding-bottom: 0;
+  }
 }
 
 .input {

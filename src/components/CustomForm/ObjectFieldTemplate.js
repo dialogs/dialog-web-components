@@ -5,10 +5,9 @@
 
 import React, { PureComponent, type Node } from 'react';
 import Fieldset from '../Fieldset/Fieldset';
-import Field from '../Field/Field';
 import styles from './CustomForm.css';
 
-type FieldProperty = {
+type Property = {
   name: string,
   content: Node
 };
@@ -16,7 +15,7 @@ type FieldProperty = {
 type Props = {
   title?: ?string,
   description?: ?string,
-  properties: FieldProperty[]
+  properties: Property[]
 };
 
 export default class ObjectFieldTemplate extends PureComponent<Props> {
@@ -29,8 +28,12 @@ export default class ObjectFieldTemplate extends PureComponent<Props> {
   }
 
   renderProperties() {
-    return this.props.properties.map((property: FieldProperty) => {
-      return <Field key={property.name}>{property.content}</Field>;
+    return this.props.properties.map((property: Property) => {
+      return (
+        <div key={property.name} className={styles.field}>
+          {property.content}
+        </div>
+      );
     });
   }
 

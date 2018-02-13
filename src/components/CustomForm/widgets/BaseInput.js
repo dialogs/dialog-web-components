@@ -91,7 +91,7 @@ class BaseInput extends PureComponent<Props> {
         autoFocus={autofocus}
         required={required}
         type={type || 'text'}
-        value={value === null ? '' : value}
+        value={value || ''}
         onChange={this.handleChange}
         onBlur={this.handleBlur}
         onFocus={this.handleFocus}
