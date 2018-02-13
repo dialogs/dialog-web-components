@@ -4,6 +4,14 @@
 
 @import '../../styles/variables.css';
 
+:root {
+  --modal-profile-width: 600px;
+  --modal-profile-form-width: 400px;
+  --modal-profile-font-size: var(--default-font-size);
+  --modal-profile-text-color-light: var(--modal-font-color-light);
+  --modal-profile-contact-font-color: var(--color-primary);
+}
+
 /* Styles */
 .container {
   width: var(--modal-profile-width);
@@ -14,11 +22,10 @@
   display: flex;
   flex-direction: row;
   box-sizing: border-box;
-  padding: calc(var(--default-padding-large) * 1.5) calc(var(--default-padding-large) * 2.5);
+  padding: calc(var(--default-padding-large) * 1.5) calc(var(--default-padding) * 2);
 }
 
 .avatarBlock {
-  width: 100px;
   margin-right: 34px;
   flex: 0 0 auto;
 }
@@ -36,50 +43,31 @@
 }
 
 .form {
-  width: var(--modal-profile-form-width);
-  flex: 0 0 auto;
+  flex: 1;
 }
 
+.field {
+  &:first-child {
+    padding-top: 0;
+  }
+  &:last-child {
+    padding-bottom: 0;
+  }
+}
+
+.input {
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.name,
 .nick,
-.nickInput {
-  margin-top: calc(var(--default-padding) * 2);
-}
-
-.nickButton {
-  margin-top: 7px;
-  display: inline-flex;
-  flex-direction: row;
-  padding: 6px 0;
-  font-size: var(--modal-font-size);
-  line-height: var(--default-line-height-small);
-  justify-content: flex-start;
-  align-content: center;
-  align-items: center;
-  color: var(--color-primary);
-  fill: var(--color-primary);
-}
-
-.nickButtonIcon {
-  margin-right: 6px;
-  cursor: inherit !important;
-  fill: inherit !important;
-}
-
-.nickHint {
-  letter-spacing: -0.3px;
-  font-size: var(--default-font-size-small);
-  line-height: 1.4;
-  color: var(--modal-profile-hint-color);
-  @apply --no-select;
-}
-
 .about {
-  margin-top: 32px;
+  composes: input;
 }
 
 .contacts {
-  margin-top: 32px;
-
   & > div {
     margin-top: 6px;
 
@@ -89,40 +77,51 @@
   }
 }
 
-.contactTitle {
-  letter-spacing: -0.1px;
-  text-transform: uppercase;
-  font-size: var(--default-font-size-small);
-  font-weight: 500;
-  line-height: 1.4;
-  color: var(--color-primary);
-  @apply --no-select;
-}
-
-.contactContent {
-  display: inline-flex;
-  flex-direction: row;
-  font-size: 22px;
-  line-height: var(--default-line-height-large);
-  align-content: center;
-  align-items: center;
-  justify-content: flex-start;
-  @apply --no-select;
-}
-
-.contactContentIcon {
-  margin-left: calc(var(--default-padding) / 2);
-  color: var(--modal-profile-hint-color);
-}
-
 .footer {
   padding: 0;
 }
 
 .pendingWrapper {
-  min-height: 421px;
+  min-height: 400px;
   display: flex;
   align-content: center;
   align-items: center;
   justify-content: center;
+}
+
+.contactTitle {
+  letter-spacing: -0.27px;
+  font-size: var(--default-font-size-small);
+  line-height: 20px;
+  color: var(--modal-profile-text-color-light);
+}
+
+.contactContent {
+  margin-top: var(--default-padding-small);
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.contactLinkWrapper {
+  margin-bottom: 4px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.contactLink {
+  letter-spacing: -0.4px;
+  font-size: var(--modal-profile-font-size);
+  line-height: 16px;
+  display: inline-block;
+  color: var(--modal-profile-contact-font-color);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--modal-profile-contact-font-color);
+
+  &:hover {
+    border-bottom: 1px solid var(--modal-profile-contact-font-color);
+  }
 }

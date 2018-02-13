@@ -573,10 +573,7 @@
   --modal-create-new-hint-color: var(--modal-font-color-light);
   --modal-create-new-hint-font-size: var(--modal-font-size);
   --modal-create-new-label-font-size: var(--default-font-size-large);
-  /* ProfileModal */
-  --modal-profile-width: 640px;
-  --modal-profile-form-width: 400px;
-  --modal-profile-hint-color: var(--modal-font-color-light);
+
   /* PreferencesModal */
   --modal-preferences-width: 740px;
   --modal-preferences-height: 480px;

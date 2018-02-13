@@ -4,25 +4,29 @@
  */
 /* eslint max-lines: ["error", 500] */
 
+import type { JSONValue, JSONSchema } from '@dlghq/dialog-utils';
 import React, { PureComponent } from 'react';
 import { Text, LocalizationContextType } from '@dlghq/react-l10n';
 import classNames from 'classnames';
+import { safelyParseJSON } from '@dlghq/dialog-utils';
+import { isEqual } from 'lodash';
 import Modal from '../Modal/Modal';
 import ModalHeader from '../Modal/ModalHeader';
 import ModalClose from '../Modal/ModalClose';
 import ModalBody from '../Modal/ModalBody';
 import ModalFooter from '../Modal/ModalFooter';
-import Input from '../Input/Input';
+import Input from '../InputNext/InputNext';
+import Field from '../Field/Field';
 import Icon from '../Icon/Icon';
 import Button from '../Button/Button';
 import AvatarSelector from '../AvatarSelector/AvatarSelector';
 import ImageEdit from '../ImageEdit/ImageEdit';
 import Spinner from '../Spinner/Spinner';
+import CustomForm from '../CustomForm/CustomForm';
 import styles from './ProfileModal.css';
 import type { Props, State } from './types';
 
 class ProfileModal extends PureComponent<Props, State> {
-  nickInput: ?HTMLInputElement;
   nameInput: ?HTMLInputElement;
 
   static contextTypes = {
@@ -36,34 +40,42 @@ class ProfileModal extends PureComponent<Props, State> {
 
     this.state = {
       screen: 'profile',
-      profile: profile ? {
-        name: profile.name,
-        nick: profile.nick,
-        about: profile.about,
-        avatar: profile.avatar
-      } : {
-        name: '',
-        nick: null,
-        about: null,
-        avatar: null
-      }
+      profile: profile
+        ? {
+          name: profile.name,
+          nick: profile.nick,
+          about: profile.about,
+          avatar: profile.avatar,
+          customProfile: profile.customProfile ? safelyParseJSON(profile.customProfile) : null
+        }
+        : {
+          name: '',
+          nick: null,
+          about: null,
+          avatar: null,
+          customProfile: null
+        }
     };
   }
 
   componentWillReceiveProps(nextProps: Props) {
     if (!this.props.profile && nextProps.profile) {
-      this.setState({
-        profile: {
-          name: nextProps.profile.name,
-          nick: nextProps.profile.nick,
-          about: nextProps.profile.about,
-          avatar: nextProps.profile.avatar
+      this.setState(
+        {
+          profile: {
+            name: nextProps.profile.name,
+            nick: nextProps.profile.nick,
+            about: nextProps.profile.about,
+            avatar: nextProps.profile.avatar,
+            customProfile: nextProps.profile.customProfile ? safelyParseJSON(nextProps.profile.customProfile) : null
+          }
+        },
+        () => {
+          if (this.nameInput) {
+            this.nameInput.focus();
+          }
         }
-      }, () => {
-        if (this.nameInput) {
-          this.nameInput.focus();
-        }
-      });
+      );
     }
   }
 
@@ -79,21 +91,11 @@ class ProfileModal extends PureComponent<Props, State> {
   handleSubmit = (event: SyntheticEvent<>): void => {
     event.preventDefault();
     if (this.state.profile) {
-      this.props.onSubmit(this.state.profile);
-    }
-  };
-
-  handleNickChooserClick = (): void => {
-    this.setState({
-      profile: {
+      this.props.onSubmit({
         ...this.state.profile,
-        nick: ''
-      }
-    }, () => {
-      if (this.nickInput) {
-        this.nickInput.focus();
-      }
-    });
+        customProfile: JSON.stringify(this.state.profile.customProfile)
+      });
+    }
   };
 
   handleAvatarEdit = (avatar: File): void => {
@@ -138,10 +140,27 @@ class ProfileModal extends PureComponent<Props, State> {
     });
   };
 
+  handleCustomProfileChange = (customProfile: JSONValue): void => {
+    this.setState({
+      profile: {
+        ...this.state.profile,
+        customProfile: JSON.parse(JSON.stringify(customProfile))
+      }
+    });
+  };
+
   isPending(): boolean {
     const { context: { name, nick, about, avatar } } = this.props;
 
     return name.pending || nick.pending || about.pending || avatar.pending;
+  }
+
+  isCustomProfileChanged(): boolean {
+    if (this.props.profile && this.props.profile.customProfile) {
+      return !isEqual(this.state.profile.customProfile, safelyParseJSON(this.props.profile.customProfile));
+    }
+
+    return false;
   }
 
   isChanged(): boolean {
@@ -149,10 +168,13 @@ class ProfileModal extends PureComponent<Props, State> {
       return false;
     }
 
-    return this.state.profile.name !== this.props.profile.name ||
-           (this.state.profile.nick !== this.props.profile.nick && this.state.profile.nick !== '') ||
-           this.state.profile.about !== this.props.profile.about ||
-           this.state.profile.avatar !== this.props.profile.avatar;
+    return (
+      this.state.profile.name !== this.props.profile.name ||
+      (this.state.profile.nick !== this.props.profile.nick && this.state.profile.nick !== '') ||
+      this.state.profile.about !== this.props.profile.about ||
+      this.state.profile.avatar !== this.props.profile.avatar ||
+      this.isCustomProfileChanged()
+    );
   }
 
   getInputState = (field: string): Object => {
@@ -166,115 +188,9 @@ class ProfileModal extends PureComponent<Props, State> {
     return {};
   };
 
-  setNickInput = (input: ?HTMLInputElement): void => {
-    this.nickInput = input;
-  };
-
   setNameInput = (input: ?HTMLInputElement): void => {
     this.nameInput = input;
   };
-
-  renderAvatar() {
-    const { profile } = this.props;
-    if (!profile) {
-      return null;
-    }
-
-    const { profile: { name, avatar } } = this.state;
-    const handlers = this.state.profile.avatar ? { onRemove: this.handleAvatarRemove } : {};
-
-    return (
-      <div className={styles.avatarBlock}>
-        <AvatarSelector
-          name={name}
-          avatar={avatar}
-          placeholder={profile.placeholder}
-          onChange={this.handleAvatarEdit}
-          {...handlers}
-        />
-      </div>
-    );
-  }
-
-  renderNick() {
-    const { profile: { nick } } = this.state;
-    const { l10n: { formatText } } = this.context;
-
-    if (nick === null) {
-      return (
-        <div className={styles.nick}>
-          <Button
-            view="link"
-            theme="primary"
-            className={styles.nickButton}
-            id="profile_modal_nick_button"
-            onClick={this.handleNickChooserClick}
-          >
-            <Icon glyph="plus_outline" className={styles.nickButtonIcon} />
-            <Text id="ProfileModal.choose_nickname" />
-          </Button>
-          <Text
-            className={styles.nickHint}
-            id="ProfileModal.choose_nickname_hint"
-            tagName="div"
-          />
-        </div>
-      );
-    }
-
-    return (
-      <Input
-        ref={this.setNickInput}
-        className={styles.nickInput}
-        id="profile_modal_nick"
-        name="nick"
-        large
-        label={formatText('ProfileModal.nickname')}
-        prefix="@"
-        onChange={this.handleChange}
-        value={nick}
-        {...this.getInputState('nick')}
-      />
-    );
-  }
-
-  renderContacts() {
-    const { profile } = this.props;
-    if (!profile) {
-      return null;
-    }
-
-    const { phones, emails } = profile;
-    if (!phones.length && !emails.length) {
-      return null;
-    }
-
-    const phonesBlock = phones.map((phone) => (
-      <div key={phone.number}>
-        <Text className={styles.contactTitle} id="ProfileModal.phone" tagName="div" />
-        <div className={styles.contactContent}>
-          {phone.number}
-          <Icon glyph="lock" className={styles.contactContentIcon} />
-        </div>
-      </div>
-    ));
-    const emailsBlock = emails.map((email) => (
-      <div key={email.email}>
-        <Text className={styles.contactTitle} id="ProfileModal.email" tagName="div" />
-        <div className={styles.contactContent}>
-          {email.email}
-          <Icon glyph="lock" className={styles.contactContentIcon} />
-        </div>
-      </div>
-    ));
-
-    return (
-      <div className={styles.contacts}>
-        {phonesBlock}
-        {emailsBlock}
-      </div>
-    );
-  }
 
   renderHeader() {
     switch (this.state.screen) {
@@ -303,11 +219,151 @@ class ProfileModal extends PureComponent<Props, State> {
     }
   }
 
-  renderProfile() {
+  renderAvatar() {
+    const { profile } = this.props;
+    if (!profile) {
+      return null;
+    }
+
+    const { profile: { name, avatar } } = this.state;
+    const handlers = this.state.profile.avatar ? { onRemove: this.handleAvatarRemove } : {};
+
+    return (
+      <div className={styles.avatarBlock}>
+        <AvatarSelector
+          name={name}
+          size={140}
+          avatar={avatar}
+          placeholder={profile.placeholder}
+          onChange={this.handleAvatarEdit}
+          {...handlers}
+        />
+      </div>
+    );
+  }
+
+  renderMainForm() {
     const { profile } = this.state;
+
+    if (!profile) {
+      return null;
+    }
+
     const { l10n: { formatText } } = this.context;
 
-    if (!this.props.profile) {
+    return (
+      <Field className={styles.field}>
+        <form autoComplete="off" onSubmit={this.handleSubmit}>
+          <Input
+            ref={this.setNameInput}
+            className={styles.name}
+            id="profile_modal_name"
+            name="name"
+            label={formatText('ProfileModal.name')}
+            value={profile.name}
+            {...this.getInputState('name')}
+            onChange={this.handleChange}
+          />
+          <Input
+            className={styles.nick}
+            id="profile_modal_nick"
+            name="nick"
+            label="ProfileModal.nickname"
+            prefix="@"
+            hint="ProfileModal.nickname_hint"
+            onChange={this.handleChange}
+            value={profile.nick || ''}
+            {...this.getInputState('nick')}
+          />
+          <Input
+            className={styles.about}
+            id="profile_modal_about"
+            name="about"
+            type="textarea"
+            label="ProfileModal.about"
+            placeholder={formatText('ProfileModal.about_placeholder')}
+            value={profile.about || ''}
+            {...this.getInputState('about')}
+            onChange={this.handleChange}
+          />
+        </form>
+      </Field>
+    );
+  }
+
+  renderContacts() {
+    const { profile } = this.props;
+
+    if (!profile) {
+      return null;
+    }
+
+    if (!profile.phones.length && !profile.emails.length) {
+      return null;
+    }
+
+    const phones = profile.phones.map((phone) => (
+      <div key={phone.number} className={styles.contactLinkWrapper}>
+        <a href={`tel:${phone.number}`} className={styles.contactLink}>
+          {phone.number}
+        </a>
+      </div>
+    ));
+
+    const emails = profile.emails.map((email) => (
+      <div key={email.email} className={styles.contactLinkWrapper}>
+        <a href={`mailto:${email.email}`} className={styles.contactLink}>
+          {email.email}
+        </a>
+      </div>
+    ));
+
+    return (
+      <Field className={styles.field}>
+        {phones ? (
+          <div className={styles.contactContent}>
+            <Text className={styles.contactTitle} id="ProfileModal.phone" tagName="div" />
+            {phones}
+          </div>
+        ) : null}
+        {emails ? (
+          <div className={styles.contactContent}>
+            <Text className={styles.contactTitle} id="ProfileModal.email" tagName="div" />
+            {emails}
+          </div>
+        ) : null}
+      </Field>
+    );
+  }
+
+  renderCustomForm() {
+    const { schema, profile } = this.props;
+    const { profile: { customProfile } } = this.state;
+
+    if (!profile || !schema || !customProfile) {
+      return null;
+    }
+
+    const customProfileSchema: JSONSchema = JSON.parse(schema);
+
+    return (
+      <Field className={styles.field}>
+        <CustomForm
+          id="custom_profile"
+          name="custom_profile"
+          schema={customProfileSchema}
+          value={customProfile}
+          onSubmit={this.handleSubmit}
+          onChange={this.handleCustomProfileChange}
+        />
+      </Field>
+    );
+  }
+
+  renderProfile() {
+    const { profile } = this.props;
+
+    if (!profile) {
       return (
         <div className={styles.pendingWrapper}>
           <Spinner size="large" />
@@ -319,31 +375,9 @@ class ProfileModal extends PureComponent<Props, State> {
       <ModalBody className={styles.body}>
         {this.renderAvatar()}
         <div className={styles.form}>
-          <Input
-            ref={this.setNameInput}
-            className={styles.input}
-            large
-            id="profile_modal_name"
-            name="name"
-            label={formatText('ProfileModal.name')}
-            value={profile.name}
-            {...this.getInputState('name')}
-            onChange={this.handleChange}
-          />
-          {this.renderNick()}
-          <Input
-            className={styles.about}
-            large
-            id="profile_modal_about"
-            name="about"
-            type="textarea"
-            label={formatText('ProfileModal.about')}
-            placeholder={formatText('ProfileModal.about_placeholder')}
-            value={profile.about || ''}
-            {...this.getInputState('about')}
-            onChange={this.handleChange}
-          />
+          {this.renderMainForm()}
           {this.renderContacts()}
+          {this.renderCustomForm()}
         </div>
       </ModalBody>
     );
@@ -354,13 +388,12 @@ class ProfileModal extends PureComponent<Props, State> {
 
     if (avatar && typeof avatar !== 'string') {
       return (
-        <ImageEdit
-          image={avatar}
-          type="circle"
-          size={250}
-          height={400}
-          onSubmit={this.handleAvatarChange}
-        />
+        <div>
+          <ImageEdit
+            size={250} height={400} image={avatar} type="circle"
+            onSubmit={this.handleAvatarChange}
+          />
+        </div>
       );
     }
 
@@ -379,6 +412,7 @@ class ProfileModal extends PureComponent<Props, State> {
             rounded={false}
             loading={this.isPending()}
             disabled={!this.isChanged() || this.isPending()}
+            onClick={this.handleSubmit}
           >
             <Text id="ProfileModal.save" />
           </Button>
@@ -405,11 +439,9 @@ class ProfileModal extends PureComponent<Props, State> {
 
     return (
       <Modal className={className} isOpen onClose={this.props.onClose}>
-        <form autoComplete="off" onSubmit={this.handleSubmit}>
-          {this.renderHeader()}
-          {this.renderBody()}
-          {this.renderFooter()}
-        </form>
+        {this.renderHeader()}
+        {this.renderBody()}
+        {this.renderFooter()}
       </Modal>
     );
   }
