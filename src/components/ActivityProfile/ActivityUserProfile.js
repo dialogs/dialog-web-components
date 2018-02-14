@@ -17,7 +17,7 @@ export type Props = {
   info: User,
   online: UserOnline,
   className?: string,
-  schema: string,
+  schema?: ?string,
   children: Node
 };
 
@@ -128,6 +128,7 @@ class ActivityUserProfile extends PureComponent<Props> {
 
   renderCustomPropfile() {
     const { schema, info: { customProfile } } = this.props;
+
     if (!schema || !customProfile) {
       return null;
     }

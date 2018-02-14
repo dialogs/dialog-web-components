@@ -13,7 +13,7 @@ export type Profile = {
   nick: ?string,
   about: ?string,
   avatar: ?(string | File),
-  customProfile: ?JSONValue
+  customProfile: ?string
 };
 
 export type Props = {
@@ -32,5 +32,11 @@ export type Props = {
 
 export type State = {
   screen: Screen,
-  profile: Profile
+  profile: {
+    name: string,
+    nick: ?string,
+    about: ?string,
+    avatar: ?(string | File),
+    customProfile: ?JSONValue
+  }
 };
