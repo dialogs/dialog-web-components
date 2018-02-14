@@ -5,7 +5,7 @@
 
 import type { ProviderContext } from '@dlghq/react-l10n';
 import React, { PureComponent } from 'react';
-import { LocalizationContextType } from '@dlghq/react-l10n';
+import { Text, LocalizationContextType } from '@dlghq/react-l10n';
 import classNames from 'classnames';
 import styles from './InputNext.css';
 
@@ -18,8 +18,8 @@ export type Props = {
   type: 'text' | 'number' | 'email' | 'search' | 'tel' | 'url' | 'password' | 'textarea',
   value: string | number,
   name?: string,
-  label?: string,
-  placeholder?: string,
+  label?: ?string,
+  placeholder?: ?string,
   disabled?: boolean,
   hint?: ?string,
   status: 'normal' | 'success' | 'error',
@@ -28,6 +28,8 @@ export type Props = {
   tabIndex?: number,
   htmlAutoFocus?: boolean,
   spellcheck?: boolean,
+  required: boolean,
+  description?: ?string,
   onChange: (value: string, event: SyntheticInputEvent<HTMLAbstractInputElement>) => mixed,
   onFocus?: (event: SyntheticFocusEvent<HTMLAbstractInputElement>) => mixed,
   onBlur?: (event: SyntheticFocusEvent<HTMLAbstractInputElement>) => mixed,
@@ -50,7 +52,8 @@ class InputNext extends PureComponent<Props, State> {
     type: 'text',
     status: 'normal',
     size: 'normal',
-    spellcheck: false
+    spellcheck: false,
+    required: false
   };
 
   static contextTypes = {
@@ -140,7 +143,6 @@ class InputNext extends PureComponent<Props, State> {
 
   renderLabel() {
     const { id, label } = this.props;
-    const { l10n } = this.context;
 
     if (!label) {
       return null;
@@ -148,7 +150,8 @@ class InputNext extends PureComponent<Props, State> {
 
     return (
       <label className={styles.label} htmlFor={id} onMouseDown={this.handleLabelMouseDown}>
-        {l10n.formatText(label)}
+        <Text id={label} />
+        {this.props.required ? <Text id="InputNext.required" tagName="small" /> : null}
       </label>
     );
   }
@@ -160,9 +163,15 @@ class InputNext extends PureComponent<Props, State> {
       return null;
     }
 
-    const { l10n } = this.context;
+    return <Text className={styles.hint} id={hint} />;
+  }
 
-    return <p className={styles.hint}>{l10n.formatText(hint)}</p>;
+  renderDescription() {
+    if (!this.props.description) {
+      return null;
+    }
+
+    return <Text className={styles.description} id={this.props.description} />;
   }
 
   render() {
@@ -182,7 +191,7 @@ class InputNext extends PureComponent<Props, State> {
       size
     } = this.props;
     const { isFocused } = this.state;
-    const { l10n } = this.context;
+    const { l10n: { formatText } } = this.context;
 
     const className = classNames(
       styles.container,
@@ -194,19 +203,22 @@ class InputNext extends PureComponent<Props, State> {
       this.props.className
     );
 
-    const inputClassName = classNames(styles.input, this.props.inputClassName);
+    const inputClassName = classNames(styles.input, this.props.inputClassName, {
+      [styles.textarea]: type === 'textarea'
+    });
 
     const TagName = type === 'textarea' ? 'textarea' : 'input';
 
     return (
       <div className={className}>
         {this.renderLabel()}
+        {this.renderDescription()}
         <TagName
           className={inputClassName}
           disabled={disabled}
           id={id}
           name={name}
-          placeholder={placeholder ? l10n.formatText(placeholder) : null}
+          placeholder={placeholder ? formatText(placeholder) : null}
           type={type}
           value={value}
           ref={this.setInput}
@@ -219,6 +231,7 @@ class InputNext extends PureComponent<Props, State> {
           onKeyPress={onKeyPress}
           onKeyUp={onKeyUp}
           spellCheck={this.props.spellcheck ? 'true' : 'false'}
+          required={this.props.required}
         />
         {this.renderHint()}
       </div>

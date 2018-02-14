@@ -8,15 +8,24 @@ const user = {
   avatar: null,
   bigAvatar: null,
   placeholder: 'red',
-  phones: [{ number: '+1 234 567 89 00', title: 'Mobile phone' }],
-  emails: [{ email: 'cap@america.com', title: 'Home email' }]
+  phones: [{ number: '+1 234 567 89 00', title: 'Mobile phone' }, { number: '+1 234 567 89 00', title: 'Mobile phone' }],
+  emails: [{ email: 'cap@america.com', title: 'Home email' },{ email: 'cap@america.com', title: 'Home email' }],
+  customProfile: JSON.stringify({
+    lastName: 'Rodgers 🦐',
+    age: 97,
+    bio: 'Roundhouse kicking asses since 1940',
+    password: 'noneed',
+    done: true,
+    telephone: '+1 234 567 89 00'
+  })
 };
+const schema = JSON.stringify(require('../../fixtures/cutomProfileSchema.json'));
 const online = {
   message: '3 minutes ago'
 };
 
 <div style={{ background: '#fff', width: 320 }}>
-  <ActivityProfile info={user} online={online} type="user" />
+  <ActivityProfile info={user} online={online} type="user" schema={schema} />
 </div>
 ```
 

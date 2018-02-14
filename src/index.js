@@ -30,6 +30,7 @@ export { default as Overlay } from './components/Overlay/Overlay';
 export { default as SelectedMessagesActions } from './components/SelectedMessagesActions/SelectedMessagesActions';
 export { default as CheckButton } from './components/CheckButton/CheckButton';
 export { default as ScrollToBottom } from './components/ScrollToBottom/ScrollToBottom';
+export { default as CustomProfile } from './components/CustomProfile/CustomProfile';
 
 // Calls
 export { default as Call } from './components/Call/Call';
@@ -67,6 +68,7 @@ export { default as Radio } from './components/Radio/Radio';
 export { default as Switcher } from './components/Switcher/Switcher';
 export { default as Range } from './components/Range/Range';
 export { default as Fieldset } from './components/Fieldset/Fieldset';
+export { default as CustomForm } from './components/CustomForm/CustomForm';
 
 // Plug & Play Forms
 export { default as Authorization } from './components/Authorization/Authorization';

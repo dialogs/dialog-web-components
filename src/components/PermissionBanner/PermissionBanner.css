@@ -6,8 +6,8 @@
 
 :root {
   --permission-banner-font-family: var(--default-font-family);
-  --permission-banner-font-size: var(--default-font-size-large);
-  --permission-banner-color: #fff;
+  --permission-banner-font-size: 15px;
+  --permission-banner-text-color: #fff;
 }
 
 /* Reset */
@@ -18,18 +18,26 @@
 /* Styles */
 .container {
   font-family: var(--permission-banner-font-family);
-  display: block;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
   width: 100%;
   position: relative;
-  text-align: center;
-  padding: 16px calc(var(--default-padding) * 3);
-  min-height: 52px;
+  padding: 8px 38px;
+  min-height: 38px;
   box-sizing: border-box;
+}
+
+.wrapper {
+  flex: 1;
+  display: block;
+  text-align: center;
 }
 
 .text {
   font-size: var(--permission-banner-font-size);
-  color: var(--permission-banner-color);
+  color: var(--permission-banner-text-color);
   display: inline-block;
   line-height: 20px;
   @apply --no-select;
@@ -43,31 +51,31 @@
   height: 20px;
   line-height: 20px;
   margin-left: var(--default-padding-small);
-  color: var(--permission-banner-color);
+  color: var(--permission-banner-text-color);
   font-size: var(--permission-banner-font-size);
   font-weight: 500;
-  border-bottom: 1px dotted color(var(--permission-banner-color) alpha(70%));
+  border-bottom: 1px dotted color(var(--permission-banner-text-color) alpha(70%));
   display: inline-block;
   @apply --no-select;
   cursor: pointer;
 
   &:hover {
-    border-bottom: 1px solid var(--permission-banner-color);
+    border-bottom: 1px solid var(--permission-banner-text-color);
   }
 }
 
 .close {
   display: inline-block;
   position: absolute;
-  width: 26px;
-  height: 26px;
-  top: 13px;
-  right: var(--default-padding);
-  fill: color(var(--permission-banner-color) alpha(50%));
+  width: 22px;
+  height: 22px;
+  top: 8px;
+  right: 8px;
+  fill: color(var(--permission-banner-text-color) alpha(50%));
   transition: fill var(--default-transition-duration) ease;
 
   &:hover {
-    fill: color(var(--permission-banner-color) alpha(90%));
+    fill: color(var(--permission-banner-text-color) alpha(90%));
   }
 }
 

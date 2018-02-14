@@ -20,13 +20,7 @@ export type Props = {
   onChange?: (type: string) => mixed
 };
 
-const MEDIA_TYPES = [
-  'all',
-  'photo',
-  'document',
-  'voice',
-  'video'
-];
+const MEDIA_TYPES = ['all', 'photo', 'document', 'voice', 'video'];
 
 class ActivityMediaHeader extends PureComponent<Props> {
   renderTrigger = (handlers: Object, isActive: boolean) => {
@@ -38,11 +32,7 @@ class ActivityMediaHeader extends PureComponent<Props> {
     return (
       <div className={className} {...handlers} id="activity_media_header_type_current">
         <Text id={`ActivityMediaHeader.${current}`} className={styles.currentText} />
-        <Icon
-          className={styles.arrow}
-          glyph={isActive ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}
-          size={24}
-        />
+        <Icon className={styles.arrow} glyph={isActive ? 'keyboard_arrow_up' : 'keyboard_arrow_down'} size={24} />
       </div>
     );
   };
@@ -65,11 +55,7 @@ class ActivityMediaHeader extends PureComponent<Props> {
       );
     });
 
-    return (
-      <Dropdown>
-        {children}
-      </Dropdown>
-    );
+    return <Dropdown>{children}</Dropdown>;
   };
 
   renderBackButton() {
@@ -78,12 +64,9 @@ class ActivityMediaHeader extends PureComponent<Props> {
     }
 
     return (
-      <Icon
-        onClick={this.props.onBack}
-        className={styles.iconBack}
-        glyph="arrow_back"
-        id="activity_media_header_back_button"
-      />
+      <div onClick={this.props.onBack} className={styles.iconBackWrapper}>
+        <Icon className={styles.icon} glyph="arrow_back" id="activity_media_header_back_button" />
+      </div>
     );
   }
 
@@ -93,12 +76,9 @@ class ActivityMediaHeader extends PureComponent<Props> {
     }
 
     return (
-      <Icon
-        onClick={this.props.onClose}
-        className={styles.iconClose}
-        glyph="close"
-        id="activity_media_header_close_button"
-      />
+      <div onClick={this.props.onClose} className={styles.iconCloseWrapper}>
+        <Icon className={styles.icon} glyph="close" id="activity_media_header_close_button" />
+      </div>
     );
   }
 

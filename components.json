@@ -27,7 +27,8 @@
       "SelectedMessagesActions",
       "CheckButton",
       "AudioPlayer",
-      "ScrollToBottom"
+      "ScrollToBottom",
+      "CustomProfile"
     ]
   },
   {
@@ -47,7 +48,8 @@
       "Radio",
       "Switcher",
       "Range",
-      "Fieldset"
+      "Fieldset",
+      "CustomForm"
     ]
   },
   {

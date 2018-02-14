@@ -4,6 +4,12 @@
 
 @import '../../styles/variables.css';
 
+:root {
+  --field-border-color: color(#000 alpha(10%));
+  --field-padding: var(--default-padding);
+  --field-font-family: var(--default-font-family);
+}
+
 /* Reset */
 .container {
   all: initial;
@@ -16,9 +22,9 @@
   box-sizing: border-box;
   width: 100%;
   min-height: 50px;
-  padding: var(--default-padding) 0;
+  padding: var(--field-padding) 0;
   box-shadow: 0 1px 0 0 var(--field-border-color);
-  font-family: var(--default-font-family);
+  font-family: var(--field-font-family);
   justify-content: center;
   align-content: flex-start;
   align-items: flex-start;

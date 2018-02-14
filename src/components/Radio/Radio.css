@@ -4,6 +4,17 @@
 
 @import '../../styles/variables.css';
 
+:root {
+  --radio-font-family: var(--default-font-family);
+  --radio-size: 22px;
+  --radio-inactive-color: #c0c0c0;
+  --radio-disabled-color: var(--radio-inactive-color);
+  --radio-active-color: var(--color-primary);
+  --radio-label-font-size: 15px;
+  --radio-label-padding: 24px;
+  --radio-disabled-label-color: #cbcbcb;
+}
+
 /* Reset */
 .container {
   all: initial;
@@ -104,7 +115,7 @@
   cursor: not-allowed;
 
   &.labeled {
-    color: var(--radio-disabled-label-color)
+    color: var(--radio-disabled-label-color);
   }
 
   & .radio {

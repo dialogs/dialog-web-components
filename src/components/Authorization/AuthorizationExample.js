@@ -142,6 +142,7 @@ class AuthorizationExample extends Component {
           onRetry={this.handleRetry}
           isGenderEnabled
           onResendCode={this.handleResendCode}
+          autoFocus={false}
         />
         {this.renderFinished()}
       </div>

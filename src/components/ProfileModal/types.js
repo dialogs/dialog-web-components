@@ -4,6 +4,7 @@
  */
 
 import type { Field, User } from '@dlghq/dialog-types';
+import type { JSONValue } from '@dlghq/dialog-utils';
 
 export type Screen = 'profile' | 'avatar';
 
@@ -11,7 +12,8 @@ export type Profile = {
   name: string,
   nick: ?string,
   about: ?string,
-  avatar: ?(string | File)
+  avatar: ?(string | File),
+  customProfile: ?string
 };
 
 export type Props = {
@@ -23,11 +25,18 @@ export type Props = {
     about: Field<?string>,
     avatar: Field<?(string | File)>
   },
+  schema: ?string,
   onClose: () => void,
-  onSubmit: (profile: Profile) => mixed,
+  onSubmit: (profile: Profile) => mixed
 };
 
 export type State = {
   screen: Screen,
-  profile: Profile
+  profile: {
+    name: string,
+    nick: ?string,
+    about: ?string,
+    avatar: ?(string | File),
+    customProfile: ?JSONValue
+  }
 };

@@ -23,15 +23,15 @@ export type Props = {
   maxWidth: number,
   maxHeight: number,
   onClick?: (event: SyntheticMouseEvent<>) => mixed
-}
+};
 
 export type State = {
   state: 1 | 2 | 3,
   error: ?mixed
-}
+};
 
 class Image extends PureComponent<Props, State> {
-  requestId: ?number;
+  requestId: ?AnimationFrameID; // eslint-disable-line no-undef
   image: ?HTMLImageElement;
 
   static defaultProps = {
@@ -116,18 +116,16 @@ class Image extends PureComponent<Props, State> {
 
     return (
       <div className={className} title={this.props.alt} style={{ width, height }}>
-        {
-          source ? (
-            <img
-              id={this.props.id}
-              src={source}
-              width={width}
-              height={height}
-              alt={this.props.alt}
-              onClick={this.props.onClick}
-            />
-          ) : null
-        }
+        {source ? (
+          <img
+            id={this.props.id}
+            src={source}
+            width={width}
+            height={height}
+            alt={this.props.alt}
+            onClick={this.props.onClick}
+          />
+        ) : null}
       </div>
     );
   }

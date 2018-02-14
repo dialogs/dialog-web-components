@@ -68,13 +68,6 @@
   /* PeerAvatar */
   --avatar-online-size: 8px;
   --avatar-online-color: var(--leafy-green);
-  /* AvatarSelector */
-  --avatar-selector-size: 100px;
-  --avatar-selector-transitio-duration: var(--default-transition-duration);
-  --avatar-selector-camera-icon-color: var(--violet-blue-two);
-  --avatar-selector-camera-icon-color-hover: color(var(--avatar-selector-camera-icon-color) alpha(90%));
-  --avatar-selector-remove-icon-color: var(--color-danger);
-  --avatar-selector-remove-icon-color-hover: color(var(--avatar-selector-remove-icon-color) alpha(90%));
   /* Button */
   --button-min-width: 90px;
   --button-border-radius: var(--default-border-radius);
@@ -210,11 +203,6 @@
   --fake-message-header-text-color: #cacaca;
   --fake-message-line-height: 10px;
   --fake-message-text-color: color(var(--fake-message-header-text-color) alpha(60%));
-  /* Field */
-  --field-border-color: color(#000 alpha(10%));
-  /* Fieldset */
-  --fieldset-legend-font-size: var(--default-font-size-small);
-  --fieldset-legend-font-color: var(--color-info);
   /* Icon */
   --icon-default-color: rgb(178, 178, 178);
   --icon-inverted-color: #fff;
@@ -335,15 +323,6 @@
   --message-state-avatar-padding: 4px;
   --message-state-dot-size: 10px;
   --message-state-dot-color: color(#000 alpha(30%));
-  /* Radio */
-  --radio-font-family: var(--default-font-family);
-  --radio-size: 22px;
-  --radio-inactive-color: #c0c0c0;
-  --radio-disabled-color: var(--radio-inactive-color);
-  --radio-active-color: var(--color-primary);
-  --radio-label-font-size: 15px;
-  --radio-label-padding: var(--default-padding);
-  --radio-disabled-label-color: #cbcbcb;
   /* Sidebar */
   /* SidebarItem */
   --sidebar-peer-item-default-top-padding: 9px;
@@ -491,23 +470,6 @@
   --spinner-round-large-border-width: 3px;
   --spinner-round-color: var(--color-primary);
   --spinner-round-animation-duration: 2s;
-  /* Swither */
-  --switcher-width: 32px;
-  --switcher-height: 20px;
-  --switcher-border-radius: calc(var(--switcher-height) / 2);
-  --switcher-dot-size: 16px;
-  --switcher-background-color: #b8b8b8;
-  --switcher-active-background-color: #ccc;
-  --switcher-checked-background-color: #4cd964;
-  --switcher-checked-active-background-color: #59ee72;
-  --switcher-dot-color: #fff;
-  --switcher-active-dot-color: #f6fff7;
-  --switcher-transition-duration: var(--default-transition-duration);
-  --switcher-label-font-family: var(--default-font-family);
-  --switcher-label-font-size: 15px;
-  --switcher-active-offset: calc(
-    var(--switcher-width) - var(--switcher-dot-size) - ((var(--switcher-height) - var(--switcher-dot-size)) / 2)
-  ); /* stylelint-disable-line */
   /* Tabs */
   --tabs-font-family: var(--default-font-family);
   --tabs-width: 220px;
@@ -560,34 +522,23 @@
   --activity-font-color: var(--default-font-color);
   --activity-text-color-light: var(--default-font-color-light);
   --activity-border-color: #e5e5e5;
-  /* ActivityHeader */
-  --activity-header-height: 60px;
-  --activity-header-transition-duration: var(--default-transition-duration);
-  --activity-header-font-size: var(--default-font-size-large);
-  --activity-header-icon-size: 26px;
-  --activity-header-icon-color: color(#000 alpha(40%));
-  --activity-header-icon-color-hover: color(#000 alpha(60%));
   /* ActivityList */
   --activity-list-min-height: 56px;
   --activity-list-vertical-padding: 14px;
   --activity-list-icon-size: 28px;
   --activity-list-hover-background-color: #f2f2f2;
-  --activity-list-padding: calc(var(--default-padding-large) * 1.5);
+  --activity-list-padding: 24px;
   --activity-list-arrow-color: var(--cool-grey);
   /* ActivityInvite */
   --activity-invite-link-font-size: 24px;
   --activity-invite-link-color: color(#000 alpha(90%));
-  /* ActivityProfile */
-  --activity-profile-padding: 25px;
-  --activity-profile-contact-font-color: var(--color-primary);
-  --activity-profile-title-font-size: 26px;
   /* Modals */
   --modal-font-family: var(--default-font-family);
   --modal-font-size: var(--default-font-size);
   --modal-font-color: var(--default-font-color);
   --modal-font-color-light: var(--default-font-color-light);
   --modal-border-radius: var(--default-border-radius);
-  --modal-border-color: color(#000 alpha(20%));
+  --modal-border-color: color(#000 alpha(10%));
   --modal-min-width: 500px;
   --modal-overlay-color: color(#000 alpha(45%));
   --modal-close-size: 28px;
@@ -622,10 +573,7 @@
   --modal-create-new-hint-color: var(--modal-font-color-light);
   --modal-create-new-hint-font-size: var(--modal-font-size);
   --modal-create-new-label-font-size: var(--default-font-size-large);
-  /* ProfileModal */
-  --modal-profile-width: 640px;
-  --modal-profile-form-width: 400px;
-  --modal-profile-hint-color: var(--modal-font-color-light);
+
   /* PreferencesModal */
   --modal-preferences-width: 740px;
   --modal-preferences-height: 480px;
