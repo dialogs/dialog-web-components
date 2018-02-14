@@ -90,12 +90,13 @@ class ProfileModal extends PureComponent<Props, State> {
 
   handleSubmit = (event: SyntheticEvent<>): void => {
     event.preventDefault();
-    if (this.state.profile) {
-      this.props.onSubmit({
-        ...this.state.profile,
-        customProfile: JSON.stringify(this.state.profile.customProfile)
-      });
-    }
+    this.props.onSubmit({
+      name: this.state.profile.name,
+      nick: this.state.profile.nick,
+      about: this.state.profile.about,
+      avatar: this.state.profile.avatar,
+      customProfile: JSON.stringify(this.state.profile.customProfile)
+    });
   };
 
   handleAvatarEdit = (avatar: File): void => {
