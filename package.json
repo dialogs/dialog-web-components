@@ -1,10 +1,16 @@
 {
   "name": "@dlghq/dialog-components",
-  "version": "0.151.6",
+  "version": "0.152.0",
   "description": "dialog Web Components",
   "main": "src/index.js",
-  "files": ["src"],
-  "keywords": ["react", "components", "dialog"],
+  "files": [
+    "src"
+  ],
+  "keywords": [
+    "react",
+    "components",
+    "dialog"
+  ],
   "scripts": {
     "start": "styleguidist server",
     "create": "node scripts/create-component.js",
@@ -106,6 +112,8 @@
     "yml-loader": "2.1.0"
   },
   "jest": {
-    "transformIgnorePatterns": ["node_modules/(?!@dlghq)"]
+    "transformIgnorePatterns": [
+      "node_modules/(?!@dlghq)"
+    ]
   }
 }
