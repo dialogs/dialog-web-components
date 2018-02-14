@@ -20,12 +20,14 @@ function DropdownItem(props: Props) {
     styles.item,
     props.className,
     props.active ? styles.active : null,
-    props.onClick ? styles.hovered : null
+    props.onClick ? styles.hoverable : null
   );
 
   return (
     <div className={className} onClick={props.onClick} id={props.id}>
-      <span className={styles.text}>{props.children}</span>
+      <div className={styles.wrapper}>
+        <span className={styles.text}>{props.children}</span>
+      </div>
     </div>
   );
 }

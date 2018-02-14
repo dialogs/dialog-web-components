@@ -4,6 +4,26 @@
 
 @import '../../styles/variables.css';
 
+:root {
+  --dropdown-font-size: var(--default-font-size);
+  --dropdown-font-color: #000;
+  --dropdown-background-color: color(#fff alpha(98%));
+  --dropdown-padding-top: calc(var(--default-padding) / 2);
+  --dropdown-padding-right: var(--default-padding-large);
+  --dropdown-padding-bottom: calc(var(--default-padding) / 2);
+  --dropdown-padding-left: var(--default-padding-large);
+  --dropdown-border-radius: var(--default-border-radius);
+  --dropdown-item-height: 36px;
+  --dropdown-item-hover-color-default: #fff;
+  --dropdown-item-hover-background-default: var(--color-primary);
+  --dropdown-item-hover-background-secondary: #e5e5e5;
+  --dropdown-divider-color: color(#000 alpha(15%));
+  --dropdown-min-width: 200px;
+  --dropdown-header-font-size: var(--default-font-size-small);
+  --dropdown-header-color: var(--default-font-color-light);
+  --dropdown-transition-duration: var(--default-transition-duration);
+}
+
 :global {
   & .tether-element {
     z-index: var(--z-index-dropdown);
@@ -23,7 +43,7 @@
 .container {
   z-index: var(--z-index-dropdown);
   display: table;
-  overflow: hidden;
+  /* overflow: hidden; */
   min-width: var(--dropdown-min-width);
   padding-top: var(--dropdown-padding-top);
   padding-right: 0;
@@ -33,9 +53,10 @@
   background-color: var(--dropdown-background-color);
   box-shadow: inset 0 0 0 1px color(#000 alpha(15%)), 0 1px 2px 0 color(#000 alpha(12%));
   line-height: 0;
+  color: var(--dropdown-font-color);
 
-  & b {
-    font-weight: 500;
+  & .container {
+    z-index: calc(var(--z-index-dropdown) + 10);
   }
 }
 
@@ -47,19 +68,28 @@
 .text {
   display: flex;
   flex-direction: row;
-  padding-top: 0;
-  padding-right: var(--dropdown-padding-right);
-  padding-bottom: 0;
-  padding-left: var(--dropdown-padding-left);
   cursor: inherit;
   user-select: none;
   font-family: var(--default-font-family);
   font-size: var(--dropdown-font-size);
-  line-height: var(--dropdown-item-height);
+  line-height: calc(var(--dropdown-item-height) / 2);
+  padding: calc(var(--dropdown-item-height) / 4) 0;
+  min-height: var(--dropdown-item-height);
   justify-content: flex-start;
   align-content: center;
   align-items: center;
-  color: var(--dropdown-font-color);
+  color: inherit;
+  box-sizing: border-box;
+}
+
+.wrapper {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  padding-top: 0;
+  padding-right: var(--dropdown-padding-right);
+  padding-bottom: 0;
+  padding-left: var(--dropdown-padding-left);
 }
 
 .divider {
@@ -101,25 +131,30 @@
   color: var(--dropdown-header-color);
 }
 
+.submenu {
+  composes: item;
+}
+
+.submenuWrapper {
+  position: absolute;
+  left: calc(100% - var(--default-padding-small));
+  top: -var(--dropdown-padding-top);
+  width: 100%;
+}
+
 /* Themes */
 .primary {
   & .active {
     cursor: pointer;
     background-color: var(--dropdown-item-hover-background-default);
-
-    & .text {
-      color: var(--dropdown-item-hover-color-default);
-    }
+    color: var(--dropdown-item-hover-color-default);
   }
 
-  & .hovered {
+  & .hoverable {
     &:hover {
       cursor: pointer;
       background-color: var(--dropdown-item-hover-background-default);
-
-      & .text {
-        color: var(--dropdown-item-hover-color-default);
-      }
+      color: var(--dropdown-item-hover-color-default);
     }
   }
 }
@@ -130,7 +165,7 @@
     background-color: var(--dropdown-item-hover-background-secondary);
   }
 
-  & .hovered {
+  & .hoverable {
     &:hover {
       cursor: pointer;
       background-color: var(--dropdown-item-hover-background-secondary);
@@ -148,5 +183,18 @@
 .appearActive {
   transition: all var(--dropdown-transition-duration) ease-in-out;
   transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.subAppear {
+  transform: translateX(10px);
+  transform-origin: 0 0;
+  opacity: 0.01;
+}
+
+.subAppearActive {
+  transition: transform var(--dropdown-transition-duration) ease-in-out,
+    opacity calc(var(--dropdown-transition-duration) * 0.5) ease-in;
+  transform: translateX(0);
   opacity: 1;
 }

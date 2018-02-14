@@ -1,10 +1,5 @@
 ```jsx
-const {
-  DropdownItem,
-  DropdownDivider,
-  PeerAvatar
-} = require('../../index');
-
+const { Dropdown, DropdownItem, DropdownDivider, PeerAvatar } = require('../../index');
 const handleClick = () => alert('menu clicked');
 
 const user = {
@@ -18,12 +13,14 @@ const user = {
 
 <Dropdown>
   <DropdownItem>
-    <PeerAvatar peer={user} />
+    <PeerAvatar peer={user} size={32} />
     <b style={{ marginLeft: 8 }}>{user.title}</b>
   </DropdownItem>
   <DropdownDivider />
   <DropdownItem onClick={handleClick}>First menu item</DropdownItem>
-  <DropdownItem onClick={handleClick} active>Very very very very loooong menu item</DropdownItem>
+  <DropdownItem onClick={handleClick} active>
+    Very very very very loooong menu item
+  </DropdownItem>
   <DropdownItem onClick={handleClick}>Last menu item</DropdownItem>
 </Dropdown>
 ```
@@ -31,11 +28,7 @@ const user = {
 Dropdown with Divider:
 
 ```jsx
-const {
-  DropdownItem,
-  DropdownDivider
-} = require('../../index');
-
+const { Dropdown, DropdownItem, DropdownDivider } = require('../../index');
 const handleClick = () => alert('menu clicked');
 
 <Dropdown>
@@ -49,11 +42,7 @@ const handleClick = () => alert('menu clicked');
 Dropdown with Header:
 
 ```jsx
-const {
-  DropdownItem,
-  DropdownHeader
-} = require('../../index');
-
+const { Dropdown, DropdownItem, DropdownHeader } = require('../../index');
 const handleClick = () => alert('menu clicked');
 
 <Dropdown>
@@ -64,15 +53,28 @@ const handleClick = () => alert('menu clicked');
 </Dropdown>
 ```
 
+Dropdown with submenu:
+
+```jsx
+const { Dropdown, DropdownItem, DropdownSubmenu } = require('../../index');
+const handleClick = () => alert('menu clicked');
+
+<Dropdown>
+  <DropdownItem onClick={handleClick}>First menu item</DropdownItem>
+  <DropdownSubmenu title="This menu item has submenu">
+    <Dropdown submenu>
+      <DropdownItem onClick={handleClick}>Submenu first menu item</DropdownItem>
+      <DropdownItem onClick={handleClick}>Submenu second menu item</DropdownItem>
+    </Dropdown>
+  </DropdownSubmenu>
+  <DropdownItem onClick={handleClick}>Another menu item</DropdownItem>
+</Dropdown>
+```
+
 Themed Dropdown:
 
 ```jsx
-const {
-  DropdownItem,
-  DropdownHeader,
-  DropdownDivider
-} = require('../../index');
-
+const { Dropdown, DropdownItem, DropdownHeader, DropdownDivider } = require('../../index');
 const handleClick = () => alert('menu clicked');
 
 <Dropdown theme="secondary">
