@@ -10,6 +10,8 @@ import { Text } from '@dlghq/react-l10n';
 import Avatar from '../Avatar/Avatar';
 import Button from '../Button/Button';
 import Icon from '../Icon/Icon';
+import Markdown from '../Markdown/Markdown';
+import PeerInfoTitle from '../PeerInfoTitle/PeerInfoTitle';
 import getAvatarPlaceholder from '../../utils/getAvatarPlaceholder';
 import styles from './DiscoverCard.css';
 
@@ -72,16 +74,16 @@ class DiscoverCard extends PureComponent<Props> {
     }
 
     return (
-      <Text
-        id="DiscoverCard.creator" values={{ title: creator }} className={styles.creator} html
-        tagName="div"
-      />
+      <div className={styles.creator}>
+        <Text id="DiscoverCard.creator" />
+        <PeerInfoTitle title={creator} className={styles.creatorTitle} emojiSize={18} />
+      </div>
     );
   }
 
   renderIcon() {
     const { type } = this.props;
-    const size = 30;
+    const size = 26;
 
     switch (type) {
       case 'channel':
@@ -112,12 +114,14 @@ class DiscoverCard extends PureComponent<Props> {
       <div className={styles.info}>
         <div className={styles.title} title={title}>
           {this.renderIcon()}
-          <span>{title}</span>
+          <PeerInfoTitle title={title} emojiSize={24} />
         </div>
         {this.renderShortname()}
-        <div className={styles.description} title={description}>
-          <span>{description}</span>
-        </div>
+        {description ? (
+          <div className={styles.description} title={description}>
+            <Markdown text={description} inline />
+          </div>
+        ) : null}
       </div>
     );
   }
