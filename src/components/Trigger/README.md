@@ -5,12 +5,12 @@ returns `false` inside of this component.
 Example:
 
 ```jsx
-const Button = require('../Button/Button').default;
 initialState = {
   openHandler: ['onClick'],
   closeHandler: ['onClick'],
-  closeOnDocumentClick: false,
-  closeOnDocumentScroll: false,
+  closeOnDocumentClick: true,
+  closeOnDocumentScroll: true,
+  closeOnChildClick: false,
   options: {
     attachment: 'middle left',
     targetAttachment: 'middle right',
@@ -19,11 +19,19 @@ initialState = {
 };
 const renderTrigger = (newProps) => {
   return (
-    <Button theme="primary" {...newProps}>Click me!</Button>
+    <Button theme="primary" {...newProps}>
+      Click me!
+    </Button>
   );
 };
 const renderChild = () => {
-  return <Icon glyph="close" />;
+  return (
+    <div
+      style={{ padding: 10, margin: 5, borderRadius: 4, backgroundColor: 'white', border: '1px solid rgba(0,0,0,.1)' }}
+    >
+      <Icon glyph="logo" size={30} onClick={() => alert('!')} />
+    </div>
+  );
 };
 
 <Trigger
@@ -31,8 +39,9 @@ const renderChild = () => {
   closeHandler={state.closeHandler}
   closeOnDocumentClick={state.closeOnDocumentClick}
   closeOnDocumentScroll={state.closeOnDocumentScroll}
+  closeOnChildClick={state.closeOnChildClick}
   options={state.options}
   renderChild={renderChild}
   renderTrigger={renderTrigger}
-/>
+/>;
 ```

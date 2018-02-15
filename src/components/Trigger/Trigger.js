@@ -7,8 +7,15 @@ import React, { Component, type Node } from 'react';
 import Tether from 'react-tether';
 import { listen } from '@dlghq/dialog-utils';
 
-export type TriggerHandler = 'onClick' | 'onContextMenu' | 'onDoubleClick' | 'onMouseDown' |
-  'onMouseEnter' | 'onMouseLeave' | 'onMouseMove' | 'onMouseUp';
+export type TriggerHandler =
+  | 'onClick'
+  | 'onContextMenu'
+  | 'onDoubleClick'
+  | 'onMouseDown'
+  | 'onMouseEnter'
+  | 'onMouseLeave'
+  | 'onMouseMove'
+  | 'onMouseUp';
 
 export type Point = {
   x: number,
@@ -16,7 +23,6 @@ export type Point = {
 };
 
 export type Props = {
-
   /**
    * [Tether options](http://tether.io/#options)
    */
@@ -36,6 +42,11 @@ export type Props = {
    * Prevent default behaviour for open events.
    */
   preventDefault?: boolean,
+
+  /**
+   * Close child on child click.
+   */
+  closeOnChildClick: boolean,
 
   /**
    * Close child on document click.
@@ -62,11 +73,12 @@ export type State = {
 };
 
 class Trigger extends Component<Props, State> {
-  listeners: ?{ remove(): void }[];
+  listeners: ?({ remove(): void }[]);
 
   static defaultProps = {
     closeOnDocumentClick: false,
-    closeOnDocumentScroll: false
+    closeOnDocumentScroll: false,
+    closeOnChildClick: true
   };
 
   constructor(props: Props): void {
@@ -105,15 +117,11 @@ class Trigger extends Component<Props, State> {
 
       this.listeners = [];
       if (this.props.closeOnDocumentClick) {
-        this.listeners.push(
-          listen(document, 'click', this.handleClose, { passive: true })
-        );
+        this.listeners.push(listen(document, 'click', this.handleClose, { passive: true }));
       }
 
       if (this.props.closeOnDocumentScroll) {
-        this.listeners.push(
-          listen(document, 'scroll', this.handleClose, { passive: true })
-        );
+        this.listeners.push(listen(document, 'scroll', this.handleClose, { passive: true }));
       }
 
       if (this.props.onChange) {
@@ -145,6 +153,13 @@ class Trigger extends Component<Props, State> {
     });
   };
 
+  handleChildClick = (event: $FlowIssue) => {
+    if (!this.props.closeOnChildClick) {
+      event.stopPropagation();
+      event.nativeEvent.stopImmediatePropagation();
+    }
+  };
+
   removeListeners = (): void => {
     if (this.listeners) {
       this.listeners.forEach((listener) => listener.remove());
@@ -153,11 +168,15 @@ class Trigger extends Component<Props, State> {
   };
 
   renderChild() {
-    if (this.state.isOpen) {
-      return this.props.renderChild(this.state.position);
+    if (!this.state.isOpen) {
+      return null;
     }
 
-    return null;
+    return (
+      <div onClick={this.handleChildClick} style={{ pointerEvents: 'all' }}>
+        {this.props.renderChild(this.state.position)}
+      </div>
+    );
   }
 
   renderTrigger() {
