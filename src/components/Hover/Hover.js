@@ -10,8 +10,8 @@ export type Props = {
   className?: string,
   id?: string,
   children: Node,
-  onHover: (hover: boolean) => void,
-  onClick?: (event: SyntheticMouseEvent<>) => void
+  onHover: (hover: boolean) => mixed,
+  onClick?: (event: SyntheticMouseEvent<>) => mixed
 };
 
 class Hover extends Component<Props> {

@@ -56,17 +56,22 @@ const handleClick = () => alert('menu clicked');
 Dropdown with submenu:
 
 ```jsx
-const { Dropdown, DropdownItem, DropdownSubmenu } = require('../../index');
+const { Dropdown, DropdownItem } = require('../../index');
 const handleClick = () => alert('menu clicked');
-
-<Dropdown>
-  <DropdownItem onClick={handleClick}>First menu item</DropdownItem>
-  <DropdownSubmenu title="This menu item has submenu">
+const renderSubmenu = () => {
+  return (
     <Dropdown submenu>
       <DropdownItem onClick={handleClick}>Submenu first menu item</DropdownItem>
       <DropdownItem onClick={handleClick}>Submenu second menu item</DropdownItem>
     </Dropdown>
-  </DropdownSubmenu>
+  );
+};
+
+<Dropdown>
+  <DropdownItem onClick={handleClick}>First menu item</DropdownItem>
+  <DropdownItem renderSubmenu={renderSubmenu} onClick={handleClick}>
+    This menu item has submenu
+  </DropdownItem>
   <DropdownItem onClick={handleClick}>Another menu item</DropdownItem>
 </Dropdown>
 ```

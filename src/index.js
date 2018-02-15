@@ -13,7 +13,6 @@ export { default as Dropdown } from './components/Dropdown/Dropdown';
 export { default as DropdownDivider } from './components/Dropdown/DropdownDivider';
 export { default as DropdownHeader } from './components/Dropdown/DropdownHeader';
 export { default as DropdownItem } from './components/Dropdown/DropdownItem';
-export { default as DropdownSubmenu } from './components/Dropdown/DropdownSubmenu';
 export { default as Icon } from './components/Icon/Icon';
 export { default as Spinner } from './components/Spinner/Spinner';
 export { default as Logo } from './components/Logo/Logo';
