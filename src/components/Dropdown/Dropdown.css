@@ -43,7 +43,6 @@
 .container {
   z-index: var(--z-index-dropdown);
   display: table;
-  /* overflow: hidden; */
   min-width: var(--dropdown-min-width);
   padding-top: var(--dropdown-padding-top);
   padding-right: 0;
@@ -73,8 +72,7 @@
   font-family: var(--default-font-family);
   font-size: var(--dropdown-font-size);
   line-height: calc(var(--dropdown-item-height) / 2);
-  padding: calc(var(--dropdown-item-height) / 4) 0;
-  min-height: var(--dropdown-item-height);
+  padding: 0;
   justify-content: flex-start;
   align-content: center;
   align-items: center;
@@ -86,9 +84,9 @@
   position: relative;
   width: 100%;
   box-sizing: border-box;
-  padding-top: 0;
+  padding-top: calc(var(--dropdown-item-height) / 4);
+  padding-bottom: calc(var(--dropdown-item-height) / 4);
   padding-right: var(--dropdown-padding-right);
-  padding-bottom: 0;
   padding-left: var(--dropdown-padding-left);
 }
 

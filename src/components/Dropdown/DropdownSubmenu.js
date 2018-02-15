@@ -12,7 +12,8 @@ export type Props = {
   children: Node,
   title: string,
   id?: string,
-  className?: string
+  className?: string,
+  wrapperClassName?: string
 };
 
 type State = {
@@ -47,10 +48,11 @@ class DropdownSubmenu extends PureComponent<Props, State> {
       styles.hoverable,
       this.state.hover ? styles.active : null
     );
+    const wrapperClassName = classNames(styles.wrapper, this.props.wrapperClassName);
 
     return (
       <Hover className={className} id={this.props.id} onHover={this.handleHover}>
-        <div className={styles.wrapper}>
+        <div className={wrapperClassName}>
           <span className={styles.text}>{this.props.title}</span>
           {this.renderSubmenu()}
         </div>

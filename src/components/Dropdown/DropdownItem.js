@@ -12,6 +12,7 @@ export type Props = {
   active?: boolean,
   id?: string,
   className?: string,
+  wrapperClassName?: string,
   onClick?: (event: SyntheticMouseEvent<>) => mixed
 };
 
@@ -22,10 +23,11 @@ function DropdownItem(props: Props) {
     props.active ? styles.active : null,
     props.onClick ? styles.hoverable : null
   );
+  const wrapperClassName = classNames(styles.wrapper, props.wrapperClassName);
 
   return (
     <div className={className} onClick={props.onClick} id={props.id}>
-      <div className={styles.wrapper}>
+      <div className={wrapperClassName}>
         <span className={styles.text}>{props.children}</span>
       </div>
     </div>
