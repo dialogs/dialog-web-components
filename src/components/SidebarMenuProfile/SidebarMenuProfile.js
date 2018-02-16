@@ -3,6 +3,7 @@
  * @flow
  */
 
+import type { AvatarPlaceholder } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import Avatar from '../Avatar/Avatar';
@@ -14,7 +15,7 @@ type Props = {
   className?: string,
   name: string,
   avatar: string,
-  placeholder: string,
+  placeholder: AvatarPlaceholder,
   status: PresenceType
 };
 
