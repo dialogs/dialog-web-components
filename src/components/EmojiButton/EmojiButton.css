@@ -21,6 +21,7 @@
   align-content: center;
   justify-content: center;
   cursor: pointer;
+  vertical-align: middle;
   transition: all var(--emoji-button-transition-duration) ease;
 
   &:hover {
