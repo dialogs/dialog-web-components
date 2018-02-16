@@ -4,14 +4,28 @@
 
 @import '../../styles/variables.css';
 
+:root {
+  --peer-avatar-unset-color: var(--color-success);
+  --peer-avatar-away-color: var(--color-warning);
+  --peer-avatar-dnd-color: var(--color-danger);
+}
+
 .container {
   position: relative;
   display: inline-flex;
   cursor: inherit;
 }
 
-.online {
-  fill: var(--avatar-online-color);
+.unset {
+  fill: var(--peer-avatar-unset-color);
+}
+
+.away {
+  fill: var(--peer-avatar-away-color);
+}
+
+.do_not_disturb {
+  fill: var(--peer-avatar-dnd-color);
 }
 
 .text {

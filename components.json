@@ -4,6 +4,7 @@
     "components": [
       "Avatar",
       "PeerAvatar",
+      "PeerAvatarWithStatus",
       "DoublePeerAvatar",
       "PeerInfoTitle",
       "Scroller",

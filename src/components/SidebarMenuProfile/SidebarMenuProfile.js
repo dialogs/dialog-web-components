@@ -8,7 +8,6 @@ import classNames from 'classnames';
 import Avatar from '../Avatar/Avatar';
 import PeerInfoTitle from '../PeerInfoTitle/PeerInfoTitle';
 import Presence, { type PresenceType } from '../Presence/Presence';
-import { Text } from '@dlghq/react-l10n';
 import styles from './SidebarMenuProfile.css';
 
 type Props = {
