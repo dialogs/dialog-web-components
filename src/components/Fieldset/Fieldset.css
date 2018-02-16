@@ -33,5 +33,6 @@
   font-size: var(--fieldset-legend-font-size);
   font-weight: 500;
   line-height: 1.4;
+  margin-bottom: var(--default-padding);
   color: var(--fieldset-legend-font-color);
 }

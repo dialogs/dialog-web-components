@@ -21,7 +21,7 @@
 }
 
 .description {
-  margin: var(--default-padding-small) 0 0;
+  margin: 0;
   color: var(--custom-form-text-color);
   line-height: 1.4;
   font-family: var(--custom-form-font-family);
