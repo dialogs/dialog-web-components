@@ -21,6 +21,7 @@
   align-items: center;
   justify-content: flex-start;
   align-content: center;
+  color: inherit;
 }
 
 .dot {
@@ -33,6 +34,7 @@
 
 .status {
   display: inline-block;
+  color: inherit;
   font-size: var(--default-font-size);
   font-family: var(--default-font-family);
 }

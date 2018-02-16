@@ -1,0 +1,64 @@
+/**
+ * Copyright 2018 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+:root {
+  --sidebar-menu-profile-font-family: var(--default-font-family);
+  --sidebar-menu-profile-font-size: var(--default-font-size);
+  --sidebar-menu-profile-status-font-size: var(--default-font-size-small);
+  --sidebar-menu-profile-status-color: var(--toolbar-status-color);
+}
+
+.container {
+  all: initial;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  font-family: var(--sidebar-menu-profile-font-family);
+  align-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
+  color: inherit;
+}
+
+.avatar {
+  margin-right: 8px;
+}
+
+.info {
+  flex-direction: column;
+  display: flex;
+}
+
+.title {
+  font-weight: 500;
+  color: inherit;
+  line-height: 20px;
+  margin-top: 4px;
+  font-size: var(--sidebar-menu-profile-font-size);
+}
+
+.presence {
+  height: 14px;
+  line-height: 14px;
+}
+
+.dot {
+  margin-top: 1px;
+  width: 8px;
+  height: 8px;
+  margin-right: calc(var(--default-padding-small) / 2);
+}
+
+.status {
+  letter-spacing: -0.2px;
+  font-size: var(--sidebar-menu-profile-status-font-size);
+  text-transform: lowercase;
+  color: currentColor;
+  @apply --text-overflow-ellipsis;
+}

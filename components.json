@@ -29,7 +29,8 @@
       "AudioPlayer",
       "ScrollToBottom",
       "CustomProfile",
-      "Presence"
+      "Presence",
+      "SidebarMenuProfile"
     ]
   },
   {
