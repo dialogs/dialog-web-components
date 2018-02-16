@@ -28,7 +28,8 @@
       "CheckButton",
       "AudioPlayer",
       "ScrollToBottom",
-      "CustomProfile"
+      "CustomProfile",
+      "Presence"
     ]
   },
   {
