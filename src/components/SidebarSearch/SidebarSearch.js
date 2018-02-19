@@ -14,6 +14,7 @@ import styles from './SidebarSearch.css';
 
 export type Props = {
   className?: string,
+  inputClassName?: string,
   query: string,
   focus: boolean,
   pending: boolean,
@@ -81,14 +82,10 @@ class SidebarSearch extends Component<Props> {
     const { pending } = this.props;
 
     if (pending) {
-      return (
-        <Spinner size="small" className={styles.spinner} />
-      );
+      return <Spinner size="small" className={styles.spinner} />;
     }
 
-    return (
-      <Icon glyph="search" className={styles.icon} size={22} />
-    );
+    return <Icon glyph="search" className={styles.icon} size={22} />;
   }
 
   renderClearIcon() {
@@ -96,45 +93,33 @@ class SidebarSearch extends Component<Props> {
       return null;
     }
 
-    return (
-      <Icon
-        glyph="close"
-        className={styles.cancel}
-        size={20}
-        onClick={this.handleCancel}
-      />
-    );
+    return <Icon glyph="close" className={styles.cancel} size={20} onClick={this.handleCancel} />;
   }
 
   render() {
     const { l10n } = this.context;
 
-    const className = classNames(
-      styles.container,
-      this.props.query ? styles.filled : null,
-      this.props.className
-    );
+    const className = classNames(styles.container, this.props.query ? styles.filled : null, this.props.className);
+    const inputClassName = classNames(styles.input, this.props.inputClassName);
 
     const placeholder = l10n.formatText('SidebarSearch.placeholder');
 
     return (
-      <div className={styles.wrapper}>
-        <div className={className}>
-          {this.renderIcon()}
-          <input
-            id="sidebar_search_input"
-            type="search"
-            ref={this.setInput}
-            placeholder={placeholder}
-            className={styles.input}
-            value={this.props.query}
-            autoFocus={this.props.focus}
-            onFocus={this.handleFocus}
-            onBlur={this.handleBlur}
-            onChange={this.handleChange}
-          />
-          {this.renderClearIcon()}
-        </div>
+      <div className={className}>
+        {this.renderIcon()}
+        <input
+          id="sidebar_search_input"
+          type="search"
+          ref={this.setInput}
+          placeholder={placeholder}
+          className={inputClassName}
+          value={this.props.query}
+          autoFocus={this.props.focus}
+          onFocus={this.handleFocus}
+          onBlur={this.handleBlur}
+          onChange={this.handleChange}
+        />
+        {this.renderClearIcon()}
       </div>
     );
   }
