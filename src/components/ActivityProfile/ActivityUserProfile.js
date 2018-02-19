@@ -25,15 +25,10 @@ class ActivityUserProfile extends PureComponent<Props> {
   renderAvatar() {
     const { info: { name, bigAvatar, placeholder } } = this.props;
 
-    return (
-      <Avatar
-        className={styles.avatar}
-        size="big"
-        title={name}
-        image={bigAvatar}
-        placeholder={placeholder}
-      />
-    );
+    return (<Avatar
+      className={styles.avatar} size="big" title={name} image={bigAvatar}
+      placeholder={placeholder}
+    />);
   }
 
   renderTitle() {
@@ -110,13 +105,13 @@ class ActivityUserProfile extends PureComponent<Props> {
 
     return (
       <div className={styles.wrapper}>
-        {phones ? (
+        {phones.length ? (
           <div className={styles.contactContent}>
             <Text className={styles.title} tagName="div" id="ActivityProfile.phone" />
             {phones}
           </div>
         ) : null}
-        {emails ? (
+        {emails.length ? (
           <div className={styles.contactContent}>
             <Text className={styles.title} tagName="div" id="ActivityProfile.email" />
             {emails}
