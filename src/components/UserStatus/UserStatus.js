@@ -4,24 +4,19 @@
  */
 
 import React, { PureComponent } from 'react';
+import type { UserStatusType } from '@dlghq/dialog-types';
 import classNames from 'classnames';
 import { Text } from '@dlghq/react-l10n';
-import styles from './Presence.css';
-
-export type PresenceType = 'unset' | 'away' | 'do_not_disturb' | 'invisible';
+import styles from './UserStatus.css';
 
 type Props = {
   className?: string,
   dotClassName?: string,
   statusClassName?: string,
-  status: PresenceType
+  status: UserStatusType
 };
 
-class Presence extends PureComponent<Props> {
-  static defaultProps = {
-    size: 'normal'
-  };
-
+class UserStatus extends PureComponent<Props> {
   render() {
     const className = classNames(styles.container, this.props.className);
     const dotClassName = classNames(styles.dot, styles[this.props.status], this.props.dotClassName);
@@ -30,10 +25,10 @@ class Presence extends PureComponent<Props> {
     return (
       <div className={className}>
         <div className={dotClassName} />
-        <Text id={`Presence.${this.props.status}`} className={statusClassName} />
+        <Text id={`UserStatus.${this.props.status}`} className={statusClassName} />
       </div>
     );
   }
 }
 
-export default Presence;
+export default UserStatus;

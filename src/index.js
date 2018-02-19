@@ -33,7 +33,7 @@ export { default as SelectedMessagesActions } from './components/SelectedMessage
 export { default as CheckButton } from './components/CheckButton/CheckButton';
 export { default as ScrollToBottom } from './components/ScrollToBottom/ScrollToBottom';
 export { default as CustomProfile } from './components/CustomProfile/CustomProfile';
-export { default as Presence } from './components/Presence/Presence';
+export { default as UserStatus } from './components/UserStatus/UserStatus';
 export { default as SidebarMenuProfile } from './components/SidebarMenuProfile/SidebarMenuProfile';
 
 // Calls

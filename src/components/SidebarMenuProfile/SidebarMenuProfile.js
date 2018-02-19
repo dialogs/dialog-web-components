@@ -3,12 +3,12 @@
  * @flow
  */
 
-import type { AvatarPlaceholder } from '@dlghq/dialog-types';
+import type { AvatarPlaceholder, UserStatusType } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import Avatar from '../Avatar/Avatar';
 import PeerInfoTitle from '../PeerInfoTitle/PeerInfoTitle';
-import Presence, { type PresenceType } from '../Presence/Presence';
+import UserStatus from '../UserStatus/UserStatus';
 import styles from './SidebarMenuProfile.css';
 
 type Props = {
@@ -16,7 +16,7 @@ type Props = {
   name: string,
   avatar: string,
   placeholder: AvatarPlaceholder,
-  status: PresenceType
+  status: UserStatusType
 };
 
 class SidebarMenuProfile extends PureComponent<Props> {
@@ -32,9 +32,9 @@ class SidebarMenuProfile extends PureComponent<Props> {
         />
         <div className={styles.info}>
           <PeerInfoTitle title={name} className={styles.title} />
-          <Presence
+          <UserStatus
             status={status}
-            className={styles.presence}
+            className={styles.status}
             dotClassName={styles.dot}
             statusClassName={styles.status}
           />
