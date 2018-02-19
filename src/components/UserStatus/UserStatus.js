@@ -17,6 +17,10 @@ type Props = {
 };
 
 class UserStatus extends PureComponent<Props> {
+  static defaultProps = {
+    status: 'unset'
+  };
+
   render() {
     const className = classNames(styles.container, this.props.className);
     const dotClassName = classNames(styles.dot, styles[this.props.status], this.props.dotClassName);
