@@ -6,10 +6,11 @@
 import React, { type Node } from 'react';
 import WelcomeMessageGroup from './WelcomeMessageGroup';
 import WelcomeMessageUser from './WelcomeMessageUser';
+import WelcomeMessageChannel from './WelcomeMessageChannel';
 
 export type Props = {
   className?: string,
-  type: 'group' | 'user',
+  type: 'group' | 'channel' | 'user',
   title: string,
   isAdmin?: ?boolean,
   isOwner?: ?boolean,
@@ -26,6 +27,10 @@ function WelcomeMessage(props: Props) {
     case 'group':
       return (
         <WelcomeMessageGroup {...props} />
+      );
+    case 'channel':
+      return (
+        <WelcomeMessageChannel {...props} />
       );
     case 'user':
       return (

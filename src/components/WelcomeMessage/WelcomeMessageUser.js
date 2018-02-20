@@ -6,6 +6,7 @@
 import React, { PureComponent, type Node } from 'react';
 import classNames from 'classnames';
 import PeerInfoTitle from '../PeerInfoTitle/PeerInfoTitle';
+import Markdown from '../Markdown/Markdown';
 import styles from './WelcomeMessage.css';
 
 export type Props = {
@@ -32,11 +33,7 @@ class WelcomeMessageUser extends PureComponent<Props> {
       return null;
     }
 
-    return (
-      <div className={styles.about}>
-        {about}
-      </div>
-    );
+    return <Markdown className={styles.about} text={about} />;
   }
 
   render() {

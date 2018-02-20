@@ -21,14 +21,14 @@ export type Props = {
   renderActions?: () => Node
 };
 
-class WelcomeMessageGroup extends PureComponent<Props> {
+class WelcomeMessageChannel extends PureComponent<Props> {
   renderCreated() {
     const { createdAt, creator, isOwner } = this.props;
 
     if (isOwner) {
       return (
         <Text
-          id="WelcomeMessage.group.created_by_you"
+          id="WelcomeMessage.channel.created_by_you"
           className={styles.created}
           values={{ createdAt: createdAt || '' }}
         />
@@ -38,7 +38,7 @@ class WelcomeMessageGroup extends PureComponent<Props> {
     if (creator) {
       return (
         <Text
-          id="WelcomeMessage.group.created"
+          id="WelcomeMessage.channel.created"
           className={styles.created}
           values={{ createdAt: createdAt || '', creator }}
         />
@@ -76,7 +76,7 @@ class WelcomeMessageGroup extends PureComponent<Props> {
     return (
       <div className={styles.hint}>
         <Text
-          id="WelcomeMessage.group.hint"
+          id="WelcomeMessage.channel.hint"
           className={styles.hintText}
           tagName="div"
         />
@@ -101,4 +101,4 @@ class WelcomeMessageGroup extends PureComponent<Props> {
   }
 }
 
-export default WelcomeMessageGroup;
+export default WelcomeMessageChannel;
