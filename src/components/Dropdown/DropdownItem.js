@@ -13,6 +13,7 @@ export type Props = {
   id?: string,
   className?: string,
   wrapperClassName?: string,
+  active?: ?boolean,
   onClick?: (event: SyntheticMouseEvent<>) => mixed,
   renderSubmenu?: () => Node
 };
@@ -44,7 +45,7 @@ class DropdownItem extends PureComponent<Props, State> {
 
   renderClickableItem() {
     const className = classNames(styles.item, this.props.className, {
-      [styles.active]: this.state.hover,
+      [styles.active]: this.state.hover || this.props.active,
       [styles.clickable]: this.props.onClick
     });
     const wrapperClassName = classNames(styles.wrapper, this.props.wrapperClassName);
@@ -60,7 +61,9 @@ class DropdownItem extends PureComponent<Props, State> {
   }
 
   renderDefaultItem() {
-    const className = classNames(styles.item, this.props.className);
+    const className = classNames(styles.item, this.props.className, {
+      [styles.active]: this.props.active
+    });
     const wrapperClassName = classNames(styles.wrapper, this.props.wrapperClassName);
 
     return (
