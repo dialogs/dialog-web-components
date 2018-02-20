@@ -3,6 +3,5 @@ group:
   created_by_you: Group created by You {createdAt}
   hint: You created a group chat. You can change its name, set a nice picture, describe the purpose and invite your friends or teammates to join you.
 channel:
-  created: Channel created by {creator} {createdAt}
   created_by_you: Channel created by You {createdAt}
   hint: You created a channel. You can change its name, set a nice picture, describe the purpose and invite your friends or teammates to subscribe.

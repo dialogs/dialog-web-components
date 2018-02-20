@@ -16,14 +16,13 @@ export type Props = {
   isAdmin?: ?boolean,
   isOwner?: ?boolean,
   about?: string,
-  creator?: ?string,
   createdAt?: ?string,
   renderActions?: () => Node
 };
 
 class WelcomeMessageChannel extends PureComponent<Props> {
   renderCreated() {
-    const { createdAt, creator, isOwner } = this.props;
+    const { createdAt, isOwner } = this.props;
 
     if (isOwner) {
       return (
@@ -31,16 +30,6 @@ class WelcomeMessageChannel extends PureComponent<Props> {
           id="WelcomeMessage.channel.created_by_you"
           className={styles.created}
           values={{ createdAt: createdAt || '' }}
-        />
-      );
-    }
-
-    if (creator) {
-      return (
-        <Text
-          id="WelcomeMessage.channel.created"
-          className={styles.created}
-          values={{ createdAt: createdAt || '', creator }}
         />
       );
     }
