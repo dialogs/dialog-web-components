@@ -33,22 +33,15 @@
     left: var(--activity-list-padding);
     height: 1px;
     content: '';
-    background-color: var(--activity-border-color);
+    background-color: #e5e5e5;
   }
 
   &::before {
-    top: 0;
+    top: -1px;
   }
 
   &::after {
     bottom: 0;
-    display: none;
-  }
-
-  &:last-child {
-    &::after {
-      display: block;
-    }
   }
 }
 

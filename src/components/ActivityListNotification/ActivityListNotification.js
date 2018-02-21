@@ -3,7 +3,7 @@
  * @flow
  */
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Text } from '@dlghq/react-l10n';
 import classNames from 'classnames';
 import ActivityListItem from '../ActivityList/ActivityListItem';
@@ -15,26 +15,13 @@ export type Props = {
   className?: string,
   value: boolean,
   onChange: (value: boolean) => void
-}
+};
 
-class ActivityListNotification extends Component<Props> {
-  handleClick: Function;
-
-  constructor(props: Props) {
-    super(props);
-
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  shouldComponentUpdate(nextProps: Props): boolean {
-    return nextProps.value !== this.props.value ||
-           nextProps.className !== this.props.className;
-  }
-
-  handleClick(event: SyntheticEvent<>): void {
+class ActivityListNotification extends PureComponent<Props> {
+  handleClick = (event: SyntheticEvent<>): void => {
     event.preventDefault();
     this.props.onChange(!this.props.value);
-  }
+  };
 
   render() {
     const className = classNames(styles.container, this.props.className);
@@ -42,17 +29,10 @@ class ActivityListNotification extends Component<Props> {
     return (
       <ActivityListItem className={className} onClick={this.handleClick} id="activity_list_notification">
         <Icon
-          glyph="notifications"
-          inverted
-          theme="danger"
-          className={styles.icon}
+          glyph="notifications" inverted theme="danger" className={styles.icon}
           size={28}
         />
-        <Text
-          tagName="div"
-          id="ActivityListNotification.notifications"
-          className={styles.text}
-        />
+        <Text tagName="div" id="ActivityListNotification.notifications" className={styles.text} />
         <Switcher
           id="activity_notification_switcher"
           name="activity_notification"
