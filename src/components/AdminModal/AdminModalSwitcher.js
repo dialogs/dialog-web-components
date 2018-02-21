@@ -5,7 +5,6 @@
 
 import type { Permission } from './types';
 import React from 'react';
-import { Text } from '@dlghq/react-l10n';
 import Switcher from '../Switcher/Switcher';
 import styles from './AdminModal.css';
 
