@@ -33,9 +33,8 @@ function AdminModalSwitcher(props: Props) {
         disabled={props.disabled}
         value={props.value}
         onChange={props.onChange}
-      >
-        <Text id={props.label} />
-      </Switcher>
+        label={props.label}
+      />
     </div>
   );
 }
