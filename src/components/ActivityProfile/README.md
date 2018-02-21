@@ -8,8 +8,8 @@ const user = {
   avatar: null,
   bigAvatar: null,
   placeholder: 'red',
-  phones: [{ number: '+1 234 567 89 00', title: 'Mobile phone' }, { number: '+1 234 567 89 00', title: 'Mobile phone' }],
-  emails: [{ email: 'cap@america.com', title: 'Home email' },{ email: 'cap@america.com', title: 'Home email' }],
+  phones: [{ number: '+1 234 567 89 00', title: 'Mobile phone' }, { number: '+1 234 567 89 11', title: 'Mobile phone' }],
+  emails: [{ email: 'cap@america.com', title: 'Home email' },{ email: 'cap1@america.com', title: 'Home email' }],
   customProfile: JSON.stringify({
     lastName: 'Rodgers 🦐',
     age: 97,
