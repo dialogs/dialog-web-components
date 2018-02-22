@@ -28,11 +28,11 @@ export type Props = {
   onSubmit: () => void,
   onAvatarChange: (avatar: File) => void,
   onAvatarRemove: () => void
-}
+};
 
 export type State = {
   avatar: ?string
-}
+};
 
 export type Context = ProviderContext;
 
@@ -99,6 +99,7 @@ class EditGroupModalForm extends PureComponent<Props, State> {
           name={name.value}
           placeholder={group.placeholder}
           avatar={avatar}
+          size={140}
           onRemove={this.props.onAvatarRemove}
           onChange={this.props.onAvatarChange}
         />
@@ -130,9 +131,13 @@ class EditGroupModalForm extends PureComponent<Props, State> {
   render() {
     const { group, about, name, vertical } = this.props;
     const { l10n } = this.context;
-    const className = classNames(styles.info, {
-      [styles.vertical]: vertical
-    }, this.props.className);
+    const className = classNames(
+      styles.info,
+      {
+        [styles.vertical]: vertical
+      },
+      this.props.className
+    );
 
     return (
       <div className={className}>
