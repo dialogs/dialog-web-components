@@ -32,5 +32,5 @@ const handleChange = (value) => setState({ value });
   <CustomForm id="custom" schema={schema} uiSchema={uiSchema} value={state.value} onChange={handleChange} />
   <hr />
   <pre>{JSON.stringify(state.value, null, 2)}</pre>
-</div>;
+</div>
 ```

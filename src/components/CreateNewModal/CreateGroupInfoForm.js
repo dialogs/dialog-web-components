@@ -26,10 +26,10 @@ export type Props = {
   onChange: (value: string, event: SyntheticInputEvent<>) => void,
   onAvatarRemove: () => void,
   onAvatarChange: (avatar: File) => void
-}
+};
 export type State = {
   avatar: ?string
-}
+};
 
 export type Context = ProviderContext;
 
@@ -80,6 +80,7 @@ class CreateGroupInfoForm extends PureComponent<Props, State> {
           name={title}
           placeholder="empty"
           avatar={avatar}
+          size={140}
           onRemove={this.props.onAvatarRemove}
           onChange={this.props.onAvatarChange}
         />
@@ -106,9 +107,13 @@ class CreateGroupInfoForm extends PureComponent<Props, State> {
   render() {
     const { id, type, about, title, vertical } = this.props;
     const { l10n } = this.context;
-    const className = classNames(styles.info, {
-      [styles.vertical]: vertical
-    }, this.props.className);
+    const className = classNames(
+      styles.info,
+      {
+        [styles.vertical]: vertical
+      },
+      this.props.className
+    );
 
     return (
       <div className={className}>

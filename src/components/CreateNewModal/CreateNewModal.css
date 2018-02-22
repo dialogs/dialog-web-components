@@ -45,7 +45,7 @@
 
 .typeHint {
   padding-right: calc(var(--default-padding-large) * 1.5);
-  padding-left: 38px;
+  padding-left: 46px;
   cursor: default;
   user-select: none;
   font-size: var(--modal-create-new-hint-font-size);
@@ -84,7 +84,7 @@
 }
 
 .avatarBlock {
-  width: 100px;
+  width: 140px;
   margin-right: 34px;
   flex: 0 0 auto;
 }
