@@ -17,12 +17,12 @@ export type Props = {
   rounded: boolean,
   loading: boolean,
   form?: string,
-  view: 'button' | 'outline' | 'link' | 'next',
+  view: 'button' | 'outline' | 'link',
   type: 'submit' | 'reset' | 'button' | 'menu',
-  theme: 'default' | 'primary' | 'success' | 'danger' | 'info' | 'warning' | 'link',
+  theme: 'default' | 'primary' | 'success' | 'danger' | 'info' | 'warning',
   size: 'small' | 'normal' | 'large',
   onClick?: (event: SyntheticEvent<>) => mixed
-}
+};
 
 class Button extends PureComponent<Props> {
   static defaultProps = {
@@ -43,17 +43,23 @@ class Button extends PureComponent<Props> {
       return null;
     }
 
-    return (
-      <Spinner type="dotted" className={styles.loading} size={size} />
-    );
+    return <Spinner type="dotted" className={styles.spinner} size={size} />;
   }
 
   render() {
     const { id, type, form, disabled, theme, size, wide, rounded, children, view, loading } = this.props;
-    const className = classNames(styles.container, styles[theme], styles[view], styles[size], {
-      [styles.wide]: wide,
-      [styles.rounded]: rounded
-    }, this.props.className);
+    const className = classNames(
+      styles.container,
+      styles[theme],
+      styles[view],
+      styles[size],
+      {
+        [styles.wide]: wide,
+        [styles.rounded]: rounded,
+        [styles.pending]: loading
+      },
+      this.props.className
+    );
 
     return (
       <button
