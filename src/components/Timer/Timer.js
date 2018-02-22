@@ -22,7 +22,7 @@ function diffTime(time): number {
 }
 
 class Timer extends PureComponent<Props, State> {
-  timer: ?number;
+  timer: ?IntervalID;
 
   static defaultProps = {
     delay: 1000

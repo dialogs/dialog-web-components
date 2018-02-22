@@ -34,7 +34,8 @@
   }
 }
 
-.messages {}
+.messages {
+}
 
 .from {
   height: var(--message-attachment-header-height);
@@ -82,7 +83,6 @@
 
 .nick {
   cursor: pointer;
-  margin-left: 6px;
   font-size: var(--default-font-size-small);
   line-height: var(--message-attachment-header-height);
   display: inline-block;

@@ -13,12 +13,12 @@ const handleChange = (value) => {
 };
 const handleSubmit = (value) => {
   console.debug('Submit registration with: ', value);
-}; 
+};
 
 <div style={{ margin: 'auto', width: 400 }}>
   <Registration
     info={state.info}
-    autoFocus
+    autoFocus={false}
     isGenderEnabled={state.isGenderEnabled}
     onChange={handleChange}
     onSubmit={handleSubmit}

@@ -249,7 +249,7 @@ class Message extends PureComponent<Props, State> {
           checked={selected}
           className={styles.selector}
           theme="primary"
-          size={24}
+          size={22}
           onClick={this.handleForceSelect}
         />
       );

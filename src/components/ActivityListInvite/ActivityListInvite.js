@@ -3,7 +3,7 @@
  * @flow
  */
 
-import * as React from 'react';
+import React, { PureComponent } from 'react';
 import { Text } from '@dlghq/react-l10n';
 import classNames from 'classnames';
 import ActivityListItem from '../ActivityList/ActivityListItem';
@@ -15,26 +15,21 @@ export type Props = {
   onClick: () => mixed
 };
 
-function ActivityListInvite(props: Props) {
-  const className = classNames(styles.container, props.className);
+class ActivityListInvite extends PureComponent<Props> {
+  render() {
+    const className = classNames(styles.container, this.props.className);
 
-  return (
-    <ActivityListItem className={className} onClick={props.onClick} id="activity_list_invite">
-      <Icon
-        glyph="link"
-        inverted
-        theme="success"
-        className={styles.icon}
-        size={28}
-      />
-      <Text
-        tagName="div"
-        id="ActivityListInvite.invite"
-        className={styles.text}
-      />
-      <Icon glyph="keyboard_arrow_right" className={styles.arrow} />
-    </ActivityListItem>
-  );
+    return (
+      <ActivityListItem className={className} onClick={this.props.onClick} id="activity_list_invite">
+        <Icon
+          glyph="link" inverted theme="success" className={styles.icon}
+          size={28}
+        />
+        <Text tagName="div" id="ActivityListInvite.invite" className={styles.text} />
+        <Icon glyph="keyboard_arrow_right" className={styles.arrow} />
+      </ActivityListItem>
+    );
+  }
 }
 
 export default ActivityListInvite;

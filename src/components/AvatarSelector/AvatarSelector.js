@@ -15,6 +15,7 @@ export type Props = {
   className?: string,
   name: string,
   placeholder: AvatarPlaceholder,
+  size: number,
   avatar: ?(string | File),
   onChange: (avatar: File) => void,
   onRemove?: () => void
@@ -25,6 +26,10 @@ type State = {
 };
 
 class AvatarSelector extends PureComponent<Props, State> {
+  static defaultProps = {
+    size: 100
+  };
+
   constructor(props: Props) {
     super(props);
 
@@ -53,11 +58,15 @@ class AvatarSelector extends PureComponent<Props, State> {
   }
 
   handleAvatarChangerClick = (): void => {
-    selectFiles((files) => {
-      if (files.length) {
-        this.props.onChange(files[0]);
-      }
-    }, false, 'image/*');
+    selectFiles(
+      (files) => {
+        if (files.length) {
+          this.props.onChange(files[0]);
+        }
+      },
+      false,
+      'image/*'
+    );
   };
 
   renderRemoveIcon() {
@@ -75,15 +84,15 @@ class AvatarSelector extends PureComponent<Props, State> {
   }
 
   render() {
-    const { name, placeholder } = this.props;
+    const { name, placeholder, size } = this.props;
     const { avatar } = this.state;
     const className = classNames(styles.container, this.props.className);
 
     return (
-      <div className={className}>
+      <div className={className} style={{ width: size, height: size }}>
         <Avatar
           className={styles.avatar}
-          size="big"
+          size={size}
           title={name}
           image={avatar}
           placeholder={placeholder}

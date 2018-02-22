@@ -8,6 +8,7 @@ import React, { Component } from 'react';
 import classNames from 'classnames';
 import TextMessagePreview from '../SidebarRecentItem/MessagePreview/TextMessagePreview';
 import Icon from '../Icon/Icon';
+import PeerInfoTitle from '../PeerInfoTitle/PeerInfoTitle';
 import MessageContent from '../MessageContent/MessageContent';
 import decorators from './utils/decorators';
 import styles from './MessageAttachment.css';
@@ -21,7 +22,7 @@ type Props = {
   onGoToMessage: (message: Message) => mixed,
   maxHeight: number,
   maxWidth: number
-}
+};
 
 class MessageAttachmentItem extends Component<Props> {
   handleGoToPeer = (event: SyntheticEvent<>): void => {
@@ -52,14 +53,17 @@ class MessageAttachmentItem extends Component<Props> {
 
     return (
       <header className={styles.header}>
-        <span>
-          <Icon glyph={type} size={20} className={styles.icon} />
-          <span className={styles.name} onClick={this.handleGoToPeer}>{sender.title + ' '}</span>
-          {sender.userName ? (
-            <span className={styles.nick} onClick={this.handleGoToPeer}>{`@${sender.userName}`}</span>
-          ) : null}
-          {type === 'reply' ? this.renderTimestamp() : null}
-        </span>
+        <Icon glyph={type} size={20} className={styles.icon} />
+        <PeerInfoTitle
+          title={sender.title}
+          userName={sender.userName}
+          titleClassName={styles.name}
+          userNameClassName={styles.nick}
+          onTitleClick={this.handleGoToPeer}
+          onUserNameClick={this.handleGoToPeer}
+          addSpacebars
+        />
+        {type === 'reply' ? this.renderTimestamp() : null}
       </header>
     );
   }
@@ -68,7 +72,9 @@ class MessageAttachmentItem extends Component<Props> {
     const { message } = this.props;
 
     return (
-      <time className={styles.time} dateTime={message.fullDate.toISOString()}>{message.date}</time>
+      <time className={styles.time} dateTime={message.fullDate.toISOString()}>
+        {message.date}
+      </time>
     );
   }
 
@@ -83,21 +89,13 @@ class MessageAttachmentItem extends Component<Props> {
       case 'reply':
         if (content.type === 'text') {
           return (
-            <TextMessagePreview
-              className={messageClassName}
-              content={content}
-              emojiSize={16}
-              decorators={decorators}
-            />
+            <TextMessagePreview className={messageClassName} content={content} emojiSize={16} decorators={decorators} />
           );
         }
 
         return (
           <MessageContent
-            className={messageClassName}
-            content={content}
-            rid={rid}
-            maxWidth={maxWidth}
+            className={messageClassName} content={content} rid={rid} maxWidth={maxWidth}
             maxHeight={70}
           />
         );
@@ -121,20 +119,21 @@ class MessageAttachmentItem extends Component<Props> {
   render() {
     const { short, type } = this.props;
 
-    const className = classNames(styles.itemContainer, styles[type], {
-      [styles.short]: short
-    }, this.props.className);
+    const className = classNames(
+      styles.itemContainer,
+      styles[type],
+      {
+        [styles.short]: short
+      },
+      this.props.className
+    );
 
     return (
       <div className={className} onClick={this.handleGoToMessage}>
         {this.renderHeader()}
         <div className={styles.content}>
-          <div className={styles.messageWrapper}>
-            {this.renderContent()}
-          </div>
-          {type === 'forward' ? (
-            <div className={styles.timeWrapper}>{this.renderTimestamp()}</div>
-          ) : null}
+          <div className={styles.messageWrapper}>{this.renderContent()}</div>
+          {type === 'forward' ? <div className={styles.timeWrapper}>{this.renderTimestamp()}</div> : null}
         </div>
       </div>
     );

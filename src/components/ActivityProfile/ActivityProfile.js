@@ -5,8 +5,7 @@
 
 import type { Props as UserProps } from './ActivityUserProfile';
 import type { Props as GroupProps } from './ActivityGroupProfile';
-
-import * as React from 'react';
+import React from 'react';
 import ActivityUserProfile from './ActivityUserProfile';
 import ActivityGroupProfile from './ActivityGroupProfile';
 
@@ -23,6 +22,7 @@ function ActivityProfile(props: Props) {
           className={props.className}
           info={props.info}
           online={props.online}
+          schema={props.schema}
         >
           {props.children}
         </ActivityUserProfile>

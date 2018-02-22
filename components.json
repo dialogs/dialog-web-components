@@ -4,6 +4,7 @@
     "components": [
       "Avatar",
       "PeerAvatar",
+      "PeerAvatarWithStatus",
       "DoublePeerAvatar",
       "PeerInfoTitle",
       "Scroller",
@@ -27,7 +28,10 @@
       "SelectedMessagesActions",
       "CheckButton",
       "AudioPlayer",
-      "ScrollToBottom"
+      "ScrollToBottom",
+      "CustomProfile",
+      "UserStatus",
+      "SidebarMenuProfile"
     ]
   },
   {
@@ -47,7 +51,8 @@
       "Radio",
       "Switcher",
       "Range",
-      "Fieldset"
+      "Fieldset",
+      "CustomForm"
     ]
   },
   {

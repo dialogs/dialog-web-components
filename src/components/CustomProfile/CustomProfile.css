@@ -1,0 +1,42 @@
+/**
+ * Copyright 2018 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+:root {
+  --custom-profile-title-color: #808080;
+  --custom-profile-text-color: #000;
+}
+
+.container {
+  all: initial;
+  font-family: var(--default-font-family);
+}
+
+.property {
+  margin-top: var(--default-padding-small);
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.title {
+  letter-spacing: -0.27px;
+  font-size: var(--default-font-size-small);
+  line-height: 20px;
+  color: var(--custom-profile-title-color);
+}
+
+.string,
+.number,
+.boolean {
+  line-height: 20px;
+  font-size: var(--default-font-size);
+  color: var(--custom-profile-text-color);
+}
+
+.boolean {
+  color: var(--color-primary);
+}

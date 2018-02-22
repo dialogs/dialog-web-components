@@ -23,7 +23,7 @@ type State = {
 class CopyButton extends Component<Props, State> {
   button: ?Node;
   clipboard: ?Clipboard;
-  timeout: ?number;
+  timeout: ?TimeoutID;
 
   constructor(props: Props) {
     super(props);
@@ -77,7 +77,7 @@ class CopyButton extends Component<Props, State> {
 
   handleCopyError = (): void => {
     this.setState({ copied: false });
-  }
+  };
 
   handleCopySuccess = (event?: $FlowIssue): void => {
     this.setState({ copied: true });
@@ -86,7 +86,7 @@ class CopyButton extends Component<Props, State> {
     }
 
     this.timeout = setTimeout(() => this.setState({ copied: null }), 3000);
-  }
+  };
 
   setButton = (button: ?Button): void => {
     this.button = findDOMNode(button);

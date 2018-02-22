@@ -36,11 +36,7 @@ export function renderText(tokens: TextToken[], emojiSize?: number = 20, isInlin
 
       case 'email':
         result.push(
-          <a
-            key={index}
-            className={styles.link}
-            href={`mailto:${content}`}
-          >
+          <a key={index} className={styles.link} href={`mailto:${content}`}>
             {content}
           </a>
         );
@@ -48,14 +44,7 @@ export function renderText(tokens: TextToken[], emojiSize?: number = 20, isInlin
         break;
 
       case 'emoji':
-        result.push(
-          <Emoji
-            key={index}
-            char={content}
-            size={emojiSize}
-            inline={isInline}
-          />
-        );
+        result.push(<Emoji key={index} char={content} size={emojiSize} inline={isInline} />);
 
         break;
 
@@ -100,7 +89,7 @@ export function renderBlocks(tokens: BlockToken[]) {
         if (token.content.length) {
           result.push(
             <p key={i} className={styles.paragraph}>
-              {renderText(token.content, isOnlyEmoji ? 36 : 20)}
+              {renderText(token.content, isOnlyEmoji ? 44 : 20)}
             </p>
           );
         } else {

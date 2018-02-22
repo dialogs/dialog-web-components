@@ -40,17 +40,11 @@ class SidebarPeerItem extends PureComponent<Props> {
 
     return (
       <div className={className} onClick={this.handleClick} id={`sidebar_peer_item_${info.peer.id}`}>
-        <PeerAvatar
-          className={styles.avatar}
-          peer={info}
-          online={online}
-        />
+        <PeerAvatar className={styles.avatar} peer={info} online={online} />
         <div className={styles.text}>
           <PeerInfoTitle title={info.title} titleClassName={styles.title} />
         </div>
-        {counter > 0 ? (
-          <div className={styles.counter}>{counter}</div>
-        ) : null}
+        {counter > 0 ? <div className={styles.counter}>{counter}</div> : null}
       </div>
     );
   }

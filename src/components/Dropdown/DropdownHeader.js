@@ -16,9 +16,9 @@ function DropdownHeader(props: Props) {
   const className = classNames(styles.header, props.className);
 
   return (
-    <header className={className}>
+    <div className={className}>
       {props.children}
-    </header>
+    </div>
   );
 }
 

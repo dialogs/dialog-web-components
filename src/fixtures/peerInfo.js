@@ -10,7 +10,8 @@ const group = {
   title: 'Dialog',
   placeholder: 'blue',
   type: 'group',
-  about: 'Dialog is a handy and feature rich enterprise multi-device messenger available for server or cloud – Slack-like, but not Slack-limited.',
+  about:
+    'Dialog is a handy and feature rich enterprise multi-device messenger available for server or cloud – Slack-like, but not Slack-limited.',
   peer: {
     id: 10101,
     type: 'group'
@@ -18,8 +19,8 @@ const group = {
 };
 
 const channel = {
-  avatar: 'https://kirsan-bucket-v2.s3.amazonaws.com/file_-786945829827428356/large-avatar.jpg?AWSAccessKeyId=AKIAJO2IR4MGVQPE6NBQ&Expires=1499352244&Signature=rODpazSBmNweJZsb%2FUrI5jke1JY%3D',
-  title: 'Kirsan newsKirsan newsKirsan news',
+  avatar: null,
+  title: 'Kirsan news 😡',
   placeholder: 'yellow',
   type: 'channel',
   about: 'Posts from the RSS feed on the official site of FIDE President Kirsan Ilyumzhinov www.kirsan.today.',
@@ -49,7 +50,8 @@ const bot = {
   placeholder: 'red',
   type: 'bot',
   userName: 'security_bot',
-  about: 'The security bot sees a world where you\'re not afraid of opening the wrong link. This security integration works silently in the background alerting users when a malicious or unwanted link has been detected in a public channel.',
+  about:
+    "The security bot sees a world where you're not afraid of opening the wrong link. This security integration works silently in the background alerting users when a malicious or unwanted link has been detected in a public channel.",
   peer: {
     id: 12239,
     type: 'user'

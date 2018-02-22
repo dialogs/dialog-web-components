@@ -33,11 +33,17 @@ class ActivityGroupProfile extends PureComponent<Props> {
     );
   }
 
-  renderName() {
+  renderTitle() {
     const { info: { name, shortname } } = this.props;
 
     return (
-      <PeerInfoTitle title={name} userName={shortname} titleClassName={styles.name} userNameClassName={styles.nick} />
+      <PeerInfoTitle
+        title={name}
+        userName={shortname}
+        titleClassName={styles.name}
+        userNameClassName={styles.nick}
+        emojiSize={26}
+      />
     );
   }
 
@@ -60,7 +66,7 @@ class ActivityGroupProfile extends PureComponent<Props> {
       <div className={styles.creator}>
         <Text id="ActivityProfile.created_by" />
         {'\u00A0'}
-        <PeerInfoTitle title={admin.peerInfo.title} emojiSize={22} />
+        <PeerInfoTitle title={admin.peerInfo.title} emojiSize={18} />
       </div>
     );
   }
@@ -73,8 +79,9 @@ class ActivityGroupProfile extends PureComponent<Props> {
     }
 
     return (
-      <div className={styles.about}>
-        <Markdown text={about} />
+      <div className={styles.wrapper}>
+        <Text className={styles.title} tagName="div" id="ActivityProfile.about" />
+        <Markdown text={about} className={styles.about} />
       </div>
     );
   }
@@ -94,11 +101,14 @@ class ActivityGroupProfile extends PureComponent<Props> {
 
     return (
       <div className={className}>
-        {this.renderAvatar()}
-        {this.renderName()}
+        <div className={styles.header}>
+          {this.renderAvatar()}
+          {this.renderTitle()}
+          {this.renderCreator()}
+          {this.renderChildren()}
+        </div>
+
         {this.renderAbout()}
-        {this.renderCreator()}
-        {this.renderChildren()}
       </div>
     );
   }

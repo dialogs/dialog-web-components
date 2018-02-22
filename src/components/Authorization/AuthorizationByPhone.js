@@ -32,7 +32,7 @@ export type State = {
 };
 
 class AuthorizationByPhone extends PureComponent<Props, State> {
-  interval: ?number;
+  interval: ?IntervalID;
   phoneInput: ?PhoneInput;
 
   constructor(props: Props) {

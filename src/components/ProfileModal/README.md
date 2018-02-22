@@ -1,7 +1,8 @@
 ```jsx
-const initialState = {
+initialState = {
   isOpen: false,
   profile: null,
+  schema: null,
   context: {
     name: {
       error: null,
@@ -36,7 +37,7 @@ const actions = {
   },
   onAvatarRemove: () => {
     console.debug('onAvatarRemove');
-    setState({ 
+    setState({
       profile: {
         ...state.profile,
         avatar: null
@@ -56,16 +57,25 @@ const openModal = () => {
         about: null,
         avatar: null,
         phones: [{
-          number: '71233218855',
+          number: '+71233218855',
           title: 'Mobile phone'
         }],
         emails: [{
           email: 'someuser@domain.com',
           title: 'Email'
-        }]
-      } 
+        }],
+        customProfile: JSON.stringify({
+          lastName: 'Rodgers 🦐',
+          age: 97,
+          bio: 'Roundhouse kicking asses since 1940',
+          password: 'noneed',
+          done: true,
+          telephone: '+1 234 567 89 00'
+        })
+      },
+      schema: JSON.stringify(require('../../fixtures/cutomProfileSchema.json'))
     });
-  }, 4000);
+  }, 2000);
 };
 
 <div>
@@ -76,6 +86,7 @@ const openModal = () => {
        <ProfileModal
           profile={state.profile}
           context={state.context}
+          schema={state.schema}
           {...actions}
         />
       )

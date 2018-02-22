@@ -5,7 +5,6 @@
 
 import type { Permission } from './types';
 import React from 'react';
-import { Text } from '@dlghq/react-l10n';
 import Switcher from '../Switcher/Switcher';
 import styles from './AdminModal.css';
 
@@ -33,9 +32,8 @@ function AdminModalSwitcher(props: Props) {
         disabled={props.disabled}
         value={props.value}
         onChange={props.onChange}
-      >
-        <Text id={props.label} />
-      </Switcher>
+        label={props.label}
+      />
     </div>
   );
 }

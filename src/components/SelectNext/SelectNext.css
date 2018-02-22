@@ -165,7 +165,9 @@
   }
 }
 
-.arrow {}
+.arrow {
+  line-height: 0;
+}
 
 /* Sizes */
 .normal {
