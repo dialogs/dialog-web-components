@@ -97,6 +97,7 @@ class AuthorizationByUsername extends PureComponent<Props> {
             label="Authorization.password"
             value={credentials.password}
             disabled={pending}
+            autoComplete="current-password"
             onChange={this.handleChange}
           />
         </div>

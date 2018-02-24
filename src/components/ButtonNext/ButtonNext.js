@@ -19,7 +19,7 @@ export type Props = {
   type: 'submit' | 'reset' | 'button' | 'menu',
   size: 'small' | 'normal' | 'large',
   onClick?: (event: SyntheticEvent<>) => mixed
-}
+};
 
 class ButtonNext extends PureComponent<Props> {
   static defaultProps = {
@@ -38,32 +38,28 @@ class ButtonNext extends PureComponent<Props> {
       return null;
     }
 
-    return (
-      <Spinner type="round" className={styles.spinner} size={size} />
-    );
+    return <Spinner type="round" className={styles.spinner} size={size} />;
   }
 
   render() {
     const { id, type, disabled, wide, rounded, children, loading, size } = this.props;
-    const className = classNames(styles.container, styles[size], {
-      [styles.wide]: wide,
-      [styles.rounded]: rounded,
-      [styles.loading]: loading
-    }, this.props.className);
+    const className = classNames(
+      styles.container,
+      styles[size],
+      {
+        [styles.wide]: wide,
+        [styles.rounded]: rounded,
+        [styles.pending]: loading
+      },
+      this.props.className
+    );
 
     return (
       <button
-        id={id}
-        className={className}
-        type={type}
-        disabled={disabled || loading}
+        id={id} className={className} type={type} disabled={disabled || loading}
         onClick={this.props.onClick}
       >
-        {
-          loading
-            ? this.renderLoading()
-            : children
-        }
+        {loading ? this.renderLoading() : children}
       </button>
     );
   }

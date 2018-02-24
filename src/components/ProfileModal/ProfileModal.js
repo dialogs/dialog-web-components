@@ -4,11 +4,11 @@
  */
 /* eslint max-lines: ["error", 500] */
 
-import type { JSONValue, JSONSchema } from '@dlghq/dialog-utils';
+import type { JSONValue } from '@dlghq/dialog-utils';
 import React, { PureComponent } from 'react';
 import { Text, LocalizationContextType } from '@dlghq/react-l10n';
 import classNames from 'classnames';
-import { safelyParseJSON } from '@dlghq/dialog-utils';
+import { safelyParseJSON, safelyParseJSONSchema } from '@dlghq/dialog-utils';
 import { isEqual } from 'lodash';
 import Modal from '../Modal/Modal';
 import ModalHeader from '../Modal/ModalHeader';
@@ -157,8 +157,13 @@ class ProfileModal extends PureComponent<Props, State> {
   }
 
   isCustomProfileChanged(): boolean {
-    if (this.props.profile && this.props.profile.customProfile) {
-      return !isEqual(this.state.profile.customProfile, safelyParseJSON(this.props.profile.customProfile));
+    if (this.props.profile) {
+      const profileFromState = this.state.profile.customProfile;
+      const profileFromProps = this.props.profile.customProfile
+        ? safelyParseJSON(this.props.profile.customProfile)
+        : null;
+
+      return !isEqual(profileFromState, profileFromProps);
     }
 
     return false;
@@ -321,13 +326,13 @@ class ProfileModal extends PureComponent<Props, State> {
 
     return (
       <Field className={styles.field}>
-        {phones ? (
+        {phones.length ? (
           <div className={styles.contactContent}>
             <Text className={styles.contactTitle} id="ProfileModal.phone" tagName="div" />
             {phones}
           </div>
         ) : null}
-        {emails ? (
+        {emails.length ? (
           <div className={styles.contactContent}>
             <Text className={styles.contactTitle} id="ProfileModal.email" tagName="div" />
             {emails}
@@ -341,11 +346,15 @@ class ProfileModal extends PureComponent<Props, State> {
     const { schema, profile } = this.props;
     const { profile: { customProfile } } = this.state;
 
-    if (!profile || !schema || !customProfile) {
+    if (!profile || !schema) {
       return null;
     }
 
-    const customProfileSchema: JSONSchema = JSON.parse(schema);
+    const customProfileSchema = safelyParseJSONSchema(schema);
+
+    if (!customProfileSchema) {
+      return null;
+    }
 
     return (
       <Field className={styles.field}>

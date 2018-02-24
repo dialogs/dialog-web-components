@@ -19,7 +19,7 @@ export type Props = {
   id: string,
   name: string,
   liveValidate: boolean,
-  value: JSONValue,
+  value: ?JSONValue,
   schema: JSONSchema,
   uiSchema?: ?JSONSchema,
   onChange: (value: JSONValue) => mixed

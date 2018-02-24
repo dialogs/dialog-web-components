@@ -7,7 +7,7 @@ import React from 'react';
 import BaseInput, { type Props } from './BaseInput';
 
 function PasswordWidget(props: Props) {
-  return <BaseInput {...props} type="password" />;
+  return <BaseInput {...props} type="password" autoComplete="off" />;
 }
 
 export default PasswordWidget;

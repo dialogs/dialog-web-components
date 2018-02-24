@@ -30,6 +30,7 @@ export type Props = {
   spellcheck?: boolean,
   required: boolean,
   description?: ?string,
+  autoComplete?: ?string,
   onChange: (value: string, event: SyntheticInputEvent<HTMLAbstractInputElement>) => mixed,
   onFocus?: (event: SyntheticFocusEvent<HTMLAbstractInputElement>) => mixed,
   onBlur?: (event: SyntheticFocusEvent<HTMLAbstractInputElement>) => mixed,
@@ -232,6 +233,7 @@ class InputNext extends PureComponent<Props, State> {
           onKeyUp={onKeyUp}
           spellCheck={this.props.spellcheck ? 'true' : 'false'}
           required={this.props.required}
+          autoComplete={this.props.autoComplete}
         />
         {this.renderHint()}
       </div>

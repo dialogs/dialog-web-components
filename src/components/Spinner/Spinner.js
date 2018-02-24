@@ -21,6 +21,7 @@ class Spinner extends PureComponent<Props> {
 
   render() {
     const className = classNames(
+      styles.container,
       this.props.className,
       styles[this.props.type],
       styles[this.props.size]
@@ -52,12 +53,8 @@ class Spinner extends PureComponent<Props> {
         return (
           <svg viewBox="0 0 50 50" className={className}>
             <circle
-              className={styles.path}
-              cx="25"
-              cy="25"
-              r="20"
-              fill="none"
-              strokeMiterlimit="10"
+              className={styles.path} cx="25" cy="25" r="20"
+              fill="none" strokeMiterlimit="10"
             />
           </svg>
         );

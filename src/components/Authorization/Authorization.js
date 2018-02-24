@@ -158,7 +158,7 @@ class Authorization extends PureComponent<Props> {
     const className = classNames(styles.container, this.props.className);
 
     return (
-      <form id={id} onSubmit={this.handleSubmit} className={className} autoComplete="off">
+      <form id={id} className={className} autoComplete="off" onSubmit={this.handleSubmit}>
         {this.renderTypeSelector()}
         {this.renderForm()}
         {this.renderSignupForm()}

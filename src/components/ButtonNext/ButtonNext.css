@@ -4,10 +4,20 @@
 @import '../../styles/variables.css';
 
 :root {
+  --button-next-font-family: var(--default-font-family);
+  --button-next-font-weight: 400;
+  --button-next-font-size: var(--default-font-size-large);
+  --button-next-line-height: 26px;
+  --button-next-size-modifier: 0.25;
+  --button-next-padding-top: var(--default-padding-small);
+  --button-next-padding-right: calc(var(--default-padding-large) * 1.5);
+  --button-next-padding-bottom: var(--default-padding-small);
+  --button-next-padding-left: calc(var(--default-padding-large) * 1.5);
   --button-next-background-color: #705eff;
   --button-next-hover-background-color: #9b40ff;
   --button-next-border-radius: 50px;
   --button-next-min-width: 140px;
+  --button-next-transition-duration: var(--default-transition-duration);
 }
 
 /* Main */
@@ -17,12 +27,12 @@
   box-sizing: border-box;
   cursor: pointer;
   user-select: none;
-  transition: all var(--button-transition-duration) ease;
+  transition: all var(--button-next-transition-duration) ease;
   text-align: center;
   border: 0;
   outline: none;
-  font-family: var(--button-font-family);
-  font-weight: var(--button-font-weight);
+  font-family: var(--button-next-font-family);
+  font-weight: var(--button-next-font-weight);
   box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.15);
   background-color: var(--button-next-background-color);
   color: white;
@@ -42,8 +52,8 @@
     box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.15);
     background-color: var(--button-next-background-color);
     color: white;
-    opacity: .8;
-    cursor: not-allowed;
+    opacity: 0.8;
+    cursor: default;
   }
 }
 
@@ -51,7 +61,8 @@
   width: 100%;
 }
 
-.loading {
+.pending {
+  cursor: wait !important;
 }
 
 .spinner {
@@ -64,28 +75,39 @@
 
 /* Sizes */
 .small {
-  padding-top: calc(var(--button-padding-top) * (1 - var(--button-size-modifier)));
-  padding-right: calc(var(--button-padding-right) * (1 - var(--button-size-modifier)));
-  padding-bottom: calc(var(--button-padding-bottom) * (1 - var(--button-size-modifier)));
-  padding-left: calc(var(--button-padding-left) * (1 - var(--button-size-modifier)));
-  font-size: calc(var(--button-font-size) * (1 - var(--button-size-modifier)));
-  line-height: calc(var(--button-line-height) * (1 - var(--button-size-modifier)));
+  padding-top: calc(var(--button-next-padding-top) * (1 - var(--button-next-size-modifier)));
+  padding-right: calc(var(--button-next-padding-right) * (1 - var(--button-next-size-modifier)));
+  padding-bottom: calc(var(--button-next-padding-bottom) * (1 - var(--button-next-size-modifier)));
+  padding-left: calc(var(--button-next-padding-left) * (1 - var(--button-next-size-modifier)));
+  font-size: calc(var(--button-next-font-size) * (1 - var(--button-next-size-modifier)));
+  line-height: calc(var(--button-next-line-height) * (1 - var(--button-next-size-modifier)));
+  & .spinner {
+    margin-top: -4px;
+  }
 }
 
 .normal {
-  padding-top: var(--button-padding-top);
-  padding-right: var(--button-padding-right);
-  padding-bottom: var(--button-padding-bottom);
-  padding-left: var(--button-padding-left);
-  font-size: var(--button-font-size);
-  line-height: var(--button-line-height);
+  padding-top: var(--button-next-padding-top);
+  padding-right: var(--button-next-padding-right);
+  padding-bottom: var(--button-next-padding-bottom);
+  padding-left: var(--button-next-padding-left);
+  font-size: var(--button-next-font-size);
+  line-height: var(--button-next-line-height);
+
+  & .spinner {
+    margin-top: -6px;
+  }
 }
 
 .large {
-  padding-top: calc(var(--button-padding-top) * (1 + var(--button-size-modifier)));
-  padding-right: calc(var(--button-padding-right) * (1 + var(--button-size-modifier)));
-  padding-bottom: calc(var(--button-padding-bottom) * (1 + var(--button-size-modifier)));
-  padding-left: calc(var(--button-padding-left) * (1 + var(--button-size-modifier)));
-  font-size: calc(var(--button-font-size) * (1 + var(--button-size-modifier)));
-  line-height: calc(var(--button-line-height) * (1 + var(--button-size-modifier)));
+  padding-top: calc(var(--button-next-padding-top) * (1 + var(--button-next-size-modifier)));
+  padding-right: calc(var(--button-next-padding-right) * (1 + var(--button-next-size-modifier)));
+  padding-bottom: calc(var(--button-next-padding-bottom) * (1 + var(--button-next-size-modifier)));
+  padding-left: calc(var(--button-next-padding-left) * (1 + var(--button-next-size-modifier)));
+  font-size: calc(var(--button-next-font-size) * (1 + var(--button-next-size-modifier)));
+  line-height: calc(var(--button-next-line-height) * (1 + var(--button-next-size-modifier)));
+
+  & .spinner {
+    margin-top: -8px;
+  }
 }
