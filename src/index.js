@@ -35,6 +35,7 @@ export { default as ScrollToBottom } from './components/ScrollToBottom/ScrollToB
 export { default as CustomProfile } from './components/CustomProfile/CustomProfile';
 export { default as UserStatus } from './components/UserStatus/UserStatus';
 export { default as SidebarMenuProfile } from './components/SidebarMenuProfile/SidebarMenuProfile';
+export { default as Markdown } from './components/Markdown/Markdown';
 
 // Calls
 export { default as Call } from './components/Call/Call';
