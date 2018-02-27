@@ -6,7 +6,7 @@
 
 :root {
   --modal-admin-font-family: var(--default-font-family);
-  --modal-admin-width: 460px;
+  --modal-admin-width: 500px;
   --modal-admin-hint-font-size: var(--default-font-size-small);
   --modal-admin-hint-color: var(--modal-font-color-light);
 }
