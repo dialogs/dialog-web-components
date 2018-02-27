@@ -9,6 +9,7 @@ import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import PeerAvatar from '../PeerAvatar/PeerAvatar';
 import CheckButton from '../CheckButton/CheckButton';
+import PeerInfoTitle from '../PeerInfoTitle/PeerInfoTitle';
 import styles from './ContactList.css';
 
 class ContactListItem extends PureComponent<ItemProps<PeerInfo>> {
@@ -27,9 +28,7 @@ class ContactListItem extends PureComponent<ItemProps<PeerInfo>> {
         <div className={styles.wrapper}>
           <PeerAvatar className={styles.avatar} size="large" peer={item} />
           <div className={styles.text}>
-            <div className={styles.nameWrapper}>
-              <span className={styles.nameText}>{item.title}</span>
-            </div>
+            <PeerInfoTitle className={styles.nameWrapper} title={item.title} titleClassName={styles.nameText} />
           </div>
           <CheckButton className={styles.selector} theme="success" checked={selected} />
         </div>
