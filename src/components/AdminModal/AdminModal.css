@@ -27,6 +27,8 @@
 }
 
 .avatar {
+  flex: 0 0 auto;
+  align-self: flex-start;
   margin-right: 16px;
 }
 
