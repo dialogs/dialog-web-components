@@ -136,21 +136,18 @@ export { default as DiscoverCard } from './components/DiscoverCard/DiscoverCard'
 
 // Activity
 export { default as ActivityHeader } from './components/ActivityHeader/ActivityHeader';
+export { default as ActivityMediaHeader } from './components/ActivityMediaHeader/ActivityMediaHeader';
+export { default as ActivityList } from './components/ActivityList/ActivityList';
+export { default as ActivityListItem } from './components/ActivityList/ActivityListItem';
+export { default as ActivityListSwitcher } from './components/ActivityList/ActivityListSwitcher';
 export { default as ActivityProfile } from './components/ActivityProfile/ActivityProfile';
 export { default as ActivityInvite } from './components/ActivityInvite/ActivityInvite';
 export { default as ActivityIntegration } from './components/ActivityIntegration/ActivityIntegration';
-export { default as ActivityList } from './components/ActivityList/ActivityList';
-export { default as ActivityListItem } from './components/ActivityList/ActivityListItem';
-export { default as ActivityListNotification } from './components/ActivityListNotification/ActivityListNotification';
-export { default as ActivityListInvite } from './components/ActivityListInvite/ActivityListInvite';
-export { default as ActivityListIntegration } from './components/ActivityListIntegration/ActivityListIntegration';
 export { default as ActivityListMembers } from './components/ActivityListMembers/ActivityListMembers';
 export { default as ActivityListMembersAdd } from './components/ActivityListMembers/ActivityListMembersAdd';
 export { default as ActivityListMembersItem } from './components/ActivityListMembers/ActivityListMembersItem';
-export { default as ActivitySearch } from './components/ActivitySearch/ActivitySearch';
-export { default as ActivityMediaHeader } from './components/ActivityMediaHeader/ActivityMediaHeader';
-export { default as ActivityListMedia } from './components/ActivityListMedia/ActivityListMedia';
 export { default as ActivityMedia } from './components/ActivityMedia/ActivityMedia';
+export { default as ActivitySearch } from './components/ActivitySearch/ActivitySearch';
 
 // Helpers
 export { default as Trigger } from './components/Trigger/Trigger';

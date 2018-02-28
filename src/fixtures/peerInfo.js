@@ -40,7 +40,8 @@ const user = {
   about: 'front-end @ dialog',
   peer: {
     id: 1709029441,
-    type: 'user'
+    type: 'user',
+    key: 'u1709029441'
   }
 };
 

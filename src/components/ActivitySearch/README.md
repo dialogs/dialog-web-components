@@ -1,6 +1,6 @@
 ```jsx
 const messages = require('../../fixtures/messages');
-const peerInfo = require('../../fixtures/peerInfo');
+const peerInfo = require('../../fixtures/peerInfo').user;
 
 const searchMessages = [{
     info: peerInfo,
@@ -42,7 +42,6 @@ const togglePending = () => {
 };
 
 const toggleError = () => {
-  console.debug('toggleError', state);
   setState({
     messages: {
       ...state.messages,
@@ -52,7 +51,6 @@ const toggleError = () => {
 };
 
 const toggleResults = () => {
-  console.debug('toggleMessages', state);
   setState({
     peers: [peerInfo, messages[0].sender],
     messages: {
@@ -70,6 +68,7 @@ const onGoToPeer = (peer) => console.debug('onGoToPeer', { peer });
     <Button onClick={toggleError} size="small" theme="primary" style={{ marginRight: 4 }}>Toggle Error</Button>
     <Button onClick={toggleResults} size="small" theme="primary" style={{ marginRight: 4 }}>Toggle Results</Button>
   </div>
+  <hr />
   <div style={{ background: '#fff', width: 320, height: 400 }}>
     <ActivitySearch
       query={state.query}

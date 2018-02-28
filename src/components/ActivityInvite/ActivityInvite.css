@@ -4,6 +4,13 @@
 
 @import '../../styles/variables.css';
 
+:root {
+  --activity-invite-font-family: var(--default-font-family);
+  --activity-invite-font-size: var(--default-font-size);
+  --activity-invite-border-color: #e5e5e5;
+  --activity-invite-link-font-size: 24px;
+  --activity-invite-link-color: color(#000 alpha(90%));
+}
 
 /* Reset */
 .container,
@@ -13,20 +20,20 @@
 
 /* Styles */
 .container {
-  font-family: var(--activity-font-family);
+  font-family: var(--activity-invite-font-family);
   display: block;
+  padding: var(--default-padding-large) calc(var(--default-padding-large) * 1.5);
 }
 
 .hr {
   display: block;
   width: 100%;
   height: 1px;
-  margin: 0;
-  background-color: var(--activity-border-color);
+  margin: var(--default-padding) 0;
+  background-color: var(--activity-invite-border-color);
 }
 
 .block {
-  padding: var(--default-padding-large) calc(var(--default-padding-large) * 1.5);
   display: flex;
   flex-flow: column;
   align-content: center;
@@ -37,7 +44,7 @@
 .text {
   flex: 1 1 auto;
   @apply --flex-fix;
-  font-size: var(--activity-font-size);
+  font-size: var(--activity-invite-font-size);
 }
 
 .linkContainer {

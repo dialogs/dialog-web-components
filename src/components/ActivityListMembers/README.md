@@ -46,6 +46,13 @@ const online = {
 };
 
 <div style={{ background: '#fff', width: 320 }}>
-  <ActivityListMembers members={members} online={online} />
+  <ActivityListMembers
+    members={members}
+    online={online}
+    uid={1001}
+    group={{
+      adminId: 1001
+    }}
+  />
 </div>
 ```

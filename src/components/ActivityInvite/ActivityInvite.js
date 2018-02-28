@@ -27,9 +27,7 @@ class ActivityInvite extends PureComponent<Props> {
       return <Spinner type="dotted" />;
     }
 
-    return (
-      <span className={styles.link}>{link}</span>
-    );
+    return <span className={styles.link}>{link}</span>;
   }
 
   renderRevoke() {
@@ -38,20 +36,18 @@ class ActivityInvite extends PureComponent<Props> {
     }
 
     return (
-      <div>
+      <div className={styles.block}>
         <hr className={styles.hr} />
-        <div className={styles.block}>
-          <Button
-            theme="danger"
-            view="link"
-            onClick={this.props.onRevoke}
-            className={styles.revoke}
-            size="small"
-            id="activity_invite_revoke_button"
-          >
-            <Text id="ActivityInvite.revoke" />
-          </Button>
-        </div>
+        <Button
+          theme="danger"
+          view="link"
+          onClick={this.props.onRevoke}
+          className={styles.revoke}
+          size="small"
+          id="activity_invite_revoke_button"
+        >
+          <Text id="ActivityInvite.revoke" />
+        </Button>
       </div>
     );
   }
@@ -63,16 +59,9 @@ class ActivityInvite extends PureComponent<Props> {
     return (
       <div className={className}>
         <div className={styles.block}>
-          <div className={styles.linkContainer}>
-            {this.renderLink()}
-          </div>
+          <div className={styles.linkContainer}>{this.renderLink()}</div>
           <CopyOnly block />
-          <CopyButton
-            id="activity_invite_copy_button"
-            wide
-            disabled={pending}
-            text={this.props.link}
-          />
+          <CopyButton id="activity_invite_copy_button" wide disabled={pending} text={this.props.link} />
         </div>
         {this.renderRevoke()}
       </div>

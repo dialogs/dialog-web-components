@@ -32,7 +32,7 @@ class ActivityMediaItem extends PureComponent<Props> {
     switch (message.content.type) {
       case 'photo':
         return (
-          <ActivityListItem onClick={this.handleGoToMessage}>
+          <ActivityListItem onClick={this.handleGoToMessage} withoutArrow>
             <ActivityMediaPhoto
               title={message.content.fileName}
               photo={message.content.fileUrl}
@@ -44,7 +44,7 @@ class ActivityMediaItem extends PureComponent<Props> {
         );
       case 'document':
         return (
-          <ActivityListItem onClick={this.handleGoToMessage}>
+          <ActivityListItem onClick={this.handleGoToMessage} withoutArrow>
             <ActivityMediaDocument
               title={message.content.fileName}
               size={message.content.fileSize}
@@ -55,7 +55,7 @@ class ActivityMediaItem extends PureComponent<Props> {
         );
       case 'voice':
         return (
-          <ActivityListItem onClick={this.handleGoToMessage}>
+          <ActivityListItem onClick={this.handleGoToMessage} withoutArrow>
             <ActivityMediaVoice
               url={message.content.fileUrl}
               duration={message.content.duration}
@@ -65,7 +65,7 @@ class ActivityMediaItem extends PureComponent<Props> {
         );
       case 'video':
         return (
-          <ActivityListItem onClick={this.handleGoToMessage}>
+          <ActivityListItem onClick={this.handleGoToMessage} withoutArrow>
             <ActivityMediaVideo
               title={message.content.fileName}
               duration={message.content.duration}

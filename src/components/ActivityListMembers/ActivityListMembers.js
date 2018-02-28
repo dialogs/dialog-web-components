@@ -63,8 +63,8 @@ class ActivityListMembers extends PureComponent<Props, State> {
       return (
         <ActivityListItem className={styles.header}>
           <Icon
-            glyph="person"
             inverted
+            glyph="person"
             theme="warning"
             className={styles.icon}
             size={28}
@@ -78,16 +78,20 @@ class ActivityListMembers extends PureComponent<Props, State> {
     const arrowGlyph = isOpen ? 'keyboard_arrow_up' : 'keyboard_arrow_down';
 
     return (
-      <ActivityListItem className={styles.header} onClick={this.handleMembersHeaderClick} id="activity_list_members">
-        <Icon
-          glyph="person"
-          inverted
-          theme="warning"
-          className={styles.icon}
-          size={28}
-        />
-        <div className={styles.text}>{online.message}</div>
-        <Icon glyph={arrowGlyph} className={styles.arrow} />
+      <ActivityListItem
+        className={styles.header}
+        onClick={this.handleMembersHeaderClick}
+        id="activity_list_members"
+        withoutArrow
+      >
+        <div className={styles.wrapper}>
+          <Icon
+            glyph="person" inverted theme="warning" className={styles.icon}
+            size={28}
+          />
+          <div className={styles.text}>{online.message}</div>
+          <Icon glyph={arrowGlyph} className={styles.arrow} size={24} />
+        </div>
       </ActivityListItem>
     );
   }
@@ -113,7 +117,6 @@ class ActivityListMembers extends PureComponent<Props, State> {
       );
     });
   }
-
 
   renderMembers() {
     const { isOpen } = this.state;

@@ -126,18 +126,14 @@
     "name": "Activity",
     "components": [
       "ActivityHeader",
-      "ActivityProfile",
-      "ActivityList",
-      "ActivityListNotification",
-      "ActivityListInvite",
-      "ActivityInvite",
-      "ActivityListIntegration",
-      "ActivityIntegration",
-      "ActivityListMembers",
-      "ActivitySearch",
       "ActivityMediaHeader",
-      "ActivityListMedia",
-      "ActivityMedia"
+      "ActivityList",
+      "ActivityProfile",
+      "ActivityListMembers",
+      "ActivityInvite",
+      "ActivityIntegration",
+      "ActivityMedia",
+      "ActivitySearch"
     ]
   },
   {

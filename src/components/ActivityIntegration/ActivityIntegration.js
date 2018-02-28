@@ -26,9 +26,7 @@ class ActivityIntegration extends PureComponent<Props> {
       return <Spinner type="dotted" />;
     }
 
-    return (
-      <span className={styles.link}>{link}</span>
-    );
+    return <span className={styles.link}>{link}</span>;
   }
 
   render() {
@@ -38,18 +36,11 @@ class ActivityIntegration extends PureComponent<Props> {
     return (
       <div className={className}>
         <div className={styles.block}>
-          <div className={styles.linkContainer}>
-            {this.renderLink()}
-          </div>
-          <CopyButton
-            id="activity_integration_copy_button"
-            wide
-            disabled={pending}
-            text={this.props.link}
-          />
+          <div className={styles.linkContainer}>{this.renderLink()}</div>
+          <CopyButton id="activity_integration_copy_button" wide disabled={pending} text={this.props.link} />
         </div>
-        <hr className={styles.hr} />
         <div className={styles.block}>
+          <hr className={styles.hr} />
           <Button
             id="activity_integration_revoke_button"
             theme="danger"
