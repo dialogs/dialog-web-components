@@ -16,7 +16,6 @@
 
 /* Styles */
 .container {
-  height: 20px;
   display: inline-flex;
   align-items: center;
   justify-content: flex-start;
@@ -38,7 +37,6 @@
   display: inline-block;
   color: inherit;
   vertical-align: middle;
-  line-height: 20px;
   font-size: var(--default-font-size);
   font-family: var(--default-font-family);
 }
