@@ -28,7 +28,7 @@ class ActivityUserProfile extends PureComponent<Props> {
     return (
       <Avatar
         className={styles.avatar}
-        size="big"
+        size={140}
         title={name}
         image={bigAvatar}
         placeholder={placeholder}
