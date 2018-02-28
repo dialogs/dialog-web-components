@@ -22,7 +22,7 @@
 .container {
   font-family: var(--activity-invite-font-family);
   display: block;
-  padding: var(--default-padding-large) calc(var(--default-padding-large) * 1.5);
+  padding: 0 calc(var(--default-padding-large) * 1.5) var(--default-padding-large);
 }
 
 .hr {
@@ -67,4 +67,6 @@
 .revoke {
   cursor: pointer;
   user-select: none;
+  padding-top: 0;
+  padding-bottom: 0;
 }
