@@ -3,7 +3,7 @@
  * @flow
  */
 
-import type { PeerInfo } from '@dlghq/dialog-types';
+import type { PeerInfo, UserStatusType } from '@dlghq/dialog-types';
 import type { AvatarSize } from '../Avatar/getAvatarSize';
 import type { Gradient } from '../Avatar/getAvatarColor';
 
@@ -15,8 +15,6 @@ import getAvatarColor from '../Avatar/getAvatarColor';
 import createSequence from '../../utils/createSequence';
 import getAvatarPlaceholder from '../../utils/getAvatarPlaceholder';
 import styles from './PeerAvatarWithStatus.css';
-
-type UserStatusType = 'unset' | 'away' | 'do_not_disturb' | 'invisible';
 
 export type Props = {
   className?: string,
@@ -38,7 +36,7 @@ class PeerAvatarWithStatus extends PureComponent<Props, void> {
   constructor(props: Props) {
     super(props);
 
-    this.id = 'peer_avatar_' + seq.next();
+    this.id = 'peer_avatar_with_status' + seq.next();
   }
 
   getAvatarSize(): number {

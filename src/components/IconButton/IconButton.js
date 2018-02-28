@@ -3,12 +3,11 @@
  * @flow
  */
 
+import type { ColorTheme } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import Icon from '../Icon/Icon';
 import styles from './IconButton.css';
-
-export type Theme = 'default' | 'primary' | 'success' | 'danger' | 'info' | 'warning';
 
 export type Props = {
   className?: string,
@@ -16,7 +15,7 @@ export type Props = {
   style?: Object,
   glyph: string,
   size: 'small' | 'normal' | 'large',
-  theme: Theme,
+  theme: ColorTheme,
   flat: boolean,
   disabled: boolean,
   active?: boolean,
@@ -34,13 +33,18 @@ class IconButton extends PureComponent<Props> {
   render() {
     const { glyph, className, theme, size, disabled, id, flat, style, active, ...otherProps } = this.props;
 
-    const buttonClassName = classNames(styles.container, styles[size], {
-      [styles.disabled]: disabled,
-      [styles.defaultStyle]: !flat,
-      [styles.flat]: flat,
-      [styles[theme]]: flat,
-      [styles.active]: active
-    }, className);
+    const buttonClassName = classNames(
+      styles.container,
+      styles[size],
+      {
+        [styles.disabled]: disabled,
+        [styles.defaultStyle]: !flat,
+        [styles.flat]: flat,
+        [styles[theme]]: flat,
+        [styles.active]: active
+      },
+      className
+    );
 
     return (
       <button

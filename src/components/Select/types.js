@@ -3,6 +3,8 @@
  * @flow
  */
 
+import type { ColorTheme } from '@dlghq/dialog-types';
+
 export type Option = {
   value: string,
   title: string
@@ -17,7 +19,7 @@ export type Props = {
   defaultValue?: ?string,
   disabled?: boolean,
   label?: string,
-  theme: 'default' | 'primary' | 'success' | 'danger' | 'info' | 'warning',
+  theme: ColorTheme,
   size: 'small' | 'normal',
   options: Option[],
   placeholder?: string,
