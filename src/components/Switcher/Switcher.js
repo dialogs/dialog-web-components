@@ -92,7 +92,7 @@ class Switcher extends PureComponent<SwitcherProps> {
     });
 
     return (
-      <div>
+      <div className={styles.wrapper}>
         {this.renderDescription()}
         <div className={className}>
           <input

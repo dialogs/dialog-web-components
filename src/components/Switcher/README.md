@@ -4,8 +4,8 @@ Basic Switcher:
 initialState = { value: true };
 
 <Switcher
-  id="example"
-  name="example"
+  id="switcher_example"
+  name="switcher_example"
   value={state.value}
   onChange={(value) => setState({ value })}
 />
@@ -17,13 +17,42 @@ Switcher with label:
 initialState = { value: true };
 
 <Switcher
-  id="label"
-  name="label"
+  id="switcher_label"
+  name="switcher_label"
   value={state.value}
   onChange={(value) => setState({ value })}
->
-  Some label
-</Switcher>
+  label="Switcher with label"
+/>
+```
+
+Switcher with description:
+
+```jsx
+initialState = { value: true };
+
+<Switcher
+  id="switcher_description"
+  name="switcher_description"
+  value={state.value}
+  onChange={(value) => setState({ value })}
+  label="Switcher label"
+  description="Some description about what this switcher change"
+/>
+```
+
+Switcher with hint:
+
+```jsx
+initialState = { value: true };
+
+<Switcher
+  id="switcher_hint"
+  name="switcher_hint"
+  value={state.value}
+  onChange={(value) => setState({ value })}
+  label="Switcher label"
+  hint="Some text about what this switcher do"
+/>
 ```
 
 Disabled Switcher:
@@ -33,8 +62,8 @@ initialState = { value: true };
 
 <Switcher
   disabled
-  id="disabled"
-  name="disabled"
+  id="switcher_disabled"
+  name="switcher_disabled"
   value={state.value}
   onChange={(value) => setState({ value })}
 />
@@ -47,8 +76,8 @@ initialState = { value: true };
 
 <Switcher
   danger
-  id="danger"
-  name="danger"
+  id="switcher_danger"
+  name="switcher_danger"
   value={state.value}
   onChange={(value) => setState({ value })}
 />
