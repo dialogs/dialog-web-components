@@ -38,8 +38,8 @@
   /* Layout */
   --layout-min-width: 1120px;
   --layout-min-height: 450px;
-  --layout-sidebar-width: 270px;
-  --layout-activity-width: 320px;
+  --layout-sidebar-width: 300px;
+  --layout-activity-width: 400px;
   /* Layers */
   --z-index-dropdown: 100;
   --z-index-tooltip: var(--z-index-dropdown);
