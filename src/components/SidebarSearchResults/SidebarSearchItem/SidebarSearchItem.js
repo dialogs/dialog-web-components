@@ -5,9 +5,9 @@
 
 import type { Peer, Message, PeerInfo } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
-import { findDOMNode } from 'react-dom';
 import { format } from 'date-fns';
 import { Text } from '@dlghq/react-l10n';
+import { hasSelection } from '@dlghq/dialog-utils';
 import classNames from 'classnames';
 import SidebarSearchItemMessage from '../SidebarSearchItemMessage/SidebarSearchItemMessage';
 import styles from './SidebarSearchItem.css';
@@ -45,7 +45,7 @@ class SidebarSearchItem extends PureComponent<Props, State> {
   };
 
   handleCollapseToggle = () => {
-    if (!this.hasSelection()) {
+    if (!hasSelection()) {
       this.setState(({ collapsed }) => {
         return {
           collapsed: !collapsed
@@ -53,17 +53,6 @@ class SidebarSearchItem extends PureComponent<Props, State> {
       });
     }
   };
-
-  hasSelection(): boolean {
-    const container = findDOMNode(this);
-    if (container) {
-      const selection = document.getSelection();
-
-      return Boolean(selection && selection.toString());
-    }
-
-    return false;
-  }
 
   renderHeader() {
     const { info, focus } = this.props;

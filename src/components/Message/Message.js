@@ -14,7 +14,6 @@ import type {
 } from '@dlghq/dialog-types';
 import classNames from 'classnames';
 import React, { PureComponent, type Node } from 'react';
-import { findDOMNode } from 'react-dom';
 import MessageContent from '../MessageContent/MessageContent';
 import PeerAvatar from '../PeerAvatar/PeerAvatar';
 import PeerInfoTitle from '../PeerInfoTitle/PeerInfoTitle';
@@ -138,17 +137,6 @@ class Message extends PureComponent<Props, State> {
     }
 
     return this.state.hover;
-  }
-
-  hasSelection(): boolean {
-    const container = findDOMNode(this);
-    if (container) {
-      const selection = document.getSelection();
-
-      return Boolean(selection && selection.toString());
-    }
-
-    return false;
   }
 
   getState(): MessageStateType {
