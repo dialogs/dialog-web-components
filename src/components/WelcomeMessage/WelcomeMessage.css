@@ -62,7 +62,11 @@
 .created {
   composes: subtitle;
   margin-top: 16px;
-  display: block;
+}
+
+.createdText,
+.createdDate {
+  margin-right: calc(var(--default-padding-small) / 2);
 }
 
 .about {
