@@ -70,3 +70,8 @@
   padding-top: 0;
   padding-bottom: 0;
 }
+
+.pending {
+  composes: block;
+  height: 300px;
+}
