@@ -29,7 +29,7 @@ class WelcomeMessageGroup extends PureComponent<Props> {
       return (
         <div className={styles.created}>
           <Text id="WelcomeMessage.group.created_by_you" className={styles.createdText} />
-          <span className={styles.createdDate}>{createdAt}</span>
+          {createdAt ? <span className={styles.createdDate}>{createdAt}</span> : null}
         </div>
       );
     }
@@ -38,7 +38,7 @@ class WelcomeMessageGroup extends PureComponent<Props> {
       return (
         <div className={styles.created}>
           <Text id="WelcomeMessage.group.created" className={styles.createdText} />
-          <span className={styles.createdDate}>{createdAt}</span>
+          {createdAt ? <span className={styles.createdDate}>{createdAt}</span> : null}
           <PeerInfoTitle title={creator} />
         </div>
       );
@@ -86,7 +86,7 @@ class WelcomeMessageGroup extends PureComponent<Props> {
       <div className={className}>
         <div className={styles.group}>
           {this.renderHint()}
-          <PeerInfoTitle title={title} titleClassName={styles.title} />
+          <PeerInfoTitle title={title} titleClassName={styles.title} emojiSize={34} />
           {this.renderCreated()}
           {this.renderAbout()}
         </div>
