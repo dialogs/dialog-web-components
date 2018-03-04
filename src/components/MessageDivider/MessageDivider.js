@@ -3,13 +3,14 @@
  * @flow
  */
 
+import type { ColorTheme } from '@dlghq/dialog-types';
 import React, { PureComponent, type Node } from 'react';
 import classNames from 'classnames';
 import styles from './MessageDivider.css';
 
 export type Props = {
   className?: string,
-  theme: 'default' | 'primary' | 'success' | 'danger' | 'info' | 'warning',
+  theme: ColorTheme,
   children: Node
 };
 
@@ -19,17 +20,11 @@ class MessageDivider extends PureComponent<Props> {
   };
 
   render() {
-    const className = classNames(
-      styles.container,
-      styles[this.props.theme],
-      this.props.className
-    );
+    const className = classNames(styles.container, styles[this.props.theme], this.props.className);
 
     return (
       <div className={className}>
-        <div className={styles.text}>
-          {this.props.children}
-        </div>
+        <div className={styles.text}>{this.props.children}</div>
       </div>
     );
   }

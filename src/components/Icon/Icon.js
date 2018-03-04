@@ -3,6 +3,7 @@
  * @flow
  */
 
+import type { ColorTheme } from '@dlghq/dialog-types';
 import type { IconSize } from './getIconSize';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
@@ -17,7 +18,7 @@ export type Props = {
   id?: string,
   className?: string,
   glyph: string,
-  theme: 'default' | 'primary' | 'success' | 'danger' | 'info' | 'warning',
+  theme: ColorTheme,
   size: IconSize,
   inverted: boolean,
   onClick?: (event: SyntheticMouseEvent<>) => mixed
@@ -49,10 +50,15 @@ class Icon extends PureComponent<Props> {
   renderInvertedIcon() {
     const { onClick, theme } = this.props;
     const size = this.getIconSize();
-    const className = classNames(styles.container, styles.inverted, {
-      [styles[theme]]: theme,
-      [styles.clickable]: onClick
-    }, this.props.className);
+    const className = classNames(
+      styles.container,
+      styles.inverted,
+      {
+        [styles[theme]]: theme,
+        [styles.clickable]: onClick
+      },
+      this.props.className
+    );
     const style = {
       width: size,
       height: size,
@@ -71,10 +77,14 @@ class Icon extends PureComponent<Props> {
   renderIcon() {
     const { onClick, theme } = this.props;
     const size = this.getIconSize();
-    const className = classNames(styles.container, {
-      [styles[theme]]: theme,
-      [styles.clickable]: onClick
-    }, this.props.className);
+    const className = classNames(
+      styles.container,
+      {
+        [styles[theme]]: theme,
+        [styles.clickable]: onClick
+      },
+      this.props.className
+    );
 
     return (
       <svg

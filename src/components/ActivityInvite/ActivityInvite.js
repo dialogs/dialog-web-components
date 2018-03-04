@@ -20,18 +20,6 @@ export type Props = {
 };
 
 class ActivityInvite extends PureComponent<Props> {
-  renderLink() {
-    const { link, pending } = this.props;
-
-    if (pending) {
-      return <Spinner type="dotted" />;
-    }
-
-    return (
-      <span className={styles.link}>{link}</span>
-    );
-  }
-
   renderRevoke() {
     if (!this.props.onRevoke) {
       return null;
@@ -40,43 +28,45 @@ class ActivityInvite extends PureComponent<Props> {
     return (
       <div>
         <hr className={styles.hr} />
-        <div className={styles.block}>
-          <Button
-            theme="danger"
-            view="link"
-            onClick={this.props.onRevoke}
-            className={styles.revoke}
-            size="small"
-            id="activity_invite_revoke_button"
-          >
-            <Text id="ActivityInvite.revoke" />
-          </Button>
+        <Button
+          theme="danger"
+          view="link"
+          onClick={this.props.onRevoke}
+          className={styles.revoke}
+          size="small"
+          id="activity_invite_revoke_button"
+        >
+          <Text id="ActivityInvite.revoke" />
+        </Button>
+      </div>
+    );
+  }
+
+  renderContent() {
+    if (this.props.pending) {
+      return (
+        <div className={styles.pending}>
+          <Spinner type="dotted" size="normal" />
         </div>
+      );
+    }
+
+    return (
+      <div className={styles.block}>
+        <div className={styles.linkContainer}>
+          <span className={styles.link}>{this.props.link}</span>
+        </div>
+        <CopyOnly block />
+        <CopyButton id="activity_invite_copy_button" wide disabled={this.props.pending} text={this.props.link} />
+        {this.renderRevoke()}
       </div>
     );
   }
 
   render() {
-    const { pending } = this.props;
     const className = classNames(styles.container, this.props.className);
 
-    return (
-      <div className={className}>
-        <div className={styles.block}>
-          <div className={styles.linkContainer}>
-            {this.renderLink()}
-          </div>
-          <CopyOnly block />
-          <CopyButton
-            id="activity_invite_copy_button"
-            wide
-            disabled={pending}
-            text={this.props.link}
-          />
-        </div>
-        {this.renderRevoke()}
-      </div>
-    );
+    return <div className={className}>{this.renderContent()}</div>;
   }
 }
 

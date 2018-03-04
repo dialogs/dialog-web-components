@@ -27,21 +27,20 @@ class WelcomeMessageGroup extends PureComponent<Props> {
 
     if (isOwner) {
       return (
-        <Text
-          id="WelcomeMessage.group.created_by_you"
-          className={styles.created}
-          values={{ createdAt: createdAt || '' }}
-        />
+        <div className={styles.created}>
+          <Text id="WelcomeMessage.group.created_by_you" className={styles.createdText} />
+          {createdAt ? <span className={styles.createdDate}>{createdAt}</span> : null}
+        </div>
       );
     }
 
     if (creator) {
       return (
-        <Text
-          id="WelcomeMessage.group.created"
-          className={styles.created}
-          values={{ createdAt: createdAt || '', creator }}
-        />
+        <div className={styles.created}>
+          <Text id="WelcomeMessage.group.created" className={styles.createdText} />
+          {createdAt ? <span className={styles.createdDate}>{createdAt}</span> : null}
+          <PeerInfoTitle title={creator} />
+        </div>
       );
     }
 
@@ -75,11 +74,7 @@ class WelcomeMessageGroup extends PureComponent<Props> {
 
     return (
       <div className={styles.hint}>
-        <Text
-          id="WelcomeMessage.group.hint"
-          className={styles.hintText}
-          tagName="div"
-        />
+        <Text id="WelcomeMessage.group.hint" className={styles.hintText} tagName="div" />
       </div>
     );
   }
@@ -91,7 +86,7 @@ class WelcomeMessageGroup extends PureComponent<Props> {
       <div className={className}>
         <div className={styles.group}>
           {this.renderHint()}
-          <PeerInfoTitle title={title} titleClassName={styles.title} />
+          <PeerInfoTitle title={title} titleClassName={styles.title} emojiSize={34} />
           {this.renderCreated()}
           {this.renderAbout()}
         </div>

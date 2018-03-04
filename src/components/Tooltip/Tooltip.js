@@ -3,6 +3,7 @@
  * @flow
  */
 
+import type { ColorTheme } from '@dlghq/dialog-types';
 import React, { Component, type Node } from 'react';
 import { Text } from '@dlghq/react-l10n';
 import Trigger from '../Trigger/Trigger';
@@ -23,7 +24,7 @@ export type Props = {
    * [Tether options](http://tether.io/#options)
    */
   options?: Object,
-  theme: 'default' | 'primary' | 'success' | 'danger' | 'info' | 'warning'
+  theme: ColorTheme
 };
 
 class Tooltip extends Component<Props> {
@@ -57,11 +58,7 @@ class Tooltip extends Component<Props> {
           }}
         >
           <div className={className}>
-            {typeof this.props.text === 'string' ? (
-              <Text id={this.props.text} />
-            ) : (
-              this.props.text
-            )}
+            {typeof this.props.text === 'string' ? <Text id={this.props.text} /> : this.props.text}
           </div>
         </CSSTransition>
       </TransitionGroup>

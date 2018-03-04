@@ -13,7 +13,8 @@ type Props = {
   className?: string,
   dotClassName?: string,
   statusClassName?: string,
-  status: UserStatusType
+  status: UserStatusType,
+  withoutDot?: boolean
 };
 
 class UserStatus extends PureComponent<Props> {
@@ -28,7 +29,7 @@ class UserStatus extends PureComponent<Props> {
 
     return (
       <div className={className}>
-        <div className={dotClassName} />
+        {this.props.withoutDot ? null : <div className={dotClassName} />}
         <Text id={`UserStatus.${this.props.status}`} className={statusClassName} />
       </div>
     );

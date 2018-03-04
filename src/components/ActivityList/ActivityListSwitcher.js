@@ -6,22 +6,28 @@
 import type { ColorTheme } from '@dlghq/dialog-types';
 import React, { PureComponent, type Node } from 'react';
 import Icon from '../Icon/Icon';
+import Switcher from '../Switcher/Switcher';
 import classNames from 'classnames';
 import styles from './ActivityList.css';
 
 export type Props = {
-  id?: string,
+  id: string,
   className?: string,
   children: Node,
   icon?: ?{
     glyph: string,
     theme: ColorTheme
   },
-  withoutArrow?: boolean,
-  onClick?: (event: SyntheticMouseEvent<>) => mixed
+  value: boolean,
+  onChange: (value: boolean) => void
 };
 
-class ActivityListItem extends PureComponent<Props> {
+class ActivityListSwitcher extends PureComponent<Props> {
+  handleClick = (event: SyntheticEvent<>): void => {
+    event.preventDefault();
+    this.props.onChange(!this.props.value);
+  };
+
   renderIcon() {
     const { icon } = this.props;
     if (!icon) {
@@ -40,30 +46,38 @@ class ActivityListItem extends PureComponent<Props> {
   }
 
   renderArrow() {
-    if (!this.props.onClick || this.props.withoutArrow) {
+    if (!this.props.onClick) {
       return null;
     }
 
-    return <Icon glyph="keyboard_arrow_right" className={styles.arrow} size={24} />;
+    if (!this.props.withArrow) {
+      return null;
+    }
+
+    return <Icon glyph="keyboard_arrow_right" className={styles.arrow} />;
   }
 
   render() {
     const className = classNames(
       styles.item,
-      {
-        [styles.clickable]: this.props.onClick
-      },
+      styles.clickable,
       this.props.className
     );
 
     return (
-      <div className={className} onClick={this.props.onClick} id={this.props.id}>
+      <div className={className} onClick={this.handleClick} id={this.props.id}>
         {this.renderIcon()}
         <div className={styles.content}>{this.props.children}</div>
-        {this.renderArrow()}
+        <Switcher
+          id={`${this.props.id}_switcher`}
+          name={`${this.props.id}_switcher`}
+          value={this.props.value}
+          className={styles.switcher}
+          onChange={this.props.onChange}
+        />
       </div>
     );
   }
 }
 
-export default ActivityListItem;
+export default ActivityListSwitcher;

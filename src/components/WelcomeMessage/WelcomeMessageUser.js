@@ -48,6 +48,7 @@ class WelcomeMessageUser extends PureComponent<Props> {
             userName={userName}
             titleClassName={styles.title}
             userNameClassName={styles.subtitle}
+            emojiSize={34}
             addSpacebars
           />
           {this.renderAbout()}

@@ -8,7 +8,6 @@ import flatten from '../flatten';
 
 function createMessage(attachment: ?MessageAttachment, text: string = 'test') {
   return {
-    attachment,
     rid: String(Math.random()),
     mid: String(Math.random()),
     date: '00:00',
@@ -23,12 +22,13 @@ function createMessage(attachment: ?MessageAttachment, text: string = 'test') {
     sortKey: '1',
     sortDate: 1,
     isOut: true,
-    isOnServer: true
+    isOnServer: true,
+    attachment
   };
 }
 
 function createReply(messages: Message[]) {
-  return { messages, type: 'reply' };
+  return { type: 'reply', messages };
 }
 
 describe('Flatten message attachments', () => {
@@ -54,5 +54,14 @@ describe('Flatten message attachments', () => {
     const parent = createReply([createMessage(empty), createMessage(child2)]);
 
     expect(flatten(parent)).toEqual([child0, child2, parent]);
+  });
+
+  test('duplicates filtered', () => {
+    const message0 = createMessage(null, 'message0');
+    const reply0 = createReply([message0]);
+    const message1 = createMessage(reply0, 'message1');
+    const reply1 = createReply([message1, message0]);
+
+    expect(flatten(reply1)).toEqual([createReply([message0]), createReply([message1])]);
   });
 });

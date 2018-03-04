@@ -4,7 +4,7 @@
  */
 
 import React, { Component, type Node } from 'react';
-import { listen } from '@dlghq/dialog-utils';
+import { listen, hasSelection } from '@dlghq/dialog-utils';
 
 export type Props = {
   className?: string,
@@ -38,8 +38,7 @@ class Hover extends Component<Props> {
   }
 
   handleSelectionChange = (): void => {
-    const selection = document.getSelection();
-    if (selection && selection.toString()) {
+    if (hasSelection()) {
       this.selecting = true;
       this.props.onHover(false);
     } else {

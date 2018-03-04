@@ -83,9 +83,8 @@ class FeedbackModal extends PureComponent<Props, State> {
               name="addLogs"
               value={this.state.addLogs}
               onChange={this.handleAddLogsToggle}
-            >
-              <Text id="FeedbackModal.add_logs" />
-            </Switcher>
+              label="FeedbackModal.add_logs"
+            />
           </ModalBody>
           <ModalFooter className={styles.footer}>
             <Button

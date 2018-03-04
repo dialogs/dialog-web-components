@@ -6,6 +6,7 @@
 import type { Peer, Message } from '@dlghq/dialog-types';
 import React, { Component } from 'react';
 import classNames from 'classnames';
+import { hasSelection } from '@dlghq/dialog-utils';
 import TextMessagePreview from '../SidebarRecentItem/MessagePreview/TextMessagePreview';
 import Icon from '../Icon/Icon';
 import PeerInfoTitle from '../PeerInfoTitle/PeerInfoTitle';
@@ -34,7 +35,7 @@ class MessageAttachmentItem extends Component<Props> {
   };
 
   handleGoToMessage = (event: SyntheticMouseEvent<>): void => {
-    if (event.target.tagName === 'A') {
+    if (event.target.tagName === 'A' || hasSelection()) {
       return;
     }
 

@@ -6,7 +6,7 @@ const initialState = {
 };
 
 <InputNext
-  id="input_basic"
+  id="input_next_basic"
   label="Basic"
   placeholder="Basic placeholder"
   value={state.value}
@@ -22,7 +22,7 @@ const initialState = {
 };
 
 <InputNext
-  id="input_no_label"
+  id="input_next_no_label"
   value={state.value}
   onChange={(value) => setState({ value })}
 />
@@ -33,7 +33,7 @@ Disabled Input:
 ```jsx
 <InputNext
   disabled
-  id="input_disabled"
+  id="input_next_disabled"
   label="Disabled"
   value="Disabled input text"
 />
@@ -44,7 +44,7 @@ Success Input with hint:
 ```jsx
 <InputNext
   hint="Correct email"
-  id="input_success_hint"
+  id="input_next_success_hint"
   label="Email"
   onChange={(value) => setState({ value })}
   status="success"
@@ -57,7 +57,7 @@ Error Input with hint:
 ```jsx
 <InputNext
   hint="Incorrect email"
-  id="input_error_hint"
+  id="input_next_error_hint"
   label="Email"
   onChange={(value) => setState({ value })}
   status="error"
@@ -73,7 +73,7 @@ const initialState = {
 };
 
 <InputNext
-  id="input_textarea"
+  id="input_next_textarea"
   type="textarea"
   label="About"
   placeholder="Type something"

@@ -36,6 +36,10 @@
   all: initial;
 }
 
+.wrapper {
+  line-height: 0;
+}
+
 .container {
   display: inline-flex;
   flex-direction: row;
