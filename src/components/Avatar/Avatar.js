@@ -50,21 +50,22 @@ class Avatar extends PureComponent<Props, void> {
 
     const className = classNames(
       this.props.className,
-      image ? styles.image : styles.placeholder,
-      this.props.onClick ? styles.clickable : null
+      this.props.onClick ? styles.clickable : null,
+      image ? styles.withImage : styles.withPlaceholder
     );
 
     if (image) {
       return (
-        <img
-          className={className}
-          src={image}
-          alt={title}
-          width={size}
-          height={size}
-          style={{ width: size, height: size }}
-          onClick={this.props.onClick}
-        />
+        <div style={{ width: size, height: size }} title={title} onClick={this.props.onClick} className={className}>
+          <img
+            className={styles.image}
+            src={image}
+            alt={title}
+            width={size}
+            height={size}
+            style={{ width: size, height: size }}
+          />
+        </div>
       );
     }
 
@@ -74,17 +75,12 @@ class Avatar extends PureComponent<Props, void> {
       width: size,
       height: size,
       lineHeight: `${size}px`,
-      fontSize: Math.min(Math.floor(twoChars ? (size / 2.4) : (size / 1.9)), 60),
+      fontSize: Math.min(Math.floor(twoChars ? size / 2.4 : size / 1.9), 60),
       backgroundImage: `linear-gradient(38deg, ${colors.payload.from}, ${colors.payload.to})`
     };
 
     return (
-      <div
-        className={className}
-        title={title}
-        style={style}
-        onClick={this.props.onClick}
-      >
+      <div className={className} title={title} style={style} onClick={this.props.onClick}>
         {text}
       </div>
     );
