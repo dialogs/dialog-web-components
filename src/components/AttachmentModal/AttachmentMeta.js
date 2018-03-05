@@ -30,9 +30,8 @@ class AttachmentMeta extends PureComponent<AttachmentMetaProps> {
             value={isDocument ? true : this.props.sendAsFile}
             disabled={isDocument}
             onChange={this.handleSendAsFileChange}
-          >
-            <Text id="AttachmentModal.send_as_file" />
-          </Switcher>
+            label="AttachmentModal.send_as_file"
+          />
         </div>
       </td>
     );
