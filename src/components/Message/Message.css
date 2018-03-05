@@ -84,10 +84,6 @@
   z-index: var(--z-index-message-actions);
 }
 
-.clickable {
-  cursor: pointer !important;
-}
-
 .pending {
   opacity: 0.6;
 }

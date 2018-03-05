@@ -165,18 +165,16 @@ class Message extends PureComponent<Props, State> {
 
   renderAvatar() {
     const sender = this.getSender();
+
     if (!sender) {
       return null;
     }
 
     const onClick = this.props.onAvatarClick ? this.handleAvatarClick : undefined;
-    const avatarClassName = classNames({
-      [styles.clickable]: this.props.onAvatarClick
-    });
 
     return (
       <div className={styles.avatar}>
-        <PeerAvatar peer={sender} size={40} onClick={onClick} className={avatarClassName} />
+        <PeerAvatar peer={sender} size={40} onClick={onClick} />
       </div>
     );
   }
