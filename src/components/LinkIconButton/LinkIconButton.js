@@ -29,8 +29,28 @@ class LinkIconButton extends PureComponent<Props> {
     theme: 'default'
   };
 
+  getIconSize = (): number => {
+    const { size } = this.props;
+    if (size === 'small') {
+      return 16;
+    }
+
+    if (size === 'large') {
+      return 30;
+    }
+
+    return 22;
+  };
+
+  renderIcon() {
+    const { glyph } = this.props;
+    const size = this.getIconSize();
+
+    return <Icon glyph={glyph} className={styles.icon} size={size} />;
+  }
+
   render() {
-    const { glyph, theme, size, flat, style, active, href, target, id, ...otherProps } = this.props;
+    const { theme, size, flat, style, active, href, target, id, ...otherProps } = this.props;
 
     const className = classNames(
       styles.container,
@@ -49,9 +69,7 @@ class LinkIconButton extends PureComponent<Props> {
         href={href} target={target} className={className} style={style}
         id={id} {...otherProps}
       >
-        <span className={styles.fix}>
-          <Icon glyph={glyph} className={styles.icon} />
-        </span>
+        <span className={styles.fix}>{this.renderIcon()}</span>
       </a>
     );
   }

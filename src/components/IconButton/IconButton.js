@@ -30,8 +30,28 @@ class IconButton extends PureComponent<Props> {
     disabled: false
   };
 
+  getIconSize = (): number => {
+    const { size } = this.props;
+    if (size === 'small') {
+      return 16;
+    }
+
+    if (size === 'large') {
+      return 30;
+    }
+
+    return 22;
+  };
+
+  renderIcon() {
+    const { glyph } = this.props;
+    const size = this.getIconSize();
+
+    return <Icon glyph={glyph} className={styles.icon} size={size} />;
+  }
+
   render() {
-    const { glyph, className, theme, size, disabled, id, flat, style, active, ...otherProps } = this.props;
+    const { className, theme, size, disabled, id, flat, style, active, ...otherProps } = this.props;
 
     const buttonClassName = classNames(
       styles.container,
@@ -55,9 +75,7 @@ class IconButton extends PureComponent<Props> {
         id={id}
         {...otherProps}
       >
-        <span className={styles.fix}>
-          <Icon glyph={glyph} className={styles.icon} />
-        </span>
+        <span className={styles.fix}>{this.renderIcon()}</span>
       </button>
     );
   }

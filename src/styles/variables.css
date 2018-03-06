@@ -142,19 +142,19 @@
   --icon-default-color: rgb(178, 178, 178);
   --icon-inverted-color: #fff;
   /* IconButton */
+  --icon-button-small-size: 32px;
   --icon-button-default-size: 40px;
   --icon-button-large-size: 54px;
   --icon-button-background-color: #fff;
   --icon-button-default-color: rgb(178, 178, 178);
   --icon-button-hover-color: var(--color-primary);
-  --icon-button-glyph-size: 22px;
-  --icon-button-glyph-size-large: 30px;
   --icon-button-flat-color: rgb(178, 178, 178);
   --icon-button-flat-color-hover: #fff;
   --icon-button-flat-hover-background-color: rgb(150, 150, 150);
   --icon-button-flat-border-width: 1px;
+  --icon-button-flat-small-size: var(--icon-button-small-size);
   --icon-button-flat-default-size: var(--icon-button-default-size);
-  --icon-button-flat-large-size: 72px;
+  --icon-button-flat-large-size: var(--icon-button-large-size);
   /* Input */
   --input-error-color: var(--color-danger);
   --input-warning-color: var(--color-warning);
