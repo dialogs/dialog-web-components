@@ -40,8 +40,8 @@
 .icon {
   width: var(--activity-media-header-icon-size);
   height: var(--activity-media-header-icon-size);
-  transition: fill var(--activity-media-header-transition-duration) linear;
-  fill: var(--activity-media-header-icon-color);
+  transition: color var(--activity-media-header-transition-duration) linear;
+  color: var(--activity-media-header-icon-color);
 }
 
 .iconWrapper {
@@ -59,7 +59,7 @@
 
   &:hover {
     & .icon {
-      fill: var(--activity-media-header-icon-color-hover);
+      color: var(--activity-media-header-icon-color-hover);
     }
   }
 }
@@ -85,19 +85,19 @@
   flex-flow: row nowrap;
 
   & .arrow {
-    fill: var(--activity-media-header-icon-color);
+    color: var(--activity-media-header-icon-color);
   }
 
   &:hover {
     & .arrow {
-      fill: var(--activity-media-header-icon-color-hover);
+      color: var(--activity-media-header-icon-color-hover);
     }
   }
 }
 
 .currentActive {
   & .arrow {
-    fill: var(--activity-media-header-icon-color-hover);
+    color: var(--activity-media-header-icon-color-hover);
   }
 }
 

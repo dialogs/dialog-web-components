@@ -34,6 +34,13 @@
 
 .back {
   margin-right: 16px;
+  transition: color var(--modal-close-transition-duration) linear;
+  color: var(--modal-close-color);
+
+  &:hover {
+    color: var(--modal-close-color-hover);
+  }
+
 }
 
 .user {

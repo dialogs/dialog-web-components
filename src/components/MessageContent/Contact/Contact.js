@@ -59,8 +59,10 @@ class Contact extends PureComponent<Props> {
     return emails.map((email) => {
       return (
         <div className={styles.email} key={email}>
-          <Icon glyph="mail_outline" className={styles.icon} />
-          <a href={`mailto:${email}`} className={styles.link}>{email}</a>
+          <Icon glyph="mail_outline" className={styles.icon} size={22} />
+          <a href={`mailto:${email}`} className={styles.link}>
+            {email}
+          </a>
         </div>
       );
     });
@@ -76,13 +78,14 @@ class Contact extends PureComponent<Props> {
     return phones.map((phone) => {
       return (
         <div className={styles.phone} key={phone}>
-          <Icon glyph="phone_outline" className={styles.icon} />
-          <a href={`tel:${phone}`} className={styles.link}>{phone}</a>
+          <Icon glyph="phone_outline" className={styles.icon} size={22} />
+          <a href={`tel:${phone}`} className={styles.link}>
+            {phone}
+          </a>
         </div>
       );
     });
   }
-
 
   render() {
     const { name, maxWidth } = this.props;

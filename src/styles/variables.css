@@ -342,7 +342,6 @@
   --sidebar-footer-background: #fff;
   --sidebar-footer-border-color: color(#000 alpha(14%));
   --sidebar-footer-button-color: #9e9e9e;
-  --sidebar-footer-button-icon-size: 28px;
   --sidebar-footer-button-color-hover: #808080;
   --sidebar-footer-button-color-active: var(--color-primary);
   --sidebar-footer-button-counter-background: var(--color-danger);
@@ -377,7 +376,6 @@
   --toolbar-status-color: var(--default-font-color-light);
   --toolbar-status-font-size: 14px;
   --toolbar-border-color: color(#000 alpha(14%));
-  --toolbar-call-button-size: 28px;
   --toolbar-call-button-color: #999;
   --toolbar-call-button-color-hover: #666;
   --toolbar-call-button-color-active: #4c4c4c;

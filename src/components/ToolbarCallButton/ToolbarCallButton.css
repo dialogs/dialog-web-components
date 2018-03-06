@@ -22,18 +22,18 @@
   align-items: center;
 
   & .icon {
-    fill: var(--toolbar-call-button-color);
+    color: var(--toolbar-call-button-color);
   }
 
   &:hover {
     & .icon {
-      fill: var(--toolbar-call-button-color-hover);
+      color: var(--toolbar-call-button-color-hover);
     }
   }
 
   &:active {
     & .icon {
-      fill: var(--toolbar-call-button-color-active);
+      color: var(--toolbar-call-button-color-active);
     }
   }
 }
@@ -48,6 +48,6 @@
   opacity: 0.15 !important;
 
   & .icon {
-    fill: var(--toolbar-call-button-color) !important;
+    color: var(--toolbar-call-button-color) !important;
   }
 }

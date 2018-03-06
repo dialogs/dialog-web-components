@@ -27,7 +27,7 @@ type State = {
 
 class AvatarSelector extends PureComponent<Props, State> {
   static defaultProps = {
-    size: 100
+    size: 140
   };
 
   constructor(props: Props) {

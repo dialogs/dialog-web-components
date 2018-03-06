@@ -62,9 +62,9 @@
 }
 
 .arrow {
-  margin-left: -4px;
+  margin-left: -2px;
   cursor: inherit;
-  fill: var(--sidebar-header-menu-color);
+  color: var(--sidebar-header-menu-color);
 }
 
 .plusWrapper {
@@ -79,7 +79,7 @@
 .plus {
   transition: all var(--default-transition-duration) ease-in;
   transform-origin: 50% 50%;
-  fill: var(--sidebar-header-plus-color);
+  color: var(--sidebar-header-plus-color);
 
   &:hover {
     opacity: 0.8;

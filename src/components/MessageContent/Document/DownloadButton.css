@@ -57,7 +57,7 @@
   left: 50%;
   top: 50%;
   transform: translateX(-50%) translateY(-50%);
-  fill: #fff;
+  color: #fff;
 }
 
 .uploading {
@@ -66,7 +66,7 @@
   box-shadow: inset 0 0 0 0 var(--color-primary);
 
   & .arrow {
-    fill: var(--color-primary);
+    color: var(--color-primary);
   }
 
   & .border {

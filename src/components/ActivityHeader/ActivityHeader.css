@@ -42,8 +42,8 @@
 .icon {
   width: var(--activity-header-icon-size);
   height: var(--activity-header-icon-size);
-  transition: fill var(--activity-header-transition-duration) linear;
-  fill: var(--activity-header-icon-color);
+  transition: color var(--activity-header-transition-duration) linear;
+  color: var(--activity-header-icon-color);
 }
 
 .iconWrapper {
@@ -61,7 +61,7 @@
 
   &:hover {
     & .icon {
-      fill: var(--activity-header-icon-color-hover);
+      color: var(--activity-header-icon-color-hover);
     }
   }
 }

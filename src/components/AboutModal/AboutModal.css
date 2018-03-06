@@ -30,11 +30,11 @@
   position: absolute;
   top: var(--default-padding-small);
   right: var(--default-padding-small);
-  fill: color(#000 alpha(40%));
-  transition: fill 150ms linear;
+  color: color(#000 alpha(40%));
+  transition: color 150ms linear;
 
   &:hover {
-    fill: color(#000 alpha(60%))
+    color: color(#000 alpha(60%));
   }
 }
 

@@ -36,7 +36,7 @@
       color: var(--sidebar-recent-item-hover-message-color);
     }
     & .icon {
-      fill: currentColor;
+      color: currentColor;
     }
   }
 
@@ -86,7 +86,7 @@
   display: inline-block;
   margin-right: 2px;
   margin-top: -4px;
-  fill: currentColor;
+  color: currentColor;
 }
 
 .message {
@@ -138,7 +138,6 @@
 
 .unread {
   color: var(--sidebar-recent-item-unread-color);
-  fill: currentColor;
 }
 
 .typing {
@@ -151,11 +150,9 @@
   background-color: var(--sidebar-recent-item-active-background-color);
   background-image: var(--sidebar-recent-item-active-background-gradient);
   color: var(--sidebar-recent-item-active-color);
-  fill: currentColor;
 
   &:hover {
     color: var(--sidebar-recent-item-active-hover-color);
-    fill: currentColor;
     background-color: var(--sidebar-recent-item-active-hover-background-color);
     background-image: var(--sidebar-recent-item-active-hover-background-gradient);
 

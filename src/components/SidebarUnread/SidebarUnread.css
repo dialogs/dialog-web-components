@@ -49,7 +49,8 @@
   right: 0;
   overflow: hidden;
   transform: translateZ(0);
-  transition: height var(--sidebar-unread-transition-duration) ease-in-out, background var(--sidebar-unread-transition-duration) ease-in-out;
+  transition: height var(--sidebar-unread-transition-duration) ease-in-out,
+    background var(--sidebar-unread-transition-duration) ease-in-out;
   background-color: var(--sidebar-unread-background-color);
   font-family: var(--sidebar-unread-font-family);
   align-content: center;
@@ -96,7 +97,8 @@
 }
 
 .icon {
-  transition: opacity var(--sidebar-unread-transition-duration) ease-in-out, transform var(--sidebar-unread-transition-duration) ease-in-out;
+  transition: opacity var(--sidebar-unread-transition-duration) ease-in-out,
+    transform var(--sidebar-unread-transition-duration) ease-in-out;
   opacity: 0;
-  fill: var(--sidebar-unread-color);
+  color: var(--sidebar-unread-color);
 }

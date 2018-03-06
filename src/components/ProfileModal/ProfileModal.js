@@ -215,6 +215,7 @@ class ProfileModal extends PureComponent<Props, State> {
               onClick={this.handleGoToProfile}
               className={styles.back}
               id="profile_modal_back_button"
+              size={28}
             />
             <Text id="ProfileModal.title_avatar" />
             <ModalClose pending={this.isPending()} onClick={this.props.onClose} id="profile_modal_close_button" />

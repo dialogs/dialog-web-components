@@ -16,7 +16,7 @@
   --sidebar-search-item-message-z-index: 10;
   --sidebar-search-item-message-content-color: #000;
   --sidebar-search-item-message-content-font-size: 14px;
-  --sidebar-search-item-message-collapser-color: var(--color-primary)
+  --sidebar-search-item-message-collapser-color: var(--color-primary);
 }
 
 /* Reset */
@@ -74,7 +74,11 @@
 
     &:before {
       display: block;
-      background-image: linear-gradient(0deg, color(var(--sidebar-search-item-message-background) alpha(0%)) 0%, color(var(--sidebar-search-item-message-background) alpha(100%)) 100%);
+      background-image: linear-gradient(
+        0deg,
+        color(var(--sidebar-search-item-message-background) alpha(0%)) 0%,
+        color(var(--sidebar-search-item-message-background) alpha(100%)) 100%
+      );
     }
   }
 
@@ -85,7 +89,11 @@
 
     &:before {
       display: block;
-      background-image: linear-gradient(180deg, color(var(--sidebar-search-item-message-background) alpha(0%)) 0%, color(var(--sidebar-search-item-message-background) alpha(100%)) 100%);
+      background-image: linear-gradient(
+        180deg,
+        color(var(--sidebar-search-item-message-background) alpha(0%)) 0%,
+        color(var(--sidebar-search-item-message-background) alpha(100%)) 100%
+      );
     }
   }
 }
@@ -105,7 +113,7 @@
 .header {
   position: relative;
   flex: 0 0 auto;
-  margin-bottom: 2px;
+  margin-bottom: 4px;
   height: 20px;
   display: flex;
   align-items: center;
@@ -137,7 +145,7 @@
 }
 
 .collapser {
-  fill: var(--sidebar-search-item-message-collapser-color);
+  color: var(--sidebar-search-item-message-collapser-color);
   display: block;
   position: absolute;
   right: -4px;

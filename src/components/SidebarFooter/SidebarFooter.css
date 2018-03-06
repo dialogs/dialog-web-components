@@ -35,14 +35,14 @@
 
   &:hover {
     & .icon {
-      fill: var(--sidebar-footer-button-color-hover);
+      color: var(--sidebar-footer-button-color-hover);
     }
   }
 }
 
 .active {
   & .icon {
-    fill: var(--sidebar-footer-button-color-active) !important;
+    color: var(--sidebar-footer-button-color-active) !important;
   }
 
   &:hover {
@@ -53,12 +53,7 @@
 }
 
 .icon {
-  flex: 0 0 auto;
-  height: var(--sidebar-footer-button-icon-size);
-  width: var(--sidebar-footer-button-icon-size);
-  font-size: var(--sidebar-footer-button-icon-size);
-  line-height: var(--sidebar-footer-button-icon-size);
-  fill: var(--sidebar-footer-button-color);
+  color: var(--sidebar-footer-button-color);
   transition: var(--default-transition-duration) ease;
 }
 

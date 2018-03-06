@@ -125,6 +125,7 @@ class EditGroupModal extends PureComponent<Props, State> {
               onClick={this.handleGoToInfo}
               className={styles.back}
               id="edit_group_back_button"
+              size={28}
             />
             <Text id="EditGroupModal.title.avatar" />
             <ModalClose pending={this.isPending()} onClick={this.props.onClose} id="edit_group_close_button" />
