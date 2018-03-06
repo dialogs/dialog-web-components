@@ -12,8 +12,6 @@
 /* Styles */
 .container {
   display: inline-flex;
-  width: var(--toolbar-call-button-size);
-  height: var(--toolbar-call-button-size);
   cursor: pointer;
   border-radius: 50%;
   justify-content: center;
@@ -39,8 +37,6 @@
 }
 
 .icon {
-  width: var(--toolbar-call-button-size);
-  height: var(--toolbar-call-button-size);
 }
 
 .disabled {

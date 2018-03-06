@@ -69,8 +69,6 @@
   align-content: center;
   align-items: center;
   justify-content: center;
-  height: var(--sidebar-footer-button-icon-size);
-  width: var(--sidebar-footer-button-icon-size);
   position: relative;
 }
 
