@@ -6,8 +6,13 @@ initialState = {
 };
 
 const onChange = (avatar) => {
-  console.debug(avatar);
+  setState({ avatar });
 };
 
-<AvatarSelector {...state} onChange={onChange} onRemove={() => setState({ avatar: null })} />
+<AvatarSelector
+  {...state}
+  onChange={onChange}
+  onRemove={() => setState({ avatar: null })}
+  size={140}
+/>
 ```
