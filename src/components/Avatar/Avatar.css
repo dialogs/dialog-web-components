@@ -10,7 +10,7 @@
 }
 
 .withImage {
-  display: block;
+  display: inline-block;
   line-height: 0;
   cursor: inherit;
 }
