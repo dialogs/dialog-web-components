@@ -118,5 +118,32 @@ module.exports = [
       fileUrl: 'https://www.w3schools.com/html/mov_bbb.mp4',
       isUploading: false
     }
+  },
+  {
+    sender: senders[1],
+    rid: Math.random(),
+    date: '12:21',
+    fullDate: new Date(),
+    state: 'read',
+    content: {
+      type: 'contact',
+      photo64: null,
+      phones: ['+1 234 567 89 00', '+1 234 567 89 11'],
+      emails: ['cap@america.com', 'cap1@america.com'],
+    }
+  },
+  {
+    sender: senders[0],
+    rid: Math.random(),
+    date: '11:1',
+    fullDate: new Date(),
+    state: 'read',
+    content: {
+      type: 'location',
+      latitude: '59.96689050458371',
+      longitude: '30.389822674915195',
+      place: '',
+      street: ''
+    }
   }
 ];
