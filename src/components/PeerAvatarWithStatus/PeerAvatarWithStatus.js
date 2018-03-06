@@ -143,15 +143,14 @@ class PeerAvatarWithStatus extends PureComponent<Props, void> {
     const size = this.getAvatarSize();
 
     return (
-      <svg
-        viewBox="0 0 100 100" width={size} height={size} className={className}
-        onClick={this.props.onClick}
-      >
-        <defs>{this.renderDefs()}</defs>
-        {this.renderMask()}
-        {this.renderText()}
-        {this.renderStatus()}
-      </svg>
+      <div style={{ width: size, height: size }} className={className} onClick={this.props.onClick}>
+        <svg viewBox="0 0 100 100" width={size} height={size}>
+          <defs>{this.renderDefs()}</defs>
+          {this.renderMask()}
+          {this.renderText()}
+          {this.renderStatus()}
+        </svg>
+      </div>
     );
   }
 }

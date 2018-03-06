@@ -4,21 +4,18 @@
 
 @import '../../styles/variables.css';
 
-.image,
-.placeholder {
+.withImage,
+.withPlaceholder {
   all: initial;
 }
 
-.image {
-  display: inline-block;
-  user-select: none;
-  pointer-events: none;
-  border-radius: 100%;
-  line-height: 1px;
-  box-shadow: 0 0 1px color(#000 alpha(12%));
+.withImage {
+  display: block;
+  line-height: 0;
+  cursor: inherit;
 }
 
-.placeholder {
+.withPlaceholder {
   display: inline-flex;
   overflow: hidden;
   text-align: center;
@@ -33,6 +30,13 @@
   align-items: center;
   color: var(--avatar-placeholder-color);
   @apply --no-select;
+}
+
+.image {
+  user-select: none;
+  pointer-events: none;
+  border-radius: 100%;
+  box-shadow: 0 0 1px color(#000 alpha(12%));
 }
 
 .clickable {

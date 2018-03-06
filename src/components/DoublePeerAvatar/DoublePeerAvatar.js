@@ -213,23 +213,19 @@ class DoublePeerAvatar extends PureComponent<Props, void> {
     const size = this.getAvatarSize();
 
     return (
-      <svg
-        viewBox="0 0 109 109"
-        width={size}
-        height={size}
-        className={className}
-        onClick={this.props.onClick}
-      >
-        <defs>
-          {this.renderDefsBig()}
-          {this.renderClipMaskBig()}
-          {this.renderDefsSmall()}
-        </defs>
-        {this.renderBigAvatar()}
-        {this.renderSmallAvatar()}
-        {this.renderPeerBigText()}
-        {this.renderPeerSmallText()}
-      </svg>
+      <div style={{ width: size, height: size }} className={className} onClick={this.props.onClick}>
+        <svg viewBox="0 0 109 109" width={size} height={size}>
+          <defs>
+            {this.renderDefsBig()}
+            {this.renderClipMaskBig()}
+            {this.renderDefsSmall()}
+          </defs>
+          {this.renderBigAvatar()}
+          {this.renderSmallAvatar()}
+          {this.renderPeerBigText()}
+          {this.renderPeerSmallText()}
+        </svg>
+      </div>
     );
   }
 }
