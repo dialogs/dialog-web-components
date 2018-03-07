@@ -64,9 +64,13 @@ class ActivityMediaHeader extends PureComponent<Props> {
     }
 
     return (
-      <div onClick={this.props.onBack} className={styles.iconBackWrapper}>
-        <Icon className={styles.icon} glyph="arrow_back" id="activity_media_header_back_button" />
-      </div>
+      <Icon
+        onClick={this.props.onBack}
+        className={styles.iconBack}
+        glyph="arrow_back"
+        id="activity_media_header_back_button"
+        size={24}
+      />
     );
   }
 
@@ -76,9 +80,13 @@ class ActivityMediaHeader extends PureComponent<Props> {
     }
 
     return (
-      <div onClick={this.props.onClose} className={styles.iconCloseWrapper}>
-        <Icon className={styles.icon} glyph="close" id="activity_media_header_close_button" />
-      </div>
+      <Icon
+        onClick={this.props.onClose}
+        className={styles.iconClose}
+        glyph="close"
+        id="activity_media_header_close_button"
+        size={24}
+      />
     );
   }
 

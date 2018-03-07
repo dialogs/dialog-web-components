@@ -22,9 +22,13 @@ class ActivityHeader extends PureComponent<Props> {
     }
 
     return (
-      <div onClick={this.props.onBack} className={styles.iconBackWrapper}>
-        <Icon id="activity_header_back_button" className={styles.icon} glyph="arrow_back" size={26} />
-      </div>
+      <Icon
+        onClick={this.props.onBack}
+        id="activity_header_back_button"
+        className={styles.iconBack}
+        glyph="arrow_back"
+        size={24}
+      />
     );
   }
 
@@ -34,9 +38,13 @@ class ActivityHeader extends PureComponent<Props> {
     }
 
     return (
-      <div onClick={this.props.onClose} className={styles.iconCloseWrapper}>
-        <Icon id="activity_header_close_button" className={styles.icon} glyph="close" size={26} />
-      </div>
+      <Icon
+        onClick={this.props.onClose}
+        id="activity_header_close_button"
+        className={styles.iconClose}
+        glyph="close"
+        size={24}
+      />
     );
   }
 

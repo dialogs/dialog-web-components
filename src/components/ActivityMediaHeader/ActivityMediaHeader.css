@@ -9,8 +9,6 @@
   --activity-media-header-font-family: var(--default-font-family);
   --activity-media-header-transition-duration: var(--default-transition-duration);
   --activity-media-header-font-size: var(--default-font-size-large);
-  --activity-media-header-icon-size: 26px;
-  --activity-media-header-icon-padding: 2px;
   --activity-media-header-icon-color: color(#000 alpha(40%));
   --activity-media-header-icon-color-hover: color(#000 alpha(60%));
 }
@@ -38,40 +36,30 @@
 }
 
 .icon {
-  width: var(--activity-media-header-icon-size);
-  height: var(--activity-media-header-icon-size);
+  transform: translateY(-50%);
   transition: color var(--activity-media-header-transition-duration) linear;
   color: var(--activity-media-header-icon-color);
-}
-
-.iconWrapper {
   cursor: pointer;
   border-radius: 100px;
   line-height: 0;
   display: block;
   position: absolute;
   box-sizing: border-box;
-  padding: var(--activity-media-header-icon-padding);
-  width: calc(var(--activity-media-header-icon-size) + (var(--activity-media-header-icon-padding) * 2));
-  height: calc(var(--activity-media-header-icon-size) + (var(--activity-media-header-icon-padding) * 2));
-  background-color: color(#fff alpha(50%));
-  top: 15px;
+  top: 50%;
 
   &:hover {
-    & .icon {
-      color: var(--activity-media-header-icon-color-hover);
-    }
+    color: var(--activity-media-header-icon-color-hover);
   }
 }
 
-.iconBackWrapper {
-  composes: iconWrapper;
-  left: 18px;
+.iconBack {
+  composes: icon;
+  left: 20px;
 }
 
-.iconCloseWrapper {
-  composes: iconWrapper;
-  right: 18px;
+.iconClose {
+  composes: icon;
+  right: 20px;
 }
 
 .current {

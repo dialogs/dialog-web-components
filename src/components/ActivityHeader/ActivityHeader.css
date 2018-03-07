@@ -9,8 +9,6 @@
   --activity-header-font-family: var(--default-font-family);
   --activity-header-transition-duration: var(--default-transition-duration);
   --activity-header-font-size: var(--default-font-size-large);
-  --activity-header-icon-size: 26px;
-  --activity-header-icon-padding: 2px;
   --activity-header-icon-color: color(#000 alpha(40%));
   --activity-header-icon-color-hover: color(#000 alpha(60%));
   --activity-header-z-index: var(--z-index-chat);
@@ -40,38 +38,28 @@
 }
 
 .icon {
-  width: var(--activity-header-icon-size);
-  height: var(--activity-header-icon-size);
+  transform: translateY(-50%);
   transition: color var(--activity-header-transition-duration) linear;
   color: var(--activity-header-icon-color);
-}
-
-.iconWrapper {
   cursor: pointer;
   border-radius: 100px;
   line-height: 0;
   display: block;
   position: absolute;
   box-sizing: border-box;
-  padding: var(--activity-header-icon-padding);
-  width: calc(var(--activity-header-icon-size) + (var(--activity-header-icon-padding) * 2));
-  height: calc(var(--activity-header-icon-size) + (var(--activity-header-icon-padding) * 2));
-  background-color: color(#fff alpha(50%));
-  top: 15px;
+  top: 50%;
 
   &:hover {
-    & .icon {
-      color: var(--activity-header-icon-color-hover);
-    }
+    color: var(--activity-header-icon-color-hover);
   }
 }
 
-.iconBackWrapper {
-  composes: iconWrapper;
-  left: 18px;
+.iconBack {
+  composes: icon;
+  left: 20px;
 }
 
-.iconCloseWrapper {
-  composes: iconWrapper;
-  right: 18px;
+.iconClose {
+  composes: icon;
+  right: 20px;
 }
