@@ -49,10 +49,11 @@
 .arrow {
   flex: 0 0 auto;
   cursor: inherit;
-  fill: var(--activity-members-arrow-color) !important;
+  color: var(--activity-members-arrow-color);
 }
 
-.members {}
+.members {
+}
 
 .listItem {
   position: relative;
@@ -75,7 +76,7 @@
     position: absolute;
     top: 0;
     right: 0;
-    left: 42px;
+    left: 38px;
     height: 1px;
     content: '';
     background-color: var(--activity-members-border-color);
@@ -95,7 +96,6 @@
   & .title,
   & .addMemberIcon {
     cursor: pointer;
-    fill: var(--color-primary);
     color: var(--color-primary);
   }
 
@@ -153,7 +153,7 @@
 }
 
 .kickMemberError {
-  fill: var(--color-danger);
+  color: var(--color-danger);
 }
 
 .wrapper {

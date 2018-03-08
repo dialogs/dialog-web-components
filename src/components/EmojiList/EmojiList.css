@@ -163,24 +163,24 @@
   cursor: pointer;
   transition-timing-function: ease-in-out;
   transition-duration: var(--default-transition-duration);
-  transition-property: color, fill, stroke;
-  fill: var(--emoji-list-category-icon-color);
+  transition-property: color, stroke;
+  color: var(--emoji-list-category-icon-color);
 
   &:hover {
-    fill: var(--emoji-list-category-icon-hover-color);
+    color: var(--emoji-list-category-icon-hover-color);
   }
 
   &.active {
-    fill: var(--emoji-list-category-icon-active-color);
+    color: var(--emoji-list-category-icon-active-color);
 
     &:hover {
-      fill: var(--emoji-list-category-icon-active-hover-color);
+      color: var(--emoji-list-category-icon-active-hover-color);
     }
   }
 }
 
 .disabled {
-  fill: var(--emoji-list-category-icon-color) !important;
+  color: var(--emoji-list-category-icon-color) !important;
   cursor: default !important;
   opacity: 0.5 !important;
 }

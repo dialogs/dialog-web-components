@@ -26,7 +26,7 @@ class ActivityInvite extends PureComponent<Props> {
     }
 
     return (
-      <div>
+      <div className={styles.revokeWrapper}>
         <hr className={styles.hr} />
         <Button
           theme="danger"

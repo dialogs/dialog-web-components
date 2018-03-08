@@ -4,7 +4,6 @@
 
 @import '../../styles/variables.css';
 
-
 .container {
   all: initial;
 }
@@ -53,7 +52,7 @@
     box-shadow: inset 0 0 0 1px color(#000 alpha(20%)), 0 1px 2px 0 color(#000 alpha(10%)) !important;
 
     & .icon {
-      fill: var(--icon-button-default-color) !important;
+      color: var(--icon-button-default-color) !important;
     }
   }
 
@@ -62,14 +61,14 @@
     box-shadow: inset 0 0 0 var(--icon-button-flat-border-width) var(--icon-button-flat-color) !important;
 
     & .icon {
-      fill: var(--icon-button-flat-color) !important;
+      color: var(--icon-button-flat-color) !important;
     }
   }
 }
 
 .active {
   & .icon {
-    fill: var(--icon-button-hover-color) !important;
+    color: var(--icon-button-hover-color) !important;
   }
 }
 
@@ -79,7 +78,7 @@
   box-shadow: inset 0 0 0 1px color(#000 alpha(20%)), 0 1px 2px 0 color(#000 alpha(10%));
 
   & .icon {
-    fill: var(--icon-button-default-color);
+    color: var(--icon-button-default-color);
   }
 
   &:hover,
@@ -87,7 +86,7 @@
     box-shadow: inset 0 0 0 1px color(#000 alpha(30%)), 0 2px 4px 0 color(#000 alpha(25%));
 
     & .icon {
-      fill: var(--icon-button-hover-color);
+      color: var(--icon-button-hover-color);
     }
   }
 
@@ -95,23 +94,28 @@
     box-shadow: inset 0 0 0 1px color(#000 alpha(30%)), 0 1px 1px 0 color(#000 alpha(25%));
 
     & .icon {
-      fill: var(--icon-button-hover-color);
+      color: var(--icon-button-hover-color);
     }
   }
 }
 
-
 /* Sizes */
+.small {
+  &.defaultStyle {
+    width: var(--icon-button-small-size);
+    height: var(--icon-button-small-size);
+  }
+
+  &.flat {
+    width: var(--icon-button-flat-small-size);
+    height: var(--icon-button-flat-small-size);
+  }
+}
 
 .normal {
   &.defaultStyle {
     width: var(--icon-button-default-size);
     height: var(--icon-button-default-size);
-
-    & .icon {
-      width: var(--icon-button-glyph-size);
-      font-size: var(--icon-button-glyph-size);
-    }
   }
 
   &.flat {
@@ -124,25 +128,11 @@
   &.defaultStyle {
     width: var(--icon-button-large-size);
     height: var(--icon-button-large-size);
-
-    & .icon {
-      width: var(--icon-button-glyph-size-large);
-      height: var(--icon-button-glyph-size-large);
-      font-size: var(--icon-button-glyph-size-large);
-      line-height: 1;
-    }
   }
 
   &.flat {
     width: var(--icon-button-flat-large-size);
     height: var(--icon-button-flat-large-size);
-
-    & .icon {
-      width: calc(var(--icon-button-glyph-size-large) * 1.2);
-      height: calc(var(--icon-button-glyph-size-large) * 1.2);
-      font-size: calc(var(--icon-button-glyph-size-large) * 1.2);
-      line-height: 1;
-    }
   }
 }
 
@@ -153,7 +143,7 @@
     box-shadow: inset 0 0 0 var(--icon-button-flat-border-width) var(--icon-button-flat-color);
 
     & .icon {
-      fill: var(--icon-button-flat-color);
+      color: var(--icon-button-flat-color);
     }
 
     &:hover,
@@ -162,7 +152,7 @@
       box-shadow: inset 0 0 0 var(--icon-button-flat-border-width) var(--icon-button-flat-hover-background-color);
 
       & .icon {
-        fill: var(--icon-button-flat-color-hover);
+        color: var(--icon-button-flat-color-hover);
       }
     }
 
@@ -175,7 +165,7 @@
     background-color: var(--color-primary);
 
     & .icon {
-      fill: var(--icon-button-flat-color-hover);
+      color: var(--icon-button-flat-color-hover);
     }
 
     &:hover,
@@ -192,7 +182,7 @@
     background-color: var(--color-success);
 
     & .icon {
-      fill: var(--icon-button-flat-color-hover);
+      color: var(--icon-button-flat-color-hover);
     }
 
     &:hover,
@@ -209,7 +199,7 @@
     background-color: var(--color-danger);
 
     & .icon {
-      fill: var(--icon-button-flat-color-hover);
+      color: var(--icon-button-flat-color-hover);
     }
 
     &:hover,
@@ -226,7 +216,7 @@
     background-color: var(--color-info);
 
     & .icon {
-      fill: var(--icon-button-flat-color-hover);
+      color: var(--icon-button-flat-color-hover);
     }
 
     &:hover,
@@ -243,7 +233,7 @@
     background-color: var(--color-warning);
 
     & .icon {
-      fill: var(--icon-button-flat-color-hover);
+      color: var(--icon-button-flat-color-hover);
     }
 
     &:hover,

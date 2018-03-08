@@ -36,17 +36,19 @@ class ActivityIntegration extends PureComponent<Props> {
         </div>
         <CopyOnly block />
         <CopyButton id="activity_integration_copy_button" wide disabled={this.props.pending} text={this.props.link} />
-        <hr className={styles.hr} />
-        <Button
-          id="activity_integration_revoke_button"
-          theme="danger"
-          view="link"
-          onClick={this.props.onRevoke}
-          size="small"
-          className={styles.revoke}
-        >
-          <Text id="ActivityIntegration.revoke" />
-        </Button>
+        <div className={styles.revokeWrapper}>
+          <hr className={styles.hr} />
+          <Button
+            id="activity_integration_revoke_button"
+            theme="danger"
+            view="link"
+            onClick={this.props.onRevoke}
+            size="small"
+            className={styles.revoke}
+          >
+            <Text id="ActivityIntegration.revoke" />
+          </Button>
+        </div>
       </div>
     );
   }

@@ -22,9 +22,7 @@ class SidebarHeaderMenu extends PureComponent<Props> {
       return null;
     }
 
-    return (
-      <div className={styles.logo}>{logo}</div>
-    );
+    return <div className={styles.logo}>{logo}</div>;
   }
 
   renderTrigger = (handlers: Object, isActive: boolean) => {
@@ -34,7 +32,7 @@ class SidebarHeaderMenu extends PureComponent<Props> {
       <a className={styles.menu} {...handlers} id="sidebar_header_menu">
         {this.renderLogo()}
         <div className={styles.appName}>{appName}</div>
-        <Icon glyph={isActive ? 'arrow_drop_up' : 'arrow_drop_down'} className={styles.arrow} size={30} />
+        <Icon glyph={isActive ? 'arrow_drop_up' : 'arrow_drop_down'} className={styles.arrow} size={28} />
       </a>
     );
   };

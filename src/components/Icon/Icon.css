@@ -21,16 +21,12 @@
   cursor: inherit;
   border-radius: 50%;
   background-color: var(--icon-default-color);
-
-  & .icon {
-    fill: var(--icon-inverted-color);
-  }
+  color: var(--icon-inverted-color) !important;
 }
 
 .icon {
-  display: inline-block;
-  text-align: center;
-  vertical-align: middle;
+  display: block;
+  fill: currentColor;
 }
 
 .clickable {
@@ -44,7 +40,7 @@
 
 /* Themes */
 .default {
-  fill: var(--icon-default-color);
+  color: var(--icon-default-color);
 
   &.inverted {
     background-color: var(--icon-default-color);
@@ -52,7 +48,7 @@
 }
 
 .primary {
-  fill: var(--color-primary);
+  color: var(--color-primary);
 
   &.inverted {
     background-color: var(--color-primary);
@@ -60,7 +56,7 @@
 }
 
 .success {
-  fill: var(--color-success);
+  color: var(--color-success);
 
   &.inverted {
     background-color: var(--color-success);
@@ -68,7 +64,7 @@
 }
 
 .danger {
-  fill: var(--color-danger);
+  color: var(--color-danger);
 
   &.inverted {
     background-color: var(--color-danger);
@@ -76,7 +72,7 @@
 }
 
 .info {
-  fill: var(--color-info);
+  color: var(--color-info);
 
   &.inverted {
     background-color: var(--color-info);
@@ -84,7 +80,7 @@
 }
 
 .warning {
-  fill: var(--color-warning);
+  color: var(--color-warning);
 
   &.inverted {
     background-color: var(--color-warning);

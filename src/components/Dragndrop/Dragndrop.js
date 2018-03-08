@@ -19,7 +19,7 @@ class Dragndrop extends PureComponent<Props> {
 
     return (
       <section className={className}>
-        <Icon glyph="arrow_up" className={styles.arrow} />
+        <Icon glyph="arrow_up" className={styles.arrow} size={80} />
         <Text id="Dragndrop.title" className={styles.title} />
         <Text id="Dragndrop.subtitle" className={styles.subtitle} />
       </section>

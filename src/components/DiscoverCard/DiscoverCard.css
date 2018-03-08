@@ -79,7 +79,7 @@
   display: inline-block;
   margin-right: 4px;
   margin-top: -4px;
-  fill: currentColor;
+  color: currentColor;
 }
 
 .shortname {
@@ -119,7 +119,7 @@
 
 .membersIcon {
   margin-right: 4px;
-  fill: currentColor;
+  color: currentColor;
 }
 
 .members {

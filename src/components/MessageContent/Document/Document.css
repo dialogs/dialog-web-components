@@ -9,7 +9,8 @@
   display: flex;
   flex-direction: row;
   box-sizing: border-box;
-  height: var(--document-height);
+  height: var(--document-height) !important;
+  max-height: var(--document-height) !important;
   padding: var(--document-padding);
   cursor: pointer;
   user-select: none;
@@ -37,24 +38,26 @@
   letter-spacing: -0.4px;
   font-size: var(--default-font-size);
   font-weight: 500;
-  flex: 1 1 50%;
+  flex: 1 1 23px;
   color: #000;
   display: inline-flex;
   align-items: center;
 }
 
 .sizeBlock {
-  flex: 1 1 50%;
+  flex: 1 1 23px;
   display: inline-flex;
   align-items: center;
 }
 
 .size {
+  line-height: 23px;
   font-size: var(--default-font-size-small);
   color: var(--default-font-color-light);
 }
 
 .text {
+  line-height: 23px;
   display: inline-block;
   max-width: 100%;
   @apply --text-overflow-ellipsis;

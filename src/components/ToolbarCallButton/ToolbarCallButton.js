@@ -15,21 +15,25 @@ export type Props = {
 };
 
 function ToolbarCallButton(props: Props) {
-  const className = classNames(styles.container, {
-    [styles.disabled]: props.disabled
-  }, props.className);
+  const className = classNames(
+    styles.container,
+    {
+      [styles.disabled]: props.disabled
+    },
+    props.className
+  );
 
   if (props.disabled) {
     return (
       <div className={className} id="toolbar_call_button">
-        <Icon glyph="phone_outline" className={styles.icon} />
+        <Icon glyph="phone_outline" className={styles.icon} size={28} />
       </div>
     );
   }
 
   return (
     <div className={className} id="toolbar_call_button" onClick={props.onClick}>
-      <Icon glyph="phone_outline" className={styles.icon} />
+      <Icon glyph="phone_outline" className={styles.icon} size={28} />
     </div>
   );
 }

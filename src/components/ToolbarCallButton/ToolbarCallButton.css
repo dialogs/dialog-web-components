@@ -12,8 +12,6 @@
 /* Styles */
 .container {
   display: inline-flex;
-  width: var(--toolbar-call-button-size);
-  height: var(--toolbar-call-button-size);
   cursor: pointer;
   border-radius: 50%;
   justify-content: center;
@@ -22,25 +20,23 @@
   align-items: center;
 
   & .icon {
-    fill: var(--toolbar-call-button-color);
+    color: var(--toolbar-call-button-color);
   }
 
   &:hover {
     & .icon {
-      fill: var(--toolbar-call-button-color-hover);
+      color: var(--toolbar-call-button-color-hover);
     }
   }
 
   &:active {
     & .icon {
-      fill: var(--toolbar-call-button-color-active);
+      color: var(--toolbar-call-button-color-active);
     }
   }
 }
 
 .icon {
-  width: var(--toolbar-call-button-size);
-  height: var(--toolbar-call-button-size);
 }
 
 .disabled {
@@ -48,6 +44,6 @@
   opacity: 0.15 !important;
 
   & .icon {
-    fill: var(--toolbar-call-button-color) !important;
+    color: var(--toolbar-call-button-color) !important;
   }
 }

@@ -6,8 +6,8 @@
 
 :root {
   --activity-search-item-message-font-family: var(--default-font-family);
-  --activity-search-item-message-highlighted-background: #F5F5F5;
-  --activity-search-item-message-highlighted-title-color: #2174D3;
+  --activity-search-item-message-highlighted-background: #f5f5f5;
+  --activity-search-item-message-highlighted-title-color: #2174d3;
   --activity-search-item-message-title-color: #000;
   --activity-search-item-message-title-font-size: var(--default-font-size);
   --activity-search-item-message-time-color: #868686;
@@ -113,7 +113,7 @@
 }
 
 .collapser {
-  fill: var(--color-primary);
+  color: var(--color-primary);
   display: block;
   position: absolute;
   right: 0;

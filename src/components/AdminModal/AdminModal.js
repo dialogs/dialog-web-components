@@ -163,7 +163,7 @@ class AdminModal extends PureComponent<Props, State> {
     return (
       <Modal className={className} onClose={this.props.onClose}>
         <ModalHeader withBorder>
-          {member ? <Icon glyph="arrow_back" onClick={this.handleCancel} className={styles.back} /> : null}
+          {member ? <Icon glyph="arrow_back" onClick={this.handleCancel} className={styles.back} size={28} /> : null}
           <Text id="AdminModal.title" />
           <ModalClose pending={action.pending} onClick={this.props.onClose} />
         </ModalHeader>

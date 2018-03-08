@@ -71,11 +71,11 @@
   height: 22px;
   top: 8px;
   right: 8px;
-  fill: color(var(--permission-banner-text-color) alpha(50%));
-  transition: fill var(--default-transition-duration) ease;
+  color: color(var(--permission-banner-text-color) alpha(70%));
+  transition: color var(--default-transition-duration) ease;
 
   &:hover {
-    fill: color(var(--permission-banner-text-color) alpha(90%));
+    color: color(var(--permission-banner-text-color) alpha(95%));
   }
 }
 

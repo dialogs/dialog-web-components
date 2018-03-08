@@ -43,7 +43,8 @@
 }
 
 .icon {
-  fill: var(--color-primary);
+  color: var(--color-primary);
+  fill: currentColor;
 }
 
 .border {
@@ -70,7 +71,7 @@
 .error {
   cursor: default;
   & .icon {
-    fill: var(--color-danger);
+    color: var(--color-danger);
   }
 
   & .border {

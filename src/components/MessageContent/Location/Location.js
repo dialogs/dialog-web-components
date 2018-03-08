@@ -3,7 +3,7 @@
  * @flow
  */
 
-import * as React from 'react';
+import React, { PureComponent } from 'react';
 import Map from '../../Map/Map';
 import styles from './Location.css';
 
@@ -13,17 +13,23 @@ export type Props = {|
   maxWidth: number
 |};
 
-function Location(props: Props) {
-  return (
-    <Map
-      className={styles.container}
-      apiKey="AIzaSyCV9I5_GAlbDMcVnD87TcONL2YaPv_d-LA"
-      width={props.maxWidth}
-      height={props.maxWidth / 2}
-      latitude={props.latitude}
-      longitude={props.longitude}
-    />
-  );
+class Location extends PureComponent<Props> {
+  static defaultProps = {
+    maxWidth: 400
+  };
+
+  render() {
+    return (
+      <Map
+        className={styles.container}
+        apiKey="AIzaSyCV9I5_GAlbDMcVnD87TcONL2YaPv_d-LA"
+        width={this.props.maxWidth}
+        height={this.props.maxWidth / 2}
+        latitude={this.props.latitude}
+        longitude={this.props.longitude}
+      />
+    );
+  }
 }
 
 export default Location;

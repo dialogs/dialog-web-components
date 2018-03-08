@@ -35,10 +35,10 @@
   height: var(--modal-close-size);
   margin-right: 16px;
   transition: color var(--modal-close-transition-duration) linear;
-  fill: var(--modal-close-color);
+  color: var(--modal-close-color);
 
   &:hover {
-    fill: var(--modal-close-color-hover);
+    color: var(--modal-close-color-hover);
   }
 }
 

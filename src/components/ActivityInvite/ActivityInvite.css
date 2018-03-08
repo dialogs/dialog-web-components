@@ -8,7 +8,7 @@
   --activity-invite-font-family: var(--default-font-family);
   --activity-invite-font-size: var(--default-font-size);
   --activity-invite-border-color: #e5e5e5;
-  --activity-invite-link-font-size: 24px;
+  --activity-invite-link-font-size: 20px;
   --activity-invite-link-color: color(#000 alpha(90%));
 }
 
@@ -22,7 +22,7 @@
 .container {
   font-family: var(--activity-invite-font-family);
   display: block;
-  padding: 0 calc(var(--default-padding-large) * 1.5) var(--default-padding-large);
+  padding: 0 calc(var(--default-padding-small) * 2) var(--default-padding-large);
 }
 
 .hr {
@@ -64,11 +64,15 @@
   color: var(--activity-invite-link-color);
 }
 
+.revokeWrapper {
+  width: 100%;
+  text-align: center;
+}
+
 .revoke {
   cursor: pointer;
   user-select: none;
-  padding-top: 0;
-  padding-bottom: 0;
+  padding: 0;
 }
 
 .pending {

@@ -81,7 +81,7 @@
   top: 7px;
   left: calc(var(--sidebar-search-padding));
   transition: opacity calc(var(--default-transition-duration)) ease;
-  fill: var(--sidebar-search-color);
+  color: var(--sidebar-search-color);
 }
 
 .spinner {

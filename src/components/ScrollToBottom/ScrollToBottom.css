@@ -45,7 +45,7 @@
 }
 
 .icon {
-  fill: var(--scroll-to-bottom-arrow-color);
+  color: var(--scroll-to-bottom-arrow-color);
 }
 
 .counter {

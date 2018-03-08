@@ -1,5 +1,4 @@
-Text
-----
+### Text
 
 ```jsx
 const content = {
@@ -20,8 +19,7 @@ const content = {
 <MessageContent content={content} />
 ```
 
-Service
--------
+### Service
 
 ```jsx
 const content = {
@@ -32,8 +30,7 @@ const content = {
 <MessageContent content={content} />
 ```
 
-Deleted
--------
+### Deleted
 
 ```jsx
 const content = {
@@ -43,8 +40,7 @@ const content = {
 <MessageContent content={content} />
 ```
 
-Photo
------
+### Photo
 
 ```jsx
 const messages = require('../../fixtures/messages');
@@ -52,8 +48,7 @@ const messages = require('../../fixtures/messages');
 <MessageContent content={messages[2].content} />
 ```
 
-Document
---------
+### Document
 
 ```jsx
 const messages = require('../../fixtures/messages');
@@ -64,14 +59,12 @@ const toggleUpload = () => setState({ isUploading: !state.isUploading });
 
 <div>
   <Button onClick={toggleUpload} theme="primary" size="small">Toggle upload</Button>
-  <br />
-  <br />
+  <hr />
   <MessageContent content={state} />
 </div>
 ```
 
-Voice
------
+### Voice
 
 ```jsx
 const messages = require('../../fixtures/messages');
@@ -82,14 +75,12 @@ const toggleUpload = () => setState({ isUploading: !state.isUploading });
 
 <div>
   <Button size="small" theme="primary" onClick={toggleUpload}>Toggle Upload</Button>
-  <br />
-  <br />
+  <hr />
   <MessageContent content={state} />
 </div>
 ```
 
-Video
------
+### Video
 
 ```jsx
 const messages = require('../../fixtures/messages');
@@ -101,6 +92,23 @@ initialState = messages[5].content;
 ```jsx
 const messages = require('../../fixtures/messages');
 initialState = Object.assign({}, messages[5].content, { fileUrl: null });
+
+<MessageContent content={state} />
+```
+
+### Contact
+```jsx
+const messages = require('../../fixtures/messages');
+initialState = messages[6].content;
+
+<MessageContent content={state} />
+```
+
+### Location
+
+```jsx
+const messages = require('../../fixtures/messages');
+initialState = messages[7].content;
 
 <MessageContent content={state} />
 ```

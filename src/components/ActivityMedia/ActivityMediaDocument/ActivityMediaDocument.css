@@ -34,7 +34,7 @@
 .preview {
   width: var(--activity-media-preview-image-size);
   height: var(--activity-media-preview-image-size);
-  background-color: #FF3939;
+  background-color: #ff3939;
   flex: 0 0 auto;
   overflow: hidden;
   display: flex;
@@ -83,6 +83,6 @@
 }
 
 .arrow {
-  fill: var(--color-primary);
+  color: var(--color-primary);
   margin-right: 4px;
 }

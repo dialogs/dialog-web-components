@@ -49,7 +49,7 @@
   display: inline-block;
   vertical-align: top;
   margin-right: 2px;
-  fill: currentColor;
+  color: currentColor;
 }
 
 .fromButton {
@@ -69,7 +69,7 @@
 .icon {
   display: inline-block;
   margin-right: 4px;
-  fill: var(--message-attachment-from-color);
+  color: var(--message-attachment-from-color);
 }
 
 .name {

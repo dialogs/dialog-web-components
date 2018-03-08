@@ -40,13 +40,13 @@
   &:hover {
     & .avatarChangerIcon {
       opacity: 1;
-      fill: var(--avatar-selector-camera-icon-color-hover);
+      color: var(--avatar-selector-camera-icon-color-hover);
     }
   }
 }
 
 .avatarChangerIcon {
-  fill: var(--avatar-selector-camera-icon-color);
+  color: var(--avatar-selector-camera-icon-color);
 }
 
 .avatarRemove {
@@ -70,5 +70,5 @@
 }
 
 .avatarRemoveIcon {
-  fill: var(--avatar-selector-remove-icon-color);
+  color: var(--avatar-selector-remove-icon-color);
 }

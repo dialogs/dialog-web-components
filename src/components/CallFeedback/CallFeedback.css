@@ -28,11 +28,12 @@
   text-align: center;
   margin-bottom: 1.2rem;
 }
+
 .star {
-  transition: fill 100ms ease;
+  transition: color 100ms ease;
   display: inline-block;
 }
 
 .starActive {
-  fill: var(--color-primary);
+  color: var(--color-primary);
 }

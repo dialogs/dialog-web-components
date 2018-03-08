@@ -29,7 +29,10 @@ function ModalClose(props: Props) {
 
   return (
     <div className={className}>
-      <Icon glyph="close" className={styles.close} onClick={props.onClick} id={props.id} />
+      <Icon
+        glyph="close" className={styles.close} onClick={props.onClick} id={props.id}
+        size={28}
+      />
     </div>
   );
 }

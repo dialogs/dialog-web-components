@@ -34,14 +34,10 @@ class SidebarFooterButton extends PureComponent<Props> {
     const { glyph, pending } = this.props;
 
     if (pending) {
-      return (
-        <Spinner size="normal" />
-      );
+      return <Spinner size="normal" />;
     }
 
-    return (
-      <Icon glyph={glyph} className={styles.icon} />
-    );
+    return <Icon glyph={glyph} className={styles.icon} size={28} />;
   }
 
   renderCounter() {
@@ -54,16 +50,18 @@ class SidebarFooterButton extends PureComponent<Props> {
     const isBig = counter > 99;
     const counterClassName = classNames(styles.counter, isBig ? styles.counterBig : null);
 
-    return (
-      <div className={counterClassName}>{isBig ? '99+' : counter}</div>
-    );
+    return <div className={counterClassName}>{isBig ? '99+' : counter}</div>;
   }
 
   render() {
     const { active, title, id } = this.props;
-    const className = classNames(styles.button, {
-      [styles.active]: active
-    }, this.props.className);
+    const className = classNames(
+      styles.button,
+      {
+        [styles.active]: active
+      },
+      this.props.className
+    );
 
     return (
       <Tooltip text={title} key={id} className={styles.tooltip}>
