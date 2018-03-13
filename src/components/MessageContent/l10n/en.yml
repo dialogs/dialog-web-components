@@ -1,4 +1,8 @@
-voice: Voice Message
+photo: Photo
+document: Document
+voice: Voice message
 voice_short: Voice
-deleted: Deleted Message
+sticker: Sticker
+location: Location
+deleted: Deleted message
 deleted_short: Deleted
