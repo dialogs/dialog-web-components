@@ -265,6 +265,7 @@ class Message extends PureComponent<Props, State> {
           attachment={attachment}
           maxWidth={maxWidth}
           maxHeight={maxHeight}
+          onForwardLightboxOpen={this.props.onForwardLightboxOpen}
           onGoToPeer={this.props.onGoToPeer}
           onGoToMessage={this.props.onGoToMessage}
         />

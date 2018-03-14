@@ -20,10 +20,11 @@ type Props = {
   type: 'forward' | 'reply',
   message: Message,
   short: boolean,
+  maxHeight: number,
+  maxWidth: number,
   onGoToPeer: (peer: Peer) => mixed,
   onGoToMessage: (message: Message) => mixed,
-  maxHeight: number,
-  maxWidth: number
+  onLightboxOpen?: (message: Message) => mixed
 };
 
 class MessageAttachmentItem extends Component<Props> {
@@ -44,6 +45,15 @@ class MessageAttachmentItem extends Component<Props> {
     event.stopPropagation();
 
     this.props.onGoToMessage(this.props.message);
+  };
+
+  handleLightboxOpen = (event: SyntheticMouseEvent<>): void => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    if (this.props.onLightboxOpen) {
+      this.props.onLightboxOpen(this.props.message);
+    }
   };
 
   renderHeader() {
@@ -169,6 +179,7 @@ class MessageAttachmentItem extends Component<Props> {
         rid={rid}
         maxWidth={maxWidth}
         maxHeight={maxHeight}
+        onLightboxOpen={this.handleLightboxOpen}
       />
     );
   }
