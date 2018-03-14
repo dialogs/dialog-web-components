@@ -7,6 +7,7 @@ import type { Peer, Message } from '@dlghq/dialog-types';
 import React, { Component } from 'react';
 import classNames from 'classnames';
 import { hasSelection } from '@dlghq/dialog-utils';
+import { Text } from '@dlghq/react-l10n';
 import TextMessagePreview from '../SidebarRecentItem/MessagePreview/TextMessagePreview';
 import Icon from '../Icon/Icon';
 import PeerInfoTitle from '../PeerInfoTitle/PeerInfoTitle';
@@ -79,38 +80,108 @@ class MessageAttachmentItem extends Component<Props> {
     );
   }
 
-  renderContent() {
-    const { message: { content, rid }, type, maxWidth, maxHeight } = this.props;
-    const messageClassName = classNames(styles.message, {
-      [styles.replyContent]: type === 'reply',
-      [styles.replyDocument]: content.type === 'document'
+  renderReply() {
+    const { message: { content, rid }, maxWidth, maxHeight } = this.props;
+    const className = classNames(styles.message, {
+      [styles.replyContent]: content.type === 'text' || content.type === 'service'
     });
+
+    switch (content.type) {
+      case 'text':
+        return (
+          <div className={className}>
+            <TextMessagePreview content={content} emojiSize={16} decorators={decorators} />
+          </div>
+        );
+
+      case 'voice':
+        return (
+          <div className={className}>
+            <Text id="MessageContent.voice" className={styles.messageType} />
+          </div>
+        );
+
+      case 'video':
+        return (
+          <div className={className}>
+            {content.preview ? (
+              <div className={styles.preview} style={{ backgroundImage: `url(${content.preview})` }} />
+            ) : (
+              <Text id="MessageContent.video" className={styles.messageType} />
+            )}
+          </div>
+        );
+
+      case 'document':
+        return (
+          <div className={className}>
+            <Text id="MessageContent.document" className={styles.messageType} />
+          </div>
+        );
+
+      case 'location':
+        return (
+          <div className={className}>
+            <Text id="MessageContent.location" className={styles.messageType} />
+          </div>
+        );
+
+      case 'contact':
+        return (
+          <div className={className}>
+            <Text id="MessageContent.contact" className={styles.messageType} />
+          </div>
+        );
+
+      case 'photo':
+        return (
+          <div className={className}>
+            {content.preview ? (
+              <div className={styles.preview} style={{ backgroundImage: `url(${content.preview})` }} />
+            ) : (
+              <Text id="MessageContent.photo" className={styles.messageType} />
+            )}
+          </div>
+        );
+
+      default:
+        return (
+          <div className={className}>
+            <MessageContent
+              className={className}
+              content={content}
+              rid={rid}
+              maxWidth={maxWidth}
+              maxHeight={maxHeight}
+            />
+          </div>
+        );
+    }
+  }
+
+  renderForward() {
+    const { message: { content, rid }, maxWidth, maxHeight } = this.props;
+
+    return (
+      <MessageContent
+        className={styles.message}
+        content={content}
+        rid={rid}
+        maxWidth={maxWidth}
+        maxHeight={maxHeight}
+      />
+    );
+  }
+
+  renderContent() {
+    const { type } = this.props;
 
     switch (type) {
       case 'reply':
-        if (content.type === 'text') {
-          return (
-            <TextMessagePreview className={messageClassName} content={content} emojiSize={16} decorators={decorators} />
-          );
-        }
-
-        return (
-          <MessageContent
-            className={messageClassName} content={content} rid={rid} maxWidth={maxWidth}
-            maxHeight={70}
-          />
-        );
+        return this.renderReply();
 
       case 'forward':
-        return (
-          <MessageContent
-            className={messageClassName}
-            content={content}
-            rid={rid}
-            maxWidth={maxWidth}
-            maxHeight={maxHeight}
-          />
-        );
+        return this.renderForward();
 
       default:
         return null;

@@ -8,6 +8,7 @@ import React, { PureComponent } from 'react';
 import { Text } from '@dlghq/react-l10n';
 import classNames from 'classnames';
 import MessageAttachmentItem from './MessageAttachmentItem';
+import PeerInfoTitle from '../PeerInfoTitle/PeerInfoTitle';
 import Button from '../Button/Button';
 import Icon from '../Icon/Icon';
 import styles from './MessageAttachment.css';
@@ -51,16 +52,13 @@ class MessageAttachmentForward extends PureComponent<Props> {
       <div className={styles.from}>
         <Text id="MessageAttachment.from" />
         <Button
-          theme="primary"
-          view="link"
-          onClick={this.handleGoToPeer}
-          size="small"
+          theme="primary" view="link" onClick={this.handleGoToPeer} size="small"
           className={styles.fromButton}
         >
-          {(from.type === 'channel' || from.type === 'group') ? (
-            <Icon glyph={from.type} className={styles.fromIcon} size={20} />
+          {from.type === 'channel' || from.type === 'group' ? (
+            <Icon glyph={from.type} className={styles.fromIcon} size={22} />
           ) : null}
-          {from.title}
+          <PeerInfoTitle title={from.title} emojiSize={16} />
         </Button>
       </div>
     );
@@ -95,9 +93,7 @@ class MessageAttachmentForward extends PureComponent<Props> {
     return (
       <div className={className}>
         {this.renderHeader()}
-        <div className={styles.messages}>
-          {this.renderMessages()}
-        </div>
+        <div className={styles.messages}>{this.renderMessages()}</div>
       </div>
     );
   }
