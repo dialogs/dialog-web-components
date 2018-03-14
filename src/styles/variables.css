@@ -46,9 +46,9 @@
   --z-index-call: calc(var(--z-index-dropdown) - 20);
   --z-index-sidebar: 50;
   --z-index-chat: 20;
-  --z-index-toolbar: calc(var(--z-index-chat) + 1);
+  --z-index-toolbar: calc(var(--z-index-chat) + 5);
   --z-index-sidebar-unread: 20;
-  --z-index-connection-status: calc(var(--z-index-dropdown) - 10);
+  --z-index-connection-status: calc(var(--z-index-toolbar) - 1);
   --z-index-message-actions: 10;
   --z-index-dragndrop: 1000;
   /* Colors */
