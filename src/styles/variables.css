@@ -194,7 +194,7 @@
   --message-small-vertical-padding: 4px;
   --message-small-horizontal-padding: 20px;
   --message-hover-background-color: #f6f6f6;
-  --message-highlight-background-color: color(var(--color-primary) alpha(30%));
+  --message-highlight-background-color: color(var(--color-primary) alpha(15%));
   --message-selected-background-color: var(--color-info);
   --message-username-color: color(#000 alpha(60%));
   --message-timestamp-color: color(#000 alpha(60%));
