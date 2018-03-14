@@ -30,7 +30,8 @@
     "postpublish": "git push --follow-tags",
     "predocs": "styleguidist build",
     "docs": "buildbranch gh-pages styleguide",
-    "coverage": "flow-coverage-report -i 'src/**/*.js' -x 'src/styleguide/**/*.js' -x 'src/utils/compileMessages.js'"
+    "coverage": "flow-coverage-report -i 'src/**/*.js' -x 'src/styleguide/**/*.js' -x 'src/utils/compileMessages.js'",
+    "yaspeller": "yaspeller src/"
   },
   "repository": {
     "type": "git",
