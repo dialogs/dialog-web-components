@@ -17,27 +17,34 @@
 .player {
   display: flex;
   flex: 1 1 auto;
+  @apply --flex-fix;
 }
 
 .playerControls {
   display: flex;
   flex-direction: column;
-  padding-top: 18px;
+  padding-top: 20px;
   flex: 1 1 auto;
+  @apply --flex-fix;
 }
 
 .playerControlsText {
   flex: 1 1 auto;
+  @apply --flex-fix;
 }
 
 .playerTime {
-  display: flex;
+  display: block;
   letter-spacing: -0.3px;
   font-size: 13px;
-  line-height: 20px;
+  line-height: 16px;
+  height: 16px;
+  margin-top: 2px;
+  margin-bottom: 2px;
   flex: 1 1 auto;
   font-family: var(--audio-player-font-family);
   color: color(#000 alpha(60%));
+  @apply --text-overflow-ellipsis;
 }
 
 .seeker {
@@ -79,9 +86,9 @@
 }
 
 .state {
-  flex: 0 0 auto;
+  display: inline-block;
 }
 
 .sender {
-  flex: 0 0 auto;
+  display: inline-block;
 }

@@ -7,8 +7,8 @@
 :root {
   --activity-media-video-title-font-size: var(--default-font-size);
   --activity-media-video-title-color: #000;
-  --activity-media-video-info-font-size: var(--default-font-size-small);
-  --activity-media-video-info-color: #7f7f7f;
+  --activity-media-video-info-font-size: 13px;
+  --activity-media-video-info-color: var(--default-font-color-light);
   --activity-media-video-preview-size: 46px;
 }
 
@@ -54,8 +54,10 @@
 }
 
 .title {
+  display: inline-block;
   font-weight: 500;
-  line-height: 22px;
+  line-height: 26px;
+  height: 26px;
   font-size: var(--activity-media-video-title-font-size);
   letter-spacing: -0.384px;
   color: var(--activity-media-video-title-color);
@@ -64,9 +66,12 @@
 }
 
 .info {
-  display: inline-flex;
+  display: inline-block;
   align-items: center;
-  line-height: 22px;
+  line-height: 16px;
+  height: 16px;
+  margin-top: 2px;
+  margin-bottom: 2px;
   font-size: var(--activity-media-video-info-font-size);
   color: var(--activity-media-video-info-color);
   letter-spacing: -0.336px;

@@ -16,9 +16,15 @@
 /* Styles */
 .container {
   font-family: var(--activity-media-font-family);
+  display: block;
 }
 
 .empty {
   padding: 2rem 30px;
   text-align: center;
+}
+
+.item {
+  display: block;
+  width: 100%;
 }

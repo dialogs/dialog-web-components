@@ -31,13 +31,7 @@ class ActivityMediaDocument extends PureComponent<Props> {
     const { title } = this.props;
 
     if (!title || title === '') {
-      return (
-        <Text
-          id="ActivityMedia.document"
-          className={styles.title}
-          tagName="div"
-        />
-      );
+      return <Text id="ActivityMedia.document" className={styles.title} tagName="div" />;
     }
 
     return <div className={styles.title}>{title}</div>;
@@ -53,7 +47,7 @@ class ActivityMediaDocument extends PureComponent<Props> {
     return (
       <div className={styles.sender}>
         {'\u00A0'}-{'\u00A0'}
-        <PeerInfoTitle title={sender || ''} />
+        <PeerInfoTitle title={sender || ''} emojiSize={16} />
       </div>
     );
   }
