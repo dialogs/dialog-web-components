@@ -2,7 +2,9 @@ photo: Photo
 document: Document
 voice: Voice message
 voice_short: Voice
+video: Video
 sticker: Sticker
 location: Location
 deleted: Deleted message
 deleted_short: Deleted
+contact: Contact

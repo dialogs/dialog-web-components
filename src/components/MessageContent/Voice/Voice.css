@@ -4,6 +4,15 @@
 
 @import '../../../styles/variables.css';
 
+:root {
+  --message-voice-font-family: var(--default-font-family);
+  --message-voice-height: 70px;
+  --message-voice-padding: 12px;
+  --message-voice-border-radius: var(--default-border-radius);
+  --message-voice-background-color: #fff;
+  --message-voice-border-color: color(#000 alpha(15%));
+}
+
 /* Reset */
 .container {
   all: initial;
@@ -12,16 +21,16 @@
 /* Styles */
 .container {
   display: flex;
-  height: var(--voice-height);
+  height: var(--message-voice-height);
   flex-direction: row;
   box-sizing: border-box;
   cursor: default;
   user-select: none;
-  border-radius: var(--voice-border-radius);
-  background-color: var(--voice-background-color);
-  box-shadow: 0 0 0 1px var(--voice-border-color);
-  font-family: var(--voice-font-family);
-  padding: var(--voice-padding);
+  border-radius: var(--message-voice-border-radius);
+  background-color: var(--message-voice-background-color);
+  box-shadow: 0 0 0 1px var(--message-voice-border-color);
+  font-family: var(--message-voice-font-family);
+  padding: var(--message-voice-padding);
   position: relative;
 }
 
@@ -33,7 +42,7 @@
 .playerControls {
   display: flex;
   flex-direction: column;
-  padding-top: 18px;
+  padding-top: 20px;
   flex: 1 1 auto;
 }
 
@@ -74,14 +83,4 @@
   position: relative;
   cursor: default !important;
   pointer-events: none;
-}
-
-.spinner {
-  display: none;
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  opacity: 1;
-  height: 46px !important;
-  width: 46px !important;
 }

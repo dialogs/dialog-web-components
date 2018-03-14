@@ -4,25 +4,42 @@
 
 @import '../../../styles/variables.css';
 
+:root {
+  --message-document-height: 70px;
+  --message-document-font-family: var(--default-font-family);
+  --message-document-media-color: var(--sky-blue);
+  --message-document-document-color: var(--orangey-red);
+  --message-document-picture-color: var(--lightish-green-two);
+  --message-document-unknown-color: var(--pinkish-grey-two);
+  --message-document-padding: 12px;
+  --message-document-background-color: #fff;
+  --message-document-border-color: color(#000 alpha(14%));
+  --message-document-border-radius: var(--default-border-radius);
+  --message-document-preview-size: 46px;
+  --message-document-padding-margin-right: 14px;
+  --message-document-download-arrow-color: var(--color-primary);
+  --message-document-download-arrow-size: 20px;
+}
+
 .container {
   all: initial;
   display: flex;
   flex-direction: row;
   box-sizing: border-box;
-  height: var(--document-height) !important;
-  max-height: var(--document-height) !important;
-  padding: var(--document-padding);
+  height: var(--message-document-height) !important;
+  max-height: var(--message-document-height) !important;
+  padding: var(--message-document-padding);
   cursor: pointer;
   user-select: none;
-  border-radius: var(--document-border-radius);
-  background-color: var(--document-background-color);
-  box-shadow: 0 0 0 1px var(--document-border-color);
-  font-family: var(--document-font-family);
+  border-radius: var(--message-document-border-radius);
+  background-color: var(--message-document-background-color);
+  box-shadow: 0 0 0 1px var(--message-document-border-color);
+  font-family: var(--message-document-font-family);
 }
 
 .uploading {
   opacity: 0.7;
-  padding-right: calc(var(--document-padding) * 2);
+  padding-right: calc(var(--message-document-padding) * 2);
   position: relative;
   cursor: default;
 }

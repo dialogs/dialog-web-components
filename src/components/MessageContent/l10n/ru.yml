@@ -2,7 +2,9 @@ photo: Изображение
 document: Документ
 voice: Голосовое сообщение
 voice_short: Голос
+video: Видеозапись
 sticker: Стикер
-location: Местонахождение
+location: Местоположение
 deleted: Удаленное сообщение
 deleted_short: Удалено
+contact: Контакт
