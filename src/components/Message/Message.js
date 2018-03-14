@@ -4,16 +4,10 @@
  */
 /* eslint max-lines: ["error", 500] */
 
-import type { Map } from 'immutable';
-import type {
-  Message as MessageType,
-  MessageState as MessageStateType,
-  PeerInfo,
-  Peer,
-  MessageMediaInteractiveConfirm
-} from '@dlghq/dialog-types';
+import type { MessageState as MessageStateType, PeerInfo } from '@dlghq/dialog-types';
+import type { Props, State } from './types';
 import classNames from 'classnames';
-import React, { PureComponent, type Node } from 'react';
+import React, { PureComponent } from 'react';
 import MessageContent from '../MessageContent/MessageContent';
 import PeerAvatar from '../PeerAvatar/PeerAvatar';
 import PeerInfoTitle from '../PeerInfoTitle/PeerInfoTitle';
@@ -25,36 +19,6 @@ import MessageAttachmentReply from '../MessageAttachment/MessageAttachmentReply'
 import MessageFlattenAttachment from '../MessageAttachment/MessageFlattenAttachment';
 import CheckButton from '../CheckButton/CheckButton';
 import styles from './Message.css';
-
-export type Props = {
-  users: Map<number, PeerInfo>,
-  message: MessageType,
-  short: boolean,
-  state: ?MessageStateType,
-  sender: ?PeerInfo,
-  className?: string,
-  forceHover?: boolean,
-  selected: ?boolean,
-  highlight?: boolean,
-  maxWidth: number,
-  maxHeight: number,
-  isSelectionEnabled?: boolean,
-  isReactionsEnabled?: boolean,
-  renderActions?: () => Node,
-  onSelect?: (message: MessageType) => mixed,
-  onTitleClick?: (message: MessageType) => mixed,
-  onAvatarClick?: (message: MessageType) => mixed,
-  onMentionClick?: (message: MessageType) => mixed,
-  onLightboxOpen?: (message: MessageType) => mixed,
-  onReaction?: (char: string) => mixed,
-  onGoToPeer: (peer: Peer) => mixed,
-  onGoToMessage: (peer: ?Peer, message: MessageType) => mixed,
-  onInteractiveAction: (id: string, value: string, confirm?: ?MessageMediaInteractiveConfirm) => mixed
-};
-
-export type State = {
-  hover: boolean
-};
 
 class Message extends PureComponent<Props, State> {
   constructor(props: Props) {
