@@ -158,6 +158,10 @@
 
     &:active {
       background-color: color(var(--icon-button-flat-hover-background-color) shade(5%));
+
+      & .icon {
+        color: var(--icon-button-flat-color-hover);
+      }
     }
   }
 

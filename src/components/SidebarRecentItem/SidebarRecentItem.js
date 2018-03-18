@@ -132,7 +132,7 @@ class SidebarRecentItem extends PureComponent<Props> {
         <div className={styles.text}>
           <div className={styles.title}>
             {this.renderIcons()}
-            <PeerInfoTitle title={this.props.info.title} />
+            <PeerInfoTitle title={this.props.info.title} emojiSize={20} />
           </div>
           {this.renderStatus()}
         </div>

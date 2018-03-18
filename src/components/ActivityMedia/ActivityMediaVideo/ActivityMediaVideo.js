@@ -36,13 +36,7 @@ class ActivityMediaVideo extends PureComponent<Props> {
     const { title } = this.props;
 
     if (!title || title === '') {
-      return (
-        <Text
-          id="ActivityMedia.video"
-          className={styles.title}
-          tagName="div"
-        />
-      );
+      return <Text id="ActivityMedia.video" className={styles.title} tagName="div" />;
     }
 
     return <div className={styles.title}>{title}</div>;
@@ -57,23 +51,19 @@ class ActivityMediaVideo extends PureComponent<Props> {
         <div className={styles.meta}>
           {this.renderTitle()}
           <div className={styles.info}>
-            {
-              duration ? (
-                <span>
-                  {getHumanTime(duration * 10)}
-                  {'\u00A0'}-{'\u00A0'}
-                </span>
-              ) : null
-            }
-            {
-              size ? (
-                <span>
-                  {size}
-                  {'\u00A0'}-{'\u00A0'}
-                </span>
-              ) : null
-            }
-            <PeerInfoTitle title={sender || ''} />
+            {duration ? (
+              <span>
+                {getHumanTime(duration * 10)}
+                {'\u00A0'}-{'\u00A0'}
+              </span>
+            ) : null}
+            {size ? (
+              <span>
+                {size}
+                {'\u00A0'}-{'\u00A0'}
+              </span>
+            ) : null}
+            <PeerInfoTitle title={sender || ''} emojiSize={16} />
           </div>
         </div>
       </div>

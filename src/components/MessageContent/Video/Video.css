@@ -1,0 +1,17 @@
+/**
+ * Copyright 2018 dialog LLC <info@dlg.im>
+ */
+
+@import '../../../styles/variables.css';
+
+:root {
+  --message-video-border-raduis: var(--default-border-radius);
+  --message-video-border-color: color(#000 alpha(15%));
+}
+
+.container {
+  border-radius: var(--message-video-border-raduis);
+  overflow: hidden;
+  line-height: 0;
+  box-shadow: 0 0 0 1px var(--message-video-border-color);
+}

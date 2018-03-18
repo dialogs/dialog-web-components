@@ -4,6 +4,11 @@
 
 @import '../../../styles/variables.css';
 
+:root {
+  --message-photo-border-raduis: var(--default-border-radius);
+  --message-photo-border-color: color(#000 alpha(15%));
+}
+
 .container {
   border-radius: var(--message-photo-border-raduis);
   overflow: hidden;

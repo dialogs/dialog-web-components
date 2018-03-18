@@ -46,9 +46,9 @@
   --z-index-call: calc(var(--z-index-dropdown) - 20);
   --z-index-sidebar: 50;
   --z-index-chat: 20;
-  --z-index-toolbar: calc(var(--z-index-chat) + 1);
+  --z-index-toolbar: calc(var(--z-index-chat) + 5);
   --z-index-sidebar-unread: 20;
-  --z-index-connection-status: calc(var(--z-index-dropdown) - 10);
+  --z-index-connection-status: calc(var(--z-index-toolbar) - 1);
   --z-index-message-actions: 10;
   --z-index-dragndrop: 1000;
   /* Colors */
@@ -194,7 +194,7 @@
   --message-small-vertical-padding: 4px;
   --message-small-horizontal-padding: 20px;
   --message-hover-background-color: #f6f6f6;
-  --message-highlight-background-color: color(var(--color-primary) alpha(30%));
+  --message-highlight-background-color: color(var(--color-primary) alpha(15%));
   --message-selected-background-color: var(--color-info);
   --message-username-color: color(#000 alpha(60%));
   --message-timestamp-color: color(#000 alpha(60%));
@@ -203,52 +203,13 @@
   --message-unread-color: color(#f2f2f2 alpha(25%));
   --message-state-border-width: 3px;
   --message-transition-duration: var(--default-transition-duration);
-  /* Contact */
-  --contact-font-family: var(--default-font-family);
-  --contact-border-radius: var(--default-border-radius);
-  --contact-border-color: color(#000 alpha(14%));
-  --contact-padding: var(--default-padding);
-  --contact-link-color: var(--color-info);
-  /* Document */
-  --document-height: 70px;
-  --document-font-family: var(--default-font-family);
-  --document-media-color: var(--sky-blue);
-  --document-document-color: var(--orangey-red);
-  --document-picture-color: var(--lightish-green-two);
-  --document-unknown-color: var(--pinkish-grey-two);
-  --document-padding: 12px;
-  --document-background-color: #fff;
-  --document-border-color: color(#000 alpha(14%));
-  --document-border-radius: var(--default-border-radius);
-  --document-preview-size: 46px;
-  --document-padding-margin-right: 14px;
-  --document-download-arrow-color: var(--color-primary);
-  --document-download-arrow-size: 20px;
-  /* Location */
-  --location-border-radius: var(--default-border-radius);
-  --location-border-color: color(#000 alpha(14%));
-  /* Photo */
-  --message-photo-border-raduis: var(--default-border-radius);
-  --message-photo-border-color: color(#000 alpha(14%));
-  /* Text */
-  --message-text-color: #000;
-  --message-text-font-size: var(--default-font-size);
-  --message-text-padding: 6px;
-  --message-service-color: var(--default-font-color-light);
-  /* Voice */
-  --voice-font-family: var(--default-font-family);
-  --voice-height: 70px;
-  --voice-padding: 12px;
-  --voice-border-radius: var(--default-border-radius);
-  --voice-background-color: #fff;
-  --voice-border-color: color(#000 alpha(14%));
   /* MessageDivider */
   --message-divider-font-family: var(--default-font-family);
   --message-divider-font-size: var(--default-font-size-small);
   --message-divider-default-color: color(#000 alpha(80%));
   --message-divider-height: 40px;
   --message-divider-background-color: #fff;
-  --message-divider-default-line-color: color(#000 alpha(14%));
+  --message-divider-default-line-color: color(#000 alpha(15%));
   /* MessageMedia */
   --message-media-font-family: var(--default-font-family);
   /* MessageState */

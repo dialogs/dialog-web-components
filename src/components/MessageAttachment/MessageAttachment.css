@@ -17,6 +17,7 @@
   --message-attachment-nick-color: color(#000 alpha(60%));
   --message-attachment-timestamp-font-size: 12px;
   --message-attachment-timestamp-color: var(--message-attachment-nick-color);
+  --message-attachment-preview-size: 36px;
 }
 
 .container {
@@ -32,9 +33,6 @@
   &:first-child {
     margin-top: 0;
   }
-}
-
-.messages {
 }
 
 .from {
@@ -104,11 +102,6 @@
   padding: 6px var(--message-attachment-forward-padding);
 }
 
-.replyDocument {
-  width: 100%;
-  display: flex;
-}
-
 .content {
   display: flex;
   flex-flow: row nowrap;
@@ -141,4 +134,19 @@
 
 .short {
   margin-top: 0;
+}
+
+.preview {
+  margin-top: 6px;
+  display: block;
+  width: var(--message-attachment-preview-size);
+  height: var(--message-attachment-preview-size);
+  background-position: 50% 50%;
+  background-size: cover;
+  border-radius: var(--default-border-radius-small);
+  box-shadow: 0 0 0 1px color(#000 alpha(15%));
+}
+
+.messageType {
+  color: var(--color-primary);
 }

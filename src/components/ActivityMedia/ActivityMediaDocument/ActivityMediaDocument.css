@@ -7,8 +7,8 @@
 :root {
   --activity-media-document-title-font-size: var(--default-font-size);
   --activity-media-document-title-color: #000;
-  --activity-media-document-info-font-size: var(--default-font-size-small);
-  --activity-media-document-info-color: #7f7f7f;
+  --activity-media-document-info-font-size: 13px;
+  --activity-media-document-info-color: var(--default-font-color-light);
   --activity-media-preview-image-size: 46px;
 }
 
@@ -63,8 +63,10 @@
 }
 
 .title {
+  display: inline-block;
   font-weight: 500;
-  line-height: 22px;
+  line-height: 26px;
+  height: 26px;
   font-size: var(--activity-media-document-title-font-size);
   letter-spacing: -0.384px;
   color: var(--activity-media-document-title-color);
@@ -73,16 +75,24 @@
 }
 
 .info {
-  display: inline-flex;
-  align-items: center;
-  line-height: 22px;
+  display: inline-block;
+  line-height: 16px;
+  height: 16px;
+  margin-top: 2px;
+  margin-bottom: 2px;
   font-size: var(--activity-media-document-info-font-size);
   color: var(--activity-media-document-info-color);
   letter-spacing: -0.336px;
   @apply --text-overflow-ellipsis;
 }
 
+.sender {
+  display: inline;
+}
+
 .arrow {
+  display: inline-block;
+  float: left;
   color: var(--color-primary);
   margin-right: 4px;
 }

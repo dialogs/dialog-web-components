@@ -161,7 +161,7 @@ class AudioPlayer extends PureComponent<Props, State> {
 
   renderPlayerSeeker() {
     const { currentTime, duration } = this.state;
-    const progress = (currentTime / duration) * 100;
+    const progress = currentTime / duration * 100;
     const current = getHumanTime(currentTime);
 
     const className = classNames(styles.seeker, {
@@ -169,12 +169,7 @@ class AudioPlayer extends PureComponent<Props, State> {
     });
 
     return (
-      <div
-        className={className}
-        onClick={this.handleRewind}
-        ref={this.setRewind}
-        title={current}
-      >
+      <div className={className} onClick={this.handleRewind} ref={this.setRewind} title={current}>
         <div className={styles.seekerPlayed} style={{ width: progress + '%' }} />
       </div>
     );
@@ -205,16 +200,10 @@ class AudioPlayer extends PureComponent<Props, State> {
   renderState() {
     const { error } = this.state;
     if (error) {
-      return (
-        <MediaErrorMessage className={styles.error} error={error} />
-      );
+      return <MediaErrorMessage className={styles.error} error={error} />;
     }
 
-    return (
-      <div className={styles.state}>
-        {getHumanTime(this.state.duration)}
-      </div>
-    );
+    return <div className={styles.state}>{getHumanTime(this.state.duration)}</div>;
   }
 
   renderSender() {
@@ -225,7 +214,7 @@ class AudioPlayer extends PureComponent<Props, State> {
     return (
       <div className={styles.sender}>
         {'\u00A0'}-{'\u00A0'}
-        <PeerInfoTitle title={this.props.sender || ''} />
+        <PeerInfoTitle title={this.props.sender || ''} emojiSize={16} />
       </div>
     );
   }

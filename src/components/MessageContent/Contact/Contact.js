@@ -56,9 +56,9 @@ class Contact extends PureComponent<Props> {
       return null;
     }
 
-    return emails.map((email) => {
+    return emails.map((email, index) => {
       return (
-        <div className={styles.email} key={email}>
+        <div className={styles.email} key={`${index}_${email}`}>
           <Icon glyph="mail_outline" className={styles.icon} size={22} />
           <a href={`mailto:${email}`} className={styles.link}>
             {email}
@@ -75,9 +75,9 @@ class Contact extends PureComponent<Props> {
       return null;
     }
 
-    return phones.map((phone) => {
+    return phones.map((phone, index) => {
       return (
-        <div className={styles.phone} key={phone}>
+        <div className={styles.phone} key={`${index}_${phone}`}>
           <Icon glyph="phone_outline" className={styles.icon} size={22} />
           <a href={`tel:${phone}`} className={styles.link}>
             {phone}

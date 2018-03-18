@@ -9,10 +9,7 @@ import React from 'react';
 import ActivityUserProfile from './ActivityUserProfile';
 import ActivityGroupProfile from './ActivityGroupProfile';
 
-export type Props = (
-  ({ type: 'user' } & UserProps) |
-  ({ type: 'group' } & GroupProps)
-);
+export type Props = ({ type: 'user' } & UserProps) | ({ type: 'group' } & GroupProps);
 
 function ActivityProfile(props: Props) {
   switch (props.type) {
@@ -23,6 +20,7 @@ function ActivityProfile(props: Props) {
           info={props.info}
           online={props.online}
           schema={props.schema}
+          onAvatarClick={props.onAvatarClick}
         >
           {props.children}
         </ActivityUserProfile>
@@ -30,10 +28,7 @@ function ActivityProfile(props: Props) {
 
     case 'group':
       return (
-        <ActivityGroupProfile
-          className={props.className}
-          info={props.info}
-        >
+        <ActivityGroupProfile className={props.className} info={props.info} onAvatarClick={props.onAvatarClick}>
           {props.children}
         </ActivityGroupProfile>
       );

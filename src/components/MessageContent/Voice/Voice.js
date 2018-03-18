@@ -18,18 +18,12 @@ export type Props = {
 
 class Voice extends PureComponent<Props> {
   render() {
-    const { isUploading, maxWidth } = this.props;
-    const className = classNames(styles.container, {
-      [styles.uploading]: isUploading
-    }, this.props.className);
+    const { isUploading, maxWidth, fileUrl, duration } = this.props;
+    const className = classNames(styles.container, this.props.className);
 
     return (
       <div className={className} style={{ width: maxWidth === 0 ? '100%' : maxWidth }}>
-        <AudioPlayer
-          src={this.props.fileUrl}
-          duration={this.props.duration}
-          pending={this.props.isUploading}
-        />
+        <AudioPlayer src={fileUrl} duration={duration} pending={isUploading} />
       </div>
     );
   }

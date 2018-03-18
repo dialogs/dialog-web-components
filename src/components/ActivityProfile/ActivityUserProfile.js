@@ -18,7 +18,8 @@ export type Props = {
   online: UserOnline,
   className?: string,
   schema?: ?string,
-  children: Node
+  children: Node,
+  onAvatarClick?: () => mixed
 };
 
 class ActivityUserProfile extends PureComponent<Props> {
@@ -32,6 +33,7 @@ class ActivityUserProfile extends PureComponent<Props> {
         title={name}
         image={bigAvatar}
         placeholder={placeholder}
+        onClick={this.props.onAvatarClick}
       />
     );
   }

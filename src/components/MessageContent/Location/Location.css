@@ -4,8 +4,13 @@
 
 @import '../../../styles/variables.css';
 
+:root {
+  --message-location-border-radius: var(--default-border-radius);
+  --message-location-border-color: color(#000 alpha(15%));
+}
+
 .container {
-  border-radius: var(--location-border-radius);
+  border-radius: var(--message-location-border-radius);
   line-height: 0;
-  box-shadow: 0 0 0 1px var(--location-border-color);
+  box-shadow: 0 0 0 1px var(--message-location-border-color);
 }

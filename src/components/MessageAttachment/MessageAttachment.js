@@ -14,7 +14,8 @@ type Props = {
   maxHeight: number,
   maxWidth: number,
   onGoToPeer: (peer: Peer) => mixed,
-  onGoToMessage: (peer: ?Peer, message: Message) => mixed
+  onGoToMessage: (peer: ?Peer, message: Message) => mixed,
+  onLightboxOpen?: (message: Message) => mixed
 };
 
 class MessageAttachment extends PureComponent<Props> {
@@ -39,6 +40,7 @@ class MessageAttachment extends PureComponent<Props> {
           <MessageAttachmentForward
             className={this.props.className}
             from={attachment.from}
+            onLightboxOpen={this.props.onLightboxOpen}
             messages={attachment.messages}
             onGoToPeer={this.props.onGoToPeer}
             onGoToMessage={this.props.onGoToMessage}

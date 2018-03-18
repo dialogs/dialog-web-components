@@ -21,13 +21,7 @@ class ActivityMediaPhoto extends PureComponent<Props> {
     const { title } = this.props;
 
     if (!title || title === '') {
-      return (
-        <Text
-          id="ActivityMedia.photo"
-          className={styles.title}
-          tagName="div"
-        />
-      );
+      return <Text id="ActivityMedia.photo" className={styles.title} tagName="div" />;
     }
 
     return <div className={styles.title}>{title}</div>;
@@ -39,22 +33,15 @@ class ActivityMediaPhoto extends PureComponent<Props> {
     return (
       <div className={styles.container}>
         {photo && preview ? (
-          <div
-            className={styles.preview}
-            style={{ backgroundImage: `url(${preview})` }}
-            onClick={this.props.onClick}
-          >
-            <div
-              className={styles.photo}
-              style={{ backgroundImage: `url(${photo})` }}
-            />
+          <div className={styles.preview} style={{ backgroundImage: `url(${preview})` }} onClick={this.props.onClick}>
+            <div className={styles.photo} style={{ backgroundImage: `url(${photo})` }} />
           </div>
         ) : null}
         <div className={styles.meta}>
           {this.renderTitle()}
           {sender ? (
             <div className={styles.info}>
-              <PeerInfoTitle title={sender} />
+              <PeerInfoTitle title={sender || ''} emojiSize={16} />
             </div>
           ) : null}
         </div>

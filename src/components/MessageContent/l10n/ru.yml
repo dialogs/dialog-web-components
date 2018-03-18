@@ -1,4 +1,10 @@
+photo: Изображение
+document: Документ
 voice: Голосовое сообщение
 voice_short: Голос
-deleted: Сообщение удалено
+video: Видеозапись
+sticker: Стикер
+location: Местоположение
+deleted: Удаленное сообщение
 deleted_short: Удалено
+contact: Контакт

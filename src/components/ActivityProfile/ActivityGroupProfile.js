@@ -15,7 +15,8 @@ import styles from './ActivityProfile.css';
 export type Props = {
   className?: string,
   info: Group,
-  children: Node
+  children: Node,
+  onAvatarClick?: () => mixed
 };
 
 class ActivityGroupProfile extends PureComponent<Props> {
@@ -29,6 +30,7 @@ class ActivityGroupProfile extends PureComponent<Props> {
         title={name}
         image={bigAvatar}
         placeholder={placeholder}
+        onClick={this.props.onAvatarClick}
       />
     );
   }
