@@ -33,7 +33,7 @@ class ActivityUserProfile extends PureComponent<Props> {
         title={name}
         image={bigAvatar}
         placeholder={placeholder}
-        onClick={this.props.onAvatarClick}
+        onClick={bigAvatar ? this.props.onAvatarClick : undefined}
       />
     );
   }
