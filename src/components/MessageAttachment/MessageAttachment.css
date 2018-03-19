@@ -124,7 +124,6 @@
 
 .time {
   margin-left: 6px;
-  margin-top: 2px;
   display: inline-block;
   color: var(--message-attachment-timestamp-color);
   line-height: 18px;
