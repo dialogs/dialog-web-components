@@ -95,16 +95,12 @@ class CallFeedback extends PureComponent<Props, State> {
               name="addLogs"
               value={this.state.addLogs}
               onChange={this.handleAddLogsToggle}
-            >
-              <Text id="CallFeedback.add_logs" />
-            </Switcher>
+              label="CallFeedback.add_logs"
+            />
           </ModalBody>
           <ModalFooter className={styles.footer}>
             <Button
-              wide
-              type="submit"
-              theme="success"
-              rounded={false}
+              wide type="submit" theme="success" rounded={false}
               id="call_feedback_submit_button"
             >
               <Text id="CallFeedback.submit" />
