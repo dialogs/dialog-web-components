@@ -21,11 +21,10 @@ class ToolbarInfo extends PureComponent<Props> {
     return (
       <div className={className}>
         <PeerInfoTitle
-          tagName="div"
           title={this.props.title}
           className={styles.nameWrapper}
           titleClassName={styles.name}
-          emojiSize={22}
+          emojiSize={20}
         />
         <div className={styles.status}>{this.props.status}</div>
       </div>

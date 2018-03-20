@@ -4,6 +4,12 @@
 
 @import '../../styles/variables.css';
 
+:root {
+  --toolbar-call-button-color: #999;
+  --toolbar-call-button-color-hover: #666;
+  --toolbar-call-button-color-active: #4c4c4c;
+}
+
 /* Reset */
 .container {
   all: initial;

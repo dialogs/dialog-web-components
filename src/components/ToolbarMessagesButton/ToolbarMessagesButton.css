@@ -4,6 +4,13 @@
 
 @import '../../styles/variables.css';
 
+:root {
+  --toolbar-messages-button-color: #999;
+  --toolbar-messages-button-color-hover: #666;
+  --toolbar-messages-button-color-active: #4c4c4c;
+  --toolbar-messages-button-active-color: var(--color-primary);
+}
+
 /* Reset */
 .container {
   all: initial;
