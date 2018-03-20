@@ -34,7 +34,11 @@ class SidebarFooterButton extends PureComponent<Props> {
     const { glyph, pending } = this.props;
 
     if (pending) {
-      return <Spinner size="normal" />;
+      return (
+        <div style={{ width: 28, height: 28 }}>
+          <Spinner size="normal" />
+        </div>
+      );
     }
 
     return <Icon glyph={glyph} className={styles.icon} size={28} />;
