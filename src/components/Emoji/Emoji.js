@@ -41,7 +41,8 @@ class Emoji extends PureComponent<Props> {
         height: `${this.props.size}px`,
         backgroundImage: SPRITE_IMAGE,
         backgroundPosition: `${SPRITE_POSITION_MUL * emoji.x}% ${SPRITE_POSITION_MUL * emoji.y}%`,
-        backgroundSize: `${SPRITE_BG_SIZE}%`
+        backgroundSize: `${SPRITE_BG_SIZE}%`,
+        marginTop: this.props.inline ? '-2px' : 0
       };
 
       return (
@@ -53,7 +54,11 @@ class Emoji extends PureComponent<Props> {
 
     const className = classNames(styles.char, this.props.className);
     const emojiStyle = {
-      fontSize: `${this.props.size}px`
+      width: `${this.props.size}px`,
+      height: `${this.props.size}px`,
+      fontSize: `${this.props.size}px`,
+      lineHeight: `${this.props.size * (this.props.inline ? 1.1 : 1.2)}px`,
+      marginTop: this.props.inline ? '-2px' : '-1px'
     };
 
     return (
