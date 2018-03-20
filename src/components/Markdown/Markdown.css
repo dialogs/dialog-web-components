@@ -5,21 +5,40 @@
 @import '../../styles/variables.css';
 
 :root {
-  --markdown-text-padding: 6px;
+  --markdown-padding: 4px;
+  --markdown-line-height: 20px;
+  --markdown-code-line-height: 20px;
+  --markdown-mention-line-height: 20px;
+  --markdown-font-size: var(--default-font-size);
+  --markdown-code-font-size: var(--default-font-size-small);
   --markdown-pre-font-size: 12px;
 }
 
-.container,
+.container {
+  font-family: var(--default-font-family);
+  line-height: var(--markdown-line-height);
+  font-size: var(--markdown-font-size);
+}
+
 .inline {
   font-family: var(--default-font-family);
-  line-height: 1.4;
+  line-height: inherit;
+  font-size: inherit;
+
+  & .paragraph,
+  & .blockquote,
+  & .mention,
+  & .pre,
+  & .code {
+    line-height: inherit;
+  }
 }
 
 .pre {
   font-family: var(--code-font-family);
   overflow: auto;
-  margin: var(--markdown-text-padding) calc(0 - var(--markdown-text-padding));
-  padding: var(--markdown-text-padding);
+  margin: var(--markdown-padding) calc(0 - var(--markdown-padding));
+  padding: var(--markdown-padding);
   white-space: pre;
   word-wrap: normal;
   border-radius: var(--default-border-radius);
@@ -35,18 +54,12 @@
 }
 
 .paragraph {
-  margin: var(--markdown-text-padding) 0;
+  margin: var(--markdown-padding) 0;
   word-wrap: break-word;
-  line-height: inherit;
-  vertical-align: baseline;
-
-  & span {
-    vertical-align: inherit;
-  }
 }
 
 .blockquote {
-  margin: calc(var(--markdown-text-padding) + 2) 0;
+  margin: calc(var(--markdown-padding) + 2) 0;
   padding: 4px 12px;
   box-shadow: inset 3px 0 0 0 var(--color-info);
 }
@@ -65,8 +78,7 @@
 
 .code {
   padding: 1px 2px;
-  margin: -1px -2px;
-  font-size: var(--default-font-size-small);
+  font-size: var(--markdown-code-font-size);
   border-radius: var(--default-border-radius-small);
   box-shadow: inset 0 1px 1px 0 color(#000 alpha(10%));
   background-color: color(#000 alpha(7.5%));
@@ -75,6 +87,7 @@
   box-sizing: border-box;
   vertical-align: inherit;
   word-break: break-word;
+  line-height: var(--markdown-code-line-height);
 }
 
 .bold {
@@ -103,11 +116,10 @@
 .mention {
   display: inline-block;
   padding: 1px 2px;
-  margin: -1px;
   box-sizing: border-box;
   border-radius: var(--default-border-radius-small);
   box-shadow: inset 0 1px 1px 0 color(#000 alpha(10%));
   background-color: color(var(--color-primary) alpha(10%));
   vertical-align: inherit;
-  line-height: 1.4;
+  line-height: var(--markdown-mention-line-height);
 }
