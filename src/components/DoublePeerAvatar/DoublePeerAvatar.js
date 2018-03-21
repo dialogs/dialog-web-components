@@ -214,7 +214,7 @@ class DoublePeerAvatar extends PureComponent<Props, void> {
 
     return (
       <div style={{ width: size, height: size }} className={className} onClick={this.props.onClick}>
-        <svg viewBox="0 0 109 109" width={size} height={size}>
+        <svg viewBox="0 0 109 109" width={size} height={size} shapeRendering="auto">
           <defs>
             {this.renderDefsBig()}
             {this.renderClipMaskBig()}

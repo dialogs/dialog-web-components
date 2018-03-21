@@ -15,7 +15,7 @@ function Logo(props: Props) {
   const className = classNames(styles.container, props.className);
 
   return (
-    <svg viewBox="0 0 360 360" className={className}>
+    <svg viewBox="0 0 360 360" className={className} shapeRendering="auto">
       <defs>
         <linearGradient
           id="logoGradient"

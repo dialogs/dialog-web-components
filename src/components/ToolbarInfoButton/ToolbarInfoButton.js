@@ -22,7 +22,7 @@ function ToolbarInfoButton(props: Props) {
 
   return (
     <div className={className} onClick={props.onClick} id="toolbar_info_button">
-      <svg viewBox="0 0 4 12" className={styles.icon}>
+      <svg viewBox="0 0 4 12" className={styles.icon} shapeRendering="auto">
         <g fillRule="evenodd">
           <rect width="4" height="8" y="4" rx="1" />
           <rect width="4" height="3" rx="1" />

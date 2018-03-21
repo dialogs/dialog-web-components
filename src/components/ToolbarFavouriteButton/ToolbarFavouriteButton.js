@@ -46,7 +46,7 @@ function ToolbarFavouriteButton(props: Props) {
 
   return (
     <div className={className} onClick={props.onClick} id="toolbar_favourite_button">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" className={styles.icon}>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" className={styles.icon} shapeRendering="auto">
         <path
           fill="rgba(0,0,0,.38)"
           transform="translate(0, -1)"

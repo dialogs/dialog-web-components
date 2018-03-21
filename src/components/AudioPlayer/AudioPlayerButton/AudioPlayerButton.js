@@ -14,7 +14,7 @@ export type Props = {
   onPlay: () => mixed,
   onPause: () => mixed,
   className?: string
-}
+};
 
 class AudioPlayerButton extends PureComponent<Props> {
   handleButtonClick = (event: SyntheticMouseEvent<>) => {
@@ -55,7 +55,7 @@ class AudioPlayerButton extends PureComponent<Props> {
     });
 
     return (
-      <svg viewBox="0 0 50 50" className={className} onClick={this.handleButtonClick}>
+      <svg viewBox="0 0 50 50" className={className} onClick={this.handleButtonClick} shapeRendering="auto">
         {this.renderIcon()}
         <circle
           className={styles.border}
