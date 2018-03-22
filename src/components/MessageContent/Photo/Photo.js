@@ -23,7 +23,13 @@ export type Props = {
 
 function Photo(props: Props) {
   const { fileUrl, fileName, preview, width, height, rid, maxWidth, maxHeight } = props;
-  const className = classNames(styles.container, props.className);
+  const className = classNames(
+    styles.container,
+    {
+      [styles.clickable]: props.onClick
+    },
+    props.className
+  );
 
   return (
     <Image

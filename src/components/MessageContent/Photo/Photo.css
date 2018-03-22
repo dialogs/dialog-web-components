@@ -7,6 +7,7 @@
 :root {
   --message-photo-border-raduis: var(--default-border-radius);
   --message-photo-border-color: color(#000 alpha(15%));
+  --message-photo-transition-duration: var(--default-transition-duration);
 }
 
 .container {
@@ -14,4 +15,13 @@
   overflow: hidden;
   line-height: 0;
   box-shadow: 0 0 0 1px var(--message-photo-border-color);
+}
+
+.clickable {
+  cursor: pointer;
+  transition: opacity var(--message-photo-transition-duration) ease;
+
+  &:hover {
+    opacity: 0.95;
+  }
 }
