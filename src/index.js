@@ -148,6 +148,7 @@ export { default as ActivityListMembersAdd } from './components/ActivityListMemb
 export { default as ActivityListMembersItem } from './components/ActivityListMembers/ActivityListMembersItem';
 export { default as ActivityMedia } from './components/ActivityMedia/ActivityMedia';
 export { default as ActivitySearch } from './components/ActivitySearch/ActivitySearch';
+export { default as ActivityPinned } from './components/ActivityPinned/ActivityPinned';
 
 // Helpers
 export { default as Trigger } from './components/Trigger/Trigger';

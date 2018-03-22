@@ -133,7 +133,8 @@
       "ActivityInvite",
       "ActivityIntegration",
       "ActivityMedia",
-      "ActivitySearch"
+      "ActivitySearch",
+      "ActivityPinned"
     ]
   },
   {

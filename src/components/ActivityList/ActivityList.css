@@ -81,7 +81,7 @@
   letter-spacing: -0.4px;
   font-size: var(--activity-list-font-size);
   color: var(--activity-list-font-color);
-  line-height: 20px;
+  line-height: 18px;
   flex: 1 1 auto;
   user-select: none;
   cursor: inherit;
