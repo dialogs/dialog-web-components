@@ -19,8 +19,7 @@ export type Props = {
   className?: string,
   char: string,
   size: number,
-  children?: Node,
-  inline?: boolean
+  children?: Node
 };
 
 class Emoji extends PureComponent<Props> {
