@@ -312,7 +312,7 @@ class Message extends PureComponent<Props, State> {
               isPending={isPending}
               maxWidth={maxWidth}
               maxHeight={maxHeight}
-              onLightboxOpen={this.handleLightboxOpen}
+              onLightboxOpen={this.props.onLightboxOpen ? this.handleLightboxOpen : undefined}
               onInteractiveAction={this.props.onInteractiveAction}
             />
             {this.renderForward()}
