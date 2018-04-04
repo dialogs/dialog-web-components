@@ -8,6 +8,7 @@ import type { PeerInfo } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
 import PeerAvatar from '../PeerAvatar/PeerAvatar';
 import classNames from 'classnames';
+import PeerInfoTitle from '../PeerInfoTitle/PeerInfoTitle';
 import styles from './ContactSelector.css';
 
 export type Props = {
@@ -22,12 +23,8 @@ class ContactSelectorChip extends PureComponent<Props> {
 
     return (
       <div className={className}>
-        <PeerAvatar
-          className={styles.chipAvatar}
-          size="medium"
-          peer={contact}
-        />
-        <div className={styles.chipText}>{contact.title}</div>
+        <PeerAvatar className={styles.chipAvatar} size={28} peer={contact} />
+        <PeerInfoTitle title={contact.title} className={styles.chipText} emojiSize={16} />
       </div>
     );
   }

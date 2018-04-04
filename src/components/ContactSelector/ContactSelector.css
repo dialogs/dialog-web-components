@@ -6,6 +6,7 @@
 
 :root {
   --contact-selector-background-color: #f9f9f9;
+  --contact-selector-chip-text-max-width: 150px;
 }
 
 /* Reset */
@@ -42,12 +43,8 @@
   height: 38px;
   margin: 2px 10px 2px 0;
   padding: 5px;
-  letter-spacing: -0.3px;
   border-radius: 38px;
   background-image: var(--default-gradient);
-  font-size: var(--default-font-size);
-  font-weight: 500;
-  line-height: 1.3;
   flex: 0 0 auto;
   flex-flow: row nowrap;
   align-content: center;
@@ -59,6 +56,13 @@
 
 .chipText {
   margin: 0 10px;
+  font-size: var(--default-font-size);
+  font-weight: 500;
+  line-height: 20px;
+  height: 20px;
+  letter-spacing: -0.3px;
+  max-width: var(--contact-selector-chip-text-max-width);
+  @apply --text-overflow-ellipsis;
 }
 
 .chipAvatar {
