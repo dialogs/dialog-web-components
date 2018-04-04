@@ -150,7 +150,7 @@
   },
   {
     "name": "Helpers",
-    "components": ["Timer", "Trigger", "Confirm"]
+    "components": ["Timer", "Trigger", "Confirm", "CopyButton"]
   },
   {
     "name": "Banners",

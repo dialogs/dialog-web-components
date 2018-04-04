@@ -11,6 +11,7 @@ import Button from '../Button/Button';
 
 type Props = {
   text: string,
+  size?: 'small' | 'normal' | 'large',
   wide: ?boolean,
   id?: string,
   disabled: boolean
@@ -101,6 +102,7 @@ class CopyButton extends Component<Props, State> {
         ref={this.setButton}
         wide={Boolean(this.props.wide)}
         disabled={this.props.disabled}
+        size={this.props.size}
         theme={copied ? 'success' : 'primary'}
       >
         <Text id={`CopyButton.${copied ? 'copied' : 'copy'}`} />
