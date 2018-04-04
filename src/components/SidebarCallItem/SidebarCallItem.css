@@ -4,6 +4,22 @@
 
 @import '../../styles/variables.css';
 
+:root {
+  --sidebar-call-item-font-family: var(--default-font-family);
+  --sidebar-call-item-top-padding: 12px;
+  --sidebar-call-item-right-padding: 14px;
+  --sidebar-call-item-bottom-padding: 9px;
+  --sidebar-call-item-left-padding: 10px;
+  --sidebar-call-item-height: 60px;
+  --sidebar-call-item-default-color: color(#000 alpha(50%));
+  --sidebar-call-item-hover-background-color: #e6e6e6;
+  --sidebar-call-item-hover-color: #000;
+  --sidebar-call-item-active-background-color: color(var(--sidebar-call-item-hover-background-color) shade(2%));
+  --sidebar-call-item-text-height: 37px;
+  --sidebar-call-item-font-size: var(--default-recent-item-font-size);
+  --sidebar-call-item-time-font-size: 13px;
+}
+
 /* Reset */
 .container {
   all: initial;

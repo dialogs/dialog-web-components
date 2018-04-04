@@ -4,6 +4,19 @@
 
 @import '../../styles/variables.css';
 
+:root {
+  --call-info-caller-color: #000;
+  --call-info-state-color: color(var(--call-info-caller-color) alpha(50%));
+  --call-info-caller-font-size: 24px;
+  --call-info-state-font-size: 18px;
+  --call-info-oncall-caller-color: #fff;
+  --call-info-oncall-state-color: var(--call-info-oncall-caller-color);
+  --call-info-oncall-caller-font-size: 18px;
+  --call-info-oncall-state-font-size: 14px;
+  --call-info-video-caller-font-size: 16px;
+  --call-info-video-state-font-size: 12px;
+}
+
 .container {
   display: flex;
   flex-direction: column;
