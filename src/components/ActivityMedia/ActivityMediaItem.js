@@ -40,6 +40,7 @@ class ActivityMediaItem extends PureComponent<Props> {
               preview={message.content.preview}
               sender={message.sender ? message.sender.title : null}
               onClick={this.handleLightboxOpen}
+              date={message.fullDate}
             />
           </ActivityListItem>
         );
@@ -51,6 +52,7 @@ class ActivityMediaItem extends PureComponent<Props> {
               size={message.content.fileSize}
               extension={message.content.fileExtension}
               sender={message.sender ? message.sender.title : null}
+              date={message.fullDate}
             />
           </ActivityListItem>
         );
@@ -73,6 +75,7 @@ class ActivityMediaItem extends PureComponent<Props> {
               preview={message.content.preview}
               size={message.content.fileSize}
               sender={message.sender ? message.sender.title : null}
+              date={message.fullDate}
             />
           </ActivityListItem>
         );

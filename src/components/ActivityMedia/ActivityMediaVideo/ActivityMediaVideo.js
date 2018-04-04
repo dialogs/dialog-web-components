@@ -3,11 +3,15 @@
  * @flow
  */
 
+import type { ProviderContext } from '@dlghq/react-l10n';
 import React, { PureComponent } from 'react';
-import { Text } from '@dlghq/react-l10n';
+import { Text, LocalizationContextType } from '@dlghq/react-l10n';
+import PeerInfoTitle from '../../PeerInfoTitle/PeerInfoTitle';
+import formatDate from 'date-fns/format';
+import getLocalDateTimeFormat from '../../../utils/getLocalDateTimeFormat';
+import getDateFnsLocale from '../../../utils/getDateFnsLocale';
 import classNames from 'classnames';
 import Icon from '../../Icon/Icon';
-import PeerInfoTitle from '../../PeerInfoTitle/PeerInfoTitle';
 import styles from './ActivityMediaVideo.css';
 import getHumanTime from '../../../utils/getHumanTime';
 
@@ -16,10 +20,17 @@ type Props = {
   size: ?string,
   preview: ?string,
   duration: ?number,
+  date?: ?Date,
   sender: ?string
 };
 
 class ActivityMediaVideo extends PureComponent<Props> {
+  context: ProviderContext;
+
+  static contextTypes = {
+    l10n: LocalizationContextType
+  };
+
   renderPreview() {
     const className = classNames(styles.preview, {
       [styles.previewEmpty]: !this.props.preview
@@ -42,8 +53,55 @@ class ActivityMediaVideo extends PureComponent<Props> {
     return <div className={styles.title}>{title}</div>;
   }
 
+  renderDuration() {
+    const { duration } = this.props;
+
+    if (!duration) {
+      return null;
+    }
+
+    return <span>{getHumanTime(duration * 10)}</span>;
+  }
+
+  renderSize() {
+    const { size } = this.props;
+
+    if (!size) {
+      return null;
+    }
+
+    return <span>{size}</span>;
+  }
+
+  renderTimestamp() {
+    const { date } = this.props;
+
+    if (!date) {
+      return null;
+    }
+
+    const format = getLocalDateTimeFormat(this.context.l10n.locale);
+    const locale = getDateFnsLocale(this.context.l10n.locale);
+
+    return (
+      <time className={styles.time} dateTime={date.toISOString()}>
+        {formatDate(date, format, locale)}
+      </time>
+    );
+  }
+
+  renderSender() {
+    const { sender } = this.props;
+
+    if (!sender) {
+      return null;
+    }
+
+    return <PeerInfoTitle title={sender} emojiSize={13} />;
+  }
+
   render() {
-    const { duration, size, sender } = this.props;
+    const { duration, size, sender, date } = this.props;
 
     return (
       <div className={styles.container}>
@@ -51,19 +109,25 @@ class ActivityMediaVideo extends PureComponent<Props> {
         <div className={styles.meta}>
           {this.renderTitle()}
           <div className={styles.info}>
-            {duration ? (
+            {this.renderDuration()}
+            {duration && date ? (
               <span>
-                {getHumanTime(duration * 10)}
                 {'\u00A0'}-{'\u00A0'}
               </span>
             ) : null}
-            {size ? (
+            {this.renderTimestamp()}
+            {date && size ? (
               <span>
-                {size}
                 {'\u00A0'}-{'\u00A0'}
               </span>
             ) : null}
-            <PeerInfoTitle title={sender || ''} emojiSize={13} />
+            {this.renderSize()}
+            {(date || size || duration) && sender ? (
+              <span>
+                {'\u00A0'}-{'\u00A0'}
+              </span>
+            ) : null}
+            {this.renderSender()}
           </div>
         </div>
       </div>

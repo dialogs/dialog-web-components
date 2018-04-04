@@ -4,19 +4,29 @@
  */
 
 import React, { PureComponent } from 'react';
-import { Text } from '@dlghq/react-l10n';
-import Icon from '../../Icon/Icon';
+import type { ProviderContext } from '@dlghq/react-l10n';
+import { Text, LocalizationContextType } from '@dlghq/react-l10n';
 import PeerInfoTitle from '../../PeerInfoTitle/PeerInfoTitle';
+import formatDate from 'date-fns/format';
+import getLocalDateTimeFormat from '../../../utils/getLocalDateTimeFormat';
+import getDateFnsLocale from '../../../utils/getDateFnsLocale';
 import styles from './ActivityMediaDocument.css';
 
 type Props = {
   title: ?string,
   size: ?string,
   sender?: ?string,
-  extension: ?string
+  extension: ?string,
+  date?: ?Date
 };
 
 class ActivityMediaDocument extends PureComponent<Props> {
+  context: ProviderContext;
+
+  static contextTypes = {
+    l10n: LocalizationContextType
+  };
+
   renderPreview() {
     const { extension } = this.props;
 
@@ -46,14 +56,40 @@ class ActivityMediaDocument extends PureComponent<Props> {
 
     return (
       <div className={styles.sender}>
-        {'\u00A0'}-{'\u00A0'}
-        <PeerInfoTitle title={sender || ''} emojiSize={13} />
+        <PeerInfoTitle title={sender} emojiSize={13} />
       </div>
     );
   }
 
-  render() {
+  renderSize() {
     const { size } = this.props;
+
+    if (!size) {
+      return null;
+    }
+
+    return <span>{size}</span>;
+  }
+
+  renderTimestamp() {
+    const { date } = this.props;
+
+    if (!date) {
+      return null;
+    }
+
+    const format = getLocalDateTimeFormat(this.context.l10n.locale);
+    const locale = getDateFnsLocale(this.context.l10n.locale);
+
+    return (
+      <time className={styles.time} dateTime={date.toISOString()}>
+        {formatDate(date, format, locale)}
+      </time>
+    );
+  }
+
+  render() {
+    const { size, date, sender } = this.props;
 
     return (
       <div className={styles.container}>
@@ -61,8 +97,18 @@ class ActivityMediaDocument extends PureComponent<Props> {
         <div className={styles.meta}>
           {this.renderTitle()}
           <div className={styles.info}>
-            <Icon glyph="arrow_down" className={styles.arrow} size={16} />
-            {size}
+            {this.renderSize()}
+            {size && date ? (
+              <span>
+                {'\u00A0'}-{'\u00A0'}
+              </span>
+            ) : null}
+            {this.renderTimestamp()}
+            {(size || date) && sender ? (
+              <span>
+                {'\u00A0'}-{'\u00A0'}
+              </span>
+            ) : null}
             {this.renderSender()}
           </div>
         </div>

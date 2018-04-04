@@ -5,7 +5,7 @@
 
 function getLocalDateTimeFormat(locale: string): string {
   if (locale === 'ru') {
-    return 'DD.MM.YYYY, HH:mm';
+    return 'DD.MM.YYYY HH:mm';
   }
 
   return 'MMMM D, YYYY, h:mm A';
