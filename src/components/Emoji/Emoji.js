@@ -19,12 +19,14 @@ export type Props = {
   className?: string,
   char: string,
   size: number,
-  children?: Node
+  children?: Node,
+  inline: boolean
 };
 
 class Emoji extends PureComponent<Props> {
   static defaultProps = {
-    size: 20
+    size: 20,
+    inline: false
   };
 
   render() {
@@ -37,12 +39,14 @@ class Emoji extends PureComponent<Props> {
       const className = classNames(styles.image, this.props.className);
 
       const style = {
-        width: `${this.props.size}px`,
-        height: `${this.props.size}px`,
+        width: `${this.props.size + 2}px`,
+        height: `${this.props.size + 2}px`,
         backgroundImage: SPRITE_IMAGE,
         backgroundPosition: `${SPRITE_POSITION_MUL * emoji.x}% ${SPRITE_POSITION_MUL * emoji.y}%`,
         backgroundSize: `${SPRITE_BG_SIZE}%`,
-        marginTop: this.props.inline ? '-2px' : 0
+        marginBottom: this.props.inline ? this.props.size * 0.17 : 0,
+        marginRight: this.props.inline ? 1 : 0,
+        verticalAlign: this.props.inline ? 'middle' : 'sub'
       };
 
       return (
@@ -54,11 +58,9 @@ class Emoji extends PureComponent<Props> {
 
     const className = classNames(styles.char, this.props.className);
     const emojiStyle = {
-      width: `${this.props.size}px`,
       height: `${this.props.size}px`,
       fontSize: `${this.props.size}px`,
-      lineHeight: `${this.props.size * (this.props.inline ? 1.1 : 1.2)}px`,
-      marginTop: this.props.inline ? '-2px' : '-1px'
+      lineHeight: this.props.inline ? 1.3 : 1.2
     };
 
     return (
