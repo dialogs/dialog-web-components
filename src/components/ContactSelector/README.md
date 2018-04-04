@@ -1,6 +1,6 @@
 ```jsx
 const { PeerInfoSelectorState } = require('../../entities');
-const contacts = require('../ContactList/mock/contacts.json');
+const contacts = require('../../fixtures/contacts.json');
 
 initialState = {
   selector: PeerInfoSelectorState.create(contacts)

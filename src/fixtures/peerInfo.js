@@ -33,7 +33,7 @@ const channel = {
 
 const user = {
   avatar: 'https://avatars1.githubusercontent.com/u/930121',
-  title: 'Oleg Shilov',
+  title: 'Oleg Shilov 💣',
   placeholder: 'lblue',
   type: 'user',
   userName: 'olegshilov',

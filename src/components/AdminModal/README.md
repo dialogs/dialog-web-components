@@ -1,5 +1,5 @@
 ```jsx
-const contacts = require('../ContactList/mock/contacts.json');
+const contacts = require('../../fixtures/contacts.json');
 
 const group = {
   id: 123,
