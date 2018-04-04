@@ -26,9 +26,14 @@ class ContactListItem extends PureComponent<ItemProps<PeerInfo>> {
     return (
       <div className={className} id={`contact_${item.peer.id}`}>
         <div className={styles.wrapper}>
-          <PeerAvatar className={styles.avatar} size="large" peer={item} />
+          <PeerAvatar className={styles.avatar} size={40} peer={item} />
           <div className={styles.text}>
-            <PeerInfoTitle className={styles.nameWrapper} title={item.title} titleClassName={styles.nameText} />
+            <PeerInfoTitle
+              className={styles.nameWrapper}
+              title={item.title}
+              titleClassName={styles.nameText}
+              emojiSize={16}
+            />
           </div>
           <CheckButton className={styles.selector} theme="success" checked={selected} />
         </div>

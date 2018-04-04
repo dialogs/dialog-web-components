@@ -26,8 +26,8 @@ function ContactList(props: Props) {
       <SelectList
         className={className}
         width={500}
-        itemHeight={72}
-        itemVisibleCount={5.5}
+        itemHeight={56}
+        itemVisibleCount={8.5}
         selector={props.selector}
         onChange={props.onChange}
         renderItem={ContactListItem.render}
