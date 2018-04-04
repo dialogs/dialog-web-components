@@ -4,6 +4,16 @@
 
 @import '../../styles/variables.css';
 
+@keyframes highlight {
+  0% {
+    background-color: var(--message-highlight-background-color);
+  }
+
+  100% {
+    background-color: transparent;
+  }
+}
+
 /* Reset */
 .container {
   all: initial;
@@ -17,13 +27,15 @@
   min-height: 30px;
   box-sizing: border-box;
   padding: var(--message-vertical-padding) 36px var(--message-vertical-padding) var(--message-horizontal-padding);
-  transition: box-shadow var(--message-transition-duration) ease-in-out, opacity var(--message-transition-duration) ease-in;
+  transition: box-shadow var(--message-transition-duration) ease-in-out,
+    opacity var(--message-transition-duration) ease-in;
   font-family: var(--message-font-family);
   backface-visibility: hidden;
 }
 
 .short {
-  padding: var(--message-small-vertical-padding) 36px var(--message-small-vertical-padding) var(--message-small-horizontal-padding);
+  padding: var(--message-small-vertical-padding) 36px var(--message-small-vertical-padding)
+    var(--message-small-horizontal-padding);
 }
 
 .avatar {
@@ -50,7 +62,7 @@
 .header {
   display: flex;
   flex-direction: row;
-  margin-bottom: 2px;
+  margin-bottom: 4px;
   flex: 0 1 auto;
   height: 22px;
   align-items: baseline;
@@ -95,12 +107,24 @@
 
 .error {
   background-color: transparent;
-  background-image: repeating-linear-gradient(-45deg, transparent, transparent 5px, var(--message-error-color) 5px, var(--message-error-color) 10px);
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 5px,
+    var(--message-error-color) 5px,
+    var(--message-error-color) 10px
+  );
   box-shadow: inset var(--message-state-border-width) 0 0 0 var(--color-danger);
 
   &.hover {
     background-color: transparent !important;
-    background-image: repeating-linear-gradient(-45deg, transparent, transparent 5px, var(--message-error-hover-color) 5px, var(--message-error-hover-color) 10px);
+    background-image: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 5px,
+      var(--message-error-hover-color) 5px,
+      var(--message-error-hover-color) 10px
+    );
   }
 }
 
@@ -128,21 +152,22 @@
   margin: 0 -12px 6px;
   background-color: transparent;
   border-radius: 0;
-  box-shadow: inset 3px 0 0 0 var(--color-primary);
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    background-color: var(--color-primary);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 2px;
+    border-radius: 1000px;
+  }
 }
 
 .forward {
   margin: 6px -10px 0;
-}
-
-@keyframes highlight {
-  0% {
-    background-color: var(--message-highlight-background-color);
-  }
-
-  100% {
-    background-color: transparent;
-  }
 }
 
 .highlight {
