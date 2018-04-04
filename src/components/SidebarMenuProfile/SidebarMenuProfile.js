@@ -31,7 +31,7 @@ class SidebarMenuProfile extends PureComponent<Props> {
           className={styles.avatar}
         />
         <div className={styles.info}>
-          <PeerInfoTitle title={name} className={styles.title} />
+          <PeerInfoTitle title={name} className={styles.title} emojiSize={16} />
           <UserStatus
             status={status}
             className={styles.status}

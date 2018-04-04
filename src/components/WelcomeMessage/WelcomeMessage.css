@@ -9,7 +9,7 @@
   --welcome-message-title-font-size: 34px;
   --welcome-message-hint-background-color: color(var(--color-info) alpha(10%));
   --welcome-message-hint-font-size: var(--default-font-size);
-  --welcome-message-subtitle-font-size: 16px;
+  --welcome-message-subtitle-font-size: var(--default-font-size);
   --welcome-message-subtitle-color: color(#000 alpha(50%));
 }
 
@@ -42,8 +42,8 @@
 .title {
   margin: 0 0 12px;
   font-size: var(--welcome-message-title-font-size);
-  /* font-weight: 500; */
-  line-height: 1.1;
+  line-height: 40px;
+  height: 40px;
   letter-spacing: -0.485714px;
 }
 
@@ -52,6 +52,7 @@
   font-size: var(--welcome-message-subtitle-font-size);
   color: var(--welcome-message-subtitle-color);
   line-height: 20px;
+  height: 20px;
   letter-spacing: -0.355556px;
 }
 

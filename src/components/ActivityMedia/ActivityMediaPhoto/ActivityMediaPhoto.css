@@ -75,8 +75,8 @@
   display: inline-block;
   line-height: 16px;
   height: 16px;
-  margin-top: 2px;
-  margin-bottom: 2px;
+  padding-top: 2px;
+  padding-bottom: 2px;
   font-size: var(--activity-media-photo-info-font-size);
   color: var(--activity-media-photo-info-color);
   letter-spacing: -0.336px;

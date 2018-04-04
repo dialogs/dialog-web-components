@@ -43,7 +43,7 @@ class AdminModalUserListItem extends PureComponent<Props> {
         <div className={styles.userWrapper}>
           {this.renderAvatar()}
           <span className={styles.title}>
-            <PeerInfoTitle title={title} />
+            <PeerInfoTitle title={title} emojiSize={16} />
           </span>
         </div>
       </div>

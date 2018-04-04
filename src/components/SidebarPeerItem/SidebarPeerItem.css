@@ -76,6 +76,7 @@
   justify-content: flex-start;
   align-content: stretch;
   align-items: flex-start;
+  height: 20px;
 }
 
 .title {
@@ -85,7 +86,7 @@
   letter-spacing: -0.27px;
   font-size: var(--sidebar-peer-item-font-size);
   font-weight: 500;
-  line-height: 21px;
+  line-height: 20px;
   @apply --text-overflow-ellipsis;
 }
 

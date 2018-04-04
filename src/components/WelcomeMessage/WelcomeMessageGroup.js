@@ -39,7 +39,7 @@ class WelcomeMessageGroup extends PureComponent<Props> {
         <div className={styles.created}>
           <Text id="WelcomeMessage.group.created" className={styles.createdText} />
           {createdAt ? <span className={styles.createdDate}>{createdAt}</span> : null}
-          <PeerInfoTitle title={creator} />
+          <PeerInfoTitle title={creator} emojiSize={16} />
         </div>
       );
     }
@@ -54,7 +54,7 @@ class WelcomeMessageGroup extends PureComponent<Props> {
       return null;
     }
 
-    return <Markdown className={styles.about} text={about} />;
+    return <Markdown className={styles.about} text={about} emojiSize={16} />;
   }
 
   renderActions() {

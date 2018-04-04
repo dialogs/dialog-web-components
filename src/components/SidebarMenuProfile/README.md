@@ -1,3 +1,8 @@
 ```jsx
-<SidebarMenuProfile name="Oleg Shilov" image={null} placeholder="orange" status="away" />
+<SidebarMenuProfile
+  name="Oleg Shilov"
+  image={null}
+  placeholder="blue"
+  status="away"
+/>
 ```

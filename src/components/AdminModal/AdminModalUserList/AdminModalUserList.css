@@ -25,6 +25,7 @@
   box-shadow: inset 0 1px 0 0 color(#000 alpha(5%));
   display: flex;
   align-content: center;
+  align-items: center;
   justify-content: flex-start;
   height: 36px;
   flex-flow: row nowrap;
@@ -37,7 +38,8 @@
 
 .title {
   cursor: inherit;
-  line-height: 36px;
-  font-size: 18px;
+  line-height: 20px;
+  height: 20px;
+  font-size: var(--default-font-size);
   @apply --text-overflow-ellipsis;
 }

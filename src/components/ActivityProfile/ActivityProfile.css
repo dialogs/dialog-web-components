@@ -44,7 +44,8 @@
   margin-top: var(--default-padding);
   letter-spacing: -0.4px;
   font-size: var(--activity-profile-title-font-size);
-  line-height: 1.2;
+  line-height: 30px;
+  height: 30px;
   color: var(--activity-profile-font-color);
 }
 
@@ -64,6 +65,9 @@
 
 .online,
 .creator {
+  font-size: var(--default-font-size);
+  height: 20px;
+  line-height: 20px;
   margin-top: var(--default-padding-small);
   color: var(--activity-profile-text-color-light);
 }

@@ -30,13 +30,14 @@ class CallInfo extends PureComponent<Props> {
       <div className={className}>
         <div className={styles.wrapper}>
           <div className={styles.caller}>
-            <PeerInfoTitle title={call.peer.title} onTitleClick={this.props.onClick} />
+            <PeerInfoTitle
+              title={call.peer.title}
+              onTitleClick={this.props.onClick}
+              emojiSize={this.props.onCall ? 18 : 24}
+            />
           </div>
           <div className={styles.state}>
-            <CallInfoState
-              state={call.state}
-              startTime={call.startTime}
-            />
+            <CallInfoState state={call.state} startTime={call.startTime} />
           </div>
         </div>
       </div>

@@ -214,7 +214,7 @@ class AudioPlayer extends PureComponent<Props, State> {
     return (
       <div className={styles.sender}>
         {'\u00A0'}-{'\u00A0'}
-        <PeerInfoTitle title={this.props.sender || ''} emojiSize={16} />
+        <PeerInfoTitle title={this.props.sender || ''} emojiSize={13} />
       </div>
     );
   }

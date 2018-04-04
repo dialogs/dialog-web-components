@@ -44,7 +44,7 @@ class ActivityGroupProfile extends PureComponent<Props> {
         userName={shortname}
         titleClassName={styles.name}
         userNameClassName={styles.nick}
-        emojiSize={26}
+        emojiSize={22}
       />
     );
   }
@@ -68,7 +68,7 @@ class ActivityGroupProfile extends PureComponent<Props> {
       <div className={styles.creator}>
         <Text id="ActivityProfile.created_by" />
         {'\u00A0'}
-        <PeerInfoTitle title={admin.peerInfo.title} emojiSize={18} />
+        <PeerInfoTitle title={admin.peerInfo.title} emojiSize={16} />
       </div>
     );
   }
@@ -83,7 +83,7 @@ class ActivityGroupProfile extends PureComponent<Props> {
     return (
       <div className={styles.wrapper}>
         <Text className={styles.title} tagName="div" id="ActivityProfile.about" />
-        <Markdown text={about} className={styles.about} />
+        <Markdown text={about} className={styles.about} emojiSize={16} />
       </div>
     );
   }

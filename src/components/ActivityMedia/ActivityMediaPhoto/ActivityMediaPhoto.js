@@ -41,7 +41,7 @@ class ActivityMediaPhoto extends PureComponent<Props> {
           {this.renderTitle()}
           {sender ? (
             <div className={styles.info}>
-              <PeerInfoTitle title={sender || ''} emojiSize={16} />
+              <PeerInfoTitle title={sender || ''} emojiSize={13} />
             </div>
           ) : null}
         </div>

@@ -29,7 +29,7 @@ class AdminModalUser extends PureComponent<Props> {
           placeholder={placeholder}
         />
         <div className={styles.info}>
-          <PeerInfoTitle title={title} className={styles.title} />
+          <PeerInfoTitle title={title} className={styles.title} emojiSize={22} />
         </div>
       </div>
     );

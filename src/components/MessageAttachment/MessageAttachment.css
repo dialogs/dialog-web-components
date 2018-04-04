@@ -61,7 +61,7 @@
 
 .header {
   height: var(--message-attachment-header-height);
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
 .icon {
@@ -75,6 +75,7 @@
   font-weight: 500;
   font-size: var(--default-font-size);
   line-height: var(--message-attachment-header-height);
+  height: var(--message-attachment-header-height);
   display: inline-block;
   vertical-align: middle;
 }
@@ -126,7 +127,8 @@
   margin-left: 6px;
   display: inline-block;
   color: var(--message-attachment-timestamp-color);
-  line-height: 18px;
+  line-height: 20px;
+  height: 20px;
   font-size: var(--message-attachment-timestamp-font-size);
   vertical-align: bottom;
 }

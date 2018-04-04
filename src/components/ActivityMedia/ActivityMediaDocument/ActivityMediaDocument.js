@@ -47,7 +47,7 @@ class ActivityMediaDocument extends PureComponent<Props> {
     return (
       <div className={styles.sender}>
         {'\u00A0'}-{'\u00A0'}
-        <PeerInfoTitle title={sender || ''} emojiSize={16} />
+        <PeerInfoTitle title={sender || ''} emojiSize={13} />
       </div>
     );
   }

@@ -23,9 +23,7 @@ class MessagePreview extends PureComponent<Props> {
     const { uid, info, message } = this.props;
     if (message && message.sender) {
       if (uid === message.sender.peer.id) {
-        return (
-          <Text className={styles.sender} id="SidebarRecentItem.you" />
-        );
+        return <Text className={styles.sender} id="SidebarRecentItem.you" />;
       }
 
       if (info.type === 'group') {
@@ -33,7 +31,7 @@ class MessagePreview extends PureComponent<Props> {
 
         return (
           <span className={styles.sender}>
-            <PeerInfoTitle title={title} />
+            <PeerInfoTitle title={title} emojiSize={15} />
             {': '}
           </span>
         );
@@ -51,20 +49,14 @@ class MessagePreview extends PureComponent<Props> {
         return (
           <div className={className}>
             {this.renderStatusSender()}
-            <TextMessagePreview
-              content={content}
-              className={styles.preview}
-              emojiSize={16}
-            />
+            <TextMessagePreview content={content} className={styles.preview} emojiSize={13} />
           </div>
         );
 
       case 'service':
         return (
           <div className={className}>
-            <span className={styles.service}>
-              {content.text}
-            </span>
+            <span className={styles.service}>{content.text}</span>
           </div>
         );
 
@@ -75,10 +67,7 @@ class MessagePreview extends PureComponent<Props> {
         return (
           <div className={className}>
             {this.renderStatusSender()}
-            <Text
-              className={styles.highlight}
-              id={`SidebarRecentItem.${content.type}`}
-            />
+            <Text className={styles.highlight} id={`SidebarRecentItem.${content.type}`} />
           </div>
         );
     }

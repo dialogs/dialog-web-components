@@ -45,7 +45,7 @@ const actions = [{
   title: 'Add to contacts'
 },{
   glyph: 'star_outline',
-  title: 'Add to fauvorites'
+  title: 'Add to favourites'
 }];
 
 const renderActions = () => {

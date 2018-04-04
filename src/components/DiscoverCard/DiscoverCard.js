@@ -76,21 +76,20 @@ class DiscoverCard extends PureComponent<Props> {
     return (
       <div className={styles.creator}>
         <Text id="DiscoverCard.creator" />
-        <PeerInfoTitle title={creator} className={styles.creatorTitle} emojiSize={18} />
+        <PeerInfoTitle title={creator} className={styles.creatorTitle} emojiSize={14} />
       </div>
     );
   }
 
   renderIcon() {
     const { type } = this.props;
-    const size = 26;
 
     switch (type) {
       case 'channel':
-        return <Icon glyph="channel" className={styles.icon} size={size} />;
+        return <Icon glyph="channel" className={styles.icon} size={24} />;
 
       case 'group':
-        return <Icon glyph="group" className={styles.icon} size={size} />;
+        return <Icon glyph="group" className={styles.icon} size={26} />;
 
       default:
         return null;
@@ -114,12 +113,12 @@ class DiscoverCard extends PureComponent<Props> {
       <div className={styles.info}>
         <div className={styles.title} title={title}>
           {this.renderIcon()}
-          <PeerInfoTitle title={title} emojiSize={24} />
+          <PeerInfoTitle title={title} emojiSize={18} />
         </div>
         {this.renderShortname()}
         {description ? (
           <div className={styles.description} title={description}>
-            <Markdown text={description} inline />
+            <Markdown text={description} inline emojiSize={15} />
           </div>
         ) : null}
       </div>

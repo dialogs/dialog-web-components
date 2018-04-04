@@ -98,7 +98,7 @@ class SidebarRecentItem extends PureComponent<Props> {
   renderIcons() {
     const icons = [];
     if (this.props.favourite) {
-      icons.push(<Icon key="favourite" glyph="star" className={styles.icon} size={16} />);
+      icons.push(<Icon key="favourite" glyph="star" className={styles.icon} size={18} />);
     }
 
     switch (this.props.info.type) {
@@ -132,7 +132,7 @@ class SidebarRecentItem extends PureComponent<Props> {
         <div className={styles.text}>
           <div className={styles.title}>
             {this.renderIcons()}
-            <PeerInfoTitle title={this.props.info.title} emojiSize={19} />
+            <PeerInfoTitle title={this.props.info.title} emojiSize={15} />
           </div>
           {this.renderStatus()}
         </div>

@@ -63,7 +63,7 @@ class ActivityMediaVideo extends PureComponent<Props> {
                 {'\u00A0'}-{'\u00A0'}
               </span>
             ) : null}
-            <PeerInfoTitle title={sender || ''} emojiSize={16} />
+            <PeerInfoTitle title={sender || ''} emojiSize={13} />
           </div>
         </div>
       </div>

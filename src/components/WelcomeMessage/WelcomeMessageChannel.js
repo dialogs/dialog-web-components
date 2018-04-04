@@ -43,7 +43,7 @@ class WelcomeMessageChannel extends PureComponent<Props> {
       return null;
     }
 
-    return <Markdown className={styles.about} text={about} />;
+    return <Markdown className={styles.about} text={about} emojiSize={16} />;
   }
 
   renderActions() {

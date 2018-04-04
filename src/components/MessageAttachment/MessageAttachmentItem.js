@@ -74,6 +74,7 @@ class MessageAttachmentItem extends Component<Props> {
           onTitleClick={this.handleGoToPeer}
           onUserNameClick={this.handleGoToPeer}
           addSpacebars
+          emojiSize={16}
         />
         {type === 'reply' ? this.renderTimestamp() : null}
       </header>
