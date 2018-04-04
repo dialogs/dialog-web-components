@@ -49,6 +49,7 @@ class MessageAttachmentItem extends Component<Props> {
   };
 
   handleGoToMessage = (event: SyntheticMouseEvent<>): void => {
+    // $FlowFixMe
     if (event.target.tagName === 'A' || hasSelection()) {
       return;
     }

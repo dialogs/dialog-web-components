@@ -14,7 +14,7 @@ import styles from './ActivitySearch.css';
 
 class ActivitySearch extends PureComponent<Props> {
   renderFilter() {
-    if (!this.props.filter) {
+    if (!this.props.options) {
       return null;
     }
 

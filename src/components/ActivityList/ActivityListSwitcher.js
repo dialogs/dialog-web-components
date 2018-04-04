@@ -30,6 +30,7 @@ class ActivityListSwitcher extends PureComponent<Props> {
 
   renderIcon() {
     const { icon } = this.props;
+
     if (!icon) {
       return null;
     }
@@ -45,24 +46,8 @@ class ActivityListSwitcher extends PureComponent<Props> {
     );
   }
 
-  renderArrow() {
-    if (!this.props.onClick) {
-      return null;
-    }
-
-    if (!this.props.withArrow) {
-      return null;
-    }
-
-    return <Icon glyph="keyboard_arrow_right" className={styles.arrow} />;
-  }
-
   render() {
-    const className = classNames(
-      styles.item,
-      styles.clickable,
-      this.props.className
-    );
+    const className = classNames(styles.item, styles.clickable, this.props.className);
 
     return (
       <div className={className} onClick={this.handleClick} id={this.props.id}>
