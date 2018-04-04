@@ -129,7 +129,6 @@
       "ActivityMediaHeader",
       "ActivityList",
       "ActivityProfile",
-      "ActivityListMembers",
       "ActivityInvite",
       "ActivityIntegration",
       "ActivityMedia",

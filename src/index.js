@@ -8,7 +8,6 @@ export { default as Avatar } from './components/Avatar/Avatar';
 export { default as PeerAvatar } from './components/PeerAvatar/PeerAvatar';
 export { default as PeerAvatarWithStatus } from './components/PeerAvatarWithStatus/PeerAvatarWithStatus';
 export { default as DoublePeerAvatar } from './components/DoublePeerAvatar/DoublePeerAvatar';
-
 export { default as PeerInfoTitle } from './components/PeerInfoTitle/PeerInfoTitle';
 export { default as Scroller } from './components/Scroller/Scroller';
 export { default as Dropdown } from './components/Dropdown/Dropdown';
@@ -58,7 +57,6 @@ export { default as ToolbarSearchInput } from './components/ToolbarSearchInput/T
 export { default as Button } from './components/Button/Button';
 export { default as ButtonNext } from './components/ButtonNext/ButtonNext';
 export { default as LinkButton } from './components/LinkButton/LinkButton';
-export { default as CopyButton } from './components/CopyButton/CopyButton';
 export { default as IconButton } from './components/IconButton/IconButton';
 export { default as LinkIconButton } from './components/LinkIconButton/LinkIconButton';
 
@@ -143,9 +141,6 @@ export { default as ActivityListSwitcher } from './components/ActivityList/Activ
 export { default as ActivityProfile } from './components/ActivityProfile/ActivityProfile';
 export { default as ActivityInvite } from './components/ActivityInvite/ActivityInvite';
 export { default as ActivityIntegration } from './components/ActivityIntegration/ActivityIntegration';
-export { default as ActivityListMembers } from './components/ActivityListMembers/ActivityListMembers';
-export { default as ActivityListMembersAdd } from './components/ActivityListMembers/ActivityListMembersAdd';
-export { default as ActivityListMembersItem } from './components/ActivityListMembers/ActivityListMembersItem';
 export { default as ActivityMedia } from './components/ActivityMedia/ActivityMedia';
 export { default as ActivitySearch } from './components/ActivitySearch/ActivitySearch';
 export { default as ActivityPinned } from './components/ActivityPinned/ActivityPinned';
@@ -154,6 +149,7 @@ export { default as ActivityPinned } from './components/ActivityPinned/ActivityP
 export { default as Trigger } from './components/Trigger/Trigger';
 export { default as Confirm } from './components/Confirm/Confirm';
 export { default as HotKeys } from './components/HotKeys/HotKeys';
+export { default as CopyButton } from './components/CopyButton/CopyButton';
 
 // Other
 export { default as Error } from './components/Error/Error';
