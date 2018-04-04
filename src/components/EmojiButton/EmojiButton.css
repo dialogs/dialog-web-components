@@ -42,16 +42,20 @@
 
 .emoji {
   display: inline-block;
-  margin-right: 4px;
+  margin-right: 6px !important;
   vertical-align: middle;
   float: left;
+  line-height: 1.1 !important;
 }
 
 .counter {
+  vertical-align: middle;
   font-size: var(--emoji-button-font-size);
   color: var(--emoji-button-counter-color);
   transition: color var(--emoji-button-transition-duration) ease;
   float: right;
+  min-width: 10px;
+  text-align: center;
   line-height: 1;
 }
 
