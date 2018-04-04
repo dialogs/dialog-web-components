@@ -48,7 +48,7 @@ class CheckButton extends PureComponent<Props> {
     );
 
     const padding = 4;
-    const tickSize = this.props.size - padding * 2;
+    const tickSize = this.props.size - (padding * 2);
     const style = {
       width: `${size}px`,
       height: `${size}px`,
