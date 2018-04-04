@@ -1,6 +1,6 @@
 ```jsx
 const messages = require('../../fixtures/messages');
-const from = require('../../fixtures/peerInfo');
+const { user } = require('../../fixtures/peerInfo');
 const onGoToMessage = () => console.debug('onGoToMessage');
 
 <div style={{background: '#fff'}}>
@@ -21,7 +21,7 @@ const onGoToMessage = () => console.debug('onGoToMessage');
     message={{
       ...messages[0],
       attachment: {
-        from,
+        from: user,
         type: 'forward',
         messages: [messages[1], messages[3]]
       }
@@ -33,7 +33,7 @@ const onGoToMessage = () => console.debug('onGoToMessage');
     message={{
       ...messages[0],
       attachment: {
-        from,
+        from: user,
         type: 'forward',
         messages: [messages[5]]
       }

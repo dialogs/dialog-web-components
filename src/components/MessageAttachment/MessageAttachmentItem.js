@@ -4,8 +4,10 @@
  */
 
 import type { Peer, Message } from '@dlghq/dialog-types';
+import type { ProviderContext } from '@dlghq/react-l10n';
 import React, { Component } from 'react';
 import classNames from 'classnames';
+import { LocalizationContextType } from '@dlghq/react-l10n';
 import { hasSelection } from '@dlghq/dialog-utils';
 import { Text } from '@dlghq/react-l10n';
 import TextMessagePreview from '../SidebarRecentItem/MessagePreview/TextMessagePreview';
@@ -13,6 +15,9 @@ import Icon from '../Icon/Icon';
 import PeerInfoTitle from '../PeerInfoTitle/PeerInfoTitle';
 import MessageContent from '../MessageContent/MessageContent';
 import decorators from './utils/decorators';
+import getLocalDateTimeFormat from '../../utils/getLocalDateTimeFormat';
+import getDateFnsLocale from '../../utils/getDateFnsLocale';
+import formatDate from 'date-fns/format';
 import styles from './MessageAttachment.css';
 
 type Props = {
@@ -28,9 +33,16 @@ type Props = {
 };
 
 class MessageAttachmentItem extends Component<Props> {
+  context: ProviderContext;
+
+  static contextTypes = {
+    l10n: LocalizationContextType
+  };
+
   handleGoToPeer = (event: SyntheticEvent<>): void => {
     event.preventDefault();
     event.stopPropagation();
+
     if (this.props.message.sender) {
       this.props.onGoToPeer(this.props.message.sender.peer);
     }
@@ -83,10 +95,12 @@ class MessageAttachmentItem extends Component<Props> {
 
   renderTimestamp() {
     const { message } = this.props;
+    const format = getLocalDateTimeFormat(this.context.l10n.locale);
+    const locale = getDateFnsLocale(this.context.l10n.locale);
 
     return (
       <time className={styles.time} dateTime={message.fullDate.toISOString()}>
-        {message.date}
+        {formatDate(message.fullDate, format, locale)}
       </time>
     );
   }
