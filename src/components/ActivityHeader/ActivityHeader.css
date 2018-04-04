@@ -48,6 +48,7 @@
   position: absolute;
   box-sizing: border-box;
   top: 50%;
+  pointer-events: all !important;
 
   &:hover {
     color: var(--activity-header-icon-color-hover);
