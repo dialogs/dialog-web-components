@@ -38,12 +38,17 @@ class CheckButton extends PureComponent<Props> {
 
   render() {
     const { checked, theme, size, id } = this.props;
-    const className = classNames(styles.container, styles[theme], {
-      [styles.checked]: checked
-    }, this.props.className);
+    const className = classNames(
+      styles.container,
+      styles[theme],
+      {
+        [styles.checked]: checked
+      },
+      this.props.className
+    );
 
-    const padding = 2;
-    const tickSize = this.props.size - (padding * 2);
+    const padding = 4;
+    const tickSize = this.props.size - padding * 2;
     const style = {
       width: `${size}px`,
       height: `${size}px`,
@@ -52,13 +57,7 @@ class CheckButton extends PureComponent<Props> {
 
     return (
       <div className={className} onClick={this.handleClick} style={style} id={id}>
-        {checked ? (
-          <Icon
-            className={styles.icon}
-            glyph="done"
-            size={tickSize}
-          />
-        ) : null}
+        {checked ? <Icon className={styles.icon} glyph="done" size={tickSize} /> : null}
       </div>
     );
   }
