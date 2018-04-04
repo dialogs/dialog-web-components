@@ -64,9 +64,10 @@ hr {
   justify-content: center !important;
   align-items: center !important;
   margin-right: 30px !important;
+  font-size: 16px;
 
   & :global(.WelcomeMessage__button__icon) {
     margin-right: 6px !important;
-    fill: currentColor !important;
+    color: currentColor !important;
   }
 }
