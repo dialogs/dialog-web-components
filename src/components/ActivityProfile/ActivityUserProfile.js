@@ -47,7 +47,7 @@ class ActivityUserProfile extends PureComponent<Props> {
         userName={nick}
         titleClassName={styles.name}
         userNameClassName={styles.nick}
-        emojiSize={26}
+        emojiSize={22}
       />
     );
   }
