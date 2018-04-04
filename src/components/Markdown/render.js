@@ -8,7 +8,7 @@ import * as React from 'react';
 import Emoji from '../Emoji/Emoji';
 import styles from './Markdown.css';
 
-export function renderText(tokens: TextToken[], emojiSize?: number = 20, isInline?: boolean) {
+export function renderText(tokens: TextToken[], emojiSize?: number = 16, isInline?: boolean) {
   const result = [];
 
   for (let index = 0; index < tokens.length; index++) {
@@ -76,7 +76,7 @@ function containsOnlyEmoji(tokens: BlockToken[]): boolean {
   return false;
 }
 
-export function renderBlocks(tokens: BlockToken[]) {
+export function renderBlocks(tokens: BlockToken[], emojiSize?: number = 16) {
   const result = [];
 
   const isOnlyEmoji = containsOnlyEmoji(tokens);
@@ -89,11 +89,11 @@ export function renderBlocks(tokens: BlockToken[]) {
         if (token.content.length) {
           result.push(
             <p key={i} className={styles.paragraph}>
-              {renderText(token.content, isOnlyEmoji ? 44 : 20)}
+              {renderText(token.content, isOnlyEmoji ? 44 : emojiSize)}
             </p>
           );
         } else {
-          result.push(<br key={i} />);
+          result.push(<br key={i} className={styles.break} />);
         }
 
         break;

@@ -25,7 +25,7 @@ class Markdown extends Component<Props> {
     decorators,
     renderText,
     renderBlocks,
-    emojiSize: 18
+    emojiSize: 16
   };
 
   shouldComponentUpdate(nextProps: Props): boolean {
@@ -45,7 +45,7 @@ class Markdown extends Component<Props> {
     const className = classNames(styles.container, this.props.className);
     const tokens = parse(this.props.text, this.props.decorators);
 
-    return <TagName className={className}>{this.props.renderBlocks(tokens)}</TagName>;
+    return <TagName className={className}>{this.props.renderBlocks(tokens, this.props.emojiSize)}</TagName>;
   }
 }
 

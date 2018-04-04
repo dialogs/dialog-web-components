@@ -1,21 +1,18 @@
-Markdown
---------
+### Markdown
 
 ```jsx
-const text = require("raw-loader!./fixtures/markdown.md");
+const text = require("raw-loader!../../fixtures/markdown.md");
 
 <Markdown text={text} />
 ```
 
-Emoji only
-----------
+### Emoji only
 
 ```jsx
 <Markdown text="😀" />
 ```
 
-Inline mode
------------
+### Inline mode
 
 ```jsx
 <Markdown text="*Hello*, :dog:" inline />
