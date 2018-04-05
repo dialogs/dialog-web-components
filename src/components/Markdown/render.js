@@ -110,7 +110,7 @@ export function renderBlocks(tokens: BlockToken[], emojiSize?: number = 16) {
       case 'blockquote':
         result.push(
           <blockquote key={i} className={styles.blockquote}>
-            {renderBlocks(token.content)}
+            {renderBlocks(token.content, emojiSize)}
           </blockquote>
         );
 
