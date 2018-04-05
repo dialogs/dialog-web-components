@@ -9,6 +9,7 @@
   align-items: center;
   align-content: center;
   justify-content: flex-start;
+  position: relative;
 
   &:hover {
     & .terminateButton {
@@ -28,13 +29,21 @@
 .sessionTitle {
   font-size: 18px;
   font-weight: 500;
-  line-height: 1.4;
+  line-height: 24px;
   flex: 0 0 auto;
 }
 
 .sessionAuthTime {
-  font-size: 13px;
-  line-height: 1.4;
+  font-size: var(--default-font-size-small);
+  line-height: 20px;
+  flex: 0 0 auto;
+  color: var(--default-font-color-light);
+  @apply --text-overflow-ellipsis;
+}
+
+.sessionDeviceTitle {
+  font-size: var(--default-font-size-small);
+  line-height: 20px;
   flex: 0 0 auto;
   color: color(#000 alpha(70%));
   @apply --text-overflow-ellipsis;
@@ -43,6 +52,9 @@
 .terminateButton {
   display: none;
   min-width: auto;
+  position: absolute;
+  top: 20px;
+  right: 0;
 }
 
 .termnateAllButton {

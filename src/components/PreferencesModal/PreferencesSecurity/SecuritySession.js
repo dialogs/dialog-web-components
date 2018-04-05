@@ -4,33 +4,35 @@
  */
 
 import type { AuthSession } from '@dlghq/dialog-types';
+import type { ProviderContext } from '@dlghq/react-l10n';
 import React, { PureComponent } from 'react';
-import { Text } from '@dlghq/react-l10n';
+import { LocalizationContextType, Text } from '@dlghq/react-l10n';
 import Field from '../../Field/Field';
 import Button from '../../Button/Button';
+import getLocalDateTimeFormat from '../../../utils/getLocalDateTimeFormat';
+import getDateFnsLocale from '../../../utils/getDateFnsLocale';
+import formatDate from 'date-fns/format';
 import styles from './Security.css';
 
 export type Props = {
   session: AuthSession,
   onSessionTerminate?: (id: number) => mixed
-}
+};
 
 class Session extends PureComponent<Props> {
-  handleTerminateClick: () => void;
+  context: ProviderContext;
 
-  constructor(props: Props) {
-    super(props);
+  static contextTypes = {
+    l10n: LocalizationContextType
+  };
 
-    this.handleTerminateClick = this.handleTerminateClick.bind(this);
-  }
-
-  handleTerminateClick(): void {
+  handleTerminateClick = (): void => {
     const { session } = this.props;
 
     if (this.props.onSessionTerminate) {
       this.props.onSessionTerminate(session.id);
     }
-  }
+  };
 
   renderTerminateButton() {
     if (!this.props.onSessionTerminate) {
@@ -50,6 +52,25 @@ class Session extends PureComponent<Props> {
     );
   }
 
+  renderAuthTime() {
+    const { session } = this.props;
+
+    const format = getLocalDateTimeFormat(this.context.l10n.locale);
+    const locale = getDateFnsLocale(this.context.l10n.locale);
+
+    return (
+      <time className={styles.sessionAuthTime} dateTime={session.authTime.toISOString()}>
+        {formatDate(session.authTime, format, locale)}
+      </time>
+    );
+  }
+
+  renderDeviceTitle() {
+    const { session } = this.props;
+
+    return <div className={styles.sessionDeviceTitle}>{session.deviceTitle}</div>;
+  }
+
   render() {
     const { session } = this.props;
 
@@ -57,7 +78,8 @@ class Session extends PureComponent<Props> {
       <Field className={styles.session}>
         <div className={styles.sessionMeta}>
           <div className={styles.sessionTitle}>{session.appTitle}</div>
-          <div className={styles.sessionAuthTime}>{session.authTime.toString()}</div>
+          {this.renderAuthTime()}
+          {this.renderDeviceTitle()}
         </div>
         {this.renderTerminateButton()}
       </Field>
