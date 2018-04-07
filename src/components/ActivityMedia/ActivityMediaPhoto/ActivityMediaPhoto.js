@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2018 dialog LLC <info@dlg.im>
  * @flow
  */
@@ -24,7 +24,11 @@ class ActivityMediaPhoto extends PureComponent<Props> {
       return <Text id="ActivityMedia.photo" className={styles.title} tagName="div" />;
     }
 
-    return <div className={styles.title}>{title}</div>;
+    return (
+      <div className={styles.title}>
+        {title}
+      </div>
+    );
   }
 
   render() {

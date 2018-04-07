@@ -100,7 +100,10 @@ class SidebarCallItem extends PureComponent<Props> {
     }
 
     return (
-      <time className={styles.duration}>: {formatTime(Math.floor(duration / 1000))}</time>
+      <time className={styles.duration}>
+:
+        {formatTime(Math.floor(duration / 1000))}
+      </time>
     );
   }
 

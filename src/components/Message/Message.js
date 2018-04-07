@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2018 dialog LLC <info@dlg.im>
  * @flow
  */
@@ -186,7 +186,11 @@ class Message extends PureComponent<Props, State> {
 
     const username = sender.userName ? ` @${sender.userName}` : '';
 
-    return <CopyOnly>{sender.title + username + ' ' + date}</CopyOnly>;
+    return (
+      <CopyOnly>
+        {sender.title + username + ' ' + date}
+      </CopyOnly>
+    );
   }
 
   renderActions() {
@@ -203,8 +207,14 @@ class Message extends PureComponent<Props, State> {
           onClick={this.handleForceSelect}
         />
       );
-    } else if (this.isHover() && renderActions) {
-      return <div className={styles.actions}>{renderActions()}</div>;
+    }
+
+    if (this.isHover() && renderActions) {
+      return (
+        <div className={styles.actions}>
+          {renderActions()}
+        </div>
+      );
     }
 
     return null;
@@ -235,7 +245,11 @@ class Message extends PureComponent<Props, State> {
       );
     });
 
-    return <div className={styles.reactions}>{children}</div>;
+    return (
+      <div className={styles.reactions}>
+        {children}
+      </div>
+    );
   }
 
   renderReply() {

@@ -160,7 +160,9 @@ class PeerAvatar extends PureComponent<Props, void> {
     return (
       <div style={{ width: size, height: size }} className={className} onClick={this.props.onClick}>
         <svg viewBox="0 0 100 100" width={size} height={size} shapeRendering="auto">
-          <defs>{this.renderDefs()}</defs>
+          <defs>
+            {this.renderDefs()}
+          </defs>
           {this.renderMask()}
           {this.renderText()}
           {this.renderOnline()}

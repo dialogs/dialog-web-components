@@ -35,7 +35,9 @@ class Typing extends PureComponent<TypingProps> {
       >
         <div className={styles.typing}>
           <Spinner type="dotted" className={styles.indicator} />
-          <div className={styles.text}>{typing.typing}</div>
+          <div className={styles.text}>
+            {typing.typing}
+          </div>
         </div>
       </CSSTransition>
     );
@@ -46,7 +48,9 @@ class Typing extends PureComponent<TypingProps> {
 
     return (
       <div className={className}>
-        <TransitionGroup>{this.renderTyping()}</TransitionGroup>
+        <TransitionGroup>
+          {this.renderTyping()}
+        </TransitionGroup>
       </div>
     );
   }

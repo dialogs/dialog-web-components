@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2018 dialog LLC <info@dlg.im>
  * @flow
  */
@@ -41,7 +41,11 @@ class RadioGroup extends PureComponent<Props> {
   }
 
   render() {
-    return <div className={this.props.className}>{this.props.children}</div>;
+    return (
+      <div className={this.props.className}>
+        {this.props.children}
+      </div>
+    );
   }
 }
 

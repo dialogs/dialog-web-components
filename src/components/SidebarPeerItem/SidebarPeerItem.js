@@ -26,10 +26,21 @@ class SidebarPeerItem extends PureComponent<Props> {
   };
 
   handleClick = (): void => {
-    const { info: { peer }, onSelect } = this.props;
-
-    onSelect(peer);
+    this.props.onSelect(this.props.info.peer);
   };
+
+  renderCounter() {
+    const { counter } = this.props;
+    if (counter > 0) {
+      return (
+        <div className={styles.counter}>
+          {counter}
+        </div>
+      );
+    }
+
+    return null;
+  }
 
   render() {
     const { active, counter, info, online } = this.props;
@@ -44,7 +55,7 @@ class SidebarPeerItem extends PureComponent<Props> {
         <div className={styles.text}>
           <PeerInfoTitle title={info.title} titleClassName={styles.title} emojiSize={15} />
         </div>
-        {counter > 0 ? <div className={styles.counter}>{counter}</div> : null}
+        {this.renderCounter()}
       </div>
     );
   }

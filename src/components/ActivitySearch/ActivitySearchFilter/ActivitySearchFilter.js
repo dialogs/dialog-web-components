@@ -18,10 +18,16 @@ class ActivitySearchFilter extends PureComponent<Props> {
     return (
       <div className={className}>
         <div className={styles.filterRel}>
-          <span>Relevant</span>
+          <span>
+Relevant
+          </span>
         </div>
         <div className={styles.filterInc}>
-          Includes: <span>Everything</span>
+          Includes:
+          {' '}
+          <span>
+Everything
+          </span>
         </div>
       </div>
     );

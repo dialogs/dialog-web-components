@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2018 dialog LLC <info@dlg.im>
  * @flow
  */
@@ -55,8 +55,12 @@ class ButtonNext extends PureComponent<Props> {
     );
 
     return (
+      // eslint-disable-next-line react/button-has-type
       <button
-        id={id} className={className} type={type} disabled={disabled || loading}
+        id={id}
+        className={className}
+        type={type}
+        disabled={disabled || loading}
         onClick={this.props.onClick}
       >
         {loading ? this.renderLoading() : children}

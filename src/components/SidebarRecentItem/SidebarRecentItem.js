@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2018 dialog LLC <info@dlg.im>
  * @flow
  */
@@ -57,7 +57,9 @@ class SidebarRecentItem extends PureComponent<Props> {
       return (
         <div className={styles.message}>
           <Spinner className={styles.typing} type="dotted" />
-          <span className={styles.highlight}>{typing}</span>
+          <span className={styles.highlight}>
+            {typing}
+          </span>
         </div>
       );
     }
@@ -92,7 +94,11 @@ class SidebarRecentItem extends PureComponent<Props> {
 
     const className = classNames(styles.counter, muted ? styles.muted : null);
 
-    return <div className={className}>{counter}</div>;
+    return (
+      <div className={className}>
+        {counter}
+      </div>
+    );
   }
 
   renderIcons() {

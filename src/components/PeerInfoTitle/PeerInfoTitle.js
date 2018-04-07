@@ -58,7 +58,11 @@ class PeerInfoTitle extends PureComponent<Props> {
       );
     }
 
-    return <span className={this.props.className}>{title}</span>;
+    return (
+      <span className={this.props.className}>
+        {title}
+      </span>
+    );
   }
 }
 

@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2018 dialog LLC <info@dlg.im>
  * @flow
  */
@@ -22,7 +22,9 @@ class ActivityMediaDocument extends PureComponent<Props> {
 
     return (
       <div className={styles.preview} title={extension}>
-        <span className={styles.extension}>{extension}</span>
+        <span className={styles.extension}>
+          {extension}
+        </span>
       </div>
     );
   }
@@ -34,7 +36,11 @@ class ActivityMediaDocument extends PureComponent<Props> {
       return <Text id="ActivityMedia.document" className={styles.title} tagName="div" />;
     }
 
-    return <div className={styles.title}>{title}</div>;
+    return (
+      <div className={styles.title}>
+        {title}
+      </div>
+    );
   }
 
   renderSender() {
@@ -46,7 +52,7 @@ class ActivityMediaDocument extends PureComponent<Props> {
 
     return (
       <div className={styles.sender}>
-        {'\u00A0'}-{'\u00A0'}
+        {'\u00A0-\u00A0'}
         <PeerInfoTitle title={sender || ''} emojiSize={13} />
       </div>
     );

@@ -68,7 +68,11 @@ class Session extends PureComponent<Props> {
   renderDeviceTitle() {
     const { session } = this.props;
 
-    return <div className={styles.sessionDeviceTitle}>{session.deviceTitle}</div>;
+    return (
+      <div className={styles.sessionDeviceTitle}>
+        {session.deviceTitle}
+      </div>
+    );
   }
 
   render() {
@@ -77,7 +81,9 @@ class Session extends PureComponent<Props> {
     return (
       <Field className={styles.session}>
         <div className={styles.sessionMeta}>
-          <div className={styles.sessionTitle}>{session.appTitle}</div>
+          <div className={styles.sessionTitle}>
+            {session.appTitle}
+          </div>
           {this.renderAuthTime()}
           {this.renderDeviceTitle()}
         </div>

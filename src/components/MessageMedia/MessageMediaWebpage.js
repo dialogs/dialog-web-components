@@ -24,7 +24,9 @@ class MessageMediaWebpage extends PureComponent<Props> {
     }
 
     return (
-      <h4 className={styles.webpageTitle}>{title}</h4>
+      <h4 className={styles.webpageTitle}>
+        {title}
+      </h4>
     );
   }
 

@@ -141,7 +141,9 @@ class PreferencesModal extends PureComponent<Props> {
             onPick={this.handleScreenChange}
           />
           <div className={styles.scroller}>
-            <Scroller>{this.renderScreen()}</Scroller>
+            <Scroller>
+              {this.renderScreen()}
+            </Scroller>
           </div>
         </ModalBody>
       </Modal>

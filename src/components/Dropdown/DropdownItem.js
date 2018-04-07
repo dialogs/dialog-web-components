@@ -40,7 +40,11 @@ class DropdownItem extends PureComponent<Props, State> {
       return null;
     }
 
-    return <div className={styles.submenuWrapper}>{this.props.renderSubmenu()}</div>;
+    return (
+      <div className={styles.submenuWrapper}>
+        {this.props.renderSubmenu()}
+      </div>
+    );
   }
 
   renderClickableItem() {
@@ -53,7 +57,9 @@ class DropdownItem extends PureComponent<Props, State> {
     return (
       <Hover className={className} id={this.props.id} onHover={this.handleHover} onClick={this.props.onClick}>
         <div className={wrapperClassName}>
-          <div className={styles.content}>{this.props.children}</div>
+          <div className={styles.content}>
+            {this.props.children}
+          </div>
           {this.renderSubmenu()}
         </div>
       </Hover>
@@ -69,7 +75,9 @@ class DropdownItem extends PureComponent<Props, State> {
     return (
       <div className={className} id={this.props.id}>
         <div className={wrapperClassName}>
-          <div className={styles.content}>{this.props.children}</div>
+          <div className={styles.content}>
+            {this.props.children}
+          </div>
         </div>
       </div>
     );

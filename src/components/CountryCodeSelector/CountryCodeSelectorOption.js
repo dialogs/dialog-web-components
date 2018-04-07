@@ -94,8 +94,12 @@ class CountryCodeSelectorOption extends PureComponent<Props> {
         onMouseOver={this.handleMouseOver}
       >
         {this.renderFlag()}
-        <div className={styles.optionLabel}>{title}</div>
-        <span className={styles.optionCode}>{country.code}</span>
+        <div className={styles.optionLabel}>
+          {title}
+        </div>
+        <span className={styles.optionCode}>
+          {country.code}
+        </span>
       </div>
     );
   }

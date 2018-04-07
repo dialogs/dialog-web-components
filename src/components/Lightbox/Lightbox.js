@@ -168,11 +168,27 @@ class Lightbox extends Component<Props, State> {
           <div className="pswp__ui pswp__ui--hidden">
             <div className={cx('pswp__top-bar', styles.toolbar)}>
               <div className="pswp__counter" />
-              <button className="pswp__button pswp__button--close" title={l10n.formatText('Lightbox.close')} />
-              <button className="pswp__button pswp__button--share" title={l10n.formatText('Lightbox.share')} />
-              <button className="pswp__button pswp__button--fs" title={l10n.formatText('Lightbox.fullscreen')} />
+              <button
+                className="pswp__button pswp__button--close"
+                type="button"
+                title={l10n.formatText('Lightbox.close')}
+              />
+              <button
+                className="pswp__button pswp__button--share"
+                type="button"
+                title={l10n.formatText('Lightbox.share')}
+              />
+              <button
+                className="pswp__button pswp__button--fs"
+                type="button"
+                title={l10n.formatText('Lightbox.fullscreen')}
+              />
               {this.renderDownload()}
-              <button className="pswp__button pswp__button--zoom" title={l10n.formatText('Lightbox.zoom')} />
+              <button
+                className="pswp__button pswp__button--zoom"
+                type="button"
+                title={l10n.formatText('Lightbox.zoom')}
+              />
               <div className="pswp__preloader">
                 <div className="pswp__preloader__icn">
                   <div className="pswp__preloader__cut">
@@ -186,12 +202,14 @@ class Lightbox extends Component<Props, State> {
             </div>
             <button
               className={cx('pswp__button pswp__button--arrow--left', styles.button)}
+              type="button"
               title={l10n.formatText('Lightbox.prev')}
             >
               <Icon glyph="arrow_left" className={styles.arrowIcon} size={42} />
             </button>
             <button
               className={cx('pswp__button pswp__button--arrow--right', styles.button)}
+              type="button"
               title={l10n.formatText('Lightbox.next')}
             >
               <Icon glyph="arrow_right" className={styles.arrowIcon} size={42} />

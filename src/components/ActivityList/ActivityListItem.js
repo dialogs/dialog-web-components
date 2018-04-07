@@ -59,7 +59,9 @@ class ActivityListItem extends PureComponent<Props> {
     return (
       <div className={className} onClick={this.props.onClick} id={this.props.id}>
         {this.renderIcon()}
-        <div className={styles.content}>{this.props.children}</div>
+        <div className={styles.content}>
+          {this.props.children}
+        </div>
         {this.renderArrow()}
       </div>
     );

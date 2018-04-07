@@ -110,12 +110,15 @@ class AuthorizationByPhone extends PureComponent<Props, State> {
   };
 
   handleIntervalUpdate = (): void => {
-    const resendTimeout = this.state.resendTimeout - 1;
-    this.setState({ resendTimeout });
-
-    if (resendTimeout === 0) {
-      this.handleIntervalClear();
-    }
+    this.setState(({ resendTimeout }) => {
+      return {
+        resendTimeout: resendTimeout - 1
+      };
+    }, () => {
+      if (this.state.resendTimeout <= 0) {
+        this.handleIntervalClear();
+      }
+    });
   };
 
   handleIntervalClear = (): void => {

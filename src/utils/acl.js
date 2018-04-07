@@ -5,7 +5,11 @@
 
 import type { Group, GroupMemberPermission } from '@dlghq/dialog-types';
 
-export function hasPermission(uid: number, group: Group, permission: GroupMemberPermission): boolean {
+export function hasPermission(
+  uid: number,
+  group: Group,
+  permission: GroupMemberPermission
+): boolean {
   // owner always has all permissions
   if (uid === group.adminId) {
     return true;
@@ -32,13 +36,7 @@ export function hasPermission(uid: number, group: Group, permission: GroupMember
 export function getDefaultPermissions(group: Group): GroupMemberPermission[] {
   switch (group.type) {
     case 'channel':
-      return [
-        'invite',
-        'update_info',
-        'send_message',
-        'edit_message',
-        'delete_message'
-      ];
+      return ['invite', 'update_info', 'send_message', 'edit_message', 'delete_message'];
 
     default:
       return [

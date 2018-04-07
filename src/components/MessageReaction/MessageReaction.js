@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2018 dialog LLC <info@dlg.im>
  * @flow
  */
@@ -34,10 +34,18 @@ class MessageReaction extends PureComponent<Props> {
         const nickname = user.userName ? '@' + user.userName : user.title;
 
         if (children.length > 0) {
-          children.push(<span key={i}>, </span>);
+          children.push(
+            <span key={i}>
+              {', '}
+            </span>
+          );
         }
 
-        children.push(<strong key={peerToString(user.peer)}>{nickname}</strong>);
+        children.push(
+          <strong key={peerToString(user.peer)}>
+            {nickname}
+          </strong>
+        );
       }
     }
 

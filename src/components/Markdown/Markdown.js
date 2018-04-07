@@ -38,14 +38,22 @@ class Markdown extends Component<Props> {
       const tokens = parseInline(this.props.text, this.props.decorators);
       const inlineClassName = classNames(styles.inline, this.props.className);
 
-      return <TagName className={inlineClassName}>{this.props.renderText(tokens, this.props.emojiSize, true)}</TagName>;
+      return (
+        <TagName className={inlineClassName}>
+          {this.props.renderText(tokens, this.props.emojiSize, true)}
+        </TagName>
+      );
     }
 
     const TagName = this.props.tagName || 'div';
     const className = classNames(styles.container, this.props.className);
     const tokens = parse(this.props.text, this.props.decorators);
 
-    return <TagName className={className}>{this.props.renderBlocks(tokens, this.props.emojiSize)}</TagName>;
+    return (
+      <TagName className={className}>
+        {this.props.renderBlocks(tokens, this.props.emojiSize)}
+      </TagName>
+    );
   }
 }
 

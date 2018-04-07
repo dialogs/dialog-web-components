@@ -86,9 +86,7 @@ function createSelectorState<T>(
     }
 
     replaceItems(items: Iterable<T>): SelectorState {
-      return this
-        .set('items', List(items))
-        .setQuery(this.getQuery(), true);
+      return this.set('items', List(items)).setQuery(this.getQuery(), true);
     }
 
     getSelected(): OrderedSet<T> {
@@ -139,30 +137,22 @@ function createSelectorState<T>(
         case 'Tab':
           event.preventDefault();
 
-          return this.addSelected(
-            this.getHovered()
-          );
+          return this.addSelected(this.getHovered());
 
         case 'Enter':
           event.preventDefault();
 
-          return this.toggleSelected(
-            this.getHovered()
-          );
+          return this.toggleSelected(this.getHovered());
 
         case 'ArrowUp':
           event.preventDefault();
 
-          return this.setHoverIndex(
-            this.getHoverIndex() - 1
-          );
+          return this.setHoverIndex(this.getHoverIndex() - 1);
 
         case 'ArrowDown':
           event.preventDefault();
 
-          return this.setHoverIndex(
-            this.getHoverIndex() + 1
-          );
+          return this.setHoverIndex(this.getHoverIndex() + 1);
 
         case 'Backspace':
           if (!this.hasQuery()) {
@@ -192,6 +182,5 @@ function createSelectorState<T>(
     }
   };
 }
-
 
 export default createSelectorState;

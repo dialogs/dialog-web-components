@@ -30,7 +30,9 @@ class AboutModal extends PureComponent<Props> {
 
     if (updateState.error) {
       return (
-        <div className={styles.error}>{updateState.error.message}</div>
+        <div className={styles.error}>
+          {updateState.error.message}
+        </div>
       );
     }
 
@@ -90,7 +92,9 @@ class AboutModal extends PureComponent<Props> {
             className={styles.close}
           />
           <Logo className={styles.logo} />
-          <h1 className={styles.appName}>{appName}</h1>
+          <h1 className={styles.appName}>
+            {appName}
+          </h1>
           <Text
             id="AboutModal.version"
             values={{ appVersion }}

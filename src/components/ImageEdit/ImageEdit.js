@@ -77,12 +77,15 @@ class ImageEdit extends PureComponent<Props, State> {
             zoom: 0
           }).then(() => {
             if (this.croppie) {
-              this.setState({
-                zoom: {
-                  ...this.state.zoom,
-                  min: this.croppie._currentZoom,
-                  current: this.croppie._currentZoom
-                }
+              const { _currentZoom: currentZoom } = this.croppie;
+              this.setState(({ zoom }) => {
+                return {
+                  zoom: {
+                    ...zoom,
+                    min: currentZoom,
+                    current: currentZoom
+                  }
+                };
               });
             }
           });
@@ -138,11 +141,13 @@ class ImageEdit extends PureComponent<Props, State> {
   };
 
   handleCroppieUpdate = (event: $FlowIssue) => {
-    this.setState({
-      zoom: {
-        ...this.state.zoom,
-        current: event.detail.zoom
-      }
+    this.setState(({ zoom }) => {
+      return {
+        zoom: {
+          ...zoom,
+          current: event.detail.zoom
+        }
+      };
     });
   };
 

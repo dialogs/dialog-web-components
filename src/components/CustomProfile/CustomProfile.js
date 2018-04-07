@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2018 dialog LLC <info@dlg.im>
  * @flow
  */
@@ -47,7 +47,11 @@ class CustomProfile extends PureComponent<Props> {
 
     const className = classNames(styles.container, this.props.className);
 
-    return <div className={className}>{this.renderProperties()}</div>;
+    return (
+      <div className={className}>
+        {this.renderProperties()}
+      </div>
+    );
   }
 }
 

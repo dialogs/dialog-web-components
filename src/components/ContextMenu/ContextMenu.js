@@ -46,7 +46,9 @@ class ContextMenu extends PureComponent<Props> {
 
   renderTrigger = (newProps: Object) => {
     return (
-      <span {...newProps}>{this.props.children}</span>
+      <span {...newProps}>
+        {this.props.children}
+      </span>
     );
   };
 

@@ -79,11 +79,13 @@ class CallExample extends PureComponent<Props, State> {
   };
 
   handleConnecting = () => {
-    this.setState({
-      call: {
-        ...this.state.call,
-        state: 'connecting'
-      }
+    this.setState(({ call }) => {
+      return {
+        call: {
+          ...call,
+          state: 'connecting'
+        }
+      };
     }, () => {
       setTimeout(this.handleInProgress, 1000);
     });
@@ -116,12 +118,14 @@ class CallExample extends PureComponent<Props, State> {
   };
 
   handleInProgress = () => {
-    this.setState({
-      call: {
-        ...this.state.call,
-        state: 'in_progress',
-        startTime: Date.now()
-      }
+    this.setState(({ call }) => {
+      return {
+        call: {
+          ...call,
+          state: 'in_progress',
+          startTime: Date.now()
+        }
+      };
     });
   };
 
@@ -158,12 +162,14 @@ class CallExample extends PureComponent<Props, State> {
           }
         }, () => {
           getVideoStream((stream) => {
-            this.setState({
-              call: {
-                ...this.state.call,
-                ownVideos: [stream],
-                theirVideos: [stream, stream]
-              }
+            this.setState((prevState) => {
+              return {
+                call: {
+                  ...prevState.call,
+                  ownVideos: [stream],
+                  theirVideos: [stream, stream]
+                }
+              };
             });
           });
         });
@@ -198,7 +204,11 @@ class CallExample extends PureComponent<Props, State> {
   };
 
   handleSizeToggle = () => {
-    this.setState({ small: !this.state.small });
+    this.setState(({ small }) => {
+      return {
+        small: !small
+      };
+    });
   };
 
   handleGoToPeer = (peer: $FlowIssue) => {
@@ -231,9 +241,13 @@ class CallExample extends PureComponent<Props, State> {
   render() {
     return (
       <div>
-        <Button onClick={this.handleCall} theme="primary" size="small">Call</Button>
+        <Button onClick={this.handleCall} theme="primary" size="small">
+Call
+        </Button>
         <div style={{ width: 6, display: 'inline-block' }} />
-        <Button onClick={this.handleSizeToggle} theme="primary" size="small">Toggle size</Button>
+        <Button onClick={this.handleSizeToggle} theme="primary" size="small">
+Toggle size
+        </Button>
         <div style={{ height: 500, width: '100%' }}>
           {this.renderCall()}
         </div>

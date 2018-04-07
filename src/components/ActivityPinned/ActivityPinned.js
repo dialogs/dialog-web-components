@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2018 dialog LLC <info@dlg.im>
  * @flow
  */
@@ -49,10 +49,13 @@ class ActivityPinned extends PureComponent<Props> {
   }
 
   render() {
-    console.debug('ActivityPinned', this.props);
     const className = classNames(styles.container, this.props.className);
 
-    return <ActivityList className={className}>{this.renderMessages()}</ActivityList>;
+    return (
+      <ActivityList className={className}>
+        {this.renderMessages()}
+      </ActivityList>
+    );
   }
 }
 

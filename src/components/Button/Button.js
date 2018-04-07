@@ -62,6 +62,7 @@ class Button extends PureComponent<Props> {
     );
 
     return (
+      // eslint-disable-next-line react/button-has-type
       <button
         id={id}
         className={className}

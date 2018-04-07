@@ -24,7 +24,9 @@ class ScrollToBottom extends PureComponent<Props> {
     }
 
     return (
-      <div className={styles.counter}>{counter}</div>
+      <div className={styles.counter}>
+        {counter}
+      </div>
     );
   }
 

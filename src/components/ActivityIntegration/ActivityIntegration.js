@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2018 dialog LLC <info@dlg.im>
  * @flow
  */
@@ -32,7 +32,9 @@ class ActivityIntegration extends PureComponent<Props> {
     return (
       <div className={styles.block}>
         <div className={styles.linkContainer}>
-          <span className={styles.link}>{this.props.link}</span>
+          <span className={styles.link}>
+            {this.props.link}
+          </span>
         </div>
         <CopyOnly block />
         <CopyButton id="activity_integration_copy_button" wide disabled={this.props.pending} text={this.props.link} />
@@ -56,7 +58,11 @@ class ActivityIntegration extends PureComponent<Props> {
   render() {
     const className = classNames(styles.container, this.props.className);
 
-    return <div className={className}>{this.renderContent()}</div>;
+    return (
+      <div className={className}>
+        {this.renderContent()}
+      </div>
+    );
   }
 }
 

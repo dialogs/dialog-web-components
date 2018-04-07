@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2018 dialog LLC <info@dlg.im>
  * @flow
  */
@@ -39,7 +39,11 @@ class ActivityMediaVideo extends PureComponent<Props> {
       return <Text id="ActivityMedia.video" className={styles.title} tagName="div" />;
     }
 
-    return <div className={styles.title}>{title}</div>;
+    return (
+      <div className={styles.title}>
+        {title}
+      </div>
+    );
   }
 
   render() {
@@ -54,13 +58,13 @@ class ActivityMediaVideo extends PureComponent<Props> {
             {duration ? (
               <span>
                 {getHumanTime(duration * 10)}
-                {'\u00A0'}-{'\u00A0'}
+                {'\u00A0-\u00A0'}
               </span>
             ) : null}
             {size ? (
               <span>
                 {size}
-                {'\u00A0'}-{'\u00A0'}
+                {'\u00A0-\u00A0'}
               </span>
             ) : null}
             <PeerInfoTitle title={sender || ''} emojiSize={13} />

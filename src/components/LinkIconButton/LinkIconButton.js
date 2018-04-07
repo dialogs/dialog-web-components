@@ -69,7 +69,9 @@ class LinkIconButton extends PureComponent<Props> {
         href={href} target={target} className={className} style={style}
         id={id} {...otherProps}
       >
-        <span className={styles.fix}>{this.renderIcon()}</span>
+        <span className={styles.fix}>
+          {this.renderIcon()}
+        </span>
       </a>
     );
   }

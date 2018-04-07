@@ -23,7 +23,11 @@ class WelcomeMessageUser extends PureComponent<Props> {
       return null;
     }
 
-    return <div className={styles.actions}>{this.props.renderActions()}</div>;
+    return (
+      <div className={styles.actions}>
+        {this.props.renderActions()}
+      </div>
+    );
   }
 
   renderAbout() {

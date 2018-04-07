@@ -27,6 +27,4 @@ export const MemberSelectorState = createSelectorState(
   true
 );
 
-export type {
-  SelectorState
-};
+export type { SelectorState };

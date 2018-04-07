@@ -24,7 +24,9 @@ class MessageDivider extends PureComponent<Props> {
 
     return (
       <div className={className}>
-        <div className={styles.text}>{this.props.children}</div>
+        <div className={styles.text}>
+          {this.props.children}
+        </div>
       </div>
     );
   }

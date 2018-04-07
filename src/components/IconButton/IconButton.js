@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2018 dialog LLC <info@dlg.im>
  * @flow
  */
@@ -69,13 +69,16 @@ class IconButton extends PureComponent<Props> {
     return (
       <button
         className={buttonClassName}
-        onClick={this.props.onClick}
+        id={id}
+        type="button"
         disabled={disabled}
         style={style}
-        id={id}
+        onClick={this.props.onClick}
         {...otherProps}
       >
-        <span className={styles.fix}>{this.renderIcon()}</span>
+        <span className={styles.fix}>
+          {this.renderIcon()}
+        </span>
       </button>
     );
   }

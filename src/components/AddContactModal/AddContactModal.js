@@ -166,7 +166,9 @@ class AddContactModal extends PureComponent<Props> {
               size={32}
             />
           </div>
-          <ErrorMessage className={styles.error}>{error.message}</ErrorMessage>
+          <ErrorMessage className={styles.error}>
+            {error.message}
+          </ErrorMessage>
         </div>
       );
     }

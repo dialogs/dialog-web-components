@@ -67,7 +67,9 @@ class SidebarSearchItem extends PureComponent<Props, State> {
           />
         </div>
         <div className={styles.headerInfo} onClick={this.handleJumpToMessage}>
-          <time dateTime={focus.fullDate.toISOString()}>{messageDate}</time>
+          <time dateTime={focus.fullDate.toISOString()}>
+            {messageDate}
+          </time>
           ・
           <Text
             id="ActivitySearch.jump"

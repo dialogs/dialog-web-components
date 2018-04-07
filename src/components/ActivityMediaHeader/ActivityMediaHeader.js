@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2018 dialog LLC <info@dlg.im>
  * @flow
  */
@@ -55,7 +55,11 @@ class ActivityMediaHeader extends PureComponent<Props> {
       );
     });
 
-    return <Dropdown>{children}</Dropdown>;
+    return (
+      <Dropdown>
+        {children}
+      </Dropdown>
+    );
   };
 
   renderBackButton() {

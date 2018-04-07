@@ -64,7 +64,9 @@ class EmojiCategory extends PureComponent<Props> {
           className={styles.categoryTitle}
           style={titleStyles}
         />
-        <div className={styles.categoryList}>{this.renderChars()}</div>
+        <div className={styles.categoryList}>
+          {this.renderChars()}
+        </div>
       </div>
     );
   }

@@ -50,17 +50,23 @@ class AttachmentMeta extends PureComponent<AttachmentMetaProps> {
           <tr>
             <td className={styles.metaBlock}>
               <Text id="AttachmentModal.filename" tagName="div" className={styles.metaHeading} />
-              <div className={styles.metaText}>{name}</div>
+              <div className={styles.metaText}>
+                {name}
+              </div>
             </td>
             <td className={styles.metaBlock}>
               <Text id="AttachmentModal.filesize" tagName="div" className={styles.metaHeading} />
-              <div className={styles.metaText}>{size}</div>
+              <div className={styles.metaText}>
+                {size}
+              </div>
             </td>
           </tr>
           <tr>
             <td className={styles.metaBlock}>
               <Text id="AttachmentModal.filetype" tagName="div" className={styles.metaHeading} />
-              <div className={styles.metaFileType}>{extension}</div>
+              <div className={styles.metaFileType}>
+                {extension}
+              </div>
             </td>
             {this.renderMethod()}
           </tr>

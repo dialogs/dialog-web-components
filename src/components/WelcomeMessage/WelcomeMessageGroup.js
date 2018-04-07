@@ -22,14 +22,27 @@ export type Props = {
 };
 
 class WelcomeMessageGroup extends PureComponent<Props> {
+  renderCreatedAt() {
+    const { createdAt } = this.props;
+    if (createdAt) {
+      return (
+        <span className={styles.createdDate}>
+          {createdAt}
+        </span>
+      );
+    }
+
+    return null;
+  }
+
   renderCreated() {
-    const { createdAt, creator, isOwner } = this.props;
+    const { creator, isOwner } = this.props;
 
     if (isOwner) {
       return (
         <div className={styles.created}>
           <Text id="WelcomeMessage.group.created_by_you" className={styles.createdText} />
-          {createdAt ? <span className={styles.createdDate}>{createdAt}</span> : null}
+          {this.renderCreatedAt()}
         </div>
       );
     }
@@ -38,7 +51,7 @@ class WelcomeMessageGroup extends PureComponent<Props> {
       return (
         <div className={styles.created}>
           <Text id="WelcomeMessage.group.created" className={styles.createdText} />
-          {createdAt ? <span className={styles.createdDate}>{createdAt}</span> : null}
+          {this.renderCreatedAt()}
           <PeerInfoTitle title={creator} emojiSize={16} />
         </div>
       );
@@ -62,7 +75,11 @@ class WelcomeMessageGroup extends PureComponent<Props> {
       return null;
     }
 
-    return <div className={styles.actions}>{this.props.renderActions()}</div>;
+    return (
+      <div className={styles.actions}>
+        {this.props.renderActions()}
+      </div>
+    );
   }
 
   renderHint() {

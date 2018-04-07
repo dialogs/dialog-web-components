@@ -21,14 +21,27 @@ export type Props = {
 };
 
 class WelcomeMessageChannel extends PureComponent<Props> {
+  renderCreatedAt() {
+    const { createdAt } = this.props;
+    if (createdAt) {
+      return (
+        <span className={styles.createdDate}>
+          {createdAt}
+        </span>
+      );
+    }
+
+    return null;
+  }
+
   renderCreated() {
-    const { createdAt, isOwner } = this.props;
+    const { isOwner } = this.props;
 
     if (isOwner) {
       return (
         <div className={styles.created}>
           <Text id="WelcomeMessage.channel.created_by_you" className={styles.createdText} />
-          {createdAt ? <span className={styles.createdDate}>{createdAt}</span> : null}
+          {this.renderCreatedAt()}
         </div>
       );
     }
@@ -51,7 +64,11 @@ class WelcomeMessageChannel extends PureComponent<Props> {
       return null;
     }
 
-    return <div className={styles.actions}>{this.props.renderActions()}</div>;
+    return (
+      <div className={styles.actions}>
+        {this.props.renderActions()}
+      </div>
+    );
   }
 
   renderHint() {

@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2018 dialog LLC <info@dlg.im>
  * @flow
  */
@@ -30,9 +30,11 @@ class EmojiButton extends PureComponent<Props> {
     }, this.props.className);
 
     return (
-      <button className={className} onClick={this.handleClick}>
+      <button className={className} type="button" onClick={this.handleClick}>
         <Emoji className={styles.emoji} char={this.props.char} size={16} />
-        <span className={styles.counter}>{this.props.count}</span>
+        <span className={styles.counter}>
+          {this.props.count}
+        </span>
       </button>
     );
   }

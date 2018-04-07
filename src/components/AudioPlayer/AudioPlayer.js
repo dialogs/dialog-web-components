@@ -203,7 +203,11 @@ class AudioPlayer extends PureComponent<Props, State> {
       return <MediaErrorMessage className={styles.error} error={error} />;
     }
 
-    return <div className={styles.state}>{getHumanTime(this.state.duration)}</div>;
+    return (
+      <div className={styles.state}>
+        {getHumanTime(this.state.duration)}
+      </div>
+    );
   }
 
   renderSender() {
@@ -213,7 +217,7 @@ class AudioPlayer extends PureComponent<Props, State> {
 
     return (
       <div className={styles.sender}>
-        {'\u00A0'}-{'\u00A0'}
+        {'\u00A0-\u00A0'}
         <PeerInfoTitle title={this.props.sender || ''} emojiSize={13} />
       </div>
     );

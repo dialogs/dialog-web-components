@@ -106,7 +106,9 @@ class CreateNewModal extends PureComponent<Props> {
     }
 
     return (
-      <div className={styles.error}>{error}</div>
+      <div className={styles.error}>
+        {error}
+      </div>
     );
   }
 

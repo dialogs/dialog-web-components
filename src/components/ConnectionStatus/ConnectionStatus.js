@@ -82,7 +82,9 @@ class ConnectionStatus extends PureComponent<Props, State> {
   render() {
     return (
       <div className={styles.wrapper}>
-        <TransitionGroup>{this.renderContent()}</TransitionGroup>
+        <TransitionGroup>
+          {this.renderContent()}
+        </TransitionGroup>
       </div>
     );
   }

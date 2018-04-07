@@ -42,12 +42,14 @@ class BlockedUser extends PureComponent<Props> {
             image={user.avatar}
             placeholder={user.placeholder}
           />
-          <span className={styles.userName}>{user.name}</span>
-          {
-            user.nick
-              ? <span className={styles.userNick}>@{user.nick}</span>
-              : null
-          }
+          <span className={styles.userName}>
+            {user.name}
+          </span>
+          {user.nick ? (
+            <span className={styles.userNick}>
+              {`@${user.nick}`}
+            </span>
+          ) : null}
         </div>
 
         <Button

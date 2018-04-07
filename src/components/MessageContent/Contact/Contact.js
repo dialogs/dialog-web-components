@@ -97,7 +97,9 @@ class Contact extends PureComponent<Props> {
       <div className={className} style={{ width: maxWidth }}>
         {this.renderAvatar()}
         <div className={styles.credentials}>
-          <div className={styles.name}>{name}</div>
+          <div className={styles.name}>
+            {name}
+          </div>
           {this.renderPhones()}
           {this.renderEmails()}
         </div>

@@ -23,7 +23,8 @@ const channel = {
   title: 'Kirsan news 😡',
   placeholder: 'yellow',
   type: 'channel',
-  about: 'Posts from the RSS feed on the official site of FIDE President Kirsan Ilyumzhinov www.kirsan.today.',
+  about:
+    'Posts from the RSS feed on the official site of FIDE President Kirsan Ilyumzhinov www.kirsan.today.',
   userName: 'kirsan_news_eng',
   peer: {
     id: 111,
@@ -44,7 +45,6 @@ const user = {
     key: 'u1709029441'
   }
 };
-
 const bot = {
   avatar: null,
   title: 'Security Bot',
@@ -58,7 +58,6 @@ const bot = {
     type: 'user'
   }
 };
-
 module.exports = {
   user,
   group,

@@ -28,7 +28,9 @@ function AttachmentPreview({ file }: AttachmentPreviewProps) {
 
   return (
     <div className={styles.preview}>
-      <div className={className}>{extension}</div>
+      <div className={className}>
+        {extension}
+      </div>
     </div>
   );
 }

@@ -41,7 +41,11 @@ class MessageFlattenAttachment extends PureComponent<Props> {
       );
     });
 
-    return <div>{children}</div>;
+    return (
+      <div>
+        {children}
+      </div>
+    );
   }
 }
 

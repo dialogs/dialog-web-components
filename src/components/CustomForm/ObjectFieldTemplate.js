@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2018 dialog LLC <info@dlg.im>
  * @flow
  */
@@ -24,7 +24,11 @@ export default class ObjectFieldTemplate extends PureComponent<Props> {
       return null;
     }
 
-    return <div className={styles.description}>{this.props.description}</div>;
+    return (
+      <div className={styles.description}>
+        {this.props.description}
+      </div>
+    );
   }
 
   renderProperties() {

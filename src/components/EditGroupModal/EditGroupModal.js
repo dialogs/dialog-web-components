@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2018 dialog LLC <info@dlg.im>
  * @flow
  */
@@ -34,50 +34,60 @@ class EditGroupModal extends PureComponent<Props, State> {
   }
 
   handleChange = (value: mixed, { target }: $FlowIssue) => {
-    this.setState({
-      group: {
-        ...this.state.group,
-        [target.name]: value
-      }
+    this.setState(({ group }) => {
+      return {
+        group: {
+          ...group,
+          [target.name]: value
+        }
+      };
     });
   };
 
   handleAvatarChange = (avatar: File): void => {
-    this.setState({
-      screen: 'info',
-      group: {
-        ...this.state.group,
-        avatar
-      }
+    this.setState(({ group }) => {
+      return {
+        screen: 'info',
+        group: {
+          ...group,
+          avatar
+        }
+      };
     });
   };
 
   handleAvatarRemove = (): void => {
-    this.setState({
-      group: {
-        ...this.state.group,
-        avatar: null
-      }
+    this.setState(({ group }) => {
+      return {
+        group: {
+          ...group,
+          avatar: null
+        }
+      };
     });
   };
 
   handleAvatarEdit = (avatar: File): void => {
-    this.setState({
-      screen: 'avatar',
-      group: {
-        ...this.state.group,
-        avatar
-      }
+    this.setState(({ group }) => {
+      return {
+        screen: 'avatar',
+        group: {
+          ...group,
+          avatar
+        }
+      };
     });
   };
 
   handleGoToInfo = (): void => {
-    this.setState({
-      screen: 'info',
-      group: {
-        ...this.state.group,
-        avatar: this.props.group.avatar
-      }
+    this.setState(({ group }) => {
+      return {
+        screen: 'info',
+        group: {
+          ...group,
+          avatar: this.props.group.avatar
+        }
+      };
     });
   };
 

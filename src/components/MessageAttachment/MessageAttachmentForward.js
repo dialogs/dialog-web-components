@@ -95,7 +95,9 @@ class MessageAttachmentForward extends PureComponent<Props> {
     return (
       <div className={className}>
         {this.renderHeader()}
-        <div className={styles.messages}>{this.renderMessages()}</div>
+        <div className={styles.messages}>
+          {this.renderMessages()}
+        </div>
       </div>
     );
   }

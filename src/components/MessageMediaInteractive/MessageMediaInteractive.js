@@ -48,7 +48,9 @@ class MessageMediaInteractive extends PureComponent<Props> {
 
     return (
       <Provider locale={this.context.l10n.locale} messages={this.props.media.messages}>
-        <div className={className}>{this.renderContent()}</div>
+        <div className={className}>
+          {this.renderContent()}
+        </div>
       </Provider>
     );
   }

@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2018 dialog LLC <info@dlg.im>
  * @flow
  */
@@ -23,10 +23,15 @@ class CustomProfileProperty extends PureComponent<Props> {
     switch (type) {
       case 'boolean':
         return <Text id={value ? 'Yes' : 'No'} className={styles.boolean} />;
+
       case 'number':
       case 'integer':
-        return <div className={styles.number}>{String(value)}</div>;
-      case 'string':
+        return (
+          <div className={styles.number}>
+            {String(value)}
+          </div>
+        );
+
       default:
         return (
           <div className={styles.string}>
@@ -41,7 +46,9 @@ class CustomProfileProperty extends PureComponent<Props> {
 
     return (
       <div className={className}>
-        <div className={styles.title}>{this.props.title}</div>
+        <div className={styles.title}>
+          {this.props.title}
+        </div>
         {this.renderValue()}
       </div>
     );

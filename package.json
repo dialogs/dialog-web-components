@@ -81,7 +81,7 @@
   },
   "devDependencies": {
     "@dlghq/babel-preset-dialog": "3.4.2",
-    "@dlghq/eslint-config-dialog": "3.3.2",
+    "@dlghq/eslint-config-dialog": "3.4.0",
     "@dlghq/postcss-dialog": "1.11.1",
     "@dlghq/stylelint-config-dialog": "0.11.0",
     "babel-jest": "22.4.3",

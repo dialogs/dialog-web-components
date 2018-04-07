@@ -49,7 +49,9 @@ class MessageState extends PureComponent<Props> {
     }
 
     return (
-      <Tooltip text={`MessageState.${this.props.state}`} className={styles.tooltip}>{time}</Tooltip>
+      <Tooltip text={`MessageState.${this.props.state}`} className={styles.tooltip}>
+        {time}
+      </Tooltip>
     );
   }
 

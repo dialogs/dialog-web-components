@@ -26,7 +26,9 @@ class ToolbarInfo extends PureComponent<Props> {
           titleClassName={styles.name}
           emojiSize={18}
         />
-        <div className={styles.status}>{this.props.status}</div>
+        <div className={styles.status}>
+          {this.props.status}
+        </div>
       </div>
     );
   }

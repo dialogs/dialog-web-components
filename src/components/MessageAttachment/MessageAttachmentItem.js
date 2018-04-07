@@ -231,8 +231,14 @@ class MessageAttachmentItem extends Component<Props> {
       <div className={className} onClick={this.handleGoToMessage}>
         {this.renderHeader()}
         <div className={styles.content}>
-          <div className={styles.messageWrapper}>{this.renderContent()}</div>
-          {type === 'forward' ? <div className={styles.timeWrapper}>{this.renderTimestamp()}</div> : null}
+          <div className={styles.messageWrapper}>
+            {this.renderContent()}
+          </div>
+          {type === 'forward' ? (
+            <div className={styles.timeWrapper}>
+              {this.renderTimestamp()}
+            </div>
+          ) : null}
         </div>
       </div>
     );

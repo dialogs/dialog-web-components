@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2018 dialog LLC <info@dlg.im>
  * @flow
  */
@@ -52,7 +52,11 @@ class Radio extends PureComponent<Props> {
       return null;
     }
 
-    return <div className={styles.label}>{children}</div>;
+    return (
+      <div className={styles.label}>
+        {children}
+      </div>
+    );
   }
 
   render() {

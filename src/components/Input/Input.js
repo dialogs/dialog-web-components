@@ -164,7 +164,11 @@ class Input extends PureComponent<Props, State> {
       return null;
     }
 
-    return <p className={styles.hint}>{l10n.formatText(hint)}</p>;
+    return (
+      <p className={styles.hint}>
+        {l10n.formatText(hint)}
+      </p>
+    );
   }
 
   renderPrefix() {

@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2018 dialog LLC <info@dlg.im>
  * @flow
  */
@@ -95,7 +95,11 @@ class ActivityGroupProfile extends PureComponent<Props> {
       return null;
     }
 
-    return <div className={styles.actions}>{children}</div>;
+    return (
+      <div className={styles.actions}>
+        {children}
+      </div>
+    );
   }
 
   render() {

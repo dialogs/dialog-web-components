@@ -42,10 +42,14 @@ class Document extends PureComponent<Props> {
         <DownloadButton isUploading={isUploading} />
         <div className={styles.info}>
           <div className={styles.filename}>
-            <div className={styles.text} title={fileName}>{fileName}</div>
+            <div className={styles.text} title={fileName}>
+              {fileName}
+            </div>
           </div>
           <div className={styles.sizeBlock}>
-            <span className={styles.size}>{fileSize}</span>
+            <span className={styles.size}>
+              {fileSize}
+            </span>
           </div>
         </div>
       </TagName>

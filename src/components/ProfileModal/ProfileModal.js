@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2018 dialog LLC <info@dlg.im>
  * @flow
  */
@@ -80,11 +80,13 @@ class ProfileModal extends PureComponent<Props, State> {
   }
 
   handleChange = (value: string, { target }: SyntheticInputEvent<>) => {
-    this.setState({
-      profile: {
-        ...this.state.profile,
-        [target.name]: value
-      }
+    this.setState(({ profile }) => {
+      return {
+        profile: {
+          ...profile,
+          [target.name]: value
+        }
+      };
     });
   };
 
@@ -100,53 +102,64 @@ class ProfileModal extends PureComponent<Props, State> {
   };
 
   handleAvatarEdit = (avatar: File): void => {
-    this.setState({
-      screen: 'avatar',
-      profile: {
-        ...this.state.profile,
-        avatar
-      }
+    this.setState(({ profile }) => {
+      return {
+        screen: 'avatar',
+        profile: {
+          ...profile,
+          avatar
+        }
+      };
     });
   };
 
   handleAvatarChange = (avatar: File): void => {
-    this.setState({
-      screen: 'profile',
-      profile: {
-        ...this.state.profile,
-        avatar
-      }
+    this.setState(({ profile }) => {
+      return {
+        screen: 'profile',
+        profile: {
+          ...profile,
+          avatar
+        }
+      };
     });
   };
 
   handleGoToProfile = (): void => {
-    if (this.props.profile) {
-      this.setState({
-        screen: 'profile',
-        profile: {
-          ...this.state.profile,
-          avatar: this.props.profile.avatar
-        }
+    const { profile } = this.props;
+    if (profile) {
+      this.setState((prevState) => {
+        return {
+          screen: 'profile',
+          profile: {
+            ...prevState.profile,
+            avatar: profile.avatar
+          }
+        };
       });
     }
   };
 
   handleAvatarRemove = (): void => {
-    this.setState({
-      screen: 'profile',
-      profile: {
-        ...this.state.profile,
-        avatar: null
-      }
+    this.setState(({ profile }) => {
+      return {
+        screen: 'profile',
+        profile: {
+          ...profile,
+          avatar: null
+        }
+      };
     });
   };
 
   handleCustomProfileChange = (customProfile: JSONValue): void => {
-    this.setState({
-      profile: {
-        ...this.state.profile,
-        customProfile: JSON.parse(JSON.stringify(customProfile))
-      }
+    this.setState(({ profile }) => {
+      return {
+        profile: {
+          ...profile,
+          customProfile: JSON.parse(JSON.stringify(customProfile))
+        }
+      };
     });
   };
 

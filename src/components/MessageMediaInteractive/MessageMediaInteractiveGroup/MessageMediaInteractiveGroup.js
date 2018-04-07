@@ -76,7 +76,11 @@ class MessageMediaInteractiveGroup extends PureComponent<Props> {
       return <MessageMediaInteractiveAction key={action.id} action={action} onSubmit={this.props.onSubmit} />;
     });
 
-    return <div className={styles.actions}>{children}</div>;
+    return (
+      <div className={styles.actions}>
+        {children}
+      </div>
+    );
   }
 
   render() {

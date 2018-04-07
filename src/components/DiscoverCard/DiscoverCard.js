@@ -103,7 +103,11 @@ class DiscoverCard extends PureComponent<Props> {
       return null;
     }
 
-    return <div className={styles.shortname}>@{shortname}</div>;
+    return (
+      <div className={styles.shortname}>
+        {`@${shortname}`}
+      </div>
+    );
   }
 
   renderInfo() {

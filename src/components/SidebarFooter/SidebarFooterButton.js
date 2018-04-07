@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2018 dialog LLC <info@dlg.im>
  * @flow
  */
@@ -54,7 +54,11 @@ class SidebarFooterButton extends PureComponent<Props> {
     const isBig = counter > 99;
     const counterClassName = classNames(styles.counter, isBig ? styles.counterBig : null);
 
-    return <div className={counterClassName}>{isBig ? '99+' : counter}</div>;
+    return (
+      <div className={counterClassName}>
+        {isBig ? '99+' : counter}
+      </div>
+    );
   }
 
   render() {

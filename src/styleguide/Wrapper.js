@@ -71,7 +71,9 @@ class Wrapper extends PureComponent {
             <div className={styles.spacer} />
             {this.renderLocaleSelect()}
           </header>
-          <div className={wrapperClassName}>{this.props.children}</div>
+          <div className={wrapperClassName}>
+            {this.props.children}
+          </div>
         </div>
       </Provider>
     );

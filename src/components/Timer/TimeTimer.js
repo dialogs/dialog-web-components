@@ -24,7 +24,9 @@ function formatTime(time: number): string {
 
 function renderTime(time: number) {
   return (
-    <span>{formatTime(time)}</span>
+    <span>
+      {formatTime(time)}
+    </span>
   );
 }
 

@@ -56,7 +56,9 @@ class MessagePreview extends PureComponent<Props> {
       case 'service':
         return (
           <div className={className}>
-            <span className={styles.service}>{content.text}</span>
+            <span className={styles.service}>
+              {content.text}
+            </span>
           </div>
         );
 

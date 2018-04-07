@@ -8,10 +8,12 @@ export type ImageSize = {
   height: number
 };
 
-function getImageSize(width: number,
+function getImageSize(
+  width: number,
   height: number,
   maxWidth: number,
-  maxHeight: number): ImageSize {
+  maxHeight: number
+): ImageSize {
   if (width > height) {
     if (width > maxWidth) {
       return {

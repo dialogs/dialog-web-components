@@ -101,7 +101,9 @@ export function renderBlocks(tokens: BlockToken[], emojiSize?: number = 16) {
       case 'code_block':
         result.push(
           <pre key={i} className={styles.pre}>
-            <code>{token.content}</code>
+            <code>
+              {token.content}
+            </code>
           </pre>
         );
 

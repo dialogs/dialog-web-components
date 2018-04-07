@@ -51,16 +51,20 @@ class AdminModal extends PureComponent<Props, State> {
 
   componentWillReceiveProps(nextProps: Props) {
     if (this.props.members !== nextProps.members) {
-      this.setState({
-        selector: this.state.selector.replaceItems(nextProps.members)
+      this.setState(({ selector }) => {
+        return {
+          selector: selector.replaceItems(nextProps.members)
+        };
       });
     }
   }
 
   handleCancel = () => {
-    this.setState({
-      selector: this.state.selector.clearSelection(),
-      permissions: this.state.permissions.clear()
+    this.setState(({ selector, permissions }) => {
+      return {
+        selector: selector.clearSelection(),
+        permissions: permissions.clear()
+      };
     });
   };
 
@@ -152,7 +156,11 @@ class AdminModal extends PureComponent<Props, State> {
       return null;
     }
 
-    return <div className={styles.error}>{action.error.message}</div>;
+    return (
+      <div className={styles.error}>
+        {action.error.message}
+      </div>
+    );
   }
 
   render() {
