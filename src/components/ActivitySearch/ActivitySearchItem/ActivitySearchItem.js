@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2018 dialog LLC <info@dlg.im>
  * @flow
  */
@@ -71,7 +71,7 @@ class ActivitySearchItem extends PureComponent<Props, State> {
           <time dateTime={focus.fullDate.toISOString()}>
             {messageDate}
           </time>
-          ・
+          {'・'}
           <Text
             id="ActivitySearch.jump"
             className={styles.headerInfoJump}

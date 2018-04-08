@@ -242,11 +242,11 @@ class CallExample extends PureComponent<Props, State> {
     return (
       <div>
         <Button onClick={this.handleCall} theme="primary" size="small">
-Call
+          {'Call'}
         </Button>
         <div style={{ width: 6, display: 'inline-block' }} />
         <Button onClick={this.handleSizeToggle} theme="primary" size="small">
-Toggle size
+          {'Toggle size'}
         </Button>
         <div style={{ height: 500, width: '100%' }}>
           {this.renderCall()}

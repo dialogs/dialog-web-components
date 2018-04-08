@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2018 dialog LLC <info@dlg.im>
  * @flow
  */
@@ -19,14 +19,13 @@ class ActivitySearchFilter extends PureComponent<Props> {
       <div className={className}>
         <div className={styles.filterRel}>
           <span>
-Relevant
+            {'Relevant'}
           </span>
         </div>
         <div className={styles.filterInc}>
-          Includes:
-          {' '}
+          {'Includes: '}
           <span>
-Everything
+            {'Everything'}
           </span>
         </div>
       </div>
