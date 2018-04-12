@@ -5,6 +5,7 @@
 /* eslint max-lines: ["error", 500] */
 
 import type { JSONValue } from '@dlghq/dialog-utils';
+import type { Props, State } from './types';
 import React, { PureComponent } from 'react';
 import { Text, LocalizationContextType } from '@dlghq/react-l10n';
 import classNames from 'classnames';
@@ -24,7 +25,6 @@ import ImageEdit from '../ImageEdit/ImageEdit';
 import Spinner from '../Spinner/Spinner';
 import CustomForm from '../CustomForm/CustomForm';
 import styles from './ProfileModal.css';
-import type { Props, State } from './types';
 
 class ProfileModal extends PureComponent<Props, State> {
   nameInput: ?HTMLInputElement;
@@ -45,7 +45,7 @@ class ProfileModal extends PureComponent<Props, State> {
           name: profile.name,
           nick: profile.nick,
           about: profile.about,
-          avatar: profile.avatar,
+          avatar: profile.bigAvatar,
           customProfile: profile.customProfile ? safelyParseJSON(profile.customProfile) : null
         }
         : {
@@ -66,7 +66,7 @@ class ProfileModal extends PureComponent<Props, State> {
             name: nextProps.profile.name,
             nick: nextProps.profile.nick,
             about: nextProps.profile.about,
-            avatar: nextProps.profile.avatar,
+            avatar: nextProps.profile.bigAvatar,
             customProfile: nextProps.profile.customProfile ? safelyParseJSON(nextProps.profile.customProfile) : null
           }
         },
