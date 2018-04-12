@@ -187,8 +187,6 @@
   --message-unread-color: color(#f2f2f2 alpha(25%));
   --message-state-border-width: 3px;
   --message-transition-duration: var(--default-transition-duration);
-  /* MessageMedia */
-  --message-media-font-family: var(--default-font-family);
   /* Sidebar */
   /* SidebarFooter */
   --sidebar-footer-font-family: var(--default-font-family);

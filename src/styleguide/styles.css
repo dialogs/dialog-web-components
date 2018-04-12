@@ -64,7 +64,7 @@ hr {
   justify-content: center !important;
   align-items: center !important;
   margin-right: 30px !important;
-  font-size: 16px;
+  font-size: 16px !important;
 
   & :global(.WelcomeMessage__button__icon) {
     margin-right: 6px !important;
