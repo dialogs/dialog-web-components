@@ -27,14 +27,14 @@
 }
 
 .sessionTitle {
-  font-size: 18px;
+  font-size: var(--default-font-size-large);
   font-weight: 500;
   line-height: 24px;
   flex: 0 0 auto;
 }
 
 .sessionAuthTime {
-  font-size: var(--default-font-size-small);
+  font-size: 12px;
   line-height: 20px;
   flex: 0 0 auto;
   color: var(--default-font-color-light);
