@@ -189,13 +189,6 @@
   --message-transition-duration: var(--default-transition-duration);
   /* MessageMedia */
   --message-media-font-family: var(--default-font-family);
-  /* MessageState */
-  --message-state-font-family: var(--default-font-family);
-  --message-state-font-size: 13px;
-  --message-state-color: color(#000 alpha(60%));
-  --message-state-avatar-padding: 4px;
-  --message-state-dot-size: 10px;
-  --message-state-dot-color: color(#000 alpha(30%));
   /* Sidebar */
   /* SidebarFooter */
   --sidebar-footer-font-family: var(--default-font-family);

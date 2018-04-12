@@ -4,16 +4,19 @@
  */
 
 import type { MessageState as MessageStateType } from '@dlghq/dialog-types';
+import type { ProviderContext } from '@dlghq/react-l10n';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
-import { Text } from '@dlghq/react-l10n';
+import { Text, LocalizationContextType } from '@dlghq/react-l10n';
 import Tooltip from '../Tooltip/Tooltip';
+import getLocalTimeFormat from '../../utils/getLocalTimeFormat';
+import getDateFnsLocale from '../../utils/getDateFnsLocale';
+import formatDate from 'date-fns/format';
 import styles from './MessageState.css';
 
 type Props = {
   className?: string,
   state: MessageStateType,
-  time: string,
   fullTime: Date,
   isEdited?: boolean,
   hover: boolean,
@@ -22,6 +25,12 @@ type Props = {
 };
 
 class MessageState extends PureComponent<Props> {
+  context: ProviderContext;
+
+  static contextTypes = {
+    l10n: LocalizationContextType
+  };
+
   handleClick = (event: SyntheticMouseEvent<>): void => {
     event.preventDefault();
     event.stopPropagation();
@@ -34,13 +43,12 @@ class MessageState extends PureComponent<Props> {
       return null;
     }
 
+    const format = getLocalTimeFormat(this.context.l10n.locale);
+    const locale = getDateFnsLocale(this.context.l10n.locale);
+
     const time = (
-      <time
-        className={styles.time}
-        onClick={this.handleClick}
-        dateTime={this.props.fullTime.toISOString()}
-      >
-        {this.props.time}
+      <time className={styles.time} onClick={this.handleClick} dateTime={this.props.fullTime.toISOString()}>
+        {formatDate(this.props.fullTime, format, locale)}
       </time>
     );
 
@@ -60,9 +68,7 @@ class MessageState extends PureComponent<Props> {
       return null;
     }
 
-    return (
-      <Text key="edited" className={styles.edited} id="MessageState.edited" />
-    );
+    return <Text key="edited" className={styles.edited} id="MessageState.edited" />;
   }
 
   render() {
@@ -73,7 +79,7 @@ class MessageState extends PureComponent<Props> {
     const className = classNames(styles.container, this.props.className, {
       [styles.compact]: this.props.compact
     });
-    const spacebars = (this.props.isEdited && !this.props.compact) ? '\u00A0\u00A0' : null;
+    const spacebars = this.props.isEdited && !this.props.compact ? '\u00A0\u00A0' : null;
 
     return (
       <div className={className}>
