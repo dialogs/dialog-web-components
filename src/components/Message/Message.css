@@ -149,7 +149,7 @@
 }
 
 .reply {
-  margin: 0 -12px 6px;
+  margin: 0 -12px 4px;
   background-color: transparent;
   border-radius: 0;
   position: relative;
@@ -167,7 +167,7 @@
 }
 
 .forward {
-  margin: 6px -10px 0;
+  margin: 4px -10px 0;
 }
 
 .highlight {

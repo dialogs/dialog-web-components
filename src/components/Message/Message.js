@@ -149,16 +149,6 @@ class Message extends PureComponent<Props, State> {
       return null;
     }
 
-    const onTitleClick = this.props.onTitleClick ? this.handleTitleClick : null;
-    const titleClassName = classNames(styles.title, {
-      [styles.clickable]: this.props.onTitleClick
-    });
-
-    const onMentionClick = this.props.onMentionClick ? this.handleMentionClick : null;
-    const mentionClassName = classNames(styles.username, {
-      [styles.clickable]: this.props.onMentionClick
-    });
-
     return (
       <header className={styles.header}>
         <PeerInfoTitle
@@ -166,10 +156,10 @@ class Message extends PureComponent<Props, State> {
           info={sender}
           title={sender.title}
           userName={this.props.maxWidth > 300 ? sender.userName : null}
-          titleClassName={titleClassName}
-          userNameClassName={mentionClassName}
-          onTitleClick={onTitleClick}
-          onUserNameClick={onMentionClick}
+          titleClassName={styles.title}
+          userNameClassName={styles.username}
+          onTitleClick={this.props.onTitleClick ? this.handleTitleClick : null}
+          onUserNameClick={this.props.onMentionClick ? this.handleMentionClick : null}
           addSpacebars
         />
         {this.renderState()}
