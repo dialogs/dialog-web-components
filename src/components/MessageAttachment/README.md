@@ -11,7 +11,7 @@ const onGoToMessage = () => console.debug('onGoToMessage');
       ...messages[0],
       attachment: {
         type: 'reply',
-        messages: [messages[3]]
+        messages: [messages[1]]
       }
     }}
   />

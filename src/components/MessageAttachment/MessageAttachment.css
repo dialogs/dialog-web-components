@@ -62,35 +62,32 @@
 .header {
   height: var(--message-attachment-header-height);
   margin-bottom: 4px;
+  display: block;
 }
 
 .icon {
-  display: inline-block;
   margin-right: 4px;
   color: var(--message-attachment-from-color);
+  vertical-align: sub;
+}
+
+.peerInfoTitle {
+  line-height: var(--message-attachment-header-height);
+  height: var(--message-attachment-header-height);
 }
 
 .name {
-  cursor: pointer;
-  font-weight: 500;
   font-size: var(--default-font-size);
-  line-height: var(--message-attachment-header-height);
-  height: var(--message-attachment-header-height);
-  display: inline-block;
-  vertical-align: middle;
+  font-weight: 500;
 }
 
 .nick {
-  cursor: pointer;
   font-size: var(--default-font-size-small);
-  line-height: var(--message-attachment-header-height);
-  display: inline-block;
-  vertical-align: middle;
   color: var(--message-attachment-nick-color);
 }
 
 .reply {
-  padding: 6px var(--message-attachment-padding);
+  padding: 4px var(--message-attachment-padding);
 }
 
 .replyContent {
@@ -100,37 +97,48 @@
 }
 
 .forward {
-  padding: 6px var(--message-attachment-forward-padding);
+  padding: 3px var(--message-attachment-forward-padding);
+
+  &:first-child {
+    padding-top: 6px;
+  }
+
+  &:last-child {
+    padding-bottom: 6px;
+  }
 }
 
 .content {
-  display: flex;
-  flex-flow: row nowrap;
+  display: block;
 }
 
 .messageWrapper {
-  flex: 1 1 auto;
-  @apply --flex-fix;
 }
 
 .message {
   font-size: var(--message-attachment-font-size);
-  line-height: 18px;
+  line-height: 20px;
 }
 
 .timeWrapper {
-  flex: 0 0 auto;
-  text-align: right;
+  display: inline-block;
 }
 
 .time {
-  margin-left: 6px;
-  display: inline-block;
   color: var(--message-attachment-timestamp-color);
-  line-height: 20px;
-  height: 20px;
   font-size: var(--message-attachment-timestamp-font-size);
-  vertical-align: bottom;
+}
+
+.timestamp {
+  composes: time;
+}
+
+.fulltime {
+  composes: time;
+  display: block;
+  margin-top: 2px;
+  height: 20px;
+  line-height: 20px;
 }
 
 .short {

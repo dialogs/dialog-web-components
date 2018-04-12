@@ -7,15 +7,15 @@ import type { Peer, Message } from '@dlghq/dialog-types';
 import type { ProviderContext } from '@dlghq/react-l10n';
 import React, { Component } from 'react';
 import classNames from 'classnames';
-import { LocalizationContextType } from '@dlghq/react-l10n';
 import { hasSelection } from '@dlghq/dialog-utils';
-import { Text } from '@dlghq/react-l10n';
+import { Text, LocalizationContextType } from '@dlghq/react-l10n';
 import TextMessagePreview from '../SidebarRecentItem/MessagePreview/TextMessagePreview';
 import Icon from '../Icon/Icon';
 import PeerInfoTitle from '../PeerInfoTitle/PeerInfoTitle';
 import MessageContent from '../MessageContent/MessageContent';
 import decorators from './utils/decorators';
 import getLocalDateTimeFormat from '../../utils/getLocalDateTimeFormat';
+import getLocalTimeFormat from '../../utils/getLocalTimeFormat';
 import getDateFnsLocale from '../../utils/getDateFnsLocale';
 import formatDate from 'date-fns/format';
 import styles from './MessageAttachment.css';
@@ -80,6 +80,7 @@ class MessageAttachmentItem extends Component<Props> {
       <header className={styles.header}>
         <Icon glyph={type} size={20} className={styles.icon} />
         <PeerInfoTitle
+          className={styles.peerInfoTitle}
           title={sender.title}
           userName={sender.userName}
           titleClassName={styles.name}
@@ -87,7 +88,7 @@ class MessageAttachmentItem extends Component<Props> {
           onTitleClick={this.handleGoToPeer}
           onUserNameClick={this.handleGoToPeer}
           addSpacebars
-          emojiSize={16}
+          emojiSize={18}
         />
         {type === 'reply' ? this.renderTimestamp() : null}
       </header>
@@ -96,11 +97,23 @@ class MessageAttachmentItem extends Component<Props> {
 
   renderTimestamp() {
     const { message } = this.props;
+    const format = getLocalTimeFormat(this.context.l10n.locale);
+    const locale = getDateFnsLocale(this.context.l10n.locale);
+
+    return (
+      <time className={styles.timestamp} dateTime={message.fullDate.toISOString()}>
+        {formatDate(message.fullDate, format, locale)}
+      </time>
+    );
+  }
+
+  renderForwardTimestamp() {
+    const { message } = this.props;
     const format = getLocalDateTimeFormat(this.context.l10n.locale);
     const locale = getDateFnsLocale(this.context.l10n.locale);
 
     return (
-      <time className={styles.time} dateTime={message.fullDate.toISOString()}>
+      <time className={styles.fulltime} dateTime={message.fullDate.toISOString()}>
         {formatDate(message.fullDate, format, locale)}
       </time>
     );
@@ -131,7 +144,10 @@ class MessageAttachmentItem extends Component<Props> {
         return (
           <div className={className}>
             {content.preview ? (
-              <div className={styles.preview} style={{ backgroundImage: `url(${content.preview})` }} />
+              <div
+                className={styles.preview}
+                style={{ backgroundImage: `url(${content.preview})` }}
+              />
             ) : (
               <Text id="MessageContent.video" className={styles.messageType} />
             )}
@@ -163,7 +179,10 @@ class MessageAttachmentItem extends Component<Props> {
         return (
           <div className={className}>
             {content.preview ? (
-              <div className={styles.preview} style={{ backgroundImage: `url(${content.preview})` }} />
+              <div
+                className={styles.preview}
+                style={{ backgroundImage: `url(${content.preview})` }}
+              />
             ) : (
               <Text id="MessageContent.photo" className={styles.messageType} />
             )}
@@ -236,7 +255,7 @@ class MessageAttachmentItem extends Component<Props> {
           </div>
           {type === 'forward' ? (
             <div className={styles.timeWrapper}>
-              {this.renderTimestamp()}
+              {this.renderForwardTimestamp()}
             </div>
           ) : null}
         </div>

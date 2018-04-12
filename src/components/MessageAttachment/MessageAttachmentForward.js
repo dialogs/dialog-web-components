@@ -59,7 +59,7 @@ class MessageAttachmentForward extends PureComponent<Props> {
           {from.type === 'channel' || from.type === 'group' ? (
             <Icon glyph={from.type} className={styles.fromIcon} size={20} />
           ) : null}
-          <PeerInfoTitle title={from.title} emojiSize={14} />
+          <PeerInfoTitle title={from.title} emojiSize={16} />
         </Button>
       </div>
     );
