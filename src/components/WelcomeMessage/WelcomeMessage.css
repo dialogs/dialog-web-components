@@ -43,7 +43,6 @@
   margin: 0 0 12px;
   font-size: var(--welcome-message-title-font-size);
   line-height: 40px;
-  height: 40px;
   letter-spacing: -0.485714px;
 }
 
@@ -52,7 +51,6 @@
   font-size: var(--welcome-message-subtitle-font-size);
   color: var(--welcome-message-subtitle-color);
   line-height: 20px;
-  height: 20px;
   letter-spacing: -0.355556px;
 }
 
@@ -65,9 +63,12 @@
   margin-top: 16px;
 }
 
-.createdText,
-.createdDate {
+.createdText {
   margin-right: calc(var(--default-padding-small) / 2);
+}
+
+.createdDate {
+  margin-left: calc(var(--default-padding-small) / 2);
 }
 
 .about {

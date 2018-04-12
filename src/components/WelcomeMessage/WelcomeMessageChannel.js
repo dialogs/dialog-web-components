@@ -23,15 +23,16 @@ export type Props = {
 class WelcomeMessageChannel extends PureComponent<Props> {
   renderCreatedAt() {
     const { createdAt } = this.props;
-    if (createdAt) {
-      return (
-        <span className={styles.createdDate}>
-          {createdAt}
-        </span>
-      );
+
+    if (!createdAt) {
+      return null;
     }
 
-    return null;
+    return (
+      <span className={styles.createdDate}>
+        {createdAt}
+      </span>
+    );
   }
 
   renderCreated() {
@@ -56,7 +57,7 @@ class WelcomeMessageChannel extends PureComponent<Props> {
       return null;
     }
 
-    return <Markdown className={styles.about} text={about} emojiSize={16} />;
+    return <Markdown className={styles.about} text={about} emojiSize={18} />;
   }
 
   renderActions() {
@@ -84,6 +85,7 @@ class WelcomeMessageChannel extends PureComponent<Props> {
       </div>
     );
   }
+
   render() {
     const { title } = this.props;
     const className = classNames(styles.container, this.props.className);
@@ -92,7 +94,7 @@ class WelcomeMessageChannel extends PureComponent<Props> {
       <div className={className}>
         <div className={styles.group}>
           {this.renderHint()}
-          <PeerInfoTitle title={title} titleClassName={styles.title} emojiSize={34} />
+          <PeerInfoTitle title={title} titleClassName={styles.title} emojiSize={36} />
           {this.renderCreated()}
           {this.renderAbout()}
         </div>

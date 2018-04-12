@@ -37,7 +37,7 @@ class WelcomeMessageUser extends PureComponent<Props> {
       return null;
     }
 
-    return <Markdown className={styles.about} text={about} emojiSize={16} />;
+    return <Markdown className={styles.about} text={about} emojiSize={18} />;
   }
 
   render() {
@@ -52,7 +52,7 @@ class WelcomeMessageUser extends PureComponent<Props> {
             userName={userName}
             titleClassName={styles.title}
             userNameClassName={styles.subtitle}
-            emojiSize={34}
+            emojiSize={36}
             addSpacebars
           />
           {this.renderAbout()}
