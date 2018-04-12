@@ -44,7 +44,15 @@ export function renderText(tokens: TextToken[], emojiSize?: number = 16, isInlin
         break;
 
       case 'emoji':
-        result.push(<Emoji key={index} char={content} size={emojiSize} inline={isInline} />);
+        result.push(
+          <Emoji
+            key={index}
+            char={content}
+            size={emojiSize}
+            inline={isInline}
+            className={styles.emoji}
+          />
+        );
 
         break;
 

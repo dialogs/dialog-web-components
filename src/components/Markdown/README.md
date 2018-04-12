@@ -9,7 +9,7 @@ const text = require("raw-loader!../../fixtures/markdown.md");
 ### Emoji only
 
 ```jsx
-<Markdown text="😀" />
+<Markdown text="😀🐱" />
 ```
 
 ### Inline mode
