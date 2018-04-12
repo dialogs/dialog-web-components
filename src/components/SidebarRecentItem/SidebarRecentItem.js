@@ -137,7 +137,7 @@ class SidebarRecentItem extends PureComponent<Props> {
       return null;
     }
 
-    return <Icon glyph="volume_off" className={styles.muteIcon} size={16} />
+    return <Icon glyph="volume_off" className={styles.muteIcon} size={16} />;
   }
 
   render() {
