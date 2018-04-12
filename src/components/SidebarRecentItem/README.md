@@ -20,7 +20,7 @@ const oleg = {
 const group = {
   peer: { id: 3, type: 'group', key: 'g3' },
   type: 'group',
-  title: 'Dialog Web',
+  title: 'Dialog Web 🤦🏽‍♂️🤦‍♂️',
   userName: null,
   placeholder: 'lblue'
 };

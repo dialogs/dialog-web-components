@@ -49,7 +49,7 @@ class MessagePreview extends PureComponent<Props> {
         return (
           <div className={className}>
             {this.renderStatusSender()}
-            <TextMessagePreview content={content} className={styles.preview} emojiSize={13} />
+            <TextMessagePreview content={content} className={styles.preview} emojiSize={15} />
           </div>
         );
 
