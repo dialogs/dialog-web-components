@@ -10,7 +10,7 @@ import Button from '../Button/Button';
 import Icon from '../Icon/Icon';
 import Range from '../Range/Range';
 import styles from './ImageEdit.css';
-import Croppie from 'croppie';
+import { Croppie } from 'croppie';
 import { listen, fileToBase64 } from '@dlghq/dialog-utils';
 import format from 'date-fns/format';
 
@@ -72,36 +72,30 @@ class ImageEdit extends PureComponent<Props, State> {
 
       fileToBase64(this.props.image, (image) => {
         if (this.croppie) {
-          this.croppie.bind({
-            url: image,
-            zoom: 0
-          }).then(() => {
-            if (this.croppie) {
-              const { _currentZoom: currentZoom } = this.croppie;
-              this.setState(({ zoom }) => {
-                return {
+          this.croppie
+            .bind({
+              url: image,
+              zoom: 0
+            })
+            .then(() => {
+              if (this.croppie) {
+                this.setState({
                   zoom: {
-                    ...zoom,
-                    min: currentZoom,
-                    current: currentZoom
+                    ...this.state.zoom,
+                    min: this.croppie._currentZoom,
+                    current: this.croppie._currentZoom
                   }
-                };
-              });
-            }
-          });
+                });
+              }
+            });
         }
       });
 
       this.listeners = [
-        listen(
-          this.croppieElement,
-          'update',
-          this.handleCroppieUpdate,
-          {
-            capture: false,
-            passive: true
-          }
-        )
+        listen(this.croppieElement, 'update', this.handleCroppieUpdate, {
+          capture: false,
+          passive: true
+        })
       ];
     }
   }
@@ -116,15 +110,20 @@ class ImageEdit extends PureComponent<Props, State> {
 
   handleSubmit = (): void => {
     if (this.croppie) {
-      this.croppie.result({
-        type: 'blob',
-        size: 'viewport',
-        format: 'jpeg',
-        circle: false
-      }).then((blob) => {
-        const fileName = format(new Date(), 'YYYY.MM.DD-HH:mm:ss.SSS');
-        this.props.onSubmit(new File([blob], `${fileName}.jpeg`));
-      });
+      this.croppie
+        .result({
+          type: 'blob',
+          size: 'viewport',
+          format: 'jpeg',
+          circle: false
+        })
+        .then((blob) => {
+          const fileName = format(new Date(), 'YYYY.MM.DD-HH:mm:ss.SSS');
+          this.props.onSubmit(new File([blob], `${fileName}.jpeg`));
+        })
+        .catch((error) => {
+          throw new Error(error);
+        });
     }
   };
 
@@ -207,12 +206,7 @@ class ImageEdit extends PureComponent<Props, State> {
           {this.renderControls()}
         </div>
         <div className={styles.footer}>
-          <Button
-            wide
-            theme="primary"
-            rounded={false}
-            onClick={this.handleSubmit}
-          >
+          <Button wide theme="primary" rounded={false} onClick={this.handleSubmit}>
             <Text id="ImageEdit.save" />
           </Button>
         </div>
