@@ -13,9 +13,9 @@
   --toolbar-padding-bottom: 10px;
   --toolbar-padding-left: 20px;
   --toolbar-title-color: #000;
-  --toolbar-title-font-size: 18px;
+  --toolbar-title-font-size: var(--default-font-size-large);
   --toolbar-status-color: var(--default-font-color-light);
-  --toolbar-status-font-size: 14px;
+  --toolbar-status-font-size: var(--default-font-size-small);
   --toolbar-border-color: color(#000 alpha(14%));
 }
 

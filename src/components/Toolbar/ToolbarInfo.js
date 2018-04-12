@@ -6,6 +6,7 @@
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import PeerInfoTitle from '../PeerInfoTitle/PeerInfoTitle';
+import Markdown from '../Markdown/Markdown';
 import styles from './Toolbar.css';
 
 export type Props = {
@@ -24,10 +25,10 @@ class ToolbarInfo extends PureComponent<Props> {
           title={this.props.title}
           className={styles.nameWrapper}
           titleClassName={styles.name}
-          emojiSize={18}
+          emojiSize={20}
         />
         <div className={styles.status}>
-          {this.props.status}
+          <Markdown text={this.props.status} emojiSize={16} inline />
         </div>
       </div>
     );
