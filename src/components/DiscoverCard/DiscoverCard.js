@@ -7,6 +7,7 @@ import type { Peer } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import { Text } from '@dlghq/react-l10n';
+import { hasSelection } from '@dlghq/dialog-utils';
 import Avatar from '../Avatar/Avatar';
 import Button from '../Button/Button';
 import Icon from '../Icon/Icon';
@@ -33,7 +34,15 @@ export type Props = Card & {
 };
 
 class DiscoverCard extends PureComponent<Props> {
-  handleClick = () => {
+  handleClick = (event: SyntheticMouseEvent<>): void => {
+    // $FlowFixMe
+    if (event.target.tagName === 'A' || hasSelection()) {
+      return;
+    }
+
+    event.preventDefault();
+    event.stopPropagation();
+
     this.props.onGoToPeer(this.props.peer);
   };
 
@@ -44,7 +53,10 @@ class DiscoverCard extends PureComponent<Props> {
     return (
       <div className={styles.side}>
         <Avatar
-          title={title} image={avatar} placeholder={placeholder} size={80}
+          title={title}
+          image={avatar}
+          placeholder={placeholder}
+          size={80}
           className={styles.avatar}
         />
       </div>
@@ -76,7 +88,7 @@ class DiscoverCard extends PureComponent<Props> {
     return (
       <div className={styles.creator}>
         <Text id="DiscoverCard.creator" />
-        <PeerInfoTitle title={creator} className={styles.creatorTitle} emojiSize={14} />
+        <PeerInfoTitle title={creator} className={styles.creatorTitle} emojiSize={16} />
       </div>
     );
   }
@@ -117,12 +129,12 @@ class DiscoverCard extends PureComponent<Props> {
       <div className={styles.info}>
         <div className={styles.title} title={title}>
           {this.renderIcon()}
-          <PeerInfoTitle title={title} emojiSize={18} />
+          <PeerInfoTitle title={title} emojiSize={20} />
         </div>
         {this.renderShortname()}
         {description ? (
           <div className={styles.description} title={description}>
-            <Markdown text={description} inline emojiSize={15} />
+            <Markdown text={description} inline emojiSize={17} />
           </div>
         ) : null}
       </div>
