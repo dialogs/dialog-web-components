@@ -4,6 +4,12 @@
 
 @import '../../../styles/variables.css';
 
+:root {
+  --admin-modal-user-list-item-height: 36px;
+  --admin-modal-user-list-item-border-color: color(#000 alpha(10%));
+  --admin-modal-user-list-item-hover-background: #f2f2f2;
+}
+
 .container {
   outline: none;
 }
@@ -16,18 +22,17 @@
 }
 
 .userHovered {
-  background-color: #f2f2f2;
+  background-color: var(--admin-modal-user-list-item-hover-background);
 }
 
 .userWrapper {
   padding: 7px 0;
-  border-bottom: 1px solid color(#000 alpha(5%));
-  box-shadow: inset 0 1px 0 0 color(#000 alpha(5%));
+  box-shadow: inset 0 -1px 0 0 var(--admin-modal-user-list-item-border-color);
   display: flex;
   align-content: center;
   align-items: center;
   justify-content: flex-start;
-  height: 36px;
+  height: var(--admin-modal-user-list-item-height);
   flex-flow: row nowrap;
 }
 

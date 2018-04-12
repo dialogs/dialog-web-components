@@ -37,8 +37,8 @@ class AdminModalUserList extends PureComponent<Props> {
           <SelectList
             className={styles.container}
             width={width}
-            itemHeight={51}
-            itemVisibleCount={7}
+            itemHeight={50}
+            itemVisibleCount={8.5}
             selector={this.props.selector}
             onChange={this.handleChange}
             renderItem={this.renderRow}
