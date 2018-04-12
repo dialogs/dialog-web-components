@@ -24,7 +24,7 @@ class ContactSelectorChip extends PureComponent<Props> {
     return (
       <div className={className}>
         <PeerAvatar className={styles.chipAvatar} size={28} peer={contact} />
-        <PeerInfoTitle title={contact.title} className={styles.chipText} emojiSize={16} />
+        <PeerInfoTitle title={contact.title} className={styles.chipText} emojiSize={18} />
       </div>
     );
   }

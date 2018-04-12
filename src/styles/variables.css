@@ -83,10 +83,6 @@
   --connection-status-height: calc(var(--default-padding-large) * 1.5);
   --connection-status-transition-duration: var(--default-transition-duration);
   --connection-status-translate-size: calc(0 - var(--connection-status-height));
-  /* ContactList */
-  --contact-list-item-border-color: color(#000 alpha(10%));
-  --contact-list-item-padding: var(--default-padding-large);
-  --contact-list-item-hover-background: #f2f2f2;
   /* Dragndrop */
   --dragndrop-width: 740px;
   --dragndrop-height: 440px;
