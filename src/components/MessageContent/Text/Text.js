@@ -35,7 +35,7 @@ class Text extends Component<Props> {
     const className = classNames(styles.container, this.props.className, this.props.isPending ? styles.pending : null);
 
     const markdown =
-      this.props.text === '' ? null : <Markdown className={className} text={this.props.text} emojiSize={16} />;
+      this.props.text === '' ? null : <Markdown className={className} text={this.props.text} emojiSize={18} />;
 
     if (this.props.media && this.props.media.length) {
       const media = this.props.media.map((item, key) => {
