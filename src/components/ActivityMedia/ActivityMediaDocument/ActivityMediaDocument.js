@@ -74,7 +74,11 @@ class ActivityMediaDocument extends PureComponent<Props> {
       return null;
     }
 
-    return <span>{size}</span>;
+    return (
+      <span>
+        {size}
+      </span>
+    );
   }
 
   renderTimestamp() {
@@ -106,13 +110,13 @@ class ActivityMediaDocument extends PureComponent<Props> {
             {this.renderSize()}
             {size && date ? (
               <span>
-                {'\u00A0'}-{'\u00A0'}
+                {'\u00A0-\u00A0'}
               </span>
             ) : null}
             {this.renderTimestamp()}
             {(size || date) && sender ? (
               <span>
-                {'\u00A0'}-{'\u00A0'}
+                {'\u00A0-\u00A0'}
               </span>
             ) : null}
             {this.renderSender()}

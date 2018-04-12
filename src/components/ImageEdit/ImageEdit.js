@@ -78,15 +78,17 @@ class ImageEdit extends PureComponent<Props, State> {
               zoom: 0
             })
             .then(() => {
-              if (this.croppie) {
-                this.setState({
+              this.setState(({ zoom }) => {
+                const currentZoom = this.croppie ? this.croppie._currentZoom : zoom.current;
+
+                return {
                   zoom: {
-                    ...this.state.zoom,
-                    min: this.croppie._currentZoom,
-                    current: this.croppie._currentZoom
+                    ...zoom,
+                    min: currentZoom,
+                    current: currentZoom
                   }
-                });
-              }
+                };
+              });
             });
         }
       });

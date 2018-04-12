@@ -85,7 +85,7 @@ class ActivityMediaPhoto extends PureComponent<Props> {
             {this.renderTimestamp()}
             {sender && date ? (
               <span>
-                {'\u00A0'}-{'\u00A0'}
+                {'\u00A0-\u00A0'}
               </span>
             ) : null}
             {this.renderSender()}

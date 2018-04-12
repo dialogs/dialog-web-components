@@ -64,7 +64,11 @@ class ActivityMediaVideo extends PureComponent<Props> {
       return null;
     }
 
-    return <span>{getHumanTime(duration * 10)}</span>;
+    return (
+      <span>
+        {getHumanTime(duration * 10)}
+      </span>
+    );
   }
 
   renderSize() {
@@ -74,7 +78,11 @@ class ActivityMediaVideo extends PureComponent<Props> {
       return null;
     }
 
-    return <span>{size}</span>;
+    return (
+      <span>
+        {size}
+      </span>
+    );
   }
 
   renderTimestamp() {
@@ -116,19 +124,19 @@ class ActivityMediaVideo extends PureComponent<Props> {
             {this.renderDuration()}
             {duration && date ? (
               <span>
-                {'\u00A0'}-{'\u00A0'}
+                {'\u00A0-\u00A0'}
               </span>
             ) : null}
             {this.renderTimestamp()}
             {date && size ? (
               <span>
-                {'\u00A0'}-{'\u00A0'}
+                {'\u00A0-\u00A0'}
               </span>
             ) : null}
             {this.renderSize()}
             {(date || size || duration) && sender ? (
               <span>
-                {'\u00A0'}-{'\u00A0'}
+                {'\u00A0-\u00A0'}
               </span>
             ) : null}
             {this.renderSender()}

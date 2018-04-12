@@ -105,7 +105,11 @@ class SidebarRecentItem extends PureComponent<Props> {
 
     const className = classNames(styles.counter, muted ? styles.muted : null);
 
-    return <div className={className}>{counter}</div>;
+    return (
+      <div className={className}>
+        {counter}
+      </div>
+    );
   }
 
   renderIcons() {
