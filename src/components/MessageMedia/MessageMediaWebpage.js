@@ -38,7 +38,7 @@ class MessageMediaWebpage extends PureComponent<Props> {
     }
 
     return (
-      <Markdown text={description} />
+      <Markdown text={description} emojiSize={18} />
     );
   }
 
