@@ -3,7 +3,7 @@
  * @flow
  */
 
-import React, { PureComponent } from 'react';
+import React, { PureComponent, type Node } from 'react';
 import classNames from 'classnames';
 import memoize from 'lodash/memoize';
 import { safelyParseJSON, safelyParseJSONSchema } from '@dlghq/dialog-utils';
@@ -19,7 +19,7 @@ export type Props = {
 };
 
 class CustomProfile extends PureComponent<Props> {
-  renderProperties() {
+  renderProperties(): ?Array<Node> {
     const value = parseJSON(this.props.value);
     const schema = parseJSONSchema(this.props.schema, (error) => console.error(error));
 

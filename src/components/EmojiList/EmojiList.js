@@ -5,7 +5,7 @@
 
 import type { StickerPack, Sticker } from '@dlghq/dialog-types';
 import type { EmojiCategory as EmojiCategoryType } from './utils/categories';
-import React, { PureComponent } from 'react';
+import React, { PureComponent, type Node } from 'react';
 import { Text } from '@dlghq/react-l10n';
 import { listen } from '@dlghq/dialog-utils';
 import classNames from 'classnames';
@@ -208,12 +208,12 @@ class EmojiList extends PureComponent<Props, State> {
     }
   }
 
-  renderCategories() {
+  renderCategories(): ?Array<Node> {
     const { current } = this.state;
 
     switch (this.state.screen) {
       case 'emoji':
-        return this.categories.map((category, idx) => {
+        return this.categories.map((category: EmojiCategoryType, idx) => {
           const isActive = current === category.name;
           const isVisible =
             isActive ||

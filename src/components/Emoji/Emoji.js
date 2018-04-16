@@ -9,7 +9,7 @@ import { getEmojiByChar } from '@dlghq/emoji';
 import emojiImage from '@dlghq/emoji/lib/apple.png';
 import styles from './Emoji.css';
 
-const SPRITE_SIZE = 49;
+const SPRITE_SIZE = 52;
 const SPRITE_BG_SIZE = SPRITE_SIZE * 100;
 const SPRITE_POSITION_MUL = 100 / (SPRITE_SIZE - 1);
 
