@@ -8,7 +8,7 @@
   --message-attachment-font-family: var(--default-font-family);
   --message-attachment-background: color(#000 alpha(3%));
   --message-attachment-font-size: var(--default-font-size-small);
-  --message-attachment-padding: 12px;
+  --message-attachment-padding: 10px;
   --message-attachment-forward-padding: 10px;
   --message-attachment-border-color: color(var(--message-attachment-background) shade(5%));
   --message-attachment-from-font-size: 14px;
@@ -54,13 +54,11 @@
   padding: 0;
   min-width: 0;
   margin-left: 6px;
-  height: var(--message-attachment-header-height);
   line-height: var(--message-attachment-header-height);
   font-size: var(--message-attachment-from-font-size);
 }
 
 .header {
-  height: var(--message-attachment-header-height);
   margin-bottom: 4px;
   display: block;
 }
@@ -73,7 +71,6 @@
 
 .peerInfoTitle {
   line-height: var(--message-attachment-header-height);
-  height: var(--message-attachment-header-height);
 }
 
 .name {
