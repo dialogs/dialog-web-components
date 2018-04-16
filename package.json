@@ -56,7 +56,7 @@
     "@dlghq/dialog-types": "1.35.3",
     "@dlghq/dialog-utils": "0.9.0",
     "@dlghq/emoji": "2.1.0",
-    "@dlghq/markdown": "1.1.0",
+    "@dlghq/markdown": "1.1.1",
     "@dlghq/react-l10n": "0.9.1",
     "classnames": "2.2.5",
     "clipboard": "2.0.0",
