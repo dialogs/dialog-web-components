@@ -49,6 +49,7 @@ class Emoji extends PureComponent<Props> {
         backgroundSize: `${SPRITE_BG_SIZE}%`,
         marginBottom: this.props.inline ? this.props.size * 0.17 : 0,
         marginRight: this.props.inline ? 1 : 0,
+        marginLeft: this.props.inline ? 1 : 0,
         verticalAlign: this.props.inline ? 'middle' : 'sub'
       };
 
