@@ -46,6 +46,7 @@
   justify-content: center;
 
   & .time {
+    font-size: var(--message-state-edited-font-size);
     margin: 0 -2rem;
   }
 }
