@@ -88,19 +88,6 @@
   --dragndrop-height: 440px;
   --dragndrop-border-radius: var(--default-border-radius);
   --dragndrop-background-color: var(--color-primary);
-  /* EmojiList */
-  --emoji-list-width: 346px;
-  --emoji-list-height: 280px;
-  --emoji-list-background-color: color(#fff alpha(98%));
-  --emoji-list-emoji-font-size: 26px;
-  --emoji-list-emoji-line-height: 30px;
-  --emoji-list-emoji-size: 26px;
-  --emoji-list-emoji-wrapper-padding: 5px;
-  --emoji-list-emoji-wrapper-background: color(var(--color-primary) alpha(10%));
-  --emoji-list-category-icon-color: var(--cool-grey-two);
-  --emoji-list-category-icon-hover-color: color(var(--emoji-list-category-icon-color) shade(20%));
-  --emoji-list-category-icon-active-color: var(--color-primary);
-  --emoji-list-category-icon-active-hover-color: color(var(--emoji-list-category-icon-active-color) alpha(80%));
   /* EmojiButton */
   --emoji-button-font-family: var(--default-font-family);
   --emoji-button-font-size: var(--default-font-size);
@@ -270,7 +257,6 @@
   --modal-create-new-hint-color: var(--modal-font-color-light);
   --modal-create-new-hint-font-size: var(--modal-font-size);
   --modal-create-new-label-font-size: var(--default-font-size-large);
-
   /* PreferencesModal */
   --modal-preferences-width: 740px;
   --modal-preferences-height: 480px;
