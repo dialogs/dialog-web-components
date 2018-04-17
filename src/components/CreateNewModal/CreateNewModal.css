@@ -1,13 +1,26 @@
-/**
+/*
  * Copyright 2018 dialog LLC <info@dlg.im>
  */
 
 @import '../../styles/variables.css';
 
+:root {
+  --modal-create-new-font-family: var(--default-font-family);
+  --modal-create-new-font-size: var(--default-font-size);
+  --modal-create-new-close-size: 28px;
+  --modal-create-new-close-color: color(#000 alpha(40%));
+  --modal-create-new-close-color-hover: color(#000 alpha(60%));
+  --modal-create-new-transition-duration: var(--default-transition-duration);
+  --modal-create-new-width: 500px;
+  --modal-create-new-hint-color: var(--default-font-color-light);;
+  --modal-create-new-hint-font-size: var(--modal-create-new-font-size);
+  --modal-create-new-label-font-size: var(--default-font-size-large);
+}
+
 /* Styles */
 .container {
   width: var(--modal-create-new-width);
-  font-family: var(--modal-font-family);
+  font-family: var(--modal-create-new-font-family);
 }
 
 .header {
@@ -21,15 +34,15 @@
 }
 
 .back {
-  width: var(--modal-close-size);
-  height: var(--modal-close-size);
+  width: var(--modal-create-new-close-size);
+  height: var(--modal-create-new-close-size);
   margin-right: 16px;
-  transition: color var(--modal-close-transition-duration) linear;
-  line-height: var(--modal-close-size);
-  color: var(--modal-close-color);
+  transition: color var(--modal-create-new-transition-duration) linear;
+  line-height: var(--modal-create-new-close-size);
+  color: var(--modal-create-new-close-color);
 
   &:hover {
-    color: var(--modal-close-color-hover);
+    color: var(--modal-create-new-close-color-hover);
   }
 }
 
@@ -56,7 +69,7 @@
 .error {
   padding: var(--default-padding);
   background-color: var(--color-danger);
-  font-size: var(--modal-font-size);
+  font-size: var(--modal-create-new-font-size);
   font-weight: 500;
   color: #fff;
 }

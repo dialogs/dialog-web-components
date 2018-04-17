@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2018 dialog LLC <info@dlg.im>
  * @flow
  */
@@ -23,37 +23,37 @@ export type Point = {
 };
 
 export type Props = {
-  /**
+  /*
    * [Tether options](http://tether.io/#options)
    */
   options: Object,
 
-  /**
+  /*
    * Which events should trigger child mount.
    */
   openHandler: TriggerHandler[],
 
-  /**
+  /*
    * Which events should trigger child unmount.
    */
   closeHandler: TriggerHandler[],
 
-  /**
+  /*
    * Prevent default behaviour for open events.
    */
   preventDefault?: boolean,
 
-  /**
+  /*
    * Close child on child click.
    */
   closeOnChildClick: boolean,
 
-  /**
+  /*
    * Close child on document click.
    */
   closeOnDocumentClick: boolean,
 
-  /**
+  /*
    * Close child on document scroll.
    */
   closeOnDocumentScroll: boolean,
@@ -61,7 +61,7 @@ export type Props = {
   renderTrigger: (handlers: Object, isActive: boolean) => Node,
   renderChild: (point: Point) => Node,
 
-  /**
+  /*
    * Called whenever child is mounting or unmounting.
    */
   onChange?: (active: boolean) => void

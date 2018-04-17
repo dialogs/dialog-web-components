@@ -1,21 +1,26 @@
-/**
+/*
  * Copyright 2018 dialog LLC <info@dlg.im>
  */
 
 @import '../../styles/variables.css';
 
 :root {
+  --modal-profile-font-family: var(--default-font-family);
   --modal-profile-width: 600px;
   --modal-profile-form-width: 400px;
   --modal-profile-font-size: var(--default-font-size);
-  --modal-profile-text-color-light: var(--modal-font-color-light);
+  --modal-profile-text-color-light: var(--default-font-color-light);
   --modal-profile-contact-font-color: var(--color-primary);
+  --modal-profile-back-size: 28px;
+  --modal-profile-back-transition-duration: var(--default-transition-duration);
+  --modal-profile-back-color: color(#000 alpha(40%));
+  --modal-profile-back-color-hover: color(#000 alpha(60%));
 }
 
 /* Styles */
 .container {
   width: var(--modal-profile-width);
-  font-family: var(--modal-font-family);
+  font-family: var(--modal-profile-font-family);
 }
 
 .body {
@@ -31,14 +36,14 @@
 }
 
 .back {
-  width: var(--modal-close-size);
-  height: var(--modal-close-size);
+  width: var(--modal-profile-back-size);
+  height: var(--modal-profile-back-size);
   margin-right: 16px;
-  transition: color var(--modal-close-transition-duration) linear;
-  color: var(--modal-close-color);
+  transition: color var(--modal-profile-back-transition-duration) linear;
+  color: var(--modal-profile-back-color);
 
   &:hover {
-    color: var(--modal-close-color-hover);
+    color: var(--modal-profile-back-color-hover);
   }
 }
 

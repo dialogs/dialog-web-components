@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2018 dialog LLC <info@dlg.im>
  */
 
@@ -11,6 +11,7 @@
   --welcome-message-hint-font-size: var(--default-font-size);
   --welcome-message-subtitle-font-size: var(--default-font-size);
   --welcome-message-subtitle-color: color(#000 alpha(50%));
+  --welcome-message-horizontal-padding: 20px;
 }
 
 /* Reset */
@@ -23,7 +24,7 @@
   display: block;
   font-family: var(--welcome-message-font-family);
   box-sizing: border-box;
-  padding: 10rem var(--message-horizontal-padding) var(--message-horizontal-padding);
+  padding: 10rem var(--welcome-message-horizontal-padding) var(--welcome-message-horizontal-padding);
 }
 
 .hint {

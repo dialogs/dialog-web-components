@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2018 dialog LLC <info@dlg.im>
  */
 
@@ -8,7 +8,10 @@
   --modal-admin-font-family: var(--default-font-family);
   --modal-admin-width: 500px;
   --modal-admin-hint-font-size: var(--default-font-size-small);
-  --modal-admin-hint-color: var(--modal-font-color-light);
+  --modal-admin-hint-color: var(--default-font-color-light);
+  --modal-admin-back-transition-duration: var(--default-transition-duration);
+  --modal-admin-back-color: color(#000 alpha(40%));
+  --modal-admin-back-color-hover: color(#000 alpha(60%));
 }
 
 /* Styles */
@@ -34,11 +37,11 @@
 
 .back {
   margin-right: 16px;
-  transition: color var(--modal-close-transition-duration) linear;
-  color: var(--modal-close-color);
+  transition: color var(--modal-admin-back-transition-duration) linear;
+  color: var(--modal-admin-back-color);
 
   &:hover {
-    color: var(--modal-close-color-hover);
+    color: var(--modal-admin-back-color-hover);
   }
 
 }

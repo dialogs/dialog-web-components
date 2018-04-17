@@ -1,11 +1,21 @@
-/**
+/*
  * Copyright 2018 dialog LLC <info@dlg.im>
  */
 
 @import '../../styles/variables.css';
 
-.container {
+:root {
+  --checkbox-size: 16px;
+}
+
+/* Reset */
+.container,
+.label {
   all: initial;
+}
+
+/* Styles */
+.container {
   height: var(--default-line-height);
 }
 
@@ -14,7 +24,6 @@
 }
 
 .label {
-  all: initial;
   position: relative;
   display: inline-block;
   padding-left: calc(var(--default-padding) * 2);

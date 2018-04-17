@@ -1,14 +1,23 @@
-/**
+/*
  * Copyright 2018 dialog LLC <info@dlg.im>
  */
 
 @import '../../styles/variables.css';
 
+:root {
+  --modal-preferences-font-family: var(--default-font-family);
+  --modal-preferences-width: 740px;
+  --modal-preferences-height: 480px;
+  --modal-preferences-header-height: 60px;
+  --modal-preferences-hint-font-size: var(--default-font-size-small);
+  --modal-preferences-hint-color: var(--default-font-color-light);
+}
+
 /* Styles */
 .container {
   width: var(--modal-preferences-width);
   height: var(--modal-preferences-height);
-  font-family: var(--modal-font-family);
+  font-family: var(--modal-preferences-font-family);
 }
 
 .body {

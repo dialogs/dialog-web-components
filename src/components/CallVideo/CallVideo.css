@@ -4,6 +4,10 @@
 
 @import '../../styles/variables.css';
 
+:root {
+  --call-video-background-color: #000;
+}
+
 .container {
   display: block;
   width: 100%;

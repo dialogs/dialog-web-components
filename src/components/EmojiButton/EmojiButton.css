@@ -1,7 +1,24 @@
-/**
+/*
  * Copyright 2018 dialog LLC <info@dlg.im>
  */
+
 @import '../../styles/variables.css';
+
+:root {
+  --emoji-button-font-family: var(--default-font-family);
+  --emoji-button-font-size: var(--default-font-size);
+  --emoji-button-size: 30px;
+  --emoji-button-background: #fff;
+  --emoji-button-background-active: #f6f2fc;
+  --emoji-button-border-color: #d9d9d9;
+  --emoji-button-border-color-hover: var(--color-primary);
+  --emoji-button-border-color-active: var(--emoji-button-border-color-hover);
+  --emoji-button-border-radius: var(--emoji-button-size);
+  --emoji-button-transition-duration: var(--default-transition-duration);
+  --emoji-button-counter-color: color(#000 alpha(50%));
+  --emoji-button-counter-color-hover: var(--color-primary);
+  --emoji-button-counter-color-active: var(--emoji-button-counter-color-hover);
+}
 
 /* Reset */
 .container {

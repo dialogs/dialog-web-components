@@ -1,8 +1,15 @@
-/**
+/*
  * Copyright 2018 dialog LLC <info@dlg.im>
  */
 
 @import '../../styles/variables.css';
+
+:root {
+  --dragndrop-width: 740px;
+  --dragndrop-height: 440px;
+  --dragndrop-border-radius: var(--default-border-radius);
+  --dragndrop-background-color: var(--color-primary);
+}
 
 /* Reset */
 .container {

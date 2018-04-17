@@ -1,9 +1,15 @@
-/**
+/*
  * Copyright 2018 dialog LLC <info@dlg.im>
  */
 
 @import '../../styles/variables.css';
 
+:root {
+  --confirm-width: 400px;
+  --confirm-font-size: var(--default-font-size-large);
+}
+
+/* Styles */
 .container {
   width: var(--confirm-width);
   min-width: 0;

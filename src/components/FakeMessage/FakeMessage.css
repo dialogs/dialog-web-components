@@ -1,8 +1,19 @@
-/**
+/*
  * Copyright 2018 dialog LLC <info@dlg.im>
  */
 
 @import '../../styles/variables.css';
+
+:root {
+  --fake-message-avatar-size: 40px;
+  --fake-message-avatar-color: #c5c5c5;
+  --fake-message-header-height: 12px;
+  --fake-message-header-text-color: #cacaca;
+  --fake-message-line-height: 10px;
+  --fake-message-text-color: color(var(--fake-message-header-text-color) alpha(60%));
+  --fake-message-vertical-padding: 6px;
+  --fake-message-horizontal-padding: 20px;
+}
 
 /* Reset */
 .container {
@@ -14,14 +25,14 @@
   position: relative;
   display: flex;
   flex-direction: row;
-  padding: var(--message-vertical-padding) var(--message-horizontal-padding);
+  padding: var(--fake-message-vertical-padding) var(--fake-message-horizontal-padding);
   flex: 0 0 auto;
 }
 
 .avatar {
   width: var(--fake-message-avatar-size);
   height: var(--fake-message-avatar-size);
-  margin-right: var(--message-horizontal-padding);
+  margin-right: var(--fake-message-horizontal-padding);
   border-radius: 50%;
   background-color: var(--fake-message-avatar-color);
   flex: 0 0 auto;

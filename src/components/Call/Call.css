@@ -1,8 +1,13 @@
-/**
+/*
  * Copyright 2018 dialog LLC <info@dlg.im>
  */
 
 @import '../../styles/variables.css';
+
+:root {
+  --call-background-color: #fff;
+  --call-default-padding: calc(var(--default-padding-large) * 3);
+}
 
 /* Styles */
 .container {

@@ -1,12 +1,27 @@
-/**
+/*
  * Copyright 2018 dialog LLC <info@dlg.im>
  */
 
 @import '../../styles/variables.css';
 
+:root {
+  --modal-attachment-font-family: var(--default-font-family);
+  --modal-attachment-width: 520px;
+  --modal-attachment-font-size: var(--default-font-size);
+  --modal-attachment-text-color: var(--modal-font-color-light);
+  --modal-attachment-pagination-arrow-size: 28px;
+  --modal-attachment-pagination-arrow-color: var(--cool-grey);
+  --modal-attachment-pagination-arrow-hover-color: color(var(--cool-grey) shade(20%));
+  --modal-attachment-body-padding: calc(var(--default-padding) * 2);
+  --modal-attachment-preview-max-height: 200px;
+  --modal-attachment-meta-font-size: var(--default-font-size-small);
+  --modal-attachment-meta-heading-color: var(--violet-blue-two);
+  --modal-attachment-meta-heading-font-size: var(--modal-attachment-meta-font-size);
+}
+
 .container {
   width: var(--modal-attachment-width);
-  font-family: var(--modal-font-family);
+  font-family: var(--modal-attachment-font-family);
   font-size: var(--modal-attachment-font-size);
 }
 

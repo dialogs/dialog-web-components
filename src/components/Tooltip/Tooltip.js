@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2018 dialog LLC <info@dlg.im>
  * @flow
  */
@@ -15,12 +15,12 @@ export type Props = {
   className?: string,
   children?: mixed,
 
-  /**
+  /*
    * Tooltip text. Will be translated using @dlghq/react-l10n.
    */
   text: Node,
 
-  /**
+  /*
    * [Tether options](http://tether.io/#options)
    */
   options?: Object,

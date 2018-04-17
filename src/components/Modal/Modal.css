@@ -1,8 +1,31 @@
-/**
+/*
  * Copyright 2018 dialog LLC <info@dlg.im>
  */
 
 @import '../../styles/variables.css';
+
+:root {
+  --modal-font-family: var(--default-font-family);
+  --modal-font-size: var(--default-font-size);
+  --modal-font-color: var(--default-font-color);
+  --modal-font-color-light: var(--default-font-color-light);
+  --modal-border-radius: var(--default-border-radius);
+  --modal-border-color: color(#000 alpha(10%));
+  --modal-min-width: 500px;
+  --modal-overlay-color: color(#000 alpha(45%));
+  --modal-close-size: 28px;
+  --modal-close-size-large: 32px;
+  --modal-close-color: color(#000 alpha(40%));
+  --modal-close-color-hover: color(#000 alpha(60%));
+  --modal-close-transition-duration: var(--default-transition-duration);
+  --modal-background-color: #fff;
+  --modal-fullscreen-background-color: #fff;
+  --modal-fullscreen-padding-top: 80px;
+  --modal-fullscreen-min-width: 800px;
+  --modal-fullscreen-min-height: 600px;
+  --modal-header-font-size: var(--default-font-size-large);
+  --modal-header-color: var(--default-font-color);
+}
 
 :global {
   & .ReactModal__Body--open {

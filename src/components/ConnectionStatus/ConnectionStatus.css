@@ -1,8 +1,16 @@
-/**
+/*
  * Copyright 2018 dialog LLC <info@dlg.im>
  */
 
 @import '../../styles/variables.css';
+
+:root {
+  --connection-status-font-size: var(--default-font-size-small);
+  --connection-status-font-color: #fff;
+  --connection-status-height: calc(var(--default-padding-large) * 1.5);
+  --connection-status-transition-duration: var(--default-transition-duration);
+  --connection-status-translate-size: calc(0 - var(--connection-status-height));
+}
 
 /* Reset */
 .container {

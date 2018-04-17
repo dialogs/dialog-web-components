@@ -1,8 +1,26 @@
-/**
+/*
  * Copyright 2018 dialog LLC <info@dlg.im>
  */
 
 @import '../../styles/variables.css';
+
+:root {
+  --message-font-family: var(--default-font-family);
+  --message-vertical-padding: 6px;
+  --message-horizontal-padding: 20px;
+  --message-small-vertical-padding: 4px;
+  --message-small-horizontal-padding: 20px;
+  --message-hover-background-color: #f6f6f6;
+  --message-highlight-background-color: color(var(--color-primary) alpha(15%));
+  --message-selected-background-color: var(--color-info);
+  --message-username-color: color(#000 alpha(60%));
+  --message-timestamp-color: color(#000 alpha(60%));
+  --message-error-color: color(var(--color-error) alpha(7.5%));
+  --message-error-hover-color: color(var(--color-error) alpha(10%));
+  --message-unread-color: color(#f2f2f2 alpha(25%));
+  --message-state-border-width: 3px;
+  --message-transition-duration: var(--default-transition-duration);
+}
 
 @keyframes highlight {
   0% {

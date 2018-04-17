@@ -1,8 +1,24 @@
-/**
+/*
  * Copyright 2018 dialog LLC <info@dlg.im>
  */
 
 @import '../../styles/variables.css';
+
+:root {
+  --icon-button-small-size: 32px;
+  --icon-button-default-size: 40px;
+  --icon-button-large-size: 54px;
+  --icon-button-background-color: #fff;
+  --icon-button-default-color: rgb(178, 178, 178);
+  --icon-button-hover-color: var(--color-primary);
+  --icon-button-flat-color: rgb(178, 178, 178);
+  --icon-button-flat-color-hover: #fff;
+  --icon-button-flat-hover-background-color: rgb(150, 150, 150);
+  --icon-button-flat-border-width: 1px;
+  --icon-button-flat-small-size: var(--icon-button-small-size);
+  --icon-button-flat-default-size: var(--icon-button-default-size);
+  --icon-button-flat-large-size: var(--icon-button-large-size);
+}
 
 .container {
   all: initial;
