@@ -1,0 +1,16 @@
+/*
+ * Copyright 2018 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+:root {
+  --peer-info-title-verification-icon-color: var(--color-success);
+}
+
+/* Reset */
+.verifiedIcon {
+  color: var(--peer-info-title-verification-icon-color);
+  margin-left: 4px;
+  vertical-align: text-bottom;
+}

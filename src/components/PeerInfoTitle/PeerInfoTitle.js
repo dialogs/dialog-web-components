@@ -7,6 +7,7 @@ import React, { PureComponent } from 'react';
 import Icon from '../Icon/Icon';
 import Markdown from '../Markdown/Markdown';
 import decorators from './decorators';
+import styles from './PeerInfoTitle.css';
 
 type Props = {
   title: string,
@@ -28,7 +29,7 @@ class PeerInfoTitle extends PureComponent<Props> {
 
   renderVerified() {
     if (this.props.isVerified) {
-      return <Icon glyph="verified" size={this.props.emojiSize} />;
+      return <Icon glyph="verified" size={this.props.emojiSize} className={styles.verifiedIcon} />;
     }
 
     return null;
