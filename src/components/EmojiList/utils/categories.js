@@ -34,12 +34,12 @@ export function createEmojiCategories(recent: ?(string[])): Result {
   }
 
   result.push(
-    createEmojiCategory('people', 'emoji_smile', categories['smileys & people']),
-    createEmojiCategory('nature', 'emoji_nature', categories['animals & nature']),
-    createEmojiCategory('food', 'emoji_food', categories['food & drink']),
+    createEmojiCategory('people', 'emoji_smile', categories.people),
+    createEmojiCategory('nature', 'emoji_nature', categories.nature),
+    createEmojiCategory('food', 'emoji_food', categories.foods),
     createEmojiCategory('objects', 'emoji_party', categories.objects),
-    createEmojiCategory('travel', 'emoji_travel', categories['travel & places']),
-    createEmojiCategory('activity', 'emoji_activity', categories.activities),
+    createEmojiCategory('travel', 'emoji_travel', categories.places),
+    createEmojiCategory('activity', 'emoji_activity', categories.activity),
     createEmojiCategory('symbols', 'emoji_symbols', categories.symbols),
     createEmojiCategory('flags', 'emoji_flag', categories.flags)
   );
