@@ -20,9 +20,14 @@
   --button-next-transition-duration: var(--default-transition-duration);
 }
 
-/* Main */
+/* Reset */
 .container {
   all: initial;
+}
+
+/* Styles */
+.container {
+  position: relative;
   display: inline-block;
   box-sizing: border-box;
   cursor: pointer;
@@ -81,9 +86,6 @@
   padding-left: calc(var(--button-next-padding-left) * (1 - var(--button-next-size-modifier)));
   font-size: calc(var(--button-next-font-size) * (1 - var(--button-next-size-modifier)));
   line-height: calc(var(--button-next-line-height) * (1 - var(--button-next-size-modifier)));
-  & .spinner {
-    margin-top: -4px;
-  }
 }
 
 .normal {
@@ -93,10 +95,6 @@
   padding-left: var(--button-next-padding-left);
   font-size: var(--button-next-font-size);
   line-height: var(--button-next-line-height);
-
-  & .spinner {
-    margin-top: -6px;
-  }
 }
 
 .large {
@@ -108,6 +106,6 @@
   line-height: calc(var(--button-next-line-height) * (1 + var(--button-next-size-modifier)));
 
   & .spinner {
-    margin-top: -8px;
+    margin-top: -6px;
   }
 }
