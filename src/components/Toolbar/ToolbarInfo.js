@@ -12,7 +12,8 @@ import styles from './Toolbar.css';
 export type Props = {
   className?: string,
   title: string,
-  status: string
+  status: string,
+  isVerified?: ?boolean
 };
 
 class ToolbarInfo extends PureComponent<Props> {
@@ -26,6 +27,7 @@ class ToolbarInfo extends PureComponent<Props> {
           className={styles.nameWrapper}
           titleClassName={styles.name}
           emojiSize={20}
+          isVerified={this.props.isVerified}
         />
         <div className={styles.status}>
           <Markdown text={this.props.status} emojiSize={16} inline />

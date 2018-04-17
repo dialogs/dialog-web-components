@@ -4,6 +4,7 @@
  */
 
 import React, { PureComponent } from 'react';
+import Icon from '../Icon/Icon';
 import Markdown from '../Markdown/Markdown';
 import decorators from './decorators';
 
@@ -16,13 +17,22 @@ type Props = {
   onTitleClick?: ?(event: SyntheticMouseEvent<>) => mixed,
   onUserNameClick?: ?(event: SyntheticMouseEvent<>) => mixed,
   addSpacebars: boolean,
-  emojiSize?: number
+  emojiSize?: number,
+  isVerified?: ?boolean
 };
 
 class PeerInfoTitle extends PureComponent<Props> {
   static defaultProps = {
     addSpacebars: false
   };
+
+  renderVerified() {
+    if (this.props.isVerified) {
+      return <Icon glyph="verified" size={this.props.emojiSize} />;
+    }
+
+    return null;
+  }
 
   render() {
     const titleStyle = this.props.onTitleClick ? { cursor: 'pointer' } : undefined;
@@ -54,6 +64,7 @@ class PeerInfoTitle extends PureComponent<Props> {
             {`@${this.props.userName}`}
             {spacebars}
           </span>
+          {this.renderVerified()}
         </span>
       );
     }
@@ -61,6 +72,7 @@ class PeerInfoTitle extends PureComponent<Props> {
     return (
       <span className={this.props.className}>
         {title}
+        {this.renderVerified()}
       </span>
     );
   }

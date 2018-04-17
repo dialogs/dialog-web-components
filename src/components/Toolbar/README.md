@@ -17,7 +17,7 @@ initialState = {
 <div style={{ background: 'white' }}>
   <Toolbar>
     <ToolbarAvatar isFavourite={state.isFavourite} onFavouriteChange={(isFavourite) => setState({ isFavourite })} peerInfo={state.peer} />
-    <ToolbarInfo title={state.peer.title} status="last seen 5 minutes ago" />
+    <ToolbarInfo title={state.peer.title} status="last seen 5 minutes ago" isVerified />
     <ToolbarButtons>
       <ToolbarCallButton onClick={console.debug} />
       <div style={{ marginRight: 8 }} />
