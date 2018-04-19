@@ -64,7 +64,7 @@
 
 .online,
 .creator {
-  font-size: var(--default-font-size);
+  font-size: var(--activity-profile-font-size);
   line-height: 20px;
   margin-top: var(--default-padding-small);
   color: var(--activity-profile-text-color-light);

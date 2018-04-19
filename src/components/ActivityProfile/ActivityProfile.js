@@ -28,7 +28,12 @@ function ActivityProfile(props: Props) {
 
     case 'group':
       return (
-        <ActivityGroupProfile className={props.className} info={props.info} onAvatarClick={props.onAvatarClick}>
+        <ActivityGroupProfile
+          className={props.className}
+          info={props.info}
+          onAvatarClick={props.onAvatarClick}
+          onCreatorClick={props.onCreatorClick}
+        >
           {props.children}
         </ActivityGroupProfile>
       );

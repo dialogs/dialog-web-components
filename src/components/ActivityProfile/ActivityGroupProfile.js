@@ -3,7 +3,7 @@
  * @flow
  */
 
-import type { Group } from '@dlghq/dialog-types';
+import type { Group, Peer } from '@dlghq/dialog-types';
 import React, { PureComponent, type Node } from 'react';
 import { Text } from '@dlghq/react-l10n';
 import classNames from 'classnames';
@@ -16,10 +16,28 @@ export type Props = {
   className?: string,
   info: Group,
   children: Node,
-  onAvatarClick?: () => mixed
+  onAvatarClick?: () => mixed,
+  onCreatorClick: (peer: Peer) => mixed
 };
 
 class ActivityGroupProfile extends PureComponent<Props> {
+  handleGoToCreator = () => {
+    console.log('handleGoToCreator')
+    const creator = this.getCreator();
+
+    if (creator) {
+      this.props.onCreatorClick(creator.peerInfo.peer);
+    }
+  };
+
+  getCreator = () => {
+    const { info: { members, adminId } } = this.props;
+
+    return members.find((member) => {
+      return member.peerInfo.peer.id === adminId;
+    });
+  };
+
   renderAvatar() {
     const { info: { name, bigAvatar, placeholder } } = this.props;
 
@@ -50,17 +68,15 @@ class ActivityGroupProfile extends PureComponent<Props> {
   }
 
   renderCreator() {
-    const { info: { type, adminId, members } } = this.props;
+    const { info: { type } } = this.props;
 
     if (type !== 'group') {
       return null;
     }
 
-    const admin = members.find((member) => {
-      return member.peerInfo.peer.id === adminId;
-    });
+    const creator = this.getCreator();
 
-    if (!admin) {
+    if (!creator) {
       return null;
     }
 
@@ -68,7 +84,11 @@ class ActivityGroupProfile extends PureComponent<Props> {
       <div className={styles.creator}>
         <Text id="ActivityProfile.created_by" />
         {'\u00A0'}
-        <PeerInfoTitle title={admin.peerInfo.title} emojiSize={18} />
+        <PeerInfoTitle
+          title={creator.peerInfo.title}
+          onTitleClick={this.handleGoToCreator}
+          emojiSize={18}
+        />
       </div>
     );
   }
@@ -113,7 +133,6 @@ class ActivityGroupProfile extends PureComponent<Props> {
           {this.renderCreator()}
           {this.renderChildren()}
         </div>
-
         {this.renderAbout()}
       </div>
     );

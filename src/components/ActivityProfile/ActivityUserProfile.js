@@ -158,7 +158,6 @@ class ActivityUserProfile extends PureComponent<Props> {
           {this.renderOnline()}
           {this.renderChildren()}
         </div>
-
         {this.renderAbout()}
         {this.renderProfileContacts()}
         {this.renderCustomPropfile()}
