@@ -22,7 +22,6 @@ export type Props = {
 
 class ActivityGroupProfile extends PureComponent<Props> {
   handleGoToCreator = () => {
-    console.log('handleGoToCreator')
     const creator = this.getCreator();
 
     if (creator) {
@@ -103,7 +102,7 @@ class ActivityGroupProfile extends PureComponent<Props> {
     return (
       <div className={styles.wrapper}>
         <Text className={styles.title} tagName="div" id="ActivityProfile.about" />
-        <Markdown text={about} className={styles.about} emojiSize={16} />
+        <Markdown text={about} className={styles.about} emojiSize={18} />
       </div>
     );
   }
