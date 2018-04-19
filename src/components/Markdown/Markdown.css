@@ -12,6 +12,7 @@
   --markdown-font-size: var(--default-font-size);
   --markdown-code-font-size: var(--default-font-size-small);
   --markdown-pre-font-size: 12px;
+  --markdown-break-height: 8px;
 }
 
 .container {
@@ -138,6 +139,9 @@
 }
 
 .break {
+  height: var(--markdown-break-height);
+  content: '';
+  display: block;
 }
 
 .emoji {
