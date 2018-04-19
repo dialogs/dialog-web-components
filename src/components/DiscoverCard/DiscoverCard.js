@@ -133,9 +133,7 @@ class DiscoverCard extends PureComponent<Props> {
         </div>
         {this.renderShortname()}
         {description ? (
-          <div className={styles.description} title={description}>
-            <Markdown text={description} emojiSize={17} />
-          </div>
+          <Markdown text={description} emojiSize={17} className={styles.description} />
         ) : null}
       </div>
     );

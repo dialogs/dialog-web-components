@@ -92,12 +92,7 @@
   font-size: var(--discover-card-description-font-size);
   color: var(--discover-card-description-color);
   margin-top: 4px;
-  display: flex;
   line-height: 18px;
-  & > span {
-    @apply --text-overflow-ellipsis;
-    white-space: initial;
-  }
 }
 
 .footer {
