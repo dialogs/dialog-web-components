@@ -21,12 +21,11 @@ function getAvatarText(title: string): string {
       return !isEmpty(item);
     });
 
-
-    if (titleArray.length > 1) {
+    if (titleArray.length === 1) {
+      return titleArray[0][0];
+    } else if (titleArray.length > 1) {
       return `${titleArray[0][0]}${titleArray[1][0]}`;
     }
-
-    return titleArray[0][0];
   }
 
   return '#';
