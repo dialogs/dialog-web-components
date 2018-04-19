@@ -3,7 +3,7 @@
  * @flow
  */
 
-const pattern = /[\uE000-\uF8FF]|\uD83C|\uD83D/g;
+const pattern = /^[\uD83C-\uDBFF\uDC00-\uDFFF]+$/;
 
 function isEmoji(text: string): boolean {
   return pattern.test(text);
