@@ -4,14 +4,14 @@
  */
 
 import type { PeerInfo } from '@dlghq/dialog-types';
-import type { AvatarSize } from '../Avatar/getAvatarSize';
-import type { Gradient } from '../Avatar/getAvatarColor';
+import type { AvatarSize } from '../Avatar/utils/getAvatarSize';
+import type { Gradient } from '../Avatar/utils/getAvatarColor';
 
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
-import getAvatarSize from '../Avatar/getAvatarSize';
-import getAvatarText from '../Avatar/getAvatarText';
-import getAvatarColor from '../Avatar/getAvatarColor';
+import getAvatarSize from '../Avatar/utils/getAvatarSize';
+import getAvatarText from '../Avatar/utils/getAvatarText';
+import getAvatarColor from '../Avatar/utils/getAvatarColor';
 import createSequence from '../../utils/createSequence';
 import styles from '../PeerAvatar/PeerAvatar.css';
 

@@ -4,13 +4,13 @@
  */
 
 import type { AvatarPlaceholder } from '@dlghq/dialog-types';
-import type { AvatarSize } from './getAvatarSize';
-import type { Gradient } from './getAvatarColor';
+import type { AvatarSize } from './utils/getAvatarSize';
+import type { Gradient } from './utils/getAvatarColor';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
-import getAvatarSize from './getAvatarSize';
-import getAvatarText from './getAvatarText';
-import getAvatarColor from './getAvatarColor';
+import getAvatarSize from './utils/getAvatarSize';
+import getAvatarText from './utils/getAvatarText';
+import getAvatarColor from './utils/getAvatarColor';
 import styles from './Avatar.css';
 
 export type Props = {
@@ -56,7 +56,12 @@ class Avatar extends PureComponent<Props, void> {
 
     if (image) {
       return (
-        <div style={{ width: size, height: size }} title={title} onClick={this.props.onClick} className={className}>
+        <div
+          style={{ width: size, height: size }}
+          title={title}
+          onClick={this.props.onClick}
+          className={className}
+        >
           <img
             className={styles.image}
             src={image}
