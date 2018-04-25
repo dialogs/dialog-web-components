@@ -210,3 +210,24 @@
   overflow: hidden;
   align-items: baseline;
 }
+
+/* Content type  */
+.contact {}
+
+.document {
+  margin-top: 4px;
+}
+
+.location {}
+
+.photo {}
+
+.service {}
+
+.sticker {}
+
+.voice {}
+
+.video {}
+
+.text {}

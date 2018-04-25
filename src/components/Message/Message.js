@@ -298,6 +298,8 @@ class Message extends PureComponent<Props, State> {
       this.isSelectionMode() ? styles.selectable : null
     );
 
+    const contentWrapperClassName = classNames(styles.content, styles[content.type]);
+
     return (
       <Hover id={`message_${rid}`} className={className} onHover={this.handleHover} onClick={this.handleSelect}>
         <CopyOnly block />
@@ -308,7 +310,7 @@ class Message extends PureComponent<Props, State> {
         </div>
         <div className={styles.body}>
           {short ? this.renderShortHeader() : this.renderHeader()}
-          <div className={styles.content}>
+          <div className={contentWrapperClassName}>
             {this.renderReply()}
             <MessageContent
               content={content}
