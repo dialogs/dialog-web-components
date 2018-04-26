@@ -19,16 +19,16 @@
 }
 
 /* Reset */
-.container {
+.container,
+.goToButton {
   all: initial;
 }
 
 /* Styles */
 .container {
-  display: flex;
+  display: inline-block;
+  overflow: hidden;
   position: relative;
-  width: var(--emoji-list-width);
-  height: var(--emoji-list-height);
   border-radius: var(--default-border-radius);
   background-color: var(--emoji-list-background-color);
   box-shadow: 0 1px 2px 0 color(#000 alpha(12%)), 0 0 0 1px color(#000 alpha(15%));
@@ -37,18 +37,18 @@
   align-content: center;
   align-items: center;
   justify-content: center;
+  flex: 0 0 auto;
+  flex-direction: column;
 }
 
 .body {
+  width: 100%;
+  height: var(--emoji-list-height);
   overflow-x: hidden;
   overflow-y: scroll;
-  flex: 1 1 auto;
-  width: 100%;
-  @apply --flex-fix;
 }
 
 .goToButton {
-  all: initial;
   position: absolute;
   top: 7px;
   right: 20px;
@@ -113,6 +113,7 @@
 
 .emoji {
   display: inline-block;
+  box-sizing: border-box;
   width: var(--emoji-list-emoji-size) !important;
   height: var(--emoji-list-emoji-size) !important;
   font-size: var(--emoji-list-emoji-font-size) !important;
@@ -122,6 +123,7 @@
 .sticker {
   display: inline-flex;
   cursor: pointer;
+  box-sizing: border-box;
   border-radius: var(--default-border-radius);
   padding: 2px;
   margin: 2px;
@@ -132,12 +134,13 @@
 }
 
 .footer {
+  display: block;
   position: relative;
   box-sizing: border-box;
-  width: 100%;
-  height: 46px;
+  min-height: 46px;
   padding: 0 11px;
   flex: 0 0 auto;
+  overflow: hidden;
 
   &:before {
     position: absolute;

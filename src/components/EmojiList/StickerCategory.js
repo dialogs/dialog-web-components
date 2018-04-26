@@ -11,6 +11,7 @@ import StickerItem from './StickerItem';
 type Props = {
   pack: StickerPack,
   height: number,
+  width: number,
   isActive: boolean,
   isVisible: boolean,
   isAtBottom: boolean,
@@ -38,6 +39,7 @@ class StickerCategory extends PureComponent<Props> {
     const { pack } = this.props;
 
     const containerStyles: Object = {
+      width: this.props.width,
       height: this.props.height
     };
 

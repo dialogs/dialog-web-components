@@ -22,3 +22,11 @@ export function calculateEmojiCategoryHeight(count: number): number {
 export function calculateStickerCategoryHeight(count: number): number {
   return calculateCategoryHeight(count, STICKER_HEIGHT, STICKER_PER_ROW);
 }
+
+export function calculateEmojiCategoryWidth(): number {
+  return (EMOJI_HEIGHT * EMOJI_PER_ROW) + 22;
+}
+
+export function calculateStickerCategoryWidth(): number {
+  return ((STICKER_HEIGHT + 4) * STICKER_PER_ROW) + 22;
+}

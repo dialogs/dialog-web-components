@@ -8,10 +8,12 @@ import { Text } from '@dlghq/react-l10n';
 import styles from './EmojiList.css';
 import EmojiListItem from './EmojiListItem';
 
+
 type Props = {
   name: string,
   chars: string[],
   height: number,
+  width: number,
   isActive: boolean,
   isVisible: boolean,
   isAtBottom: boolean,
@@ -38,6 +40,7 @@ class EmojiCategory extends PureComponent<Props> {
 
   render() {
     const containerStyles: Object = {
+      width: this.props.width,
       height: this.props.height
     };
 

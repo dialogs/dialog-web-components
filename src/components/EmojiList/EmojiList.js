@@ -9,7 +9,11 @@ import React, { PureComponent, type Node } from 'react';
 import { Text } from '@dlghq/react-l10n';
 import { listen } from '@dlghq/dialog-utils';
 import classNames from 'classnames';
-import { calculateStickerCategoryHeight } from './utils/calculator';
+import {
+  calculateStickerCategoryHeight,
+  calculateEmojiCategoryWidth,
+  calculateStickerCategoryWidth
+} from './utils/calculator';
 import { createEmojiCategories } from './utils/categories';
 import EmojiTab from './EmojiTab';
 import EmojiCategory from './EmojiCategory';
@@ -226,6 +230,7 @@ class EmojiList extends PureComponent<Props, State> {
               name={category.name}
               chars={category.chars}
               height={category.height}
+              width={calculateEmojiCategoryWidth()}
               isActive={isActive}
               isVisible={isVisible}
               isAtBottom={this.state.isAtBottom}
@@ -250,6 +255,7 @@ class EmojiList extends PureComponent<Props, State> {
                 key={pack.id}
                 pack={pack}
                 height={calculateStickerCategoryHeight(pack.stickers.length)}
+                width={calculateStickerCategoryWidth()}
                 isActive={isActive}
                 isVisible={isVisible}
                 isAtBottom={this.state.isAtBottom}
@@ -303,7 +309,10 @@ class EmojiList extends PureComponent<Props, State> {
           });
 
           return (
-            <footer className={classNames(styles.footer, styles.footerStickers)}>
+            <footer
+              className={classNames(styles.footer, styles.footerStickers)}
+              style={{ width: calculateStickerCategoryWidth() }}
+            >
               {children}
             </footer>
           );
