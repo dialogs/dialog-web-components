@@ -5,11 +5,11 @@
 
 import React, { PureComponent, type Node } from 'react';
 import classNames from 'classnames';
-import { getEmojiByChar } from '@dlghq/emoji';
+import { getEmojiByChar, shouldUseImage } from '@dlghq/emoji';
 import emojiImage from '@dlghq/emoji/lib/apple.png';
 import styles from './Emoji.css';
 
-const SPRITE_SIZE = 49;
+const SPRITE_SIZE = 52;
 const SPRITE_BG_SIZE = SPRITE_SIZE * 100;
 const SPRITE_POSITION_MUL = 100 / (SPRITE_SIZE - 1);
 
@@ -31,12 +31,12 @@ class Emoji extends PureComponent<Props> {
 
   render() {
     const emoji = getEmojiByChar(this.props.char);
+
     if (!emoji) {
       return null;
     }
 
-    // const isShouldUseImage = shouldUseImage(emoji.char);
-    const isShouldUseImage = true;
+    const isShouldUseImage = shouldUseImage(emoji.char);
 
     if (isShouldUseImage) {
       const className = classNames(styles.image, this.props.className);
@@ -61,15 +61,16 @@ class Emoji extends PureComponent<Props> {
     }
 
     const className = classNames(styles.char, this.props.className);
-    const emojiStyle = {
-      height: `${this.props.size}px`,
-      fontSize: `${this.props.size}px`,
-      lineHeight: this.props.inline ? 1.3 : 1.2
+    const charStyle = this.props.inline ? {} : {
+      fontSize: this.props.size,
+      lineHeight: '1.2em',
+      display: 'inline-block',
+      marginBottom: '-0.2em'
     };
 
     return (
-      <span className={className} style={emojiStyle} title={emoji.name}>
-        {this.props.children || emoji.char}
+      <span className={className} title={emoji.name} style={charStyle}>
+        {emoji.char}
       </span>
     );
   }

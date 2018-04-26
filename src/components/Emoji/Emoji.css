@@ -17,12 +17,4 @@
   text-indent: -9000px;
 }
 
-.char {
-  display: inline-block;
-  vertical-align: inherit;
-  line-height: inherit;
-  word-break: break-all;
-  font-family: var(--font-emoji);
-  font-weight: normal;
-  text-size-adjust: 100%;
-}
+.char {}
