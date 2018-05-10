@@ -19,13 +19,12 @@
 }
 
 .container {
+  width: 100%;
+  height: var(--message-divider-height);
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 100%;
-  height: var(--message-divider-height);
   background-color: var(--message-divider-background-color);
-  font-family: var(--message-divider-font-family);
   justify-content: center;
   align-items: center;
   align-content: center;
@@ -33,7 +32,7 @@
   &::after {
     position: absolute;
     z-index: 1;
-    top: calc(var(--message-divider-height) / 2);
+    top: 50%;
     right: 24px;
     left: 24px;
     display: block;
@@ -43,6 +42,7 @@
 }
 
 .text {
+  font-family: var(--message-divider-font-family);
   position: relative;
   z-index: 3;
   padding: 0 var(--default-padding);
@@ -114,5 +114,45 @@
 
   & .text {
     color: color(var(--color-warning) alpha(80%));
+  }
+}
+
+.enter {
+  opacity: 0.01;
+  height: 0;
+
+  &::after {
+    transform: scaleX(0.1);
+  }
+}
+
+.enterActive {
+  transition: opacity 250ms 50ms ease, height 50ms linear;
+  opacity: 1;
+  height: var(--message-divider-height);
+
+  &::after {
+    transition: transform 250ms ease;
+    transform: scaleX(1);
+  }
+}
+
+.leave {
+  opacity: 1;
+  height: var(--message-divider-height);
+
+  &::after {
+    transform: scaleX(1);
+  }
+}
+
+.leaveActive {
+  transition: opacity 150ms 150ms ease, height 50ms 250ms linear;
+  opacity: 0.01;
+  height: 0;
+
+  &::after {
+    transition: transform 250ms ease;
+    transform: scaleX(0.1);
   }
 }
