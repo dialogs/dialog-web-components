@@ -20,5 +20,6 @@
 
 .text {
   font-size: var(--deleted-text-font-size);
+  line-height: 22px;
   color: var(--deleted-text-color);
 }
