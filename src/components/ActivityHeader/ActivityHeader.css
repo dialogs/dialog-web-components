@@ -34,6 +34,7 @@
   letter-spacing: -0.3px;
   @apply --no-select;
   box-sizing: border-box;
+  width: 100%;
   z-index: var(--activity-header-z-index);
 }
 
@@ -56,11 +57,9 @@
 }
 
 .iconBack {
-  composes: icon;
   left: 20px;
 }
 
 .iconClose {
-  composes: icon;
   right: 20px;
 }
