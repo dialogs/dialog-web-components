@@ -77,7 +77,7 @@ class CallChat extends PureComponent<Props, State> {
   renderInfo() {
     const { call } = this.props;
 
-    if (hasTheirVideos(call)) {
+    if (isOnCall(call.state) && hasTheirVideos(call)) {
       return null;
     }
 
@@ -85,7 +85,7 @@ class CallChat extends PureComponent<Props, State> {
       <div className={styles.info}>
         <CallAvatar
           animated={!isOnCall(call.state)}
-          size={200}
+          size={180}
           peer={call.peer}
           state={call.state}
         />
