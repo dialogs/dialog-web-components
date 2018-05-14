@@ -91,3 +91,9 @@
   padding: 8px;
   border-radius: 50%;
 }
+
+.chatFingerprint {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}

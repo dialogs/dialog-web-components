@@ -75,14 +75,15 @@ class CallWindow extends PureComponent<Props, State> {
   renderVideo() {
     const { call } = this.props;
 
-    if (hasTheirVideos(call)) {
-      return (
-        <CallVideo theirVideos={call.theirVideos} />
-      );
+    if (!hasTheirVideos(call)) {
+      return null;
     }
 
-    return null;
+    return (
+      <CallVideo theirVideos={call.theirVideos} />
+    );
   }
+
 
   renderContent() {
     const { call } = this.props;
