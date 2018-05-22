@@ -13,26 +13,6 @@ sign_in: Авторизоваться
 sign_up: Зарегистрироваться
 success: Успешно
 data_processing_agreement: Нажимая "Запросить код", я даю согласие на обработку моих персональных данных.
-errors:
-  EMAIL_INVALID: Некорректный email
-  PHONE_NUMBER_INVALID: Некорректный телефон
-  PHONE_AUTH_REQUIRED: По законам РФ необходимо добавить номер мобильного телефона для авторизации в мессенджерах. После добавления номера телефона, история переписки сохранится.
-  NAME_INVALID: Некорректное имя
-  CODE_INVALID: Неверный код
-  CODE_HASH_INVALID: Неверный код
-  PHONE_CODE_INVALID: Неверный код
-  EMAIL_CODE_INVALID: Неверный код
-  CODE_EXPIRED: Время действия кода истекло
-  PHONE_CODE_EXPIRED: Время действия кода истекло
-  EMAIL_CODE_EXPIRED: Время действия кода истекло
-  CODE_WAIT: Попытайтесь запросить код позже
-  GATE_ERROR: Сервис не доступен, попробуйте позже
-  TIMEOUT: Тайм-аут запроса
-  FORBIDDEN: Авторизация запрещена, данные некорректны
-  SHORTNAME_INVALID: Неправильный логин
-  PASSWORD_INVALID: Неправильный логин или пароль
-  USERNAME_UNOCCUPIED: Неправильный логин или пароль
-
 type:
   phone: Телефон
   email: Email

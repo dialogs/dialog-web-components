@@ -139,7 +139,7 @@ class AuthorizationByPhone extends PureComponent<Props, State> {
       const error = errors[field];
 
       return {
-        hint: `Authorization.errors.${error.tag}`,
+        hint: error.message,
         status: 'error'
       };
     }

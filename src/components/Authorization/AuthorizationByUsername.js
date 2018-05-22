@@ -46,7 +46,7 @@ class AuthorizationByUsername extends PureComponent<Props> {
     if (errors) {
       const error = errors.login || errors.password;
       if (error) {
-        return `Authorization.errors.${error.tag}`;
+        return error.message;
       }
     }
 
