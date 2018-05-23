@@ -13,25 +13,6 @@ sign_in: Sign in
 sign_up: Sign up
 success: Success
 data_processing_agreement: By pressing "Request code", I agree to the Terms of Service and Privacy Policy of this website.
-errors:
-  EMAIL_INVALID: Invalid email
-  PHONE_AUTH_REQUIRED: According to the laws of the Russian Federation, it is necessary to add a mobile phone number for authorization. After adding the phone number, message history will be preserved.
-  PHONE_NUMBER_INVALID: Invalid phone number
-  NAME_INVALID: Invalid name
-  CODE_INVALID: Invalid code
-  CODE_HASH_INVALID: Invalid code
-  PHONE_CODE_INVALID: Invalid code
-  EMAIL_CODE_INVALID: Invalid code
-  CODE_EXPIRED: Code has expired
-  PHONE_CODE_EXPIRED: Code has expired
-  EMAIL_CODE_EXPIRED: Code has expired
-  CODE_WAIT: Try to request code later
-  GATE_ERROR: Service unavailable, try later
-  TIMEOUT: Request timeout
-  FORBIDDEN: Forbidden to login, invalid credentials
-  SHORTNAME_INVALID: Incorrect username
-  PASSWORD_INVALID: Wrong username or password
-  USERNAME_UNOCCUPIED: Wrong username or password
 type:
   phone: Phone
   email: Email

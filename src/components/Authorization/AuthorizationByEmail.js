@@ -39,7 +39,7 @@ class AuthorizationByEmail extends PureComponent<Props> {
       const error = errors[field];
 
       return {
-        hint: `Authorization.errors.${error.tag}`,
+        hint: error.message,
         status: 'error'
       };
     }
