@@ -12,6 +12,7 @@ import CallVideo from '../CallVideo/CallVideo';
 import CallAvatar from '../CallAvatar/CallAvatar';
 import CallInfo from '../CallInfo/CallInfo';
 import CallControls from '../CallControls/CallControls';
+import CallFingerprint from '../CallFingerprint/CallFingerprint';
 import Icon from '../Icon/Icon';
 import isOnCall from './utils/isOnCall';
 import { hasVideos, hasTheirVideos } from './utils/hasVideo';
@@ -76,7 +77,7 @@ class CallChat extends PureComponent<Props, State> {
   renderInfo() {
     const { call } = this.props;
 
-    if (hasTheirVideos(call)) {
+    if (isOnCall(call.state) && hasTheirVideos(call)) {
       return null;
     }
 
@@ -84,7 +85,7 @@ class CallChat extends PureComponent<Props, State> {
       <div className={styles.info}>
         <CallAvatar
           animated={!isOnCall(call.state)}
-          size={200}
+          size={180}
           peer={call.peer}
           state={call.state}
         />
@@ -135,6 +136,22 @@ class CallChat extends PureComponent<Props, State> {
     );
   }
 
+  renderFingerprint() {
+    const { call } = this.props;
+
+    if (!isOnCall(call.state) || !call.fingerprint) {
+      return null;
+    }
+
+    return (
+      <CallFingerprint
+        fingerprint={call.fingerprint}
+        className={styles.chatFingerprint}
+        isVideoRuning={hasTheirVideos(call)}
+      />
+    );
+  }
+
   render() {
     const className = classNames(styles.container, this.props.className);
 
@@ -147,6 +164,7 @@ class CallChat extends PureComponent<Props, State> {
           </div>
           {this.renderFullScreen()}
           {this.renderControls()}
+          {this.renderFingerprint()}
         </Hover>
       </div>
     );

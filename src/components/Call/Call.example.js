@@ -71,7 +71,8 @@ class CallExample extends PureComponent<Props, State> {
         isMuted: false,
         isOutgoing: true,
         isCameraOn: false,
-        isScreenSharingOn: false
+        isScreenSharingOn: false,
+        fingerprint: null
       }
     }, () => {
       setTimeout(this.handleConnecting, 2000);
@@ -123,7 +124,8 @@ class CallExample extends PureComponent<Props, State> {
         call: {
           ...call,
           state: 'in_progress',
-          startTime: Date.now()
+          startTime: Date.now(),
+          fingerprint: '🦄🦖🐓☎️'
         }
       };
     });

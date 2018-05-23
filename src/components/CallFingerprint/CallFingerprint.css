@@ -1,0 +1,119 @@
+/*
+ * Copyright 2018 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+:root {
+  --call-fingerprint-z-index: calc(var(--z-index-call) + 15)
+}
+
+.container {
+  z-index: var(--call-fingerprint-z-index);
+  cursor: default;
+}
+
+.wrapper {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  align-content: center;
+  justify-content: flex-start;
+}
+
+.lock {
+  flex: 0 0 auto;
+  padding: 8px;
+  background-color: var(--color-success);
+  color: #fff;
+  border-radius: 50%;
+  position: relative;
+  z-index: calc(var(--call-fingerprint-z-index) + 2);
+  transition: all 100ms ease-in;
+}
+
+.windowLock {
+  z-index: calc(var(--call-fingerprint-z-index) + 2);
+  flex: 0 0 auto;
+  padding: 2px;
+  color: var(--color-success);
+}
+
+.withVideo {
+  & .lock {
+    background-color: transparent;
+    color: var(--color-success);
+    margin-right: -4px;
+  }
+
+  & .hint {
+    margin: 0;
+    padding: 6px;
+    border-radius: var(--default-border-radius-small);
+    background-color: color(#fff alpha(15%));
+    color: #fff;
+  }
+}
+
+.fingerprint {
+  display: block;
+  flex: 0 0 auto;
+  padding: 6px;
+  position: relative;
+  z-index: calc(var(--call-fingerprint-z-index) + 1);
+}
+
+.hint {
+  display: block;
+  position: relative;
+  z-index: calc(var(--call-fingerprint-z-index) + 1);
+  margin: 8px 0;
+  font-size: var(--default-font-size-small);
+  color: var(--default-font-color-light);
+  max-width: 260px;
+}
+
+/* Animations */
+.enter {
+  opacity: 0.01;
+  transform: translateX(10px);
+}
+
+.enterActive {
+  transition: opacity 250ms ease, transform 250ms ease;
+  transform: translateX(0px);
+  opacity: 1;
+}
+
+.leave {
+  transform: translateX(0px);
+  opacity: 1;
+}
+
+.leaveActive {
+  transition: opacity 250ms ease, transform 250ms ease;
+  opacity: 0.01;
+  transform: translateX(10px);
+}
+
+.hintEnter {
+  opacity: 0.01;
+  transform: translateY(10px);
+}
+
+.hintEnterActive {
+  transition: opacity 250ms ease, transform 250ms ease;
+  transform: translateY(0px);
+  opacity: 1;
+}
+
+.hintLeave {
+  transform: translateY(0px);
+  opacity: 1;
+}
+
+.hintLeaveActive {
+  transition: opacity 250ms ease, transform 250ms ease;
+  opacity: 0.01;
+  transform: translateY(10px);
+}

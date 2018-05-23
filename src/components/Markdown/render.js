@@ -84,7 +84,7 @@ function containsOnlyEmoji(tokens: BlockToken[]): boolean {
   return false;
 }
 
-export function renderBlocks(tokens: BlockToken[], emojiSize?: number = 16) {
+export function renderBlocks(tokens: BlockToken[], emojiSize?: number = 16, renderBigEmoji: boolean) {
   const result = [];
 
   const isOnlyEmoji = containsOnlyEmoji(tokens);
@@ -97,7 +97,7 @@ export function renderBlocks(tokens: BlockToken[], emojiSize?: number = 16) {
         if (token.content.length) {
           result.push(
             <p key={i} className={styles.paragraph}>
-              {renderText(token.content, isOnlyEmoji ? 44 : emojiSize)}
+              {renderText(token.content, isOnlyEmoji && renderBigEmoji ? 44 : emojiSize)}
             </p>
           );
         } else {
@@ -120,7 +120,7 @@ export function renderBlocks(tokens: BlockToken[], emojiSize?: number = 16) {
       case 'blockquote':
         result.push(
           <blockquote key={i} className={styles.blockquote}>
-            {renderBlocks(token.content, emojiSize)}
+            {renderBlocks(token.content, emojiSize, renderBigEmoji)}
           </blockquote>
         );
 

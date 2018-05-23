@@ -5,3 +5,4 @@ ringing_outgoing: ringing
 connecting: connecting…
 ended: call ended
 unknown: unknown
+fingerprint: Your call is secured if you see the same emojis as our opponent
