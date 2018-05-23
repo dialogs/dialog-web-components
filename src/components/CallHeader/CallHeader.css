@@ -1,7 +1,6 @@
 /*
  * Copyright 2018 dialog LLC <info@dlg.im>
  */
-
 @import '../../styles/variables.css';
 
 .container {
@@ -27,4 +26,62 @@
   right: 0;
   padding: var(--default-padding-small) var(--default-padding);
   background-color: color(#000 alpha(45%));
+}
+
+.lockWrapper {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  z-index: 100;
+  line-height: 0;
+}
+
+.lock {
+  margin: 4px;
+}
+
+.body {
+  flex: 1 1 auto;
+  overflow: hidden;
+  margin-left: var(--default-padding);
+  margin-right: var(--default-padding);
+  @apply --flex-fix;
+  position: relative;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.info {
+  position: absolute;
+  left: 0;
+}
+
+.fingerprintWrapper {
+  position: absolute;
+  left: 0;
+}
+
+/* Animation */
+.enter {
+  opacity: 0.01;
+  transform: translateY(-10px);
+}
+
+.enterActive {
+  transition: all 150ms ease;
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.leave {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.leaveActive {
+  transition: all 150ms ease;
+  transform: translateY(10px);
+  opacity: 0.01;
 }

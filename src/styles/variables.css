@@ -43,7 +43,7 @@
   --layout-activity-width: 320px;
 
   /* Layers */
-  --z-index-dropdown: 100;
+  --z-index-dropdown: 1000;
   --z-index-tooltip: var(--z-index-dropdown);
   --z-index-call: calc(var(--z-index-dropdown) - 20);
   --z-index-sidebar: 50;
@@ -52,7 +52,7 @@
   --z-index-sidebar-unread: 20;
   --z-index-connection-status: calc(var(--z-index-toolbar) - 1);
   --z-index-message-actions: 10;
-  --z-index-dragndrop: 1000;
+  --z-index-dragndrop: 2000;
 
   /* Colors */
   --color-primary: var(--violet-blue);

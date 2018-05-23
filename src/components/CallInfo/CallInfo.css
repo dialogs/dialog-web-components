@@ -54,7 +54,6 @@
   align-items: flex-start;
   align-content: flex-start;
   justify-content: center;
-  padding-left: var(--default-padding);
 
   & .wrapper {
     text-align: left;
