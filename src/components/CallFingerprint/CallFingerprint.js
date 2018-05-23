@@ -16,8 +16,7 @@ import styles from './CallFingerprint.css';
 type Props = {
   fingerprint: string,
   className?: string,
-  isVideoRuning: boolean,
-  onClick?: () => mixed
+  isVideoRuning: boolean
 };
 
 type State = {
@@ -119,7 +118,6 @@ class CallFingerprint extends PureComponent<Props, State> {
             className={styles.lock}
             size={24}
             theme="success"
-            onClick={this.props.onClick ? this.props.onClick : undefined}
           />
           {this.renderFingerprint()}
         </Hover>

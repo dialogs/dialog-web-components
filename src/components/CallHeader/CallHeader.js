@@ -20,8 +20,7 @@ type Props = {
   call: Call,
   isVisible: boolean,
   withVideo: boolean,
-  onClick?: ?() => mixed,
-  onLockClick?: ?() => mixed
+  onClick?: ?() => mixed
 };
 
 type State = {
@@ -120,7 +119,6 @@ class CallHeader extends PureComponent<Props, State> {
             className={styles.lock}
             size={16}
             theme="success"
-            onClick={this.props.onLockClick ? this.props.onLockClick : undefined}
           />
         </Tooltip>
       </Hover>
