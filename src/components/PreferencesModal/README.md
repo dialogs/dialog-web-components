@@ -4,6 +4,7 @@ initialState = {
   screen: 'general',
   settings: {
     isSendByEnter: true,
+    isDebugEnabled: false,
     isCounterIncludeMuted: true,
     isSoundEffectsEnabled: false,
     isOnlyMentionNotifications: true,

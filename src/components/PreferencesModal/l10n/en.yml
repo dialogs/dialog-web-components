@@ -5,6 +5,9 @@ general:
     sending: Send Message
     other: Other
   sound: Enable sound effects
+  debug:
+    label: Make {appName} better
+    hint: Let us to collect anonymous statistics about application usage
   sendByEnter:
     enable: <b>Enter</b> – send message<br/><b>Shift + Enter</b> – new line
     disable: <b>{keyOS} + Enter</b> – send message<br/><b>Enter</b> – new line

@@ -15,6 +15,7 @@ import styles from './PreferencesModal.css';
 
 export type Settings = {
   isSendByEnter: boolean,
+  isDebugEnabled: boolean,
   isSoundEffectsEnabled: boolean
 };
 
@@ -30,15 +31,17 @@ class PreferencesGeneral extends PureComponent<Props> {
     });
   };
 
-  handleSoundChange = (value: boolean): void => {
-    this.props.onChange({
-      isSoundEffectsEnabled: value
-    });
+  handleSoundChange = (isSoundEffectsEnabled: boolean): void => {
+    this.props.onChange({ isSoundEffectsEnabled });
   };
+
+  handleDebugChange = (isDebugEnabled: boolean): void => {
+    this.props.onChange({ isDebugEnabled });
+  }
 
   render() {
     const sendBy = this.props.settings.isSendByEnter ? 'enter' : 'shift_enter';
-    const { isSoundEffectsEnabled } = this.props.settings;
+    const { isDebugEnabled, isSoundEffectsEnabled } = this.props.settings;
     const keyOS = isMacOS() ? 'Cmd' : 'Ctrl';
 
     return (
@@ -65,6 +68,16 @@ class PreferencesGeneral extends PureComponent<Props> {
               label="PreferencesModal.general.sound"
               value={isSoundEffectsEnabled}
               onChange={this.handleSoundChange}
+            />
+          </Field>
+          <Field>
+            <Switcher
+              id="preferences_general_is_debug_enabled"
+              name="isDebugEnabled"
+              label="PreferencesModal.general.debug.label"
+              hint="PreferencesModal.general.debug.hint"
+              value={isDebugEnabled}
+              onChange={this.handleDebugChange}
             />
           </Field>
         </Fieldset>

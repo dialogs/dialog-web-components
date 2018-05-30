@@ -5,6 +5,9 @@ general:
     sending: Отправка сообщений
     other: Разное
   sound: Включить звуковые эффекты
+  debug:
+    label: Делать {appName} лучше
+    hint: Позвольте нам собирать обезличенную статистику по использованию приложения
   sendByEnter:
     enable: <b>Enter</b> – отправить сообщение<br /><b>Shift + Enter</b> – новая строка
     disable: <b>{keyOS} + Enter</b> – отправить сообщение<br /><b>Enter</b> – новая строка
