@@ -11,14 +11,21 @@ export type ImageSize = {
 function getImageSize(
   width: number,
   height: number,
-  maxWidth: number,
-  maxHeight: number
+  maxWidth?: ?number,
+  maxHeight?: ?number
 ): ImageSize {
-  const ratio = Math.min(maxWidth / width, maxHeight / height);
+  if (maxWidth && maxHeight) {
+    const ratio = Math.min(maxWidth / width, maxHeight / height);
+
+    return {
+      width: width * ratio,
+      height: height * ratio
+    };
+  }
 
   return {
-    width: width * ratio,
-    height: height * ratio
+    width,
+    height
   };
 }
 
