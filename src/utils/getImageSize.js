@@ -14,21 +14,12 @@ function getImageSize(
   maxWidth: number,
   maxHeight: number
 ): ImageSize {
-  if (width > height) {
-    if (width > maxWidth) {
-      return {
-        width: maxWidth,
-        height: height * (maxWidth / width)
-      };
-    }
-  } else if (height > maxHeight) {
-    return {
-      width: width * (maxHeight / height),
-      height: maxHeight
-    };
-  }
+  const ratio = Math.min(maxWidth / width, maxHeight / height);
 
-  return { width, height };
+  return {
+    width: width * ratio,
+    height: height * ratio
+  };
 }
 
 export default getImageSize;
