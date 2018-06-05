@@ -14,7 +14,7 @@ import styles from './SidebarMenuProfile.css';
 type Props = {
   className?: string,
   name: string,
-  avatar: string,
+  avatar: ?string,
   placeholder: AvatarPlaceholder,
   status: UserStatusType
 };
