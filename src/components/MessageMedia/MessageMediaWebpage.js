@@ -38,7 +38,13 @@ class MessageMediaWebpage extends PureComponent<Props> {
     }
 
     return (
-      <Markdown text={description} emojiSize={18} />
+      <Markdown
+        className={styles.webpageDescription}
+        text={description}
+        emojiSize={18}
+        inline
+        tagName="div"
+      />
     );
   }
 
@@ -62,14 +68,31 @@ class MessageMediaWebpage extends PureComponent<Props> {
     );
   }
 
+  renderURL() {
+    const { media: { content: { url } } } = this.props;
+
+    if (!url) {
+      return null;
+    }
+
+    return (
+      <a className={styles.webpageLink} href={url} target="_blank">
+        {url}
+      </a>
+    );
+  }
+
   render() {
     const className = classNames(styles.container, styles.webpage, this.props.className);
 
     return (
       <blockquote className={className}>
-        {this.renderTitle()}
-        {this.renderDescription()}
         {this.renderImage()}
+        <div className={styles.webpageWrapper}>
+          {this.renderTitle()}
+          {this.renderDescription()}
+          {this.renderURL()}
+        </div>
       </blockquote>
     );
   }
