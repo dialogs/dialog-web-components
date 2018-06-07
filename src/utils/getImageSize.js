@@ -15,6 +15,10 @@ function getImageSize(
   maxHeight?: ?number
 ): ImageSize {
   if (maxWidth && maxHeight) {
+    if (maxWidth > width && maxHeight > height) {
+      return { width, height };
+    }
+
     const ratio = Math.min(maxWidth / width, maxHeight / height);
 
     return {
@@ -23,10 +27,7 @@ function getImageSize(
     };
   }
 
-  return {
-    width,
-    height
-  };
+  return { width, height };
 }
 
 export default getImageSize;

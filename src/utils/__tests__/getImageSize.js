@@ -25,4 +25,8 @@ describe('getImageSize', () => {
   test('should return correct size when height bigger then maxHeight', () => {
     expect(getImageSize(200, 150, 200, 100)).toEqual({ width: 133.33333333333331, height: 100 });
   });
+
+  test('should return same size when width and height smaller them maximum values', () => {
+    expect(getImageSize(100, 100, 300, 300)).toEqual({ width: 100, height: 100 });
+  });
 });
