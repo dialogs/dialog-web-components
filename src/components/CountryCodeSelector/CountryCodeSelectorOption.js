@@ -56,7 +56,7 @@ class CountryCodeSelectorOption extends PureComponent<Props> {
     this.props.onSelect(this.props.country);
   };
 
-  handleMouseOver = () => {
+  handleMouseEnter = () => {
     this.props.onFocus(this.props.country);
   };
 
@@ -91,7 +91,7 @@ class CountryCodeSelectorOption extends PureComponent<Props> {
         className={className}
         style={style}
         onClick={this.handleClick}
-        onMouseOver={this.handleMouseOver}
+        onMouseEnter={this.handleMouseEnter}
       >
         {this.renderFlag()}
         <div className={styles.optionLabel}>

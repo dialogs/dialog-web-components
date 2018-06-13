@@ -58,7 +58,7 @@ class CountryCodeSelector extends PureComponent<Props> {
   }
 
   render() {
-    const { l10n } = this.context;
+    const { l10n: { formatText } } = this.context;
     const className = classNames(
       styles.container,
       this.props.className,
@@ -72,11 +72,12 @@ class CountryCodeSelector extends PureComponent<Props> {
           ref={this.setSelect}
           name="country-code"
           value={this.props.value}
+          valueKey="alpha"
           clearable={false}
-          optionHeight={37}
+          optionHeight={40}
           options={this.props.countries}
-          placeholder={l10n.formatText('CountryCodeSelector.search')}
-          noResultsText={l10n.formatText('CountryCodeSelector.not_found')}
+          placeholder={formatText('CountryCodeSelector.search')}
+          noResultsText={formatText('CountryCodeSelector.not_found')}
           disabled={this.props.disabled}
           valueRenderer={CountryCodeSelectorOption.renderValue}
           optionRenderer={CountryCodeSelectorOption.renderOption}
