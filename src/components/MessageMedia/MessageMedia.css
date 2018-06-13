@@ -78,13 +78,13 @@
 
 .webpageLink {
   margin: 4px 0 0;
-  line-height: 18px;
-  font-size: var(--default-font-size-small);
-  color: var(--color-info);
-  text-decoration: none;
-  display: block;
+  display: inline-block;
   max-width: 100%;
   @apply --text-overflow-ellipsis;
+  line-height: 18px;
+  font-size: var(--default-font-size-small);
+  text-decoration: none;
+  color: var(--color-info);
 
   &:hover {
     text-decoration: underline;
