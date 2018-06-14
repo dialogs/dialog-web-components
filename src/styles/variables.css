@@ -54,6 +54,7 @@
   --z-index-message-actions: 10;
   --z-index-dragndrop: 2000;
   --z-index-input: 100;
+  --z-index-overlay: calc(var(--z-index-dropdown) + 5);
 
   /* Colors */
   --color-primary: var(--violet-blue);
