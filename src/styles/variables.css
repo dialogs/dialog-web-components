@@ -44,7 +44,7 @@
 
   /* Layers */
   --z-index-dropdown: 1000;
-  --z-index-tooltip: var(--z-index-dropdown);
+  --z-index-tooltip: calc(var(--z-index-dropdown) + 10);
   --z-index-call: calc(var(--z-index-dropdown) - 20);
   --z-index-sidebar: 50;
   --z-index-chat: 20;
