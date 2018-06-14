@@ -16,9 +16,10 @@
   --input-next-border-color: #d1d3d8;
   --input-next-label-font-size: var(--default-font-size-small);
   --input-next-label-color: #808080;
-  --input-next-hover-border-color: color(var(--input-next-border-color) shade(10%));
+  --input-next-hover-border-color: color(var(--input-next-border-color) shade(15%));
   --input-next-focus-border-color: var(--color-primary);
-  --input-next-transition-dudarion: var(--default-transition-duration);
+  --input-next-focus-outline-color: color(var(--input-next-focus-border-color) alpha(20%));
+  --input-next-transition-duration: calc(var(--default-transition-duration) / 1.5);
   --input-next-success-color: var(--color-success);
   --input-next-error-color: var(--color-danger);
   --input-next-hint-font-family: var(--input-next-font-family);
@@ -50,6 +51,8 @@
   width: 100%;
   margin-bottom: var(--default-padding);
   line-height: 0;
+  position: relative;
+  z-index: var(--z-index-input);
 }
 
 .input {
@@ -65,7 +68,7 @@
   line-height: var(--input-next-line-height);
   box-sizing: border-box;
   width: 100%;
-  // transition: box-shadow var(--input-next-transition-dudarion) linear;
+  transition: box-shadow var(--input-next-transition-duration) ease-in;
 
   &::-webkit-input-placeholder {
     color: var(--input-next-placeholder-color);
@@ -88,19 +91,19 @@
   }
 
   &:focus {
-    box-shadow: inset 0 0 0 1px var(--input-next-focus-border-color);
+    box-shadow: inset 0 0 0 1px var(--input-next-focus-border-color), 0 0 0 3px var(--input-next-focus-outline-color);
   }
 }
 
 .label {
-  display: inline-block;
-  cursor: pointer;
-  user-select: none;
+  @apply --no-select;
+  color: var(--input-next-label-color);
   font-family: var(--input-next-font-family);
   font-size: var(--input-next-label-font-size);
   line-height: 1.4;
+  display: inline-block;
   margin-bottom: calc(var(--default-padding-small) / 2);
-  color: var(--input-next-label-color);
+  cursor: pointer;
 
   & small {
     margin-left: calc(var(--default-padding-small) / 2);
@@ -143,6 +146,10 @@
 .success {
   & .input {
     box-shadow: inset 0 0 0 1px var(--input-next-success-color);
+
+    &:focus {
+      box-shadow: inset 0 0 0 1px var(--input-next-success-color), 0 0 0 3px color(var(--input-next-success-color) alpha(20%));
+    }
   }
 
   & .hint {
@@ -154,6 +161,9 @@
 .error {
   & .input {
     box-shadow: inset 0 0 0 1px var(--input-next-error-color);
+    &:focus {
+      box-shadow: inset 0 0 0 1px var(--input-next-error-color), 0 0 0 3px color(var(--input-next-error-color) alpha(20%));
+    }
   }
 
   & .hint {

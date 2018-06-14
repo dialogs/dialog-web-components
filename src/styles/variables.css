@@ -53,6 +53,7 @@
   --z-index-connection-status: calc(var(--z-index-toolbar) - 1);
   --z-index-message-actions: 10;
   --z-index-dragndrop: 2000;
+  --z-index-input: 100;
 
   /* Colors */
   --color-primary: var(--violet-blue);

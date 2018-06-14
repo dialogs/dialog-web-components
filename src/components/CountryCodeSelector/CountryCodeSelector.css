@@ -7,27 +7,42 @@
 :root {
   --country-code-selector-font-family: var(--default-font-family);
   --country-code-selector-border-radius: var(--default-border-radius);
-  --country-code-selector-border-color: #D1D3D8;
-  --country-code-selector-label-color: #676C75;
+  --country-code-selector-border-color: #d1d3d8;
+  --country-code-selector-label-color: #808080;
+  --country-code-selector-label-font-family: var(--default-font-family);
+  --country-code-selector-label-font-size: var(--default-font-size-small);
   --country-code-selector-height: 46px;
   --country-code-selector-color: #414752;
-  --country-code-selector-border-hover-color: color(var(--country-code-selector-border-color) shade(10%));
-  --country-code-selector-z-index: var(--z-index-dropdown);
+  --country-code-selector-menu-outer-z-index: var(--z-index-dropdown);
+  --country-code-selector-hover-border-color: color(var(--country-code-selector-border-color) shade(15%));
   --country-code-selector-focus-border-color: var(--color-primary);
+  --country-code-selector-focus-outline-color: color(var(--country-code-selector-focus-border-color) alpha(20%));
+  --country-code-selector-transition-duration: calc(var(--default-transition-duration) / 1.5);
+}
+
+/* Reset */
+.container,
+.label {
+  all: initial;
 }
 
 /* Styles */
 .container {
   font-family: var(--country-code-selector-font-family);
   color: var(--country-code-selector-color);
-  text-align: left;
 
   & :global(.Select) {
+    transition: box-shadow var(--country-code-selector-transition-duration) ease-in;
+    border-radius: var(--country-code-selector-border-radius);
+    & :global(.Select-control) {
+      transition: box-shadow var(--country-code-selector-transition-duration) ease-in;
+    }
 
     &:global(.is-focused) {
+      box-shadow: 0 0 0 3px var(--country-code-selector-focus-outline-color);
 
       & :global(.Select-control) {
-        box-shadow: inset 0 0 0 1px var(--country-code-selector-focus-border-color);
+        box-shadow: inset 0 0 0 1px var(--country-code-selector-focus-border-color) !important;
 
         & .optionLabel {
           opacity: 0.5;
@@ -35,6 +50,9 @@
       }
 
       &:global(.is-open) {
+        box-shadow: 0 0 0 3px var(--country-code-selector-focus-outline-color);
+        border-radius: var(--country-code-selector-border-radius) var(--country-code-selector-border-radius) 0 0;
+
         & :global(.Select-control) {
           box-shadow: inset 0 0 0 1px var(--country-code-selector-focus-border-color);
           border-radius: var(--country-code-selector-border-radius) var(--country-code-selector-border-radius) 0 0;
@@ -64,13 +82,12 @@
       border: 0;
       border-radius: var(--country-code-selector-border-radius);
       box-shadow: inset 0 0 0 1px var(--country-code-selector-border-color);
-      //transition: box-shadow var(--default-transition-duration) ease;
       height: var(--country-code-selector-height);
       position: relative;
-      z-index: calc(var(--country-code-selector-z-index) + 1);
+      z-index: calc(var(--z-index-input) + 10);
 
       &:hover {
-        box-shadow: inset 0 0 0 1px var(--country-code-selector-border-hover-color);
+        box-shadow: inset 0 0 0 1px var(--country-code-selector-hover-border-color);
       }
     }
 
@@ -101,7 +118,7 @@
       border: 1px solid 1px var(--country-code-selector-border-color);
       box-shadow: 0 2px 3px 0 color(#000 alpha(20%));
       overflow: hidden;
-      z-index: var(--country-code-selector-z-index);
+      z-index: var(--country-code-selector-menu-outer-z-index);
     }
 
     &-placeholder {
@@ -143,11 +160,13 @@
 }
 
 .label {
-  color: var(--country-code-selector-label-color);
-  font-size: var(--default-font-size);
-  display: inline-block;
-  line-height: 30px;
   @apply --no-select;
+  color: var(--country-code-selector-label-color);
+  font-family: var(--country-code-selector-label-font-family);
+  font-size: var(--country-code-selector-label-font-size);
+  line-height: 1.4;
+  display: inline-block;
+  margin-bottom: calc(var(--default-padding-small) / 2);
   cursor: pointer;
 }
 
