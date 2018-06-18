@@ -29,6 +29,11 @@ const initial = {
   }
 };
 initialState = initial;
+const handleClose = () => setState(initial);
+const handleSubmit = (group) => {
+  console.debug(group);
+  setState(initial);
+};
 
 <div>
   <Button theme="primary" onClick={() => setState({ isOpen: true })}>Edit Group</Button>
@@ -36,9 +41,10 @@ initialState = initial;
     state.isOpen
       ? <EditGroupModal
           group={state.group}
+          shortnamePrefix="https://dlg.im/@"
           context={state.context}
-          onClose={() => setState(initial)}
-          onSubmit={console.debug}
+          onClose={handleClose}
+          onSubmit={handleSubmit}
         />
       : null
   }

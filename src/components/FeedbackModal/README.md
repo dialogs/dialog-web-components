@@ -5,6 +5,10 @@ initialState = {
 
 const handleClose = () => setState({ isOpen: false });
 const handleOpen = () => setState({ isOpen: true });
+const handleSubmit = (feedback) => {
+  console.debug(feedback);
+  handleClose();
+};
 
 <div>
   <Button theme="primary" onClick={handleOpen}>Open feedback</Button>
@@ -12,7 +16,7 @@ const handleOpen = () => setState({ isOpen: true });
     state.isOpen ? (
       <FeedbackModal
         onClose={handleClose}
-        onSubmit={(feedback) => console.debug(feedback)}
+        onSubmit={handleSubmit}
       />
     ) : null
   }

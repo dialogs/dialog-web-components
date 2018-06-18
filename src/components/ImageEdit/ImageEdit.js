@@ -13,6 +13,7 @@ import styles from './ImageEdit.css';
 import { Croppie } from 'croppie';
 import { listen, fileToBase64 } from '@dlghq/dialog-utils';
 import format from 'date-fns/format';
+import HotKeys from '../HotKeys/HotKeys';
 
 export type Props = {
   className?: string,
@@ -158,6 +159,14 @@ class ImageEdit extends PureComponent<Props, State> {
     }
   };
 
+  handleHotkey = (hotkey: string, event: KeyboardEvent): void => {
+    if (hotkey === 'Enter') {
+      event.preventDefault();
+      event.stopPropagation();
+      this.handleSubmit();
+    }
+  };
+
   setCropper = (cropper: ?HTMLElement): void => {
     if (cropper) {
       this.croppieElement = cropper;
@@ -202,17 +211,19 @@ class ImageEdit extends PureComponent<Props, State> {
     const className = classNames(styles.container, this.props.className);
 
     return (
-      <div className={className}>
-        <div className={styles.body} style={{ height: this.props.height }}>
-          <div ref={this.setCropper} />
-          {this.renderControls()}
+      <HotKeys onHotKey={this.handleHotkey}>
+        <div className={className}>
+          <div className={styles.body} style={{ height: this.props.height }}>
+            <div ref={this.setCropper} />
+            {this.renderControls()}
+          </div>
+          <div className={styles.footer}>
+            <Button wide theme="primary" rounded={false} onClick={this.handleSubmit}>
+              <Text id="ImageEdit.save" />
+            </Button>
+          </div>
         </div>
-        <div className={styles.footer}>
-          <Button wide theme="primary" rounded={false} onClick={this.handleSubmit}>
-            <Text id="ImageEdit.save" />
-          </Button>
-        </div>
-      </div>
+      </HotKeys>
     );
   }
 }

@@ -17,6 +17,7 @@ import ImageEdit from '../ImageEdit/ImageEdit';
 import Icon from '../Icon/Icon';
 import styles from './EditGroupModal.css';
 import type { Props, State } from './types';
+import HotKeys from '../HotKeys/HotKeys';
 
 class EditGroupModal extends PureComponent<Props, State> {
   constructor(props: Props) {
@@ -97,6 +98,17 @@ class EditGroupModal extends PureComponent<Props, State> {
     }
 
     this.props.onSubmit(this.props.group, this.state.group);
+  };
+
+  handleHotkey = (hotkey: string, event: KeyboardEvent): void => {
+    if (hotkey === 'Enter') {
+      event.preventDefault();
+      event.stopPropagation();
+
+      if (this.state.screen !== 'avatar') {
+        this.handleSubmit();
+      }
+    }
   };
 
   isChanged(): boolean {
@@ -226,11 +238,13 @@ class EditGroupModal extends PureComponent<Props, State> {
     const className = classNames(styles.container, this.props.className);
 
     return (
-      <Modal className={className} onClose={this.props.onClose}>
-        {this.renderHeader()}
-        {this.renderBody()}
-        {this.renderFooter()}
-      </Modal>
+      <HotKeys onHotKey={this.handleHotkey}>
+        <Modal className={className} onClose={this.props.onClose}>
+          {this.renderHeader()}
+          {this.renderBody()}
+          {this.renderFooter()}
+        </Modal>
+      </HotKeys>
     );
   }
 }

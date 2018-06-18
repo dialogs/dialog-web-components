@@ -22,10 +22,11 @@ import CreateGroupInfoForm from './CreateGroupInfoForm';
 import CreateGroupMembersForm from './CreateGroupMembersForm';
 import ImageEdit from '../ImageEdit/ImageEdit';
 import styles from './CreateNewModal.css';
+import HotKeys from '../HotKeys/HotKeys';
 
 class CreateNewModal extends PureComponent<Props> {
   static defaultProps = {
-    id: 'create_new_group'
+    id: 'create_new_modal'
   };
 
   handlePrevStepClick = (): void => {
@@ -89,13 +90,33 @@ class CreateNewModal extends PureComponent<Props> {
     this.props.onStepChange('avatar');
   };
 
-  handleSubmit = (event: SyntheticEvent<>): void => {
-    event.preventDefault();
+  handleSubmit = (event: ?SyntheticEvent<>): void => {
+    if (event) {
+      event.preventDefault();
+    }
     this.props.onSubmit(this.props.request);
   };
 
   handleCancelAvatarEdit = (): void => {
     this.props.onStepChange('info');
+  };
+
+  handleHotkey = (hotkey: string, event: KeyboardEvent): void => {
+    if (hotkey === 'Enter') {
+      event.preventDefault();
+      event.stopPropagation();
+
+      switch (this.props.step) {
+        case 'avatar':
+          // do nothing because ImageEdit has own HotKeys handlers
+          break;
+        case 'members':
+          this.handleSubmit();
+          break;
+        default:
+          this.handleNextStepClick();
+      }
+    }
   };
 
   renderError() {
@@ -299,9 +320,11 @@ class CreateNewModal extends PureComponent<Props> {
     const className = classNames(styles.container, this.props.className);
 
     return (
-      <Modal className={className} onClose={this.props.onClose}>
-        {this.renderStep()}
-      </Modal>
+      <HotKeys onHotKey={this.handleHotkey}>
+        <Modal className={className} onClose={this.props.onClose}>
+          {this.renderStep()}
+        </Modal>
+      </HotKeys>
     );
   }
 }

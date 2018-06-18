@@ -20,6 +20,7 @@ import Icon from '../Icon/Icon';
 import Avatar from '../Avatar/Avatar';
 import Button from '../Button/Button';
 import styles from './AddContactModal.css';
+import HotKeys from '../HotKeys/HotKeys';
 
 export type Props = {
   className?: string,
@@ -64,6 +65,20 @@ class AddContactModal extends PureComponent<Props> {
 
     if (contact) {
       this.props.onOpenChat(contact.id);
+    }
+  };
+
+  handleHotkey = (hotkey: string, event: KeyboardEvent): void => {
+    if (hotkey === 'Enter') {
+      event.preventDefault();
+      event.stopPropagation();
+
+      const { added, contact } = this.props;
+      if (added || (contact && contact.isContact)) {
+        this.handleOpenChat();
+      } else {
+        this.handleAddClick();
+      }
     }
   };
 
@@ -271,14 +286,16 @@ class AddContactModal extends PureComponent<Props> {
     const className = classNames(styles.container, this.props.className);
 
     return (
-      <Modal className={className} onClose={this.props.onClose}>
-        <ModalHeader withBorder>
-          <Text id="AddContactModal.title" />
-          <ModalClose onClick={this.props.onClose} id="add_contact_close_button" />
-        </ModalHeader>
-        {this.renderBody()}
-        {this.renderFooter()}
-      </Modal>
+      <HotKeys onHotKey={this.handleHotkey}>
+        <Modal className={className} onClose={this.props.onClose}>
+          <ModalHeader withBorder>
+            <Text id="AddContactModal.title" />
+            <ModalClose onClick={this.props.onClose} id="add_contact_close_button" />
+          </ModalHeader>
+          {this.renderBody()}
+          {this.renderFooter()}
+        </Modal>
+      </HotKeys>
     );
   }
 }

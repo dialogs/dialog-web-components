@@ -25,6 +25,7 @@ import ImageEdit from '../ImageEdit/ImageEdit';
 import Spinner from '../Spinner/Spinner';
 import CustomForm from '../CustomForm/CustomForm';
 import styles from './ProfileModal.css';
+import HotKeys from '../HotKeys/HotKeys';
 
 class ProfileModal extends PureComponent<Props, State> {
   nameInput: ?HTMLInputElement;
@@ -90,8 +91,11 @@ class ProfileModal extends PureComponent<Props, State> {
     });
   };
 
-  handleSubmit = (event: SyntheticEvent<>): void => {
-    event.preventDefault();
+  handleSubmit = (event: ?SyntheticEvent<>): void => {
+    if (event) {
+      event.preventDefault();
+    }
+
     this.props.onSubmit({
       name: this.state.profile.name,
       nick: this.state.profile.nick,
@@ -163,6 +167,17 @@ class ProfileModal extends PureComponent<Props, State> {
     });
   };
 
+  handleHotkey = (hotkey: string, event: KeyboardEvent): void => {
+    if (hotkey === 'Enter') {
+      event.preventDefault();
+      event.stopPropagation();
+
+      if (this.isChanged()) {
+        this.handleSubmit();
+      }
+    }
+  };
+
   isPending(): boolean {
     const { context: { name, nick, about, avatar } } = this.props;
 
@@ -191,7 +206,7 @@ class ProfileModal extends PureComponent<Props, State> {
       this.state.profile.name !== this.props.profile.name ||
       (this.state.profile.nick !== this.props.profile.nick && this.state.profile.nick !== '') ||
       this.state.profile.about !== this.props.profile.about ||
-      this.state.profile.bigAvatar !== this.props.profile.bigAvatar ||
+      this.state.profile.avatar !== this.props.profile.bigAvatar ||
       this.isCustomProfileChanged()
     );
   }
@@ -462,11 +477,13 @@ class ProfileModal extends PureComponent<Props, State> {
     const className = classNames(styles.container, this.props.className);
 
     return (
-      <Modal className={className} isOpen onClose={this.props.onClose}>
-        {this.renderHeader()}
-        {this.renderBody()}
-        {this.renderFooter()}
-      </Modal>
+      <HotKeys onHotKey={this.handleHotkey}>
+        <Modal className={className} isOpen onClose={this.props.onClose}>
+          {this.renderHeader()}
+          {this.renderBody()}
+          {this.renderFooter()}
+        </Modal>
+      </HotKeys>
     );
   }
 }

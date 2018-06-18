@@ -16,6 +16,7 @@ import ModalFooter from '../Modal/ModalFooter';
 import ModalClose from '../Modal/ModalClose';
 import ContactSelector from '../ContactSelector/ContactSelector';
 import styles from './AddMembersModal.css';
+import HotKeys from '../HotKeys/HotKeys';
 
 export type Props = {
   className?: string,
@@ -43,35 +44,45 @@ class AddMembersModal extends PureComponent<Props> {
     );
   };
 
+  handleHotkey = (hotkey: string, event: KeyboardEvent): void => {
+    if (hotkey === 'Enter') {
+      event.preventDefault();
+      event.stopPropagation();
+      this.handleSubmit();
+    }
+  };
+
   render() {
     const className = classNames(styles.container, this.props.className);
 
     return (
-      <Modal className={className} onClose={this.handleClose}>
-        <ModalHeader withBorder>
-          <Text id="AddMembersModal.title" />
-          <ModalClose onClick={this.handleClose} id="add_members_close_button" />
-        </ModalHeader>
-        <ModalBody className={styles.body}>
-          <ContactSelector
-            autoFocus={this.props.autoFocus}
-            selector={this.props.selector}
-            onChange={this.props.onChange}
-          />
-        </ModalBody>
-        <ModalFooter className={styles.footer}>
-          <Button
-            wide
-            theme="success"
-            rounded={false}
-            disabled={this.props.pending}
-            onClick={this.handleSubmit}
-            id="add_members_add_button"
-          >
-            <Text id="AddMembersModal.button_add" />
-          </Button>
-        </ModalFooter>
-      </Modal>
+      <HotKeys onHotKey={this.handleHotkey}>
+        <Modal className={className} onClose={this.handleClose}>
+          <ModalHeader withBorder>
+            <Text id="AddMembersModal.title" />
+            <ModalClose onClick={this.handleClose} id="add_members_close_button" />
+          </ModalHeader>
+          <ModalBody className={styles.body}>
+            <ContactSelector
+              autoFocus={this.props.autoFocus}
+              selector={this.props.selector}
+              onChange={this.props.onChange}
+            />
+          </ModalBody>
+          <ModalFooter className={styles.footer}>
+            <Button
+              wide
+              theme="success"
+              rounded={false}
+              disabled={this.props.pending}
+              onClick={this.handleSubmit}
+              id="add_members_add_button"
+            >
+              <Text id="AddMembersModal.button_add" />
+            </Button>
+          </ModalFooter>
+        </Modal>
+      </HotKeys>
     );
   }
 }
