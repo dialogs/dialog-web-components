@@ -80,7 +80,7 @@ class SidebarSearchResults extends PureComponent<SidebarSearchResultsProps> {
     const children = messages.value.map((item) => {
       return (
         <SidebarSearchItem
-          key={item.focus.rid}
+          key={item.focus.mid}
           info={item.info}
           before={item.before}
           after={item.after}
