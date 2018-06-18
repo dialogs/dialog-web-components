@@ -191,7 +191,7 @@ class ProfileModal extends PureComponent<Props, State> {
       this.state.profile.name !== this.props.profile.name ||
       (this.state.profile.nick !== this.props.profile.nick && this.state.profile.nick !== '') ||
       this.state.profile.about !== this.props.profile.about ||
-      this.state.profile.avatar !== this.props.profile.avatar ||
+      this.state.profile.bigAvatar !== this.props.profile.bigAvatar ||
       this.isCustomProfileChanged()
     );
   }
