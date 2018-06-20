@@ -39,6 +39,7 @@
   cursor: pointer;
   line-height: 30px;
   color: var(--color-primary);
+  z-index: calc(var(--z-index-input) + 5);
 }
 
 .resend {
