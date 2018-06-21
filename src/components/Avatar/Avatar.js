@@ -46,7 +46,7 @@ class Avatar extends PureComponent<Props, void> {
     const { image, title } = this.props;
     const size = this.getAvatarSize();
     const text = size >= 20 ? this.getAvatarText() : null;
-    const twoChars = Boolean(text && text.length !== 1);
+    // const twoChars = Boolean(text && text.length !== 1);
 
     const className = classNames(
       this.props.className,
@@ -80,7 +80,7 @@ class Avatar extends PureComponent<Props, void> {
       width: size,
       height: size,
       lineHeight: `${size}px`,
-      fontSize: Math.min(Math.floor(twoChars ? size / 2.4 : size / 1.9), 60),
+      fontSize: Math.min(Math.floor(size / 2.4), 80),
       backgroundImage: `linear-gradient(38deg, ${colors.payload.from}, ${colors.payload.to})`
     };
 
