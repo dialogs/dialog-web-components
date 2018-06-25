@@ -15,7 +15,7 @@ import ModalBody from '../Modal/ModalBody';
 import ModalFooter from '../Modal/ModalFooter';
 import ErrorMessage from '../Error/Error';
 import Spinner from '../Spinner/Spinner';
-import Input from '../Input/Input';
+import InputNext from '../InputNext/InputNext';
 import Icon from '../Icon/Icon';
 import Avatar from '../Avatar/Avatar';
 import Button from '../Button/Button';
@@ -229,12 +229,11 @@ class AddContactModal extends PureComponent<Props> {
 
     return (
       <ModalBody className={styles.body}>
-        <Input
-          autoFocus
+        <InputNext
+          htmlAutoFocus
           className={styles.input}
           id="add_contact_query"
           type="text"
-          size="large"
           value={query}
           placeholder="AddContactModal.placeholder"
           onChange={this.handleQueryChange}

@@ -9,13 +9,13 @@
   --modal-add-contact-font-size: var(--default-font-size);
   --modal-add-contact-font-color: var(--default-font-color);
   --modal-add-contact-font-color-light: var(--default-font-color-light);
-  --modal-add-contact-width: 500px;
+  --modal-add-contact-width: 420px;
   --modal-add-contact-heigth: 320px;
 }
 
 .container {
   width: var(--modal-add-contact-width);
-  /*height: var(--modal-add-contact-heigth);*/
+  min-height: var(--modal-add-contact-heigth);
   font-family: var(--modal-add-contact-font-family);
   font-size: var(--modal-add-contact-font-size);
 }
