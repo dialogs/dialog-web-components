@@ -14,6 +14,8 @@ type HTMLAbstractInputElement = HTMLInputElement | HTMLTextAreaElement;
 export type Props = {
   className?: string,
   inputClassName?: string,
+  wrapperClassName?: string,
+  prefixClassName?: string,
   id: string,
   type: 'text' | 'number' | 'email' | 'search' | 'tel' | 'url' | 'password' | 'textarea',
   value: string | number,
@@ -22,6 +24,7 @@ export type Props = {
   placeholder?: ?string,
   disabled?: boolean,
   hint?: ?string,
+  prefix?: ?string,
   status: 'normal' | 'success' | 'error',
   size: 'small' | 'normal',
   autoFocus?: boolean,
@@ -49,16 +52,16 @@ class InputNext extends PureComponent<Props, State> {
   context: Context;
   input: ?HTMLAbstractInputElement;
 
+  static contextTypes = {
+    l10n: LocalizationContextType
+  };
+
   static defaultProps = {
     type: 'text',
     status: 'normal',
     size: 'normal',
     spellcheck: false,
     required: false
-  };
-
-  static contextTypes = {
-    l10n: LocalizationContextType
   };
 
   constructor(props: Props, context: Context) {
@@ -175,7 +178,21 @@ class InputNext extends PureComponent<Props, State> {
     return <Text className={styles.description} id={this.props.description} />;
   }
 
-  render() {
+  renderPrefix() {
+    if (this.props.type === 'textarea' || !this.props.prefix) {
+      return null;
+    }
+
+    const prefixClassName = classNames(styles.prefix, this.props.prefixClassName);
+
+    return (
+      <div className={prefixClassName} onMouseDown={this.handleLabelMouseDown}>
+        {this.props.prefix}
+      </div>
+    );
+  }
+
+  renderInput() {
     const {
       id,
       name,
@@ -183,16 +200,56 @@ class InputNext extends PureComponent<Props, State> {
       value,
       disabled,
       tabIndex,
-      status,
       htmlAutoFocus,
       placeholder,
       onKeyUp,
       onKeyDown,
       onKeyPress,
+      prefix
+    } = this.props;
+    const { l10n: { formatText } } = this.context;
+
+    const inputClassName = classNames(styles.input, this.props.inputClassName, {
+      [styles.textarea]: type === 'textarea',
+      [styles.prefixed]: Boolean(prefix)
+    });
+
+    const TagName = type === 'textarea' ? 'textarea' : 'input';
+
+
+    return (
+      <TagName
+        className={inputClassName}
+        disabled={disabled}
+        id={id}
+        name={name}
+        placeholder={placeholder ? formatText(placeholder) : null}
+        type={type}
+        value={value}
+        ref={this.setInput}
+        tabIndex={tabIndex}
+        autoFocus={htmlAutoFocus}
+        onChange={this.handleChange}
+        onBlur={this.handleBlur}
+        onFocus={this.handleFocus}
+        onKeyDown={onKeyDown}
+        onKeyPress={onKeyPress}
+        onKeyUp={onKeyUp}
+        spellCheck={this.props.spellcheck ? 'true' : 'false'}
+        required={this.props.required}
+        autoComplete={this.props.autoComplete}
+      />
+    );
+  }
+
+  render() {
+    const {
+      value,
+      disabled,
+      status,
       size
     } = this.props;
     const { isFocused } = this.state;
-    const { l10n: { formatText } } = this.context;
 
     const className = classNames(
       styles.container,
@@ -203,38 +260,16 @@ class InputNext extends PureComponent<Props, State> {
       styles[size],
       this.props.className
     );
-
-    const inputClassName = classNames(styles.input, this.props.inputClassName, {
-      [styles.textarea]: type === 'textarea'
-    });
-
-    const TagName = type === 'textarea' ? 'textarea' : 'input';
+    const wrapperClassName = classNames(styles.inputWrapper, this.props.wrapperClassName);
 
     return (
       <div className={className}>
         {this.renderLabel()}
         {this.renderDescription()}
-        <TagName
-          className={inputClassName}
-          disabled={disabled}
-          id={id}
-          name={name}
-          placeholder={placeholder ? formatText(placeholder) : null}
-          type={type}
-          value={value}
-          ref={this.setInput}
-          tabIndex={tabIndex}
-          autoFocus={htmlAutoFocus}
-          onChange={this.handleChange}
-          onBlur={this.handleBlur}
-          onFocus={this.handleFocus}
-          onKeyDown={onKeyDown}
-          onKeyPress={onKeyPress}
-          onKeyUp={onKeyUp}
-          spellCheck={this.props.spellcheck ? 'true' : 'false'}
-          required={this.props.required}
-          autoComplete={this.props.autoComplete}
-        />
+        <div className={wrapperClassName}>
+          {this.renderPrefix()}
+          {this.renderInput()}
+        </div>
         {this.renderHint()}
       </div>
     );

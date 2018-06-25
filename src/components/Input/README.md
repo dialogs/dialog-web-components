@@ -7,7 +7,7 @@ Basic Input:
   placeholder="Basic placeholder"
   value={state.value || ''}
   onChange={value => setState({ value })}
-/>;
+/>
 ```
 
 Input without label:
@@ -18,7 +18,7 @@ Input without label:
   value={state.value || ''}
   placeholder="What's your name?"
   onChange={value => setState({ value })}
-/>;
+/>
 ```
 
 Disabled Input:
@@ -37,7 +37,7 @@ Success Input with hint:
   onChange={value => setState({ value })}
   status="success"
   value={state.value || 'bob@example.com'}
-/>;
+/>
 ```
 
 Error Input with hint:
@@ -50,7 +50,7 @@ Error Input with hint:
   onChange={value => setState({ value })}
   status="error"
   value={state.value || 'bob@example.com'}
-/>;
+/>
 ```
 
 Prefixed Input
@@ -63,7 +63,7 @@ Prefixed Input
   placeholder="string"
   prefix="app.dlg.im/"
   value={state.value || ''}
-/>;
+/>
 ```
 
 Since `<textarea />` has the same interface as `<input />`, there is `textarea` type:
@@ -77,7 +77,7 @@ const initialState = { value: '' };
   placeholder="Type something"
   value={state.value || ''}
   onChange={value => setState({ value })}
-/>;
+/>
 ```
 
 You can make `Input` even larger. Just add `large` to props:
@@ -91,5 +91,5 @@ You can make `Input` even larger. Just add `large` to props:
   large
   value={state.value || ''}
   onChange={value => setState({ value })}
-/>;
+/>
 ```
