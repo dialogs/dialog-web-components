@@ -12,10 +12,12 @@ import classNames from 'classnames';
 import { LocalizationContextType } from '@dlghq/react-l10n';
 import { fileToBase64 } from '@dlghq/dialog-utils';
 import AvatarSelector from '../AvatarSelector/AvatarSelector';
-import Input from '../Input/Input';
+import InputNext from '../InputNext/InputNext';
 import styles from '../CreateNewModal/CreateNewModal.css';
+import Switcher from '../Switcher/Switcher';
 
 export type Props = {
+  id: string,
   group: Group,
   name: Field<string>,
   shortname: Field<?string>,
@@ -31,18 +33,22 @@ export type Props = {
 };
 
 export type State = {
-  avatar: ?string
+  avatar: ?string,
+  isPublic: boolean
 };
 
 export type Context = ProviderContext;
 
 class EditGroupModalForm extends PureComponent<Props, State> {
-  static defaultProps = {
-    vertical: false
-  };
+  shortnameInput: ?InputNext;
 
   static contextTypes = {
     l10n: LocalizationContextType
+  };
+
+  static defaultProps = {
+    vertical: false,
+    id: 'edit_group'
   };
 
   constructor(props: Props, context: Context) {
@@ -50,11 +56,13 @@ class EditGroupModalForm extends PureComponent<Props, State> {
 
     if (!props.avatar || typeof props.avatar === 'string') {
       this.state = {
-        avatar: props.avatar
+        avatar: props.avatar,
+        isPublic: props.shortname && Boolean(props.shortname.value) && props.shortname.value !== ''
       };
     } else {
       this.state = {
-        avatar: null
+        avatar: null,
+        isPublic: props.shortname && Boolean(props.shortname.value) && props.shortname.value !== ''
       };
       fileToBase64(props.avatar, (avatar) => {
         this.setState({ avatar });
@@ -72,10 +80,22 @@ class EditGroupModalForm extends PureComponent<Props, State> {
     }
   }
 
+  componentDidUpdate(prevProps: Props, prevState: State) {
+    if (this.shortnameInput) {
+      if (prevState.isPublic !== this.state.isPublic && this.state.isPublic) {
+        this.shortnameInput.focus();
+      }
+    }
+  }
+
   handleSubmit = (event: SyntheticEvent<>) => {
     event.preventDefault();
 
     this.props.onSubmit();
+  };
+
+  handlePublicToggle = (isPublic: boolean): void => {
+    this.setState({ isPublic });
   };
 
   getInputState = (field: string): Object => {
@@ -87,6 +107,12 @@ class EditGroupModalForm extends PureComponent<Props, State> {
     }
 
     return {};
+  };
+
+  setShortnameInput = (shortnameInput: ?InputNext): void => {
+    if (shortnameInput) {
+      this.shortnameInput = shortnameInput;
+    }
   };
 
   renderAvatar() {
@@ -108,29 +134,37 @@ class EditGroupModalForm extends PureComponent<Props, State> {
   }
 
   renderShortname() {
-    const { group, shortname } = this.props;
-    const { l10n } = this.context;
-
+    const { group, shortname, id } = this.props;
     const isBecomePublic = !group.shortname && shortname.value;
 
     return (
-      <Input
-        id="edit_group_shortname"
-        name="shortname"
-        label={l10n.formatText(`CreateNewModal.${group.type}.info.shortname`)}
-        onChange={this.props.onChange}
-        prefix={this.props.shortnamePrefix}
-        value={shortname.value || ''}
-        hint={isBecomePublic ? `EditGroupModal.${group.type}.become_public` : undefined}
-        status={isBecomePublic ? 'warning' : 'normal'}
-        {...this.getInputState('shortname')}
-      />
+      <div className={styles.shortnameWrapper}>
+        <Switcher
+          id={`${id}_public_swither`}
+          name={`${id}_public_swither`}
+          value={this.state.isPublic}
+          onChange={this.handlePublicToggle}
+          label={`CreateNewModal.${group.type}.public`}
+          className={styles.switcher}
+        />
+        <InputNext
+          id={`${id}_shortname`}
+          name="shortname"
+          onChange={this.props.onChange}
+          prefix={this.props.shortnamePrefix}
+          value={shortname.value || ''}
+          disabled={!this.state.isPublic}
+          label={`CreateNewModal.${group.type}.info.shortname`}
+          hint={isBecomePublic ? `EditGroupModal.${group.type}.become_public` : undefined}
+          ref={this.setShortnameInput}
+          {...this.getInputState('shortname')}
+        />
+      </div>
     );
   }
 
   render() {
-    const { group, about, name, vertical } = this.props;
-    const { l10n } = this.context;
+    const { group, about, name, vertical, id } = this.props;
     const className = classNames(
       styles.info,
       {
@@ -143,31 +177,31 @@ class EditGroupModalForm extends PureComponent<Props, State> {
       <div className={className}>
         {this.renderAvatar()}
         <form className={styles.form} autoComplete="off" onSubmit={this.handleSubmit}>
-          <Input
+          <InputNext
             className={styles.input}
-            id="edit_group_name"
-            large
+            id={`${id}_name`}
             name="name"
             onChange={this.props.onChange}
             status={name.error ? 'error' : 'normal'}
-            placeholder={l10n.formatText(`CreateNewModal.${group.type}.info.name`)}
-            value={name.value}
+            label={`CreateNewModal.${group.type}.info.title.label`}
+            placeholder={`CreateNewModal.${group.type}.info.title.placeholder`}
+            value={name.value || ''}
+            htmlAutoFocus
             {...this.getInputState('name')}
           />
-          {this.renderShortname()}
-          <Input
+          <InputNext
             className={styles.input}
-            id="edit_group_about"
-            label={l10n.formatText(`CreateNewModal.${group.type}.info.description.label`)}
-            large
+            id={`${id}_about`}
             name="about"
             status={about.error ? 'error' : 'normal'}
             onChange={this.props.onChange}
-            placeholder={l10n.formatText(`CreateNewModal.${group.type}.info.description.placeholder`)}
+            label={`CreateNewModal.${group.type}.info.description.label`}
+            placeholder={`CreateNewModal.${group.type}.info.description.placeholder`}
             type="textarea"
             value={about.value || ''}
             {...this.getInputState('about')}
           />
+          {this.renderShortname()}
         </form>
       </div>
     );
