@@ -9,7 +9,8 @@ import classNames from 'classnames';
 import { LocalizationContextType } from '@dlghq/react-l10n';
 import { fileToBase64 } from '@dlghq/dialog-utils';
 import AvatarSelector from '../AvatarSelector/AvatarSelector';
-import Input from '../Input/Input';
+import InputNext from '../InputNext/InputNext';
+import Switcher from '../Switcher/Switcher';
 import styles from './CreateNewModal.css';
 
 export type Props = {
@@ -28,25 +29,29 @@ export type Props = {
   onAvatarChange: (avatar: File) => void
 };
 export type State = {
-  avatar: ?string
+  avatar: ?string,
+  isPublic: boolean
 };
 
 export type Context = ProviderContext;
 
 class CreateGroupInfoForm extends PureComponent<Props, State> {
-  static defaultProps = {
-    vertical: false
-  };
+  shortnameInput: ?InputNext;
 
   static contextTypes = {
     l10n: LocalizationContextType
+  };
+
+  static defaultProps = {
+    vertical: false
   };
 
   constructor(props: Props, context: Context) {
     super(props, context);
 
     this.state = {
-      avatar: null
+      avatar: null,
+      isPublic: false
     };
   }
 
@@ -64,10 +69,28 @@ class CreateGroupInfoForm extends PureComponent<Props, State> {
     }
   }
 
+  componentDidUpdate(prevProps: Props, prevState: State) {
+    if (this.shortnameInput) {
+      if (prevState.isPublic !== this.state.isPublic && this.state.isPublic) {
+        this.shortnameInput.focus();
+      }
+    }
+  }
+
   handleSubmit = (event: SyntheticEvent<>) => {
     event.preventDefault();
 
     this.props.onSubmit(event);
+  };
+
+  handlePublicToggle = (isPublic: boolean): void => {
+    this.setState({ isPublic });
+  };
+
+  setShortnameInput = (shortnameInput: ?InputNext): void => {
+    if (shortnameInput) {
+      this.shortnameInput = shortnameInput;
+    }
   };
 
   renderAvatar() {
@@ -92,15 +115,26 @@ class CreateGroupInfoForm extends PureComponent<Props, State> {
     const { type, shortname, id } = this.props;
 
     return (
-      <Input
-        id={`${id}_shortname`}
-        name="shortname"
-        value={shortname || ''}
-        prefix={this.props.shortnamePrefix}
-        hint={`CreateNewModal.${type}.${shortname ? 'public' : 'private'}`}
-        label={`CreateNewModal.${type}.info.shortname`}
-        onChange={this.props.onChange}
-      />
+      <div className={styles.shortnameWrapper}>
+        <Switcher
+          id={`${id}_public_swither`}
+          name={`${id}_public_swither`}
+          value={this.state.isPublic}
+          onChange={this.handlePublicToggle}
+          label={`CreateNewModal.${type}.public`}
+          className={styles.switcher}
+        />
+        <InputNext
+          id={`${id}_shortname`}
+          name="shortname"
+          value={shortname || ''}
+          prefix={this.props.shortnamePrefix}
+          disabled={!this.state.isPublic}
+          label={`CreateNewModal.${type}.info.shortname`}
+          ref={this.setShortnameInput}
+          onChange={this.props.onChange}
+        />
+      </div>
     );
   }
 
@@ -119,23 +153,22 @@ class CreateGroupInfoForm extends PureComponent<Props, State> {
       <div className={className}>
         {this.renderAvatar()}
         <form id={id} autoComplete="off" className={styles.form} onSubmit={this.handleSubmit}>
-          <Input
+          <InputNext
             className={styles.input}
             id={`${id}_title`}
-            large
             name="title"
             onChange={this.props.onChange}
-            placeholder={l10n.formatText(`CreateNewModal.${type}.info.name`)}
+            placeholder={l10n.formatText(`CreateNewModal.${type}.info.title.placeholder`)}
+            label={l10n.formatText(`CreateNewModal.${type}.info.title.label`)}
             value={title}
             htmlAutoFocus
           />
-          <Input
+          <InputNext
             className={styles.input}
             id={`${id}_about`}
-            label={l10n.formatText(`CreateNewModal.${type}.info.description.label`)}
-            large
             name="about"
             onChange={this.props.onChange}
+            label={l10n.formatText(`CreateNewModal.${type}.info.description.label`)}
             placeholder={l10n.formatText(`CreateNewModal.${type}.info.description.placeholder`)}
             type="textarea"
             value={about || ''}

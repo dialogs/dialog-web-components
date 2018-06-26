@@ -5,7 +5,8 @@ title:
 submit: Update info
 
 group:
-  become_public: This group become public
+  public: Make this group public
 
 channel:
-  become_public: This channel become public
+  public: Make this channel public
+

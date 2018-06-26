@@ -65,6 +65,19 @@ Error Input with hint:
 />
 ```
 
+Prefixed Input
+
+```jsx
+<InputNext
+  id="shortname"
+  label="Channel link"
+  onChange={value => setState({ value })}
+  placeholder="string"
+  prefix="app.dlg.im/"
+  value={state.value || ''}
+/>
+```
+
 Since `<textarea />` has the same interface as `<input />`, there is `textarea` type:
 
 ```jsx
