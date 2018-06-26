@@ -63,7 +63,10 @@ class PreferencesSecurity extends PureComponent<Props> {
       return null;
     }
 
-    const children = activeSessions.map((session) => {
+    // Sessions sorted by date descending
+    const children = activeSessions.sort((session1, session2) => {
+      return new Date(session1.authTime).getTime() - new Date(session2.authTime).getTime();
+    }).map((session) => {
       return (
         <Session
           key={session.id}
