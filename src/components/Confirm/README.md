@@ -6,18 +6,25 @@ initialState = {
 };
 
 const onOpen = () => setState({ isOpen: true });
-const onClose = () => setState({ isOpen: false });
+const onClose = () => {
+  console.log('confirm closed');
+  setState({ isOpen: false });
+};
+const onSubmit = () => {
+  console.log('confirm submitted');
+  setState({ isOpen: false })
+};
 
 <div>
   <Button theme="danger" size="small" onClick={onOpen}>Delete Message</Button>
   {
     state.isOpen ? (
-      <Confirm 
+      <Confirm
         message="Are you going to delete this message?"
         submit="Delete"
         cancel="Cancel"
         theme="danger"
-        onSubmit={onClose}
+        onSubmit={onSubmit}
         onClose={onClose}
       />
     ) : null
@@ -33,18 +40,26 @@ initialState = {
 };
 
 const onOpen = () => setState({ isOpen: true });
-const onClose = () => setState({ isOpen: false });
+const onClose = () => {
+  console.log('confirm closed');
+  setState({ isOpen: false });
+};
+const onSubmit = () => {
+  console.log('confirm submitted');
+  setState({ isOpen: false })
+};
+
 
 <div>
   <Button theme="warning" size="small" onClick={onOpen}>Clear chat</Button>
   {
     state.isOpen ? (
-      <Confirm 
+      <Confirm
         message="Are you going to clear chat history?"
         submit="Clear"
         cancel="Cancel"
         theme="warning"
-        onSubmit={onClose}
+        onSubmit={onSubmit}
         onClose={onClose}
       />
     ) : null
@@ -60,18 +75,26 @@ initialState = {
 };
 
 const onOpen = () => setState({ isOpen: true });
-const onClose = () => setState({ isOpen: false });
+const onClose = () => {
+  console.log('confirm closed');
+  setState({ isOpen: false });
+};
+const onSubmit = () => {
+  console.log('confirm submitted');
+  setState({ isOpen: false })
+};
+
 
 <div>
   <Button theme="success" size="small" onClick={onOpen}>Add user</Button>
   {
     state.isOpen ? (
-      <Confirm 
+      <Confirm
         message="Are you going to add this user to contacts?"
         submit="Add"
         cancel="Cancel"
         theme="success"
-        onSubmit={onClose}
+        onSubmit={onSubmit}
         onClose={onClose}
       />
     ) : null
