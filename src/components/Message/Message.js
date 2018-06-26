@@ -201,7 +201,7 @@ class Message extends PureComponent<Props, State> {
 
     if (this.isHover() && renderActions) {
       return (
-        <div className={styles.actions}>
+        <div className={styles.actions} id={`message_${this.props.message.rid}_actions`}>
           {renderActions()}
         </div>
       );
