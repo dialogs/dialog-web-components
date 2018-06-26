@@ -10,7 +10,7 @@
   --modal-add-contact-font-color: var(--default-font-color);
   --modal-add-contact-font-color-light: var(--default-font-color-light);
   --modal-add-contact-width: 420px;
-  --modal-add-contact-heigth: 320px;
+  --modal-add-contact-heigth: 310px;
 }
 
 .container {
@@ -26,9 +26,6 @@
   box-sizing: border-box;
   padding: calc(var(--default-padding) * 2);
   text-align: center;
-  align-content: flex-start;
-  align-items: flex-start;
-  justify-content: center;
 }
 
 .input {
