@@ -51,7 +51,7 @@ class CreateGroupInfoForm extends PureComponent<Props, State> {
 
     this.state = {
       avatar: null,
-      isPublic: false
+      isPublic: Boolean(props.shortname)
     };
   }
 
