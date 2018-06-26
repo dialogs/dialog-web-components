@@ -135,7 +135,6 @@ class EditGroupModalForm extends PureComponent<Props, State> {
 
   renderShortname() {
     const { group, shortname, id } = this.props;
-    const isBecomePublic = !group.shortname && shortname.value;
 
     return (
       <div className={styles.shortnameWrapper}>
@@ -144,7 +143,7 @@ class EditGroupModalForm extends PureComponent<Props, State> {
           name={`${id}_public_swither`}
           value={this.state.isPublic}
           onChange={this.handlePublicToggle}
-          label={`CreateNewModal.${group.type}.public`}
+          label={`EditGroupModal.${group.type}.public`}
           className={styles.switcher}
         />
         <InputNext
@@ -155,7 +154,6 @@ class EditGroupModalForm extends PureComponent<Props, State> {
           value={shortname.value || ''}
           disabled={!this.state.isPublic}
           label={`CreateNewModal.${group.type}.info.shortname`}
-          hint={isBecomePublic ? `EditGroupModal.${group.type}.become_public` : undefined}
           ref={this.setShortnameInput}
           {...this.getInputState('shortname')}
         />
