@@ -13,6 +13,7 @@ import getLocalDateTimeFormat from '../../../utils/getLocalDateTimeFormat';
 import getDateFnsLocale from '../../../utils/getDateFnsLocale';
 import formatDate from 'date-fns/format';
 import styles from './Security.css';
+import UAParser from 'ua-parser-js';
 
 export type Props = {
   session: AuthSession,
@@ -67,10 +68,32 @@ class Session extends PureComponent<Props> {
 
   renderDeviceTitle() {
     const { session } = this.props;
+    const parsed = UAParser(session.deviceTitle);
+    let deviceTitle = '';
+
+    if (parsed.browser.name || parsed.browser.os) {
+      if (parsed.browser.name) {
+        deviceTitle += parsed.browser.name;
+        if (parsed.browser.version) {
+          deviceTitle += ` ${parsed.browser.version}`;
+        }
+      }
+      if (parsed.os.name) {
+        if (parsed.browser.name) {
+          deviceTitle += ', ';
+        }
+        deviceTitle += parsed.os.name;
+        if (parsed.os.version) {
+          deviceTitle += ` ${parsed.os.version}`;
+        }
+      }
+    } else {
+      deviceTitle = session.deviceTitle;
+    }
 
     return (
       <div className={styles.sessionDeviceTitle}>
-        {session.deviceTitle}
+        {deviceTitle}
       </div>
     );
   }
