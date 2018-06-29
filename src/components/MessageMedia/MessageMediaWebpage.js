@@ -12,7 +12,8 @@ import styles from './MessageMedia.css';
 
 export type Props = {
   className?: string,
-  media: MessageMediaWebsite
+  media: MessageMediaWebsite,
+  maxWidth: number
 };
 
 class MessageMediaWebpage extends PureComponent<Props> {
@@ -83,7 +84,9 @@ class MessageMediaWebpage extends PureComponent<Props> {
   }
 
   render() {
-    const className = classNames(styles.container, styles.webpage, this.props.className);
+    const className = classNames(styles.container, styles.webpage, {
+      [styles.vertical]: this.props.maxWidth < 400
+    }, this.props.className);
 
     return (
       <blockquote className={className}>
