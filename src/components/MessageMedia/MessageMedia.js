@@ -28,6 +28,7 @@ function MessageMedia(props: Props) {
         <MessageMediaWebpage
           media={props.media}
           className={props.className}
+          maxWidth={props.maxWidth}
         />
       );
 

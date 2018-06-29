@@ -26,7 +26,9 @@ class Text extends Component<Props> {
       this.props.text !== nextProps.text ||
       this.props.media !== nextProps.media ||
       this.props.isPending !== nextProps.isPending ||
-      this.props.className !== nextProps.className
+      this.props.className !== nextProps.className ||
+      this.props.maxWidth !== nextProps.maxWidth ||
+      this.props.maxHeight !== nextProps.maxHeight
     );
   }
 

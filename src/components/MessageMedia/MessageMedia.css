@@ -73,7 +73,8 @@
   display: block;
   font-size: var(--default-font-size-small);
   margin: 4px 0;
-  line-height: 18px;
+  line-height: 16px;
+  word-break: break-word;
 }
 
 .webpageLink {
@@ -88,5 +89,15 @@
 
   &:hover {
     text-decoration: underline;
+  }
+}
+
+.vertical {
+  &.webpage {
+    flex-direction: column;
+
+    & .webpageWrapper {
+      margin-top: 6px;
+    }
   }
 }
