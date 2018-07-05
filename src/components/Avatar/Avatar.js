@@ -115,8 +115,13 @@ class Avatar extends PureComponent<Props> {
         title={this.props.title}
       >
         <svg viewBox="0 0 100 100" width={size} height={size} shapeRendering="auto">
-          <defs>{this.renderDefs()}</defs>
-          <rect fill={`url(#${this.id})`} x="0" y="0" width="100" height="100" />
+          <defs>
+            {this.renderDefs()}
+          </defs>
+          <rect
+            fill={`url(#${this.id})`} x="0" y="0" width="100"
+            height="100"
+          />
           {this.renderText()}
         </svg>
       </div>

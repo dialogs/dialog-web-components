@@ -29,7 +29,10 @@
   color: var(--avatar-text-color);
   letter-spacing: 2px;
   fill: currentColor;
-  @apply --no-select;
+  text-transform: uppercase;
+  user-select: none;
+  cursor: inherit;
+  vertical-align: middle;
 }
 
 .clickable {
