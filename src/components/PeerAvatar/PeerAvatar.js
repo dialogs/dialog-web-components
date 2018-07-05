@@ -72,6 +72,7 @@ class PeerAvatar extends PureComponent<Props, void> {
             width="100%"
             height="100%"
             xlinkHref={avatar}
+            preserveAspectRatio="xMidYMid slice"
           />
         </pattern>
       );
@@ -83,10 +84,10 @@ class PeerAvatar extends PureComponent<Props, void> {
       <linearGradient
         id={this.id}
         gradientUnits="userSpaceOnUse"
-        x1="6.79%"
-        y1="105.31%"
-        x2="93.21%"
-        y2="-5.31%"
+        x1="100%"
+        y1="100%"
+        x2="0%"
+        y2="0%"
       >
         <stop stopColor={colors.payload.from} />
         <stop offset="1" stopColor={colors.payload.to} />
@@ -112,17 +113,13 @@ class PeerAvatar extends PureComponent<Props, void> {
 
   renderText() {
     const avatar = this.getAvatarImage();
+
     if (avatar) {
       return null;
     }
 
     const size = this.getAvatarSize();
     const text = size >= 20 ? this.getAvatarText() : null;
-    // const twoChars = Boolean(text && text.length !== 1);
-    const textStyles = {
-      fontSize: 38,
-      fontWeight: 300
-    };
 
     return (
       <text
@@ -132,7 +129,6 @@ class PeerAvatar extends PureComponent<Props, void> {
         textAnchor="middle"
         alignmentBaseline="central"
         dominantBaseline="central"
-        style={textStyles}
       >
         {text}
       </text>

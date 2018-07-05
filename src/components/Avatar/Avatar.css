@@ -5,44 +5,31 @@
 @import '../../styles/variables.css';
 
 :root {
-  --avatar-placeholder-color: #fff;
+  --avatar-text-color: #fff;
+  --avatar-text-font-size: 32px;
 }
 
 /* Reset */
-.withImage,
-.withPlaceholder {
+.container {
   all: initial;
 }
 
 /* Styles */
-.withImage {
+.container {
   display: inline-block;
+  box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.05);
+  border-radius: 100%;
   line-height: 0;
-  cursor: inherit;
-}
-
-.withPlaceholder {
-  display: inline-flex;
   overflow: hidden;
-  text-align: center;
-  vertical-align: middle;
-  text-transform: uppercase;
-  pointer-events: none;
-  border-radius: 100%;
-  font-family: var(--default-font-family);
-  font-weight: 300;
-  align-content: center;
-  justify-content: center;
-  align-items: center;
-  color: var(--avatar-placeholder-color);
-  @apply --no-select;
 }
 
-.image {
-  user-select: none;
-  pointer-events: none;
-  border-radius: 100%;
-  box-shadow: 0 0 1px color(#000 alpha(12%));
+.text {
+  font-family: var(--default-font-family);
+  font-size: var(--avatar-text-font-size);
+  color: var(--avatar-text-color);
+  letter-spacing: 2px;
+  fill: currentColor;
+  @apply --no-select;
 }
 
 .clickable {
