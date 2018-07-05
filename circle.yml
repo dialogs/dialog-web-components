@@ -6,11 +6,11 @@ general:
 
 machine:
   node:
-    version: 7
+    version: 10
   environment:
     GIT_NAME: Circle CI
     GIT_EMAIL: circle@dlg.im
-    YARN_VERSION: 0.21.3
+    YARN_VERSION: 1.7.0
     PATH: "${PATH}:${HOME}/.yarn/bin"
 
 dependencies:
