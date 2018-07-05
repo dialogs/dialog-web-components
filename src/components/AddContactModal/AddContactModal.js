@@ -109,7 +109,7 @@ class AddContactModal extends PureComponent<Props> {
           <div>
             <div className={styles.addedAvatar}>
               <Avatar
-                size="large"
+                size={36}
                 title={contact.name}
                 image={contact.avatar}
                 placeholder={contact.placeholder}
@@ -136,7 +136,7 @@ class AddContactModal extends PureComponent<Props> {
         <div>
           <Avatar
             className={styles.foundAvatar}
-            size="large"
+            size={36}
             title={contact.name}
             image={contact.avatar}
             placeholder={contact.placeholder}
@@ -168,7 +168,7 @@ class AddContactModal extends PureComponent<Props> {
         <div className={styles.contact}>
           <div className={styles.avatar}>
             <Avatar
-              size="big"
+              size={100}
               title={contact.name}
               image={contact.avatar}
               placeholder={contact.placeholder}
@@ -192,7 +192,7 @@ class AddContactModal extends PureComponent<Props> {
       <div className={styles.contact}>
         <div className={styles.avatar}>
           <Avatar
-            size="big"
+            size={100}
             title={contact.name}
             image={contact.avatar}
             placeholder={contact.placeholder}

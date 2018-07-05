@@ -41,6 +41,6 @@ const users = [
 ];
 
 <div>
-  {users.map((user, key) => <PeerAvatarWithStatus key={key} {...user} size={100} />)}
+  {users.map((user, key) => <PeerAvatarWithStatus key={key} {...user} size={50} />)}
 </div>
 ```

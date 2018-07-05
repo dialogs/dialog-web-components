@@ -16,7 +16,7 @@ const users = [
 <DoublePeerAvatar
   peerBig={users[0]}
   peerSmall={users[1]}
-  size={100}
+  size={54.5}
 />
 ```
 
@@ -38,6 +38,6 @@ const users = [
 <DoublePeerAvatar
   peerBig={users[1]}
   peerSmall={users[0]}
-  size={100}
+  size={54.5}
 />
 ```

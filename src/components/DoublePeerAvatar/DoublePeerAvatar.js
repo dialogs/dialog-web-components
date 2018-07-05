@@ -62,6 +62,7 @@ class DoublePeerAvatar extends PureComponent<Props, void> {
             width="100px"
             height="100px"
             xlinkHref={this.props.peerBig.avatar}
+            preserveAspectRatio="xMidYMid slice"
           />
         </pattern>
       );
@@ -73,10 +74,10 @@ class DoublePeerAvatar extends PureComponent<Props, void> {
       <linearGradient
         id={this.ids.big}
         gradientUnits="userSpaceOnUse"
-        x1="6.79%"
-        y1="105.31%"
-        x2="93.21%"
-        y2="-5.31%"
+        x1="100%"
+        y1="100%"
+        x2="0%"
+        y2="0%"
       >
         <stop stopColor={colors.payload.from} />
         <stop offset="1" stopColor={colors.payload.to} />
@@ -113,6 +114,7 @@ class DoublePeerAvatar extends PureComponent<Props, void> {
             height="100px"
             xlinkHref={this.props.peerSmall.avatar}
             transform="scale(0.507046569,0.507046569)"
+            preserveAspectRatio="xMidYMid slice"
           />
         </pattern>
       );

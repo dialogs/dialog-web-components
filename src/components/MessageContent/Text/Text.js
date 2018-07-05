@@ -28,7 +28,7 @@ class Text extends Component<Props> {
       this.props.isPending !== nextProps.isPending ||
       this.props.className !== nextProps.className ||
       this.props.maxWidth !== nextProps.maxWidth ||
-      this.props.maxHeight !== nextProps.maxHeight 
+      this.props.maxHeight !== nextProps.maxHeight
     );
   }
 

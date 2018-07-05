@@ -4,8 +4,6 @@
  */
 
 import type { AvatarPlaceholder } from '@dlghq/dialog-types';
-import type { AvatarSize } from './utils/getAvatarSize';
-import type { Gradient } from './utils/getAvatarColor';
 
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
@@ -78,9 +76,8 @@ class Avatar extends PureComponent<Props> {
     );
   }
 
-
   renderText() {
-    const {title, size, image} = this.props;
+    const { title, size, image } = this.props;
 
     if (image) {
       return null;
@@ -111,11 +108,14 @@ class Avatar extends PureComponent<Props> {
     );
 
     return (
-      <div style={{ width: size, height: size }} className={className} onClick={this.props.onClick} title={this.props.title}>
+      <div
+        style={{ width: size, height: size }}
+        className={className}
+        onClick={this.props.onClick}
+        title={this.props.title}
+      >
         <svg viewBox="0 0 100 100" width={size} height={size} shapeRendering="auto">
-          <defs>
-            {this.renderDefs()}
-          </defs>
+          <defs>{this.renderDefs()}</defs>
           <rect fill={`url(#${this.id})`} x="0" y="0" width="100" height="100" />
           {this.renderText()}
         </svg>
