@@ -13,7 +13,7 @@ const user = {
 
 <Dropdown>
   <DropdownItem>
-    <PeerAvatar peer={user} size={32} />
+    <PeerAvatar peer={user} size={46} />
     <b style={{ marginLeft: 8 }}>{user.title}</b>
   </DropdownItem>
   <DropdownDivider />

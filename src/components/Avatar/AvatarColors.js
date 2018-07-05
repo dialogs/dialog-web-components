@@ -30,7 +30,7 @@ export default {
   },
   yellow: {
     from: '#ffda54',
-    to: '#ffc800'
+    to: '#ffae00'
   },
   green: {
     from: '#80f12b',

@@ -34,6 +34,6 @@ const users = [
 ];
 
 <div>
-  {users.map((user, key) => <PeerAvatar key={key} {...user} size={100} />)}
+  {users.map((user, key) => <PeerAvatar key={key} {...user} size={50} />)}
 </div>
 ```
