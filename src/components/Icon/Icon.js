@@ -9,10 +9,7 @@ import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import getIconSize from './getIconSize';
 import styles from './Icon.css';
-
-// $FlowFixMe
-const files = require.context('./svg', false, /.*\.svg$/);
-files.keys().forEach(files);
+import './getIcons';
 
 export type Props = {
   id?: string,
