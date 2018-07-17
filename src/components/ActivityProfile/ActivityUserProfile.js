@@ -136,7 +136,7 @@ class ActivityUserProfile extends PureComponent<Props> {
     );
   }
 
-  renderCustomPropfile() {
+  renderCustomProfile() {
     const { schema, info: { customProfile } } = this.props;
 
     if (!schema || !customProfile) {
@@ -160,7 +160,7 @@ class ActivityUserProfile extends PureComponent<Props> {
         </div>
         {this.renderAbout()}
         {this.renderProfileContacts()}
-        {this.renderCustomPropfile()}
+        {this.renderCustomProfile()}
       </div>
     );
   }
