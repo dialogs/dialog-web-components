@@ -45,6 +45,7 @@
   font-size: var(--tooltip-font-size);
   line-height: 20px;
   color: var(--tooltip-color);
+  pointer-events: none;
   @apply --no-select;
 
   & strong {
