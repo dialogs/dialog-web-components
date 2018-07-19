@@ -31,8 +31,12 @@ export type UserNameValue = {
   }
 };
 
-export type AuthType = 'email' | 'phone' | 'username';
-export type AuthValue = EmailValue | PhoneValue | UserNameValue;
+export type CertValue = {
+  type: 'cert'
+};
+
+export type AuthValue = EmailValue | PhoneValue | UserNameValue | CertValue;
+export type AuthType = $PropertyType<AuthValue, 'type'>;
 
 export type SignupInfo = {
   name: string,

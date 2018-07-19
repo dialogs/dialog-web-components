@@ -17,3 +17,4 @@ type:
   phone: Телефон
   email: Email
   username: Логин/Пароль
+  cert: Сертификат

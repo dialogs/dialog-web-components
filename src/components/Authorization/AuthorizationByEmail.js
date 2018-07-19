@@ -51,7 +51,14 @@ class AuthorizationByEmail extends PureComponent<Props> {
     const { step } = this.props;
 
     if (step >= LOGIN_SENT) {
-      return <Text id="Authorization.wrong" onClick={this.props.onRetry} className={styles.retry} tagName="a" />;
+      return (
+        <Text
+          id="Authorization.wrong"
+          onClick={this.props.onRetry}
+          className={styles.retry}
+          tagName="a"
+        />
+      );
     }
 
     return null;
@@ -110,7 +117,11 @@ class AuthorizationByEmail extends PureComponent<Props> {
     }
 
     return (
-      <Text tagName="div" className={styles.dataProcessingAgreement} id="Authorization.data_processing_agreement" />
+      <Text
+        tagName="div"
+        className={styles.dataProcessingAgreement}
+        id="Authorization.data_processing_agreement"
+      />
     );
   }
 

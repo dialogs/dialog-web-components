@@ -17,3 +17,4 @@ type:
   phone: Phone
   email: Email
   username: Login/Password
+  cert: Certificate

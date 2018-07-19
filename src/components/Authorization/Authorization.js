@@ -11,6 +11,7 @@ import AuthorizationTypeSelector from './AuthorizationTypeSelector';
 import AuthorizationByPhone from './AuthorizationByPhone';
 import AuthorizationByEmail from './AuthorizationByEmail';
 import AuthorizationByUsername from './AuthorizationByUsername';
+import AuthorizationByCertificate from './AuthorizationByCertificate';
 import Registration from '../Registration/Registration';
 import ButtonNext from '../ButtonNext/ButtonNext';
 import { LOGIN_SENT, CODE_REQUESTED, CODE_SENT, SIGNUP_STARTED, NAME_SENT, AUTH_FINISHED } from './constants';
@@ -20,7 +21,7 @@ class Authorization extends PureComponent<Props> {
   static defaultProps = {
     id: 'authorization_form',
     autoFocus: true,
-    allowed: ['phone', 'email', 'username']
+    allowed: ['phone', 'email', 'username', 'cert']
   };
 
   handleChange = (value: AuthValue) => {
@@ -50,7 +51,7 @@ class Authorization extends PureComponent<Props> {
   renderButtonText() {
     const { step, value: { type } } = this.props;
 
-    if (type === 'username') {
+    if (type === 'username' || type === 'cert') {
       return <Text id="Authorization.sign_in" />;
     }
 
@@ -126,6 +127,12 @@ class Authorization extends PureComponent<Props> {
             onSubmit={this.props.onSubmit}
           />
         );
+
+      case 'cert':
+        return (
+          <AuthorizationByCertificate id={id} errors={errors} />
+        );
+
       default:
         console.warn('Unsupported auth type');
 
