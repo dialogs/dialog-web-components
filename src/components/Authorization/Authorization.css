@@ -11,7 +11,16 @@
 .typeSelector {
   display: flex;
   justify-content: center;
+  flex-flow: row wrap;
   margin-bottom: var(--default-padding-large);
+
+  @media (--medium) {
+    flex-flow: row wrap;
+  }
+
+  @media (--small) {
+    flex-flow: column nowrap;
+  }
 }
 
 .type {

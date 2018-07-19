@@ -3,23 +3,17 @@
  * @flow
  */
 
-import type { AuthError } from '@dlghq/dialog-types';
-import type { CertValue, InputState } from './types';
-import React, { PureComponent } from 'react';
-import { Text } from '@dlghq/react-l10n';
+// import type { AuthError } from '@dlghq/dialog-types';
+import React from 'react';
 import styles from './Authorization.css';
 
 export type Props = {
   id: string,
-  errors: ?{ [field: string]: AuthError }
+  // errors: ?{ [field: string]: AuthError }
 };
 
-class AuthorizationByCertificate extends PureComponent<Props> {
-  render() {
-    return (
-      <div className={styles.formWrapper} />
-    );
-  }
+function AuthorizationByCertificate(props: Props) {
+  return <div className={styles.formWrapper} id={props.id} />;
 }
 
 export default AuthorizationByCertificate;
