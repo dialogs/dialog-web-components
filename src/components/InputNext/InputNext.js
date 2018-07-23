@@ -31,6 +31,7 @@ export type Props = {
   tabIndex?: number,
   htmlAutoFocus?: boolean,
   spellcheck?: boolean,
+  readOnly?: boolean,
   required: boolean,
   description?: ?string,
   autoComplete?: ?string,
@@ -237,6 +238,7 @@ class InputNext extends PureComponent<Props, State> {
         onKeyUp={onKeyUp}
         spellCheck={this.props.spellcheck ? 'true' : 'false'}
         required={this.props.required}
+        readOnly={this.props.readOnly}
         autoComplete={this.props.autoComplete}
       />
     );
@@ -247,7 +249,8 @@ class InputNext extends PureComponent<Props, State> {
       value,
       disabled,
       status,
-      size
+      size,
+      readOnly
     } = this.props;
     const { isFocused } = this.state;
 
@@ -257,6 +260,7 @@ class InputNext extends PureComponent<Props, State> {
       value ? styles.filled : null,
       isFocused ? styles.focused : null,
       disabled ? styles.disabled : null,
+      readOnly ? styles.readonly : null,
       styles[size],
       this.props.className
     );
