@@ -1,8 +1,8 @@
 connecting_to_server: Ожидание сети…
-connecting_to_peer: вызов
-ringing_incoming: входящий звонок
-ringing_outgoing: исходящий звонок
-connecting: подключение…
-ended: вызов завершён
-unknown: неизвестно
-fingerprint: Ваш звонок защищен если вы видите такие же эможи как и ваш собеседник
+connecting_to_peer: Вызов
+ringing_incoming: Входящий звонок
+ringing_outgoing: Исходящий звонок
+connecting: Подключение…
+ended: Вызов завершён
+unknown: Неизвестно
+fingerprint: Ваш звонок защищен, если вы видите такие же эмодзи как и ваш собеседник
