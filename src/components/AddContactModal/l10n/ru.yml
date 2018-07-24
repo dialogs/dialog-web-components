@@ -2,8 +2,8 @@ title: Добавить контакт
 placeholder: Телефон, e-mail или ник
 hint: Введите адрес электронной почты, имя или мобильный телефон, чтобы найти этого человека в {appName}.
 user_found: <b>{username}</b> найден.
-user_in_contact: <b>{username}</b> уже находится в списке ваших контактов.
-user_added: <b>{username}</b> добавлен в список ваших контактов
+user_in_contact: <b>{username}</b> уже находится в вашем списке контактов.
+user_added: <b>{username}</b> добавлен в ваш список контактов.
 button_add: Добавить контакт
 button_send: Отправить сообщение
 not_found: Такой пользователь не найден
