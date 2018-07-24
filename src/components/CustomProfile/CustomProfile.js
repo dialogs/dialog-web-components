@@ -3,31 +3,56 @@
  * @flow
  */
 
+import type { JSONSchema, JSONValue } from '@dlghq/dialog-utils';
 import React, { PureComponent, type Node } from 'react';
 import classNames from 'classnames';
 import memoize from 'lodash/memoize';
 import { safelyParseJSON, safelyParseJSONSchema } from '@dlghq/dialog-utils';
 import styles from './CustomProfile.css';
 import CustomProfileProperty from './CustomProfileProperty';
+import { orderProperties } from 'react-jsonschema-form/lib/utils';
 const parseJSON = memoize(safelyParseJSON);
 const parseJSONSchema = memoize(safelyParseJSONSchema);
 
 export type Props = {
   className?: string,
   value: string,
-  schema: string
+  schema: string,
+  uiSchema?: ?Object
 };
 
 class CustomProfile extends PureComponent<Props> {
+  getValue(): JSONValue {
+    return parseJSON(this.props.value);
+  }
+
+  getSchema(): JSONSchema {
+    return parseJSONSchema(this.props.schema, (error) => console.error(error));
+  }
+
+  getUiSchema(): ?Object {
+    if (!this.props.uiSchema) {
+      return null;
+    }
+
+    return this.props.uiSchema;
+  }
+
   renderProperties(): ?Array<Node> {
-    const value = parseJSON(this.props.value);
-    const schema = parseJSONSchema(this.props.schema, (error) => console.error(error));
+    const value = this.getValue();
+    const schema = this.getSchema();
+    const uiSchema = this.getUiSchema();
 
     if (!schema) {
       return null;
     }
 
-    return Object.keys(schema.properties).map((propName) => {
+    const properties =
+      uiSchema && uiSchema['ui:order']
+        ? orderProperties(Object.keys(schema.properties), uiSchema['ui:order'])
+        : Object.keys(schema.properties);
+
+    return properties.map((propName) => {
       const propValue = value && value[propName] ? value[propName] : null;
       const { type, title } = schema.properties[propName];
 
@@ -41,7 +66,7 @@ class CustomProfile extends PureComponent<Props> {
   }
 
   render() {
-    if (!parseJSON(this.props.value)) {
+    if (!this.getValue()) {
       return null;
     }
 
