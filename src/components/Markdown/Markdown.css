@@ -120,8 +120,10 @@
   border-bottom: 1px dotted var(--color-info);
   color: var(--color-info);
   vertical-align: inherit;
+  transition: color var(--default-transition-duration) ease;
 
   &:hover {
+    color: color(var(--color-info) tint(10%));
     border-bottom: 1px solid var(--color-info);
   }
 }

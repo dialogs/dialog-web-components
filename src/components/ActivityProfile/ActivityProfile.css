@@ -10,7 +10,7 @@
   --activity-profile-font-color: var(--default-font-color);
   --activity-profile-text-color-light: var(--default-font-color-light);
   --activity-profile-padding: var(--default-padding) 24px;
-  --activity-profile-contact-font-color: var(--color-primary);
+  --activity-profile-contact-font-color: var(--color-info);
   --activity-profile-title-font-size: 22px;
 }
 
@@ -115,8 +115,10 @@
   color: var(--activity-profile-contact-font-color);
   text-decoration: none;
   border-bottom: 1px dotted var(--activity-profile-contact-font-color);
+  transition: color var(--default-transition-duration) ease;
 
   &:hover {
+    color: color(var(--color-info) tint(10%));
     border-bottom: 1px solid var(--activity-profile-contact-font-color);
   }
 }
