@@ -73,3 +73,11 @@
   font-family: var(--default-font-family);
   font-size: var(--default-font-size-small);
 }
+
+.errorWrapper {
+  font-family: var(--default-font-family);
+  font-size: var(--default-font-size);
+  text-align: center;
+  padding: var(--default-padding) 0;
+  margin-bottom: 20px;
+}

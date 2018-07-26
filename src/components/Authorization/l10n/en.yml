@@ -18,3 +18,4 @@ type:
   email: Email
   username: Login/Password
   cert: Certificate
+cert_error: Something went completely wrong.<br />Perhaps your computer does not have a security certificate.
