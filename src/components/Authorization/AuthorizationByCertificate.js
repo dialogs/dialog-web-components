@@ -33,7 +33,6 @@ class AuthorizationByCertificate extends PureComponent<Props> {
 
   render() {
     const { id } = this.props;
-    console.log(this.props);
 
     return (
       <div className={styles.formWrapper} id={id}>
