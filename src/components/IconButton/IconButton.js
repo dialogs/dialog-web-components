@@ -51,7 +51,7 @@ class IconButton extends PureComponent<Props> {
   }
 
   render() {
-    const { className, theme, size, disabled, id, flat, style, active, ...otherProps } = this.props;
+    const { className, theme, size, disabled, id, flat, style, active, onClick, ...otherProps } = this.props;
 
     const buttonClassName = classNames(
       styles.container,
@@ -73,7 +73,7 @@ class IconButton extends PureComponent<Props> {
         type="button"
         disabled={disabled}
         style={style}
-        onClick={this.props.onClick}
+        onClick={onClick}
         {...otherProps}
       >
         <span className={styles.fix}>
