@@ -294,4 +294,9 @@
     background-color: color(var(--input-next-text-color) alpha(2%));
     color: var(--input-next-text-color) !important;
   }
+
+  & .prefix {
+    background-color: color(var(--input-next-text-color) alpha(2%));
+    color: var(--input-next-text-color) !important;
+  }
 }
