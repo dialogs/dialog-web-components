@@ -61,7 +61,7 @@ export function renderText(tokens: TextToken[], emojiSize?: number = 16, isInlin
 
         result.push(
           <span key={index} className={className}>
-            {content}
+            {content.replace(/ /g, '\u00A0')}
           </span>
         );
 
