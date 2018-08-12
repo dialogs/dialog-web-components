@@ -7,24 +7,25 @@ import type { ColorTheme } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import Icon from '../Icon/Icon';
-import styles from './IconButton.css';
+import styles from './CustomButton.css';
 
 export type Props = {
   className?: string,
   id?: string,
   style?: Object,
-  glyph: string,
+  glyph: string | null,
   size: 'small' | 'normal' | 'large',
   theme: ColorTheme,
   flat: boolean,
   disabled: boolean,
   active?: boolean,
+  value?: string | null,
   onClick: (event: SyntheticMouseEvent<>) => mixed
 };
 
-class IconButton extends PureComponent<Props> {
+class CustomButton extends PureComponent<Props> {
   button: *;
-  
+
   static defaultProps = {
     size: 'normal',
     flat: false,
@@ -64,7 +65,7 @@ class IconButton extends PureComponent<Props> {
   };
 
   render() {
-    const { className, theme, size, disabled, id, flat, style, active, onClick, ...otherProps } = this.props;
+    const { className, theme, size, disabled, id, flat, style, active, onClick, value, ...otherProps } = this.props;
 
     const buttonClassName = classNames(
       styles.container,
@@ -91,11 +92,11 @@ class IconButton extends PureComponent<Props> {
         {...otherProps}
       >
         <span className={styles.fix}>
-          {this.renderIcon()}
+          {value}
         </span>
       </button>
     );
   }
 }
 
-export default IconButton;
+export default CustomButton;
