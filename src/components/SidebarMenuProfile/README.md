@@ -1,7 +1,7 @@
 ```jsx
 <SidebarMenuProfile
   name="Oleg Shilov"
-  image={null}
+  avatar={null}
   placeholder="blue"
   status="away"
 />
