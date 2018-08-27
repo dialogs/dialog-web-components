@@ -10,61 +10,43 @@ import Pad from './Pad/Pad';
 import PadNumber from './PadNumber/PadNumber';
 import PadFooter from './PadFooter/PadFooter';
 
-export type Props = {
+type Props = {
   className?: string,
-  dialNumber?: string,
-  handlePadButtonClick?: (phoneNumber: string) => mixed,
-  handleDeleteClick?: (phoneNumber: string) => mixed,
-  handleCallClick?: (phoneNumber: string) => mixed,
-  handleInputChange?: () => mixed
+  phone: string,
+  onChange: (phone: string) => mixed,
+  onSubmit: (phone: string) => mixed
 };
 
 class Dialpad extends PureComponent<Props> {
-
-  onDeleteClick = (): void => {
-    const { handleDeleteClick, dialNumber } = this.props;
-
-    if(handleDeleteClick && dialNumber) {
-      handleDeleteClick(dialNumber)
-    }
-    //this.props.handleDeleteClick(this.props.dialNumber)
+  handleCall = () => {
+    this.props.onSubmit(this.props.phone);
   };
 
-  onCallClick = (): void => {
-    const { handleCallClick, dialNumber } = this.props;
-
-    if(handleCallClick && dialNumber) {
-      handleCallClick(dialNumber)
-    }
-    //this.props.handleCallClick(this.props.dialNumber);
+  handlePress = (value: string) => {
+    this.props.onChange(this.props.phone + value);
   };
 
-  renderPad() {
-    const {dialNumber, handleInputChange, handlePadButtonClick} = this.props;
-
-    return(
-      <div className={styles.dialpad}>
-        <PadNumber
-          dialNumber={dialNumber}
-          onInputChange={handleInputChange}
-        />
-        <Pad
-          onPadButtonClick={handlePadButtonClick}
-        />
-        <PadFooter
-          onDeleteClick={this.onDeleteClick}
-          onCallClick={this.onCallClick}
-        />
-      </div>
-    )
-  }
+  handleBackspace = (): void => {
+    const { phone } = this.props;
+    this.props.onChange(phone.slice(0, Math.max(0, phone.length - 1)));
+  };
 
   render() {
     const className = classNames(styles.container, this.props.className);
 
     return (
       <div className={className}>
-        {this.renderPad()}
+        <div className={styles.dialpad}>
+          <PadNumber
+            phone={this.props.phone}
+            onChange={this.props.onChange}
+          />
+          <Pad onPress={this.handlePress} />
+          <PadFooter
+            onCallClick={this.handleCall}
+            onDeleteClick={this.handleBackspace}
+          />
+        </div>
       </div>
     );
   }

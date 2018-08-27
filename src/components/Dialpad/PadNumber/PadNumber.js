@@ -8,29 +8,29 @@ import classNames from 'classnames';
 import styles from './PadNumber.css';
 import PhoneInput from '../../PhoneInput/PhoneInput';
 
-export type Props = {
+type Props = {
   className?: string,
-  dialNumber?: string,
-  onInputChange?: ()=> mixed
+  phone: string,
+  onChange: (phone: string) => mixed
 };
 
 class PadNumber extends PureComponent<Props> {
+  handleChange = (phone: string) => {
+    this.props.onChange(phone);
+  };
 
   render() {
     const className = classNames(styles.container, this.props.className);
-    const { dialNumber, onInputChange } = this.props;
 
-    if(onInputChange) {
-      return (
-        <form className={className} name='dialpad-form'>
-          <PhoneInput
-            onChange={onInputChange}
-            value={dialNumber ? dialNumber : ''}
-            id='dialpad_phone_input'
-          />
-        </form>
-      );
-    }
+    return (
+      <form className={className} name="dialpad-form">
+        <PhoneInput
+          id="dialpad_phone_input"
+          value={this.props.phone}
+          onChange={this.handleChange}
+        />
+      </form>
+    );
   }
 }
 

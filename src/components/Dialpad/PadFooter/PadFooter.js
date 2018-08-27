@@ -15,28 +15,27 @@ export type Props = {
 };
 
 class PadFooter extends PureComponent<Props> {
-
   render() {
     const className = classNames(styles.container, this.props.className);
     const { onDeleteClick, onCallClick } = this.props;
 
-    if(onDeleteClick && onCallClick) {
+    if (onDeleteClick && onCallClick) {
       return (
         <div className={className}>
           <div className={styles.wrapper}>
-            <IconButton 
-              size='large' 
-              theme="success" 
-              flat 
-              glyph='phone_outline' 
-              onClick={onCallClick} 
+            <IconButton
+              size="large"
+              theme="success"
+              flat
+              glyph="phone_outline"
+              onClick={onCallClick}
             />
           </div>
           <div className={styles.wrapper}>
-            <IconButton 
-              size='large' 
-              glyph='keyboard_arrow_left' 
-              onClick={onDeleteClick} 
+            <IconButton
+              size="large"
+              glyph="keyboard_arrow_left"
+              onClick={onDeleteClick}
             />
           </div>
         </div>

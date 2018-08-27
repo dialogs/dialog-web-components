@@ -7,6 +7,7 @@ import type { Country } from '../CountryCodeSelector/utils/countries';
 import React, { PureComponent } from 'react';
 import InputNext from '../InputNext/InputNext';
 import getCountryByPhone from './utils/getCountryByPhone';
+import normalize from './utils/normalize';
 import { getPreferredCountryCodes } from '../../utils/language';
 
 type Props = {
@@ -34,9 +35,10 @@ class PhoneInput extends PureComponent<Props> {
   };
 
   handleChange = (value: string): void => {
+    const phone = normalize(value) || '+';
     this.props.onChange(
-      value || '+',
-      getCountryByPhone(value, this.props.preferredCountryCodes)
+      phone,
+      getCountryByPhone(phone, this.props.preferredCountryCodes)
     );
   };
 

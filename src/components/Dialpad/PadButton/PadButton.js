@@ -8,32 +8,31 @@ import CustomButton from './../../CustomButton/CustomButton';
 import classNames from 'classnames';
 import styles from './PadButton.css';
 
-export type Props = {
+type Props = {
   className?: string,
-  value?: string,
-  key?: string,
-  onClick?: () => mixed
+  value: string,
+  onPress: (value: string) => mixed
 };
 
 class PadButton extends PureComponent<Props> {
+  handleClick = () => {
+    this.props.onPress(this.props.value);
+  };
 
   render() {
     const className = classNames(styles.wrapper, this.props.className);
-    const { value, onClick } = this.props
 
-    if(onClick) {
-      return (
-        <div className={className}>
-          <CustomButton 
-          size='large' 
-          value={value ? value.toUpperCase() : null} 
-          onClick={onClick} 
+    return (
+      <div className={className}>
+        <CustomButton
           className={styles.containerButton}
+          size="large"
+          value={this.props.value.toUpperCase()}
+          onClick={this.handleClick}
           glyph={null}
-          />
-        </div>
-      );
-    }
+        />
+      </div>
+    );
   }
 }
 

@@ -1,35 +1,22 @@
 ```jsx
 
 initialState = {
-    dialNumber: '+71234567890'
+  phone: '+71234567890'
 };
 
-const handlePadButton = number => {
-    setState({
-        dialNumber: `${state.dialNumber}${number}`
-    })
+const handleChange = (phone) => {
+  setState({ phone });
 };
-const handleDeleteClick = number => {
-    setState({
-        dialNumber: number.slice(0, number.length - 1)
-    })
-};
-const handleCallClick = number => {
-    alert(number.length > 0 ? `Call number ${number}` : 'Please enter the number');
-};
-const handleInputChange = inputValue => {
-    setState({
-        dialNumber: inputValue
-    })
+
+const handleSubmit = (phone) => {
+  alert(phone);
 };
 
 <div>
-    <Dialpad 
-        dialNumber={state.dialNumber} 
-        handlePadButtonClick={handlePadButton} 
-        handleDeleteClick={handleDeleteClick} 
-        handleCallClick={handleCallClick}  
-        handleInputChange={handleInputChange}
-    />
+  <Dialpad
+    phone={state.phone}
+    onChange={handleChange}
+    onSubmit={handleSubmit}
+  />
 </div>
 ```

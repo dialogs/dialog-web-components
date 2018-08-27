@@ -24,7 +24,7 @@ export type Props = {
 
 class IconButton extends PureComponent<Props> {
   button: *;
-  
+
   static defaultProps = {
     size: 'normal',
     flat: false,
@@ -50,7 +50,7 @@ class IconButton extends PureComponent<Props> {
     const size = this.getIconSize();
 
     return <Icon glyph={glyph} className={styles.icon} size={size} />;
-  };
+  }
 
   setButton = (element: *): void => {
     this.button = element;
@@ -58,8 +58,8 @@ class IconButton extends PureComponent<Props> {
 
   handleClick = (event: $FlowIssue): void => {
     this.props.onClick(event);
-    if(this.button) {
-      this.button.blur()
+    if (this.button) {
+      this.button.blur();
     }
   };
 

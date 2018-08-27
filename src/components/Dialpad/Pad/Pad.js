@@ -8,35 +8,47 @@ import classNames from 'classnames';
 import styles from './Pad.css';
 import PadButton from '../PadButton/PadButton';
 
-export type Props = {
+type Props = {
   className?: string,
-  onPadButtonClick?: (phoneNumber: string) => mixed
+  buttons: string[],
+  onPress: (value: string) => mixed
 };
 
 class Pad extends PureComponent<Props> {
+  static defaultProps = {
+    buttons: [
+      '1', '2', '3',
+      '4', '5', '6',
+      '7', '8', '9',
+      '*', '0', '#'
+    ]
+  };
 
-  renderButtons = (): any => {
-    const buttons = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '*', '0', '#'];
-    const { onPadButtonClick } = this.props;
+  handleInsert = (value: string) => {
 
-    if(onPadButtonClick) {
-      return buttons.map(element => 
-        <PadButton 
-          value={element} 
-          onClick={()=> onPadButtonClick(element)} 
-          key={'test__'+element}
-        />)
-    }
+  };
+
+  handleBackspace = () => {
+
   };
 
   render() {
     const className = classNames(styles.container, this.props.className);
 
+    const buttons = this.props.buttons.map((value) => {
+      return (
+        <PadButton
+          key={value}
+          value={value}
+          onPress={this.props.onPress}
+        />
+      );
+    });
 
     return (
       <div className={className}>
-        <div className={classNames(styles.buttons)}>
-          {this.renderButtons()}
+        <div className={styles.buttons}>
+          {buttons}
         </div>
       </div>
     );
