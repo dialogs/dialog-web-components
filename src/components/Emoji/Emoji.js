@@ -6,6 +6,7 @@
 import React, { PureComponent, type Node } from 'react';
 import classNames from 'classnames';
 import { getEmojiByChar, shouldUseImage } from '@dlghq/emoji';
+import { isElectron } from '@dlghq/dialog-utils';
 import emojiImage from '@dlghq/emoji/lib/apple.png';
 import styles from './Emoji.css';
 
@@ -36,7 +37,11 @@ class Emoji extends PureComponent<Props> {
       return null;
     }
 
-    const isShouldUseImage = shouldUseImage(emoji.char);
+    let isShouldUseImage = shouldUseImage(emoji.char);
+    // TODO: remove the hack when electron updates chrome
+    if (!isShouldUseImage && isElectron() && (/♀️|♂️/).test(emoji.char)) {
+      isShouldUseImage = true;
+    }
 
     if (isShouldUseImage) {
       const className = classNames(styles.image, this.props.className);
