@@ -4,7 +4,6 @@
  */
 
 import type { BlockToken, TextToken } from '@dlghq/markdown/src/types';
-import { repeat } from 'lodash';
 import * as React from 'react';
 import Emoji from '../Emoji/Emoji';
 import styles from './Markdown.css';
@@ -62,10 +61,16 @@ export function renderText(tokens: TextToken[], emojiSize?: number = 16, isInlin
 
         result.push(
           <span key={index} className={className}>
-            {content.replace(/ {2,}/g, (value) => repeat('\u00A0', value.length - 1) + ' ')}
+            {content.split(/( {2,})/).map((s: string) => {
+              if (s[0] === ' ') {
+                // eslint-disable-next-line react/jsx-key
+                return s.split('').map(() => (['\u00A0', <wbr />]));
+              }
+
+              return s;
+            })}
           </span>
         );
-
         break;
       }
     }
