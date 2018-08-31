@@ -62,7 +62,7 @@ export function renderText(tokens: TextToken[], emojiSize?: number = 16, isInlin
         result.push(
           <span key={index} className={className}>
             {content.split(/( {2,})/).map((s: string) => {
-              if (s[0] === ' ') {
+              if (s.length >= 2 && s[0] === ' ' && s[1] === ' ') {
                 // eslint-disable-next-line react/jsx-key
                 return s.split('').map(() => (['\u00A0', <wbr />]));
               }
