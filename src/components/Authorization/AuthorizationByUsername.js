@@ -57,7 +57,7 @@ class AuthorizationByUsername extends PureComponent<Props> {
     const { errors } = this.props;
 
     if (isEmpty(errors)) {
-      return 'normal';
+      return 'default';
     }
 
     return 'error';

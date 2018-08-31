@@ -25,7 +25,7 @@ export type Props = {
   disabled?: boolean,
   hint?: ?string,
   prefix?: ?string,
-  status: 'normal' | 'success' | 'error',
+  status: 'default' | 'success' | 'error',
   size: 'small' | 'normal',
   autoFocus?: boolean,
   tabIndex?: number,
@@ -58,7 +58,7 @@ class InputNext extends PureComponent<Props, State> {
 
   static defaultProps = {
     type: 'text',
-    status: 'normal',
+    status: 'default',
     size: 'normal',
     spellcheck: false,
     required: false

@@ -7,7 +7,7 @@ import React, { PureComponent } from 'react';
 import Input from '../../InputNext/InputNext';
 import styles from '../CustomForm.css';
 
-type InputStatus = 'error' | 'normal';
+type InputStatus = 'error' | 'default';
 
 export type Props = {
   id: string,
@@ -58,7 +58,7 @@ class BaseInput extends PureComponent<Props> {
       return 'error';
     }
 
-    return 'normal';
+    return 'default';
   };
 
   getHint = (): ?string => {
