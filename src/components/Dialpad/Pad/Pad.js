@@ -21,14 +21,24 @@ class Pad extends PureComponent<Props> {
 
   renderButtons() {
     return this.props.buttons.map((value) => {
-      return <PadButton key={value} value={value} onClick={this.props.onPress} />;
+      return (
+        <PadButton
+          key={value}
+          value={value}
+          onClick={this.props.onPress}
+        />
+      );
     });
   }
 
   render() {
     const className = classNames(styles.container, this.props.className);
 
-    return <div className={className}>{this.renderButtons()}</div>;
+    return (
+      <div className={className}>
+        {this.renderButtons()}
+      </div>
+    );
   }
 }
 

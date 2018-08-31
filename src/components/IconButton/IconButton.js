@@ -54,20 +54,19 @@ class IconButton extends PureComponent<Props> {
     return <Icon glyph={glyph} className={styles.icon} size={size} />;
   }
 
-  setButton = (button: ?HTMLButtonElement): void => {
-    this.button = button;
-  };
-
-  handleClick = (event: $FlowIssue): void => {
-    this.props.onClick(event);
-
-    if (this.button) {
-      this.button.blur();
-    }
-  };
-
   render() {
-    const { className, theme, size, disabled, id, flat, style, active, onClick, ...otherProps } = this.props;
+    const {
+      className,
+      theme,
+      size,
+      disabled,
+      id,
+      flat,
+      style,
+      active,
+      onClick,
+      ...otherProps
+    } = this.props;
 
     const buttonClassName = classNames(
       styles.container,
@@ -89,8 +88,7 @@ class IconButton extends PureComponent<Props> {
         type="button"
         disabled={disabled}
         style={style}
-        onClick={this.handleClick}
-        ref={this.setButton}
+        onClick={onClick}
         {...otherProps}
       >
         <span className={styles.fix}>

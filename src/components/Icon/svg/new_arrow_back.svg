@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-  <path
-    d="M6.382 16.786a.998.998 0 0 1-.382-.79.997.997 0 0 1 .294-.714l5.007-4.99a1 1 0 0 1 1.412 1.416L9.41 15H25a1 1 0 1 1 0 2H9.43l3.283 3.272a1 1 0 0 1-1.412 1.417l-4.919-4.903z"
-    transform-origin="50% 50%"
-    transform="scale(1.2) translate(-0.5 0)"
-  />
-</svg>
