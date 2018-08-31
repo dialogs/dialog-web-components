@@ -13,6 +13,7 @@ import { getPreferredCountryCodes } from '../../utils/language';
 type Props = {
   value: string,
   className?: string,
+  inputClassName?: string,
   id: string,
   name?: string,
   label?: string,
@@ -59,6 +60,7 @@ class PhoneInput extends PureComponent<Props> {
         type="tel"
         value={this.props.value || '+'}
         className={this.props.className}
+        inputClassName={this.props.inputClassName}
         id={this.props.id}
         name={this.props.name}
         label={this.props.label}
