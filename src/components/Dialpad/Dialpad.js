@@ -26,30 +26,19 @@ class Dialpad extends PureComponent<Props> {
     this.props.onChange(this.props.phone + value);
   };
 
-  handleBackspace = (): void => {
-    const { phone } = this.props;
-    this.props.onChange(phone.slice(0, Math.max(0, phone.length - 1)));
-  };
-
   render() {
     const className = classNames(styles.container, this.props.className);
 
     return (
       <div className={className}>
         <div className={styles.dialpad}>
-          <PadNumber
-            phone={this.props.phone}
-            onChange={this.props.onChange}
-          />
+          <PadNumber phone={this.props.phone} onChange={this.props.onChange} />
           <Pad onPress={this.handlePress} />
-          <PadFooter
-            onCallClick={this.handleCall}
-            onDeleteClick={this.handleBackspace}
-          />
+          <PadFooter onCallClick={this.handleCall} />
         </div>
       </div>
     );
   }
-};
+}
 
 export default Dialpad;

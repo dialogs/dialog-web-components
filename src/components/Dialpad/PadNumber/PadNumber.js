@@ -15,6 +15,8 @@ type Props = {
 };
 
 class PadNumber extends PureComponent<Props> {
+  input: ?PhoneInput;
+
   handleChange = (phone: string) => {
     this.props.onChange(phone);
   };
@@ -28,6 +30,8 @@ class PadNumber extends PureComponent<Props> {
           id="dialpad_phone_input"
           value={this.props.phone}
           onChange={this.handleChange}
+          className={styles.inputContainer}
+          inputClassName={styles.input}
         />
       </form>
     );

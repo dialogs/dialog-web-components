@@ -44,7 +44,7 @@ class PhoneInput extends PureComponent<Props> {
     );
   };
 
-  setInput = (element: *): void => {
+  setInput = (element: ?InputNext): void => {
     this.input = element;
   };
 

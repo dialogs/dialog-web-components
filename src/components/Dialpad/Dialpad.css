@@ -17,12 +17,12 @@
 /* Styles */
 .container {
   font-family: var(--dialpad-font-family);
+  padding: var(--default-padding-small);
+  display: block;
 }
 
 .dialpad {
   display: flex;
   flex-wrap: wrap;
   max-width: 400px;
-  margin: 0 auto;
-  background-color: '#fff';
 }

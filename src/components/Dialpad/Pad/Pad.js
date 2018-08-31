@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2018 dialog LLC <info@dlg.im>
  * @flow
  */
@@ -16,42 +16,19 @@ type Props = {
 
 class Pad extends PureComponent<Props> {
   static defaultProps = {
-    buttons: [
-      '1', '2', '3',
-      '4', '5', '6',
-      '7', '8', '9',
-      '*', '0', '#'
-    ]
+    buttons: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '*', '0', '#']
   };
 
-  handleInsert = (value: string) => {
-
-  };
-
-  handleBackspace = () => {
-
-  };
+  renderButtons() {
+    return this.props.buttons.map((value) => {
+      return <PadButton key={value} value={value} onClick={this.props.onPress} />;
+    });
+  }
 
   render() {
     const className = classNames(styles.container, this.props.className);
 
-    const buttons = this.props.buttons.map((value) => {
-      return (
-        <PadButton
-          key={value}
-          value={value}
-          onPress={this.props.onPress}
-        />
-      );
-    });
-
-    return (
-      <div className={className}>
-        <div className={styles.buttons}>
-          {buttons}
-        </div>
-      </div>
-    );
+    return <div className={className}>{this.renderButtons()}</div>;
   }
 }
 

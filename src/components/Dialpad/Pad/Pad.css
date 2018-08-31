@@ -4,10 +4,6 @@
 
 @import '../../../styles/variables.css';
 
-:root {
-  --pad-font-family: var(--default-font-family);
-}
-
 /* Reset */
 .container {
   all: initial;
@@ -15,23 +11,12 @@
 
 /* Styles */
 .container {
-  font-family: var(--pad-font-family);
-  display: flex;
-  align-items: center;
-  align-content: center;
-  justify-content: space-between;
-  padding: 20px 20px 0 20px;
-  margin-top: -5px;
-  margin-bottom: -5px;
-}
-
-.buttons {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
   align-content: center;
   justify-content: center;
-  padding-top: 30px;
+  width: 100%;
+  padding-top: calc(var(--default-padding) / 2);
 }
-
