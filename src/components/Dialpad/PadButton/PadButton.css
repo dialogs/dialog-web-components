@@ -1,0 +1,60 @@
+/**
+ * Copyright 2018 dialog LLC <info@dlg.im>
+ */
+
+@import '../../../styles/variables.css';
+
+:root {
+  --pad-button-font-family: var(--default-font-family);
+  --pad-button-height: 42px;
+  --pad-button-font-size: 20px;
+  --pad-button-background-color: #fff;
+  --pad-button-color: color(#000 alpha(50%));
+  --pad-button-hover-color: #000;
+  --pad-button-hover-background-color: #e6e6e6;
+  --pad-button-pressed-background-color: color(var(--pad-button-hover-background-color) shade(2%));
+}
+
+/* Reset */
+.container {
+  all: initial;
+}
+
+/* Styles */
+.container {
+  display: flex;
+  flex: 0 0 33.33%;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  width: 33.33%;
+}
+
+.button {
+  border-radius: var(--default-border-radius-small);
+  display: flex;
+  flex: 0 0 auto;
+  color: var(--pad-button-color);
+  width: 100%;
+  height: var(--pad-button-height);
+  font-family: var(--pad-button-font-family);
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: all var(--default-transition-duration) ease;
+  cursor: pointer;
+  user-select: none;
+  font-size: var(--pad-button-font-size);
+  font-weight: 500;
+
+  &:hover,
+  &:focus {
+    background-color: var(--pad-button-hover-background-color);
+    color: var(--pad-button-hover-color);
+  }
+
+  &:active {
+    background-color: var(--pad-button-pressed-background-color);
+  }
+}

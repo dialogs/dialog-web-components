@@ -191,7 +191,7 @@
 
   & .prefix {
     padding-top: calc(var(--input-next-padding-top) * (1 - var(--input-next-size-modifier)));
-    padding-right: 2px;
+    padding-right: 1px;
     padding-bottom: calc(var(--input-next-padding-bottom) * (1 - var(--input-next-size-modifier)));
     padding-left: var(--input-next-padding-left);
     font-size: var(--input-next-small-font-size);
@@ -219,7 +219,7 @@
 
   & .prefix {
     padding-top: var(--input-next-padding-top);
-    padding-right: 2px;
+    padding-right: 1px;
     padding-bottom: var(--input-next-padding-bottom);
     padding-left: var(--input-next-padding-left);
     font-size: var(--input-next-font-size);

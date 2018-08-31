@@ -23,6 +23,8 @@ export type Props = {
 };
 
 class IconButton extends PureComponent<Props> {
+  button: ?HTMLButtonElement;
+
   static defaultProps = {
     size: 'normal',
     flat: false,
@@ -32,15 +34,17 @@ class IconButton extends PureComponent<Props> {
 
   getIconSize = (): number => {
     const { size } = this.props;
-    if (size === 'small') {
-      return 16;
-    }
 
-    if (size === 'large') {
-      return 30;
-    }
+    switch (size) {
+      case 'small':
+        return 16;
 
-    return 22;
+      case 'large':
+        return 30;
+
+      default:
+        return 22;
+    }
   };
 
   renderIcon() {
@@ -51,7 +55,18 @@ class IconButton extends PureComponent<Props> {
   }
 
   render() {
-    const { className, theme, size, disabled, id, flat, style, active, onClick, ...otherProps } = this.props;
+    const {
+      className,
+      theme,
+      size,
+      disabled,
+      id,
+      flat,
+      style,
+      active,
+      onClick,
+      ...otherProps
+    } = this.props;
 
     const buttonClassName = classNames(
       styles.container,
