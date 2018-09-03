@@ -25,7 +25,9 @@ type Props = {
   autoFocus?: boolean,
   tabIndex?: number,
   preferredCountryCodes: string[],
-  onChange: (value: string, country: ?Country) => mixed
+  onChange: (value: string, country: ?Country) => mixed,
+  onFocus?: (event: SyntheticFocusEvent<>) => mixed,
+  onBlur?: (event: SyntheticFocusEvent<>) => mixed
 };
 
 class PhoneInput extends PureComponent<Props> {
@@ -73,6 +75,8 @@ class PhoneInput extends PureComponent<Props> {
         tabIndex={this.props.tabIndex}
         onChange={this.handleChange}
         ref={this.setInput}
+        onFocus={this.props.onFocus}
+        onBlur={this.props.onBlur}
       />
     );
   }
