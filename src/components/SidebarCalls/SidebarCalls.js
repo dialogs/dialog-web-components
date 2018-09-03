@@ -80,31 +80,38 @@ class SidebarCalls extends Component<Props> {
     );
   }
 
-  render() {
-    const className = classNames(styles.container, this.props.className);
-
+  renderCallList() {
     if (this.props.pending && !this.props.calls.length) {
       return null;
     }
 
     return (
+      <AutoSizer>
+        {({ width, height }) => {
+          return (
+            <List
+              width={width}
+              height={height}
+              noRowsRenderer={this.renderEmpty}
+              onRowsRendered={this.handleRowsRendered}
+              rowHeight={61}
+              rowRenderer={this.renderRow}
+              rowCount={this.props.calls.length}
+            />
+          );
+        }}
+      </AutoSizer>
+    );
+  }
+
+  render() {
+    const className = classNames(styles.container, this.props.className);
+
+
+    return (
       <div className={className}>
         {this.renderDialpad()}
-        <AutoSizer>
-          {({ width, height }) => {
-            return (
-              <List
-                width={width}
-                height={height}
-                noRowsRenderer={this.renderEmpty}
-                onRowsRendered={this.handleRowsRendered}
-                rowHeight={61}
-                rowRenderer={this.renderRow}
-                rowCount={this.props.calls.length}
-              />
-            );
-          }}
-        </AutoSizer>
+        {this.renderCallList()}
       </div>
     );
   }
