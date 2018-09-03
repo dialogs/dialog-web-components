@@ -12,18 +12,20 @@ import PadFooter from './PadFooter/PadFooter';
 
 type Props = {
   className?: string,
-  phone: string,
-  onChange: (phone: string) => mixed,
-  onSubmit: (phone: string) => mixed
+  number: string,
+  onChange: (number: string) => mixed,
+  onSubmit: (number: string) => mixed,
+  onFocus: () => mixed,
+  onBlur: () => mixed,
 };
 
 class Dialpad extends PureComponent<Props> {
   handleCall = () => {
-    this.props.onSubmit(this.props.phone);
+    this.props.onSubmit(this.props.number);
   };
 
-  handlePress = (value: string) => {
-    this.props.onChange(this.props.phone + value);
+  handleButtonClick = (value: string) => {
+    this.props.onChange(this.props.number + value);
   };
 
   render() {
@@ -32,8 +34,13 @@ class Dialpad extends PureComponent<Props> {
     return (
       <div className={className}>
         <div className={styles.dialpad}>
-          <PadNumber phone={this.props.phone} onChange={this.props.onChange} />
-          <Pad onPress={this.handlePress} />
+          <PadNumber
+            number={this.props.number}
+            onChange={this.props.onChange}
+            onFocus={this.props.onFocus}
+            onBlur={this.props.onBlur}
+          />
+          <Pad onPress={this.handleButtonClick} />
           <PadFooter onCallClick={this.handleCall} />
         </div>
       </div>

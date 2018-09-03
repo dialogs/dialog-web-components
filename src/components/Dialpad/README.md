@@ -1,22 +1,20 @@
 ```jsx
 
 initialState = {
-  phone: '+71234567890'
+  number: '+71234567890'
 };
 
-const handleChange = (phone) => {
-  setState({ phone });
+const handleChange = (number) => {
+  setState({ number });
 };
 
-const handleSubmit = (phone) => {
-  alert(phone);
+const handleSubmit = (number) => {
+  console.log(number);
 };
 
-<div>
-  <Dialpad
-    phone={state.phone}
-    onChange={handleChange}
-    onSubmit={handleSubmit}
-  />
-</div>
+<Dialpad
+  number={state.number}
+  onChange={handleChange}
+  onSubmit={handleSubmit}
+/>
 ```

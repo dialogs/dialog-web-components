@@ -23,7 +23,6 @@
   align-content: center;
   justify-content: center;
   width: 100%;
-  text-align: center;
   padding-top: calc(var(--default-padding) / 2);
 }
 

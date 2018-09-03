@@ -10,15 +10,17 @@ import PhoneInput from '../../PhoneInput/PhoneInput';
 
 type Props = {
   className?: string,
-  phone: string,
-  onChange: (phone: string) => mixed
+  number: string,
+  onChange: (number: string) => mixed,
+  onFocus: () => mixed,
+  onBlur: () => mixed
 };
 
 class PadNumber extends PureComponent<Props> {
   input: ?PhoneInput;
 
-  handleChange = (phone: string) => {
-    this.props.onChange(phone);
+  handleChange = (number: string) => {
+    this.props.onChange(number);
   };
 
   render() {
@@ -28,10 +30,12 @@ class PadNumber extends PureComponent<Props> {
       <form className={className} name="dialpad-form">
         <PhoneInput
           id="dialpad_phone_input"
-          value={this.props.phone}
+          value={this.props.number}
           onChange={this.handleChange}
           className={styles.inputContainer}
           inputClassName={styles.input}
+          onFocus={this.props.onFocus}
+          onBlur={this.props.onBlur}
         />
       </form>
     );
