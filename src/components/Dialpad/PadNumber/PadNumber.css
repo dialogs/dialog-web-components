@@ -1,0 +1,35 @@
+/**
+ * Copyright 2018 dialog LLC <info@dlg.im>
+ */
+
+@import '../../../styles/variables.css';
+
+:root {
+  --pad-number-font-family: var(--default-font-family);
+}
+
+/* Reset */
+.container {
+  all: initial;
+}
+
+/* Styles */
+.container {
+  font-family: var(--pad-number-font-family);
+  margin: 0 auto;
+  width: 100%;
+}
+
+.inputContainer {
+  margin-bottom: 0;
+}
+
+.inputWrapper {
+
+}
+
+.input {
+  font-size: 22px !important;
+  font-weight: 500;
+  text-align: center;
+}

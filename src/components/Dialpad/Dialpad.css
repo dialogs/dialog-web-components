@@ -1,0 +1,28 @@
+/**
+ * Copyright 2018 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+@import '../../styles/colors.css';
+
+:root {
+  --dialpad-font-family: var(--default-font-family);
+}
+
+/* Reset */
+.container {
+  all: initial;
+}
+
+/* Styles */
+.container {
+  font-family: var(--dialpad-font-family);
+  padding: var(--default-padding-small);
+  display: block;
+}
+
+.dialpad {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 400px;
+}
