@@ -15,7 +15,7 @@
   --input-next-placeholder-color: #aaa;
   --input-next-border-color: #d1d3d8;
   --input-next-label-font-size: var(--default-font-size-small);
-  --input-next-label-color: #808080;
+  --input-next-label-color: #676c75;
   --input-next-hover-border-color: color(var(--input-next-border-color) shade(15%));
   --input-next-focus-border-color: var(--color-primary);
   --input-next-focus-outline-color: color(var(--input-next-focus-border-color) alpha(20%));

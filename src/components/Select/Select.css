@@ -19,7 +19,7 @@
   --select-line-height: 26px;
   --select-color: #333;
   --select-background-color: #fff;
-  --select-label-font-size: var(--default-font-size);
+  --select-label-font-size: var(--default-font-size-small);
   --select-label-color: #676c75;
   --select-border-color: #D1D3D8;
   --select-hover-border-color: color(var(--select-border-color) shade(10%));
@@ -62,7 +62,8 @@
   display: inline-block;
   cursor: pointer;
   user-select: none;
-  line-height: 30px;
+  line-height: 1.4;
+  margin-bottom: calc(var(--default-padding-small) / 2);
   color: var(--select-label-color);
 }
 
