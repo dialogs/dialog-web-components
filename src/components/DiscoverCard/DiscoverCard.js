@@ -108,6 +108,17 @@ class DiscoverCard extends PureComponent<Props> {
     }
   }
 
+  renderTitle() {
+    const { title } = this.props;
+
+    return (
+      <div className={styles.title} title={title}>
+        {this.renderIcon()}
+        <PeerInfoTitle title={title} emojiSize={20} />
+      </div>
+    );
+  }
+
   renderShortname() {
     const { shortname } = this.props;
 
@@ -122,20 +133,15 @@ class DiscoverCard extends PureComponent<Props> {
     );
   }
 
-  renderInfo() {
-    const { title, description } = this.props;
+  renderDescription() {
+    const { description } = this.props;
+
+    if (!description) {
+      return null;
+    }
 
     return (
-      <div className={styles.info}>
-        <div className={styles.title} title={title}>
-          {this.renderIcon()}
-          <PeerInfoTitle title={title} emojiSize={20} />
-        </div>
-        {this.renderShortname()}
-        {description ? (
-          <Markdown text={description} emojiSize={17} className={styles.description} />
-        ) : null}
-      </div>
+      <Markdown text={description} emojiSize={17} className={styles.description} />
     );
   }
 
@@ -147,7 +153,11 @@ class DiscoverCard extends PureComponent<Props> {
       <div className={className} onClick={this.handleClick} id={`discover_card_${this.props.peer.id}`}>
         <div className={styles.body}>
           {this.renderAvatar()}
-          {this.renderInfo()}
+          <div className={styles.info}>
+            {this.renderTitle()}
+            {this.renderShortname()}
+            {this.renderDescription()}
+          </div>
         </div>
         <footer className={styles.footer}>
           {this.renderMembers()}
