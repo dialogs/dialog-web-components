@@ -1,0 +1,61 @@
+/*
+ * Copyright 2018 dialog LLC <info@dlg.im>
+ */
+
+@import '../../../styles/variables.css';
+
+:root {
+  --modal-attachment-preview-max-height: 200px;
+}
+
+.container {
+  display: flex;
+  height: var(--modal-attachment-preview-max-height);
+  text-align: center;
+  line-height: 0;
+  flex: 0 0 auto;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+
+.image {
+  display: inline-block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: var(--modal-attachment-preview-max-height);
+  border-radius: 6px;
+  box-shadow: 0 0 0 1px color(#000 alpha(2%));
+}
+
+.file {
+  display: inline-flex;
+  width: 200px;
+  height: 200px;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 50%;
+  font-size: 36px;
+  font-weight: 300;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  transition: background-color var(--default-transition-duration) cubic-bezier(0.47, 0, 0.75, 0.72);
+}
+
+.unknown {
+  background-color: var(--pinkish-grey-two);
+}
+
+.document {
+  background-color: var(--orangey-red);
+}
+
+.media {
+  background-color: var(--sky-blue);
+}
+
+.compressed {
+  background-color: var(--light-orange);
+}

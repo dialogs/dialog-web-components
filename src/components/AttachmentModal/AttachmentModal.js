@@ -15,8 +15,8 @@ import ModalFooter from '../Modal/ModalFooter';
 import HotKeys from '../HotKeys/HotKeys';
 import Button from '../Button/Button';
 import Icon from '../Icon/Icon';
-import AttachmentMeta from './AttachmentMeta';
-import AttachmentPreview from './AttachmentPreview';
+import AttachmentMeta from './AttachmentMeta/AttachmentMeta';
+import AttachmentPreview from './AttachmentPreview/AttachmentPreview';
 import styles from './AttachmentModal.css';
 
 class AttachmentModal extends PureComponent<Props> {
