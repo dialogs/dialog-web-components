@@ -5,6 +5,7 @@
 
 import type { AttachmentMetaProps as Props } from '../types';
 import React, { PureComponent } from 'react';
+import classNames from 'classnames';
 import { Text } from '@dlghq/react-l10n';
 import { getReadableFileSize } from '@dlghq/dialog-utils';
 import getFilenameExtension from '../../../utils/getFilenameExtension';
@@ -49,7 +50,7 @@ class AttachmentMeta extends PureComponent<Props> {
     const extension = getFilenameExtension(name);
 
     return (
-      <table className={styles.meta}>
+      <table className={classNames(styles.container, this.props.className)}>
         <tbody>
           <tr>
             <td className={styles.block}>

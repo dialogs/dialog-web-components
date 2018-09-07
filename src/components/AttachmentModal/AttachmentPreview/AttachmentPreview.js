@@ -56,7 +56,7 @@ class AttachmentPreview extends PureComponent<Props> {
   }
 
   renderAttachment() {
-    if (this.getFileType()) {
+    if (this.getFileType() === 'picture') {
       return this.renderPreview();
     }
 
