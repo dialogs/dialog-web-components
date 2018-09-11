@@ -148,6 +148,7 @@ export { default as ActivityPinned } from './components/ActivityPinned/ActivityP
 
 // Helpers
 export { default as Trigger } from './components/Trigger/Trigger';
+export { default as Alert } from './components/Alert/Alert';
 export { default as Confirm } from './components/Confirm/Confirm';
 export { default as HotKeys } from './components/HotKeys/HotKeys';
 export { default as CopyButton } from './components/CopyButton/CopyButton';
