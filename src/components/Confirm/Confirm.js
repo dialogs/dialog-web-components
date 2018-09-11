@@ -3,6 +3,7 @@
  * @flow
  */
 
+import type { ColorTheme } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import { Text } from '@dlghq/react-l10n';
@@ -18,13 +19,17 @@ export type Props = {
   message: string,
   submit: string,
   cancel: string,
-  theme: 'danger' | 'success' | 'warning',
+  theme: ColorTheme,
   action: mixed,
   onSubmit: (action: mixed) => void,
   onClose: () => mixed
 };
 
 class Confirm extends PureComponent<Props> {
+  static defaultProps = {
+    theme: 'default'
+  };
+
   handleSuccess = (): void => {
     this.props.onSubmit(this.props.action);
   };
