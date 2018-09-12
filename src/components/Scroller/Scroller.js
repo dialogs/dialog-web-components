@@ -3,11 +3,18 @@
  * @flow
  */
 
+import type { ClientRect } from '../../types';
 import React, { Component, type Node } from 'react';
 import { listen } from '@dlghq/dialog-utils';
 import { AutoSizer } from 'react-virtualized';
 import classNames from 'classnames';
 import styles from './Scroller.css';
+
+export type Dimensions = {
+  scrollTop: number,
+  scrollHeight: number,
+  offsetHeight: number
+};
 
 export type Props = {
   className?: string,
@@ -132,6 +139,26 @@ class Scroller extends Component<Props, State> {
       }
     }
   };
+
+  getDimensions(): ?Dimensions {
+    if (this.container) {
+      return {
+        scrollTop: this.container.scrollTop,
+        scrollHeight: this.container.scrollHeight,
+        offsetHeight: this.container.offsetHeight
+      };
+    }
+
+    return null;
+  }
+
+  getBoundingClientRect(): ?ClientRect {
+    if (this.container) {
+      return this.container.getBoundingClientRect();
+    }
+
+    return null;
+  }
 
   setContainer = (container: *): void => {
     this.container = container;
