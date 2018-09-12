@@ -45,6 +45,7 @@ class AudioPlayer extends PureComponent<Props, State> {
   handleError = () => {
     if (this.audio) {
       const { error } = this.audio;
+
       this.setState({
         error,
         isPlaying: false,
@@ -99,7 +100,7 @@ class AudioPlayer extends PureComponent<Props, State> {
     event.stopPropagation();
 
     if (this.rewind && !this.state.error) {
-      const rewindRect: ClientRect = this.rewind.getBoundingClientRect();
+      const rewindRect = this.rewind.getBoundingClientRect();
       const rewindPosition = (event.clientX - rewindRect.left) / rewindRect.width;
 
       if (this.audio) {
@@ -129,7 +130,7 @@ class AudioPlayer extends PureComponent<Props, State> {
     return 0;
   }
 
-  setAudio = (audio: *) => {
+  setAudio = (audio: ?HTMLMediaElement) => {
     if (audio) {
       audio.volume = 1;
       if (this.state.isPlaying) {
@@ -140,8 +141,10 @@ class AudioPlayer extends PureComponent<Props, State> {
     this.audio = audio;
   };
 
-  setRewind = (rewind: *) => {
-    this.rewind = rewind;
+  setRewind = (rewind: ?HTMLElement) => {
+    if (rewind) {
+      this.rewind = rewind;
+    }
   };
 
   renderPlayPauseButton() {

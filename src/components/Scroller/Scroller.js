@@ -7,14 +7,7 @@ import React, { Component, type Node } from 'react';
 import { listen } from '@dlghq/dialog-utils';
 import { AutoSizer } from 'react-virtualized';
 import classNames from 'classnames';
-import createSequence from '../../utils/createSequence';
 import styles from './Scroller.css';
-
-export type Dimensions = {
-  scrollTop: number,
-  scrollHeight: number,
-  offsetHeight: number
-};
 
 export type Props = {
   className?: string,
@@ -29,8 +22,6 @@ export type Props = {
 type State = {
   isUserInteraction: boolean
 };
-
-const seq = createSequence();
 
 class Scroller extends Component<Props, State> {
   container: ?HTMLElement;
@@ -142,26 +133,6 @@ class Scroller extends Component<Props, State> {
     }
   };
 
-  getDimensions(): ?Dimensions {
-    if (this.container) {
-      return {
-        scrollTop: this.container.scrollTop,
-        scrollHeight: this.container.scrollHeight,
-        offsetHeight: this.container.offsetHeight
-      };
-    }
-
-    return null;
-  }
-
-  getBoundingClientRect(): ?ClientRect {
-    if (this.container) {
-      return this.container.getBoundingClientRect();
-    }
-
-    return null;
-  }
-
   setContainer = (container: *): void => {
     this.container = container;
   };
@@ -195,7 +166,7 @@ class Scroller extends Component<Props, State> {
       <AutoSizer onResize={this.props.onResize}>
         {(size) => (
           <div className={this.props.className} style={size}>
-            <div className={className} ref={this.setContainer} tabIndex={100 + seq.next()}>
+            <div className={className} ref={this.setContainer}>
               {this.props.children}
             </div>
           </div>
