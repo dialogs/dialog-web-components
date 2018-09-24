@@ -43,13 +43,13 @@ class BlockedUser extends PureComponent<Props> {
             placeholder={user.placeholder}
           />
           <div className={styles.userInfo}>
-            <span className={styles.userName}>
+            <p className={styles.userName}>
               {user.name}
-            </span>
+            </p>
             {user.nick && (
-              <span className={styles.userNick}>
+              <p className={styles.userNick}>
                 {`@${user.nick}`}
-              </span>
+              </p>
             )}
           </div>
         </div>

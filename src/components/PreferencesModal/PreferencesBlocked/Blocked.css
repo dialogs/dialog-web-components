@@ -45,19 +45,27 @@
   align-items: center;
   align-content: center;
   justify-content: flex-start;
+  position: relative;
 
   &:hover {
     & .unblockButton {
-      display: block;
-    }
+        display: block;
+     }
 
-    & .userInfo {
+    & .userName {
         max-width: 180px;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-    }
+     }
   }
+}
+
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+
 }
 
 .userMeta {
@@ -80,13 +88,17 @@
   font-weight: 500;
   line-height: 1.4;
   color: #000;
+  margin: 0 0 10px 0;
 }
 
 .userNick {
-  margin-left: 8px;
   color: color(#000 alpha(50%));
+  margin: 0;
 }
 
 .unblockButton {
   display: none;
+  position: absolute;
+  top: 20px;
+  right: 0;
 }
