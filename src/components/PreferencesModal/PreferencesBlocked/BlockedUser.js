@@ -37,7 +37,7 @@ class BlockedUser extends PureComponent<Props> {
         <div className={styles.userMeta}>
           <Avatar
             className={styles.userAvatar}
-            size={36}
+            size={40}
             title={user.name}
             image={user.avatar}
             placeholder={user.placeholder}

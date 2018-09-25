@@ -57,6 +57,7 @@
 .userInfo {
   display: flex;
   flex-direction: column;
+  @apply --text-overflow-ellipsis;
 }
 
 .userMeta {
@@ -72,6 +73,7 @@
 
 .userAvatar {
   margin-right: var(--default-padding);
+  flex-shrink: 0;
 }
 
 .userName {
@@ -79,17 +81,17 @@
   font-weight: 500;
   line-height: 1.4;
   color: #000;
-  margin: 0 0 10px 0;
+  @apply --text-overflow-ellipsis;
+  margin: 0;
 }
 
 .userNick {
   color: color(#000 alpha(50%));
+  @apply --text-overflow-ellipsis;
   margin: 0;
 }
 
 .unblockButton {
   display: none;
-  position: absolute;
-  top: 20px;
-  right: 0;
+  flex-shrink: 0;
 }
