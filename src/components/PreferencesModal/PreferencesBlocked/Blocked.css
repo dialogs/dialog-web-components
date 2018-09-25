@@ -45,7 +45,6 @@
   align-items: center;
   align-content: center;
   justify-content: flex-start;
-  position: relative;
 
   &:hover {
     & .unblockButton {
