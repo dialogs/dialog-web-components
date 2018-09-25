@@ -37,19 +37,21 @@ class BlockedUser extends PureComponent<Props> {
         <div className={styles.userMeta}>
           <Avatar
             className={styles.userAvatar}
-            size={36}
+            size={40}
             title={user.name}
             image={user.avatar}
             placeholder={user.placeholder}
           />
-          <span className={styles.userName}>
-            {user.name}
-          </span>
-          {user.nick ? (
-            <span className={styles.userNick}>
-              {`@${user.nick}`}
-            </span>
-          ) : null}
+          <div className={styles.userInfo}>
+            <p className={styles.userName}>
+              {user.name}
+            </p>
+            {user.nick && (
+              <p className={styles.userNick}>
+                {`@${user.nick}`}
+              </p>
+            )}
+          </div>
         </div>
 
         <Button
