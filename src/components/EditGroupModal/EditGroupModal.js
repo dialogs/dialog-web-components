@@ -20,6 +20,10 @@ import type { Props, State } from './types';
 import HotKeys from '../HotKeys/HotKeys';
 
 class EditGroupModal extends PureComponent<Props, State> {
+  static defaultProps = {
+    isPublicGroupsEnabled: true
+  };
+
   constructor(props: Props) {
     super(props);
 
@@ -168,6 +172,7 @@ class EditGroupModal extends PureComponent<Props, State> {
         shortname={{ ...this.props.context.shortname, value: this.state.group.shortname }}
         avatar={this.state.group.avatar}
         shortnamePrefix={this.props.shortnamePrefix}
+        isPublicGroupsEnabled={this.props.isPublicGroupsEnabled}
         onChange={this.handleChange}
         onSubmit={this.handleSubmit}
         onAvatarChange={this.handleAvatarEdit}

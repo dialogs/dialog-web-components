@@ -25,6 +25,7 @@ export type Props = {
   avatar: ?(string | File),
   className?: string,
   vertical: boolean,
+  isPublicGroupsEnabled: boolean,
   shortnamePrefix?: ?string,
   onChange: () => void,
   onSubmit: () => void,
@@ -134,7 +135,11 @@ class EditGroupModalForm extends PureComponent<Props, State> {
   }
 
   renderShortname() {
-    const { group, shortname, id } = this.props;
+    const { group, shortname, id, isPublicGroupsEnabled } = this.props;
+
+    if (!isPublicGroupsEnabled) {
+      return null;
+    }
 
     return (
       <div className={styles.shortnameWrapper}>

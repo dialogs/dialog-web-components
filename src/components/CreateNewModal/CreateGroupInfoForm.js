@@ -23,6 +23,7 @@ export type Props = {
   avatar: ?File,
   className?: string,
   vertical: boolean,
+  isPublicGroupsEnabled: boolean,
   onSubmit: (event: SyntheticEvent<>) => void,
   onChange: (value: string, event: SyntheticInputEvent<>) => void,
   onAvatarRemove: () => void,
@@ -112,7 +113,11 @@ class CreateGroupInfoForm extends PureComponent<Props, State> {
   }
 
   renderShortname() {
-    const { type, shortname, id } = this.props;
+    const { type, shortname, id, isPublicGroupsEnabled } = this.props;
+
+    if (!isPublicGroupsEnabled) {
+      return null;
+    }
 
     return (
       <div className={styles.shortnameWrapper}>
