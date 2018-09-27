@@ -26,7 +26,8 @@ import HotKeys from '../HotKeys/HotKeys';
 
 class CreateNewModal extends PureComponent<Props> {
   static defaultProps = {
-    id: 'create_new_modal'
+    id: 'create_new_modal',
+    isPublicGroupsEnabled: true
   };
 
   handlePrevStepClick = (): void => {
@@ -196,6 +197,7 @@ class CreateNewModal extends PureComponent<Props> {
             onSubmit={this.handleNextStepClick}
             onAvatarRemove={this.handleAvatarRemove}
             onAvatarChange={this.handleAvatarEdit}
+            isPublicGroupsEnabled={this.props.isPublicGroupsEnabled}
           />
         </ModalBody>
         <ModalFooter className={styles.footer}>
