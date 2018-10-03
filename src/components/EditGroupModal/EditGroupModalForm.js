@@ -51,7 +51,7 @@ class EditGroupModalForm extends PureComponent<Props, State> {
   static defaultProps = {
     vertical: false,
     id: 'edit_group',
-    groupAboutMaxLength: 3000
+    aboutMaxLength: 3000
   };
 
   constructor(props: Props, context: Context) {
