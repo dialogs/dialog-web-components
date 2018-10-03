@@ -1,0 +1,20 @@
+:root {
+  --chat-editor-record-button-color: color(#000 alpha(38%));
+  --chat-editor-record-button-active-color: color(#000 alpha(50%));
+}
+
+.button {
+  box-sizing: border-box;
+  flex: 0 0 auto;
+}
+
+.icon {
+  cursor: pointer;
+  user-select: none;
+  color: var(--chat-editor-record-button-color);
+
+  &:hover {
+    opacity: 1;
+    color: var(--chat-editor-record-button-active-color);
+  }
+}
