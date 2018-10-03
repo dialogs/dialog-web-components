@@ -28,7 +28,7 @@
   --select-next-color: #333;
   --select-next-background-color: #fff;
   --select-next-label-font-size: var(--default-font-size-small);
-  --select-next-label-color: #676c75;
+  --select-next-label-color: var(--color-labels);
   --select-next-border-color: #D1D3D8;
   --select-next-hover-border-color: color(var(--select-next-border-color) shade(10%));
   --select-next-focus-border-color: var(--color-primary);

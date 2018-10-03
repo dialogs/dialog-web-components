@@ -69,7 +69,7 @@ Prefixed Input
 
 ```jsx
 <InputNext
-  id="shortname"
+  id="shortname2"
   label="Channel link"
   onChange={value => setState({ value })}
   placeholder="string"
@@ -89,6 +89,24 @@ const initialState = {
   id="input_next_textarea"
   type="textarea"
   label="About"
+  placeholder="Type something"
+  value={state.value}
+  onChange={(value) => setState({ value })}
+/>
+```
+
+Input with maxLength
+
+```jsx
+const initialState = {
+  value: ''
+};
+
+<InputNext
+  id="input_next_maxLenght"
+  type="textarea"
+  label="About"
+  maxLength={10}
   placeholder="Type something"
   value={state.value}
   onChange={(value) => setState({ value })}

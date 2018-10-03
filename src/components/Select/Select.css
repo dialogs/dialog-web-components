@@ -20,7 +20,7 @@
   --select-color: #333;
   --select-background-color: #fff;
   --select-label-font-size: var(--default-font-size-small);
-  --select-label-color: #676c75;
+  --select-label-color: var(--color-labels);
   --select-border-color: #D1D3D8;
   --select-hover-border-color: color(var(--select-border-color) shade(10%));
   --select-focus-border-color: var(--color-primary);
