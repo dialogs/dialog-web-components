@@ -64,6 +64,7 @@
   --color-warning: var(--orange-yellow);
   --color-pending: var(--color-info);
   --color-error: var(--color-danger);
+  --color-labels: var(--dark-grey);
 
   /* Gradients */
   --default-gradient: linear-gradient(89deg, var(--violet-blue), var(--color-primary));

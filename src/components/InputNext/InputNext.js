@@ -29,6 +29,8 @@ export type Props = {
   size: 'small' | 'normal',
   autoFocus?: boolean,
   tabIndex?: number,
+  maxLength?: number,
+  lengthLimitCounter?: boolean,
   htmlAutoFocus?: boolean,
   spellcheck?: boolean,
   readOnly?: boolean,
@@ -193,6 +195,30 @@ class InputNext extends PureComponent<Props, State> {
     );
   }
 
+  renderLengthLimitCounter() {
+    const {
+      maxLength,
+      lengthLimitCounter
+    } = this.props;
+
+    if (!maxLength && !lengthLimitCounter) {
+      return null;
+    }
+
+    const input = this.input;
+    let value = input && input.value;
+    value = value || '';
+    const length = value.length;
+
+    return (
+      <div
+        className={styles.lengthLimitCounter}
+      >
+        {`${length} ${maxLength ? `/ ${maxLength}` : ''}`}
+      </div>
+    );
+  }
+
   renderInput() {
     const {
       id,
@@ -206,7 +232,8 @@ class InputNext extends PureComponent<Props, State> {
       onKeyUp,
       onKeyDown,
       onKeyPress,
-      prefix
+      prefix,
+      maxLength
     } = this.props;
     const { l10n: { formatText } } = this.context;
 
@@ -230,6 +257,7 @@ class InputNext extends PureComponent<Props, State> {
         ref={this.setInput}
         tabIndex={tabIndex}
         autoFocus={htmlAutoFocus}
+        maxLength={maxLength}
         onChange={this.handleChange}
         onBlur={this.handleBlur}
         onFocus={this.handleFocus}
@@ -269,6 +297,7 @@ class InputNext extends PureComponent<Props, State> {
     return (
       <div className={className}>
         {this.renderLabel()}
+        {this.renderLengthLimitCounter()}
         {this.renderDescription()}
         <div className={wrapperClassName}>
           {this.renderPrefix()}
