@@ -1,7 +1,7 @@
 Voice Recorder
 
 ```jsx
-<div>
+<div style={{position: 'relative', height: 50}}>
   <VoiceRecorder />
 </div>
 ```

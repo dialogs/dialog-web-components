@@ -45,7 +45,6 @@ export { default as Markdown } from './components/Markdown/Markdown';
 // Calls
 export { default as Call } from './components/Call/Call';
 export { default as CallChat } from './components/Call/CallChat';
-export { default as AudioPlayer } from './components/AudioPlayer/AudioPlayer';
 export { default as CallWindow } from './components/Call/CallWindow';
 export { default as CallFeedback } from './components/CallFeedback/CallFeedback';
 
