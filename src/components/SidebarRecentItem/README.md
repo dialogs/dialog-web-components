@@ -119,5 +119,35 @@ function handleSelect(peer) {
     online={null}
     onSelect={handleSelect}
   />
+  <SidebarRecentItem
+    uid={7}
+    info={channel}
+    muted={true}
+    active={channel.peer.key === state.current}
+    counter={57}
+    message={{ content: { type: 'text', text: '' }, attachment: { type: 'forward', from: null } }}
+    online={null}
+    onSelect={handleSelect}
+  />
+    <SidebarRecentItem
+      uid={1}
+      info={nkt}
+      active={nkt.peer.key === state.current}
+      counter={0}
+      favourite={true}
+      message={{ sender: nkt, content: { type: 'text', text: '' }, attachment: { type: 'forward', from: null }  }}
+      online={true}
+      onSelect={handleSelect}
+    />
+    <SidebarRecentItem
+      uid={1}
+      info={nkt}
+      active={nkt.peer.key === state.current}
+      counter={0}
+      favourite={true}
+      message={{ sender: nkt, content: { type: 'text', text: '' }, attachment: { type: 'reply', from: null }  }}
+      online={true}
+      onSelect={handleSelect}
+    />
 </div>
 ```
