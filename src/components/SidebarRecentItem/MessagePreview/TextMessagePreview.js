@@ -3,7 +3,7 @@
  * @flow
  */
 
-import type { MessageContentText } from '@dlghq/dialog-types';
+import type { MessageContentText, MessageAttachment } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
 import { Text } from '@dlghq/react-l10n';
 import Markdown from '../../Markdown/Markdown';
@@ -14,8 +14,9 @@ import styles from '../SidebarRecentItem.css';
 export type Props = {
   className?: string,
   content: MessageContentText,
+  attachment?: ?MessageAttachment,
   emojiSize: number,
-  decorators: typeof decorators
+  decorators?: typeof decorators
 };
 
 class TextMessagePreview extends PureComponent<Props> {
@@ -24,7 +25,7 @@ class TextMessagePreview extends PureComponent<Props> {
   };
 
   render() {
-    const { content } = this.props;
+    const { content, attachment } = this.props;
 
     if (content.text.startsWith('```')) {
       return (
@@ -36,6 +37,18 @@ class TextMessagePreview extends PureComponent<Props> {
       return (
         <Text className={styles.highlight} id="SidebarRecentItem.quote" />
       );
+    }
+
+    if (content.text === '' && attachment) {
+      if (attachment.type === 'forward') {
+        return (
+          <Text className={styles.highlight} id="SidebarRecentItem.forwarded" />
+        );
+      } else if (attachment.type === 'reply') {
+        return (
+          <Text className={styles.highlight} id="SidebarRecentItem.reply" />
+        );
+      }
     }
 
     return (
