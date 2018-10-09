@@ -6,7 +6,8 @@
     "react/prop-types": 0,
     "lines-around-comment": 0,
     "react/no-multi-comp": "off",
-    "react/jsx-one-expression-per-line": "off"
+    "react/jsx-one-expression-per-line": "off",
+    "react/no-did-mount-set-state": "off"
   },
   "env": {
     "jest": true

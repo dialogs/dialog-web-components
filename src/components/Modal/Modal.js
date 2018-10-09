@@ -6,6 +6,7 @@
 import React, { PureComponent, type Node } from 'react';
 import { createPortal } from 'react-dom';
 import classNames from 'classnames';
+import { ModalContext } from './ModalContext';
 
 import styles from './Modal.css';
 
@@ -25,13 +26,6 @@ type ReactModalProps = {
   shouldCloseOnOverlayClick: boolean,
   children: Node
 };
-
-const modalRoot = document.createElement('div');
-modalRoot.setAttribute('id', '@dlghq/web-components/modal-root');
-const body = document.querySelector('body');
-if (body) {
-  body.appendChild(modalRoot);
-}
 
 class ReactModal extends React.PureComponent<ReactModalProps> {
   static defaultProps = {
@@ -53,18 +47,27 @@ class ReactModal extends React.PureComponent<ReactModalProps> {
   render() {
     const { children, overlayClassName, className } = this.props;
 
-    return createPortal(
-      <div className={overlayClassName} onClick={this.handleClickOverlay}>
-        <div className={className} onClick={this.handleInnerClick}>
-          {children}
-        </div>
-      </div>,
-      modalRoot
+    return (
+      <ModalContext.Consumer>
+        {({ modalRoot }) => {
+          if (!modalRoot) return null;
+          console.log({ modalRoot });
+
+          return createPortal(
+            <div className={overlayClassName} onClick={this.handleClickOverlay}>
+              <div className={className} onClick={this.handleInnerClick}>
+                {children}
+              </div>
+            </div>,
+            modalRoot
+          );
+        }}
+      </ModalContext.Consumer>
     );
   }
 }
 
-class Modal extends PureComponent<Props> {
+export class Modal extends PureComponent<Props> {
   render() {
     const className = classNames(styles.container, this.props.className);
     const overlayClassName = classNames(styles.overlay, this.props.overlayClassName, {
