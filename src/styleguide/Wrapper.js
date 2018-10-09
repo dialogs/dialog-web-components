@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from '@dlghq/react-l10n';
 import classNames from 'classnames';
-import { ModalProvider } from '../components/Modal'
+import { ModalProvider } from '../components/Modal';
 
 import messages from './devMessages';
 import Select from '../components/Select/Select';
