@@ -36,7 +36,13 @@ export function renderText(tokens: TextToken[], emojiSize?: number = 16, isInlin
 
       case 'email':
         result.push(
-          <a key={index} className={styles.link} href={`mailto:${content}`}>
+          <a
+            key={index}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.link}
+            href={`mailto:${content}`}
+          >
             {content}
           </a>
         );
