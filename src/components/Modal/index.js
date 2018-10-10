@@ -1,4 +1,7 @@
-// @flow
+/*
+ * Copyright 2018 dialog LLC <info@dlg.im>
+ * @flow
+ */
 
 export * from './Modal';
 export { ModalProvider } from './ModalContext';

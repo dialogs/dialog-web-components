@@ -26,10 +26,12 @@ export class ModalProvider extends React.PureComponent<ModalProviderProps, Modal
   componentDidMount() {
     if (typeof window !== 'undefined') {
       const { modalRootId } = this.props;
-      const body = document.querySelector('body');
+      const body = document.body;
       if (body) {
         const modalRoot = document.createElement('div');
-        if (modalRootId) modalRoot.setAttribute('id', modalRootId);
+        if (modalRootId) {
+          modalRoot.setAttribute('id', modalRootId);
+        }
         body.appendChild(modalRoot);
         this.setState({ modalRoot });
       }
@@ -37,10 +39,9 @@ export class ModalProvider extends React.PureComponent<ModalProviderProps, Modal
   }
 
   componentWillUnmount() {
-    const body = document.querySelector('body');
     const { modalRoot } = this.state;
-    if (body && modalRoot) {
-      body.removeChild(modalRoot);
+    if (modalRoot && modalRoot.parentNode) {
+      modalRoot.parentNode.removeChild(modalRoot);
     }
   }
 

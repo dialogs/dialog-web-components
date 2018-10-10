@@ -51,7 +51,6 @@ class ReactModal extends React.PureComponent<ReactModalProps> {
       <ModalContext.Consumer>
         {({ modalRoot }) => {
           if (!modalRoot) return null;
-          console.log({ modalRoot });
 
           return createPortal(
             <div className={overlayClassName} onClick={this.handleClickOverlay}>
