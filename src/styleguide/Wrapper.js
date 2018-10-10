@@ -2,6 +2,8 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from '@dlghq/react-l10n';
 import classNames from 'classnames';
+import { ModalProvider } from '../components/Modal';
+
 import messages from './devMessages';
 import Select from '../components/Select/Select';
 import Switcher from '../components/Switcher/Switcher';
@@ -64,18 +66,20 @@ class Wrapper extends PureComponent {
     const wrapperClassName = classNames(styles.wrapper, this.state.isTransparent ? styles.transparent : styles.white);
 
     return (
-      <Provider locale={this.state.locale} messages={messages} globalValues={{ appName: 'dialog' }}>
-        <div className={styles.container}>
-          <header className={styles.header}>
-            {this.renderBackgroundToggle()}
-            <div className={styles.spacer} />
-            {this.renderLocaleSelect()}
-          </header>
-          <div className={wrapperClassName}>
-            {this.props.children}
+      <ModalProvider>
+        <Provider locale={this.state.locale} messages={messages} globalValues={{ appName: 'dialog' }}>
+          <div className={styles.container}>
+            <header className={styles.header}>
+              {this.renderBackgroundToggle()}
+              <div className={styles.spacer} />
+              {this.renderLocaleSelect()}
+            </header>
+            <div className={wrapperClassName}>
+              {this.props.children}
+            </div>
           </div>
-        </div>
-      </Provider>
+        </Provider>
+      </ModalProvider>
     );
   }
 }

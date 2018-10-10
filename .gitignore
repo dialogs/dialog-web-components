@@ -12,3 +12,4 @@ yarn-error.log
 /src/components/Icon/Icons.svg
 
 \.idea/
+.vscode

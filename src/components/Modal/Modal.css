@@ -41,6 +41,7 @@
 /* Styles */
 .container {
   display: flex;
+  flex-direction: column;
   overflow: hidden;
   min-width: var(--modal-min-width);
   margin: calc(var(--default-padding-large) * 3) 0 0;

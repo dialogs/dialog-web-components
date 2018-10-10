@@ -80,11 +80,7 @@ export { default as Registration } from './components/Registration/Registration'
 export { default as GenderSelect } from './components/GenderSelect/GenderSelect';
 
 // Modals
-export { default as Modal } from './components/Modal/Modal';
-export { default as ModalBody } from './components/Modal/ModalBody';
-export { default as ModalClose } from './components/Modal/ModalClose';
-export { default as ModalFooter } from './components/Modal/ModalFooter';
-export { default as ModalHeader } from './components/Modal/ModalHeader';
+export * from './components/Modal';
 
 // Plug & Play Modals
 export { default as AboutModal } from './components/AboutModal/AboutModal';
