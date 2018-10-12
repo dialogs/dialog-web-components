@@ -136,6 +136,7 @@ export { default as FakeMessage } from './components/FakeMessage/FakeMessage';
 export { default as EmptyChat } from './components/EmptyChat/EmptyChat';
 export { default as WelcomeMessage } from './components/WelcomeMessage/WelcomeMessage';
 export { default as VoiceRecorder } from './components/VoiceRecorder/VoiceRecorder';
+export { default as AudioPlayer } from './components/AudioPlayer/AudioPlayer';
 
 // Contacts
 export { default as ContactSelector } from './components/ContactSelector/ContactSelector';

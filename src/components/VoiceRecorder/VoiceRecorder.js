@@ -4,7 +4,7 @@
  */
 
 import React, { Component } from 'react';
-import MediaRecorder from 'audio-recorder-polyfill';
+import Recorder from 'opus-recorder';
 import IconButton from '../IconButton/IconButton';
 import TimeTimer from '../Timer/TimeTimer';
 import classNames from 'classnames';
@@ -13,7 +13,6 @@ import styles from './VoiceRecorder.css';
 type Props = {
   className?: string,
   onStop?: () => void,
-  onCancel?: () => void,
   onSave: (Object) => void
 };
 
@@ -24,14 +23,16 @@ type State = {
   isRecording: boolean
 };
 
-type Event = {
-  data: Blob
+const options = {
+  monitorGain: 0,
+  recordingGain: 1,
+  numberOfChannels: 1,
+  encoderSampleRate: 48000,
+  encoderPath: '/devapp/encoderWorker.min.js'
 };
 
-const constraints = { audio: true };
-
 class VoiceRecorder extends Component<Props, State> {
-  recorder: MediaRecorder;
+  recorder: Recorder;
 
   constructor(props: Props) {
     super(props);
@@ -42,58 +43,45 @@ class VoiceRecorder extends Component<Props, State> {
       canSave: false,
       isRecording: false
     };
+
+    this.recorder = new Recorder(options);
+    this.recorder.onstart = this.startRecording;
+    this.recorder.onstop = this.stopRecording;
+    this.recorder.ondataavailable = this.saveRecord;
   }
 
-  componentWillUnmount() {
-    this.recorder.removeEventListener('dataavailable', this.handleSave);
-  }
-
-  handleSave = (e: Event) => {
-    const { onSave } = this.props;
-    const { canSave, startTime, endTime } = this.state;
-
-    if (canSave && onSave) {
-      const duration = endTime - startTime;
-      onSave({ blob: e.data, duration });
-    }
+  handleStart = () => {
+    this.recorder.start();
   };
 
-  handleStopClick = () => {
-    const { onStop } = this.props;
+  handleStopClick = (e: SyntheticEvent<HTMLButtonElement>) => {
+    const canSave = e.currentTarget.id === 'stopBtn';
+    this.recorder.stop();
+    this.setState({ canSave, isRecording: false, endTime: Date.now() });
+  };
 
-    this.stopRecording();
-    this.setState({ canSave: true, isRecording: false, endTime: Date.now() });
+  startRecording = () => {
+    this.setState({ isRecording: true, startTime: Date.now() });
+  };
+
+  stopRecording = () => {
+    const { onStop } = this.props;
 
     if (onStop) {
       onStop();
     }
   };
 
-  handleCancelClick = () => {
-    const { onCancel } = this.props;
+  saveRecord = (buffer: Uint8Array) => {
+    const { onSave } = this.props;
+    const { canSave } = this.state;
 
-    this.stopRecording();
-    this.setState({ canSave: false, isRecording: false });
-
-    if (onCancel) {
-      onCancel();
+    if (canSave && onSave) {
+      const { startTime, endTime } = this.state;
+      const duration = endTime - startTime;
+      const blob = new Blob([buffer], { type: 'audio/ogg' });
+      onSave({ blob, duration });
     }
-  };
-
-  startRecording = () => {
-    if (navigator.mediaDevices) {
-      navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
-        this.recorder = new MediaRecorder(stream);
-        this.recorder.addEventListener('dataavailable', this.handleSave);
-        this.recorder.start();
-        this.setState({ isRecording: true, startTime: Date.now() });
-      });
-    }
-  };
-
-  stopRecording = () => {
-    this.recorder.stop();
-    this.recorder.stream.getTracks()[0].stop();
   };
 
   renderControls() {
@@ -103,20 +91,22 @@ class VoiceRecorder extends Component<Props, State> {
     return (
       <div className={className}>
         <div className={styles.controlsWrapper}>
-          <div className={styles.backdrop} onClick={this.handleCancelClick} />
+          <div className={styles.backdrop} onClick={this.handleStopClick} />
           <div className={styles.controls}>
             <IconButton
+              id="cancelBtn"
               glyph="close"
               size="small"
               theme="danger"
               flat
-              onClick={this.handleCancelClick}
+              onClick={this.handleStopClick}
             />
             <div className={styles.timer}>
               <span className={styles.timerCircle} />
               <TimeTimer start={startTime} className={styles.timerDigits} />
             </div>
             <IconButton
+              id="stopBtn"
               glyph="done"
               size="small"
               theme="success"
