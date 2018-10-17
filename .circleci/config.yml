@@ -48,6 +48,17 @@ jobs:
           npm version prerelease --preid=${CIRCLE_BRANCH}.${CIRCLE_BUILD_NUM} --ignore-scripts
           npm publish --tag=${CIRCLE_BRANCH}
 
+  npm_publish_release:
+    docker:
+      - image: node:10
+    steps:
+      - checkout
+      - run:
+          <<: *defaults_run
+      - run: |
+          npm version patch
+          npm publish
+
 workflows:
   version: 2
   build-deploy:
@@ -64,6 +75,12 @@ workflows:
             branches:
               only:
                 - master
+      - npm_publish_release:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
       - npm_publish_prerelease:
           requires:
             - build
