@@ -6,8 +6,6 @@ jobs:
     steps:
       - checkout
       - run: |
-          git config --global user.email ${GIT_NAME}
-          git config --global user.name ${GIT_EMAIL}
           yarn install --pure-lockfile --no-progress
           yarn build
           yarn test
@@ -27,7 +25,9 @@ jobs:
       - restore_cache:
           keys:
             - dialog-coponents-{{ .Branch }}
-      - run: yarn docs
+      - run: |
+          yarn
+          yarn docs
 
   npm_publish_prerelease:
     docker:
@@ -35,6 +35,8 @@ jobs:
     steps:
       - checkout
       - run: |
+          git config --global user.email ${GIT_NAME}
+          git config --global user.name ${GIT_EMAIL}
           npm version prerelease --preid=${CIRCLE_BRANCH} --ignore-scripts
           npm publish --tag=${CIRCLE_BRANCH}
 
