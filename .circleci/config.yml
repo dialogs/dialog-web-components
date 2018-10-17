@@ -26,6 +26,8 @@ jobs:
           keys:
             - dialog-coponents-{{ .Branch }}
       - run: |
+          git config user.email ${GIT_NAME}
+          git config user.name ${GIT_EMAIL}
           yarn
           yarn docs
 
@@ -35,8 +37,9 @@ jobs:
     steps:
       - checkout
       - run: |
-          git config --global user.email ${GIT_NAME}
-          git config --global user.name ${GIT_EMAIL}
+          echo "//registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" > ~/.npmrc
+          git config user.email ${GIT_NAME}
+          git config user.name ${GIT_EMAIL}
           npm version prerelease --preid=${CIRCLE_BRANCH} --ignore-scripts
           npm publish --tag=${CIRCLE_BRANCH}
 
@@ -53,9 +56,9 @@ workflows:
           requires:
             - build
           filters:
-            tags:
+            branches:
               only:
-                - /^v\d+(\.\d+)*$/
+                - master
       - npm_publish_prerelease:
           requires:
             - build
