@@ -83,24 +83,20 @@ class AddContactModal extends PureComponent<Props> {
   };
 
   isLocked(): boolean {
-    const { pending, contact } = this.props;
+    const { pending, contact, query } = this.props;
 
-    return pending || !contact;
+    return pending || !contact || query === '';
   }
 
   renderStatus() {
     const { query, pending, contact } = this.props;
 
     if (!query) {
-      return (
-        <Text id="AddContactModal.hint" className={styles.hint} />
-      );
+      return <Text id="AddContactModal.hint" className={styles.hint} />;
     }
 
     if (pending) {
-      return (
-        <Spinner type="round" size="large" />
-      );
+      return <Spinner type="round" size="large" />;
     }
 
     if (contact) {
@@ -114,13 +110,7 @@ class AddContactModal extends PureComponent<Props> {
                 image={contact.avatar}
                 placeholder={contact.placeholder}
               />
-              <Icon
-                glyph="done"
-                className={styles.iconSmall}
-                inverted
-                size={14}
-                theme="success"
-              />
+              <Icon glyph="done" className={styles.iconSmall} inverted size={14} theme="success" />
             </div>
             <Text
               id="AddContactModal.user_in_contact"
@@ -151,9 +141,7 @@ class AddContactModal extends PureComponent<Props> {
       );
     }
 
-    return (
-      <Text id="AddContactModal.not_found" className={styles.hint} />
-    );
+    return <Text id="AddContactModal.not_found" className={styles.hint} />;
   }
 
   renderContact() {
@@ -173,17 +161,9 @@ class AddContactModal extends PureComponent<Props> {
               image={contact.avatar}
               placeholder={contact.placeholder}
             />
-            <Icon
-              glyph="clear"
-              className={styles.iconError}
-              inverted
-              theme="danger"
-              size={32}
-            />
+            <Icon glyph="clear" className={styles.iconError} inverted theme="danger" size={32} />
           </div>
-          <ErrorMessage className={styles.error}>
-            {error.message}
-          </ErrorMessage>
+          <ErrorMessage className={styles.error}>{error.message}</ErrorMessage>
         </div>
       );
     }
@@ -197,13 +177,7 @@ class AddContactModal extends PureComponent<Props> {
             image={contact.avatar}
             placeholder={contact.placeholder}
           />
-          <Icon
-            glyph="done"
-            className={styles.icon}
-            inverted
-            theme="success"
-            size={32}
-          />
+          <Icon glyph="done" className={styles.icon} inverted theme="success" size={32} />
         </div>
         <Text
           id="AddContactModal.user_added"
@@ -220,11 +194,7 @@ class AddContactModal extends PureComponent<Props> {
     const { query, added } = this.props;
 
     if (added) {
-      return (
-        <ModalBody className={styles.body}>
-          {this.renderContact()}
-        </ModalBody>
-      );
+      return <ModalBody className={styles.body}>{this.renderContact()}</ModalBody>;
     }
 
     return (
@@ -238,17 +208,15 @@ class AddContactModal extends PureComponent<Props> {
           placeholder="AddContactModal.placeholder"
           onChange={this.handleQueryChange}
         />
-        <div className={styles.status}>
-          {this.renderStatus()}
-        </div>
+        <div className={styles.status}>{this.renderStatus()}</div>
       </ModalBody>
     );
   }
 
   renderFooter() {
-    const { error, added, contact } = this.props;
+    const { error, added, contact, query } = this.props;
 
-    if (added || (contact && contact.isContact)) {
+    if (added || (contact && contact.isContact && query !== '')) {
       return (
         <ModalFooter className={styles.footer}>
           <Button
