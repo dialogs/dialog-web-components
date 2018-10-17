@@ -33,10 +33,12 @@ workflows:
             branches:
               ignore:
                 - gh-pages
-      # - deployment:
-      #     filters:
-      #       tags:
-      #         - /^v\d+(\.\d+)*$/
+      - deployment:
+          requires:
+            - build
+          filters:
+            tags:
+              - /^v\d+(\.\d+)*$/
 
 # general:
 #   branches:
