@@ -17,7 +17,7 @@ jobs:
           yarn test
           yarn coverage
       - save_cache:
-          key: dialog-coponents-{{ .Branch }}
+          key: dialog-components-{{ .Branch }}
           paths:
             - ~/.yarn
             - ~/.yarn-cache
@@ -30,7 +30,7 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - dialog-coponents-{{ .Branch }}
+            - dialog-components-{{ .Branch }}
       - run:
           <<: *defaults_run
       - run: |
@@ -47,6 +47,7 @@ jobs:
       - run: |
           npm version prerelease --preid=${CIRCLE_BRANCH} --ignore-scripts
           npm publish --tag=${CIRCLE_BRANCH}
+          git push
 
 workflows:
   version: 2
