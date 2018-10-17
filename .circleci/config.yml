@@ -14,11 +14,30 @@ jobs:
           yarn test
           yarn coverage
       - save_cache:
-            key: dialog-coponents-{{ .Branch }}
-            paths:
-              - ~/.yarn
-              - ~/.yarn-cache
-              - ~/.cache/yarn
+          key: dialog-coponents-{{ .Branch }}
+          paths:
+            - ~/.yarn
+            - ~/.yarn-cache
+            - ~/.cache/yarn
+  deployment:
+    docker:
+      - image: node:10
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - dialog-coponents-{{ .Branch }}
+
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build
+      - deployment:
+          filters:
+            tags:
+              - /^v\d+(\.\d+)*$/
+        
       
 
 # general:
