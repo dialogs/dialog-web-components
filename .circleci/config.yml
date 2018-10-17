@@ -1,5 +1,9 @@
 version: 2
- 
+defaults_run: &defaults_run
+  - run: |
+    echo "//registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" > ~/.npmrc
+    git config user.email ${GIT_NAME}
+    git config user.name ${GIT_EMAIL}
 jobs:
   build:
     docker:
@@ -26,9 +30,8 @@ jobs:
       - restore_cache:
           keys:
             - dialog-coponents-{{ .Branch }}
+      <<: *defaults_run
       - run: |
-          git config user.email ${GIT_NAME}
-          git config user.name ${GIT_EMAIL}
           yarn
           yarn docs
 
@@ -37,12 +40,10 @@ jobs:
       - image: node:10
     steps:
       - checkout
-      - run:
-          - echo "//registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" > ~/.npmrc
-          - git config user.email ${GIT_NAME}
-          - git config user.name ${GIT_EMAIL}
-          - npm version prerelease --preid=${CIRCLE_BRANCH} --ignore-scripts
-          - npm publish --tag=${CIRCLE_BRANCH}
+      <<: *defaults_run
+      - run: |
+          npm version prerelease --preid=${CIRCLE_BRANCH} --ignore-scripts
+          npm publish --tag=${CIRCLE_BRANCH}
 
 workflows:
   version: 2
