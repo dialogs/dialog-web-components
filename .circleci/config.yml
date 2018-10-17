@@ -38,7 +38,7 @@ workflows:
             - build
           filters:
             tags:
-              - /^v\d+(\.\d+)*$/
+              only: /^v\d+(\.\d+)*$/
 
 # general:
 #   branches:
