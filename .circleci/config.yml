@@ -14,8 +14,8 @@ jobs:
       - run: |
           yarn install --pure-lockfile --no-progress
           yarn build
-          yarn test
-          yarn coverage
+          # yarn test
+          # yarn coverage
       - save_cache:
           key: dialog-components-{{ .Branch }}
           paths:
@@ -45,9 +45,8 @@ jobs:
       - run:
           <<: *defaults_run
       - run: |
-          npm version prerelease --preid=test2${CIRCLE_BRANCH} --ignore-scripts
+          npm version prerelease --preid=${CIRCLE_BRANCH}.${CIRCLE_BUILD_NUM} --ignore-scripts
           npm publish --tag=${CIRCLE_BRANCH}
-          git push -u origin ${CIRCLE_BRANCH}
 
 workflows:
   version: 2
