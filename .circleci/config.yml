@@ -41,7 +41,7 @@ jobs:
     steps:
       - checkout
       - run:
-          <<: *defaults_run
+          - <<: *defaults_run
           - npm version prerelease --preid=${CIRCLE_BRANCH} --ignore-scripts
           - npm publish --tag=${CIRCLE_BRANCH}
 
