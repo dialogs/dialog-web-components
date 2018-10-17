@@ -50,7 +50,8 @@ workflows:
             - build
           filters:
             tags:
-              only: /^v\d+(\.\d+)*$/
+              only:
+                - /^v\d+(\.\d+)*$/
       - npm_publish_prerelease:
           requires:
             - build
