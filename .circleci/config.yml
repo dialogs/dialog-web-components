@@ -7,6 +7,7 @@ jobs:
       ignore:
         - gh-pages
     steps:
+      - checkout
       - run: |
           yarn install --pure-lockfile --no-progress
           yarn build
