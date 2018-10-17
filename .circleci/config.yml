@@ -1,8 +1,8 @@
-version: 2.1
+version: 2
 jobs:
-  machine:
-    docker: node:10
   build:
+    machine:
+      docker: node:10
     branches:
       ignore:
         - gh-pages
