@@ -23,7 +23,7 @@
     "lint:flow": "flow",
     "format": "npm-run-all --sequential format:*",
     "format:eslint": "eslint --fix src/",
-    "format:prettier": "prettier --write --loglevel warn src/**/*.js",
+    "format:prettier": "prettier --write --loglevel warn \"src/**/*.js\" \".circleci/*.yml\"",
     "preversion": "npm test",
     "postversion": "npm run release",
     "prerelease": "npm run build",
