@@ -45,9 +45,9 @@ jobs:
       - run:
           <<: *defaults_run
       - run: |
-          npm version prerelease --preid=test${CIRCLE_BRANCH} --ignore-scripts
+          npm version prerelease --preid=test2${CIRCLE_BRANCH} --ignore-scripts
           npm publish --tag=${CIRCLE_BRANCH}
-          git push
+          git push -u origin ${CIRCLE_BRANCH}
 
 workflows:
   version: 2
