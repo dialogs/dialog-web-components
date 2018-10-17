@@ -16,6 +16,7 @@ jobs:
             - ~/.yarn
             - ~/.yarn-cache
             - ~/.cache/yarn
+
   deployment:
     docker:
       - image: node:10
@@ -25,6 +26,16 @@ jobs:
           keys:
             - dialog-coponents-{{ .Branch }}
       - run: yarn docs
+
+  npm_publish_prerelease:
+    docker:
+      - image: node:10
+    steps:
+      - checkout
+      - run: |
+          npm version prerelease --preid={{ .Branch }} --ignore-scripts
+          npm publish --tag={{ .Branch }}
+
 workflows:
   version: 2
   build-deploy:
@@ -40,3 +51,9 @@ workflows:
           filters:
             tags:
               only: /^v\d+(\.\d+)*$/
+      - npm_publish_prerelease:
+          requires:
+            - build
+          filters:
+            branches:
+              ignore: master
