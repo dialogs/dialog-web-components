@@ -4,13 +4,14 @@
  */
 
 import React, { PureComponent, type Node } from 'react';
-import PropTypes from 'prop-types';
+
+import { RadioGroupContext } from './RadioGroupContext';
 
 export type Props = {
   className?: string,
-  disabled?: boolean,
+  disabled: boolean,
   children: Node,
-  name: string,
+  name?: string,
   value: string,
   onChange: (value: string, event: SyntheticInputEvent<HTMLInputElement>) => mixed
 };
@@ -25,26 +26,17 @@ export type Context = {
 };
 
 class RadioGroup extends PureComponent<Props> {
-  static childContextTypes = {
-    radioGroup: PropTypes.object.isRequired
+  static defaultProps = {
+    disabled: false
   };
 
-  getChildContext(): Context {
-    return {
-      radioGroup: {
-        name: this.props.name,
-        value: this.props.value,
-        onChange: this.props.onChange,
-        disabled: this.props.disabled
-      }
-    };
-  }
-
   render() {
+    const { value, name, onChange, disabled } = this.props;
+
     return (
-      <div className={this.props.className}>
-        {this.props.children}
-      </div>
+      <RadioGroupContext.Provider value={{ value, name, onChange, disabled }}>
+        <div className={this.props.className}>{this.props.children}</div>
+      </RadioGroupContext.Provider>
     );
   }
 }
