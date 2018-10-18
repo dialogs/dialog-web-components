@@ -74,10 +74,10 @@ workflows:
       - deployment:
           requires:
             - build
-          # filters:
-          #   branches:
-          #     only:
-          #       - master
+          filters:
+            branches:
+              only:
+                - master
       - npm_publish_release:
           requires:
             - build
