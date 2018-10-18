@@ -9,17 +9,17 @@ import classNames from 'classnames';
 import styles from './Radio.css';
 import { RadioGroupContext, type RadioGroupContextType } from './RadioGroupContext';
 
-export type Props = {
+export type RadioProps = {
   className?: string,
   children: Node,
   id?: string,
   value: string,
   tabIndex?: number,
   htmlAutoFocus?: boolean,
-  disabled: boolean
+  disabled?: boolean
 };
 
-class Radio extends PureComponent<Props> {
+class Radio extends PureComponent<RadioProps> {
   handleChange = (radioGroup: RadioGroupContextType) => (
     event: SyntheticInputEvent<HTMLInputElement>
   ): void => {

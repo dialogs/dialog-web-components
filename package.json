@@ -20,7 +20,7 @@
     "test": "jest",
     "lint": "npm-run-all --sequential lint:eslint lint:flow",
     "lint:eslint": "eslint src/",
-    "lint:flow": "flow",
+    "lint:flow": "flow stop & flow",
     "format": "npm-run-all --sequential format:*",
     "format:eslint": "eslint --fix src/",
     "format:prettier": "prettier --write --loglevel warn \"src/**/*.js\" \".circleci/*.yml\"",

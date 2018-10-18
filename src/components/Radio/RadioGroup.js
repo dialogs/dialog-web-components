@@ -7,7 +7,7 @@ import React, { PureComponent, type Node } from 'react';
 
 import { RadioGroupContext } from './RadioGroupContext';
 
-export type Props = {
+export type RadioGroupProps = {
   className?: string,
   disabled: boolean,
   children: Node,
@@ -25,7 +25,7 @@ export type Context = {
   }
 };
 
-class RadioGroup extends PureComponent<Props> {
+class RadioGroup extends PureComponent<RadioGroupProps> {
   static defaultProps = {
     disabled: false
   };
