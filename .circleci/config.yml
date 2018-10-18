@@ -12,16 +12,14 @@ jobs:
     steps:
       - checkout
       - run: |
-          yarn install --pure-lockfile --no-progress
-          yarn build
-          yarn test
-          yarn coverage
+          npm i
+          npm run build
+          npm test
+          npm run coverage
       - save_cache:
           key: dialog-components-{{ .Branch }}
           paths:
-            - ~/.yarn
-            - ~/.yarn-cache
-            - ~/.cache/yarn
+            - node_modules
 
   deployment:
     docker:
@@ -34,8 +32,8 @@ jobs:
       - run:
           <<: *defaults_run
       - run: |
-          yarn
-          yarn docs
+          npm i
+          npm run docs
 
   npm_publish_prerelease:
     docker:
