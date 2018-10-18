@@ -20,7 +20,6 @@ jobs:
           npm i
           npm run build
           npm test
-          npm run coverage
       - save_cache:
           key: dialog-components-{{ .Branch }}
           paths:
@@ -37,7 +36,6 @@ jobs:
       - run:
           <<: *defaults_run
       - run: |
-          npm i
           npm run docs
 
   npm_publish_prerelease:
@@ -62,7 +60,7 @@ jobs:
       - run:
           <<: *defaults_run
       - run: |
-          npm publish
+          npm version
 
 workflows:
   version: 2

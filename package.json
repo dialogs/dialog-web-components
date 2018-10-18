@@ -28,7 +28,6 @@
     "postversion": "npm run release",
     "prerelease": "npm run build",
     "release": "npm publish",
-    "postpublish": "git push --follow-tags",
     "predocs": "styleguidist build",
     "docs": "buildbranch gh-pages styleguide",
     "coverage": "flow-coverage-report -i 'src/**/*.js' -x 'src/styleguide/**/*.js' -x 'src/utils/compileMessages.js'",
