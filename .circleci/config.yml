@@ -20,7 +20,6 @@ jobs:
           npm i
           npm run build
           npm test
-          npm run coverage
       - save_cache:
           key: dialog-components-{{ .Branch }}
           paths:
