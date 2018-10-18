@@ -3,14 +3,16 @@ defaults_run: &defaults_run
   name: run defaults
   command: |
     echo "//registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" > ~/.npmrc
-    git config user.name ${GIT_NAME}
-    git config user.email ${GIT_EMAIL}
+    git config user.name "$GIT_NAME"
+    git config user.email "$GIT_EMAIL"
 jobs:
   build:
     docker:
       - image: node:10
     steps:
       - checkout
+      - run:
+          <<: *defaults_run
       - run: |
           npm i
           npm run build
@@ -35,16 +37,19 @@ jobs:
           npm i
           npm run docs
 
-  npm_publish_prerelease:
-    docker:
-      - image: node:10
-    steps:
-      - checkout
-      - run:
-          <<: *defaults_run
-      - run: |
-          npm version prerelease --preid=${CIRCLE_BRANCH}.${CIRCLE_BUILD_NUM} --ignore-scripts
-          npm publish --tag=${CIRCLE_BRANCH}
+#  npm_publish_prerelease:
+#    docker:
+#      - image: node:10
+#    steps:
+#      - checkout
+#      - run:
+#          <<: *defaults_run
+#      - run: |
+#          if [ "${CIRCLE_PROJECT_USERNAME}" = "dialogs" ]
+#          then
+#            npm version prerelease --preid=${CIRCLE_BRANCH}.${CIRCLE_BUILD_NUM} --ignore-scripts
+#            npm publish --tag=${CIRCLE_BRANCH}
+#          fi
 
   npm_publish_release:
     docker:
@@ -78,9 +83,9 @@ workflows:
           filters:
             branches:
               only: master
-      - npm_publish_prerelease:
-          requires:
-            - build
-          filters:
-            branches:
-              ignore: master
+#      - npm_publish_prerelease:
+#          requires:
+#            - build
+#          filters:
+#            branches:
+#              ignore: master
