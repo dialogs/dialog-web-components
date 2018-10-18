@@ -19,7 +19,7 @@ export type Props = {
   flat: boolean,
   disabled: boolean,
   active?: boolean,
-  onClick: (event: SyntheticMouseEvent<>) => mixed
+  onClick: (event: SyntheticEvent<HTMLButtonElement>) => mixed
 };
 
 class IconButton extends PureComponent<Props> {

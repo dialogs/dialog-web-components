@@ -57,7 +57,6 @@
     "@dlghq/emoji": "2.2.0",
     "@dlghq/markdown": "1.3.1",
     "@dlghq/react-l10n": "0.9.1",
-    "audio-recorder-polyfill": "0.1.3",
     "classnames": "2.2.6",
     "clipboard": "2.0.1",
     "croppie": "2.6.2",
