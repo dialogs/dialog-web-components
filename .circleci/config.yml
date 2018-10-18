@@ -3,8 +3,8 @@ defaults_run: &defaults_run
   name: run defaults
   command: |
     echo "//registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" > ~/.npmrc
-    git config user.email ${GIT_NAME}
-    git config user.name ${GIT_EMAIL}
+    git config user.name ${GIT_NAME}
+    git config user.email ${GIT_EMAIL}
 jobs:
   build:
     docker:
