@@ -3,6 +3,7 @@
  * @flow
  */
 
+import type { ColorTheme } from '@dlghq/dialog-types';
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import Icon from '../Icon/Icon';
@@ -12,7 +13,7 @@ export type Props = {
   className?: string,
   id?: string,
   checked: boolean,
-  theme: 'primary' | 'success' | 'danger' | 'info' | 'warning',
+  theme: ColorTheme,
   size: number,
   stopPropagation: boolean,
   onClick?: (checked: boolean) => mixed

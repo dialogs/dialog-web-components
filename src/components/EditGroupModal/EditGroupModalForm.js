@@ -25,11 +25,13 @@ export type Props = {
   avatar: ?(string | File),
   className?: string,
   vertical: boolean,
+  isPublicGroupsEnabled: boolean,
   shortnamePrefix?: ?string,
   onChange: () => void,
   onSubmit: () => void,
   onAvatarChange: (avatar: File) => void,
-  onAvatarRemove: () => void
+  onAvatarRemove: () => void,
+  aboutMaxLength?: number
 };
 
 export type State = {
@@ -48,7 +50,8 @@ class EditGroupModalForm extends PureComponent<Props, State> {
 
   static defaultProps = {
     vertical: false,
-    id: 'edit_group'
+    id: 'edit_group',
+    aboutMaxLength: 3000
   };
 
   constructor(props: Props, context: Context) {
@@ -134,7 +137,11 @@ class EditGroupModalForm extends PureComponent<Props, State> {
   }
 
   renderShortname() {
-    const { group, shortname, id } = this.props;
+    const { group, shortname, id, isPublicGroupsEnabled } = this.props;
+
+    if (!isPublicGroupsEnabled) {
+      return null;
+    }
 
     return (
       <div className={styles.shortnameWrapper}>
@@ -162,7 +169,7 @@ class EditGroupModalForm extends PureComponent<Props, State> {
   }
 
   render() {
-    const { group, about, name, vertical, id } = this.props;
+    const { group, about, name, vertical, id, aboutMaxLength } = this.props;
     const className = classNames(
       styles.info,
       {
@@ -193,6 +200,7 @@ class EditGroupModalForm extends PureComponent<Props, State> {
             name="about"
             status={about.error ? 'error' : 'normal'}
             onChange={this.props.onChange}
+            maxLength={aboutMaxLength}
             label={`CreateNewModal.${group.type}.info.description.label`}
             placeholder={`CreateNewModal.${group.type}.info.description.placeholder`}
             type="textarea"

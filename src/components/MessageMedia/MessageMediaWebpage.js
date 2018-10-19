@@ -77,7 +77,7 @@ class MessageMediaWebpage extends PureComponent<Props> {
     }
 
     return (
-      <a className={styles.webpageLink} href={url} target="_blank">
+      <a className={styles.webpageLink} href={url} target="_blank" rel="noopener noreferrer">
         {url}
       </a>
     );

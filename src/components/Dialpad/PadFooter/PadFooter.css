@@ -1,0 +1,38 @@
+/**
+ * Copyright 2018 dialog LLC <info@dlg.im>
+ */
+
+@import '../../../styles/variables.css';
+
+:root {
+  --pad-footer-font-family: var(--default-font-family);
+}
+
+/* Reset */
+.container {
+  all: initial;
+}
+
+/* Styles */
+.container {
+  font-family: var(--pad-footer-font-family);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  width: 100%;
+  padding-top: calc(var(--default-padding) / 2);
+}
+
+.button {
+  border-radius: var(--default-border-radius-small);
+  box-shadow: none !important;
+  height: 46px;
+  line-height: 0;
+}
+
+.buttonIcon {
+  color: #fff;
+}

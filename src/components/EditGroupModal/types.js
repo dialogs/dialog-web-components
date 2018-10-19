@@ -22,6 +22,7 @@ export type Props = {
   },
   className?: string,
   shortnamePrefix?: ?string,
+  isPublicGroupsEnabled: boolean,
   onClose: () => void,
   onSubmit: (group: Group, update: GroupUpdate) => mixed
 };

@@ -9,6 +9,7 @@ import classNames from 'classnames';
 import { Text } from '@dlghq/react-l10n';
 import { AutoSizer, List } from 'react-virtualized';
 import SidebarCallItem from '../SidebarCallItem/SidebarCallItem';
+import Dialpad from '../Dialpad/Dialpad';
 import styles from './SidebarCalls.css';
 
 export type Props = {
@@ -16,11 +17,21 @@ export type Props = {
   pending: boolean,
   uid: number,
   calls: CallInfo[],
-  onLoadMore: () => void,
-  onSelect: (call: CallInfo) => void
+  enableDialpad: boolean,
+  number: string,
+  onLoadMore: () => mixed,
+  onSelect: (call: CallInfo) => mixed,
+  onNumberChange: (phone: string) => mixed,
+  onNumberSubmit: (phone: string) => mixed,
+  onNumberFocus: () => mixed,
+  onNumberBlur: () => mixed
 };
 
 class SidebarCalls extends Component<Props> {
+  static defaultProps = {
+    enableDialpad: false
+  };
+
   handleRowsRendered = ({ overscanStopIndex }: Object) => {
     if (overscanStopIndex === this.props.calls.length - 1) {
       this.props.onLoadMore();
@@ -52,30 +63,55 @@ class SidebarCalls extends Component<Props> {
     );
   };
 
-  render() {
-    const className = classNames(styles.container, this.props.className);
+  renderDialpad() {
+    if (!this.props.enableDialpad) {
+      return null;
+    }
 
+    return (
+      <Dialpad
+        className={styles.dialpad}
+        number={this.props.number}
+        onChange={this.props.onNumberChange}
+        onSubmit={this.props.onNumberSubmit}
+        onBlur={this.props.onNumberBlur}
+        onFocus={this.props.onNumberFocus}
+      />
+    );
+  }
+
+  renderCallList() {
     if (this.props.pending && !this.props.calls.length) {
       return null;
     }
 
     return (
+      <AutoSizer>
+        {({ width, height }) => {
+          return (
+            <List
+              width={width}
+              height={height}
+              noRowsRenderer={this.renderEmpty}
+              onRowsRendered={this.handleRowsRendered}
+              rowHeight={61}
+              rowRenderer={this.renderRow}
+              rowCount={this.props.calls.length}
+            />
+          );
+        }}
+      </AutoSizer>
+    );
+  }
+
+  render() {
+    const className = classNames(styles.container, this.props.className);
+
+
+    return (
       <div className={className}>
-        <AutoSizer>
-          {({ width, height }) => {
-            return (
-              <List
-                width={width}
-                height={height}
-                noRowsRenderer={this.renderEmpty}
-                onRowsRendered={this.handleRowsRendered}
-                rowHeight={61}
-                rowRenderer={this.renderRow}
-                rowCount={this.props.calls.length}
-              />
-            );
-          }}
-        </AutoSizer>
+        {this.renderDialpad()}
+        {this.renderCallList()}
       </div>
     );
   }

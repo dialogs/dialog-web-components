@@ -3,6 +3,7 @@
  * @flow
  */
 
+import type { ColorTheme } from '@dlghq/dialog-types';
 import React, { PureComponent, type Node } from 'react';
 import classNames from 'classnames';
 import Spinner from '../Spinner/Spinner';
@@ -19,7 +20,7 @@ export type Props = {
   form?: string,
   view: 'button' | 'outline' | 'link',
   type: 'submit' | 'reset' | 'button' | 'menu',
-  theme: 'default' | 'primary' | 'success' | 'danger' | 'info' | 'warning',
+  theme: ColorTheme,
   size: 'small' | 'normal' | 'large',
   onClick?: (event: SyntheticEvent<>) => mixed
 };

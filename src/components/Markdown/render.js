@@ -36,7 +36,13 @@ export function renderText(tokens: TextToken[], emojiSize?: number = 16, isInlin
 
       case 'email':
         result.push(
-          <a key={index} className={styles.link} href={`mailto:${content}`}>
+          <a
+            key={index}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.link}
+            href={`mailto:${content}`}
+          >
             {content}
           </a>
         );
@@ -61,10 +67,15 @@ export function renderText(tokens: TextToken[], emojiSize?: number = 16, isInlin
 
         result.push(
           <span key={index} className={className}>
-            {content.replace(/ /g, '\u00A0')}
+            {content.split(/( {2,})/).map((string: string) => {
+              if (string.length >= 2 && string[0] === ' ' && string[1] === ' ') {
+                return string.split('').map((char, key) => ['\u00A0', <wbr key={key} />]);
+              }
+
+              return string;
+            })}
           </span>
         );
-
         break;
       }
     }
@@ -84,7 +95,11 @@ function containsOnlyEmoji(tokens: BlockToken[]): boolean {
   return false;
 }
 
-export function renderBlocks(tokens: BlockToken[], emojiSize?: number = 16, renderBigEmoji: boolean) {
+export function renderBlocks(
+  tokens: BlockToken[],
+  emojiSize?: number = 16,
+  renderBigEmoji: boolean
+) {
   const result = [];
 
   const isOnlyEmoji = containsOnlyEmoji(tokens);
@@ -103,7 +118,6 @@ export function renderBlocks(tokens: BlockToken[], emojiSize?: number = 16, rend
         } else {
           result.push(<br key={i} className={styles.break} />);
         }
-
         break;
 
       case 'code_block':
@@ -114,7 +128,6 @@ export function renderBlocks(tokens: BlockToken[], emojiSize?: number = 16, rend
             </code>
           </pre>
         );
-
         break;
 
       case 'blockquote':
@@ -123,7 +136,6 @@ export function renderBlocks(tokens: BlockToken[], emojiSize?: number = 16, rend
             {renderBlocks(token.content, emojiSize, renderBigEmoji)}
           </blockquote>
         );
-
         break;
 
       default:

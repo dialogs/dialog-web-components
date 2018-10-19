@@ -14,3 +14,5 @@ document: Документ
 location: Местоположение
 unknown: ""
 unsupported: ""
+forwarded: "Пересланное сообщение"
+reply: "Ответ на сообщение"

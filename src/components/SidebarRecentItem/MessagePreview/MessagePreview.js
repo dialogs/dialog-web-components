@@ -42,14 +42,14 @@ class MessagePreview extends PureComponent<Props> {
   }
 
   render() {
-    const { className, message: { content } } = this.props;
+    const { className, message: { attachment, content } } = this.props;
 
     switch (content.type) {
       case 'text':
         return (
           <div className={className}>
             {this.renderStatusSender()}
-            <TextMessagePreview content={content} className={styles.preview} emojiSize={15} />
+            <TextMessagePreview attachment={attachment} content={content} className={styles.preview} emojiSize={15} />
           </div>
         );
 

@@ -53,6 +53,12 @@
   }
 }
 
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  @apply --text-overflow-ellipsis;
+}
+
 .userMeta {
   display: flex;
   flex: 1 1 auto;
@@ -66,6 +72,7 @@
 
 .userAvatar {
   margin-right: var(--default-padding);
+  flex-shrink: 0;
 }
 
 .userName {
@@ -73,13 +80,17 @@
   font-weight: 500;
   line-height: 1.4;
   color: #000;
+  @apply --text-overflow-ellipsis;
+  margin: 0;
 }
 
 .userNick {
-  margin-left: 8px;
   color: color(#000 alpha(50%));
+  @apply --text-overflow-ellipsis;
+  margin: 0;
 }
 
 .unblockButton {
   display: none;
+  flex-shrink: 0;
 }

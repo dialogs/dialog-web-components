@@ -72,6 +72,7 @@ export { default as Switcher } from './components/Switcher/Switcher';
 export { default as Range } from './components/Range/Range';
 export { default as Fieldset } from './components/Fieldset/Fieldset';
 export { default as CustomForm } from './components/CustomForm/CustomForm';
+export { default as Dialpad } from './components/Dialpad/Dialpad';
 
 // Plug & Play Forms
 export { default as Authorization } from './components/Authorization/Authorization';
@@ -79,11 +80,7 @@ export { default as Registration } from './components/Registration/Registration'
 export { default as GenderSelect } from './components/GenderSelect/GenderSelect';
 
 // Modals
-export { default as Modal } from './components/Modal/Modal';
-export { default as ModalBody } from './components/Modal/ModalBody';
-export { default as ModalClose } from './components/Modal/ModalClose';
-export { default as ModalFooter } from './components/Modal/ModalFooter';
-export { default as ModalHeader } from './components/Modal/ModalHeader';
+export * from './components/Modal';
 
 // Plug & Play Modals
 export { default as AboutModal } from './components/AboutModal/AboutModal';
@@ -96,6 +93,7 @@ export { default as PreferencesModal } from './components/PreferencesModal/Prefe
 export { default as AddMembersModal } from './components/AddMembersModal/AddMembersModal';
 export { default as FeedbackModal } from './components/FeedbackModal/FeedbackModal';
 export { default as AdminModal } from './components/AdminModal/AdminModal';
+export { default as SelectCertificateModal } from './components/SelectCertificateModal/SelectCertificateModal';
 
 // Sidebar
 export { default as SidebarHeader } from './components/SidebarHeader/SidebarHeader';
@@ -147,6 +145,7 @@ export { default as ActivityPinned } from './components/ActivityPinned/ActivityP
 
 // Helpers
 export { default as Trigger } from './components/Trigger/Trigger';
+export { default as Alert } from './components/Alert/Alert';
 export { default as Confirm } from './components/Confirm/Confirm';
 export { default as HotKeys } from './components/HotKeys/HotKeys';
 export { default as CopyButton } from './components/CopyButton/CopyButton';

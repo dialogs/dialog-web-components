@@ -27,8 +27,8 @@
 
   --select-next-color: #333;
   --select-next-background-color: #fff;
-  --select-next-label-font-size: var(--default-font-size);
-  --select-next-label-color: #676c75;
+  --select-next-label-font-size: var(--default-font-size-small);
+  --select-next-label-color: var(--color-labels);
   --select-next-border-color: #D1D3D8;
   --select-next-hover-border-color: color(var(--select-next-border-color) shade(10%));
   --select-next-focus-border-color: var(--color-primary);
@@ -67,7 +67,8 @@
   display: inline-block;
   cursor: pointer;
   user-select: none;
-  line-height: 30px;
+  line-height: 1.4;
+  margin-bottom: calc(var(--default-padding-small) / 2);
   color: var(--select-next-label-color);
 }
 

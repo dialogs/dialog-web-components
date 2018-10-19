@@ -23,6 +23,8 @@ export type Props = {
   avatar: ?File,
   className?: string,
   vertical: boolean,
+  isPublicGroupsEnabled: boolean,
+  aboutMaxLength?: number,
   onSubmit: (event: SyntheticEvent<>) => void,
   onChange: (value: string, event: SyntheticInputEvent<>) => void,
   onAvatarRemove: () => void,
@@ -43,6 +45,7 @@ class CreateGroupInfoForm extends PureComponent<Props, State> {
   };
 
   static defaultProps = {
+    aboutMaxLength: 3000,
     vertical: false
   };
 
@@ -112,7 +115,11 @@ class CreateGroupInfoForm extends PureComponent<Props, State> {
   }
 
   renderShortname() {
-    const { type, shortname, id } = this.props;
+    const { type, shortname, id, isPublicGroupsEnabled } = this.props;
+
+    if (!isPublicGroupsEnabled) {
+      return null;
+    }
 
     return (
       <div className={styles.shortnameWrapper}>
@@ -139,7 +146,7 @@ class CreateGroupInfoForm extends PureComponent<Props, State> {
   }
 
   render() {
-    const { id, type, about, title, vertical } = this.props;
+    const { id, type, about, aboutMaxLength, title, vertical } = this.props;
     const { l10n } = this.context;
     const className = classNames(
       styles.info,
@@ -172,6 +179,7 @@ class CreateGroupInfoForm extends PureComponent<Props, State> {
             placeholder={l10n.formatText(`CreateNewModal.${type}.info.description.placeholder`)}
             type="textarea"
             value={about || ''}
+            maxLength={aboutMaxLength}
           />
           {this.renderShortname()}
         </form>

@@ -23,10 +23,14 @@ export type AttachmentModalProps = {
 };
 
 export type AttachmentPreviewProps = {
+  className?: string,
+  fileClassName?: string,
+  imageClassName?: string,
   file: AttachmentFile
 };
 
 export type AttachmentMetaProps = {
+  className?: string,
   attachment: Attachment,
   sendAsFile: boolean,
   onSendAsFileChange: (sendAsFIle: boolean) => mixed

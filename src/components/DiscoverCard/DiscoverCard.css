@@ -15,6 +15,7 @@
   --discover-card-shortname-color: color(#000 alpha(50%));
   --discover-card-description-font-size: 15px;
   --discover-card-description-color: color(#000 alpha(40%));
+  --discover-card-description-lines-to-show: 4;
   --discover-card-members-color: color(#000 alpha(40%));
   --discover-card-members-font-size: var(--default-font-size);
   --discover-card-creator-color: color(#000 alpha(50%));
@@ -89,10 +90,18 @@
 }
 
 .description {
+  display: block;
+  display: -webkit-box;
   font-size: var(--discover-card-description-font-size);
   color: var(--discover-card-description-color);
   margin-top: 4px;
   line-height: 18px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: var(--discover-card-description-lines-to-show);
+  /* autoprefixer: off */
+   -webkit-box-orient: vertical;
+   /* autoprefixer: on */
 }
 
 .footer {

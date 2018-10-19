@@ -54,7 +54,7 @@
   --z-index-message-actions: 10;
   --z-index-dragndrop: 2000;
   --z-index-input: 100;
-  --z-index-overlay: calc(var(--z-index-dropdown) + 5);
+  --z-index-overlay: 1500;
 
   /* Colors */
   --color-primary: var(--violet-blue);
@@ -64,6 +64,7 @@
   --color-warning: var(--orange-yellow);
   --color-pending: var(--color-info);
   --color-error: var(--color-danger);
+  --color-labels: var(--dark-grey);
 
   /* Gradients */
   --default-gradient: linear-gradient(89deg, var(--violet-blue), var(--color-primary));

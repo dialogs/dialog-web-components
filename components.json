@@ -52,7 +52,8 @@
       "Switcher",
       "Range",
       "Fieldset",
-      "CustomForm"
+      "CustomForm",
+      "Dialpad"
     ]
   },
   {
@@ -79,7 +80,8 @@
       "AddMembersModal",
       "EditGroupModal",
       "FeedbackModal",
-      "AdminModal"
+      "AdminModal",
+      "SelectCertificateModal"
     ]
   },
   {
@@ -150,7 +152,13 @@
   },
   {
     "name": "Helpers",
-    "components": ["Timer", "Trigger", "Confirm", "CopyButton"]
+    "components": [
+      "Timer",
+      "Trigger",
+      "Alert",
+      "Confirm",
+      "CopyButton"
+    ]
   },
   {
     "name": "Banners",

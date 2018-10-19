@@ -1,10 +1,14 @@
 {
-  "extends": "@dlghq/eslint-config-dialog",
+  "extends": ["@dlghq/eslint-config-dialog", "prettier"],
   "rules": {
     "no-invalid-this": 0,
     "react/void-dom-elements-no-children": 0,
     "react/prop-types": 0,
-    "lines-around-comment": 0
+    "lines-around-comment": 0,
+    "react/no-multi-comp": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "react/no-did-mount-set-state": "off",
+    "react/jsx-max-props-per-line": "off"
   },
   "env": {
     "jest": true

@@ -21,7 +21,8 @@ type Props = {
   updateState: Field<'upToDate' | 'available'>,
   onCheck: () => mixed,
   onUpdate: () => mixed,
-  onClose: () => mixed
+  onClose: () => mixed,
+  onVersionClick: () => mixed
 }
 
 class AboutModal extends PureComponent<Props> {
@@ -99,6 +100,7 @@ class AboutModal extends PureComponent<Props> {
             id="AboutModal.version"
             values={{ appVersion }}
             tagName="div"
+            onClick={this.props.onVersionClick}
             className={styles.version}
           />
           <div className={styles.state}>

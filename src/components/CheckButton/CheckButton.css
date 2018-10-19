@@ -41,6 +41,7 @@
 
 .checked {
   box-shadow: none;
+  background-color: #757575;
 
   &:hover,
   &:active {

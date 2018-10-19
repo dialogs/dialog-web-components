@@ -1,6 +1,6 @@
 title: Add contact
-placeholder: Mobile, e-mail or nickname
-hint: Enter someone’s e-mail address, nickname or mobile phone to find them on {appName}.
+placeholder: Mobile or nickname
+hint: Enter someone’s nickname or mobile phone to find them on {appName}.
 user_found: <b>{username}</b> has been found.
 user_in_contact: <b>{username}</b> is already in your contacts.
 user_added: <b>{username}</b> has been added to your {appName} contacts
