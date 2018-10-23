@@ -3,88 +3,83 @@
  * @flow
  */
 
-import type { Context } from './RadioGroup';
-import React, { PureComponent, type Element, type ChildrenArray } from 'react';
-import PropTypes from 'prop-types';
+import React, { PureComponent, type Node } from 'react';
 import classNames from 'classnames';
-import styles from './Radio.css';
 
-export type Props = {
+import styles from './Radio.css';
+import { RadioGroupContext, type RadioGroupContextType } from './RadioGroupContext';
+
+export type RadioProps = {
   className?: string,
-  children: ChildrenArray<Element<any>>,
+  children: Node,
   id?: string,
   value: string,
   tabIndex?: number,
-  htmlAutoFocus?: boolean
+  htmlAutoFocus?: boolean,
+  disabled?: boolean
 };
 
-class Radio extends PureComponent<Props> {
-  context: Context;
-  input: ?HTMLInputElement;
-
-  static contextTypes = {
-    radioGroup: PropTypes.object.isRequired
+class Radio extends PureComponent<RadioProps> {
+  handleChange = (radioGroup: RadioGroupContextType) => (
+    event: SyntheticInputEvent<HTMLInputElement>
+  ): void => {
+    radioGroup.onChange(event.target.value, event);
   };
 
-  handleChange = (event: SyntheticInputEvent<HTMLInputElement>): void => {
-    this.context.radioGroup.onChange(event.target.value, event);
-  };
-
-  setInput = (input: ?HTMLInputElement): void => {
-    this.input = input;
-  };
+  inputRef: {
+    current: HTMLInputElement | null
+  } = React.createRef();
 
   focus(): void {
-    if (this.input) {
-      this.input.focus();
+    const { current: input } = this.inputRef;
+
+    if (input) {
+      input.focus();
     }
   }
 
   blur(): void {
-    if (this.input) {
-      this.input.blur();
-    }
-  }
+    const { current: input } = this.inputRef;
 
-  renderChildren() {
-    const { children } = this.props;
-    if (!children) {
-      return null;
+    if (input) {
+      input.blur();
     }
-
-    return (
-      <div className={styles.label}>
-        {children}
-      </div>
-    );
   }
 
   render() {
     const { children, id, value, tabIndex, htmlAutoFocus } = this.props;
-    const { radioGroup } = this.context;
-    const className = classNames(styles.container, this.props.className, {
-      [styles.labeled]: Boolean(children),
-      [styles.disabled]: radioGroup.disabled
-    });
 
     return (
-      <label className={className} htmlFor={id}>
-        <input
-          className={styles.input}
-          type="radio"
-          id={id}
-          name={radioGroup.name}
-          tabIndex={tabIndex}
-          value={value}
-          autoFocus={htmlAutoFocus}
-          checked={value === radioGroup.value}
-          ref={this.setInput}
-          onChange={this.handleChange}
-          disabled={radioGroup.disabled}
-        />
-        <span className={styles.radio} />
-        {this.renderChildren()}
-      </label>
+      <RadioGroupContext.Consumer>
+        {(radioGroup) => {
+          if (!radioGroup) return null;
+
+          const disabled = this.props.disabled || radioGroup.disabled;
+          const className = classNames(styles.container, this.props.className, {
+            [styles.labeled]: Boolean(children),
+            [styles.disabled]: disabled
+          });
+
+          return (
+            <label className={className} htmlFor={id}>
+              <input
+                id={id}
+                className={styles.input}
+                type="radio"
+                tabIndex={tabIndex}
+                value={value}
+                autoFocus={htmlAutoFocus}
+                checked={value === radioGroup.value}
+                ref={this.inputRef}
+                onChange={this.handleChange(radioGroup)}
+                disabled={disabled}
+              />
+              <span className={styles.radio} />
+              {children ? <div className={styles.label}>{children}</div> : null}
+            </label>
+          );
+        }}
+      </RadioGroupContext.Consumer>
     );
   }
 }

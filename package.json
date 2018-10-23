@@ -1,6 +1,6 @@
 {
   "name": "@dlghq/dialog-components",
-  "version": "0.165.13",
+  "version": "0.165.14",
   "description": "dialog Web Components",
   "main": "src/index.js",
   "files": [
@@ -20,7 +20,7 @@
     "test": "jest",
     "lint": "npm-run-all --sequential lint:eslint lint:flow",
     "lint:eslint": "eslint src/",
-    "lint:flow": "flow",
+    "lint:flow": "flow check",
     "format": "npm-run-all --sequential format:*",
     "format:eslint": "eslint --fix src/",
     "format:prettier": "prettier --write --loglevel warn \"src/**/*.js\" \".circleci/*.yml\"",
