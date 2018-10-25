@@ -2,7 +2,6 @@
  * Copyright 2018 dialog LLC <info@dlg.im>
  * @flow
  */
-/* eslint max-lines: ["error", 500] */
 
 import type { JSONValue } from '@dlghq/dialog-utils';
 import type { Props, State } from './types';
@@ -43,32 +42,33 @@ class ProfileModal extends PureComponent<Props, State> {
       screen: 'profile',
       profile: profile
         ? {
-          name: profile.name,
-          nick: profile.nick,
-          about: profile.about,
-          avatar: profile.bigAvatar,
-          customProfile: profile.customProfile ? safelyParseJSON(profile.customProfile) : null
-        }
+            name: profile.name,
+            nick: profile.nick,
+            about: profile.about,
+            avatar: profile.bigAvatar,
+            customProfile: profile.customProfile ? safelyParseJSON(profile.customProfile) : null
+          }
         : {
-          name: '',
-          nick: null,
-          about: null,
-          avatar: null,
-          customProfile: null
-        }
+            name: '',
+            nick: null,
+            about: null,
+            avatar: null,
+            customProfile: null
+          }
     };
   }
 
-  componentWillReceiveProps(nextProps: Props) {
-    if (!this.props.profile && nextProps.profile) {
+  componentDidMount() {
+    const { profile } = this.props;
+    if (profile) {
       this.setState(
         {
           profile: {
-            name: nextProps.profile.name,
-            nick: nextProps.profile.nick,
-            about: nextProps.profile.about,
-            avatar: nextProps.profile.bigAvatar,
-            customProfile: nextProps.profile.customProfile ? safelyParseJSON(nextProps.profile.customProfile) : null
+            name: profile.name,
+            nick: profile.nick,
+            about: profile.about,
+            avatar: profile.bigAvatar,
+            customProfile: profile.customProfile ? safelyParseJSON(profile.customProfile) : null
           }
         },
         () => {
@@ -179,7 +179,9 @@ class ProfileModal extends PureComponent<Props, State> {
   };
 
   isPending(): boolean {
-    const { context: { name, nick, about, avatar } } = this.props;
+    const {
+      context: { name, nick, about, avatar }
+    } = this.props;
 
     return name.pending || nick.pending || about.pending || avatar.pending;
   }
@@ -232,7 +234,11 @@ class ProfileModal extends PureComponent<Props, State> {
         return (
           <ModalHeader withBorder>
             <Text id="ProfileModal.title" />
-            <ModalClose pending={this.isPending()} onClick={this.props.onClose} id="profile_modal_close_button" />
+            <ModalClose
+              pending={this.isPending()}
+              onClick={this.props.onClose}
+              id="profile_modal_close_button"
+            />
           </ModalHeader>
         );
       case 'avatar':
@@ -246,7 +252,11 @@ class ProfileModal extends PureComponent<Props, State> {
               size={28}
             />
             <Text id="ProfileModal.title_avatar" />
-            <ModalClose pending={this.isPending()} onClick={this.props.onClose} id="profile_modal_close_button" />
+            <ModalClose
+              pending={this.isPending()}
+              onClick={this.props.onClose}
+              id="profile_modal_close_button"
+            />
           </ModalHeader>
         );
       default:
@@ -260,7 +270,9 @@ class ProfileModal extends PureComponent<Props, State> {
       return null;
     }
 
-    const { profile: { name, avatar } } = this.state;
+    const {
+      profile: { name, avatar }
+    } = this.state;
     const handlers = this.state.profile.avatar ? { onRemove: this.handleAvatarRemove } : {};
 
     return (
@@ -284,7 +296,9 @@ class ProfileModal extends PureComponent<Props, State> {
       return null;
     }
 
-    const { l10n: { formatText } } = this.context;
+    const {
+      l10n: { formatText }
+    } = this.context;
 
     return (
       <Field className={styles.field}>
@@ -373,7 +387,9 @@ class ProfileModal extends PureComponent<Props, State> {
 
   renderCustomForm() {
     const { schema, profile } = this.props;
-    const { profile: { customProfile } } = this.state;
+    const {
+      profile: { customProfile }
+    } = this.state;
 
     if (!profile || !schema) {
       return null;
@@ -423,13 +439,18 @@ class ProfileModal extends PureComponent<Props, State> {
   }
 
   renderAvatarEdit() {
-    const { profile: { avatar } } = this.state;
+    const {
+      profile: { avatar }
+    } = this.state;
 
     if (avatar && typeof avatar !== 'string') {
       return (
         <div>
           <ImageEdit
-            size={250} height={400} image={avatar} type="circle"
+            size={250}
+            height={400}
+            image={avatar}
+            type="circle"
             onSubmit={this.handleAvatarChange}
           />
         </div>

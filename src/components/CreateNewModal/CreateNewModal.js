@@ -3,7 +3,6 @@
  * @flow
  */
 
-
 import type { PeerInfo } from '@dlghq/dialog-types';
 import type { Props } from './types';
 import type { SelectorState } from '../../entities';
@@ -127,21 +126,25 @@ class CreateNewModal extends PureComponent<Props> {
       return null;
     }
 
-    return (
-      <div className={styles.error}>
-        {error}
-      </div>
-    );
+    return <div className={styles.error}>{error}</div>;
   }
 
   renderTypeStep() {
-    const { id, request: { type }, step } = this.props;
+    const {
+      id,
+      request: { type },
+      step
+    } = this.props;
 
     return (
       <div className={styles.wrapper}>
         <ModalHeader className={styles.header} withBorder>
           <Text id={`CreateNewModal.${type}.title`} />
-          <ModalClose pending={this.props.pending} onClick={this.props.onClose} id={`${this.props.id}_close_button`} />
+          <ModalClose
+            pending={this.props.pending}
+            onClick={this.props.onClose}
+            id={`${this.props.id}_close_button`}
+          />
         </ModalHeader>
         <ModalBody className={styles.body}>
           <CreateGroupTypeForm
@@ -169,18 +172,23 @@ class CreateNewModal extends PureComponent<Props> {
   }
 
   renderInfoStep() {
-    const { id, step, request: { type, about, title, shortname, avatar }, shortnamePrefix } = this.props;
+    const {
+      id,
+      step,
+      request: { type, about, title, shortname, avatar },
+      shortnamePrefix
+    } = this.props;
 
     return (
       <div className={styles.wrapper}>
         <ModalHeader className={styles.header} withBorder>
-          <Icon
-            glyph="arrow_back"
-            onClick={this.handlePrevStepClick}
-            className={styles.back}
-          />
+          <Icon glyph="arrow_back" onClick={this.handlePrevStepClick} className={styles.back} />
           <Text id={`CreateNewModal.${type}.title`} />
-          <ModalClose pending={this.props.pending} onClick={this.props.onClose} id={`${this.props.id}_close_button`} />
+          <ModalClose
+            pending={this.props.pending}
+            onClick={this.props.onClose}
+            id={`${this.props.id}_close_button`}
+          />
         </ModalHeader>
         {this.renderError()}
         <ModalBody className={styles.body}>
@@ -217,7 +225,9 @@ class CreateNewModal extends PureComponent<Props> {
   }
 
   renderAvatarStep() {
-    const { request: { avatar } } = this.props;
+    const {
+      request: { avatar }
+    } = this.props;
 
     if (avatar && typeof avatar !== 'string') {
       return (
@@ -254,7 +264,10 @@ class CreateNewModal extends PureComponent<Props> {
   }
 
   renderMembersStep() {
-    const { id, request: { type, members } } = this.props;
+    const {
+      id,
+      request: { type, members }
+    } = this.props;
 
     return (
       <div className={styles.wrapper}>

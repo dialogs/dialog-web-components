@@ -64,6 +64,7 @@ class Radio extends PureComponent<RadioProps> {
             <label className={className} htmlFor={id}>
               <input
                 id={id}
+                name={radioGroup.name}
                 className={styles.input}
                 type="radio"
                 tabIndex={tabIndex}

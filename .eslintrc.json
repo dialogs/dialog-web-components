@@ -5,6 +5,7 @@
     "react/void-dom-elements-no-children": 0,
     "react/prop-types": 0,
     "lines-around-comment": 0,
+    "max-lines": 0,
     "react/no-multi-comp": "off",
     "react/jsx-one-expression-per-line": "off",
     "react/no-did-mount-set-state": "off",
