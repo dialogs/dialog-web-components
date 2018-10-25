@@ -2,7 +2,6 @@
  * Copyright 2018 dialog LLC <info@dlg.im>
  * @flow
  */
-/* eslint max-lines: ["error", 500] */
 
 import type { JSONValue } from '@dlghq/dialog-utils';
 import type { Props, State } from './types';
