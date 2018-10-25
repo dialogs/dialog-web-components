@@ -3,15 +3,11 @@
  * @flow
  */
 
-import React, { Component } from 'react';
+import { Component } from 'react';
 import Recorder from 'opus-recorder';
-import IconButton from '../IconButton/IconButton';
-import TimeTimer from '../Timer/TimeTimer';
-import classNames from 'classnames';
-import styles from './VoiceRecorder.css';
 
 type Props = {
-  className?: string,
+  children: Function,
   onStop?: () => void,
   onSave: (Object) => void
 };
@@ -45,26 +41,16 @@ class VoiceRecorder extends Component<Props, State> {
     };
 
     this.recorder = new Recorder(options);
-    this.recorder.onstart = this.startRecording;
-    this.recorder.onstop = this.stopRecording;
-    this.recorder.ondataavailable = this.saveRecord;
+    this.recorder.onstart = this.handleStart;
+    this.recorder.onstop = this.handleStop;
+    this.recorder.ondataavailable = this.handleSave;
   }
 
   handleStart = () => {
-    this.recorder.start();
-  };
-
-  handleStopClick = (e: SyntheticEvent<HTMLButtonElement>) => {
-    const canSave = e.currentTarget.id === 'stopBtn';
-    this.recorder.stop();
-    this.setState({ canSave, isRecording: false, endTime: Date.now() });
-  };
-
-  startRecording = () => {
     this.setState({ isRecording: true, startTime: Date.now() });
   };
 
-  stopRecording = () => {
+  handleStop = () => {
     const { onStop } = this.props;
 
     if (onStop) {
@@ -72,7 +58,7 @@ class VoiceRecorder extends Component<Props, State> {
     }
   };
 
-  saveRecord = (buffer: Uint8Array) => {
+  handleSave = (buffer: Uint8Array) => {
     const { onSave } = this.props;
     const { canSave } = this.state;
 
@@ -84,45 +70,33 @@ class VoiceRecorder extends Component<Props, State> {
     }
   };
 
-  renderControls() {
-    const { startTime } = this.state;
-    const className = classNames(styles.container, this.props.className);
+  startRecording = () => {
+    this.recorder.start();
+  };
 
-    return (
-      <div className={className}>
-        <div className={styles.controlsWrapper}>
-          <div className={styles.backdrop} onClick={this.handleStopClick} />
-          <div className={styles.controls}>
-            <IconButton
-              id="cancelBtn"
-              glyph="close"
-              size="small"
-              theme="danger"
-              flat
-              onClick={this.handleStopClick}
-            />
-            <div className={styles.timer}>
-              <span className={styles.timerCircle} />
-              <TimeTimer start={startTime} className={styles.timerDigits} />
-            </div>
-            <IconButton
-              id="stopBtn"
-              glyph="done"
-              size="small"
-              theme="success"
-              flat
-              onClick={this.handleStopClick}
-            />
-          </div>
-        </div>
-      </div>
-    );
-  }
+  stopRecording = () => {
+    this.recorder.stop();
+    this.setState({ canSave: true, isRecording: false, endTime: Date.now() });
+  };
+
+  cancelRecording = () => {
+    this.recorder.stop();
+    this.setState({ canSave: false, isRecording: false, endTime: Date.now() });
+  };
 
   render() {
-    const { isRecording } = this.state;
+    const { isRecording, startTime } = this.state;
+    const recordProps = {
+      isRecording,
+      startTime,
+      startRecording: this.startRecording,
+      stopRecording: this.stopRecording,
+      cancelRecording: this.cancelRecording,
+    };
 
-    return isRecording ? this.renderControls() : null;
+    return (
+      this.props.children(recordProps)
+    );
   }
 }
 
