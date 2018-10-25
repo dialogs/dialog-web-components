@@ -3,11 +3,17 @@
  * @flow
  */
 
-import { Component } from 'react';
+import { Component, type Node } from 'react';
 import Recorder from 'opus-recorder';
 
 type Props = {
-  children: Function,
+  children: ({
+    isRecording: boolean,
+    startTime: number,
+    startRecording: () => void,
+    stopRecording: () => void,
+    cancelRecording: () => void,
+  }) => Node,
   onStop?: () => void,
   onSave: (Object) => void
 };
