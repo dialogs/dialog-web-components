@@ -1,6 +1,6 @@
 {
   "name": "@dlghq/dialog-components",
-  "version": "0.167.0",
+  "version": "0.168.0",
   "description": "dialog Web Components",
   "main": "src/index.js",
   "files": [
@@ -68,6 +68,7 @@
     "date-fns": "1.29.0",
     "immutable": "3.8.2",
     "key-event-to-string": "1.2.0",
+    "opus-recorder": "5.0.0",
     "photoswipe": "4.1.2",
     "prop-types": "15.6.2",
     "react-jsonschema-form": "1.0.4",

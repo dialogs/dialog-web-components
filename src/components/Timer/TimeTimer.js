@@ -3,11 +3,12 @@
  * @flow
  */
 
-import * as React from 'react';
+import React, { PureComponent } from 'react';
 import Timer from './Timer';
 
 type Props = {
-  start: number
+  start: number,
+  className?: string
 };
 
 function pad(value: number) {
@@ -22,18 +23,22 @@ function formatTime(time: number): string {
   return pad(minutes) + ':' + pad(seconds);
 }
 
-function renderTime(time: number) {
-  return (
-    <span>
-      {formatTime(time)}
-    </span>
-  );
-}
+class TimeTimer extends PureComponent<Props> {
+  renderTime = (time: number) => {
+    const { className } = this.props;
 
-function TimeTimer(props: Props) {
-  return (
-    <Timer start={props.start} renderTime={renderTime} />
-  );
+    return (
+      <span className={className}>
+        {formatTime(time)}
+      </span>
+    );
+  };
+
+  render() {
+    const { start } = this.props;
+
+    return <Timer start={start} renderTime={this.renderTime} />;
+  }
 }
 
 export default TimeTimer;

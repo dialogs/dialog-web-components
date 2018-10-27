@@ -121,7 +121,8 @@
       "FakeMessage",
       "EmptyChat",
       "WelcomeMessage",
-      "MessageMediaInteractive"
+      "MessageMediaInteractive",
+      "VoiceRecorder"
     ]
   },
   {
