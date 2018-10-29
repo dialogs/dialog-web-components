@@ -10,6 +10,13 @@ import MediaErrorMessage from '../MediaErrorMessage/MediaErrorMessage';
 import AudioPlayerButton from './AudioPlayerButton/AudioPlayerButton';
 import PeerInfoTitle from '../PeerInfoTitle/PeerInfoTitle';
 import styles from './AudioPlayer.css';
+import ogv from 'ogv';
+
+if (navigator.userAgent.toLowerCase().indexOf(' electron/') > -1) {
+  ogv.OGVLoader.base = process.resourcesPath + '/ogv';
+} else {
+  ogv.OGVLoader.base = 'ogv';
+}
 
 type Props = {
   src: ?string,
@@ -23,12 +30,15 @@ type State = {
   error: ?MediaError,
   duration: number,
   isPlaying: boolean,
-  currentTime: number
+  isEnded: boolean,
+  currentTime: number,
+  isOgg: boolean
 };
 
 class AudioPlayer extends PureComponent<Props, State> {
   audio: ?HTMLMediaElement;
   rewind: ?HTMLElement;
+  playerOGV: ?HTMLElement;
 
   constructor(props: Props) {
     super(props);
@@ -38,12 +48,21 @@ class AudioPlayer extends PureComponent<Props, State> {
       error: null,
       duration: props.duration || 0,
       isPlaying: false,
-      currentTime: 0
+      isEnded: false,
+      currentTime: 0,
+      isOgg: true
     };
   }
 
   handleError = () => {
-    if (this.audio) {
+    const { isOgg } = this.state;
+    if (isOgg && this.playerOGV.error) {
+      this.setState({
+        error: this.playerOGV.error.message,
+        isPlaying: false,
+        currentTime: 0
+      });
+    } else {
       const { error } = this.audio;
 
       this.setState({
@@ -62,50 +81,92 @@ class AudioPlayer extends PureComponent<Props, State> {
   };
 
   handlePlayClick = () => {
-    this.setState(() => {
-      if (this.audio) {
-        if (this.audio.error) {
-          return {
-            key: String(Math.random()),
-            error: null,
-            isPlaying: true,
-            currentTime: 0
-          };
-        }
+    const { isEnded, isOgg } = this.state;
+    if (isEnded && isOgg) {
+      this.playerOGV.stop();
+    }
 
-        this.audio.play();
+    this.setState(() => {
+      if (this.playerOGV.error && isOgg) {
+        return {
+          key: String(Math.random()),
+          error: this.playerOGV.error.message,
+          isPlaying: false,
+          currentTime: 0
+        };
       }
 
-      return { isPlaying: true };
+      return {
+        isPlaying: true,
+        isEnded: false
+      };
     });
+
+    if (!isOgg && this.audio) {
+      this.audio.play();
+    }
+
+    if (this.playerOGV) {
+      this.playerOGV.play();
+    }
   };
 
   handlePauseClick = () => {
-    if (this.audio) {
+    const { isOgg } = this.state;
+
+    this.setState({
+      isPlaying: false
+    });
+    if (this.playerOGV) {
+      this.playerOGV.pause();
+    }
+    if (isOgg) {
+      this.playerOGV.pause();
+    } else {
       this.audio.pause();
     }
   };
 
   handleEnded = () => {
-    const currentTime = this.getCurrentTime();
-    this.setState({ currentTime, isPlaying: false });
-  };
+    const { isOgg } = this.state;
+    const { duration } = this.props;
 
-  handlePause = () => {
-    const currentTime = this.getCurrentTime();
-    this.setState({ currentTime, isPlaying: false });
+    if (isOgg) {
+      this.playerOGV.currentTime = duration;
+    }
+
+    this.setState({
+      isPlaying: false,
+      currentTime: duration,
+      isEnded: true
+    });
   };
 
   handleRewind = (event: SyntheticMouseEvent<>) => {
+    const { isEnded, isOgg } = this.state;
+    const { duration } = this.props;
+
     event.stopPropagation();
+    if (!this.rewind && this.state.error) {
+      return;
+    }
 
-    if (this.rewind && !this.state.error) {
-      const rewindRect = this.rewind.getBoundingClientRect();
-      const rewindPosition = (event.clientX - rewindRect.left) / rewindRect.width;
-
-      if (this.audio) {
-        this.audio.currentTime = this.audio.duration * rewindPosition;
+    const rewindRect = this.rewind.getBoundingClientRect();
+    const rewindPosition = (event.clientX - rewindRect.left) / rewindRect.width;
+    if (isOgg) {
+      if (isEnded) {
+        this.setState({
+          isEnded: false
+        });
       }
+      if (this.playerOGV) {
+        this.playerOGV.currentTime = (duration * rewindPosition) / 1000;
+        this.setState({
+          currentTime: this.playerOGV.currentTime.toFixed(5)
+        });
+      }
+    } else {
+      this.audio.currentTime = this.audio.duration * rewindPosition;
     }
   };
 
@@ -123,22 +184,52 @@ class AudioPlayer extends PureComponent<Props, State> {
   }
 
   getCurrentTime(): number {
-    if (this.audio) {
-      return parseInt(this.audio.currentTime * 1000, 10);
+    if (this.audio && !this.state.isOgg) {
+      return parseInt(this.audio.currentTime, 10);
     }
 
     return 0;
   }
 
   setAudio = (audio: ?HTMLMediaElement) => {
-    if (audio) {
-      audio.volume = 1;
-      if (this.state.isPlaying) {
-        audio.play();
-      }
+    const { src } = this.props;
+    if (!src) {
+      return;
     }
 
-    this.audio = audio;
+    if (!this.playerOGV) {
+      this.playerOGV = new ogv.OGVPlayer();
+      this.playerOGV.src = this.props.src;
+
+      this.playerOGV.addEventListener('ended', this.handleEnded);
+      this.playerOGV.addEventListener('playing', this.updateCurrentTime);
+      this.playerOGV.addEventListener('error', this.handleError);
+    }
+
+    let format = src.split('?')[0].split('.');
+    format = format[format.length - 1];
+
+    this.setState(() => {
+      if (format === 'ogg' || format === 'opus') {
+        return {
+          isOgg: true
+        };
+      }
+
+      return {
+        isOgg: false
+      };
+    });
+
+    if ((format !== 'ogg' || format !== 'opus') && audio) {
+      this.audio = audio;
+    }
+
+    if (audio) {
+      audio.volume = 1;
+    } else {
+      this.playerOGV.volume = 1;
+    }
   };
 
   setRewind = (rewind: ?HTMLElement) => {
@@ -147,24 +238,48 @@ class AudioPlayer extends PureComponent<Props, State> {
     }
   };
 
+  updateCurrentTime = () => {
+    const { isPlaying } = this.state;
+    const { duration } = this.props;
+
+    const timer = setInterval(() => {
+      if (isPlaying) {
+        this.setState({
+          currentTime: Number(this.playerOGV.currentTime.toFixed(5))
+        });
+      }
+      if (Math.ceil(this.playerOGV.currentTime) >= Math.ceil(duration / 1000) || !isPlaying) {
+        clearInterval(timer);
+      }
+    }, 500);
+  };
+
+  ogvPause = () => {
+    if (this.playerOGV) {
+      this.playerOGV.pause();
+    }
+  };
+
   renderPlayPauseButton() {
     const { pending } = this.props;
     const { error, isPlaying } = this.state;
 
     return (
-      <AudioPlayerButton
-        error={error}
-        pending={Boolean(pending)}
-        isPlaying={isPlaying}
-        onPlay={this.handlePlayClick}
-        onPause={this.handlePauseClick}
-      />
+      <div>
+        <AudioPlayerButton
+          error={error}
+          pending={Boolean(pending)}
+          isPlaying={isPlaying}
+          onPlay={this.handlePlayClick}
+          onPause={this.handlePauseClick}
+        />
+      </div>
     );
   }
 
   renderPlayerSeeker() {
     const { currentTime, duration } = this.state;
-    const progress = currentTime / duration * 100;
+    const progress = (this.state.currentTime / (duration / 1000)) * 100;
     const current = getHumanTime(currentTime);
 
     const className = classNames(styles.seeker, {
@@ -193,7 +308,6 @@ class AudioPlayer extends PureComponent<Props, State> {
         src={src}
         onError={this.handleError}
         onEnded={this.handleEnded}
-        onPause={this.handlePause}
         onTimeUpdate={this.handleTimeUpdate}
         onLoadedMetadata={this.handleLoadedMetadata}
       />
@@ -206,11 +320,7 @@ class AudioPlayer extends PureComponent<Props, State> {
       return <MediaErrorMessage className={styles.error} error={error} />;
     }
 
-    return (
-      <div className={styles.state}>
-        {getHumanTime(this.state.duration)}
-      </div>
-    );
+    return <div className={styles.state}>{getHumanTime(this.state.duration)}</div>;
   }
 
   renderSender() {
@@ -237,7 +347,7 @@ class AudioPlayer extends PureComponent<Props, State> {
             {this.renderSender()}
           </div>
         </div>
-        {this.renderAudioElement()}
+        {this.state.isOgg ? this.setAudio() : this.renderAudioElement()}
       </div>
     );
   }
