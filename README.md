@@ -63,7 +63,6 @@ yarn add @dlghq/babel-preset-dialog @dlghq/postcss-dialog
 
 const fs = require('fs');
 const path = require('path');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 function resolve(...paths) {
   return fs.realpathSync(path.join(__dirname, ...paths));
@@ -80,18 +79,6 @@ const whitelist = [
 ];
 
 module.exports = {
-  plugins: [
-    new CopyWebpackPlugin(
-      [{
-        from: resolve('node_modules/ogv/dist'),
-        to: resolve('assets/ogv'),
-        toType: 'dir',
-        force: true,
-        ignore: ['*.txt', '*.md', 'COPYING']
-      }],
-      {}
-    ),
-  ],
   module: {
     rules: [
       {
