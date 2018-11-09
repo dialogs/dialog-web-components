@@ -10,7 +10,6 @@ import MediaErrorMessage from '../MediaErrorMessage/MediaErrorMessage';
 import AudioPlayerButton from './AudioPlayerButton/AudioPlayerButton';
 import PeerInfoTitle from '../PeerInfoTitle/PeerInfoTitle';
 import styles from './AudioPlayer.css';
-import Recorder from 'opus-recorder';
 
 type Props = {
   src: ?string,
@@ -56,6 +55,22 @@ class AudioPlayer extends PureComponent<Props, State> {
     };
   }
 
+  componentWillMount() {
+    const { src } = this.props;
+
+    if(!src){
+      return;
+    }
+
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", src, true);
+    xhr.responseType = "arraybuffer";
+    xhr.onload = () => {
+      this.decodeAudio(xhr.response);
+    };
+    xhr.send();
+  }
+
   handleError = () => {
     if (this.audio) {
       const { error } = this.audio;
@@ -69,22 +84,6 @@ class AudioPlayer extends PureComponent<Props, State> {
       console.error(error); // eslint-disable-line
     }
   };
-
-  componentWillMount() {
-    const { src } = this.props;
-
-    if(!src){
-      return;
-    }
-
-    let xhr = new XMLHttpRequest();
-    xhr.open("GET", src, true);
-    xhr.responseType = "arraybuffer";
-    xhr.onload = (e) => {
-      this.decodeAudio(xhr.response);
-    };
-    xhr.send();
-  }
 
   handleLoadedMetadata = () => {
     const duration = this.getDuration();
@@ -178,45 +177,6 @@ class AudioPlayer extends PureComponent<Props, State> {
     }
   };
 
-  renderPlayPauseButton() {
-    const { pending } = this.props;
-    const { error, isPlaying, isDecoded } = this.state;
-
-    return (
-      <AudioPlayerButton
-        error={error}
-        pending={Boolean(pending) || !Boolean(isDecoded)}
-        isPlaying={isPlaying}
-        onPlay={this.handlePlayClick}
-        onPause={this.handlePauseClick}
-      />
-    );
-  }
-
-  renderPlayerSeeker() {
-    const { currentTime, duration } = this.state;
-    const progress = (currentTime / duration) * 100;
-    const current = getHumanTime(currentTime);
-
-    const className = classNames(styles.seeker, {
-      [styles.seekerError]: this.state.error,
-    });
-
-    return (
-      <div
-        className={className}
-        onClick={this.handleRewind}
-        ref={this.setRewind}
-        title={current}
-      >
-        <div
-          className={styles.seekerPlayed}
-          style={{ width: progress + '%' }}
-        />
-      </div>
-    );
-  }
-
   decodeAudio = (buffer) => {
     const typedArray = new Uint8Array(buffer);
 
@@ -251,7 +211,7 @@ class AudioPlayer extends PureComponent<Props, State> {
       this.wavWorker.postMessage({
         command: 'encode',
         buffers: e.data
-      }, e.data.map(function(typedArray){
+      }, e.data.map((typedArray) => {
         return typedArray.buffer;
       }));
     }
@@ -259,11 +219,50 @@ class AudioPlayer extends PureComponent<Props, State> {
 
   wavWorkerMessage = (e) => {
     if (e.data !== null) {
-      var dataBlob = new Blob( [ e.data ], { type: "audio/wav" } );
-      var url = URL.createObjectURL( dataBlob );
+      const dataBlob = new Blob( [ e.data ], { type: "audio/wav" } );
+      const url = URL.createObjectURL( dataBlob );
 
       this.setState({ decodedSrc: url, isDecoded: true });
     }
+  }
+
+  renderPlayerSeeker() {
+    const { currentTime, duration } = this.state;
+    const progress = (currentTime / duration) * 100;
+    const current = getHumanTime(currentTime);
+
+    const className = classNames(styles.seeker, {
+      [styles.seekerError]: this.state.error,
+    });
+
+    return (
+      <div
+        className={className}
+        onClick={this.handleRewind}
+        ref={this.setRewind}
+        title={current}
+      >
+        <div
+          className={styles.seekerPlayed}
+          style={{ width: progress + '%' }}
+        />
+      </div>
+    );
+  }
+
+  renderPlayPauseButton() {
+    const { pending } = this.props;
+    const { error, isPlaying, isDecoded } = this.state;
+
+    return (
+      <AudioPlayerButton
+        error={error}
+        pending={Boolean(pending) || !isDecoded}
+        isPlaying={isPlaying}
+        onPlay={this.handlePlayClick}
+        onPause={this.handlePauseClick}
+      />
+    );
   }
 
   renderAudioElement() {
