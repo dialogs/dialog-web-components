@@ -38,7 +38,7 @@ const options = {
 class AudioPlayer extends PureComponent<Props, State> {
   audio: ?HTMLMediaElement;
   rewind: ?HTMLElement;
-  decodeWorker: Worker;
+  decoderWorker: Worker;
   wavWorker: Worker;
 
   constructor(props: Props) {
@@ -177,7 +177,7 @@ class AudioPlayer extends PureComponent<Props, State> {
     }
   };
 
-  decodeAudio = (buffer) => {
+  decodeAudio = (buffer: ?ArrayBuffer) => {
     const typedArray = new Uint8Array(buffer);
 
     this.decoderWorker = new Worker(options.decoderWorkerPath);
@@ -204,7 +204,7 @@ class AudioPlayer extends PureComponent<Props, State> {
     }, [typedArray.buffer] );
   }
 
-  decodeWorkerMessage = (e) => {
+  decodeWorkerMessage = (e: ?Object) => {
     if (e.data === null) {
       this.wavWorker.postMessage({ command: 'done' });
     } else {
@@ -217,7 +217,7 @@ class AudioPlayer extends PureComponent<Props, State> {
     }
   }
 
-  wavWorkerMessage = (e) => {
+  wavWorkerMessage = (e: ?Object) => {
     if (e.data !== null) {
       const dataBlob = new Blob( [ e.data ], { type: "audio/wav" } );
       const url = URL.createObjectURL( dataBlob );
