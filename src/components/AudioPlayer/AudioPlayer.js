@@ -177,7 +177,10 @@ class AudioPlayer extends PureComponent<Props, State> {
     }
   };
 
-  decodeAudio = (buffer: ?ArrayBuffer) => {
+  decodeAudio = (buffer: ArrayBuffer) => {
+    if(!buffer) {
+      return;
+    }
     const typedArray = new Uint8Array(buffer);
 
     this.decoderWorker = new Worker(options.decoderWorkerPath);
@@ -204,7 +207,7 @@ class AudioPlayer extends PureComponent<Props, State> {
     }, [typedArray.buffer] );
   }
 
-  decodeWorkerMessage = (e: ?Object) => {
+  decodeWorkerMessage = (e: Object) => {
     if (e.data === null) {
       this.wavWorker.postMessage({ command: 'done' });
     } else {
@@ -217,7 +220,7 @@ class AudioPlayer extends PureComponent<Props, State> {
     }
   }
 
-  wavWorkerMessage = (e: ?Object) => {
+  wavWorkerMessage = (e: Object) => {
     if (e.data !== null) {
       const dataBlob = new Blob( [ e.data ], { type: "audio/wav" } );
       const url = URL.createObjectURL( dataBlob );
