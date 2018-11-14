@@ -24,11 +24,22 @@ type State = {
   duration: number,
   isPlaying: boolean,
   currentTime: number,
+  decodedSrc: string,
+  isDecoded: boolean,
+};
+
+const options = {
+  sampleRate: 48000,
+  wavBitDepth: 32,
+  decoderWorkerPath: '/devapp/decoderWorker.min.js',
+  wavWorkerPath: '/devapp/waveWorker.min.js',
 };
 
 class AudioPlayer extends PureComponent<Props, State> {
   audio: ?HTMLMediaElement;
   rewind: ?HTMLElement;
+  decoderWorker: Worker;
+  wavWorker: Worker;
 
   constructor(props: Props) {
     super(props);
@@ -39,7 +50,25 @@ class AudioPlayer extends PureComponent<Props, State> {
       duration: props.duration || 0,
       isPlaying: false,
       currentTime: 0,
+      decodedSrc: '',
+      isDecoded: false,
     };
+  }
+
+  componentWillMount() {
+    const { src } = this.props;
+
+    if (!src) {
+      return;
+    }
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', src, true);
+    xhr.responseType = 'arraybuffer';
+    xhr.onload = () => {
+      this.decodeAudio(xhr.response);
+    };
+    xhr.send();
   }
 
   handleError = () => {
@@ -148,20 +177,63 @@ class AudioPlayer extends PureComponent<Props, State> {
     }
   };
 
-  renderPlayPauseButton() {
-    const { pending } = this.props;
-    const { error, isPlaying } = this.state;
+  decodeAudio = (buffer: ArrayBuffer) => {
+    if (!buffer) {
+      return;
+    }
+    const typedArray = new Uint8Array(buffer);
 
-    return (
-      <AudioPlayerButton
-        error={error}
-        pending={Boolean(pending)}
-        isPlaying={isPlaying}
-        onPlay={this.handlePlayClick}
-        onPause={this.handlePauseClick}
-      />
+    this.decoderWorker = new Worker(options.decoderWorkerPath);
+    this.wavWorker = new Worker(options.wavWorkerPath);
+
+    this.decoderWorker.postMessage({
+      command: 'init',
+      decoderSampleRate: options.sampleRate,
+      outputBufferSampleRate: options.sampleRate,
+    });
+
+    this.wavWorker.postMessage({
+      command: 'init',
+      wavBitDepth: options.wavBitDepth,
+      wavSampleRate: options.sampleRate,
+    });
+
+    this.decoderWorker.onmessage = this.decodeWorkerMessage;
+    this.wavWorker.onmessage = this.wavWorkerMessage;
+
+    this.decoderWorker.postMessage(
+      {
+        command: 'decode',
+        pages: typedArray,
+      },
+      [typedArray.buffer],
     );
-  }
+  };
+
+  decodeWorkerMessage = (e: Object) => {
+    if (e.data === null) {
+      this.wavWorker.postMessage({ command: 'done' });
+    } else {
+      this.wavWorker.postMessage(
+        {
+          command: 'encode',
+          buffers: e.data,
+        },
+        e.data.map((typedArray) => {
+          return typedArray.buffer;
+        }),
+      );
+    }
+  };
+
+  wavWorkerMessage = (e: Object) => {
+    if (e.data !== null) {
+      const dataBlob = new Blob([e.data], { type: 'audio/wav' });
+      const url = URL.createObjectURL(dataBlob);
+
+      this.setState({ decodedSrc: url, isDecoded: true });
+    }
+  };
 
   renderPlayerSeeker() {
     const { currentTime, duration } = this.state;
@@ -187,11 +259,25 @@ class AudioPlayer extends PureComponent<Props, State> {
     );
   }
 
-  renderAudioElement() {
-    const { src } = this.props;
-    const { key } = this.state;
+  renderPlayPauseButton() {
+    const { pending } = this.props;
+    const { error, isPlaying, isDecoded } = this.state;
 
-    if (!src) {
+    return (
+      <AudioPlayerButton
+        error={error}
+        pending={Boolean(pending) || !isDecoded}
+        isPlaying={isPlaying}
+        onPlay={this.handlePlayClick}
+        onPause={this.handlePauseClick}
+      />
+    );
+  }
+
+  renderAudioElement() {
+    const { key, decodedSrc } = this.state;
+
+    if (!decodedSrc) {
       return null;
     }
 
@@ -199,7 +285,7 @@ class AudioPlayer extends PureComponent<Props, State> {
       <audio
         key={key}
         ref={this.setAudio}
-        src={src}
+        src={decodedSrc}
         onError={this.handleError}
         onEnded={this.handleEnded}
         onPause={this.handlePause}
