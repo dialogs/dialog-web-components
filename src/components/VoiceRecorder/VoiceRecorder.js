@@ -14,6 +14,7 @@ type Props = {
     stopRecording: () => void,
     cancelRecording: () => void,
   }) => Node,
+  encoderPath?: string,
   onStop?: () => void,
   onSave: (Object) => void,
 };
@@ -23,14 +24,6 @@ type State = {
   endTime: number,
   canSave: boolean,
   isRecording: boolean,
-};
-
-const options = {
-  monitorGain: 0,
-  recordingGain: 1,
-  numberOfChannels: 1,
-  encoderSampleRate: 48000,
-  encoderPath: '/devapp/encoderWorker.min.js',
 };
 
 class VoiceRecorder extends Component<Props, State> {
@@ -44,6 +37,14 @@ class VoiceRecorder extends Component<Props, State> {
       endTime: 0,
       canSave: false,
       isRecording: false,
+    };
+
+    const options = {
+      monitorGain: 0,
+      recordingGain: 1,
+      numberOfChannels: 1,
+      encoderSampleRate: 48000,
+      encoderPath: props.encoderPath || '/devapp/encoderWorker.min.js',
     };
 
     this.recorder = new Recorder(options);
