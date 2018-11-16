@@ -92,6 +92,7 @@ class VoiceRecorder extends Component<Props, State> {
   };
 
   render() {
+    console.log('Bitch and rich');
     const { isRecording, startTime } = this.state;
     const recordProps = {
       isRecording,
