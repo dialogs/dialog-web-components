@@ -39,6 +39,8 @@ class VoiceRecorder extends Component<Props, State> {
       isRecording: false,
     };
 
+    console.log('props.encoderPath ', props.encoderPath);
+
     const options = {
       monitorGain: 0,
       recordingGain: 1,
