@@ -7,10 +7,12 @@
 :root {
   --activity-media-header-height: 60px;
   --activity-media-header-font-family: var(--default-font-family);
-  --activity-media-header-transition-duration: var(--default-transition-duration);
+  --activity-media-header-transition-duration: var(
+    --default-transition-duration
+  );
   --activity-media-header-font-size: var(--default-font-size-large);
-  --activity-media-header-icon-color: color(#000 alpha(40%));
-  --activity-media-header-icon-color-hover: color(#000 alpha(60%));
+  --activity-media-header-icon-color: color-mod(#000 alpha(40%));
+  --activity-media-header-icon-color-hover: color-mod(#000 alpha(60%));
 }
 
 /* Reset */
@@ -31,7 +33,7 @@
   padding: 15px 40px;
   text-align: center;
   letter-spacing: -0.3px;
-  @apply --no-select;
+  @mixin no-select;
   box-sizing: border-box;
 }
 
@@ -64,7 +66,7 @@
 
 .current {
   cursor: pointer;
-  @apply --no-select;
+  @mixin no-select;
   height: 28px;
   display: flex;
   align-items: center;
@@ -92,7 +94,7 @@
 .currentText {
   cursor: pointer;
   flex: 0 0 auto;
-  @apply --text-overflow-ellipsis;
+  @mixin text-overflow-ellipsis;
 }
 
 .arrow {

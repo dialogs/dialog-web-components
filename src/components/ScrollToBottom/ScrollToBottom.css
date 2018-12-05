@@ -27,19 +27,19 @@
   padding: 12px;
   border-radius: 1000px;
   position: relative;
-  border: 1px solid color(#000 alpha(20%));
+  border: 1px solid color-mod(#000 alpha(20%));
   cursor: pointer;
   transition-timing-function: ease;
   transition-duration: var(--scroll-to-bottom-transition-duration);
   transition-property: box-shadow, transform;
 
   &:hover {
-    /*box-shadow: 0 10px 20px -8px color(#000 alpha(25%));*/
+    /*box-shadow: 0 10px 20px -8px color-mod(#000 alpha(25%));*/
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
   }
 
   &:active {
-    /*box-shadow: 0 5px 15px -2px color(#000 alpha(25%));*/
+    /*box-shadow: 0 5px 15px -2px color-mod(#000 alpha(25%));*/
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.25);
   }
 }
@@ -64,5 +64,5 @@
   text-align: center;
   border-radius: 1000px;
   color: var(--scroll-to-bottom-counter-text-color);
-  @apply --no-select;
+  @mixin no-select;
 }

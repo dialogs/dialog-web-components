@@ -42,6 +42,10 @@ class ContactSelectorInput extends PureComponent<Props> {
     this.props.onChange(this.props.selector.handleKeyboardEvent(event));
   };
 
+  handleDelete = (contact: PeerInfo): void => {
+    this.props.onChange(this.props.selector.deleteSelected(contact));
+  };
+
   getPlaceholder(): string {
     return this.context.l10n.formatText('ContactSelector.search_placeholder');
   }
@@ -60,7 +64,13 @@ class ContactSelectorInput extends PureComponent<Props> {
     const selected = this.props.selector.getSelected().toArray();
 
     return selected.map((contact) => {
-      return <ContactSelectorChip key={contact.peer.id} contact={contact} />;
+      return (
+        <ContactSelectorChip
+          key={contact.peer.id}
+          contact={contact}
+          onDelete={this.handleDelete}
+        />
+      );
     });
   }
 

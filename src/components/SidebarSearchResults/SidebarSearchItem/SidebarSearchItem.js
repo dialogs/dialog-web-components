@@ -4,11 +4,12 @@
  */
 
 import type { Peer, Message, PeerInfo } from '@dlghq/dialog-types';
-import React, { PureComponent } from 'react';
+import React, { PureComponent, type Node } from 'react';
 import { format } from 'date-fns';
 import { Text } from '@dlghq/react-l10n';
 import { hasSelection } from '@dlghq/dialog-utils';
 import classNames from 'classnames';
+
 import SidebarSearchItemMessage from '../SidebarSearchItemMessage/SidebarSearchItemMessage';
 import styles from './SidebarSearchItem.css';
 import PeerInfoTitle from '../../PeerInfoTitle/PeerInfoTitle';
@@ -74,7 +75,7 @@ class SidebarSearchItem extends PureComponent<Props, State> {
     );
   }
 
-  renderBeforeMessages() {
+  renderBeforeMessages(): Node {
     const { info, before } = this.props;
 
     if (!before.length) {
@@ -125,7 +126,7 @@ class SidebarSearchItem extends PureComponent<Props, State> {
     );
   }
 
-  renderAfterMessages() {
+  renderAfterMessages(): Node {
     const { info, after } = this.props;
 
     if (!after.length) {

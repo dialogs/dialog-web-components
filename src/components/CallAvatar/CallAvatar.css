@@ -43,8 +43,8 @@
     border-radius: 50%;
     transform-origin: 50% 50%;
     transform: translateZ(0);
-    background-color: color(var(--color-primary) alpha(5%));
-    box-shadow: inset 0 0 0 1px color(var(--color-primary) alpha(3%));
+    background-color: color-mod(var(--color-primary) alpha(5%));
+    box-shadow: inset 0 0 0 1px color-mod(var(--color-primary) alpha(3%));
     animation: pulse 1.5s infinite ease;
   }
 }

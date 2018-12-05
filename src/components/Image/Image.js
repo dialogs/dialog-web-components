@@ -5,12 +5,12 @@
 
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
-import getImageSize from '../../utils/getImageSize';
-import styles from './Image.css';
 
-const STATE_LOADING = 1;
-const STATE_SUCCESS = 2;
-const STATE_ERROR = 3;
+import getImageSize from '../../utils/getImageSize';
+import ImagePreloader, {
+  STATE_SUCCESS,
+} from '../ImagePreloader/ImagePreloader';
+import styles from './Image.css';
 
 export type Props = {
   className?: string,
@@ -25,44 +25,11 @@ export type Props = {
   onClick?: (event: SyntheticMouseEvent<>) => mixed,
 };
 
-export type State = {
-  state: 1 | 2 | 3,
-  error: ?mixed,
-};
-
-class Image extends PureComponent<Props, State> {
-  requestId: ?AnimationFrameID; // eslint-disable-line no-undef
-  image: ?HTMLImageElement;
-
+class Image extends PureComponent<Props, void> {
   static defaultProps = {
     maxWidth: 400,
     maxHeight: 400,
   };
-
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      state: STATE_LOADING,
-      error: null,
-    };
-  }
-
-  componentDidMount(): void {
-    if (this.props.src) {
-      this.startFetch(this.props.src);
-    }
-  }
-
-  componentWillReceiveProps({ src }: Props): void {
-    if (src && this.props.src !== src) {
-      this.startFetch(src);
-    }
-  }
-
-  componentWillUnmount(): void {
-    this.stopFetch();
-  }
 
   getSize() {
     const { width, height, maxWidth, maxHeight } = this.props;
@@ -70,47 +37,8 @@ class Image extends PureComponent<Props, State> {
     return getImageSize(width, height, maxWidth, maxHeight);
   }
 
-  startFetch(src: string): void {
-    this.stopFetch();
-    this.requestId = requestAnimationFrame(() => {
-      const image = document.createElement('img');
-
-      image.onload = () => {
-        this.setState({ state: STATE_SUCCESS });
-        this.stopFetch();
-      };
-
-      image.onerror = (error) => {
-        this.setState({ error, state: STATE_ERROR });
-        this.stopFetch();
-      };
-
-      image.src = src;
-
-      this.image = image;
-    });
-  }
-
-  stopFetch(): void {
-    if (this.requestId) {
-      cancelAnimationFrame(this.requestId);
-      this.requestId = null;
-    }
-
-    if (this.image) {
-      this.image.src = '';
-      this.image.onload = null;
-      this.image.onerror = null;
-      this.image = null;
-    }
-  }
-
   render() {
-    const { preview, src } = this.props;
-    const { state } = this.state;
-
-    const isPreview = state !== STATE_SUCCESS;
-    const source = isPreview ? preview : src;
+    const { preview } = this.props;
     const { width, height } = this.getSize();
     const className = classNames(styles.container, this.props.className);
 
@@ -120,16 +48,26 @@ class Image extends PureComponent<Props, State> {
         title={this.props.alt}
         style={{ width, height }}
       >
-        {source ? (
-          <img
-            id={this.props.id}
-            src={source}
-            width={width}
-            height={height}
-            alt={this.props.alt}
-            onClick={this.props.onClick}
-          />
-        ) : null}
+        <ImagePreloader src={this.props.src}>
+          {({ state, src }) => {
+            const source = state === STATE_SUCCESS ? src : preview;
+
+            if (!source) {
+              return null;
+            }
+
+            return (
+              <img
+                id={this.props.id}
+                src={source}
+                width={width}
+                height={height}
+                alt={this.props.alt}
+                onClick={this.props.onClick}
+              />
+            );
+          }}
+        </ImagePreloader>
       </div>
     );
   }

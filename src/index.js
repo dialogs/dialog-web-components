@@ -5,11 +5,9 @@
 
 // Interface
 export { default as Avatar } from './components/Avatar/Avatar';
+export { default as AvatarDouble } from './components/AvatarDouble/AvatarDouble';
 export { default as PeerAvatar } from './components/PeerAvatar/PeerAvatar';
-export {
-  default as PeerAvatarWithStatus
-} from './components/PeerAvatarWithStatus/PeerAvatarWithStatus';
-export { default as DoublePeerAvatar } from './components/DoublePeerAvatar/DoublePeerAvatar';
+export { default as PeerAvatarDouble } from './components/PeerAvatarDouble/PeerAvatarDouble';
 export { default as PeerInfoTitle } from './components/PeerInfoTitle/PeerInfoTitle';
 export { default as Scroller } from './components/Scroller/Scroller';
 export { default as Dropdown } from './components/Dropdown/Dropdown';
@@ -41,6 +39,7 @@ export { default as CustomProfile } from './components/CustomProfile/CustomProfi
 export { default as UserStatus } from './components/UserStatus/UserStatus';
 export { default as SidebarMenuProfile } from './components/SidebarMenuProfile/SidebarMenuProfile';
 export { default as Markdown } from './components/Markdown/Markdown';
+export { default as SpaceList } from './components/SpaceList/SpaceList';
 
 // Calls
 export { default as Call } from './components/Call/Call';
@@ -103,6 +102,7 @@ export { default as PreferencesModal } from './components/PreferencesModal/Prefe
 export { default as AddMembersModal } from './components/AddMembersModal/AddMembersModal';
 export { default as FeedbackModal } from './components/FeedbackModal/FeedbackModal';
 export { default as AdminModal } from './components/AdminModal/AdminModal';
+export { default as CreateSpaceModal } from './components/CreateSpaceModal/CreateSpaceModal';
 export { default as SelectCertificateModal } from './components/SelectCertificateModal/SelectCertificateModal';
 
 // Sidebar
@@ -170,6 +170,7 @@ export { default as Alert } from './components/Alert/Alert';
 export { default as Confirm } from './components/Confirm/Confirm';
 export { default as HotKeys } from './components/HotKeys/HotKeys';
 export { default as CopyButton } from './components/CopyButton/CopyButton';
+export { default as ImagePreloader } from './components/ImagePreloader/ImagePreloader';
 
 // Other
 export { default as Error } from './components/Error/Error';

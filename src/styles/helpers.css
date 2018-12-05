@@ -1,29 +1,27 @@
 /*
- * Copyright 2018 dialog LLC <info@dlg.im>
- */
+* Copyright 2018 dialog LLC <info@dlg.im>
+*/
 
-:root {
-  --text-overflow-ellipsis: {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-  }
+@define-mixin text-overflow-ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 
-  --clearfix: {
-    &::after {
-      display: table;
-      clear: both;
-      content: '';
-    }
+@define-mixin clearfix {
+  &::after {
+    display: table;
+    clear: both;
+    content: '';
   }
+}
 
-  --no-select: {
-    cursor: default;
-    user-select: none;
-  }
+@define-mixin no-select {
+  cursor: default;
+  user-select: none;
+}
 
-  --flex-fix: {
-    min-width: 0;
-    min-height: 0;
-  }
+@define-mixin flex-fix {
+  min-width: 0;
+  min-height: 0;
 }

@@ -1,0 +1,59 @@
+/*
+ * Copyright 2018 dialog LLC <info@dlg.im>
+ */
+
+@import '../../../styles/variables.css';
+@import '../../../styles/colors.css';
+
+:root {
+  --space-avatar-text-color: #fff;
+  --space-avatar-font-size: 20px;
+  --space-avatar-font-size-active: 30px;
+}
+
+/* Reset */
+.container {
+  all: initial;
+}
+
+/* Styles */
+.container {
+  display: inline-block;
+  line-height: 0;
+}
+
+.container.nonactive g {
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.container g {
+  transition: opacity var(--default-transition-duration) ease-in-out;
+}
+
+.image path {
+  transition: d var(--default-transition-duration) ease-in-out;
+}
+
+.text {
+  font-family: var(--default-font-family);
+  color: var(--space-avatar-text-color);
+  letter-spacing: 2px;
+  fill: currentColor;
+  text-transform: uppercase;
+  user-select: none;
+  cursor: inherit;
+  vertical-align: middle;
+  transition: font-size var(--default-transition-duration) ease-in-out;
+}
+
+.active text {
+  font-size: var(--space-avatar-font-size-active);
+}
+
+.nonactive text {
+  font-size: var(--space-avatar-font-size);
+}

@@ -131,7 +131,7 @@ class EditGroupModalForm extends PureComponent<Props, State> {
     return (
       <div className={styles.avatarBlock}>
         <AvatarSelector
-          name={name.value}
+          title={name.value}
           placeholder={group.placeholder}
           avatar={avatar}
           size={140}

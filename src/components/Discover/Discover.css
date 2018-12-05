@@ -15,7 +15,7 @@
   --discover-padding-right: 20px;
   --discover-padding-bottom: 10px;
   --discover-padding-left: 20px;
-  --discover-border-color: color(#000 alpha(14%));
+  --discover-border-color: color-mod(#000 alpha(14%));
 }
 
 /* Reset */
@@ -48,7 +48,7 @@
 
 .headerText {
   flex: 1 1 auto;
-  @apply --flex-fix;
+  @mixin flex-fix;
 }
 
 .headerControls {
@@ -67,7 +67,7 @@
   line-height: 22px;
   margin: 0;
   color: var(--discover-title-color);
-  @apply --text-overflow-ellipsis;
+  @mixin text-overflow-ellipsis;
 }
 
 .subTitle {
@@ -78,13 +78,13 @@
   letter-spacing: -0.2px;
   line-height: 18px;
   color: var(--discover-subtitle-color);
-  @apply --text-overflow-ellipsis;
+  @mixin text-overflow-ellipsis;
 }
 
 .cards {
   display: flex;
   flex: 1 1 auto;
-  @apply --flex-fix;
+  @mixin flex-fix;
   overflow: auto;
   flex-flow: row wrap;
   padding: calc(var(--default-padding) / 2);

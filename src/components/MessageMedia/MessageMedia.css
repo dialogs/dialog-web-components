@@ -8,9 +8,9 @@
   --message-media-font-family: var(--default-font-family);
   --message-media-font-size: var(--default-font-size);
   --message-media-font-color: #000;
-  --message-media-webpage-title-color: color(#000 alpha(90%));
+  --message-media-webpage-title-color: color-mod(#000 alpha(90%));
   --message-media-border-width: 2px;
-  --message-media-border-color: color(#000 alpha(14%));
+  --message-media-border-color: color-mod(#000 alpha(14%));
 }
 
 /* Reset */
@@ -57,7 +57,7 @@
 .webpageWrapper {
   display: block;
   flex: 1 1 auto;
-  @apply --flex-fix;
+  @mixin flex-fix;
 }
 
 .webpageTitle {
@@ -81,7 +81,7 @@
   margin: 4px 0 0;
   display: inline-block;
   max-width: 100%;
-  @apply --text-overflow-ellipsis;
+  @mixin text-overflow-ellipsis;
   line-height: 18px;
   font-size: var(--default-font-size-small);
   text-decoration: none;

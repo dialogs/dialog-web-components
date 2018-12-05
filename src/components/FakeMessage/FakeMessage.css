@@ -10,7 +10,9 @@
   --fake-message-header-height: 12px;
   --fake-message-header-text-color: #cacaca;
   --fake-message-line-height: 10px;
-  --fake-message-text-color: color(var(--fake-message-header-text-color) alpha(60%));
+  --fake-message-text-color: color-mod(
+    var(--fake-message-header-text-color) alpha(60%)
+  );
   --fake-message-vertical-padding: 6px;
   --fake-message-horizontal-padding: 20px;
 }
@@ -25,7 +27,8 @@
   position: relative;
   display: flex;
   flex-direction: row;
-  padding: var(--fake-message-vertical-padding) var(--fake-message-horizontal-padding);
+  padding: var(--fake-message-vertical-padding)
+    var(--fake-message-horizontal-padding);
   flex: 0 0 auto;
 }
 
@@ -50,7 +53,7 @@
 .header {
   margin-top: 2px;
   line-height: 0;
- }
+}
 
 .line {
   display: inline-block;

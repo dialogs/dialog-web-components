@@ -23,7 +23,7 @@
   position: relative;
   flex: 1 1 auto;
   overflow: auto;
-  @apply --flex-fix;
+  @mixin flex-fix;
 }
 
 .spinnerWrapper {
@@ -64,5 +64,5 @@
   color: var(--sidebar-search-result-header-color);
   padding: 6px 14px;
   line-height: 20px;
-  font-size: var(--sidebar-search-result-header-font-size)
+  font-size: var(--sidebar-search-result-header-font-size);
 }

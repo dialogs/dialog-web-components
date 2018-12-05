@@ -43,8 +43,8 @@
   white-space: pre;
   word-wrap: normal;
   border-radius: var(--default-border-radius);
-  background-color: color(#000 alpha(5%));
-  box-shadow: inset 0 1px 1px 0 color(#000 alpha(10%));
+  background-color: color-mod(#000 alpha(5%));
+  box-shadow: inset 0 1px 1px 0 color-mod(#000 alpha(10%));
   font-size: var(--markdown-pre-font-size);
   line-height: 18px;
   vertical-align: inherit;
@@ -93,8 +93,8 @@
   margin: -1px 0;
   font-size: var(--markdown-code-font-size);
   border-radius: var(--default-border-radius-small);
-  box-shadow: inset 0 1px 1px 0 color(#000 alpha(10%));
-  background-color: color(#000 alpha(7.5%));
+  box-shadow: inset 0 1px 1px 0 color-mod(#000 alpha(10%));
+  background-color: color-mod(#000 alpha(7.5%));
   font-family: var(--code-font-family);
   display: inline-block;
   box-sizing: border-box;
@@ -123,7 +123,7 @@
   transition: color var(--default-transition-duration) ease;
 
   &:hover {
-    color: color(var(--color-info) tint(10%));
+    color: color-mod(var(--color-info) tint(10%));
     border-bottom: 1px solid var(--color-info);
   }
 }
@@ -134,8 +134,8 @@
   margin: -1px 0;
   box-sizing: border-box;
   border-radius: var(--default-border-radius-small);
-  box-shadow: inset 0 1px 1px 0 color(#000 alpha(10%));
-  background-color: color(var(--color-primary) alpha(10%));
+  box-shadow: inset 0 1px 1px 0 color-mod(#000 alpha(10%));
+  background-color: color-mod(var(--color-primary) alpha(10%));
   vertical-align: inherit;
   line-height: var(--markdown-mention-line-height);
 }

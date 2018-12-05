@@ -10,13 +10,13 @@
   --modal-font-color: var(--default-font-color);
   --modal-font-color-light: var(--default-font-color-light);
   --modal-border-radius: var(--default-border-radius);
-  --modal-border-color: color(#000 alpha(7.5%));
+  --modal-border-color: color-mod(#000 alpha(7.5%));
   --modal-min-width: 500px;
-  --modal-overlay-color: color(#000 alpha(45%));
+  --modal-overlay-color: color-mod(#000 alpha(45%));
   --modal-close-size: 28px;
   --modal-close-size-large: 32px;
-  --modal-close-color: color(#000 alpha(40%));
-  --modal-close-color-hover: color(#000 alpha(60%));
+  --modal-close-color: color-mod(#000 alpha(40%));
+  --modal-close-color-hover: color-mod(#000 alpha(60%));
   --modal-close-transition-duration: var(--default-transition-duration);
   --modal-background-color: #fff;
   --modal-fullscreen-background-color: #fff;
@@ -48,10 +48,10 @@
   border-radius: var(--modal-border-radius);
   outline: none;
   background-color: var(--modal-background-color);
-  box-shadow: 0 2px 3px 0 color(#000 alpha(15%));
+  box-shadow: 0 2px 3px 0 color-mod(#000 alpha(15%));
   font-family: var(--modal-font-family);
   flex: 0 0 auto;
-  @apply --flex-fix;
+  @mixin flex-fix;
 }
 
 .overlay {
@@ -74,7 +74,7 @@
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
-  @apply --flex-fix;
+  @mixin flex-fix;
 }
 
 .close {

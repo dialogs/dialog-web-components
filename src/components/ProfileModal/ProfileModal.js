@@ -285,7 +285,7 @@ class ProfileModal extends PureComponent<Props, State> {
     return (
       <div className={styles.avatarBlock}>
         <AvatarSelector
-          name={name}
+          title={name}
           size={140}
           avatar={avatar}
           placeholder={profile.placeholder}

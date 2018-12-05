@@ -46,7 +46,7 @@ hr {
   margin: 1rem 0;
   display: block;
   border: 0;
-  background-color: color(#000 alpha(10%));
+  background-color: color-mod(#000 alpha(10%));
 }
 
 :global(.styleguide__buttons) {

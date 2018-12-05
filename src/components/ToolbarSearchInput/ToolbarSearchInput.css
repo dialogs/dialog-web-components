@@ -8,8 +8,8 @@
   --toolbar-search-input-font-family: var(--default-font-family);
   --toolbar-search-input-background-color: #fff;
   --toolbar-search-input-width: 256px;
-  --toolbar-search-input-border-color: color(#000 alpha(20%));
-  --toolbar-search-input-hover-border-color: color(#000 alpha(30%));
+  --toolbar-search-input-border-color: color-mod(#000 alpha(20%));
+  --toolbar-search-input-hover-border-color: color-mod(#000 alpha(30%));
   --toolbar-search-input-focus-border-color: var(--color-primary);
   --toolbar-search-input-font-size: var(--default-font-size-small);
 }
@@ -74,7 +74,7 @@
 }
 
 .cancel {
-    position: absolute;
-    top: 7px;
-    right: 6px;
+  position: absolute;
+  top: 7px;
+  right: 6px;
 }

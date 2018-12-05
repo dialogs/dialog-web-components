@@ -33,5 +33,5 @@
 }
 
 .pending {
-  color: color(var(--message-text-color) alpha(60%));
+  color: color-mod(var(--message-text-color) alpha(60%));
 }

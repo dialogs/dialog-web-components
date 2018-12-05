@@ -3,8 +3,9 @@
  * @flow
  */
 
-import React, { PureComponent } from 'react';
+import React, { PureComponent, type Node } from 'react';
 import { Text } from '@dlghq/react-l10n';
+
 import styles from './EmojiList.css';
 import EmojiListItem from './EmojiListItem';
 
@@ -20,7 +21,7 @@ type Props = {
 };
 
 class EmojiCategory extends PureComponent<Props> {
-  renderChars() {
+  renderChars(): Node {
     if (!this.props.isVisible) {
       return null;
     }

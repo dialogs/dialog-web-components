@@ -21,6 +21,10 @@ export type Props = {
 class Range extends PureComponent<Props> {
   static defaultProps = {
     orientation: 'horizontal',
+    min: 0,
+    max: 1,
+    step: 0.01,
+    value: 0,
   };
 
   render() {

@@ -4,15 +4,16 @@
  */
 
 import type { Props, SidebarFooterButtonVariant } from './types';
-import React, { PureComponent } from 'react';
+import React, { PureComponent, type Node } from 'react';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import classNames from 'classnames';
+
 import SidebarFooterButton from './SidebarFooterButton';
 import SidebarUpdateButton from './SidebarUpdateButton';
 import styles from './SidebarFooter.css';
 
 class SidebarFooter extends PureComponent<Props> {
-  rendereFooterButtons() {
+  rendereFooterButtons(): Node {
     const { current, variants } = this.props;
 
     return variants.map(

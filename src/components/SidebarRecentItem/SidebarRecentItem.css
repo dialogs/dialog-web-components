@@ -13,29 +13,49 @@
   --sidebar-recent-item-bottom-padding: 9px;
   --sidebar-recent-item-left-padding: 10px;
   --sidebar-recent-item-background: #fafafa;
-  --sidebar-recent-item-default-color: color(var(--sidebar-recent-item-background) blend(#000 40%));
+  --sidebar-recent-item-default-color: color-mod(
+    var(--sidebar-recent-item-background) blend(#000 40%)
+  );
   --sidebar-recent-item-hover-color: #000;
   --sidebar-recent-item-unread-color: var(--sidebar-recent-item-hover-color);
   --sidebar-recent-item-hover-background-color: #e6e6e6;
-  --sidebar-recent-item-pressed-background-color: color(var(--sidebar-recent-item-hover-background-color) shade(2%));
-  --sidebar-recent-item-message-color: color(var(--sidebar-recent-item-background) blend(#000 40%));
-  --sidebar-recent-item-hover-message-color: color(var(--sidebar-recent-item-message-color) shade(20%));
+  --sidebar-recent-item-pressed-background-color: color-mod(
+    var(--sidebar-recent-item-hover-background-color) shade(2%)
+  );
+  --sidebar-recent-item-message-color: color-mod(
+    var(--sidebar-recent-item-background) blend(#000 40%)
+  );
+  --sidebar-recent-item-hover-message-color: color-mod(
+    var(--sidebar-recent-item-message-color) shade(20%)
+  );
   --sidebar-recent-item-counter-size: 24px;
   --sidebar-recent-item-counter-background: var(--color-primary);
   --sidebar-recent-item-counter-font-size: 13px;
   --sidebar-recent-item-counter-color: #fff;
-  --sidebar-recent-item-counter-muted-color: var(--sidebar-recent-item-counter-color);
+  --sidebar-recent-item-counter-muted-color: var(
+    --sidebar-recent-item-counter-color
+  );
   --sidebar-recent-item-counter-muted-background: #a4a4a4;
   --sidebar-recent-item-active-background-color: var(--violet-blue);
   --sidebar-recent-item-active-background-gradient: var(--default-gradient);
   --sidebar-recent-item-active-color: #fff;
-  --sidebar-recent-item-active-hover-color: var(--sidebar-recent-item-active-color);
-  --sidebar-recent-item-active-message-color: color(var(--sidebar-recent-item-active-background-color) blend(#fff 80%));
-  --sidebar-recent-item-active-counter-color: color(#fff alpha(50%));
-  --sidebar-recent-item-active-hover-background-color: var(--sidebar-recent-item-active-background-color);
-  --sidebar-recent-item-active-hover-background-gradient: var(--sidebar-recent-item-active-background-gradient);
+  --sidebar-recent-item-active-hover-color: var(
+    --sidebar-recent-item-active-color
+  );
+  --sidebar-recent-item-active-message-color: color-mod(
+    var(--sidebar-recent-item-active-background-color) blend(#fff 80%)
+  );
+  --sidebar-recent-item-active-counter-color: color-mod(#fff alpha(50%));
+  --sidebar-recent-item-active-hover-background-color: var(
+    --sidebar-recent-item-active-background-color
+  );
+  --sidebar-recent-item-active-hover-background-gradient: var(
+    --sidebar-recent-item-active-background-gradient
+  );
   --sidebar-recent-item-icon-color: var(--sidebar-recent-item-default-color);
-  --sidebar-recent-item-active-icon-color: var(--sidebar-recent-item-active-color);
+  --sidebar-recent-item-active-icon-color: var(
+    --sidebar-recent-item-active-color
+  );
   --sidebar-recent-item-highlight-color: var(--color-primary);
   --sidebar-recent-item-draft-color: var(--color-danger);
 }
@@ -82,20 +102,10 @@
   }
 }
 
-.withDoubleAvatar {
-  padding-bottom: var(--sidebar-recent-item-bottom-padding);
-}
-
 .avatar {
   margin-right: 11px;
   flex: 0 0 auto;
   align-self: auto;
-}
-
-.doubleAvatar {
-  flex: 0 0 auto;
-  align-self: auto;
-  margin-right: 8px;
 }
 
 .text {
@@ -105,7 +115,7 @@
   vertical-align: middle;
   flex: 1 1 auto;
   position: relative;
-  @apply --flex-fix;
+  @mixin flex-fix;
 }
 
 .title {
@@ -115,8 +125,8 @@
   font-weight: 500;
   line-height: 20px;
   flex: 0 1 auto;
-  @apply --flex-fix;
-  @apply --text-overflow-ellipsis;
+  @mixin flex-fix;
+  @mixin text-overflow-ellipsis;
 }
 
 .header {
@@ -159,7 +169,7 @@
   line-height: 17px;
   height: 17px;
   color: var(--sidebar-recent-item-message-color);
-  @apply --text-overflow-ellipsis;
+  @mixin text-overflow-ellipsis;
 }
 
 .sender,
@@ -218,7 +228,9 @@
   &:hover {
     color: var(--sidebar-recent-item-active-hover-color);
     background-color: var(--sidebar-recent-item-active-hover-background-color);
-    background-image: var(--sidebar-recent-item-active-hover-background-gradient);
+    background-image: var(
+      --sidebar-recent-item-active-hover-background-gradient
+    );
 
     & .message {
       color: var(--sidebar-recent-item-active-message-color);

@@ -3,7 +3,7 @@
  * @flow
  */
 
-import React, { PureComponent } from 'react';
+import React, { PureComponent, type Node } from 'react';
 import classNames from 'classnames';
 import { Text } from '@dlghq/react-l10n';
 import Button from '../Button/Button';
@@ -12,8 +12,20 @@ import Range from '../Range/Range';
 import styles from './ImageEdit.css';
 import { Croppie } from 'croppie';
 import { listen, fileToBase64 } from '@dlghq/dialog-utils';
-import format from 'date-fns/format';
 import HotKeys from '../HotKeys/HotKeys';
+
+type FooterRendererProps = {
+  submit: () => mixed,
+};
+
+type ControlsRendererProps = {
+  rotateLeft: () => mixed,
+  rotateRight: () => mixed,
+  zoom: {
+    onChange: (value: number) => mixed,
+    value: number,
+  },
+};
 
 export type Props = {
   className?: string,
@@ -21,15 +33,15 @@ export type Props = {
   type: 'circle' | 'square',
   size: number,
   height: number,
+  maxZoom: number,
   onSubmit: (image: File) => mixed,
+  renderFooter?: (footerRendererProps: FooterRendererProps) => Node,
+  renderControls?: (controlsRendererProps: ControlsRendererProps) => Node,
 };
 
 export type State = {
-  zoom: {
-    min: number,
-    max: number,
-    current: number,
-  },
+  zoom: number,
+  minZoom: number,
 };
 
 class ImageEdit extends PureComponent<Props, State> {
@@ -41,17 +53,15 @@ class ImageEdit extends PureComponent<Props, State> {
     type: 'circle',
     size: 250,
     height: 400,
+    maxZoom: 2,
   };
 
   constructor(props: Props) {
     super(props);
 
     this.state = {
-      zoom: {
-        min: 0,
-        max: 1.5,
-        current: 0,
-      },
+      zoom: 0,
+      minZoom: 0,
     };
 
     this.croppie = null;
@@ -69,6 +79,7 @@ class ImageEdit extends PureComponent<Props, State> {
         showZoomer: false,
         enableOrientation: true,
         customClass: styles.cropper,
+        maxZoom: this.props.maxZoom,
       });
 
       fileToBase64(this.props.image, (image) => {
@@ -82,14 +93,11 @@ class ImageEdit extends PureComponent<Props, State> {
               this.setState(({ zoom }) => {
                 const currentZoom = this.croppie
                   ? this.croppie._currentZoom
-                  : zoom.current;
+                  : zoom;
 
                 return {
-                  zoom: {
-                    ...zoom,
-                    min: currentZoom,
-                    current: currentZoom,
-                  },
+                  zoom: currentZoom,
+                  minZoom: currentZoom,
                 };
               });
             });
@@ -119,12 +127,13 @@ class ImageEdit extends PureComponent<Props, State> {
         .result({
           type: 'blob',
           size: 'viewport',
-          format: 'jpeg',
+          format: 'png',
           circle: false,
         })
         .then((blob) => {
-          const fileName = format(new Date(), 'YYYY.MM.DD-HH:mm:ss.SSS');
-          this.props.onSubmit(new File([blob], `${fileName}.jpeg`));
+          this.props.onSubmit(
+            new File([blob], `${new Date().toISOString()}.png`),
+          );
         })
         .catch((error) => {
           throw new Error(error);
@@ -134,25 +143,18 @@ class ImageEdit extends PureComponent<Props, State> {
 
   handleRotateLeft = (): void => {
     if (this.croppie) {
-      this.croppie.rotate(-90);
+      this.croppie.rotate(90);
     }
   };
 
   handleRotateRight = (): void => {
     if (this.croppie) {
-      this.croppie.rotate(90);
+      this.croppie.rotate(-90);
     }
   };
 
   handleCroppieUpdate = (event: $FlowIssue) => {
-    this.setState(({ zoom }) => {
-      return {
-        zoom: {
-          ...zoom,
-          current: event.detail.zoom,
-        },
-      };
-    });
+    this.setState({ zoom: event.detail.zoom });
   };
 
   handleZoomChange = (value: number) => {
@@ -182,7 +184,19 @@ class ImageEdit extends PureComponent<Props, State> {
     }
   };
 
-  renderControls() {
+  renderControls(): Node {
+    if (this.props.renderControls) {
+      return this.props.renderControls({
+        rotateLeft: this.handleRotateLeft,
+        rotateRight: this.handleRotateRight,
+        zoom: {
+          onChange: this.handleZoomChange,
+          value: this.state.zoom,
+          minZoom: this.state.minZoom,
+        },
+      });
+    }
+
     return (
       <div className={styles.controls}>
         <Icon
@@ -198,14 +212,26 @@ class ImageEdit extends PureComponent<Props, State> {
           className={styles.rotateRight}
         />
         <Range
-          min={this.state.zoom.min}
-          max={this.state.zoom.max}
-          value={this.state.zoom.current}
-          step={0.005}
+          min={this.state.minZoom}
+          max={this.props.maxZoom}
+          value={this.state.zoom}
+          step={0.001}
           onChange={this.handleZoomChange}
           className={styles.zoom}
         />
       </div>
+    );
+  }
+
+  renderFooter(): Node {
+    if (this.props.renderFooter) {
+      return this.props.renderFooter({ submit: this.handleSubmit });
+    }
+
+    return (
+      <Button wide theme="primary" rounded={false} onClick={this.handleSubmit}>
+        <Text id="ImageEdit.save" />
+      </Button>
     );
   }
 
@@ -215,20 +241,11 @@ class ImageEdit extends PureComponent<Props, State> {
     return (
       <HotKeys onHotKey={this.handleHotkey}>
         <div className={className}>
-          <div className={styles.body} style={{ height: this.props.height }}>
-            <div ref={this.setCropper} />
+          <div className={styles.body}>
+            <div ref={this.setCropper} style={{ height: this.props.height }} />
             {this.renderControls()}
           </div>
-          <div className={styles.footer}>
-            <Button
-              wide
-              theme="primary"
-              rounded={false}
-              onClick={this.handleSubmit}
-            >
-              <Text id="ImageEdit.save" />
-            </Button>
-          </div>
+          <div className={styles.footer}>{this.renderFooter()}</div>
         </div>
       </HotKeys>
     );

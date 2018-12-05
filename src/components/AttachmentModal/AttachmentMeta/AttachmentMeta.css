@@ -7,7 +7,9 @@
 :root {
   --modal-attachment-meta-font-size: var(--default-font-size-small);
   --modal-attachment-meta-heading-color: var(--violet-blue-two);
-  --modal-attachment-meta-heading-font-size: var(--modal-attachment-meta-font-size);
+  --modal-attachment-meta-heading-font-size: var(
+    --modal-attachment-meta-font-size
+  );
 }
 
 .container {
@@ -46,7 +48,7 @@
   font-weight: 500;
   line-height: 20px;
   color: #000;
-  @apply --text-overflow-ellipsis;
+  @mixin text-overflow-ellipsis;
 }
 
 .type {

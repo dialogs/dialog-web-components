@@ -9,7 +9,11 @@
   --toolbar-info-button-color: #999;
   --toolbar-info-button-color-hover: #666;
   --toolbar-info-button-color-active: #4c4c4c;
-  --toolbar-info-button-active-background-image: linear-gradient(-36deg, #7103cd 0%, #2c00b4 100%);
+  --toolbar-info-button-active-background-image: linear-gradient(
+    -36deg,
+    #7103cd 0%,
+    #2c00b4 100%
+  );
 }
 
 /* Reset */
@@ -64,18 +68,20 @@
 
 .active {
   background-image: var(--toolbar-info-button-active-background-image);
-  /*box-shadow: inset 0 1px 0 0 color(#000 alpha(20%)), 0 0 0 0 color(#000 alpha(25%));*/
+  /*box-shadow: inset 0 1px 0 0 color-mod(#000 alpha(20%)), 0 0 0 0 color-mod(#000 alpha(25%));*/
 
   & .icon {
     fill: #fff;
   }
 
   &:hover {
-    box-shadow: inset 0 0 0 0 color(#000 alpha(20%)), 0 1px 1px 0 color(#000 alpha(25%));
+    box-shadow: inset 0 0 0 0 color-mod(#000 alpha(20%)),
+      0 1px 1px 0 color-mod(#000 alpha(25%));
     opacity: 0.9;
   }
 
   &:active {
-    box-shadow: inset 0 0 0 0 color(#000 alpha(20%)), 0 1px 0 0 color(#000 alpha(25%));
+    box-shadow: inset 0 0 0 0 color-mod(#000 alpha(20%)),
+      0 1px 0 0 color-mod(#000 alpha(25%));
   }
 }

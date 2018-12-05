@@ -11,11 +11,11 @@
   --sidebar-call-item-bottom-padding: 9px;
   --sidebar-call-item-left-padding: 10px;
   --sidebar-call-item-height: 73px;
-  --sidebar-call-item-default-color: color(#000 alpha(50%));
+  --sidebar-call-item-default-color: color-mod(#000 alpha(50%));
   --sidebar-call-item-hover-background-color: #e6e6e6;
   --sidebar-call-item-hover-color: #000;
   --sidebar-call-item-active-color: var(--lipstick);
-  --sidebar-call-item-active-background-color: color(
+  --sidebar-call-item-active-background-color: color-mod(
     var(--sidebar-call-item-hover-background-color) shade(2%)
   );
   --sidebar-call-item-text-height: 54px;
@@ -57,7 +57,7 @@
   }
 
   & .avatar {
-    margin-right: 8px;
+    margin-right: 11px;
     flex: 0 0 auto;
     align-self: auto;
     cursor: inherit;
@@ -75,13 +75,13 @@
   flex: 1 1 auto;
   height: var(--sidebar-call-item-text-height);
   position: relative;
-  @apply --flex-fix;
+  @mixin flex-fix;
 }
 
 .state {
   line-height: 20px;
   font-size: var(--sidebar-call-item-font-size);
-  @apply --text-overflow-ellipsis;
+  @mixin text-overflow-ellipsis;
 }
 
 .stateActive {
@@ -103,7 +103,7 @@
   font-size: var(--sidebar-call-item-time-font-size);
   vertical-align: middle;
   letter-spacing: -0.25px;
-  @apply --text-overflow-ellipsis;
+  @mixin text-overflow-ellipsis;
 
   &:first-letter {
     text-transform: capitalize;

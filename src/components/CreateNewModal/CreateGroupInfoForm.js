@@ -103,7 +103,7 @@ class CreateGroupInfoForm extends PureComponent<Props, State> {
     return (
       <div className={styles.avatarBlock}>
         <AvatarSelector
-          name={title}
+          title={title}
           placeholder="empty"
           avatar={avatar}
           size={140}

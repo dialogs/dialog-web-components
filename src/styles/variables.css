@@ -11,12 +11,14 @@
 
 :root {
   --font-apple: -apple-system, 'BlinkMacSystemFont';
-  --font-fallback: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  --font-fallback: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
+    'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   --font-emoji: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-  --default-font-family: var(--font-apple), var(--font-fallback), var(--font-emoji);
-  --code-font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', 'Fira Mono', 'Droid Sans Mono', 'Consolas',
-    'Roboto Mono', 'Source Code Pro', monospace;
+  --default-font-family: var(--font-apple), var(--font-fallback),
+    var(--font-emoji);
+  --code-font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code',
+    'Fira Mono', 'Droid Sans Mono', 'Consolas', 'Roboto Mono', 'Source Code Pro',
+    monospace;
 
   /* Sizes */
   --default-background-color: #fff;
@@ -24,7 +26,9 @@
   --default-font-size: 16px;
   --default-font-size-large: 18px;
   --default-font-color: #000;
-  --default-font-color-light: color(var(--default-font-color) blend(var(--default-background-color) 50%));
+  --default-font-color-light: color-mod(
+    var(--default-font-color) blend(var(--default-background-color) 50%)
+  );
   --default-line-height-small: 1.25;
   --default-line-height: 1.5;
   --default-line-height-large: 2;
@@ -67,7 +71,11 @@
   --color-labels: var(--dark-grey);
 
   /* Gradients */
-  --default-gradient: linear-gradient(89deg, var(--violet-blue), var(--color-primary));
+  --default-gradient: linear-gradient(
+    89deg,
+    var(--violet-blue),
+    var(--color-primary)
+  );
   --login-gradient: var(--default-gradient);
   --login-background: var(--login-gradient);
 }

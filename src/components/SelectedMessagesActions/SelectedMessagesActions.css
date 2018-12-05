@@ -47,7 +47,7 @@
   font-size: var(--default-font-size-small);
   flex: 1 1 auto;
   text-align: center;
-  @apply --flex-fix;
+  @mixin flex-fix;
 
   & b {
     font-weight: 500;

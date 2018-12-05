@@ -1,0 +1,123 @@
+/*
+ * Copyright 2018 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+:root {
+  --modal-create-new-font-family: var(--default-font-family);
+  --modal-create-new-font-size: var(--default-font-size);
+  --modal-create-new-close-size: 28px;
+  --modal-create-new-close-color: color(#000 alpha(40%));
+  --modal-create-new-close-color-hover: color(#000 alpha(60%));
+  --modal-create-new-transition-duration: var(--default-transition-duration);
+  --modal-create-new-width: 500px;
+  --modal-create-new-hint-color: var(--default-font-color-light);
+  --modal-create-new-hint-font-size: var(--modal-create-new-font-size);
+  --modal-create-new-label-font-size: var(--default-font-size-large);
+}
+
+/* Styles */
+.container {
+  width: var(--modal-create-new-width);
+  font-family: var(--modal-create-new-font-family);
+}
+
+.header {
+  padding-right: 24px;
+  padding-left: 24px;
+  line-height: 0;
+}
+
+.body {
+  padding: 0;
+}
+
+.back {
+  width: var(--modal-create-new-close-size);
+  height: var(--modal-create-new-close-size);
+  margin-right: 16px;
+  transition: color var(--modal-create-new-transition-duration) linear;
+  line-height: var(--modal-create-new-close-size);
+  color: var(--modal-create-new-close-color);
+
+  &:hover {
+    color: var(--modal-create-new-close-color-hover);
+  }
+}
+
+.type {
+  box-sizing: border-box;
+  width: var(--modal-create-new-width);
+  padding: calc(var(--default-padding-large) * 2.5);
+}
+
+.typeLabel {
+  font-size: var(--modal-create-new-label-font-size);
+}
+
+.typeHint {
+  padding-right: calc(var(--default-padding-large) * 1.5);
+  padding-left: 46px;
+  cursor: default;
+  user-select: none;
+  font-size: var(--modal-create-new-hint-font-size);
+  line-height: 1.6;
+  color: var(--modal-create-new-hint-color);
+}
+
+.error {
+  padding: var(--default-padding);
+  background-color: var(--color-danger);
+  font-size: var(--modal-create-new-font-size);
+  font-weight: 500;
+  color: #fff;
+}
+
+.info {
+  display: flex;
+  box-sizing: border-box;
+  padding: calc(var(--default-padding-large) * 1.5)
+    calc(var(--default-padding-large) * 2.5);
+  flex-flow: row;
+}
+
+.vertical {
+  flex-flow: column;
+  align-items: center;
+  align-content: center;
+
+  & .avatarBlock {
+    margin-right: 0;
+    margin-bottom: 32px;
+  }
+
+  & .form {
+    width: 100%;
+  }
+}
+
+.avatarBlock {
+  width: 140px;
+  margin-right: 34px;
+  flex: 0 0 auto;
+}
+
+.form {
+  flex: 1 1 auto;
+  @apply --flex-fix;
+}
+
+.input {
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.footer {
+  padding: 0;
+}
+
+.switcher {
+  margin-bottom: var(--default-padding);
+}

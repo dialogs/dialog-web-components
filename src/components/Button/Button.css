@@ -18,37 +18,73 @@
   --button-font-family: var(--default-font-family);
   --button-size-modifier: 0.25;
   --button-default-background-color: #757575;
-  --button-default-text-shadow: 0 1px 1px color(#000 alpha(20%));
-  --button-default-box-shadow: 0 2px 4px 0 color(#000 alpha(25%));
-  --button-default-box-shadow-active: 0 1px 1px 0 color(#000 alpha(25%));
-  --button-default-hover-background-color: color(var(--button-default-background-color) tint(10%));
-  --button-default-active-background-color: color(var(--button-default-background-color) shade(10%));
-  --button-default-disabled-background-color: color(var(--button-default-background-color) blackness(50%) alpha(70%));
+  --button-default-text-shadow: 0 1px 1px color-mod(#000 alpha(20%));
+  --button-default-box-shadow: 0 2px 4px 0 color-mod(#000 alpha(25%));
+  --button-default-box-shadow-active: 0 1px 1px 0 color-mod(#000 alpha(25%));
+  --button-default-hover-background-color: color-mod(
+    var(--button-default-background-color) tint(10%)
+  );
+  --button-default-active-background-color: color-mod(
+    var(--button-default-background-color) shade(10%)
+  );
+  --button-default-disabled-background-color: color-mod(
+    var(--button-default-background-color) blackness(50%) alpha(70%)
+  );
   --button-default-color: #fff;
   --button-primary-background-color: var(--color-primary);
-  --button-primary-hover-background-color: color(var(--button-primary-background-color) tint(10%));
-  --button-primary-active-background-color: color(var(--button-primary-background-color) shade(5%));
-  --button-primary-disabled-background-color: color(var(--button-primary-background-color) blackness(50%) alpha(70%));
+  --button-primary-hover-background-color: color-mod(
+    var(--button-primary-background-color) tint(10%)
+  );
+  --button-primary-active-background-color: color-mod(
+    var(--button-primary-background-color) shade(5%)
+  );
+  --button-primary-disabled-background-color: color-mod(
+    var(--button-primary-background-color) blackness(50%) alpha(70%)
+  );
   --button-primary-color: var(--button-default-color);
   --button-success-background-color: var(--color-success);
-  --button-success-hover-background-color: color(var(--button-success-background-color) tint(10%));
-  --button-success-active-background-color: color(var(--button-success-background-color) shade(5%));
-  --button-success-disabled-background-color: color(var(--button-success-background-color) blackness(50%) alpha(70%));
+  --button-success-hover-background-color: color-mod(
+    var(--button-success-background-color) tint(10%)
+  );
+  --button-success-active-background-color: color-mod(
+    var(--button-success-background-color) shade(5%)
+  );
+  --button-success-disabled-background-color: color-mod(
+    var(--button-success-background-color) blackness(50%) alpha(70%)
+  );
   --button-success-color: var(--button-default-color);
   --button-danger-background-color: var(--color-danger);
-  --button-danger-hover-background-color: color(var(--button-danger-background-color) tint(10%));
-  --button-danger-active-background-color: color(var(--button-danger-background-color) shade(5%));
-  --button-danger-disabled-background-color: color(var(--button-danger-background-color) blackness(50%) alpha(70%));
+  --button-danger-hover-background-color: color-mod(
+    var(--button-danger-background-color) tint(10%)
+  );
+  --button-danger-active-background-color: color-mod(
+    var(--button-danger-background-color) shade(5%)
+  );
+  --button-danger-disabled-background-color: color-mod(
+    var(--button-danger-background-color) blackness(50%) alpha(70%)
+  );
   --button-danger-color: var(--button-default-color);
   --button-info-background-color: var(--color-info);
-  --button-info-hover-background-color: color(var(--button-info-background-color) tint(10%));
-  --button-info-active-background-color: color(var(--button-info-background-color) shade(5%));
-  --button-info-disabled-background-color: color(var(--button-info-background-color) blackness(50%) alpha(70%));
+  --button-info-hover-background-color: color-mod(
+    var(--button-info-background-color) tint(10%)
+  );
+  --button-info-active-background-color: color-mod(
+    var(--button-info-background-color) shade(5%)
+  );
+  --button-info-disabled-background-color: color-mod(
+    var(--button-info-background-color) blackness(50%) alpha(70%)
+  );
   --button-info-color: var(--button-default-color);
   --button-warning-background-color: var(--color-warning);
-  --button-warning-hover-background-color: color(var(--button-warning-background-color) tint(10%));
-  --button-warning-active-background-color: color(var(--button-warning-background-color) shade(5%));
-  --button-warning-disabled-background-color: color(var(--button-warning-background-color) blackness(50%) alpha(70%));
+  --button-warning-hover-background-color: color-mod(
+    var(--button-warning-background-color) tint(10%)
+  );
+  --button-warning-active-background-color: color-mod(
+    var(--button-warning-background-color) shade(5%)
+  );
+  --button-warning-disabled-background-color: color-mod(
+    var(--button-warning-background-color) blackness(50%) alpha(70%)
+  );
   --button-warning-color: var(--button-default-color);
   --button-transition-duration: var(--default-transition-duration);
 }
@@ -455,12 +491,22 @@
 
 /* Sizes */
 .small {
-  padding-top: calc(var(--button-padding-top) * (1 - var(--button-size-modifier)));
-  padding-right: calc(var(--button-padding-right) * (1 - var(--button-size-modifier)));
-  padding-bottom: calc(var(--button-padding-bottom) * (1 - var(--button-size-modifier)));
-  padding-left: calc(var(--button-padding-left) * (1 - var(--button-size-modifier)));
+  padding-top: calc(
+    var(--button-padding-top) * (1 - var(--button-size-modifier))
+  );
+  padding-right: calc(
+    var(--button-padding-right) * (1 - var(--button-size-modifier))
+  );
+  padding-bottom: calc(
+    var(--button-padding-bottom) * (1 - var(--button-size-modifier))
+  );
+  padding-left: calc(
+    var(--button-padding-left) * (1 - var(--button-size-modifier))
+  );
   font-size: calc(var(--button-font-size) * (1 - var(--button-size-modifier)));
-  line-height: calc(var(--button-line-height) * (1 - var(--button-size-modifier)));
+  line-height: calc(
+    var(--button-line-height) * (1 - var(--button-size-modifier))
+  );
 }
 
 .normal {
@@ -473,10 +519,20 @@
 }
 
 .large {
-  padding-top: calc(var(--button-padding-top) * (1 + var(--button-size-modifier)));
-  padding-right: calc(var(--button-padding-right) * (1 + var(--button-size-modifier)));
-  padding-bottom: calc(var(--button-padding-bottom) * (1 + var(--button-size-modifier)));
-  padding-left: calc(var(--button-padding-left) * (1 + var(--button-size-modifier)));
+  padding-top: calc(
+    var(--button-padding-top) * (1 + var(--button-size-modifier))
+  );
+  padding-right: calc(
+    var(--button-padding-right) * (1 + var(--button-size-modifier))
+  );
+  padding-bottom: calc(
+    var(--button-padding-bottom) * (1 + var(--button-size-modifier))
+  );
+  padding-left: calc(
+    var(--button-padding-left) * (1 + var(--button-size-modifier))
+  );
   font-size: calc(var(--button-font-size) * (1 + var(--button-size-modifier)));
-  line-height: calc(var(--button-line-height) * (1 + var(--button-size-modifier)));
+  line-height: calc(
+    var(--button-line-height) * (1 + var(--button-size-modifier))
+  );
 }

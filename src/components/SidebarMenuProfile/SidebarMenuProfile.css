@@ -60,5 +60,5 @@
   font-size: var(--sidebar-menu-profile-status-font-size);
   text-transform: lowercase;
   color: currentColor;
-  @apply --text-overflow-ellipsis;
+  @mixin text-overflow-ellipsis;
 }

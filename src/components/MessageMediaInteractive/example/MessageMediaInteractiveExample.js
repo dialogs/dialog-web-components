@@ -4,7 +4,7 @@
 /* eslint-disable */
 
 import React, { PureComponent } from 'react';
-import CodeMirror from 'react-codemirror2';
+import { Controlled as CodeMirror } from 'react-codemirror2';
 import MessageMediaInteractive from '../MessageMediaInteractive';
 import 'codemirror/mode/javascript/javascript';
 import { interactive } from '../../../fixtures/messagesMedia';
@@ -51,7 +51,7 @@ class MessageMediaInteractiveExample extends PureComponent<Props, State> {
               theme: 'dracula',
               lineNumbers: true,
             }}
-            onChange={this.handleCodeChange}
+            onBeforeChange={this.handleCodeChange}
           />
         </div>
         <div className={styles.result}>

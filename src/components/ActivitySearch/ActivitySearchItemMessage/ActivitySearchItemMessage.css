@@ -65,12 +65,20 @@
 
   &:first-child:before {
     display: block;
-    background-image: linear-gradient(0deg, color(#fff alpha(0%)) 0%, color(#fff alpha(100%)) 100%);
+    background-image: linear-gradient(
+      0deg,
+      color-mod(#fff alpha(0%)) 0%,
+      color-mod(#fff alpha(100%)) 100%
+    );
   }
 
   &:last-child:before {
     display: block;
-    background-image: linear-gradient(180deg, color(#fff alpha(0%)) 0%, color(#fff alpha(100%)) 100%);
+    background-image: linear-gradient(
+      180deg,
+      color-mod(#fff alpha(0%)) 0%,
+      color-mod(#fff alpha(100%)) 100%
+    );
   }
 }
 
@@ -81,7 +89,7 @@
 
 .wrapper {
   flex: 1 1 auto;
-  @apply --flex-fix;
+  @mixin flex-fix;
   display: flex;
   flex-flow: column nowrap;
 }

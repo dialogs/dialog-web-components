@@ -2,8 +2,10 @@
  * Copyright 2018 dialog LLC <info@dlg.im>
  * @flow
  */
-import React, { PureComponent } from 'react';
+
+import React, { PureComponent, type Node } from 'react';
 import classNames from 'classnames';
+
 import Icon from '../../Icon/Icon';
 import styles from './Contact.css';
 
@@ -49,7 +51,7 @@ class Contact extends PureComponent<Props> {
     );
   }
 
-  renderEmails() {
+  renderEmails(): Node {
     const { emails } = this.props;
 
     if (!emails.length) {
@@ -68,7 +70,7 @@ class Contact extends PureComponent<Props> {
     });
   }
 
-  renderPhones() {
+  renderPhones(): Node {
     const { phones } = this.props;
 
     if (!phones.length) {

@@ -10,7 +10,7 @@ import { LocalizationContextType } from '@dlghq/react-l10n';
 import { Text } from '@dlghq/react-l10n';
 import { formatTime } from '@dlghq/dialog-utils';
 import classNames from 'classnames';
-import DoublePeerAvatar from '../DoublePeerAvatar/DoublePeerAvatar';
+import PeerAvatarDouble from '../PeerAvatarDouble/PeerAvatarDouble';
 import Icon from '../Icon/Icon';
 import formatRelative from '../../utils/formatRelative';
 import styles from './SidebarCallItem.css';
@@ -64,11 +64,11 @@ class SidebarCallItem extends PureComponent<Props> {
 
   renderAvatar() {
     return (
-      <DoublePeerAvatar
+      <PeerAvatarDouble
         className={styles.avatar}
-        size={40}
-        peerBig={this.props.call.initiator}
-        peerSmall={this.props.call.recipient}
+        size={37}
+        big={this.props.call.initiator}
+        small={this.props.call.recipient}
       />
     );
   }

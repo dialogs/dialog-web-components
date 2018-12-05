@@ -16,7 +16,7 @@
   --toolbar-title-font-size: var(--default-font-size);
   --toolbar-status-color: var(--default-font-color-light);
   --toolbar-status-font-size: var(--default-font-size-small);
-  --toolbar-border-color: color(#000 alpha(14%));
+  --toolbar-border-color: color-mod(#000 alpha(14%));
 }
 
 /* Reset */
@@ -64,7 +64,7 @@
   width: 100%;
   line-height: 22px;
   height: 22px;
-  @apply --text-overflow-ellipsis;
+  @mixin text-overflow-ellipsis;
 }
 
 .name {
@@ -80,7 +80,7 @@
   line-height: 18px;
   height: 18px;
   color: var(--toolbar-status-color);
-  @apply --text-overflow-ellipsis;
+  @mixin text-overflow-ellipsis;
 }
 
 .avatar {

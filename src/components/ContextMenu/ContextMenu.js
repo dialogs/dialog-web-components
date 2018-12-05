@@ -5,8 +5,9 @@
 
 import type { Props } from './types';
 import type { ProviderContext } from '@dlghq/react-l10n';
-import React, { PureComponent } from 'react';
+import React, { PureComponent, type Node } from 'react';
 import { LocalizationContextType } from '@dlghq/react-l10n';
+
 import styles from './ContextMenu.css';
 import Trigger from '../Trigger/Trigger';
 import Dropdown from '../Dropdown/Dropdown';
@@ -21,7 +22,7 @@ class ContextMenu extends PureComponent<Props> {
     l10n: LocalizationContextType,
   };
 
-  renderMenuItems() {
+  renderMenuItems(): Node {
     const items = this.props.getMenu();
 
     return items.map(({ title, handler }, index) => {

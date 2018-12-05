@@ -19,9 +19,15 @@
 
   --select-next-small-font-size: var(--default-font-size-small);
   --select-next-small-border-radius: var(--default-border-radius-small);
-  --select-next-small-line-height: calc(var(--select-next-line-height) * (1 - var(--select-next-size-modifier)));
-  --select-next-small-padding-top: calc(var(--select-next-padding-top) * (1 - var(--select-next-size-modifier)));
-  --select-next-small-padding-bottom: calc(var(--select-next-padding-bottom) * (1 - var(--select-next-size-modifier)));
+  --select-next-small-line-height: calc(
+    var(--select-next-line-height) * (1 - var(--select-next-size-modifier))
+  );
+  --select-next-small-padding-top: calc(
+    var(--select-next-padding-top) * (1 - var(--select-next-size-modifier))
+  );
+  --select-next-small-padding-bottom: calc(
+    var(--select-next-padding-bottom) * (1 - var(--select-next-size-modifier))
+  );
   --select-next-small-padding-left: var(--select-next-padding-left);
   --select-next-small-padding-right: var(--select-next-padding-right);
 
@@ -29,8 +35,10 @@
   --select-next-background-color: #fff;
   --select-next-label-font-size: var(--default-font-size-small);
   --select-next-label-color: var(--color-labels);
-  --select-next-border-color: #D1D3D8;
-  --select-next-hover-border-color: color(var(--select-next-border-color) shade(10%));
+  --select-next-border-color: #d1d3d8;
+  --select-next-hover-border-color: color-mod(
+    var(--select-next-border-color) shade(10%)
+  );
   --select-next-focus-border-color: var(--color-primary);
   --select-next-transition-dudarion: var(--default-transition-duration);
   --select-next-placeholder-color: #aaa;
@@ -40,7 +48,6 @@
   --select-next-option-selected-background-color: #e5e5e5;
 
   --select-next-z-index: var(--z-index-dropdown);
-
 }
 
 /* Reset */
@@ -74,7 +81,7 @@
 
 .select {
   flex: 1 1 auto;
-  @apply --flex-fix;
+  @mixin flex-fix;
   width: 100%;
 
   & :global(.Select-control) {
@@ -113,7 +120,8 @@
 
   & :global(.Select-menu-outer) {
     border: 0;
-    box-shadow: 0 2px 3px 0 color(#000 alpha(20%)), inset 0 0 0 1px var(--select-next-border-color);
+    box-shadow: 0 2px 3px 0 color-mod(#000 alpha(20%)),
+      inset 0 0 0 1px var(--select-next-border-color);
     overflow: hidden;
     z-index: var(--select-next-z-index);
   }
@@ -124,7 +132,9 @@
 
     &:global(.is-focused) {
       color: var(--select-next-option-focused-color) !important;
-      background-color: var(--select-next-option-focused-background-color) !important;
+      background-color: var(
+        --select-next-option-focused-background-color
+      ) !important;
     }
 
     &:global(.is-selected) {
@@ -175,10 +185,16 @@
   & .select {
     & :global(.Select-control) {
       border-radius: var(--select-next-border-radius);
-      height: calc(var(--select-next-padding-top) + var(--select-next-line-height) + var(--select-next-padding-bottom));
+      height: calc(
+        var(--select-next-padding-top) + var(--select-next-line-height) +
+          var(--select-next-padding-bottom)
+      );
 
       & :global(.Select-input) {
-        height: calc(var(--select-next-padding-top) + var(--select-next-line-height) + var(--select-next-padding-bottom));
+        height: calc(
+          var(--select-next-padding-top) + var(--select-next-line-height) +
+            var(--select-next-padding-bottom)
+        );
         padding-right: var(--select-next-padding-right);
         padding-left: var(--select-next-padding-left);
 
@@ -201,7 +217,10 @@
       }
 
       & :global(.Select-arrow-zone) {
-        padding-right: calc(var(--select-next-padding-right) - (var(--select-next-line-height) / 4));
+        padding-right: calc(
+          var(--select-next-padding-right) -
+            (var(--select-next-line-height) / 4)
+        );
       }
 
       & .arrowIcon {
@@ -226,10 +245,18 @@
   & .select {
     & :global(.Select-control) {
       border-radius: var(--select-next-small-border-radius);
-      height: calc(var(--select-next-small-padding-top) + var(--select-next-small-line-height) + var(--select-next-small-padding-bottom));
+      height: calc(
+        var(--select-next-small-padding-top) +
+          var(--select-next-small-line-height) +
+          var(--select-next-small-padding-bottom)
+      );
 
       & :global(.Select-input) {
-        height: calc(var(--select-next-small-padding-top) + var(--select-next-small-line-height) + var(--select-next-small-padding-bottom));
+        height: calc(
+          var(--select-next-small-padding-top) +
+            var(--select-next-small-line-height) +
+            var(--select-next-small-padding-bottom)
+        );
         padding-right: var(--select-next-small-padding-right);
         padding-left: var(--select-next-small-padding-left);
 
@@ -252,7 +279,10 @@
       }
 
       & :global(.Select-arrow-zone) {
-        padding-right: calc(var(--select-next-small-padding-right) - (var(--select-next-small-line-height) / 4));
+        padding-right: calc(
+          var(--select-next-small-padding-right) -
+            (var(--select-next-small-line-height) / 4)
+        );
       }
 
       & .arrowIcon {

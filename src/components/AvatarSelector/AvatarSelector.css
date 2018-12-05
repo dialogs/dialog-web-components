@@ -7,9 +7,13 @@
 :root {
   --avatar-selector-transitio-duration: var(--default-transition-duration);
   --avatar-selector-camera-icon-color: var(--color-primary);
-  --avatar-selector-camera-icon-color-hover: color(var(--avatar-selector-camera-icon-color) alpha(90%));
+  --avatar-selector-camera-icon-color-hover: color-mod(
+    var(--avatar-selector-camera-icon-color) alpha(90%)
+  );
   --avatar-selector-remove-icon-color: var(--color-danger);
-  --avatar-selector-remove-icon-color-hover: color(var(--avatar-selector-remove-icon-color) alpha(90%));
+  --avatar-selector-remove-icon-color-hover: color-mod(
+    var(--avatar-selector-remove-icon-color) alpha(90%)
+  );
 }
 
 /* Reset */
@@ -25,10 +29,12 @@
 }
 
 .avatar {
-  cursor: pointer;
+  position: relative;
+  z-index: 0;
 }
 
 .avatarChanger {
+  z-index: 1;
   position: absolute;
   right: 6px;
   bottom: 6px;
@@ -51,6 +57,7 @@
 
 .avatarRemove {
   position: absolute;
+  z-index: 1;
   right: 10px;
   top: 6px;
   cursor: pointer;

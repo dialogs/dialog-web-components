@@ -9,8 +9,8 @@
   --input-warning-color: var(--color-warning);
   --input-success-color: var(--color-success);
   --input-text-color: #000;
-  --input-placeholder-color: color(#000 alpha(30%));
-  --input-border-color: color(#000 alpha(35%));
+  --input-placeholder-color: color-mod(#000 alpha(30%));
+  --input-border-color: color-mod(#000 alpha(35%));
   --input-border-width: 1px;
   --input-focus-border-width: 2px;
   --input-default-font-size: 18px;
@@ -22,12 +22,14 @@
   --input-focused-border-color: var(--color-primary);
   --input-disabled-color: var(--pinkish-grey-two);
   --input-disabled-border-color: var(--input-disabled-color);
-  --input-disabled-background-color: color(var(--input-disabled-color) alpha(15%));
+  --input-disabled-background-color: color-mod(
+    var(--input-disabled-color) alpha(15%)
+  );
   --input-label-color: var(--color-primary);
   --input-label-font-size: 14px;
   --input-label-line-height: 22px;
   --input-label-font-family: var(--default-font-family);
-  --input-hint-color: color(#000 alpha(30%));
+  --input-hint-color: color-mod(#000 alpha(30%));
   --input-hint-font-size: 14px;
   --input-hint-line-height: 18px;
   --input-hint-font-family: var(--default-font-family);
@@ -105,7 +107,8 @@
 
 .filled {
   & .inputWrapper {
-    box-shadow: 0 var(--input-border-width) 0 0 var(--input-focused-border-color);
+    box-shadow: 0 var(--input-border-width) 0 0
+      var(--input-focused-border-color);
   }
 
   & .prefix {
@@ -119,7 +122,8 @@
 
 .focused {
   & .inputWrapper {
-    box-shadow: 0 var(--input-focus-border-width) 0 0 var(--input-focused-border-color);
+    box-shadow: 0 var(--input-focus-border-width) 0 0
+      var(--input-focused-border-color);
   }
 
   & .prefix {
@@ -138,13 +142,14 @@
   }
 
   & .input {
-    color: color(var(--input-text-color) alpha(35%));
+    color: color-mod(var(--input-text-color) alpha(35%));
     cursor: not-allowed;
   }
 
   & .inputWrapper {
     cursor: not-allowed;
-    box-shadow: 0 var(--input-border-width) 0 0 var(--input-disabled-border-color);
+    box-shadow: 0 var(--input-border-width) 0 0
+      var(--input-disabled-border-color);
   }
 }
 
@@ -181,7 +186,7 @@
   font-size: var(--input-hint-font-size);
   line-height: var(--input-hint-line-height);
   color: var(--input-hint-color);
-  @apply --no-select;
+  @mixin no-select;
 }
 
 /* Success state */
@@ -192,7 +197,8 @@
 
   &.focused {
     & .inputWrapper {
-      box-shadow: 0 var(--input-focus-border-width) 0 0 var(--input-success-color);
+      box-shadow: 0 var(--input-focus-border-width) 0 0
+        var(--input-success-color);
     }
   }
 
@@ -225,7 +231,8 @@
 
   &.focused {
     & .inputWrapper {
-      box-shadow: 0 var(--input-focus-border-width) 0 0 var(--input-warning-color);
+      box-shadow: 0 var(--input-focus-border-width) 0 0
+        var(--input-warning-color);
     }
   }
 

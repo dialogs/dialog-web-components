@@ -6,10 +6,10 @@
 
 :root {
   --activity-search-item-font-family: var(--default-font-family);
-  --activity-search-item-border-color: color(#000 alpha(14%));
+  --activity-search-item-border-color: color-mod(#000 alpha(14%));
   --activity-search-item-header-title-font-size: var(--default-font-size);
   --activity-search-item-header-date-font-size: 13px;
-  --activity-search-item-header-date-color: #8E8E8E;
+  --activity-search-item-header-date-color: #8e8e8e;
   --activity-search-item-messages-border-color: #ececec;
 }
 
@@ -36,11 +36,11 @@
   flex: 1 1 auto;
   font-weight: 500;
   line-height: 20px;
-  @apply --text-overflow-ellipsis;
-  @apply --flex-fix;
+  @mixin text-overflow-ellipsis;
+  @mixin flex-fix;
 }
 
-.headerInfo{
+.headerInfo {
   margin-left: 6px;
   flex: 0 0 auto;
   line-height: 20px;

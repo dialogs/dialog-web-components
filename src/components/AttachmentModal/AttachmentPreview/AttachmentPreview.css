@@ -26,7 +26,7 @@
   height: auto;
   max-height: var(--modal-attachment-preview-max-height);
   border-radius: 6px;
-  box-shadow: 0 0 0 1px color(#000 alpha(2%));
+  box-shadow: 0 0 0 1px color-mod(#000 alpha(2%));
 }
 
 .file {
@@ -41,7 +41,8 @@
   align-items: center;
   justify-content: center;
   color: #fff;
-  transition: background-color var(--default-transition-duration) cubic-bezier(0.47, 0, 0.75, 0.72);
+  transition: background-color var(--default-transition-duration)
+    cubic-bezier(0.47, 0, 0.75, 0.72);
 }
 
 .unknown {

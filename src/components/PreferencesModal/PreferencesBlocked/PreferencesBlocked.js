@@ -4,9 +4,10 @@
  */
 
 import type { User } from '@dlghq/dialog-types';
-import React, { PureComponent } from 'react';
+import React, { PureComponent, type Node } from 'react';
 import { Text, LocalizationContextType } from '@dlghq/react-l10n';
 import { filterByQuery } from '@dlghq/dialog-utils';
+
 import Fieldset from '../../Fieldset/Fieldset';
 import SearchInput from './SearchInput';
 import BlockedUser from './BlockedUser';
@@ -61,7 +62,7 @@ class PreferencesSecurity extends PureComponent<Props, State> {
     );
   }
 
-  renderBlockedUsers() {
+  renderBlockedUsers(): Node {
     const { blocked } = this.props;
     const { query } = this.state;
 

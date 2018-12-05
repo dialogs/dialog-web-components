@@ -6,7 +6,7 @@
 
 :root {
   --call-info-caller-color: #000;
-  --call-info-state-color: color(var(--call-info-caller-color) alpha(50%));
+  --call-info-state-color: color-mod(var(--call-info-caller-color) alpha(50%));
   --call-info-caller-font-size: 24px;
   --call-info-state-font-size: 18px;
   --call-info-oncall-caller-color: #fff;
@@ -25,7 +25,7 @@
   justify-content: center;
   box-sizing: border-box;
   width: 100%;
-  @apply --flex-fix;
+  @mixin flex-fix;
 }
 
 .wrapper {
@@ -40,7 +40,7 @@
   color: var(--call-info-caller-color);
   line-height: 30px;
   height: 30px;
-  @apply --text-overflow-ellipsis;
+  @mixin text-overflow-ellipsis;
 }
 
 .state {

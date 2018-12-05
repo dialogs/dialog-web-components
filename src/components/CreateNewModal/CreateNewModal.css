@@ -8,11 +8,11 @@
   --modal-create-new-font-family: var(--default-font-family);
   --modal-create-new-font-size: var(--default-font-size);
   --modal-create-new-close-size: 28px;
-  --modal-create-new-close-color: color(#000 alpha(40%));
-  --modal-create-new-close-color-hover: color(#000 alpha(60%));
+  --modal-create-new-close-color: color-mod(#000 alpha(40%));
+  --modal-create-new-close-color-hover: color-mod(#000 alpha(60%));
   --modal-create-new-transition-duration: var(--default-transition-duration);
   --modal-create-new-width: 500px;
-  --modal-create-new-hint-color: var(--default-font-color-light);;
+  --modal-create-new-hint-color: var(--default-font-color-light);
   --modal-create-new-hint-font-size: var(--modal-create-new-font-size);
   --modal-create-new-label-font-size: var(--default-font-size-large);
 }
@@ -77,7 +77,8 @@
 .info {
   display: flex;
   box-sizing: border-box;
-  padding: calc(var(--default-padding-large) * 1.5) calc(var(--default-padding-large) * 2.5);
+  padding: calc(var(--default-padding-large) * 1.5)
+    calc(var(--default-padding-large) * 2.5);
   flex-flow: row;
 }
 
@@ -104,7 +105,7 @@
 
 .form {
   flex: 1 1 auto;
-  @apply --flex-fix;
+  @mixin flex-fix;
 }
 
 .input {

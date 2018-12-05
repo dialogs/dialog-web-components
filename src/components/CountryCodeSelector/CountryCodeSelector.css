@@ -1,7 +1,6 @@
 /*
  * Copyright 2018 dialog LLC <info@dlg.im>
  */
-
 @import '../../styles/variables.css';
 
 :root {
@@ -14,10 +13,16 @@
   --country-code-selector-height: 46px;
   --country-code-selector-color: #414752;
   --country-code-selector-menu-outer-z-index: var(--z-index-dropdown);
-  --country-code-selector-hover-border-color: color(var(--country-code-selector-border-color) shade(15%));
+  --country-code-selector-hover-border-color: color-mod(
+    var(--country-code-selector-border-color) shade(15%)
+  );
   --country-code-selector-focus-border-color: var(--color-primary);
-  --country-code-selector-focus-outline-color: color(var(--country-code-selector-focus-border-color) alpha(20%));
-  --country-code-selector-transition-duration: calc(var(--default-transition-duration) / 1.5);
+  --country-code-selector-focus-outline-color: color-mod(
+    var(--country-code-selector-focus-border-color) alpha(20%)
+  );
+  --country-code-selector-transition-duration: calc(
+    var(--default-transition-duration) / 1.5
+  );
 }
 
 /* Reset */
@@ -32,17 +37,86 @@
   color: var(--country-code-selector-color);
 
   & :global(.Select) {
-    transition: box-shadow var(--country-code-selector-transition-duration) ease-in;
+    transition: box-shadow var(--country-code-selector-transition-duration)
+      ease-in;
     border-radius: var(--country-code-selector-border-radius);
+
     & :global(.Select-control) {
-      transition: box-shadow var(--country-code-selector-transition-duration) ease-in;
+      border: 0;
+      border-radius: var(--country-code-selector-border-radius);
+      box-shadow: inset 0 0 0 1px var(--country-code-selector-border-color);
+      height: var(--country-code-selector-height);
+      position: relative;
+      z-index: calc(var(--z-index-input) + 10);
+      transition: box-shadow var(--country-code-selector-transition-duration)
+        ease-in;
+
+      &:hover {
+        box-shadow: inset 0 0 0 1px
+          var(--country-code-selector-hover-border-color);
+      }
+    }
+
+    & :global(.Select-input) {
+      height: var(--country-code-selector-height);
+      padding: 0 var(--default-padding);
+
+      & > input {
+        line-height: 26px;
+        height: 26px;
+        padding: var(--default-padding-small) 0;
+      }
+    }
+
+    & :global(.Select-noresults) {
+      text-align: center;
+      padding: 8px 16px;
+      line-height: 24px;
+    }
+
+    & :global(.Select-menu-outer) {
+      border: 1px solid var(--country-code-selector-border-color);
+      box-shadow: 0 2px 3px 0 color-mod(#000 alpha(20%));
+      overflow: hidden;
+      z-index: var(--country-code-selector-menu-outer-z-index);
+    }
+
+    & :global(.Select-placeholder) {
+      line-height: var(--country-code-selector-height);
+      padding: 0 var(--default-padding);
+      user-select: none;
+    }
+
+    & :global(.Select-arrow-zone) {
+      width: 32px;
+      padding-right: 10px;
+    }
+
+    & :global(.Select-value) {
+      padding: 0 var(--default-padding) !important;
+
+      & .option {
+        padding-left: 0;
+        padding-right: 24px;
+      }
+    }
+
+    & :global(.Select-value-label) {
+      padding: var(--default-padding-small) 0;
+      display: block;
+    }
+
+    & :global(.Select-option) {
+      padding: 6px var(--default-padding);
+      color: var(--country-code-selector-color);
     }
 
     &:global(.is-focused) {
       box-shadow: 0 0 0 3px var(--country-code-selector-focus-outline-color);
 
       & :global(.Select-control) {
-        box-shadow: inset 0 0 0 1px var(--country-code-selector-focus-border-color) !important;
+        box-shadow: inset 0 0 0 1px
+          var(--country-code-selector-focus-border-color) !important;
 
         & .optionLabel {
           opacity: 0.5;
@@ -51,11 +125,14 @@
 
       &:global(.is-open) {
         box-shadow: 0 0 0 3px var(--country-code-selector-focus-outline-color);
-        border-radius: var(--country-code-selector-border-radius) var(--country-code-selector-border-radius) 0 0;
+        border-radius: var(--country-code-selector-border-radius)
+          var(--country-code-selector-border-radius) 0 0;
 
         & :global(.Select-control) {
-          box-shadow: inset 0 0 0 1px var(--country-code-selector-focus-border-color);
-          border-radius: var(--country-code-selector-border-radius) var(--country-code-selector-border-radius) 0 0;
+          box-shadow: inset 0 0 0 1px
+            var(--country-code-selector-focus-border-color);
+          border-radius: var(--country-code-selector-border-radius)
+            var(--country-code-selector-border-radius) 0 0;
         }
       }
     }
@@ -68,26 +145,12 @@
       }
     }
 
-
     &:global(.is-disabled) {
       & :global(.Select-control) {
         background-color: #fff;
         cursor: not-allowed;
-        opacity: .6;
+        opacity: 0.6;
         box-shadow: inset 0 0 0 1px var(--country-code-selector-border-color) !important;
-      }
-    }
-
-    &-control {
-      border: 0;
-      border-radius: var(--country-code-selector-border-radius);
-      box-shadow: inset 0 0 0 1px var(--country-code-selector-border-color);
-      height: var(--country-code-selector-height);
-      position: relative;
-      z-index: calc(var(--z-index-input) + 10);
-
-      &:hover {
-        box-shadow: inset 0 0 0 1px var(--country-code-selector-hover-border-color);
       }
     }
 
@@ -95,60 +158,6 @@
       & :global(.Select-input) {
         padding-left: 52px;
       }
-    }
-
-    &-input {
-      height: var(--country-code-selector-height);
-      padding: 0 var(--default-padding);
-
-      & > input {
-        line-height: 26px;
-        height: 26px;
-        padding: var(--default-padding-small) 0;
-      }
-    }
-
-    &-noresults {
-      text-align: center;
-      padding: 8px 16px;
-      line-height: 24px;
-    }
-
-    &-menu-outer {
-      border: 1px solid 1px var(--country-code-selector-border-color);
-      box-shadow: 0 2px 3px 0 color(#000 alpha(20%));
-      overflow: hidden;
-      z-index: var(--country-code-selector-menu-outer-z-index);
-    }
-
-    &-placeholder {
-      line-height: var(--country-code-selector-height);
-      padding: 0 var(--default-padding);
-      user-select: none;
-    }
-
-    &-arrow-zone {
-      width: 32px;
-      padding-right: 10px;
-    }
-
-    &-value {
-      padding: 0 var(--default-padding) !important;
-
-      &-label {
-        padding: var(--default-padding-small) 0;
-        display: block;
-      }
-
-      & .option {
-        padding-left: 0;
-        padding-right: 24px;
-      }
-    }
-
-    &-option {
-      padding: 6px var(--default-padding);
-      color: var(--country-code-selector-color);
     }
   }
 }
@@ -160,7 +169,7 @@
 }
 
 .label {
-  @apply --no-select;
+  @mixin no-select;
   color: var(--country-code-selector-label-color);
   font-family: var(--country-code-selector-label-font-family);
   font-size: var(--country-code-selector-label-font-size);
@@ -182,7 +191,7 @@
 }
 
 .optionFocused {
-  background-color: #F0F1F4;
+  background-color: #f0f1f4;
   color: var(--country-code-selector-color);
 }
 
@@ -203,12 +212,12 @@
   flex: 1 1 auto;
   padding: 0 8px 0 10px;
   overflow: hidden;
-  @apply --flex-fix;
+  @mixin flex-fix;
 }
 
 .optionCountry {
   font-size: var(--default-font-size);
-  @apply --text-overflow-ellipsis;
+  @mixin text-overflow-ellipsis;
 }
 
 .optionCode {

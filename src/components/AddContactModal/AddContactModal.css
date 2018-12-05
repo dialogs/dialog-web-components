@@ -57,12 +57,12 @@
   & b {
     font-weight: 500;
   }
-  @apply --no-select;
+  @mixin no-select;
 }
 
 .found {
   composes: hint;
-  color: color(var(--modal-add-contact-font-color) alpha(80%));
+  color: color-mod(var(--modal-add-contact-font-color) alpha(80%));
 }
 
 .foundAvatar {
@@ -91,7 +91,7 @@
   bottom: 0;
   padding: 3px;
   user-select: none;
-  @apply --no-select;
+  @mixin no-select;
 }
 
 .iconError {
@@ -112,7 +112,7 @@
   font-size: var(--default-font-size-large);
   line-height: 1.3;
   color: var(--modal-add-contact-font-color);
-  @apply --no-select;
+  @mixin no-select;
 
   & b,
   & strong {

@@ -177,7 +177,7 @@ class Trigger extends Component<Props, State> {
     }
 
     return (
-      <div onClick={this.handleChildClick} style={{ pointerEvents: 'all' }}>
+      <div onClick={this.handleChildClick}>
         {this.props.renderChild(this.state.position)}
       </div>
     );

@@ -5,7 +5,7 @@
 @import '../../styles/variables.css';
 
 :root {
-  --contact-list-item-border-color: color(#000 alpha(10%));
+  --contact-list-item-border-color: color-mod(#000 alpha(10%));
   --contact-list-item-padding: var(--default-padding-large);
   --contact-list-item-hover-background: #f2f2f2;
 }
@@ -39,7 +39,7 @@
   padding: 0 var(--contact-list-item-padding);
   cursor: pointer;
 
-  @apply --no-select;
+  @mixin no-select;
 
   &:active {
     & .selector {
@@ -61,7 +61,7 @@
   align-content: center;
   justify-content: flex-start;
   align-items: center;
-  @apply --flex-fix;
+  @mixin flex-fix;
 }
 
 .avatar {
@@ -84,7 +84,7 @@
 
 .nameWrapper {
   width: 100%;
-  @apply --text-overflow-ellipsis;
+  @mixin text-overflow-ellipsis;
 }
 
 .nameText {
@@ -97,7 +97,7 @@
   letter-spacing: -0.2px;
   font-size: 15px;
   line-height: 1.5;
-  color: color(#000 alpha(50%));
+  color: color-mod(#000 alpha(50%));
 }
 
 .selector {

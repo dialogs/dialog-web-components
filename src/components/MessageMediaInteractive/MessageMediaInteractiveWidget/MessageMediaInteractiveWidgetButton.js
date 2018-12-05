@@ -37,7 +37,7 @@ class MessageMediaInteractiveWidgetButton extends PureComponent<Props> {
           view="outline"
           onClick={this.handleClick}
         >
-          {widget.label}
+          {widget.label || ''}
         </Button>
       </div>
     );

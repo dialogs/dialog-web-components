@@ -8,7 +8,9 @@
   --sidebar-fake-item-line-height: 9px;
   --sidebar-fake-item-second-line-height: 8px;
   --sidebar-fake-item-line-color: #cacaca;
-  --sidebar-fake-item-second-line-color: color(var(--sidebar-fake-item-line-color) alpha(60%));
+  --sidebar-fake-item-second-line-color: color-mod(
+    var(--sidebar-fake-item-line-color) alpha(60%)
+  );
   --sidebar-fake-item-avatar-size: 37px;
   --sidebar-fake-item-avatar-color: #c5c5c5;
   --sidebar-fake-item-counter-size: 24px;

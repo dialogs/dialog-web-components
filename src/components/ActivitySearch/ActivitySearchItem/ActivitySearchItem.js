@@ -4,12 +4,12 @@
  */
 
 import type { Peer, Message, PeerInfo } from '@dlghq/dialog-types';
-
-import React, { PureComponent } from 'react';
+import React, { PureComponent, type Node } from 'react';
 import { format } from 'date-fns';
 import { Text } from '@dlghq/react-l10n';
 import { hasSelection } from '@dlghq/dialog-utils';
 import classNames from 'classnames';
+
 import ActivitySearchItemMessage from '../ActivitySearchItemMessage/ActivitySearchItemMessage';
 import styles from './ActivitySearchItem.css';
 import PeerInfoTitle from '../../PeerInfoTitle/PeerInfoTitle';
@@ -76,7 +76,7 @@ class ActivitySearchItem extends PureComponent<Props, State> {
     );
   }
 
-  renderBeforeMessages() {
+  renderBeforeMessages(): Node {
     const { info, before } = this.props;
 
     if (!before.length) {
@@ -111,7 +111,7 @@ class ActivitySearchItem extends PureComponent<Props, State> {
     });
   }
 
-  renderFocusMessage() {
+  renderFocusMessage(): Node {
     const { info, focus } = this.props;
 
     return (
@@ -127,7 +127,7 @@ class ActivitySearchItem extends PureComponent<Props, State> {
     );
   }
 
-  renderAfterMessages() {
+  renderAfterMessages(): Node {
     const { info, after } = this.props;
 
     if (!after.length) {

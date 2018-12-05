@@ -5,7 +5,7 @@
 
 import type { Message, PeerInfo, Peer } from '@dlghq/dialog-types';
 import { Text } from '@dlghq/react-l10n';
-import React, { PureComponent } from 'react';
+import React, { PureComponent, type Node } from 'react';
 import classNames from 'classnames';
 import ActivityList from '../ActivityList/ActivityList';
 import styles from './ActivityPinned.css';
@@ -22,7 +22,7 @@ export type Props = {
 };
 
 class ActivityPinned extends PureComponent<Props> {
-  renderMessages() {
+  renderMessages(): Node {
     const { messages, info } = this.props;
 
     if (!messages.length) {

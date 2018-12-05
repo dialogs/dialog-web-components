@@ -4,7 +4,8 @@
  */
 
 import type { StickerPack } from '@dlghq/dialog-types';
-import React, { PureComponent } from 'react';
+import React, { PureComponent, type Node } from 'react';
+
 import styles from './EmojiList.css';
 import StickerItem from './StickerItem';
 
@@ -19,7 +20,7 @@ type Props = {
 };
 
 class StickerCategory extends PureComponent<Props> {
-  renderPacks() {
+  renderPacks(): Node {
     if (!this.props.isVisible) {
       return null;
     }

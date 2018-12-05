@@ -1,0 +1,16 @@
+title: Create new space
+info:
+  title:
+    label: Space title
+    placeholder: Name this space
+
+  shortname:
+    label: Space link
+    placeholder: link
+
+finish: Create space
+next:
+  type: Add info
+  info: Add members
+
+avatar_edit: Edit avatar

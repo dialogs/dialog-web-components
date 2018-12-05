@@ -55,7 +55,10 @@ jobs:
             - dialog-components-{{ .Branch }}
       - run:
           <<: *defaults_run
+      - run:
+          <<: *git_config
       - run: |
+          git remote set-url origin https://${GITHUB_BOT_TOKEN}@github.com/dialogs/dialog-web-components.git
           npm run docs
 
   npm_publish_prerelease:

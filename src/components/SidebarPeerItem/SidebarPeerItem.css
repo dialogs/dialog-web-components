@@ -10,14 +10,18 @@
   --sidebar-peer-item-default-bottom-padding: 9px;
   --sidebar-peer-item-default-left-padding: 14px;
   --sidebar-peer-item-default-height: 46px;
-  --sidebar-peer-item-default-color: color(#000 alpha(50%));
+  --sidebar-peer-item-default-color: color-mod(#000 alpha(50%));
   --sidebar-peer-item-hover-background-color: #e6e6e6;
   --sidebar-peer-item-hover-color: #000;
   --sidebar-peer-item-background-color: var(--violet-blue);
   --sidebar-peer-item-active-background-image: var(--default-gradient);
   --sidebar-peer-item-active-color: #fff;
-  --sidebar-peer-item-active-hover-background-color: var(--sidebar-peer-item-background-color);
-  --sidebar-peer-item-active-hover-background-image: var(--sidebar-peer-item-active-background-image);
+  --sidebar-peer-item-active-hover-background-color: var(
+    --sidebar-peer-item-background-color
+  );
+  --sidebar-peer-item-active-hover-background-image: var(
+    --sidebar-peer-item-active-background-image
+  );
   --sidebar-peer-item-active-hover-color: var(--sidebar-peer-item-active-color);
   --sidebar-peer-item-counter-background: var(--color-primary);
   --sidebar-peer-item-counter-color: #fff;
@@ -57,7 +61,9 @@
   }
 
   &:active {
-    background-color: color(var(--sidebar-peer-item-hover-background-color) shade(2%));
+    background-color: color-mod(
+      var(--sidebar-peer-item-hover-background-color) shade(2%)
+    );
   }
 
   & .avatar {
@@ -87,7 +93,7 @@
   font-size: var(--sidebar-peer-item-font-size);
   font-weight: 500;
   line-height: 20px;
-  @apply --text-overflow-ellipsis;
+  @mixin text-overflow-ellipsis;
 }
 
 .counter {

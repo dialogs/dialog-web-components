@@ -29,7 +29,7 @@
   justify-content: flex-start;
   flex: 1 1 auto;
   overflow: hidden;
-  @apply --flex-fix;
+  @mixin flex-fix;
 }
 
 .tabs {
@@ -39,7 +39,9 @@
 
 .scroller {
   width: 100%;
-  height: calc(var(--modal-preferences-height) - var(--modal-preferences-header-height));
+  height: calc(
+    var(--modal-preferences-height) - var(--modal-preferences-header-height)
+  );
   min-height: 100%;
   flex: 1 1 auto;
 }

@@ -7,7 +7,7 @@
 :root {
   --message-contact-font-family: var(--default-font-family);
   --message-contact-border-radius: var(--default-border-radius);
-  --message-contact-border-color: color(#000 alpha(15%));
+  --message-contact-border-color: color-mod(#000 alpha(15%));
   --message-contact-padding: var(--default-padding);
   --message-contact-link-color: var(--color-info);
 }
@@ -33,7 +33,7 @@
 
 .credentials {
   flex: 1 1 auto;
-  @apply --flex-fix;
+  @mixin flex-fix;
 }
 
 .name {

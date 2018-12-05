@@ -10,8 +10,8 @@
   --modal-admin-hint-font-size: var(--default-font-size-small);
   --modal-admin-hint-color: var(--default-font-color-light);
   --modal-admin-back-transition-duration: var(--default-transition-duration);
-  --modal-admin-back-color: color(#000 alpha(40%));
-  --modal-admin-back-color-hover: color(#000 alpha(60%));
+  --modal-admin-back-color: color-mod(#000 alpha(40%));
+  --modal-admin-back-color-hover: color-mod(#000 alpha(60%));
 }
 
 /* Styles */
@@ -43,7 +43,6 @@
   &:hover {
     color: var(--modal-admin-back-color-hover);
   }
-
 }
 
 .user {
@@ -80,7 +79,7 @@
 
 .footerButton {
   flex: 1 1 auto;
-  @apply --flex-fix;
+  @mixin flex-fix;
 }
 
 .fieldset {

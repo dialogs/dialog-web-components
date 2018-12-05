@@ -19,10 +19,13 @@
   --switcher-label-font-family: var(--default-font-family);
   --switcher-label-font-size: 15px;
   --switcher-active-offset: calc(
-    var(--switcher-width) - var(--switcher-dot-size) - ((var(--switcher-height) - var(--switcher-dot-size)) / 2)
+    var(--switcher-width) - var(--switcher-dot-size) -
+      ((var(--switcher-height) - var(--switcher-dot-size)) / 2)
   );
   --switcher-danger-background-color: var(--color-danger);
-  --switcher-danger-active-background-color: color(var(--color-danger) lightness(+8%));
+  --switcher-danger-active-background-color: color-mod(
+    var(--color-danger) lightness(+8%)
+  );
   --switcher-hint-font-size: var(--default-font-size-small);
   --switcher-hint-color: #aaa;
   --switcher-hint-font-family: var(--switcher-label-font-family);
@@ -56,8 +59,8 @@
       background-color: var(--switcher-active-background-color);
 
       &::before {
-        background-color: color(var(--switcher-dot-color) alpha(98%));
-        box-shadow: 0 2px 2px 0 color(#000 alpha(30%));
+        background-color: color-mod(var(--switcher-dot-color) alpha(98%));
+        box-shadow: 0 2px 2px 0 color-mod(#000 alpha(30%));
       }
     }
 
@@ -77,7 +80,9 @@
 
     &:hover {
       & .switcher {
-        background-color: var(--switcher-danger-active-background-color) !important;
+        background-color: var(
+          --switcher-danger-active-background-color
+        ) !important;
       }
     }
   }
@@ -108,7 +113,8 @@
     width: var(--switcher-dot-size);
     height: var(--switcher-dot-size);
     content: '';
-    transition: background var(--switcher-transition-duration) ease, left var(--switcher-transition-duration) ease,
+    transition: background var(--switcher-transition-duration) ease,
+      left var(--switcher-transition-duration) ease,
       box-shadow var(--switcher-transition-duration) ease;
     transform: translateZ(0);
     border-radius: 100%;
@@ -120,7 +126,7 @@
 
     &::before {
       background-color: var(--switcher-active-dot-color);
-      box-shadow: 0 1px 0 0 color(#000 alpha(30%));
+      box-shadow: 0 1px 0 0 color-mod(#000 alpha(30%));
     }
   }
 }
@@ -196,7 +202,7 @@
   user-select: none;
   font-family: var(--switcher-label-font-family);
   font-size: var(--switcher-label-font-size);
-  @apply --text-overflow-ellipsis;
+  @mixin text-overflow-ellipsis;
 
   & b,
   & strong {

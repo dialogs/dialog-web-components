@@ -6,6 +6,8 @@
 
 :root {
   --contact-selector-background-color: #f9f9f9;
+  --contact-selector-chip-background: var(--color-primary);
+  --contact-selector-chip-height: 38px;
   --contact-selector-chip-text-max-width: 150px;
 }
 
@@ -24,7 +26,7 @@
   display: flex;
   padding: 8px 30px;
   background-color: var(--contact-selector-background-color);
-  box-shadow: inset 0 -1px 0 0 color(#000 alpha(10%));
+  box-shadow: inset 0 -1px 0 0 color-mod(#000 alpha(10%));
   flex-flow: row wrap;
 }
 
@@ -32,26 +34,27 @@
   margin: 2px 0;
   letter-spacing: -0.2px;
   font-family: var(--default-font-family);
-  font-size: 15px;
-  line-height: 38px;
+  font-size: 16px;
+  line-height: var(--contact-selector-chip-height);
   flex: 1 1 auto;
 }
 
 .chip {
   display: inline-flex;
   box-sizing: border-box;
-  height: 38px;
+  height: var(--contact-selector-chip-height);
   margin: 2px 10px 2px 0;
   padding: 5px;
-  border-radius: 38px;
-  background-image: var(--default-gradient);
+  border-radius: calc(var(--contact-selector-chip-height) / 2);
+  background: var(--contact-selector-chip-background);
   flex: 0 0 auto;
   flex-flow: row nowrap;
   align-content: center;
   align-items: center;
   justify-content: center;
   color: #fff;
-  @apply --no-select;
+  @mixin no-select;
+  cursor: pointer;
 }
 
 .chipText {
@@ -62,8 +65,24 @@
   height: 20px;
   letter-spacing: -0.3px;
   max-width: var(--contact-selector-chip-text-max-width);
-  @apply --text-overflow-ellipsis;
+  @mixin text-overflow-ellipsis;
 }
 
 .chipAvatar {
+}
+
+.avatarWrapper {
+  line-height: 0;
+}
+
+.deleteIcon {
+  color: #fff;
+  margin: 5px;
+}
+
+.empty {
+  padding: calc(var(--default-padding) * 2);
+  text-align: center;
+  font-size: var(--default-font-size-large);
+  color: color-mod(#000 alpha(80%));
 }

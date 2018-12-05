@@ -13,7 +13,7 @@ import styles from './AvatarSelector.css';
 
 export type Props = {
   className?: string,
-  name: string,
+  title: string,
   placeholder: AvatarPlaceholder,
   size: number,
   avatar: ?(string | File),
@@ -84,7 +84,7 @@ class AvatarSelector extends PureComponent<Props, State> {
   }
 
   render() {
-    const { name, placeholder, size } = this.props;
+    const { title, placeholder, size } = this.props;
     const { avatar } = this.state;
     const className = classNames(styles.container, this.props.className);
 
@@ -93,7 +93,7 @@ class AvatarSelector extends PureComponent<Props, State> {
         <Avatar
           className={styles.avatar}
           size={size}
-          title={name}
+          title={title}
           image={avatar}
           placeholder={placeholder}
           onClick={this.handleAvatarChangerClick}

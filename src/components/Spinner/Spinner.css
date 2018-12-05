@@ -5,7 +5,7 @@
 @import '../../styles/variables.css';
 
 :root {
-  --spinner-wave-background-color: color(var(--color-primary) alpha(85%));
+  --spinner-wave-background-color: color-mod(var(--color-primary) alpha(85%));
   --spinner-wave-color: #fff;
   --spinner-wawe-small-height: 24px;
   --spinner-wave-small-stick-width: 2px;
@@ -95,7 +95,7 @@
   align-content: center;
   align-items: center;
   justify-content: center;
-  @apply --clearfix;
+  @mixin clearfix;
 }
 
 .stick {
@@ -165,7 +165,8 @@
 }
 
 .path {
-  animation: dash calc(var(--spinner-round-animation-duration) / 1.5) ease-in-out infinite;
+  animation: dash calc(var(--spinner-round-animation-duration) / 1.5)
+    ease-in-out infinite;
   stroke-linecap: round;
 }
 

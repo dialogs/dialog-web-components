@@ -5,7 +5,7 @@
 
 import type { Message } from '@dlghq/dialog-types';
 import { Text } from '@dlghq/react-l10n';
-import React, { PureComponent } from 'react';
+import React, { PureComponent, type Node } from 'react';
 import classNames from 'classnames';
 import ActivityList from '../ActivityList/ActivityList';
 import ActivityMediaItem from './ActivityMediaItem';
@@ -13,13 +13,13 @@ import styles from './ActivityMedia.css';
 
 export type Props = {
   className?: string,
-  messages: Message[],
+  messages: Array<Message>,
   onGoToMessage: (message: Message) => mixed,
   onLightboxOpen: (message: Message) => mixed,
 };
 
 class ActivityMedia extends PureComponent<Props> {
-  renderMessages() {
+  renderMessages(): Node {
     const { messages } = this.props;
 
     if (!messages.length) {

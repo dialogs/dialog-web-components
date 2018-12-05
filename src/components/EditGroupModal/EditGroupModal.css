@@ -8,8 +8,8 @@
   --modal-group-edit-font-family: var(--default-font-family);
   --modal-group-edit-width: 600px;
   --modal-group-edit-size: 28px;
-  --modal-group-edit-color: color(#000 alpha(40%));
-  --modal-group-edit-color-hover: color(#000 alpha(60%));
+  --modal-group-edit-color: color-mod(#000 alpha(40%));
+  --modal-group-edit-color-hover: color-mod(#000 alpha(60%));
   --modal-group-edit-transition-duration: var(--default-transition-duration);
 }
 

@@ -83,6 +83,9 @@ class Tooltip extends Component<Props> {
     const options = {
       attachment: 'bottom center',
       targetAttachment: 'top center',
+      classes: {
+        element: styles.tetherElement,
+      },
       constraints: [
         {
           to: 'scrollParent',

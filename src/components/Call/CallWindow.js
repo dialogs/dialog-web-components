@@ -94,7 +94,7 @@ class CallWindow extends PureComponent<Props, State> {
               size={136}
               peer={call.peer}
               state={call.state}
-              onClick={this.isSIP() ? null : this.handleGoToPeer}
+              onClick={this.isSIP() ? undefined : this.handleGoToPeer}
             />
             <CallInfo
               className={styles.callState}

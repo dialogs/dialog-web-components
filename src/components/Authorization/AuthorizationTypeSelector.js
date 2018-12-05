@@ -4,8 +4,9 @@
  */
 
 import type { AuthType } from './types';
-import React, { PureComponent } from 'react';
+import React, { PureComponent, type Node } from 'react';
 import { Text } from '@dlghq/react-l10n';
+
 import Radio from '../Radio/Radio';
 import RadioGroup from '../Radio/RadioGroup';
 import styles from './Authorization.css';
@@ -19,7 +20,7 @@ export type Props = {
 };
 
 class AuthorizationTypeSelector extends PureComponent<Props> {
-  renderOptions() {
+  renderOptions(): Node {
     const { id } = this.props;
 
     return this.props.allowed.map((type) => {

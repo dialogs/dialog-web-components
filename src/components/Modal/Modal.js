@@ -40,8 +40,8 @@ class ReactModal extends React.PureComponent<ReactModalProps> {
     }
   };
 
-  handleInnerClick = (e) => {
-    e.stopPropagation();
+  handleInnerClick = (event: SyntheticMouseEvent<>) => {
+    event.stopPropagation();
   };
 
   render() {

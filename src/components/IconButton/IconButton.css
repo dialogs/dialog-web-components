@@ -40,7 +40,7 @@
   &::after {
     content: '';
     flex: 1 1 auto;
-    @apply --flex-fix;
+    @mixin flex-fix;
   }
 }
 
@@ -65,7 +65,8 @@
 
   &.defaultStyle {
     background-color: var(--icon-button-background-color) !important;
-    box-shadow: inset 0 0 0 1px color(#000 alpha(20%)), 0 1px 2px 0 color(#000 alpha(10%)) !important;
+    box-shadow: inset 0 0 0 1px color-mod(#000 alpha(20%)),
+      0 1px 2px 0 color-mod(#000 alpha(10%)) !important;
 
     & .icon {
       color: var(--icon-button-default-color) !important;
@@ -74,7 +75,8 @@
 
   &.flat {
     background-color: transparent !important;
-    box-shadow: inset 0 0 0 var(--icon-button-flat-border-width) var(--icon-button-flat-color) !important;
+    box-shadow: inset 0 0 0 var(--icon-button-flat-border-width)
+      var(--icon-button-flat-color) !important;
 
     & .icon {
       color: var(--icon-button-flat-color) !important;
@@ -91,7 +93,8 @@
 /* Styles */
 .defaultStyle {
   background-color: var(--icon-button-background-color);
-  box-shadow: inset 0 0 0 1px color(#000 alpha(20%)), 0 1px 2px 0 color(#000 alpha(10%));
+  box-shadow: inset 0 0 0 1px color-mod(#000 alpha(20%)),
+    0 1px 2px 0 color-mod(#000 alpha(10%));
 
   & .icon {
     color: var(--icon-button-default-color);
@@ -99,7 +102,8 @@
 
   &:hover,
   &:focus {
-    box-shadow: inset 0 0 0 1px color(#000 alpha(30%)), 0 2px 4px 0 color(#000 alpha(25%));
+    box-shadow: inset 0 0 0 1px color-mod(#000 alpha(30%)),
+      0 2px 4px 0 color-mod(#000 alpha(25%));
 
     & .icon {
       color: var(--icon-button-hover-color);
@@ -107,7 +111,8 @@
   }
 
   &:active {
-    box-shadow: inset 0 0 0 1px color(#000 alpha(30%)), 0 1px 1px 0 color(#000 alpha(25%));
+    box-shadow: inset 0 0 0 1px color-mod(#000 alpha(30%)),
+      0 1px 1px 0 color-mod(#000 alpha(25%));
 
     & .icon {
       color: var(--icon-button-hover-color);
@@ -156,7 +161,8 @@
 .flat {
   &.default {
     background-color: transparent;
-    box-shadow: inset 0 0 0 var(--icon-button-flat-border-width) var(--icon-button-flat-color);
+    box-shadow: inset 0 0 0 var(--icon-button-flat-border-width)
+      var(--icon-button-flat-color);
 
     & .icon {
       color: var(--icon-button-flat-color);
@@ -165,7 +171,8 @@
     &:hover,
     &:focus {
       background-color: var(--icon-button-flat-hover-background-color);
-      box-shadow: inset 0 0 0 var(--icon-button-flat-border-width) var(--icon-button-flat-hover-background-color);
+      box-shadow: inset 0 0 0 var(--icon-button-flat-border-width)
+        var(--icon-button-flat-hover-background-color);
 
       & .icon {
         color: var(--icon-button-flat-color-hover);
@@ -173,7 +180,9 @@
     }
 
     &:active {
-      background-color: color(var(--icon-button-flat-hover-background-color) shade(5%));
+      background-color: color-mod(
+        var(--icon-button-flat-hover-background-color) shade(5%)
+      );
 
       & .icon {
         color: var(--icon-button-flat-color-hover);
@@ -190,11 +199,11 @@
 
     &:hover,
     &:focus {
-      background-color: color(var(--color-primary) tint(10%));
+      background-color: color-mod(var(--color-primary) tint(10%));
     }
 
     &:active {
-      background-color: color(var(--color-primary) shade(5%));
+      background-color: color-mod(var(--color-primary) shade(5%));
     }
   }
 
@@ -207,11 +216,11 @@
 
     &:hover,
     &:focus {
-      background-color: color(var(--color-success) tint(10%));
+      background-color: color-mod(var(--color-success) tint(10%));
     }
 
     &:active {
-      background-color: color(var(--color-success) shade(5%));
+      background-color: color-mod(var(--color-success) shade(5%));
     }
   }
 
@@ -224,11 +233,11 @@
 
     &:hover,
     &:focus {
-      background-color: color(var(--color-danger) tint(10%));
+      background-color: color-mod(var(--color-danger) tint(10%));
     }
 
     &:active {
-      background-color: color(var(--color-danger) shade(5%));
+      background-color: color-mod(var(--color-danger) shade(5%));
     }
   }
 
@@ -241,11 +250,11 @@
 
     &:hover,
     &:focus {
-      background-color: color(var(--color-info) tint(10%));
+      background-color: color-mod(var(--color-info) tint(10%));
     }
 
     &:active {
-      background-color: color(var(--color-info) shade(5%));
+      background-color: color-mod(var(--color-info) shade(5%));
     }
   }
 
@@ -258,11 +267,11 @@
 
     &:hover,
     &:focus {
-      background-color: color(var(--color-warning) tint(10%));
+      background-color: color-mod(var(--color-warning) tint(10%));
     }
 
     &:active {
-      background-color: color(var(--color-warning) shade(5%));
+      background-color: color-mod(var(--color-warning) shade(5%));
     }
   }
 }

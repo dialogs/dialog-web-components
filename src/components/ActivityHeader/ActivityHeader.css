@@ -9,8 +9,8 @@
   --activity-header-font-family: var(--default-font-family);
   --activity-header-transition-duration: var(--default-transition-duration);
   --activity-header-font-size: var(--default-font-size-large);
-  --activity-header-icon-color: color(#000 alpha(40%));
-  --activity-header-icon-color-hover: color(#000 alpha(60%));
+  --activity-header-icon-color: color-mod(#000 alpha(40%));
+  --activity-header-icon-color-hover: color-mod(#000 alpha(60%));
   --activity-header-z-index: var(--z-index-chat);
 }
 
@@ -32,7 +32,7 @@
   padding: 15px 40px;
   text-align: center;
   letter-spacing: -0.3px;
-  @apply --no-select;
+  @mixin no-select;
   box-sizing: border-box;
   width: 100%;
   z-index: var(--activity-header-z-index);

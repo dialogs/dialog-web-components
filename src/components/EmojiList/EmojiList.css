@@ -6,16 +6,22 @@
 :root {
   --emoji-list-width: 346px;
   --emoji-list-height: 280px;
-  --emoji-list-background-color: color(#fff alpha(98%));
+  --emoji-list-background-color: color-mod(#fff alpha(98%));
   --emoji-list-emoji-font-size: 26px;
   --emoji-list-emoji-line-height: 30px;
   --emoji-list-emoji-size: 26px;
   --emoji-list-emoji-wrapper-padding: 5px;
-  --emoji-list-emoji-wrapper-background: color(var(--color-primary) alpha(10%));
+  --emoji-list-emoji-wrapper-background: color-mod(
+    var(--color-primary) alpha(10%)
+  );
   --emoji-list-category-icon-color: var(--cool-grey-two);
-  --emoji-list-category-icon-hover-color: color(var(--emoji-list-category-icon-color) shade(20%));
+  --emoji-list-category-icon-hover-color: color-mod(
+    var(--emoji-list-category-icon-color) shade(20%)
+  );
   --emoji-list-category-icon-active-color: var(--color-primary);
-  --emoji-list-category-icon-active-hover-color: color(var(--emoji-list-category-icon-active-color) alpha(80%));
+  --emoji-list-category-icon-active-hover-color: color-mod(
+    var(--emoji-list-category-icon-active-color) alpha(80%)
+  );
 }
 
 /* Reset */
@@ -31,7 +37,8 @@
   position: relative;
   border-radius: var(--default-border-radius);
   background-color: var(--emoji-list-background-color);
-  box-shadow: 0 1px 2px 0 color(#000 alpha(12%)), 0 0 0 1px color(#000 alpha(15%));
+  box-shadow: 0 1px 2px 0 color-mod(#000 alpha(12%)),
+    0 0 0 1px color-mod(#000 alpha(15%));
   font-family: var(--default-font-family);
   flex-flow: column;
   align-content: center;
@@ -55,7 +62,7 @@
   z-index: 10;
   cursor: pointer;
   transition: color var(--default-transition-duration) ease-in;
-  color: color(var(--color-primary) alpha(70%));
+  color: color-mod(var(--color-primary) alpha(70%));
   font-family: var(--default-font-family);
   letter-spacing: -0.2px;
   text-transform: uppercase;
@@ -79,15 +86,15 @@
   box-sizing: border-box;
   width: 100%;
   border-radius: var(--default-border-radius);
-  background: color(#fff alpha(90%));
+  background: color-mod(#fff alpha(90%));
   padding: 8px var(--default-padding);
   letter-spacing: -0.2px;
   text-transform: uppercase;
   font-size: 14px;
   font-weight: 500;
   line-height: 1.6;
-  color: color(#000 alpha(50%));
-  @apply --no-select;
+  color: color-mod(#000 alpha(50%));
+  @mixin no-select;
 }
 
 .categoryList {
@@ -97,8 +104,12 @@
 .emojiWrapper {
   display: inline-block;
   box-sizing: border-box;
-  width: calc((var(--emoji-list-emoji-wrapper-padding) * 2) + var(--emoji-list-emoji-size));
-  height: calc((var(--emoji-list-emoji-wrapper-padding) * 2) + var(--emoji-list-emoji-size));
+  width: calc(
+    (var(--emoji-list-emoji-wrapper-padding) * 2) + var(--emoji-list-emoji-size)
+  );
+  height: calc(
+    (var(--emoji-list-emoji-wrapper-padding) * 2) + var(--emoji-list-emoji-size)
+  );
   padding: var(--emoji-list-emoji-wrapper-padding);
   vertical-align: middle;
   cursor: pointer;
@@ -150,7 +161,11 @@
     height: 20px;
     content: '';
     pointer-events: none;
-    background-image: linear-gradient(to bottom, color(#fff alpha(0%)) 0%, color(#fff alpha(100%)) 100%);
+    background-image: linear-gradient(
+      to bottom,
+      color-mod(#fff alpha(0%)) 0%,
+      color-mod(#fff alpha(100%)) 100%
+    );
   }
 }
 

@@ -3,8 +3,9 @@
  * @flow
  */
 
-import React, { PureComponent } from 'react';
+import React, { PureComponent, type Node } from 'react';
 import classNames from 'classnames';
+
 import styles from './Pad.css';
 import PadButton from '../PadButton/PadButton';
 
@@ -19,7 +20,7 @@ class Pad extends PureComponent<Props> {
     buttons: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '*', '0', '#'],
   };
 
-  renderButtons() {
+  renderButtons(): Node {
     return this.props.buttons.map((value) => {
       return (
         <PadButton key={value} value={value} onClick={this.props.onPress} />

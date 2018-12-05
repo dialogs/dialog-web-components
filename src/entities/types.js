@@ -27,5 +27,5 @@ export interface SelectorState<T> {
 }
 
 export type SelectorStateCreator<T> = {
-  create(items: T[]): SelectorState<T>,
+  create(items: Array<T>): SelectorState<T>,
 };

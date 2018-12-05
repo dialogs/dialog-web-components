@@ -4,7 +4,7 @@
  */
 
 import type { AvatarPlaceholder } from '@dlghq/dialog-types';
-import AvatarColors from '../AvatarColors';
+import AvatarColors from './AvatarColors';
 
 export type Color = {
   type: 'color',

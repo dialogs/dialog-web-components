@@ -9,10 +9,12 @@
   --pad-button-height: 42px;
   --pad-button-font-size: 20px;
   --pad-button-background-color: #fff;
-  --pad-button-color: color(#000 alpha(50%));
+  --pad-button-color: color-mod(#000 alpha(50%));
   --pad-button-hover-color: #000;
   --pad-button-hover-background-color: #e6e6e6;
-  --pad-button-pressed-background-color: color(var(--pad-button-hover-background-color) shade(2%));
+  --pad-button-pressed-background-color: color-mod(
+    var(--pad-button-hover-background-color) shade(2%)
+  );
 }
 
 /* Reset */

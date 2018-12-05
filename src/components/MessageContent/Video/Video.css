@@ -6,7 +6,7 @@
 
 :root {
   --message-video-border-raduis: var(--default-border-radius);
-  --message-video-border-color: color(#000 alpha(15%));
+  --message-video-border-color: color-mod(#000 alpha(15%));
 }
 
 .container {

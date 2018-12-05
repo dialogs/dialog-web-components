@@ -3,9 +3,9 @@
     "name": "Interface",
     "components": [
       "Avatar",
+      "AvatarDouble",
       "PeerAvatar",
-      "PeerAvatarWithStatus",
-      "DoublePeerAvatar",
+      "PeerAvatarDouble",
       "PeerInfoTitle",
       "Scroller",
       "Dropdown",
@@ -31,12 +31,19 @@
       "ScrollToBottom",
       "CustomProfile",
       "UserStatus",
-      "SidebarMenuProfile"
+      "SidebarMenuProfile",
+      "SpaceList"
     ]
   },
   {
     "name": "Buttons",
-    "components": ["Button", "ButtonNext", "LinkButton", "IconButton", "LinkIconButton"]
+    "components": [
+      "Button",
+      "ButtonNext",
+      "LinkButton",
+      "IconButton",
+      "LinkIconButton"
+    ]
   },
   {
     "name": "Forms",
@@ -81,6 +88,7 @@
       "EditGroupModal",
       "FeedbackModal",
       "AdminModal",
+      "CreateSpaceModal",
       "SelectCertificateModal"
     ]
   },
@@ -158,7 +166,8 @@
       "Trigger",
       "Alert",
       "Confirm",
-      "CopyButton"
+      "CopyButton",
+      "ImagePreloader"
     ]
   },
   {

@@ -1,39 +1,13 @@
+This component is just a wrapper for `Avatar` component, which get `peerInfo` object and substitute needed props to `Avatar` directly
+
 ```jsx
-const users = [
-  {
-    peer: {
-      title: 'Nikita Gusakov',
-      placeholder: 'red',
-      avatar: 'https://www.gravatar.com/avatar/19c935592c57cbeeec09a3b3d23b5b10',
-      peer: {
-        id: 432
-      }
-    }
-  },
-  {
-    peer: {
-      title: 'Oleg Shilov',
-      placeholder: 'green',
-      avatar: 'https://www.gravatar.com/avatar/084643c42fcc4b48b985e4e744f0012b',
-      peer: {
-        id: 41321
-      }
-    },
-    online: true
-  },
-  {
-    peer: {
-      title: 'Doctor Who',
-      placeholder: 'lblue',
-      peer: {
-        id: 4412
-      }
-    },
-    online: true
-  }
-];
+const { user, bot, group } = require('../../fixtures/peerInfo');
 
 <div>
-  {users.map((user, key) => <PeerAvatar key={key} {...user} size={50} />)}
-</div>
+  <PeerAvatar peer={group} size={50} status="invisible" />
+  <span style={{ width: 10, display: 'inline-block' }} />
+  <PeerAvatar peer={user} size={50} status="do_not_disturb" />
+  <span style={{ width: 10, display: 'inline-block' }} />
+  <PeerAvatar peer={bot} size={50} status="unset" />
+</div>;
 ```

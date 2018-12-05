@@ -7,10 +7,12 @@
 :root {
   --welcome-message-font-family: var(--default-font-family);
   --welcome-message-title-font-size: 34px;
-  --welcome-message-hint-background-color: color(var(--color-info) alpha(10%));
+  --welcome-message-hint-background-color: color-mod(
+    var(--color-info) alpha(10%)
+  );
   --welcome-message-hint-font-size: var(--default-font-size);
   --welcome-message-subtitle-font-size: var(--default-font-size);
-  --welcome-message-subtitle-color: color(#000 alpha(50%));
+  --welcome-message-subtitle-color: color-mod(#000 alpha(50%));
   --welcome-message-horizontal-padding: 20px;
 }
 
@@ -24,7 +26,8 @@
   display: block;
   font-family: var(--welcome-message-font-family);
   box-sizing: border-box;
-  padding: 10rem var(--welcome-message-horizontal-padding) var(--welcome-message-horizontal-padding);
+  padding: 10rem var(--welcome-message-horizontal-padding)
+    var(--welcome-message-horizontal-padding);
 }
 
 .hint {

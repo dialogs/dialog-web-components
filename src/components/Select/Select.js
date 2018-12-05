@@ -4,7 +4,7 @@
  */
 
 import type { Props } from './types';
-import React, { PureComponent } from 'react';
+import React, { PureComponent, type Node } from 'react';
 import { Text, LocalizationContextType } from '@dlghq/react-l10n';
 import classNames from 'classnames';
 import Icon from '../Icon/Icon';
@@ -44,7 +44,7 @@ class Select extends PureComponent<Props> {
     }
   }
 
-  renderOptions() {
+  renderOptions(): Node {
     const options = this.props.options.map((option) => {
       return (
         <Text

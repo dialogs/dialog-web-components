@@ -26,7 +26,7 @@ export type Props = {
     error: ?Error,
     pending: boolean,
   },
-  onClose: close,
+  onClose: () => mixed,
   onScreenChange: (screen: string) => mixed,
   onSettingsChange: (value: ProfileSettings) => mixed,
   onSessionsLoad: () => mixed,

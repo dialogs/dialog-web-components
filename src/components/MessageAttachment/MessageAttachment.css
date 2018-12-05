@@ -6,15 +6,17 @@
 
 :root {
   --message-attachment-font-family: var(--default-font-family);
-  --message-attachment-background: color(#000 alpha(3%));
+  --message-attachment-background: color-mod(#000 alpha(3%));
   --message-attachment-font-size: var(--default-font-size-small);
   --message-attachment-padding: 10px;
   --message-attachment-forward-padding: 10px;
-  --message-attachment-border-color: color(var(--message-attachment-background) shade(5%));
+  --message-attachment-border-color: color-mod(
+    var(--message-attachment-background) shade(5%)
+  );
   --message-attachment-from-font-size: 14px;
   --message-attachment-from-color: #939393;
   --message-attachment-header-height: 20px;
-  --message-attachment-nick-color: color(#000 alpha(60%));
+  --message-attachment-nick-color: color-mod(#000 alpha(60%));
   --message-attachment-timestamp-font-size: 12px;
   --message-attachment-timestamp-color: var(--message-attachment-nick-color);
   --message-attachment-preview-size: 36px;
@@ -90,7 +92,7 @@
 .replyContent {
   width: 100%;
   display: block;
-  @apply --text-overflow-ellipsis;
+  @mixin text-overflow-ellipsis;
 }
 
 .forward {
@@ -150,7 +152,7 @@
   background-position: 50% 50%;
   background-size: cover;
   border-radius: var(--default-border-radius-small);
-  box-shadow: 0 0 0 1px color(#000 alpha(15%));
+  box-shadow: 0 0 0 1px color-mod(#000 alpha(15%));
 }
 
 .messageType {

@@ -4,11 +4,12 @@
  */
 
 import type { Peer, Message, PeerInfo, Field } from '@dlghq/dialog-types';
-import type { SearchEntity } from '../types';
 import { Text } from '@dlghq/react-l10n';
 import { peerToString } from '@dlghq/dialog-types/utils';
-import React, { PureComponent } from 'react';
+import React, { PureComponent, type Node } from 'react';
 import classNames from 'classnames';
+
+import type { SearchEntity } from '../types';
 import Spinner from '../../Spinner/Spinner';
 import Error from '../../Error/Error';
 import Emoji from '../../Emoji/Emoji';
@@ -26,7 +27,7 @@ type Props = {
 };
 
 class ActivitySearchMessages extends PureComponent<Props> {
-  renderPeers() {
+  renderPeers(): Node {
     return this.props.peers.map((item) => {
       return (
         <ActivitySearchItemPeer
@@ -38,7 +39,7 @@ class ActivitySearchMessages extends PureComponent<Props> {
     });
   }
 
-  renderMessages() {
+  renderMessages(): Node {
     const { messages } = this.props;
 
     if (messages.pending) {

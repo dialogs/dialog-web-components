@@ -11,13 +11,15 @@
   --message-small-vertical-padding: 4px;
   --message-small-horizontal-padding: 20px;
   --message-hover-background-color: #f6f6f6;
-  --message-highlight-background-color: color(var(--color-primary) alpha(15%));
+  --message-highlight-background-color: color-mod(
+    var(--color-primary) alpha(15%)
+  );
   --message-selected-background-color: var(--color-info);
-  --message-username-color: color(#000 alpha(60%));
-  --message-timestamp-color: color(#000 alpha(60%));
-  --message-error-color: color(var(--color-error) alpha(7.5%));
-  --message-error-hover-color: color(var(--color-error) alpha(10%));
-  --message-unread-color: color(#f2f2f2 alpha(25%));
+  --message-username-color: color-mod(#000 alpha(60%));
+  --message-timestamp-color: color-mod(#000 alpha(60%));
+  --message-error-color: color-mod(var(--color-error) alpha(7.5%));
+  --message-error-hover-color: color-mod(var(--color-error) alpha(10%));
+  --message-unread-color: color-mod(#f2f2f2 alpha(25%));
   --message-state-border-width: 3px;
   --message-transition-duration: var(--default-transition-duration);
 }
@@ -44,7 +46,8 @@
   flex-direction: row;
   min-height: 30px;
   box-sizing: border-box;
-  padding: var(--message-vertical-padding) 36px var(--message-vertical-padding) var(--message-horizontal-padding);
+  padding: var(--message-vertical-padding) 36px var(--message-vertical-padding)
+    var(--message-horizontal-padding);
   transition: box-shadow var(--message-transition-duration) ease-in-out,
     opacity var(--message-transition-duration) ease-in;
   font-family: var(--message-font-family);
@@ -52,7 +55,8 @@
 }
 
 .short {
-  padding: var(--message-small-vertical-padding) 36px var(--message-small-vertical-padding)
+  padding: var(--message-small-vertical-padding) 36px
+    var(--message-small-vertical-padding)
     var(--message-small-horizontal-padding);
 }
 
@@ -74,7 +78,7 @@
   flex: 1 1 100%;
   align-content: flex-start;
   justify-content: flex-start;
-  @apply --flex-fix;
+  @mixin flex-fix;
 }
 
 .header {
@@ -93,7 +97,7 @@
 .title {
   font-size: 16px;
   font-weight: 500;
-  @apply --text-overflow-ellipsis;
+  @mixin text-overflow-ellipsis;
 }
 
 .username {
@@ -120,7 +124,8 @@
 
 .unread {
   background-color: var(--message-unread-color);
-  box-shadow: inset var(--message-state-border-width) 0 0 0 color(#000 alpha(20%));
+  box-shadow: inset var(--message-state-border-width) 0 0 0
+    color-mod(#000 alpha(20%));
 }
 
 .error {
@@ -212,22 +217,30 @@
 }
 
 /* Content type  */
-.contact {}
+.contact {
+}
 
 .document {
   margin-top: 4px;
 }
 
-.location {}
+.location {
+}
 
-.photo {}
+.photo {
+}
 
-.service {}
+.service {
+}
 
-.sticker {}
+.sticker {
+}
 
-.voice {}
+.voice {
+}
 
-.video {}
+.video {
+}
 
-.text {}
+.text {
+}

@@ -10,7 +10,7 @@
   --activity-search-item-header-title-font-size: var(--default-font-size);
   --activity-search-item-header-title-color: #000;
   --activity-search-item-header-date-font-size: 13px;
-  --activity-search-item-header-date-color: #8E8E8E;
+  --activity-search-item-header-date-color: #8e8e8e;
   --activity-search-item-header-jump-color: var(--color-primary);
 }
 
@@ -39,8 +39,8 @@
   line-height: 20px;
   font-size: var(--activity-search-item-header-title-font-size);
   color: var(--activity-search-item-header-title-color);
-  @apply --text-overflow-ellipsis;
-  @apply --flex-fix;
+  @mixin text-overflow-ellipsis;
+  @mixin flex-fix;
 }
 
 .headerInfo {

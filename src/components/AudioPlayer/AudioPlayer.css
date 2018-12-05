@@ -17,7 +17,7 @@
 .player {
   display: flex;
   flex: 1 1 auto;
-  @apply --flex-fix;
+  @mixin flex-fix;
 }
 
 .playerControls {
@@ -25,12 +25,12 @@
   flex-direction: column;
   padding-top: 20px;
   flex: 1 1 auto;
-  @apply --flex-fix;
+  @mixin flex-fix;
 }
 
 .playerControlsText {
   flex: 1 1 auto;
-  @apply --flex-fix;
+  @mixin flex-fix;
 }
 
 .playerTime {
@@ -43,8 +43,8 @@
   padding-bottom: 2px;
   flex: 1 1 auto;
   font-family: var(--audio-player-font-family);
-  color: color(#000 alpha(60%));
-  @apply --text-overflow-ellipsis;
+  color: color-mod(#000 alpha(60%));
+  @mixin text-overflow-ellipsis;
 }
 
 .seeker {
@@ -54,7 +54,7 @@
   height: 6px;
   cursor: pointer;
   border-radius: 6px;
-  background-color: color(var(--color-primary) alpha(10%));
+  background-color: color-mod(var(--color-primary) alpha(10%));
 }
 
 .seekerPlayed {
@@ -78,7 +78,7 @@
 }
 
 .seekerError {
-  background-color: color(var(--color-danger) alpha(10%));
+  background-color: color-mod(var(--color-danger) alpha(10%));
 
   & .seekerPlayed {
     background-color: var(--color-danger);

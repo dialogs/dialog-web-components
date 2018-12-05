@@ -10,9 +10,15 @@
   --sidebar-unread-hover-height: 18px;
   --sidebar-unread-color: #fff;
   --sidebar-unread-background-color: var(--color-primary);
-  --sidebar-unread-hover-background-color: color(var(--sidebar-unread-background-color) tint(10%));
-  --sidebar-unread-active-background-color: color(var(--sidebar-unread-background-color) shade(5%));
-  --sidebar-unread-transition-duration: calc(var(--default-transition-duration) * 0.6);
+  --sidebar-unread-hover-background-color: color-mod(
+    var(--sidebar-unread-background-color) tint(10%)
+  );
+  --sidebar-unread-active-background-color: color-mod(
+    var(--sidebar-unread-background-color) shade(5%)
+  );
+  --sidebar-unread-transition-duration: calc(
+    var(--default-transition-duration) * 0.6
+  );
 }
 
 /* Reset */
@@ -67,7 +73,7 @@
   align-content: center;
   align-items: center;
   justify-content: center;
-  @apply --no-select;
+  @mixin no-select;
   cursor: pointer;
 }
 

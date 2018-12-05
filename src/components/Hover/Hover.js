@@ -9,7 +9,7 @@ import { listen, hasSelection } from '@dlghq/dialog-utils';
 export type Props = {
   className?: string,
   id?: string,
-  children: Node,
+  children?: Node,
   onHover: (hover: boolean) => mixed,
   onClick?: (event: SyntheticMouseEvent<>) => mixed,
 };

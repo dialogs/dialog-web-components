@@ -25,7 +25,7 @@
   top: 0;
   right: 0;
   padding: var(--default-padding-small) var(--default-padding);
-  background-color: color(#000 alpha(45%));
+  background-color: color-mod(#000 alpha(45%));
 }
 
 .lockWrapper {
@@ -45,7 +45,7 @@
   overflow: hidden;
   margin-left: var(--default-padding);
   margin-right: var(--default-padding);
-  @apply --flex-fix;
+  @mixin flex-fix;
   position: relative;
   display: flex;
   align-content: center;

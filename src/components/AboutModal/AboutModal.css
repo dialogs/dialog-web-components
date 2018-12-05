@@ -8,11 +8,11 @@
   --modal-about-font-family: var(--default-font-family);
   --modal-about-width: 300px;
   --modal-about-logo-size: 62px;
-  --modal-about-divider-color: color(#000 alpha(5%));
+  --modal-about-divider-color: color-mod(#000 alpha(5%));
   --modal-about-appName-font-size: 22px;
-  --modal-about-appName-color: color(#000 alpha(80%));
+  --modal-about-appName-color: color-mod(#000 alpha(80%));
   --modal-about-state-font-size: 14px;
-  --modal-about-state-color: color(#000 alpha(60%));
+  --modal-about-state-color: color-mod(#000 alpha(60%));
 }
 
 /* Styles */
@@ -30,11 +30,11 @@
   position: absolute;
   top: var(--default-padding-small);
   right: var(--default-padding-small);
-  color: color(#000 alpha(40%));
+  color: color-mod(#000 alpha(40%));
   transition: color 150ms linear;
 
   &:hover {
-    color: color(#000 alpha(60%));
+    color: color-mod(#000 alpha(60%));
   }
 }
 
@@ -59,7 +59,7 @@
 .version {
   font-size: 13px;
   line-height: 1;
-  color: color(var(--modal-about-appName-color) alpha(40%));
+  color: color-mod(var(--modal-about-appName-color) alpha(40%));
   margin-bottom: 1rem;
 }
 

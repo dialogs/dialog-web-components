@@ -12,7 +12,7 @@
   --sidebar-search-border-color-focus: var(--pinkish-grey);
   --sidebar-search-background-color: var(--white-two);
   --sidebar-search-color: #999;
-  --sidebar-search-placeholder-color: color(#000 alpha(50%));
+  --sidebar-search-placeholder-color: color-mod(#000 alpha(50%));
   --sidebar-search-focus-color: #000;
   --sidebar-search-focus-background-color: #fff;
   --sidebar-search-input-height: 34px;

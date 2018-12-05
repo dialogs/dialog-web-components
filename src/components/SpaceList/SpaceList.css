@@ -1,0 +1,51 @@
+/*
+ * Copyright 2018 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+:root {
+  --space-list-space-add-default-color: var(--color-primary);
+  --space-list-space-add-icon-color: #ffffff;
+}
+
+/* Reset */
+.container {
+  all: initial;
+}
+
+/* Styles */
+.container {
+  display: flex;
+  line-height: 0;
+}
+
+.wrapper {
+  white-space: nowrap;
+  display: inline-block;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.spaceAdd {
+  position: relative;
+}
+
+.spaceAdd g {
+  cursor: pointer;
+  transition: opacity var(--default-transition-duration) ease-in-out;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+/* path === shape */
+.spaceAdd path {
+  fill: var(--space-list-space-add-default-color);
+}
+
+/* rect === plus sign */
+.spaceAdd rect {
+  fill: var(--space-list-space-add-icon-color);
+}

@@ -10,7 +10,7 @@ import type {
   GroupMemberPermission,
 } from '@dlghq/dialog-types';
 import type { Permission } from './types';
-import React, { PureComponent } from 'react';
+import React, { PureComponent, type Node } from 'react';
 import { hasPermission } from '../../utils/acl';
 import AdminModalSwitcher from './AdminModalSwitcher';
 import Fieldset from '../Fieldset/Fieldset';
@@ -92,7 +92,7 @@ class AdminModalForm extends PureComponent<Props> {
     }
   };
 
-  renderSwitchers() {
+  renderSwitchers(): Node {
     const { id, uid, group, permissions, renderOrder } = this.props;
     const transferOwnership = permissions.has('transfer_ownership');
     const order = renderOrder[group.type];

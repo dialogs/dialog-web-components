@@ -6,7 +6,7 @@
 
 :root {
   --message-location-border-radius: var(--default-border-radius);
-  --message-location-border-color: color(#000 alpha(15%));
+  --message-location-border-color: color-mod(#000 alpha(15%));
 }
 
 .container {

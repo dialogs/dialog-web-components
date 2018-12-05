@@ -5,7 +5,7 @@
 @import '../../styles/variables.css';
 
 :root {
-  --field-border-color: color(#000 alpha(10%));
+  --field-border-color: color-mod(#000 alpha(10%));
   --field-padding: var(--default-padding);
   --field-font-family: var(--default-font-family);
 }

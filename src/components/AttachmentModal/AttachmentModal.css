@@ -11,7 +11,9 @@
   --modal-attachment-text-color: var(--modal-font-color-light);
   --modal-attachment-pagination-arrow-size: 28px;
   --modal-attachment-pagination-arrow-color: var(--cool-grey);
-  --modal-attachment-pagination-arrow-hover-color: color(var(--cool-grey) shade(20%));
+  --modal-attachment-pagination-arrow-hover-color: color-mod(
+    var(--cool-grey) shade(20%)
+  );
   --modal-attachment-body-padding: calc(var(--default-padding) * 2);
 }
 
@@ -30,7 +32,6 @@
   padding: var(--modal-attachment-body-padding);
   justify-content: center;
 }
-
 
 .footer {
   padding: 0;

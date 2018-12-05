@@ -40,7 +40,7 @@
   color: var(--permission-banner-text-color);
   display: inline-block;
   line-height: 20px;
-  @apply --no-select;
+  @mixin no-select;
 
   & b {
     font-weight: 500;
@@ -54,9 +54,10 @@
   color: var(--permission-banner-text-color);
   font-size: var(--permission-banner-font-size);
   font-weight: 500;
-  border-bottom: 1px dotted color(var(--permission-banner-text-color) alpha(70%));
+  border-bottom: 1px dotted
+    color-mod(var(--permission-banner-text-color) alpha(70%));
   display: inline-block;
-  @apply --no-select;
+  @mixin no-select;
   cursor: pointer;
 
   &:hover {
@@ -71,11 +72,11 @@
   height: 22px;
   top: 8px;
   right: 8px;
-  color: color(var(--permission-banner-text-color) alpha(70%));
+  color: color-mod(var(--permission-banner-text-color) alpha(70%));
   transition: color var(--default-transition-duration) ease;
 
   &:hover {
-    color: color(var(--permission-banner-text-color) alpha(95%));
+    color: color-mod(var(--permission-banner-text-color) alpha(95%));
   }
 }
 

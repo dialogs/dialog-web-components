@@ -14,7 +14,7 @@ type Props = {
   peer: PeerInfo,
   size: number,
   animated: boolean,
-  onClick?: ?() => mixed,
+  onClick?: (event: SyntheticMouseEvent<>) => mixed,
 };
 
 class CallAvatar extends PureComponent<Props> {

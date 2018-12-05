@@ -10,7 +10,7 @@ import classNames from 'classnames';
 import Spinner from '../Spinner/Spinner';
 import PeerAvatar from '../PeerAvatar/PeerAvatar';
 import PeerInfoTitle from '../PeerInfoTitle/PeerInfoTitle';
-import DoublePeerAvatar from '../DoublePeerAvatar/DoublePeerAvatar';
+import PeerAvatarDouble from '../PeerAvatarDouble/PeerAvatarDouble';
 import MessagePreview from './MessagePreview/MessagePreview';
 import Icon from '../Icon/Icon';
 import styles from './SidebarRecentItem.css';
@@ -46,11 +46,11 @@ class SidebarRecentItem extends PureComponent<Props> {
 
     if (message && message.sender && info.type === 'group') {
       return (
-        <DoublePeerAvatar
-          className={styles.doubleAvatar}
-          size={40}
-          peerBig={info}
-          peerSmall={message.sender}
+        <PeerAvatarDouble
+          className={styles.avatar}
+          size={37}
+          big={info}
+          small={message.sender}
         />
       );
     }
@@ -172,7 +172,6 @@ class SidebarRecentItem extends PureComponent<Props> {
       this.props.className,
       this.props.active ? styles.active : null,
       this.props.counter ? styles.unread : null,
-      this.isDoubleAvatar() ? styles.withDoubleAvatar : null,
     );
 
     return (

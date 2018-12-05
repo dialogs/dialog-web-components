@@ -51,7 +51,12 @@ class SidebarPeerItem extends PureComponent<Props> {
         onClick={this.handleClick}
         id={`sidebar_peer_item_${info.peer.id}`}
       >
-        <PeerAvatar className={styles.avatar} peer={info} online={online} />
+        <PeerAvatar
+          className={styles.avatar}
+          peer={info}
+          online={online}
+          size={32}
+        />
         <div className={styles.text}>
           <PeerInfoTitle
             title={info.title}

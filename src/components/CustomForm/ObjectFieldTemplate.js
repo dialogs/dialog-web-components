@@ -32,7 +32,7 @@ export default class ObjectFieldTemplate extends PureComponent<Props> {
     return <div className={styles.description}>{this.props.description}</div>;
   }
 
-  renderProperties() {
+  renderProperties(): Node {
     return this.props.properties.map((property: Property) => {
       if (this.props.uiSchema) {
         if (

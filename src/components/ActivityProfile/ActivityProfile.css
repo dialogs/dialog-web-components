@@ -118,7 +118,7 @@
   transition: color var(--default-transition-duration) ease;
 
   &:hover {
-    color: color(var(--color-info) tint(10%));
+    color: color-mod(var(--color-info) tint(10%));
     border-bottom: 1px solid var(--activity-profile-contact-font-color);
   }
 }

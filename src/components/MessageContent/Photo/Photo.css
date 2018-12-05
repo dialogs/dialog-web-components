@@ -6,7 +6,7 @@
 
 :root {
   --message-photo-border-raduis: var(--default-border-radius);
-  --message-photo-border-color: color(#000 alpha(15%));
+  --message-photo-border-color: color-mod(#000 alpha(15%));
   --message-photo-transition-duration: var(--default-transition-duration);
 }
 

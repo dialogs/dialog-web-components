@@ -9,7 +9,7 @@
   --activity-invite-font-size: var(--default-font-size);
   --activity-invite-border-color: #e5e5e5;
   --activity-invite-link-font-size: 20px;
-  --activity-invite-link-color: color(#000 alpha(90%));
+  --activity-invite-link-color: color-mod(#000 alpha(90%));
 }
 
 /* Reset */
@@ -43,7 +43,7 @@
 
 .text {
   flex: 1 1 auto;
-  @apply --flex-fix;
+  @mixin flex-fix;
   font-size: var(--activity-invite-font-size);
 }
 

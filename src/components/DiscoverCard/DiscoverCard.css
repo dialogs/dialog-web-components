@@ -6,19 +6,19 @@
 
 :root {
   --discover-card-font-family: var(--default-font-family);
-  --discover-card-border-color: color(#000 alpha(8%));
+  --discover-card-border-color: color-mod(#000 alpha(8%));
   --discover-card-border-radius: 4px;
   --discover-card-background-color: #fff;
   --discover-card-title-font-size: 18px;
   --discover-card-title-color: #000;
   --discover-card-shortname-font-size: var(--default-font-size-small);
-  --discover-card-shortname-color: color(#000 alpha(50%));
+  --discover-card-shortname-color: color-mod(#000 alpha(50%));
   --discover-card-description-font-size: 15px;
-  --discover-card-description-color: color(#000 alpha(40%));
+  --discover-card-description-color: color-mod(#000 alpha(40%));
   --discover-card-description-lines-to-show: 4;
-  --discover-card-members-color: color(#000 alpha(40%));
+  --discover-card-members-color: color-mod(#000 alpha(40%));
   --discover-card-members-font-size: var(--default-font-size);
-  --discover-card-creator-color: color(#000 alpha(50%));
+  --discover-card-creator-color: color-mod(#000 alpha(50%));
   --discover-card-creator-font-size: var(--default-font-size-small);
 }
 
@@ -53,7 +53,7 @@
   flex: 1 1 auto;
   box-sizing: border-box;
   padding: var(--default-padding);
-  @apply --flex-fix;
+  @mixin flex-fix;
 }
 
 .side {
@@ -73,7 +73,7 @@
   line-height: 24px;
   height: 24px;
   margin-top: 2px;
-  @apply --text-overflow-ellipsis;
+  @mixin text-overflow-ellipsis;
 }
 
 .icon {
@@ -99,9 +99,11 @@
   overflow: hidden;
   text-overflow: ellipsis;
   -webkit-line-clamp: var(--discover-card-description-lines-to-show);
+}
+
+.description {
   /* autoprefixer: off */
-   -webkit-box-orient: vertical;
-   /* autoprefixer: on */
+  -webkit-box-orient: vertical;
 }
 
 .footer {
@@ -145,8 +147,8 @@
   line-height: 20px;
   color: var(--discover-card-creator-color);
   flex: 1 1 auto;
-  @apply --flex-fix;
-  @apply --text-overflow-ellipsis;
+  @mixin flex-fix;
+  @mixin text-overflow-ellipsis;
 }
 
 .creatorTitle {

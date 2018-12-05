@@ -8,9 +8,10 @@ import type {
   MessageMediaInteractiveConfirm,
 } from '@dlghq/dialog-types';
 import type { ProviderContext as Context } from '@dlghq/react-l10n';
-import React, { PureComponent } from 'react';
+import React, { PureComponent, type Node } from 'react';
 import { Provider, LocalizationContextType } from '@dlghq/react-l10n';
 import classNames from 'classnames';
+
 import styles from './MessageMediaInteractive.css';
 import MessageMediaInteractiveGroup from './MessageMediaInteractiveGroup/MessageMediaInteractiveGroup';
 
@@ -32,7 +33,7 @@ class MessageMediaInteractive extends PureComponent<Props> {
     l10n: LocalizationContextType,
   };
 
-  renderContent() {
+  renderContent(): Node {
     const { media } = this.props;
 
     return media.content.map((group, index) => {

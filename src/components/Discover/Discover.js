@@ -5,9 +5,10 @@
 
 import type { Peer } from '@dlghq/dialog-types';
 import type { Card } from '../DiscoverCard/DiscoverCard';
-import React, { PureComponent } from 'react';
+import React, { PureComponent, type Node } from 'react';
 import classNames from 'classnames';
 import { Text } from '@dlghq/react-l10n';
+
 import Button from '../Button/Button';
 import DiscoverCard from '../DiscoverCard/DiscoverCard';
 import styles from './Discover.css';
@@ -20,7 +21,7 @@ export type Props = {
 };
 
 class Discover extends PureComponent<Props> {
-  renderCards() {
+  renderCards(): Node {
     const { items } = this.props;
 
     return items.map((card) => {

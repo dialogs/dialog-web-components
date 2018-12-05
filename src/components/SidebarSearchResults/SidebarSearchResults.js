@@ -5,8 +5,9 @@
 
 import type { SidebarSearchResultsProps } from './types';
 import type { PeerInfo } from '@dlghq/dialog-types';
-import React, { PureComponent } from 'react';
+import React, { PureComponent, type Node } from 'react';
 import { Text } from '@dlghq/react-l10n';
+
 import Emoji from '../Emoji/Emoji';
 import Error from '../Error/Error';
 import Spinner from '../Spinner/Spinner';
@@ -16,7 +17,7 @@ import SidebarSearchItem from './SidebarSearchItem/SidebarSearchItem';
 import styles from './SidebarSearchResults.css';
 
 class SidebarSearchResults extends PureComponent<SidebarSearchResultsProps> {
-  renderPeers() {
+  renderPeers(): Node {
     const { peers } = this.props;
 
     if (!peers.length) {

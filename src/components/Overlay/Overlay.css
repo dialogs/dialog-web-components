@@ -6,7 +6,7 @@
 
 :root {
   --overlay-font-family: var(--default-font-family);
-  --overlay-background: color(#333 alpha(65%));
+  --overlay-background: color-mod(#333 alpha(65%));
   --overlay-caption-color: #fff;
   --overlay-z-index: 9999;
 }
@@ -43,7 +43,7 @@
   text-align: center;
   font-family: var(--overlay-font-family);
   color: var(--overlay-caption-color);
-  @apply --no-select;
+  @mixin no-select;
 }
 
 /* Animation */

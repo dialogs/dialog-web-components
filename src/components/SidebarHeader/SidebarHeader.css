@@ -12,7 +12,7 @@
   --sidebar-header-padding-right: 12px;
   --sidebar-header-padding-bottom: 10px;
   --sidebar-header-padding-left: 12px;
-  --sidebar-header-menu-color: color(#000 alpha(80%));
+  --sidebar-header-menu-color: color-mod(#000 alpha(80%));
   --sidebar-header-menu-font-size: var(--default-font-size-large);
   --sidebar-header-plus-color: var(--indigo);
 }
@@ -42,7 +42,8 @@
   font-size: var(--sidebar-header-menu-font-size);
   font-weight: 500;
   line-height: calc(
-    var(--sidebar-header-height) - var(--sidebar-header-padding-top) - var(--sidebar-header-padding-bottom)
+    var(--sidebar-header-height) - var(--sidebar-header-padding-top) -
+      var(--sidebar-header-padding-bottom)
   );
   color: var(--sidebar-header-menu-color);
   justify-content: flex-start;
@@ -69,7 +70,10 @@
 
 .plusWrapper {
   display: inline-flex;
-  height: calc(var(--sidebar-header-height) - var(--sidebar-header-padding-top) - var(--sidebar-header-padding-bottom));
+  height: calc(
+    var(--sidebar-header-height) - var(--sidebar-header-padding-top) -
+      var(--sidebar-header-padding-bottom)
+  );
   align-content: center;
   align-items: center;
   justify-content: flex-end;

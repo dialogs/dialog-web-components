@@ -56,7 +56,7 @@
   display: flex;
   flex-flow: column nowrap;
   flex: 1 1 auto;
-  @apply --flex-fix;
+  @mixin flex-fix;
 }
 
 .title {
@@ -68,7 +68,7 @@
   letter-spacing: -0.384px;
   color: var(--activity-media-photo-title-color);
   flex: 0 0 auto;
-  @apply --text-overflow-ellipsis;
+  @mixin text-overflow-ellipsis;
 }
 
 .info {
@@ -80,5 +80,5 @@
   font-size: var(--activity-media-photo-info-font-size);
   color: var(--activity-media-photo-info-color);
   letter-spacing: -0.336px;
-  @apply --text-overflow-ellipsis;
+  @mixin text-overflow-ellipsis;
 }

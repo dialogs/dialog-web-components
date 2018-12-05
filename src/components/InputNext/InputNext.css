@@ -16,10 +16,16 @@
   --input-next-border-color: #d1d3d8;
   --input-next-label-font-size: var(--default-font-size-small);
   --input-next-label-color: var(--color-labels);
-  --input-next-hover-border-color: color(var(--input-next-border-color) shade(15%));
+  --input-next-hover-border-color: color-mod(
+    var(--input-next-border-color) shade(15%)
+  );
   --input-next-focus-border-color: var(--color-primary);
-  --input-next-focus-outline-color: color(var(--input-next-focus-border-color) alpha(20%));
-  --input-next-transition-duration: calc(var(--default-transition-duration) / 1.5);
+  --input-next-focus-outline-color: color-mod(
+    var(--input-next-focus-border-color) alpha(20%)
+  );
+  --input-next-transition-duration: calc(
+    var(--default-transition-duration) / 1.5
+  );
   --input-next-success-color: var(--color-success);
   --input-next-error-color: var(--color-danger);
   --input-next-hint-font-family: var(--input-next-font-family);
@@ -89,10 +95,11 @@
   }
 }
 
-.filled {}
+.filled {
+}
 
 .label {
-  @apply --no-select;
+  @mixin no-select;
   color: var(--input-next-label-color);
   font-family: var(--input-next-font-family);
   font-size: var(--input-next-label-font-size);
@@ -103,7 +110,7 @@
 
   & small {
     margin-left: calc(var(--default-padding-small) / 2);
-    color: color(var(--input-next-label-color) alpha(60%));
+    color: color-mod(var(--input-next-label-color) alpha(60%));
   }
 }
 
@@ -130,7 +137,7 @@
   line-height: var(--input-next-hint-line-height);
   color: var(--input-next-hint-color);
   margin-top: calc(var(--default-padding-small) / 2);
-  @apply --no-select;
+  @mixin no-select;
 }
 
 .disabled {
@@ -155,7 +162,8 @@
     box-shadow: inset 0 0 0 1px var(--input-next-success-color);
 
     &:hover {
-      box-shadow: inset 0 0 0 1px color(var(--input-next-success-color) shade(15%));
+      box-shadow: inset 0 0 0 1px
+        color-mod(var(--input-next-success-color) shade(15%));
     }
   }
 
@@ -170,7 +178,8 @@
     box-shadow: inset 0 0 0 1px var(--input-next-error-color);
 
     &:hover {
-      box-shadow: inset 0 0 0 1px color(var(--input-next-error-color) shade(15%));
+      box-shadow: inset 0 0 0 1px
+        color-mod(var(--input-next-error-color) shade(15%));
     }
   }
 
@@ -185,21 +194,33 @@
   }
 
   & .input {
-    padding-top: calc(var(--input-next-padding-top) * (1 - var(--input-next-size-modifier)));
+    padding-top: calc(
+      var(--input-next-padding-top) * (1 - var(--input-next-size-modifier))
+    );
     padding-right: var(--input-next-padding-right);
-    padding-bottom: calc(var(--input-next-padding-bottom) * (1 - var(--input-next-size-modifier)));
+    padding-bottom: calc(
+      var(--input-next-padding-bottom) * (1 - var(--input-next-size-modifier))
+    );
     padding-left: var(--input-next-padding-left);
     font-size: var(--input-next-small-font-size);
-    line-height: calc(var(--input-next-line-height) * (1 - var(--input-next-size-modifier)));
+    line-height: calc(
+      var(--input-next-line-height) * (1 - var(--input-next-size-modifier))
+    );
   }
 
   & .prefix {
-    padding-top: calc(var(--input-next-padding-top) * (1 - var(--input-next-size-modifier)));
+    padding-top: calc(
+      var(--input-next-padding-top) * (1 - var(--input-next-size-modifier))
+    );
     padding-right: 1px;
-    padding-bottom: calc(var(--input-next-padding-bottom) * (1 - var(--input-next-size-modifier)));
+    padding-bottom: calc(
+      var(--input-next-padding-bottom) * (1 - var(--input-next-size-modifier))
+    );
     padding-left: var(--input-next-padding-left);
     font-size: var(--input-next-small-font-size);
-    line-height: calc(var(--input-next-line-height) * (1 - var(--input-next-size-modifier)));
+    line-height: calc(
+      var(--input-next-line-height) * (1 - var(--input-next-size-modifier))
+    );
   }
 
   & .prefixed {
@@ -259,18 +280,21 @@
 
 .focused {
   & .inputWrapper {
-    box-shadow: inset 0 0 0 1px var(--input-next-focus-border-color), 0 0 0 3px var(--input-next-focus-outline-color);
+    box-shadow: inset 0 0 0 1px var(--input-next-focus-border-color),
+      0 0 0 3px var(--input-next-focus-outline-color);
   }
 
   &.error {
     & .inputWrapper {
-      box-shadow: inset 0 0 0 1px var(--input-next-error-color), 0 0 0 3px color(var(--input-next-error-color) alpha(20%));
+      box-shadow: inset 0 0 0 1px var(--input-next-error-color),
+        0 0 0 3px color-mod(var(--input-next-error-color) alpha(20%));
     }
   }
 
   &.success {
     & .inputWrapper {
-      box-shadow: inset 0 0 0 1px var(--input-next-success-color), 0 0 0 3px color(var(--input-next-success-color) alpha(20%));
+      box-shadow: inset 0 0 0 1px var(--input-next-success-color),
+        0 0 0 3px color-mod(var(--input-next-success-color) alpha(20%));
     }
   }
 
@@ -296,12 +320,12 @@
   }
 
   & .input {
-    background-color: color(var(--input-next-text-color) alpha(2%));
+    background-color: color-mod(var(--input-next-text-color) alpha(2%));
     color: var(--input-next-text-color) !important;
   }
 
   & .prefix {
-    background-color: color(var(--input-next-text-color) alpha(2%));
+    background-color: color-mod(var(--input-next-text-color) alpha(2%));
     color: var(--input-next-text-color) !important;
   }
 }
@@ -314,14 +338,13 @@
   font-family: var(--input-next-length-font-family);
   font-size: var(--input-next-length-font-size);
 
-
-  @apply --no-select;
+  @mixin no-select;
   line-height: 1.4;
   display: inline-block;
   margin-bottom: calc(var(--default-padding-small) / 2);
   cursor: pointer;
 
   & small {
-    color: color(var(--input-next-length-color) alpha(60%));
+    color: color-mod(var(--input-next-length-color) alpha(60%));
   }
 }

@@ -4,7 +4,7 @@
  */
 
 import type { PeerInfo, GroupMember } from '@dlghq/dialog-types';
-import type { SelectorState } from './types';
+import type { SelectorState, SelectorStateCreator } from './types';
 import createSelectorState from './createSelectorState';
 
 function peerIntoToQueryString(info: PeerInfo): string {
@@ -15,13 +15,13 @@ function peerIntoToQueryString(info: PeerInfo): string {
   return info.title;
 }
 
-export const PeerInfoSelectorState = createSelectorState(
+export const PeerInfoSelectorState: SelectorStateCreator<PeerInfo> = createSelectorState(
   'PeerInfoSelectorState',
   peerIntoToQueryString,
   true,
 );
 
-export const MemberSelectorState = createSelectorState(
+export const MemberSelectorState: SelectorStateCreator<GroupMember> = createSelectorState(
   'MemberSelectorState',
   (member: GroupMember) => peerIntoToQueryString(member.peerInfo),
   true,

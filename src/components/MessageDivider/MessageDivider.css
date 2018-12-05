@@ -7,10 +7,10 @@
 :root {
   --message-divider-font-family: var(--default-font-family);
   --message-divider-font-size: var(--default-font-size-small);
-  --message-divider-default-color: color(#000 alpha(80%));
+  --message-divider-default-color: color-mod(#000 alpha(80%));
   --message-divider-height: 30px;
   --message-divider-background-color: #fff;
-  --message-divider-default-line-color: color(#000 alpha(15%));
+  --message-divider-default-line-color: color-mod(#000 alpha(15%));
 }
 
 /* Reset */
@@ -73,7 +73,7 @@
   }
 
   & .text {
-    color: color(var(--color-primary) alpha(80%));
+    color: color-mod(var(--color-primary) alpha(80%));
   }
 }
 
@@ -83,7 +83,7 @@
   }
 
   & .text {
-    color: color(var(--color-success) alpha(80%));
+    color: color-mod(var(--color-success) alpha(80%));
   }
 }
 
@@ -93,7 +93,7 @@
   }
 
   & .text {
-    color: color(var(--color-danger) alpha(80%));
+    color: color-mod(var(--color-danger) alpha(80%));
   }
 }
 
@@ -103,7 +103,7 @@
   }
 
   & .text {
-    color: color(var(--color-info) alpha(80%));
+    color: color-mod(var(--color-info) alpha(80%));
   }
 }
 
@@ -113,7 +113,7 @@
   }
 
   & .text {
-    color: color(var(--color-warning) alpha(80%));
+    color: color-mod(var(--color-warning) alpha(80%));
   }
 }
 

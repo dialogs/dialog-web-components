@@ -9,11 +9,8 @@ function resolve(...paths) {
   return fs.realpathSync(path.join(__dirname, ...paths));
 }
 
-module.exports = {
-  title: `dialog components v${pkg.version}`,
-  serverPort: 5000,
-  highlightTheme: 'dracula',
-  sections: schema.map(({ name, content, components }) => {
+function getSections() {
+  return schema.map(({ name, content, components }) => {
     return {
       name,
       content: content ? resolve('docs', content + '.md') : null,
@@ -22,25 +19,36 @@ module.exports = {
           return resolve(
             'src/components',
             componentName,
-            componentName + '.js'
+            componentName + '.js',
           );
         });
-      }
+      },
     };
-  }),
+  });
+}
+
+module.exports = {
+  title: `dialog components v${pkg.version}`,
+  serverPort: 5000,
+  editorConfig: {
+    theme: 'dracula',
+  },
+  sections: getSections(),
 
   webpackConfig: require('./webpack.config'),
 
   require: [
     resolve('node_modules/core-js/shim.js'),
     resolve('src/styles/global.css'),
-    resolve('src/styleguide/styles.css')
+    resolve('src/styleguide/styles.css'),
   ],
+
+  styleguideComponents: {
+    Wrapper: resolve('src/styleguide/Wrapper/Wrapper.js'),
+  },
 
   theme,
   styles,
-
-  template: resolve('src/styleguide/index.html'),
 
   getComponentPathLine(componentPath) {
     const name = path.basename(componentPath, '.js');
@@ -50,5 +58,5 @@ module.exports = {
 
   getExampleFilename(componentPath) {
     return componentPath.replace(/[\w\d]+\.js$/i, 'README.md');
-  }
+  },
 };

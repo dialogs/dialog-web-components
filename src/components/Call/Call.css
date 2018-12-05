@@ -23,7 +23,8 @@
 
 .window {
   border-radius: 6px;
-  box-shadow: 0 1px 2px 0 color(#000 alpha(12%)), inset 0 0 0 1px color(#000 alpha(15%));
+  box-shadow: 0 1px 2px 0 color-mod(#000 alpha(12%)),
+    inset 0 0 0 1px color-mod(#000 alpha(15%));
   position: relative;
   z-index: var(--z-index-call);
   overflow: hidden;
@@ -36,7 +37,8 @@
   justify-content: center;
 
   & .info {
-    padding: calc(var(--default-padding-large) * 2.5) 0 calc(var(--default-padding-large) * 3);
+    padding: calc(var(--default-padding-large) * 2.5) 0
+      calc(var(--default-padding-large) * 3);
   }
 }
 
@@ -87,7 +89,7 @@
   right: var(--default-padding-large);
   z-index: calc(var(--z-index-call) + 10);
   color: #fff;
-  background-color: color(#000 alpha(30%));
+  background-color: color-mod(#000 alpha(30%));
   padding: 8px;
   border-radius: 50%;
 }

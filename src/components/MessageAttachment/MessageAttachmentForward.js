@@ -4,9 +4,10 @@
  */
 
 import type { Peer, Message, PeerInfo } from '@dlghq/dialog-types';
-import React, { PureComponent } from 'react';
+import React, { PureComponent, type Node } from 'react';
 import { Text } from '@dlghq/react-l10n';
 import classNames from 'classnames';
+
 import MessageAttachmentItem from './MessageAttachmentItem';
 import PeerInfoTitle from '../PeerInfoTitle/PeerInfoTitle';
 import Button from '../Button/Button';
@@ -68,7 +69,7 @@ class MessageAttachmentForward extends PureComponent<Props> {
     );
   }
 
-  renderMessages() {
+  renderMessages(): Node {
     const { messages, maxHeight, maxWidth } = this.props;
     let lastSenderId = 0;
 

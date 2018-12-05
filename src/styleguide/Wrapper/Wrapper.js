@@ -2,13 +2,13 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from '@dlghq/react-l10n';
 import classNames from 'classnames';
-import { ModalProvider } from '../components/Modal';
 
-import messages from './devMessages';
-import Select from '../components/Select/Select';
-import Switcher from '../components/Switcher/Switcher';
+import { ModalProvider } from '../../components/Modal';
+import messages from '../devMessages';
+import Select from '../../components/Select/Select';
+import Switcher from '../../components/Switcher/Switcher';
 import styles from './Wrapper.css';
-import createSequence from '../utils/createSequence';
+import createSequence from '../../utils/createSequence';
 
 const seq = createSequence();
 

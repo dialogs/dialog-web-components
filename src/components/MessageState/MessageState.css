@@ -7,10 +7,10 @@
 :root {
   --message-state-font-family: var(--default-font-family);
   --message-state-font-size: 13px;
-  --message-state-color: color(#000 alpha(60%));
+  --message-state-color: color-mod(#000 alpha(60%));
   --message-state-avatar-padding: 4px;
   --message-state-dot-size: 10px;
-  --message-state-dot-color: color(#000 alpha(30%));
+  --message-state-dot-color: color-mod(#000 alpha(30%));
   --message-state-edited-font-size: 11px;
   --message-state-height: 22px;
 }
@@ -34,7 +34,7 @@
 
 .edited {
   font-size: var(--message-state-edited-font-size);
-  color: color(#000 alpha(40%));
+  color: color-mod(#000 alpha(40%));
   font-weight: 500;
   cursor: default;
 }

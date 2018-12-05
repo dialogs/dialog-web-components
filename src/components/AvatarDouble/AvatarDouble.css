@@ -1,0 +1,107 @@
+/*
+ * Copyright 2018 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+:root {
+  --avatar-double-text-color: #fff;
+  --avatar-double-big-text-font-size: 32px;
+  --avatar-double-small-text-font-size: 18px;
+  --avatar-double-hovered-opacity: 0.9;
+  --avatar-double-active-opacity: 0.85;
+}
+
+/* Reset */
+.container {
+  all: initial;
+}
+
+/* Styles */
+.container {
+  display: inline-block;
+  border-radius: 100%;
+  line-height: 0;
+  position: relative;
+  transform: translateZ(1);
+  transition: opacity var(--default-transition-duration) ease-in-out;
+  opacity: 1;
+  user-select: none;
+}
+
+.svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 109%;
+  height: 109%;
+  z-index: 3000;
+}
+
+.avatarBig {
+}
+
+.avatarSmall {
+}
+
+.text {
+  font-family: var(--default-font-family);
+  color: var(--avatar-double-text-color);
+  letter-spacing: 1px;
+  fill: currentColor;
+  text-transform: uppercase;
+  user-select: none;
+  cursor: inherit;
+  vertical-align: middle;
+  font-weight: 500;
+  pointer-events: none;
+}
+
+.textBig {
+  composes: text;
+  font-size: var(--avatar-double-big-text-font-size);
+}
+
+.textSmall {
+  composes: text;
+  font-size: var(--avatar-double-small-text-font-size);
+}
+
+.hovered {
+  opacity: var(--avatar-double-hovered-opacity);
+
+  &:active {
+    opacity: var(--avatar-double-active-opacity);
+  }
+}
+
+/* Clicker */
+.clickerWrapper {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 3005;
+}
+
+.clickerBig {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+}
+
+.clickerSmall {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  right: -9%;
+  bottom: -9%;
+  border-radius: 100%;
+  cursor: pointer;
+}
