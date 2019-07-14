@@ -9,8 +9,8 @@
 
   --space-info-modal-font-size: var(--default-font-size);
   --space-info-modal-close-size: 28px;
-  --space-info-modal-close-color: color(#000 alpha(40%));
-  --space-info-modal-close-color-hover: color(#000 alpha(60%));
+  --space-info-modal-close-color: color-mod(#000 alpha(40%));
+  --space-info-modal-close-color-hover: color-mod(#000 alpha(60%));
   --space-info-modal-transition-duration: var(--default-transition-duration);
   --space-info-modal-hint-color: var(--default-font-color-light);
   --space-info-modal-hint-font-size: var(--space-info-modal-font-size);

@@ -8,8 +8,8 @@
   --modal-space-edit-font-family: var(--default-font-family);
   --modal-space-edit-width: 600px;
   --modal-space-edit-size: 28px;
-  --modal-space-edit-color: color(#000 alpha(40%));
-  --modal-space-edit-color-hover: color(#000 alpha(60%));
+  --modal-space-edit-color: color-mod(#000 alpha(40%));
+  --modal-space-edit-color-hover: color-mod(#000 alpha(60%));
   --modal-space-edit-transition-duration: var(--default-transition-duration);
 }
 
