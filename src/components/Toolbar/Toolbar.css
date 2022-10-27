@@ -1,0 +1,73 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+.container {
+  all: initial;
+  z-index: var(--z-index-toolbar);
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  height: var(--toolbar-height);
+  padding-top: var(--toolbar-padding-top);
+  padding-right: var(--toolbar-padding-right);
+  padding-bottom: var(--toolbar-padding-bottom);
+  padding-left: var(--toolbar-padding-left);
+  background-color: var(--toolbar-background-color);
+  box-shadow: inset 0 -1px 0 0 var(--toolbar-border-color);
+  font-family: var(--toolbar-font-family);
+  justify-content: flex-start;
+}
+
+/* Layout */
+.info {
+  box-sizing: border-box;
+  padding: 0;
+  flex: 1 1 auto;
+}
+
+.buttons {
+  display: flex;
+  box-sizing: border-box;
+  padding: 0 0 0 var(--toolbar-padding-right);
+  flex: 0 1 auto;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* Theming */
+.name {
+  vertical-align: middle;
+  letter-spacing: -0.3px;
+  font-size: var(--toolbar-title-font-size);
+  font-weight: 500;
+  line-height: 22px;
+  color: var(--toolbar-title-color);
+}
+
+.status {
+  vertical-align: middle;
+  letter-spacing: -0.2px;
+  font-size: var(--toolbar-status-font-size);
+  line-height: 18px;
+  color: var(--toolbar-status-color);
+}
+
+.avatar {
+  position: relative;
+  margin-right: 20px;
+}
+
+.favourite {
+  position: absolute;
+  right: -2px;
+  bottom: -2px;
+  box-sizing: border-box;
+  width: 16px !important;
+  height: 16px !important;
+  padding: 2px;
+  border-radius: 50%;
+  background-color: #fff;
+}

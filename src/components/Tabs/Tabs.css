@@ -1,0 +1,46 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+/* Reset */
+.container {
+  all: initial;
+}
+
+/* Styles */
+.container {
+  display: flex;
+  flex-direction: column;
+  width: var(--tabs-width);
+  list-style: none;
+  font-family: var(--tabs-font-family);
+  justify-content: center;
+  align-content: center;
+}
+
+.tab {
+  display: inline-flex;
+  height: 50px;
+  padding-right: 22px;
+  padding-left: 22px;
+  cursor: pointer;
+  user-select: none;
+  text-transform: uppercase;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.2;
+  flex: 0 0 auto;
+  align-content: center;
+  justify-content: flex-start;
+  align-items: center;
+  color: var(--tabs-color);
+}
+
+.active {
+  cursor: default;
+  background-image: var(--tabs-gradient);
+  color: var(--tabs-color-active);
+}

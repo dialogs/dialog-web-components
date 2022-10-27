@@ -1,0 +1,31 @@
+/*
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+.block {
+  display: block;
+  vertical-align: baseline;
+  width: 1px;
+  height: 0;
+  background-size: 0;
+  background-repeat: no-repeat;
+  font-size: 0;
+  color: transparent;
+  float: left;
+  text-rendering: auto;
+  /*user-select: none;*/
+}
+
+.inline {
+  display: inline-block;
+  vertical-align: baseline;
+  width: 1px;
+  height: 0;
+  background-size: 0;
+  background-repeat: no-repeat;
+  font-size: 0;
+  color: transparent;
+  float: left;
+  text-rendering: auto;
+  user-select: none;
+}

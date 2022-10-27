@@ -1,0 +1,8 @@
+pending: Pending
+sent: Sent
+received: Delivered
+read: Read
+read_by: Read by
+read_by_count: Read by "{count} people"
+error: Error
+unknown: Unknown

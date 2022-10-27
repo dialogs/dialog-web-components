@@ -1,0 +1,70 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../../styles/variables.css';
+
+.container {
+  all: initial;
+  display: flex;
+  width: var(--contact-width);
+  padding: var(--contact-padding);
+  border-radius: var(--contact-border-radius);
+  background-color: #fff;
+  box-shadow: 0 0 0 1px var(--contact-border-color);
+  font-family: var(--contact-font-family);
+  flex-flow: row-reverse;
+}
+
+.avatar {
+  overflow: hidden;
+  width: var(--contact-avatar-size);
+  height: var(--contact-avatar-size);
+  border-radius: calc(var(--contact-avatar-size) / 2);
+  line-height: 0;
+  flex: 0 0 auto;
+}
+
+.credentials {
+  flex: 1 1 auto;
+  @apply --flex-fix;
+}
+
+.name {
+  margin-bottom: 6px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.phone {
+  margin-bottom: 4px;
+  vertical-align: middle;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.email {
+  margin-bottom: 4px;
+  vertical-align: middle;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.icon {
+  margin-right: 6px;
+  font-size: 22px;
+  color: color(#000 alpha(20%));
+}
+
+.link {
+  text-decoration: none;
+  border-bottom: 1px dotted var(--contact-link-color);
+  line-height: inherit;
+  color: var(--contact-link-color);
+
+  &:hover {
+    border-bottom: 1px solid var(--contact-link-color);
+  }
+}
+

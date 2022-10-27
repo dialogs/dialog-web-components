@@ -1,0 +1,35 @@
+machine:
+  node:
+    version: 7
+  environment:
+    PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
+  pre:
+    - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+    - echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+    - sudo apt-get update && sudo apt-get install yarn
+
+general:
+  branches:
+    ignore:
+      - gh-pages
+
+dependencies:
+  override:
+    - yarn install
+  cache_directories:
+    - ~/.cache/yarn
+
+test:
+  override:
+    - yarn test
+  post:
+    - yarn coverage
+
+deployment:
+  docs:
+    tag: /^v\d+(\.\d+)*$/
+    owner: dialogs
+    commands:
+      - git config --global user.name "$GIT_NAME"
+      - git config --global user.email "$GIT_EMAIL"
+      - yarn docs

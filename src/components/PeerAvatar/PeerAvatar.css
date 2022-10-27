@@ -1,0 +1,29 @@
+@import '../../styles/variables.css';
+
+.container {
+  position: relative;
+  display: inline-flex;
+  cursor: inherit;
+}
+
+.online {
+  fill: var(--avatar-online-color);
+}
+
+.text {
+  fill: var(--avatar-placeholder-color);
+  text-transform: uppercase;
+  font-family: var(--default-font-family);
+  font-weight: 400;
+  user-select: none;
+  cursor: inherit;
+}
+
+.clickable {
+  cursor: pointer;
+  transition: opacity var(--default-transition-duration) ease-in-out;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}

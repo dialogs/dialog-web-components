@@ -1,0 +1,100 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+/* Styles */
+.container {
+  width: var(--modal-profile-width);
+  font-family: var(--modal-font-family);
+}
+
+.body {
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  padding: calc(var(--default-padding-large) * 1.5) calc(var(--default-padding-large) * 2.5);
+}
+
+.avatarBlock {
+  width: 100px;
+  margin-right: 34px;
+  flex: 0 0 auto;
+}
+
+.form {
+  width: var(--modal-profile-form-width);
+  flex: 0 0 auto;
+}
+
+.nick,
+.nickInput {
+  margin-top: calc(var(--default-padding) * 2);
+}
+
+.nickButton {
+  margin-top: 7px;
+  display: inline-flex;
+  flex-direction: row;
+  padding: 6px 0;
+  font-size: var(--modal-font-size);
+  line-height: var(--default-line-height-small);
+  justify-content: flex-start;
+  align-content: center;
+  align-items: center;
+}
+
+.nickButtonIcon {
+  margin-right: 6px;
+  cursor: inherit !important;
+  font-size: 22px;
+  color: inherit !important;
+  fill: inherit !important;
+}
+
+.nickHint {
+  letter-spacing: -0.3px;
+  font-size: var(--default-font-size-small);
+  line-height: 1.4;
+  color: var(--modal-profile-hint-color);
+  @apply --no-select;
+}
+
+.about {
+  margin-top: 32px;
+}
+
+.contacts {
+  margin-top: 32px;
+}
+
+.contactTitle {
+  letter-spacing: -0.1px;
+  text-transform: uppercase;
+  font-size: var(--default-font-size-small);
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--color-primary);
+  @apply --no-select;
+}
+
+.contactContent {
+  display: inline-flex;
+  flex-direction: row;
+  font-size: 22px;
+  line-height: var(--default-line-height-large);
+  align-content: center;
+  align-items: center;
+  justify-content: flex-start;
+  @apply --no-select;
+}
+
+.contactContentIcon {
+  margin-left: calc(var(--default-padding) / 2);
+  color: var(--modal-profile-hint-color);
+}
+
+.footer {
+  padding: 0;
+}

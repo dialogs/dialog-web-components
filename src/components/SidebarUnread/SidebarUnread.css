@@ -1,0 +1,104 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+/* Reset */
+.container {
+  all: initial;
+}
+
+/* Styles */
+.container {
+  position: absolute;
+  z-index: var(--z-index-sidebar-unread);
+  right: 0;
+  left: 0;
+  height: var(--sidebar-unread-hover-height);
+
+  &:hover {
+    & .wrapper {
+      height: var(--sidebar-unread-hover-height);
+      background-color: var(--sidebar-unread-hover-background-color);
+    }
+
+    & .icon {
+      transform: scale(1) translateY(0);
+      opacity: 1;
+    }
+  }
+
+  &:active {
+    & .wrapper {
+      background-color: var(--sidebar-unread-active-background-color);
+    }
+
+    & .icon {
+      transform: scale(1) translateY(0);
+      opacity: 1;
+    }
+  }
+}
+
+.wrapper {
+  height: var(--sidebar-unread-default-height);
+  display: flex;
+  position: absolute;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  transition: height var(--sidebar-unread-transition-duration) ease-in-out, background var(--sidebar-unread-transition-duration) ease-in-out;
+  background-color: var(--sidebar-unread-background-color);
+  font-family: var(--sidebar-unread-font-family);
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  @apply --no-select;
+  cursor: pointer;
+}
+
+.top {
+  top: 0;
+
+  & .wrapper {
+    top: 0;
+  }
+
+  & .icon {
+    transform: scale(0.7) translateY(-10px);
+  }
+
+  &:active {
+    & .icon {
+      transform: translateY(-1px);
+    }
+  }
+}
+
+.bottom {
+  bottom: 0;
+
+  & .wrapper {
+    bottom: 0;
+  }
+
+  & .icon {
+    transform: scale(0.7) translateY(10px);
+  }
+
+  &:active {
+    & .icon {
+      transform: translateY(1px);
+    }
+  }
+}
+
+.icon {
+  transition: opacity var(--sidebar-unread-transition-duration) ease-in-out, transform var(--sidebar-unread-transition-duration) ease-in-out;
+  opacity: 0;
+  font-size: 20px;
+  fill: var(--sidebar-unread-color);
+  color: var(--sidebar-unread-color);
+  stroke: var(--sidebar-unread-color);
+}

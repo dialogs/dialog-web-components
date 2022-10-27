@@ -1,0 +1,3 @@
+{
+  "extends": "@dlghq/stylelint-config-dialog"
+}

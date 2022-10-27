@@ -1,0 +1,83 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+/* Reset */
+.container {
+  all: initial;
+}
+
+/* Styles */
+.container {
+  display: flex;
+  font-family: var(--sidebar-footer-font-family);
+  height: var(--sidebar-footer-height);
+  background-color: var(--sidebar-footer-background);
+  box-shadow: inset 0 1px 0 0 var(--sidebar-footer-border-color);
+  flex-flow: row;
+  align-content: stretch;
+  align-items: stretch;
+  justify-content: space-around;
+}
+
+.button {
+  flex: 1 1 auto;
+  @apply --flex-fix;
+  cursor: pointer;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    & .icon {
+      color: var(--sidebar-footer-button-color-hover);
+      fill: var(--sidebar-footer-button-color-hover);
+      stroke: var(--sidebar-footer-button-color-hover);
+    }
+  }
+}
+
+.active {
+  & .icon {
+    color: var(--sidebar-footer-button-color-active) !important;
+    fill: var(--sidebar-footer-button-color-active) !important;
+    stroke: var(--sidebar-footer-button-color-active) !important;
+  }
+
+  &:hover {
+    & .icon {
+      opacity: .8;
+    }
+  }
+}
+
+.icon {
+  flex: 0 0 auto;
+  height: var(--sidebar-footer-button-icon-size);
+  width: var(--sidebar-footer-button-icon-size);
+  font-size: var(--sidebar-footer-button-icon-size);
+  line-height: var(--sidebar-footer-button-icon-size);
+  color: var(--sidebar-footer-button-color);
+  fill: var(--sidebar-footer-button-color);
+  stroke: var(--sidebar-footer-button-color);
+  transition: var(--default-transition-duration) ease;
+}
+
+.tooltip {
+  flex: 1 1 auto;
+  display: inline-flex;
+  @apply --flex-fix;
+}
+
+.spinner {
+  flex: 0 0 auto;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  height: var(--sidebar-footer-button-icon-size);
+  width: var(--sidebar-footer-button-icon-size);
+}

@@ -1,0 +1,29 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+/* Reset */
+.container {
+  all: initial;
+}
+
+/* Styles */
+.container {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 50px;
+  padding: var(--default-padding) 0;
+  box-shadow: 0 1px 0 0 var(--field-border-color);
+  font-family: var(--default-font-family);
+  justify-content: center;
+  align-content: flex-start;
+  align-items: flex-start;
+
+  &:last-child {
+    box-shadow: none;
+  }
+}

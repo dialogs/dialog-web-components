@@ -1,0 +1,83 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+/* Reset */
+.container {
+  all: initial;
+}
+
+/* Styles */
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: var(--activity-profile-padding);
+  text-align: center;
+  font-family: var(--activity-font-family);
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.avatar {
+  flex: 0 0 auto;
+}
+
+.name {
+  margin-top: var(--default-padding);
+  letter-spacing: -0.4px;
+  font-size: var(--activity-profile-title-font-size);
+  line-height: 1.2;
+  color: var(--activity-font-color);
+}
+
+.nick,
+.status,
+.about {
+  letter-spacing: -0.4px;
+  font-size: var(--activity-font-size);
+  line-height: 1.3;
+  color: var(--activity-font-color);
+}
+
+.nick {
+  margin-top: calc(var(--default-padding) / 2);
+}
+
+.online,
+.creator {
+  margin-top: var(--default-padding-small);
+  color: var(--activity-text-color-light);
+}
+
+.about {
+  margin-top: var(--default-padding);
+}
+
+.actions {
+  margin-top: calc(var(--default-padding) * 1.6);
+}
+
+.button {
+  margin: 0 7px;
+}
+
+.contacts {
+  margin-top: var(--default-padding-large);
+  text-align: center;
+}
+
+.contactTitle {
+  letter-spacing: -0.27px;
+  font-size: var(--default-font-size-small);
+  line-height: 22px;
+  color: var(--activity-text-color-light);
+}
+
+.contactContent {
+  letter-spacing: -0.4px;
+  font-size: var(--activity-font-size);
+  line-height: 22px;
+  color: var(--activity-profile-contact-font-color);
+}

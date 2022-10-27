@@ -1,0 +1,10 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+.root {
+  display: inline-block;
+  line-height: 0;
+}

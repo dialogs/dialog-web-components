@@ -1,0 +1,84 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+.container {
+  all: initial;
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  height: var(--sidebar-header-height);
+  padding-top: var(--sidebar-header-padding-top);
+  padding-right: var(--sidebar-header-padding-right);
+  padding-bottom: var(--sidebar-header-padding-bottom);
+  padding-left: var(--sidebar-header-padding-left);
+  font-family: var(--sidebar-header-font-family);
+  align-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.menu {
+  display: inline-flex;
+  flex-direction: row;
+  cursor: pointer;
+  user-select: none;
+  letter-spacing: -0.3px;
+  font-size: var(--sidebar-header-menu-font-size);
+  font-weight: 500;
+  line-height: calc(var(--sidebar-header-height) - var(--sidebar-header-padding-top) - var(--sidebar-header-padding-bottom));
+  color: var(--sidebar-header-menu-color);
+  justify-content: flex-start;
+  align-content: center;
+  align-items: center;
+}
+
+.logo {
+  width: 28px;
+  height: 28px;
+  margin-right: 14px;
+  margin-left: 2px;
+  line-height: 0;
+}
+
+.appName {
+}
+
+.arrow {
+  height: calc(var(--sidebar-header-height) - var(--sidebar-header-padding-top) - var(--sidebar-header-padding-bottom));
+  cursor: inherit;
+  color: #000;
+  line-height: calc(var(--sidebar-header-height) - var(--sidebar-header-padding-top) - var(--sidebar-header-padding-bottom));
+}
+
+.plusWrapper {
+  display: inline-flex;
+  height: calc(var(--sidebar-header-height) - var(--sidebar-header-padding-top) - var(--sidebar-header-padding-bottom));
+  align-content: center;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1 1 auto;
+}
+
+.plus {
+  margin-right: 10px;
+  transition: all var(--default-transition-duration) ease-in;
+  transform-origin: 50% 50%;
+  color: var(--sidebar-header-plus-color);
+  stroke: var(--sidebar-header-plus-color);
+  fill: var(--sidebar-header-plus-color);
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:active {
+    opacity: 0.9;
+  }
+}
+
+.plusActive {
+  transform: rotate(90deg);
+}

@@ -1,0 +1,117 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+.container {
+  all: initial;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  padding: var(--message-vertical-padding) var(--message-horizontal-padding);
+  transition: box-shadow var(--message-transition-duration) ease-in-out, opacity var(--message-transition-duration) ease-in;
+  font-family: var(--message-font-family);
+}
+
+.avatar {
+  flex: 0 0 auto;
+}
+
+.info {
+  display: block;
+  box-sizing: border-box;
+  width: 60px;
+  padding-right: 20px;
+  text-align: center;
+  line-height: 0;
+  flex: 0 0 auto;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  align-content: flex-start;
+  justify-content: flex-start;
+  @apply --flex-fix;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 4px;
+  vertical-align: bottom;
+  flex: 0 1 auto;
+}
+
+.sender {
+  display: inline-block;
+}
+
+.title {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.username {
+  display: inline-block;
+  margin-left: 6px;
+  font-size: 14px;
+  color: var(--message-username-color);
+}
+
+.content {
+  line-height: 0;
+  flex: 0 0 auto;
+}
+
+.actions {
+  position: absolute;
+  top: -18px;
+  right: var(--message-horizontal-padding);
+  display: block;
+  z-index: var(--z-index-message-actions);
+}
+
+.clickable {
+  cursor: pointer !important;
+}
+
+.pending {
+  opacity: 0.6;
+}
+
+.unread {
+  background-color: var(--message-unread-color);
+  box-shadow: inset var(--message-state-border-width) 0 0 0 color(#000 alpha(20%));
+}
+
+.error {
+  background-color: transparent;
+  background-image: repeating-linear-gradient(-45deg, transparent, transparent 5px, var(--message-error-color) 5px, var(--message-error-color) 10px);
+  box-shadow: inset var(--message-state-border-width) 0 0 0 var(--color-danger);
+
+  &.hover {
+    background-color: transparent !important;
+    background-image: repeating-linear-gradient(-45deg, transparent, transparent 5px, var(--message-error-hover-color) 5px, var(--message-error-hover-color) 10px);
+  }
+}
+
+.hover {
+  background-color: var(--message-hover-background-color) !important;
+}
+
+.stateShort {
+  display: inline-block;
+  line-height: 20px;
+}
+
+.reactions {
+  margin-top: calc(var(--default-padding) / 2);
+}
+
+.reactionButton {
+  margin-right: calc(var(--default-padding) / 2);
+}

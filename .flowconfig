@@ -1,0 +1,34 @@
+[ignore]
+.*/__tests__/.*
+.*/test/.*
+.*/react/node_modules/.*
+.*/fbjs/node_modules/.*
+.*/node_modules/invariant/.*
+.*/node_modules/flow-coverage-report/.*
+.*/scripts/.*
+src/utils/compileMessages.js
+
+# Incorrect parsing
+.*/systemjs-builder/.*
+.*/findup/.*
+.*/stylelint/.*
+
+[include]
+./node_modules/react
+./node_modules/fbjs/lib
+./node_modules/immutable
+
+[libs]
+./node_modules/@dlghq/dialog-utils/lib
+./node_modules/fbjs/flow/lib
+
+[options]
+module.system=haste
+module.use_strict=true
+
+module.file_ext=.js
+module.name_mapper='.*\.css$' -> 'CSSModule'
+
+suppress_type=$FlowIssue
+suppress_comment=\\(.\\|\n\\)*\\$FlowFixMe
+esproposal.class_static_fields=enable

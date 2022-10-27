@@ -1,0 +1,19 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+/* Styles */
+.container {
+  width: var(--modal-member-add-width);
+  font-family: var(--modal-font-family);
+}
+
+.body {
+  padding: 0;
+}
+
+.footer {
+  padding: 0;
+}

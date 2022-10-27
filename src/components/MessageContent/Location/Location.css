@@ -1,0 +1,10 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../../styles/variables.css';
+
+.container {
+  border-radius: var(--location-border-radius);
+  line-height: 0;
+}

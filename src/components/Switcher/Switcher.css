@@ -1,0 +1,122 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+.container,
+.switcher,
+.label {
+  all: initial;
+}
+
+.container {
+  display: inline-flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  height: var(--switcher-height);
+  vertical-align: middle;
+  justify-content: flex-start;
+  align-content: center;
+  align-items: center;
+}
+
+.input {
+  display: none;
+}
+
+.switcher {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  width: var(--switcher-width);
+  height: var(--switcher-height);
+  cursor: pointer;
+  user-select: none;
+  transition: background var(--switcher-transition-duration) ease;
+  border-radius: var(--switcher-border-radius);
+  background-color: var(--switcher-background-color);
+  flex: 0 0 auto;
+
+  &::before {
+    position: absolute;
+    top: calc((var(--switcher-height) - var(--switcher-dot-size)) / 2);
+    left: calc((var(--switcher-height) - var(--switcher-dot-size)) / 2);
+    display: block;
+    width: var(--switcher-dot-size);
+    height: var(--switcher-dot-size);
+    content: '';
+    transition: background var(--switcher-transition-duration) ease, left var(--switcher-transition-duration) ease, box-shadow var(--switcher-transition-duration) ease;
+    transform: translateZ(0);
+    border-radius: 100%;
+    background-color: var(--switcher-dot-color);
+  }
+
+  &:hover {
+    background-color: var(--switcher-active-background-color);
+
+    &::before {
+      background-color: color(var(--switcher-dot-color) alpha(98%));
+      box-shadow: 0 2px 2px 0 color(#000 alpha(30%));
+    }
+  }
+
+  &:active {
+    background-color: var(--switcher-active-background-color);
+
+    &::before {
+      background-color: var(--switcher-active-dot-color);
+      box-shadow: 0 1px 0 0 color(#000 alpha(30%));
+    }
+  }
+}
+
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+
+  & .switcher {
+    cursor: not-allowed;
+    background-color: var(--switcher-background-color) !important;
+
+    &::before {
+      background-color: var(--switcher-dot-color);
+      box-shadow: none;
+    }
+  }
+
+  &.checked {
+    & .switcher {
+      background-color: var(--switcher-checked-background-color) !important;
+    }
+  }
+}
+
+.checked {
+  & .switcher {
+    background-color: var(--switcher-checked-background-color);
+
+    &::before {
+      left: var(--switcher-active-offset);
+      background-color: var(--switcher-active-dot-color);
+    }
+
+    &:hover {
+      background-color: var(--switcher-checked-active-background-color);
+    }
+  }
+}
+
+.label {
+  display: inline;
+  padding-left: 14px;
+  cursor: pointer;
+  user-select: none;
+  font-family: var(--switcher-label-font-family);
+  font-size: var(--switcher-label-font-size);
+
+  & b,
+  & strong {
+    font-weight: 500;
+  }
+}

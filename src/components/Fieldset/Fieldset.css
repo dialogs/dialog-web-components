@@ -1,0 +1,33 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+/* Reset */
+.container,
+.legend {
+  all: initial;
+}
+
+/* Styles */
+.container {
+  display: block;
+  width: 100%;
+  padding-bottom: var(--default-padding);
+}
+
+.legend {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 8px;
+  cursor: default;
+  user-select: none;
+  letter-spacing: -0.1px;
+  text-transform: uppercase;
+  font-family: var(--default-font-family);
+  font-size: var(--fieldset-legend-font-size);
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--fieldset-legend-font-color);
+}

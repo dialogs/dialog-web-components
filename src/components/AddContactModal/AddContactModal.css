@@ -1,0 +1,131 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+.container {
+  width: var(--modal-add-contact-width);
+  /*height: var(--modal-add-contact-heigth);*/
+  font-family: var(--modal-font-family);
+  font-size: var(--modal-font-size);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: calc(var(--default-padding) * 2);
+  text-align: center;
+  align-content: flex-start;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.input {
+  width: 100%;
+  margin-bottom: calc(var(--default-padding) * 2);
+  flex: 0;
+}
+
+.status {
+  display: flex;
+  width: 100%;
+  min-height: 50px;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+.contact {
+  width: 100%;
+}
+
+.hint {
+  vertical-align: middle;
+  letter-spacing: -0.3px;
+  font-size: var(--modal-font-size);
+  line-height: 1.2;
+  color: var(--modal-font-color-light);
+
+  & b {
+    font-weight: 500;
+  }
+  @apply --no-select;
+}
+
+.found {
+  composes: hint;
+  color: color(var(--modal-font-color) alpha(80%));
+}
+
+.foundAvatar {
+  margin-right: var(--default-padding-small);
+  vertical-align: middle;
+}
+
+.addedAvatar {
+  position: relative;
+  display: inline-block;
+  line-height: 0;
+  margin-right: var(--default-padding-small);
+  vertical-align: middle;
+}
+
+.avatar {
+  position: relative;
+  display: inline-block;
+  margin-bottom: var(--default-padding);
+  line-height: 0;
+}
+
+.icon {
+  position: absolute;
+  right: 2px;
+  bottom: 2px;
+  padding: 1px;
+  user-select: none;
+  border-radius: 50%;
+  background-color: var(--color-success);
+  font-size: 20px;
+  color: #fff;
+  @apply --no-select;
+}
+
+.iconError {
+  background-color: var(--color-danger);
+  composes: icon;
+}
+
+.iconSmall {
+  composes: icon;
+  font-size: 10px;
+  width: 14px;
+  height: 14px;
+  right: -2px;
+  bottom: -2px;
+}
+
+.text {
+  margin: 0;
+  padding: 0 50px;
+  letter-spacing: -0.3px;
+  font-size: var(--default-font-size-large);
+  line-height: 1.3;
+  color: var(--modal-font-color);
+  @apply --no-select;
+
+  & b,
+  & strong {
+    font-weight: 600;
+  }
+}
+
+.error {
+  display: block;
+  text-align: center;
+}
+
+.footer {
+  padding: 0;
+}

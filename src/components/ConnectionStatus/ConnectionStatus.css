@@ -1,0 +1,73 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+/* Reset */
+.container {
+  all: initial;
+}
+
+/* Styles */
+.container {
+  position: absolute;
+  z-index: var(--z-index-connection-status);
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: var(--connection-status-height);
+  cursor: default;
+  user-select: none;
+  transition: background var(--connection-status-transition-duration) ease;
+  font-family: var(--default-font-family);
+  font-size: var(--connection-status-font-size);
+  color: var(--connection-status-font-color);
+  flex: 0 0 auto;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.wrapper {
+  position: relative;
+  height: 0;
+}
+
+.online {
+  background-color: var(--color-success);
+}
+
+.connecting {
+  background-color: var(--color-danger);
+}
+
+.updating {
+  background-color: var(--color-warning);
+}
+
+/* Animation */
+/* TODO: rethink animation */
+.enter {
+  /*transform: translateY(var(--connection-status-translate-size));*/
+  margin-top: var(--connection-status-translate-size);
+}
+
+.enterActive {
+  /*transform: translateY(0);*/
+  margin-top: 0;
+  transition: margin var(--connection-status-transition-duration) ease-in;
+}
+
+.leave {
+  /*transform: translateY(0);*/
+  margin-top: 0;
+}
+
+.leaveActive {
+  /*transform: translateY(var(--connection-status-translate-size));*/
+  margin-top: var(--connection-status-translate-size);
+  transition: margin var(--connection-status-transition-duration) ease-out;
+}

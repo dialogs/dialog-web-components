@@ -1,0 +1,85 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../../styles/variables.css';
+
+.empty {
+  display: flex;
+  height: 200px;
+  padding: 0 50px;
+  text-align: center;
+  font-family: var(--default-font-family);
+  font-size: 15px;
+  flex-flow: row;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  color: color(#000 alpha(30%));
+  @apply --no-select;
+}
+
+.inputField {
+  padding-top: 0;
+}
+
+.input {
+  all: initial;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 6px 12px;
+  border-radius: var(--default-border-radius-small);
+  box-shadow: inset 0 0 1px 0 color(#000 alpha(38%));
+  font-family: var(--default-font-family);
+  font-size: 16px;
+  line-height: 32px;
+}
+
+.notFound {
+  composes: empty;
+}
+
+.user {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  align-content: center;
+  justify-content: flex-start;
+
+  &:hover {
+    & .unblockButton {
+      display: block;
+    }
+  }
+}
+
+.userMeta {
+  display: flex;
+  flex: 1 1 auto;
+  flex-flow: row;
+  align-items: center;
+  align-content: center;
+  justify-content: flex-start;
+  @apply --flex-fix;
+  @apply --no-select;
+}
+
+.userAvatar {
+  margin-right: var(--default-padding);
+}
+
+.userName {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: #000;
+}
+
+.userNick {
+  margin-left: 8px;
+  color: color(#000 alpha(50%));
+}
+
+.unblockButton {
+  display: none;
+}

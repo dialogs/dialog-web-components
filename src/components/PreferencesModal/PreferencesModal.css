@@ -1,0 +1,60 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+/* Styles */
+.container {
+  width: var(--modal-preferences-width);
+  height: var(--modal-preferences-height);
+  font-family: var(--modal-font-family);
+}
+
+.body {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  align-content: flex-start;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex: 1 1 auto;
+  overflow: hidden;
+  @apply --flex-fix;
+}
+
+.tabs {
+  padding: var(--default-padding-small);
+  flex: 0 0 auto;
+}
+
+.scroller {
+  width: 100%;
+  height: calc(var(--modal-preferences-height) - var(--modal-preferences-header-height));
+  min-height: 100%;
+  flex: 1 1 auto;
+}
+
+.screen {
+  box-sizing: border-box;
+  padding: 25px 50px 25px 40px;
+}
+
+.spinnerScreen {
+  display: flex;
+  height: 100%;
+  composes: screen;
+  flex-flow: row;
+  justify-content: center;
+  align-content: center;
+}
+
+.hint {
+  padding-top: 6px;
+  padding-left: 46px;
+  cursor: default;
+  user-select: none;
+  font-size: var(--modal-preferences-hint-font-size);
+  line-height: 1.3;
+  color: var(--modal-preferences-hint-color);
+}

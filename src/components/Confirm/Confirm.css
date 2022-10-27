@@ -1,0 +1,33 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+.container {
+  width: var(--confirm-width);
+  min-width: 0;
+}
+
+.body {
+  padding: calc(var(--default-padding) * 2) calc(var(--default-padding) * 2) var(--default-padding);
+}
+
+.question {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-size: var(--confirm-font-size);
+  font-weight: 400;
+  line-height: var(--default-line-height);
+  cursor: default;
+}
+
+.footer {
+  padding: var(--default-padding) var(--default-padding) var(--default-padding-large);
+  text-align: center;
+}
+
+.button {
+  margin: 0 calc(var(--default-padding) / 4);
+}

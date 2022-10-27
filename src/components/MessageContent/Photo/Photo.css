@@ -1,0 +1,9 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../../styles/variables.css';
+
+.container {
+  border-radius: var(--message-photo-border-raduis);
+}

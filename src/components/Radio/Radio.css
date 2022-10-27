@@ -1,0 +1,96 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+/* Reset */
+.container {
+  all: initial;
+}
+
+/* Styles */
+.container {
+  display: inline-flex;
+  flex-direction: row;
+  padding: 6px 0;
+  cursor: pointer;
+  font-family: var(--radio-font-family);
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+
+  &:hover {
+    & .radio {
+      box-shadow: 0 0 0 2px var(--radio-active-color) inset;
+    }
+  }
+
+  &:active {
+    & .input:checked + .radio {
+      &:before {
+        transform: scale(0.9);
+      }
+    }
+  }
+}
+
+.input {
+  display: none;
+
+  & + .radio {
+    &:before {
+      transform: scale(0);
+    }
+  }
+
+  &:checked + .radio {
+    box-shadow: 0 0 0 2px var(--radio-active-color) inset;
+
+    &:before {
+      transform: scale(1);
+    }
+  }
+}
+
+.radio {
+  position: relative;
+  display: inline-flex;
+  flex-direction: row;
+  width: var(--radio-size);
+  height: var(--radio-size);
+  cursor: pointer;
+  user-select: none;
+  transition: box-shadow var(--default-transition-duration) ease-in-out;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px var(--radio-inactive-color) inset;
+  flex: 0 0 auto;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+
+  &:before {
+    display: block;
+    width: 10px;
+    height: 10px;
+    content: '';
+    transition: transform var(--default-transition-duration) ease-in-out;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+    flex: 0 0 auto;
+  }
+}
+
+.label {
+  padding-left: var(--radio-label-padding);
+  cursor: inherit;
+  user-select: none;
+  font-size: var(--radio-label-font-size);
+
+  & b,
+  & strong {
+    font-weight: 500;
+  }
+}
+
+.labeled {}

@@ -1,0 +1,113 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+/* Styles */
+.container {
+  font-family: var(--default-font-family);
+}
+
+.scroll {
+}
+
+.wrapper {
+}
+
+.zoomWrap {
+}
+
+.background {
+  background-color: var(--lightbox-background-color) !important;
+}
+
+.item {
+}
+
+.image {
+}
+
+.oneSlide {
+}
+
+.ui {
+  position: relative;
+  z-index: 1550;
+}
+
+.overClose {
+}
+
+.uiHidden {
+}
+
+.uiIdle {
+  display: none;
+}
+
+.controls {
+}
+
+.title {
+}
+
+.titleEmpty {
+}
+
+.preloader {
+  /*display: none;*/
+}
+
+.preloaderActive {
+  /*display: block;*/
+}
+
+.overClose {
+}
+
+.toolbar {
+  /*height: 74px;*/
+  background-color: var(--lightbox-toolbar-background-color) !important;
+}
+
+.buttonZoom {
+}
+
+.buttonClose {
+}
+
+.buttonPrev {
+}
+
+.buttonNext {
+}
+
+.preloader {
+}
+
+.elementDisabled {
+}
+
+.buttonDownload {
+  all: initial;
+  display: flex;
+  float: right;
+  width: 44px;
+  height: 44px;
+  transition: opacity 200ms;
+  text-decoration: none;
+  opacity: 0.75;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+
+  & .icon {
+    font-size: 22px;
+    color: #fff;
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+}

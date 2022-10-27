@@ -1,0 +1,36 @@
+title: Preferences
+general:
+  title: General
+  legend:
+    sending: Send Message
+    other: Other
+  sound: Enable sound effects
+  sendByEnter:
+    enable: <b>Enter</b> – send message; <b>Shift + Enter</b> – new line
+    disable: <b>{keyOS} + Enter</b> – send message; <b>Enter</b> – new line
+notifications:
+  title: Notifications
+  legend:
+    notifications: Notifications
+    privacy: Privacy
+  notifications: Notifications
+  preview: Message preview
+  preview_hint: Show message text in notification
+  mention: Mention Only Notifications
+  mention_hint: You can enable notifications only for messages that contains you mention.
+security:
+  title: Security
+  legend:
+    current_session: Current session
+    active_sessions: Active sessions
+  terminate: Terminate
+  terminate_all: Terminate all other sessions
+shortcuts:
+  title: Keyboard shortcuts
+blocked:
+  title: Blocked users
+  legend: List of blocked users
+  empty: You will not receive messages from people on your block list
+  search_placeholder: Search for blocked users
+  not_found: No users found
+  unblock: Unblock

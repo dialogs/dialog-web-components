@@ -1,0 +1,107 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../../styles/variables.css';
+
+.container {
+  all: initial;
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  min-width: var(--document-min-width);
+  max-width: var(--document-max-width);
+  padding: var(--document-padding);
+  cursor: pointer;
+  user-select: none;
+  border-radius: var(--document-border-radius);
+  background-color: var(--document-background-color);
+  box-shadow: 0 0 0 1px var(--document-border-color);
+  font-family: var(--document-font-family);
+}
+
+.uploading {
+  opacity: 0.6;
+  padding-right: calc(var(--document-padding) * 2);
+  position: relative;
+  cursor: default;
+}
+
+.preview {
+  display: flex;
+  width: var(--document-preview-size);
+  height: var(--document-preview-size);
+  margin-right: var(--document-padding-margin-right);
+  text-transform: uppercase;
+  border-radius: calc(var(--document-preview-size) / 2);
+  font-size: 14px;
+  font-weight: 500;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  flex: 0 0 auto;
+}
+
+.info {
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
+
+.filename {
+  letter-spacing: -0.4px;
+  font-size: var(--default-font-size);
+  font-weight: 500;
+  flex: 1 1 50%;
+  color: #000;
+  display: inline-flex;
+  align-items: center;
+}
+
+.sizeBlock {
+  flex: 1 1 50%;
+  display: inline-flex;
+  align-items: center;
+}
+
+.size {
+  font-size: var(--default-font-size-small);
+  color: var(--default-font-color-light);
+}
+
+.text {
+  display: inline-block;
+  max-width: 100%;
+  @apply --text-overflow-ellipsis;
+}
+
+.downloadArrow {
+  color: var(--document-download-arrow-color);
+  font-size: var(--document-download-arrow-size);
+}
+
+/* File type colors */
+.media {
+  background-color: var(--document-media-color);
+}
+
+.document {
+  background-color: var(--document-document-color);
+}
+
+.picture {
+  background-color: var(--document-picture-color);
+}
+
+.unknown {
+  background-color: var(--document-unknown-color);
+}
+
+.spinner {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  opacity: 1;
+}

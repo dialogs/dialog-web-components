@@ -1,0 +1,172 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../../styles/variables.css';
+
+/* Reset */
+.container,
+.transctiptButton {
+  all: initial;
+}
+
+/* Styles */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  min-width: var(--voice-min-width);
+  max-width: var(--voice-max-width);
+  cursor: default;
+  user-select: none;
+  border-radius: var(--voice-border-radius);
+  background-color: var(--voice-background-color);
+  box-shadow: 0 0 0 1px var(--voice-border-color);
+  font-family: var(--voice-font-family);
+}
+
+.player {
+  display: flex;
+  padding: var(--voice-padding);
+  flex: 1 1 auto;
+}
+
+.playerIcon {
+  margin-right: 14px;
+}
+
+.playerControls {
+  display: flex;
+  flex-direction: column;
+  padding-top: 16px;
+  flex: 1 1 auto;
+}
+
+.playerControlsText {
+  flex: 1 1 auto;
+}
+
+.playerTime {
+  display: flex;
+  letter-spacing: -0.3px;
+  font-size: 14px;
+  line-height: 20px;
+  flex: 1 1 auto;
+  color: color(#000 alpha(60%));
+}
+
+.seeker {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 8px;
+  cursor: pointer;
+  border-radius: 2px;
+  background-color: color(var(--color-primary) alpha(10%));
+
+  /*&::after {*/
+  /*position: absolute;*/
+  /*top: 0;*/
+  /*left: 0;*/
+  /*width: 100%;*/
+  /*height: 8px;*/
+  /*content: '';*/
+  /*background-image: radial-gradient(ellipse at center, transparent 50%, #fff 50%);*/
+  /*background-repeat: repeat-x;*/
+  /*background-size: 8px 8px;*/
+  /*}*/
+}
+
+.seekerPlayed {
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  transition: width 100ms linear;
+  background-color: var(--color-primary);
+}
+
+.transctiptButton {
+  display: flex;
+  flex-direction: column;
+  width: var(--voice-transcript-button-wdith);
+  cursor: pointer;
+  user-select: none;
+  transition: color var(--default-transition-duration) ease-out;
+  border-left: 1px solid var(--voice-border-color);
+  font-family: var(--voice-font-family);
+  flex: 0 0 auto;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  color: var(--voice-transcript-button-color);
+
+  &:hover,
+  &.transctiptButtonActive {
+    color: var(--voice-transcript-button-hover-color);
+
+    & .transctiptButtonIcon {
+      color: var(--voice-transcript-button-hover-color);
+      fill: var(--voice-transcript-button-hover-color);
+    }
+  }
+}
+
+.transctiptButtonIcon {
+  width: 30px;
+  height: 30px;
+  cursor: inherit;
+  transition: fill var(--default-transition-duration) ease-out;
+  color: var(--voice-transcript-button-icon-color);
+  fill: var(--voice-transcript-button-icon-color);
+}
+
+.transcriptButtonText {
+  margin-top: 4px;
+  letter-spacing: 0.1px;
+  font-size: 10px;
+}
+
+.transcription {
+  position: relative;
+  z-index: 10;
+  box-sizing: border-box;
+  min-width: var(--voice-min-width);
+  margin-top: 16px;
+  padding: var(--voice-transcription-padding);
+  letter-spacing: -0.24px;
+  border-radius: var(--voice-border-radius);
+  background-color: var(--voice-background-color);
+  box-shadow: 0 0 0 1px var(--voice-border-color);
+  font-family: var(--voice-font-family);
+  font-size: var(--voice-transcription-font-size);
+  line-height: 21px;
+  color: var(--voice-transcription-color);
+
+  &::before {
+    position: absolute;
+    top: calc(0 - var(--voice-transcription-stem-size) / 2);
+    left: calc(var(--voice-min-width) - (var(--voice-transcript-button-wdith) / 2) - (var(--voice-transcription-stem-size) / 2));
+    width: var(--voice-transcription-stem-size);
+    height: var(--voice-transcription-stem-size);
+    content: '';
+    transform: rotate(45deg);
+    background-color: var(--voice-background-color);
+    box-shadow: -1px -1px 0 0 var(--voice-border-color);
+  }
+}
+
+.transcriptionEmpty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}

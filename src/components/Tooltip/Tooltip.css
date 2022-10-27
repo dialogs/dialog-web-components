@@ -1,0 +1,53 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+:global {
+  & .tether-element {
+    pointer-events: none;
+  }
+}
+
+/* Reset */
+.tooltip {
+  all: initial;
+}
+
+/* Styles */
+.wrapper {
+  display: inline-block;
+}
+
+.tooltip {
+  position: relative;
+  z-index: var(--tooltip-z-index);
+  display: block;
+  box-sizing: border-box;
+  margin: var(--tooltip-offset);
+  padding: 3px 12px;
+  text-align: center;
+  letter-spacing: -0.3px;
+  pointer-events: none;
+  border-radius: 3px;
+  background-color: var(--tooltip-background-color);
+  font-family: var(--tooltip-font-family);
+  font-size: var(--tooltip-font-size);
+  line-height: 20px;
+  color: var(--tooltip-color);
+  @apply --no-select;
+}
+
+/* Animations */
+.appear {
+  transform: translateZ(0) scale(0.6);
+  transform-origin: 50% 100%;
+  opacity: 0.01;
+}
+
+.appearActive {
+  transition: all var(--tooltip-transition-duration) ease-out;
+  transform: translateZ(0) scale(1);
+  opacity: 1;
+}

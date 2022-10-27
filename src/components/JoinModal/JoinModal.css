@@ -1,0 +1,73 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+.container {
+  width: var(--modal-join-width);
+  font-family: var(--modal-font-family);
+  font-size: var(--modal-join-font-size);
+}
+
+.header {
+  flex-direction: column;
+  height: auto;
+  padding-top: var(--modal-join-padding-top);
+  padding-right: var(--modal-join-padding-right);
+  padding-bottom: 0;
+  padding-left: var(--modal-join-padding-left);
+  text-align: center;
+  align-items: center;
+}
+
+.body {
+  padding-top: 0;
+  padding-right: var(--modal-join-padding-right);
+  padding-bottom: 0;
+  padding-left: var(--modal-join-padding-left);
+  text-align: center;
+}
+
+.footer {
+  padding-top: 0;
+  padding-right: var(--modal-join-padding-right);
+  padding-bottom: var(--modal-join-padding-bottom);
+  padding-left: var(--modal-join-padding-left);
+  text-align: center;
+}
+
+.buttons {
+  margin-top: calc(var(--default-padding-large) * 2);
+
+  & .button {
+    margin: 0 calc(var(--default-padding) / 2);
+  }
+}
+
+.text {
+  margin: 0;
+  padding: 0;
+  font-weight: 400;
+  line-height: var(--default-line-height);
+}
+
+.title {
+  margin: 0;
+  padding: 0;
+  letter-spacing: -0.5px;
+  font-size: var(--modal-join-title-font-size);
+  font-weight: 400;
+  line-height: var(--default-line-height-small);
+}
+
+.form {
+  padding-top: calc(var(--default-padding-large) * 3);
+  padding-right: 0;
+  padding-bottom: calc(var(--default-padding-large) * 2);
+  padding-left: 0;
+}
+
+.input {
+  margin-bottom: 20px;
+}

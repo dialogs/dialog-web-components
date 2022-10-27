@@ -1,0 +1,11 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+.container {
+  all: initial;
+  width: auto;
+  height: auto;
+  cursor: inherit;
+  display: block;
+}

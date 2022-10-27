@@ -1,0 +1,29 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+.container {
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+  user-select: none;
+  font-family: var(--activity-font-family);
+  justify-content: flex-start;
+  align-content: center;
+}
+
+.icon {
+  margin-right: var(--default-padding-small);
+  cursor: inherit;
+}
+
+.text {
+  flex: 1 1 auto;
+  font-size: var(--activity-font-size);
+  line-height: 1.2;
+}
+
+.switcher {
+}

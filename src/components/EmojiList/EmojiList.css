@@ -1,0 +1,196 @@
+/**
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ */
+@import '../../styles/variables.css';
+
+/* Reset */
+.container {
+  all: initial;
+}
+
+/* Styles */
+.container {
+  display: flex;
+  position: relative;
+  width: var(--emoji-list-width);
+  height: var(--emoji-list-height);
+  border-radius: var(--default-border-radius);
+  background-color: var(--emoji-list-background-color);
+  box-shadow: 0 1px 2px 0 color(#000 alpha(12%)), 0 0 0 1px color(#000 alpha(15%));
+  font-family: var(--default-font-family);
+  flex-flow: column;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.body {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  flex: 1 1 auto;
+  @apply --flex-fix;
+}
+
+.goToButton {
+  all: initial;
+  position: absolute;
+  top: 7px;
+  right: 20px;
+  z-index: 10;
+  cursor: pointer;
+  transition: color var(--default-transition-duration) ease-in;
+  color: color(var(--color-primary) alpha(70%));
+  font-family: var(--default-font-family);
+  letter-spacing: -0.2px;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.6;
+  &:hover {
+    color: var(--color-primary);
+  }
+}
+
+.category {
+  position: relative;
+  padding-top: 38px;
+}
+
+.categoryTitle {
+  position: absolute;
+  transform: translateZ(0px);
+  z-index: 5;
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: var(--default-border-radius);
+  background: color(#fff alpha(90%));
+  padding: 8px var(--default-padding);
+  letter-spacing: -0.2px;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.6;
+  color: color(#000 alpha(50%));
+  @apply --no-select;
+}
+
+.categoryList {
+  padding: 0 11px;
+}
+
+.emojiWrapper {
+  display: inline-block;
+  box-sizing: border-box;
+  padding: var(--emoji-list-emoji-wrapper-padding);
+  cursor: pointer;
+  user-select: none;
+  transition: background calc(var(--default-transition-duration) / 2) linear;
+  border-radius: 50%;
+
+  &:hover {
+    background-color: var(--emoji-list-emoji-wrapper-background);
+  }
+}
+
+.emoji {
+  display: inline-block;
+  width: var(--emoji-list-emoji-size);
+  height: var(--emoji-list-emoji-size);
+  font-size: var(--emoji-list-emoji-font-size);
+  line-height: var(--emoji-list-emoji-line-height);
+}
+
+.sticker {
+  display: inline-flex;
+  cursor: pointer;
+  border-radius: var(--default-border-radius);
+  padding: 2px;
+  margin: 2px;
+  transition: background calc(var(--default-transition-duration) / 2) linear;
+  &:hover {
+    background-color: var(--emoji-list-emoji-wrapper-background);
+  }
+}
+
+.footer {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  height: 46px;
+  padding: 0 11px;
+  flex: 0 0 auto;
+
+  &:before {
+    position: absolute;
+    top: -20px;
+    left: 1px;
+    right: 1px;
+    height: 20px;
+    content: '';
+    pointer-events: none;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, white 100%);
+  }
+}
+
+.footerStickers {
+  display: flex;
+  overflow-x: auto;
+}
+
+.footerTab {
+  display: inline-flex;
+  margin-top: 7px;
+  padding: 5px 7px;
+  vertical-align: middle;
+}
+
+.footerTabSticker {
+  display: inline-flex;
+  padding: 6px 6px 2px;
+  margin-bottom: 4px;
+  vertical-align: middle;
+  cursor: pointer;
+  &.active {
+    border-bottom: 2px solid var(--emoji-list-category-icon-active-color);
+  }
+}
+
+.footerTabIcon {
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  transition-timing-function: ease-in-out;
+  transition-duration: var(--default-transition-duration);
+  transition-property: color, fill, stroke;
+  border-radius: 50%;
+  font-size: 24px;
+  color: var(--emoji-list-category-icon-color);
+  fill: var(--emoji-list-category-icon-color);
+  stroke: var(--emoji-list-category-icon-color);
+
+  &:hover {
+    color: var(--emoji-list-category-icon-hover-color);
+    fill: var(--emoji-list-category-icon-hover-color);
+    stroke: var(--emoji-list-category-icon-hover-color);
+  }
+
+  &.active {
+    color: var(--emoji-list-category-icon-active-color);
+    fill: var(--emoji-list-category-icon-active-color);
+    stroke: var(--emoji-list-category-icon-active-color);
+
+    &:hover {
+      color: var(--emoji-list-category-icon-active-hover-color);
+      fill: var(--emoji-list-category-icon-active-hover-color);
+      stroke: var(--emoji-list-category-icon-active-hover-color);
+    }
+  }
+}
+
+.disabled {
+  color: var(--emoji-list-category-icon-color) !important;
+  fill: var(--emoji-list-category-icon-color) !important;
+  stroke: var(--emoji-list-category-icon-color) !important;
+  cursor: default !important;
+  opacity: 0.5 !important;
+}

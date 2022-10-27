@@ -1,0 +1,66 @@
+@import '../../styles/variables.css';
+
+.container {
+  all: initial;
+  height: var(--default-line-height);
+}
+
+.checkbox {
+  display: none;
+}
+
+.label {
+  all: initial;
+  position: relative;
+  display: inline-block;
+  padding-left: calc(var(--default-padding) * 2);
+  cursor: pointer;
+  user-select: none;
+  font-family: var(--default-font-family);
+  line-height: 24px;
+
+  &::before {
+    position: absolute;
+    top: 4px;
+    left: 2px;
+    display: block;
+    width: var(--checkbox-size);
+    height: var(--checkbox-size);
+    content: '';
+    transition: box-shadow var(--default-transition-duration) linear;
+    border-radius: 1px;
+    box-shadow: 0 0 0 2px var(--color-primary), inset 0 0 0 0 var(--color-primary);
+  }
+
+  &::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10px;
+    height: 22px;
+    content: '';
+    transform: translate(3px, -2px) rotate(45deg) scale(0);
+    border: 0 solid #fff;
+    border-width: 0 4px 4px 0;
+  }
+}
+
+.disabled {
+  opacity: 0.5;
+
+  .label {
+    cursor: not-allowed;
+  }
+}
+
+.checked {
+  & .label {
+    &::before {
+      box-shadow: 0 0 0 2px var(--color-primary), inset 0 0 0 10px var(--color-primary);
+    }
+
+    &::after {
+      transform: translate(3px, -2px) rotate(45deg) scale(0.45);
+    }
+  }
+}

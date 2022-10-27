@@ -1,0 +1,36 @@
+title: Настройки
+general:
+  title: Основные
+  legend:
+    sending: Отправка сообщений
+    other: Разное
+  sound: Включить звуковые эффекты
+  sendByEnter:
+    enable: <b>Enter</b> – отправить особщение;<br /> <b>Shift + Enter</b> – новая строка
+    disable: <b>{keyOS} + Enter</b> – отправить особщение;<br /> <b>Enter</b> – новая строка
+notifications:
+  title: Уведомления
+  legend:
+    private: Сообщения от людей
+    group: Cообщения из групп
+  notifications: Уведомления
+  preview: Показ сообщений
+  preview_hint: Показывать текст сообщения в уведомлениях
+  mention: Уведомлять только при упоминании
+  mention_hint: Вы можете включить уведомления только для тех сообщений в которых вас упомянули
+security:
+  title: Безопасность
+  legend:
+    current_session: Текущая сессия
+    active_sessions: Активные сессии
+  terminate: Завершить
+  terminate_all: Завершить все другие сеансы
+shortcuts:
+  title: Горячие клавиши
+blocked:
+  title: Заблокированные пользователи
+  legend: Список заблокированных пользователей
+  empty: Вы не будете получать сообщения от пользовтелей которых вы заблокировали
+  search_placeholder: Поиск заблокированных пользователей
+  not_found: Пользователей не найдео
+  unblock: Разблокировать
